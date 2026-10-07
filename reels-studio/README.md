@@ -53,6 +53,15 @@ npx remotion render src/index.ts Reel ../finished-videos/my-reel.mp4 --props=./p
 
 Готовые ролики сохраняются в папку репозитория `finished-videos/`.
 
+## Раскадровка
+
+```bash
+npm run frames -- ../finished-videos/my-reel.mp4            # кадр каждую секунду
+npm run frames -- ../finished-videos/my-reel.mp4 --at 1,3.5  # нужные моменты
+```
+
+Картинка с кадрами и таймкодами появится в `finished-videos/frames/`. Нужны ffmpeg и Python с Pillow.
+
 ## Где что лежит
 
 - `source-videos/` — сырьё: съёмка, клипы, фото, музыка.

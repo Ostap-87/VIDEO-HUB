@@ -7,7 +7,8 @@
     "render:reel": "remotion render src/index.ts Reel ../finished-videos/reel.mp4",
     "render:text": "remotion render src/index.ts TextReel ../finished-videos/text-reel.mp4",
     "cover": "remotion still src/index.ts Reel ../finished-videos/cover.png --frame=45",
-    "upgrade": "remotion upgrade"
+    "upgrade": "remotion upgrade",
+    "frames": "python3 scripts/frames.py"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.0",
