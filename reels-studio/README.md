@@ -73,7 +73,15 @@ npm run matte -- ../source-videos/папка/_work/clip.cut.mp4 --ranges 0.8-4,1
 npx remotion render src/index.ts TalkReel ../finished-videos/имя.mp4 --props=./props/имя.json
 ```
 
-Пример props: `props/2026-10-07-byt-tehnika.json`.
+Пример props: `props/2026-10-07-byt-tehnika.json`, стиль референса — `TalkReelPro` и `props/2026-10-07-byt-tehnika-v2.json`.
+
+Пути в props считаются от корня репозитория (public-папка Remotion — корень VIDEO-HUB):
+`source-videos/...`, `интернет-материалы/...`.
+
+- `cities` — фото городов в нижней половине кадра, пока спикер перечисляет города (спикер сдвигается вверх);
+  поля `src`, `name`, `at`, `until`, `kicker` (подпись вместо «Маршрут · n/N»).
+- `site` — телефон в финале: `home` (главная, прокрутка) → `catalog` (каталог экспедиций) → `route` (кадры маршрута по дням).
+  Кадры маршрута снимаются Playwright: прокрутить страницу экспедиции к блоку «Маршрут» и жать «следующий день».
 
 ## Раскадровка
 
@@ -94,5 +102,6 @@ npm run frames -- ../finished-videos/my-reel.mp4 --at 1,3.5  # нужные мо
 - `source-videos/` — сырьё: съёмка, клипы, фото, музыка.
 - `reels-studio/props/` — сценарий каждого ролика, `props/имя.json`.
 - `finished-videos/` — готовые ролики и обложки.
+- `интернет-материалы/` — всё, что скачано из интернета (фото городов и т.п.), авторы и лицензии в `АВТОРЫ.md`.
 
 Видео и аудио хранятся через Git LFS (`.gitattributes`), поэтому перед первой работой выполните `git lfs install`.

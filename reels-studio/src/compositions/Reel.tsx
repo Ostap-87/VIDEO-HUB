@@ -10,7 +10,7 @@ import {Media} from "../components/Media";
 import {SafeZone} from "../components/SafeZone";
 
 export const reelSchema = z.object({
-  mediaSrc: z.string(), // файл из source-videos/: видео (mp4, mov) или фото. Пусто = нейтральный фон
+  mediaSrc: z.string(), // путь от корня репозитория (source-videos/...): видео (mp4, mov) или фото. Пусто = нейтральный фон
   tone: z.enum(["light", "dark"]), // цвет плашки сайта под фон
   counter: z.string(), // например "1 / 3". Пусто = скрыть
   kicker: z.string(),

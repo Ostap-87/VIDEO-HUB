@@ -5,8 +5,9 @@ Config.setVideoImageFormat("jpeg");
 Config.setCodec("h264");
 Config.setOverwriteOutput(true);
 
-// Исходники (видео, фото, музыка) лежат в общей папке репозитория source-videos/
-Config.setPublicDir("../source-videos");
+// Файлы для роликов берутся из всего репозитория: source-videos/ (сырьё), интернет-материалы/ (скачанное) и т.д.
+// Пути в props пишутся от корня репозитория, например "source-videos/2026-10-07-тема/clip.mp4".
+Config.setPublicDir("..");
 
 // В облачной среде Claude Remotion не может сам скачать свой браузер,
 // поэтому берём уже установленный там headless shell. На вашем компьютере этого пути нет, и всё работает как обычно.

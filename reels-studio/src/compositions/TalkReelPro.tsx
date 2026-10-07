@@ -42,9 +42,12 @@ export const talkReelProSchema = z.object({
   numbers: z.array(z.object({text: z.string(), sub: z.string(), at: z.number(), until: z.number()})),
   // Перебивки: картинка на весь экран, спикер уменьшается в окошко по центру (звук не прерывается)
   broll: z.array(z.object({src: z.string(), at: z.number(), until: z.number()})),
+  // Города: фото в нижней половине экрана, пока спикер их перечисляет; спикер остаётся сверху
+  cities: z.array(z.object({src: z.string(), name: z.string(), at: z.number(), until: z.number(), kicker: z.string().optional()})),
   sfx: z.object({pop: z.string(), whoosh: z.string()}),
   speechSeconds: z.number(),
-  site: z.object({src: z.string(), at: z.number()}), // src — страница сайта для экрана телефона (верх страницы)
+  // Финал: на экране телефона главная страница (прокрутка) → каталог экспедиций (прокрутка) → маршрут по дням
+  site: z.object({at: z.number(), home: z.string(), catalog: z.string(), route: z.array(z.string())}),
   cta: z.string(),
   ctaSeconds: z.number(),
   showSafeZone: z.boolean(),
@@ -93,12 +96,13 @@ export const LogoBar: React.FC<{darkFrom?: number}> = ({darkFrom = Infinity}) =>
 };
 
 // Субтитры по 3 слова по центру кадра, текущее и акцентные слова — синие
-const BigCaptions: React.FC<{words: TalkReelProProps["words"]; accent: string[]; until: number; lowFrom: number}> = ({
-  words,
-  accent,
-  until,
-  lowFrom,
-}) => {
+const BigCaptions: React.FC<{
+  words: TalkReelProProps["words"];
+  accent: string[];
+  until: number;
+  lowFrom: number;
+  cities: TalkReelProProps["cities"];
+}> = ({words, accent, until, lowFrom, cities}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -117,7 +121,7 @@ const BigCaptions: React.FC<{words: TalkReelProProps["words"]; accent: string[];
         position: "absolute",
         left: 90,
         right: 90,
-        top: low ? 1420 : 1250,
+        top: low ? 1420 : cityAmount(cities, t) > 0.5 ? 780 : 1250,
         textAlign: "center",
         fontFamily: display.fontFamily,
         fontWeight: 700,
@@ -370,15 +374,17 @@ const BigNumber: React.FC<{n: TalkReelProProps["numbers"][number]}> = ({n}) => {
 // Зум на склейках: куски чередуют общий план и наезд, плюс лёгкий «дых» внутри куска.
 // Перебивка (broll): за спиной спикера проявляется картинка, сам спикер вырезан из фона
 // (cutoutSrc — прозрачное видео из scripts/matte.py) и остаётся на месте, звук не прерывается.
-const ZoomedVideo: React.FC<{src: string; cutoutSrc: string; cuts: number[]; broll: TalkReelProProps["broll"]}> = ({
-  src,
-  cutoutSrc,
-  cuts,
-  broll,
-}) => {
+const ZoomedVideo: React.FC<{
+  src: string;
+  cutoutSrc: string;
+  cuts: number[];
+  broll: TalkReelProProps["broll"];
+  cities: TalkReelProProps["cities"];
+}> = ({src, cutoutSrc, cuts, broll, cities}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
+  const lift = cityAmount(cities, t) * 330; // лицо поднимается в верхнюю половину
   const idx = cuts.filter((c) => c <= t).length;
   const segStart = cuts[idx - 1] ?? 0;
   const base = idx % 2 === 0 ? 1.0 : 1.14;
@@ -400,6 +406,7 @@ const ZoomedVideo: React.FC<{src: string; cutoutSrc: string; cuts: number[]; bro
     objectFit: "cover",
     scale: String(base + drift),
     transformOrigin: "50% 32%",
+    translate: `0px ${-lift}px`,
   };
   return (
     <AbsoluteFill style={{background: "#0B0D14"}}>
@@ -428,10 +435,121 @@ const ZoomedVideo: React.FC<{src: string; cutoutSrc: string; cuts: number[]; bro
   );
 };
 
+// Сколько «городской» панели сейчас на экране: 0 — нет, 1 — нижняя половина занята фото города
+const cityAmount = (cities: TalkReelProProps["cities"], t: number) => {
+  if (!cities.length) return 0;
+  const start = Math.min(...cities.map((c) => c.at));
+  const end = Math.max(...cities.map((c) => c.until));
+  const ease = Easing.bezier(0.22, 1, 0.36, 1);
+  return Math.min(
+    interpolate(t, [start - 0.1, start + 0.3], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease}),
+    interpolate(t, [end - 0.3, end], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease}),
+  );
+};
+
+// Фото городов в нижней половине: каждый город въезжает справа поверх предыдущего, медленный наезд, подпись
+const CityPanel: React.FC<{cities: TalkReelProProps["cities"]}> = ({cities}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const t = frame / fps;
+  const amount = cityAmount(cities, t);
+  if (amount <= 0) return null;
+  const ease = Easing.bezier(0.22, 1, 0.36, 1);
+  const shown = cities.filter((c) => t >= c.at - 0.05 && t <= c.until + 0.3);
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: 960,
+        height: 960,
+        overflow: "hidden",
+        translate: `0px ${(1 - amount) * 100}%`,
+        borderTop: "6px solid #FFFFFF",
+        boxShadow: "0 -20px 60px rgba(0,0,0,0.45)",
+        background: "#0B0D14",
+      }}
+    >
+      {shown.map((c, i) => {
+        const inP = interpolate(t, [c.at - 0.05, c.at + 0.25], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease});
+        const kb = interpolate(t, [c.at, c.until + 0.3], [1.06, 1.16], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
+        const label = spring({frame: frame - Math.round((c.at + 0.08) * fps), fps, config: {damping: 14, stiffness: 170}});
+        const route = cities.filter((x) => !x.kicker);
+        const n = route.indexOf(c) + 1;
+        return (
+          <AbsoluteFill key={i} style={{translate: `${inP * 100}%`, zIndex: cities.indexOf(c) + 1}}>
+            <Img src={staticFile(c.src)} style={{width: "100%", height: "100%", objectFit: "cover", scale: String(kb)}} />
+            <AbsoluteFill style={{background: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%)"}} />
+            <div
+              style={{
+                position: "absolute",
+                left: 64,
+                bottom: 300,
+                opacity: label,
+                translate: `0px ${(1 - label) * 40}px`,
+              }}
+            >
+              <div style={{fontFamily: body.fontFamily, fontWeight: 700, fontSize: 30, letterSpacing: "0.14em", color: "#BAE6FD", textTransform: "uppercase"}}>
+                {c.kicker ?? `Маршрут · ${n}/${route.length}`}
+              </div>
+              <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: 92, color: "#FFFFFF", textShadow: shadow}}>{c.name}</div>
+            </div>
+          </AbsoluteFill>
+        );
+      })}
+    </div>
+  );
+};
+
+// Экран телефона в финале: страницы сменяют друг друга сдвигом влево
+const PhoneScreen: React.FC<{home: string; catalog: string; route: string[]; w: number; seconds: number}> = ({
+  home,
+  catalog,
+  route,
+  w,
+  seconds,
+}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const t = frame / fps;
+  const ease = Easing.inOut(Easing.cubic);
+  const tHome = [0.6, 3.2];
+  const tCat = [3.4, 5.6];
+  const routeStart = 5.8;
+  const step = Math.max(0.6, (seconds - routeStart) / route.length);
+  const slide = (at: number) =>
+    interpolate(t, [at - 0.3, at], [100, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.bezier(0.22, 1, 0.36, 1)});
+  const scrollOf = (a: number[], h: number) =>
+    interpolate(t, a, [0, h], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease});
+  const homeH = (w / 1075) * 3008;
+  const catH = (w / 1075) * 4600;
+  return (
+    <AbsoluteFill style={{background: "#FFFFFF"}}>
+      <AbsoluteFill>
+        <Img src={staticFile(home)} style={{width: "100%", translate: `0px ${-scrollOf(tHome, homeH * 0.28)}px`}} />
+      </AbsoluteFill>
+      <AbsoluteFill style={{translate: `${slide(tCat[0])}%`, background: "#FFFFFF"}}>
+        <Img src={staticFile(catalog)} style={{width: "100%", translate: `0px ${-scrollOf([tCat[0] + 0.3, tCat[1]], catH * 0.32)}px`}} />
+      </AbsoluteFill>
+      {route.map((src, i) => {
+        const at = routeStart + i * step;
+        const fade = i === 0 ? slide(at) : 0;
+        const op = i === 0 ? 1 : interpolate(t, [at - 0.25, at], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
+        return (
+          <AbsoluteFill key={i} style={{translate: `${fade}%`, opacity: op, background: "#FFFFFF"}}>
+            <Img src={staticFile(src)} style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 0%"}} />
+          </AbsoluteFill>
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
 // Финал (по второму референсу пользователя): тёмно-синий фон со свечением, слева телефон в 3D-наклоне
 // со страницей каталога, которая прокручивается; справа заголовок и светящаяся кнопка с адресом сайта;
 // спикер уменьшается из полного кадра в карточку с белой рамкой справа снизу.
-const Finale: React.FC<{src: string; phoneSrc: string; title: string; seconds: number}> = ({src, phoneSrc, title, seconds}) => {
+const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: string; seconds: number}> = ({src, site, title, seconds}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const ease = Easing.bezier(0.22, 1, 0.36, 1);
@@ -446,12 +564,6 @@ const Finale: React.FC<{src: string; phoneSrc: string; title: string; seconds: n
   const lerp = (a: number, b: number) => a + (b - a) * card;
   const phoneW = 420;
   const phoneH = 900;
-  const imgH = ((phoneW - 24) / 1075) * 4600;
-  const scroll = interpolate(frame, [1.4 * fps, Math.max(2, seconds - 0.3) * fps], [0, imgH * 0.42], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: Easing.inOut(Easing.cubic),
-  });
   return (
     <AbsoluteFill
       style={{
@@ -483,8 +595,8 @@ const Finale: React.FC<{src: string; phoneSrc: string; title: string; seconds: n
             rotate: `y ${14 - 4 * phone}deg`,
           }}
         >
-          <div style={{width: "100%", height: "100%", borderRadius: 52, overflow: "hidden", background: "#FFFFFF"}}>
-            <Img src={staticFile(phoneSrc)} style={{width: "100%", translate: `0px ${-scroll}px`}} />
+          <div style={{position: "relative", width: "100%", height: "100%", borderRadius: 52, overflow: "hidden", background: "#FFFFFF"}}>
+            <PhoneScreen home={site.home} catalog={site.catalog} route={site.route} w={phoneW - 24} seconds={seconds} />
           </div>
         </div>
       </div>
@@ -545,6 +657,7 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
     ...p.logos.flatMap((g) => g.items.map((l) => ({at: l.at, src: p.sfx.whoosh}))),
     ...p.numbers.map((n) => ({at: n.at, src: p.sfx.whoosh})),
     ...p.broll.map((b) => ({at: b.at, src: p.sfx.whoosh})),
+    ...p.cities.map((c) => ({at: c.at, src: p.sfx.pop})),
     {at: p.site.at, src: p.sfx.whoosh},
   ];
 
@@ -557,7 +670,8 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
         </Sequence>
       ))}
 
-      <ZoomedVideo src={p.mediaSrc} cutoutSrc={p.cutoutSrc} cuts={p.cuts} broll={p.broll} />
+      <ZoomedVideo src={p.mediaSrc} cutoutSrc={p.cutoutSrc} cuts={p.cuts} broll={p.broll} cities={p.cities} />
+      <CityPanel cities={p.cities} />
 
       {p.chips.map((g, i) => {
         const start = g.items[0].at;
@@ -584,13 +698,13 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
       <Sequence from={siteFrom}>
         <Finale
           src={p.mediaSrc}
-          phoneSrc={p.site.src}
+          site={p.site}
           title={p.cta}
           seconds={(durationInFrames - siteFrom) / fps}
         />
       </Sequence>
 
-      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} />
+      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} />
       {/* логотип: стеклянная пирамида + крупная белая надпись с бликом (как в референсе) */}
       <div style={{position: "absolute", top: 86, left: 56}}>
         <SiteLogo variant="title" scale={1} />

@@ -1,5 +1,5 @@
 {
- "mediaSrc": "2026-10-07-byt-tehnika/_work/byt-tehnika.cut.mp4",
+ "mediaSrc": "source-videos/2026-10-07-byt-tehnika/_work/byt-tehnika.cut.mp4",
  "tone": "light",
  "kicker": "Бизнес-экспедиция · Китай",
  "hook": "**5 дней** — 9 лидеров бытовой техники",
@@ -1182,10 +1182,10 @@
    "from": "bottom"
   }
  ],
- "slideSfx": "2026-10-07-byt-tehnika/sfx/whoosh.wav",
+ "slideSfx": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
  "speechSeconds": 104.7,
  "site": {
-  "src": "2026-10-07-byt-tehnika/site/globaltechtour-mobile-full.png",
+  "src": "source-videos/2026-10-07-byt-tehnika/site/globaltechtour-mobile-full.png",
   "at": 98.0
  },
  "ctaTitle": "Пришлю **подробную программу**",

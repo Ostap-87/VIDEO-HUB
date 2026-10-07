@@ -1,5 +1,5 @@
 {
- "mediaSrc": "2026-10-07-byt-tehnika/_work/byt-tehnika.cut.mp4",
+ "mediaSrc": "source-videos/2026-10-07-byt-tehnika/_work/byt-tehnika.cut.mp4",
  "words": [
   {
    "text": "Посмотрите",
@@ -1238,50 +1238,6 @@
    "until": 13.010000000000002
   },
   {
-   "wrap": true,
-   "items": [
-    {
-     "text": "Пекин",
-     "at": 20.78
-    },
-    {
-     "text": "Циндао",
-     "at": 21.08
-    },
-    {
-     "text": "Ханчжоу",
-     "at": 21.69
-    },
-    {
-     "text": "Фошань",
-     "at": 22.41
-    },
-    {
-     "text": "Чжухай",
-     "at": 23.05
-    },
-    {
-     "text": "Шэньчжэнь",
-     "at": 23.59
-    }
-   ],
-   "until": 25.54
-  },
-  {
-   "wrap": false,
-   "items": [
-    {
-     "text": "Юг — Шунде",
-     "at": 25.54
-    },
-    {
-     "text": "Север — Циндао",
-     "at": 26.35
-    }
-   ],
-   "until": 32.47
-  },
-  {
    "wrap": false,
    "items": [
     {
@@ -1406,15 +1362,15 @@
   {
    "items": [
     {
-     "src": "2026-10-07-byt-tehnika/logos/xiaomi.svg",
+     "src": "source-videos/2026-10-07-byt-tehnika/logos/xiaomi.svg",
      "at": 12.71
     },
     {
-     "src": "2026-10-07-byt-tehnika/logos/haier.svg",
+     "src": "source-videos/2026-10-07-byt-tehnika/logos/haier.svg",
      "at": 13.33
     },
     {
-     "src": "2026-10-07-byt-tehnika/logos/hisense.svg",
+     "src": "source-videos/2026-10-07-byt-tehnika/logos/hisense.svg",
      "at": 13.79
     }
    ],
@@ -1423,15 +1379,15 @@
   {
    "items": [
     {
-     "src": "2026-10-07-byt-tehnika/logos/robam.png",
+     "src": "source-videos/2026-10-07-byt-tehnika/logos/robam.png",
      "at": 14.48
     },
     {
-     "src": "2026-10-07-byt-tehnika/logos/supor.png",
+     "src": "source-videos/2026-10-07-byt-tehnika/logos/supor.png",
      "at": 15.01
     },
     {
-     "src": "2026-10-07-byt-tehnika/logos/midea.svg",
+     "src": "source-videos/2026-10-07-byt-tehnika/logos/midea.svg",
      "at": 15.55
     }
    ],
@@ -1440,15 +1396,15 @@
   {
    "items": [
     {
-     "src": "2026-10-07-byt-tehnika/logos/galanz.png",
+     "src": "source-videos/2026-10-07-byt-tehnika/logos/galanz.png",
      "at": 16.12
     },
     {
-     "src": "2026-10-07-byt-tehnika/logos/gree.svg",
+     "src": "source-videos/2026-10-07-byt-tehnika/logos/gree.svg",
      "at": 16.77
     },
     {
-     "src": "2026-10-07-byt-tehnika/logos/skyworth.png",
+     "src": "source-videos/2026-10-07-byt-tehnika/logos/skyworth.png",
      "at": 17.27
     }
    ],
@@ -1457,7 +1413,7 @@
   {
    "items": [
     {
-     "src": "2026-10-07-byt-tehnika/logos/haier.svg",
+     "src": "source-videos/2026-10-07-byt-tehnika/logos/haier.svg",
      "at": 32.769999999999996
     }
    ],
@@ -1466,7 +1422,7 @@
   {
    "items": [
     {
-     "src": "2026-10-07-byt-tehnika/logos/gree.svg",
+     "src": "source-videos/2026-10-07-byt-tehnika/logos/gree.svg",
      "at": 36.46
     }
    ],
@@ -1475,7 +1431,7 @@
   {
    "items": [
     {
-     "src": "2026-10-07-byt-tehnika/logos/galanz.png",
+     "src": "source-videos/2026-10-07-byt-tehnika/logos/galanz.png",
      "at": 39.13
     }
    ],
@@ -1484,7 +1440,7 @@
   {
    "items": [
     {
-     "src": "2026-10-07-byt-tehnika/logos/xiaomi.svg",
+     "src": "source-videos/2026-10-07-byt-tehnika/logos/xiaomi.svg",
      "at": 43.54
     }
    ],
@@ -1493,11 +1449,11 @@
   {
    "items": [
     {
-     "src": "2026-10-07-byt-tehnika/logos/alibaba.svg",
+     "src": "source-videos/2026-10-07-byt-tehnika/logos/alibaba.svg",
      "at": 61.06
     },
     {
-     "src": "2026-10-07-byt-tehnika/logos/sber.svg",
+     "src": "source-videos/2026-10-07-byt-tehnika/logos/sber.svg",
      "at": 61.64
     }
    ],
@@ -1526,58 +1482,103 @@
   }
  ],
  "sfx": {
-  "pop": "2026-10-07-byt-tehnika/sfx/switch.wav",
-  "whoosh": "2026-10-07-byt-tehnika/sfx/whoosh.wav"
+  "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+  "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav"
  },
  "speechSeconds": 104.7,
  "site": {
-  "src": "2026-10-07-byt-tehnika/site/expeditions-top.png",
-  "at": 98.0
+  "at": 98.0,
+  "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
+  "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
+  "route": [
+   "source-videos/2026-10-07-byt-tehnika/site/route/appliances-day1.png",
+   "source-videos/2026-10-07-byt-tehnika/site/route/appliances-day2.png",
+   "source-videos/2026-10-07-byt-tehnika/site/route/appliances-day3.png",
+   "source-videos/2026-10-07-byt-tehnika/site/route/appliances-day4.png",
+   "source-videos/2026-10-07-byt-tehnika/site/route/appliances-day5.png"
+  ]
  },
  "cta": "Экспедиции",
  "ctaSeconds": 3,
  "showSafeZone": false,
  "broll": [
   {
-   "src": "2026-10-07-byt-tehnika/broll/showroom.png",
+   "src": "source-videos/2026-10-07-byt-tehnika/broll/showroom.png",
    "at": 0.81,
    "until": 3.98
   },
   {
-   "src": "2026-10-07-byt-tehnika/broll/china-map.png",
-   "at": 18.29,
-   "until": 24.7
-  },
-  {
-   "src": "2026-10-07-byt-tehnika/broll/appliance-factory.png",
+   "src": "source-videos/2026-10-07-byt-tehnika/broll/appliance-factory.png",
    "at": 47.96,
    "until": 53.92
   },
   {
-   "src": "2026-10-07-byt-tehnika/broll/delegation-factory.png",
+   "src": "source-videos/2026-10-07-byt-tehnika/broll/delegation-factory.png",
    "at": 67.38,
    "until": 71.95
   },
   {
-   "src": "2026-10-07-byt-tehnika/broll/meeting-handshake.png",
-   "at": 72.0,
-   "until": 75.38000000000001
-  },
-  {
-   "src": "2026-10-07-byt-tehnika/broll/door.png",
+   "src": "source-videos/2026-10-07-byt-tehnika/broll/door.png",
    "at": 75.89,
    "until": 78.75
   },
   {
-   "src": "2026-10-07-byt-tehnika/broll/industries-18.png",
+   "src": "source-videos/2026-10-07-byt-tehnika/broll/industries-18.png",
    "at": 84.66,
    "until": 88.37
-  },
-  {
-   "src": "2026-10-07-byt-tehnika/broll/interpreter.png",
-   "at": 92.22,
-   "until": 94.38
   }
  ],
- "cutoutSrc": "2026-10-07-byt-tehnika/_work/byt-tehnika.cut.alpha.webm"
+ "cutoutSrc": "source-videos/2026-10-07-byt-tehnika/_work/byt-tehnika.cut.alpha.webm",
+ "cities": [
+  {
+   "src": "интернет-материалы/города/pekin.jpg",
+   "name": "Пекин",
+   "at": 19.0,
+   "until": 21.08
+  },
+  {
+   "src": "интернет-материалы/города/tsindao.jpg",
+   "name": "Циндао",
+   "at": 21.08,
+   "until": 21.69
+  },
+  {
+   "src": "интернет-материалы/города/khanchzhou.jpg",
+   "name": "Ханчжоу",
+   "at": 21.69,
+   "until": 22.41
+  },
+  {
+   "src": "интернет-материалы/города/foshan.jpg",
+   "name": "Фошань",
+   "at": 22.41,
+   "until": 23.05
+  },
+  {
+   "src": "интернет-материалы/города/chzhukhai.jpg",
+   "name": "Чжухай",
+   "at": 23.05,
+   "until": 23.59
+  },
+  {
+   "src": "интернет-материалы/города/shenzhen.jpg",
+   "name": "Шэньчжэнь",
+   "at": 23.59,
+   "until": 25.54
+  },
+  {
+   "src": "интернет-материалы/города/shunde.jpg",
+   "name": "Шунде",
+   "at": 25.54,
+   "until": 26.35,
+   "kicker": "Юг — центр техники"
+  },
+  {
+   "src": "интернет-материалы/города/tsindao.jpg",
+   "name": "Циндао",
+   "at": 26.35,
+   "until": 28.29,
+   "kicker": "Север — центр техники"
+  }
+ ]
 }
