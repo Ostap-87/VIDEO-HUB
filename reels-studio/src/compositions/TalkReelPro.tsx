@@ -44,13 +44,22 @@ export const talkReelProSchema = z.object({
   broll: z.array(z.object({src: z.string(), at: z.number(), until: z.number()})),
   // Города: фото в нижней половине экрана, пока спикер их перечисляет; спикер остаётся сверху
   cities: z.array(z.object({src: z.string(), name: z.string(), at: z.number(), until: z.number(), kicker: z.string().optional()})),
-  sfx: z.object({pop: z.string(), whoosh: z.string()}),
+  // Зумы на ключевых словах: punch — резкий наезд за 3 кадра (со звуком whip), push — плавный медленный наезд.
+  // Держится hold секунд, потом плавно уходит. Между склейками уровни зума тоже чередуются (часть — плавно).
+  zooms: z
+    .array(z.object({at: z.number(), kind: z.enum(["punch", "push"]), amount: z.number(), hold: z.number()}))
+    .default([]),
+  sfx: z.object({pop: z.string(), whoosh: z.string(), whip: z.string().optional()}),
+  // Фоновая музыка (только треки с коммерческой лицензией); volume ~0.1 под голосом, громче в финале
+  music: z.object({src: z.string(), volume: z.number(), outroVolume: z.number()}).optional(),
   speechSeconds: z.number(),
   // Финал: на экране телефона главная страница (прокрутка) → каталог экспедиций (прокрутка) → маршрут по дням
   site: z.object({at: z.number(), home: z.string(), catalog: z.string(), route: z.array(z.string())}),
   cta: z.string(),
   ctaSeconds: z.number(),
   showSafeZone: z.boolean(),
+  // reels — как есть; stories — логотип ниже верхней панели Stories (полоски прогресса и аватар занимают ~200 px)
+  format: z.enum(["reels", "stories"]).default("reels"),
 });
 export type TalkReelProProps = z.infer<typeof talkReelProSchema>;
 
@@ -371,6 +380,39 @@ const BigNumber: React.FC<{n: TalkReelProProps["numbers"][number]}> = ({n}) => {
   );
 };
 
+// Уровни зума по кускам между склейками: общий план, лёгкий и средний наезд чередуются.
+const LEVELS = [1.0, 1.08, 1.02, 1.14, 1.0, 1.1];
+const zoomAt = (cuts: number[], zooms: TalkReelProProps["zooms"], t: number) => {
+  const idx = cuts.filter((c) => c <= t).length;
+  const segStart = cuts[idx - 1] ?? 0;
+  const level = (i: number) => LEVELS[i % LEVELS.length];
+  // каждая третья склейка — плавный переход (0.45 с), остальные — резкий джамп-кат
+  const smooth = idx % 3 === 2;
+  const base = smooth
+    ? interpolate(t - segStart, [0, 0.45], [level(idx - 1), level(idx)], {
+        extrapolateRight: "clamp",
+        easing: Easing.bezier(0.45, 0, 0.2, 1),
+      })
+    : level(idx);
+  const drift = interpolate(t - segStart, [0, 6], [0, 0.03], {extrapolateRight: "clamp"});
+  let extra = 0;
+  for (const z of zooms) {
+    if (t < z.at || t > z.at + z.hold + 0.6) continue;
+    const attack = z.kind === "punch" ? 0.1 : 1.4;
+    const inP = interpolate(t, [z.at, z.at + attack], [0, 1], {
+      extrapolateRight: "clamp",
+      easing: z.kind === "punch" ? Easing.out(Easing.cubic) : Easing.bezier(0.33, 0, 0.2, 1),
+    });
+    const outP = interpolate(t, [z.at + z.hold, z.at + z.hold + 0.5], [1, 0], {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+      easing: Easing.bezier(0.45, 0, 0.2, 1),
+    });
+    extra = Math.max(extra, z.amount * Math.min(inP, outP));
+  }
+  return base + drift + extra;
+};
+
 // Зум на склейках: куски чередуют общий план и наезд, плюс лёгкий «дых» внутри куска.
 // Перебивка (broll): за спиной спикера проявляется картинка, сам спикер вырезан из фона
 // (cutoutSrc — прозрачное видео из scripts/matte.py) и остаётся на месте, звук не прерывается.
@@ -380,15 +422,13 @@ const ZoomedVideo: React.FC<{
   cuts: number[];
   broll: TalkReelProProps["broll"];
   cities: TalkReelProProps["cities"];
-}> = ({src, cutoutSrc, cuts, broll, cities}) => {
+  zooms: TalkReelProProps["zooms"];
+}> = ({src, cutoutSrc, cuts, broll, cities, zooms}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
   const lift = cityAmount(cities, t) * 330; // лицо поднимается в верхнюю половину
-  const idx = cuts.filter((c) => c <= t).length;
-  const segStart = cuts[idx - 1] ?? 0;
-  const base = idx % 2 === 0 ? 1.0 : 1.14;
-  const drift = interpolate(t - segStart, [0, 6], [0, 0.03], {extrapolateRight: "clamp"});
+  const zoom = zoomAt(cuts, zooms, t);
   const b = broll.find((x) => t >= x.at && t <= x.until) ?? broll.find((x) => t >= x.at - 0.5 && t <= x.until + 0.5);
   const ease = Easing.bezier(0.22, 1, 0.36, 1);
   const p = b
@@ -404,7 +444,7 @@ const ZoomedVideo: React.FC<{
     width: "100%",
     height: "100%",
     objectFit: "cover",
-    scale: String(base + drift),
+    scale: String(zoom),
     transformOrigin: "50% 32%",
     translate: `0px ${-lift}px`,
   };
@@ -675,8 +715,10 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
   const {fps, durationInFrames} = useVideoConfig();
   const f = (s: number) => Math.round(s * fps);
   const siteFrom = f(p.site.at);
-  const sfxAt = [
+  const sfxAt: {at: number; src: string; volume?: number}[] = [
     ...p.chips.flatMap((g) => g.items.map((c) => ({at: c.at, src: p.sfx.pop}))),
+    ...p.chips.flatMap((g) => g.items.filter((c) => c.strike !== undefined).map((c) => ({at: c.strike as number, src: p.sfx.whoosh}))),
+    ...p.zooms.filter((z) => z.kind === "punch" && p.sfx.whip).map((z) => ({at: z.at, src: p.sfx.whip as string, volume: 0.16})),
     ...p.logos.flatMap((g) => g.items.map((l) => ({at: l.at, src: p.sfx.whoosh}))),
     ...p.numbers.map((n) => ({at: n.at, src: p.sfx.whoosh})),
     ...p.broll.map((b) => ({at: b.at, src: p.sfx.whoosh})),
@@ -687,13 +729,26 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
   return (
     <AbsoluteFill style={{backgroundColor: "#0B0D14"}}>
       <Audio src={staticFile(p.mediaSrc)} />
+      {p.music ? (
+        <Audio
+          src={staticFile(p.music.src)}
+          volume={(fr) =>
+            interpolate(
+              fr / fps,
+              [0, 1.2, p.speechSeconds - 0.5, p.speechSeconds + 0.6, durationInFrames / fps - 1.2, durationInFrames / fps],
+              [0, p.music!.volume, p.music!.volume, p.music!.outroVolume, p.music!.outroVolume, 0],
+              {extrapolateLeft: "clamp", extrapolateRight: "clamp"},
+            )
+          }
+        />
+      ) : null}
       {sfxAt.map((s, i) => (
         <Sequence key={`sfx-${i}`} from={Math.max(0, f(s.at) - 2)} durationInFrames={fps}>
-          <Audio src={staticFile(s.src)} volume={0.28} />
+          <Audio src={staticFile(s.src)} volume={s.volume ?? 0.4} />
         </Sequence>
       ))}
 
-      <ZoomedVideo src={p.mediaSrc} cutoutSrc={p.cutoutSrc} cuts={p.cuts} broll={p.broll} cities={p.cities} />
+      <ZoomedVideo src={p.mediaSrc} cutoutSrc={p.cutoutSrc} cuts={p.cuts} broll={p.broll} cities={p.cities} zooms={p.zooms} />
       <CityPanel cities={p.cities} />
 
       {p.chips.map((g, i) => {
@@ -729,7 +784,7 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
 
       <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} />
       {/* логотип: стеклянная пирамида + крупная белая надпись с бликом (как в референсе) */}
-      <div style={{position: "absolute", top: 86, left: 56}}>
+      <div style={{position: "absolute", top: p.format === "stories" ? 210 : 86, left: 56}}>
         <SiteLogo variant="title" scale={1} />
       </div>
       {p.showSafeZone ? <SafeZone /> : null}

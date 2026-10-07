@@ -1453,7 +1453,7 @@
      "at": 61.06
     },
     {
-     "src": "source-videos/2026-10-07-byt-tehnika/logos/sber.svg",
+     "src": "source-videos/2026-10-07-byt-tehnika/logos/sber-user.png",
      "at": 61.64
     }
    ],
@@ -1483,7 +1483,8 @@
  ],
  "sfx": {
   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
-  "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav"
+  "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav"
  },
  "speechSeconds": 104.7,
  "site": {
@@ -1580,5 +1581,102 @@
    "until": 28.29,
    "kicker": "Север — центр техники"
   }
- ]
+ ],
+ "zooms": [
+  {
+   "at": 3.8,
+   "kind": "push",
+   "amount": 0.07,
+   "hold": 1.4
+  },
+  {
+   "at": 6.3,
+   "kind": "punch",
+   "amount": 0.2,
+   "hold": 0.6
+  },
+  {
+   "at": 10.4,
+   "kind": "punch",
+   "amount": 0.16,
+   "hold": 0.7
+  },
+  {
+   "at": 28.1,
+   "kind": "push",
+   "amount": 0.08,
+   "hold": 2.2
+  },
+  {
+   "at": 33.1,
+   "kind": "punch",
+   "amount": 0.14,
+   "hold": 0.8
+  },
+  {
+   "at": 41.4,
+   "kind": "punch",
+   "amount": 0.18,
+   "hold": 0.9
+  },
+  {
+   "at": 55.8,
+   "kind": "punch",
+   "amount": 0.18,
+   "hold": 1.0
+  },
+  {
+   "at": 58.4,
+   "kind": "push",
+   "amount": 0.07,
+   "hold": 1.6
+  },
+  {
+   "at": 64.5,
+   "kind": "punch",
+   "amount": 0.18,
+   "hold": 0.6
+  },
+  {
+   "at": 72.0,
+   "kind": "push",
+   "amount": 0.08,
+   "hold": 2.0
+  },
+  {
+   "at": 77.3,
+   "kind": "punch",
+   "amount": 0.2,
+   "hold": 0.6
+  },
+  {
+   "at": 81.5,
+   "kind": "punch",
+   "amount": 0.16,
+   "hold": 0.8
+  },
+  {
+   "at": 88.2,
+   "kind": "push",
+   "amount": 0.07,
+   "hold": 2.0
+  },
+  {
+   "at": 92.2,
+   "kind": "punch",
+   "amount": 0.15,
+   "hold": 1.0
+  },
+  {
+   "at": 94.1,
+   "kind": "push",
+   "amount": 0.06,
+   "hold": 3.0
+  }
+ ],
+ "music": {
+  "src": "интернет-материалы/музыка/inspiring-technology-soundrider.mp3",
+  "volume": 0.09,
+  "outroVolume": 0.22
+ }
 }

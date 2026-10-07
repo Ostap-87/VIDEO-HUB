@@ -13,7 +13,8 @@
     "setup:whisper": "bash scripts/setup-whisper.sh",
     "cut": "python3 scripts/cut_pauses.py",
     "site": "node scripts/site_shot.mjs",
-    "matte": "python3 scripts/matte.py"
+    "matte": "python3 scripts/matte.py",
+    "stories": "python3 scripts/stories.py"
   },
   "dependencies": {
     "@remotion/captions": "4.0.533",

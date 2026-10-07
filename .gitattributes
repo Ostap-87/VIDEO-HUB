@@ -12,6 +12,8 @@
 
 # Звуки внутри скиллов маленькие, храним их в обычном git, не в LFS
 .claude/skills/**/*.mp3 -filter -diff -merge binary
+# Фоновая музыка из интернета — пара треков по ~3 МБ, тоже в обычном git
+интернет-материалы/музыка/*.mp3 -filter -diff -merge binary
 # Презентации
 *.pptx filter=lfs diff=lfs merge=lfs -text
 *.key filter=lfs diff=lfs merge=lfs -text

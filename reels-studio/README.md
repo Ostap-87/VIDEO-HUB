@@ -73,15 +73,26 @@ npm run matte -- ../source-videos/папка/_work/clip.cut.mp4 --ranges 0.8-4,1
 npx remotion render src/index.ts TalkReel ../finished-videos/имя.mp4 --props=./props/имя.json
 ```
 
-Пример props: `props/2026-10-07-byt-tehnika.json`, стиль референса — `TalkReelPro` и `props/2026-10-07-byt-tehnika-v2.json`.
+Пример props: `props/2026-10-07-byt-tehnika.json`, стиль референса — `TalkReelPro` и `props/2026-10-07-byt-tehnika-v3.json`.
 
 Пути в props считаются от корня репозитория (public-папка Remotion — корень VIDEO-HUB):
 `source-videos/...`, `интернет-материалы/...`.
 
 - `cities` — фото городов внизу кадра (верхний край размыт «пеленой», без резкой границы), пока спикер перечисляет города (спикер сдвигается вверх);
   поля `src`, `name`, `at`, `until`, `kicker` (подпись вместо «Маршрут · n/N»).
+- `zooms` — зумы на словах: `{"at": 6.3, "kind": "punch", "amount": 0.2, "hold": 0.6}` (резкий, со звуком) или
+  `"kind": "push"` (плавный медленный наезд).
+- `music` — фоновая музыка: `{"src": "интернет-материалы/музыка/трек.mp3", "volume": 0.09, "outroVolume": 0.22}`.
 - `site` — телефон в финале: `home` (главная, прокрутка) → `catalog` (каталог экспедиций) → `route` (кадры маршрута по дням).
   Кадры маршрута снимаются Playwright: прокрутить страницу экспедиции к блоку «Маршрут» и жать «следующий день».
+
+## Reels и Stories
+
+```bash
+npx remotion render src/index.ts TalkReelPro ../finished-videos/имя.mp4 --props=./props/имя.json                 # Reels
+npx remotion render src/index.ts TalkReelPro ../finished-videos/имя-stories.mp4 --props='{"format":"stories"}'  # Stories
+npm run stories -- ../finished-videos/имя-stories.mp4 --at 58.3   # части по ≤60 с для Stories
+```
 
 ## Раскадровка
 
@@ -90,7 +101,8 @@ npm run frames -- ../finished-videos/my-reel.mp4            # кадр кажд�
 npm run frames -- ../finished-videos/my-reel.mp4 --at 1,3.5  # нужные моменты
 ```
 
-Картинка с кадрами и таймкодами появится в `finished-videos/frames/`. Нужны ffmpeg и Python с Pillow.
+Картинка с кадрами и таймкодами появится в `finished-videos/frames/`. Раскадровку готового ролика копируйте в
+`finished-videos/раскадровки/имя.jpg` — она хранится в репозитории. Нужны ffmpeg и Python с Pillow.
 
 ## Облачная среда Claude
 

@@ -8,7 +8,7 @@ import {sampleReel, sampleTextReel} from "./data/sample";
 import talkSample from "../props/2026-10-07-byt-tehnika.json";
 import {SiteLogoPreview} from "./components/SiteLogo";
 import {TalkReelPro, talkReelProSchema, type TalkReelProProps} from "./compositions/TalkReelPro";
-import talkProSample from "../props/2026-10-07-byt-tehnika-v2.json";
+import talkProSample from "../props/2026-10-07-byt-tehnika-v3.json";
 
 export const RemotionRoot: React.FC = () => {
   return (
