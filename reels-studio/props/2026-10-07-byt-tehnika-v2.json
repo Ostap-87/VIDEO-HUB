@@ -1531,7 +1531,7 @@
  "cutoutSrc": "source-videos/2026-10-07-byt-tehnika/_work/byt-tehnika.cut.alpha.webm",
  "cities": [
   {
-   "src": "интернет-материалы/города/pekin.jpg",
+   "src": "интернет-материалы/города/варианты/pekin-hram-neba-a.jpg",
    "name": "Пекин",
    "at": 19.0,
    "until": 21.08
@@ -1543,7 +1543,7 @@
    "until": 21.69
   },
   {
-   "src": "интернет-материалы/города/khanchzhou.jpg",
+   "src": "source-videos/2026-10-07-byt-tehnika/cities/khanchzhou-zapadnoe-ozero.jpg",
    "name": "Ханчжоу",
    "at": 21.69,
    "until": 22.41
