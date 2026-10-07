@@ -1401,7 +1401,8 @@
    "text": "−600 млрд",
    "sub": "долларов капитализации NVIDIA за день",
    "at": 4.45,
-   "until": 6.3
+   "until": 6.3,
+   "tone": "down"
   },
   {
    "text": "10+",
@@ -1591,5 +1592,10 @@
   "src": "интернет-материалы/музыка/inspiring-technology-soundrider.mp3",
   "volume": 0.09,
   "outroVolume": 0.22
+ },
+ "stockDrop": {
+  "at": 2.23,
+  "until": 8.5,
+  "label": "NVDA"
  }
 }

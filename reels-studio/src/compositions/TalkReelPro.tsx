@@ -39,7 +39,12 @@ export const talkReelProSchema = z.object({
       flip: z.boolean().optional(),
     }),
   ),
-  numbers: z.array(z.object({text: z.string(), sub: z.string(), at: z.number(), until: z.number()})),
+  // tone: "down" — красная цифра (падение), по умолчанию синяя
+  numbers: z.array(
+    z.object({text: z.string(), sub: z.string(), at: z.number(), until: z.number(), tone: z.enum(["up", "down"]).optional()}),
+  ),
+  // Падающий биржевой график ЗА спикером (спикер вырезан и стоит перед линией); label — тикер
+  stockDrop: z.object({at: z.number(), until: z.number(), label: z.string()}).optional(),
   // Перебивки: картинка на весь экран, спикер уменьшается в окошко по центру (звук не прерывается)
   broll: z.array(z.object({src: z.string(), at: z.number(), until: z.number()})),
   // Города: фото в нижней половине экрана, пока спикер их перечисляет; спикер остаётся сверху
@@ -209,6 +214,11 @@ const Chip: React.FC<{text: string; delay: number; strike?: number}> = ({text, d
   );
 };
 
+// Лицо спикера занимает примерно x 330–790, y 600–1150 (с учётом резких зумов). Все плашки, логотипы и цифры
+// живут только в «свободных зонах»: верхняя полоса (y 250–600) и полоса под субтитрами (y 1410–1530).
+// В Stories верхняя полоса сдвигается вниз на TOP_SHIFT под полоски прогресса и аватар.
+const TopShift = React.createContext(0);
+
 const ChipGroup: React.FC<{group: TalkReelProProps["chips"][number]; start: number}> = ({group, start}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -216,11 +226,12 @@ const ChipGroup: React.FC<{group: TalkReelProProps["chips"][number]; start: numb
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
+  const shift = React.useContext(TopShift);
   return (
     <div
       style={{
         position: "absolute",
-        top: 250,
+        top: 250 + shift * 0.6,
         left: 70,
         right: group.wrap ? 70 : undefined,
         display: "flex",
@@ -285,10 +296,10 @@ const FlipCard: React.FC<{group: TalkReelProProps["logos"][number]; start: numbe
     <div
       style={{
         position: "absolute",
-        right: 28,
-        top: 780,
+        right: 40,
+        top: 1405,
         width: 330,
-        height: 140,
+        height: 124,
         perspective: 1200,
         opacity: out * enter,
         translate: `${(1 - enter) * 420}px 0px`,
@@ -310,11 +321,13 @@ const LogoGroup: React.FC<{group: TalkReelProProps["logos"][number]; start: numb
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
+  const shift = React.useContext(TopShift);
+  // две карточки над головой, две — под субтитрами
   const slots = [
-    {left: 60, top: 430, rot: -6},
-    {right: 60, top: 540, rot: 5},
-    {left: 60, top: 680, rot: 4},
-    {right: 60, top: 780, rot: -4},
+    {left: 50, top: 300 + shift * 0.6, rot: -5},
+    {right: 50, top: 300 + shift * 0.6, rot: 4},
+    {left: 50, top: 1410, rot: 3},
+    {right: 50, top: 1410, rot: -4},
   ];
   return (
     <AbsoluteFill style={{opacity: out}}>
@@ -332,7 +345,7 @@ const LogoGroup: React.FC<{group: TalkReelProProps["logos"][number]; start: numb
               top: slot.top,
               background: "#FFFFFF",
               borderRadius: 28,
-              padding: "26px 34px",
+              padding: "22px 30px",
               boxShadow: "0 18px 50px rgba(0,0,0,0.35)",
               opacity: s,
               translate: `${(1 - s) * (fromLeft ? -400 : 400)}px 0px`,
@@ -340,7 +353,7 @@ const LogoGroup: React.FC<{group: TalkReelProProps["logos"][number]; start: numb
               scale: String(0.6 + 0.4 * s),
             }}
           >
-            <Img src={staticFile(l.src)} style={{height: 92, maxWidth: 380, objectFit: "contain", display: "block"}} />
+            <Img src={staticFile(l.src)} style={{height: 72, maxWidth: 360, objectFit: "contain", display: "block"}} />
           </div>
         );
       })}
@@ -350,6 +363,7 @@ const LogoGroup: React.FC<{group: TalkReelProProps["logos"][number]; start: numb
 
 // Крупная цифра с «попом» и синим свечением
 const BigNumber: React.FC<{n: TalkReelProProps["numbers"][number]}> = ({n}) => {
+  const shift = React.useContext(TopShift);
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const s = spring({frame, fps, config: {damping: 9, stiffness: 160, mass: 0.8}});
@@ -358,15 +372,18 @@ const BigNumber: React.FC<{n: TalkReelProProps["numbers"][number]}> = ({n}) => {
     extrapolateRight: "clamp",
   });
   return (
-    <div style={{position: "absolute", left: 70, top: 380, opacity: out, scale: String(0.6 + 0.4 * s), transformOrigin: "left center"}}>
+    <div style={{position: "absolute", left: 70, top: 290 + shift * 0.6, opacity: out, scale: String(0.6 + 0.4 * s), transformOrigin: "left center"}}>
       <div
         style={{
           fontFamily: display.fontFamily,
           fontWeight: 700,
-          fontSize: n.text.length > 3 ? 140 : 190,
+          fontSize: n.text.length > 6 ? 120 : n.text.length > 3 ? 140 : 190,
           lineHeight: 1,
-          color: "#3D7BFF",
-          textShadow: "0 0 40px rgba(61,123,255,0.85), 0 6px 20px rgba(0,0,0,0.45)",
+          color: n.tone === "down" ? "#FF3B3B" : "#3D7BFF",
+          textShadow:
+            n.tone === "down"
+              ? "0 0 40px rgba(255,59,59,0.8), 0 6px 20px rgba(0,0,0,0.45)"
+              : "0 0 40px rgba(61,123,255,0.85), 0 6px 20px rgba(0,0,0,0.45)",
         }}
       >
         {n.text}
@@ -377,6 +394,79 @@ const BigNumber: React.FC<{n: TalkReelProProps["numbers"][number]}> = ({n}) => {
         </div>
       ) : null}
     </div>
+  );
+};
+
+// Биржевой график падает за спиной спикера: красная ломаная рисуется сверху-слева вниз-вправо,
+// на конце стрелка, под линией красная заливка, на фоне сетка. Спикер (вырезка) стоит перед графиком.
+const DROP_POINTS: [number, number][] = [
+  [40, 560], [170, 520], [260, 600], [360, 560], [450, 720], [540, 680], [640, 900], [720, 860], [830, 1130], [900, 1090], [990, 1320],
+];
+const StockChart: React.FC<{drop: NonNullable<TalkReelProProps["stockDrop"]>; t: number}> = ({drop, t}) => {
+  const ease = Easing.bezier(0.5, 0, 0.3, 1);
+  const draw = interpolate(t, [drop.at, drop.at + 2.4], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease});
+  const fade = Math.min(
+    interpolate(t, [drop.at - 0.1, drop.at + 0.3], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}),
+    interpolate(t, [drop.until - 0.4, drop.until], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}),
+  );
+  // длина ломаной и точка на ней для текущего прогресса
+  const seg = DROP_POINTS.slice(1).map((pt, i) => Math.hypot(pt[0] - DROP_POINTS[i][0], pt[1] - DROP_POINTS[i][1]));
+  const total = seg.reduce((a, x) => a + x, 0);
+  let left = draw * total;
+  const shown: [number, number][] = [DROP_POINTS[0]];
+  for (let i = 0; i < seg.length; i++) {
+    const [x0, y0] = DROP_POINTS[i];
+    const [x1, y1] = DROP_POINTS[i + 1];
+    if (left >= seg[i]) {
+      shown.push([x1, y1]);
+      left -= seg[i];
+    } else {
+      const k = left / seg[i];
+      shown.push([x0 + (x1 - x0) * k, y0 + (y1 - y0) * k]);
+      break;
+    }
+  }
+  const [hx, hy] = shown[shown.length - 1];
+  const [px, py] = shown.length > 1 ? shown[shown.length - 2] : [hx - 1, hy - 1];
+  const ang = (Math.atan2(hy - py, hx - px) * 180) / Math.PI;
+  const line = shown.map(([x, y]) => `${x},${y}`).join(" ");
+  const area = `${line} ${hx},1920 ${DROP_POINTS[0][0]},1920`;
+  const pulse = 0.5 + 0.5 * Math.sin(t * 9);
+  return (
+    <AbsoluteFill style={{opacity: fade}}>
+      {/* лёгкое затемнение, чтобы линия читалась на светлом фоне */}
+      <AbsoluteFill style={{background: "linear-gradient(to bottom, rgba(10,12,20,0.55), rgba(40,0,0,0.35))"}} />
+      <svg viewBox="0 0 1080 1920" style={{position: "absolute", inset: 0}}>
+        <defs>
+          <linearGradient id="dropFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#FF3B3B" stopOpacity="0.2" />
+            <stop offset="1" stopColor="#FF3B3B" stopOpacity="0" />
+          </linearGradient>
+          <filter id="dropGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="10" result="b" />
+            <feMerge>
+              <feMergeNode in="b" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
+          <line key={`h${i}`} x1={0} x2={1080} y1={480 + i * 130} y2={480 + i * 130} stroke="rgba(255,255,255,0.12)" strokeWidth={2} />
+        ))}
+        {[0, 1, 2, 3, 4, 5].map((i) => (
+          <line key={`v${i}`} y1={420} y2={1500} x1={90 + i * 180} x2={90 + i * 180} stroke="rgba(255,255,255,0.08)" strokeWidth={2} />
+        ))}
+        <polygon points={area} fill="url(#dropFill)" />
+        <polyline points={line} fill="none" stroke="#FF3B3B" strokeWidth={14} strokeLinejoin="round" strokeLinecap="round" filter="url(#dropGlow)" />
+        <g transform={`translate(${hx} ${hy}) rotate(${ang})`} filter="url(#dropGlow)">
+          <polygon points="34,0 -18,-30 -18,30" fill="#FF3B3B" />
+        </g>
+        <circle cx={hx} cy={hy} r={26 + 14 * pulse} fill="none" stroke="#FF3B3B" strokeOpacity={0.5 * (1 - pulse) + 0.2} strokeWidth={4} />
+        <text x={60} y={660} fill="#FFFFFF" fontFamily="Inter, Arial, sans-serif" fontWeight={700} fontSize={44} opacity={0.9}>
+          {drop.label} ▼
+        </text>
+      </svg>
+    </AbsoluteFill>
   );
 };
 
@@ -423,7 +513,8 @@ const ZoomedVideo: React.FC<{
   broll: TalkReelProProps["broll"];
   cities: TalkReelProProps["cities"];
   zooms: TalkReelProProps["zooms"];
-}> = ({src, cutoutSrc, cuts, broll, cities, zooms}) => {
+  stockDrop: TalkReelProProps["stockDrop"];
+}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -451,6 +542,12 @@ const ZoomedVideo: React.FC<{
   return (
     <AbsoluteFill style={{background: "#0B0D14"}}>
       <OffthreadVideo src={staticFile(src)} muted style={{...videoStyle, opacity: 1 - p}} />
+      {stockDrop && !b && t >= stockDrop.at - 0.1 && t <= stockDrop.until + 0.1 ? (
+        <>
+          <StockChart drop={stockDrop} t={t} />
+          <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} />
+        </>
+      ) : null}
       {b ? (
         <>
           <AbsoluteFill style={{opacity: p}}>
@@ -748,11 +845,19 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
         </Sequence>
       ))}
 
-      <ZoomedVideo src={p.mediaSrc} cutoutSrc={p.cutoutSrc} cuts={p.cuts} broll={p.broll} cities={p.cities} zooms={p.zooms} />
+      <ZoomedVideo
+        src={p.mediaSrc}
+        cutoutSrc={p.cutoutSrc}
+        cuts={p.cuts}
+        broll={p.broll}
+        cities={p.cities}
+        zooms={p.zooms}
+        stockDrop={p.stockDrop}
+      />
       <CityPanel cities={p.cities} />
 
-      {/* в Stories верх занят полосками и аватаром: плашки, логотипы и цифры опускаем вместе с логотипом */}
-      <AbsoluteFill style={{translate: p.format === "stories" ? "0px 130px" : undefined}}>
+      {/* в Stories верх занят полосками и аватаром: верхняя полоса плашек опускается (TopShift) */}
+      <TopShift.Provider value={p.format === "stories" ? 130 : 0}>
       {p.chips.map((g, i) => {
         const start = g.items[0].at;
         return (
@@ -774,7 +879,7 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
           <BigNumber n={n} />
         </Sequence>
       ))}
-      </AbsoluteFill>
+      </TopShift.Provider>
 
       <Sequence from={siteFrom}>
         <Finale
