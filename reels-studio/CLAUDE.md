@@ -113,6 +113,7 @@ muted #6B6B76 подписи, surface #FFFFFF плашки, line #D5D5DD рам�
 анимация и эффекты — `remotion-markup`, субтитры и Whisper — `remotion-captions`, звук и видео — `remotion-multimedia`,
 рендер — `remotion-render`.
 Голос, расшифровка, музыка и звуковые эффекты — скиллы ElevenLabs (`text-to-speech`, `speech-to-text`, `music`, `sound-effects`, `voice-isolator`).
+Скиллы HyperFrames — второй движок, только по прямой просьбе (см. корневой `CLAUDE.md`).
 Если совет скилла противоречит ядру стиля, побеждает ядро стиля.
 
 # Статус реализации
