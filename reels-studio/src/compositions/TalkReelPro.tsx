@@ -487,7 +487,7 @@ const StockChart: React.FC<{drop: NonNullable<TalkReelProProps["stockDrop"]>; t:
           <polygon points="34,0 -18,-30 -18,30" fill={C} />
         </g>
         <circle cx={hx} cy={hy} r={26 + 14 * pulse} fill="none" stroke={C} strokeOpacity={0.5 * (1 - pulse) + 0.2} strokeWidth={4} />
-        <text x={60} y={up ? 1250 : 660} fill="#FFFFFF" fontFamily="Inter, Arial, sans-serif" fontWeight={700} fontSize={44} opacity={0.9}>
+        <text x={60} y={up ? 470 : 660} fill="#FFFFFF" fontFamily="Inter, Arial, sans-serif" fontWeight={700} fontSize={44} opacity={0.9}>
           {drop.label} {up ? "▲" : "▼"}
         </text>
       </svg>
