@@ -8,7 +8,9 @@
     "render:text": "remotion render src/index.ts TextReel ../finished-videos/text-reel.mp4",
     "cover": "remotion still src/index.ts Reel ../finished-videos/cover.png --frame=45",
     "upgrade": "remotion upgrade",
-    "frames": "python3 scripts/frames.py"
+    "frames": "python3 scripts/frames.py",
+    "transcribe": "python3 scripts/transcribe.py",
+    "setup:whisper": "bash scripts/setup-whisper.sh"
   },
   "dependencies": {
     "@remotion/captions": "4.0.533",

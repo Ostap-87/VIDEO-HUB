@@ -54,6 +54,15 @@ npx remotion render src/index.ts Reel ../finished-videos/my-reel.mp4 --props=./p
 
 Готовые ролики сохраняются в папку репозитория `finished-videos/`.
 
+## Субтитры по речи (Whisper)
+
+```bash
+npm run setup:whisper                                   # один раз: whisper.cpp + модель
+npm run transcribe -- ../source-videos/папка/clip.mp4    # → clip.words.json рядом с видео
+```
+
+Слова с таймингами из `clip.words.json` вставьте в поле `words` props-файла. Нужны ffmpeg, cmake и Python.
+
 ## Раскадровка
 
 ```bash
