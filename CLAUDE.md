@@ -30,6 +30,21 @@
 
 Правила без описания новой возможности считаются незаконченной работой.
 
+## Скиллы Remotion
+
+В `.claude/skills/` лежат официальные скиллы Remotion (https://github.com/remotion-dev/skills),
+они подхватываются в каждой сессии. Перед работой с кодом роликов загружай нужный:
+
+- `remotion-best-practices` — общий вход, если не ясно, какой нужен;
+- `remotion-markup` — анимации, тайминги, переходы, эффекты;
+- `remotion-captions` — расшифровка речи и субтитры;
+- `remotion-multimedia` — видео, аудио, метаданные файлов;
+- `remotion-render` / `remotion-studio` — рендер и превью;
+- `remotion-create`, `remotion-docs`, `remotion-upgrade`, `remotion-maps`, `remotion-interactivity`, `remotion-saas` — по задаче.
+
+Правила бренда из `reels-studio/CLAUDE.md` важнее общих советов скиллов.
+Обновление скиллов: см. `.claude/skills/SOURCE.md`.
+
 ## Показывать процесс
 
 Пользователь хочет видеть работу скриншотами: исходник сначала нарезается на кадры
