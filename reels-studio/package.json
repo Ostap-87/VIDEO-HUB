@@ -11,12 +11,21 @@
     "frames": "python3 scripts/frames.py"
   },
   "dependencies": {
-    "@remotion/cli": "^4.0.0",
-    "@remotion/google-fonts": "^4.0.0",
+    "@remotion/captions": "4.0.533",
+    "@remotion/cli": "4.0.533",
+    "@remotion/elevenlabs": "4.0.533",
+    "@remotion/google-fonts": "4.0.533",
+    "@remotion/install-whisper-cpp": "4.0.533",
+    "@remotion/layout-utils": "4.0.533",
+    "@remotion/media": "4.0.533",
+    "@remotion/motion-blur": "4.0.533",
+    "@remotion/noise": "4.0.533",
+    "@remotion/sfx": "4.0.533",
+    "@remotion/transitions": "4.0.533",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "remotion": "^4.0.0",
-    "zod": "3.22.3"
+    "remotion": "4.0.533",
+    "zod": "4.5.4"
   },
   "devDependencies": {
     "@types/react": "^18.3.0",

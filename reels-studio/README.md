@@ -9,7 +9,8 @@ npm install
 npm run studio
 ```
 
-Если Remotion ругается на разные версии пакетов, выполните `npm run upgrade`.
+Все пакеты Remotion закреплены на одной версии. Новый пакет добавляйте командой `npx remotion add <пакет>`,
+обновление — `npm run upgrade`. Справочник: https://www.remotion.dev/docs/api
 
 ## Стиль
 

@@ -116,6 +116,22 @@ muted #6B6B76 подписи, surface #FFFFFF плашки, line #D5D5DD рам�
 Скиллы HyperFrames — второй движок, только по прямой просьбе (см. корневой `CLAUDE.md`).
 Если совет скилла противоречит ядру стиля, побеждает ядро стиля.
 
+# Пакеты Remotion
+
+Справочник API: https://www.remotion.dev/docs/api (из облака читается через curl, а также скиллом `remotion-docs`).
+Все `remotion` и `@remotion/*` закреплены на одной версии (сейчас 4.0.533) без `^`. Новый пакет ставь только
+командой `npx remotion add <пакет>`, обновление — `npm run upgrade`; после — `npx remotion versions` должен быть без ошибок.
+
+Установлены и для чего:
+- `@remotion/media` — рекомендуемые `<Video>` и `<Audio>` для новых компонентов;
+- `@remotion/transitions` — `<TransitionSeries>`, переходы между сценами (наезд слайдов, fade, slide);
+- `@remotion/captions` — тип `Caption` и разбивка субтитров на страницы (`createTikTokStyleCaptions`) для трёх режимов субтитров;
+- `@remotion/elevenlabs` — превращает ответ ElevenLabs Speech to Text в массив `Caption`;
+- `@remotion/install-whisper-cpp` — локальная расшифровка Whisper.cpp (бесплатно, модель с Hugging Face);
+- `@remotion/sfx` — звуковые эффекты без указания авторства (вжух, щелчки) для «попа» и переходов;
+- `@remotion/layout-utils` — измерение текста: подгонка заголовков под ширину карточки;
+- `@remotion/motion-blur`, `@remotion/noise` — размытие в движении и шум для акцентных эффектов (дозировано).
+
 # Статус реализации
 
 Готово: Reel (обложка, субтитры по 3 слова, финал), TextReel (слайды-карусель), Frame с дымкой и плашками, RichWords с акцентом.
