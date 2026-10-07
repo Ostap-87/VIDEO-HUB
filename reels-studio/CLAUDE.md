@@ -99,7 +99,9 @@ muted #6B6B76 подписи, surface #FFFFFF плашки, line #D5D5DD рам�
 3. Не меняй `src/theme.ts` и `src/fonts.ts` без прямого указания.
 4. Каждый ролик оформляй как props-файл `props/имя.json` для композиции Reel или TextReel.
 5. Проверяй безопасную зону и читаемость текста на дымке.
-6. Рендери и показывай результат: `npx remotion render src/index.ts Reel out/имя.mp4 --props=./props/имя.json`.
+6. Рендери и показывай результат: `npx remotion render src/index.ts Reel ../finished-videos/имя.mp4 --props=./props/имя.json`.
+7. Папки: сырьё бери из `source-videos/` (это public-папка Remotion, в `mediaSrc` путь внутри неё), готовые ролики и обложки сохраняй в `finished-videos/`. Видео и аудио идут через Git LFS.
+8. Всё сохраняй в репозиторий `Ostap-87/VIDEO-HUB`: коммить и пушь после каждого готового ролика или правки.
 
 # Статус реализации
 

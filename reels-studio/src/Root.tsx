@@ -1,8 +1,8 @@
 import React from "react";
 import {Composition} from "remotion";
 import {VIDEO} from "./theme";
-import {Reel, reelSchema} from "./compositions/Reel";
-import {TextReel, textReelSchema} from "./compositions/TextReel";
+import {Reel, reelSchema, type ReelProps} from "./compositions/Reel";
+import {TextReel, textReelSchema, type TextReelProps} from "./compositions/TextReel";
 import {sampleReel, sampleTextReel} from "./data/sample";
 
 export const RemotionRoot: React.FC = () => {
@@ -17,7 +17,7 @@ export const RemotionRoot: React.FC = () => {
         durationInFrames={VIDEO.fps * 20}
         schema={reelSchema}
         defaultProps={sampleReel}
-        calculateMetadata={({props}) => ({
+        calculateMetadata={({props}: {props: ReelProps}) => ({
           durationInFrames: Math.round(props.durationInSeconds * VIDEO.fps),
         })}
       />
@@ -30,7 +30,7 @@ export const RemotionRoot: React.FC = () => {
         durationInFrames={VIDEO.fps * 12}
         schema={textReelSchema}
         defaultProps={sampleTextReel}
-        calculateMetadata={({props}) => ({
+        calculateMetadata={({props}: {props: TextReelProps}) => ({
           durationInFrames: Math.round(props.slides.length * props.secondsPerSlide * VIDEO.fps),
         })}
       />
