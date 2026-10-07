@@ -300,7 +300,7 @@
   "id": "aabba343-a12d-45c3-881e-c666774218f8",
   "prompt": "Elegant Chinese cosmetics counter display in a shopping mall, rows of skincare and makeup products w",
   "videos": [
-   "2026-10-07-kosmetika"
+   "(отклонено: видна вывеска SK-II)"
   ]
  },
  "709": {
@@ -553,6 +553,13 @@
   "prompt": "A business team in a modern meeting room reviewing a factory visit itinerary on a large screen showi",
   "videos": [
    "2026-10-07-intro"
+  ]
+ },
+ "760": {
+  "id": "3da17011-2536-46fa-ab23-6feb3e65be25",
+  "prompt": "Minimalist modern Chinese beauty brand flagship store interior, gallery-like display shelves, warm a",
+  "videos": [
+   "2026-10-07-kosmetika"
   ]
  }
 }
