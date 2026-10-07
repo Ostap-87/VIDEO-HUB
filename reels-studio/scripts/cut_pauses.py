@@ -119,9 +119,24 @@ def main():
 
     out = work / f"{stem}.cut.mp4"
     if not a.words_only:
-        run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(src), "-filter_complex", graph,
-         "-map", "[v]", "-map", "[a]", "-r", "30", "-c:v", "libx264", "-preset", "medium", "-crf", "18",
-         "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-movflags", "+faststart", str(out)])
+        # Кусками: каждый оставленный отрезок кодируется отдельно, потом склейка без перекодирования видео.
+        # Один большой filter_complex с десятками trim держит весь ролик в памяти (до 6 ГБ) и падает по OOM.
+        tmp = work / "_parts"
+        tmp.mkdir(exist_ok=True)
+        lines = []
+        for i, (s, e) in enumerate(segs):
+            part = tmp / f"{i:03d}.mkv"
+            run(["ffmpeg", "-loglevel", "error", "-y", "-ss", f"{s:.3f}", "-i", str(src), "-t", f"{e - s:.3f}",
+                 "-r", "30", "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p",
+                 "-c:a", "pcm_s16le", "-ar", "48000", str(part)])
+            lines.append(f"file '{part.as_posix()}'")
+        (tmp / "list.txt").write_text("\n".join(lines))
+        run(["ffmpeg", "-loglevel", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(tmp / "list.txt"),
+             "-c:v", "copy", "-af", AUDIO_CHAIN, "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+             "-movflags", "+faststart", str(out)])
+        for f in tmp.iterdir():
+            f.unlink()
+        tmp.rmdir()
     (work / f"{stem}.cut.json").write_text(json.dumps(plan, indent=1))
 
     if a.words:
