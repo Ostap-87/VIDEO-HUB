@@ -65,6 +65,9 @@ export const talkReelProSchema = z.object({
   showSafeZone: z.boolean(),
   // reels — как есть; stories — логотип ниже верхней панели Stories (полоски прогресса и аватар занимают ~200 px)
   format: z.enum(["reels", "stories"]).default("reels"),
+  // Линия глаз из scripts/grid.py (_work/имя.cut.layout.json): точка между глазами — центр всех зумов,
+  // поэтому при наездах глаза остаются на своей линии и не «прыгают»
+  focus: z.object({x: z.number(), y: z.number()}).default({x: 540, y: 614}),
 });
 export type TalkReelProProps = z.infer<typeof talkReelProSchema>;
 
@@ -514,7 +517,8 @@ const ZoomedVideo: React.FC<{
   cities: TalkReelProProps["cities"];
   zooms: TalkReelProProps["zooms"];
   stockDrop: TalkReelProProps["stockDrop"];
-}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop}) => {
+  focus: TalkReelProProps["focus"];
+}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -536,7 +540,7 @@ const ZoomedVideo: React.FC<{
     height: "100%",
     objectFit: "cover",
     scale: String(zoom),
-    transformOrigin: "50% 32%",
+    transformOrigin: `${focus.x}px ${focus.y}px`,
     translate: `0px ${-lift}px`,
   };
   return (
@@ -853,6 +857,7 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
         cities={p.cities}
         zooms={p.zooms}
         stockDrop={p.stockDrop}
+        focus={p.focus}
       />
       <CityPanel cities={p.cities} />
 

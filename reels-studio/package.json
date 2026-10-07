@@ -14,7 +14,8 @@
     "cut": "python3 scripts/cut_pauses.py",
     "site": "node scripts/site_shot.mjs",
     "matte": "python3 scripts/matte.py",
-    "stories": "python3 scripts/stories.py"
+    "stories": "python3 scripts/stories.py",
+    "grid": "python3 scripts/grid.py"
   },
   "dependencies": {
     "@remotion/captions": "4.0.533",
