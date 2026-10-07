@@ -42,8 +42,20 @@
 - `remotion-render` / `remotion-studio` — рендер и превью;
 - `remotion-create`, `remotion-docs`, `remotion-upgrade`, `remotion-maps`, `remotion-interactivity`, `remotion-saas` — по задаче.
 
+## Скиллы ElevenLabs (голос, звук, музыка)
+
+- `text-to-speech` — закадровый голос; `speech-to-text` — расшифровка речи с таймингами слов для субтитров;
+- `music` — фоновая музыка под ролик; `sound-effects` — звуковые эффекты (вжух, щелчки, удары);
+- `voice-isolator` — очистить голос от шума цеха; `voice-changer`, `dubbing` — смена голоса и перевод озвучки;
+- `setup-api-key` — проверка ключа.
+
+Ключ ElevenLabs в облаке хранится как сетевой секрет среды (хост `api.elevenlabs.io`, заголовок `xi-api-key`),
+а не в `.env` и не в чате. Никогда не проси вставить ключ в переписку и не коммить его.
+Сгенерированный звук сохраняй в `source-videos/` (голос — `voice/`, музыка — `music/`, эффекты — `sfx/` внутри папки ролика).
+Музыка ElevenLabs допустима для коммерческого использования только на платном тарифе; тариф уточняй у пользователя.
+
 Правила бренда из `reels-studio/CLAUDE.md` важнее общих советов скиллов.
-Обновление скиллов: см. `.claude/skills/SOURCE.md`.
+Откуда скиллы и как их обновить: `.claude/skills/SOURCE.md`.
 
 ## Показывать процесс
 

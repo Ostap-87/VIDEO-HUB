@@ -111,7 +111,9 @@ muted #6B6B76 подписи, surface #FFFFFF плашки, line #D5D5DD рам�
 
 Перед правкой кода загружай скилл Remotion из `.claude/skills/` (список в корневом `CLAUDE.md`):
 анимация и эффекты — `remotion-markup`, субтитры и Whisper — `remotion-captions`, звук и видео — `remotion-multimedia`,
-рендер — `remotion-render`. Если совет скилла противоречит ядру стиля, побеждает ядро стиля.
+рендер — `remotion-render`.
+Голос, расшифровка, музыка и звуковые эффекты — скиллы ElevenLabs (`text-to-speech`, `speech-to-text`, `music`, `sound-effects`, `voice-isolator`).
+Если совет скилла противоречит ядру стиля, побеждает ядро стиля.
 
 # Статус реализации
 
