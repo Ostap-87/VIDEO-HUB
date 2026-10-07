@@ -110,7 +110,7 @@ export const TalkReel: React.FC<TalkReelProps> = (p) => {
                 src={staticFile(p.mediaSrc)}
                 muted
                 trimBefore={start}
-                style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 12%"}}
+                style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 100%"}}
               />
             </Screen>
           </Sequence>
