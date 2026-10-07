@@ -15,3 +15,9 @@ hyperframes-keyframes, hyperframes-audio, hyperframes-creative, hyperframes-regi
 talking-head-recut, general-video, faceless-explainer, motion-graphics, music-to-video, slideshow,
 product-launch-video, pr-to-video, remotion-to-hyperframes, figma, media-use.
 Обновить: `npx skills add heygen-com/hyperframes --full-depth --yes` или скопировать папку `skills/` заново.
+
+## Hugging Face (3 шт.)
+Источник: https://github.com/huggingface/skills (коммит ca0325b, 01.10.2026), лицензия Apache-2.0. Только инструкции.
+Скиллы: hf-cli, transformers-js, huggingface-best.
+Не взяты: обучение моделей, SageMaker/AWS, Gradio/Spaces-разработка и прочее, что не относится к роликам.
+Обновить: скопировать нужные папки из `skills/` заново.
