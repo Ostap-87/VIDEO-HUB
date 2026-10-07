@@ -63,6 +63,17 @@ npm run transcribe -- ../source-videos/папка/clip.mp4    # → clip.words.j
 
 Слова с таймингами из `clip.words.json` вставьте в поле `words` props-файла. Нужны ffmpeg, cmake и Python.
 
+## Говорящая голова (TalkReel)
+
+```bash
+npm run transcribe -- ../source-videos/папка/clip.MOV                                  # слова с таймингами
+npm run cut -- ../source-videos/папка/clip.MOV --words ../source-videos/папка/clip.words.json  # чистый звук, без пауз
+npm run site -- https://globaltechtour.ru ../source-videos/папка/site/site.png          # скриншот сайта для финала
+npx remotion render src/index.ts TalkReel ../finished-videos/имя.mp4 --props=./props/имя.json
+```
+
+Пример props: `props/2026-10-07-byt-tehnika.json`.
+
 ## Раскадровка
 
 ```bash

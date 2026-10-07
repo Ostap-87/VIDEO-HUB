@@ -3,7 +3,9 @@ import {Composition} from "remotion";
 import {VIDEO} from "./theme";
 import {Reel, reelSchema, type ReelProps} from "./compositions/Reel";
 import {TextReel, textReelSchema, type TextReelProps} from "./compositions/TextReel";
+import {TalkReel, talkReelSchema, type TalkReelProps} from "./compositions/TalkReel";
 import {sampleReel, sampleTextReel} from "./data/sample";
+import talkSample from "../props/2026-10-07-byt-tehnika.json";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -32,6 +34,19 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={sampleTextReel}
         calculateMetadata={({props}: {props: TextReelProps}) => ({
           durationInFrames: Math.round(props.slides.length * props.secondsPerSlide * VIDEO.fps),
+        })}
+      />
+      <Composition
+        id="TalkReel"
+        component={TalkReel}
+        width={VIDEO.width}
+        height={VIDEO.height}
+        fps={VIDEO.fps}
+        durationInFrames={VIDEO.fps * 20}
+        schema={talkReelSchema}
+        defaultProps={talkSample as TalkReelProps}
+        calculateMetadata={({props}: {props: TalkReelProps}) => ({
+          durationInFrames: Math.round((props.speechSeconds + props.ctaSeconds) * VIDEO.fps),
         })}
       />
     </>

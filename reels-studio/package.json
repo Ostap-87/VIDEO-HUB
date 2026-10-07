@@ -10,7 +10,9 @@
     "upgrade": "remotion upgrade",
     "frames": "python3 scripts/frames.py",
     "transcribe": "python3 scripts/transcribe.py",
-    "setup:whisper": "bash scripts/setup-whisper.sh"
+    "setup:whisper": "bash scripts/setup-whisper.sh",
+    "cut": "python3 scripts/cut_pauses.py",
+    "site": "node scripts/site_shot.mjs"
   },
   "dependencies": {
     "@remotion/captions": "4.0.533",
