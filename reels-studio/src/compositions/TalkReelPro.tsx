@@ -31,7 +31,12 @@ export const talkReelProSchema = z.object({
   cuts: z.array(z.number()), // моменты склеек (секунды) — на них чередуется зум
   chips: z.array(z.object({until: z.number(), wrap: z.boolean(), items: z.array(chip)})),
   logos: z.array(
-    z.object({until: z.number(), items: z.array(z.object({src: z.string(), at: z.number()}))}),
+    z.object({
+      until: z.number(),
+      items: z.array(z.object({src: z.string(), at: z.number()})),
+      // flip: одна карточка справа от лица; на item[1].at переворачивается по вертикальной оси
+      flip: z.boolean().optional(),
+    }),
   ),
   numbers: z.array(z.object({text: z.string(), sub: z.string(), at: z.number(), until: z.number()})),
   sfx: z.object({pop: z.string(), whoosh: z.string()}),
@@ -213,6 +218,66 @@ const ChipGroup: React.FC<{group: TalkReelProProps["chips"][number]; start: numb
           strike={c.strike === undefined ? undefined : Math.round((c.strike - start) * fps)}
         />
       ))}
+    </div>
+  );
+};
+
+// Одна карточка справа от лица: въезжает справа, затем на каждой следующей компании
+// переворачивается по вертикальной оси и показывает следующий логотип
+const FlipCard: React.FC<{group: TalkReelProProps["logos"][number]; start: number}> = ({group, start}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const local = (s: number) => Math.round((s - start) * fps);
+  const enter = spring({frame, fps, config: {damping: 14, stiffness: 150}});
+  const out = interpolate(frame, [local(group.until) - 8, local(group.until)], [1, 0], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  // угол: каждая следующая компания — ещё пол-оборота
+  const angle = group.items
+    .slice(1)
+    .reduce((a, it) => a + 180 * spring({frame: frame - local(it.at), fps, config: {damping: 16, stiffness: 120}}), 0);
+  const shown = Math.min(group.items.length - 1, Math.round(angle / 180));
+  const face = (src: string, back: boolean) => (
+    <div
+      style={{
+        position: "absolute",
+        inset: 0,
+        background: "#FFFFFF",
+        borderRadius: 26,
+        boxShadow: "0 18px 50px rgba(0,0,0,0.35)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "0 26px",
+        backfaceVisibility: "hidden",
+        WebkitBackfaceVisibility: "hidden",
+        rotate: back ? "y 180deg" : undefined,
+      }}
+    >
+      <Img src={staticFile(src)} style={{maxHeight: 64, maxWidth: "100%", objectFit: "contain"}} />
+    </div>
+  );
+  // на лицевой стороне — чётные логотипы, на обороте — нечётные
+  const front = group.items[shown % 2 === 0 ? shown : Math.max(0, shown - 1)].src;
+  const back = group.items[shown % 2 === 1 ? shown : Math.min(group.items.length - 1, shown + 1)].src;
+  return (
+    <div
+      style={{
+        position: "absolute",
+        right: 28,
+        top: 780,
+        width: 330,
+        height: 140,
+        perspective: 1200,
+        opacity: out * enter,
+        translate: `${(1 - enter) * 420}px 0px`,
+      }}
+    >
+      <div style={{position: "absolute", inset: 0, transformStyle: "preserve-3d", rotate: `y ${angle}deg`}}>
+        {face(front, false)}
+        {face(back, true)}
+      </div>
     </div>
   );
 };
@@ -443,7 +508,7 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
         const start = g.items[0].at;
         return (
           <Sequence key={`logos-${i}`} from={f(start)} durationInFrames={f(g.until - start)}>
-            <LogoGroup group={g} start={start} />
+            {g.flip ? <FlipCard group={g} start={start} /> : <LogoGroup group={g} start={start} />}
           </Sequence>
         );
       })}
@@ -459,8 +524,8 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
 
       <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} darkFrom={siteFrom} />
       {/* живой логотип сайта: вращающаяся пирамида + волна цвета по буквам */}
-      <div style={{position: "absolute", top: 96, left: 0, right: 0, display: "flex", justifyContent: "center"}}>
-        <SiteLogo scale={0.9} />
+      <div style={{position: "absolute", top: 70, left: 0, right: 0, display: "flex", justifyContent: "center"}}>
+        <SiteLogo scale={1.35} glass={false} />
       </div>
 
       <Sequence from={durationInFrames - f(p.ctaSeconds)}>

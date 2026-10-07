@@ -149,12 +149,24 @@ export const Pyramid: React.FC<{size: number; seed?: string}> = ({size, seed = "
 };
 
 // Волна цвета по буквам, как анимация logo-letter-shimmer на сайте
-const Shimmer: React.FC<{text: string; fontSize: number}> = ({text, fontSize}) => {
+const Shimmer: React.FC<{text: string; fontSize: number; halo?: boolean}> = ({text, fontSize, halo}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
   return (
-    <span style={{fontFamily: inter600.fontFamily, fontWeight: 600, fontSize, letterSpacing: "-0.02em", whiteSpace: "pre"}}>
+    <span
+      style={{
+        fontFamily: inter600.fontFamily,
+        fontWeight: 600,
+        fontSize,
+        letterSpacing: "-0.02em",
+        whiteSpace: "pre",
+        // без плашки на видео: мягкий светлый ореол, чтобы цвета сайта читались на любом фоне
+        textShadow: halo
+          ? "0 0 1.5px #fff, 0 0 1.5px #fff, 0 0 3px rgba(255,255,255,0.9), 0 2px 10px rgba(0,0,0,0.25)"
+          : undefined,
+      }}
+    >
       {[...text].map((ch, i) => {
         const phase = (((t - i * 0.06) % 2.6) + 2.6) % 2.6 / 2.6; // 0..1
         const tri = phase < 0.5 ? phase * 2 : 2 - phase * 2; // 0 → 1 → 0
@@ -185,8 +197,10 @@ export const SiteLogo: React.FC<{scale?: number; glass?: boolean}> = ({scale = 1
       boxShadow: glass ? "0 12px 34px rgba(0,0,0,0.22)" : undefined,
     }}
   >
-    <Pyramid size={(82 / 24) * 40 * scale} />
-    <Shimmer text="GLOBAL TECH TOUR" fontSize={40 * scale} />
+    <div style={{filter: glass ? undefined : "drop-shadow(0 0 1.5px #fff) drop-shadow(0 2px 8px rgba(0,0,0,0.25))"}}>
+      <Pyramid size={(82 / 24) * 40 * scale} />
+    </div>
+    <Shimmer text="GLOBAL TECH TOUR" fontSize={40 * scale} halo={!glass} />
   </div>
 );
 
