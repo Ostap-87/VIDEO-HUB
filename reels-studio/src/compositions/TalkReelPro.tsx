@@ -44,7 +44,10 @@ export const talkReelProSchema = z.object({
     z.object({text: z.string(), sub: z.string(), at: z.number(), until: z.number(), tone: z.enum(["up", "down"]).optional()}),
   ),
   // Падающий биржевой график ЗА спикером (спикер вырезан и стоит перед линией); label — тикер
-  stockDrop: z.object({at: z.number(), until: z.number(), label: z.string()}).optional(),
+  // direction: "up" — зелёный растущий график (рост рынка, продаж); по умолчанию "down" — красный падающий
+  stockDrop: z
+    .object({at: z.number(), until: z.number(), label: z.string(), direction: z.enum(["down", "up"]).optional()})
+    .optional(),
   // Перебивки: картинка на весь экран, спикер уменьшается в окошко по центру (звук не прерывается)
   // transition: как картинка появляется за спиной — circle (круг из центра), slide (въезд сбоку с размытием),
   // zoom (наезд из размытия), wipe (диагональная шторка), fade. Без поля — чередуются по порядку.
@@ -421,6 +424,10 @@ const DROP_POINTS: [number, number][] = [
   [40, 560], [170, 520], [260, 600], [360, 560], [450, 720], [540, 680], [640, 900], [720, 860], [830, 1130], [900, 1090], [990, 1320],
 ];
 const StockChart: React.FC<{drop: NonNullable<TalkReelProProps["stockDrop"]>; t: number}> = ({drop, t}) => {
+  const up = drop.direction === "up";
+  const C = up ? "#22C55E" : "#FF3B3B";
+  // рост — та же ломаная, отражённая по вертикали (снизу-слева вверх-вправо)
+  const POINTS: [number, number][] = up ? DROP_POINTS.map(([x, y]) => [x, 1880 - y]) : DROP_POINTS;
   const ease = Easing.bezier(0.5, 0, 0.3, 1);
   const draw = interpolate(t, [drop.at, drop.at + 2.4], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease});
   const fade = Math.min(
@@ -428,13 +435,13 @@ const StockChart: React.FC<{drop: NonNullable<TalkReelProProps["stockDrop"]>; t:
     interpolate(t, [drop.until - 0.4, drop.until], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}),
   );
   // длина ломаной и точка на ней для текущего прогресса
-  const seg = DROP_POINTS.slice(1).map((pt, i) => Math.hypot(pt[0] - DROP_POINTS[i][0], pt[1] - DROP_POINTS[i][1]));
+  const seg = POINTS.slice(1).map((pt, i) => Math.hypot(pt[0] - POINTS[i][0], pt[1] - POINTS[i][1]));
   const total = seg.reduce((a, x) => a + x, 0);
   let left = draw * total;
-  const shown: [number, number][] = [DROP_POINTS[0]];
+  const shown: [number, number][] = [POINTS[0]];
   for (let i = 0; i < seg.length; i++) {
-    const [x0, y0] = DROP_POINTS[i];
-    const [x1, y1] = DROP_POINTS[i + 1];
+    const [x0, y0] = POINTS[i];
+    const [x1, y1] = POINTS[i + 1];
     if (left >= seg[i]) {
       shown.push([x1, y1]);
       left -= seg[i];
@@ -448,17 +455,17 @@ const StockChart: React.FC<{drop: NonNullable<TalkReelProProps["stockDrop"]>; t:
   const [px, py] = shown.length > 1 ? shown[shown.length - 2] : [hx - 1, hy - 1];
   const ang = (Math.atan2(hy - py, hx - px) * 180) / Math.PI;
   const line = shown.map(([x, y]) => `${x},${y}`).join(" ");
-  const area = `${line} ${hx},1920 ${DROP_POINTS[0][0]},1920`;
+  const area = `${line} ${hx},1920 ${POINTS[0][0]},1920`;
   const pulse = 0.5 + 0.5 * Math.sin(t * 9);
   return (
     <AbsoluteFill style={{opacity: fade}}>
       {/* лёгкое затемнение, чтобы линия читалась на светлом фоне */}
-      <AbsoluteFill style={{background: "linear-gradient(to bottom, rgba(10,12,20,0.55), rgba(40,0,0,0.35))"}} />
+      <AbsoluteFill style={{background: `linear-gradient(to bottom, rgba(10,12,20,0.55), ${up ? "rgba(0,40,10,0.35)" : "rgba(40,0,0,0.35)"})`}} />
       <svg viewBox="0 0 1080 1920" style={{position: "absolute", inset: 0}}>
         <defs>
           <linearGradient id="dropFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#FF3B3B" stopOpacity="0.2" />
-            <stop offset="1" stopColor="#FF3B3B" stopOpacity="0" />
+            <stop offset="0" stopColor={C} stopOpacity="0.2" />
+            <stop offset="1" stopColor={C} stopOpacity="0" />
           </linearGradient>
           <filter id="dropGlow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="10" result="b" />
@@ -475,13 +482,13 @@ const StockChart: React.FC<{drop: NonNullable<TalkReelProProps["stockDrop"]>; t:
           <line key={`v${i}`} y1={420} y2={1500} x1={90 + i * 180} x2={90 + i * 180} stroke="rgba(255,255,255,0.08)" strokeWidth={2} />
         ))}
         <polygon points={area} fill="url(#dropFill)" />
-        <polyline points={line} fill="none" stroke="#FF3B3B" strokeWidth={14} strokeLinejoin="round" strokeLinecap="round" filter="url(#dropGlow)" />
+        <polyline points={line} fill="none" stroke={C} strokeWidth={14} strokeLinejoin="round" strokeLinecap="round" filter="url(#dropGlow)" />
         <g transform={`translate(${hx} ${hy}) rotate(${ang})`} filter="url(#dropGlow)">
-          <polygon points="34,0 -18,-30 -18,30" fill="#FF3B3B" />
+          <polygon points="34,0 -18,-30 -18,30" fill={C} />
         </g>
-        <circle cx={hx} cy={hy} r={26 + 14 * pulse} fill="none" stroke="#FF3B3B" strokeOpacity={0.5 * (1 - pulse) + 0.2} strokeWidth={4} />
-        <text x={60} y={660} fill="#FFFFFF" fontFamily="Inter, Arial, sans-serif" fontWeight={700} fontSize={44} opacity={0.9}>
-          {drop.label} ▼
+        <circle cx={hx} cy={hy} r={26 + 14 * pulse} fill="none" stroke={C} strokeOpacity={0.5 * (1 - pulse) + 0.2} strokeWidth={4} />
+        <text x={60} y={up ? 1250 : 660} fill="#FFFFFF" fontFamily="Inter, Arial, sans-serif" fontWeight={700} fontSize={44} opacity={0.9}>
+          {drop.label} {up ? "▲" : "▼"}
         </text>
       </svg>
     </AbsoluteFill>
