@@ -356,7 +356,7 @@
   "id": "d7d96141-14b7-4d8c-8cdc-2384411e7b32",
   "prompt": "Photorealistic wide street-level photo of three modern retail storefronts side by side, each with cl",
   "videos": [
-   "2026-10-07-chai-kofe"
+   "(отклонено: искажённая вывеска HEYAGEE)"
   ]
  },
  "518": {
@@ -560,6 +560,13 @@
   "prompt": "Minimalist modern Chinese beauty brand flagship store interior, gallery-like display shelves, warm a",
   "videos": [
    "2026-10-07-kosmetika"
+  ]
+ },
+ "218": {
+  "id": "9dfac02e-c356-4b2a-9f82-f084b1da643c",
+  "prompt": "Photorealistic wide street-level photo of three modern retail storefronts side by side in Shanghai, ",
+  "videos": [
+   "2026-10-07-chai-kofe"
   ]
  }
 }
