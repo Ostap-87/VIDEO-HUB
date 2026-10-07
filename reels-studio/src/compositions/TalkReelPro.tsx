@@ -39,6 +39,8 @@ export const talkReelProSchema = z.object({
     }),
   ),
   numbers: z.array(z.object({text: z.string(), sub: z.string(), at: z.number(), until: z.number()})),
+  // Перебивки: картинка на весь экран, спикер уменьшается в окошко по центру (звук не прерывается)
+  broll: z.array(z.object({src: z.string(), at: z.number(), until: z.number()})),
   sfx: z.object({pop: z.string(), whoosh: z.string()}),
   speechSeconds: z.number(),
   site: z.object({src: z.string(), at: z.number()}),
@@ -121,6 +123,9 @@ const BigCaptions: React.FC<{words: TalkReelProProps["words"]; accent: string[];
         lineHeight: 1.18,
         color: dark ? theme.colors.text : "#FFFFFF",
         textShadow: dark ? "none" : shadow,
+        // тёмная обводка, чтобы белые субтитры читались и на светлых картинках-перебивках
+        WebkitTextStroke: dark ? undefined : "10px rgba(10,12,20,0.55)",
+        paintOrder: "stroke fill",
         // на сайте — белая подложка, чтобы текст не сливался с кнопками страницы
         background: dark ? "rgba(255,255,255,0.94)" : undefined,
         borderRadius: dark ? 28 : undefined,
@@ -361,7 +366,14 @@ const BigNumber: React.FC<{n: TalkReelProProps["numbers"][number]}> = ({n}) => {
 };
 
 // Зум на склейках: куски чередуют общий план и наезд, плюс лёгкий «дых» внутри куска
-const ZoomedVideo: React.FC<{src: string; cuts: number[]; until: number}> = ({src, cuts, until}) => {
+const PIP = {w: 440, h: 782, top: 760}; // окошко спикера во время перебивки (9:16)
+
+const ZoomedVideo: React.FC<{src: string; cuts: number[]; until: number; broll: TalkReelProProps["broll"]}> = ({
+  src,
+  cuts,
+  until,
+  broll,
+}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -375,6 +387,20 @@ const ZoomedVideo: React.FC<{src: string; cuts: number[]; until: number}> = ({sr
     extrapolateRight: "clamp",
     easing: Easing.bezier(0.22, 1, 0.36, 1),
   });
+  // Перебивка: p = 0 (спикер на весь экран) … 1 (спикер в окошке)
+  const b = broll.find((x) => t >= x.at && t <= x.until) ?? broll.find((x) => t >= x.at - 0.5 && t <= x.until + 0.5);
+  const ease = Easing.bezier(0.22, 1, 0.36, 1);
+  const p = b
+    ? Math.min(
+        interpolate(t, [b.at, b.at + 0.4], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease}),
+        interpolate(t, [b.until - 0.4, b.until], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease}),
+      )
+    : 0;
+  const kb = b ? interpolate(t, [b.at, b.until], [1.04, 1.14], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}) : 1;
+  const left = ((1080 - PIP.w) / 2) * p;
+  const top = PIP.top * p;
+  const width = 1080 - (1080 - PIP.w) * p;
+  const height = 1920 - (1920 - PIP.h) * p;
   return (
     <AbsoluteFill style={{background: "#0B0D14"}}>
       <AbsoluteFill
@@ -385,17 +411,36 @@ const ZoomedVideo: React.FC<{src: string; cuts: number[]; until: number}> = ({sr
           boxShadow: shrink < 1 ? "0 30px 80px rgba(0,0,0,0.6)" : undefined,
         }}
       >
-        <OffthreadVideo
-          src={staticFile(src)}
-          muted
+        {b ? (
+          <AbsoluteFill style={{opacity: Math.min(1, p * 2)}}>
+            <Img src={staticFile(b.src)} style={{width: "100%", height: "100%", objectFit: "cover", scale: String(kb)}} />
+          </AbsoluteFill>
+        ) : null}
+        <div
           style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            scale: String(base + drift),
-            transformOrigin: "50% 32%",
+            position: "absolute",
+            left,
+            top,
+            width,
+            height,
+            overflow: "hidden",
+            borderRadius: 44 * p,
+            border: p > 0 ? `${6 * p}px solid #FFFFFF` : undefined,
+            boxShadow: p > 0 ? `0 24px 60px rgba(0,0,0,${0.45 * p})` : undefined,
           }}
-        />
+        >
+          <OffthreadVideo
+            src={staticFile(src)}
+            muted
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              scale: String((base + drift) * (1 - p) + 1.0 * p),
+              transformOrigin: "50% 32%",
+            }}
+          />
+        </div>
         {/* затемнение сверху и снизу для читаемости логотипа и субтитров */}
         <AbsoluteFill
           style={{
@@ -482,6 +527,7 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
     ...p.chips.flatMap((g) => g.items.map((c) => ({at: c.at, src: p.sfx.pop}))),
     ...p.logos.flatMap((g) => g.items.map((l) => ({at: l.at, src: p.sfx.whoosh}))),
     ...p.numbers.map((n) => ({at: n.at, src: p.sfx.whoosh})),
+    ...p.broll.map((b) => ({at: b.at, src: p.sfx.whoosh})),
     {at: p.site.at, src: p.sfx.whoosh},
   ];
 
@@ -494,7 +540,7 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
         </Sequence>
       ))}
 
-      <ZoomedVideo src={p.mediaSrc} cuts={p.cuts} until={p.site.at} />
+      <ZoomedVideo src={p.mediaSrc} cuts={p.cuts} until={p.site.at} broll={p.broll} />
 
       {p.chips.map((g, i) => {
         const start = g.items[0].at;

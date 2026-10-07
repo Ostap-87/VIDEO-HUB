@@ -15,10 +15,9 @@ const inter600 = loadFont("normal", {weights: ["600"], subsets: ["latin"]});
 type V3 = [number, number, number];
 type Q = [number, number, number, number]; // x, y, z, w
 
-const FACE = "rgba(56,189,248,0.55)"; // #38BDF8, opacity .55
-const EDGE = "#1E3A8A";
-const ASH = [81, 104, 161]; // --color-ash-gray
-const IRIS = [37, 99, 235]; // --color-electric-iris
+// На сайте грани #38BDF8 с прозрачностью 0.55; в ролике — светло-голубое стекло (см. Pyramid)
+// На сайте рёбра #1E3A8A
+const GLASS_EDGE = "rgba(240,249,255,0.95)"; // в ролике: рёбра как грани стекла — почти белые
 
 // Вершины пирамиды как у CylinderGeometry(0, 1.05, 1.3, 4): вершина сверху, квадрат внизу
 const H = 1.3;
@@ -124,35 +123,51 @@ export const Pyramid: React.FC<{size: number; seed?: string}> = ({size, seed = "
       [c, a],
     ].forEach(([i, j]) => edges.add(i < j ? `${i}-${j}` : `${j}-${i}`)),
   );
+  // «Светло-голубое стекло»: чем прямее грань к зрителю, тем светлее и прозрачнее (блик)
+  const facing = (idx: number[]) => {
+    const [a, b, c] = idx.map((i) => rot(tilt, rot(q, VERTS[i])));
+    const u: V3 = [b[0] - a[0], b[1] - a[1], b[2] - a[2]];
+    const v: V3 = [c[0] - a[0], c[1] - a[1], c[2] - a[2]];
+    const n = norm([u[1] * v[2] - u[2] * v[1], u[2] * v[0] - u[0] * v[2], u[0] * v[1] - u[1] * v[0]]);
+    return Math.abs(n[2]);
+  };
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{display: "block", overflow: "visible"}}>
-      {faces.map(({idx}, k) => (
-        <polygon key={k} points={idx.map((i) => `${toPx(pts[i].x)},${toPx(pts[i].y)}`).join(" ")} fill={FACE} />
-      ))}
+      {faces.map(({idx}, k) => {
+        const lit = facing(idx);
+        // от небесно-голубого #7DD3FC (боком) к светло-голубому #E0F2FE (лицом к зрителю)
+        const r = Math.round(125 + 99 * lit);
+        const g = Math.round(211 + 31 * lit);
+        const bl = Math.round(252 + 2 * lit);
+        return (
+          <polygon
+            key={k}
+            points={idx.map((i) => `${toPx(pts[i].x)},${toPx(pts[i].y)}`).join(" ")}
+            fill={`rgba(${r},${g},${bl},${(0.42 + 0.18 * lit).toFixed(3)})`}
+          />
+        );
+      })}
       {[...edges].map((e) => {
         const [i, j] = e.split("-").map(Number);
+        const xy = {x1: toPx(pts[i].x), y1: toPx(pts[i].y), x2: toPx(pts[j].x), y2: toPx(pts[j].y)};
         return (
-          <line
-            key={e}
-            x1={toPx(pts[i].x)}
-            y1={toPx(pts[i].y)}
-            x2={toPx(pts[j].x)}
-            y2={toPx(pts[j].y)}
-            stroke={EDGE}
-            strokeWidth={size / 70}
-            strokeLinecap="round"
-          />
+          <g key={e}>
+            <line {...xy} stroke="rgba(56,189,248,0.75)" strokeWidth={size / 38} strokeLinecap="round" />
+            <line {...xy} stroke={GLASS_EDGE} strokeWidth={size / 110} strokeLinecap="round" />
+          </g>
         );
       })}
     </svg>
   );
 };
 
-// Волна цвета по буквам, как анимация logo-letter-shimmer на сайте
+// Буквы переливаются: по надписи бежит световой блик (синий → светло-голубой → белый),
+// период 2.6 с, как у анимации logo-letter-shimmer на сайте
 const Shimmer: React.FC<{text: string; fontSize: number; halo?: boolean}> = ({text, fontSize, halo}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const t = frame / fps;
+  const phase = ((frame / fps) % 2.6) / 2.6; // 0..1
+  const pos = -60 + phase * 220; // блик проходит слева направо, %
   return (
     <span
       style={{
@@ -161,23 +176,15 @@ const Shimmer: React.FC<{text: string; fontSize: number; halo?: boolean}> = ({te
         fontSize,
         letterSpacing: "-0.02em",
         whiteSpace: "pre",
-        // без плашки на видео: мягкий светлый ореол, чтобы цвета сайта читались на любом фоне
-        textShadow: halo
-          ? "0 0 1.5px #fff, 0 0 1.5px #fff, 0 0 3px rgba(255,255,255,0.9), 0 2px 10px rgba(0,0,0,0.25)"
-          : undefined,
+        backgroundImage: `linear-gradient(100deg, #2563EB 0%, #2563EB ${pos - 22}%, #7DD3FC ${pos - 8}%, #FFFFFF ${pos}%, #7DD3FC ${pos + 8}%, #2563EB ${pos + 22}%, #2563EB 100%)`,
+        WebkitBackgroundClip: "text",
+        backgroundClip: "text",
+        color: "transparent",
+        // контур для читаемости на видео: тень по форме букв
+        filter: halo ? "drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 1px #fff) drop-shadow(0 2px 8px rgba(0,0,0,0.3))" : undefined,
       }}
     >
-      {[...text].map((ch, i) => {
-        const phase = (((t - i * 0.06) % 2.6) + 2.6) % 2.6 / 2.6; // 0..1
-        const tri = phase < 0.5 ? phase * 2 : 2 - phase * 2; // 0 → 1 → 0
-        const e = tri < 0.5 ? 2 * tri * tri : 1 - Math.pow(-2 * tri + 2, 2) / 2; // ease-in-out
-        const c = ASH.map((a, k) => Math.round(a + (IRIS[k] - a) * e));
-        return (
-          <span key={i} style={{color: `rgb(${c.join(",")})`, display: "inline-block"}}>
-            {ch}
-          </span>
-        );
-      })}
+      {text}
     </span>
   );
 };

@@ -1536,5 +1536,47 @@
  },
  "cta": "Подробности на сайте",
  "ctaSeconds": 3,
- "showSafeZone": false
+ "showSafeZone": false,
+ "broll": [
+  {
+   "src": "2026-10-07-byt-tehnika/broll/showroom.png",
+   "at": 0.81,
+   "until": 3.98
+  },
+  {
+   "src": "2026-10-07-byt-tehnika/broll/china-map.png",
+   "at": 18.29,
+   "until": 24.7
+  },
+  {
+   "src": "2026-10-07-byt-tehnika/broll/appliance-factory.png",
+   "at": 47.96,
+   "until": 53.92
+  },
+  {
+   "src": "2026-10-07-byt-tehnika/broll/delegation-factory.png",
+   "at": 67.38,
+   "until": 71.95
+  },
+  {
+   "src": "2026-10-07-byt-tehnika/broll/meeting-handshake.png",
+   "at": 72.0,
+   "until": 75.38000000000001
+  },
+  {
+   "src": "2026-10-07-byt-tehnika/broll/door.png",
+   "at": 75.89,
+   "until": 78.75
+  },
+  {
+   "src": "2026-10-07-byt-tehnika/broll/industries-18.png",
+   "at": 84.66,
+   "until": 88.37
+  },
+  {
+   "src": "2026-10-07-byt-tehnika/broll/interpreter.png",
+   "at": 92.22,
+   "until": 94.38
+  }
+ ]
 }
