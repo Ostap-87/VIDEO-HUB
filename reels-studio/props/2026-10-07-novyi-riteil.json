@@ -1770,9 +1770,9 @@
   }
  ],
  "music": {
-  "src": "интернет-материалы/музыка/inspiring-technology-soundrider.mp3",
-  "volume": 0.09,
-  "outroVolume": 0.22
+  "src": "интернет-материалы/музыка/trivial-call-bluedot.mp3",
+  "volume": 0.15,
+  "outroVolume": 0.34
  },
  "focus": {
   "x": 536,
