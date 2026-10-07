@@ -46,7 +46,21 @@ export const talkReelProSchema = z.object({
   // Падающий биржевой график ЗА спикером (спикер вырезан и стоит перед линией); label — тикер
   stockDrop: z.object({at: z.number(), until: z.number(), label: z.string()}).optional(),
   // Перебивки: картинка на весь экран, спикер уменьшается в окошко по центру (звук не прерывается)
-  broll: z.array(z.object({src: z.string(), at: z.number(), until: z.number()})),
+  // transition: как картинка появляется за спиной — circle (круг из центра), slide (въезд сбоку с размытием),
+  // zoom (наезд из размытия), wipe (диагональная шторка), fade. Без поля — чередуются по порядку.
+  broll: z.array(
+    z.object({
+      src: z.string(),
+      at: z.number(),
+      until: z.number(),
+      transition: z.enum(["circle", "slide", "zoom", "wipe", "fade"]).optional(),
+    }),
+  ),
+  // Чек-лист «планшет с зелёными галочками» для перечислений: спикер уходит наверх, внизу планшет, пункты
+  // появляются на своих словах, галочка рисуется.
+  checklists: z
+    .array(z.object({title: z.string(), items: z.array(z.object({text: z.string(), at: z.number()})), until: z.number()}))
+    .default([]),
   // Города: фото в нижней половине экрана, пока спикер их перечисляет; спикер остаётся сверху
   cities: z.array(z.object({src: z.string(), name: z.string(), at: z.number(), until: z.number(), kicker: z.string().optional()})),
   // Зумы на ключевых словах: punch — резкий наезд за 3 кадра (со звуком whip), push — плавный медленный наезд.
@@ -119,7 +133,8 @@ const BigCaptions: React.FC<{
   until: number;
   lowFrom: number;
   cities: TalkReelProProps["cities"];
-}> = ({words, accent, until, lowFrom, cities}) => {
+  lists: TalkReelProProps["checklists"];
+}> = ({words, accent, until, lowFrom, cities, lists}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -138,7 +153,7 @@ const BigCaptions: React.FC<{
         position: "absolute",
         left: 90,
         right: 90,
-        top: low ? 1420 : cityAmount(cities, t) > 0.5 ? 780 : 1250,
+        top: low ? 1420 : Math.max(cityAmount(cities, t), listAmount(lists, t)) > 0.5 ? 780 : 1250,
         textAlign: "center",
         fontFamily: display.fontFamily,
         fontWeight: 700,
@@ -518,21 +533,34 @@ const ZoomedVideo: React.FC<{
   zooms: TalkReelProProps["zooms"];
   stockDrop: TalkReelProProps["stockDrop"];
   focus: TalkReelProProps["focus"];
-}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus}) => {
+  checklists: TalkReelProProps["checklists"];
+}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
-  const lift = cityAmount(cities, t) * 330; // лицо поднимается в верхнюю половину
+  const lift = Math.max(cityAmount(cities, t), listAmount(checklists, t)) * 330; // лицо поднимается в верхнюю половину
   const zoom = zoomAt(cuts, zooms, t);
   const b = broll.find((x) => t >= x.at && t <= x.until) ?? broll.find((x) => t >= x.at - 0.5 && t <= x.until + 0.5);
   const ease = Easing.bezier(0.22, 1, 0.36, 1);
   const p = b
     ? Math.min(
-        interpolate(t, [b.at, b.at + 0.35], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease}),
-        interpolate(t, [b.until - 0.35, b.until], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease}),
+        interpolate(t, [b.at, b.at + 0.5], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease}),
+        interpolate(t, [b.until - 0.45, b.until], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease}),
       )
     : 0;
   const kb = b ? interpolate(t, [b.at, b.until], [1.12, 1.02], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}) : 1;
+  const kind = b ? (b.transition ?? TRANSITIONS[broll.indexOf(b) % TRANSITIONS.length]) : "fade";
+  // fade — картинка проявляется, видео гаснет; остальные — картинка закрывает кадр по форме, вырезка спикера сразу видна
+  const imgStyle: React.CSSProperties =
+    kind === "circle"
+      ? {clipPath: `circle(${p * 120}% at ${focus.x}px ${focus.y}px)`}
+      : kind === "slide"
+        ? {translate: `${(1 - p) * 100}%`, filter: `blur(${(1 - p) * 24}px)`}
+        : kind === "zoom"
+          ? {opacity: p, scale: String(1 + (1 - p) * 0.6), filter: `blur(${(1 - p) * 30}px)`}
+          : kind === "wipe"
+            ? {clipPath: `polygon(0 0, ${p * 230}% 0, ${p * 230 - 130}% 100%, 0 100%)`}
+            : {opacity: p};
   const videoStyle: React.CSSProperties = {
     position: "absolute",
     inset: 0,
@@ -545,7 +573,7 @@ const ZoomedVideo: React.FC<{
   };
   return (
     <AbsoluteFill style={{background: "#0B0D14"}}>
-      <OffthreadVideo src={staticFile(src)} muted style={{...videoStyle, opacity: 1 - p}} />
+      <OffthreadVideo src={staticFile(src)} muted style={{...videoStyle, opacity: kind === "fade" ? 1 - p : 1}} />
       {stockDrop && !b && t >= stockDrop.at - 0.1 && t <= stockDrop.until + 0.1 ? (
         <>
           <StockChart drop={stockDrop} t={t} />
@@ -554,14 +582,22 @@ const ZoomedVideo: React.FC<{
       ) : null}
       {b ? (
         <>
-          <AbsoluteFill style={{opacity: p}}>
+          <AbsoluteFill style={imgStyle}>
             <Img src={staticFile(b.src)} style={{width: "100%", height: "100%", objectFit: "cover", scale: String(kb)}} />
+            {/* светлая кромка у шторки и круга */}
+            {kind === "circle" || kind === "wipe" ? (
+              <AbsoluteFill style={{boxShadow: `inset 0 0 ${60 * (1 - p)}px rgba(255,255,255,${0.6 * (1 - p)})`}} />
+            ) : null}
           </AbsoluteFill>
           <OffthreadVideo
             src={staticFile(cutoutSrc)}
             transparent
             muted
-            style={{...videoStyle, opacity: Math.min(1, p * 3), filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.35))"}}
+            style={{
+              ...videoStyle,
+              opacity: kind === "fade" ? Math.min(1, p * 3) : p > 0.001 ? 1 : 0,
+              filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.35))",
+            }}
           />
         </>
       ) : null}
@@ -573,6 +609,119 @@ const ZoomedVideo: React.FC<{
         }}
       />
     </AbsoluteFill>
+  );
+};
+
+const TRANSITIONS = ["circle", "slide", "zoom", "wipe", "fade"] as const;
+
+// Сколько панели чек-листа на экране (0…1), как у панели городов
+const listAmount = (lists: TalkReelProProps["checklists"], t: number) => {
+  const ease = Easing.bezier(0.22, 1, 0.36, 1);
+  let a = 0;
+  for (const l of lists) {
+    const start = l.items[0].at - 0.35;
+    a = Math.max(
+      a,
+      Math.min(
+        interpolate(t, [start - 0.1, start + 0.35], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease}),
+        interpolate(t, [l.until - 0.35, l.until], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease}),
+      ),
+    );
+  }
+  return a;
+};
+
+// Планшет-чек-лист: тёмная «пелена» снизу, на ней белый планшет с зажимом, пункты с зелёными галочками
+const ChecklistPanel: React.FC<{lists: TalkReelProProps["checklists"]}> = ({lists}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const t = frame / fps;
+  const amount = listAmount(lists, t);
+  if (amount <= 0) return null;
+  const l = lists.find((x) => t >= x.items[0].at - 0.6 && t <= x.until + 0.1);
+  if (!l) return null;
+  const slide = (1 - amount) * 900;
+  return (
+    <>
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          top: PANEL_TOP - 60,
+          bottom: 0,
+          translate: `0px ${slide}px`,
+          background: "linear-gradient(to bottom, rgba(8,14,32,0) 0px, rgba(8,14,32,0.92) 220px, #070B18 100%)",
+          backdropFilter: "blur(18px)",
+          WebkitBackdropFilter: "blur(18px)",
+          maskImage: `linear-gradient(to bottom, transparent 0px, black ${FEATHER}px)`,
+          WebkitMaskImage: `linear-gradient(to bottom, transparent 0px, black ${FEATHER}px)`,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          left: 70,
+          right: 70,
+          top: PANEL_TOP + 40,
+          translate: `0px ${slide}px`,
+          rotate: `${-1.5 * amount}deg`,
+          background: "#FFFFFF",
+          borderRadius: 34,
+          padding: "70px 44px 34px",
+          boxShadow: "0 30px 80px rgba(0,0,0,0.55)",
+        }}
+      >
+        {/* зажим планшета */}
+        <div
+          style={{
+            position: "absolute",
+            top: -26,
+            left: "50%",
+            translate: "-50% 0",
+            width: 240,
+            height: 64,
+            borderRadius: 18,
+            background: "linear-gradient(180deg, #3B4254, #1C2130)",
+            boxShadow: "0 8px 18px rgba(0,0,0,0.35)",
+          }}
+        />
+        <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: 40, color: "#17171D", marginBottom: 18}}>{l.title}</div>
+        {l.items.map((it, i) => {
+          const s = spring({frame: frame - Math.round(it.at * fps), fps, config: {damping: 14, stiffness: 160}});
+          const draw = interpolate(frame, [it.at * fps + 3, it.at * fps + 13], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
+          return (
+            <div
+              key={i}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 22,
+                padding: "14px 0",
+                borderTop: i ? "2px solid #EEF0F4" : undefined,
+                opacity: s,
+                translate: `${(1 - s) * 60}px 0px`,
+              }}
+            >
+              <svg width={58} height={58} viewBox="0 0 58 58" style={{flexShrink: 0}}>
+                <circle cx={29} cy={29} r={27} fill={draw > 0 ? "#16A34A" : "#E5E7EB"} opacity={0.15 + 0.85 * Math.min(1, draw * 2)} />
+                <path
+                  d="M16 30 L25 39 L43 20"
+                  fill="none"
+                  stroke="#FFFFFF"
+                  strokeWidth={6}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeDasharray={42}
+                  strokeDashoffset={42 * (1 - draw)}
+                />
+              </svg>
+              <div style={{fontFamily: body.fontFamily, fontWeight: 700, fontSize: 42, color: "#17171D", lineHeight: 1.15}}>{it.text}</div>
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 };
 
@@ -713,15 +862,24 @@ const PhoneScreen: React.FC<{home: string; catalog: string; route: string[]; w: 
 // Финал (по второму референсу пользователя): тёмно-синий фон со свечением, слева телефон в 3D-наклоне
 // со страницей каталога, которая прокручивается; справа заголовок и светящаяся кнопка с адресом сайта;
 // спикер уменьшается из полного кадра в карточку с белой рамкой справа снизу.
-const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: string; seconds: number}> = ({src, site, title, seconds}) => {
+// fromFrame — с какого кадра ролика начинается финал: видео в карточке идёт синхронно с голосом.
+// За последние ~1,6 с спикер возвращается из карточки в полный кадр на естественном фоне (решение пользователя).
+const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: string; seconds: number; fromFrame: number}> = ({
+  src,
+  site,
+  title,
+  seconds,
+  fromFrame,
+}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const ease = Easing.bezier(0.22, 1, 0.36, 1);
   const k = (a: number, b: number) =>
     interpolate(frame, [a * fps, b * fps], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease});
-  const card = k(0, 0.7); // 0 — полный кадр, 1 — карточка
-  const phone = k(0.35, 1.1);
-  const head = k(0.8, 1.3);
+  const back = k(seconds - 1.7, seconds - 1.0); // возврат в полный кадр
+  const card = k(0, 0.7) * (1 - back); // 0 — полный кадр, 1 — карточка
+  const phone = k(0.35, 1.1) * (1 - back);
+  const head = k(0.8, 1.3) * (1 - back);
   const pill = spring({frame: frame - Math.round(1.1 * fps), fps, config: {damping: 12, stiffness: 140}});
   const glow = 0.55 + 0.45 * Math.sin((frame / fps) * Math.PI * 1.2);
   const CARD = {left: 600, top: 840, w: 400, h: 520};
@@ -773,7 +931,7 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
           position: "absolute",
           left: 545,
           top: 505,
-          opacity: pill,
+          opacity: pill * (1 - back),
           scale: String(0.7 + 0.3 * pill),
           transformOrigin: "left center",
           background: BLUE,
@@ -805,6 +963,7 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
         <OffthreadVideo
           src={staticFile(src)}
           muted
+          trimBefore={fromFrame}
           style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 40%"}}
         />
       </div>
@@ -824,6 +983,7 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
     ...p.numbers.map((n) => ({at: n.at, src: p.sfx.whoosh})),
     ...p.broll.map((b) => ({at: b.at, src: p.sfx.whoosh})),
     ...p.cities.map((c) => ({at: c.at, src: p.sfx.pop})),
+    ...p.checklists.flatMap((l) => l.items.map((it) => ({at: it.at, src: p.sfx.pop}))),
     {at: p.site.at, src: p.sfx.whoosh},
   ];
 
@@ -858,8 +1018,10 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
         zooms={p.zooms}
         stockDrop={p.stockDrop}
         focus={p.focus}
+        checklists={p.checklists}
       />
       <CityPanel cities={p.cities} />
+      <ChecklistPanel lists={p.checklists} />
 
       {/* в Stories верх занят полосками и аватаром: верхняя полоса плашек опускается (TopShift) */}
       <TopShift.Provider value={p.format === "stories" ? 130 : 0}>
@@ -892,10 +1054,11 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
           site={p.site}
           title={p.cta}
           seconds={(durationInFrames - siteFrom) / fps}
+          fromFrame={siteFrom}
         />
       </Sequence>
 
-      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} />
+      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} />
       {/* логотип: стеклянная пирамида + крупная белая надпись с бликом (как в референсе) */}
       <div style={{position: "absolute", top: p.format === "stories" ? 210 : 86, left: 56}}>
         <SiteLogo variant="title" scale={1} />
