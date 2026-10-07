@@ -448,6 +448,10 @@ const cityAmount = (cities: TalkReelProProps["cities"], t: number) => {
 };
 
 // Фото городов в нижней половине: каждый город въезжает справа поверх предыдущего, медленный наезд, подпись
+const PANEL_TOP = 1070; // фото городов опущено на ~1 см ниже середины кадра
+const PANEL_H = 1920 - PANEL_TOP;
+const FEATHER = 200; // высота растворения верхнего края фото
+
 const CityPanel: React.FC<{cities: TalkReelProProps["cities"]}> = ({cities}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -456,19 +460,21 @@ const CityPanel: React.FC<{cities: TalkReelProProps["cities"]}> = ({cities}) => 
   if (amount <= 0) return null;
   const ease = Easing.bezier(0.22, 1, 0.36, 1);
   const shown = cities.filter((c) => t >= c.at - 0.05 && t <= c.until + 0.3);
+  // Стык с видео без жёсткого края: верх панели растворяется (маска), поверх шва — размытая светлая «пелена».
+  const slide = (1 - amount) * PANEL_H;
   return (
+    <>
     <div
       style={{
         position: "absolute",
         left: 0,
         right: 0,
-        top: 960,
-        height: 960,
+        top: PANEL_TOP,
+        height: PANEL_H,
         overflow: "hidden",
-        translate: `0px ${(1 - amount) * 100}%`,
-        borderTop: "6px solid #FFFFFF",
-        boxShadow: "0 -20px 60px rgba(0,0,0,0.45)",
-        background: "#0B0D14",
+        translate: `0px ${slide}px`,
+        maskImage: `linear-gradient(to bottom, transparent 0px, black ${FEATHER}px)`,
+        WebkitMaskImage: `linear-gradient(to bottom, transparent 0px, black ${FEATHER}px)`,
       }}
     >
       {shown.map((c, i) => {
@@ -485,12 +491,12 @@ const CityPanel: React.FC<{cities: TalkReelProProps["cities"]}> = ({cities}) => 
               style={{
                 position: "absolute",
                 left: 64,
-                bottom: 300,
+                bottom: 400,
                 opacity: label,
                 translate: `0px ${(1 - label) * 40}px`,
               }}
             >
-              <div style={{fontFamily: body.fontFamily, fontWeight: 700, fontSize: 30, letterSpacing: "0.14em", color: "#BAE6FD", textTransform: "uppercase"}}>
+              <div style={{fontFamily: body.fontFamily, fontWeight: 700, fontSize: 30, letterSpacing: "0.14em", color: "#BAE6FD", textTransform: "uppercase", textShadow: shadow}}>
                 {c.kicker ?? `Маршрут · ${n}/${route.length}`}
               </div>
               <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: 92, color: "#FFFFFF", textShadow: shadow}}>{c.name}</div>
@@ -499,6 +505,23 @@ const CityPanel: React.FC<{cities: TalkReelProProps["cities"]}> = ({cities}) => 
         );
       })}
     </div>
+    <div
+      style={{
+        position: "absolute",
+        left: 0,
+        right: 0,
+        top: PANEL_TOP - 90,
+        height: FEATHER + 120,
+        translate: `0px ${slide}px`,
+        opacity: amount,
+        backdropFilter: "blur(22px)",
+        WebkitBackdropFilter: "blur(22px)",
+        background: "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(235,244,255,0.16) 45%, rgba(255,255,255,0) 100%)",
+        maskImage: "linear-gradient(to bottom, transparent 0%, black 40%, black 55%, transparent 100%)",
+        WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 40%, black 55%, transparent 100%)",
+      }}
+    />
+    </>
   );
 };
 
