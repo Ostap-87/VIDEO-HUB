@@ -1,0 +1,24 @@
+{
+  "name": "reels-studio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render:reel": "remotion render src/index.ts Reel out/reel.mp4",
+    "render:text": "remotion render src/index.ts TextReel out/text-reel.mp4",
+    "cover": "remotion still src/index.ts Reel out/cover.png --frame=45",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "@remotion/google-fonts": "^4.0.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "^4.0.0",
+    "zod": "3.22.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.0",
+    "typescript": "^5.4.0"
+  }
+}
