@@ -751,6 +751,8 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
       <ZoomedVideo src={p.mediaSrc} cutoutSrc={p.cutoutSrc} cuts={p.cuts} broll={p.broll} cities={p.cities} zooms={p.zooms} />
       <CityPanel cities={p.cities} />
 
+      {/* в Stories верх занят полосками и аватаром: плашки, логотипы и цифры опускаем вместе с логотипом */}
+      <AbsoluteFill style={{translate: p.format === "stories" ? "0px 130px" : undefined}}>
       {p.chips.map((g, i) => {
         const start = g.items[0].at;
         return (
@@ -772,6 +774,7 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
           <BigNumber n={n} />
         </Sequence>
       ))}
+      </AbsoluteFill>
 
       <Sequence from={siteFrom}>
         <Finale
