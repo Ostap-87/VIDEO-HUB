@@ -16,6 +16,7 @@ import {z} from "zod";
 import {theme} from "../theme";
 import {body, display} from "../fonts";
 import {SafeZone} from "../components/SafeZone";
+import {SiteLogo} from "../components/SiteLogo";
 
 // «Говорящая голова» в стиле референса пользователя (07.10.2026):
 // видео на весь экран, сверху плашка ▲ GLOBAL TECH TOUR, крупные белые субтитры по центру
@@ -194,7 +195,7 @@ const ChipGroup: React.FC<{group: TalkReelProProps["chips"][number]; start: numb
     <div
       style={{
         position: "absolute",
-        top: 230,
+        top: 250,
         left: 70,
         right: group.wrap ? 70 : undefined,
         display: "flex",
@@ -457,7 +458,10 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
       </Sequence>
 
       <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} darkFrom={siteFrom} />
-      <LogoBar darkFrom={siteFrom} />
+      {/* живой логотип сайта: вращающаяся пирамида + волна цвета по буквам */}
+      <div style={{position: "absolute", top: 96, left: 0, right: 0, display: "flex", justifyContent: "center"}}>
+        <SiteLogo scale={0.9} />
+      </div>
 
       <Sequence from={durationInFrames - f(p.ctaSeconds)}>
         <CtaPill text={p.cta} />

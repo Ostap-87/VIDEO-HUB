@@ -6,6 +6,7 @@ import {TextReel, textReelSchema, type TextReelProps} from "./compositions/TextR
 import {TalkReel, talkReelSchema, type TalkReelProps} from "./compositions/TalkReel";
 import {sampleReel, sampleTextReel} from "./data/sample";
 import talkSample from "../props/2026-10-07-byt-tehnika.json";
+import {SiteLogoPreview} from "./components/SiteLogo";
 import {TalkReelPro, talkReelProSchema, type TalkReelProProps} from "./compositions/TalkReelPro";
 import talkProSample from "../props/2026-10-07-byt-tehnika-v2.json";
 
@@ -63,6 +64,15 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={({props}: {props: TalkReelProProps}) => ({
           durationInFrames: Math.round((props.speechSeconds + props.ctaSeconds) * VIDEO.fps),
         })}
+      />
+      <Composition
+        id="GTTLogo"
+        component={SiteLogoPreview}
+        width={900}
+        height={220}
+        fps={VIDEO.fps}
+        durationInFrames={VIDEO.fps * 8}
+        defaultProps={{scale: 1, glass: true}}
       />
     </>
   );
