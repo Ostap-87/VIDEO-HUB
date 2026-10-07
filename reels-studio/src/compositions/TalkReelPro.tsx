@@ -931,7 +931,7 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
       </div>
       {/* заголовок и кнопка с адресом */}
       <div style={{position: "absolute", left: 545, right: 40, top: 410, opacity: head, translate: `0px ${(1 - head) * 40}px`}}>
-        <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: 52, color: "#E9EEF8"}}>{title}</div>
+        <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: title.length > 12 ? 38 : 52, color: "#E9EEF8", whiteSpace: "nowrap"}}>{title}</div>
       </div>
       <div
         style={{
