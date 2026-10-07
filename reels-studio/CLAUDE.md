@@ -239,6 +239,8 @@ muted #6B6B76 подписи, surface #FFFFFF плашки, line #D5D5DD рам�
 Xiaomi, Haier, Hisense, Robam, Supor, Midea, Galanz, Gree, Skyworth, Alibaba). Сначала ищи там, нужные копируй
 в `source-videos/ДАТА-тема/logos/`. Чего нет — Wikimedia Commons (upload.wikimedia.org) или Simple Icons.
 SVG с пустыми полями (квадратный viewBox) обрезай по содержимому, иначе логотип в карточке выйдет мелким.
+Если логотипа нет нигде (так было с Zhipu AI и Baidu), собери простой SVG: значок из Simple Icons в фирменном цвете + название
+шрифтом Arial/WenQuanYi. Перед рендером показывай все логотипы ролика одним листом на белых карточках.
 
 # Статус реализации
 
