@@ -9,3 +9,5 @@
 | shanhai-bund-noch.jpg | Шанхай, вид с Бунда ночью | для будущих роликов |
 | shanhai-bund-vecher.jpg | Шанхай, вид с Бунда вечером | для будущих роликов |
 | guanchzhou-kantonskaya-bashnya.jpg | Гуанчжоу, Кантонская башня | для будущих роликов |
+| guanchzhou-bashnya-noch.jpg | Гуанчжоу, Кантонская башня ночью, с высоты | для будущих роликов |
+| foshan-noch-pagoda.jpg | Фошань, вечерняя набережная с пагодой | ролик byt-tehnika-v2, «Фошань» |
