@@ -2,6 +2,7 @@
 
   python3 scripts/cut_pauses.py ../source-videos/папка/clip.MOV
   python3 scripts/cut_pauses.py ../source-videos/папка/clip.MOV --min-pause 0.35 --keep 0.12 --words clip.words.json
+  python3 scripts/cut_pauses.py … --drop 86.78-90.80   # вырезать оговорку / повтор (секунды исходника)
 
 Что делает:
 1. Звук: срез гула ниже 80 Гц, шумоподавление, компрессия, громкость ~-14 LUFS (норма Instagram).
@@ -63,6 +64,22 @@ def keep_segments(total, silences, keep):
     return segs
 
 
+def subtract(segs, drops):
+    """Убирает из оставленных кусков отрезки --drop (оговорки, повторы)."""
+    for d0, d1 in drops:
+        out = []
+        for s, e in segs:
+            if e <= d0 or s >= d1:
+                out.append((s, e))
+                continue
+            if s < d0 - 0.05:
+                out.append((s, d0))
+            if e > d1 + 0.05:
+                out.append((d1, e))
+        segs = out
+    return segs
+
+
 def remap(t, segs):
     for s in segs:
         if s["src_start"] <= t <= s["src_end"]:
@@ -77,6 +94,7 @@ def main():
     ap.add_argument("--keep", type=float, default=0.12)
     ap.add_argument("--threshold", type=float, default=-38)
     ap.add_argument("--words", help="clip.words.json из npm run transcribe")
+    ap.add_argument("--drop", default="", help="вырезать отрезки исходника, напр. 86.78-90.80,101.2-102")
     ap.add_argument("--words-only", action="store_true", help="не перекодировать видео, только пересчитать слова")
     a = ap.parse_args()
 
@@ -87,6 +105,8 @@ def main():
 
     total = duration(src)
     segs = keep_segments(total, find_silences(src, a.threshold, a.min_pause), a.keep)
+    drops = [tuple(map(float, r.split("-"))) for r in a.drop.split(",") if r]
+    segs = subtract(segs, drops)
 
     parts, out_t, plan = [], 0.0, []
     for i, (s, e) in enumerate(segs):
@@ -106,6 +126,8 @@ def main():
 
     if a.words:
         words = json.loads(pathlib.Path(a.words).read_text())
+        # слова, которые целиком попали в вырезанные оговорки, убираем
+        words = [w for w in words if not any(d0 <= (w["start"] + w["end"]) / 2 <= d1 for d0, d1 in drops)]
         moved, pending = [], []
         for w in words:
             s, e = remap(w["start"], plan), remap(w["end"], plan)
