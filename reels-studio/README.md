@@ -62,6 +62,11 @@ npm run frames -- ../finished-videos/my-reel.mp4 --at 1,3.5  # нужные мо
 
 Картинка с кадрами и таймкодами появится в `finished-videos/frames/`. Нужны ffmpeg и Python с Pillow.
 
+## Облачная среда Claude
+
+В облаке Remotion берёт уже установленный браузер (`remotion.config.ts`), скачивать его не нужно.
+На вашем компьютере этот путь не существует, и Remotion работает как обычно.
+
 ## Где что лежит
 
 - `source-videos/` — сырьё: съёмка, клипы, фото, музыка.
