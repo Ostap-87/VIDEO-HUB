@@ -12,7 +12,8 @@
     "transcribe": "python3 scripts/transcribe.py",
     "setup:whisper": "bash scripts/setup-whisper.sh",
     "cut": "python3 scripts/cut_pauses.py",
-    "site": "node scripts/site_shot.mjs"
+    "site": "node scripts/site_shot.mjs",
+    "matte": "python3 scripts/matte.py"
   },
   "dependencies": {
     "@remotion/captions": "4.0.533",

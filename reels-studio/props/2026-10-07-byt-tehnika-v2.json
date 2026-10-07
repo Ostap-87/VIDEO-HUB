@@ -1531,10 +1531,10 @@
  },
  "speechSeconds": 104.7,
  "site": {
-  "src": "2026-10-07-byt-tehnika/site/globaltechtour-mobile-full.png",
+  "src": "2026-10-07-byt-tehnika/site/expeditions-top.png",
   "at": 98.0
  },
- "cta": "Подробности на сайте",
+ "cta": "Экспедиции",
  "ctaSeconds": 3,
  "showSafeZone": false,
  "broll": [
@@ -1578,5 +1578,6 @@
    "at": 92.22,
    "until": 94.38
   }
- ]
+ ],
+ "cutoutSrc": "2026-10-07-byt-tehnika/_work/byt-tehnika.cut.alpha.webm"
 }

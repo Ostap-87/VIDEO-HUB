@@ -1,6 +1,7 @@
 import React from "react";
 import {random, useCurrentFrame, useVideoConfig} from "remotion";
 import {loadFont} from "@remotion/google-fonts/Inter";
+import {display} from "../fonts";
 
 // Живой логотип GLOBAL TECH TOUR — точная копия шапки globaltechtour.ru (компонент с three.js на сайте):
 // - пирамида с квадратным основанием: радиус основания 1.05, высота 1.3, 4 грани;
@@ -189,8 +190,46 @@ const Shimmer: React.FC<{text: string; fontSize: number; halo?: boolean}> = ({te
   );
 };
 
+// Вариант «title» (по референсу пользователя): крупная белая надпись Unbounded 700,
+// по ней бежит голубой блик; слева стеклянная пирамида
+const TitleText: React.FC<{fontSize: number}> = ({fontSize}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const pos = -60 + (((frame / fps) % 3.2) / 3.2) * 220;
+  return (
+    <span
+      style={{
+        fontFamily: display.fontFamily,
+        fontWeight: 700,
+        fontSize,
+        letterSpacing: "0.01em",
+        whiteSpace: "pre",
+        backgroundImage: `linear-gradient(100deg, #FFFFFF 0%, #FFFFFF ${pos - 18}%, #BAE6FD ${pos - 6}%, #7DD3FC ${pos}%, #BAE6FD ${pos + 6}%, #FFFFFF ${pos + 18}%, #FFFFFF 100%)`,
+        WebkitBackgroundClip: "text",
+        backgroundClip: "text",
+        color: "transparent",
+        filter: "drop-shadow(0 3px 10px rgba(0,0,0,0.45))",
+      }}
+    >
+      GLOBAL TECH TOUR
+    </span>
+  );
+};
+
 // Логотип целиком: на стеклянной светлой плашке (как шапка сайта), чтобы цвета сайта читались на любом видео
-export const SiteLogo: React.FC<{scale?: number; glass?: boolean}> = ({scale = 1, glass = true}) => (
+export const SiteLogo: React.FC<{scale?: number; glass?: boolean; variant?: "site" | "title"}> = ({
+  scale = 1,
+  glass = true,
+  variant = "site",
+}) =>
+  variant === "title" ? (
+    <div style={{display: "inline-flex", alignItems: "center", gap: 18 * scale}}>
+      <div style={{margin: `${-44 * scale}px ${-30 * scale}px`, filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.35))"}}>
+        <Pyramid size={176 * scale} />
+      </div>
+      <TitleText fontSize={60 * scale} />
+    </div>
+  ) : (
   <div
     style={{
       display: "inline-flex",

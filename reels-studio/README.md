@@ -69,6 +69,7 @@ npm run transcribe -- ../source-videos/папка/clip.mp4    # → clip.words.j
 npm run transcribe -- ../source-videos/папка/clip.MOV                                  # слова с таймингами
 npm run cut -- ../source-videos/папка/clip.MOV --words ../source-videos/папка/clip.words.json  # чистый звук, без пауз
 npm run site -- https://globaltechtour.ru ../source-videos/папка/site/site.png          # скриншот сайта для финала
+npm run matte -- ../source-videos/папка/_work/clip.cut.mp4 --ranges 0.8-4,18-24      # вырезать спикера из фона (нужен pip install onnxruntime)
 npx remotion render src/index.ts TalkReel ../finished-videos/имя.mp4 --props=./props/имя.json
 ```
 

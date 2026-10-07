@@ -26,6 +26,7 @@ import {SiteLogo} from "../components/SiteLogo";
 const chip = z.object({text: z.string(), at: z.number(), strike: z.number().optional()});
 export const talkReelProSchema = z.object({
   mediaSrc: z.string(), // склеенное видео из source-videos/…/_work/имя.cut.mp4 (звук из него же)
+  cutoutSrc: z.string(), // тот же ролик с вырезанным спикером (прозрачный webm из scripts/matte.py)
   words: z.array(z.object({text: z.string(), start: z.number(), end: z.number()})),
   accentWords: z.array(z.string()), // слова, которые всегда синие (бренды, цифры)
   cuts: z.array(z.number()), // моменты склеек (секунды) — на них чередуется зум
@@ -43,7 +44,7 @@ export const talkReelProSchema = z.object({
   broll: z.array(z.object({src: z.string(), at: z.number(), until: z.number()})),
   sfx: z.object({pop: z.string(), whoosh: z.string()}),
   speechSeconds: z.number(),
-  site: z.object({src: z.string(), at: z.number()}),
+  site: z.object({src: z.string(), at: z.number()}), // src — страница сайта для экрана телефона (верх страницы)
   cta: z.string(),
   ctaSeconds: z.number(),
   showSafeZone: z.boolean(),
@@ -92,11 +93,11 @@ export const LogoBar: React.FC<{darkFrom?: number}> = ({darkFrom = Infinity}) =>
 };
 
 // Субтитры по 3 слова по центру кадра, текущее и акцентные слова — синие
-const BigCaptions: React.FC<{words: TalkReelProProps["words"]; accent: string[]; until: number; darkFrom: number}> = ({
+const BigCaptions: React.FC<{words: TalkReelProProps["words"]; accent: string[]; until: number; lowFrom: number}> = ({
   words,
   accent,
   until,
-  darkFrom,
+  lowFrom,
 }) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -108,14 +109,15 @@ const BigCaptions: React.FC<{words: TalkReelProProps["words"]; accent: string[];
   if (!page || t > page[page.length - 1].end + 0.5) return null;
   const pop = spring({frame: frame - Math.round(page[0].start * fps), fps, config: theme.motion.snappy, durationInFrames: 8});
   const clean = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}+]/gu, "");
-  const dark = frame >= darkFrom + 10; // на белом сайте текст тёмный
+  const dark = false;
+  const low = frame >= lowFrom + 10; // в финале субтитры ниже карточки спикера
   return (
     <div
       style={{
         position: "absolute",
         left: 90,
         right: 90,
-        top: 1250,
+        top: low ? 1420 : 1250,
         textAlign: "center",
         fontFamily: display.fontFamily,
         fontWeight: 700,
@@ -365,13 +367,13 @@ const BigNumber: React.FC<{n: TalkReelProProps["numbers"][number]}> = ({n}) => {
   );
 };
 
-// Зум на склейках: куски чередуют общий план и наезд, плюс лёгкий «дых» внутри куска
-const PIP = {w: 440, h: 782, top: 760}; // окошко спикера во время перебивки (9:16)
-
-const ZoomedVideo: React.FC<{src: string; cuts: number[]; until: number; broll: TalkReelProProps["broll"]}> = ({
+// Зум на склейках: куски чередуют общий план и наезд, плюс лёгкий «дых» внутри куска.
+// Перебивка (broll): за спиной спикера проявляется картинка, сам спикер вырезан из фона
+// (cutoutSrc — прозрачное видео из scripts/matte.py) и остаётся на месте, звук не прерывается.
+const ZoomedVideo: React.FC<{src: string; cutoutSrc: string; cuts: number[]; broll: TalkReelProProps["broll"]}> = ({
   src,
+  cutoutSrc,
   cuts,
-  until,
   broll,
 }) => {
   const frame = useCurrentFrame();
@@ -381,141 +383,156 @@ const ZoomedVideo: React.FC<{src: string; cuts: number[]; until: number; broll: 
   const segStart = cuts[idx - 1] ?? 0;
   const base = idx % 2 === 0 ? 1.0 : 1.14;
   const drift = interpolate(t - segStart, [0, 6], [0, 0.03], {extrapolateRight: "clamp"});
-  // В финале кадр уменьшается («картинка в картинке») перед сайтом
-  const shrink = interpolate(t, [until - 1.2, until - 0.2], [1, 0.82], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: Easing.bezier(0.22, 1, 0.36, 1),
-  });
-  // Перебивка: p = 0 (спикер на весь экран) … 1 (спикер в окошке)
   const b = broll.find((x) => t >= x.at && t <= x.until) ?? broll.find((x) => t >= x.at - 0.5 && t <= x.until + 0.5);
   const ease = Easing.bezier(0.22, 1, 0.36, 1);
   const p = b
     ? Math.min(
-        interpolate(t, [b.at, b.at + 0.4], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease}),
-        interpolate(t, [b.until - 0.4, b.until], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease}),
+        interpolate(t, [b.at, b.at + 0.35], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease}),
+        interpolate(t, [b.until - 0.35, b.until], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease}),
       )
     : 0;
-  const kb = b ? interpolate(t, [b.at, b.until], [1.04, 1.14], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}) : 1;
-  const left = ((1080 - PIP.w) / 2) * p;
-  const top = PIP.top * p;
-  const width = 1080 - (1080 - PIP.w) * p;
-  const height = 1920 - (1920 - PIP.h) * p;
+  const kb = b ? interpolate(t, [b.at, b.until], [1.12, 1.02], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}) : 1;
+  const videoStyle: React.CSSProperties = {
+    position: "absolute",
+    inset: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    scale: String(base + drift),
+    transformOrigin: "50% 32%",
+  };
   return (
     <AbsoluteFill style={{background: "#0B0D14"}}>
-      <AbsoluteFill
-        style={{
-          scale: String(shrink),
-          borderRadius: shrink < 1 ? 48 : 0,
-          overflow: "hidden",
-          boxShadow: shrink < 1 ? "0 30px 80px rgba(0,0,0,0.6)" : undefined,
-        }}
-      >
-        {b ? (
-          <AbsoluteFill style={{opacity: Math.min(1, p * 2)}}>
+      <OffthreadVideo src={staticFile(src)} muted style={{...videoStyle, opacity: 1 - p}} />
+      {b ? (
+        <>
+          <AbsoluteFill style={{opacity: p}}>
             <Img src={staticFile(b.src)} style={{width: "100%", height: "100%", objectFit: "cover", scale: String(kb)}} />
           </AbsoluteFill>
-        ) : null}
-        <div
-          style={{
-            position: "absolute",
-            left,
-            top,
-            width,
-            height,
-            overflow: "hidden",
-            borderRadius: 44 * p,
-            border: p > 0 ? `${6 * p}px solid #FFFFFF` : undefined,
-            boxShadow: p > 0 ? `0 24px 60px rgba(0,0,0,${0.45 * p})` : undefined,
-          }}
-        >
           <OffthreadVideo
-            src={staticFile(src)}
+            src={staticFile(cutoutSrc)}
+            transparent
             muted
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              scale: String((base + drift) * (1 - p) + 1.0 * p),
-              transformOrigin: "50% 32%",
-            }}
+            style={{...videoStyle, opacity: Math.min(1, p * 3), filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.35))"}}
           />
-        </div>
-        {/* затемнение сверху и снизу для читаемости логотипа и субтитров */}
-        <AbsoluteFill
-          style={{
-            background:
-              "linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.35) 100%)",
-          }}
-        />
-      </AbsoluteFill>
-    </AbsoluteFill>
-  );
-};
-
-const HEADER_CUT = 150; // высота шапки сайта на скриншоте, px при ширине 1080
-
-// Сайт въезжает снизу на весь экран и плавно прокручивается
-const SiteScene: React.FC<{src: string; seconds: number}> = ({src, seconds}) => {
-  const frame = useCurrentFrame();
-  const {fps} = useVideoConfig();
-  const inP = interpolate(frame, [0, 16], [1, 0], {extrapolateRight: "clamp", easing: Easing.bezier(0.22, 1, 0.36, 1)});
-  const imgH = (1080 / 1075) * 3008;
-  const y = interpolate(frame, [fps * 1, fps * Math.max(2, seconds - 1)], [0, (imgH - 1920) * 0.6], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: Easing.inOut(Easing.cubic),
-  });
-  return (
-    <AbsoluteFill style={{translate: `0px ${inP * 100}%`, background: "#FFFFFF"}}>
-      {/* шапку сайта (с его логотипом) срезаем: сверху уже стоит наша плашка GLOBAL TECH TOUR */}
-      <Img src={staticFile(src)} style={{width: "100%", marginTop: 240 - HEADER_CUT, translate: `0px ${-y}px`}} />
-      <div
+        </>
+      ) : null}
+      {/* затемнение сверху и снизу для читаемости логотипа и субтитров */}
+      <AbsoluteFill
         style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          top: 0,
-          height: 250,
-          background: "linear-gradient(to bottom, #FFFFFF 78%, rgba(255,255,255,0))",
+          background:
+            "linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.35) 100%)",
         }}
       />
     </AbsoluteFill>
   );
 };
 
-const CtaPill: React.FC<{text: string}> = ({text}) => {
+// Финал (по второму референсу пользователя): тёмно-синий фон со свечением, слева телефон в 3D-наклоне
+// со страницей каталога, которая прокручивается; справа заголовок и светящаяся кнопка с адресом сайта;
+// спикер уменьшается из полного кадра в карточку с белой рамкой справа снизу.
+const Finale: React.FC<{src: string; phoneSrc: string; title: string; seconds: number}> = ({src, phoneSrc, title, seconds}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const s = spring({frame, fps, config: theme.motion.snappy});
+  const ease = Easing.bezier(0.22, 1, 0.36, 1);
+  const k = (a: number, b: number) =>
+    interpolate(frame, [a * fps, b * fps], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease});
+  const card = k(0, 0.7); // 0 — полный кадр, 1 — карточка
+  const phone = k(0.35, 1.1);
+  const head = k(0.8, 1.3);
+  const pill = spring({frame: frame - Math.round(1.1 * fps), fps, config: {damping: 12, stiffness: 140}});
+  const glow = 0.55 + 0.45 * Math.sin((frame / fps) * Math.PI * 1.2);
+  const CARD = {left: 600, top: 840, w: 400, h: 520};
+  const lerp = (a: number, b: number) => a + (b - a) * card;
+  const phoneW = 420;
+  const phoneH = 900;
+  const imgH = ((phoneW - 24) / 1075) * 4600;
+  const scroll = interpolate(frame, [1.4 * fps, Math.max(2, seconds - 0.3) * fps], [0, imgH * 0.42], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.inOut(Easing.cubic),
+  });
   return (
-    <div
+    <AbsoluteFill
       style={{
-        position: "absolute",
-        left: 0,
-        right: 0,
-        top: 1300,
-        display: "flex",
-        justifyContent: "center",
-        opacity: s,
-        translate: `0px ${(1 - s) * 120}px`,
+        background:
+          "radial-gradient(ellipse 70% 45% at 30% 38%, rgba(37,99,235,0.35), rgba(37,99,235,0) 70%), linear-gradient(180deg, #0A1022 0%, #050814 100%)",
       }}
     >
+      {/* телефон */}
       <div
         style={{
+          position: "absolute",
+          left: 60,
+          top: 330,
+          width: phoneW,
+          height: phoneH,
+          perspective: 1400,
+          opacity: phone,
+          translate: `${(1 - phone) * -500}px 0px`,
+        }}
+      >
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            borderRadius: 64,
+            background: "#0E1220",
+            padding: 12,
+            boxShadow: "0 40px 90px rgba(0,0,0,0.6), 0 0 0 2px rgba(255,255,255,0.08) inset",
+            rotate: `y ${14 - 4 * phone}deg`,
+          }}
+        >
+          <div style={{width: "100%", height: "100%", borderRadius: 52, overflow: "hidden", background: "#FFFFFF"}}>
+            <Img src={staticFile(phoneSrc)} style={{width: "100%", translate: `0px ${-scroll}px`}} />
+          </div>
+        </div>
+      </div>
+      {/* заголовок и кнопка с адресом */}
+      <div style={{position: "absolute", left: 545, right: 40, top: 410, opacity: head, translate: `0px ${(1 - head) * 40}px`}}>
+        <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: 52, color: "#E9EEF8"}}>{title}</div>
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          left: 545,
+          top: 505,
+          opacity: pill,
+          scale: String(0.7 + 0.3 * pill),
+          transformOrigin: "left center",
           background: BLUE,
           color: "#FFFFFF",
           fontFamily: body.fontFamily,
           fontWeight: 700,
-          fontSize: 50,
-          padding: "30px 54px",
+          fontSize: 40,
+          padding: "24px 38px",
           borderRadius: 999,
-          boxShadow: "0 20px 50px rgba(37,99,235,0.45)",
+          boxShadow: `0 0 ${40 + 30 * glow}px rgba(59,130,246,${0.55 + 0.3 * glow}), 0 16px 40px rgba(0,0,0,0.4)`,
         }}
       >
-        {text} →
+        {theme.site}
       </div>
-    </div>
+      {/* спикер: из полного кадра в карточку */}
+      <div
+        style={{
+          position: "absolute",
+          left: lerp(0, CARD.left),
+          top: lerp(0, CARD.top),
+          width: lerp(1080, CARD.w),
+          height: lerp(1920, CARD.h),
+          borderRadius: 32 * card,
+          overflow: "hidden",
+          border: `${6 * card}px solid #FFFFFF`,
+          boxShadow: `0 30px 70px rgba(0,0,0,${0.5 * card})`,
+        }}
+      >
+        <OffthreadVideo
+          src={staticFile(src)}
+          muted
+          style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 40%"}}
+        />
+      </div>
+    </AbsoluteFill>
   );
 };
 
@@ -540,7 +557,7 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
         </Sequence>
       ))}
 
-      <ZoomedVideo src={p.mediaSrc} cuts={p.cuts} until={p.site.at} broll={p.broll} />
+      <ZoomedVideo src={p.mediaSrc} cutoutSrc={p.cutoutSrc} cuts={p.cuts} broll={p.broll} />
 
       {p.chips.map((g, i) => {
         const start = g.items[0].at;
@@ -565,18 +582,19 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
       ))}
 
       <Sequence from={siteFrom}>
-        <SiteScene src={p.site.src} seconds={(durationInFrames - siteFrom) / fps} />
+        <Finale
+          src={p.mediaSrc}
+          phoneSrc={p.site.src}
+          title={p.cta}
+          seconds={(durationInFrames - siteFrom) / fps}
+        />
       </Sequence>
 
-      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} darkFrom={siteFrom} />
-      {/* живой логотип сайта: вращающаяся пирамида + волна цвета по буквам */}
-      <div style={{position: "absolute", top: 70, left: 0, right: 0, display: "flex", justifyContent: "center"}}>
-        <SiteLogo scale={1.35} glass={false} />
+      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} />
+      {/* логотип: стеклянная пирамида + крупная белая надпись с бликом (как в референсе) */}
+      <div style={{position: "absolute", top: 86, left: 56}}>
+        <SiteLogo variant="title" scale={1} />
       </div>
-
-      <Sequence from={durationInFrames - f(p.ctaSeconds)}>
-        <CtaPill text={p.cta} />
-      </Sequence>
       {p.showSafeZone ? <SafeZone /> : null}
     </AbsoluteFill>
   );

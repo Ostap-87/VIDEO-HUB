@@ -6,3 +6,4 @@ finished-videos/_*
 reels-studio/whisper.cpp/
 source-videos/**/*.words.json.tmp
 source-videos/**/_work/
+reels-studio/models/
