@@ -1,0 +1,641 @@
+{
+  "title": "Ритейл Японии: от конбини до tech-дискаунтеров — Global Tech Tour",
+  "output": "2026-10-08-япония-ритейл",
+  "source": "https://globaltechtour.ru/expeditions/japan-retail-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "japan",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Ритейл Японии",
+      "topright": "Конбини · SPA-бренды\nTech-дискаунтеры",
+      "logos": [
+        {
+          "name": "Seven-Eleven Japan",
+          "logo": "source-videos/логотипы/ритейл/7-eleven.png"
+        },
+        {
+          "name": "Lawson",
+          "logo": "source-videos/логотипы/ритейл/lawson.png"
+        },
+        {
+          "name": "FamilyMart",
+          "logo": "source-videos/логотипы/ритейл/familymart.svg"
+        },
+        {
+          "name": "UNIQLO",
+          "logo": "source-videos/логотипы/ритейл/uniqlo.svg"
+        },
+        {
+          "name": "MUJI",
+          "logo": "source-videos/логотипы/ритейл/muji.svg"
+        },
+        {
+          "name": "Don Quijote",
+          "logo": "source-videos/логотипы/ритейл/don-quijote.png"
+        },
+        {
+          "name": "Trial Holdings",
+          "logo": "source-videos/логотипы/ритейл/trial.png"
+        },
+        {
+          "name": "Rakuten",
+          "logo": "source-videos/логотипы/ритейл/rakuten.svg"
+        }
+      ],
+      "box_text": "От конбини до AI-камер Trial —\n10 компаний, 6 дней, 6 ночей",
+      "box_right": "Токио + Фукуока —\nштаб-квартира Trial",
+      "footer": "Global Tech Tour · бизнес-делегации в Японию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Визиты в штаб-квартиры, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы и сопровождение на японском/английском включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на японском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "ghost": "日本",
+      "title1": "10 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Токио",
+          "text": "Seven-Eleven, Lawson, FamilyMart, AEON"
+        },
+        {
+          "name": "Дни 3–4 · Токио",
+          "text": "UNIQLO, MUJI, Don Quijote, Nitori"
+        },
+        {
+          "name": "День 5 · Фукуока",
+          "text": "Trial, Rakuten"
+        }
+      ],
+      "quote": "Плюс однодневный перелёт в Фукуоку\nк штаб-квартире Trial Holdings."
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Токио",
+          "days": "дни 1–5",
+          "companies": "Seven-Eleven\nLawson\nFamilyMart\nAEON\n+ ещё 5"
+        },
+        {
+          "name": "Фукуока",
+          "days": "день 5",
+          "companies": "Trial",
+          "leg": {
+            "icon": "plane",
+            "text": "≈2 ч в одну сторону"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Токио · <b>Вылет:</b> Токио · Фукуока — перелёт туда-обратно за день"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "ghost": "五天",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Seven-Eleven ·\nLawson",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "FamilyMart ·\nAEON",
+          "text": "AEON — сервис мобильного самосканирования.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "UNIQLO ·\nMUJI",
+          "text": "Визиты: UNIQLO, MUJI.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Don Quijote ·\nNitori",
+          "text": "Don Quijote — сеть дискаунтеров, флагманский бизнес холдинга Pan.",
+          "label": "День 4"
+        },
+        {
+          "sub": "Фукуока · 10:00–13:00",
+          "title": "Trial ·\nRakuten",
+          "text": "Внутренний перелёт туда-обратно Токио–Фукуока (≈2 ч в одну сторону); визит к Rakuten Group — вечером, по возвращении в Токио. Ночёвка в Токио.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Токио",
+      "title": "Seven-Eleven Japan",
+      "native": "セブン‑イレブン",
+      "ghost": "セブ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/ритейл/seven-eleven.png",
+      "short": "Seven-Eleven Japan",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Первый",
+          "label": "полноценный франчайзинговый конбини"
+        },
+        {
+          "icon": "flag",
+          "value": "1973",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Штаб-квартира в районе Тиёда, Токио; сеть остается крупнейшей по выручке и числу магазинов в стране.",
+      "learn": "Компания тестирует роботов для расстановки товара и уборки полов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Токио",
+      "title": "Lawson",
+      "native": "ローソン",
+      "ghost": "ローソン",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/ритейл/lawson.png",
+      "short": "Lawson",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "28",
+          "label": "точек с аватар-продавцами",
+          "sub": "было 17"
+        },
+        {
+          "icon": "star",
+          "value": "Real",
+          "label": "футуристический формат"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Тестирует магазины с аватар-продавцами: на кассе Green Lawson — 3D-аватар реального сотрудника.",
+      "learn": "Lawson тестирует магазины с аватар-продавцами: на кассе экспериментальной точки Green Lawson в Токио установлен дисплей.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Токио",
+      "title": "FamilyMart",
+      "native": "ファミリーマート",
+      "ghost": "ファ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/ритейл/familymart.svg",
+      "short": "FamilyMart",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "17 тыс",
+          "label": "магазинов"
+        },
+        {
+          "icon": "handshake",
+          "value": "Itochu",
+          "label": "партнёр"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Сеть также продвигает цифровизацию через собственный сервис оплаты FamiPay.",
+      "learn": "FamilyMart, вторая по величине сеть конбини в Японии, базируется в Токио.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Токио",
+      "title": "AEON",
+      "native": "イオン",
+      "ghost": "イオン",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/ритейл/aeon.png",
+      "short": "AEON — Regi Go smart store",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "300+",
+          "label": "магазинов сети",
+          "sub": "к 2024 году"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Сервис мобильного самосканирования и самостоятельной оплаты от AEON Retail.",
+      "learn": "Изначально использовались выданные в магазине смартфоны, с апреля 2022 года заработало мобильное приложение.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Токио",
+      "title": "UNIQLO",
+      "native": "ユニクロ",
+      "ghost": "ユニクロ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/ритейл/uniqlo.svg",
+      "short": "UNIQLO (Fast Retailing)",
+      "subtitle": "Fast Retailing · Токио",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "90%",
+          "label": "ручной труд"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$885 млн",
+          "label": "инвестиции",
+          "sub": "2018 год"
+        },
+        {
+          "icon": "star",
+          "value": "Ariake Project",
+          "label": "цифровой проект"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        }
+      ],
+      "why": "Логистический центр Ariake, запущенный в 2016 году с участием Daifuku, стал первым автоматизированным складом группы.",
+      "learn": "Штаб-квартира Fast Retailing находится в токийском районе Ариакэ.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Токио",
+      "title": "MUJI",
+      "native": "無印良品",
+      "ghost": "無印",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/ритейл/muji.svg",
+      "short": "MUJI",
+      "subtitle": "Ryohin Keikaku · Токио",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "1188",
+          "label": "магазинов",
+          "sub": "по состоянию на 2023"
+        },
+        {
+          "icon": "chart",
+          "value": "79",
+          "label": "номеров"
+        },
+        {
+          "icon": "handshake",
+          "value": "Ryohin Keikaku",
+          "label": "в составе группы"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        }
+      ],
+      "why": "В апреле 2019 года на улице Намики-дори в Гиндзе открылся мировой флагманский магазин MUJI Ginza.",
+      "learn": "MUJI принадлежит компании Ryohin Keikaku, штаб-квартира которой расположена в районе Кораку токийского Бункё.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Токио",
+      "title": "Don Quijote",
+      "native": "ドン・キホーテ",
+      "ghost": "ドン",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/ритейл/don-quijote.png",
+      "short": "Don Quijote (PPIH)",
+      "subtitle": "PPIH · Токио",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "900+",
+          "label": "магазинов"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Сеть дискаунтеров, флагманский бизнес холдинга Pan Pacific International Holdings.",
+      "learn": "Группа управляет более чем 900 магазинами по всему миру, расширяясь в Юго-Восточной Азии и Северной Америке.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Токио",
+      "title": "Nitori",
+      "native": "ニトリ",
+      "ghost": "ニトリ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/ритейл/nitori.png",
+      "short": "Nitori",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "1046",
+          "label": "магазинов",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "flag",
+          "value": "1967",
+          "label": "год основания",
+          "sub": "в Саппоро"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Nitori стала крупнейшей сетью мебели и товаров для дома в Японии.",
+      "learn": "В 2010 году компания перешла на холдинговую структуру, а в 2016-м пост президента от основателя принял Тосиюки Сираи.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Фукуока",
+      "title": "Trial",
+      "native": "トライアルホールディングス",
+      "ghost": "トラ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/ритейл/trial.png",
+      "short": "Trial Holdings",
+      "subtitle": "Фукуока",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "300+",
+          "label": "супермаркетов"
+        },
+        {
+          "icon": "chart",
+          "value": "~700",
+          "label": "ИИ-камер"
+        },
+        {
+          "icon": "pin",
+          "value": "Фукуока",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "В флагманском смарт-магазине Super Center Trial на Island City установлено около 700 ИИ-камер.",
+      "learn": "В 2018 году компания выделила технологическое подразделение Retail AI, разрабатывающее умные тележки со встроенными планшетами.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Токио",
+      "title": "Rakuten Group",
+      "native": "楽天グループ",
+      "ghost": "楽天",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/ритейл/rakuten.svg",
+      "short": "Rakuten Group",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "cart",
+          "value": "Rakuten Ichiba",
+          "label": "маркетплейс"
+        },
+        {
+          "icon": "flag",
+          "value": "1997",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "вечером, после возвращения из Фукуоки"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Крупнейшая e-commerce экосистема Японии: маркетплейс Rakuten Ichiba, финтех-сервисы, программа лояльности Rakuten.",
+      "learn": "Акции торгуются на Токийской бирже; компания интегрирует онлайн- и офлайн-сервисы вокруг единой системы баллов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "И сопровождение на японском/английском",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На японском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "Ритейл Японии",
+          "text": "\nТокио + Фукуока",
+          "icon": "store"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов в Токио и Фукуоке"
+        },
+        {
+          "icon": "store",
+          "value": "10 компаний",
+          "label": "Ритейл Японии",
+          "sub": "от конбини до tech-дискаунтеров"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Внутренний перелёт Токио–Фукуока–Токио",
+        "Трансферы и сопровождение на японском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Токио (перелёт Москва → Токио, аэропорты Нарита/Ханеда).<br><b>Вылет:</b> Токио (после дня 5 → Москва)"
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

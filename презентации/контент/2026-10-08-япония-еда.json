@@ -1,0 +1,595 @@
+{
+  "title": "Продукты питания и молочная промышленность Японии — Global Tech Tour",
+  "output": "2026-10-08-япония-еда",
+  "source": "https://globaltechtour.ru/expeditions/japan-food-dairy-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "japan",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Продукты питания и молочная промышленность Японии",
+      "topright": "Yakult · Kikkoman\nAjinomoto · Nissin",
+      "logos": [
+        {
+          "name": "Yakult Honsha",
+          "logo": "source-videos/логотипы/еда/yakult-honsha.svg"
+        },
+        {
+          "name": "Meiji",
+          "logo": "source-videos/логотипы/еда/meiji-holdings.svg"
+        },
+        {
+          "name": "Kikkoman",
+          "logo": "source-videos/логотипы/еда/kikkoman.png"
+        },
+        {
+          "name": "Kewpie",
+          "logo": "source-videos/логотипы/еда/kewpie.png"
+        },
+        {
+          "name": "Ajinomoto",
+          "logo": "source-videos/логотипы/еда/ajinomoto.svg"
+        },
+        {
+          "name": "Fuji Oil",
+          "logo": "source-videos/логотипы/еда/fuji-oil.png"
+        },
+        {
+          "name": "Nissin Foods",
+          "logo": "source-videos/логотипы/еда/nissin-foods.png"
+        },
+        {
+          "name": "Morinaga Milk",
+          "logo": "source-videos/логотипы/еда/morinaga-milk.svg"
+        }
+      ],
+      "box_text": "От пробиотиков Yakult —\n9 компаний, 6 дней, 6 ночей",
+      "box_right": "Токио + Осака —\nс переездом на Синкансэне Токио→Осака",
+      "footer": "Global Tech Tour · бизнес-делегации в Японию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Доступ к производственным площадкам, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый маршрут Токио–Кансай без потери дней на логистику. Трансферы и сопровождение на японском/английском включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на японском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "ghost": "日本",
+      "title1": "9 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Токио",
+          "text": "Yakult Honsha, Meiji, Kikkoman, Kewpie"
+        },
+        {
+          "name": "Дни 3–4 · Осака",
+          "text": "Ajinomoto, Fuji Oil, Nissin Foods — второй визит дня — молочный завод региона Кансай (партнёр по запросу, уточняется)."
+        },
+        {
+          "name": "День 5 · Осака",
+          "text": "Morinaga Milk, Megmilk Snow Brand"
+        }
+      ],
+      "quote": "С переездом на Синкансэне\nТокио→Осака."
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Токио",
+          "days": "дни 1–2",
+          "companies": "Yakult Honsha\nMeiji\nKikkoman\nKewpie"
+        },
+        {
+          "name": "Осака",
+          "days": "дни 3–5",
+          "companies": "Ajinomoto\nFuji Oil\nNissin Foods\nMorinaga Milk\nMegmilk Snow Brand",
+          "leg": {
+            "icon": "car",
+            "text": "≈2,5 ч"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Токио · <b>Вылет:</b> Осака (аэропорт Кансай KIX, либо возврат в Токио → Москва)"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "ghost": "五天",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Yakult Honsha ·\nMeiji",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "Токио / Нода (Тиба) · 10:00–13:00",
+          "title": "Kikkoman ·\nKewpie",
+          "text": "Kikkoman — крупнейший в мире производитель соевого соуса.",
+          "label": "День 2"
+        },
+        {
+          "sub": "Осака · 10:00–13:00",
+          "title": "Ajinomoto ·\nFuji Oil",
+          "text": "Переезд на Синкансэне Токио→Осака (≈2,5 ч).",
+          "label": "День 3"
+        },
+        {
+          "sub": "Осака · 10:00–13:00",
+          "title": "Nissin Foods",
+          "text": "Второй визит дня — молочный завод региона Кансай (партнёр по запросу, уточняется).",
+          "label": "День 4"
+        },
+        {
+          "sub": "Осака / Кобе · 10:00–13:00",
+          "title": "Morinaga Milk ·\nMegmilk Snow Brand",
+          "text": "Визиты: Morinaga Milk, Megmilk Snow Brand.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Токио",
+      "title": "Yakult Honsha",
+      "native": "ヤクルト本社",
+      "ghost": "ヤク",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/еда/yakult-honsha.svg",
+      "short": "Yakult Honsha",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "~200",
+          "label": "компаний"
+        },
+        {
+          "icon": "globe",
+          "value": "30+",
+          "label": "стран"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Сегодня группа объединяет около 200 компаний более чем в 30 странах — пионер пробиотической категории в Японии.",
+      "learn": "Одноимённый пробиотический напиток поступил в продажу в 1935 году, а сама компания учреждена в 1955 году для консолидации бизнеса.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Токио",
+      "title": "Meiji Holdings",
+      "native": "明治ホールディングス",
+      "ghost": "明治",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/еда/meiji-holdings.svg",
+      "short": "Meiji Holdings",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2009",
+          "label": "год образования",
+          "sub": "1 апреля 2009 года"
+        },
+        {
+          "icon": "package",
+          "value": "Meiji Seika",
+          "label": "кондитерская, 1916"
+        },
+        {
+          "icon": "package",
+          "value": "Meiji Milk",
+          "label": "молочная, 1917"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        }
+      ],
+      "why": "Объединение кондитерской Meiji Seika и молочной Meiji Milk Products; корни — с 1906 года.",
+      "learn": "Портфель охватывает молоко, йогурты, сыры, мороженое и шоколад, а также функциональные молочные продукты с упором на исследования.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Токио / Нода (Тиба)",
+      "title": "Kikkoman",
+      "native": "キッコーマン",
+      "ghost": "キッ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/еда/kikkoman.png",
+      "short": "Kikkoman",
+      "subtitle": "Токио / Нода (Тиба)",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "50%+",
+          "label": "рынка соевого соуса США",
+          "sub": "на рынке с 1957 года"
+        },
+        {
+          "icon": "trending",
+          "value": "№1 в мире",
+          "label": "производитель соевого соуса"
+        },
+        {
+          "icon": "flag",
+          "value": "1917",
+          "label": "год образования"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио / Нода (Тиба)",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        }
+      ],
+      "why": "Крупнейший в мире производитель соевого соуса; традиция варки соуса в Ноде, префектура Тиба, насчитывает свыше 350 лет.",
+      "learn": "Завод в Ноде включает музей истории соевого соуса.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Токио / Нода (Тиба)",
+      "title": "Kewpie",
+      "native": "キユーピー",
+      "ghost": "キユ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/еда/kewpie.png",
+      "short": "Kewpie",
+      "subtitle": "Токио / Нода (Тиба)",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Первый",
+          "label": "майонез в продаже в Японии",
+          "sub": "1925 год"
+        },
+        {
+          "icon": "flag",
+          "value": "1919",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио / Нода (Тиба)",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Сегодня Kewpie — ведущий японский производитель майонеза, соусов и обработанных овощей, узнаваемый по маскоту-кукле.",
+      "learn": "На заводах применяются компьютерное зрение и ИИ для инспекции овощей — направление, показанное на маршруте «Mayo Terrace».",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Осака",
+      "title": "Ajinomoto",
+      "native": "味の素",
+      "ghost": "味の素",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/еда/ajinomoto.svg",
+      "short": "Ajinomoto",
+      "subtitle": "Осака",
+      "facts": [
+        {
+          "icon": "smartphone",
+          "value": "AminoScience",
+          "label": "глобальная платформа"
+        },
+        {
+          "icon": "flag",
+          "value": "1909",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Осака",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Приправа AJI-NO-MOTO стала первой в мире коммерческой добавкой умами; уже в 1917 году компания открыла офис в Нью-Йорке.",
+      "learn": "Сегодня Ajinomoto Group — глобальная платформа AminoScience, применяющая аминокислотные биотехнологии в пищепроме и фармацевтике.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Осака",
+      "title": "Fuji Oil",
+      "native": "不二製油",
+      "ghost": "不二",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/еда/fuji-oil.png",
+      "short": "Fuji Oil",
+      "subtitle": "Осака",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1950",
+          "label": "год основания",
+          "sub": "в Осаке"
+        },
+        {
+          "icon": "pin",
+          "value": "Осака",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "В 1961 году компания разработала обезжиренный соевый белок «Fuji Takaramame», а в 1966 году.",
+      "learn": "Fuji Oil учреждена в октябре 1950 года в Осаке при участии Itochu на базе маслозавода Fuji Sanshi.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Осака",
+      "title": "Nissin Foods",
+      "native": "日清食品",
+      "ghost": "日清",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/еда/nissin-foods.png",
+      "short": "Nissin Foods",
+      "subtitle": "Осака",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Первая в мире",
+          "label": "лапша быстрого приготовления"
+        },
+        {
+          "icon": "star",
+          "value": "Chicken Ramen",
+          "label": "изобретён в 1958 году"
+        },
+        {
+          "icon": "flag",
+          "value": "1948",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Осака",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        }
+      ],
+      "why": "Nissin Foods основана в 1948 году Момофуку Андо; в 1958 году он изобрёл «Chicken Ramen».",
+      "learn": "Музей CupNoodles в Икэде посвящён истории изобретения лапши быстрого приготовления и позволяет создать собственную упаковку.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Осака / Кобе",
+      "title": "Morinaga Milk",
+      "native": "森永乳業",
+      "ghost": "森永",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/еда/morinaga-milk.svg",
+      "short": "Morinaga Milk",
+      "subtitle": "Осака / Кобе",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1917",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Осака / Кобе",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "С 1960-х годов ведёт исследования бифидобактерий и в 1969 году выделила флагманский штамм Bifidobacterium longum BB536.",
+      "learn": "Также развивает технологии асептической упаковки для энтерального питания.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Осака / Кобе",
+      "title": "Megmilk Snow Brand",
+      "native": "雪印メグミルク",
+      "ghost": "雪印",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/еда/megmilk-snow-brand.png",
+      "short": "Megmilk Snow Brand",
+      "subtitle": "Осака / Кобе",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2009",
+          "label": "год образования"
+        },
+        {
+          "icon": "pin",
+          "value": "Осака / Кобе",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Сегодня компания — один из крупнейших производителей молочной продукции страны.",
+      "learn": "В 1933 году построен сырный завод в Тоасе, а сыр 1934 года мгновенно стал дефицитным, положив начало крупному сыроварению.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Доступ к производственным площадкам, обычно закрытым для случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "И сопровождение на японском/английском",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На японском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "9 компаний",
+          "text": "Yakult · Kikkoman · Ajinomoto\nТокио + Осака",
+          "icon": "cart"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов в Токио и Осаке"
+        },
+        {
+          "icon": "cart",
+          "value": "9 компаний",
+          "label": "в программе",
+          "sub": "Yakult, Kikkoman, Ajinomoto"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Переезд на Синкансэне Токио–Осака",
+        "Трансферы и сопровождение на японском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Токио (перелёт Москва → Токио, аэропорты Нарита/Ханеда).<br><b>Вылет:</b> Осака (аэропорт Кансай KIX, либо возврат в Токио → Москва)"
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

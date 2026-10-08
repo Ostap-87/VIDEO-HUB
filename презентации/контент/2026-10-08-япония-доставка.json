@@ -1,0 +1,613 @@
+{
+  "title": "Central/Dark Kitchen и быстрая доставка еды в Японии — Global Tech Tour",
+  "output": "2026-10-08-япония-доставка",
+  "source": "https://globaltechtour.ru/expeditions/japan-dark-kitchen-delivery-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "japan",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Central/Dark Kitchen и быстрая доставка еды в Японии",
+      "topright": "Demae-can · Uber Eats\nSoftBank Robotics",
+      "logos": [
+        {
+          "name": "Demae-can",
+          "logo": "source-videos/логотипы/техгиганты/demae-can.png"
+        },
+        {
+          "name": "Uber Eats",
+          "logo": "source-videos/логотипы/техгиганты/uber-eats.svg"
+        },
+        {
+          "name": "Connected Robotics",
+          "logo": "source-videos/логотипы/роботы/connected-robotics.png"
+        },
+        {
+          "name": "TechMagic",
+          "logo": "source-videos/логотипы/роботы/techmagic.png"
+        },
+        {
+          "name": "SoftBank Robotics",
+          "logo": "source-videos/логотипы/роботы/softbank-robotics.png"
+        },
+        {
+          "name": "ZMP",
+          "logo": "source-videos/логотипы/роботы/zmp.png"
+        },
+        {
+          "name": "Wolt",
+          "logo": "source-videos/логотипы/техгиганты/wolt.png"
+        },
+        {
+          "name": "Panasonic Robotics",
+          "logo": "source-videos/логотипы/роботы/panasonic-robotics.png"
+        }
+      ],
+      "box_text": "Доставка еды —\n10 компаний, 6 дней, 6 ночей",
+      "box_right": "Токио —\nвсё в пределах Большого Токио, без перелётов",
+      "footer": "Global Tech Tour · бизнес-делегации в Японию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Компактный маршрут без перелётов, всё в Большом Токио. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Компактный маршрут без перелётов, всё в Большом Токио. Трансферы в пределах Большого Токио включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на японском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "ghost": "日本",
+      "title1": "10 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2",
+          "text": "Demae-can, Uber Eats, Connected Robotics, TechMagic"
+        },
+        {
+          "name": "Дни 3–4",
+          "text": "SoftBank Robotics, ZMP, Wolt, Panasonic Robotics"
+        },
+        {
+          "name": "День 5",
+          "text": "Rakuten Delivery, menu — день завершается итоговой встречей и networking."
+        }
+      ],
+      "quote": "Всё в пределах Большого\nТокио, без перелётов."
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "ghost": "五天",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Demae-can ·\nUber Eats",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Connected Robotics ·\nTechMagic",
+          "text": "Визиты: Connected Robotics, TechMagic.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "SoftBank Robotics ·\nZMP",
+          "text": "SoftBank Robotics — подразделение SoftBank Group.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Wolt ·\nPanasonic Robotics",
+          "text": "Wolt — финский сервис доставки еды.",
+          "label": "День 4"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Rakuten Delivery ·\nmenu",
+          "text": "День завершается итоговой встречей и networking.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Токио",
+      "title": "Demae-can",
+      "native": "出前館",
+      "ghost": "出前",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/техгиганты/demae-can.png",
+      "short": "Demae-can",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "handshake",
+          "value": "LINE",
+          "label": "основной акционер",
+          "sub": "с 2020 года"
+        },
+        {
+          "icon": "flag",
+          "value": "2000",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Крупнейшая платформа доставки еды в Японии, работающая по модели маркетплейса.",
+      "learn": "С 2020 года основным акционером выступает LINE, что усилило интеграцию сервиса с мессенджером LINE.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Токио",
+      "title": "Uber Eats Japan",
+      "native": "ウーバーイーツジャパン",
+      "ghost": "ウー",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/техгиганты/uber-eats.svg",
+      "short": "Uber Eats Japan",
+      "subtitle": "Uber Technologies · Токио",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Первый",
+          "label": "азиатский рынок сервиса"
+        },
+        {
+          "icon": "handshake",
+          "value": "Mitsubishi Electric",
+          "label": "партнёр"
+        },
+        {
+          "icon": "flag",
+          "value": "2016",
+          "label": "год запуска"
+        },
+        {
+          "icon": "handshake",
+          "value": "Uber Technologies",
+          "label": "в составе группы"
+        }
+      ],
+      "why": "Uber Eats запустился в Японии в сентябре 2016 года — первый азиатский рынок сервиса.",
+      "learn": "С 2022 года компания тестирует автономных роботов доставки на тротуарах района Нихонбаси в Токио.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Токио",
+      "title": "Connected Robotics",
+      "ghost": "コネ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/роботы/connected-robotics.png",
+      "short": "Connected Robotics",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "OctoChef",
+          "label": "робот для такояки"
+        },
+        {
+          "icon": "flag",
+          "value": "2014",
+          "label": "год основания",
+          "sub": "в Токио"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Линейка кухонных роботов включает OctoChef, робота для варки и промывки соба-лапши двумя манипуляторами.",
+      "learn": "Connected Robotics основана в 2014 году в Токио Тэцуей Саванобори после его личного опыта работы в ресторане.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Токио",
+      "title": "TechMagic",
+      "native": "テックマジック",
+      "ghost": "テッ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/роботы/techmagic.png",
+      "short": "TechMagic",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "1+ млн",
+          "label": "порций блюд"
+        },
+        {
+          "icon": "flag",
+          "value": "2018",
+          "label": "год основания",
+          "sub": "в Токио Юдзи"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Разрабатывает кухонных роботов для жарки во фритюре и на сковороде, приготовления пасты и мойки посуды.",
+      "learn": "По данным пресс-релизов, роботами компании приготовлено свыше 1 млн порций блюд.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Токио",
+      "title": "SoftBank Robotics",
+      "ghost": "ソフ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/роботы/softbank-robotics.png",
+      "short": "SoftBank Robotics",
+      "subtitle": "SoftBank Group · Токио",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$32 млн",
+          "label": "инвестиции"
+        },
+        {
+          "icon": "handshake",
+          "value": "SoftBank Group",
+          "label": "в составе группы"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Подразделение SoftBank Group, ранее известное сервисным гуманоидом Pepper.",
+      "learn": "В 2020 году совместно с американским стартапом Bear Robotics выпустила сервисного робота Servi для ресторанов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Токио",
+      "title": "ZMP",
+      "logo": "source-videos/логотипы/роботы/zmp.png",
+      "short": "ZMP",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "handshake",
+          "value": "Japan Post Holdings",
+          "label": "партнёр"
+        },
+        {
+          "icon": "flag",
+          "value": "2001",
+          "label": "год основания",
+          "sub": "в Токио"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Тротуарный робот доставки DeliRo с выразительными «глазами» испытывался совместно с Japan Post Holdings.",
+      "learn": "Компания диверсифицировалась в автономное вождение и роботов-курьеров.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Токио",
+      "title": "Wolt Japan",
+      "native": "ウォルトジャパン",
+      "ghost": "ウォ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/техгиганты/wolt.png",
+      "short": "Wolt Japan",
+      "subtitle": "DoorDash · Токио",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$8,1 млрд",
+          "label": "сумма сделки",
+          "sub": "с 2022 года"
+        },
+        {
+          "icon": "flag",
+          "value": "2014",
+          "label": "год основания"
+        },
+        {
+          "icon": "handshake",
+          "value": "DoorDash",
+          "label": "в составе группы"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        }
+      ],
+      "why": "В Японии Wolt запустился в ноябре 2020-го в Иокогаме — первый рынок в Восточной Азии.",
+      "learn": "Позиционируется как премиальная платформа с курируемым выбором ресторанов, подпиской Wolt+ и упором на качество сервиса.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Токио",
+      "title": "Panasonic Robotics",
+      "ghost": "パナ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/роботы/panasonic-robotics.png",
+      "short": "Panasonic Robotics",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Hakobo",
+          "label": "робот доставки"
+        },
+        {
+          "icon": "users",
+          "value": "до 4",
+          "label": "роботов на одного оператора"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Испытывает робота доставки «Hakobo» в «умном городе» Fujisawa Sustainable Smart Town.",
+      "learn": "Panasonic испытывает робота доставки «Hakobo» в «умном городе» Fujisawa Sustainable Smart Town.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Токио",
+      "title": "Rakuten Delivery",
+      "native": "楽天デリバリー",
+      "ghost": "楽天",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/техгиганты/rakuten-delivery-gurunavi.svg",
+      "short": "Rakuten Delivery / Gurunavi",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "30 000+",
+          "label": "ресторанов"
+        },
+        {
+          "icon": "chart",
+          "value": "100 000+",
+          "label": "заведений"
+        },
+        {
+          "icon": "trending",
+          "value": "№1 в Японии",
+          "label": "сервис-путеводитель"
+        },
+        {
+          "icon": "flag",
+          "value": "1996",
+          "label": "год основания"
+        }
+      ],
+      "why": "Крупнейший в Японии сервис-путеводитель по ресторанам, основан в 1996 году, вышел на биржу в 2000-м.",
+      "learn": "Платформа охватывает свыше 30 000 ресторанов с доставкой и более 100 000 заведений в общем каталоге.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Токио",
+      "title": "menu",
+      "logo": "source-videos/логотипы/техгиганты/menu-kddi.png",
+      "short": "menu (KDDI)",
+      "subtitle": "KDDI · Токио",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2019",
+          "label": "год запуска"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Сервис доставки еды; в 2021 году инвестором стал KDDI и интегрировал его с au, Ponta и Lawson.",
+      "learn": "Однако в августе 2026 года KDDI объявила о прекращении сервиса 30 сентября 2026 года и ликвидации компании-оператора на фоне.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Компактный маршрут без перелётов, всё в Большом Токио",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "В пределах Большого Токио",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На японском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "10 компаний",
+          "text": "Demae-can · Uber Eats · SoftBank Robotics\nв одном городе",
+          "icon": "smartphone"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов в Токио"
+        },
+        {
+          "icon": "smartphone",
+          "value": "10 компаний",
+          "label": "в программе",
+          "sub": "Demae-can, Uber Eats"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы в пределах Большого Токио",
+        "Сопровождение на японском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Токио (перелёт Москва → Токио, аэропорты Нарита/Ханеда).<br><b>Вылет:</b> Токио (после дня 5 → Москва)"
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

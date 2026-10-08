@@ -1,0 +1,586 @@
+{
+  "title": "Бабл-ти и кофейная индустрия Японии — Global Tech Tour",
+  "output": "2026-10-08-япония-чай-кофе",
+  "source": "https://globaltechtour.ru/expeditions/japan-bubble-tea-coffee-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "japan",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Бабл-ти и кофейная индустрия Японии",
+      "topright": "UCC · %Arabica\nStarbucks Reserve · Doutor",
+      "logos": [
+        {
+          "name": "UCC Ueshima Coffee",
+          "logo": "source-videos/логотипы/чай-кофе/ucc-ueshima-coffee.png"
+        },
+        {
+          "name": "Suntory",
+          "logo": "source-videos/логотипы/чай-кофе/suntory-boss-coffee.png"
+        },
+        {
+          "name": "% Arabica",
+          "logo": "source-videos/логотипы/чай-кофе/arabica-percent.png"
+        },
+        {
+          "name": "Ogawa Coffee",
+          "logo": "source-videos/логотипы/чай-кофе/ogawa-coffee.png"
+        },
+        {
+          "name": "Starbucks Reserve Roastery Nakameguro",
+          "logo": "source-videos/логотипы/чай-кофе/starbucks-reserve-roastery-nakameguro.png"
+        },
+        {
+          "name": "Blue Bottle",
+          "logo": "source-videos/логотипы/чай-кофе/blue-bottle.png"
+        },
+        {
+          "name": "Doutor Coffee",
+          "logo": "source-videos/логотипы/чай-кофе/doutor-coffee.png"
+        },
+        {
+          "name": "Gong Cha",
+          "logo": "source-videos/логотипы/чай-кофе/gong-cha.png"
+        }
+      ],
+      "box_text": "От музея кофе UCC в Кобе —\n8 компаний, 6 дней, 6 ночей",
+      "box_right": "Кобе + Осака + Киото + Токио —\nбез перелётов",
+      "footer": "Global Tech Tour · бизнес-делегации в Японию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Доступ к обжарочным производствам и штаб-квартирам, обычно закрытые для визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Маршрут через три ключевых города кофейной культуры Японии. Трансферы и сопровождение на японском/английском включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на японском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "ghost": "日本",
+      "title1": "8 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Кобе + Осака",
+          "text": "UCC Ueshima Coffee, Suntory — второй визит дня — локальная сеть кофеен (уточняется)."
+        },
+        {
+          "name": "Дни 3–4 · Киото + Токио",
+          "text": "% Arabica, Ogawa Coffee, Starbucks Reserve Roastery Nakameguro, Blue Bottle"
+        },
+        {
+          "name": "День 5 · Токио",
+          "text": "Doutor Coffee, Gong Cha"
+        }
+      ],
+      "quote": "Кофейная культура Японии\nот завода до чашки."
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Кобе",
+          "days": "день 1",
+          "companies": "UCC Ueshima Coffee"
+        },
+        {
+          "name": "Осака",
+          "days": "день 2",
+          "companies": "Suntory",
+          "leg": {
+            "icon": "car",
+            "text": ""
+          }
+        },
+        {
+          "name": "Киото",
+          "days": "день 3",
+          "companies": "% Arabica\nOgawa Coffee",
+          "leg": {
+            "icon": "car",
+            "text": "~30 мин от Осаки"
+          }
+        },
+        {
+          "name": "Токио",
+          "days": "дни 4–5",
+          "companies": "Starbucks Reserve Roastery Nakameguro\nBlue Bottle\nDoutor Coffee\nGong Cha",
+          "leg": {
+            "icon": "car",
+            "text": ""
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Кобе · <b>Вылет:</b> Токио (после дня 5 → Москва)"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "ghost": "五天",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "UCC Ueshima Coffee",
+          "text": "Прилёт делегации в первой половине дня, переезд на Синкансэне из Токио, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "Осака · 10:00–13:00",
+          "title": "Suntory",
+          "text": "Второй визит дня — локальная сеть кофеен (уточняется).",
+          "label": "День 2"
+        },
+        {
+          "sub": "Киото · 10:00–13:00",
+          "title": "% Arabica ·\nOgawa Coffee",
+          "text": "Выезд в Киото (~30 мин от Осаки). Ночёвка — Осака.",
+          "label": "День 3"
+        },
+        {
+          "sub": "Токио · 10:00–13:00",
+          "title": "Starbucks Reserve ·\nBlue Bottle",
+          "text": "Визиты: Starbucks Reserve Roastery Nakameguro, Blue Bottle.",
+          "label": "День 4"
+        },
+        {
+          "sub": "Токио · 10:00–13:00",
+          "title": "Doutor Coffee ·\nGong Cha",
+          "text": "Gong Cha — бренд чая с тапиокой, основанный в 2006 году в Гаосюне.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Кобе",
+      "title": "UCC Ueshima Coffee",
+      "native": "UCC上島珈琲",
+      "ghost": "上島",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/чай-кофе/ucc-ueshima-coffee.png",
+      "short": "UCC Ueshima Coffee",
+      "subtitle": "Кобе",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1933",
+          "label": "начало истории",
+          "sub": "порт Кобе"
+        },
+        {
+          "icon": "building",
+          "value": "1987",
+          "label": "открыт Музей кофе UCC"
+        },
+        {
+          "icon": "pin",
+          "value": "Кобе",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Ведёт историю с 1933 года, когда портовый торговец Тадао Уэсима, попробовав кофе в порту Кобе.",
+      "learn": "Компания проводит экскурсии по обжарочному производству.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Осака",
+      "title": "Suntory / BOSS Coffee",
+      "native": "サントリー BOSS",
+      "ghost": "サン",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/чай-кофе/suntory-boss-coffee.png",
+      "short": "Suntory / BOSS Coffee",
+      "subtitle": "Осака",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1992",
+          "label": "запуск бренда BOSS"
+        },
+        {
+          "icon": "trending",
+          "value": "№3",
+          "label": "напиток Японии по продажам"
+        },
+        {
+          "icon": "pin",
+          "value": "Осака",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Бренд готового кофе в банках компании Suntory.",
+      "learn": "До 2019 года продавался только в Японии, где остаётся третьим по продажам напитком страны; затем вышел на рынки Австралии.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Киото",
+      "title": "% Arabica",
+      "native": "％アラビカ",
+      "ghost": "％ア",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/чай-кофе/arabica-percent.png",
+      "short": "% Arabica",
+      "subtitle": "Киото",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "242",
+          "label": "точки",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "flag",
+          "value": "2011",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Киото",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "К июню 2025 года бренд насчитывал 242 точки по миру, включая крупнейшее присутствие в материковом Китае.",
+      "learn": "Минималистичный дизайн под слоганом «See the World through Coffee» сочетает японскую эстетику с локальными элементами.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Киото",
+      "title": "Ogawa Coffee",
+      "native": "小川珈琲",
+      "ghost": "小川",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/чай-кофе/ogawa-coffee.png",
+      "short": "Ogawa Coffee",
+      "subtitle": "Киото",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1952",
+          "label": "год основания",
+          "sub": "в Киото"
+        },
+        {
+          "icon": "pin",
+          "value": "Киото",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Одна из трёх легендарных старейших кофеен города наряду с Inoda и Maeda.",
+      "learn": "За 70+ лет построила интегрированное производство, поставляющее кофе в кафе Киото, Токио и Бостона.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Токио",
+      "title": "Starbucks Reserve",
+      "ghost": "スタ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/чай-кофе/starbucks-reserve-roastery-nakameguro.png",
+      "short": "Starbucks Reserve",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "~250",
+          "label": "сотрудников"
+        },
+        {
+          "icon": "chart",
+          "value": "~680",
+          "label": "тонн кофе"
+        },
+        {
+          "icon": "chart",
+          "value": "100+",
+          "label": "эксклюзивных напитков"
+        },
+        {
+          "icon": "flag",
+          "value": "2019",
+          "label": "год открытия",
+          "sub": "28 февраля 2019 года"
+        }
+      ],
+      "why": "Четырёхэтажное здание вмещает 17-метровую обжарочную колонну, первую в Японии пекарню Princi.",
+      "learn": "Открытая 28 февраля 2019 года в токийском Накамэгуро.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Токио",
+      "title": "Blue Bottle",
+      "ghost": "ブル",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/чай-кофе/blue-bottle.png",
+      "short": "Blue Bottle Japan",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2015",
+          "label": "первый магазин в Японии",
+          "sub": "Киёсуми-Сиракава"
+        },
+        {
+          "icon": "store",
+          "value": "47",
+          "label": "мест в зале",
+          "sub": "после реконструкции 2019 года"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Blue Bottle Coffee вышла в Японию 6 февраля 2015 года.",
+      "learn": "С самого начала магазин совмещал функции обжарочного цеха.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Токио",
+      "title": "Doutor Coffee",
+      "native": "ドトールコーヒー",
+      "ghost": "ドト",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/чай-кофе/doutor-coffee.png",
+      "short": "Doutor Coffee",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "~900",
+          "label": "точек Doutor"
+        },
+        {
+          "icon": "star",
+          "value": "Первое в Японии",
+          "label": "кафе формата самообслуживания"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Одна из крупнейших и старейших сетей кофеен страны.",
+      "learn": "Doutor Coffee, основанная Хиромити Торибой, открыла в Харадзюку первое в Японии кафе формата самообслуживания.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Токио",
+      "title": "Gong Cha Japan",
+      "native": "貢茶ジャパン",
+      "ghost": "貢茶",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/чай-кофе/gong-cha.png",
+      "short": "Gong Cha Japan",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "~3000",
+          "label": "стаканов"
+        },
+        {
+          "icon": "globe",
+          "value": "20+",
+          "label": "стран"
+        },
+        {
+          "icon": "flag",
+          "value": "2006",
+          "label": "год основания",
+          "sub": "в Гаосюне"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        }
+      ],
+      "why": "Бренд чая с тапиокой, основанный в 2006 году в Гаосюне; название переводится как «чай в дань императору».",
+      "learn": "Первый магазин в Японии открылся в Харадзюку в сентябре 2015 года и, по данным СМИ, в день открытия продал около 3000 стаканов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "И сопровождение на японском/английском",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На японском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "8 компаний",
+          "text": "UCC · %Arabica · Starbucks Reserve\nКобе + Осака + Киото + Токио",
+          "icon": "cart"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов"
+        },
+        {
+          "icon": "cart",
+          "value": "8 компаний",
+          "label": "в программе",
+          "sub": "UCC, %Arabica, Starbucks Reserve"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Переезды на Синкансэне Токио–Кобе и Осака–Токио",
+        "Трансферы и сопровождение на японском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Кобе (перелёт Москва → Токио, переезд на Синкансэне ≈3 ч до Кобе в день прилёта).<br><b>Вылет:</b> Токио (после дня 5 → Москва)"
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

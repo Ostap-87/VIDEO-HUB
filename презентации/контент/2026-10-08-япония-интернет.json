@@ -1,0 +1,607 @@
+{
+  "title": "Интернет-гиганты Японии: ИИ, мессенджеры, e-commerce — Global Tech Tour",
+  "output": "2026-10-08-япония-интернет",
+  "source": "https://globaltechtour.ru/expeditions/japan-tech-internet-giants-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "japan",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Интернет-гиганты Японии",
+      "topright": "ИИ · Мессенджеры\nE-commerce",
+      "logos": [
+        {
+          "name": "Preferred Networks",
+          "logo": "source-videos/логотипы/ии/preferred-networks.png"
+        },
+        {
+          "name": "Sakana AI",
+          "logo": "source-videos/логотипы/ии/sakana-ai.png"
+        },
+        {
+          "name": "LY",
+          "logo": "source-videos/логотипы/техгиганты/ly-corporation.svg"
+        },
+        {
+          "name": "PayPay",
+          "logo": "source-videos/логотипы/техгиганты/paypay.png"
+        },
+        {
+          "name": "Rakuten Crimson House",
+          "logo": "source-videos/логотипы/техгиганты/rakuten-crimson-house.svg"
+        },
+        {
+          "name": "Mercari",
+          "logo": "source-videos/логотипы/техгиганты/mercari.png"
+        },
+        {
+          "name": "Fujitsu",
+          "logo": "source-videos/логотипы/общие/fujitsu.svg"
+        },
+        {
+          "name": "NTT",
+          "logo": "source-videos/логотипы/общие/ntt.png"
+        }
+      ],
+      "box_text": "10 компаний, 6 дней, 6 ночей",
+      "box_right": "Токио —\nмаршрут целиком в Токио, без перелётов",
+      "footer": "Global Tech Tour · бизнес-делегации в Японию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Доступ к фронтир-лабораториям и штаб-квартирам, обычно закрытые для визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Компактный маршрут без перелётов. Трансферы в пределах Большого Токио, включая выезд в Тибу включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на японском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "ghost": "日本",
+      "title1": "10 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2",
+          "text": "Preferred Networks, Sakana AI, LY, PayPay"
+        },
+        {
+          "name": "Дни 3–4",
+          "text": "Rakuten Crimson House, Mercari, Fujitsu, NTT — rakuten Crimson House — кампус AI + e-commerce, две сессии на одной площадке."
+        },
+        {
+          "name": "День 5",
+          "text": "ZOZO, Sony AI — zOZO — выезд в Тибу (~1 ч); Sony AI — итоговая встреча."
+        }
+      ],
+      "quote": "Маршрут целиком в Токио,\nбез перелётов."
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "ghost": "五天",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Preferred Networks ·\nSakana AI",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "LY ·\nPayPay",
+          "text": "Визиты: LY, PayPay.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Rakuten Crimson House ·\nMercari",
+          "text": "Rakuten Crimson House — кампус AI + e-commerce, две сессии на одной площадке.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Fujitsu ·\nNTT",
+          "text": "Fujitsu — японская ИТ-корпорация, основанная в 1935; NTT — крупнейшая японская телекоммуникационная.",
+          "label": "День 4"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "ZOZO ·\nSony AI",
+          "text": "ZOZO — выезд в Тибу (~1 ч); Sony AI — итоговая встреча.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Токио",
+      "title": "Preferred Networks",
+      "logo": "source-videos/логотипы/ии/preferred-networks.png",
+      "short": "Preferred Networks",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "cpu",
+          "value": "MN-Core",
+          "label": "собственный ИИ-процессор"
+        },
+        {
+          "icon": "star",
+          "value": "Green500",
+          "label": "MN-3 — трижды №1"
+        },
+        {
+          "icon": "flag",
+          "value": "2014",
+          "label": "год основания",
+          "sub": "в Токио"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        }
+      ],
+      "why": "Разработала собственный ИИ-процессор MN-Core и суперкомпьютер MN-3.",
+      "learn": "Совместно с ENEOS создала платформу симуляции материалов Matlantis.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Токио",
+      "title": "Sakana AI",
+      "native": "サカナAI",
+      "ghost": "サカナ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/ии/sakana-ai.png",
+      "short": "Sakana AI",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$135 млн",
+          "label": "привлечено инвестиций",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "flag",
+          "value": "2023",
+          "label": "год основания",
+          "sub": "в Токио"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Разрабатывает генеративные модели, оптимизированные под японский язык и культуру.",
+      "learn": "Основана в июле 2023 года в Токио бывшими исследователями Google Brain Дэвидом Ха и Ллионом Джонсом вместе с Рэн Ито.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Токио",
+      "title": "LY Corporation",
+      "native": "LINEヤフー",
+      "ghost": "ヤフー",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/техгиганты/ly-corporation.svg",
+      "short": "LY Corporation",
+      "subtitle": "LINE + Yahoo! Japan · Токио",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2023",
+          "label": "год образования"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Мессенджер LINE — доминирующая платформа общения в Японии с десятками миллионов активных пользователей ежемесячно.",
+      "learn": "Japan добавляет поиск, портал и e-commerce, а аффилированный PayPay — крупнейший QR-кошелёк страны.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Токио",
+      "title": "PayPay",
+      "logo": "source-videos/логотипы/техгиганты/paypay.png",
+      "short": "PayPay",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "~72 млн",
+          "label": "зарегистрированных пользователей"
+        },
+        {
+          "icon": "chart",
+          "value": "~40 млн",
+          "label": "активных"
+        },
+        {
+          "icon": "chart",
+          "value": "~2/3",
+          "label": "объёма QR-платежей Японии"
+        },
+        {
+          "icon": "flag",
+          "value": "2018",
+          "label": "год создания"
+        }
+      ],
+      "why": "PayPay Corporation, создана в июне 2018 года как СП SoftBank и Yahoo Japan при технической поддержке индийской Paytm.",
+      "learn": "«Супер-приложение» расширилось до банкинга, брокериджа, карты и страхования.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Токио",
+      "title": "Rakuten Crimson",
+      "native": "楽天クリムゾンハウス",
+      "ghost": "楽天",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/техгиганты/rakuten-crimson-house.svg",
+      "short": "Rakuten Crimson House",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1997",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Глобальная штаб-квартира Rakuten Group в районе Футако-Тамагава, куда компания переехала в 2015 году.",
+      "learn": "Rakuten основана Хироси Микитани в 1997 году и выросла из магазина Rakuten Ichiba в конгломерат из десятков сервисов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Токио",
+      "title": "Mercari",
+      "native": "メルカリ",
+      "ghost": "メルカリ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/техгиганты/mercari.png",
+      "short": "Mercari",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "20+ млн",
+          "label": "активных пользователей"
+        },
+        {
+          "icon": "flag",
+          "value": "2013",
+          "label": "год основания",
+          "sub": "в Токио"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "В 2018-м компания провела IPO на Tokyo Stock Exchange — одно из крупнейших технологических размещений в истории Японии.",
+      "learn": "Сервис насчитывает свыше 20 млн активных пользователей в месяц и применяет ML для распознавания товаров по фото.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Токио",
+      "title": "Fujitsu",
+      "native": "富士通",
+      "ghost": "富士",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/общие/fujitsu.svg",
+      "short": "Fujitsu",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "~3,7 трлн иен",
+          "label": "выручка"
+        },
+        {
+          "icon": "chart",
+          "value": "25 млрд",
+          "label": "USD"
+        },
+        {
+          "icon": "handshake",
+          "value": "RIKEN",
+          "label": "партнёр"
+        },
+        {
+          "icon": "flag",
+          "value": "1935",
+          "label": "год основания",
+          "sub": "в Кавасаки"
+        }
+      ],
+      "why": "Крупнейший в Японии производитель компьютерных систем и ИТ-услуг, разработчик суперкомпьютера Fugaku.",
+      "learn": "Котируется на Токийской бирже.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Токио",
+      "title": "NTT",
+      "native": "日本電信電話",
+      "ghost": "日本",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/общие/ntt.png",
+      "short": "NTT",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "~340 000",
+          "label": "сотрудников"
+        },
+        {
+          "icon": "chart",
+          "value": "~13,7 трлн иен",
+          "label": "выручка"
+        },
+        {
+          "icon": "trending",
+          "value": "№1",
+          "label": "телеком-холдинг Японии"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        }
+      ],
+      "why": "Крупнейшая японская телекоммуникационная холдинговая компания.",
+      "learn": "С 2023 года NTT развивает собственную языковую модель tsuzumi — компактную LLM с упором на японский язык.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Токио / Тиба",
+      "title": "ZOZO",
+      "logo": "source-videos/логотипы/техгиганты/zozo.png",
+      "short": "ZOZO",
+      "subtitle": "Токио / Тиба",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "№1",
+          "label": "японская fashion-tech платформа"
+        },
+        {
+          "icon": "cart",
+          "value": "ZOZOTOWN",
+          "label": "маркетплейс"
+        },
+        {
+          "icon": "flag",
+          "value": "1998",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио / Тиба",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        }
+      ],
+      "why": "Крупнейшая японская fashion-tech платформа, основанная Юсаку Маэдзавой в 1998 году.",
+      "learn": "Штаб-квартира — в Тибе, платформа сотрудничает с тысячами брендов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Токио / Тиба",
+      "title": "Sony AI",
+      "native": "ソニーAI",
+      "ghost": "ソニー",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/ии/sony-ai.png",
+      "short": "Sony AI",
+      "subtitle": "Токио / Тиба",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Gran Turismo Sophy",
+          "label": "проект",
+          "sub": "ИИ-агентом для гонок в Gran"
+        },
+        {
+          "icon": "cpu",
+          "value": "Project Ace",
+          "label": "система"
+        },
+        {
+          "icon": "flag",
+          "value": "2020",
+          "label": "год создания",
+          "sub": "1 апреля 2020 года"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио / Тиба",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        }
+      ],
+      "why": "Работает по модели «больших вызовов» в играх, обработке изображений, робототехнике и научных открытиях.",
+      "learn": "Известна проектом Gran Turismo Sophy — ИИ-агентом для гонок в Gran Turismo 7, а также системой Project Ace для настольного тенниса.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "В пределах Большого Токио, включая выезд в Тибу",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На японском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "Интернет-гиганты Японии",
+          "text": "ИИ, мессенджеры и e-commerce\nв одном городе",
+          "icon": "smartphone"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов в Токио"
+        },
+        {
+          "icon": "smartphone",
+          "value": "10 компаний",
+          "label": "Интернет-гиганты Японии",
+          "sub": "иИ, мессенджеры, e-commerce"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы в пределах Большого Токио, включая выезд в Тибу",
+        "Сопровождение на японском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Токио (перелёт Москва → Токио, аэропорты Нарита/Ханеда).<br><b>Вылет:</b> Токио (после дня 5 → Москва)"
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

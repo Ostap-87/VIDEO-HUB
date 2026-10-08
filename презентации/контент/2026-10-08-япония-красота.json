@@ -1,0 +1,645 @@
+{
+  "title": "Косметика и бьюти-технологии Японии — Global Tech Tour",
+  "output": "2026-10-08-япония-красота",
+  "source": "https://globaltechtour.ru/expeditions/japan-beauty-industry-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "japan",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Косметика и бьюти-технологии Японии",
+      "topright": "Shiseido · Kao\nPola Orbis · MTG",
+      "logos": [
+        {
+          "name": "Shiseido",
+          "logo": "source-videos/логотипы/косметика/shiseido.svg"
+        },
+        {
+          "name": "Fancl",
+          "logo": "source-videos/логотипы/косметика/fancl.png"
+        },
+        {
+          "name": "Kao",
+          "logo": "source-videos/логотипы/косметика/kao.png"
+        },
+        {
+          "name": "Kanebo",
+          "logo": "source-videos/логотипы/косметика/kanebo.png"
+        },
+        {
+          "name": "Pola Orbis",
+          "logo": "source-videos/логотипы/косметика/pola-orbis.png"
+        },
+        {
+          "name": "Kosé",
+          "logo": "source-videos/логотипы/косметика/kose.png"
+        },
+        {
+          "name": "Panasonic Beauty",
+          "logo": "source-videos/логотипы/общие/panasonic-beauty.png"
+        },
+        {
+          "name": "Mandom",
+          "logo": "source-videos/логотипы/косметика/mandom.png"
+        }
+      ],
+      "box_text": "От Global Innovation Center Shiseido —\n10 компаний, 6 дней, 6 ночей",
+      "box_right": "Иокогама + Токио + Осака + Нагоя —\nбез перелётов",
+      "footer": "Global Tech Tour · бизнес-делегации в Японию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Доступ к R&D-центрам, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Маршрут через три ключевых бьюти-региона Японии. Трансферы и сопровождение на японском/английском включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на японском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "ghost": "日本",
+      "title1": "10 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2",
+          "text": "Shiseido, Fancl, Kao, Kanebo"
+        },
+        {
+          "name": "Дни 3–4 · Токио + Осака",
+          "text": "Pola Orbis, Kosé, Panasonic Beauty, Mandom, Rohto"
+        },
+        {
+          "name": "День 5 · Нагоя",
+          "text": "MTG"
+        }
+      ],
+      "quote": "J-beauty индустрия целиком, через\nтри региона на Синкансэне."
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Иокогама",
+          "days": "день 1",
+          "companies": "Shiseido\nFancl"
+        },
+        {
+          "name": "Токио",
+          "days": "дни 2–3",
+          "companies": "Kao\nKanebo\nPola Orbis\nKosé",
+          "leg": {
+            "icon": "car",
+            "text": ""
+          }
+        },
+        {
+          "name": "Осака",
+          "days": "день 4",
+          "companies": "Panasonic Beauty\nMandom\nRohto",
+          "leg": {
+            "icon": "car",
+            "text": ""
+          }
+        },
+        {
+          "name": "Нагоя",
+          "days": "день 5",
+          "companies": "MTG",
+          "leg": {
+            "icon": "car",
+            "text": ""
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Иокогама · <b>Вылет:</b> Нагоя (аэропорт Тюбу Центрэйр, либо возврат в Токио → Москва)"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "ghost": "五天",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Shiseido ·\nFancl",
+          "text": "Прилёт делегации в первой половине дня, трансфер (~30 мин от Токио), короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "Токио · 10:00–13:00",
+          "title": "Kao ·\nKanebo",
+          "text": "Kanebo — японский косметический бренд.",
+          "label": "День 2"
+        },
+        {
+          "sub": "Токио · 10:00–13:00",
+          "title": "Pola Orbis ·\nKosé",
+          "text": "Pola Orbis — линия персонализированного ухода POLA.",
+          "label": "День 3"
+        },
+        {
+          "sub": "Осака · 10:00–13:00",
+          "title": "Panasonic Beauty ·\nMandom · Rohto",
+          "text": "Визиты: Panasonic Beauty, Mandom, Rohto.",
+          "label": "День 4"
+        },
+        {
+          "sub": "Нагоя · 10:00–13:00",
+          "title": "MTG",
+          "text": "Переезд на Синкансэне Осака→Нагоя. Второй визит дня — локальный шоурум бьюти-девайсов (уточняется). Ночёвка — Токио (возврат) или Нагоя.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Иокогама",
+      "title": "Shiseido",
+      "native": "資生堂",
+      "ghost": "資生",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/косметика/shiseido.svg",
+      "short": "Shiseido",
+      "subtitle": "Иокогама",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "~800",
+          "label": "исследователей компании"
+        },
+        {
+          "icon": "pin",
+          "value": "Иокогама",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "15-этажный Global Innovation Center объединяет лаборатории почти 800 исследователей с открытым для публики пространством.",
+      "learn": "Музей Shiseido, кафе S/PARK и стойка диагностики кожи; в 2025 году этажи открыты заново как «Shiseido Beauty Park».",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Иокогама",
+      "title": "Fancl",
+      "native": "ファンケル",
+      "ghost": "ファ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/косметика/fancl.png",
+      "short": "Fancl",
+      "subtitle": "Иокогама",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "530+",
+          "label": "патентов"
+        },
+        {
+          "icon": "flag",
+          "value": "1980",
+          "label": "год основания",
+          "sub": "в Йокогаме Кэндзи"
+        },
+        {
+          "icon": "pin",
+          "value": "Иокогама",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "FANCL основана в 1980 году в Йокогаме Кэндзи Икэмори, чью жену раздражали консерванты в косметике того времени.",
+      "learn": "Сегодня у FANCL более 530 патентов и два современных R&D-центра.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Токио",
+      "title": "Kao",
+      "native": "花王",
+      "ghost": "花王",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/косметика/kao.png",
+      "short": "Kao",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Bio IOS",
+          "label": "устойчивый ПАВ, 2019"
+        },
+        {
+          "icon": "cpu",
+          "value": "Kirei Skin AI",
+          "label": "ИИ-диагностика кожи"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Развивает собственные научно-исследовательские платформы в сфере материаловедения и анализа кожи.",
+      "learn": "Для диагностики кожи Kao применяет ИИ Kirei Skin AI, распознающий типы макияжа и его дефекты.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Токио",
+      "title": "Kanebo",
+      "native": "カネボウ",
+      "ghost": "カネボウ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/косметика/kanebo.png",
+      "short": "Kanebo (Kao)",
+      "subtitle": "Kao · Токио",
+      "facts": [
+        {
+          "icon": "handshake",
+          "value": "Kao",
+          "label": "в составе группы",
+          "sub": "с 2006 года"
+        },
+        {
+          "icon": "star",
+          "value": "Suisai",
+          "label": "флагманская линия"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Японский косметический бренд, вошедший в состав группы Kao в 2006 году.",
+      "learn": "Одна из его флагманских линий, Suisai, построена на технологии двойного ферментного очищения: порошок, вспенивающийся при контакте.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Токио",
+      "title": "Pola Orbis",
+      "ghost": "ポー",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/косметика/pola-orbis.png",
+      "short": "Pola Orbis",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "~21,4 млн",
+          "label": "наборов данных"
+        },
+        {
+          "icon": "chart",
+          "value": "8,62 млн",
+          "label": "возможных комбинаций"
+        },
+        {
+          "icon": "flag",
+          "value": "1989",
+          "label": "год запуска"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        }
+      ],
+      "why": "APEX — линия персонализированного ухода POLA.",
+      "learn": "В июле 2019 года бренд перезапустили с обновленной диагностикой кожи.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Токио",
+      "title": "Kosé",
+      "native": "コーセー",
+      "ghost": "コーセー",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/косметика/kose.png",
+      "short": "Kosé",
+      "subtitle": "Токио",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "COSME DECORTÉ",
+          "label": "запуск",
+          "sub": "1970 год"
+        },
+        {
+          "icon": "flag",
+          "value": "1946",
+          "label": "год основания",
+          "sub": "в Токио"
+        },
+        {
+          "icon": "pin",
+          "value": "Токио",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "С 1963 по 2001 год компания сотрудничала с L'Oréal в области технологий.",
+      "learn": "В 2022 году KOSÉ представила 3D-проекционный симулятор макияжа The Color Machine, а также ведет исследования по применению ИИ.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Осака",
+      "title": "Panasonic Beauty",
+      "ghost": "パナ",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/общие/panasonic-beauty.png",
+      "short": "Panasonic Beauty",
+      "subtitle": "Осака",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "100 млн",
+          "label": "единиц",
+          "sub": "к 2024 году"
+        },
+        {
+          "icon": "pin",
+          "value": "Осака",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Направление техники для красоты и ухода концерна Panasonic Holdings.",
+      "learn": "Выпускает фены, стайлеры, ультразвуковые и ионные приборы для ухода за кожей и волосами на базе технологии nanoe — наночастиц.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Осака",
+      "title": "Mandom",
+      "native": "マンダム",
+      "ghost": "マンダム",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/косметика/mandom.png",
+      "short": "Mandom",
+      "subtitle": "Осака",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "GATSBY",
+          "label": "бренд"
+        },
+        {
+          "icon": "pin",
+          "value": "Осака",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "В 1978 году родился бренд GATSBY, а в 1985 году вышла Gatsby Styling Foam.",
+      "learn": "История Mandom началась в 1927 году, когда Синпатиро Нисимура основал в Осаке парфюмерную компанию Kintsuru.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Осака",
+      "title": "Rohto",
+      "native": "ロート製薬",
+      "ghost": "ロー",
+      "ghost_thai": false,
+      "logo": "source-videos/логотипы/косметика/rohto.png",
+      "short": "Rohto",
+      "subtitle": "Осака",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Obagi",
+          "label": "бренд"
+        },
+        {
+          "icon": "pin",
+          "value": "Осака",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Уход за кожей начал развиваться с конца 1970-х и получил импульс после покупки The Mentholatum Company в 1988 году.",
+      "learn": "Лаборатории компании расположены в штаб-квартире и в городах Ига и Кидзугава.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Нагоя",
+      "title": "MTG",
+      "logo": "source-videos/логотипы/косметика/mtg-refa.png",
+      "short": "MTG (ReFa)",
+      "subtitle": "ReFa · Нагоя",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "SIXPAD",
+          "label": "линейка"
+        },
+        {
+          "icon": "flag",
+          "value": "1996",
+          "label": "год основания",
+          "sub": "в Нагое"
+        },
+        {
+          "icon": "pin",
+          "value": "Нагоя",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "В апреле 2009 года был запущен бренд ReFa с роликом ReFa CARAT.",
+      "learn": "MTG Co., Ltd. основана в 1996 году в Нагое Цуёси Мацуситой с целью выводить японские бьюти- и health-бренды на мировой рынок.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Доступ к R&D-центрам, обычно закрытым для случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "И сопровождение на японском/английском",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На японском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "10 компаний",
+          "text": "Shiseido · Kao · Pola Orbis\nИокогама + Токио + Осака + Нагоя",
+          "icon": "store"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов"
+        },
+        {
+          "icon": "store",
+          "value": "10 компаний",
+          "label": "в программе",
+          "sub": "Shiseido, Kao, Pola Orbis"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Переезды на Синкансэне Токио–Осака–Нагоя",
+        "Трансферы и сопровождение на японском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Иокогама (перелёт Москва → Токио, трансфер ≈30 мин в Иокогаму).<br><b>Вылет:</b> Нагоя (аэропорт Тюбу Центрэйр, либо возврат в Токио → Москва)"
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

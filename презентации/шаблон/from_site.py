@@ -270,7 +270,8 @@ def sentences(text):
     parts = re.split(r'(?<=[.!?])\s+(?=[А-ЯЁA-Z«"0-9])', text)
     out = []
     for p in parts:  # склеиваем ложные разрывы после инициалов и сокращений
-        if out and re.search(r'(?:\b(?:Co|Ltd|Inc|Dr|St|Mr|Mrs|д-р|т\.е|т\.д|им)\.|(?:^|[\s.])[A-ZА-ЯЁ]\.)$', out[-1]):
+        if out and (re.search(r'(?:\b(?:Co|Ltd|Inc|Dr|St|Mr|Mrs|д-р|т\.е|т\.д|им|преф|ул|р-н|обл)\.|(?:^|[\s.])[A-ZА-ЯЁ]\.)$', out[-1])
+                    or out[-1].count('«') > out[-1].count('»')):  # точка внутри кавычек: «Shiseido. Global …»
             out[-1] += ' ' + p
         else:
             out.append(p)
@@ -293,6 +294,8 @@ def first_pos(word):
 
 def bad_start(s):
     """Фраза не может начинаться с деепричастия/причастия/союза — это обрывок."""
+    if re.match(r'(?:В том же|В тот же|Позже|Затем|Тогда|После этого|Кроме того|При этом)\b', s.strip()):
+        return True  # ссылка на предыдущую фразу — вне контекста непонятно
     w = s.split()[0] if s.split() else ''
     if w.lower() in ('и', 'а', 'но', 'что', 'который', 'которая', 'которое', 'которые', 'чья', 'чей', 'где', 'включая', 'при', 'позволяя'):
         return True
@@ -799,7 +802,7 @@ def extract_facts(desc, names=()):
             sub = sm.group(1) if sm else ''
             if sub and MORPH:  # «в Бангкоке Ти» → только город
                 ws = sub.split()
-                while len(ws) > 2 and first_pos(ws[-1]) != 'NOUN':
+                while len(ws) > 2 and (first_pos(ws[-1]) != 'NOUN' or len(ws[-1]) <= 3):
                     ws.pop()
                 if len(ws) > 2:
                     pl = parse_word(ws[-1])
@@ -1024,8 +1027,7 @@ def candidates(c):
                             continue
                         if re.search(r'\b(?:котор\w+|чь\w+|где|когда)\b', part[:st], re.I):
                             break  # «…, корни которых восходят к 1906 году» — придаточное, не про компанию
-                        pw = parse_word(w.lower())
-                        if founded and pw and pw.tag.tense == 'past':
+                        if founded and re.search(r'(?:изначально|первоначально|сначала|поначалу|когда-то|ранее)\s+$', part[:st], re.I):
                             continue  # «основана в 1899 году, изначально выпускала …» — история, не суть
                         txt = part[st:]
                         sc = 5 if re.match(ACTIVITY, w.lower()) else 2
@@ -1687,7 +1689,11 @@ def build_deck(tour, comps, logos_ok=True):
             variants += [end_dot('; '.join(k.split(' — ')[0] + ' — ' + ' '.join(k.split(' — ')[1].split()[:4]) for k in kinds))] if kinds else []
         variants += [f'Визиты: {", ".join(names)}.' if names else '']
         title3 = ' ·\n'.join(' '.join(n.split()[:2]) for n in names) if names else title
-        dlist.append({'sub': d.get('time') or '', 'title': Var(title, title2, title3),
+        title4 = title3
+        if len(names) >= 3:  # три компании в день — в две строки: «Panasonic Beauty ·\nMandom · Rohto»
+            k = (len(names) + 1) // 2 if len(names) > 3 else 1
+            title4 = ' · '.join(names[:k]) + ' ·\n' + ' · '.join(names[k:])
+        dlist.append({'sub': d.get('time') or '', 'title': Var(title, title2, title3, title4),
                       'text': Var(*[v for v in variants if v]), 'label': f'День {d["day"]}'})
         if len(cities) > 1 and d['city_ru'] != main_city:  # «Токио / Нода (Тиба)» — тоже подпись
             dlist[-1]['sub'] = f'{d["city_ru"]} · {d.get("time") or ""}'.strip(' ·')
