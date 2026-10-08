@@ -1775,5 +1775,189 @@
   ],
   "logo": "source-videos/логотипы/ии/sony-ai.png",
   "site_logo": "/logos/Sony AI.png"
+ },
+ "shiseido": {
+  "names": [
+   "Shiseido"
+  ],
+  "logo": "source-videos/логотипы/косметика/shiseido.svg",
+  "site_logo": "/logos/shiseido.svg"
+ },
+ "fancl": {
+  "names": [
+   "Fancl"
+  ],
+  "logo": "source-videos/логотипы/косметика/fancl.png",
+  "site_logo": "/logos/FANCL.png"
+ },
+ "kao": {
+  "names": [
+   "Kao"
+  ],
+  "logo": "source-videos/логотипы/косметика/kao.png",
+  "site_logo": "/logos/Kao.png"
+ },
+ "kanebo": {
+  "names": [
+   "Kanebo (Kao)",
+   "Kanebo"
+  ],
+  "logo": "source-videos/логотипы/косметика/kanebo.png",
+  "site_logo": "/logos/Kanebo.png"
+ },
+ "pola-orbis": {
+  "names": [
+   "Pola Orbis"
+  ],
+  "logo": "source-videos/логотипы/косметика/pola-orbis.png",
+  "site_logo": "/logos/Pola Orbis.png"
+ },
+ "kose": {
+  "names": [
+   "Kosé"
+  ],
+  "logo": "source-videos/логотипы/косметика/kose.png",
+  "site_logo": "/logos/Kosé.png"
+ },
+ "panasonic-beauty": {
+  "names": [
+   "Panasonic Beauty"
+  ],
+  "logo": "source-videos/логотипы/общие/panasonic-beauty.png",
+  "site_logo": "/logos/Panasonic Beauty.png"
+ },
+ "mandom": {
+  "names": [
+   "Mandom"
+  ],
+  "logo": "source-videos/логотипы/косметика/mandom.png",
+  "site_logo": "/logos/Mandom.png"
+ },
+ "rohto": {
+  "names": [
+   "Rohto"
+  ],
+  "logo": "source-videos/логотипы/косметика/rohto.png",
+  "site_logo": "/logos/Rohto.png"
+ },
+ "mtg": {
+  "names": [
+   "MTG (ReFa)",
+   "MTG",
+   "ReFa"
+  ],
+  "logo": "source-videos/логотипы/косметика/mtg-refa.png",
+  "site_logo": "/logos/MTG.png"
+ },
+ "fujifilm": {
+  "names": [
+   "FUJIFILM"
+  ],
+  "logo": "source-videos/логотипы/медицина/fujifilm-ips.svg",
+  "site_logo": "/logos/fujifilm-ips.svg"
+ },
+ "healios-k-k": {
+  "names": [
+   "Healios K.K.",
+   "Healios"
+  ],
+  "logo": "source-videos/логотипы/медицина/healios.png",
+  "site_logo": "/logos/Healios K.K..png"
+ },
+ "eisai": {
+  "names": [
+   "Eisai"
+  ],
+  "logo": "source-videos/логотипы/медицина/eisai.png",
+  "site_logo": "/logos/Eisai.png"
+ },
+ "kaneka": {
+  "names": [
+   "Kaneka"
+  ],
+  "logo": "source-videos/логотипы/медицина/kaneka.png",
+  "site_logo": "/logos/Kaneka.png"
+ },
+ "kyoto-university-cira": {
+  "names": [
+   "Kyoto University / CiRA",
+   "Kyoto University",
+   "CiRA"
+  ],
+  "logo": "source-videos/логотипы/общие/kyoto-university-cira.png",
+  "site_logo": "/logos/Kyoto University.png"
+ },
+ "riken-wako": {
+  "names": [
+   "RIKEN Wako"
+  ],
+  "logo": "source-videos/логотипы/общие/riken-wako.png",
+  "site_logo": "/logos/Riken Wako.png"
+ },
+ "cellusion": {
+  "names": [
+   "Cellusion"
+  ],
+  "logo": "source-videos/логотипы/медицина/cellusion.png",
+  "site_logo": "/logos/Cellusion.png"
+ },
+ "metcela": {
+  "names": [
+   "Metcela"
+  ],
+  "logo": "source-videos/логотипы/медицина/metcela.png",
+  "site_logo": "/logos/Metcela.png"
+ },
+ "ucc-ueshima-coffee": {
+  "names": [
+   "UCC Ueshima Coffee"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/ucc-ueshima-coffee.png",
+  "site_logo": "/logos/UESHIMA.png"
+ },
+ "suntory-boss-coffee": {
+  "names": [
+   "Suntory / BOSS Coffee",
+   "Suntory",
+   "BOSS Coffee"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/suntory-boss-coffee.png",
+  "site_logo": "/logos/Suntory Boss Coffee.png"
+ },
+ "arabica": {
+  "names": [
+   "% Arabica"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/arabica-percent.png",
+  "site_logo": "/logos/arabica.png"
+ },
+ "ogawa-coffee": {
+  "names": [
+   "Ogawa Coffee"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/ogawa-coffee.png",
+  "site_logo": "/logos/Ogawa Coffee.png"
+ },
+ "starbucks-reserve-roastery-nakameguro": {
+  "names": [
+   "Starbucks Reserve Roastery Nakameguro"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/starbucks-reserve-roastery-nakameguro.png",
+  "site_logo": "/logos/Starbucks Reserve Roastery.png"
+ },
+ "blue-bottle-japan": {
+  "names": [
+   "Blue Bottle Japan",
+   "Blue Bottle"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/blue-bottle.png",
+  "site_logo": "/logos/Blue Bottle Coffee.png"
+ },
+ "doutor-coffee": {
+  "names": [
+   "Doutor Coffee"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/doutor-coffee.png",
+  "site_logo": "/logos/Doutor Coffee.png"
  }
 }

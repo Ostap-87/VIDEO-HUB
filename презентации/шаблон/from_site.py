@@ -503,6 +503,9 @@ def nomn_phrase(words):
         res[head] = q
     for j in range(head):
         if _pos(words[j]) in ('ADJF', 'PRTF'):
+            if res[head] == words[head] and any(p.tag.case == 'nomn' and p.tag.POS in ('ADJF', 'PRTF')
+                                                for p in MORPH.parse(words[j].rpartition('-')[2].lower())[:3]):
+                continue  # уже именительный («полноценный франчайзинговый конбини») — род не трогаем
             g = {'nomn', num} | ({gender} if num == 'sing' and gender else set())
             qj = _infl_word(words[j], g)
             if qj:
@@ -581,7 +584,7 @@ def extract_facts(desc, names=()):
         if not value:
             return
         labels = label_variants(label_words) if isinstance(label_words, list) else [label_words]
-        facts.append({'kind': kind, 'value': value.strip(), 'labels': labels,
+        facts.append({'kind': kind, 'value': value.strip().rstrip('.,;:'), 'labels': labels,
                       'subs': [s for s in (sub if isinstance(sub, list) else [sub]) if s], 'icon': icon, 'pos': pos, 'prio': prio})
 
     gpos = 0
@@ -774,7 +777,7 @@ def extract_facts(desc, names=()):
             if words:
                 add('top', f'Топ-{n}', words, [], 'trending', base + m.start(), 2)
         # --- год основания / запуска (только про саму компанию)
-        for m in re.finditer(r'(основан\w*|созда\w*|запущен\w*|запуст\w*|открыл\w*|открыт\w*|образован\w*|зарегистрирован\w*|появил\w*|вышедш\w*|вышл\w*|вышел)'
+        for m in re.finditer(r'(?i)(основан\w*|учрежд\w*|созда\w*|запущен\w*|запуст\w*|открыл\w*|открыт\w*|образован\w*|зарегистрирован\w*|появил\w*|вышедш\w*|вышл\w*|вышел)'
                              r'([^.;]{0,45}?)\b((?:19|20)\d\d)(?:\s*(?:году|года|год|г\.)|-м)?', sent):
             verb, mid, year = m.group(1).lower(), m.group(2), m.group(3)
             if re.search(r'\d{4}', mid) or in_parens(sent, m.start()):
@@ -789,7 +792,7 @@ def extract_facts(desc, names=()):
                     continue
                 lab = 'IPO на бирже'
             else:
-                lab = {'основ': 'год основания', 'созда': 'год создания', 'запущ': 'год запуска', 'запус': 'год запуска',
+                lab = {'основ': 'год основания', 'учреж': 'год основания', 'созда': 'год создания', 'запущ': 'год запуска', 'запус': 'год запуска',
                        'откры': 'год открытия', 'образ': 'год образования', 'зарег': 'год регистрации', 'появи': 'год появления'}.get(verb[:5], 'год основания')
             tail = sent[m.end():]
             sm = re.match(r'\s*,?\s*((?:в|во|со штаб-квартирой в)\s+[А-ЯЁA-Z][\w-]+(?:\s+[А-ЯЁA-Z][\w-]+)?)', tail)
@@ -963,7 +966,7 @@ def company_names(c):
     return [x for x in out if x and len(x) > 2]
 
 
-FOUND_RX = r'основан|зарегистр|образован|создан|запущен|открыт|открыл|появил|начинал'
+FOUND_RX = r'основан|учрежд|зарегистр|образован|создан|запущен|открыт|открыл|появил|начинал'
 
 
 def ok_start(word, subj):
@@ -1009,6 +1012,7 @@ def candidates(c):
         if subj:
             for pi_, part in enumerate(s0.split('; ')):
                 pos = 0
+                founded = False
                 if pi_ > 0 and not (part.lower().startswith(tuple(names)) or is_verb(part.split()[0]) if part.split() else False):
                     continue
                 for w in part.split():
@@ -1016,7 +1020,13 @@ def candidates(c):
                     pos = st + len(w)
                     if is_verb(w) or (first_pos(w) == 'PRTS' and w[:1].islower()):
                         if re.match(FOUND_RX, w.lower()):
+                            founded = True
                             continue
+                        if re.search(r'\b(?:котор\w+|чь\w+|где|когда)\b', part[:st], re.I):
+                            break  # «…, корни которых восходят к 1906 году» — придаточное, не про компанию
+                        pw = parse_word(w.lower())
+                        if founded and pw and pw.tag.tense == 'past':
+                            continue  # «основана в 1899 году, изначально выпускала …» — история, не суть
                         txt = part[st:]
                         sc = 5 if re.match(ACTIVITY, w.lower()) else 2
                         out.append([sc + (1 if si == 0 else 0), si, txt, 'verb'])
@@ -1146,19 +1156,24 @@ def parent_group(c):
     return lat[0] if lat else ''
 
 
+def city_base(city):
+    """«Токио / Нода (Тиба)», «Осака / Кобе» → основной город (для маршрута и списка городов)."""
+    return re.split(r'\s*/\s*', city or '')[0].strip() or city
+
+
 def base_name(name):
-    return re.sub(r'\s*\([^)]*\)', '', name).strip()
+    return re.sub(r'\s*[(（][^)）]*[)）]', '', name).strip()
 
 
 def paren_name(name):
-    m = re.search(r'\(([^)]*)\)', name)
+    m = re.search(r'[(（]([^)）]*)[)）]', name)
     return m.group(1).strip() if m else ''
 
 
 def title_variants(c):
     n = base_name(c['name_en'])
     out = [n]
-    short = re.sub(r'\s+(Thailand|Group|Corporation|Holdings|Public Company Limited|PCL|Co\.?,? Ltd\.?|Integrative Wellness|'
+    short = re.sub(r'\s+(Thailand|Japan|Vietnam|India|Malaysia|Indonesia|Korea|K\.K\.|Group|Corporation|Holdings|Public Company Limited|PCL|Co\.?,? Ltd\.?|Integrative Wellness|'
                    r'Scientific Wellness Center|Wellness Center|Wellness Clinic|Longevity Clinic|Clinic|International|Coffee Roasters)$', '', n).strip()
     if short and short != n:
         out.append(short)
@@ -1173,12 +1188,25 @@ def title_variants(c):
     return res
 
 
+JP_FORM = r'(?:株式会社|有限会社|合同会社)'
+
+
+def native_clean(c):
+    """Родное название без «株式会社» и без повтора латинского имени («ZMP株式会社» → пусто, «PayPay株式会社» → пусто)."""
+    z = re.sub(JP_FORM, '', (c.get('name_zh') or '')).strip()
+    z = re.sub(r'[(（]\s*[)）]', '', z).strip()
+    lat = {x.lower() for x in company_names(c)} | {c['name_en'].lower(), base_name(c['name_en']).lower()}
+    if not z or base_name(z).lower() in lat or z.lower() in lat or re.fullmatch(r'[\x00-\x7fÀ-ɏ\s.,&()（）\'’-]+', z):
+        return ''
+    return z
+
+
 def native_variants(c):
-    z = (c.get('name_zh') or '').strip()
-    if not z or re.fullmatch(r'[\x00-\x7fÀ-ɏ\s.,&()\'’-]+', z):
+    z = native_clean(c)
+    if not z:
         return [None]
     out = []
-    if '(' in z:
+    if re.search(r'[(（]', z):
         out.append(base_name(z))
     out.append(z)
     if '/' in z:
@@ -1192,12 +1220,16 @@ def native_variants(c):
 
 
 def ghost_for(c):
-    z = (c.get('name_zh') or '').strip()
+    raw = (c.get('name_zh') or '').strip()
+    z = native_clean(c) if re.search(r'[぀-ヿ]|' + JP_FORM, raw) else raw
     if not z:
         return None, False
     if re.search(r'[฀-๿]', z):
         return re.split(r'[\s(/]', z)[0], True
-    if re.search(r'[぀-ヿ一-鿿]', z):
+    if re.search(r'[぀-ヿ]', z):  # японское: короткое название целиком, длинное — первые 2 знака
+        g = re.sub(r'[\s()（）/A-Za-z0-9・‑-]', '', base_name(z))
+        return (g if len(g) <= 4 else g[:2]) or None, False
+    if re.search(r'[一-鿿]', z):
         return re.sub(r'[\s()/A-Za-z0-9]', '', z)[:2], False
     return None, False
 
@@ -1214,7 +1246,7 @@ def load_brands():
     return json.loads(BRANDS.read_text(encoding='utf-8')) if BRANDS.exists() else {}
 
 
-GENERIC_SUFFIX = r'\s+(?:Thailand|Group|Corporation|Corp\.?|Holdings|Public Company Limited|PCL|Co\.?,? Ltd\.?|Ltd\.?|Inc\.?)$'
+GENERIC_SUFFIX = r'\s+(?:Thailand|Japan|Vietnam|India|Malaysia|Indonesia|Korea|UAE|K\.K\.|Group|Corporation|Corp\.?|Holdings|Public Company Limited|PCL|Co\.?,? Ltd\.?|Ltd\.?|Inc\.?)$'
 
 
 def name_keys(c):
@@ -1326,10 +1358,22 @@ def ensure_logo(c, tour, brands, new_logos, allow_download=True):
     ext = Path(c['logo']).suffix.lower() or '.png'
     dest = LOGOS / folder / f'{slug}{ext}'
     dest.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        data = fetch(url, binary=True)
-    except Exception as e:
-        print(f'  ! не скачался логотип {url}: {e}', file=sys.stderr)
+    import unicodedata
+    data = None
+    # сайт на несуществующий файл отдаёт HTML-страницу; «Kosé.png» лежит в NFD-записи — пробуем варианты
+    for u in dict.fromkeys([url, SITE + urllib.parse.quote(unicodedata.normalize('NFD', c['logo'])),
+                            SITE + urllib.parse.quote(unicodedata.normalize('NFC', c['logo']))]):
+        try:
+            d_ = fetch(u, binary=True)
+        except Exception as e:
+            print(f'  ! не скачался логотип {u}: {e}', file=sys.stderr)
+            continue
+        if d_[:200].lstrip().lower().startswith((b'<!doctype html', b'<html')):
+            continue
+        data = d_
+        break
+    if data is None:
+        print(f'  ! логотипа нет на сайте: {url}', file=sys.stderr)
         return None
     dest.write_bytes(data)
     if ext in ('.png', '.jpg', '.jpeg', '.webp'):
@@ -1455,9 +1499,9 @@ def build_deck(tour, comps, logos_ok=True):
     days, nights = stats.get('days') or len(itin) + 1, stats.get('nights') or len(itin) + 1
     cities = []
     for d in itin:
-        if d['city_ru'] not in cities:
-            cities.append(d['city_ru'])
-    main_city = itin[0]['city_ru'] if itin else ''
+        if city_base(d['city_ru']) not in cities:
+            cities.append(city_base(d['city_ru']))
+    main_city = city_base(itin[0]['city_ru']) if itin else ''
     brands = load_brands()
     new_logos = []
     clist = []  # (день, компания)
@@ -1553,7 +1597,7 @@ def build_deck(tour, comps, logos_ok=True):
             continue
         dn = [d['day'] for d in g]
         name = f'День {dn[0]}' if len(dn) == 1 else f'Дни {dn[0]}–{dn[-1]}'
-        gc = sorted({d['city_ru'] for d in g}, key=lambda x: cities.index(x))
+        gc = sorted({city_base(d['city_ru']) for d in g}, key=lambda x: cities.index(x))
         if len(cities) > 1:
             name += ' · ' + ' + '.join(gc)
         names = [company_short(comps[cid]) for d in g for cid in d['companies'] if cid in comps]
@@ -1586,7 +1630,7 @@ def build_deck(tour, comps, logos_ok=True):
     if len(cities) > 1:
         cl = []
         for ci, cname in enumerate(cities):
-            dd = [d for d in itin if d['city_ru'] == cname]
+            dd = [d for d in itin if city_base(d['city_ru']) == cname]
             nums = [d['day'] for d in dd]
             if len(nums) == 1:
                 dtxt = f'день {nums[0]}'
@@ -1645,7 +1689,7 @@ def build_deck(tour, comps, logos_ok=True):
         title3 = ' ·\n'.join(' '.join(n.split()[:2]) for n in names) if names else title
         dlist.append({'sub': d.get('time') or '', 'title': Var(title, title2, title3),
                       'text': Var(*[v for v in variants if v]), 'label': f'День {d["day"]}'})
-        if len(cities) > 1 and d['city_ru'] != main_city:
+        if len(cities) > 1 and d['city_ru'] != main_city:  # «Токио / Нода (Тиба)» — тоже подпись
             dlist[-1]['sub'] = f'{d["city_ru"]} · {d.get("time") or ""}'.strip(' ·')
     dghost = THAI_DAYS.get(len(itin)) if country == 'th' else (CJK_DAYS.get(len(itin)) if country in ('cn', 'jp') else None)
     slides.append({'type': 'days', 'tag': 'Программа по дням', 'title': f'{cnt(len(itin), "день", "дня", "дней")} визитов',

@@ -1433,7 +1433,7 @@
   ]
  },
  "cta": "Экспедиции",
- "ctaSeconds": 3,
+ "ctaSeconds": 2.567,
  "showSafeZone": false,
  "broll": [
   {
@@ -1593,9 +1593,9 @@
   }
  ],
  "music": {
-  "src": "интернет-материалы/музыка/inspiring-technology-soundrider.mp3",
-  "volume": 0.09,
-  "outroVolume": 0.22
+  "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+  "volume": 0.078,
+  "outroVolume": 0.18
  },
  "focus": {
   "x": 507,
