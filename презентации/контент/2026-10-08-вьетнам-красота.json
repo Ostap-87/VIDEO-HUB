@@ -94,12 +94,12 @@
         {
           "name": "Хошимин",
           "days": "дни 1–3",
-          "companies": "Cocoon\nHasaki\nThorakao\nSaigon Cosmetics\n+ ещё 2"
+          "companies": "Cocoon · Hasaki\nThorakao\nSaigon Cosmetics\nM.O.I\nLemonade"
         },
         {
           "name": "Ханой",
           "days": "дни 4–5",
-          "companies": "Sao Thái Dương\nMilaganics",
+          "companies": "Sao Thái Dương\nMilaganics\nOEM-производство",
           "leg": {
             "icon": "plane",
             "text": "≈2 ч"
@@ -128,7 +128,7 @@
         {
           "sub": "10:00–13:00",
           "title": "M.O.I Cosmetics ·\nLemonade Cosmetics",
-          "text": "M.O.I — первый профессиональный локальный бренд макияжа; Lemonade — декоративная косметика.",
+          "text": "M.O.I и Lemonade — локальные бренды декоративной косметики.",
           "label": "День 3"
         },
         {
@@ -337,7 +337,7 @@
           "icon": "chart",
           "value": "63,9 млрд донгов",
           "label": "выручка",
-          "sub": "2022 год, вдвое больше, чем годом ранее"
+          "sub": "2022 год, ×2 г/г"
         },
         {
           "icon": "star",
@@ -370,28 +370,30 @@
       "subtitle": "Ханой",
       "facts": [
         {
-          "icon": "chart",
+          "icon": "package",
           "value": "150+",
           "label": "наименований"
         },
         {
-          "icon": "chart",
+          "icon": "package",
           "value": "~19",
-          "label": "фитопрепаратов"
+          "label": "фитопрепаратов",
+          "sub": "женьшень, имбирь, бетель"
         },
         {
-          "icon": "chart",
+          "icon": "star",
           "value": "13",
-          "label": "патентов"
+          "label": "патентов",
+          "sub": "70+ доклинических и 21 клиническое исследование"
         },
         {
-          "icon": "flag",
-          "value": "2000",
-          "label": "год основания"
+          "icon": "globe",
+          "value": "20+",
+          "label": "стран экспорта"
         }
       ],
-      "why": "Фармацевтическая и косметическая компания из Ханоя: свыше 150 наименований, производство WHO-GMP.",
-      "learn": "Имеет 13 патентов, провела 70+ доклинических и 21 клиническое исследование, экспортирует в 20+ стран.",
+      "why": "Вьетнамская фармацевтическая и косметическая компания из Ханоя: фитопрепараты на женьшене, имбире и бетеле.",
+      "learn": "Основана в 2000 году фармацевтами Нгуен Хыу Тханем и Нгуен Тхи Хыонг Лиен; производство сертифицировано WHO-GMP.",
       "learn_label": "Фокус визита"
     },
     {
@@ -478,7 +480,7 @@
           "icon": "store",
           "value": "8 компаний",
           "label": "в программе",
-          "sub": "Cocoon, Hasaki, Thorakao, Sao Thái Dương"
+          "sub": "Cocoon, Hasaki, Thorakao"
         },
         {
           "icon": "briefcase",

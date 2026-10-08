@@ -9,7 +9,7 @@
 <section class="slide s-company">
   <div class="ghost{% if s.ghost_thai %} thai{% endif %}" style="{% if s.ghost_size %}font-size:{{ s.ghost_size }}px;{% endif %}">{{ s.ghost or '' }}</div>
   {{ m.tag(s.tag) }}
-  <div class="title" data-fit="{{ s.title_width or 1808 }}">{{ s.title }}{% if s.native %} <span class="native">{{ s.native }}</span>{% endif %}</div>
+  <div class="title" data-fit="{{ s.title_width or 1808 }}"{% if s.title_dy %} style="margin-top:{{ s.title_dy }}px"{% endif %}>{{ s.title }}{% if s.native %} <span class="native">{{ s.native }}</span>{% endif %}</div>
   {% for f in s.facts[:4] %}{% set p = FACT_POS[loop.index0] %}
   <div class="card grad fact" style="left:{{ p.l }}px;top:{{ p.t }}px;{{ m.rot(p.r) }}">
     {% if p.tape %}<div class="tape" style="left:{{ p.tape[0] }}px;top:{{ p.tape[1] }}px;{{ m.rot(p.tape[2]) }}"></div>{% endif %}

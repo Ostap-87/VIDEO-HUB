@@ -180,7 +180,8 @@
       ],
       "why": "Объединяет сети Thế Giới Di Động, Điện Máy Xanh, Bách Hóa Xanh, аптеки An Khang, TopZone и AVAKids.",
       "learn": "В мае 2025 года MWG запустила собственный маркетплейс MWG Shop, вернувшись в e-commerce.",
-      "learn_label": "Фокус визита"
+      "learn_label": "Фокус визита",
+      "title_dy": 16
     },
     {
       "type": "company",
@@ -275,7 +276,7 @@
         {
           "icon": "star",
           "value": "№1",
-          "label": "Vietnam Top 10 Retail Reputation Award",
+          "label": "Retail Reputation Award",
           "sub": "5 лет подряд"
         },
         {
