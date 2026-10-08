@@ -363,6 +363,15 @@ export function mascotState(plan: MascotPlan, t: number) {
   for (let i = 0; i < st.length; i++) {
     const B = st[i];
     const A = st[i - 1] ?? {at: B.at - 1, x: 1200, y: B.y};
+    // из-за одного края за другой — мгновенно, за кадром (раньше робот шёл через весь кадр и лицо спикера)
+    const off = (x: number) => x < -60 || x > 1140;
+    if (off(A.x) && off(B.x)) {
+      if (t < B.at) break;
+      x = B.x;
+      y = B.y;
+      face = B.face ?? 0;
+      continue;
+    }
     const dist = Math.hypot(B.x - A.x, B.y - A.y);
     const hop = Math.abs(B.y - A.y) > 60;
     const travel = hop ? 0.9 : Math.min(2.2, Math.max(0.5, dist / 520));
