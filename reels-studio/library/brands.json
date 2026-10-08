@@ -1959,5 +1959,476 @@
   ],
   "logo": "source-videos/логотипы/чай-кофе/doutor-coffee.png",
   "site_logo": "/logos/Doutor Coffee.png"
+ },
+ "vinamilk": {
+  "names": [
+   "Vinamilk"
+  ],
+  "logo": "source-videos/логотипы/еда/vinamilk.svg",
+  "site_logo": "/logos/vinamilk.svg"
+ },
+ "nutifood": {
+  "names": [
+   "Nutifood"
+  ],
+  "logo": "source-videos/логотипы/еда/nutifood.png",
+  "site_logo": "/logos/Nutrifood.png"
+ },
+ "masan-consumer": {
+  "names": [
+   "Masan Consumer"
+  ],
+  "logo": "source-videos/логотипы/еда/masan-consumer.png",
+  "site_logo": "/logos/Masan Consumer.png"
+ },
+ "vissan": {
+  "names": [
+   "Vissan"
+  ],
+  "logo": "source-videos/логотипы/еда/vissan.png",
+  "site_logo": "/logos/Vissan.png"
+ },
+ "th-true-milk": {
+  "names": [
+   "TH True Milk"
+  ],
+  "logo": "source-videos/логотипы/еда/th-true-milk.png",
+  "site_logo": "/logos/TH True Milk.png"
+ },
+ "acecook-vietnam": {
+  "names": [
+   "Acecook Vietnam",
+   "Acecook"
+  ],
+  "logo": "source-videos/логотипы/еда/acecook.png",
+  "site_logo": "/logos/Acecook.png"
+ },
+ "indofood": {
+  "names": [
+   "Indofood"
+  ],
+  "logo": "source-videos/логотипы/еда/indofood.svg",
+  "site_logo": "/logos/indofood.svg"
+ },
+ "frisian-flag-indonesia": {
+  "names": [
+   "Frisian Flag Indonesia",
+   "Frisian Flag"
+  ],
+  "logo": "source-videos/логотипы/еда/frisian-flag.png",
+  "site_logo": "/logos/Frisian Flag.png"
+ },
+ "kalbe-nutritionals": {
+  "names": [
+   "Kalbe Nutritionals"
+  ],
+  "logo": "source-videos/логотипы/еда/kalbe-nutritionals.png",
+  "site_logo": "/logos/kalbe.png"
+ },
+ "cimory": {
+  "names": [
+   "Cimory"
+  ],
+  "logo": "source-videos/логотипы/еда/cimory.png",
+  "site_logo": "/logos/Cimory.png"
+ },
+ "ultrajaya": {
+  "names": [
+   "Ultrajaya"
+  ],
+  "logo": "source-videos/логотипы/еда/ultrajaya.png",
+  "site_logo": "/logos/Ultrajaya.png"
+ },
+ "mayora-indah": {
+  "names": [
+   "Mayora Indah"
+  ],
+  "logo": "source-videos/логотипы/еда/mayora-indah.png",
+  "site_logo": "/logos/Mayora.png"
+ },
+ "nestle-indonesia": {
+  "names": [
+   "Nestlé Indonesia",
+   "Nestlé"
+  ],
+  "logo": "source-videos/логотипы/еда/nestle.png",
+  "site_logo": "/logos/Nestle.png"
+ },
+ "garudafood": {
+  "names": [
+   "Garudafood"
+  ],
+  "logo": "source-videos/логотипы/еда/garudafood.png",
+  "site_logo": "/logos/Garuda Food.png"
+ },
+ "goto": {
+  "names": [
+   "GoTo (GoFood/GoKitchen)",
+   "GoTo"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/goto-gofood-gokitchen.png",
+  "site_logo": "/logos/GoFood:GoKitchen).png"
+ },
+ "yummy-corp": {
+  "names": [
+   "Yummy Corp",
+   "Yummy"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/yummy-corp.png",
+  "site_logo": "/logos/Yummy Corp.png"
+ },
+ "everplate": {
+  "names": [
+   "Everplate"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/everplate.png",
+  "site_logo": "/logos/Everplate.png"
+ },
+ "hangry": {
+  "names": [
+   "Hangry"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/hangry.png",
+  "site_logo": "/logos/Hangry.png"
+ },
+ "legit-group": {
+  "names": [
+   "Legit Group",
+   "Legit"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/legit-group.png",
+  "site_logo": "/logos/Legit Group.png"
+ },
+ "dailybox-group": {
+  "names": [
+   "Dailybox Group",
+   "Dailybox"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/dailybox-group.png",
+  "site_logo": "/logos/Dailybox.png"
+ },
+ "wahyoo": {
+  "names": [
+   "Wahyoo"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/wahyoo.png",
+  "site_logo": "/logos/Wahyoo.png"
+ },
+ "kata-ai": {
+  "names": [
+   "Kata.ai"
+  ],
+  "logo": "source-videos/логотипы/ии/kata-ai.png",
+  "site_logo": "/logos/Kata ai.png"
+ },
+ "nodeflux": {
+  "names": [
+   "Nodeflux"
+  ],
+  "logo": "source-videos/логотипы/ии/nodeflux.png",
+  "site_logo": "/logos/Nodeflux.png"
+ },
+ "prosa-ai": {
+  "names": [
+   "Prosa.ai"
+  ],
+  "logo": "source-videos/логотипы/ии/prosa-ai.png",
+  "site_logo": "/logos/Posa ai.png"
+ },
+ "sahabat-ai": {
+  "names": [
+   "Sahabat-AI"
+  ],
+  "logo": "source-videos/логотипы/ии/sahabat-ai.png",
+  "site_logo": "/logos/Sahabat-AI.png"
+ },
+ "bukalapak": {
+  "names": [
+   "Bukalapak"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/bukalapak.svg",
+  "site_logo": "/logos/bukalapak.svg"
+ },
+ "paragon-technology-and-innovation": {
+  "names": [
+   "Paragon Technology & Innovation (Wardah/Emina/Make Over)",
+   "Paragon Technology & Innovation"
+  ],
+  "logo": "source-videos/логотипы/косметика/paragon-technology-innovation.png",
+  "site_logo": "/logos/Paragon Technology & Innovation (Wardah:Emina:Make Over).png"
+ },
+ "kahf": {
+  "names": [
+   "Kahf (Paragon)",
+   "Kahf"
+  ],
+  "logo": "source-videos/логотипы/косметика/kahf-paragon.png",
+  "site_logo": "/logos/Kahf.png"
+ },
+ "martha-tilaar-group": {
+  "names": [
+   "Martha Tilaar Group",
+   "Martha Tilaar"
+  ],
+  "logo": "source-videos/логотипы/косметика/martha-tilaar-group.png",
+  "site_logo": "/logos/Martha Tilaar.png"
+ },
+ "mustika-ratu": {
+  "names": [
+   "Mustika Ratu"
+  ],
+  "logo": "source-videos/логотипы/косметика/mustika-ratu.png",
+  "site_logo": "/logos/Mustika Ratu.png"
+ },
+ "somethinc": {
+  "names": [
+   "Somethinc (Beauty Haul)",
+   "Somethinc"
+  ],
+  "logo": "source-videos/логотипы/косметика/somethinc-beauty-haul.png",
+  "site_logo": "/logos/Somethinc.png"
+ },
+ "avoskin": {
+  "names": [
+   "Avoskin (AVO Innovation)",
+   "Avoskin"
+  ],
+  "logo": "source-videos/логотипы/косметика/avoskin.png",
+  "site_logo": "/logos/Avoskin.png"
+ },
+ "esqa-cosmetics": {
+  "names": [
+   "ESQA Cosmetics"
+  ],
+  "logo": "source-videos/логотипы/косметика/esqa-cosmetics.png",
+  "site_logo": "/logos/ESQA.png"
+ },
+ "ms-glow": {
+  "names": [
+   "MS Glow"
+  ],
+  "logo": "source-videos/логотипы/косметика/ms-glow.png",
+  "site_logo": "/logos/MS Glow.png"
+ },
+ "rose-all-day": {
+  "names": [
+   "Rose All Day"
+  ],
+  "logo": "source-videos/логотипы/косметика/rose-all-day.png",
+  "site_logo": "/logos/Rose All Day.png"
+ },
+ "kalbe-farma-kbic-campus": {
+  "names": [
+   "Kalbe Farma — KBIC Campus"
+  ],
+  "logo": "source-videos/логотипы/медицина/kalbe-farma-kbic.png",
+  "site_logo": "/logos/Kalbe Farma.png"
+ },
+ "prodia-stemcell-indonesia": {
+  "names": [
+   "Prodia StemCell Indonesia (ProSTEM)",
+   "Prodia StemCell Indonesia",
+   "Prodia StemCell",
+   "ProSTEM"
+  ],
+  "logo": "source-videos/логотипы/медицина/prodia-stemcell-prostem.png",
+  "site_logo": "/logos/Prodia.png"
+ },
+ "kalgen-dna": {
+  "names": [
+   "KalGen DNA (Kalbe)",
+   "KalGen DNA"
+  ],
+  "logo": "source-videos/логотипы/медицина/kalgen-dna.png",
+  "site_logo": "/logos/KalGen DNA.png"
+ },
+ "kg-bio": {
+  "names": [
+   "KG Bio (Kalbe)",
+   "KG Bio"
+  ],
+  "logo": "source-videos/логотипы/медицина/kg-bio-kalbe.png",
+  "site_logo": "/logos/KG Bio (Kalbe).png"
+ },
+ "prodia": {
+  "names": [
+   "Prodia"
+  ],
+  "logo": "source-videos/логотипы/медицина/prodia.png",
+  "site_logo": "/logos/Prodia.png"
+ },
+ "biothera-stem-cell-clinic": {
+  "names": [
+   "Biothera Stem Cell Clinic (PIK2)",
+   "Biothera Stem Cell Clinic"
+  ],
+  "logo": "source-videos/логотипы/медицина/biothera-stem-cell-clinic.png",
+  "site_logo": "/logos/Biothera Stem Cell Clinic (PIK2).png"
+ },
+ "bio-farma-kimia-farma": {
+  "names": [
+   "Bio Farma / Kimia Farma",
+   "Bio Farma",
+   "Kimia Farma"
+  ],
+  "logo": "source-videos/логотипы/медицина/bio-farma-kimia-farma.png",
+  "site_logo": "/logos/Bio Farma :Kimia Farma.png"
+ },
+ "regeneratia-bali": {
+  "names": [
+   "Regeneratia Bali"
+  ],
+  "logo": "source-videos/логотипы/медицина/regeneratia-bali.png",
+  "site_logo": "/logos/Regeneratia Bali.png"
+ },
+ "kopi-kenangan": {
+  "names": [
+   "Kopi Kenangan"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/kopi-kenangan.png",
+  "site_logo": "/logos/Kopi Kenangan.png"
+ },
+ "fore-coffee": {
+  "names": [
+   "Fore Coffee"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/fore-coffee.png",
+  "site_logo": "/logos/Fore Coffee.png"
+ },
+ "kopi-janji-jiwa": {
+  "names": [
+   "Kopi Janji Jiwa"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/kopi-janji-jiwa.png",
+  "site_logo": "/logos/Kopi Janji Jiwa.png"
+ },
+ "tomoro-coffee": {
+  "names": [
+   "Tomoro Coffee"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/tomoro-coffee.png",
+  "site_logo": "/logos/tomoro coffee.png"
+ },
+ "chatime-indonesia": {
+  "names": [
+   "Chatime Indonesia (F&B Indonesia/Kawan Lama)",
+   "Chatime Indonesia",
+   "Chatime"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/chatime.png",
+  "site_logo": "/logos/Chatime.png"
+ },
+ "esteh-indonesia": {
+  "names": [
+   "Esteh Indonesia",
+   "Esteh"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/esteh.png",
+  "site_logo": "/logos/Esteh.png"
+ },
+ "haus": {
+  "names": [
+   "Haus!"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/haus-drinks.png",
+  "site_logo": "/logos/Haus!.png"
+ },
+ "kenangan-coffee-chigo": {
+  "names": [
+   "Kenangan Coffee / Chigo",
+   "Kenangan Coffee",
+   "Chigo"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/kenangan-coffee-chigo.png",
+  "site_logo": "/logos/Kenangan Coffee.png"
+ },
+ "vinmec-research-institute-of-stem-cell-and-gene-technology": {
+  "names": [
+   "Vinmec Research Institute of Stem Cell & Gene Technology (VRISG)",
+   "Vinmec Research Institute of Stem Cell & Gene Technology",
+   "VRISG"
+  ],
+  "logo": "source-videos/логотипы/медицина/vinmec-vrisg.png",
+  "site_logo": "/logos/Vinmec.png"
+ },
+ "vinmec-center-of-regenerative-medicine-and-cell-therapy": {
+  "names": [
+   "Vinmec Center of Regenerative Medicine & Cell Therapy"
+  ],
+  "logo": "source-videos/логотипы/медицина/vinmec-regenerative-medicine-center.png",
+  "site_logo": "/logos/Vinmec.png"
+ },
+ "vinuniversity": {
+  "names": [
+   "VinUniversity"
+  ],
+  "logo": "source-videos/логотипы/общие/vinuniversity.png",
+  "site_logo": "/logos/VinUniversity.png"
+ },
+ "phuc-long": {
+  "names": [
+   "Phúc Long (Masan)",
+   "Phúc Long"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/phuc-long-masan.png",
+  "site_logo": "/logos/Phuc Long .png"
+ },
+ "the-coffee-house": {
+  "names": [
+   "The Coffee House"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/the-coffee-house.png",
+  "site_logo": "/logos/The Coffee Hpuse.png"
+ },
+ "highlands-coffee": {
+  "names": [
+   "Highlands Coffee"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/highlands-coffee.svg",
+  "site_logo": "/logos/highlands-coffee.svg"
+ },
+ "katinat": {
+  "names": [
+   "Katinat"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/katinat.png",
+  "site_logo": "/logos/Katinat.png"
+ },
+ "trung-nguyen-legend": {
+  "names": [
+   "Trung Nguyên Legend"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/trung-nguyen-legend.png",
+  "site_logo": "/logos/Trung Nguen Legend.png"
+ },
+ "cong-ca-phe": {
+  "names": [
+   "Cộng Cà Phê"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/cong-ca-phe.png",
+  "site_logo": "/logos/Cong coffee.png"
+ },
+ "tocotoco": {
+  "names": [
+   "ToCoToCo"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/tocotoco.png",
+  "site_logo": "/logos/TocoToco.png"
+ },
+ "phe-la": {
+  "names": [
+   "Phê La"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/phe-la.png",
+  "site_logo": "/logos/PheLa.png"
+ },
+ "king-coffee": {
+  "names": [
+   "King Coffee (TNI)",
+   "King Coffee",
+   "TNI"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/king-coffee-tni.png",
+  "site_logo": "/logos/King Coffee.png"
  }
 }

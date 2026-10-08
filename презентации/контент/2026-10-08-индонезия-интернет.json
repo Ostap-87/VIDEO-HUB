@@ -1,0 +1,550 @@
+{
+  "title": "Интернет-гиганты Индонезии: ИИ, мессенджеры, e-commerce — Global Tech Tour",
+  "output": "2026-10-08-индонезия-интернет",
+  "source": "https://globaltechtour.ru/expeditions/indonesia-tech-internet-giants-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "indonesia",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Интернет-гиганты Индонезии",
+      "topright": "ИИ · Мессенджеры\nE-commerce",
+      "logos": [
+        {
+          "name": "GoTo",
+          "logo": "source-videos/логотипы/техгиганты/goto-gofood-gokitchen.png"
+        },
+        {
+          "name": "Grab",
+          "logo": "source-videos/логотипы/техгиганты/grab.svg"
+        },
+        {
+          "name": "Blibli",
+          "logo": "source-videos/логотипы/ритейл/blibli.svg"
+        },
+        {
+          "name": "Kata.ai",
+          "logo": "source-videos/логотипы/ии/kata-ai.png"
+        },
+        {
+          "name": "Nodeflux",
+          "logo": "source-videos/логотипы/ии/nodeflux.png"
+        },
+        {
+          "name": "Prosa.ai",
+          "logo": "source-videos/логотипы/ии/prosa-ai.png"
+        },
+        {
+          "name": "Sahabat-AI",
+          "logo": "source-videos/логотипы/ии/sahabat-ai.png"
+        },
+        {
+          "name": "Shopee",
+          "logo": "source-videos/логотипы/техгиганты/shopee.svg"
+        }
+      ],
+      "box_text": "От единого кампуса GoTo —\n9 компаний, 6 дней, 6 ночей",
+      "box_right": "Джакарта —\nвесь tech-стек Индонезии в Джакарте",
+      "footer": "Global Tech Tour · бизнес-делегации в Индонезию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Визиты в штаб-квартиры, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы/перелёты между городами программы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на индонезийском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "9 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2",
+          "text": "GoTo, Grab, Blibli — кампус GoTo — две сессии на одной площадке."
+        },
+        {
+          "name": "Дни 3–4",
+          "text": "Kata.ai, Nodeflux, Prosa.ai, Sahabat-AI"
+        },
+        {
+          "name": "День 5",
+          "text": "Shopee, Bukalapak"
+        }
+      ],
+      "quote": "Весь tech-стек Индонезии\nв Джакарте."
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "GoTo",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Grab ·\nBlibli",
+          "text": "Grab — сингапурский супер-апп, основанный в 2012 г.; Blibli — индонезийская e-commerce платформа.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Kata.ai ·\nNodeflux",
+          "text": "Визиты: Kata.ai, Nodeflux.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Prosa.ai ·\nSahabat-AI",
+          "text": "Визиты: Prosa.ai, Sahabat-AI.",
+          "label": "День 4"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Shopee ·\nBukalapak",
+          "text": "Bukalapak — один из пионеров индонезийского e-commerce.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Джакарта",
+      "title": "GoTo",
+      "logo": "source-videos/логотипы/техгиганты/goto-gofood-gokitchen.png",
+      "short": "GoTo (Gojek + Tokopedia + GoPay)",
+      "subtitle": "Gojek + Tokopedia + GoPay · Джакарта",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$18 млрд",
+          "label": "оценка компании"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$1,5 млрд",
+          "label": "инвестиции"
+        },
+        {
+          "icon": "trending",
+          "value": "75,01%",
+          "label": "доли"
+        },
+        {
+          "icon": "flag",
+          "value": "2021",
+          "label": "год образования",
+          "sub": "17 мая 2021 года"
+        }
+      ],
+      "why": "GoTo Group образован 17 мая 2021 г. слиянием Gojek и Tokopedia — крупнейшей сделкой в истории Индонезии.",
+      "learn": "В 2024 г. e-commerce бизнес передан в СП с TikTok Shop, а транспорт, доставка и финтех остались под GoTo.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Джакарта",
+      "title": "Grab Indonesia",
+      "logo": "source-videos/логотипы/техгиганты/grab.svg",
+      "short": "Grab Indonesia",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "72%",
+          "label": "мобильность и доставке достигает"
+        },
+        {
+          "icon": "flag",
+          "value": "2012",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Сингапурский супер-апп.",
+      "learn": "В райд-хейлинге Grab делит с Gojek/GoTo индонезийский рынок примерно поровну.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Джакарта",
+      "title": "Blibli",
+      "logo": "source-videos/логотипы/ритейл/blibli.svg",
+      "short": "Blibli",
+      "subtitle": "Djarum · Джакарта",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "100+ тыс",
+          "label": "партнёров"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$509 млн",
+          "label": "оценка компании"
+        },
+        {
+          "icon": "store",
+          "value": "Ranch Market",
+          "label": "сеть"
+        },
+        {
+          "icon": "flag",
+          "value": "2011",
+          "label": "год основания",
+          "sub": "15 августа 2011 года"
+        }
+      ],
+      "why": "Индонезийская e-commerce платформа.",
+      "learn": "Работает по модели O2O, объединяя более 100 тыс. партнёров.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Джакарта",
+      "title": "Kata.ai",
+      "logo": "source-videos/логотипы/ии/kata-ai.png",
+      "short": "Kata.ai",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "handshake",
+          "value": "Kanari AI",
+          "label": "партнёр"
+        },
+        {
+          "icon": "flag",
+          "value": "2015",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "В 2016 году приобрела филиппинский стартап HeyKuya.",
+      "learn": "Строит NLP-чат-ботов на индонезийском языке для крупных корпоративных клиентов, включая Unilever и Telkomsel.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Джакарта",
+      "title": "Nodeflux",
+      "logo": "source-videos/логотипы/ии/nodeflux.png",
+      "short": "Nodeflux",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "140+",
+          "label": "участников мирового рейтинга"
+        },
+        {
+          "icon": "target",
+          "value": "NIST",
+          "label": "тест"
+        },
+        {
+          "icon": "flag",
+          "value": "2016",
+          "label": "год основания",
+          "sub": "в Джакарте"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        }
+      ],
+      "why": "Первая и крупнейшая индонезийская компания в области компьютерного зрения.",
+      "learn": "Основана в 2016 году в Джакарте Мейди Фитранто и Фарисом Раманом, выпускниками Бандунгского технологического института.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Джакарта",
+      "title": "Prosa.ai",
+      "logo": "source-videos/логотипы/ии/prosa-ai.png",
+      "short": "Prosa.ai",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "AntiHoaks",
+          "label": "запуск",
+          "sub": "для борьбы с дезинформацией"
+        },
+        {
+          "icon": "flag",
+          "value": "2018",
+          "label": "год основания",
+          "sub": "в Бандунге"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Разрабатывает NLP- и речевые технологии специально для языка бахаса Индонезия: чат-боты, обработку текста и речи.",
+      "learn": "Совместно с Министерством связи Индонезии запустила чат-бот AntiHoaks для борьбы с дезинформацией.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Джакарта",
+      "title": "Sahabat-AI",
+      "logo": "source-videos/логотипы/ии/sahabat-ai.png",
+      "short": "Sahabat-AI",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2024",
+          "label": "год запуска",
+          "sub": "14 ноября 2024 года"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Модель обучена с помощью AI Singapore и Tech Mahindra на базе NVIDIA NeMo и рассчитана на бахаса Индонезия.",
+      "learn": "Цель проекта — цифровой суверенитет и развитие открытого ИИ-сообщества Индонезии.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Джакарта",
+      "title": "Shopee Indonesia / TikTok Shop",
+      "logo": "source-videos/логотипы/техгиганты/shopee.svg",
+      "short": "Shopee Indonesia / TikTok Shop",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$1,5 млрд",
+          "label": "инвестиции"
+        },
+        {
+          "icon": "trending",
+          "value": "75,01%",
+          "label": "5 млрд и получила"
+        },
+        {
+          "icon": "chart",
+          "value": "~450",
+          "label": "рабочих мест"
+        },
+        {
+          "icon": "star",
+          "value": "TikTok Shop by Tokopedia",
+          "label": "бренд",
+          "sub": "ответ на запрет соцсетям вести"
+        }
+      ],
+      "why": "Основной конкурент на рынке — Shopee, удерживающее лидерство по GMV в индонезийском e-commerce.",
+      "learn": "ByteDance вложила $1,5 млрд и получила 75,01% в Tokopedia, объединив её с TikTok Shop в СП под брендом «TikTok Shop by Tokopedia».",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Джакарта",
+      "title": "Bukalapak",
+      "logo": "source-videos/логотипы/техгиганты/bukalapak.svg",
+      "short": "Bukalapak",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "<3%",
+          "label": "выручки"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Один из пионеров индонезийского e-commerce; в 2021 г. провёл крупнейшее в истории страны IPO.",
+      "learn": "Под давлением Shopee и TikTok Shop акции обвалились более чем на 85% от цены размещения.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Трансферы/перелёты между городами программы",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На индонезийском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "Интернет-гиганты Индонезии",
+          "text": "ИИ, мессенджеры и e-commerce\nв одном городе",
+          "icon": "smartphone"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов в Джакарте"
+        },
+        {
+          "icon": "smartphone",
+          "value": "9 компаний",
+          "label": "Интернет-гиганты Индонезии",
+          "sub": "иИ, мессенджеры, e-commerce"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы/перелёты между городами программы",
+        "Сопровождение на индонезийском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Джакарта (перелёт Москва → Джакарта).<br><b>Вылет:</b> Джакарта — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,557 @@
+{
+  "title": "Central/Dark Kitchen и быстрая доставка еды в Индонезии — Global Tech Tour",
+  "output": "2026-10-08-индонезия-доставка",
+  "source": "https://globaltechtour.ru/expeditions/indonesia-dark-kitchen-delivery-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "indonesia",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Central/Dark Kitchen и быстрая доставка еды в Индонезии",
+      "topright": "GoTo · Grab\nYummy Corp · ShopeeFood",
+      "logos": [
+        {
+          "name": "GoTo",
+          "logo": "source-videos/логотипы/техгиганты/goto-gofood-gokitchen.png"
+        },
+        {
+          "name": "Grab",
+          "logo": "source-videos/логотипы/техгиганты/grab.svg"
+        },
+        {
+          "name": "Yummy",
+          "logo": "source-videos/логотипы/техгиганты/yummy-corp.png"
+        },
+        {
+          "name": "Everplate",
+          "logo": "source-videos/логотипы/техгиганты/everplate.png"
+        },
+        {
+          "name": "Hangry",
+          "logo": "source-videos/логотипы/техгиганты/hangry.png"
+        },
+        {
+          "name": "Legit",
+          "logo": "source-videos/логотипы/техгиганты/legit-group.png"
+        },
+        {
+          "name": "Dailybox",
+          "logo": "source-videos/логотипы/техгиганты/dailybox-group.png"
+        },
+        {
+          "name": "ShopeeFood",
+          "logo": "source-videos/логотипы/техгиганты/shopee-food.svg"
+        }
+      ],
+      "box_text": "От штаб-квартиры GoTo (GoFood/GoKitchen) —\n10 компаний, 6 дней, 6 ночей",
+      "box_right": "Джакарта —\nвся доставка еды Джакарты, без перелётов",
+      "footer": "Global Tech Tour · бизнес-делегации в Индонезию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Визиты в штаб-квартиры, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы/перелёты между городами программы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на индонезийском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "10 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2",
+          "text": "GoTo, Grab, Yummy, Everplate"
+        },
+        {
+          "name": "Дни 3–4",
+          "text": "Hangry, Legit, Dailybox, ShopeeFood"
+        },
+        {
+          "name": "День 5",
+          "text": "Wahyoo — день завершается итоговой встречей."
+        }
+      ],
+      "quote": "Вся доставка еды Джакарты,\nбез перелётов."
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "GoTo ·\nGrab",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Yummy ·\nEverplate",
+          "text": "Yummy — крупнейший оператор облачных кухонь; Everplate — индонезийский оператор инфраструктуры облачных.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Hangry ·\nLegit",
+          "text": "Hangry — индонезийский мультибрендовый cloud-kitchen стартап; Legit — индонезийский консолидатор облачных кухонь.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Dailybox ·\nShopeeFood",
+          "text": "Dailybox — индонезийский tech-enabled оператор F&B; ShopeeFood — сервис доставки еды сингапурской Sea Ltd.",
+          "label": "День 4"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Wahyoo",
+          "text": "День завершается итоговой встречей.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Джакарта",
+      "title": "GoTo",
+      "logo": "source-videos/логотипы/техгиганты/goto-gofood-gokitchen.png",
+      "short": "GoTo (GoFood/GoKitchen)",
+      "subtitle": "GoFood/GoKitchen · Джакарта",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Gojek",
+          "label": "запуск"
+        },
+        {
+          "icon": "flag",
+          "value": "2015",
+          "label": "год запуска"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "GoFood — сервис доставки еды экосистемы GoTo.",
+      "learn": "Использует данные о поведении миллионов пользователей и партнёров-водителей для алгоритмического прогнозирования спроса.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Джакарта",
+      "title": "Grab Indonesia",
+      "logo": "source-videos/логотипы/техгиганты/grab.svg",
+      "short": "Grab Indonesia",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "72%",
+          "label": "мобильность и доставке достигает"
+        },
+        {
+          "icon": "flag",
+          "value": "2012",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Сингапурский супер-апп.",
+      "learn": "В райд-хейлинге Grab делит с Gojek/GoTo индонезийский рынок примерно поровну.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Джакарта",
+      "title": "Yummy Corp",
+      "logo": "source-videos/логотипы/техгиганты/yummy-corp.png",
+      "short": "Yummy Corp",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "70+",
+          "label": "кухонь",
+          "sub": "2019 год"
+        },
+        {
+          "icon": "users",
+          "value": "50+",
+          "label": "партнёрских брендов",
+          "sub": "2019 год"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$12 млн",
+          "label": "Series B",
+          "sub": "раунд Series B, 2020 год"
+        },
+        {
+          "icon": "trending",
+          "value": "№1",
+          "label": "оператор облачных кухонь Индонезии"
+        }
+      ],
+      "why": "Yummy Corp — крупнейший оператор облачных кухонь Индонезии.",
+      "learn": "Бренд Yummykitchen управляет 70+ кухнями и обслуживает более 50 партнёрских брендов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Джакарта",
+      "title": "Everplate",
+      "logo": "source-videos/логотипы/техгиганты/everplate.png",
+      "short": "Everplate",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "6 млн рупий",
+          "label": "/мес"
+        },
+        {
+          "icon": "users",
+          "value": "150+",
+          "label": "F&B-партнёров"
+        },
+        {
+          "icon": "flag",
+          "value": "2020",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        }
+      ],
+      "why": "Индонезийский оператор инфраструктуры облачных кухонь, основанный в январе 2020 г.",
+      "learn": "Помогает партнёрам выходить на все ключевые платформы доставки — GrabFood, GoFood, ShopeeFood, Traveloka Eats.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Джакарта",
+      "title": "Hangry",
+      "logo": "source-videos/логотипы/техгиганты/hangry.png",
+      "short": "Hangry",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "package",
+          "value": "18",
+          "label": "брендов"
+        },
+        {
+          "icon": "store",
+          "value": "117",
+          "label": "точек"
+        },
+        {
+          "icon": "flag",
+          "value": "2019",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        }
+      ],
+      "why": "В октябре 2025 г. привлёк $10,5 млн на модернизацию кухонь и выход на первый зарубежный рынок — Малайзию.",
+      "learn": "Hangry — индонезийский мультибрендовый cloud-kitchen стартап, основанный в конце 2019 г.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Джакарта",
+      "title": "Legit Group",
+      "logo": "source-videos/логотипы/техгиганты/legit-group.png",
+      "short": "Legit Group",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "30+",
+          "label": "локаций"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$3 млн",
+          "label": "seed"
+        },
+        {
+          "icon": "handshake",
+          "value": "Ismaya Group",
+          "label": "партнёр"
+        },
+        {
+          "icon": "flag",
+          "value": "2021",
+          "label": "год основания"
+        }
+      ],
+      "why": "Индонезийский консолидатор облачных кухонь.",
+      "learn": "Управляет четырьмя delivery-only F&B-брендами в 30+ локациях, преимущественно в Джакарте, без офлайн-точек.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Джакарта",
+      "title": "Dailybox Group",
+      "logo": "source-videos/логотипы/техгиганты/dailybox-group.png",
+      "short": "Dailybox Group",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "globe",
+          "value": "20+",
+          "label": "городов"
+        },
+        {
+          "icon": "store",
+          "value": "150+",
+          "label": "точек"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$24 млн",
+          "label": "привлечено инвестиций",
+          "sub": "2022 год"
+        },
+        {
+          "icon": "flag",
+          "value": "2018",
+          "label": "год основания",
+          "sub": "в Джакарте"
+        }
+      ],
+      "why": "Индонезийский tech-enabled оператор F&B, основанный в 2018 г. в Джакарте; стартовал как поставщик рисовых боксов.",
+      "learn": "Портфель включает три бренда — Dailybox, Shirato и сеть пекарен Breadlife; работает в 20+ городах, свыше 150 точек.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Джакарта",
+      "title": "ShopeeFood",
+      "logo": "source-videos/логотипы/техгиганты/shopee-food.svg",
+      "short": "ShopeeFood",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "18%",
+          "label": "её доля рынка достигла",
+          "sub": "к 2024 году"
+        },
+        {
+          "icon": "trending",
+          "value": "50%+",
+          "label": "выросл"
+        },
+        {
+          "icon": "flag",
+          "value": "2020",
+          "label": "год запуска"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        }
+      ],
+      "why": "Сервис доставки еды сингапурской Sea Ltd, интегрированный в приложение Shopee.",
+      "learn": "Благодаря доступу к обширной пользовательской базе Shopee платформа быстро набрала обороты: к 2024 г. её доля рынка достигла ~18%.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Джакарта",
+      "title": "Wahyoo",
+      "logo": "source-videos/логотипы/техгиганты/wahyoo.png",
+      "short": "Wahyoo",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$5 млн",
+          "label": "привлечено инвестиций",
+          "sub": "раунд Series A"
+        },
+        {
+          "icon": "briefcase",
+          "value": "~$38,9 млн",
+          "label": "оценка компании"
+        },
+        {
+          "icon": "flag",
+          "value": "2017",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        }
+      ],
+      "why": "Индонезийский стартап цифровизации уличных варунгов.",
+      "learn": "Помогает владельцам небольших закусочных через маркетинг, программы лояльности, онлайн-заказ ингредиентов, управление финансами.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Трансферы/перелёты между городами программы",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На индонезийском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "10 компаний",
+          "text": "GoTo · Grab · Yummy Corp\nв одном городе",
+          "icon": "smartphone"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов в Джакарте"
+        },
+        {
+          "icon": "smartphone",
+          "value": "10 компаний",
+          "label": "в программе",
+          "sub": "GoTo, Grab, Yummy Corp"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы/перелёты между городами программы",
+        "Сопровождение на индонезийском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Джакарта (перелёт Москва → Джакарта).<br><b>Вылет:</b> Джакарта — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

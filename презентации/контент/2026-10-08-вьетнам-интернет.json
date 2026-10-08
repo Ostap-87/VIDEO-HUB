@@ -1,0 +1,608 @@
+{
+  "title": "Интернет-гиганты Вьетнама: ИИ, мессенджеры, e-commerce — Global Tech Tour",
+  "output": "2026-10-08-вьетнам-интернет",
+  "source": "https://globaltechtour.ru/expeditions/vietnam-tech-internet-giants-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "vietnam",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Интернет-гиганты Вьетнама",
+      "topright": "ИИ · Мессенджеры\nE-commerce",
+      "logos": [
+        {
+          "name": "VNG",
+          "logo": "source-videos/логотипы/техгиганты/vng-corporation.png"
+        },
+        {
+          "name": "Tiki",
+          "logo": "source-videos/логотипы/техгиганты/tiki.png"
+        },
+        {
+          "name": "MoMo",
+          "logo": "source-videos/логотипы/техгиганты/momo.png"
+        },
+        {
+          "name": "Trusting Social",
+          "logo": "source-videos/логотипы/ии/trusting-social.png"
+        },
+        {
+          "name": "VinAI",
+          "logo": "source-videos/логотипы/ии/vinai.png"
+        },
+        {
+          "name": "FPT AI",
+          "logo": "source-videos/логотипы/ии/fpt-ai-software.png"
+        },
+        {
+          "name": "Viettel",
+          "logo": "source-videos/логотипы/общие/viettel.svg"
+        },
+        {
+          "name": "VinBrain",
+          "logo": "source-videos/логотипы/медицина/vinbrain.png"
+        }
+      ],
+      "box_text": "От кампуса Zalo (VNG, 79,6 млн MAU) в Хошимине до автомобильного AI —\n10 компаний, 6 дней, 6 ночей",
+      "box_right": "Хошимин + Ханой",
+      "footer": "Global Tech Tour · бизнес-делегации во Вьетнам · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Визиты в штаб-квартиры, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на вьетнамском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "10 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Хошимин",
+          "text": "VNG, Tiki, MoMo, Trusting Social"
+        },
+        {
+          "name": "Дни 3–4 · Ханой",
+          "text": "VinAI, FPT AI, Viettel, VinBrain"
+        },
+        {
+          "name": "День 5 · Ханой",
+          "text": "Shopee, ELSA"
+        }
+      ]
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Хошимин",
+          "days": "дни 1–2",
+          "companies": "VNG\nTiki\nMoMo\nTrusting Social"
+        },
+        {
+          "name": "Ханой",
+          "days": "дни 3–5",
+          "companies": "VinAI\nFPT AI\nViettel\nVinBrain\nShopee\nELSA",
+          "leg": {
+            "icon": "plane",
+            "text": "≈2 ч"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Хошимин · <b>Вылет:</b> Ханой"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "VNG ·\nTiki",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "MoMo ·\nTrusting Social",
+          "text": "Визиты: MoMo, Trusting Social.",
+          "label": "День 2"
+        },
+        {
+          "sub": "Ханой · 10:00–13:00",
+          "title": "VinAI ·\nFPT AI",
+          "text": "Внутренний перелёт Хошимин→Ханой (≈2 ч).",
+          "label": "День 3"
+        },
+        {
+          "sub": "Ханой · 10:00–13:00",
+          "title": "Viettel ·\nVinBrain",
+          "text": "Viettel — вьетнамский государственный телеком-.",
+          "label": "День 4"
+        },
+        {
+          "sub": "Ханой · 10:00–13:00",
+          "title": "Shopee ·\nELSA",
+          "text": "Визиты: Shopee, ELSA.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Хошимин",
+      "title": "VNG Corporation",
+      "logo": "source-videos/логотипы/техгиганты/vng-corporation.png",
+      "short": "VNG Corporation",
+      "subtitle": "Хошимин",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "79,6 млн",
+          "label": "MAU"
+        },
+        {
+          "icon": "chart",
+          "value": "1,718 трлн донгов",
+          "label": "выручка"
+        },
+        {
+          "icon": "trending",
+          "value": "38%",
+          "label": "г/г"
+        },
+        {
+          "icon": "trending",
+          "value": "№1",
+          "label": "вьетнамская интернет-компания"
+        }
+      ],
+      "why": "VNG Corporation, основана в 2004 г., крупнейшая вьетнамская интернет-компания, оператор мессенджера Zalo.",
+      "learn": "2026 г. функции ИИ-мессенджинга и звонков ежемесячно использовали ок.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Хошимин",
+      "title": "Tiki",
+      "logo": "source-videos/логотипы/техгиганты/tiki.png",
+      "short": "Tiki",
+      "subtitle": "Хошимин",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$258 млн",
+          "label": "привлечено инвестиций",
+          "sub": "раунд Series E, 2021 год"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$1 млрд",
+          "label": "оценка компании"
+        },
+        {
+          "icon": "trending",
+          "value": "0,9%",
+          "label": "доля рынка упала"
+        },
+        {
+          "icon": "flag",
+          "value": "2010",
+          "label": "год основания"
+        }
+      ],
+      "why": "Вьетнамская e-commerce платформа.",
+      "learn": "Чан Нгок Тхай Соном как книжный онлайн-магазин в Хошимине; выросла в универсальный маркетплейс с логистикой NOW и TikiNOW.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Хошимин",
+      "title": "MoMo",
+      "logo": "source-videos/логотипы/техгиганты/momo.png",
+      "short": "MoMo",
+      "subtitle": "Хошимин",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$200 млн",
+          "label": "привлечено инвестиций",
+          "sub": "раунд Series E, 2021 год"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$2 млрд",
+          "label": "оценка компании"
+        },
+        {
+          "icon": "users",
+          "value": "40+ млн",
+          "label": "пользователей"
+        },
+        {
+          "icon": "trending",
+          "value": "~56%",
+          "label": "рынка"
+        }
+      ],
+      "why": "Выросла из SIM-приложения для переводов в ведущий супер-кошелёк страны после релиза смартфон-версии в 2014-м.",
+      "learn": "MoMo обслуживает более 40 млн пользователей, около 56% рынка.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Хошимин",
+      "title": "Trusting Social",
+      "logo": "source-videos/логотипы/ии/trusting-social.png",
+      "short": "Trusting Social",
+      "subtitle": "Хошимин",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "~170",
+          "label": "финансовых организаций"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$214+ млн",
+          "label": "привлечено инвестиций"
+        },
+        {
+          "icon": "flag",
+          "value": "2013",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Хошимин",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        }
+      ],
+      "why": "Использует ИИ и большие данные для кредитного скоринга заёмщиков без традиционной кредитной истории на основе.",
+      "learn": "Обслуживает около 170 финансовых организаций во Вьетнаме, Индонезии, Индии и на Филиппинах.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Ханой",
+      "title": "VinAI",
+      "logo": "source-videos/логотипы/ии/vinai.png",
+      "short": "VinAI",
+      "subtitle": "Vingroup · Ханой",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "65%",
+          "label": "MovianAI компании Qualcomm",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$66,9 млн",
+          "label": "сумма сделки",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "flag",
+          "value": "2019",
+          "label": "год основания"
+        },
+        {
+          "icon": "handshake",
+          "value": "Vingroup",
+          "label": "в составе группы"
+        }
+      ],
+      "why": "Занимается автомобильным ИИ и генеративными моделями, в том числе открытой вьетнамоязычной LLM PhoGPT.",
+      "learn": "В 2024 году генеративное направление выделено в MovianAI.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Ханой",
+      "title": "FPT AI / FPT Software",
+      "logo": "source-videos/логотипы/ии/fpt-ai-software.png",
+      "short": "FPT AI / FPT Software",
+      "subtitle": "Ханой",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$200 млн",
+          "label": "инвестиции",
+          "sub": "2024 год"
+        },
+        {
+          "icon": "trending",
+          "value": "№1",
+          "label": "ИТ-компания Вьетнама"
+        },
+        {
+          "icon": "smartphone",
+          "value": "FPT AI Factory",
+          "label": "платформа"
+        },
+        {
+          "icon": "pin",
+          "value": "Ханой",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        }
+      ],
+      "why": "Крупнейшая ИТ-компания Вьетнама, часть корпорации FPT.",
+      "learn": "Первая ИИ-фабрика во Вьетнаме заработала в январе 2025 года, аналогичный проект запущен и в Японии.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Ханой",
+      "title": "Viettel",
+      "logo": "source-videos/логотипы/общие/viettel.svg",
+      "short": "Viettel",
+      "subtitle": "Ханой",
+      "facts": [
+        {
+          "icon": "globe",
+          "value": "10",
+          "label": "стран мира"
+        },
+        {
+          "icon": "chart",
+          "value": "220,4 трлн донгов",
+          "label": "выручка",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "trending",
+          "value": "13,8%",
+          "label": "больше"
+        },
+        {
+          "icon": "pin",
+          "value": "Ханой",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        }
+      ],
+      "why": "Вьетнамский государственный телеком- и оборонно-промышленный конгломерат.",
+      "learn": "Помимо телекома, Viettel развивает цифровые сервисы, кибербезопасность и оборонную промышленность.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Ханой",
+      "title": "VinBrain",
+      "logo": "source-videos/логотипы/медицина/vinbrain.png",
+      "short": "VinBrain",
+      "subtitle": "Vingroup · Ханой",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "182",
+          "label": "больницы"
+        },
+        {
+          "icon": "smartphone",
+          "value": "DrAid",
+          "label": "диагностическая платформа"
+        },
+        {
+          "icon": "handshake",
+          "value": "Vingroup",
+          "label": "в составе группы"
+        },
+        {
+          "icon": "pin",
+          "value": "Ханой",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        }
+      ],
+      "why": "Вьетнамская компания медицинского искусственного интеллекта.",
+      "learn": "Разработала диагностическую платформу DrAid на базе ИИ для анализа рентгеновских снимков, КТ и МРТ.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Ханой",
+      "title": "Shopee/Lazada Vietnam",
+      "logo": "source-videos/логотипы/техгиганты/lazada.svg",
+      "short": "Shopee/Lazada Vietnam",
+      "subtitle": "Alibaba · Ханой",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "~3%",
+          "label": "продаж"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$16,5 млрд",
+          "label": "оценка компании",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "handshake",
+          "value": "Alibaba",
+          "label": "в составе группы"
+        },
+        {
+          "icon": "pin",
+          "value": "Ханой",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        }
+      ],
+      "why": "Shopee и Lazada — две крупнейшие e-commerce платформы Вьетнама.",
+      "learn": "Совокупная выручка топ-4 платформ Вьетнама в 2025 г. оценивается в $16,5 млрд.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Ханой",
+      "title": "ELSA",
+      "logo": "source-videos/логотипы/ии/elsa.png",
+      "short": "ELSA",
+      "subtitle": "Ханой",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$60+ млн",
+          "label": "привлечено инвестиций"
+        },
+        {
+          "icon": "star",
+          "value": "ELSA AI Tutor",
+          "label": "запуск",
+          "sub": "2023 год"
+        },
+        {
+          "icon": "flag",
+          "value": "2015",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Ханой",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        }
+      ],
+      "why": "Приложение ELSA использует ИИ для оценки и коррекции английского произношения у изучающих язык.",
+      "learn": "Привлекла свыше 60 млн долларов инвестиций, включая раунды от Google, Monk's Hill Ventures и SIG.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Включены",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На вьетнамском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "Интернет-гиганты Вьетнама",
+          "text": "ИИ, мессенджеры и e-commerce\nХошимин + Ханой",
+          "icon": "smartphone"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов в Хошимине и Ханое"
+        },
+        {
+          "icon": "smartphone",
+          "value": "10 компаний",
+          "label": "Интернет-гиганты Вьетнама",
+          "sub": "иИ, мессенджеры, e-commerce"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Внутренние перелёты между городами программы",
+        "Сопровождение на вьетнамском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Хошимин (перелёт Москва → Хошимин).<br><b>Вылет:</b> Ханой — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,543 @@
+{
+  "title": "Бабл-ти и кофейная индустрия Индонезии — Global Tech Tour",
+  "output": "2026-10-08-индонезия-чай-кофе",
+  "source": "https://globaltechtour.ru/expeditions/indonesia-bubble-tea-coffee-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "indonesia",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Бабл-ти и кофейная индустрия Индонезии",
+      "topright": "Kopi Kenangan · Fore Coffee\nChatime",
+      "logos": [
+        {
+          "name": "Kopi Kenangan",
+          "logo": "source-videos/логотипы/чай-кофе/kopi-kenangan.png"
+        },
+        {
+          "name": "Fore Coffee",
+          "logo": "source-videos/логотипы/чай-кофе/fore-coffee.png"
+        },
+        {
+          "name": "Kopi Janji Jiwa",
+          "logo": "source-videos/логотипы/чай-кофе/kopi-janji-jiwa.png"
+        },
+        {
+          "name": "Tomoro Coffee",
+          "logo": "source-videos/логотипы/чай-кофе/tomoro-coffee.png"
+        },
+        {
+          "name": "Chatime",
+          "logo": "source-videos/логотипы/чай-кофе/chatime.png"
+        },
+        {
+          "name": "Esteh",
+          "logo": "source-videos/логотипы/чай-кофе/esteh.png"
+        },
+        {
+          "name": "Haus!",
+          "logo": "source-videos/логотипы/чай-кофе/haus-drinks.png"
+        },
+        {
+          "name": "Point Coffee",
+          "logo": "source-videos/логотипы/ритейл/indomaret.png"
+        }
+      ],
+      "box_text": "От первого фудтех-единорога ЮВА Kopi —\n9 компаний, 6 дней, 6 ночей",
+      "box_right": "Джакарта —\nвся программа в одном городе",
+      "footer": "Global Tech Tour · бизнес-делегации в Индонезию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Визиты в штаб-квартиры, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы/перелёты между городами программы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на индонезийском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "9 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2",
+          "text": "Kopi Kenangan, Fore Coffee, Kopi Janji Jiwa, Tomoro Coffee"
+        },
+        {
+          "name": "Дни 3–4",
+          "text": "Chatime, Esteh, Haus!, Point Coffee"
+        },
+        {
+          "name": "День 5",
+          "text": "Kenangan Coffee — день завершается итоговой встречей."
+        }
+      ],
+      "quote": "Кофейная и чайная культура\nДжакарты в одном маршруте."
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Kopi Kenangan ·\nFore Coffee",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Kopi Janji Jiwa ·\nTomoro Coffee",
+          "text": "Kopi Janji Jiwa — первая точка в ТЦ ITC Kuningan продавала около 10.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Chatime ·\nEsteh",
+          "text": "Chatime — тайваньский бренд бабл-ти.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Haus! ·\nPoint Coffee",
+          "text": "Визиты: Haus!, Point Coffee.",
+          "label": "День 4"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Kenangan Coffee",
+          "text": "День завершается итоговой встречей.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Джакарта",
+      "title": "Kopi Kenangan",
+      "logo": "source-videos/логотипы/чай-кофе/kopi-kenangan.png",
+      "short": "Kopi Kenangan",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$96 млн",
+          "label": "привлечено инвестиций",
+          "sub": "раунд Series C"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$1+ млрд",
+          "label": "оценка компании"
+        },
+        {
+          "icon": "store",
+          "value": "850+",
+          "label": "точек"
+        },
+        {
+          "icon": "flag",
+          "value": "2017",
+          "label": "год основания"
+        }
+      ],
+      "why": "В декабре 2021-го стала первым фудтех-единорогом Юго-Восточной Азии.",
+      "learn": "Сеть — свыше 850 точек в 64 городах, собственное приложение, формат grab-and-go.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Джакарта",
+      "title": "Fore Coffee",
+      "logo": "source-videos/логотипы/чай-кофе/fore-coffee.png",
+      "short": "Fore Coffee",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "300+",
+          "label": "точек"
+        },
+        {
+          "icon": "briefcase",
+          "value": "353+ млрд рупий",
+          "label": "привлечено инвестиций"
+        },
+        {
+          "icon": "flag",
+          "value": "2018",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        }
+      ],
+      "why": "Из прилавка на втором этаже магазина Otten Coffee сеть выросла до более 300 точек.",
+      "learn": "В марте 2025-го компания провела IPO на бирже Индонезии, привлекя свыше 353 млрд рупий.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Джакарта",
+      "title": "Kopi Janji Jiwa",
+      "logo": "source-videos/логотипы/чай-кофе/kopi-janji-jiwa.png",
+      "short": "Kopi Janji Jiwa",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "~10",
+          "label": "стаканов"
+        },
+        {
+          "icon": "globe",
+          "value": "100+",
+          "label": "городов"
+        },
+        {
+          "icon": "flag",
+          "value": "2018",
+          "label": "год основания",
+          "sub": "в Джакарте"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        }
+      ],
+      "why": "Первая точка в ТЦ ITC Kuningan продавала около 10 стаканов в день.",
+      "learn": "Сеть быстро выросла до крупнейшей по числу точек кофейной сети Индонезии — около 800–900 точек в 2020–2022 гг., свыше 100 городов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Джакарта",
+      "title": "Tomoro Coffee",
+      "logo": "source-videos/логотипы/чай-кофе/tomoro-coffee.png",
+      "short": "Tomoro Coffee",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "600+",
+          "label": "точек",
+          "sub": "2024 год"
+        },
+        {
+          "icon": "flag",
+          "value": "2022",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Tomoro Coffee основана в 2022 году Син Вэй 'Стар' Юанем и Fish Sun.",
+      "learn": "Рост оказался стремительным: свыше 600 точек в Индонезии к октябрю 2024-го, экспансия в Китай, Сингапур и Филиппины.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Джакарта",
+      "title": "Chatime Indonesia",
+      "logo": "source-videos/логотипы/чай-кофе/chatime.png",
+      "short": "Chatime Indonesia",
+      "subtitle": "F&B Indonesia/Kawan Lama · Джакарта",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "460+",
+          "label": "точек"
+        },
+        {
+          "icon": "globe",
+          "value": "60+",
+          "label": "городов"
+        },
+        {
+          "icon": "trending",
+          "value": "39,3%",
+          "label": "бренд бабл-ти в стране"
+        },
+        {
+          "icon": "flag",
+          "value": "2005",
+          "label": "год основания"
+        }
+      ],
+      "why": "Тайваньский бренд бабл-ти.",
+      "learn": "В Индонезию пришёл в 2011-м через PT Foods Beverages Indonesia, структуру ритейл-конгломерата Kawan Lama Group.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Джакарта",
+      "title": "Esteh Indonesia",
+      "logo": "source-videos/логотипы/чай-кофе/esteh.png",
+      "short": "Esteh Indonesia",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "2",
+          "label": "м"
+        },
+        {
+          "icon": "flag",
+          "value": "2018",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "За несколько лет из маленькой палатки сеть выросла в национальную розничную сеть с тысячами точек по Индонезии.",
+      "learn": "Бренд делает акцент на местном 'чае Нусантара' с разными вкусами.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Джакарта",
+      "title": "Haus!",
+      "logo": "source-videos/логотипы/чай-кофе/haus-drinks.png",
+      "short": "Haus!",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$2 млн",
+          "label": "привлечено инвестиций",
+          "sub": "раунд Series A, 2020 год"
+        },
+        {
+          "icon": "store",
+          "value": "220+",
+          "label": "точек"
+        },
+        {
+          "icon": "trending",
+          "value": "120%+",
+          "label": "рост числа точек"
+        },
+        {
+          "icon": "flag",
+          "value": "2018",
+          "label": "год основания",
+          "sub": "в Индонезии"
+        }
+      ],
+      "why": "Haus! основана в 2018 году в Индонезии как сеть напитков make-to-order для массового сегмента миллениалов и поколения Z.",
+      "learn": "В 2020-м привлекла 2 млн долл. в раунде Series A от BRI Ventures, позже — Series B1 от Atlas Global Ventures.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Джакарта",
+      "title": "Point Coffee",
+      "logo": "source-videos/логотипы/ритейл/indomaret.png",
+      "short": "Point Coffee (Indomaret)",
+      "subtitle": "Indomaret · Джакарта",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2016",
+          "label": "год запуска",
+          "sub": "30 мая 2016 года"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Формат 'на заказ' охватил и удалённые регионы; к 2022-му сеть выросла до 1000–1200 точек.",
+      "learn": "Ребрендинг в Point Coffee — 2019 год.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Джакарта",
+      "title": "Kenangan Coffee / Chigo",
+      "logo": "source-videos/логотипы/чай-кофе/kenangan-coffee-chigo.png",
+      "short": "Kenangan Coffee / Chigo",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "В 2021 году Kopi Kenangan запустила смежный бренд Chigo — сеть жареной курицы в Джаботабеке и Медане с локальным меню.",
+      "learn": "Kenangan Coffee — международное развитие бренда Kopi Kenangan, выходящее на зарубежные рынки.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Трансферы/перелёты между городами программы",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На индонезийском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "9 компаний",
+          "text": "Kopi Kenangan · Fore Coffee · Chatime\nв одном городе",
+          "icon": "cart"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов в Джакарте"
+        },
+        {
+          "icon": "cart",
+          "value": "9 компаний",
+          "label": "в программе",
+          "sub": "Kopi Kenangan, Fore Coffee, Chatime"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы/перелёты между городами программы",
+        "Сопровождение на индонезийском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Джакарта (перелёт Москва → Джакарта).<br><b>Вылет:</b> Джакарта — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

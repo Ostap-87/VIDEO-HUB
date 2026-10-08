@@ -1,0 +1,512 @@
+{
+  "title": "Лонгевити Индонезии — корпоративная регенеративная медицина — Global Tech Tour",
+  "output": "2026-10-08-индонезия-лонгевити",
+  "source": "https://globaltechtour.ru/expeditions/indonesia-longevity-biotech-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "indonesia",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Лонгевити Индонезии — корпоративная регенеративная медицина",
+      "topright": "Kalbe Farma · Prodia\nBio Farma",
+      "logos": [
+        {
+          "name": "Kalbe Farma",
+          "logo": "source-videos/логотипы/медицина/kalbe-farma-kbic.png"
+        },
+        {
+          "name": "Prodia StemCell",
+          "logo": "source-videos/логотипы/медицина/prodia-stemcell-prostem.png"
+        },
+        {
+          "name": "KalGen DNA",
+          "logo": "source-videos/логотипы/медицина/kalgen-dna.png"
+        },
+        {
+          "name": "KG Bio",
+          "logo": "source-videos/логотипы/медицина/kg-bio-kalbe.png"
+        },
+        {
+          "name": "Prodia",
+          "logo": "source-videos/логотипы/медицина/prodia.png"
+        },
+        {
+          "name": "Biothera Stem Cell Clinic",
+          "logo": "source-videos/логотипы/медицина/biothera-stem-cell-clinic.png"
+        },
+        {
+          "name": "Bio Farma",
+          "logo": "source-videos/логотипы/медицина/bio-farma-kimia-farma.png"
+        },
+        {
+          "name": "Regeneratia Bali",
+          "logo": "source-videos/логотипы/медицина/regeneratia-bali.png"
+        }
+      ],
+      "box_text": "От инновационного кампуса KBIC Kalbe Farma —\n8 компаний, 6 дней, 6 ночей",
+      "box_right": "Джакарта + Бали",
+      "footer": "Global Tech Tour · бизнес-делегации в Индонезию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Визиты в штаб-квартиры, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы/перелёты между городами программы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на индонезийском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "8 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Джакарта",
+          "text": "Kalbe Farma, Prodia StemCell, KalGen DNA"
+        },
+        {
+          "name": "Дни 3–4 · Джакарта",
+          "text": "KG Bio, Prodia, Biothera Stem Cell Clinic, Bio Farma"
+        },
+        {
+          "name": "День 5 · Бали",
+          "text": "Regeneratia Bali"
+        }
+      ],
+      "quote": "Сила сегмента в корпоративном\nпроизводстве."
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Джакарта",
+          "days": "дни 1–4",
+          "companies": "Kalbe Farma\nProdia StemCell\nKalGen DNA\nKG Bio\n+ ещё 3"
+        },
+        {
+          "name": "Бали",
+          "days": "день 5",
+          "companies": "Regeneratia Bali",
+          "leg": {
+            "icon": "plane",
+            "text": ""
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Джакарта · <b>Вылет:</b> Бали/Джакарта"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Kalbe Farma",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Prodia StemCell ·\nKalGen DNA",
+          "text": "Prodia StemCell — пионер клеточной терапии в стране; KalGen DNA — совместное предприятие Bifarma Adiluhung.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "KG Bio ·\nProdia",
+          "text": "Визиты: KG Bio, Prodia.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Biothera Stem Cell Clinic ·\nBio Farma",
+          "text": "Bio Farma — государственный фармацевтический холдинг Индонезии.",
+          "label": "День 4"
+        },
+        {
+          "sub": "Бали · 10:00–13:00",
+          "title": "Regeneratia Bali",
+          "text": "Опциональное расширение на Бали (перелёт ≈2 ч). Потребительский клинический слой в Индонезии пока тонкий.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Джакарта",
+      "title": "Kalbe Farma — KBIC Campus",
+      "logo": "source-videos/логотипы/медицина/kalbe-farma-kbic.png",
+      "short": "Kalbe Farma — KBIC Campus",
+      "subtitle": "Bifarma Adiluhung · Джакарта",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "до 80 млрд",
+          "label": "аллогенных клеток"
+        },
+        {
+          "icon": "chart",
+          "value": "15 000",
+          "label": "литров секретома"
+        },
+        {
+          "icon": "star",
+          "value": "Первое в Индонезии",
+          "label": "сертифицированное"
+        },
+        {
+          "icon": "handshake",
+          "value": "Bifarma Adiluhung",
+          "label": "в составе группы"
+        }
+      ],
+      "why": "Мощность Regenic — до 80 млрд аллогенных клеток и 15 000 литров секретома в год.",
+      "learn": "Инновационный кампус Kalbe Business Innovation Centre в Джакарте, объединяющий Regenic.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Джакарта",
+      "title": "Prodia StemCell Indonesia",
+      "logo": "source-videos/логотипы/медицина/prodia-stemcell-prostem.png",
+      "short": "Prodia StemCell Indonesia",
+      "subtitle": "ProSTEM · Джакарта",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "100 млрд рупий",
+          "label": "инвестиции"
+        },
+        {
+          "icon": "flag",
+          "value": "2010",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Пионер клеточной терапии в стране, работающая с ISO 9001:2015 и сертификацией CPOB от BPOM.",
+      "learn": "Лаборатория ProSTEM в Джакарте — одна из крупнейших в Азии по обработке и хранению стволовых клеток.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Джакарта",
+      "title": "KalGen DNA",
+      "logo": "source-videos/логотипы/медицина/kalgen-dna.png",
+      "short": "KalGen DNA (Kalbe)",
+      "subtitle": "Kalbe · Bifarma Adiluhung · Джакарта",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "GEN-ME",
+          "label": "тестирование"
+        },
+        {
+          "icon": "handshake",
+          "value": "Bifarma Adiluhung",
+          "label": "в составе группы"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Совместное предприятие Bifarma Adiluhung и малайзийской DNA Laboratories Sdn.",
+      "learn": "Компания производит IVD-тесты для молекулярной диагностики онкологических и инфекционных заболеваний.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Джакарта",
+      "title": "KG Bio",
+      "logo": "source-videos/логотипы/медицина/kg-bio-kalbe.png",
+      "short": "KG Bio (Kalbe)",
+      "subtitle": "Kalbe · Kalbe Farma · Джакарта",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Первое",
+          "label": "рыночное одобрение для длительно"
+        },
+        {
+          "icon": "flag",
+          "value": "2016",
+          "label": "год создания"
+        },
+        {
+          "icon": "handshake",
+          "value": "Kalbe Farma",
+          "label": "в составе группы"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        }
+      ],
+      "why": "KG Bio — клинико-стадийная биотехнологическая компания.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Джакарта",
+      "title": "Prodia",
+      "logo": "source-videos/логотипы/медицина/prodia.png",
+      "short": "Prodia",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "№1",
+          "label": "сеть клинических лабораторий Индонезии"
+        },
+        {
+          "icon": "flag",
+          "value": "1973",
+          "label": "год основания",
+          "sub": "в Соло"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Prodia — крупнейшая сеть клинических лабораторий Индонезии.",
+      "learn": "С 2012 года остаётся единственной лабораторией и клиникой в стране, аккредитованной Колледжем американских патологов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Джакарта",
+      "title": "Biothera Stem Cell Clinic",
+      "logo": "source-videos/логотипы/медицина/biothera-stem-cell-clinic.png",
+      "short": "Biothera Stem Cell Clinic (PIK2)",
+      "subtitle": "PIK2 · Джакарта",
+      "facts": [
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Медицинское руководство осуществляют д-р Ади Виджаянто, специалист по стволовым клеткам с PhD.",
+      "learn": "Клиника клеточной терапии Biothera Stem Cell в комплексе PIK2.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Джакарта",
+      "title": "Bio Farma / Kimia Farma",
+      "logo": "source-videos/логотипы/медицина/bio-farma-kimia-farma.png",
+      "short": "Bio Farma / Kimia Farma",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Государственный фармацевтический холдинг Индонезии, объединяющий Kimia Farma и Indofarma.",
+      "learn": "В 2026 году Kimia Farma представила Stemxera — продукт на основе стволовых клеток и секретома.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Бали",
+      "title": "Regeneratia Bali",
+      "logo": "source-videos/логотипы/медицина/regeneratia-bali.png",
+      "short": "Regeneratia Bali",
+      "subtitle": "Бали",
+      "facts": [
+        {
+          "icon": "pin",
+          "value": "Бали",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Там с использованием ИИ-технологий и закрытой системы культивации в течение 2–3 дней готовится.",
+      "learn": "Regeneratia Bali — anti-aging и регенеративный центр на Бали.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Трансферы/перелёты между городами программы",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На индонезийском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "8 компаний",
+          "text": "Kalbe Farma · Prodia · Bio Farma\nДжакарта + Бали",
+          "icon": "target"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов в Джакарте и Бали"
+        },
+        {
+          "icon": "target",
+          "value": "8 компаний",
+          "label": "в программе",
+          "sub": "Kalbe Farma, Prodia, Bio Farma"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы/перелёты между городами программы",
+        "Сопровождение на индонезийском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Джакарта (перелёт Москва → Джакарта).<br><b>Вылет:</b> Бали/Джакарта — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

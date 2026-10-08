@@ -1,0 +1,544 @@
+{
+  "title": "Ритейл Вьетнама: от MWG до WinCommerce — Global Tech Tour",
+  "output": "2026-10-08-вьетнам-ритейл",
+  "source": "https://globaltechtour.ru/expeditions/vietnam-retail-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "vietnam",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Ритейл Вьетнама",
+      "topright": "MWG · Saigon Co.op\nAEON · WinCommerce",
+      "logos": [
+        {
+          "name": "Thế Giới Di Động",
+          "logo": "source-videos/логотипы/ритейл/mwg.png"
+        },
+        {
+          "name": "FPT Retail",
+          "logo": "source-videos/логотипы/ритейл/fpt-long-chau.png"
+        },
+        {
+          "name": "Saigon Co.op",
+          "logo": "source-videos/логотипы/ритейл/saigon-coop.png"
+        },
+        {
+          "name": "Central Retail",
+          "logo": "source-videos/логотипы/ритейл/central-retail.png"
+        },
+        {
+          "name": "AEON",
+          "logo": "source-videos/логотипы/ритейл/aeon.png"
+        },
+        {
+          "name": "WinCommerce",
+          "logo": "source-videos/логотипы/ритейл/wincommerce.png"
+        },
+        {
+          "name": "Circle K",
+          "logo": "source-videos/логотипы/ритейл/circle-k.svg"
+        },
+        {
+          "name": "Con Cưng",
+          "logo": "source-videos/логотипы/ритейл/con-cung.png"
+        }
+      ],
+      "box_text": "От омниканальной сети MWG (Bách Hóa Xanh, —\n8 компаний, 6 дней, 6 ночей",
+      "box_right": "Хошимин + Ханой —\nвьетнамский ритейл через два города",
+      "footer": "Global Tech Tour · бизнес-делегации во Вьетнам · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Визиты в штаб-квартиры, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на вьетнамском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "8 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Хошимин",
+          "text": "Thế Giới Di Động, FPT Retail, Saigon Co.op"
+        },
+        {
+          "name": "Дни 3–4 · Хошимин + Ханой",
+          "text": "Central Retail, AEON, WinCommerce"
+        },
+        {
+          "name": "День 5 · Ханой",
+          "text": "Circle K, Con Cưng"
+        }
+      ],
+      "quote": "Вьетнамский ритейл\nчерез два города."
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Хошимин",
+          "days": "дни 1–3",
+          "companies": "Thế Giới Di Động\nFPT Retail\nSaigon Co.op\nCentral Retail\nAEON"
+        },
+        {
+          "name": "Ханой",
+          "days": "дни 4–5",
+          "companies": "WinCommerce\nCircle K\nCon Cưng",
+          "leg": {
+            "icon": "plane",
+            "text": "≈2 ч"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Хошимин · <b>Вылет:</b> Ханой"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Thế Giới Di Động",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "FPT Retail ·\nSaigon Co.op",
+          "text": "Saigon Co.op — крупнейший кооперативный ритейлер Вьетнама.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Central Retail ·\nAEON",
+          "text": "Визиты: Central Retail, AEON.",
+          "label": "День 3"
+        },
+        {
+          "sub": "Ханой · 10:00–13:00",
+          "title": "WinCommerce",
+          "text": "Внутренний перелёт Хошимин→Ханой (≈2 ч). Второй визит дня — демо смарт-магазина WinMart+ (AI/лояльность).",
+          "label": "День 4"
+        },
+        {
+          "sub": "Ханой · 10:00–13:00",
+          "title": "Circle K ·\nCon Cưng",
+          "text": "Circle K — крупнейшая иностранная сеть удобных магазинов; Con Cưng — вьетнамская сеть товаров для мам и детей.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Хошимин",
+      "title": "Thế Giới Di Động / MWG",
+      "logo": "source-videos/логотипы/ритейл/mwg.png",
+      "short": "Thế Giới Di Động / MWG",
+      "subtitle": "Хошимин",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "5200+",
+          "label": "магазинов",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "globe",
+          "value": "63",
+          "label": "провинции страны",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "briefcase",
+          "value": "150 трлн донгов",
+          "label": "выручки",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "flag",
+          "value": "2004",
+          "label": "год основания"
+        }
+      ],
+      "why": "Объединяет сети Thế Giới Di Động, Điện Máy Xanh, Bách Hóa Xanh, аптеки An Khang, TopZone и AVAKids.",
+      "learn": "В мае 2025 года MWG запустила собственный маркетплейс MWG Shop, вернувшись в e-commerce.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Хошимин",
+      "title": "FPT Retail / Long Châu",
+      "logo": "source-videos/логотипы/ритейл/fpt-long-chau.png",
+      "short": "FPT Retail / Long Châu",
+      "subtitle": "FPT Corporation · Хошимин",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "до 2417",
+          "label": "аптек",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "building",
+          "value": "223",
+          "label": "центров вакцинации",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "chart",
+          "value": "51,08 трлн донгов",
+          "label": "выручка",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "trending",
+          "value": "27%",
+          "label": "г/г"
+        }
+      ],
+      "why": "Управляет аптечной сетью Long Châu — к концу 2025 года сеть выросла до 2417 аптек и 223 центров вакцинации в составе.",
+      "learn": "Компания использует ИИ и big data для прогнозирования спроса по регионам и оптимизации запасов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Хошимин",
+      "title": "Saigon Co.op",
+      "logo": "source-videos/логотипы/ритейл/saigon-coop.png",
+      "short": "Saigon Co.op",
+      "subtitle": "Хошимин",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "~1 млн",
+          "label": "покупателей ежедневно"
+        },
+        {
+          "icon": "store",
+          "value": "~800",
+          "label": "точек"
+        },
+        {
+          "icon": "briefcase",
+          "value": "3,5 трлн донгов",
+          "label": "онлайн-продаж"
+        },
+        {
+          "icon": "trending",
+          "value": "№1",
+          "label": "кооперативный ритейлер Вьетнама"
+        }
+      ],
+      "why": "Крупнейший кооперативный ритейлер Вьетнама.",
+      "learn": "В 2025 году компания сделала ставку на e-commerce и логистику.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Хошимин",
+      "title": "Central Retail Vietnam",
+      "logo": "source-videos/логотипы/ритейл/central-retail.png",
+      "short": "Central Retail Vietnam (GO!/Tops)",
+      "subtitle": "GO!/Tops · Central Group · Хошимин",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$258,7 млн",
+          "label": "инвестиции",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "globe",
+          "value": "57",
+          "label": "провинций"
+        },
+        {
+          "icon": "chart",
+          "value": "10",
+          "label": "Retail Reputation Award"
+        },
+        {
+          "icon": "star",
+          "value": "The 1 Vietnam",
+          "label": "запуск",
+          "sub": "2025 год"
+        }
+      ],
+      "why": "Сеть пятый год подряд занимает 1-е место в рейтинге Vietnam Top 10 Retail Reputation Award.",
+      "learn": "В ноябре 2025 года компания запустила программу лояльности «The 1 Vietnam» во всех сетях как единую омниканальную экосистему.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Хошимин",
+      "title": "AEON Vietnam",
+      "logo": "source-videos/логотипы/ритейл/aeon.png",
+      "short": "AEON Vietnam",
+      "subtitle": "Хошимин",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "~8",
+          "label": "торговых центров",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "store",
+          "value": "15",
+          "label": "супермаркетов формата GMS"
+        },
+        {
+          "icon": "store",
+          "value": "180",
+          "label": "магазинов"
+        },
+        {
+          "icon": "trending",
+          "value": "~30%",
+          "label": "среднегодовой рост выручки",
+          "sub": "к 2030 году"
+        }
+      ],
+      "why": "Планировала управлять около 8 торговыми центрами, 15 супермаркетами формата GMS, 45 средними и малыми супермаркетами.",
+      "learn": "Компания рассчитывает на среднегодовой рост выручки около 30% и намерена утроить масштаб бизнеса во Вьетнаме к 2030 году за счёт.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Ханой",
+      "title": "WinCommerce",
+      "logo": "source-videos/логотипы/ритейл/wincommerce.png",
+      "short": "WinCommerce",
+      "subtitle": "Ханой",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "764",
+          "label": "новые точки",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "store",
+          "value": "4592",
+          "label": "точек"
+        },
+        {
+          "icon": "trending",
+          "value": "~80%",
+          "label": "открытий"
+        },
+        {
+          "icon": "chart",
+          "value": "~39 трлн донгов",
+          "label": "выручка",
+          "sub": "2025 год"
+        }
+      ],
+      "why": "Управляет супермаркетами WinMart и минимаркетами WinMart+.",
+      "learn": "Внутри магазинов работает интегрированная экосистема с киосками чая и кофе Phúc Long, аптеками Phano Mart.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Ханой",
+      "title": "Circle K / GS25 Vietnam",
+      "logo": "source-videos/логотипы/ритейл/circle-k.svg",
+      "short": "Circle K / GS25 Vietnam",
+      "subtitle": "Ханой",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "~500",
+          "label": "точек"
+        },
+        {
+          "icon": "store",
+          "value": "6",
+          "label": "магазинов",
+          "sub": "март 2025"
+        },
+        {
+          "icon": "trending",
+          "value": "№1",
+          "label": "иностранная сеть удобных магазинов"
+        },
+        {
+          "icon": "pin",
+          "value": "Ханой",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        }
+      ],
+      "why": "Крупнейшая иностранная сеть удобных магазинов во Вьетнаме, насчитывающая около 500 точек по стране.",
+      "learn": "По данным за 2023 год, доля рынка по выручке составляла: Circle K — 38%, GS25 — 14%.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Ханой",
+      "title": "Con Cưng",
+      "logo": "source-videos/логотипы/ритейл/con-cung.png",
+      "short": "Con Cưng",
+      "subtitle": "Ханой",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "600+",
+          "label": "собственных магазинов"
+        },
+        {
+          "icon": "globe",
+          "value": "45",
+          "label": "провинций страны"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$90 млн",
+          "label": "инвестиции",
+          "sub": "2022 год"
+        },
+        {
+          "icon": "trending",
+          "value": "30%+",
+          "label": "которых не менее"
+        }
+      ],
+      "why": "Вьетнамская сеть товаров для мам и детей, насчитывающая более 600 собственных магазинов в 45 провинциях страны.",
+      "learn": "За предыдущие четыре года компания росла в среднем на 70% в год и ставила цель достичь 2 млрд долларов продаж к 2025 году.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Включены",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На вьетнамском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "Ритейл Вьетнама",
+          "text": "\nХошимин + Ханой",
+          "icon": "store"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов в Хошимине и Ханое"
+        },
+        {
+          "icon": "store",
+          "value": "8 компаний",
+          "label": "Ритейл Вьетнама",
+          "sub": "от MWG до WinCommerce"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Внутренние перелёты между городами программы",
+        "Сопровождение на вьетнамском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Хошимин (перелёт Москва → Хошимин).<br><b>Вылет:</b> Ханой — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

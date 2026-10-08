@@ -1,0 +1,563 @@
+{
+  "title": "Ритейл Индонезии: от Indomaret до Blibli — Global Tech Tour",
+  "output": "2026-10-08-индонезия-ритейл",
+  "source": "https://globaltechtour.ru/expeditions/indonesia-retail-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "indonesia",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Ритейл Индонезии",
+      "topright": "Indomaret · MAP\nAEON · Blibli",
+      "logos": [
+        {
+          "name": "Indomaret",
+          "logo": "source-videos/логотипы/ритейл/indomaret.png"
+        },
+        {
+          "name": "Alfamart",
+          "logo": "source-videos/логотипы/ритейл/alfamart.png"
+        },
+        {
+          "name": "MAP",
+          "logo": "source-videos/логотипы/ритейл/map.png"
+        },
+        {
+          "name": "Erajaya",
+          "logo": "source-videos/логотипы/ритейл/erajaya.png"
+        },
+        {
+          "name": "Transmart",
+          "logo": "source-videos/логотипы/ритейл/transmart.png"
+        },
+        {
+          "name": "Matahari Department Store",
+          "logo": "source-videos/логотипы/ритейл/matahari.png"
+        },
+        {
+          "name": "AEON",
+          "logo": "source-videos/логотипы/ритейл/aeon.png"
+        },
+        {
+          "name": "Ace Hardware",
+          "logo": "source-videos/логотипы/ритейл/ace-hardware.png"
+        }
+      ],
+      "box_text": "10 компаний, 6 дней, 6 ночей",
+      "box_right": "Джакарта —\nиндонезийский ритейл целиком в Джакарте",
+      "footer": "Global Tech Tour · бизнес-делегации в Индонезию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Визиты в штаб-квартиры, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы/перелёты между городами программы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на индонезийском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "10 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2",
+          "text": "Indomaret, Alfamart, MAP, Erajaya"
+        },
+        {
+          "name": "Дни 3–4",
+          "text": "Transmart, Matahari Department Store, AEON, Ace Hardware"
+        },
+        {
+          "name": "День 5",
+          "text": "Ranch Market, Blibli"
+        }
+      ],
+      "quote": "Индонезийский ритейл\nцеликом в Джакарте."
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Indomaret ·\nAlfamart",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "MAP ·\nErajaya",
+          "text": "MAP — крупнейший lifestyle-ритейлер Индонезии; Erajaya — индонезийский ритейл-конгломерат электроники.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Transmart ·\nMatahari Department",
+          "text": "Визиты: Transmart, Matahari Department Store.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "AEON ·\nAce Hardware",
+          "text": "AEON — местное подразделение японской группы AEON.",
+          "label": "День 4"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Ranch Market ·\nBlibli",
+          "text": "Blibli — индонезийская e-commerce платформа.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Джакарта",
+      "title": "Indomaret",
+      "logo": "source-videos/логотипы/ритейл/indomaret.png",
+      "short": "Indomaret",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "200",
+          "label": "магазинов",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "building",
+          "value": "37",
+          "label": "распределительных центров"
+        },
+        {
+          "icon": "chart",
+          "value": "27",
+          "label": "депо"
+        },
+        {
+          "icon": "trending",
+          "value": "№1",
+          "label": "сеть минимаркетов Индонезии"
+        }
+      ],
+      "why": "Крупнейшая сеть минимаркетов Индонезии со штаб-квартирой в башне Menara Indomaret в Северной Джакарте.",
+      "learn": "Основана в 1988 году; ключевой кейс модернизации розницы шаговой доступности в регионе.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Джакарта",
+      "title": "Alfamart",
+      "logo": "source-videos/логотипы/ритейл/alfamart.png",
+      "short": "Alfamart",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "17 000+",
+          "label": "точек"
+        },
+        {
+          "icon": "smartphone",
+          "value": "Alfagift",
+          "label": "приложение"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Одна из двух доминирующих сетей минимаркетов Индонезии, более 17 000 точек.",
+      "learn": "В основе цифровой стратегии — приложение Alfagift, число участников которого растёт более чем на 30% в год.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Джакарта",
+      "title": "MAP",
+      "logo": "source-videos/логотипы/ритейл/map.png",
+      "short": "MAP (Mitra Adiperkasa)",
+      "subtitle": "Mitra Adiperkasa · Джакарта",
+      "facts": [
+        {
+          "icon": "globe",
+          "value": "80+",
+          "label": "городов"
+        },
+        {
+          "icon": "package",
+          "value": "150",
+          "label": "глобальных брендов"
+        },
+        {
+          "icon": "chart",
+          "value": "36,5+ трлн рупий",
+          "label": "выручка",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "trending",
+          "value": "№1",
+          "label": "lifestyle-ритейлер Индонезии"
+        }
+      ],
+      "why": "Крупнейший lifestyle-ритейлер Индонезии, около 3000–3200 магазинов в 80+ городах.",
+      "learn": "Выручка MAP в 2025 году превысила 36,5 трлн рупий; развивает омниканальную модель.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Джакарта",
+      "title": "Erajaya",
+      "logo": "source-videos/логотипы/ритейл/erajaya.png",
+      "short": "Erajaya (Erafone)",
+      "subtitle": "Erafone · Джакарта",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "1000+",
+          "label": "магазинов"
+        },
+        {
+          "icon": "flag",
+          "value": "1996",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Один из крупнейших дистрибьюторов смартфонов в Индонезии.",
+      "learn": "Развивает омниканальную модель офлайн- и онлайн-продаж.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Джакарта",
+      "title": "Transmart",
+      "logo": "source-videos/логотипы/ритейл/transmart.png",
+      "short": "Transmart (CT Corp)",
+      "subtitle": "CT Corp · Джакарта",
+      "facts": [
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Формат сочетает гипермаркет с модой, развлечениями и общепитом, оставаясь крупнейшим оператором гипермаркетов страны.",
+      "learn": "CT Corp приобрела индонезийские активы Carrefour, получив полный контроль к январю 2013 года.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Джакарта",
+      "title": "Matahari Department Store",
+      "logo": "source-videos/логотипы/ритейл/matahari.png",
+      "short": "Matahari Department Store",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "143",
+          "label": "магазина",
+          "sub": "март 2025"
+        },
+        {
+          "icon": "smartphone",
+          "value": "Matahari.com",
+          "label": "платформа"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Под давлением e-commerce компания оптимизирует сеть, тестирует новые форматы.",
+      "learn": "PT Matahari Department Store Tbk управляет крупнейшей сетью универмагов Индонезии — 143 магазина на март 2025 года.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Джакарта",
+      "title": "AEON Indonesia",
+      "logo": "source-videos/логотипы/ритейл/aeon.png",
+      "short": "AEON Indonesia",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "~177 000 м²",
+          "label": "площадь"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Местное подразделение японской группы AEON.",
+      "learn": "PT AEON Indonesia работает в супермаркетах, универмагах, health & beauty и общепите, привнеся японские концепции вроде Daiso.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Джакарта",
+      "title": "Ace Hardware",
+      "logo": "source-videos/логотипы/ритейл/ace-hardware.png",
+      "short": "Ace Hardware (Kawan Lama)",
+      "subtitle": "Kawan Lama · Джакарта",
+      "facts": [
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Работала в Индонезии 29 лет по лицензии группы Kawan Lama, разросшись до примерно 240–248 магазинов.",
+      "learn": "В 2024 году Kawan Lama позволила лицензионному соглашению с американской компанией истечь.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Джакарта",
+      "title": "Ranch Market",
+      "logo": "source-videos/логотипы/ритейл/ranch-market.png",
+      "short": "Ranch Market",
+      "subtitle": "Джакарта",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "43",
+          "label": "точки"
+        },
+        {
+          "icon": "pin",
+          "value": "Джакарта",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Ranch Market, работающая под PT Supra Boga Lestari с 1998 года.",
+      "learn": "К концу 2019 года — 43 точки под четырьмя брендами, включая Farmers Market.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Джакарта",
+      "title": "Blibli",
+      "logo": "source-videos/логотипы/ритейл/blibli.svg",
+      "short": "Blibli",
+      "subtitle": "Djarum · Джакарта",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "100+ тыс",
+          "label": "партнёров"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$509 млн",
+          "label": "оценка компании"
+        },
+        {
+          "icon": "store",
+          "value": "Ranch Market",
+          "label": "сеть"
+        },
+        {
+          "icon": "flag",
+          "value": "2011",
+          "label": "год основания",
+          "sub": "15 августа 2011 года"
+        }
+      ],
+      "why": "Индонезийская e-commerce платформа.",
+      "learn": "Работает по модели O2O, объединяя более 100 тыс. партнёров.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Трансферы/перелёты между городами программы",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На индонезийском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "Ритейл Индонезии",
+          "text": "\nв одном городе",
+          "icon": "store"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов в Джакарте"
+        },
+        {
+          "icon": "store",
+          "value": "10 компаний",
+          "label": "Ритейл Индонезии",
+          "sub": "от Indomaret до Blibli"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы/перелёты между городами программы",
+        "Сопровождение на индонезийском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Джакарта (перелёт Москва → Джакарта).<br><b>Вылет:</b> Джакарта — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

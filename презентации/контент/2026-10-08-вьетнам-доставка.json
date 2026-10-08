@@ -1,0 +1,444 @@
+{
+  "title": "Central/Dark Kitchen и быстрая доставка еды во Вьетнаме — Global Tech Tour",
+  "output": "2026-10-08-вьетнам-доставка",
+  "source": "https://globaltechtour.ru/expeditions/vietnam-dark-kitchen-delivery-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "vietnam",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Central/Dark Kitchen и быстрая доставка еды во Вьетнаме",
+      "topright": "GrabFood · ShopeeFood\nXanh SM",
+      "logos": [
+        {
+          "name": "GrabFood",
+          "logo": "source-videos/логотипы/техгиганты/grab.svg"
+        },
+        {
+          "name": "ShopeeFood",
+          "logo": "source-videos/логотипы/техгиганты/shopee-food.svg"
+        },
+        {
+          "name": "Be",
+          "logo": "source-videos/логотипы/техгиганты/be-begroup.png"
+        },
+        {
+          "name": "Loship",
+          "logo": "source-videos/логотипы/техгиганты/loship.png"
+        },
+        {
+          "name": "Xanh SM",
+          "logo": "source-videos/логотипы/техгиганты/xanh-sm-gsm-vinfast.svg"
+        },
+        {
+          "name": "Ahamove",
+          "logo": "source-videos/логотипы/техгиганты/ahamove.png"
+        }
+      ],
+      "box_text": "От лидера рынка GrabFood Vietnam до EV-доставки Xanh SM —\n6 компаний, 6 дней, 6 ночей",
+      "box_right": "Хошимин + Ханой",
+      "footer": "Global Tech Tour · бизнес-делегации во Вьетнам · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Визиты в штаб-квартиры, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на вьетнамском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "6 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Хошимин",
+          "text": "GrabFood, ShopeeFood, Be, Loship"
+        },
+        {
+          "name": "Дни 3–4 · Хошимин + Ханой",
+          "text": "Xanh SM, Ahamove"
+        },
+        {
+          "name": "День 5 · Ханой",
+          "text": "Итоговые встречи с локальными delivery-tech игроками."
+        }
+      ]
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Хошимин",
+          "days": "дни 1–3",
+          "companies": "GrabFood\nShopeeFood\nBe\nLoship\n+ ещё 2"
+        },
+        {
+          "name": "Ханой",
+          "days": "дни 4–5",
+          "leg": {
+            "icon": "plane",
+            "text": "≈2 ч"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Хошимин · <b>Вылет:</b> Ханой"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "GrabFood ·\nShopeeFood",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Be ·\nLoship",
+          "text": "Be — вьетнамский супер-апп, основанный в 2018; Loship — вьетнамский сервис быстрой доставки «за один час».",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Xanh SM ·\nAhamove",
+          "text": "Xanh SM — оператор электротакси и каршеринга; Ahamove — вьетнамская логистическая платформа.",
+          "label": "День 3"
+        },
+        {
+          "sub": "Ханой · 10:00–13:00",
+          "title": "Ханой",
+          "text": "Внутренний перелёт Хошимин→Ханой (≈2 ч). Визиты дня — оператор облачных кухонь и B2B-платформа поставок для F&B (по согласованию).",
+          "label": "День 4"
+        },
+        {
+          "sub": "Ханой · 10:00–13:00",
+          "title": "Ханой",
+          "text": "Итоговые встречи с локальными delivery-tech игроками.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Хошимин",
+      "title": "GrabFood Vietnam",
+      "logo": "source-videos/логотипы/техгиганты/grab.svg",
+      "short": "GrabFood Vietnam",
+      "subtitle": "Хошимин",
+      "facts": [
+        {
+          "icon": "pin",
+          "value": "Хошимин",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Сервис доставки еды сингапурского супер-приложения Grab.",
+      "learn": "GrabFood занимает лидирующие позиции на вьетнамском рынке доставки еды наряду с ShopeeFood и Be.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Хошимин",
+      "title": "ShopeeFood",
+      "logo": "source-videos/логотипы/техгиганты/shopee-food.svg",
+      "short": "ShopeeFood",
+      "subtitle": "Sea Limited · Хошимин",
+      "facts": [
+        {
+          "icon": "handshake",
+          "value": "Sea Limited",
+          "label": "в составе группы"
+        },
+        {
+          "icon": "pin",
+          "value": "Хошимин",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Сервис доставки еды во Вьетнаме, принадлежащий сингапурской Sea Limited; вырос из платформы Now.vn.",
+      "learn": "Сервис — один из двух-трёх лидеров рынка доставки еды Вьетнама наряду с GrabFood и Be, опираясь на общую с Shopee логистику.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Хошимин",
+      "title": "Be",
+      "logo": "source-videos/логотипы/техгиганты/be-begroup.png",
+      "short": "Be (beGroup)",
+      "subtitle": "beGroup · Хошимин",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "~$30,3 млн",
+          "label": "привлечено инвестиций"
+        },
+        {
+          "icon": "star",
+          "value": "Первое",
+          "label": "встроенное банковское предложение"
+        },
+        {
+          "icon": "star",
+          "value": "Cake",
+          "label": "запуск",
+          "sub": "2021 год"
+        },
+        {
+          "icon": "flag",
+          "value": "2018",
+          "label": "год основания",
+          "sub": "в Хошимине"
+        }
+      ],
+      "why": "Вьетнамский супер-апп, основанный в 2018 году в Хошимине как райдхейлинг-сервис, конкурирующий с Grab.",
+      "learn": "Компания привлекла около $30,3 млн от VPBank Securities и в 2021-м вместе с VPBank запустила цифровой банк Cake.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Хошимин",
+      "title": "Loship",
+      "logo": "source-videos/логотипы/техгиганты/loship.png",
+      "short": "Loship",
+      "subtitle": "Хошимин",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "70 000+",
+          "label": "курьеров"
+        },
+        {
+          "icon": "chart",
+          "value": "200 000",
+          "label": "продавцов"
+        },
+        {
+          "icon": "users",
+          "value": "~2 млн",
+          "label": "клиентов"
+        },
+        {
+          "icon": "flag",
+          "value": "2017",
+          "label": "год основания"
+        }
+      ],
+      "why": "Вьетнамский сервис быстрой доставки «за один час», основанный в 2017 году.",
+      "learn": "По данным компании, платформа задействует свыше 70 000 курьеров и 200 000 продавцов и обслуживает около 2 млн клиентов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Хошимин",
+      "title": "Xanh SM",
+      "logo": "source-videos/логотипы/техгиганты/xanh-sm-gsm-vinfast.svg",
+      "short": "Xanh SM (GSM/VinFast)",
+      "subtitle": "GSM/VinFast · Хошимин",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2023",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Хошимин",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "С 2023 г. компания вышла за пределы Вьетнама.",
+      "learn": "Парк состоит исключительно из электромобилей VinFast.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Хошимин",
+      "title": "Ahamove",
+      "logo": "source-videos/логотипы/техгиганты/ahamove.png",
+      "short": "Ahamove",
+      "subtitle": "Хошимин",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "100+ тыс",
+          "label": "онлайн-продавцов"
+        },
+        {
+          "icon": "flag",
+          "value": "2015",
+          "label": "год основания",
+          "sub": "в Хошимине"
+        },
+        {
+          "icon": "pin",
+          "value": "Хошимин",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Наряду с GHN входит в число ключевых логистических партнёров для крупнейших e-commerce площадок Вьетнама.",
+      "learn": "Ahamove — вьетнамская логистическая платформа, основанная в 2015 г. в Хошимине, соединяющая отправителей с водителями мотоциклов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Включены",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На вьетнамском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "6 компаний",
+          "text": "GrabFood · ShopeeFood · Xanh SM\nХошимин + Ханой",
+          "icon": "smartphone"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов в Хошимине и Ханое"
+        },
+        {
+          "icon": "smartphone",
+          "value": "6 компаний",
+          "label": "в программе",
+          "sub": "GrabFood, ShopeeFood, Xanh SM"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Внутренние перелёты между городами программы",
+        "Сопровождение на вьетнамском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Хошимин (перелёт Москва → Хошимин).<br><b>Вылет:</b> Ханой — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}
