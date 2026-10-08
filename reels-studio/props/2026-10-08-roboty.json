@@ -1123,24 +1123,6 @@
  ],
  "broll": [
   {
-   "src": "source-videos/2026-10-08-roboty/broll/hf-553.png",
-   "at": 0.12,
-   "until": 3.86,
-   "transition": "circle"
-  },
-  {
-   "src": "source-videos/2026-10-08-roboty/broll/hf-47.png",
-   "at": 11.08,
-   "until": 13.81,
-   "transition": "slide"
-  },
-  {
-   "src": "source-videos/2026-10-08-roboty/broll/hf-265.png",
-   "at": 21.51,
-   "until": 26.01,
-   "transition": "zoom"
-  },
-  {
    "src": "source-videos/2026-10-08-roboty/broll/hf-254.png",
    "at": 55.92,
    "until": 59.62,
@@ -1268,15 +1250,57 @@
    {
     "at": 26.93,
     "until": 30.37
-   },
-   {
-    "at": 51.03,
-    "until": 53.99
-   },
-   {
-    "at": 63.9,
-    "until": 67.4
    }
   ]
- }
+ },
+ "clips": [
+  {
+   "at": 0.15,
+   "until": 3.86,
+   "src": "source-videos/aura-robotics/видео-с-сайта/agibot-rd-video.mp4",
+   "from": 2,
+   "kicker": "R&D-центр",
+   "title": "AgiBot"
+  },
+  {
+   "at": 11.68,
+   "until": 13.81,
+   "src": "source-videos/aura-robotics/видео-с-сайта/matrix-video.mp4",
+   "from": 4,
+   "kicker": "Шанхай",
+   "title": "Matrix Robotics"
+  },
+  {
+   "at": 17.79,
+   "until": 21.51,
+   "src": "source-videos/aura-robotics/видео-с-сайта/agibot-2-video.mp4",
+   "from": 1,
+   "kicker": "Конвейер",
+   "title": "AgiBot"
+  },
+  {
+   "at": 21.74,
+   "until": 24.85,
+   "src": "source-videos/aura-robotics/видео-с-сайта/robotera-rd-video.mp4",
+   "from": 1,
+   "kicker": "R&D-центр",
+   "title": "Robotera"
+  },
+  {
+   "at": 51.03,
+   "until": 53.05,
+   "src": "source-videos/aura-robotics/видео-с-сайта/factory-visit-video.mp4",
+   "from": 8,
+   "kicker": "Визит на завод",
+   "title": "Внутри производства"
+  },
+  {
+   "at": 61.69,
+   "until": 68.96,
+   "src": "source-videos/aura-robotics/видео-с-сайта/robotera-2-video.mp4",
+   "from": 6,
+   "kicker": "Пекин",
+   "title": "Robotera"
+  }
+ ]
 }

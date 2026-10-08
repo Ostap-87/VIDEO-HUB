@@ -79,6 +79,10 @@ export const talkReelProSchema = z.object({
   flags: z.array(z.object({at: z.number(), until: z.number(), items: z.array(z.string())})).optional(),
   // большой развевающийся 3D-флаг за спиной спикера (спикер вырезан) — отрезок нужен в --ranges для npm run matte
   bgFlags: z.array(z.object({at: z.number(), until: z.number(), src: z.string()})).optional(),
+  // видео внизу экрана (например, снятая пользователем работа роботов): нижняя половина кадра, спикер поднят, подпись
+  clips: z
+    .array(z.object({at: z.number(), until: z.number(), src: z.string(), from: z.number().optional(), kicker: z.string().optional(), title: z.string().optional()}))
+    .optional(),
   // второй ракурс (вторая камера, scripts/angle_b.py): в отрезках shots кадр переключается на боковой план
   angleB: z.object({src: z.string(), shots: z.array(z.object({at: z.number(), until: z.number()}))}).optional(),
   // Зумы на ключевых словах: punch — резкий наезд за 3 кадра (со звуком whip), push — плавный медленный наезд.
@@ -155,7 +159,8 @@ const BigCaptions: React.FC<{
   cities: TalkReelProProps["cities"];
   lists: TalkReelProProps["checklists"];
   broll?: TalkReelProProps["broll"];
-}> = ({words, accent, until, lowFrom, cities, lists, broll = []}) => {
+  clips?: TalkReelProProps["clips"];
+}> = ({words, accent, until, lowFrom, cities, lists, broll = [], clips}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -175,7 +180,7 @@ const BigCaptions: React.FC<{
         position: "absolute",
         left: 90 - 40 * pipAmount(broll, t),
         right: 90 + 300 * pipAmount(broll, t), // при карточке спикера в углу субтитры сдвигаются влево
-        top: low ? 1420 : Math.max(cityAmount(cities, t), listAmount(lists, t)) > 0.5 ? 780 : 1250,
+        top: low ? 1420 : Math.max(cityAmount(cities, t), listAmount(lists, t), clipAmount(clips ?? [], t)) > 0.5 ? 780 : 1250,
         textAlign: "center",
         fontFamily: B.captionFont,
         fontWeight: B.captionWeight,
@@ -608,11 +613,12 @@ const ZoomedVideo: React.FC<{
   checklists: TalkReelProProps["checklists"];
   bgFlags?: TalkReelProProps["bgFlags"];
   angleB?: TalkReelProProps["angleB"];
-}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists, bgFlags, angleB}) => {
+  clips?: TalkReelProProps["clips"];
+}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists, bgFlags, angleB, clips}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
-  const lift = Math.max(cityAmount(cities, t), listAmount(checklists, t)) * 330; // лицо поднимается в верхнюю половину
+  const lift = Math.max(cityAmount(cities, t), listAmount(checklists, t), clipAmount(clips ?? [], t)) * 330; // лицо поднимается в верхнюю половину
   const zoom = zoomAt(cuts, zooms, t);
   const b = broll.find((x) => t >= x.at && t <= x.until) ?? broll.find((x) => t >= x.at - 0.5 && t <= x.until + 0.5);
   const ease = Easing.bezier(0.22, 1, 0.36, 1);
@@ -954,6 +960,68 @@ const CityPanel: React.FC<{cities: TalkReelProProps["cities"]}> = ({cities}) => 
   );
 };
 
+// Видео внизу экрана: как панель городов, но в ней идёт видео (без звука) с подписью; въезжает снизу
+const clipAmount = (clips: NonNullable<TalkReelProProps["clips"]>, t: number) => {
+  const ease = Easing.bezier(0.22, 1, 0.36, 1);
+  let a = 0;
+  for (const c of clips)
+    a = Math.max(a, Math.min(
+      interpolate(t, [c.at - 0.1, c.at + 0.35], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease}),
+      interpolate(t, [c.until - 0.35, c.until], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease}),
+    ));
+  return a;
+};
+
+const ClipPanel: React.FC<{clips: NonNullable<TalkReelProProps["clips"]>}> = ({clips}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const t = frame / fps;
+  const B = useBrand();
+  return (
+    <>
+      {clips.map((c, i) => {
+        if (t < c.at - 0.15 || t > c.until + 0.05) return null;
+        const amount = clipAmount([c], t);
+        const slide = (1 - amount) * PANEL_H;
+        const label = spring({frame: frame - Math.round((c.at + 0.15) * fps), fps, config: {damping: 14, stiffness: 170}});
+        return (
+          <Sequence key={i} from={Math.round((c.at - 0.15) * fps)} durationInFrames={Math.round((c.until - c.at + 0.25) * fps)} layout="none">
+            <div
+              style={{
+                position: "absolute",
+                left: 0,
+                right: 0,
+                top: PANEL_TOP,
+                height: PANEL_H,
+                overflow: "hidden",
+                translate: `0px ${slide}px`,
+                maskImage: `linear-gradient(to bottom, transparent 0px, black ${FEATHER}px)`,
+                WebkitMaskImage: `linear-gradient(to bottom, transparent 0px, black ${FEATHER}px)`,
+              }}
+            >
+              <OffthreadVideo
+                src={staticFile(c.src)}
+                muted
+                trimBefore={Math.round((c.from ?? 0) * fps)}
+                style={{width: "100%", height: "100%", objectFit: "cover", scale: String(interpolate(t, [c.at, c.until], [1.04, 1.12]))}}
+              />
+              <AbsoluteFill style={{background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 45%)"}} />
+              {c.title ? (
+                <div style={{position: "absolute", left: 64, bottom: 400, opacity: label, translate: `0px ${(1 - label) * 40}px`}}>
+                  {c.kicker ? (
+                    <div style={{fontFamily: B.bodyFont, fontWeight: 700, fontSize: 30, letterSpacing: "0.14em", color: B.kicker, textTransform: "uppercase", textShadow: shadow}}>{c.kicker}</div>
+                  ) : null}
+                  <div style={{fontFamily: B.id === "aura" ? B.captionFont : display.fontFamily, fontWeight: B.id === "aura" ? 800 : 700, fontSize: 80, color: "#FFFFFF", textShadow: shadow}}>{c.title}</div>
+                </div>
+              ) : null}
+            </div>
+          </Sequence>
+        );
+      })}
+    </>
+  );
+};
+
 // Экран телефона в финале: страницы сменяют друг друга сдвигом влево
 const PhoneScreen: React.FC<{home: string; catalog: string; route: string[]; w: number; seconds: number}> = ({
   home,
@@ -1233,14 +1301,16 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
       {p.music ? (
         <Audio
           src={staticFile(p.music.src)}
-          volume={(fr) =>
-            interpolate(
-              fr / fps,
-              [0, 1.2, p.speechSeconds - 0.5, p.speechSeconds + 0.6, durationInFrames / fps - 1.2, durationInFrames / fps],
-              [0, p.music!.volume, p.music!.volume, p.music!.outroVolume, p.music!.outroVolume, 0],
-              {extrapolateLeft: "clamp", extrapolateRight: "clamp"},
-            )
-          }
+          volume={(fr) => {
+            // точки громкости всегда по возрастанию, даже если ролик кончается сразу после последней фразы
+            const end = durationInFrames / fps;
+            const a = Math.min(p.speechSeconds - 0.5, end - 2.4);
+            const b = Math.min(p.speechSeconds + 0.6, end - 1.3);
+            const c = Math.max(b + 0.05, end - 1.2);
+            return interpolate(fr / fps, [0, 1.2, Math.max(1.25, a), Math.max(1.3, b), c, Math.max(c + 0.05, end)], [
+              0, p.music!.volume, p.music!.volume, p.music!.outroVolume, p.music!.outroVolume, 0,
+            ], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
+          }}
         />
       ) : null}
       {sfxAt.map((s, i) => (
@@ -1261,8 +1331,10 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
         checklists={p.checklists}
         bgFlags={p.bgFlags}
         angleB={p.angleB}
+        clips={p.clips}
       />
       <CityPanel cities={p.cities} />
+      {p.clips ? <ClipPanel clips={p.clips} /> : null}
       <ChecklistPanel lists={p.checklists} />
 
       {/* в Stories верх занят полосками и аватаром: верхняя полоса плашек опускается (TopShift) */}
@@ -1306,7 +1378,7 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
           <FlagArc items={fl.items} at={fl.at} until={fl.until} center={p.focus} />
         </Sequence>
       ))}
-      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} broll={p.broll} />
+      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} broll={p.broll} clips={p.clips} />
       {brand.id === "aura" ? (
         // Aura: круглая печать крутится над головой спикера, по центру; в Stories — ниже полосок и аватара
         <div style={{position: "absolute", top: p.format === "stories" ? 200 : 70, left: "50%", translate: "-50% 0"}}>
