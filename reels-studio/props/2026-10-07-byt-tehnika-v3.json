@@ -1678,5 +1678,11 @@
   "src": "интернет-материалы/музыка/inspiring-technology-soundrider.mp3",
   "volume": 0.09,
   "outroVolume": 0.22
+ },
+ "checklists": [],
+ "format": "reels",
+ "focus": {
+  "x": 499,
+  "y": 834
  }
 }
