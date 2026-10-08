@@ -33,7 +33,7 @@ def resolve(url):
 
 def wetransfer(url):
     full = resolve(url) if "we.tl" in url else url
-    m = re.search(r"/downloads/([0-9a-f]+)/(?:([0-9a-f]+)/)?([0-9a-f]+)", full)
+    m = re.search(r"/(?:downloads|previews)/([0-9a-f]+)/(?:([0-9a-f]+)/)?([0-9a-f]+)", full)
     if not m:
         raise SystemExit(f"Не разобрал ссылку WeTransfer: {full}")
     tid, recipient, sec = m.group(1), m.group(2), m.group(3)
