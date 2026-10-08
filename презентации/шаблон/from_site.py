@@ -676,12 +676,21 @@ def extract_facts(desc, names=()):
                     while pw and (pw[-1].lower() in STOPW or pw[-1].lower() in ('её', 'его', 'их') or is_verb(pw[-1])
                                   or first_pos(pw[-1]) in ('PREP', 'CONJ')):
                         pw = pw[:-1]  # «доля рынка достигла» → «доля рынка»
-                    k = max([i + 1 for i, w in enumerate(pw) if re.search(r'\d', w) or is_verb(w)] + [0])
-                    pw = pw[k:][-4:]  # «вложила $1,5 млрд и получила» — не подпись
+                    k = max([i + 1 for i, w in enumerate(pw) if re.search(r'\d', w) or is_verb(w) or first_pos(w) == 'GRND'] + [0])
+                    pw = pw[k:][-4:]  # «вложила $1,5 млрд и получила», «сократив ручной труд на 90%» — не подпись
                     while pw and (pw[0].lower() in STOPW or pw[0].lower() in ('её', 'его', 'их') or is_verb(pw[0])
-                                  or first_pos(pw[0]) in ('PREP', 'CONJ')):
+                                  or re.fullmatch(MULT + '|' + CUR, pw[0].lower() + ('.' if pw[0] == 'тыс' else ''))
+                                  or first_pos(pw[0]) in ('PREP', 'CONJ')):  # «67 млн евро с увеличением мощности до 50%»
                         pw = pw[1:]
-                    words = ['доля', 'рынка'] if dm and 'рынк' in seg else (['доля'] if dm else nomn_phrase(pw))
+                    if dm:  # «крупнейшую долю рынка доставки еды (около 47%)» → «доля рынка доставки еды»
+                        take = []
+                        for w in re.findall(r'[\w-]+', seg[dm.start():]):
+                            if is_verb(w) or w.lower() in STOPW or re.search(r'\d', w) or len(take) >= 4:
+                                break
+                            take.append(w)
+                        words = (nomn_phrase(take) or ['доля', 'рынка']) if 'рынк' in ' '.join(take) else (['доля', 'рынка'] if 'рынк' in seg else ['доля'])
+                    else:
+                        words = nomn_phrase(pw)
                 if not words:
                     continue
                 v = {'~': '~', 'до ': 'до ', '<': '<'}.get(sign, '') + raw + '%' + ('+' if sign == '+' else '')
@@ -945,7 +954,8 @@ def extract_facts(desc, names=()):
     for f in sorted(facts, key=lambda f: (f['prio'], f['pos'])):
         if any(f['value'].lower() == r['value'].lower() for r in res):
             continue
-        if f['kind'] == 'top' and any(r['labels'][0] == f['labels'][0] for r in res):
+        if f['kind'] == 'top' and any(r['labels'][0] == f['labels'][0] or (r['kind'] == 'pct' and f['labels'][0].startswith(r['labels'][0] + ' '))
+                                      for r in res):  # «47% доля рынка» + «№1 доля рынка доставки еды»
             continue
         same = [r for r in res if r['kind'] == f['kind'] and r['labels'][0] == f['labels'][0] and f['kind'] in ('money', 'count', 'pct', 'year')]
         if same:
@@ -1196,10 +1206,11 @@ def nominal_kind(c, limit=55):
     p0 = parse_word(w0.lower())
     if not w0 or (p0 and p0.tag.case not in ('nomn', None)) or any(is_verb(w) for w in s0[:dm.start()].split()):
         return ''
-    if any(first_pos(w) == 'PRTS' for w in s0[:dm.start()].split()) or any(is_verb(w) for w in re.split(r'[,;]', s0[dm.end():])[0].split()):
+    if any(first_pos(w) == 'PRTS' for w in s0[:dm.start()].split()) or any(is_verb(w) for w in re.split(r'[,;:]', s0[dm.end():])[0].split()):
         return ''  # «… основана в 2018 году — первая точка продавала …»
     v = clause_cuts(s0[dm.end():].strip(), limit)
-    v = [x for x in v if len(x) <= limit]
+    v = [x for x in v if len(x) <= limit and x.split() and not x.endswith('-')
+         and first_pos(x.split()[-1].strip('.,')) not in ('ADJF', 'PRTF')]  # «государственный телеком-» — обрывок
     return v[0] if v else ''
 
 
