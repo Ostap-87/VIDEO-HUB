@@ -32,7 +32,7 @@ def main():
     ap.add_argument("cut_json")
     ap.add_argument("--offset", type=float)
     a = ap.parse_args()
-    cut = pathlib.Path(a.cut_json)
+    cut = pathlib.Path(a.cut_json).resolve()
     stem = cut.name.replace(".cut.json", "")
     raw_a = next(p for p in cut.parent.parent.iterdir() if p.stem == stem and p.suffix.lower() in (".mov", ".mp4"))
     if a.offset is None:

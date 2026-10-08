@@ -472,7 +472,8 @@
  "unitree": {
   "names": [
    "Unitree",
-   "Юнитри"
+   "Юнитри",
+   "Унитри"
   ],
   "logo": "source-videos/логотипы/техгиганты/unitree.png"
  },
@@ -490,5 +491,36 @@
    "RedNote"
   ],
   "logo": "source-videos/логотипы/техгиганты/xiaohongshu.svg"
+ },
+ "agibot": {
+  "names": [
+   "AgiBot",
+   "Агибот",
+   "Аджибот",
+   "Zhiyuan"
+  ],
+  "logo": "source-videos/логотипы/роботы/agibot.png"
+ },
+ "kepler": {
+  "names": [
+   "Kepler",
+   "Кеплер"
+  ],
+  "logo": "source-videos/логотипы/роботы/kepler.png"
+ },
+ "fourier": {
+  "names": [
+   "Fourier",
+   "Фурье"
+  ],
+  "logo": "source-videos/логотипы/роботы/fourier.png"
+ },
+ "robotera": {
+  "names": [
+   "Robotera",
+   "RobotEra",
+   "Роботера"
+  ],
+  "logo": "source-videos/логотипы/роботы/robotera.png"
  }
 }

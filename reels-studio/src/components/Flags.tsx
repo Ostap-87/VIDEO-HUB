@@ -99,7 +99,7 @@ const Cloth: React.FC<{tex: THREE.Texture; t: number}> = ({tex, t}) => {
     const y = base[i * 3 + 1];
     const k = 0.35 + 0.65 * ((x + 2.25) / 4.5); // у древка (слева) волна слабее, к свободному краю сильнее
     const z =
-      (Math.sin(x * 2.2 - t * 4.2 + y * 0.6) * 0.16 + Math.sin(x * 4.1 - t * 6.3 - y * 1.1) * 0.06 + Math.sin(y * 2.0 - t * 2.4) * 0.04) * k;
+      (Math.sin(x * 2.6 - t * 4.2 + y * 0.6) * 0.24 + Math.sin(x * 4.6 - t * 6.3 - y * 1.1) * 0.09 + Math.sin(y * 2.0 - t * 2.4) * 0.05) * k;
     pos.setXYZ(i, x, y - k * k * 0.12 + Math.sin(x * 1.7 - t * 3.1) * 0.03 * k, z);
   }
   pos.needsUpdate = true;
@@ -114,12 +114,12 @@ const Cloth: React.FC<{tex: THREE.Texture; t: number}> = ({tex, t}) => {
 const FlagScene: React.FC<{tex: THREE.Texture; t: number}> = ({tex, t}) => {
   const camera = useThree((s) => s.camera);
   React.useLayoutEffect(() => {
-    camera.lookAt(-1.3, 0.15, 0);
+    camera.lookAt(-1.3, 0.05, 0);
   }, [camera]);
   return (
     <>
-      <ambientLight intensity={0.55} />
-      <directionalLight position={[-2, 3, 4]} intensity={2.2} />
+      <ambientLight intensity={0.35} />
+      <directionalLight position={[-3, 2, 2]} intensity={2.8} />
       <directionalLight position={[3, -1, 2]} intensity={0.5} color="#FFE9C4" />
       <Cloth tex={tex} t={t} />
     </>
@@ -134,26 +134,28 @@ export const WavingFlag3D: React.FC<{src: string; at: number; until: number}> = 
     interpolate(t, [at, at + 0.45], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic)}),
     interpolate(t, [until - 0.4, until], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}),
   );
-  // текстуру ждём до кадра (delayRender), иначе первые кадры ушли бы без флага
-  const [tex, setTex] = React.useState<THREE.Texture | null>(null);
-  React.useEffect(() => {
-    const h = delayRender("флаг: текстура");
-    new THREE.TextureLoader().load(
+  // текстура создаётся сразу; кадр ждёт загрузки картинки (delayRender), потом сцена перерисовывается
+  const [h] = React.useState(() => delayRender("флаг: текстура"));
+  const [, setLoaded] = React.useState(false);
+  const tex = React.useMemo(() => {
+    const tx = new THREE.TextureLoader().load(
       staticFile(src),
-      (tx) => {
-        tx.colorSpace = THREE.SRGBColorSpace;
-        tx.anisotropy = 4;
-        setTex(tx);
+      () => {
+        tx.needsUpdate = true;
+        setLoaded(true);
         continueRender(h);
       },
       undefined,
       () => continueRender(h),
     );
-  }, [src]);
+    tx.colorSpace = THREE.SRGBColorSpace;
+    tx.anisotropy = 4;
+    return tx;
+  }, [src, h]);
   return (
     <div style={{position: "absolute", inset: 0, opacity: p, background: "#7A0A0A"}}>
-      <ThreeCanvas width={1080} height={1920} camera={{fov: 40, position: [-1.3, 0.15, 3.0], near: 0.1, far: 50}} gl={{antialias: true}}>
-        {tex ? <FlagScene tex={tex} t={t} /> : null}
+      <ThreeCanvas width={1080} height={1920} camera={{fov: 40, position: [-1.3, 0.05, 3.9], near: 0.1, far: 50}} gl={{antialias: true}}>
+        <FlagScene tex={tex} t={t} />
       </ThreeCanvas>
     </div>
   );

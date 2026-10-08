@@ -8,6 +8,7 @@ import {sampleReel, sampleTextReel} from "./data/sample";
 import talkSample from "../props/2026-10-07-byt-tehnika.json";
 import {SiteLogoPreview} from "./components/SiteLogo";
 import {AuraPreview} from "./components/AuraPreview";
+import {FlagTest} from "./components/FlagTest";
 import {Carousel, carouselSchema, type CarouselProps} from "./compositions/Carousel";
 import carouselSample from "../props/carousels/пример-gtt.json";
 import {TalkReelPro, talkReelProSchema, type TalkReelProProps} from "./compositions/TalkReelPro";
@@ -66,6 +67,7 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={carouselSample as CarouselProps}
         calculateMetadata={({props}: {props: CarouselProps}) => ({durationInFrames: props.slides.length})}
       />
+      <Composition id="FlagTest" component={FlagTest} width={1080} height={1920} fps={30} durationInFrames={300} />
       <Composition id="AuraPreview" component={AuraPreview} width={VIDEO.width} height={VIDEO.height} fps={VIDEO.fps} durationInFrames={VIDEO.fps * 15} />
       <Composition
         id="TalkReelPro"

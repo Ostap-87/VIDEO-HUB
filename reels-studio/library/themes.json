@@ -239,7 +239,7 @@
    "общие"
   ],
   "broll": {
-   "include": "robot|humanoid|robotic arm|cobot|quadruped|robot dog|automat|assembly line|factory|laborator",
+   "include": "robot|humanoid|robotic|cobot|quadruped|robot dog|bionic|exoskeleton",
    "tags": {
     "гуманоид": "humanoid",
     "робот": "robot|humanoid",
