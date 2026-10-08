@@ -113,6 +113,12 @@ def main():
                 step("Вырезаю паузы, чищу звук")
                 run(["python3", "scripts/cut_pauses.py", raw, "--words", words])
 
+            stage = "angle-b"
+            second = next((p for p in sorted(folder.glob(f"{a.clip}-2.*")) if p.suffix in VIDEO_EXT), None)
+            if second and not (work / f"{a.clip}.cut.b.mp4").exists():
+                step("Второй ракурс: режу вторую камеру по тем же кускам")
+                run(["python3", "scripts/angle_b.py", second, work / f"{a.clip}.cut.json"])
+
             stage = "grid"
             if not (work / f"{a.clip}.cut.layout.json").exists():
                 step("Сетка и линия глаз")

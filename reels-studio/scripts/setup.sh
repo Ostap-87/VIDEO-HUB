@@ -26,5 +26,23 @@ mkdir -p models
 [ -s models/rvm_mobilenetv3_fp32.onnx ] || curl -L --fail -o models/rvm_mobilenetv3_fp32.onnx \
   https://github.com/PeterL1n/RobustVideoMatting/releases/download/v1.0.0/rvm_mobilenetv3_fp32.onnx
 
+# 5. Шумодав голоса DeepFilterNet3 — в отдельном окружении /opt/dfn (у него старые зависимости, общий Python не трогаем)
+if [ ! -x /opt/dfn/bin/python ] || ! /opt/dfn/bin/python -c "import df" 2>/dev/null; then
+  echo "[setup] DeepFilterNet"
+  python3 -m venv /opt/dfn && /opt/dfn/bin/pip install -q torch torchaudio --index-url https://download.pytorch.org/whl/cpu \
+    && /opt/dfn/bin/pip install -q deepfilternet soundfile safetensors
+  # новый torchaudio убрал torchaudio.backend — заглушка для импорта deepfilternet
+  SP=$(/opt/dfn/bin/python -c "import torchaudio,os;print(os.path.dirname(torchaudio.__file__))")
+  mkdir -p "$SP/backend" && touch "$SP/backend/__init__.py" && printf 'class AudioMetaData:\n    pass\n' > "$SP/backend/common.py"
+fi
+M=/opt/dfn/model/DeepFilterNet3
+if [ ! -s $M/checkpoints/model_120.ckpt.best ]; then
+  # GitHub из облака закрыт — веса берём с Hugging Face и перекладываем в формат deepfilternet
+  mkdir -p $M/checkpoints
+  curl -sSL -o $M/config.ini https://huggingface.co/shakahl/DeepFilterNet3/resolve/main/config.ini
+  curl -sSL -o $M/model.safetensors https://huggingface.co/shakahl/DeepFilterNet3/resolve/main/model.safetensors
+  /opt/dfn/bin/python -c "from safetensors.torch import load_file; import torch; torch.save(load_file('$M/model.safetensors'), '$M/checkpoints/model_120.ckpt.best')"
+fi
+
 echo "[setup] $(date +%T) готово"
 touch /tmp/gtt-setup.done

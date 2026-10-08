@@ -17,6 +17,7 @@ import {theme} from "../theme";
 import {body, display} from "../fonts";
 import {SafeZone} from "../components/SafeZone";
 import {SiteLogo} from "../components/SiteLogo";
+import {FlagArc, WavingFlag3D} from "../components/Flags";
 import {BRANDS, BrandCtx, useBrand} from "../brand";
 import {AuraBadge} from "../components/AuraBadge";
 import {AuraMascot, type GestureKind, type MascotPlan, type MascotStay} from "../components/AuraMascot";
@@ -37,7 +38,9 @@ export const talkReelProSchema = z.object({
   logos: z.array(
     z.object({
       until: z.number(),
-      items: z.array(z.object({src: z.string(), at: z.number()})),
+      items: z.array(z.object({src: z.string(), at: z.number(), scale: z.number().optional()})),
+      // scale — размер карточек логотипов (1 — обычный; 1.5 и 2 — по просьбе пользователя 08.10.2026)
+      scale: z.number().optional(),
       // flip: одна карточка справа от лица; на item[1].at переворачивается по вертикальной оси
       flip: z.boolean().optional(),
     }),
@@ -60,6 +63,9 @@ export const talkReelProSchema = z.object({
       at: z.number(),
       until: z.number(),
       transition: z.enum(["circle", "slide", "zoom", "wipe", "fade"]).optional(),
+      // mode: cutout (по умолчанию) — спикер вырезан и стоит перед картинкой;
+      // pip — спикер уезжает карточкой в правый нижний угол, картинка на весь экран (решение пользователя 08.10.2026)
+      mode: z.enum(["cutout", "pip"]).optional(),
     }),
   ),
   // Чек-лист «планшет с зелёными галочками» для перечислений: спикер уходит наверх, внизу планшет, пункты
@@ -69,6 +75,12 @@ export const talkReelProSchema = z.object({
     .default([]),
   // Города: фото в нижней половине экрана, пока спикер их перечисляет; спикер остаётся сверху
   cities: z.array(z.object({src: z.string(), name: z.string(), at: z.number(), until: z.number(), kicker: z.string().optional()})),
+  // флаги стран полукругом над головой (картинки флагов), на словах про страны
+  flags: z.array(z.object({at: z.number(), until: z.number(), items: z.array(z.string())})).optional(),
+  // большой развевающийся 3D-флаг за спиной спикера (спикер вырезан) — отрезок нужен в --ranges для npm run matte
+  bgFlags: z.array(z.object({at: z.number(), until: z.number(), src: z.string()})).optional(),
+  // второй ракурс (вторая камера, scripts/angle_b.py): в отрезках shots кадр переключается на боковой план
+  angleB: z.object({src: z.string(), shots: z.array(z.object({at: z.number(), until: z.number()}))}).optional(),
   // Зумы на ключевых словах: punch — резкий наезд за 3 кадра (со звуком whip), push — плавный медленный наезд.
   // Держится hold секунд, потом плавно уходит. Между склейками уровни зума тоже чередуются (часть — плавно).
   zooms: z
@@ -142,7 +154,8 @@ const BigCaptions: React.FC<{
   lowFrom: number;
   cities: TalkReelProProps["cities"];
   lists: TalkReelProProps["checklists"];
-}> = ({words, accent, until, lowFrom, cities, lists}) => {
+  broll?: TalkReelProProps["broll"];
+}> = ({words, accent, until, lowFrom, cities, lists, broll = []}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -160,8 +173,8 @@ const BigCaptions: React.FC<{
     <div
       style={{
         position: "absolute",
-        left: 90,
-        right: 90,
+        left: 90 - 40 * pipAmount(broll, t),
+        right: 90 + 300 * pipAmount(broll, t), // при карточке спикера в углу субтитры сдвигаются влево
         top: low ? 1420 : Math.max(cityAmount(cities, t), listAmount(lists, t)) > 0.5 ? 780 : 1250,
         textAlign: "center",
         fontFamily: B.captionFont,
@@ -351,20 +364,21 @@ const FlipCard: React.FC<{group: TalkReelProProps["logos"][number]; start: numbe
         rotate: back ? "y 180deg" : undefined,
       }}
     >
-      <Img src={staticFile(src)} style={{maxHeight: 64, maxWidth: "100%", objectFit: "contain"}} />
+      <Img src={staticFile(src)} style={{maxHeight: 64 * (group.scale ?? 1), maxWidth: "100%", objectFit: "contain"}} />
     </div>
   );
   // на лицевой стороне — чётные логотипы, на обороте — нечётные
   const front = group.items[shown % 2 === 0 ? shown : Math.max(0, shown - 1)].src;
   const back = group.items[shown % 2 === 1 ? shown : Math.min(group.items.length - 1, shown + 1)].src;
+  const sc = group.scale ?? 1;
   return (
     <div
       style={{
         position: "absolute",
         right: 40,
-        top: 1405,
-        width: 330,
-        height: 124,
+        top: 1405 - (sc - 1) * 90,
+        width: 330 * sc,
+        height: 124 * sc,
         perspective: 1200,
         opacity: out * enter,
         translate: `${(1 - enter) * 420}px 0px`,
@@ -400,6 +414,7 @@ const LogoGroup: React.FC<{group: TalkReelProProps["logos"][number]; start: numb
         const s = spring({frame: frame - Math.round((l.at - start) * fps), fps, config: {damping: 12, stiffness: 140}});
         const slot = slots[i % slots.length];
         const fromLeft = "left" in slot;
+        const sc = l.scale ?? group.scale ?? 1;
         return (
           <div
             key={i}
@@ -409,8 +424,8 @@ const LogoGroup: React.FC<{group: TalkReelProProps["logos"][number]; start: numb
               right: fromLeft ? undefined : slot.right,
               top: slot.top,
               background: "#FFFFFF",
-              borderRadius: 28,
-              padding: "22px 30px",
+              borderRadius: 28 * Math.sqrt(sc),
+              padding: `${22 * Math.sqrt(sc)}px ${30 * Math.sqrt(sc)}px`,
               boxShadow: "0 18px 50px rgba(0,0,0,0.35)",
               opacity: s,
               translate: `${(1 - s) * (fromLeft ? -400 : 400)}px 0px`,
@@ -418,7 +433,7 @@ const LogoGroup: React.FC<{group: TalkReelProProps["logos"][number]; start: numb
               scale: String(0.6 + 0.4 * s),
             }}
           >
-            <Img src={staticFile(l.src)} style={{height: 72, maxWidth: 360, objectFit: "contain", display: "block"}} />
+            <Img src={staticFile(l.src)} style={{height: 72 * sc, maxWidth: Math.min(470, 360 * sc), objectFit: "contain", display: "block"}} />
           </div>
         );
       })}
@@ -545,7 +560,9 @@ const StockChart: React.FC<{drop: NonNullable<TalkReelProProps["stockDrop"]>; t:
 
 // Уровни зума по кускам между склейками: общий план, лёгкий и средний наезд чередуются.
 const LEVELS = [1.0, 1.08, 1.02, 1.14, 1.0, 1.1];
-const zoomAt = (cuts: number[], zooms: TalkReelProProps["zooms"], t: number) => {
+const zoomAt = (allCuts: number[], zooms: TalkReelProProps["zooms"], t: number) => {
+  // склейки ближе 0,7 с друг к другу не меняют уровень зума — иначе короткий кусок «мелькает» (как ускорение)
+  const cuts = allCuts.filter((c, i) => i === 0 || c - allCuts[i - 1] >= 0.7);
   const idx = cuts.filter((c) => c <= t).length;
   const segStart = cuts[idx - 1] ?? 0;
   const level = (i: number) => LEVELS[i % LEVELS.length];
@@ -589,7 +606,9 @@ const ZoomedVideo: React.FC<{
   stockDrop: TalkReelProProps["stockDrop"];
   focus: TalkReelProProps["focus"];
   checklists: TalkReelProProps["checklists"];
-}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists}) => {
+  bgFlags?: TalkReelProProps["bgFlags"];
+  angleB?: TalkReelProProps["angleB"];
+}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists, bgFlags, angleB}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -629,13 +648,66 @@ const ZoomedVideo: React.FC<{
   return (
     <AbsoluteFill style={{background: "#0B0D14"}}>
       <OffthreadVideo src={staticFile(src)} muted style={{...videoStyle, opacity: kind === "fade" ? 1 - p : 1}} />
+      {angleB
+        ? angleB.shots.map((sh, i) => (
+            <Sequence key={`b-${i}`} from={Math.round(sh.at * fps)} durationInFrames={Math.round((sh.until - sh.at) * fps)} layout="none">
+              <OffthreadVideo
+                src={staticFile(angleB.src)}
+                muted
+                trimBefore={Math.round(sh.at * fps)}
+                style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", scale: String(1.04 + 0.03 * ((t - sh.at) / Math.max(0.1, sh.until - sh.at)))}}
+              />
+            </Sequence>
+          ))
+        : null}
+      {(bgFlags ?? []).map((fl, i) =>
+        t >= fl.at - 0.05 && t <= fl.until + 0.05 ? (
+          <Sequence key={`bgf-${i}`} from={Math.round(fl.at * fps)} durationInFrames={Math.round((fl.until - fl.at) * fps) + 2} layout="none">
+            <WavingFlag3D src={fl.src} at={fl.at} until={fl.until} />
+            <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={{...videoStyle, filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.4))"}} />
+          </Sequence>
+        ) : null,
+      )}
       {stockDrop && !b && t >= stockDrop.at - 0.1 && t <= stockDrop.until + 0.1 ? (
         <>
           <StockChart drop={stockDrop} t={t} />
           <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} />
         </>
       ) : null}
-      {b ? (
+      {b && b.mode === "pip" ? (
+        // спикер уезжает карточкой в правый нижний угол, картинка — на весь экран
+        <>
+          <AbsoluteFill style={imgStyle}>
+            <Img src={staticFile(b.src)} style={{width: "100%", height: "100%", objectFit: "cover", scale: String(kb)}} />
+          </AbsoluteFill>
+          <div
+            style={{
+              position: "absolute",
+              left: PIP.x * p,
+              top: PIP.y * p,
+              width: 1080 + (PIP.w - 1080) * p,
+              height: 1920 + (PIP.h - 1920) * p,
+              borderRadius: 30 * p,
+              overflow: "hidden",
+              border: `${6 * p}px solid #FFFFFF`,
+              boxShadow: `0 24px 60px rgba(0,0,0,${0.5 * p})`,
+            }}
+          >
+            <OffthreadVideo
+              src={staticFile(src)}
+              muted
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: `${(focus.x / 1080) * 100}% ${Math.min(100, (focus.y / 1920) * 100 + 8)}%`,
+                scale: String(1 + 0.25 * p),
+                transformOrigin: `${(focus.x / 1080) * 100}% ${(focus.y / 1920) * 100}%`,
+              }}
+            />
+          </div>
+        </>
+      ) : b ? (
         <>
           <AbsoluteFill style={imgStyle}>
             <Img src={staticFile(b.src)} style={{width: "100%", height: "100%", objectFit: "cover", scale: String(kb)}} />
@@ -668,6 +740,16 @@ const ZoomedVideo: React.FC<{
 };
 
 const TRANSITIONS = ["circle", "slide", "zoom", "wipe", "fade"] as const;
+// карточка спикера в режиме перебивки pip: правый нижний угол, выше нижней зоны интерфейса Instagram
+const PIP = {x: 1080 - 60 - 330, y: 1060, w: 330, h: 440};
+const pipAmount = (broll: TalkReelProProps["broll"], t: number) => {
+  const b = broll.find((x) => x.mode === "pip" && t >= x.at - 0.1 && t <= x.until + 0.1);
+  if (!b) return 0;
+  return Math.min(
+    interpolate(t, [b.at, b.at + 0.5], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}),
+    interpolate(t, [b.until - 0.45, b.until], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}),
+  );
+};
 
 // Сколько панели чек-листа на экране (0…1), как у панели городов
 const listAmount = (lists: TalkReelProProps["checklists"], t: number) => {
@@ -692,11 +774,11 @@ const ChecklistPanel: React.FC<{lists: TalkReelProProps["checklists"]}> = ({list
   const {fps} = useVideoConfig();
   const t = frame / fps;
   const amount = listAmount(lists, t);
+  const B = useBrand();
   if (amount <= 0) return null;
   const l = lists.find((x) => t >= x.items[0].at - 0.6 && t <= x.until + 0.1);
   if (!l) return null;
   const slide = (1 - amount) * 900;
-  const B = useBrand();
   return (
     <>
       <div
@@ -1059,11 +1141,11 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
 // FINAL — на карточке спикера в финале (указывает на кнопку сайта), в конце спрыгивает и машет.
 const auraPlan = (p: TalkReelProProps, total: number): MascotPlan => {
   const top = p.format === "stories" ? 78 : 0;
-  const HOME = {x: 880, y: 1640, face: -0.35};
+  const HOME = {x: 905, y: 1535, face: -0.35}; // справа внизу, но выше нижней зоны интерфейса Instagram (380 px)
   const CHIP = {x: 185, y: 900 + top, face: 0.45};
   const LIST = {x: 860, y: PANEL_TOP + 44, face: -0.75};
   const CITY = {x: 880, y: PANEL_TOP + 160, face: -0.7};
-  const FINAL = {x: 800, y: 846, face: -0.8};
+  const FINAL = {x: 660, y: 905, face: -0.8}; // на левом краю карточки спикера, ниже кнопки сайта
   type Ev = {from: number; to: number; spot: typeof HOME; g: {at: number; kind: GestureKind}[]};
   const ev: Ev[] = [];
   for (const c of p.chips) {
@@ -1071,6 +1153,9 @@ const auraPlan = (p: TalkReelProProps, total: number): MascotPlan => {
     for (const it of c.items) if (it.strike !== undefined) g.push({at: it.strike - 0.25, kind: "push"});
     ev.push({from: c.items[0].at - 0.5, to: c.until, spot: CHIP, g});
   }
+  // карточка-переворот (справа внизу) — робот уходит налево, чтобы не закрывать её, и показывает
+  for (const g of p.logos)
+    if (g.flip) ev.push({from: g.items[0].at - 0.5, to: g.until, spot: CHIP, g: [{at: g.items[0].at, kind: "point"}]});
   for (const n of p.numbers) ev.push({from: n.at - 0.5, to: n.until, spot: CHIP, g: [{at: n.at - 0.35, kind: "jump"}]});
   for (const l of p.checklists)
     ev.push({from: l.items[0].at - 0.8, to: l.until, spot: LIST, g: l.items.map((it) => ({at: it.at - 0.3, kind: "tick" as const}))});
@@ -1174,6 +1259,8 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
         stockDrop={p.stockDrop}
         focus={p.focus}
         checklists={p.checklists}
+        bgFlags={p.bgFlags}
+        angleB={p.angleB}
       />
       <CityPanel cities={p.cities} />
       <ChecklistPanel lists={p.checklists} />
@@ -1213,11 +1300,16 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
         />
       </Sequence>
 
-      {plan ? <AuraMascot plan={plan} scale={1.25} /> : null}
-      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} />
+      {plan ? <AuraMascot plan={plan} scale={1.15} /> : null}
+      {(p.flags ?? []).map((fl, i) => (
+        <Sequence key={`flags-${i}`} from={f(fl.at)} durationInFrames={f(fl.until - fl.at)}>
+          <FlagArc items={fl.items} at={fl.at} until={fl.until} center={p.focus} />
+        </Sequence>
+      ))}
+      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} broll={p.broll} />
       {brand.id === "aura" ? (
         // Aura: круглая печать крутится над головой спикера, по центру; в Stories — ниже полосок и аватара
-        <div style={{position: "absolute", top: p.format === "stories" ? 200 : 40, left: "50%", translate: "-50% 0"}}>
+        <div style={{position: "absolute", top: p.format === "stories" ? 200 : 70, left: "50%", translate: "-50% 0"}}>
           <AuraBadge size={200} />
         </div>
       ) : (

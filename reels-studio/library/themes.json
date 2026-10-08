@@ -40,7 +40,7 @@
   "title": "Искусственный интеллект",
   "expedition": "/expeditions/china-ai-expedition",
   "route": "source-videos/2026-10-07-ai/site/route/ai-day*.png",
-  "music": "inspiring-technology-soundrider",
+  "music": "inspiring-corporate-soundrider",
   "logos": [
    "ии",
    "общие",
@@ -75,7 +75,7 @@
   "title": "Бытовая техника и умный дом",
   "expedition": "/expeditions/china-appliances-expedition",
   "route": "source-videos/2026-10-07-byt-tehnika/site/route/appliances-day*.png",
-  "music": "inspiring-technology-soundrider",
+  "music": "inspiring-corporate-soundrider",
   "logos": [
    "бытовая-техника",
    "общие"
@@ -104,7 +104,7 @@
   "title": "Чайно-кофейный ретейл",
   "expedition": "/expeditions/china-tea-coffee-retail-expedition",
   "route": "source-videos/2026-10-07-chai-kofe/site/route/ck-day*.png",
-  "music": "upbeat-corporate-soundrider",
+  "music": "inspiring-corporate-soundrider",
   "logos": [
    "чай-кофе",
    "общие"
@@ -130,7 +130,7 @@
   "title": "Кондитерские и десерты",
   "expedition": "/expeditions/confectionery-expedition",
   "route": "source-videos/2026-10-07-konditerka/site/route/kd-day*.png",
-  "music": "bidous-transit-bluedot",
+  "music": "inspiring-corporate-soundrider",
   "logos": [
    "кондитерка",
    "общие"
@@ -155,7 +155,7 @@
   "title": "Индустрия красоты",
   "expedition": "/expeditions/china-beauty-antiage-expedition",
   "route": "source-videos/2026-10-07-kosmetika/site/route/km-day*.png",
-  "music": "inspiring-ambient-motivation-soundrider",
+  "music": "inspiring-corporate-soundrider",
   "logos": [
    "косметика",
    "общие"
@@ -180,7 +180,7 @@
   "title": "Новый ритейл и доставка",
   "expedition": "/expeditions/china-retail-showrooms-expedition",
   "route": "source-videos/2026-10-07-novyi-riteil/site/route/nr-day*.png",
-  "music": "trivial-call-bluedot",
+  "music": "inspiring-corporate-soundrider",
   "logos": [
    "ритейл",
    "общие"
@@ -206,7 +206,7 @@
   "title": "Технологические гиганты",
   "expedition": "/expeditions/china-tech-giants-expedition",
   "route": "source-videos/2026-10-07-tech-giganty/site/route/tg-day*.png",
-  "music": "inspiring-technology-soundrider",
+  "music": "inspiring-corporate-soundrider",
   "logos": [
    "техгиганты",
    "общие",
@@ -229,6 +229,35 @@
   ],
   "audienceTitle": "Для кого поездка"
  },
+ "roboty": {
+  "title": "Роботы и робототехника Китая",
+  "expedition": "/expeditions/robotics-expedition",
+  "music": "inspiring-corporate-soundrider",
+  "logos": [
+   "техгиганты",
+   "ии",
+   "общие"
+  ],
+  "broll": {
+   "include": "robot|humanoid|robotic arm|cobot|quadruped|robot dog|automat|assembly line|factory|laborator",
+   "tags": {
+    "гуманоид": "humanoid",
+    "робот": "robot|humanoid",
+    "собак": "quadruped|robot dog",
+    "манипулятор|рука": "robotic arm|cobot",
+    "завод|производств": "factory|assembly",
+    "склад": "warehouse|agv",
+    "лаборатор|r&d|разработ": "lab|research"
+   }
+  },
+  "accent": [
+   "роботы",
+   "роботов",
+   "гуманоиды",
+   "гуманоидов"
+  ],
+  "audienceTitle": "Для кого поездка"
+ },
  "aura": {
   "title": "Aura Robotics: роботы из Китая",
   "brand": "aura",
@@ -238,7 +267,7 @@
    "catalog": "source-videos/aura-robotics/site/catalog-humanoid.png"
   },
   "cta": "Роботы из Китая",
-  "music": "inspiring-technology-soundrider",
+  "music": "inspiring-corporate-soundrider",
   "logos": [
    "техгиганты",
    "ии",
@@ -267,7 +296,7 @@
  "obshchee": {
   "title": "Общая тема (визитка, анонс, новая отрасль)",
   "expedition": "/expeditions",
-  "music": "upbeat-corporate-soundrider",
+  "music": "inspiring-corporate-soundrider",
   "logos": [
    "общие"
   ],

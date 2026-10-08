@@ -578,6 +578,19 @@ def main():
     }
     if stock:
         props["stockDrop"] = stock
+    # второй ракурс (вторая камера): переключение на боковой план на спокойных кусках, ~раз в 10 с
+    bcam = work / f"{a.clip}.cut.b.mp4"
+    if bcam.exists():
+        busy_b = busy + [(b["at"] - 0.5, b["until"] + 0.5) for b in broll] + [(n["at"] - 0.3, n["until"]) for n in numbers]
+        shots, last = [], -99.0
+        segs = [(c["out_start"], (cutj[i + 1]["out_start"] if i + 1 < len(cutj) else speech_sec)) for i, c in enumerate(cutj)]
+        for s0, s1 in segs:
+            if s1 - s0 < 1.8 or s0 - last < 9 or s0 < 4 or overlaps(s0, min(s1, s0 + 3.5), busy_b):
+                continue
+            shots.append({"at": r2(s0), "until": r2(min(s1, s0 + 3.5))})
+            last = s0
+        props["angleB"] = {"src": str(bcam.relative_to(ROOT)), "shots": shots}
+        note(0, f"второй ракурс: {len(shots)} переключений")
     if th.get("brand"):  # другой бренд (aura — Aura Robotics): свой стиль, логотип, маскот и сайт в финале
         props["brand"] = th["brand"]
     if th.get("site"):
