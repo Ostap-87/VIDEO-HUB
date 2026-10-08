@@ -6,7 +6,7 @@
   "slides": [
     {
       "type": "cover",
-      "tag": "Бизнес-делегация · Косметика и бьюти-технологии Вьетнама",
+      "tag": "Косметика и бьюти-технологии Вьетнама",
       "topright": "Cocoon · Hasaki\nThorakao · Sao Thái Dương",
       "logos": [
         {
@@ -43,7 +43,7 @@
         }
       ],
       "box_text": "От веганского skincare Cocoon —\n8 компаний, 6 дней, 6 ночей",
-      "box_right": "Хошимин + Ханой —\nразвивающийся, но быстрорастущий сегмент",
+      "box_right": "Хошимин + Ханой",
       "footer": "Global Tech Tour · бизнес-делегации во Вьетнам · РФ/СНГ"
     },
     {
@@ -74,7 +74,7 @@
       "title2": "5 дней",
       "items": [
         {
-          "name": "Дни 1–2 · Хошимин",
+          "name": "Дни 1–2",
           "text": "Cocoon, Hasaki, Thorakao, Saigon Cosmetics"
         },
         {
@@ -122,13 +122,13 @@
         {
           "sub": "10:00–13:00",
           "title": "Thorakao ·\nSaigon Cosmetics",
-          "text": "Saigon Cosmetics — бывшее государственное предприятие.",
+          "text": "Визиты: Thorakao, Saigon Cosmetics.",
           "label": "День 2"
         },
         {
           "sub": "10:00–13:00",
           "title": "M.O.I Cosmetics ·\nLemonade Cosmetics",
-          "text": "Lemonade Cosmetics — вьетнамский бренд декоративной косметики.",
+          "text": "Визиты: M.O.I Cosmetics, Lemonade Cosmetics.",
           "label": "День 3"
         },
         {
@@ -194,11 +194,6 @@
           "sub": "2024 год"
         },
         {
-          "icon": "star",
-          "value": "Первый",
-          "label": "этаж"
-        },
-        {
           "icon": "flag",
           "value": "2016",
           "label": "год основания"
@@ -208,6 +203,12 @@
           "value": "Хошимин",
           "label": "площадка визита",
           "sub": "день 1 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
         }
       ],
       "why": "Работает по гибридной онлайн-офлайн модели с уникальным форматом магазина «shop-spa-warehouse»: первый этаж.",
@@ -450,7 +451,7 @@
         {
           "icon": "store",
           "value": "8 компаний",
-          "label": "в программе",
+          "label": "Косметика и бьюти-технологии Вьетнама",
           "sub": "Cocoon, Hasaki, Thorakao"
         },
         {

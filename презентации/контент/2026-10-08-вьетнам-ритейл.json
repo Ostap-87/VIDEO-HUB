@@ -7,14 +7,14 @@
     {
       "type": "cover",
       "tag": "Бизнес-делегация · Ритейл Вьетнама",
-      "topright": "MWG · Saigon Co.op\nAEON · WinCommerce",
+      "topright": "От MWG\nдо WinCommerce",
       "logos": [
         {
-          "name": "Thế Giới Di Động",
+          "name": "MWG",
           "logo": "source-videos/логотипы/ритейл/mwg.png"
         },
         {
-          "name": "FPT Retail",
+          "name": "FPT Retail / Long Châu",
           "logo": "source-videos/логотипы/ритейл/fpt-long-chau.png"
         },
         {
@@ -22,11 +22,11 @@
           "logo": "source-videos/логотипы/ритейл/saigon-coop.png"
         },
         {
-          "name": "Central Retail",
-          "logo": "source-videos/логотипы/ритейл/central-retail.png"
+          "name": "Central Retail Vietnam",
+          "logo": "source-videos/логотипы/ритейл/central-retail-vietnam.png"
         },
         {
-          "name": "AEON",
+          "name": "AEON Vietnam",
           "logo": "source-videos/логотипы/ритейл/aeon.png"
         },
         {
@@ -42,8 +42,8 @@
           "logo": "source-videos/логотипы/ритейл/con-cung.png"
         }
       ],
-      "box_text": "От омниканальной сети MWG (Bách Hóa Xanh, —\n8 компаний, 6 дней, 6 ночей",
-      "box_right": "Хошимин + Ханой —\nвьетнамский ритейл через два города",
+      "box_text": "От омниканальной MWG до WinMart —\n8 компаний, 6 дней, 6 ночей",
+      "box_right": "Хошимин и Ханой —\nритейл двух столиц",
       "footer": "Global Tech Tour · бизнес-делегации во Вьетнам · РФ/СНГ"
     },
     {
@@ -74,7 +74,7 @@
       "title2": "5 дней",
       "items": [
         {
-          "name": "Дни 1–2 · Хошимин",
+          "name": "Дни 1–2",
           "text": "Thế Giới Di Động, FPT Retail, Saigon Co.op"
         },
         {
@@ -122,7 +122,7 @@
         {
           "sub": "10:00–13:00",
           "title": "FPT Retail ·\nSaigon Co.op",
-          "text": "Saigon Co.op — крупнейший кооперативный ритейлер Вьетнама.",
+          "text": "Визиты: FPT Retail, Saigon Co.op.",
           "label": "День 2"
         },
         {
@@ -213,7 +213,7 @@
           "label": "г/г"
         }
       ],
-      "why": "Управляет аптечной сетью Long Châu — к концу 2025 года сеть выросла до 2417 аптек и 223 центров вакцинации в составе.",
+      "why": "Управляет аптечной сетью Long Châu — к концу 2025 года сеть выросла до 2417 аптек и 223 центров вакцинации.",
       "learn": "Компания использует ИИ и big data для прогнозирования спроса по регионам и оптимизации запасов.",
       "learn_label": "Фокус визита"
     },
@@ -255,7 +255,7 @@
       "tag": "День 3 · Хошимин",
       "title": "Central Retail Vietnam",
       "logo": "source-videos/логотипы/ритейл/central-retail.png",
-      "short": "Central Retail Vietnam (GO!/Tops)",
+      "short": "Central Retail",
       "subtitle": "GO!/Tops · Central Group · Хошимин",
       "facts": [
         {
@@ -317,7 +317,7 @@
         }
       ],
       "why": "Планировала управлять около 8 торговыми центрами, 15 супермаркетами формата GMS, 45 средними и малыми супермаркетами.",
-      "learn": "Компания рассчитывает на среднегодовой рост выручки около 30% и намерена утроить масштаб бизнеса во Вьетнаме к 2030 году за счёт.",
+      "learn": "Компания рассчитывает на среднегодовой рост выручки около 30% и намерена утроить масштаб бизнеса во Вьетнаме к 2030.",
       "learn_label": "Фокус визита"
     },
     {
@@ -415,9 +415,9 @@
           "sub": "2022 год"
         },
         {
-          "icon": "trending",
-          "value": "30%+",
-          "label": "которых не менее"
+          "icon": "flag",
+          "value": "2011",
+          "label": "год основания"
         }
       ],
       "why": "Вьетнамская сеть товаров для мам и детей, насчитывающая более 600 собственных магазинов в 45 провинциях страны.",
@@ -454,7 +454,7 @@
         },
         {
           "title": "Ритейл Вьетнама",
-          "text": "\nХошимин + Ханой",
+          "text": "От MWG до WinCommerce\nХошимин + Ханой",
           "icon": "store"
         }
       ]

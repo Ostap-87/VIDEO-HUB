@@ -6,7 +6,7 @@
   "slides": [
     {
       "type": "cover",
-      "tag": "Продукты питания и молочная промышленность Вьетнама",
+      "tag": "Бизнес-делегация · Вьетнама",
       "topright": "Vinamilk · TH True Milk\nAcecook",
       "logos": [
         {
@@ -38,7 +38,7 @@
           "logo": "source-videos/логотипы/еда/acecook.png"
         }
       ],
-      "box_text": "От мега-завода Vinamilk Industry 4.0 —\n7 компаний, 6 дней, 6 ночей",
+      "box_text": "7 компаний, 6 дней, 6 ночей",
       "box_right": "Хошимин + Виня, пров. Нгеан + Ханой",
       "footer": "Global Tech Tour · бизнес-делегации во Вьетнам · РФ/СНГ"
     },
@@ -70,11 +70,11 @@
       "title2": "5 дней",
       "items": [
         {
-          "name": "Дни 1–2 · Хошимин",
+          "name": "Дни 1–2",
           "text": "Vinamilk, Nutifood, Masan Consumer"
         },
         {
-          "name": "Дни 3–4 · Хошимин + Виня, пров. Нгеан",
+          "name": "Дни 3–4",
           "text": "Vissan, Dutch Lady, TH True Milk"
         },
         {
@@ -95,7 +95,7 @@
         {
           "name": "Виня, пров. Нгеан",
           "days": "день 4",
-          "companies": "TH True Milk",
+          "companies": "1 компания",
           "leg": {
             "icon": "plane",
             "text": "≈1,5 ч"
@@ -127,7 +127,7 @@
         {
           "sub": "10:00–13:00",
           "title": "Nutifood ·\nMasan Consumer",
-          "text": "Masan Consumer — один из ведущих производителей брендированных продуктов.",
+          "text": "Визиты: Nutifood, Masan Consumer.",
           "label": "День 2"
         },
         {
@@ -164,9 +164,9 @@
           "label": "заводов"
         },
         {
-          "icon": "building",
-          "value": "20 га",
-          "label": "мощностью"
+          "icon": "chart",
+          "value": "400 млн",
+          "label": "литров молока"
         },
         {
           "icon": "trending",
@@ -291,7 +291,7 @@
       "tag": "День 3 · Хошимин",
       "title": "Dutch Lady",
       "logo": "source-videos/логотипы/еда/foremost-frieslandcampina.png",
-      "short": "Dutch Lady (FrieslandCampina)",
+      "short": "Dutch Lady",
       "subtitle": "FrieslandCampina · Binh Duong Import Export Company · Хошимин",
       "facts": [
         {
@@ -377,7 +377,7 @@
         {
           "icon": "trending",
           "value": "~40%",
-          "label": "рынок с долей"
+          "label": "Лидер рынка с долей"
         },
         {
           "icon": "chart",

@@ -2064,7 +2064,8 @@
  "goto": {
   "names": [
    "GoTo (GoFood/GoKitchen)",
-   "GoTo"
+   "GoFood",
+   "GoKitchen"
   ],
   "logo": "source-videos/логотипы/техгиганты/goto-gofood-gokitchen.png",
   "site_logo": "/logos/GoFood:GoKitchen).png"
@@ -2156,14 +2157,6 @@
   ],
   "logo": "source-videos/логотипы/косметика/paragon-technology-innovation.png",
   "site_logo": "/logos/Paragon Technology & Innovation (Wardah:Emina:Make Over).png"
- },
- "kahf": {
-  "names": [
-   "Kahf (Paragon)",
-   "Kahf"
-  ],
-  "logo": "source-videos/логотипы/косметика/kahf-paragon.png",
-  "site_logo": "/logos/Kahf.png"
  },
  "martha-tilaar-group": {
   "names": [
@@ -2430,5 +2423,160 @@
   ],
   "logo": "source-videos/логотипы/чай-кофе/king-coffee-tni.png",
   "site_logo": "/logos/King Coffee.png"
+ },
+ "be": {
+  "names": [
+   "Be (beGroup)"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/be-begroup.png",
+  "site_logo": "/logos/Be .png"
+ },
+ "loship": {
+  "names": [
+   "Loship"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/loship.png",
+  "site_logo": "/logos/Loship.png"
+ },
+ "xanh-sm": {
+  "names": [
+   "Xanh SM (GSM/VinFast)",
+   "Xanh SM"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/xanh-sm-gsm-vinfast.svg",
+  "site_logo": "/logos/xanh-sm-gsm-vinfast.svg"
+ },
+ "ahamove": {
+  "names": [
+   "Ahamove"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/ahamove.png",
+  "site_logo": "/logos/Ahamove.png"
+ },
+ "vng-corporation": {
+  "names": [
+   "VNG Corporation",
+   "VNG"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/vng-corporation.png",
+  "site_logo": "/logos/VNG Corporation.png"
+ },
+ "tiki": {
+  "names": [
+   "Tiki"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/tiki.png",
+  "site_logo": "/logos/Tiki.png"
+ },
+ "momo": {
+  "names": [
+   "MoMo"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/momo.png",
+  "site_logo": "/logos/MoMo.png"
+ },
+ "trusting-social": {
+  "names": [
+   "Trusting Social"
+  ],
+  "logo": "source-videos/логотипы/ии/trusting-social.png",
+  "site_logo": "/logos/Trusting Social.png"
+ },
+ "vinai": {
+  "names": [
+   "VinAI"
+  ],
+  "logo": "source-videos/логотипы/ии/vinai.png",
+  "site_logo": "/logos/VinAI.png"
+ },
+ "fpt-ai-fpt-software": {
+  "names": [
+   "FPT AI / FPT Software",
+   "FPT AI",
+   "FPT Software"
+  ],
+  "logo": "source-videos/логотипы/ии/fpt-ai-software.png",
+  "site_logo": "/logos/FPT AI.png"
+ },
+ "viettel": {
+  "names": [
+   "Viettel"
+  ],
+  "logo": "source-videos/логотипы/общие/viettel.svg",
+  "site_logo": "/logos/viettel.svg"
+ },
+ "vinbrain": {
+  "names": [
+   "VinBrain"
+  ],
+  "logo": "source-videos/логотипы/медицина/vinbrain.png",
+  "site_logo": "/logos/VinBrain.png"
+ },
+ "elsa": {
+  "names": [
+   "ELSA"
+  ],
+  "logo": "source-videos/логотипы/ии/elsa.png",
+  "site_logo": "/logos/ELSA.png"
+ },
+ "cocoon-vietnam": {
+  "names": [
+   "Cocoon Vietnam",
+   "Cocoon"
+  ],
+  "logo": "source-videos/логотипы/косметика/cocoon.png",
+  "site_logo": "/logos/Cocoon.png"
+ },
+ "hasaki": {
+  "names": [
+   "Hasaki"
+  ],
+  "logo": "source-videos/логотипы/косметика/hasaki.png",
+  "site_logo": "/logos/Hasaki.png"
+ },
+ "thorakao": {
+  "names": [
+   "Thorakao (Lan Hảo)",
+   "Thorakao"
+  ],
+  "logo": "source-videos/логотипы/косметика/thorakao.png",
+  "site_logo": "/logos/Thorakao.png"
+ },
+ "saigon-cosmetics": {
+  "names": [
+   "Saigon Cosmetics (SCC)",
+   "Saigon Cosmetics",
+   "SCC"
+  ],
+  "logo": "source-videos/логотипы/косметика/saigon-cosmetics-scc.png",
+  "site_logo": "/logos/Saigon Cosmetics.png"
+ },
+ "m-o-i-cosmetics": {
+  "names": [
+   "M.O.I Cosmetics"
+  ],
+  "logo": "source-videos/логотипы/косметика/moi-cosmetics.png",
+  "site_logo": "/logos/M.O.I Cosmetics.png"
+ },
+ "lemonade-cosmetics": {
+  "names": [
+   "Lemonade Cosmetics"
+  ],
+  "logo": "source-videos/логотипы/косметика/lemonade-cosmetics.png",
+  "site_logo": "/logos/Lemonade.png"
+ },
+ "sao-thai-duong": {
+  "names": [
+   "Sao Thái Dương"
+  ],
+  "logo": "source-videos/логотипы/косметика/sao-thai-duong.png",
+  "site_logo": "/logos/Sao Thái Dương.png"
+ },
+ "milaganics": {
+  "names": [
+   "Milaganics"
+  ],
+  "logo": "source-videos/логотипы/косметика/milaganics.png",
+  "site_logo": "/logos/Milaganics.png"
  }
 }

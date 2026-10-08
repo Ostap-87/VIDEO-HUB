@@ -208,6 +208,7 @@ def parse_site(src):
         except Exception:
             continue
         if 'name_en' in c and 'desc_ru' in c:
+            c['desc_ru'] = re.sub(r"(?<![\w'])'([^'\n]{2,60})'(?![\w'])", r'«\1»', c['desc_ru'] or '')  # 'Cimory Dairyland' → «…»
             comps.setdefault(c['id'], c)
     return tours, comps
 
@@ -270,9 +271,14 @@ def sentences(text):
     parts = re.split(r'(?<=[.!?])\s+(?=[А-ЯЁA-Z«"0-9])', text)
     out = []
     for p in parts:  # склеиваем ложные разрывы после инициалов и сокращений
-        if out and (re.search(r'(?:\b(?:Co|Ltd|Inc|Dr|St|Mr|Mrs|д-р|т\.е|т\.д|им|преф|ул|р-н|обл)\.|(?:^|[\s.])[A-ZА-ЯЁ]\.)$', out[-1])
+        if out and (re.search(r'(?:\b(?:Co|Ltd|Inc|Sdn|Bhd|Dr|St|Mr|Mrs|д-р|т\.е|т\.д|им|преф|ул|р-н|обл)\.|(?:^|[\s.])[A-ZА-ЯЁ]\.)$', out[-1])
                     or out[-1].count('«') > out[-1].count('»')):  # точка внутри кавычек: «Shiseido. Global …»
             out[-1] += ' ' + p
+        elif out and re.search(r'\b(?:ок|кв|гг?|долл|тыс|млн|млрд|трлн|руб)\.$', out[-1]) and re.match(r'\d', p):
+            out[-1] += ' ' + p  # «ок. 24 млн», «II кв. 2026 г.»
+        elif (out and re.search(r'\bгг?\.$', out[-1]) and re.search(r'(?:основан|создан|запущен|открыт|учрежд)\w*[^.]*\bгг?\.$', out[-1])
+              and re.match(r'(?:[A-ZА-ЯЁ][\w-]*\s){0,3}[A-ZА-ЯЁ][\w-]*(?:ом|ем|ём|ой|ей|ым|им)\b', p)):
+            out[-1] += ' ' + p  # «основана в 2010 г. Чан Нгок Тхай Соном»
         else:
             out.append(p)
     return [p.strip() for p in out if p.strip()]
@@ -294,12 +300,29 @@ def first_pos(word):
 
 def bad_start(s):
     """Фраза не может начинаться с деепричастия/причастия/союза — это обрывок."""
-    if re.match(r'(?:В том же|В тот же|Позже|Затем|Тогда|После этого|Кроме того|При этом)\b', s.strip()):
+    if re.match(r'(?:В том же|В тот же|Позже|Затем|Тогда|После этого|Кроме того|При этом|Там|Здесь)\b', s.strip()):
         return True  # ссылка на предыдущую фразу — вне контекста непонятно
     w = s.split()[0] if s.split() else ''
     if w.lower() in ('и', 'а', 'но', 'что', 'который', 'которая', 'которое', 'которые', 'чья', 'чей', 'где', 'включая', 'при', 'позволяя'):
         return True
     return first_pos(w) == 'GRND' or (first_pos(w) == 'PRTF' and w[:1].islower())
+
+
+COMPOUND_PREP = {('за', 'счёт'), ('за', 'счет'), ('в', 'составе'), ('на', 'основе'), ('в', 'рамках'), ('при', 'поддержке'),
+                 ('с', 'помощью'), ('в', 'течение'), ('в', 'области'), ('по', 'данным'), ('в', 'сфере')}
+
+
+def trim_tail(ws):
+    """Обрезанная по словам фраза не кончается на «телеком-», «за счёт», «в составе»."""
+    ws = list(ws)
+    while len(ws) > 3:
+        if ws[-1].endswith(('-', '–')):
+            ws.pop()
+        elif tuple(w.lower().strip(',') for w in ws[-2:]) in COMPOUND_PREP:
+            ws = ws[:-2]
+        else:
+            break
+    return ws
 
 
 def clause_cuts(s, limit):
@@ -336,10 +359,11 @@ def clause_cuts(s, limit):
             if len(acc) + len(w) + 1 > limit:
                 break
             acc = (acc + ' ' + w).strip()
-        ws = acc.split()
+        ws = trim_tail(acc.split())
         while len(ws) > 3 and (ws[-1].lower() in STOPW or first_pos(ws[-1]) in ('PREP', 'CONJ', 'ADJF', 'PRTF', 'PRCL', 'ADVB', 'NUMR')
                                or ws[-1].lower() in ('под', 'над', 'для', 'их', 'его', 'её', 'чем', 'которые', 'который')):
             ws.pop()
+            ws = trim_tail(ws)
         out.append(' '.join(ws))
     res = []
     for o in out:
@@ -373,7 +397,7 @@ ICON_STEMS = [
     (r'позици|товар|продукт|SKU|бренд|упаков', 'package'),
 ]
 TOP_BAD = ('подобн', 'мест', 'крупн', 'так', 'ден', 'раз', 'этап', 'квартал', 'год', 'половин', 'поток', 'шаг', 'магазин', 'сезон', 'выпуск',
-           'точк', 'филиал', 'зал', 'офис')
+           'точк', 'филиал', 'зал', 'офис', 'этаж')
 SIGNIF = r'крупнейш|лидер|перв(?:ый|ая|ое|ым|ой|ую)\b|№\s?\d|ведущ|доминир|пионер|культов|старейш|единствен|флагман|топ-|место\b|место в|одн\w+ из'
 ACTIVITY = (r'управля|развива|разрабатыва|производ|выпуска|владеет|специализир|обслужива|объединя|созда[её]т|предлага|'
             r'работает|занима|контролир|поставля|связывает|делает ставку|выросл|является|позиционир|насчитыва|удержива')
@@ -596,7 +620,7 @@ def extract_facts(desc, names=()):
         gpos += len(sent) + 1
         subj_is_company = si == 0 or any(sent.lower().startswith(n) for n in lname) or re.match(r'(Компания|Сеть|Бренд|Группа|Клиника|Сервис|Платформа)\b', sent)
         # --- числа
-        for m in re.finditer(r'(\$\s?)?(?<![\w.,/–-])' + NUMRE + r'(\+)?(?![.,]\d|[/–-]\d|\d|-[а-я]|[A-Za-zА-Яа-я])', sent):
+        for m in re.finditer(r'(\$\s?)?(?<![\w.,/–×-])(?<!\d[ \u00a0\u202f])' + NUMRE + r'(\+)?(?![.,]\d|[/–×-]\d|\d|-[а-я]|[A-Za-zА-Яа-я])', sent):
             if in_parens(sent, m.start()) and not re.search(r'%|' + MULT + '|' + AREA, sent[m.end():m.end() + 14]):
                 continue
             raw = m.group(2)
@@ -609,13 +633,16 @@ def extract_facts(desc, names=()):
                 continue
             if re.search(r'(?:версии|версия|v|Series|раунд\w*|№)\s*$', before, re.I):
                 continue
-            if re.match(r'\s*(?:мл|г|кг|см|мм|ч|час\w*|мин\w*|сек\w*|дн\w*|дней|недел\w*|месяц\w*|лет|года?|раз\w*)\b', after):
+            if re.match(r'\s*(?:мл|г|кг|см|мм|м|км|ч|час\w*|мин\w*|сек\w*|дн\w*|дней|недел\w*|месяц\w*|лет|года?|раз\w*)\b', after):
                 continue
             if re.search(r'(?:уступая|опережая|после|чем у|в отличие от)\b', before) or re.search(r'(запланирован\w*|планиру\w*|план\w*|цел\w*)\s*$', before):
                 continue
             mm = re.match(r'\s*' + MULT, after)
             mult = mm.group(1) if mm else ''
             aft2 = after[mm.end():] if mm else after
+            plus2 = bool(mm and aft2.startswith('+'))  # «135 млн+ единиц»
+            if plus2:
+                aft2 = aft2[1:]
             am = re.match(r'\s*' + AREA, aft2)
             unit = 'м²' if am and not am.group(1).startswith(('га', 'гект')) else ('га' if am else '')
             if am:
@@ -626,7 +653,7 @@ def extract_facts(desc, names=()):
             pct = re.match(r'\s*%', aft2)
             if m.group(1):
                 cur = cur or 'долл'
-            sign = '+' if m.group(3) else ''
+            sign = '+' if m.group(3) or plus2 else ''
             for word, sg in APPROX:
                 if re.search(r'(?:^|\s)' + word + r'\s*$', before, re.I):
                     sign = sign or sg
@@ -643,12 +670,18 @@ def extract_facts(desc, names=()):
                 words = np_after(after_pct, 0, 4)
                 if not words or after_pct.strip().startswith((')', ',')):
                     pre = re.sub(r'\(\s*(?:около|свыше|более|почти|примерно)?\s*$', '', before).strip()
-                    pw = re.findall(r'[\w-]+', re.split(r'[,;(—]', pre)[-1])[-4:]
-                    while pw and (pw[0].lower() in STOPW or is_verb(pw[0]) or first_pos(pw[0]) in ('PREP', 'CONJ')):
+                    seg = re.split(r',\s|[;(—]', pre)[-1]  # «$1,5 млрд» — запятая внутри числа не граница
+                    dm = re.search(r'\bдол[яеию]\b', seg)
+                    pw = re.findall(r'[\w-]+', seg)
+                    while pw and (pw[-1].lower() in STOPW or pw[-1].lower() in ('её', 'его', 'их') or is_verb(pw[-1])
+                                  or first_pos(pw[-1]) in ('PREP', 'CONJ')):
+                        pw = pw[:-1]  # «доля рынка достигла» → «доля рынка»
+                    k = max([i + 1 for i, w in enumerate(pw) if re.search(r'\d', w) or is_verb(w)] + [0])
+                    pw = pw[k:][-4:]  # «вложила $1,5 млрд и получила» — не подпись
+                    while pw and (pw[0].lower() in STOPW or pw[0].lower() in ('её', 'его', 'их') or is_verb(pw[0])
+                                  or first_pos(pw[0]) in ('PREP', 'CONJ')):
                         pw = pw[1:]
-                    while pw and (pw[-1].lower() in STOPW or first_pos(pw[-1]) in ('PREP', 'CONJ')):
-                        pw = pw[:-1]
-                    words = nomn_phrase(pw)
+                    words = ['доля', 'рынка'] if dm and 'рынк' in seg else (['доля'] if dm else nomn_phrase(pw))
                 if not words:
                     continue
                 v = {'~': '~', 'до ': 'до ', '<': '<'}.get(sign, '') + raw + '%' + ('+' if sign == '+' else '')
@@ -933,9 +966,26 @@ def _vs(x):
     return x.v[0] if isinstance(x, Var) else x
 
 
+def bad_label(f):
+    """Подпись-обрывок: «которых не менее», «2021 Masan Group купила», «больше», «мощностью»."""
+    lb = f['labels'][0] if f.get('labels') else ''
+    lb = _vs(lb) if lb else ''
+    ws = [w.strip('«»"(),.;:') for w in str(lb).split()]
+    ws = [w for w in ws if w]
+    if not ws:
+        return False
+    if re.match(r'\d', ws[0]) or any(w.lower() in ('которых', 'которые', 'который', 'которой', 'больше', 'меньше') for w in ws):
+        return True
+    if any(w[:1].islower() and first_pos(w) == 'VERB' for w in ws) or (ws[0][:1].isupper() and first_pos(ws[0].lower()) == 'VERB'):
+        return True
+    p = parse_word(ws[0]) if len(ws) == 1 and ws[0][:1].islower() else None
+    return bool(p and p.tag.POS == 'NOUN' and p.tag.case == 'ablt')
+
+
 def pick_facts(cands, extra):
     """4 факта: сначала по одному каждого вида (цифры, №1, бренд, год…), потом добор; в конце — группа, город."""
     limits = {'year': 1, 'name': 2, 'listing': 1, 'top': 2, 'money': 2, 'count': 3, 'pct': 2, 'partner': 1, 'spec': 2}
+    cands = [f for f in cands if not bad_label(f)]
     ranked = sorted(cands, key=lambda f: (f['prio'], f['pos']))
     chosen, kinds = [], {}
 
@@ -1074,7 +1124,7 @@ def text_variants(s, limits, kind='sentence'):
                 if len(acc) + len(w) + 1 > lim:
                     break
                 acc = (acc + ' ' + w).strip()
-            wl = acc.split()
+            wl = trim_tail(acc.split())
             while len(wl) > 3 and (wl[-1].lower() in STOPW or first_pos(wl[-1].strip(',')) in ('PREP', 'CONJ', 'ADJF', 'PRTF', 'PRCL', 'ADVB', 'NUMR')):
                 wl.pop()
             cuts = [' '.join(wl).rstrip(',')] + cuts
@@ -1124,6 +1174,15 @@ def why_learn(c):
     return why, learn
 
 
+def words_cut(text, n):
+    """Первые n слов; если последнее — прилагательное/предлог/союз, добираем до существительного (не больше n + 3)."""
+    ws = text.split()
+    k = min(n, len(ws))
+    while k < len(ws) and k < n + 3 and (first_pos(ws[k - 1].strip(',;.')) in ('ADJF', 'PRTF', 'PREP', 'CONJ') or ws[k - 1].endswith('-')):
+        k += 1
+    return ' '.join(ws[:k]).rstrip(',;')
+
+
 def nominal_kind(c, limit=55):
     """«Dutch Mill — доминирующий производитель питьевого йогурта» → «доминирующий производитель питьевого йогурта»."""
     sents = sentences(c.get('desc_ru', ''))
@@ -1137,6 +1196,8 @@ def nominal_kind(c, limit=55):
     p0 = parse_word(w0.lower())
     if not w0 or (p0 and p0.tag.case not in ('nomn', None)) or any(is_verb(w) for w in s0[:dm.start()].split()):
         return ''
+    if any(first_pos(w) == 'PRTS' for w in s0[:dm.start()].split()) or any(is_verb(w) for w in re.split(r'[,;]', s0[dm.end():])[0].split()):
+        return ''  # «… основана в 2018 году — первая точка продавала …»
     v = clause_cuts(s0[dm.end():].strip(), limit)
     v = [x for x in v if len(x) <= limit]
     return v[0] if v else ''
@@ -1254,7 +1315,10 @@ GENERIC_SUFFIX = r'\s+(?:Thailand|Japan|Vietnam|India|Malaysia|Indonesia|Korea|U
 def name_keys(c):
     n = c['name_en']
     keys = set()
-    for part in [n, base_name(n), paren_name(n)] + re.split(r'\s*/\s*|\s+[—–]\s+', base_name(n)):
+    pn = paren_name(n)
+    if pn and not re.fullmatch(r'[A-Z]{2,5}|[A-Z][a-z]+[A-Z]\w*', pn):
+        pn = ''  # «Point Coffee (Indomaret)» — в скобках материнская компания, её логотип не подходит
+    for part in [n, base_name(n), pn] + re.split(r'\s*/\s*|\s+[—–]\s+', base_name(n)):
         part = part.strip()
         if not part:
             continue
@@ -1549,8 +1613,10 @@ def build_deck(tour, comps, logos_ok=True):
     counts = f'{cnt(n_comp, "компания", "компании", "компаний")}, {cnt(days, "день", "дня", "дней")}, {cnt(nights, "ночь", "ночи", "ночей")}'
     head_vars = []
     for lim in (70, 55, 42):
-        for v in clause_cuts(re.sub(r'\s+и\s+[^,]+$', '', pos_head) if lim < 70 else pos_head, lim):
-            head_vars.append(v)
+        ph = strip_parens(pos_head)  # «MWG (Bách Hóa Xanh, Điện Máy Xanh) в Хошимине» — скобки на обложке не режем
+        for v in clause_cuts(re.sub(r'\s+и\s+[^,]+$', '', ph) if lim < 70 else ph, lim):
+            if v.count('(') == v.count(')'):
+                head_vars.append(v)
     box_text = Var([f'{h} —\n{counts}' for h in head_vars if h.startswith(('От', 'Из', 'С ')) or len(h) < 60], counts)
     city_line = ' + '.join(cities)
     box_right = Var(f'{city_line} —\n{pos_tail}' if pos_tail and len(pos_tail) <= 48 else None,
@@ -1650,7 +1716,10 @@ def build_deck(tour, comps, logos_ok=True):
             if ci > 0:
                 tr = next((d.get('transfer_ru', '') for d in dd if d.get('transfer_ru')), '')
                 m = re.search(r'\(([≈~][^)]*)\)', tr)
-                entry['leg'] = {'icon': 'plane' if stats.get('flights') else 'car', 'text': m.group(1) if m else ''}
+                icon = ('plane' if re.search(r'[Пп]ерел[её]т|рейс', tr) else 'train' if re.search(r'[Пп]оезд(?!к)|[Сс]инкансэн', tr)
+                        else 'car' if re.search(r'[Пп]оездк|[Пп]ереезд|[Тт]рансфер|[Вв]ыезд', tr)
+                        else 'plane' if stats.get('flights') else 'car')
+                entry['leg'] = {'icon': icon, 'text': m.group(1) if m else ''}
             cl.append(entry)
         foot = []
         if tour.get('arrival_ru'):
@@ -1686,7 +1755,7 @@ def build_deck(tour, comps, logos_ok=True):
         if tx:
             variants += [sentences(tx[0])[0], end_dot(short_tx)] + ([d['note_ru']] if d.get('note_ru') else [])
         else:
-            variants += [end_dot('; '.join(k.split(' — ')[0] + ' — ' + ' '.join(k.split(' — ')[1].split()[:4]) for k in kinds))] if kinds else []
+            variants += [end_dot('; '.join(k.split(' — ')[0] + ' — ' + words_cut(k.split(' — ')[1], 4) for k in kinds))] if kinds else []
         variants += [f'Визиты: {", ".join(names)}.' if names else '']
         title3 = ' ·\n'.join(' '.join(n.split()[:2]) for n in names) if names else title
         title4 = title3
@@ -1780,8 +1849,9 @@ def build_deck(tour, comps, logos_ok=True):
     extra_night = re.search(r'ночь после дня (\d+)', tour.get('departure_ru', ''))
     sector_icon = SECTOR_ICON.get(tour.get('sector'), 'target')
     sixth_title = topic if len(topic) <= 26 else cnt(n_comp, 'компания', 'компании', 'компаний')
-    low = lambda x: x if re.match(r'[A-Z]{2}|[A-Z]\w*[A-Z]', x) else x[:1].lower() + x[1:]
-    sixth_text = (', '.join(low(s) if i else s for i, s in enumerate(subs[:-1])) + (' и ' + low(subs[-1]) if len(subs) > 1 else '') if subs else ' · '.join(tagline[:3]))
+    low = lambda x: x if re.match(r'[A-ZА-ЯЁ]{2}|[A-Z]\w*[A-Z]', x) else x[:1].lower() + x[1:]
+    sixth_text = (', '.join(low(s) if i else s for i, s in enumerate(subs[:-1])) + ' и ' + low(subs[-1]) if len(subs) > 1
+                  else subs[0] if subs else ' · '.join(tagline[:3]))
     sixth_text = cap(sixth_text) + ('\nв одном городе' if len(cities) == 1 else '\n' + ' + '.join(cities))
     slides.append({'type': 'benefits', 'items': [
         {'title': 'Переговоры\nс компаниями', 'text': Var(inc_short[0] if inc_short else 'Все визиты и переговоры программы', 'Все визиты программы'), 'icon': 'users'},

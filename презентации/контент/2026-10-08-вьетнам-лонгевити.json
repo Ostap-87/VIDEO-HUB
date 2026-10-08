@@ -6,16 +6,12 @@
   "slides": [
     {
       "type": "cover",
-      "tag": "Лонгевити Вьетнама (anti-aging биотех) — тонкий сегмент",
+      "tag": "Бизнес-делегация · Вьетнама",
       "topright": "Vinmec VRISG · VinUniversity\nMedeze",
       "logos": [
         {
           "name": "Vinmec Research Institute of Stem Cell & Gene Technology",
           "logo": "source-videos/логотипы/медицина/vinmec-vrisg.png"
-        },
-        {
-          "name": "Vinmec Center of Regenerative Medicine & Cell Therapy",
-          "logo": "source-videos/логотипы/медицина/vinmec-regenerative-medicine-center.png"
         },
         {
           "name": "VinUniversity",
@@ -77,7 +73,7 @@
         {
           "name": "Ханой",
           "days": "дни 1–2",
-          "companies": "Vinmec Research Institute of Stem Cell & Gene Technology\nVinmec Center of Regenerative Medicine & Cell Therapy\nVinUniversity"
+          "companies": "3 компании"
         },
         {
           "name": "Хошимин",
@@ -89,7 +85,7 @@
           }
         }
       ],
-      "footer": "<b>Прилёт:</b> Хошимин · <b>Вылет:</b> Хошимин"
+      "footer": "<b>Прилёт:</b> Ханой · <b>Вылет:</b> Хошимин"
     },
     {
       "type": "days",
@@ -157,7 +153,7 @@
       "type": "company",
       "tag": "День 2 · Ханой",
       "title": "Vinmec Center",
-      "logo": "source-videos/логотипы/медицина/vinmec-regenerative-medicine-center.png",
+      "logo": "source-videos/логотипы/медицина/vinmec-vrisg.png",
       "short": "Vinmec Center",
       "subtitle": "Ханой",
       "facts": [
