@@ -10,12 +10,8 @@
       "topright": "Paragon (Wardah) · Martha Tilaar\nMS Glow",
       "logos": [
         {
-          "name": "Paragon Technology & Innovation",
+          "name": "Paragon",
           "logo": "source-videos/логотипы/косметика/paragon-technology-innovation.png"
-        },
-        {
-          "name": "Kahf",
-          "logo": "source-videos/логотипы/косметика/kahf-paragon.png"
         },
         {
           "name": "Martha Tilaar",
@@ -40,9 +36,13 @@
         {
           "name": "MS Glow",
           "logo": "source-videos/логотипы/косметика/ms-glow.png"
+        },
+        {
+          "name": "Rose All Day",
+          "logo": "source-videos/логотипы/косметика/rose-all-day.png"
         }
       ],
-      "box_text": "От halal-tech инновационного центра —\n10 компаний, 6 дней, 6 ночей",
+      "box_text": "От halal-tech центра Paragon до Avoskin —\n10 компаний, 6 дней, 6 ночей",
       "box_right": "Тангеранг + Джакарта + Джокьякарта",
       "footer": "Global Tech Tour · бизнес-делегации в Индонезию · РФ/СНГ"
     },
@@ -75,7 +75,7 @@
       "items": [
         {
           "name": "Дни 1–2",
-          "text": "Paragon Technology & Innovation, Kahf, Martha Tilaar, Mustika Ratu"
+          "text": "Paragon, Kahf, Martha Tilaar, Mustika Ratu"
         },
         {
           "name": "Дни 3–4 · Джакарта + Джокьякарта",
@@ -93,15 +93,15 @@
         {
           "name": "Тангеранг",
           "days": "день 1",
-          "companies": "Paragon Technology & Innovation\nKahf"
+          "companies": "Paragon\nKahf"
         },
         {
           "name": "Джакарта",
           "days": "дни 2–3, 5",
           "companies": "Martha Tilaar\nMustika Ratu\nSomethinc\nBase\nMS Glow\nRose All Day",
           "leg": {
-            "icon": "plane",
-            "text": ""
+            "icon": "car",
+            "text": "~1 ч"
           }
         },
         {
@@ -123,20 +123,20 @@
       "days": [
         {
           "sub": "10:00–13:00",
-          "title": "Paragon Technology ·\nKahf",
-          "text": "Визиты: Paragon Technology & Innovation, Kahf.",
+          "title": "Paragon ·\nKahf",
+          "text": "Трансфер в Тангеранг (~1 ч от Джакарты): Paragon — крупнейший производитель косметики страны.",
           "label": "День 1"
         },
         {
           "sub": "Джакарта · 10:00–13:00",
           "title": "Martha Tilaar ·\nMustika Ratu",
-          "text": "Martha Tilaar — крупный индонезийский бьюти-конгломерат.",
+          "text": "Martha Tilaar — бьюти-конгломерат на основе джаму; Mustika Ratu — рецепты дворца Кератон.",
           "label": "День 2"
         },
         {
           "sub": "Джакарта · 10:00–13:00",
           "title": "Somethinc ·\nBase",
-          "text": "Base — индонезийский digital-first бренд skincare.",
+          "text": "Somethinc — skincare с научным подходом; Base — digital-first skincare со Smart Skin Test.",
           "label": "День 3"
         },
         {
@@ -162,32 +162,36 @@
       "subtitle": "Wardah/Emina/Make Over · Тангеранг",
       "facts": [
         {
+          "icon": "chart",
+          "value": "135+ млн",
+          "label": "halal-единиц в год"
+        },
+        {
           "icon": "trending",
           "value": "№1",
           "label": "производитель косметики"
         },
         {
-          "icon": "pin",
-          "value": "Тангеранг",
-          "label": "площадка визита",
-          "sub": "день 1 программы"
+          "icon": "star",
+          "value": "Wardah",
+          "label": "первая halal-косметика",
+          "sub": "с 1995 года"
         },
         {
-          "icon": "calendar",
-          "value": "День 1",
-          "label": "визит делегации",
-          "sub": "10:00–13:00"
+          "icon": "package",
+          "value": "4",
+          "label": "бренда",
+          "sub": "Wardah, Make Over, Emina, Kahf"
         }
       ],
-      "why": "Выпускает 135 млн+ halal-единиц в год под брендами Wardah, Make Over, Emina и Kahf.",
-      "learn": "По состоянию на начало 2025 года CEO Салман Субакат подтвердил, что компания остаётся частной, без подтверждённых планов IPO.",
+      "why": "Крупнейший производитель косметики в Индонезии: 135+ млн halal-единиц в год под брендами Wardah, Make Over, Emina и Kahf.",
+      "learn": "Основана фармацевтом Нурхаяти Субакат; по данным на начало 2025 года остаётся частной, без планов IPO.",
       "learn_label": "Фокус визита"
     },
     {
       "type": "company",
       "tag": "День 1 · Тангеранг",
       "title": "Kahf",
-      "logo": "source-videos/логотипы/косметика/kahf-paragon.png",
       "short": "Kahf (Paragon)",
       "subtitle": "Paragon · Тангеранг",
       "facts": [
@@ -197,10 +201,14 @@
           "label": "год запуска"
         },
         {
-          "icon": "pin",
-          "value": "Тангеранг",
-          "label": "площадка визита",
-          "sub": "день 1 программы"
+          "icon": "star",
+          "value": "HydroBalance",
+          "label": "фирменная технология"
+        },
+        {
+          "icon": "handshake",
+          "value": "Paragon",
+          "label": "в составе группы"
         },
         {
           "icon": "calendar",
@@ -209,8 +217,8 @@
           "sub": "10:00–13:00"
         }
       ],
-      "why": "Бренд halal-ухода для мужчин от Paragon, запущенный в 2020 году разработчиками Резой Сукамто и Билли Дхармаваном.",
-      "learn": "Название отсылает к суре Аль-Кахф; линейка включает средства для умывания.",
+      "why": "Бренд halal-ухода для мужчин от Paragon — цель создателей повторить успех Wardah в мужском сегменте.",
+      "learn": "Умывание, уход за кожей, солнцезащита, парфюмерия, волосы и тело — без спирта и компонентов животного происхождения.",
       "learn_label": "Фокус визита"
     },
     {
@@ -224,7 +232,14 @@
         {
           "icon": "building",
           "value": "10 га",
-          "label": "площадь"
+          "label": "сад Kampoeng Djamoe Organik",
+          "sub": "Чикаранг"
+        },
+        {
+          "icon": "star",
+          "value": "500–650",
+          "label": "видов растений",
+          "sub": "для рецептур джаму"
         },
         {
           "icon": "pin",
@@ -239,8 +254,8 @@
           "sub": "10:00–13:00"
         }
       ],
-      "why": "Крупный индонезийский бьюти-конгломерат, чей комплекс Kampoeng Djamoe Organik в Чикаранге совмещает R&D.",
-      "learn": "Сад площадью 10 га выращивает свыше 500–650 видов растений для рецептур на основе джаму.",
+      "why": "Бьюти-конгломерат: комплекс Kampoeng Djamoe Organik в Чикаранге совмещает R&D, агротуризм и природоохранную зону.",
+      "learn": "Принцип «Beauty Green»: сад выращивает растения для рецептур на основе джаму; есть учебный центр для женщин из деревень.",
       "learn_label": "Фокус визита"
     },
     {
@@ -257,10 +272,14 @@
           "label": "год основания"
         },
         {
-          "icon": "pin",
-          "value": "Джакарта",
-          "label": "площадка визита",
-          "sub": "день 2 программы"
+          "icon": "building",
+          "value": "1981",
+          "label": "открыта фабрика"
+        },
+        {
+          "icon": "chart",
+          "value": "1995",
+          "label": "листинг на бирже Индонезии"
         },
         {
           "icon": "calendar",
@@ -269,8 +288,8 @@
           "sub": "10:00–13:00"
         }
       ],
-      "why": "PT Mustika Ratu Tbk продолжает экспортировать косметику на основе джаму.",
-      "learn": "Компания официально учреждена в 1978 году, фабрика открыта в 1981-м, листинг на бирже Индонезии — в 1995 году.",
+      "why": "Косметика и джаму по рецептам дворца Кератон Суракарты; основательница — потомок королевской семьи.",
+      "learn": "Мурьяти Судибьо начинала с продаж из гаража; сегодня PT Mustika Ratu Tbk экспортирует косметику на основе джаму.",
       "learn_label": "Фокус визита"
     },
     {
@@ -304,8 +323,8 @@
           "sub": "10:00–13:00"
         }
       ],
-      "why": "Стал одним из лидеров продаж в сегменте skincare в индонезийском e-commerce.",
-      "learn": "Позиционируется как доступный бренд skincare и макияжа с научным подходом для кожи жителей Юго-Восточной Азии.",
+      "why": "Доступный skincare и макияж с научным подходом для кожи жителей ЮВА; один из лидеров продаж skincare в e-commerce.",
+      "learn": "Входит в BeautyHaul Group — первую отечественную бьюти-платформу e-commerce Индонезии (2014); формулы с halal-сертификацией.",
       "learn_label": "Фокус визита"
     },
     {
@@ -319,6 +338,11 @@
           "icon": "flag",
           "value": "2019",
           "label": "год основания"
+        },
+        {
+          "icon": "star",
+          "value": "Smart Skin Test",
+          "label": "онлайн-тест кожи"
         },
         {
           "icon": "pin",
@@ -352,19 +376,23 @@
           "sub": "в Джокьякарте"
         },
         {
-          "icon": "pin",
-          "value": "Джокьякарта",
-          "label": "площадка визита",
-          "sub": "день 4 программы"
+          "icon": "star",
+          "value": "2020",
+          "label": "лучший локальный бренд",
+          "sub": "по версии Female Daily"
         },
         {
-          "icon": "calendar",
-          "value": "День 4",
-          "label": "визит делегации",
-          "sub": "10:00–13:00"
+          "icon": "trending",
+          "value": "Топ-3",
+          "label": "по доле цифровых продаж"
+        },
+        {
+          "icon": "globe",
+          "value": "Вьетнам",
+          "label": "выход через Sociolla"
         }
       ],
-      "why": "Быстрорастущий индонезийский бренд skincare.",
+      "why": "Быстрорастущий индонезийский бренд skincare: очищающие средства, сыворотки, тканевые маски, солнцезащита.",
       "learn": "В 2020 году Female Daily признал его лучшим локальным брендом ухода за лицом; входит в тройку лидеров по доле цифровых продаж.",
       "learn_label": "Фокус визита"
     },
@@ -379,18 +407,19 @@
         {
           "icon": "briefcase",
           "value": "$6 млн",
-          "label": "привлечено инвестиций",
-          "sub": "раунд Series A, 2022 год"
+          "label": "Series A",
+          "sub": "2022 год"
         },
         {
           "icon": "briefcase",
           "value": "~$10 млн",
-          "label": "инвестиции"
+          "label": "привлечено всего",
+          "sub": "~$4 млн — Unilever Ventures"
         },
         {
           "icon": "star",
           "value": "Первый",
-          "label": "веганский косметический бренд Индонезии"
+          "label": "веганский бренд косметики Индонезии"
         },
         {
           "icon": "flag",
@@ -399,7 +428,7 @@
         }
       ],
       "why": "Первый веганский косметический бренд Индонезии, также halal-сертифицированный.",
-      "learn": "В 2022 году привлекла $6 млн в Series A, затем ещё около $4 млн от Unilever Ventures — по данным СМИ.",
+      "learn": "Продаётся через Sociolla, Sephora и Watsons во Вьетнаме, Сингапуре и Малайзии.",
       "learn_label": "Фокус визита"
     },
     {
@@ -410,6 +439,17 @@
       "short": "MS Glow",
       "subtitle": "Джакарта",
       "facts": [
+        {
+          "icon": "star",
+          "value": "2022",
+          "label": "выигран спор о товарном знаке",
+          "sub": "с PS Glow"
+        },
+        {
+          "icon": "briefcase",
+          "value": "~38 млрд рупий",
+          "label": "компенсация по спору"
+        },
         {
           "icon": "pin",
           "value": "Джакарта",
@@ -423,8 +463,8 @@
           "sub": "10:00–13:00"
         }
       ],
-      "why": "Индонезийский косметический бренд, соучредители Шанди Пурнамасари и Гиланг Видья Прамана; фигурировал в судебных спорах.",
-      "learn": "Данные об уголовном деле о «пирамиде» против основателей не подтверждены.",
+      "why": "Индонезийский косметический бренд; соучредители — Шанди Пурнамасари и Гиланг Видья Прамана («Джураган 99»).",
+      "learn": "В 2022 году суд встал на сторону MS Glow в споре о товарном знаке с PS Glow.",
       "learn_label": "Фокус визита"
     },
     {
@@ -441,10 +481,15 @@
           "label": "год основания"
         },
         {
-          "icon": "pin",
-          "value": "Джакарта",
-          "label": "площадка визита",
-          "sub": "день 5 программы"
+          "icon": "briefcase",
+          "value": "~$5,4 млн",
+          "label": "Series A",
+          "sub": "DSG Consumer Partners"
+        },
+        {
+          "icon": "star",
+          "value": "Back-to-basics",
+          "label": "философия бренда"
         },
         {
           "icon": "calendar",

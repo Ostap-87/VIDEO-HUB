@@ -7,7 +7,7 @@
     {
       "type": "cover",
       "tag": "Бизнес-делегация · Ритейл Индонезии",
-      "topright": "Indomaret · MAP\nAEON · Blibli",
+      "topright": "От Indomaret\nдо Blibli",
       "logos": [
         {
           "name": "Indomaret",
@@ -30,7 +30,7 @@
           "logo": "source-videos/логотипы/ритейл/transmart.png"
         },
         {
-          "name": "Matahari Department Store",
+          "name": "Matahari",
           "logo": "source-videos/логотипы/ритейл/matahari.png"
         },
         {
@@ -38,12 +38,12 @@
           "logo": "source-videos/логотипы/ритейл/aeon.png"
         },
         {
-          "name": "Ace Hardware",
-          "logo": "source-videos/логотипы/ритейл/ace-hardware.png"
+          "name": "Blibli",
+          "logo": "source-videos/логотипы/ритейл/blibli.svg"
         }
       ],
-      "box_text": "10 компаний, 6 дней, 6 ночей",
-      "box_right": "Джакарта —\nиндонезийский ритейл целиком в Джакарте",
+      "box_text": "От 20 000+ точек Indomaret до O2O Blibli —\n10 компаний, 6 дней, 6 ночей",
+      "box_right": "Джакарта —\nвесь ритейл в одном городе",
       "footer": "Global Tech Tour · бизнес-делегации в Индонезию · РФ/СНГ"
     },
     {
@@ -79,7 +79,7 @@
         },
         {
           "name": "Дни 3–4",
-          "text": "Transmart, Matahari Department Store, AEON, Ace Hardware"
+          "text": "Transmart, Matahari, AEON, Ace Hardware"
         },
         {
           "name": "День 5",
@@ -107,20 +107,20 @@
         },
         {
           "sub": "10:00–13:00",
-          "title": "Transmart ·\nMatahari Department",
-          "text": "Визиты: Transmart, Matahari Department Store.",
+          "title": "Transmart ·\nMatahari",
+          "text": "Transmart — крупнейший оператор гипермаркетов; Matahari — крупнейшая сеть универмагов.",
           "label": "День 3"
         },
         {
           "sub": "10:00–13:00",
           "title": "AEON ·\nAce Hardware",
-          "text": "AEON — местное подразделение японской группы AEON.",
+          "text": "AEON — подразделение японской группы; Ace Hardware — сеть Kawan Lama, с 2025 года Azko.",
           "label": "День 4"
         },
         {
           "sub": "10:00–13:00",
           "title": "Ranch Market ·\nBlibli",
-          "text": "Blibli — индонезийская e-commerce платформа.",
+          "text": "Ranch Market — первые премиальные супермаркеты; Blibli — e-commerce модели O2O.",
           "label": "День 5"
         }
       ]
@@ -135,7 +135,7 @@
       "facts": [
         {
           "icon": "store",
-          "value": "200",
+          "value": "~23 000",
           "label": "магазинов",
           "sub": "2025 год"
         },
@@ -145,7 +145,7 @@
           "label": "распределительных центров"
         },
         {
-          "icon": "chart",
+          "icon": "package",
           "value": "27",
           "label": "депо"
         },
@@ -175,13 +175,13 @@
         {
           "icon": "smartphone",
           "value": "Alfagift",
-          "label": "приложение"
+          "label": "приложение",
+          "sub": "участников +30% в год"
         },
         {
-          "icon": "pin",
-          "value": "Джакарта",
-          "label": "площадка визита",
-          "sub": "день 1 программы"
+          "icon": "star",
+          "value": "Poinku",
+          "label": "приложение лояльности"
         },
         {
           "icon": "calendar",
@@ -239,7 +239,8 @@
         {
           "icon": "store",
           "value": "1000+",
-          "label": "магазинов"
+          "label": "магазинов",
+          "sub": "Erafone, iBox, Samsung"
         },
         {
           "icon": "flag",
@@ -247,10 +248,9 @@
           "label": "год основания"
         },
         {
-          "icon": "pin",
-          "value": "Джакарта",
-          "label": "площадка визита",
-          "sub": "день 2 программы"
+          "icon": "chart",
+          "value": "ERAA",
+          "label": "тикер на бирже Индонезии"
         },
         {
           "icon": "calendar",
@@ -259,7 +259,7 @@
           "sub": "10:00–13:00"
         }
       ],
-      "why": "Один из крупнейших дистрибьюторов смартфонов в Индонезии.",
+      "why": "Один из крупнейших дистрибьюторов смартфонов в Индонезии: свыше 1000 магазинов Erafone, iBox и Samsung.",
       "learn": "Развивает омниканальную модель офлайн- и онлайн-продаж.",
       "learn_label": "Фокус визита"
     },
@@ -272,10 +272,19 @@
       "subtitle": "CT Corp · Джакарта",
       "facts": [
         {
-          "icon": "pin",
-          "value": "Джакарта",
-          "label": "площадка визита",
-          "sub": "день 3 программы"
+          "icon": "trending",
+          "value": "№1",
+          "label": "оператор гипермаркетов страны"
+        },
+        {
+          "icon": "flag",
+          "value": "2013",
+          "label": "полный контроль над активами Carrefour"
+        },
+        {
+          "icon": "handshake",
+          "value": "CT Corp",
+          "label": "в составе группы"
         },
         {
           "icon": "calendar",
@@ -284,8 +293,8 @@
           "sub": "10:00–13:00"
         }
       ],
-      "why": "Формат сочетает гипермаркет с модой, развлечениями и общепитом, оставаясь крупнейшим оператором гипермаркетов страны.",
-      "learn": "CT Corp приобрела индонезийские активы Carrefour, получив полный контроль к январю 2013 года.",
+      "why": "Формат сочетает гипермаркет с модой, развлечениями и общепитом — крупнейший оператор гипермаркетов страны.",
+      "learn": "CT Corp выкупила индонезийские активы Carrefour (полный контроль — январь 2013) и провела ребрендинг в Transmart.",
       "learn_label": "Фокус визита"
     },
     {
@@ -303,25 +312,23 @@
           "sub": "март 2025"
         },
         {
+          "icon": "trending",
+          "value": "№1",
+          "label": "сеть универмагов Индонезии"
+        },
+        {
           "icon": "smartphone",
           "value": "Matahari.com",
           "label": "платформа"
         },
         {
-          "icon": "pin",
-          "value": "Джакарта",
-          "label": "площадка визита",
-          "sub": "день 3 программы"
-        },
-        {
-          "icon": "calendar",
-          "value": "День 3",
-          "label": "визит делегации",
-          "sub": "10:00–13:00"
+          "icon": "star",
+          "value": "Shop&Talk",
+          "label": "лайв-стриминг и соцкоммерция"
         }
       ],
-      "why": "Под давлением e-commerce компания оптимизирует сеть, тестирует новые форматы.",
-      "learn": "PT Matahari Department Store Tbk управляет крупнейшей сетью универмагов Индонезии — 143 магазина на март 2025 года.",
+      "why": "Крупнейшая сеть универмагов Индонезии: под давлением e-commerce оптимизирует сеть и тестирует новые форматы.",
+      "learn": "Инвестирует в платформу Matahari.com и приложение лайв-стриминга Shop&Talk, объединяя офлайн- и онлайн-розницу.",
       "learn_label": "Фокус визита"
     },
     {
@@ -335,13 +342,18 @@
         {
           "icon": "building",
           "value": "~177 000 м²",
-          "label": "площадь"
+          "label": "AEON Mall BSD City",
+          "sub": "Тангеранг"
         },
         {
-          "icon": "pin",
-          "value": "Джакарта",
-          "label": "площадка визита",
-          "sub": "день 4 программы"
+          "icon": "flag",
+          "value": "2015",
+          "label": "выход на рынок"
+        },
+        {
+          "icon": "star",
+          "value": "Daiso",
+          "label": "японская концепция"
         },
         {
           "icon": "calendar",
@@ -350,7 +362,7 @@
           "sub": "10:00–13:00"
         }
       ],
-      "why": "Местное подразделение японской группы AEON.",
+      "why": "Подразделение японской группы AEON: флагманский молл AEON Mall BSD City в Тангеранге.",
       "learn": "PT AEON Indonesia работает в супермаркетах, универмагах, health & beauty и общепите, привнеся японские концепции вроде Daiso.",
       "learn_label": "Фокус визита"
     },
@@ -363,10 +375,21 @@
       "subtitle": "Kawan Lama · Джакарта",
       "facts": [
         {
-          "icon": "pin",
-          "value": "Джакарта",
-          "label": "площадка визита",
-          "sub": "день 4 программы"
+          "icon": "store",
+          "value": "~240–248",
+          "label": "магазинов",
+          "sub": "на пике"
+        },
+        {
+          "icon": "calendar",
+          "value": "29 лет",
+          "label": "по лицензии Kawan Lama"
+        },
+        {
+          "icon": "star",
+          "value": "Azko",
+          "label": "новый бренд Kawan Lama",
+          "sub": "с марта 2025"
         },
         {
           "icon": "calendar",
@@ -375,8 +398,8 @@
           "sub": "10:00–13:00"
         }
       ],
-      "why": "Работала в Индонезии 29 лет по лицензии группы Kawan Lama, разросшись до примерно 240–248 магазинов.",
-      "learn": "В 2024 году Kawan Lama позволила лицензионному соглашению с американской компанией истечь.",
+      "why": "29 лет работала в Индонезии по лицензии группы Kawan Lama и выросла примерно до 240–248 магазинов.",
+      "learn": "В 2024 году Kawan Lama не продлила лицензию; к марту 2025 года магазины переименованы в собственный бренд Azko.",
       "learn_label": "Фокус визита"
     },
     {
@@ -390,13 +413,19 @@
         {
           "icon": "store",
           "value": "43",
-          "label": "точки"
+          "label": "точки",
+          "sub": "конец 2019 года"
         },
         {
-          "icon": "pin",
-          "value": "Джакарта",
-          "label": "площадка визита",
-          "sub": "день 5 программы"
+          "icon": "flag",
+          "value": "1998",
+          "label": "работает с"
+        },
+        {
+          "icon": "package",
+          "value": "4",
+          "label": "бренда сети",
+          "sub": "включая Farmers Market"
         },
         {
           "icon": "calendar",
@@ -405,8 +434,8 @@
           "sub": "10:00–13:00"
         }
       ],
-      "why": "Ranch Market, работающая под PT Supra Boga Lestari с 1998 года.",
-      "learn": "К концу 2019 года — 43 точки под четырьмя брендами, включая Farmers Market.",
+      "why": "Первая сеть премиальных супермаркетов Индонезии — для верхнего среднего класса и экспатов.",
+      "learn": "Импортные продукты, мясная лавка, пекарня и деликатесы; доставка через WhatsApp и BBQ-мероприятия в магазинах.",
       "learn_label": "Фокус визита"
     },
     {
@@ -424,23 +453,25 @@
         },
         {
           "icon": "briefcase",
-          "value": "$509 млн",
-          "label": "оценка компании"
-        },
-        {
-          "icon": "store",
-          "value": "Ranch Market",
-          "label": "сеть"
+          "value": "~$509 млн",
+          "label": "оценка при IPO",
+          "sub": "конец 2022"
         },
         {
           "icon": "flag",
           "value": "2011",
           "label": "год основания",
-          "sub": "15 августа 2011 года"
+          "sub": "15 августа"
+        },
+        {
+          "icon": "handshake",
+          "value": "Djarum",
+          "label": "в составе группы",
+          "sub": "через GDP Venture"
         }
       ],
-      "why": "Индонезийская e-commerce платформа.",
-      "learn": "Работает по модели O2O, объединяя более 100 тыс. партнёров.",
+      "why": "Индонезийская e-commerce платформа: в 2022 году провела IPO и стала третьим «единорогом» страны.",
+      "learn": "Работает по модели O2O (B2C, B2B, B2B2C) с 100+ тыс. партнёров; в портфеле — tiket.com и Ranch Market.",
       "learn_label": "Фокус визита"
     },
     {
