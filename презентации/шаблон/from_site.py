@@ -321,6 +321,11 @@ def clause_cuts(s, limit):
             continue  # перечисление
         if any(len(seg.split()) <= 1 for seg in re.split(r',\s', head)[1:]):
             continue  # «…, ставший, по данным …» — оборванная вставка
+        if m.group().startswith(',') and nxt.split() and len(nxt.split()) <= 2 and not is_verb(nxt.split()[0]):
+            continue  # «в страны Азии, Европы, …»
+        lastw = head.split()[-1].strip('»"')
+        if first_pos(lastw) in ('ADJF', 'PRTF', 'PREP', 'CONJ') and not re.match(r'[A-Z0-9]', lastw):
+            continue  # «с игривым, ориентированным …»
         out.append(head)
     if not out:  # нет подходящей границы — режем по словам
         words, acc = s.split(), ''
@@ -507,22 +512,24 @@ def nomn_phrase(words):
     return res
 
 
-def label_variants(words, limit=30):
-    """Подпись к цифре: целиком, без прилагательных/наречий, короче с конца."""
+def label_variants(words, limit=40):
+    """Подпись к цифре: целиком → без первого прилагательного → короче с конца → без прилагательных."""
     words = [w for w in words if w]
     if not words:
         return ['']
     out = [' '.join(words)]
-    if MORPH and len(words) > 1:
-        keep = [w for k, w in enumerate(words)
-                if not (w[:1].islower() and first_pos(w) in ('ADJF', 'PRTF', 'ADVB') and k < len(words) - 1)]
-        out.append(' '.join(keep))
+    if MORPH and len(words) > 2 and words[0][:1].islower() and _pos(words[0]) in ('ADJF', 'PRTF'):
+        out.append(' '.join(words[1:]))
     for n in range(len(words) - 1, 0, -1):
         cut = words[:n]
-        while cut and (cut[-1].lower() in STOPW or first_pos(cut[-1]) in ('ADJF', 'PRTF', 'ADVB', 'PREP', 'CONJ')):
+        while cut and (cut[-1].lower() in STOPW or _pos(cut[-1]) in ('ADJF', 'PRTF', 'ADVB', 'PREP', 'CONJ')):
             cut = cut[:-1]
         if cut:
             out.append(' '.join(cut))
+    if MORPH and len(words) > 1:
+        keep = [w for k, w in enumerate(words)
+                if not (w[:1].islower() and _pos(w) in ('ADJF', 'PRTF', 'ADVB') and k < len(words) - 1)]
+        out.append(' '.join(keep))
     res = []
     for o in out:
         if o and o not in res:
@@ -639,7 +646,13 @@ def extract_facts(desc, names=()):
                 if not words:
                     continue
                 v = {'~': '~', 'до ': 'до ', '<': '<'}.get(sign, '') + raw + '%' + ('+' if sign == '+' else '')
-                weak = MORPH and all(first_pos(w) in ('ADJF', 'PRTF') for w in words)
+                weak = MORPH and all(_pos(w) in ('ADJF', 'PRTF') for w in words)
+                if weak:
+                    prev = [f for f in facts if f['kind'] == 'count' and base <= f['pos'] < base + m.start()]
+                    if prev:
+                        noun = prev[-1]['labels'][0].split()[-1]
+                        words = words + [noun]
+                        weak = False
                 add('pct', v, words, [year_phrase(clause)], 'trending', base + m.start(), 6 if weak else 1)
                 continue
             if cur:
@@ -684,7 +697,9 @@ def extract_facts(desc, names=()):
             words = np_after(aft2, 0, 4)
             if not words and unit:  # «525 тыс. м² торговых площадей» / «занимают 20 000 м²»
                 words = ['площадь']
-            if not words and mult:  # «аудитория оценивается свыше 50 млн»
+            pre_label = False
+            if not words and mult and not re.search(r'\bпри\b', ' '.join(before.split()[-4:])):  # «аудитория оценивается свыше 50 млн»
+                pre_label = True
                 pw = re.findall(r'[\w-]+', re.split(r'[,;:(—]', before)[-1])
                 pw = [w for w in pw if not (w.lower() in STOPW or is_verb(w) or first_pos(w) in ('PREP', 'CONJ', 'ADVB', 'PRTS'))][-2:]
                 if pw and first_pos(pw[0]) in ('NOUN', 'ADJF'):
@@ -700,7 +715,7 @@ def extract_facts(desc, names=()):
             if not mult and not unit and nval < 2:
                 continue
             n_ag = int(nval) if nval == int(nval) else 5
-            words2 = agree(words, n_ag, sign == '+' or bool(mult)) if not unit else words
+            words2 = agree(words, n_ag, sign == '+' or bool(mult)) if not (unit or pre_label) else words
             v = num_value(raw, sign if sign in ('+', '~', 'до ') else '', mult, unit)
             weak = MORPH and all(first_pos(w) in ('ADJF', 'PRTF') for w in words2)
             add('count', v, words2, [year_phrase(clause)], 'building' if unit else icon_for(' '.join(words2)), base + m.start(), 6 if weak else 1)
@@ -763,7 +778,7 @@ def extract_facts(desc, names=()):
             if re.search(r'\d{4}', mid) or in_parens(sent, m.start()):
                 continue
             pv = parse_word(verb)
-            if MORPH and pv and pv.tag.POS == 'PRTF' and pv.tag.case not in ('nomn',):
+            if MORPH and pv and pv.tag.POS == 'PRTF' and (pv.tag.case not in ('nomn',) or m.start() > 80):
                 continue
             if not subj_is_company or (si == 0 and m.start() > 120 and not sent.lower().startswith(tuple(lname))):
                 continue
@@ -929,6 +944,8 @@ def ok_start(word, subj):
     w = word.strip('«»"(')
     if not w:
         return False
+    if re.match(r'(?:Ltd|Inc|Co|LLC|PCL|Plc|Corp)\b', w):
+        return False
     if re.match(r'[A-Z]', w):
         return True
     if re.match(r'(?:один|одна|одно)$', w.lower()):
@@ -951,7 +968,7 @@ def candidates(c):
     for si, s in enumerate(sents):
         s0 = strip_parens(s)
         starts_company = s0.lower().startswith(tuple(names)) or re.match(r'(Компания|Сеть|Бренд|Группа|Клиника|Сервис|Платформа)\b', s0)
-        subj = bool(starts_company) or si == 0
+        subj = bool(starts_company) or si == 0 or (bool(s0.split()) and first_pos(s0.split()[0].lower()) in ('VERB', 'PRTS'))
         found_pen = lambda t: -4 if re.search(FOUND_RX, t[:60]) else 0
         # 1) именное сказуемое: «X — крупнейший …»
         dm = re.search(r'\s[—–]\s', s0)
@@ -961,7 +978,7 @@ def candidates(c):
             if not any(is_verb(w) for w in pre.split()) and len(pre.split()) <= 14 and np_ and ok_start(np_.split()[0], False) or (
                     dm and subj and np_ and first_pos(np_.split()[0]) in ('ADJF', 'PRTF') and parse_word(np_.split()[0]).tag.case == 'nomn'
                     and not any(is_verb(w) for w in pre.split())):
-                out.append([9 + (1 if si == 0 else 0) + found_pen(np_), si, np_])
+                out.append([9 + (1 if si == 0 else 0) + found_pen(np_), si, np_, 'nominal'])
         # 2) глагольное сказуемое при подлежащем-компании
         if subj:
             for pi_, part in enumerate(s0.split('; ')):
@@ -976,7 +993,7 @@ def candidates(c):
                             continue
                         txt = part[st:]
                         sc = 5 if re.match(ACTIVITY, w.lower()) else 2
-                        out.append([sc + (1 if si == 0 else 0), si, txt])
+                        out.append([sc + (1 if si == 0 else 0), si, txt, 'verb'])
                         break
         # 3) значимость: «лидерство», «первая в Таиланде», «№1»
         if re.search(SIGNIF, s0, re.I):
@@ -989,11 +1006,11 @@ def candidates(c):
                     continue
                 if bad_start(txt):
                     continue
-                out.append([8 + (1 if si == 0 else 0) + found_pen(txt), si, txt])
+                out.append([8 + (1 if si == 0 else 0) + found_pen(txt), si, txt, 'signif'])
         # 4) предложение целиком
         if re.match(r'[A-ZА-ЯЁ0-9«]', s0) and not bad_start(s0):
-            sc = 1 + (1 if re.search(SIGNIF, s0, re.I) else 0) + len(re.findall(LEARN_RX, s0, re.I)) + found_pen(s0) // 2 + (2 if re.search(ACTIVITY, s0) else 0)
-            out.append([sc, si, s0])
+            sc = 1 + (1 if re.search(SIGNIF, s0, re.I) else 0) + len(re.findall(LEARN_RX, s0, re.I)) + found_pen(s0) // 2 + (2 if re.search(ACTIVITY, s0) and not subj else 0)
+            out.append([sc, si, s0, 'sentence'])
     return out
 
 
@@ -1002,11 +1019,18 @@ LEARN_RX = (r'технолог|ИИ|искусствен|платформ|циф
             r'омниканал|live|стрим|аналитик|прослеживаем|завод|производств|лаборатор|диагност|терапи|клиник|phygital')
 
 
-def text_variants(s, limits):
+def has_verb(t):
+    ws = t.split()
+    if ws and (first_pos(ws[0].lower()) in ('VERB', 'PRTS')):
+        return True
+    return bool(re.search(r'\s[—–]\s', t)) or any(is_verb(w) or first_pos(w) == 'PRTS' for w in ws)
+
+
+def text_variants(s, limits, kind='sentence'):
     out = []
     for lim in limits:
         cuts = clause_cuts(s, lim)
-        if cuts and len(cuts[0]) < 0.5 * lim and len(s) > lim:
+        if cuts and len(cuts[0]) < 0.35 * lim and len(s) > lim:
             ws, acc = s.split(), ''
             for w in ws:
                 if len(acc) + len(w) + 1 > lim:
@@ -1017,7 +1041,9 @@ def text_variants(s, limits):
                 wl.pop()
             cuts = [' '.join(wl).rstrip(',')] + cuts
         for v in cuts:
-            if len(v) < 20 or bad_start(v):
+            if len(v) < 20 or (kind != 'nominal' and bad_start(v)):
+                continue
+            if kind == 'sentence' and not has_verb(v):
                 continue
             v = end_dot(cap(v))
             if v not in out:
@@ -1032,25 +1058,31 @@ def why_learn(c):
     cands.sort(key=lambda x: (-x[0], x[1]))
     why = []
     used_si = None
-    for sc, si, txt in cands:
-        txt = re.sub(r',\s+(?:основанн|запущенн|созданн)\w*\s[^,]*(?=,|$)', '', txt)
-        why = text_variants(txt, (120, 95, 75))
+    for sc, si, txt, kind in cands:
+        txt = re.sub(r',\s+(?:основанн|запущенн|созданн)\w*\s[^,;—]*\.?$', '.', txt)
+        why = text_variants(txt, (120, 95, 75), kind)
         if why:
             used_si = si
             break
     learn = []
     lc = []
-    for sc, si, txt in cands:
+    for sc, si, txt, kind in cands:
         if si == used_si:
             continue
         lsc = len(re.findall(LEARN_RX, txt, re.I)) * 2 + (2 if txt == strip_parens(sentences(c['desc_ru'])[si]) else 0) - (3 if re.search(FOUND_RX, txt[:60]) else 0)
-        lc.append((lsc, si, txt))
+        lc.append((lsc, si, txt, kind))
     lc.sort(key=lambda x: (-x[0], x[1]))
-    for sc, si, txt in lc:
-        learn = text_variants(txt, (130, 105, 80, 60))
+    for sc, si, txt, kind in lc:
+        learn = text_variants(txt, (130, 105, 80, 60), kind)
         if learn and not any(l[:40] == w[:40] for l in learn for w in why):
             break
         learn = []
+    if not learn:
+        for sc, si, txt, kind in lc:
+            learn = text_variants(txt, (130, 105, 80, 60), 'signif')
+            if learn and not any(l[:40] == w[:40] for l in learn for w in why):
+                break
+            learn = []
     return why, learn
 
 
