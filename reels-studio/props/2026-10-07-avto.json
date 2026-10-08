@@ -1474,12 +1474,6 @@
    "transition": "circle"
   },
   {
-   "src": "source-videos/2026-10-07-avto/broll/luxury-ev-dealership.png",
-   "at": 29.86,
-   "until": 33.4,
-   "transition": "slide"
-  },
-  {
    "src": "source-videos/2026-10-07-avto/broll/saic-plant.png",
    "at": 33.55,
    "until": 36.1,
