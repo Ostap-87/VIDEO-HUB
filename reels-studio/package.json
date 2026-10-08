@@ -21,7 +21,8 @@
     "fetch": "python3 scripts/fetch.py",
     "route": "node scripts/site_route.mjs",
     "setup": "bash scripts/setup.sh",
-    "broll": "python3 scripts/broll.py"
+    "broll": "python3 scripts/broll.py",
+    "carousel": "python3 scripts/carousel.py"
   },
   "dependencies": {
     "@react-three/fiber": "8.17.10",
