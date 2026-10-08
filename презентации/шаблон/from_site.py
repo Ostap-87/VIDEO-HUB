@@ -269,8 +269,8 @@ def sentences(text):
     text = re.sub(r'\s+', ' ', text or '').strip()
     parts = re.split(r'(?<=[.!?])\s+(?=[А-ЯЁA-Z«"0-9])', text)
     out = []
-    for p in parts:  # склеиваем ложные разрывы после сокращений
-        if out and re.search(r'(?:\b(?:тыс|млн|млрд|г|гг|д-р|др|Co|Ltd|Inc|Dr|St|т\.е|т\.д|англ|им)\.|\b[A-ZА-Я]\.)$', out[-1]):
+    for p in parts:  # склеиваем ложные разрывы после инициалов и сокращений
+        if out and re.search(r'(?:\b(?:Co|Ltd|Inc|Dr|St|Mr|Mrs|д-р|т\.е|т\.д|им)\.|(?:^|[\s.])[A-ZА-ЯЁ]\.)$', out[-1]):
             out[-1] += ' ' + p
         else:
             out.append(p)
@@ -283,31 +283,59 @@ def strip_parens(s):
 
 def end_dot(s):
     s = s.strip().rstrip(',;:—– ')
-    return s if s.endswith(('.', '!', '?', '»')) else s + '.'
+    return s if s.endswith(('.', '!', '?')) else s + '.'
+
+
+def first_pos(word):
+    p = parse_word(word.strip('«»"(),.;:'))
+    return p.tag.POS if p else None
+
+
+def bad_start(s):
+    """Фраза не может начинаться с деепричастия/причастия/союза — это обрывок."""
+    w = s.split()[0] if s.split() else ''
+    if w.lower() in ('и', 'а', 'но', 'что', 'который', 'которая', 'которое', 'которые', 'чья', 'чей', 'где', 'включая', 'при', 'позволяя'):
+        return True
+    return first_pos(w) == 'GRND' or (first_pos(w) == 'PRTF' and w[:1].islower())
 
 
 def clause_cuts(s, limit):
-    """Варианты укорачивания фразы по границам частей (запятая, тире, «;», «:»), от длинного к короткому."""
+    """Варианты укорачивания фразы по границам частей (запятая, тире, «;», «:»), от длинного к короткому.
+    Не режем посреди перечисления («комбикорма, животноводство, …»)."""
     s = s.strip()
     out = []
     if len(s) <= limit:
         out.append(s)
-    for m in reversed(list(re.finditer(r'[,;:]\s| — | – ', s))):
+    bounds = list(re.finditer(r'[,;:]\s| — | – ', s))
+    for k in range(len(bounds) - 1, -1, -1):
+        m = bounds[k]
         head = s[:m.start()].strip()
-        if 25 <= len(head) <= limit and head.count('(') == head.count(')') and head.count('«') == head.count('»'):
-            out.append(head)
+        if not (25 <= len(head) <= limit):
+            continue
+        if head.count('(') != head.count(')') or head.count('«') != head.count('»'):
+            continue
+        prev = s[bounds[k - 1].end():m.start()] if k > 0 else head
+        nxt_end = bounds[k + 1].start() if k + 1 < len(bounds) else len(s)
+        nxt = s[m.end():nxt_end]
+        if m.group().startswith(',') and (len(prev.split()) <= 2 or (len(nxt.split()) <= 3 and re.search(r'\sи\s', nxt + ' '))):
+            continue  # перечисление
+        if any(len(seg.split()) <= 1 for seg in re.split(r',\s', head)[1:]):
+            continue  # «…, ставший, по данным …» — оборванная вставка
+        out.append(head)
     if not out:  # нет подходящей границы — режем по словам
         words, acc = s.split(), ''
         for w in words:
             if len(acc) + len(w) + 1 > limit:
                 break
             acc = (acc + ' ' + w).strip()
-        acc = re.sub(r'\s+(?:в|на|и|с|со|по|к|о|об|у|от|до|для|из|за|при|как|а|но)$', '', acc)
-        out.append(acc)
-    seen, res = set(), []
+        ws = acc.split()
+        while len(ws) > 3 and (ws[-1].lower() in STOPW or first_pos(ws[-1]) in ('PREP', 'CONJ', 'ADJF', 'PRTF', 'PRCL', 'ADVB', 'NUMR')
+                               or ws[-1].lower() in ('под', 'над', 'для', 'их', 'его', 'её', 'чем', 'которые', 'который')):
+            ws.pop()
+        out.append(' '.join(ws))
+    res = []
     for o in out:
-        if o not in seen:
-            seen.add(o)
+        if o not in res:
             res.append(o)
     return res
 
@@ -316,38 +344,53 @@ def clause_cuts(s, limit):
 NUMRE = r'(\d{1,3}(?:[   ]\d{3})+|\d+(?:,\d+)?)'
 MULT = r'(тыс\.|тысяч\w*|млн|млрд|трлн)'
 CUR = r'(бат\w*|долл\w*|евро|юан\w*|иен\w*|рупи\w*|вон\w*|дирхам\w*|ринггит\w*|донг\w*)'
-APPROX = [('более чем в', '+'), ('более чем на', '+'), ('более чем', '+'), ('свыше', '+'), ('более', '+'),
-          ('больше', '+'), ('около', '~'), ('почти', '~'), ('примерно', '~'), ('порядка', '~'), ('приблизительно', '~'),
-          ('до', 'до '), ('менее', '<'), ('не менее', '+')]
-MONTHS = 'января|февраля|марта|апреля|мая|июня|июля|августа|сентября|октября|ноября|декабря'
-STOPW = {'в', 'на', 'и', 'с', 'со', 'по', 'к', 'о', 'у', 'от', 'до', 'для', 'из', 'за', 'при', 'через', 'как', 'а', 'но',
-         'или', 'что', 'это', 'по', 'среди', 'после', 'перед', 'между', 'под', 'над', 'без', 'включая', 'а также', 'также',
-         'против', 'вокруг', 'внутри', 'вне', 'благодаря', 'около', 'свыше', 'более', 'почти', 'чем', 'года', 'году', 'год'}
+AREA = r'(кв\.\s?м\.?|м²|кв\. метр\w*|квадратн\w+ метр\w*|гектар\w*|га\b)'
+APPROX = [('более чем в', '+'), ('более чем на', '+'), ('более чем', '+'), ('свыше', '+'), ('более', '+'), ('больше', '+'),
+          ('не менее', '+'), ('превысила', '+'), ('превысил', '+'), ('около', '~'), ('почти', '~'), ('примерно', '~'),
+          ('порядка', '~'), ('приблизительно', '~'), ('менее', '<'), ('до', 'до ')]
+MONTHS = ['январ', 'феврал', 'март', 'апрел', 'ма', 'июн', 'июл', 'август', 'сентябр', 'октябр', 'ноябр', 'декабр']
+MONTH_NOM = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
+MONTH_RX = r'(?:январ[яь]|феврал[яь]|марта?|апрел[яь]|ма[яй]|июн[яь]|июл[яь]|августа?|сентябр[яь]|октябр[яь]|ноябр[яь]|декабр[яь])'
+STOPW = {'в', 'во', 'на', 'и', 'с', 'со', 'по', 'к', 'о', 'у', 'от', 'до', 'из', 'за', 'при', 'через', 'как', 'а', 'но',
+         'или', 'что', 'это', 'среди', 'после', 'перед', 'между', 'под', 'над', 'без', 'включая', 'также', 'против',
+         'вокруг', 'внутри', 'вне', 'благодаря', 'около', 'свыше', 'более', 'почти', 'чем', 'года', 'году', 'год',
+         'примерно', 'порядка', 'приблизительно', 'уже', 'ещё', 'еще', 'всего', 'только', 'лишь', 'же', 'ли'}
 ICON_STEMS = [
     (r'магазин|точ[ек]|точк|филиал|кофейн|аптек|бутик|киоск|отделени|супермаркет|гипермаркет|ресторан', 'store'),
-    (r'пользовател|клиент|сотрудник|курьер|человек|специалист|посетител|партн[её]р|пациент|подписчик|покупател|участник|врач|бариста', 'users'),
+    (r'пользовател|клиент|сотрудник|курьер|человек|специалист|посетител|партн[её]р|пациент|подписчик|покупател|участник|врач|бариста|дата-сайентист', 'users'),
     (r'стран|провинц|рынк|регион|город|штат', 'globe'),
-    (r'завод|предприяти|площадк|фабрик|центр|клиник|больниц|кухн|склад|лаборатор', 'building'),
+    (r'завод|предприяти|площадк|фабрик|центр|клиник|больниц|кухн|склад|лаборатор|площад|м²', 'building'),
     (r'проект|контракт|сделк|организац|компани|стартап', 'briefcase'),
     (r'заказ', 'cart'),
     (r'позици|товар|продукт|SKU|бренд|упаков', 'package'),
 ]
+TOP_BAD = ('подобн', 'мест', 'крупн', 'так', 'ден', 'раз', 'этап', 'квартал', 'год', 'половин', 'поток', 'шаг', 'магазин', 'сезон', 'выпуск',
+           'точк', 'филиал', 'зал', 'офис')
+SIGNIF = r'крупнейш|лидер|перв(?:ый|ая|ое|ым|ой|ую)\b|№\s?\d|ведущ|доминир|пионер|культов|старейш|единствен|флагман|топ-|место\b|место в|одн\w+ из'
+ACTIVITY = (r'управля|развива|разрабатыва|производ|выпуска|владеет|специализир|обслужива|объединя|созда[её]т|предлага|'
+            r'работает|занима|контролир|поставля|связывает|делает ставку|выросл|является|позиционир|насчитыва|удержива')
 
 
-def num_value(raw, sign, mult='', money_cur=''):
+def num_value(raw, sign, mult='', unit='', money_cur=''):
     n = raw.replace(' ', ' ').replace(' ', ' ')
+    if re.fullmatch(r'\d{4}', n):
+        pass
+    elif re.fullmatch(r'\d{5,}', n):
+        n = f'{int(n):,}'.replace(',', ' ')
     v = n
     if mult:
-        v += ' ' + {'тыс.': 'тыс.'}.get(mult, mult if not mult.startswith('тысяч') else 'тыс.')
+        v += ' ' + ('тыс.' if mult.startswith('тыс') else mult)
+    if unit:
+        v += ' ' + unit
     if money_cur:
-        if money_cur.startswith('долл') or money_cur == '$':
+        if money_cur.startswith('долл'):
             v = '$' + v
-        elif money_cur == 'евро' or money_cur == '€':
+        elif money_cur.startswith('евро'):
             v = '€' + v
         else:
-            v += ' ' + {'бат': 'бат'}.get(money_cur[:3], money_cur)
+            v += ' ' + ('бат' if money_cur.startswith('бат') else money_cur)
     if sign == '+':
-        v = (v + '+') if not mult and not money_cur else v.replace(n, n + '+', 1)
+        v = (v + '+') if not mult and not money_cur and not unit else v.replace(n, n + '+', 1)
     elif sign == '~':
         v = '~' + v
     elif sign:
@@ -355,26 +398,27 @@ def num_value(raw, sign, mult='', money_cur=''):
     return v
 
 
-def np_after(text, i, max_words=4):
-    """Именная группа после позиции i: слова до знака препинания/предлога."""
-    rest = text[i:]
-    m = re.match(r'\s*([^.,;:()—–\n]*)', rest)
+def np_after(text, i=0, max_words=4):
+    """Именная группа после позиции i: слова до знака препинания, предлога или глагола."""
+    m = re.match(r'\s*([^.,;:()—–\n]*)', text[i:])
     words = m.group(1).split() if m else []
     out = []
     for w in words:
         lw = w.lower()
-        if out and (lw in STOPW or re.match(r'^(?:19|20)\d\d', lw)):
+        if out and (lw in STOPW or re.match(r'^(?:19|20)\d\d', lw) or re.match(r'^\d', lw) or is_verb(w) or first_pos(w) in ('GRND', 'PRTS', 'INFN')):
             break
-        if not out and lw in STOPW:
+        if not out and (lw in STOPW or is_verb(w)):
             return []
-        out.append(w)
+        out.append(w.strip('«»"'))
         if len(out) >= max_words:
             break
+    while out and (out[-1].lower() in STOPW or out[-1].lower() in ('для',)):
+        out.pop()
     return out
 
 
 def agree(words, n_for_agree, plus):
-    """«в 135 магазинах» → «магазинов»: ставим слова в форму, согласованную с числом."""
+    """«в 135 магазинах» → «магазинов»: слова в форму, согласованную с числом."""
     if not MORPH or not words:
         return words
     res = []
@@ -382,67 +426,100 @@ def agree(words, n_for_agree, plus):
     for k, w in enumerate(words):
         p = parse_word(w)
         if not p or not w[:1].islower() or p.tag.POS not in ('NOUN', 'ADJF', 'PRTF'):
-            res.append(w)
             if k == 0:
                 return words
-            continue
-        case = p.tag.case
-        if k == 0 and case in ('gent',):
-            return words  # уже согласовано (15 430 магазинов)
-        if k == 0 and case == 'nomn' and not plus:
-            return words
-        if case in ('gent',) and changed and p.tag.POS == 'NOUN':  # «точках сетей» — второе слово уже в родительном
             res.extend(words[k:])
             return res
-        q = p.inflect({'gent', 'plur'}) if (plus or n_for_agree % 10 in (0, 5, 6, 7, 8, 9) or 11 <= n_for_agree % 100 <= 14) else (
-            p.inflect({'gent', 'sing'}) if n_for_agree % 10 in (2, 3, 4) else p.inflect({'nomn', 'sing'}))
+        case = p.tag.case
+        if k == 0 and case == 'gent':
+            return words
+        if k == 0 and case == 'nomn' and not plus:
+            return words
+        if case == 'gent' and changed and p.tag.POS == 'NOUN' and res and parse_word(res[-1]) and parse_word(res[-1]).tag.POS == 'NOUN':
+            res.extend(words[k:])
+            return res
+        if plus or n_for_agree % 10 in (0, 5, 6, 7, 8, 9) or 11 <= n_for_agree % 100 <= 14:
+            q = p.inflect({'gent', 'plur'})
+        elif n_for_agree % 10 in (2, 3, 4):
+            q = p.inflect({'gent', 'sing'}) if p.tag.POS == 'NOUN' else p.inflect({'gent', 'plur'})
+        else:
+            q = p.inflect({'nomn', 'sing'})
         res.append(q.word if q else w)
         changed = True
+        if p.tag.POS == 'NOUN':  # дальше — зависимые слова в своём падеже
+            res.extend(words[k + 1:])
+            return res
     return res
 
 
+def _infl_word(w, grams):
+    """Склонение слова; у слов через дефис («ИИ-ассистента», «масс-брендом») склоняется последняя часть."""
+    if '-' in w:
+        head, _, last = w.rpartition('-')
+        if re.fullmatch(r'[а-яё]+', last):
+            q = _infl_word(last, grams)
+            return f'{head}-{q}' if q else None
+        return None
+    ps = MORPH.parse(w.lower())
+    if not ps or not MORPH.word_is_known(w.lower()):
+        return None
+    q = ps[0].inflect(set(grams))
+    return q.word if q else None
+
+
+def _pos(w):
+    last = w.rpartition('-')[2] if '-' in w else w
+    p = parse_word(last.lower())
+    return p.tag.POS if p else None
+
+
 def nomn_phrase(words):
-    """Первое существительное (и прилагательные перед ним) — в именительный падеж: «долю рынка» → «доля рынка»."""
-    if not MORPH:
+    """Прилагательные + первое существительное — в именительный падеж: «долю рынка» → «доля рынка»."""
+    if not MORPH or not words:
         return words
     res = list(words)
+    head = None
     for k, w in enumerate(words):
-        p = parse_word(w)
-        if not p or not w[:1].islower():
+        pos = _pos(w)
+        if pos == 'NOUN':
+            head = k
             break
-        if p.tag.POS == 'NOUN':
-            num = p.tag.number or 'sing'
-            for j in range(k + 1):
-                pj = parse_word(res[j])
-                if pj and pj.tag.POS in ('NOUN', 'ADJF', 'PRTF'):
-                    q = pj.inflect({'nomn', num}) if pj.tag.POS != 'NOUN' or j == k else None
-                    if pj.tag.POS == 'NOUN' and j == k:
-                        q = pj.inflect({'nomn', num})
-                    if q:
-                        res[j] = q.word
-            break
-        if p.tag.POS not in ('ADJF', 'PRTF'):
-            break
+        if pos not in ('ADJF', 'PRTF', 'ADVB'):
+            return words
+    if head is None:
+        return words
+    hw = words[head].rpartition('-')[2].lower()
+    parses = [p for p in MORPH.parse(hw)[:4] if p.tag.POS == 'NOUN']
+    nums = {p.tag.number for p in parses}
+    num = 'sing' if 'sing' in nums else 'plur'
+    gender = next((p.tag.gender for p in parses if p.tag.gender), None)
+    q = _infl_word(words[head], {'nomn', num})
+    if q:
+        res[head] = q
+    for j in range(head):
+        if _pos(words[j]) in ('ADJF', 'PRTF'):
+            g = {'nomn', num} | ({gender} if num == 'sing' and gender else set())
+            qj = _infl_word(words[j], g)
+            if qj:
+                res[j] = qj
+    if words[0][:1].isupper():
+        res[0] = res[0][:1].upper() + res[0][1:]
     return res
 
 
 def label_variants(words, limit=30):
-    """Подпись к цифре: целиком, без прилагательных, только существительное (+родительный)."""
+    """Подпись к цифре: целиком, без прилагательных/наречий, короче с конца."""
     words = [w for w in words if w]
     if not words:
         return ['']
     out = [' '.join(words)]
     if MORPH and len(words) > 1:
-        keep = []
-        for k, w in enumerate(words):
-            p = parse_word(w)
-            if p and p.tag.POS in ('ADJF', 'PRTF') and w[:1].islower() and k < len(words) - 1 and len(words) > 2:
-                continue
-            keep.append(w)
+        keep = [w for k, w in enumerate(words)
+                if not (w[:1].islower() and first_pos(w) in ('ADJF', 'PRTF', 'ADVB') and k < len(words) - 1)]
         out.append(' '.join(keep))
     for n in range(len(words) - 1, 0, -1):
         cut = words[:n]
-        while cut and cut[-1].lower() in STOPW:
+        while cut and (cut[-1].lower() in STOPW or first_pos(cut[-1]) in ('ADJF', 'PRTF', 'ADVB', 'PREP', 'CONJ')):
             cut = cut[:-1]
         if cut:
             out.append(' '.join(cut))
@@ -454,15 +531,25 @@ def label_variants(words, limit=30):
     return good + [o for o in res if o not in good]
 
 
-def year_phrase(clause, skip=None):
-    for m in re.finditer(r'(?:(?:по состоянию на|по данным на|по данным|в|к|на|с|за)\s+)?(?:(?:' + MONTHS.replace('я', '[яь]') + r'|\w+е)\s+)?((?:19|20)\d\d)(?:\s*(?:году|года|год|г\.)|-м|-х|-го)?', clause):
-        if skip and m.group(1) == skip:
-            continue
-        txt = m.group(0).strip()
-        if len(txt) > 30:
-            txt = m.group(1)
-        return txt
-    return ''
+def year_phrase(clause):
+    """«по состоянию на май 2025 года» → «по состоянию на май 2025»; «в 2024 году» → «2024 год»."""
+    m = re.search(r'(по состоянию на|по данным на|по данным|к|с|на)?\s*(?:(\d{1,2})\s+)?(' + MONTH_RX + r')?\s*((?:19|20)\d\d)(\s*(?:году|года|год|г\.)|-м|-го)?', clause, re.I)
+    while m and not (m.group(1) or m.group(3) or m.group(5)):
+        m = re.search(r'(по состоянию на|по данным на|по данным|к|с|на)?\s*(?:(\d{1,2})\s+)?(' + MONTH_RX + r')?\s*((?:19|20)\d\d)(\s*(?:году|года|год|г\.)|-м|-го)?', clause[m.end():], re.I) if m else None
+        if m is None:
+            break
+    if not m:
+        return ''
+    pre, mon, year = (m.group(1) or '').lower(), m.group(3), m.group(4)
+    if mon:
+        idx = next((i for i, st in enumerate(MONTHS) if mon.lower().startswith(st)), None)
+        mon_n = MONTH_NOM[idx] if idx is not None else mon
+        return f'{pre + " " if pre and pre.startswith("по") else ""}{mon_n} {year}'.strip()
+    if pre in ('к', 'с'):
+        return f'{pre} {year} года' if pre == 'с' else f'к {year} году'
+    if pre.startswith('по'):
+        return f'{pre} {year}'
+    return f'{year} год'
 
 
 def icon_for(label):
@@ -472,221 +559,346 @@ def icon_for(label):
     return 'chart'
 
 
-def extract_facts(desc, city_ru=''):
-    """Факты из описания: числа с подписью, год основания, «первый/крупнейший», названия брендов и платформ."""
+def in_parens(sent, pos):
+    return sent[:pos].count('(') > sent[:pos].count(')')
+
+
+def extract_facts(desc, names=()):
+    """Факты из описания: числа с подписью, «№1/первый», год основания, названия брендов и платформ, биржа."""
     text = re.sub(r'\s+', ' ', desc or '').strip()
     facts = []
     sents = sentences(text)
+    lname = [n.lower() for n in names if n]
 
     def add(kind, value, label_words, sub, icon, pos, prio):
         if not value:
             return
-        facts.append({'kind': kind, 'value': value.strip(), 'labels': label_variants(label_words) if isinstance(label_words, list) else [label_words],
-                      'subs': [s for s in sub if s] if isinstance(sub, list) else ([sub] if sub else []), 'icon': icon, 'pos': pos, 'prio': prio})
+        labels = label_variants(label_words) if isinstance(label_words, list) else [label_words]
+        facts.append({'kind': kind, 'value': value.strip(), 'labels': labels,
+                      'subs': [s for s in (sub if isinstance(sub, list) else [sub]) if s], 'icon': icon, 'pos': pos, 'prio': prio})
 
-    offset = 0
-    for sent in sents:
-        base = text.find(sent, offset)
-        offset = max(offset, base)
+    gpos = 0
+    for si, sent in enumerate(sents):
+        base = gpos
+        gpos += len(sent) + 1
+        subj_is_company = si == 0 or any(sent.lower().startswith(n) for n in lname) or re.match(r'(Компания|Сеть|Бренд|Группа|Клиника|Сервис|Платформа)\b', sent)
         # --- числа
-        for m in re.finditer(r'(\$\s?)?(?<![\w.,/–-])' + NUMRE + r'(\+)?(?![.,]\d|[/–-]\d|\d)', sent):
+        for m in re.finditer(r'(\$\s?)?(?<![\w.,/–-])' + NUMRE + r'(\+)?(?![.,]\d|[/–-]\d|\d|-[а-я]|[A-Za-zА-Яа-я])', sent):
+            if in_parens(sent, m.start()) and not re.search(r'%|' + MULT + '|' + AREA, sent[m.end():m.end() + 14]):
+                continue
             raw = m.group(2)
-            pre_dollar = bool(m.group(1))
             after = sent[m.end():]
             before = sent[:m.start()]
             digits = raw.replace(' ', '').replace(' ', '').replace(' ', '')
-            # годы и даты
             if re.fullmatch(r'(19|20)\d\d', digits) and not re.match(r'\s*(%|' + MULT + r'|' + CUR + r')', after):
                 continue
-            if re.match(r'\s*(' + MONTHS + r')', after):
+            if re.match(r'\s*' + MONTH_RX, after, re.I) or re.match(r'-', after):
                 continue
-            if re.search(r'(?:версии|версия|v)\s*$', before) or re.match(r'\s*(?:мл|г|кг|см|мм|ч|час|мин)\b', after):
+            if re.search(r'(?:версии|версия|v|Series|раунд\w*|№)\s*$', before, re.I):
+                continue
+            if re.match(r'\s*(?:мл|г|кг|см|мм|ч|час\w*|мин\w*|сек\w*|дн\w*|дней|недел\w*|месяц\w*|лет|года?|раз\w*)\b', after):
+                continue
+            if re.search(r'(?:уступая|опережая|после|чем у|в отличие от)\b', before) or re.search(r'(запланирован\w*|планиру\w*|план\w*|цел\w*)\s*$', before):
                 continue
             mm = re.match(r'\s*' + MULT, after)
             mult = mm.group(1) if mm else ''
             aft2 = after[mm.end():] if mm else after
+            am = re.match(r'\s*' + AREA, aft2)
+            unit = 'м²' if am and not am.group(1).startswith(('га', 'гект')) else ('га' if am else '')
+            if am:
+                aft2 = aft2[am.end():]
             cm = re.match(r'\s*' + CUR, aft2)
             cur = cm.group(1) if cm else ''
             aft3 = aft2[cm.end():] if cm else aft2
             pct = re.match(r'\s*%', aft2)
-            if pre_dollar:
+            if m.group(1):
                 cur = cur or 'долл'
             sign = '+' if m.group(3) else ''
             for word, sg in APPROX:
                 if re.search(r'(?:^|\s)' + word + r'\s*$', before, re.I):
                     sign = sign or sg
                     break
-            # «на 3-14 дней» и т.п. уже отброшены; номер в названии («Series D») — нет цифр
-            clause_start = max(before.rfind(','), before.rfind(';'), before.rfind('('), before.rfind(' — '), before.rfind(':'))
-            clause = sent[clause_start + 1: m.end() + 120]
-            nval = float(digits.replace(',', '.')) if digits.replace(',', '').isdigit() else 0
+            cs = max(before.rfind(','), before.rfind(';'), before.rfind('('), before.rfind(' — '), before.rfind(':'))
+            ce = min([x for x in (after.find(','), after.find(';'), after.find(')'), after.find(' — ')) if x >= 0] + [len(after)])
+            clause = sent[cs + 1: m.end() + ce]
+            try:
+                nval = float(digits.replace(',', '.'))
+            except ValueError:
+                nval = 0
             if pct:
                 after_pct = aft2[pct.end():]
                 words = np_after(after_pct, 0, 4)
                 if not words or after_pct.strip().startswith((')', ',')):
-                    # «долю рынка доставки еды (около 47%)» → подпись — слова перед скобкой
                     pre = re.sub(r'\(\s*(?:около|свыше|более|почти|примерно)?\s*$', '', before).strip()
-                    pw = re.findall(r'[\w-]+', pre.split(',')[-1])[-4:]
-                    while pw and (pw[0].lower() in STOPW or is_verb(pw[0])):
+                    pw = re.findall(r'[\w-]+', re.split(r'[,;(—]', pre)[-1])[-4:]
+                    while pw and (pw[0].lower() in STOPW or is_verb(pw[0]) or first_pos(pw[0]) in ('PREP', 'CONJ')):
                         pw = pw[1:]
+                    while pw and (pw[-1].lower() in STOPW or first_pos(pw[-1]) in ('PREP', 'CONJ')):
+                        pw = pw[:-1]
                     words = nomn_phrase(pw)
                 if not words:
                     continue
-                v = ('~' if sign == '~' else '') + raw + '%' + ('+' if sign == '+' else '')
-                add('pct', v, words, [year_phrase(clause)], 'trending', base + m.start(), 1)
+                v = {'~': '~', 'до ': 'до ', '<': '<'}.get(sign, '') + raw + '%' + ('+' if sign == '+' else '')
+                weak = MORPH and all(first_pos(w) in ('ADJF', 'PRTF') for w in words)
+                add('pct', v, words, [year_phrase(clause)], 'trending', base + m.start(), 6 if weak else 1)
                 continue
             if cur:
-                v = num_value(raw, sign if sign in ('+', '~') else '', mult, cur)
-                ctx = before[-70:].lower()
-                lab = None
+                v = num_value(raw, sign if sign in ('+', '~') else '', mult, '', cur)
+                ctx = before[-80:].lower()
+                folw = ' '.join(np_after(aft3, 0, 2)).lower()
+                best, lab = -1, None
                 for rx, lb in [(r'выручк|доход|продаж', 'выручка'), (r'капитализац', 'капитализация'), (r'оцен', 'оценка компании'),
-                               (r'убыт', 'убытки'), (r'привлек|раунд|series|инвестиций от|получил', 'привлечено инвестиций'),
-                               (r'инвест|вложи|вложен', 'инвестиции'), (r'продал|сделк|за\s*$', 'сумма сделки'),
-                               (r'стоимост|модернизац', 'стоимость проекта')]:
-                    if re.search(rx, ctx):
-                        lab = lb
+                               (r'убыт', 'убытки'), (r'привлек|раунд|series|посевн', 'привлечено инвестиций'),
+                               (r'инвест|вложи|вложен', 'инвестиции'), (r'продал|сделк', 'сумма сделки'),
+                               (r'стоимост|модернизац', 'стоимость проекта'), (r'прибыл', 'прибыль')]:
+                    for mm2 in re.finditer(rx, ctx):
+                        if mm2.start() > best:
+                            best, lab = mm2.start(), lb
+                if folw.startswith('инвестиц') and lab not in ('привлечено инвестиций',):
+                    lab = 'инвестиции'
+                if lab and re.search(r'цел', ctx[-60:]):
+                    lab = {'выручка': 'цель по выручке'}.get(lab, lab)
                 if not lab:
                     w = np_after(aft3, 0, 3)
-                    lab = ' '.join(w) if w and not is_verb(w[0]) else ''
+                    lab = ' '.join(w) if w else ''
                 if not lab:
                     continue
-                if 'привлечено' in lab and re.search(r'series\s+\w+', clause, re.I):
-                    sub = re.search(r'series\s+\w+(?:\s+extension)?', clause, re.I).group(0)
-                    yp = year_phrase(clause)
-                    sub = f'раунд {sub}' + (f', {yp}' if yp else '')
+                win = re.split(r'\d', aft3, maxsplit=1)[0][:60]
+                sm = re.search(r'(?:раунд\w*\s+)?Series\s+[A-F](?:\s+extension)?', win)
+                if sm:
+                    sub = 'раунд ' + re.sub(r'^раунд\w*\s+', '', sm.group(0))
+                elif re.search(r'посевн', win):
+                    sub = 'посевной раунд'
+                elif re.match(r'\s*за\s+(\d)-й\s+квартал', aft3):
+                    sub = 'за ' + re.match(r'\s*за\s+(\d-й\s+квартал)', aft3).group(1)
+                elif re.match(r'\s*за\s+\w+\s+раунд', aft3):
+                    sub = re.match(r'\s*(за\s+\w+\s+раунд\w*)', aft3).group(1)
                 else:
-                    sub = year_phrase(clause)
-                add('money', v, lab, [sub], 'chart' if lab in ('выручка', 'капитализация', 'убытки') else 'briefcase', base + m.start(), 1)
+                    sub = ''
+                yp = year_phrase(clause)
+                if yp and yp not in sub:
+                    sub = f'{sub}, {yp}' if sub else yp
+                add('money', v, lab, [sub], 'chart' if lab in ('выручка', 'капитализация', 'убытки', 'прибыль', 'цель по выручке') else 'briefcase', base + m.start(), 1)
                 continue
             # счётные величины
             words = np_after(aft2, 0, 4)
+            if not words and unit:  # «525 тыс. м² торговых площадей» / «занимают 20 000 м²»
+                words = ['площадь']
+            if not words and mult:  # «аудитория оценивается свыше 50 млн»
+                pw = re.findall(r'[\w-]+', re.split(r'[,;:(—]', before)[-1])
+                pw = [w for w in pw if not (w.lower() in STOPW or is_verb(w) or first_pos(w) in ('PREP', 'CONJ', 'ADVB', 'PRTS'))][-2:]
+                if pw and first_pos(pw[0]) in ('NOUN', 'ADJF'):
+                    words = nomn_phrase(pw)
             if not words:
                 continue
-            if words[0][:1].isupper() and not re.match(r'^[A-Z]', words[0]) is None and len(words) == 1:
+            w0 = words[0].lower()
+            if w0 in ('лет', 'года', 'год', 'летнего', 'летия', 'раз', 'процентов', 'человек') and w0 != 'человек':
                 continue
-            if is_verb(words[0]) or words[0].lower() in ('лет', 'года', 'год', 'летнего', 'летия', 'раз', 'процентов'):
-                if words[0].lower() == 'лет' and re.search(r'(?:спустя|свыше|более|почти|уже)\s*$', before):
-                    pass
-                else:
-                    continue
             p0 = parse_word(words[0])
-            if MORPH and p0 and p0.tag.POS not in ('NOUN', 'ADJF', 'PRTF') and not words[0][:1].isupper():
+            if MORPH and p0 and p0.tag.POS not in ('NOUN', 'ADJF', 'PRTF') and not re.match(r'[A-Z]', words[0]):
                 continue
-            if not mult and nval < 2:
+            if not mult and not unit and nval < 2:
                 continue
             n_ag = int(nval) if nval == int(nval) else 5
-            words2 = agree(words, n_ag, sign == '+' or bool(mult))
-            v = num_value(raw, sign if sign in ('+', '~') else ('до ' if sign == 'до ' else ''), mult)
-            rest_words = np_after(aft2, 0, 8)[len(words):]
-            subs = [year_phrase(clause)]
-            add('count', v, words2, subs, icon_for(' '.join(words2)), base + m.start(), 1)
-        # --- год основания / запуска
-        for m in re.finditer(r'(основан\w*|созда\w*|запущен\w*|запуст\w*|открыл\w*|открыт\w*|образован\w*|зарегистрирован\w*|появил\w*|вышедш\w*|вышл\w*|начинал\w*)'
-                             r'([^.;]{0,45}?)\b((?:19|20)\d\d)(?:\s*(?:году|года|год|г\.)|-м)?', sent):
-            verb, mid, year = m.group(1).lower(), m.group(2), m.group(3)
-            if re.search(r'\d{4}', mid):
+            words2 = agree(words, n_ag, sign == '+' or bool(mult)) if not unit else words
+            v = num_value(raw, sign if sign in ('+', '~', 'до ') else '', mult, unit)
+            weak = MORPH and all(first_pos(w) in ('ADJF', 'PRTF') for w in words2)
+            add('count', v, words2, [year_phrase(clause)], 'building' if unit else icon_for(' '.join(words2)), base + m.start(), 6 if weak else 1)
+        # --- «№1», «второе место»
+        for m in re.finditer(r'([\w-]+)\s+№\s?(\d+)(\s+(?:в|во)\s+[А-ЯЁ][\w-]+)?(\s+по\s+[^,.;()]{3,30})?', sent):
+            pw = nomn_phrase([m.group(1)]) if m.group(1)[:1].islower() else [m.group(1)]
+            add('top', f'№{m.group(2)}' + (m.group(3) or ''), pw, [(m.group(4) or '').strip()], 'trending', base + m.start(), 2)
+        for m in re.finditer(r'(перв|втор|трет)\w+\s+мест\w*\s*(в мире|в Таиланде|в стране|в Азии|в АСЕАН|в регионе)?(\s+по\s+[^,.;()—]{3,40})?', sent):
+            n = {'перв': 1, 'втор': 2, 'трет': 3}[m.group(1)]
+            scope = m.group(2) or ''
+            by = (m.group(3) or '').strip()
+            if not by:
+                pm = re.search(r'(?:^|,\s*)(По\s+[^,]{3,40}?)\s+[\w-]+\s+[\w-]+\s+(?:в\s+[А-ЯЁ]\w+\s+)?занима\w*\s*$', sent[:m.start()])
+                by = pm.group(1)[0].lower() + pm.group(1)[1:] if pm else ''
+            if not by and not scope:
                 continue
-            if verb.startswith(('вышедш', 'вышл')):
-                if 'бирж' not in mid and 'IPO' not in mid and 'Nasdaq' not in mid:
-                    continue
-                lab = 'IPO на бирже'
-            else:
-                lab = {'основ': 'год основания', 'созда': 'год создания', 'запущ': 'год запуска', 'запус': 'год запуска',
-                       'откры': 'год открытия', 'образ': 'год образования', 'зарег': 'год регистрации', 'появи': 'год появления',
-                       'начин': 'начало истории'}.get(verb[:5], 'год основания')
-            tail = sent[m.end():]
-            sm = re.match(r'\s*,?\s*((?:в|во|со штаб-квартирой в)\s+[А-ЯЁA-Z][\w-]+(?:\s+[А-ЯЁA-Z][\w-]+)?)', tail)
-            sub = sm.group(1) if sm else ''
-            if not sub:
-                dm = re.search(r'(\d{1,2})\s+(' + MONTHS + r')\s*$', mid)
-                if dm:
-                    sub = f'{dm.group(1)} {dm.group(2)} {year} года'
-            if not sub:
-                sm = re.search(r'\bв\s+([А-ЯЁ][\w-]+е)\b', mid)
-                sub = f'в {sm.group(1)}' if sm else ''
-            add('year', year, lab, [sub], 'flag', base + m.start(), 3)
-        # --- «первый / крупнейший / №1»
+            add('top', f'№{n}' + (f' {scope}' if scope else ''), by or 'по рейтингу', [], 'trending', base + m.start(), 2)
+        # --- «первый / крупнейший / единственный»
         for m in re.finditer(r'\b(перв(?:ый|ая|ое|ым|ой|ую)|крупнейш(?:ий|ая|ее|им|ей|ую)|единственн(?:ый|ая|ым|ой))\s+'
                              r'(?:(в мире|в Таиланде|в стране|в Азии|в АСЕАН|в Юго-Восточной Азии|в регионе|в Японии|в Китае|во Вьетнаме|в Индии|в Индонезии|в Малайзии|в Корее|в ОАЭ)\s+)?'
                              r'([^.,;:()—]{3,60})', sent):
             w0, scope, rest = m.group(1).lower(), m.group(2) or '', m.group(3)
             before = sent[:m.start()]
-            if re.search(r'(?:одн\w+\s+из|в\s+числ\w+)\s*$', before):
+            if re.search(r'(?:одн\w+\s+из|в\s+числ\w+|из|среди)\s*$', before) or in_parens(sent, m.start()) or not subj_is_company:
                 continue
             p = parse_word(w0)
-            if MORPH and p and p.tag.case not in ('nomn', 'ablt'):
+            if MORPH and p and p.tag.case not in ('nomn', 'ablt', 'accs'):
                 continue
             words = np_after(rest, 0, 4)
-            if not words:
+            if not words or words[0].lower().startswith(TOP_BAD):
                 continue
-            words = nomn_phrase(words) if MORPH else words
+            if MORPH and words and first_pos(words[0]) not in ('NOUN', 'ADJF', 'PRTF', 'ADVB'):
+                continue
+            words = nomn_phrase(words)
+            head = next((parse_word(w) for w in words if parse_word(w) and parse_word(w).tag.POS == 'NOUN'), None)
+            if head and head.word.startswith(TOP_BAD):
+                continue
+            g = head.tag.gender if head else ''
+            p0 = parse_word(w0)
+            if p0 and p0.tag.gender and p0.tag.number != 'plur':
+                g = p0.tag.gender
             if w0.startswith('перв'):
-                val = 'Первый' if not words or (parse_word(words[0]) and parse_word(words[0]).tag.gender != 'femn') else 'Первая'
-                g = parse_word(words[-1]) if words else None
-                head = None
-                for w in words:
-                    pw = parse_word(w)
-                    if pw and pw.tag.POS == 'NOUN':
-                        head = pw
-                        break
-                if head:
-                    val = {'femn': 'Первая', 'neut': 'Первое'}.get(head.tag.gender, 'Первый')
+                val = {'femn': 'Первая', 'neut': 'Первое'}.get(g, 'Первый')
             elif w0.startswith('единств'):
-                head = next((parse_word(w) for w in words if parse_word(w) and parse_word(w).tag.POS == 'NOUN'), None)
-                val = {'femn': 'Единственная', 'neut': 'Единственное'}.get(head.tag.gender if head else '', 'Единственный')
+                val = {'femn': 'Единственная', 'neut': 'Единственное'}.get(g, 'Единственный')
             else:
                 val = '№1'
             if scope:
                 val = f'{val} {scope}'
             add('top', val, words, [], 'trending' if val.startswith('№') else 'star', base + m.start(), 2)
         for m in re.finditer(r'\bодн\w+\s+из\s+(двух|трёх|трех|пяти|десяти|\d+)\s+(крупнейш\w+|ведущ\w+)\s+([^.,;:()—]{3,60})', sent):
-            nmap = {'двух': 2, 'трёх': 3, 'трех': 3, 'пяти': 5, 'десяти': 10}
-            n = nmap.get(m.group(1), m.group(1))
+            n = {'двух': 2, 'трёх': 3, 'трех': 3, 'пяти': 5, 'десяти': 10}.get(m.group(1), m.group(1))
             words = np_after(m.group(3), 0, 4)
             if words:
                 add('top', f'Топ-{n}', words, [], 'trending', base + m.start(), 2)
-        # --- названия брендов / платформ / моделей
-        for m in re.finditer(r'\b(бренд\w*|линейк\w+|платформ\w+|приложени\w+|модел\w+|сервис\w*|кошел[её]к\w*|кошельк\w*|'
-                             r'программ\w+|формат\w*|технологи\w+|систем\w+|проект\w*|суббренд\w*|маркетплейс\w*|'
-                             r'ассистент\w*|супер-апп\w*|супер-приложени\w*|акселератор\w*|инкубатор\w*|тест\w*)\s+'
-                             r'(?:под брендом\s+)?«?([A-Z][\w&+\'’.!-]*(?:\s+(?:[A-Z0-9][\w&+\'’.!-]*|of|the|by|for|&))*)»?', sent):
-            kw, name = m.group(1), m.group(2).strip().rstrip('.')
-            if len(name) < 2 or name.upper() in ('NYSE', 'SE', 'COVID-19', 'IPO', 'USA', 'NSF', 'FDA', 'AI', 'ИИ', 'DNA'):
+        # --- год основания / запуска (только про саму компанию)
+        for m in re.finditer(r'(основан\w*|созда\w*|запущен\w*|запуст\w*|открыл\w*|открыт\w*|образован\w*|зарегистрирован\w*|появил\w*|вышедш\w*|вышл\w*|вышел)'
+                             r'([^.;]{0,45}?)\b((?:19|20)\d\d)(?:\s*(?:году|года|год|г\.)|-м)?', sent):
+            verb, mid, year = m.group(1).lower(), m.group(2), m.group(3)
+            if re.search(r'\d{4}', mid) or in_parens(sent, m.start()):
                 continue
-            name_words = name.split()
-            while name_words and name_words[-1] in ('of', 'the', 'by', 'for', '&'):
-                name_words.pop()
-            name = ' '.join(name_words[:3])
-            lab = inflect(kw, {'nomn', 'sing'}) if MORPH else kw
+            pv = parse_word(verb)
+            if MORPH and pv and pv.tag.POS == 'PRTF' and pv.tag.case not in ('nomn',):
+                continue
+            if not subj_is_company or (si == 0 and m.start() > 120 and not sent.lower().startswith(tuple(lname))):
+                continue
+            if verb.startswith(('вышедш', 'вышл', 'вышел')):
+                if not re.search(r'бирж|IPO|Nasdaq|NYSE', mid):
+                    continue
+                lab = 'IPO на бирже'
+            else:
+                lab = {'основ': 'год основания', 'созда': 'год создания', 'запущ': 'год запуска', 'запус': 'год запуска',
+                       'откры': 'год открытия', 'образ': 'год образования', 'зарег': 'год регистрации', 'появи': 'год появления'}.get(verb[:5], 'год основания')
             tail = sent[m.end():]
-            sm = re.match(r'\s*(?:\([^)]*\)\s*)?(?:—|–)\s*([^.,;:()]{3,45})', tail)
-            sub = sm.group(1).strip() if sm else ''
-            ic = {'платформ': 'smartphone', 'приложе': 'smartphone', 'кошел': 'smartphone', 'кошель': 'smartphone', 'модел': 'cpu',
-                  'ассист': 'cpu', 'сервис': 'smartphone', 'маркет': 'cart', 'тест': 'target'}.get(kw[:7].lower(), None)
-            if not ic:
-                ic = {'платформ'[:5]: 'smartphone'}.get(kw[:5].lower(), 'star')
+            sm = re.match(r'\s*,?\s*((?:в|во|со штаб-квартирой в)\s+[А-ЯЁA-Z][\w-]+(?:\s+[А-ЯЁA-Z][\w-]+)?)', tail)
+            sub = sm.group(1) if sm else ''
+            if sub and MORPH:  # «в Бангкоке Ти» → только город
+                ws = sub.split()
+                while len(ws) > 2 and first_pos(ws[-1]) != 'NOUN':
+                    ws.pop()
+                if len(ws) > 2:
+                    pl = parse_word(ws[-1])
+                    if pl and 'Name' in str(pl.tag) or (pl and pl.tag.case == 'ablt'):
+                        ws.pop()
+                sub = ' '.join(ws)
+            if not sub:
+                dm = re.search(r'(\d{1,2})\s+(' + MONTH_RX + r')\s*$', mid)
+                if dm:
+                    sub = f'{dm.group(1)} {dm.group(2)} {year} года'
+            if not sub:
+                sm = re.search(r'\bв\s+([А-ЯЁ][\w-]+е)\b', mid)
+                sub = f'в {sm.group(1)}' if sm else ''
+            add('year', year, lab, [sub], 'flag', base + m.start(), 3)
+        # --- названия брендов / платформ / моделей
+        for m in re.finditer(r'(?:([А-ЯЁа-яё-]+)\s+)?\b(бренд\w*|агрегатор\w*|мессенджер\w*|логистик\w*|соцкоммерци\w*|линейк\w+|платформ\w+|приложени\w+|модел\w+|сервис\w*|кошел[её]к\w*|кошельк\w*|'
+                             r'программ\w+|формат\w*|технологи\w+|систем\w+|проект\w*|суббренд\w*|маркетплейс\w*|стратеги\w+|'
+                             r'ассистент\w*|супер-апп\w*|акселератор\w*|инкубатор\w*|тест\w*|сет[ьи])\s+'
+                             r'(?:под (?:брендом|названием)\s+)?«?([A-Z][\w&+\'’.!-]*(?:\s+(?:[A-Z0-9][\w&+\'’.!-]*|of|the|by|for|&))*)»?', sent):
+            adj, kw, name = m.group(1), m.group(2), m.group(3).strip().rstrip('.')
+            if len(name) < 2 or name.upper() in ('NYSE', 'SE', 'COVID-19', 'IPO', 'USA', 'NSF', 'FDA', 'AI', 'DNA', 'LLM', 'ML', 'AWS'):
+                continue
+            pk = parse_word(kw)
+            if MORPH and pk and (pk.tag.case not in ('nomn', 'accs', 'ablt') or pk.tag.number == 'plur'):
+                continue
+            nw = name.split()
+            while nw and nw[-1] in ('of', 'the', 'by', 'for', '&'):
+                nw.pop()
+            name = ' '.join(nw[:4])
+            if any(name.lower() == n or name.lower() in n.split() or name.lower() in n for n in lname if len(name) >= 3) or name.lower() in lname:
+                continue
+            lab = inflect(kw, {'nomn', 'sing'}) if MORPH else kw
+            adj = adj.lower() if adj else adj
+            if adj and MORPH and first_pos(adj) == 'ADJF':
+                pa = parse_word(adj)
+                pkw = parse_word(lab)
+                qa = pa.inflect({'nomn', 'sing'} | ({pkw.tag.gender} if pkw and pkw.tag.gender else set()))
+                if qa:
+                    lab = f'{qa.word} {lab}'
+            tail = sent[m.end():]
+            sm = re.match(r'\s*(?:\([^)]*\)\s*)?(?:—|–)\s*([^.;:()]+)', tail)
+            sub = clause_cuts(sm.group(1).strip(), 34)[0] if sm else ''
+            if len(sub) > 36:
+                sub = ''
+            k5 = kw[:5].lower()
+            ic = {'платф': 'smartphone', 'прило': 'smartphone', 'кошел': 'smartphone', 'кошел': 'smartphone', 'модел': 'cpu',
+                  'ассис': 'cpu', 'серви': 'smartphone', 'марке': 'cart', 'тест': 'target', 'техно': 'cpu', 'систе': 'cpu',
+                  'страт': 'target', 'сеть': 'store', 'сети': 'store', 'супер': 'smartphone'}.get(k5, 'star')
             add('name', name, lab, [sub], ic, base + m.start(), 4)
+        # --- «запустило «Tops Chef Bot» — ИИ-ассистента …»
+        for m in re.finditer(r'«([A-Z][^»]{1,28})»\s*—\s*([^,.;:()]{3,60})', sent):
+            name = m.group(1)
+            if any(f['value'] == name for f in facts):
+                continue
+            words = np_after(m.group(2), 0, 3)
+            if words:
+                add('name', name, nomn_phrase(words), [], 'star', base + m.start(), 4)
+        # --- партнёры
+        for m in re.finditer(r'(?:совместно с|в партн[её]рстве с|партн[её]рство с|партн[её]р(?:ом)?)\s+([A-Z][\w&.\'’-]*(?:\s+[A-Z][\w&.\'’-]*){0,2})', sent):
+            name = m.group(1)
+            if any(name.lower() in n for n in lname):
+                continue
+            add('partner', name, 'партнёр', [], 'handshake', base + m.start(), 5)
+        # --- специализация: «специализирующаяся на anti-age и регенеративной медицине»
+        for m in re.finditer(r'(?:специализирующ\w*|специализируется|специализация)\s+на\s+([^.;:(,]+(?:,[^.;:(,]+)*)', sent):
+            items = re.split(r',\s*|\s+и\s+', m.group(1))
+            for item in items[:3]:
+                ws = item.split()
+                if not ws:
+                    continue
+                lm = re.match(r'[A-Za-z][A-Za-z0-9+]*(?:-[A-Za-z0-9+]+)*', ws[0])
+                if lm:
+                    val = lm.group(0)
+                else:
+                    ph = []
+                    for w in ws[:3]:
+                        ph.append(w)
+                        if _pos(w) == 'NOUN':
+                            break
+                    if len(ph) < 2 or _pos(ph[-1]) != 'NOUN':
+                        continue
+                    val = ' '.join(nomn_phrase(ph))
+                val = cap(val)
+                if 3 <= len(val) <= 16:
+                    add('spec', val, 'направление', [], 'target', base + m.start(), 7)
         # --- биржа
-        for m in re.finditer(r'(Фондов\w+ бирж\w+ Таиланда|Nasdaq|NYSE|SET\b|Фондов\w+ бирж\w+)', sent):
+        for m in re.finditer(r'(Фондов\w+ бирж\w+ Таиланда|Nasdaq|NYSE|\bSET\b|Фондов\w+ бирж\w+)', sent):
+            if in_parens(sent, m.start()) or not subj_is_company:
+                continue
             ex = m.group(1)
-            val = {'Nasdaq': 'Nasdaq', 'NYSE': 'NYSE'}.get(ex, 'SET' if 'Таиланд' in ex or ex == 'SET' else 'Биржа')
-            add('listing', val, 'публичная компания', [year_phrase(sent[max(0, m.start() - 60): m.end() + 40])], 'chart', base + m.start(), 5)
-    # дубли по значению
-    res, seen = [], set()
+            val = {'Nasdaq': 'Nasdaq', 'NYSE': 'NYSE'}.get(ex, 'SET' if ('Таиланд' in ex or ex == 'SET') else 'Биржа')
+            add('listing', val, 'акции на бирже', [], 'chart', base + m.start(), 5)
+    # дубли: одно значение — один факт; одна подпись у денег — первый; у счётных — больший
+    res = []
     for f in sorted(facts, key=lambda f: (f['prio'], f['pos'])):
-        key = f['value'].lower()
-        if key in seen:
+        if any(f['value'].lower() == r['value'].lower() for r in res):
             continue
-        seen.add(key)
+        if f['kind'] == 'top' and any(r['labels'][0] == f['labels'][0] for r in res):
+            continue
+        same = [r for r in res if r['kind'] == f['kind'] and r['labels'][0] == f['labels'][0] and f['kind'] in ('money', 'count', 'pct', 'year')]
+        if same:
+            if f['kind'] == 'count':
+                def nv(x):
+                    try:
+                        return float(re.sub(r'[^\d,]', '', x['value']).replace(',', '.') or 0)
+                    except ValueError:
+                        return 0
+                if nv(f) > nv(same[0]):
+                    res[res.index(same[0])] = f
+            continue
         res.append(f)
     return res
 
 
 def pick_facts(cands, extra):
-    """4 факта: цифры → «первый/№1» → бренды → год → биржа → дополнительные (группа, город визита)."""
+    """4 факта: цифры → «№1/первый» → бренды → год → партнёр/биржа → группа, город визита."""
     chosen, kinds = [], {}
-    limits = {'year': 1, 'name': 2, 'listing': 1, 'top': 2}
-    for f in cands + extra:
+    limits = {'year': 1, 'name': 2, 'listing': 1, 'top': 2, 'money': 2, 'count': 3, 'pct': 2, 'partner': 1, 'spec': 2}
+    for f in sorted(cands, key=lambda f: (f['prio'], f['pos'])) + extra:
         k = f['kind']
         if kinds.get(k, 0) >= limits.get(k, 9):
             continue
@@ -696,92 +908,180 @@ def pick_facts(cands, extra):
         kinds[k] = kinds.get(k, 0) + 1
         if len(chosen) == 4:
             break
-    # порядок: цифры/лидерство сначала, как в ручной презентации
-    order = {'count': 0, 'pct': 0, 'money': 0, 'top': 1, 'name': 2, 'year': 3, 'listing': 4, 'group': 5, 'city': 6}
+    order = {'count': 0, 'pct': 0, 'money': 0, 'top': 1, 'name': 2, 'spec': 2, 'partner': 3, 'year': 4, 'listing': 5, 'group': 6, 'city': 7, 'city2': 8}
     chosen.sort(key=lambda f: (order.get(f['kind'], 9), f.get('pos', 0)))
     return chosen
 
 
 # ---------------------------------------------------------------- тексты о компании
-def predicate(sent, name):
-    """Главная мысль первого предложения: «X — крупнейший переработчик…» → «крупнейший переработчик…»;
-    «X, входящая в …, управляет сетью…» → «управляет сетью…»."""
-    s = sent
-    words = s.split()
-    dash = re.search(r'\s[—–]\s', s)
-    pre = s[:dash.start()] if dash else s
-    verb_at = None
-    depth = 0
-    pos = 0
-    for w in pre.split():
-        st = pre.find(w, pos)
-        pos = st + len(w)
-        depth += w.count('(') - w.count(')')
-        if depth == 0 and is_verb(w):
-            verb_at = st
-            break
-    if verb_at is not None:
-        rest = s[verb_at:]
-    elif dash:
-        rest = s[dash.end():]
-    else:
-        rest = s
-    return rest.strip()
+def company_names(c):
+    n = c['name_en']
+    out = [base_name(n), paren_name(n), n.split()[0]]
+    for part in re.split(r'\s*/\s*', base_name(n)):
+        out.append(part)
+    return [x for x in out if x and len(x) > 2]
 
 
-def why_variants(c):
+FOUND_RX = r'основан|зарегистр|образован|создан|запущен|открыт|открыл|появил|начинал'
+
+
+def ok_start(word, subj):
+    w = word.strip('«»"(')
+    if not w:
+        return False
+    if re.match(r'[A-Z]', w):
+        return True
+    if re.match(r'(?:один|одна|одно)$', w.lower()):
+        return True
+    p = parse_word(w)
+    if not p:
+        return False
+    if p.tag.POS == 'NOUN' and p.tag.case == 'nomn':
+        return True
+    if subj and (p.tag.POS == 'VERB' or p.tag.POS == 'PRTS'):
+        return True
+    return False
+
+
+def candidates(c):
+    """Части описания для «Почему выбран» / «Фокус визита»: [оценка, № предложения, текст]."""
     sents = sentences(c.get('desc_ru', ''))
-    if not sents:
-        return []
-    pred = predicate(sents[0], c['name_en'])
-    pred = strip_parens(pred)
+    names = [x.lower() for x in company_names(c)]
     out = []
-    for lim in (120, 95, 75):
-        for v in clause_cuts(pred, lim):
-            v = end_dot(cap(v))
-            if v not in out:
-                out.append(v)
+    for si, s in enumerate(sents):
+        s0 = strip_parens(s)
+        starts_company = s0.lower().startswith(tuple(names)) or re.match(r'(Компания|Сеть|Бренд|Группа|Клиника|Сервис|Платформа)\b', s0)
+        subj = bool(starts_company) or si == 0
+        found_pen = lambda t: -4 if re.search(FOUND_RX, t[:60]) else 0
+        # 1) именное сказуемое: «X — крупнейший …»
+        dm = re.search(r'\s[—–]\s', s0)
+        if dm and subj:
+            pre = s0[:dm.start()]
+            np_ = s0[dm.end():].strip()
+            if not any(is_verb(w) for w in pre.split()) and len(pre.split()) <= 14 and np_ and ok_start(np_.split()[0], False) or (
+                    dm and subj and np_ and first_pos(np_.split()[0]) in ('ADJF', 'PRTF') and parse_word(np_.split()[0]).tag.case == 'nomn'
+                    and not any(is_verb(w) for w in pre.split())):
+                out.append([9 + (1 if si == 0 else 0) + found_pen(np_), si, np_])
+        # 2) глагольное сказуемое при подлежащем-компании
+        if subj:
+            for pi_, part in enumerate(s0.split('; ')):
+                pos = 0
+                if pi_ > 0 and not (part.lower().startswith(tuple(names)) or is_verb(part.split()[0]) if part.split() else False):
+                    continue
+                for w in part.split():
+                    st = part.find(w, pos)
+                    pos = st + len(w)
+                    if is_verb(w) or (first_pos(w) == 'PRTS' and w[:1].islower()):
+                        if re.match(FOUND_RX, w.lower()):
+                            continue
+                        txt = part[st:]
+                        sc = 5 if re.match(ACTIVITY, w.lower()) else 2
+                        out.append([sc + (1 if si == 0 else 0), si, txt])
+                        break
+        # 3) значимость: «лидерство», «первая в Таиланде», «№1»
+        if re.search(SIGNIF, s0, re.I):
+            for bm in [None] + list(re.finditer(r';\s+|,\s+|\s[—–]\s', s0)):
+                st = bm.end() if bm else 0
+                txt = s0[st:]
+                if not txt or not re.search(SIGNIF, txt[:90], re.I):
+                    continue
+                if bm and not ok_start(txt.split()[0], subj):
+                    continue
+                if bad_start(txt):
+                    continue
+                out.append([8 + (1 if si == 0 else 0) + found_pen(txt), si, txt])
+        # 4) предложение целиком
+        if re.match(r'[A-ZА-ЯЁ0-9«]', s0) and not bad_start(s0):
+            sc = 1 + (1 if re.search(SIGNIF, s0, re.I) else 0) + len(re.findall(LEARN_RX, s0, re.I)) + found_pen(s0) // 2 + (2 if re.search(ACTIVITY, s0) else 0)
+            out.append([sc, si, s0])
     return out
 
 
 LEARN_RX = (r'технолог|ИИ|искусствен|платформ|цифров|приложени|запуст|запущ|разработ|инновац|R&D|автоматиз|робот|данн|'
             r'e-commerce|онлайн|доставк|линейк|формат|систем|сервис|программ|модел|экспорт|франчайз|стратеги|ребрендинг|'
-            r'омниканал|live|стрим|аналитик|прослеживаем|завод|производств|лаборатор|диагност|терапи|клиник')
+            r'омниканал|live|стрим|аналитик|прослеживаем|завод|производств|лаборатор|диагност|терапи|клиник|phygital')
 
 
-def learn_variants(c, used=''):
-    sents = sentences(c.get('desc_ru', ''))
-    cands = []
-    for k, s in enumerate(sents[1:], 1):
-        score = len(re.findall(LEARN_RX, s, re.I)) * 2 + (1 if k == len(sents) - 1 else 0)
-        cands.append((score, k, s))
-    if not cands and sents:  # одно предложение — берём его вторую половину
-        parts = re.split(r',\s|;\s', sents[0])
-        if len(parts) > 2:
-            cands.append((0, 0, ', '.join(parts[-2:])))
-    if not cands:
-        return []
-    cands.sort(key=lambda x: (-x[0], x[1]))
-    s = strip_parens(cands[0][2])
+def text_variants(s, limits):
     out = []
-    for lim in (130, 105, 80, 60):
-        for v in clause_cuts(s, lim):
+    for lim in limits:
+        cuts = clause_cuts(s, lim)
+        if cuts and len(cuts[0]) < 0.5 * lim and len(s) > lim:
+            ws, acc = s.split(), ''
+            for w in ws:
+                if len(acc) + len(w) + 1 > lim:
+                    break
+                acc = (acc + ' ' + w).strip()
+            wl = acc.split()
+            while len(wl) > 3 and (wl[-1].lower() in STOPW or first_pos(wl[-1].strip(',')) in ('PREP', 'CONJ', 'ADJF', 'PRTF', 'PRCL', 'ADVB', 'NUMR')):
+                wl.pop()
+            cuts = [' '.join(wl).rstrip(',')] + cuts
+        for v in cuts:
+            if len(v) < 20 or bad_start(v):
+                continue
             v = end_dot(cap(v))
             if v not in out:
                 out.append(v)
     return out
 
 
+def why_learn(c):
+    cands = candidates(c)
+    if not cands:
+        return [], []
+    cands.sort(key=lambda x: (-x[0], x[1]))
+    why = []
+    used_si = None
+    for sc, si, txt in cands:
+        txt = re.sub(r',\s+(?:основанн|запущенн|созданн)\w*\s[^,]*(?=,|$)', '', txt)
+        why = text_variants(txt, (120, 95, 75))
+        if why:
+            used_si = si
+            break
+    learn = []
+    lc = []
+    for sc, si, txt in cands:
+        if si == used_si:
+            continue
+        lsc = len(re.findall(LEARN_RX, txt, re.I)) * 2 + (2 if txt == strip_parens(sentences(c['desc_ru'])[si]) else 0) - (3 if re.search(FOUND_RX, txt[:60]) else 0)
+        lc.append((lsc, si, txt))
+    lc.sort(key=lambda x: (-x[0], x[1]))
+    for sc, si, txt in lc:
+        learn = text_variants(txt, (130, 105, 80, 60))
+        if learn and not any(l[:40] == w[:40] for l in learn for w in why):
+            break
+        learn = []
+    return why, learn
+
+
+def nominal_kind(c, limit=55):
+    """«Dutch Mill — доминирующий производитель питьевого йогурта» → «доминирующий производитель питьевого йогурта»."""
+    sents = sentences(c.get('desc_ru', ''))
+    if not sents:
+        return ''
+    s0 = strip_parens(sents[0])
+    dm = re.search(r'\s[—–]\s', s0)
+    if not dm or re.search(ACTIVITY, s0[:dm.start()]) or len(s0[:dm.start()].split()) > 14:
+        return ''
+    v = clause_cuts(s0[dm.end():].strip(), limit)
+    v = [x for x in v if len(x) <= limit]
+    return v[0] if v else ''
+
+
 def parent_group(c):
-    d = c.get('desc_ru', '')
-    m = re.search(r'(?:входящ\w+ в|в составе|часть|дочерн\w+ (?:компани\w+|структур\w+)|подразделение|принадлеж\w+|'
-                  r'контролируем\w+|структур\w+ конгломерата|конгломерата|флагманский кошел[её]к|совместн\w+ предприяти\w+)\s+([^,.;—()]{2,70})', d)
+    sents = sentences(c.get('desc_ru', ''))
+    if not sents:
+        return ''
+    d = sents[0]
+    m = re.search(r'(?:входящ\w+ в|входит в|в составе|часть|дочерн\w+ (?:компани\w+|структур\w+)|^[^—]{0,60}— (?:[а-яё-]+\s+)?подразделени\w*|принадлеж\w+|'
+                  r'контролируем\w+|контролиру\w+|конгломерата|флагманский кошел[её]к|совместн\w+ предприяти\w+|под управлением)\s+([^,.;—()]{2,80})', d)
     if not m:
         return ''
     seg = m.group(1)
     lat = re.findall(r'[A-Z][\w&.\'’-]*(?:\s+(?:[A-Z][\w&.\'’-]*|of|and|&))*', seg)
-    lat = [x for x in lat if x not in (c['name_en'],) and len(x) > 1]
-    return lat[0].strip() if lat else ''
+    names = [x.lower() for x in company_names(c)]
+    lat = [x.strip() for x in lat if len(x) > 1 and x.strip().lower() not in names]
+    return lat[0] if lat else ''
 
 
 def base_name(name):
@@ -797,7 +1097,7 @@ def title_variants(c):
     n = base_name(c['name_en'])
     out = [n]
     short = re.sub(r'\s+(Thailand|Group|Corporation|Holdings|Public Company Limited|PCL|Co\.?,? Ltd\.?|Integrative Wellness|'
-                   r'Scientific Wellness Center|Wellness Center|Longevity Clinic|Clinic|International)$', '', n).strip()
+                   r'Scientific Wellness Center|Wellness Center|Wellness Clinic|Longevity Clinic|Clinic|International|Coffee Roasters)$', '', n).strip()
     if short and short != n:
         out.append(short)
     if '/' in n:
@@ -1238,13 +1538,9 @@ def build_deck(tour, comps, logos_ok=True):
             tx.append(d['note_ru'])
         kinds = []
         for c in cs:
-            ss = sentences(c.get('desc_ru', ''))
-            if not ss:
-                continue
-            pred = strip_parens(predicate(ss[0], c['name_en']))
-            if is_verb(pred.split()[0]) if pred else True:
-                continue
-            kinds.append(f'{company_short(c)} — {clause_cuts(pred, 60)[-1]}')
+            k = nominal_kind(c)
+            if k:
+                kinds.append(f'{company_short(c)} — {k}')
         alt = '; '.join(kinds)
         full = ' '.join(tx) if tx else (end_dot(alt) if alt else '')
         short_tx = ' '.join(clause_cuts(tx[0], 70)[-1:]) + ('.' if tx else '') if tx else ''
@@ -1264,7 +1560,7 @@ def build_deck(tour, comps, logos_ok=True):
     for d, c in clist:
         city = d['city_ru']
         gh, thai = ghost_for(c)
-        cands = extract_facts(c.get('desc_ru', ''), city)
+        cands = extract_facts(c.get('desc_ru', ''), company_names(c))
         extra = []
         grp = parent_group(c)
         if grp and grp.lower() not in c['name_en'].lower():
@@ -1272,6 +1568,7 @@ def build_deck(tour, comps, logos_ok=True):
         extra.append({'kind': 'city', 'value': city, 'labels': ['площадка визита'], 'subs': [f'день {d["day"]} программы'], 'icon': 'pin', 'pos': 1000})
         extra.append({'kind': 'city2', 'value': f'День {d["day"]}', 'labels': ['визит делегации'], 'subs': [d.get('time') or ''], 'icon': 'calendar', 'pos': 1001})
         facts = pick_facts(cands, extra)
+        wl = why_learn(c)
         fl = []
         for f in facts:
             subs = [s for s in f['subs'] if s]
@@ -1301,8 +1598,8 @@ def build_deck(tour, comps, logos_ok=True):
                  'short': Var(c['name_en'], base_name(c['name_en'])),
                  'subtitle': Var(' · '.join(sub_parts), ' · '.join(sub_parts[-2:]), city),
                  'facts': fl,
-                 'why': Var(*why_variants(c)),
-                 'learn': Var(*(learn_variants(c) or [''])),
+                 'why': Var(*(wl[0] or [''])),
+                 'learn': Var(*(wl[1] or [''])),
                  'learn_label': 'Фокус визита'}
         if not slide['logo']:
             slide.pop('logo')
