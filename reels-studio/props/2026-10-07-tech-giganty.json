@@ -4,1167 +4,1122 @@
   {
    "text": "Скорее",
    "start": 0.197,
-   "end": 0.277
+   "end": 0.28
   },
   {
    "text": "всего,",
-   "start": 0.277,
-   "end": 0.847
+   "start": 0.28,
+   "end": 0.85
   },
   {
    "text": "у",
-   "start": 0.847,
-   "end": 0.957
+   "start": 0.85,
+   "end": 0.96
   },
   {
    "text": "вас",
-   "start": 0.957,
-   "end": 1.107
+   "start": 0.96,
+   "end": 1.11
   },
   {
    "text": "в",
-   "start": 1.107,
-   "end": 1.187
+   "start": 1.11,
+   "end": 1.19
   },
   {
    "text": "кармане",
-   "start": 1.187,
-   "end": 1.837
+   "start": 1.19,
+   "end": 1.84
   },
   {
    "text": "сейчас",
-   "start": 1.837,
-   "end": 2.267
+   "start": 1.84,
+   "end": 2.27
   },
   {
    "text": "лежит",
-   "start": 2.267,
-   "end": 2.677
+   "start": 2.27,
+   "end": 2.68
   },
   {
    "text": "Xiaomi",
-   "start": 2.677,
-   "end": 2.927
+   "start": 2.68,
+   "end": 2.93
   },
   {
    "text": "или",
-   "start": 2.927,
-   "end": 3.177
+   "start": 2.93,
+   "end": 3.18
   },
   {
    "text": "Huawei.",
-   "start": 3.177,
-   "end": 3.637
+   "start": 3.18,
+   "end": 3.64
   },
   {
    "text": "А",
-   "start": 3.637,
-   "end": 3.717
+   "start": 3.64,
+   "end": 3.72
   },
   {
    "text": "вы",
-   "start": 3.717,
-   "end": 3.877
+   "start": 3.72,
+   "end": 3.88
   },
   {
    "text": "когда-нибудь",
-   "start": 3.877,
-   "end": 4.669
+   "start": 3.88,
+   "end": 4.667
   },
   {
    "text": "были",
-   "start": 4.669,
-   "end": 4.989
+   "start": 4.667,
+   "end": 4.987
   },
   {
    "text": "у",
-   "start": 4.989,
-   "end": 5.149
+   "start": 4.987,
+   "end": 5.147
   },
   {
    "text": "них",
-   "start": 5.149,
-   "end": 5.309
+   "start": 5.147,
+   "end": 5.307
   },
   {
    "text": "в",
-   "start": 5.309,
-   "end": 5.389
+   "start": 5.307,
+   "end": 5.387
   },
   {
    "text": "офисе?",
-   "start": 5.389,
-   "end": 5.929
+   "start": 5.387,
+   "end": 5.927
   },
   {
    "text": "Мы",
-   "start": 5.929,
-   "end": 6.129
+   "start": 5.927,
+   "end": 6.134
   },
   {
    "text": "едем",
-   "start": 6.129,
-   "end": 6.415
+   "start": 6.134,
+   "end": 6.42
   },
   {
    "text": "туда.",
-   "start": 6.415,
-   "end": 6.855
+   "start": 6.42,
+   "end": 6.86
   },
   {
    "text": "Пять",
-   "start": 6.855,
-   "end": 7.115
+   "start": 6.86,
+   "end": 7.157
   },
   {
    "text": "дней,",
-   "start": 7.115,
-   "end": 7.478
+   "start": 7.157,
+   "end": 7.52
   },
   {
    "text": "девять",
-   "start": 7.478,
-   "end": 7.708
+   "start": 7.52,
+   "end": 7.75
   },
   {
    "text": "технологических",
-   "start": 7.708,
-   "end": 8.728
+   "start": 7.75,
+   "end": 8.77
   },
   {
    "text": "гигантов",
-   "start": 8.728,
-   "end": 9.258
+   "start": 8.77,
+   "end": 9.3
   },
   {
    "text": "Китая.",
-   "start": 9.258,
-   "end": 9.798
+   "start": 9.3,
+   "end": 9.84
   },
   {
    "text": "Baidu,",
-   "start": 9.798,
-   "end": 10.718
+   "start": 9.84,
+   "end": 10.76
   },
   {
    "text": "Xiaomi,",
-   "start": 10.718,
-   "end": 11.438
+   "start": 10.76,
+   "end": 11.48
   },
   {
    "text": "Alibaba,",
-   "start": 11.438,
-   "end": 12.008
+   "start": 11.48,
+   "end": 12.05
   },
   {
    "text": "Unitree,",
-   "start": 12.008,
-   "end": 12.698
+   "start": 12.05,
+   "end": 12.74
   },
   {
    "text": "Meituan,",
-   "start": 12.698,
-   "end": 13.378
+   "start": 12.74,
+   "end": 13.42
   },
   {
    "text": "Xiaohongshu,",
-   "start": 13.378,
-   "end": 14.249
+   "start": 13.42,
+   "end": 14.287
   },
   {
    "text": "Tencent,",
-   "start": 14.249,
-   "end": 14.919
+   "start": 14.287,
+   "end": 14.957
   },
   {
    "text": "Huawei",
-   "start": 14.919,
-   "end": 15.379
+   "start": 14.957,
+   "end": 15.417
   },
   {
    "text": "и",
-   "start": 15.379,
-   "end": 15.529
+   "start": 15.417,
+   "end": 15.567
   },
   {
    "text": "UBTech.",
-   "start": 15.529,
-   "end": 16.369
+   "start": 15.567,
+   "end": 16.407
   },
   {
    "text": "Мы",
-   "start": 16.369,
-   "end": 16.559
+   "start": 16.407,
+   "end": 16.61
   },
   {
    "text": "проедем",
-   "start": 16.559,
-   "end": 16.972
+   "start": 16.61,
+   "end": 17.023
   },
   {
    "text": "Пекин,",
-   "start": 16.972,
-   "end": 17.532
+   "start": 17.023,
+   "end": 17.583
   },
   {
    "text": "Ханчжоу,",
-   "start": 17.532,
-   "end": 18.262
+   "start": 17.583,
+   "end": 18.313
   },
   {
    "text": "Шанхай",
-   "start": 18.262,
-   "end": 18.832
+   "start": 18.313,
+   "end": 18.883
   },
   {
    "text": "и",
-   "start": 18.832,
-   "end": 18.912
+   "start": 18.883,
+   "end": 18.963
   },
   {
    "text": "Шэньчжэнь.",
-   "start": 18.912,
-   "end": 19.702
+   "start": 18.963,
+   "end": 19.753
   },
   {
    "text": "Вы",
-   "start": 19.702,
-   "end": 19.852
+   "start": 19.753,
+   "end": 19.903
   },
   {
    "text": "увидите,",
-   "start": 19.852,
-   "end": 20.462
+   "start": 19.903,
+   "end": 20.513
   },
   {
    "text": "как",
-   "start": 20.462,
-   "end": 20.692
+   "start": 20.513,
+   "end": 20.743
   },
   {
    "text": "Xiaomi",
-   "start": 20.692,
-   "end": 20.922
+   "start": 20.743,
+   "end": 20.973
   },
   {
    "text": "прошла",
-   "start": 20.922,
-   "end": 21.382
+   "start": 20.973,
+   "end": 21.433
   },
   {
    "text": "путь",
-   "start": 21.382,
-   "end": 21.682
+   "start": 21.433,
+   "end": 21.733
   },
   {
    "text": "от",
-   "start": 21.682,
-   "end": 21.822
+   "start": 21.733,
+   "end": 21.873
   },
   {
    "text": "смартфонов",
-   "start": 21.822,
-   "end": 22.592
+   "start": 21.873,
+   "end": 22.643
   },
   {
    "text": "до",
-   "start": 22.592,
-   "end": 22.742
+   "start": 22.643,
+   "end": 22.793
   },
   {
    "text": "собственных",
-   "start": 22.742,
-   "end": 23.592
+   "start": 22.793,
+   "end": 23.643
   },
   {
    "text": "электроавтомобилей.",
-   "start": 23.592,
-   "end": 25.182
+   "start": 23.643,
+   "end": 25.233
   },
   {
    "text": "Как",
-   "start": 25.222,
-   "end": 25.432
+   "start": 25.273,
+   "end": 25.483
   },
   {
    "text": "Tencent",
-   "start": 25.432,
-   "end": 25.942
+   "start": 25.483,
+   "end": 25.993
   },
   {
    "text": "построил",
-   "start": 25.942,
-   "end": 26.372
+   "start": 25.993,
+   "end": 26.423
   },
   {
    "text": "WeChat,",
-   "start": 26.372,
-   "end": 26.692
+   "start": 26.423,
+   "end": 26.743
   },
   {
    "text": "в",
-   "start": 26.692,
-   "end": 26.822
+   "start": 26.743,
+   "end": 26.873
   },
   {
    "text": "котором",
-   "start": 26.822,
-   "end": 27.352
+   "start": 26.873,
+   "end": 27.403
   },
   {
    "text": "китайцы",
-   "start": 27.352,
-   "end": 27.922
+   "start": 27.403,
+   "end": 27.973
   },
   {
    "text": "живут",
-   "start": 27.922,
-   "end": 28.332
+   "start": 27.973,
+   "end": 28.383
   },
   {
    "text": "целый",
-   "start": 28.332,
-   "end": 28.742
+   "start": 28.383,
+   "end": 28.793
   },
   {
    "text": "день,",
-   "start": 28.742,
-   "end": 29.402
+   "start": 28.793,
+   "end": 29.453
   },
   {
    "text": "общаются,",
-   "start": 29.402,
-   "end": 29.892
+   "start": 29.453,
+   "end": 29.943
   },
   {
    "text": "платят,",
-   "start": 29.892,
-   "end": 30.462
+   "start": 29.943,
+   "end": 30.513
   },
   {
    "text": "работают.",
-   "start": 30.462,
-   "end": 31.382
+   "start": 30.513,
+   "end": 31.433
   },
   {
    "text": "Как",
-   "start": 31.382,
-   "end": 31.662
+   "start": 31.433,
+   "end": 31.672
   },
   {
    "text": "Meituan",
-   "start": 31.662,
-   "end": 31.95
+   "start": 31.672,
+   "end": 31.96
   },
   {
    "text": "доставляет",
-   "start": 31.95,
-   "end": 32.83
+   "start": 31.96,
+   "end": 32.84
   },
   {
    "text": "еду",
-   "start": 32.83,
-   "end": 33.02
+   "start": 32.84,
+   "end": 33.03
   },
   {
    "text": "миллионам",
-   "start": 33.02,
-   "end": 33.91
+   "start": 33.03,
+   "end": 33.92
   },
   {
    "text": "людей",
-   "start": 33.91,
-   "end": 34.34
+   "start": 33.92,
+   "end": 34.35
   },
   {
    "text": "за",
-   "start": 34.34,
-   "end": 34.53
+   "start": 34.35,
+   "end": 34.54
   },
   {
    "text": "15",
-   "start": 34.53,
-   "end": 34.81
+   "start": 34.54,
+   "end": 34.82
   },
   {
    "text": "минут.",
-   "start": 34.81,
-   "end": 35.49
-  },
-  {
-   "text": "Посмотрите",
-   "start": 35.49,
-   "end": 36.512
-  },
-  {
-   "text": "на",
-   "start": 36.512,
-   "end": 36.742
-  },
-  {
-   "text": "роботов-собак",
-   "start": 36.742,
-   "end": 38.004
-  },
-  {
-   "text": "Unitree,",
-   "start": 38.004,
-   "end": 38.514
-  },
-  {
-   "text": "которые",
-   "start": 38.514,
-   "end": 39.524
-  },
-  {
-   "text": "танцуют",
-   "start": 39.524,
-   "end": 39.982
-  },
-  {
-   "text": "по",
-   "start": 39.982,
-   "end": 40.202
-  },
-  {
-   "text": "всему",
-   "start": 40.202,
-   "end": 40.782
-  },
-  {
-   "text": "интернету.",
-   "start": 40.782,
-   "end": 42.072
+   "start": 34.82,
+   "end": 35.433
   },
   {
    "text": "И",
-   "start": 42.072,
-   "end": 42.162
+   "start": 35.513,
+   "end": 35.593
   },
   {
    "text": "на",
-   "start": 42.162,
-   "end": 42.342
+   "start": 35.593,
+   "end": 35.75
   },
   {
    "text": "Xiaohongshu,",
-   "start": 42.342,
-   "end": 42.912
+   "start": 35.75,
+   "end": 36.32
   },
   {
    "text": "китайский",
-   "start": 42.912,
-   "end": 43.722
+   "start": 36.32,
+   "end": 37.13
   },
   {
    "text": "ответ",
-   "start": 43.722,
-   "end": 44.162
+   "start": 37.13,
+   "end": 37.57
   },
   {
    "text": "Instagram.",
-   "start": 44.162,
-   "end": 44.752
+   "start": 37.57,
+   "end": 38.16
   },
   {
    "text": "Это",
-   "start": 44.752,
-   "end": 44.982
+   "start": 38.16,
+   "end": 38.39
   },
   {
    "text": "не",
-   "start": 44.982,
-   "end": 45.132
+   "start": 38.39,
+   "end": 38.511
   },
   {
    "text": "экскурсия",
-   "start": 45.132,
-   "end": 45.701
+   "start": 38.511,
+   "end": 39.08
   },
   {
    "text": "по",
-   "start": 45.701,
-   "end": 45.781
+   "start": 39.08,
+   "end": 39.16
   },
   {
    "text": "красивым",
-   "start": 45.781,
-   "end": 46.391
+   "start": 39.16,
+   "end": 39.77
   },
   {
    "text": "холлам.",
-   "start": 46.391,
-   "end": 47.021
+   "start": 39.77,
+   "end": 40.4
   },
   {
    "text": "Это",
-   "start": 47.021,
-   "end": 47.781
+   "start": 40.4,
+   "end": 41.16
   },
   {
    "text": "возможность",
-   "start": 47.781,
-   "end": 48.141
+   "start": 41.16,
+   "end": 41.52
   },
   {
    "text": "понять,",
-   "start": 48.141,
-   "end": 48.661
+   "start": 41.52,
+   "end": 42.04
   },
   {
    "text": "как",
-   "start": 48.661,
-   "end": 48.801
+   "start": 42.04,
+   "end": 42.18
   },
   {
    "text": "строятся",
-   "start": 48.801,
-   "end": 49.401
+   "start": 42.18,
+   "end": 42.78
   },
   {
    "text": "экосистемы,",
-   "start": 49.401,
-   "end": 50.261
+   "start": 42.78,
+   "end": 43.64
   },
   {
    "text": "как",
-   "start": 50.301,
-   "end": 50.491
+   "start": 43.68,
+   "end": 43.86
   },
   {
    "text": "запускаются",
-   "start": 50.491,
-   "end": 51.258
+   "start": 43.86,
+   "end": 44.627
   },
   {
    "text": "продукты",
-   "start": 51.258,
-   "end": 51.838
+   "start": 44.627,
+   "end": 45.207
   },
   {
    "text": "и",
-   "start": 51.838,
-   "end": 51.928
+   "start": 45.207,
+   "end": 45.297
   },
   {
    "text": "почему",
-   "start": 51.928,
-   "end": 52.488
+   "start": 45.297,
+   "end": 45.857
   },
   {
    "text": "китайские",
-   "start": 52.488,
-   "end": 53.248
+   "start": 45.857,
+   "end": 46.617
   },
   {
    "text": "компании",
-   "start": 53.248,
-   "end": 53.958
+   "start": 46.617,
+   "end": 47.327
   },
   {
    "text": "растут",
-   "start": 53.958,
-   "end": 54.548
+   "start": 47.327,
+   "end": 47.917
   },
   {
    "text": "быстрее",
-   "start": 54.548,
-   "end": 55.088
+   "start": 47.917,
+   "end": 48.457
   },
   {
    "text": "всех.",
-   "start": 55.088,
-   "end": 55.658
+   "start": 48.457,
+   "end": 49.027
   },
   {
    "text": "Меня",
-   "start": 55.658,
-   "end": 56.104
+   "start": 49.027,
+   "end": 49.453
   },
   {
    "text": "зовут",
-   "start": 56.104,
-   "end": 56.464
+   "start": 49.453,
+   "end": 49.813
   },
   {
    "text": "Остап",
-   "start": 56.464,
-   "end": 56.984
+   "start": 49.813,
+   "end": 50.333
   },
   {
    "text": "Доценко.",
-   "start": 56.984,
-   "end": 58.004
+   "start": 50.333,
+   "end": 51.353
   },
   {
    "text": "Я",
-   "start": 58.004,
-   "end": 58.104
+   "start": 51.353,
+   "end": 51.453
   },
   {
    "text": "работал",
-   "start": 58.104,
-   "end": 58.814
+   "start": 51.453,
+   "end": 52.163
   },
   {
    "text": "в",
-   "start": 58.814,
-   "end": 58.914
+   "start": 52.163,
+   "end": 52.263
   },
   {
    "text": "Alibaba",
-   "start": 58.914,
-   "end": 59.264
+   "start": 52.263,
+   "end": 52.613
   },
   {
    "text": "и",
-   "start": 59.264,
-   "end": 59.364
+   "start": 52.613,
+   "end": 52.713
   },
   {
    "text": "Сбере.",
-   "start": 59.364,
-   "end": 59.964
+   "start": 52.713,
+   "end": 53.313
   },
   {
    "text": "И",
-   "start": 59.964,
-   "end": 60.044
+   "start": 53.313,
+   "end": 53.393
   },
   {
    "text": "мой",
-   "start": 60.044,
-   "end": 60.284
+   "start": 53.393,
+   "end": 53.644
   },
   {
    "text": "общий",
-   "start": 60.284,
-   "end": 60.613
+   "start": 53.644,
+   "end": 53.973
   },
   {
    "text": "стаж",
-   "start": 60.613,
-   "end": 60.973
+   "start": 53.973,
+   "end": 54.333
   },
   {
    "text": "работы",
-   "start": 60.973,
-   "end": 61.463
+   "start": 54.333,
+   "end": 54.823
   },
   {
    "text": "с",
-   "start": 61.463,
-   "end": 61.543
+   "start": 54.823,
+   "end": 54.903
   },
   {
    "text": "Китаем",
-   "start": 61.543,
-   "end": 61.933
+   "start": 54.903,
+   "end": 55.293
   },
   {
    "text": "более",
-   "start": 61.933,
-   "end": 62.353
+   "start": 55.293,
+   "end": 55.713
   },
   {
    "text": "10",
-   "start": 62.353,
-   "end": 62.593
+   "start": 55.713,
+   "end": 55.953
   },
   {
    "text": "лет.",
-   "start": 62.593,
-   "end": 63.053
+   "start": 55.953,
+   "end": 56.413
   },
   {
    "text": "Я",
-   "start": 63.053,
-   "end": 63.133
+   "start": 56.413,
+   "end": 56.493
   },
   {
    "text": "свободно",
-   "start": 63.133,
-   "end": 63.813
+   "start": 56.493,
+   "end": 57.173
   },
   {
    "text": "говорю",
-   "start": 63.813,
-   "end": 64.023
+   "start": 57.173,
+   "end": 57.383
   },
   {
    "text": "по-китайски.",
-   "start": 64.023,
-   "end": 64.813
+   "start": 57.383,
+   "end": 58.173
   },
   {
    "text": "Я",
-   "start": 64.813,
-   "end": 64.893
+   "start": 58.173,
+   "end": 58.253
   },
   {
    "text": "знаю,",
-   "start": 64.893,
-   "end": 65.513
+   "start": 58.253,
+   "end": 58.873
   },
   {
    "text": "где",
-   "start": 65.513,
-   "end": 65.593
+   "start": 58.873,
+   "end": 58.953
   },
   {
    "text": "в",
-   "start": 65.593,
-   "end": 65.673
+   "start": 58.953,
+   "end": 59.033
   },
   {
    "text": "этих",
-   "start": 65.673,
-   "end": 65.933
+   "start": 59.033,
+   "end": 59.293
   },
   {
    "text": "компаниях",
-   "start": 65.933,
-   "end": 66.653
+   "start": 59.293,
+   "end": 60.013
   },
   {
    "text": "реально",
-   "start": 66.653,
-   "end": 67.223
+   "start": 60.013,
+   "end": 60.583
   },
   {
    "text": "интересно.",
-   "start": 67.223,
-   "end": 68.133
+   "start": 60.583,
+   "end": 61.493
   },
   {
    "text": "И",
-   "start": 68.133,
-   "end": 68.213
+   "start": 61.493,
+   "end": 61.573
   },
   {
    "text": "покажу",
-   "start": 68.213,
-   "end": 68.893
+   "start": 61.573,
+   "end": 62.253
   },
   {
    "text": "вам",
-   "start": 68.893,
-   "end": 68.973
+   "start": 62.253,
+   "end": 62.333
   },
   {
    "text": "именно",
-   "start": 68.973,
-   "end": 69.473
+   "start": 62.333,
+   "end": 62.833
   },
   {
    "text": "это.",
-   "start": 69.473,
-   "end": 69.893
+   "start": 62.833,
+   "end": 63.253
   },
   {
    "text": "У",
-   "start": 69.893,
-   "end": 69.973
+   "start": 63.253,
+   "end": 63.333
   },
   {
    "text": "меня",
-   "start": 69.973,
-   "end": 70.653
+   "start": 63.333,
+   "end": 64.013
   },
   {
    "text": "большой",
-   "start": 70.653,
-   "end": 70.793
+   "start": 64.013,
+   "end": 64.153
   },
   {
    "text": "опыт",
-   "start": 70.793,
-   "end": 71.093
+   "start": 64.153,
+   "end": 64.453
   },
   {
    "text": "организации",
-   "start": 71.093,
-   "end": 71.913
+   "start": 64.453,
+   "end": 65.273
   },
   {
    "text": "таких",
-   "start": 71.913,
-   "end": 72.303
+   "start": 65.273,
+   "end": 65.663
   },
   {
    "text": "визитов.",
-   "start": 72.303,
-   "end": 72.973
+   "start": 65.663,
+   "end": 66.333
   },
   {
    "text": "И",
-   "start": 73.313,
-   "end": 73.393
+   "start": 66.673,
+   "end": 66.753
   },
   {
    "text": "со",
-   "start": 73.393,
-   "end": 73.543
+   "start": 66.753,
+   "end": 66.903
   },
   {
    "text": "многими",
-   "start": 73.543,
-   "end": 74.183
+   "start": 66.903,
+   "end": 67.543
   },
   {
    "text": "из",
-   "start": 74.183,
-   "end": 74.393
+   "start": 67.543,
+   "end": 67.753
   },
   {
    "text": "этих",
-   "start": 74.393,
-   "end": 74.733
+   "start": 67.753,
+   "end": 68.093
   },
   {
    "text": "компаний",
-   "start": 74.733,
-   "end": 75.463
+   "start": 68.093,
+   "end": 68.823
   },
   {
    "text": "я",
-   "start": 75.463,
-   "end": 75.623
+   "start": 68.823,
+   "end": 68.983
   },
   {
    "text": "знаком",
-   "start": 75.623,
-   "end": 76.113
+   "start": 68.983,
+   "end": 69.45
   },
   {
    "text": "лично.",
-   "start": 76.113,
-   "end": 76.51
+   "start": 69.45,
+   "end": 69.847
   },
   {
    "text": "Все",
-   "start": 76.51,
-   "end": 76.762
+   "start": 69.847,
+   "end": 70.107
   },
   {
    "text": "систематизировано",
-   "start": 76.762,
-   "end": 77.461
+   "start": 70.107,
+   "end": 70.807
   },
   {
    "text": "и",
-   "start": 77.461,
-   "end": 77.591
+   "start": 70.807,
+   "end": 70.937
   },
   {
    "text": "заранее",
-   "start": 77.591,
-   "end": 78.401
+   "start": 70.937,
+   "end": 71.747
   },
   {
    "text": "согласовано.",
-   "start": 78.401,
-   "end": 79.848
+   "start": 71.747,
+   "end": 73.207
   },
   {
    "text": "Никаких",
-   "start": 79.848,
-   "end": 80.548
+   "start": 73.207,
+   "end": 73.907
   },
   {
    "text": "бесконечных",
-   "start": 80.548,
-   "end": 81.108
+   "start": 73.907,
+   "end": 74.467
   },
   {
    "text": "переписок",
-   "start": 81.108,
-   "end": 81.748
+   "start": 74.467,
+   "end": 75.107
   },
   {
    "text": "и",
-   "start": 81.748,
-   "end": 81.828
+   "start": 75.107,
+   "end": 75.187
   },
   {
    "text": "ожидания",
-   "start": 81.828,
-   "end": 82.588
+   "start": 75.187,
+   "end": 75.933
   },
   {
    "text": "ответов.",
-   "start": 82.638,
-   "end": 83.268
+   "start": 75.983,
+   "end": 76.613
   },
   {
    "text": "В",
-   "start": 83.268,
-   "end": 83.348
+   "start": 76.613,
+   "end": 76.693
   },
   {
    "text": "нашей",
-   "start": 83.348,
-   "end": 83.728
+   "start": 76.693,
+   "end": 77.073
   },
   {
    "text": "базе",
-   "start": 83.728,
-   "end": 83.808
+   "start": 77.073,
+   "end": 77.153
   },
   {
    "text": "более",
-   "start": 83.808,
-   "end": 84.228
+   "start": 77.153,
+   "end": 77.573
   },
   {
    "text": "тысячи",
-   "start": 84.228,
-   "end": 84.728
+   "start": 77.573,
+   "end": 78.073
   },
   {
    "text": "компаний",
-   "start": 84.728,
-   "end": 85.388
+   "start": 78.073,
+   "end": 78.733
   },
   {
    "text": "из",
-   "start": 85.388,
-   "end": 85.548
+   "start": 78.733,
+   "end": 78.893
   },
   {
    "text": "18",
-   "start": 85.548,
-   "end": 85.798
+   "start": 78.893,
+   "end": 79.143
   },
   {
    "text": "индустрий.",
-   "start": 85.798,
-   "end": 86.718
+   "start": 79.143,
+   "end": 80.063
   },
   {
    "text": "Цены",
-   "start": 86.718,
-   "end": 86.798
+   "start": 80.063,
+   "end": 80.143
   },
   {
    "text": "прозрачные,",
-   "start": 86.798,
-   "end": 86.988
+   "start": 80.143,
+   "end": 80.333
   },
   {
    "text": "без",
-   "start": 86.988,
-   "end": 87.188
+   "start": 80.333,
+   "end": 80.533
   },
   {
    "text": "загадочности",
-   "start": 87.188,
-   "end": 88.088
+   "start": 80.533,
+   "end": 81.433
   },
   {
    "text": "и",
-   "start": 88.088,
-   "end": 88.218
+   "start": 81.433,
+   "end": 81.563
   },
   {
    "text": "ореола",
-   "start": 88.218,
-   "end": 88.598
+   "start": 81.563,
+   "end": 81.943
   },
   {
    "text": "таинственности.",
-   "start": 88.598,
-   "end": 89.868
+   "start": 81.943,
+   "end": 83.213
   },
   {
    "text": "Все",
-   "start": 90.145,
-   "end": 90.305
+   "start": 83.5,
+   "end": 83.66
   },
   {
    "text": "на",
-   "start": 90.305,
-   "end": 90.435
+   "start": 83.66,
+   "end": 83.79
   },
   {
    "text": "русском",
-   "start": 90.435,
-   "end": 90.895
+   "start": 83.79,
+   "end": 84.25
   },
   {
    "text": "языке.",
-   "start": 90.895,
-   "end": 91.345
+   "start": 84.25,
+   "end": 84.7
   },
   {
    "text": "И",
-   "start": 91.345,
-   "end": 91.425
+   "start": 84.7,
+   "end": 84.78
   },
   {
    "text": "да,",
-   "start": 91.425,
-   "end": 91.675
+   "start": 84.78,
+   "end": 85.02
   },
   {
    "text": "гостевой",
-   "start": 91.675,
-   "end": 92.178
+   "start": 85.02,
+   "end": 85.523
   },
   {
    "text": "бейдж",
-   "start": 92.178,
-   "end": 92.578
+   "start": 85.523,
+   "end": 85.923
   },
   {
    "text": "можно",
-   "start": 92.578,
-   "end": 92.998
+   "start": 85.923,
+   "end": 86.343
   },
   {
    "text": "оставить",
-   "start": 92.998,
-   "end": 93.668
+   "start": 86.343,
+   "end": 87.013
   },
   {
    "text": "себе.",
-   "start": 93.668,
-   "end": 94.208
+   "start": 87.013,
+   "end": 87.553
   },
   {
    "text": "Это",
-   "start": 94.208,
-   "end": 94.868
+   "start": 87.553,
+   "end": 88.213
   },
   {
    "text": "самый",
-   "start": 94.868,
-   "end": 94.968
+   "start": 88.213,
+   "end": 88.313
   },
   {
    "text": "ценный",
-   "start": 94.968,
-   "end": 95.408
+   "start": 88.313,
+   "end": 88.753
   },
   {
    "text": "сувенир",
-   "start": 95.408,
-   "end": 95.998
+   "start": 88.753,
+   "end": 89.345
   },
   {
    "text": "из",
-   "start": 95.998,
-   "end": 96.078
+   "start": 89.345,
+   "end": 89.425
   },
   {
    "text": "Китая",
-   "start": 96.078,
-   "end": 96.42
+   "start": 89.425,
+   "end": 89.767
   },
   {
    "text": "и",
-   "start": 96.42,
-   "end": 96.5
+   "start": 89.767,
+   "end": 89.847
   },
   {
    "text": "этой",
-   "start": 96.5,
-   "end": 96.85
+   "start": 89.847,
+   "end": 90.197
   },
   {
    "text": "поездки.",
-   "start": 96.85,
-   "end": 97.68
+   "start": 90.197,
+   "end": 91.027
   },
   {
    "text": "Заходите",
-   "start": 97.68,
-   "end": 98.357
+   "start": 91.027,
+   "end": 91.693
   },
   {
    "text": "на",
-   "start": 98.357,
-   "end": 98.577
+   "start": 91.693,
+   "end": 91.913
   },
   {
    "text": "сайт",
-   "start": 98.577,
-   "end": 99.097
+   "start": 91.913,
+   "end": 92.433
   },
   {
    "text": "Global",
-   "start": 99.097,
-   "end": 99.367
+   "start": 92.433,
+   "end": 92.703
   },
   {
    "text": "Tech",
-   "start": 99.367,
-   "end": 99.577
+   "start": 92.703,
+   "end": 92.913
   },
   {
    "text": "Tour",
-   "start": 99.577,
-   "end": 99.857
+   "start": 92.913,
+   "end": 93.193
   },
   {
    "text": "или",
-   "start": 99.857,
-   "end": 100.177
+   "start": 93.193,
+   "end": 93.488
   },
   {
    "text": "пишите",
-   "start": 100.177,
-   "end": 100.516
+   "start": 93.488,
+   "end": 93.827
   },
   {
    "text": "мне",
-   "start": 100.516,
-   "end": 100.856
+   "start": 93.827,
+   "end": 94.167
   },
   {
    "text": "в",
-   "start": 100.856,
-   "end": 100.936
+   "start": 94.167,
+   "end": 94.247
   },
   {
    "text": "личные",
-   "start": 100.936,
-   "end": 101.726
+   "start": 94.247,
+   "end": 95.037
   },
   {
    "text": "сообщения.",
-   "start": 101.726,
-   "end": 102.396
+   "start": 95.037,
+   "end": 95.707
   },
   {
    "text": "Пришлю",
-   "start": 102.396,
-   "end": 102.692
+   "start": 95.707,
+   "end": 96.0
   },
   {
    "text": "полную",
-   "start": 102.692,
-   "end": 103.052
+   "start": 96.0,
+   "end": 96.36
   },
   {
    "text": "программу",
-   "start": 103.052,
-   "end": 103.591
+   "start": 96.36,
+   "end": 96.93
   },
   {
    "text": "и",
-   "start": 103.591,
-   "end": 103.681
+   "start": 96.93,
+   "end": 97.02
   },
   {
    "text": "подробную",
-   "start": 103.681,
-   "end": 104.491
+   "start": 97.02,
+   "end": 97.83
   },
   {
    "text": "информацию.",
-   "start": 104.491,
-   "end": 105.581
+   "start": 97.83,
+   "end": 98.92
   }
  ],
  "accentWords": [
@@ -1211,36 +1166,34 @@
   "tour"
  ],
  "cuts": [
-  0.221,
-  3.956,
-  6.118,
-  7.068,
-  13.686,
-  16.528,
-  31.576,
-  35.7,
-  37.034,
-  39.683,
-  45.087,
-  50.429,
-  55.876,
-  60.188,
-  76.014,
-  76.663,
-  76.916,
-  77.184,
-  78.622,
-  82.588,
-  90.074,
-  91.651,
-  95.991,
-  97.833,
-  100.079,
-  102.612,
-  103.268,
-  105.805,
-  108.506,
-  108.982
+  0.233,
+  3.967,
+  6.133,
+  7.1,
+  13.733,
+  16.567,
+  31.6,
+  35.433,
+  38.467,
+  43.8,
+  49.233,
+  53.533,
+  69.367,
+  70.0,
+  70.267,
+  70.533,
+  71.967,
+  75.933,
+  83.433,
+  85.0,
+  89.333,
+  91.167,
+  93.4,
+  95.933,
+  96.6,
+  99.133,
+  101.833,
+  102.3
  ],
  "chips": [
   {
@@ -1248,87 +1201,87 @@
    "items": [
     {
      "text": "5 дней",
-     "at": 6.86
+     "at": 6.865
     }
    ],
-   "until": 9.6
+   "until": 9.642
   },
   {
    "wrap": false,
    "items": [
     {
      "text": "Экскурсия по холлам",
-     "at": 45.13,
-     "strike": 46.39
+     "at": 38.509,
+     "strike": 39.769
     }
    ],
-   "until": 47.0
+   "until": 40.379
   },
   {
    "wrap": false,
    "items": [
     {
      "text": "Остап Доценко",
-     "at": 56.46
+     "at": 49.809
     }
    ],
-   "until": 57.9
+   "until": 51.249
   },
   {
    "wrap": false,
    "items": [
     {
      "text": "Свободный китайский",
-     "at": 63.13
+     "at": 56.49
     }
    ],
-   "until": 64.7
+   "until": 58.06
   },
   {
    "wrap": false,
    "items": [
     {
      "text": "Знаком лично",
-     "at": 75.62
+     "at": 68.98
     }
    ],
-   "until": 76.45
+   "until": 69.787
   },
   {
    "wrap": false,
    "items": [
     {
      "text": "Бесконечные переписки",
-     "at": 80.55,
-     "strike": 81.11
+     "at": 73.909,
+     "strike": 74.469
     },
     {
      "text": "Ожидание ответов",
-     "at": 81.83,
-     "strike": 82.64
+     "at": 75.189,
+     "strike": 75.985
     }
    ],
-   "until": 83.2
+   "until": 76.545
   },
   {
    "wrap": false,
    "items": [
     {
      "text": "18 индустрий",
-     "at": 85.55
+     "at": 78.895
     }
    ],
-   "until": 86.7
+   "until": 80.045
   },
   {
    "wrap": false,
    "items": [
     {
      "text": "Гостевой бейдж — вам на память",
-     "at": 92.18
+     "at": 85.525
     }
    ],
-   "until": 94.2
+   "until": 87.545
   }
  ],
  "logos": [
@@ -1336,111 +1289,102 @@
    "items": [
     {
      "src": "source-videos/2026-10-07-tech-giganty/logos/xiaomi.svg",
-     "at": 2.68
+     "at": 2.683
     },
     {
      "src": "source-videos/2026-10-07-tech-giganty/logos/huawei.svg",
-     "at": 3.18
+     "at": 3.183
     }
    ],
-   "until": 5.3,
+   "until": 5.298,
    "flip": true
   },
   {
    "items": [
     {
      "src": "source-videos/2026-10-07-tech-giganty/logos/baidu.png",
-     "at": 9.8
+     "at": 9.842
     },
     {
      "src": "source-videos/2026-10-07-tech-giganty/logos/xiaomi.svg",
-     "at": 10.72
+     "at": 10.762
     },
     {
      "src": "source-videos/2026-10-07-tech-giganty/logos/alibaba.svg",
-     "at": 11.44
+     "at": 11.482
     },
     {
      "src": "source-videos/2026-10-07-tech-giganty/logos/unitree.png",
-     "at": 12.01
+     "at": 12.052
     }
    ],
-   "until": 12.7
+   "until": 12.742
   },
   {
    "items": [
     {
      "src": "source-videos/2026-10-07-tech-giganty/logos/meituan.svg",
-     "at": 12.7
+     "at": 12.742
     },
     {
      "src": "source-videos/2026-10-07-tech-giganty/logos/xiaohongshu.svg",
-     "at": 13.38
+     "at": 13.422
     },
     {
      "src": "source-videos/2026-10-07-tech-giganty/logos/tencent.svg",
-     "at": 14.25
+     "at": 14.288
     },
     {
      "src": "source-videos/2026-10-07-tech-giganty/logos/huawei.svg",
-     "at": 14.92
+     "at": 14.958
     }
    ],
-   "until": 15.53
+   "until": 15.568
   },
   {
    "items": [
     {
      "src": "source-videos/2026-10-07-tech-giganty/logos/ubtech.svg",
-     "at": 15.53
+     "at": 15.568
     }
    ],
-   "until": 16.6
+   "until": 16.651
   },
   {
    "items": [
     {
      "src": "source-videos/2026-10-07-tech-giganty/logos/wechat.png",
-     "at": 26.37
+     "at": 26.421
     }
    ],
-   "until": 28.6
-  },
-  {
-   "items": [
-    {
-     "src": "source-videos/2026-10-07-tech-giganty/logos/unitree.png",
-     "at": 38.0
-    }
-   ],
-   "until": 40.8
+   "until": 28.651
   },
   {
    "items": [
     {
      "src": "source-videos/2026-10-07-tech-giganty/logos/xiaohongshu.svg",
-     "at": 42.34
+     "at": 35.748
     },
     {
      "src": "source-videos/2026-10-07-tech-giganty/logos/instagram.svg",
-     "at": 44.16
+     "at": 37.568
     }
    ],
-   "until": 44.75,
+   "until": 38.158,
    "flip": true
   },
   {
    "items": [
     {
      "src": "source-videos/2026-10-07-tech-giganty/logos/alibaba.svg",
-     "at": 58.91
+     "at": 52.259
     },
     {
      "src": "source-videos/2026-10-07-tech-giganty/logos/sber.png",
-     "at": 59.36
+     "at": 52.709
     }
    ],
-   "until": 61.4,
+   "until": 54.76,
    "flip": true
   }
  ],
@@ -1448,26 +1392,26 @@
   {
    "text": "9",
    "sub": "технологических гигантов Китая",
-   "at": 7.48,
-   "until": 9.6
+   "at": 7.522,
+   "until": 9.642
   },
   {
    "text": "15 мин",
    "sub": "доставка еды Meituan",
-   "at": 34.53,
-   "until": 35.45
+   "at": 34.54,
+   "until": 35.433
   },
   {
    "text": "10+",
    "sub": "лет работы с Китаем",
-   "at": 62.35,
-   "until": 63.6
+   "at": 55.71,
+   "until": 56.96
   },
   {
    "text": "1000+",
    "sub": "компаний в базе",
-   "at": 83.81,
-   "until": 85.5
+   "at": 77.155,
+   "until": 78.845
   }
  ],
  "sfx": {
@@ -1475,9 +1419,9 @@
   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav"
  },
- "speechSeconds": 109.31,
+ "speechSeconds": 102.433,
  "site": {
-  "at": 97.68,
+  "at": 91.027,
   "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
   "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
   "route": [
@@ -1494,74 +1438,68 @@
  "broll": [
   {
    "src": "source-videos/2026-10-07-tech-giganty/broll/huawei-tencent-towers.png",
-   "at": 3.64,
-   "until": 6.7,
+   "at": 3.643,
+   "until": 6.705,
    "transition": "circle"
   },
   {
    "src": "source-videos/2026-10-07-tech-giganty/broll/lobby-logos-wall.png",
-   "at": 6.86,
-   "until": 9.7,
+   "at": 6.865,
+   "until": 9.742,
    "transition": "zoom"
   },
   {
    "src": "source-videos/2026-10-07-tech-giganty/broll/xiaomi-ev-showroom.png",
-   "at": 20.46,
-   "until": 24.6,
+   "at": 20.511,
+   "until": 24.651,
    "transition": "slide"
   },
   {
    "src": "source-videos/2026-10-07-tech-giganty/broll/tencent-hq.png",
-   "at": 25.22,
-   "until": 28.6,
+   "at": 25.271,
+   "until": 28.651,
    "transition": "wipe"
   },
   {
    "src": "source-videos/2026-10-07-tech-giganty/broll/courier-scooter.png",
-   "at": 31.38,
-   "until": 35.4,
+   "at": 31.431,
+   "until": 35.41,
    "transition": "zoom"
   },
   {
-   "src": "source-videos/2026-10-07-tech-giganty/broll/robot-dog-showroom.png",
-   "at": 35.49,
-   "until": 40.9,
-   "transition": "circle"
-  },
-  {
    "src": "source-videos/2026-10-07-tech-giganty/broll/smartphone-feed.png",
-   "at": 42.07,
-   "until": 44.7,
+   "at": 35.478,
+   "until": 38.108,
    "transition": "slide"
   },
   {
    "src": "source-videos/2026-10-07-tech-giganty/broll/grand-lobby.png",
-   "at": 44.75,
-   "until": 47.0,
+   "at": 38.158,
+   "until": 40.379,
    "transition": "fade"
   },
   {
    "src": "source-videos/2026-10-07-tech-giganty/broll/analytics-office.png",
-   "at": 64.81,
-   "until": 67.6,
+   "at": 58.17,
+   "until": 60.96,
    "transition": "wipe"
   },
   {
    "src": "source-videos/2026-10-07-tech-giganty/broll/meeting-room.png",
-   "at": 69.89,
-   "until": 72.4,
+   "at": 63.25,
+   "until": 65.76,
    "transition": "circle"
   },
   {
    "src": "source-videos/2026-10-07-tech-giganty/broll/china-business-collage.png",
-   "at": 84.2,
-   "until": 86.7,
+   "at": 77.545,
+   "until": 80.045,
    "transition": "zoom"
   },
   {
    "src": "source-videos/2026-10-07-tech-giganty/broll/visitor-badges.png",
-   "at": 91.34,
-   "until": 94.2,
+   "at": 84.695,
+   "until": 87.545,
    "transition": "slide"
   }
  ],
@@ -1570,85 +1508,85 @@
   {
    "src": "интернет-материалы/города/варианты/pekin-hram-neba-a.jpg",
    "name": "Пекин",
-   "at": 16.97,
-   "until": 17.53
+   "at": 17.021,
+   "until": 17.581
   },
   {
    "src": "source-videos/2026-10-07-byt-tehnika/cities/khanchzhou-zapadnoe-ozero.jpg",
    "name": "Ханчжоу",
-   "at": 17.53,
-   "until": 18.26
+   "at": 17.581,
+   "until": 18.311
   },
   {
    "src": "source-videos/2026-10-07-byt-tehnika/cities/shanhai-bund-noch.jpg",
    "name": "Шанхай",
-   "at": 18.26,
-   "until": 18.91
+   "at": 18.311,
+   "until": 18.961
   },
   {
    "src": "интернет-материалы/города/shenzhen.jpg",
    "name": "Шэньчжэнь",
-   "at": 18.91,
-   "until": 19.75
+   "at": 18.961,
+   "until": 19.801
   }
  ],
  "zooms": [
   {
-   "at": 5.93,
+   "at": 5.928,
    "kind": "punch",
    "amount": 0.18,
    "hold": 0.6
   },
   {
-   "at": 10.0,
+   "at": 10.042,
    "kind": "push",
    "amount": 0.06,
    "hold": 2.0
   },
   {
-   "at": 23.59,
+   "at": 23.641,
    "kind": "punch",
    "amount": 0.16,
    "hold": 0.7
   },
   {
-   "at": 56.0,
+   "at": 49.349,
    "kind": "push",
    "amount": 0.07,
    "hold": 1.6
   },
   {
-   "at": 60.0,
+   "at": 53.349,
    "kind": "push",
    "amount": 0.06,
    "hold": 1.8
   },
   {
-   "at": 67.22,
+   "at": 60.58,
    "kind": "punch",
    "amount": 0.18,
    "hold": 0.6
   },
   {
-   "at": 73.3,
+   "at": 66.66,
    "kind": "push",
    "amount": 0.07,
    "hold": 1.8
   },
   {
-   "at": 79.85,
+   "at": 73.209,
    "kind": "punch",
    "amount": 0.16,
    "hold": 0.8
   },
   {
-   "at": 91.42,
+   "at": 84.775,
    "kind": "punch",
    "amount": 0.15,
    "hold": 0.7
   },
   {
-   "at": 95.4,
+   "at": 88.745,
    "kind": "push",
    "amount": 0.06,
    "hold": 1.8
@@ -1669,64 +1607,64 @@
    "items": [
     {
      "text": "Общаются",
-     "at": 29.4
+     "at": 29.451
     },
     {
      "text": "Платят",
-     "at": 29.89
+     "at": 29.941
     },
     {
      "text": "Работают",
-     "at": 30.46
+     "at": 30.511
     }
    ],
-   "until": 31.3
+   "until": 31.351
   },
   {
    "title": "Что вы поймёте",
    "items": [
     {
      "text": "Как строятся экосистемы",
-     "at": 48.8
+     "at": 42.179
     },
     {
      "text": "Как запускаются продукты",
-     "at": 50.49
+     "at": 43.859
     },
     {
      "text": "Почему растут быстрее всех",
-     "at": 51.93
+     "at": 45.299
     }
    ],
-   "until": 55.45
+   "until": 48.819
   },
   {
    "title": "Как устроена поездка",
    "items": [
     {
      "text": "Всё систематизировано",
-     "at": 76.51
+     "at": 69.847
     },
     {
      "text": "Заранее согласовано",
-     "at": 77.59
+     "at": 70.936
     }
    ],
-   "until": 79.6
+   "until": 72.959
   },
   {
    "title": "Условия",
    "items": [
     {
      "text": "Прозрачные цены",
-     "at": 86.8
+     "at": 80.145
     },
     {
      "text": "Всё на русском языке",
-     "at": 90.31
+     "at": 83.665
     }
    ],
-   "until": 91.25
+   "until": 84.605
   }
  ]
 }
