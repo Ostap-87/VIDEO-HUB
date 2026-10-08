@@ -1204,7 +1204,8 @@ def ghost_for(c):
 
 # ---------------------------------------------------------------- логотипы
 def slugify(s):
-    s = base_name(s).lower().replace('&', 'and').replace("'", '').replace('’', '')
+    import unicodedata
+    s = unicodedata.normalize('NFKD', base_name(s)).encode('ascii', 'ignore').decode().lower().replace('&', 'and').replace("'", '').replace('’', '')
     s = re.sub(r'[^a-z0-9]+', '-', s).strip('-')
     return s
 
@@ -1349,7 +1350,11 @@ def register_brands(new_logos, tour, brands):
         if any(v.get('logo') == rel for v in brands.values()):
             continue
         names = []
-        for n in (c['name_en'], base_name(c['name_en']), paren_name(c['name_en'])):
+        pn = paren_name(c['name_en'])
+        if pn and not re.fullmatch(r'[A-Z]{2,5}|[A-Z][a-z]+[A-Z]\w*|Mistine|Eucerin', pn):
+            pn = ''  # в скобках часто материнская компания (Bumrungrad, PTT OR) — не алиас логотипа
+        parts = [x.strip() for x in re.split(r'\s*/\s*', base_name(c['name_en']))] if '/' in c['name_en'] else []
+        for n in [c['name_en'], base_name(c['name_en']), re.sub(GENERIC_SUFFIX, '', base_name(c['name_en'])).strip(), pn] + parts:
             n = n.strip()
             if not n or n in names:
                 continue
@@ -1362,7 +1367,7 @@ def register_brands(new_logos, tour, brands):
         added.append(base_name(c['name_en']))
         changed = True
     if changed:
-        BRANDS.write_text(json.dumps(brands, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+        BRANDS.write_text(json.dumps(brands, ensure_ascii=False, indent=1), encoding='utf-8')
         note = (f'\n- {datetime.date.today():%d.%m.%Y}, экспедиция {tour["tour_id"]}: ' + ', '.join(added) +
                 ' — с сайта пользователя globaltechtour.ru (`/logos/…`, карточки компаний); обрезаны поля и белый фон. '
                 'Товарные знаки принадлежат владельцам; используются для указания компаний в программе.\n')
