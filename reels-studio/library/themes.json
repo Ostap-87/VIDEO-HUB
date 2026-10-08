@@ -1,0 +1,126 @@
+{
+ "_о_файле": "Темы роликов для npm run auto. expedition — страница экспедиции (маршрут в финале), route — готовые скриншоты дней (если нет — снимаются scripts/site_route.mjs и кэшируются), music — трек из library/music.json, logos — папки source-videos/логотипы/, broll.include — какие картинки каталога Higgsfield подходят теме (регулярка по английскому описанию), broll.tags — русская основа слова в речи → английские слова в описании картинки (подбор по смыслу фразы), stockDrop — график за спиной на фразе, accent — слова, которые всегда синие.",
+ "avto": {
+  "title": "Автопром и электромобили",
+  "expedition": "/expeditions/china-auto-plants-expedition",
+  "route": "source-videos/2026-10-07-avto/site/route/av-day*.png",
+  "music": "inspiring-corporate-soundrider",
+  "logos": ["авто", "общие"],
+  "broll": {
+   "include": "electric (car|vehicle|sedan|suv)|\\bev\\b|automotive|car factory|battery|charging|assembly line|showroom",
+   "tags": {"заря[дж]": "charg", "батаре": "battery", "завод": "factory|plant|assembly", "конвейер": "assembly|conveyor", "робот": "robot", "салон": "interior|showroom", "автопилот": "autonom|self-driving|dashboard", "дилер": "showroom|dealer", "переговор": "meeting|negotiat"}
+  },
+  "stockDrop": {"re": "(быстро )?забирают рынок|захватывают рынок|растут быстрее", "label": "Рынок EV Китая", "direction": "up", "seconds": 5},
+  "accent": ["электромобили", "автозаводов", "автопилот"],
+  "audienceTitle": "Для кого поездка"
+ },
+ "ai": {
+  "title": "Искусственный интеллект",
+  "expedition": "/expeditions/china-ai-expedition",
+  "route": "source-videos/2026-10-07-ai/site/route/ai-day*.png",
+  "music": "inspiring-technology-soundrider",
+  "logos": ["ии", "общие", "техгиганты"],
+  "broll": {
+   "include": "\\bai\\b|artificial intelligence|data cent|server|neural|chip|semiconductor|gpu|robot|laborator",
+   "tags": {"модел": "neural|model|ai", "чип": "chip|semiconductor", "дата": "data cent|server", "робот": "robot|humanoid", "протез": "prosthe|bionic", "лаборатор": "lab", "интерфейс": "interface|screen"}
+  },
+  "stockDrop": {"re": "обрушил\\w* капитализаци|упал\\w* капитализаци|рухнул\\w*", "label": "NVDA", "direction": "down", "seconds": 5},
+  "accent": ["ии", "нейросети", "модели"],
+  "audienceTitle": "Для кого поездка"
+ },
+ "byt-tehnika": {
+  "title": "Бытовая техника и умный дом",
+  "expedition": "/expeditions/china-appliances-expedition",
+  "route": "source-videos/2026-10-07-byt-tehnika/site/route/appliances-day*.png",
+  "music": "inspiring-technology-soundrider",
+  "logos": ["бытовая-техника", "общие"],
+  "broll": {
+   "include": "appliance|refrigerator|air condition|washing machine|television|\\btv\\b|kitchen|microwave|smart home|factory|assembly",
+   "tags": {"кондиционер": "air condition", "холодильник": "refrigerator|fridge", "телевизор": "television|tv", "микроволнов": "microwave|kitchen", "умн": "smart home", "завод": "factory|assembly", "производств": "factory|production"}
+  },
+  "accent": ["техники", "холодильник", "телевизор", "кондиционер"],
+  "audienceTitle": "Для кого поездка"
+ },
+ "chai-kofe": {
+  "title": "Чайно-кофейный ретейл",
+  "expedition": "/expeditions/china-tea-coffee-retail-expedition",
+  "route": "source-videos/2026-10-07-chai-kofe/site/route/ck-day*.png",
+  "music": "upbeat-corporate-soundrider",
+  "logos": ["чай-кофе", "общие"],
+  "broll": {
+   "include": "\\btea\\b|coffee|cafe|bubble|barista|drink",
+   "tags": {"чай": "tea", "кофе": "coffee|barista", "стакан": "cup|drink", "упаковк": "packag", "сырь": "ingredient|bean|leaf", "очеред": "queue|line"}
+  },
+  "accent": ["чай", "кофе"],
+  "audienceTitle": "Для кого поездка"
+ },
+ "konditerka": {
+  "title": "Кондитерские и десерты",
+  "expedition": "/expeditions/confectionery-expedition",
+  "route": "source-videos/2026-10-07-konditerka/site/route/kd-day*.png",
+  "music": "bidous-transit-bluedot",
+  "logos": ["кондитерка", "общие"],
+  "broll": {
+   "include": "cake|dessert|bakery|pastry|confection|food production|food factory",
+   "tags": {"торт": "cake", "десерт": "dessert", "пекар": "bakery|bread", "рецепт": "recipe|kitchen|chef", "витрин": "display|showcase|store"}
+  },
+  "accent": ["торты", "десерты"],
+  "audienceTitle": "Для кого поездка"
+ },
+ "kosmetika": {
+  "title": "Индустрия красоты",
+  "expedition": "/expeditions/china-beauty-antiage-expedition",
+  "route": "source-videos/2026-10-07-kosmetika/site/route/km-day*.png",
+  "music": "inspiring-ambient-motivation-soundrider",
+  "logos": ["косметика", "общие"],
+  "broll": {
+   "include": "cosmetic|beauty|skincare|makeup|lipstick|perfume|livestream|laborator",
+   "tags": {"формул": "lab|formula", "стрим": "livestream|stream", "крем": "cream|skincare", "помад": "lipstick|makeup", "лаборатор": "lab"}
+  },
+  "accent": ["красоты", "косметики"],
+  "audienceTitle": "Для кого поездка"
+ },
+ "novyi-riteil": {
+  "title": "Новый ритейл и доставка",
+  "expedition": "/expeditions/china-retail-showrooms-expedition",
+  "route": "source-videos/2026-10-07-novyi-riteil/site/route/nr-day*.png",
+  "music": "trivial-call-bluedot",
+  "logos": ["ритейл", "общие"],
+  "broll": {
+   "include": "retail|supermarket|grocery|delivery|store|shopping|warehouse|courier|e-commerce",
+   "tags": {"доставк": "delivery|courier", "магазин": "store|supermarket", "склад": "warehouse", "онлайн": "app|phone|e-commerce", "полк": "shelf|aisle", "покупател": "shopper|customer"}
+  },
+  "accent": ["ритейла", "доставки"],
+  "audienceTitle": "Для кого поездка"
+ },
+ "tech-giganty": {
+  "title": "Технологические гиганты",
+  "expedition": "/expeditions/china-tech-giants-expedition",
+  "route": "source-videos/2026-10-07-tech-giganty/site/route/tg-day*.png",
+  "music": "inspiring-technology-soundrider",
+  "logos": ["техгиганты", "общие", "ии", "ритейл"],
+  "broll": {
+   "include": "tech (giant|campus|company|headquarters)|smartphone|super app|campus|headquarters|office tower|robot|data cent",
+   "tags": {"приложен": "app|smartphone", "экосистем": "ecosystem|campus", "робот": "robot", "доставк": "delivery|courier", "офис": "office|campus|headquarters"}
+  },
+  "accent": ["гигантов", "экосистемы"],
+  "audienceTitle": "Для кого поездка"
+ },
+ "obshchee": {
+  "title": "Общая тема (визитка, анонс, новая отрасль)",
+  "expedition": "/expeditions",
+  "music": "upbeat-corporate-soundrider",
+  "logos": ["общие"],
+  "broll": {
+   "include": "factory|production line|headquarters|delegation|business trip|china",
+   "tags": {"завод": "factory", "производств": "factory|production", "штаб": "headquarters|office", "китай": "china|chinese"}
+  },
+  "accent": [],
+  "audienceTitle": "Для кого поездка"
+ },
+ "_outro": {
+  "_": "общий пул перебивок для второй половины ролика (кто я, как устроена поездка), для всех тем",
+  "include": "meeting|negotiat|handshake|delegation|business (people|travel)|conference|vip|badge|door|gate|reception",
+  "tags": {"переговор": "negotiat|meeting", "визит": "delegation|visit|reception", "не пускают": "door|gate|vip|security", "переписк": "laptop|email|phone", "партнер": "handshake|partner", "контакт": "handshake|business card", "фотограф": "photo|camera"}
+ }
+}

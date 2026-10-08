@@ -1,0 +1,9 @@
+{
+ "_о_файле": "Фоновая музыка (коммерческие лицензии, авторы в интернет-материалы/АВТОРЫ.md). volume — громкость под голосом, подобрана на слух в роликах 07.10.2026 (≈ на 18 дБ тише голоса), outroVolume — в финале.",
+ "inspiring-corporate-soundrider": {"src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3", "volume": 0.078, "outroVolume": 0.18},
+ "inspiring-technology-soundrider": {"src": "интернет-материалы/музыка/inspiring-technology-soundrider.mp3", "volume": 0.09, "outroVolume": 0.2},
+ "upbeat-corporate-soundrider": {"src": "интернет-материалы/музыка/upbeat-corporate-soundrider.mp3", "volume": 0.11, "outroVolume": 0.25},
+ "bidous-transit-bluedot": {"src": "интернет-материалы/музыка/bidous-transit-bluedot.mp3", "volume": 0.22, "outroVolume": 0.5},
+ "inspiring-ambient-motivation-soundrider": {"src": "интернет-материалы/музыка/inspiring-ambient-motivation-soundrider.mp3", "volume": 0.072, "outroVolume": 0.17},
+ "trivial-call-bluedot": {"src": "интернет-материалы/музыка/trivial-call-bluedot.mp3", "volume": 0.15, "outroVolume": 0.34}
+}

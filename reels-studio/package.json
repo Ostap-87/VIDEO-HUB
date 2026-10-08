@@ -15,7 +15,13 @@
     "site": "node scripts/site_shot.mjs",
     "matte": "python3 scripts/matte.py",
     "stories": "python3 scripts/stories.py",
-    "grid": "python3 scripts/grid.py"
+    "grid": "python3 scripts/grid.py",
+    "auto": "python3 scripts/auto.py",
+    "autoprops": "python3 scripts/autoprops.py",
+    "fetch": "python3 scripts/fetch.py",
+    "route": "node scripts/site_route.mjs",
+    "setup": "bash scripts/setup.sh",
+    "broll": "python3 scripts/broll.py"
   },
   "dependencies": {
     "@remotion/captions": "4.0.533",

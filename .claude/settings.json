@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && [ ! -f /tmp/gtt-setup.done ] && ! pgrep -f 'reels-studio/scripts/[s]etup.sh' >/dev/null && (setsid nohup bash reels-studio/scripts/setup.sh > /tmp/gtt-setup.log 2>&1 < /dev/null &) ; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}

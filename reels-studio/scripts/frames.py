@@ -36,10 +36,11 @@ def main():
     ap.add_argument("--every", type=float, default=1.0)
     ap.add_argument("--at", default="")
     ap.add_argument("--cols", type=int, default=6)
+    ap.add_argument("--out", help="куда сохранить лист (по умолчанию <папка видео>/frames/<имя>.jpg)")
     a = ap.parse_args()
 
     video = pathlib.Path(a.video)
-    out_dir = video.parent / "frames" / video.stem
+    out_dir = (pathlib.Path(a.out).parent / pathlib.Path(a.out).stem) if a.out else video.parent / "frames" / video.stem
     out_dir.mkdir(parents=True, exist_ok=True)
 
     if a.at:
@@ -72,7 +73,7 @@ def main():
         sheet.paste(im, (x, y + label))
         draw.text((x + 10, y + 5), f"{int(t // 60)}:{t % 60:05.2f}", fill="#FFFFFF", font=font)
 
-    dst = video.parent / "frames" / f"{video.stem}.jpg"
+    dst = pathlib.Path(a.out) if a.out else video.parent / "frames" / f"{video.stem}.jpg"
     sheet.save(dst, quality=85)
     print(dst)
 

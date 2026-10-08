@@ -1,0 +1,13 @@
+{
+ "Пекин": {"forms": ["Пекин", "Пекине", "Пекина", "Пекину"], "photos": ["интернет-материалы/города/pekin.jpg", "интернет-материалы/города/варианты/pekin-hram-neba-b.jpg", "интернет-материалы/города/варианты/pekin-hram-neba-a.jpg", "интернет-материалы/города/варианты/pekin-hram-neba-v.jpg"]},
+ "Шанхай": {"forms": ["Шанхай", "Шанхае", "Шанхая"], "photos": ["интернет-материалы/города/варианты/shanhai-bund-b.jpg", "source-videos/2026-10-07-byt-tehnika/cities/shanhai-bund-vecher.jpg", "интернет-материалы/города/варианты/shanhai-bund-a.jpg", "source-videos/2026-10-07-byt-tehnika/cities/shanhai-bund-noch.jpg"]},
+ "Шэньчжэнь": {"forms": ["Шэньчжэнь", "Шэньчжэне", "Шэньчжэня", "Шеньчжень", "Шеньчжене", "Шэньчжень", "Шенчжень"], "photos": ["интернет-материалы/города/shenzhen.jpg"]},
+ "Гуанчжоу": {"forms": ["Гуанчжоу"], "photos": ["интернет-материалы/города/варианты/guanchzhou-bashnya-a.jpg", "source-videos/2026-10-07-byt-tehnika/cities/guanchzhou-bashnya-noch.jpg", "source-videos/2026-10-07-byt-tehnika/cities/guanchzhou-kantonskaya-bashnya.jpg"]},
+ "Ханчжоу": {"forms": ["Ханчжоу"], "photos": ["интернет-материалы/города/khanchzhou.jpg", "source-videos/2026-10-07-byt-tehnika/cities/khanchzhou-zapadnoe-ozero.jpg"]},
+ "Хэфэй": {"forms": ["Хэфэй", "Хэфэе", "Хефей", "Хефее", "Хэфэя"], "photos": ["интернет-материалы/города/hefei.jpg"]},
+ "Циндао": {"forms": ["Циндао"], "photos": ["интернет-материалы/города/tsindao.jpg"]},
+ "Чжухай": {"forms": ["Чжухай", "Чжухае", "Чжухая"], "photos": ["интернет-материалы/города/chzhukhai.jpg"]},
+ "Фошань": {"forms": ["Фошань", "Фошане", "Фошаня"], "photos": ["интернет-материалы/города/foshan.jpg", "source-videos/2026-10-07-byt-tehnika/cities/foshan-noch-pagoda.jpg"]},
+ "Шунде": {"forms": ["Шунде"], "photos": ["интернет-материалы/города/shunde.jpg"]},
+ "Сямынь": {"forms": ["Сямынь", "Сямыне", "Сямэнь"], "photos": ["source-videos/2026-10-07-byt-tehnika/cities/syamen-bashni.jpg"]}
+}

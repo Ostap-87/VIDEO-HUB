@@ -1,0 +1,481 @@
+{
+ "alibaba": {
+  "names": [
+   "Alibaba",
+   "Алибаба",
+   "Алибабе",
+   "Алибабу"
+  ],
+  "logo": "source-videos/логотипы/общие/alibaba.svg"
+ },
+ "sber": {
+  "names": [
+   "Сбер",
+   "Сбере",
+   "Сбербанк",
+   "Сбербанке",
+   "Sber"
+  ],
+  "logo": "source-videos/логотипы/общие/sber.png"
+ },
+ "huawei": {
+  "names": [
+   "Huawei",
+   "Хуавей",
+   "Хуавэй",
+   "Хуавея"
+  ],
+  "logo": "source-videos/логотипы/общие/huawei.svg"
+ },
+ "xiaomi": {
+  "names": [
+   "Xiaomi",
+   "Сяоми",
+   "Шаоми",
+   "Ксиаоми"
+  ],
+  "logo": "source-videos/логотипы/общие/xiaomi.svg"
+ },
+ "tencent": {
+  "names": [
+   "Tencent",
+   "Тенсент",
+   "Тенцент"
+  ],
+  "logo": "source-videos/логотипы/общие/tencent.svg"
+ },
+ "baidu": {
+  "names": [
+   "Baidu",
+   "Байду"
+  ],
+  "logo": "source-videos/логотипы/общие/baidu.png"
+ },
+ "bytedance": {
+  "names": [
+   "ByteDance",
+   "Байтденс",
+   "Байтдэнс"
+  ],
+  "logo": "source-videos/логотипы/общие/bytedance.png"
+ },
+ "nvidia": {
+  "names": [
+   "NVIDIA",
+   "Nvidia",
+   "Нвидиа",
+   "Энвидиа",
+   "Нвидия"
+  ],
+  "logo": "source-videos/логотипы/ии/nvidia.svg"
+ },
+ "deepseek": {
+  "names": [
+   "DeepSeek",
+   "Дипсик"
+  ],
+  "logo": "source-videos/логотипы/ии/deepseek.svg"
+ },
+ "zhipu": {
+  "names": [
+   "Zhipu",
+   "Zhipu AI",
+   "Чжипу",
+   "Джипу"
+  ],
+  "logo": "source-videos/логотипы/ии/zhipu.png"
+ },
+ "kimi": {
+  "names": [
+   "Kimi",
+   "Кими",
+   "Moonshot"
+  ],
+  "logo": "source-videos/логотипы/ии/kimi.png"
+ },
+ "kuaishou": {
+  "names": [
+   "Kuaishou",
+   "Куайшоу",
+   "Квайшоу"
+  ],
+  "logo": "source-videos/логотипы/ии/kuaishou.png"
+ },
+ "sensetime": {
+  "names": [
+   "SenseTime",
+   "Сенстайм"
+  ],
+  "logo": "source-videos/логотипы/ии/sensetime.png"
+ },
+ "brainco": {
+  "names": [
+   "BrainCo",
+   "Брейнко"
+  ],
+  "logo": "source-videos/логотипы/ии/brainco.png"
+ },
+ "nio": {
+  "names": [
+   "NIO",
+   "Нио"
+  ],
+  "logo": "source-videos/логотипы/авто/nio.svg"
+ },
+ "maextro": {
+  "names": [
+   "Maextro",
+   "Маэстро",
+   "Maestro"
+  ],
+  "logo": "source-videos/логотипы/авто/maextro.svg"
+ },
+ "saic": {
+  "names": [
+   "SAIC",
+   "САИК"
+  ],
+  "logo": "source-videos/логотипы/авто/saic.svg"
+ },
+ "gac-aion": {
+  "names": [
+   "GAC Aion",
+   "Aion",
+   "GAC",
+   "Айон"
+  ],
+  "logo": "source-videos/логотипы/авто/gac-aion.svg"
+ },
+ "xpeng": {
+  "names": [
+   "Xpeng",
+   "XPeng",
+   "Сяопэн",
+   "Икспенг"
+  ],
+  "logo": "source-videos/логотипы/авто/xpeng.svg"
+ },
+ "haier": {
+  "names": [
+   "Haier",
+   "Хайер",
+   "Хаер"
+  ],
+  "logo": "source-videos/логотипы/бытовая-техника/haier.svg"
+ },
+ "hisense": {
+  "names": [
+   "Hisense",
+   "Хайсенс"
+  ],
+  "logo": "source-videos/логотипы/бытовая-техника/hisense.svg"
+ },
+ "robam": {
+  "names": [
+   "Robam",
+   "Робам"
+  ],
+  "logo": "source-videos/логотипы/бытовая-техника/robam.png"
+ },
+ "supor": {
+  "names": [
+   "Supor",
+   "Супор"
+  ],
+  "logo": "source-videos/логотипы/бытовая-техника/supor.png"
+ },
+ "midea": {
+  "names": [
+   "Midea",
+   "Мидеа",
+   "Мидея"
+  ],
+  "logo": "source-videos/логотипы/бытовая-техника/midea.svg"
+ },
+ "galanz": {
+  "names": [
+   "Galanz",
+   "Галанз"
+  ],
+  "logo": "source-videos/логотипы/бытовая-техника/galanz.png"
+ },
+ "gree": {
+  "names": [
+   "Gree",
+   "Грии",
+   "Гри"
+  ],
+  "logo": "source-videos/логотипы/бытовая-техника/gree.svg"
+ },
+ "skyworth": {
+  "names": [
+   "Skyworth",
+   "Скайворт"
+  ],
+  "logo": "source-videos/логотипы/бытовая-техника/skyworth.png"
+ },
+ "chagee": {
+  "names": [
+   "Chagee",
+   "Чаги",
+   "Чагии"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/chagee.svg"
+ },
+ "heytea": {
+  "names": [
+   "HeyTea",
+   "Хэйти",
+   "Хейти"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/heytea.svg"
+ },
+ "luckin-coffee": {
+  "names": [
+   "Luckin Coffee",
+   "Luckin",
+   "Лакин"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/luckin-coffee.svg"
+ },
+ "manner-coffee": {
+  "names": [
+   "Manner Coffee",
+   "Manner",
+   "Маннер"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/manner-coffee.png"
+ },
+ "m-stand": {
+  "names": [
+   "M Stand",
+   "Эм Стэнд"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/m-stand.png"
+ },
+ "alittle-tea": {
+  "names": [
+   "Yidiandian",
+   "A Little Tea",
+   "Идяньдянь"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/alittle-tea.png"
+ },
+ "wang-lao-ji": {
+  "names": [
+   "Wang Lao Ji",
+   "Ван Лао Цзи",
+   "Ванлаоцзи"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/wang-lao-ji.png"
+ },
+ "21cake": {
+  "names": [
+   "21Cake",
+   "21 Cake"
+  ],
+  "logo": "source-videos/логотипы/кондитерка/21cake.png"
+ },
+ "ganso": {
+  "names": [
+   "Ganso",
+   "Гансо"
+  ],
+  "logo": "source-videos/логотипы/кондитерка/ganso.png"
+ },
+ "xingfu-xibing": {
+  "names": [
+   "Xingfu Xibing",
+   "Синфу Сибин"
+  ],
+  "logo": "source-videos/логотипы/кондитерка/xingfu-xibing.png"
+ },
+ "maxims": {
+  "names": [
+   "Maxim's Cakes",
+   "Maxim's",
+   "Максимс"
+  ],
+  "logo": "source-videos/логотипы/кондитерка/maxims.png"
+ },
+ "holiland": {
+  "names": [
+   "Holiland",
+   "Холиленд"
+  ],
+  "logo": "source-videos/логотипы/кондитерка/holiland.png"
+ },
+ "wedome": {
+  "names": [
+   "Wedome",
+   "Видом"
+  ],
+  "logo": "source-videos/логотипы/кондитерка/wedome.svg"
+ },
+ "85c": {
+  "names": [
+   "85°C",
+   "85C",
+   "85 градусов"
+  ],
+  "logo": "source-videos/логотипы/кондитерка/85c.png"
+ },
+ "carslan": {
+  "names": [
+   "Carslan",
+   "Карслан"
+  ],
+  "logo": "source-videos/логотипы/косметика/carslan.png"
+ },
+ "pechoin": {
+  "names": [
+   "Pechoin",
+   "Печоин"
+  ],
+  "logo": "source-videos/логотипы/косметика/pechoin.png"
+ },
+ "kans": {
+  "names": [
+   "KANS",
+   "Канс"
+  ],
+  "logo": "source-videos/логотипы/косметика/kans.png"
+ },
+ "proya": {
+  "names": [
+   "Proya",
+   "Пройя",
+   "Прoя"
+  ],
+  "logo": "source-videos/логотипы/косметика/proya.png"
+ },
+ "florasis": {
+  "names": [
+   "Florasis",
+   "Флорасис"
+  ],
+  "logo": "source-videos/логотипы/косметика/florasis.png"
+ },
+ "maogeping": {
+  "names": [
+   "Mao Geping",
+   "MAOGEPING",
+   "Мао Гепин"
+  ],
+  "logo": "source-videos/логотипы/косметика/maogeping.png"
+ },
+ "chando": {
+  "names": [
+   "CHANDO",
+   "Chando",
+   "Чандо"
+  ],
+  "logo": "source-videos/логотипы/косметика/chando.png"
+ },
+ "kylin-way": {
+  "names": [
+   "Kylin Way",
+   "Килин Вэй"
+  ],
+  "logo": "source-videos/логотипы/косметика/kylin-way.svg"
+ },
+ "perfect-diary": {
+  "names": [
+   "Perfect Diary",
+   "Перфект Дайри"
+  ],
+  "logo": "source-videos/логотипы/косметика/perfect-diary.svg"
+ },
+ "loreal": {
+  "names": [
+   "L'Oréal",
+   "L'Oreal",
+   "Лореаль",
+   "Лореаля"
+  ],
+  "logo": "source-videos/логотипы/косметика/loreal.png"
+ },
+ "hema": {
+  "names": [
+   "Hema",
+   "Хема",
+   "Хэма"
+  ],
+  "logo": "source-videos/логотипы/ритейл/hema.png"
+ },
+ "sams-club": {
+  "names": [
+   "Sam's Club",
+   "Сэмс Клаб"
+  ],
+  "logo": "source-videos/логотипы/ритейл/sams-club.svg"
+ },
+ "pinduoduo": {
+  "names": [
+   "Pinduoduo",
+   "Пиндуодуо"
+  ],
+  "logo": "source-videos/логотипы/ритейл/pinduoduo.svg"
+ },
+ "yonghui": {
+  "names": [
+   "Yonghui",
+   "Юнхуэй"
+  ],
+  "logo": "source-videos/логотипы/ритейл/yonghui.png"
+ },
+ "meituan": {
+  "names": [
+   "Meituan",
+   "Мейтуань",
+   "Мэйтуань"
+  ],
+  "logo": "source-videos/логотипы/ритейл/meituan.svg"
+ },
+ "jd": {
+  "names": [
+   "JD",
+   "JD.com",
+   "Цзиндун"
+  ],
+  "logo": "source-videos/логотипы/ритейл/jd.svg"
+ },
+ "instagram": {
+  "names": [
+   "Instagram",
+   "Инстаграм",
+   "Инстаграма"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/instagram.svg"
+ },
+ "ubtech": {
+  "names": [
+   "UBTech",
+   "UBTECH",
+   "Юбитек"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/ubtech.svg"
+ },
+ "unitree": {
+  "names": [
+   "Unitree",
+   "Юнитри"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/unitree.png"
+ },
+ "wechat": {
+  "names": [
+   "WeChat",
+   "Вичат"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/wechat.png"
+ },
+ "xiaohongshu": {
+  "names": [
+   "Xiaohongshu",
+   "Сяохуншу",
+   "RedNote"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/xiaohongshu.svg"
+ }
+}
