@@ -65,7 +65,8 @@ export const talkReelProSchema = z.object({
       transition: z.enum(["circle", "slide", "zoom", "wipe", "fade"]).optional(),
       // mode: cutout (по умолчанию) — спикер вырезан и стоит перед картинкой;
       // pip — спикер уезжает карточкой в правый нижний угол, картинка на весь экран (решение пользователя 08.10.2026)
-      mode: z.enum(["cutout", "pip"]).optional(),
+      // screen — как в финале: спикер в большом «экране» с рамкой по центру, картинка на весь кадр за ним
+      mode: z.enum(["cutout", "pip", "screen"]).optional(),
     }),
   ),
   // Чек-лист «планшет с зелёными галочками» для перечислений: спикер уходит наверх, внизу планшет, пункты
@@ -643,6 +644,7 @@ const ZoomedVideo: React.FC<{
     : 0;
   const kb = b ? interpolate(t, [b.at, b.until], [1.12, 1.02], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}) : 1;
   const kind = b ? (b.transition ?? TRANSITIONS[broll.indexOf(b) % TRANSITIONS.length]) : "fade";
+  const R = b?.mode === "screen" ? SCREEN : PIP;
   // fade — картинка проявляется, видео гаснет; остальные — картинка закрывает кадр по форме, вырезка спикера сразу видна
   const imgStyle: React.CSSProperties =
     kind === "circle"
@@ -693,8 +695,8 @@ const ZoomedVideo: React.FC<{
           <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} />
         </>
       ) : null}
-      {b && b.mode === "pip" ? (
-        // спикер уезжает карточкой в правый нижний угол, картинка — на весь экран
+      {b && (b.mode === "pip" || b.mode === "screen") ? (
+        // pip — спикер уезжает карточкой в правый нижний угол; screen — в большой экран по центру; картинка — на весь кадр
         <>
           <AbsoluteFill style={imgStyle}>
             <Img src={staticFile(b.src)} style={{width: "100%", height: "100%", objectFit: "cover", scale: String(kb)}} />
@@ -702,14 +704,15 @@ const ZoomedVideo: React.FC<{
           <div
             style={{
               position: "absolute",
-              left: PIP.x * p,
-              top: PIP.y * p,
-              width: 1080 + (PIP.w - 1080) * p,
-              height: 1920 + (PIP.h - 1920) * p,
-              borderRadius: 30 * p,
+              left: R.x * p,
+              top: R.y * p,
+              width: 1080 + (R.w - 1080) * p,
+              height: 1920 + (R.h - 1920) * p,
+              borderRadius: R.r * p,
               overflow: "hidden",
-              border: `${6 * p}px solid #FFFFFF`,
-              boxShadow: `0 24px 60px rgba(0,0,0,${0.5 * p})`,
+              border: `${R.border * p}px solid ${B.id === "aura" ? "#262626" : "#FFFFFF"}`,
+              boxShadow: `0 30px 80px rgba(0,0,0,${0.55 * p})`,
+              transform: b.mode === "screen" ? `perspective(1800px) rotateY(${-6 * p}deg)` : undefined,
             }}
           >
             <OffthreadVideo
@@ -720,7 +723,7 @@ const ZoomedVideo: React.FC<{
                 height: "100%",
                 objectFit: "cover",
                 objectPosition: `${(focus.x / 1080) * 100}% ${Math.min(100, (focus.y / 1920) * 100 + 8)}%`,
-                scale: String(1 + 0.25 * p),
+                scale: String(1 + (b.mode === "screen" ? 0.08 : 0.25) * p),
                 transformOrigin: `${(focus.x / 1080) * 100}% ${(focus.y / 1920) * 100}%`,
               }}
             />
@@ -760,7 +763,9 @@ const ZoomedVideo: React.FC<{
 
 const TRANSITIONS = ["circle", "slide", "zoom", "wipe", "fade"] as const;
 // карточка спикера в режиме перебивки pip: правый нижний угол, выше нижней зоны интерфейса Instagram
-const PIP = {x: 1080 - 60 - 330, y: 1060, w: 330, h: 440};
+const PIP = {x: 1080 - 60 - 330, y: 1060, w: 330, h: 440, r: 30, border: 6};
+// «экран» (как в финале): большая карточка над субтитрами, лицо в верхней половине
+const SCREEN = {x: 165, y: 270, w: 750, h: 960, r: 40, border: 14};
 const pipAmount = (broll: TalkReelProProps["broll"], t: number) => {
   const b = broll.find((x) => x.mode === "pip" && t >= x.at - 0.1 && t <= x.until + 0.1);
   if (!b) return 0;
