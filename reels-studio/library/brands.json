@@ -2613,5 +2613,346 @@
   ],
   "logo": "source-videos/логотипы/техгиганты/shopee-lazada.png",
   "site_logo": "/logos/Shopee:Lazada Vietnam.png"
+ },
+ "amul": {
+  "names": [
+   "Amul (GCMMF)",
+   "Amul",
+   "GCMMF",
+   "Amul Fed Dairy"
+  ],
+  "logo": "source-videos/логотипы/еда/amul-gcmmf.png",
+  "site_logo": "/logos/Amul.png"
+ },
+ "mother-dairy": {
+  "names": [
+   "Mother Dairy"
+  ],
+  "logo": "source-videos/логотипы/еда/mother-dairy.png",
+  "site_logo": "/logos/Mother Dairy.png"
+ },
+ "nandini": {
+  "names": [
+   "Nandini (KMF)",
+   "Nandini",
+   "KMF"
+  ],
+  "logo": "source-videos/логотипы/еда/nandini-kmf.png",
+  "site_logo": "/logos/Nandini.png"
+ },
+ "itc-foods": {
+  "names": [
+   "ITC Foods"
+  ],
+  "logo": "source-videos/логотипы/еда/itc-foods-aashirvaad.png",
+  "site_logo": "/logos/ITC Foods.png"
+ },
+ "britannia": {
+  "names": [
+   "Britannia"
+  ],
+  "logo": "source-videos/логотипы/еда/britannia.png",
+  "site_logo": "/logos/Britannia.png"
+ },
+ "hatsun-agro": {
+  "names": [
+   "Hatsun Agro"
+  ],
+  "logo": "source-videos/логотипы/еда/hatsun-agro.png",
+  "site_logo": "/logos/Hatsun.png"
+ },
+ "rebel-foods": {
+  "names": [
+   "Rebel Foods"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/rebel-foods.png",
+  "site_logo": "/logos/Rebel Foods.png"
+ },
+ "eatclub": {
+  "names": [
+   "EatClub (Box8)",
+   "EatClub"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/eatclub-box8.png",
+  "site_logo": "/logos/EatClub.png"
+ },
+ "curefoods": {
+  "names": [
+   "Curefoods (EatFit)",
+   "Curefoods",
+   "EatFit"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/curefoods-eatfit.png",
+  "site_logo": "/logos/Curefoods.png"
+ },
+ "licious": {
+  "names": [
+   "Licious"
+  ],
+  "logo": "source-videos/логотипы/еда/licious.png",
+  "site_logo": "/logos/Licious.png"
+ },
+ "freshmenu": {
+  "names": [
+   "FreshMenu"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/freshmenu.png",
+  "site_logo": "/logos/FreshMenu.png"
+ },
+ "biryani-by-kilo": {
+  "names": [
+   "Biryani By Kilo"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/biryani-by-kilo.png",
+  "site_logo": "/logos/Biryani By Kilo.png"
+ },
+ "zepto-cafe": {
+  "names": [
+   "Zepto Café"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/zepto-cafe.png",
+  "site_logo": "/logos/Zepto Cafe.png"
+ },
+ "sarvam-ai": {
+  "names": [
+   "Sarvam AI"
+  ],
+  "logo": "source-videos/логотипы/ии/sarvam-ai.png",
+  "site_logo": "/logos/Sarvam AI.png"
+ },
+ "krutrim": {
+  "names": [
+   "Krutrim (Ola)",
+   "Krutrim"
+  ],
+  "logo": "source-videos/логотипы/ии/krutrim-ola.png",
+  "site_logo": "/logos/Krutrim.png"
+ },
+ "meesho": {
+  "names": [
+   "Meesho"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/meesho.png",
+  "site_logo": "/logos/Meesho.png"
+ },
+ "yellow-ai": {
+  "names": [
+   "Yellow.ai"
+  ],
+  "logo": "source-videos/логотипы/ии/yellow-ai.png",
+  "site_logo": "/logos/Yellow.png"
+ },
+ "mad-street-den": {
+  "names": [
+   "Mad Street Den"
+  ],
+  "logo": "source-videos/логотипы/ии/mad-street-den.png",
+  "site_logo": "/logos/Mad Street Den.png"
+ },
+ "fractal-analytics": {
+  "names": [
+   "Fractal Analytics"
+  ],
+  "logo": "source-videos/логотипы/ии/fractal-analytics.png",
+  "site_logo": "/logos/Fractal Analytics.png"
+ },
+ "qure-ai": {
+  "names": [
+   "Qure.ai"
+  ],
+  "logo": "source-videos/логотипы/ии/qure-ai.png",
+  "site_logo": "/logos/Qure ai.png"
+ },
+ "haptik": {
+  "names": [
+   "Haptik (Reliance Jio)",
+   "Haptik"
+  ],
+  "logo": "source-videos/логотипы/ии/haptik-reliance-jio.png",
+  "site_logo": "/logos/Haptik.png"
+ },
+ "sugar-cosmetics": {
+  "names": [
+   "Sugar Cosmetics"
+  ],
+  "logo": "source-videos/логотипы/косметика/sugar-cosmetics.png",
+  "site_logo": "/logos/Sugar Cosmetics.png"
+ },
+ "purplle": {
+  "names": [
+   "Purplle"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/purplle.png",
+  "site_logo": "/logos/Purplle.png"
+ },
+ "plum-goodness": {
+  "names": [
+   "Plum Goodness"
+  ],
+  "logo": "source-videos/логотипы/косметика/plum-goodness.png",
+  "site_logo": "/logos/Plum Goodness.png"
+ },
+ "mamaearth": {
+  "names": [
+   "Mamaearth (Honasa)",
+   "Mamaearth"
+  ],
+  "logo": "source-videos/логотипы/косметика/mamaearth-honasa.png",
+  "site_logo": "/logos/Mamaearth.png"
+ },
+ "forest-essentials": {
+  "names": [
+   "Forest Essentials"
+  ],
+  "logo": "source-videos/логотипы/косметика/forest-essentials.png",
+  "site_logo": "/logos/Forest Essentials.png"
+ },
+ "swiss-beauty": {
+  "names": [
+   "Swiss Beauty"
+  ],
+  "logo": "source-videos/логотипы/косметика/swiss-beauty.png",
+  "site_logo": "/logos/Swiss Beauty.png"
+ },
+ "lakme": {
+  "names": [
+   "Lakmé (HUL)",
+   "Lakmé",
+   "HUL"
+  ],
+  "logo": "source-videos/логотипы/косметика/lakme-hul.png",
+  "site_logo": "/logos/Lakmé (HUL).png"
+ },
+ "good-glamm": {
+  "names": [
+   "Good Glamm (MyGlamm)",
+   "Good Glamm",
+   "MyGlamm"
+  ],
+  "logo": "source-videos/логотипы/косметика/good-glamm-myglamm.png",
+  "site_logo": "/logos/Good Glamm.png"
+ },
+ "giostar": {
+  "names": [
+   "GIOSTAR"
+  ],
+  "logo": "source-videos/логотипы/медицина/giostar.png",
+  "site_logo": "/logos/GIOSTAR.png"
+ },
+ "decode-age": {
+  "names": [
+   "Decode Age"
+  ],
+  "logo": "source-videos/логотипы/медицина/decode-age.png",
+  "site_logo": "/logos/Decode Age.png"
+ },
+ "biocon-syngene": {
+  "names": [
+   "Biocon / Syngene",
+   "Biocon",
+   "Syngene"
+  ],
+  "logo": "source-videos/логотипы/медицина/biocon-syngene.png",
+  "site_logo": "/logos/Biocon:Syngene.png"
+ },
+ "stemrx": {
+  "names": [
+   "StemRx (Navi Mumbai)",
+   "StemRx"
+  ],
+  "logo": "source-videos/логотипы/медицина/stemrx-navi-mumbai.png",
+  "site_logo": "/logos/StemRX.png"
+ },
+ "reliance-life-sciences": {
+  "names": [
+   "Reliance Life Sciences"
+  ],
+  "logo": "source-videos/логотипы/медицина/reliance-life-sciences.png",
+  "site_logo": "/logos/Reliance Life Sciences.png"
+ },
+ "artemis-hospitals": {
+  "names": [
+   "Artemis Hospitals"
+  ],
+  "logo": "source-videos/логотипы/медицина/artemis-hospitals.png",
+  "site_logo": "/logos/Artemis.png"
+ },
+ "the-anti-aging-centre": {
+  "names": [
+   "The Anti-Aging Centre (TAC)",
+   "The Anti-Aging Centre",
+   "TAC"
+  ],
+  "logo": "source-videos/логотипы/медицина/anti-aging-centre-tac.png",
+  "site_logo": "/logos/The Anti-Aging Centre (TAC).png"
+ },
+ "apollo-nova-regenerative-direction": {
+  "names": [
+   "Apollo/Nova — Regenerative Direction",
+   "Apollo",
+   "Nova — Regenerative Direction"
+  ],
+  "logo": "source-videos/логотипы/медицина/apollo-nova-regenerative.png",
+  "site_logo": "/logos/Apollo:Nova.png"
+ },
+ "blue-tokai-coffee-roasters": {
+  "names": [
+   "Blue Tokai Coffee Roasters"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/blue-tokai-coffee-roasters.png",
+  "site_logo": "/logos/Blue Tokai Cofee.png"
+ },
+ "sleepy-owl-rage-coffee": {
+  "names": [
+   "Sleepy Owl / Rage Coffee",
+   "Sleepy Owl",
+   "Rage Coffee"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/sleepy-owl-rage-coffee.png",
+  "site_logo": "/logos/Sleepy Owl.png"
+ },
+ "chaayos": {
+  "names": [
+   "Chaayos"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/chaayos.png",
+  "site_logo": "/logos/Chaayos.png"
+ },
+ "abcoffee": {
+  "names": [
+   "AbCoffee"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/abcoffee.png",
+  "site_logo": "/logos/Abcofee.png"
+ },
+ "third-wave-coffee": {
+  "names": [
+   "Third Wave Coffee"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/third-wave-coffee.png",
+  "site_logo": "/logos/Third Wave Coffee.png"
+ },
+ "araku-coffee": {
+  "names": [
+   "Araku Coffee"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/araku-coffee.png",
+  "site_logo": "/logos/Araku Coffee.png"
+ },
+ "tata-coffee-starbucks-india-jv": {
+  "names": [
+   "Tata Coffee / Starbucks India JV",
+   "Tata Coffee",
+   "Starbucks India JV"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/tata-coffee-starbucks.png",
+  "site_logo": "/logos/tata coffee.png"
+ },
+ "boba-bhai": {
+  "names": [
+   "Boba Bhai"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/boba-bhai.png",
+  "site_logo": "/logos/boba bhai.png"
  }
 }

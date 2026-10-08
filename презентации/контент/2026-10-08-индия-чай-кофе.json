@@ -1,0 +1,559 @@
+{
+  "title": "Бабл-ти и кофейная индустрия Индии — Global Tech Tour",
+  "output": "2026-10-08-индия-чай-кофе",
+  "source": "https://globaltechtour.ru/expeditions/india-bubble-tea-coffee-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "india",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Бабл-ти и кофейная индустрия Индии",
+      "topright": "Blue Tokai · Chaayos\nThird Wave Coffee",
+      "logos": [
+        {
+          "name": "Blue Tokai Coffee Roasters",
+          "logo": "source-videos/логотипы/чай-кофе/blue-tokai-coffee-roasters.png"
+        },
+        {
+          "name": "Sleepy Owl",
+          "logo": "source-videos/логотипы/чай-кофе/sleepy-owl-rage-coffee.png"
+        },
+        {
+          "name": "Chaayos",
+          "logo": "source-videos/логотипы/чай-кофе/chaayos.png"
+        },
+        {
+          "name": "AbCoffee",
+          "logo": "source-videos/логотипы/чай-кофе/abcoffee.png"
+        },
+        {
+          "name": "Third Wave Coffee",
+          "logo": "source-videos/логотипы/чай-кофе/third-wave-coffee.png"
+        },
+        {
+          "name": "Araku Coffee",
+          "logo": "source-videos/логотипы/чай-кофе/araku-coffee.png"
+        },
+        {
+          "name": "Tata Coffee",
+          "logo": "source-videos/логотипы/чай-кофе/tata-coffee-starbucks.png"
+        },
+        {
+          "name": "Boba Bhai",
+          "logo": "source-videos/логотипы/чай-кофе/boba-bhai.png"
+        }
+      ],
+      "box_text": "От обжарки Blue Tokai до бабл-ти Boba Bhai —\n8 компаний, 6 дней, 6 ночей",
+      "box_right": "Дели + Бенгалуру + Мумбаи",
+      "footer": "Global Tech Tour · бизнес-делегации в Индию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Визиты в штаб-квартиры, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на хинди и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "8 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Дели",
+          "text": "Blue Tokai Coffee Roasters, Sleepy Owl, Chaayos, AbCoffee"
+        },
+        {
+          "name": "Дни 3–4 · Бенгалуру",
+          "text": "Third Wave Coffee, Araku Coffee, Tata Coffee, Boba Bhai"
+        },
+        {
+          "name": "День 5 · Мумбаи",
+          "text": "Программа уточняется у партнёров на месте"
+        }
+      ]
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Дели",
+          "days": "дни 1–2",
+          "companies": "Blue Tokai Coffee Roasters\nSleepy Owl\nChaayos\nAbCoffee"
+        },
+        {
+          "name": "Бенгалуру",
+          "days": "дни 3–4",
+          "companies": "Third Wave Coffee\nAraku Coffee\nTata Coffee\nBoba Bhai",
+          "leg": {
+            "icon": "plane",
+            "text": "≈2,5 ч"
+          }
+        },
+        {
+          "name": "Мумбаи",
+          "days": "день 5",
+          "leg": {
+            "icon": "plane",
+            "text": "≈1,5 ч"
+          },
+          "companies": "программа\nуточняется"
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Дели · <b>Вылет:</b> Мумбаи"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Blue Tokai ·\nSleepy Owl",
+          "text": "Blue Tokai — specialty-кофе «farm-to-cup»; Sleepy Owl / Rage Coffee — D2C-бренды кофе.",
+          "label": "День 1"
+        },
+        {
+          "sub": "Дели/Гуруграм",
+          "title": "Chaayos ·\nAbCoffee",
+          "text": "Chaayos — чайные кафе с IoT-аппаратом Chai Monk; abcoffee — кофейни grab-and-go.",
+          "label": "День 2"
+        },
+        {
+          "sub": "Бенгалуру",
+          "title": "Third Wave Coffee ·\nAraku Coffee",
+          "text": "Внутренний перелёт Дели→Бенгалуру (≈2,5 ч).",
+          "label": "День 3"
+        },
+        {
+          "sub": "Бенгалуру",
+          "title": "Tata Starbucks ·\nBoba Bhai",
+          "text": "Tata Starbucks — СП Tata и Starbucks; Boba Bhai — бабл-ти стартап из Shark Tank India.",
+          "label": "День 4"
+        },
+        {
+          "sub": "Мумбаи",
+          "title": "Мумбаи",
+          "text": "Внутренний перелёт Бенгалуру→Мумбаи (≈1,5 ч). Программа пятого дня уточняется у партнёров на месте.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Дели",
+      "title": "Blue Tokai Coffee Roasters",
+      "logo": "source-videos/логотипы/чай-кофе/blue-tokai-coffee-roasters.png",
+      "short": "Blue Tokai Coffee Roasters",
+      "subtitle": "Дели",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "100+",
+          "label": "кофеен"
+        },
+        {
+          "icon": "users",
+          "value": "80+",
+          "label": "хозяйств-поставщиков",
+          "sub": "в основном Карнатака"
+        },
+        {
+          "icon": "building",
+          "value": "4",
+          "label": "обжарочных производства",
+          "sub": "Дели, Мумбаи, Бангалор, Токио"
+        },
+        {
+          "icon": "flag",
+          "value": "2012–13",
+          "label": "год основания"
+        }
+      ],
+      "why": "Стала пионером специализированного кофе «farm-to-cup» в Индии, закупая зерно напрямую у 80+ хозяйств.",
+      "learn": "Обжарочные производства в Дели, Мумбаи, Бангалоре и Токио; экскурсии по пути зерна от фермы до чашки.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Дели",
+      "title": "Sleepy Owl / Rage Coffee",
+      "logo": "source-videos/логотипы/чай-кофе/sleepy-owl-rage-coffee.png",
+      "short": "Sleepy Owl / Rage Coffee",
+      "subtitle": "Дели",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Первый",
+          "label": "фасованный cold brew в Индии",
+          "sub": "Sleepy Owl, 2016"
+        },
+        {
+          "icon": "chart",
+          "value": "~₹50 крор",
+          "label": "выручка Sleepy Owl",
+          "sub": "2024 год"
+        },
+        {
+          "icon": "cart",
+          "value": "200 000+",
+          "label": "заказов в месяц"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$11,4 млн",
+          "label": "привлёк Rage Coffee",
+          "sub": "в т. ч. Вират Кохли"
+        }
+      ],
+      "why": "Два D2C-бренда кофе: Sleepy Owl первым в Индии предложил фасованный cold brew, Rage Coffee — растворимый кофе с витаминами.",
+      "learn": "Rage Coffee (2018, Бхарат Сетхи) привлёк $11,4 млн, включая средства крикетиста Вирата Кохли.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Дели/Гуруграм",
+      "title": "Chaayos",
+      "logo": "source-videos/логотипы/чай-кофе/chaayos.png",
+      "short": "Chaayos",
+      "subtitle": "Дели/Гуруграм",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "200+",
+          "label": "чайных кафе"
+        },
+        {
+          "icon": "cpu",
+          "value": "Chai Monk",
+          "label": "IoT-аппарат",
+          "sub": "~80% процесса автоматизировано"
+        },
+        {
+          "icon": "chart",
+          "value": "₹310,6 крор",
+          "label": "выручка",
+          "sub": "FY2025, +25% г/г"
+        },
+        {
+          "icon": "star",
+          "value": "~80 000",
+          "label": "комбинаций вкусов"
+        }
+      ],
+      "why": "Технологичная сеть чайных кафе Индии с 200+ точками по стране.",
+      "learn": "Выручка в FY2025 — ₹310,6 крор (+25% год к году), убытки сократились более чем вдвое.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Дели/Гуруграм",
+      "title": "AbCoffee",
+      "logo": "source-videos/логотипы/чай-кофе/abcoffee.png",
+      "short": "AbCoffee",
+      "subtitle": "Дели/Гуруграм",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "90+",
+          "label": "точек",
+          "sub": "Мумбаи, Дели-NCR, Бангалор"
+        },
+        {
+          "icon": "smartphone",
+          "value": "~54%",
+          "label": "заказов — через приложение"
+        },
+        {
+          "icon": "chart",
+          "value": "40 000+",
+          "label": "чашек в месяц",
+          "sub": "предпродажа по подписке"
+        },
+        {
+          "icon": "briefcase",
+          "value": "₹61 крор",
+          "label": "pre-Series B",
+          "sub": "Kliff Ventures"
+        }
+      ],
+      "why": "Технологичная сеть кофеен формата «grab-and-go» с 90+ точками в Мумбаи, Дели-NCR и Бангалоре.",
+      "learn": "Основана в 2022 году Абхиджитом Анандом в Мумбаи; ₹61 крор раунда pre-Series B — на расширение офлайн-сети.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Бенгалуру",
+      "title": "Third Wave Coffee",
+      "logo": "source-videos/логотипы/чай-кофе/third-wave-coffee.png",
+      "short": "Third Wave Coffee",
+      "subtitle": "Бенгалуру",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "114+",
+          "label": "точек",
+          "sub": "конец 2024 года"
+        },
+        {
+          "icon": "trending",
+          "value": "80–100",
+          "label": "открытий в год",
+          "sub": "план"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$69,9 млн",
+          "label": "привлечено всего"
+        },
+        {
+          "icon": "briefcase",
+          "value": "~$150 млн",
+          "label": "оценка компании",
+          "sub": "раунд $35 млн, Creaegis"
+        }
+      ],
+      "why": "Одна из самых быстрорастущих сетей специализированного кофе Индии, к концу 2024 года насчитывала 114+ точек.",
+      "learn": "Основана в 2016 году в Бангалоре; раунд $35 млн под руководством Creaegis — при оценке около $150 млн.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Бенгалуру",
+      "title": "Araku Coffee",
+      "logo": "source-videos/логотипы/чай-кофе/araku-coffee.png",
+      "short": "Araku Coffee",
+      "subtitle": "Бенгалуру",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "150 000+",
+          "label": "фермеров",
+          "sub": "племенные общины"
+        },
+        {
+          "icon": "building",
+          "value": "~250 000",
+          "label": "акров долины Араку"
+        },
+        {
+          "icon": "star",
+          "value": "Первый",
+          "label": "terroir-mapped кофе в мире"
+        },
+        {
+          "icon": "flag",
+          "value": "2010",
+          "label": "запуск",
+          "sub": "фонд Naandi"
+        }
+      ],
+      "why": "Отдельные микроучастки картографированы по почве и затенению — первый в мире «terroir-mapped» кофе.",
+      "learn": "Односортовая арабика с географической защитой; крупнейшая в Индии органическая и fair-trade плантация.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Бенгалуру",
+      "title": "Tata Starbucks",
+      "logo": "source-videos/логотипы/чай-кофе/tata-coffee-starbucks.png",
+      "short": "Tata Coffee / Starbucks India JV",
+      "subtitle": "Tata Consumer Products · Бенгалуру",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "500+",
+          "label": "кафе Starbucks",
+          "sub": "конец 2025 года"
+        },
+        {
+          "icon": "handshake",
+          "value": "50/50",
+          "label": "СП Tata и Starbucks",
+          "sub": "с 2012 года"
+        },
+        {
+          "icon": "star",
+          "value": "2012",
+          "label": "первое кафе",
+          "sub": "октябрь, Мумбаи"
+        },
+        {
+          "icon": "building",
+          "value": "Tata Coffee",
+          "label": "обжарка для СП",
+          "sub": "и экспорт зерна для Starbucks"
+        }
+      ],
+      "why": "Совместное предприятие Tata Consumer Products и Starbucks Coffee Company на паритетных началах.",
+      "learn": "По отдельному соглашению Tata Coffee обжаривает и поставляет кофе для СП на выделенном индийском производстве.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Бенгалуру",
+      "title": "Boba Bhai",
+      "logo": "source-videos/логотипы/чай-кофе/boba-bhai.png",
+      "short": "Boba Bhai",
+      "subtitle": "Бенгалуру",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "40+",
+          "label": "точек",
+          "sub": "в девяти городах"
+        },
+        {
+          "icon": "cart",
+          "value": "85 000+",
+          "label": "заказов в месяц"
+        },
+        {
+          "icon": "briefcase",
+          "value": "~$7 млн",
+          "label": "привлечено",
+          "sub": "Titan Capital, 8i Ventures"
+        },
+        {
+          "icon": "flag",
+          "value": "2023",
+          "label": "год основания",
+          "sub": "Дхрув Коли"
+        }
+      ],
+      "why": "Индийский стартап бабл-ти и бургеров в корейском стиле, получивший известность после шоу Shark Tank India.",
+      "learn": "Посевной раунд и Series A (Titan Capital, 8i Ventures); 40+ точек в девяти городах, включая Бангалор и Мумбаи.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Включены",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На хинди/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "8 компаний",
+          "text": "Blue Tokai · Chaayos · Third Wave Coffee\nДели + Бенгалуру + Мумбаи",
+          "icon": "cart"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов"
+        },
+        {
+          "icon": "cart",
+          "value": "8 компаний",
+          "label": "в программе",
+          "sub": "Blue Tokai, Chaayos"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Внутренние перелёты между городами программы",
+        "Сопровождение на хинди/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Дели (перелёт Москва → Дели).<br><b>Вылет:</b> Мумбаи — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,600 @@
+{
+  "title": "Central/Dark Kitchen и быстрая доставка еды в Индии — Global Tech Tour",
+  "output": "2026-10-08-индия-доставка",
+  "source": "https://globaltechtour.ru/expeditions/india-dark-kitchen-delivery-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "india",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Dark Kitchen и доставка еды",
+      "topright": "Rebel Foods · Swiggy\nZomato/Blinkit",
+      "logos": [
+        {
+          "name": "Rebel Foods",
+          "logo": "source-videos/логотипы/техгиганты/rebel-foods.png"
+        },
+        {
+          "name": "EatClub",
+          "logo": "source-videos/логотипы/техгиганты/eatclub-box8.png"
+        },
+        {
+          "name": "Swiggy Instamart",
+          "logo": "source-videos/логотипы/ритейл/swiggy.svg"
+        },
+        {
+          "name": "Curefoods",
+          "logo": "source-videos/логотипы/техгиганты/curefoods-eatfit.png"
+        },
+        {
+          "name": "Licious",
+          "logo": "source-videos/логотипы/еда/licious.png"
+        },
+        {
+          "name": "FreshMenu",
+          "logo": "source-videos/логотипы/техгиганты/freshmenu.png"
+        },
+        {
+          "name": "Blinkit",
+          "logo": "source-videos/логотипы/ритейл/blinkit.svg"
+        },
+        {
+          "name": "Biryani By Kilo",
+          "logo": "source-videos/логотипы/техгиганты/biryani-by-kilo.png"
+        }
+      ],
+      "box_text": "От Rebel Foods до Zomato/Blinkit —\n10 компаний, 6 дней, 6 ночей",
+      "box_right": "Мумбаи · Бенгалуру ·\nДели-NCR — 3 города",
+      "footer": "Global Tech Tour · бизнес-делегации в Индию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Визиты в штаб-квартиры, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на хинди и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "10 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2",
+          "text": "Rebel Foods, EatClub, Swiggy Instamart, Curefoods"
+        },
+        {
+          "name": "Дни 3–4 · Бенгалуру + Гуруграм",
+          "text": "Licious, FreshMenu, Blinkit, Biryani By Kilo"
+        },
+        {
+          "name": "День 5 · Дели-NCR",
+          "text": "Zepto Café — день завершается итоговой встречей."
+        }
+      ]
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Мумбаи",
+          "days": "день 1",
+          "companies": "Rebel Foods\nEatClub"
+        },
+        {
+          "name": "Бенгалуру",
+          "days": "дни 2–3",
+          "companies": "Swiggy Instamart\nCurefoods\nLicious\nFreshMenu",
+          "leg": {
+            "icon": "plane",
+            "text": "≈1,5 ч"
+          }
+        },
+        {
+          "name": "Дели-NCR",
+          "days": "дни 4–5",
+          "companies": "Blinkit\nBiryani By Kilo\nZepto Café",
+          "leg": {
+            "icon": "plane",
+            "text": "≈2,5 ч"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Мумбаи · <b>Вылет:</b> Дели-NCR"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Rebel Foods ·\nEatClub",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "Бенгалуру",
+          "title": "Swiggy Instamart ·\nCurefoods",
+          "text": "Внутренний перелёт Мумбаи→Бенгалуру (≈1,5 ч).",
+          "label": "День 2"
+        },
+        {
+          "sub": "Бенгалуру",
+          "title": "Licious ·\nFreshMenu",
+          "text": "Licious — D2C-единорог мяса и морепродуктов; FreshMenu — пионер облачных кухонь Индии.",
+          "label": "День 3"
+        },
+        {
+          "sub": "Гуруграм",
+          "title": "Blinkit ·\nBiryani By Kilo",
+          "text": "Внутренний перелёт Бенгалуру→Гуруграм (≈2,5 ч).",
+          "label": "День 4"
+        },
+        {
+          "sub": "Дели-NCR",
+          "title": "Zepto Café",
+          "text": "Zepto Café — готовая еда за 10 минут из дарксторов; итоговая встреча.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Мумбаи",
+      "title": "Rebel Foods",
+      "logo": "source-videos/логотипы/техгиганты/rebel-foods.png",
+      "short": "Rebel Foods",
+      "subtitle": "Мумбаи",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "~450",
+          "label": "облачных кухонь"
+        },
+        {
+          "icon": "store",
+          "value": "5000+",
+          "label": "виртуальных ресторанов",
+          "sub": "Faasos, Behrouz Biryani…"
+        },
+        {
+          "icon": "trending",
+          "value": "№1 в мире",
+          "label": "оператор мультибрендовых облачных кухонь"
+        },
+        {
+          "icon": "globe",
+          "value": "70+",
+          "label": "городов",
+          "sub": "Индия, ОАЭ, Великобритания"
+        }
+      ],
+      "why": "Крупнейший в мире оператор мультибрендовых облачных кухонь: Faasos, Behrouz Biryani, Oven Story Pizza, Lunchbox.",
+      "learn": "Проприетарный стек для ИИ-прогнозирования спроса, запуска брендов и контроля качества; в декабре 2024 г. вошёл KKR.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Мумбаи",
+      "title": "EatClub",
+      "logo": "source-videos/логотипы/техгиганты/eatclub-box8.png",
+      "short": "EatClub (Box8)",
+      "subtitle": "Box8 · Мумбаи",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$40 млн",
+          "label": "привлечено",
+          "sub": "декабрь 2021, Tiger Global"
+        },
+        {
+          "icon": "flag",
+          "value": "2012",
+          "label": "год основания",
+          "sub": "как Box8"
+        },
+        {
+          "icon": "star",
+          "value": "MOJO Pizza",
+          "label": "бренд сети",
+          "sub": "а также BOX8, Itminaan Biryani"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Технологичный оператор одной из крупнейших сетей облачных кухонь Азии (ранее Box8 / Poncho Hospitality).",
+      "learn": "Начинали в 2012 г. с доставки мил-боксов Box8; после раунда $40 млн (2021) — ребрендинг в EatClub Brands.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Бенгалуру",
+      "title": "Swiggy Instamart",
+      "logo": "source-videos/логотипы/ритейл/swiggy.svg",
+      "short": "Swiggy Instamart",
+      "subtitle": "Бенгалуру",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "~20–25%",
+          "label": "доля рынка quick-commerce",
+          "sub": "№3, 2025 год"
+        },
+        {
+          "icon": "chart",
+          "value": "~$1,8 млрд",
+          "label": "годовой объём заказов (GOV)"
+        },
+        {
+          "icon": "trending",
+          "value": "×2",
+          "label": "рост GOV год к году",
+          "sub": "IV кв. FY25"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Сервис quick-commerce платформы Swiggy, для которой основной бизнес — классическая доставка еды из ресторанов.",
+      "learn": "№3 в quick-commerce после Blinkit (~48%) и Zepto (~22%); сеть дарксторов активно расширяется.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Бенгалуру",
+      "title": "Curefoods",
+      "logo": "source-videos/логотипы/техгиганты/curefoods-eatfit.png",
+      "short": "Curefoods (EatFit)",
+      "subtitle": "EatFit · Бенгалуру",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "500+",
+          "label": "кухонь"
+        },
+        {
+          "icon": "package",
+          "value": "10+",
+          "label": "брендов",
+          "sub": "EatFit, CakeZone, Frozen Bottle…"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$167 млн",
+          "label": "привлечено",
+          "sub": "Chiratae Ventures, Accel"
+        },
+        {
+          "icon": "chart",
+          "value": "₹800 крор",
+          "label": "IPO одобрено SEBI",
+          "sub": "октябрь 2025 года"
+        }
+      ],
+      "why": "Консолидатор облачных кухонь, спин-офф бренда здорового питания EatFit (основатель — Анкит Нагори, Cure.fit).",
+      "learn": "Активно скупает нишевые F&B-компании: EatFit, CakeZone, Frozen Bottle, MasalaBox, Sharief Bhai, Nomad Pizza.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Бенгалуру",
+      "title": "Licious",
+      "logo": "source-videos/логотипы/еда/licious.png",
+      "short": "Licious",
+      "subtitle": "Бенгалуру",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "~$490 млн",
+          "label": "привлечено",
+          "sub": "Temasek, Vertex Ventures"
+        },
+        {
+          "icon": "star",
+          "value": "Первый",
+          "label": "D2C-единорог Индии",
+          "sub": "мясо и морепродукты"
+        },
+        {
+          "icon": "building",
+          "value": "5",
+          "label": "перерабатывающих предприятий",
+          "sub": "своя холодная цепь"
+        },
+        {
+          "icon": "chart",
+          "value": "₹685 крор",
+          "label": "выручка",
+          "sub": "FY2024"
+        }
+      ],
+      "why": "Первый индийский D2C-единорог на рынке мяса и морепродуктов; основан в 2015 году в Бангалоре.",
+      "learn": "Модель «от фермы до стола»: своя холодная цепь через пять перерабатывающих предприятий, доставка в 28+ городов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Бенгалуру",
+      "title": "FreshMenu",
+      "logo": "source-videos/логотипы/техгиганты/freshmenu.png",
+      "short": "FreshMenu",
+      "subtitle": "Бенгалуру",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$45+ млн",
+          "label": "привлечено",
+          "sub": "Lightspeed, Zodius Capital"
+        },
+        {
+          "icon": "chart",
+          "value": "~₹150 крор",
+          "label": "выручка"
+        },
+        {
+          "icon": "flag",
+          "value": "2014",
+          "label": "год основания",
+          "sub": "Бангалор, Рашми Дага"
+        },
+        {
+          "icon": "handshake",
+          "value": "Dil Foods",
+          "label": "лицензия на перезапуск",
+          "sub": "2024–2025"
+        }
+      ],
+      "why": "Пионер облачных кухонь Индии: без обеденных залов, блюда готовятся под заказ через приложение и агрегаторы.",
+      "learn": "В 2020-х пережил кризис финансирования; в 2024–2025 бренд лицензирован оператору Dil Foods для перезапуска кухонь.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Гуруграм",
+      "title": "Blinkit",
+      "logo": "source-videos/логотипы/ритейл/blinkit.svg",
+      "short": "Blinkit (Eternal)",
+      "subtitle": "Eternal · Гуруграм",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "~48%",
+          "label": "доля рынка quick-commerce",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "store",
+          "value": "1000+",
+          "label": "дарксторов",
+          "sub": "цель — 2000 к концу 2025"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$568 млн",
+          "label": "покупка Zomato (Eternal)",
+          "sub": "2022 год, акциями"
+        },
+        {
+          "icon": "flag",
+          "value": "2013",
+          "label": "год основания",
+          "sub": "как Grofers"
+        }
+      ],
+      "why": "Лидер quick-commerce Индии (бывший Grofers): доля рынка ~48% и более 1000 дарксторов.",
+      "learn": "С 2022 г. принадлежит Zomato (ныне Eternal); в экосистеме Eternal — Hyperpure, B2B-поставки ингредиентов ресторанам.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Гуруграм",
+      "title": "Biryani By Kilo",
+      "logo": "source-videos/логотипы/техгиганты/biryani-by-kilo.png",
+      "short": "Biryani By Kilo",
+      "subtitle": "Гуруграм",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "100+",
+          "label": "точек",
+          "sub": "к 2023 году"
+        },
+        {
+          "icon": "globe",
+          "value": "25+",
+          "label": "городов Индии"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$67+ млн",
+          "label": "привлечено",
+          "sub": "113 инвесторов"
+        },
+        {
+          "icon": "handshake",
+          "value": "Devyani",
+          "label": "покупатель",
+          "sub": "апрель 2025 года"
+        }
+      ],
+      "why": "Бирьяни в глиняных горшках дум-стиля: флагманские рестораны плюс сеть облачных кухонь для доставки.",
+      "learn": "Основана в 2015 году в Гуруграме; в апреле 2025 года куплена ресторанным холдингом Devyani International.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Дели-NCR",
+      "title": "Zepto Café",
+      "logo": "source-videos/логотипы/техгиганты/zepto-cafe.png",
+      "short": "Zepto Café",
+      "subtitle": "Дели-NCR",
+      "facts": [
+        {
+          "icon": "package",
+          "value": "140+",
+          "label": "позиций меню",
+          "sub": "кофе, выпечка, лёгкие блюда"
+        },
+        {
+          "icon": "cart",
+          "value": "~30 000",
+          "label": "заказов в день",
+          "sub": "к запуску, 6 городов"
+        },
+        {
+          "icon": "store",
+          "value": "600",
+          "label": "дарксторов Zepto",
+          "sub": "цель охвата"
+        },
+        {
+          "icon": "flag",
+          "value": "2022",
+          "label": "запуск",
+          "sub": "приложение — с 2024 года"
+        }
+      ],
+      "why": "Доставка готовой еды и напитков за 10 минут от квик-коммерс единорога Zepto — из дарксторов с мини-кухнями.",
+      "learn": "Мини-кухни в дарксторах: спид-печи и кофемашины; в декабре 2024 года Zepto Café выделен в отдельное приложение.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Включены",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На хинди/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "10 компаний",
+          "text": "Rebel Foods · Swiggy · Zomato/Blinkit\nМумбаи + Бенгалуру + Дели-NCR",
+          "icon": "smartphone"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов"
+        },
+        {
+          "icon": "smartphone",
+          "value": "10 компаний",
+          "label": "в программе",
+          "sub": "Rebel Foods, Swiggy, Zomato/Blinkit"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Внутренние перелёты между городами программы",
+        "Сопровождение на хинди/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Мумбаи (перелёт Москва → Мумбаи).<br><b>Вылет:</b> Дели-NCR — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

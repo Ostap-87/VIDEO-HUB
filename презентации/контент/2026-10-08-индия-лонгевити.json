@@ -1,0 +1,562 @@
+{
+  "title": "Лонгевити и anti-aging биотех Индии — Global Tech Tour",
+  "output": "2026-10-08-индия-лонгевити",
+  "source": "https://globaltechtour.ru/expeditions/india-longevity-biotech-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "india",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Лонгевити и anti-aging биотех Индии",
+      "topright": "GIOSTAR · Biocon\nArtemis Hospitals",
+      "logos": [
+        {
+          "name": "GIOSTAR",
+          "logo": "source-videos/логотипы/медицина/giostar.png"
+        },
+        {
+          "name": "Decode Age",
+          "logo": "source-videos/логотипы/медицина/decode-age.png"
+        },
+        {
+          "name": "Biocon",
+          "logo": "source-videos/логотипы/медицина/biocon-syngene.png"
+        },
+        {
+          "name": "StemRx",
+          "logo": "source-videos/логотипы/медицина/stemrx-navi-mumbai.png"
+        },
+        {
+          "name": "Reliance Life Sciences",
+          "logo": "source-videos/логотипы/медицина/reliance-life-sciences.png"
+        },
+        {
+          "name": "Artemis Hospitals",
+          "logo": "source-videos/логотипы/медицина/artemis-hospitals.png"
+        },
+        {
+          "name": "The Anti-Aging Centre",
+          "logo": "source-videos/логотипы/медицина/anti-aging-centre-tac.png"
+        },
+        {
+          "name": "Apollo",
+          "logo": "source-videos/логотипы/медицина/apollo-nova-regenerative.png"
+        }
+      ],
+      "box_text": "От стволовых клеток GIOSTAR до Artemis —\n9 компаний, 6 дней, 6 ночей",
+      "box_right": "Бенгалуру + Мумбаи + Дели-NCR",
+      "footer": "Global Tech Tour · бизнес-делегации в Индию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Визиты в штаб-квартиры, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на хинди и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "9 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Бенгалуру",
+          "text": "GIOSTAR, Decode Age, Biocon / Syngene, клиника долголетия (уточняется)"
+        },
+        {
+          "name": "Дни 3–4 · Мумбаи + Дели-NCR",
+          "text": "StemRx, Reliance Life Sciences, Artemis Hospitals, The Anti-Aging Centre"
+        },
+        {
+          "name": "День 5 · Дели-NCR",
+          "text": "Apollo — регенеративная медицина, итоговая встреча"
+        }
+      ]
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Бенгалуру",
+          "days": "дни 1–2",
+          "companies": "GIOSTAR\nDecode Age\nBiocon"
+        },
+        {
+          "name": "Мумбаи",
+          "days": "день 3",
+          "companies": "StemRx\nReliance Life Sciences",
+          "leg": {
+            "icon": "plane",
+            "text": "≈1,5 ч"
+          }
+        },
+        {
+          "name": "Дели-NCR",
+          "days": "дни 4–5",
+          "companies": "Artemis Hospitals\nThe Anti-Aging Centre\nApollo",
+          "leg": {
+            "icon": "plane",
+            "text": "≈2 ч"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Бенгалуру · <b>Вылет:</b> Дели-NCR"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "GIOSTAR ·\nDecode Age",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Biocon /\nSyngene",
+          "text": "Biocon / Syngene — кампус Biocon Park; второй визит — клиника долголетия (уточняется).",
+          "label": "День 2"
+        },
+        {
+          "sub": "Мумбаи",
+          "title": "StemRx ·\nReliance Life Sciences",
+          "text": "Внутренний перелёт Бенгалуру→Мумбаи (≈1,5 ч).",
+          "label": "День 3"
+        },
+        {
+          "sub": "Дели-NCR",
+          "title": "Artemis ·\nAnti-Aging Centre",
+          "text": "Внутренний перелёт Мумбаи→Дели (≈2 ч).",
+          "label": "День 4"
+        },
+        {
+          "sub": "Дели-NCR",
+          "title": "Apollo",
+          "text": "Apollo — PRP-терапия и стволовые клетки; итоговая встреча.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Бенгалуру",
+      "title": "GIOSTAR",
+      "logo": "source-videos/логотипы/медицина/giostar.png",
+      "short": "GIOSTAR",
+      "subtitle": "Бенгалуру",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2008",
+          "label": "год основания"
+        },
+        {
+          "icon": "building",
+          "value": "3",
+          "label": "центра в Индии",
+          "sub": "Ахмадабад, Бангалор, Чандигарх"
+        },
+        {
+          "icon": "target",
+          "value": "Диабет",
+          "label": "волчанка, рассеянный склероз",
+          "sub": "аутоиммунные заболевания"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Global Institute of Stem Cell Therapy and Research: доступная стволово-клеточная терапия при дегенеративных заболеваниях.",
+      "learn": "Больницы и центры в Ахмадабаде, Бангалоре и Чандигархе; аутологичные и аллогенные стволовые клетки.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Бенгалуру",
+      "title": "Decode Age",
+      "logo": "source-videos/логотипы/медицина/decode-age.png",
+      "short": "Decode Age",
+      "subtitle": "Бенгалуру",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Первая",
+          "label": "компания долголетия",
+          "sub": "исследовательская, в Индии"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$1,7 млн",
+          "label": "привлечено",
+          "sub": "2024 год"
+        },
+        {
+          "icon": "flag",
+          "value": "2021",
+          "label": "год основания"
+        },
+        {
+          "icon": "target",
+          "value": "NMN",
+          "label": "нутрицевтики",
+          "sub": "ресвератрол, спермидин, сенолитики"
+        }
+      ],
+      "why": "Позиционирует себя как первая исследовательская компания долголетия в Индии: нутрицевтики против маркеров старения.",
+      "learn": "Нутрицевтики (NMN, ресвератрол, спермидин, сенолитики) плюс тесты микробиома и биологического возраста по крови.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Бенгалуру",
+      "title": "Biocon / Syngene",
+      "logo": "source-videos/логотипы/медицина/biocon-syngene.png",
+      "short": "Biocon / Syngene",
+      "subtitle": "Бенгалуру",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "№1",
+          "label": "биотех-компания Индии",
+          "sub": "Biocon"
+        },
+        {
+          "icon": "flag",
+          "value": "1978",
+          "label": "год основания Biocon"
+        },
+        {
+          "icon": "users",
+          "value": "8200+",
+          "label": "сотрудников Syngene",
+          "sub": "5600+ учёных"
+        },
+        {
+          "icon": "building",
+          "value": "90 акров",
+          "label": "кампус Biocon Park",
+          "sub": "Бангалор"
+        }
+      ],
+      "why": "Крупнейшая индийская биотехнологическая компания: путь от производства ферментов до полного цикла биофармацевтики.",
+      "learn": "Дочерняя Syngene International — CRDMO для фармы, биотеха и агрохимии на кампусе Biocon Park в Бангалоре.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Мумбаи",
+      "title": "StemRx",
+      "logo": "source-videos/логотипы/медицина/stemrx-navi-mumbai.png",
+      "short": "StemRx (Navi Mumbai)",
+      "subtitle": "Нави-Мумбаи",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2011",
+          "label": "год основания",
+          "sub": "д-р Прадип В. Махаджан"
+        },
+        {
+          "icon": "target",
+          "value": "Аутизм",
+          "label": "ДЦП, аваскулярный некроз",
+          "sub": "и ортопедические патологии"
+        },
+        {
+          "icon": "pin",
+          "value": "Нави-Мумбаи",
+          "label": "больница и R&D-центр",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Больница и исследовательский центр регенеративной медицины в Нави-Мумбаи, основанные д-ром Прадипом В. Махаджаном.",
+      "learn": "Аутологичная стволово-клеточная терапия при аутизме, ДЦП, аваскулярном некрозе и болезнях двигательных нейронов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Мумбаи",
+      "title": "Reliance Life Sciences",
+      "logo": "source-videos/логотипы/медицина/reliance-life-sciences.png",
+      "short": "Reliance Life Sciences",
+      "subtitle": "Мумбаи",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "20 акров",
+          "label": "кампус в Нави-Мумбаи",
+          "sub": "Dhirubhai Ambani LSC"
+        },
+        {
+          "icon": "target",
+          "value": "Вакцины",
+          "label": "биофарма, генная и клеточная терапия"
+        },
+        {
+          "icon": "trending",
+          "value": "№1",
+          "label": "опыт трансплантаций",
+          "sub": "пуповинной крови, Индия"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Биотехнологическое подразделение группы Reliance, крупнейшего частного конгломерата Индии.",
+      "learn": "Одной из первых в Индии развивала регенеративную медицину; флагман — Dhirubhai Ambani Life Sciences Centre.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Дели-NCR",
+      "title": "Artemis Hospitals",
+      "logo": "source-videos/логотипы/медицина/artemis-hospitals.png",
+      "short": "Artemis Hospitals",
+      "subtitle": "Дели-NCR",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "750+",
+          "label": "коек",
+          "sub": "525 000 кв. футов"
+        },
+        {
+          "icon": "users",
+          "value": "400+",
+          "label": "врачей",
+          "sub": "11 центров передового опыта"
+        },
+        {
+          "icon": "star",
+          "value": "JCI + NABH",
+          "label": "двойная аккредитация",
+          "sub": "первая в регионе; JCI — 4 раза"
+        },
+        {
+          "icon": "flag",
+          "value": "2007",
+          "label": "работает с"
+        }
+      ],
+      "why": "Первая многопрофильная больница региона, аккредитованная одновременно JCI и NABH.",
+      "learn": "Лаборатория больницы поддерживает научные исследования в области генной терапии, клеточной биологии и регенеративной медицины.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Дели-NCR",
+      "title": "The Anti-Aging Centre",
+      "logo": "source-videos/логотипы/медицина/anti-aging-centre-tac.png",
+      "short": "The Anti-Aging Centre (TAC)",
+      "subtitle": "TAC · Дели-NCR",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "160+",
+          "label": "биомаркеров",
+          "sub": "метилирование ДНК, теломеры"
+        },
+        {
+          "icon": "calendar",
+          "value": "12 мес.",
+          "label": "индивидуальная программа"
+        },
+        {
+          "icon": "building",
+          "value": "3",
+          "label": "города",
+          "sub": "Гуруграм, Пуне, Дели"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Сеть клиник долголетия: первая в Индии программа персонализированного долголетия под руководством врачей.",
+      "learn": "Оценивает 160+ биомаркеров, включая метилирование ДНК и длину теломер; часть тестов анализируют в Нидерландах.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Дели-NCR",
+      "title": "Apollo / Nova",
+      "logo": "source-videos/логотипы/медицина/apollo-nova-regenerative.png",
+      "short": "Apollo",
+      "subtitle": "Регенеративное направление · Дели-NCR",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "Jubilee Hills",
+          "label": "регенеративное отделение",
+          "sub": "Apollo, Хайдарабад"
+        },
+        {
+          "icon": "target",
+          "value": "PRP",
+          "label": "терапия суставов и хрящей"
+        },
+        {
+          "icon": "target",
+          "value": "МСК",
+          "label": "трансплантация стволовых клеток",
+          "sub": "мезенхимальных"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Одна из крупнейших частных больничных сетей Индии развивает направление регенеративной медицины.",
+      "learn_label": "Фокус визита",
+      "learn": "Отделение в Apollo Jubilee Hills с проф. Энрико Кастеллаччи: PRP-терапия и мезенхимальные стволовые клетки."
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Включены",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На хинди/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "9 компаний",
+          "text": "GIOSTAR · Biocon · Artemis Hospitals\nБенгалуру + Мумбаи + Дели-NCR",
+          "icon": "target"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов"
+        },
+        {
+          "icon": "target",
+          "value": "9 компаний",
+          "label": "Лонгевити и anti-aging биотех Индии",
+          "sub": "GIOSTAR, Biocon, Artemis Hospitals"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Внутренние перелёты между городами программы",
+        "Сопровождение на хинди/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Бенгалуру (перелёт Москва → Бенгалуру).<br><b>Вылет:</b> Дели-NCR — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

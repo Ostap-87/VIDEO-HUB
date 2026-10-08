@@ -285,7 +285,7 @@ def sentences(text):
 
 
 def strip_parens(s):
-    return re.sub(r'\s*\([^()]*\)', '', s).strip()
+    return re.sub(r'(?<!\.)\.\.(?!\.)', '.', re.sub(r'\s*\([^()]*\)', '', s)).strip()  # «2011 г. (…).» → «2011 г.»
 
 
 def end_dot(s):
@@ -374,7 +374,7 @@ def clause_cuts(s, limit):
 
 # ---------------------------------------------------------------- факты из описания компании
 NUMRE = r'(\d{1,3}(?:[   ]\d{3})+|\d+(?:,\d+)?)'
-MULT = r'(тыс\.|тысяч\w*|млн|млрд|трлн)'
+MULT = r'(тыс\.|тысяч\w*|млн|млрд|трлн|крор\w*)'  # крор — индийские 10 млн (₹330 870 крор)
 CUR = r'(бат\w*|долл\w*|евро|юан\w*|иен\w*|рупи\w*|вон\w*|дирхам\w*|ринггит\w*|донг\w*)'
 AREA = r'(кв\.\s?м\.?|м²|кв\. метр\w*|квадратн\w+ метр\w*|гектар\w*|га\b)'
 APPROX = [('более чем в', '+'), ('более чем на', '+'), ('более чем', '+'), ('свыше', '+'), ('более', '+'), ('больше', '+'),
@@ -411,11 +411,13 @@ def num_value(raw, sign, mult='', unit='', money_cur=''):
         n = f'{int(n):,}'.replace(',', ' ')
     v = n
     if mult:
-        v += ' ' + ('тыс.' if mult.startswith('тыс') else mult)
+        v += ' ' + ('тыс.' if mult.startswith('тыс') else 'крор' if mult.startswith('крор') else mult)
     if unit:
         v += ' ' + unit
     if money_cur:
-        if money_cur.startswith('долл'):
+        if money_cur == '₹' or (money_cur.startswith('рупи') and mult.startswith('крор')):  # индийская рупия: «₹4744 крор»
+            v = '₹' + v
+        elif money_cur.startswith('долл'):
             v = '$' + v
         elif money_cur.startswith('евро'):
             v = '€' + v
@@ -620,7 +622,7 @@ def extract_facts(desc, names=()):
         gpos += len(sent) + 1
         subj_is_company = si == 0 or any(sent.lower().startswith(n) for n in lname) or re.match(r'(Компания|Сеть|Бренд|Группа|Клиника|Сервис|Платформа)\b', sent)
         # --- числа
-        for m in re.finditer(r'(\$\s?)?(?<![\w.,/–×-])(?<!\d[ \u00a0\u202f])' + NUMRE + r'(\+)?(?![.,]\d|[/–×-]\d|\d|-[а-я]|[A-Za-zА-Яа-я])', sent):
+        for m in re.finditer(r'([$₹]\s?)?(?<![\w.,/–×-])(?<!\d[ \u00a0\u202f])' + NUMRE + r'(\+)?(?![.,]\d|[/–×-]\d|\d|-[а-я]|[A-Za-zА-Яа-я])', sent):
             if in_parens(sent, m.start()) and not re.search(r'%|' + MULT + '|' + AREA, sent[m.end():m.end() + 14]):
                 continue
             raw = m.group(2)
@@ -652,7 +654,7 @@ def extract_facts(desc, names=()):
             aft3 = aft2[cm.end():] if cm else aft2
             pct = re.match(r'\s*%', aft2)
             if m.group(1):
-                cur = cur or 'долл'
+                cur = cur or ('₹' if '₹' in m.group(1) else 'долл')
             sign = '+' if m.group(3) or plus2 else ''
             for word, sg in APPROX:
                 if re.search(r'(?:^|\s)' + word + r'\s*$', before, re.I):
@@ -671,10 +673,12 @@ def extract_facts(desc, names=()):
                 if not words or after_pct.strip().startswith((')', ',')):
                     pre = re.sub(r'\(\s*(?:около|свыше|более|почти|примерно)?\s*$', '', before).strip()
                     seg = re.split(r',\s|[;(—]', pre)[-1]  # «$1,5 млрд» — запятая внутри числа не граница
-                    dm = re.search(r'\bдол[яеию]\b', seg)
+                    dm = re.search(r'\bдол(?:[яеию]|ей)\b', seg)
                     pw = re.findall(r'[\w-]+', seg)
+                    growth = False
                     while pw and (pw[-1].lower() in STOPW or pw[-1].lower() in ('её', 'его', 'их') or is_verb(pw[-1])
                                   or first_pos(pw[-1]) in ('PREP', 'CONJ')):
+                        growth = growth or bool(re.match(r'(?:вырос|увеличил)', pw[-1].lower()))
                         pw = pw[:-1]  # «доля рынка достигла» → «доля рынка»
                     k = max([i + 1 for i, w in enumerate(pw) if re.search(r'\d', w) or is_verb(w) or first_pos(w) == 'GRND'] + [0])
                     pw = pw[k:][-4:]  # «вложила $1,5 млрд и получила», «сократив ручной труд на 90%» — не подпись
@@ -691,6 +695,11 @@ def extract_facts(desc, names=()):
                         words = (nomn_phrase(take) or ['доля', 'рынка']) if 'рынк' in ' '.join(take) else (['доля', 'рынка'] if 'рынк' in seg else ['доля'])
                     else:
                         words = nomn_phrase(pw)
+                        if words and pw and seg.strip() == pre and re.fullmatch(r'[А-ЯЁ][а-яё-]+', words[0]) and not (
+                                MORPH and {'Name', 'Surn', 'Geox', 'Orgn', 'Trad'} & set(map(str, MORPH.parse(words[0])[0].tag.grammemes))):
+                            words = [words[0].lower()] + words[1:]  # начало предложения: «Консолидированный GMV» → «консолидированный GMV»
+                        if growth and MORPH and words and len(words) <= 3 and all(_pos(w) in ('NOUN', 'ADJF', 'PRTF', None) for w in words):
+                            words = ['рост'] + [_infl_word(w, {'gent'}) or w for w in words]  # «Выручка выросла на 26%» → «рост выручки»
                 if not words:
                     continue
                 v = {'~': '~', 'до ': 'до ', '<': '<'}.get(sign, '') + raw + '%' + ('+' if sign == '+' else '')
@@ -710,11 +719,14 @@ def extract_facts(desc, names=()):
                 best, lab = -1, None
                 for rx, lb in [(r'выручк|доход|продаж', 'выручка'), (r'капитализац', 'капитализация'), (r'оцен', 'оценка компании'),
                                (r'убыт', 'убытки'), (r'привлек|раунд|series|посевн', 'привлечено инвестиций'),
-                               (r'инвест|вложи|вложен', 'инвестиции'), (r'продал|сделк', 'сумма сделки'),
+                               (r'инвест|вложи|вложен', 'инвестиции'), (r'продал|сделк|приобр\w+ компани|куплен', 'сумма сделки'),
+                               (r'оборот', 'оборот'), (r'\bgmv\b', 'GMV'),
                                (r'стоимост|модернизац', 'стоимость проекта'), (r'прибыл', 'прибыль')]:
                     for mm2 in re.finditer(rx, ctx):
                         if mm2.start() > best:
                             best, lab = mm2.start(), lb
+                if not lab and re.search(r'\bipo\s+(?:на|объ[её]мом)\s+(?:около\s+|примерно\s+|свыше\s+|более\s+)?$', ctx):
+                    lab = 'объём IPO'  # «провела IPO на ₹1701 крор»
                 if folw.startswith('инвестиц') and lab not in ('привлечено инвестиций',):
                     lab = 'инвестиции'
                 if lab and re.search(r'цел', ctx[-60:]):
@@ -1417,6 +1429,9 @@ def ensure_logo(c, tour, brands, new_logos, allow_download=True):
     hit = find_existing_logo(c, brands)
     if hit:
         return hit
+    for c2, rel, _ in new_logos:  # «Amul (GCMMF)» и «Amul Fed Dairy» — один файл сайта, второй раз не качаем
+        if c2.get('logo') == c['logo']:
+            return rel
     folder = SECTOR_FOLDER.get(c.get('sector'), 'общие')
     tid = tour['tour_id']
     if 'beauty' in tid and c.get('sector') in ('consumer', 'medtech'):
@@ -1780,14 +1795,24 @@ def build_deck(tour, comps, logos_ok=True):
                       'text': Var(*[v for v in variants if v]), 'label': f'День {d["day"]}'})
         if len(cities) > 1 and d['city_ru'] != main_city:  # «Токио / Нода (Тиба)» — тоже подпись
             sub = f'{d["city_ru"]} · {d.get("time") or ""}'.strip(' ·')
-            dlist[-1]['sub'] = sub if len(sub) <= 18 or len(itin) <= 3 else d['city_ru']  # «Семаранг · 10:00–13:00» наезжает на кружок следующего дня
+            short_city = d['city_ru'] if len(d['city_ru']) <= 18 or d is itin[-1] else city_base(d['city_ru'])  # «Ахмадабад/Гандинагар»
+            dlist[-1]['sub'] = sub if len(sub) <= 18 or len(itin) <= 3 else short_city  # «Семаранг · 10:00–13:00» наезжает на кружок следующего дня
     dghost = THAI_DAYS.get(len(itin)) if country == 'th' else (CJK_DAYS.get(len(itin)) if country in ('cn', 'jp') else None)
     slides.append({'type': 'days', 'tag': 'Программа по дням', 'title': f'{cnt(len(itin), "день", "дня", "дней")} визитов',
                    'ghost': dghost, 'days': dlist})
 
-    # 6. компании
+    # 6. компании (одна карточка на компанию: Zepto в дни 2 и 4 — «Дни 2 и 4 · Мумбаи / Бенгалуру»)
+    visits = {}
     for d, c in clist:
-        city = d['city_ru']
+        visits.setdefault(c['id'], []).append(d)
+    carded = set()
+    for d, c in clist:
+        if c['id'] in carded:
+            continue
+        carded.add(c['id'])
+        vd = visits[c['id']]
+        day_word = f'День {d["day"]}' if len(vd) == 1 else 'Дни ' + ' и '.join(str(x['day']) for x in vd)
+        city = ' / '.join(dict.fromkeys(x['city_ru'] for x in vd))
         gh, thai = ghost_for(c)
         cands = extract_facts(c.get('desc_ru', ''), company_names(c))
         extra = []
@@ -1796,8 +1821,8 @@ def build_deck(tour, comps, logos_ok=True):
             ws_ = grp.split()
             gval = Var(grp, ''.join(w[0] for w in ws_ if w[0].isupper())) if len(ws_) >= 3 else grp
             extra.append({'kind': 'group', 'value': gval, 'labels': ['в составе группы'], 'subs': [], 'icon': 'handshake', 'pos': 999})
-        extra.append({'kind': 'city', 'value': city, 'labels': ['площадка визита'], 'subs': [f'день {d["day"]} программы'], 'icon': 'pin', 'pos': 1000})
-        extra.append({'kind': 'city2', 'value': f'День {d["day"]}', 'labels': ['визит делегации'], 'subs': [d.get('time') or ''], 'icon': 'calendar', 'pos': 1001})
+        extra.append({'kind': 'city', 'value': city, 'labels': ['площадка визита'], 'subs': [f'{day_word.lower()} программы'], 'icon': 'pin', 'pos': 1000})
+        extra.append({'kind': 'city2', 'value': day_word, 'labels': ['визит делегации'], 'subs': [d.get('time') or ''], 'icon': 'calendar', 'pos': 1001})
         facts = pick_facts(cands, extra)
         wl = why_learn(c)
         fl = []
@@ -1826,7 +1851,7 @@ def build_deck(tour, comps, logos_ok=True):
             for n in nv:
                 combos.append((t, n))
         combos.sort(key=lambda x: (x[1] is None, len(x[0]) + len(x[1] or '') * 0.9) if x != (tv[0], nv[0]) else (False, -1))
-        slide = {'type': 'company', 'tag': f'День {d["day"]} · {city}',
+        slide = {'type': 'company', 'tag': f'{day_word} · {city}',
                  'title': Var(None), 'native': Var(None),
                  '_combo': True,
                  'ghost': gh, 'ghost_thai': thai,

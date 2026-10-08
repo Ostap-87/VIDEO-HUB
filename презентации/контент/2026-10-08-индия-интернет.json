@@ -1,0 +1,631 @@
+{
+  "title": "Интернет-гиганты Индии: ИИ, мессенджеры, e-commerce — Global Tech Tour",
+  "output": "2026-10-08-индия-интернет",
+  "source": "https://globaltechtour.ru/expeditions/india-tech-internet-giants-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "india",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Интернет-гиганты Индии",
+      "topright": "ИИ · Мессенджеры\nE-commerce",
+      "logos": [
+        {
+          "name": "Sarvam AI",
+          "logo": "source-videos/логотипы/ии/sarvam-ai.png"
+        },
+        {
+          "name": "Krutrim",
+          "logo": "source-videos/логотипы/ии/krutrim-ola.png"
+        },
+        {
+          "name": "Flipkart",
+          "logo": "source-videos/логотипы/ритейл/flipkart.svg"
+        },
+        {
+          "name": "Meesho",
+          "logo": "source-videos/логотипы/техгиганты/meesho.png"
+        },
+        {
+          "name": "Yellow.ai",
+          "logo": "source-videos/логотипы/ии/yellow-ai.png"
+        },
+        {
+          "name": "Mad Street Den",
+          "logo": "source-videos/логотипы/ии/mad-street-den.png"
+        },
+        {
+          "name": "Fractal Analytics",
+          "logo": "source-videos/логотипы/ии/fractal-analytics.png"
+        },
+        {
+          "name": "Qure.ai",
+          "logo": "source-videos/логотипы/ии/qure-ai.png"
+        }
+      ],
+      "box_text": "От суверенных LLM Sarvam AI и Krutrim —\n10 компаний, 6 дней, 6 ночей",
+      "box_right": "Бенгалуру + Мумбаи —\nодин перелёт, две tech-столицы",
+      "footer": "Global Tech Tour · бизнес-делегации в Индию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Визиты в штаб-квартиры, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на хинди и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "10 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Бенгалуру",
+          "text": "Sarvam AI, Krutrim, Flipkart, Meesho"
+        },
+        {
+          "name": "Дни 3–4 · Бенгалуру + Мумбаи",
+          "text": "Yellow.ai, Mad Street Den, Fractal Analytics, Qure.ai"
+        },
+        {
+          "name": "День 5 · Мумбаи",
+          "text": "Haptik, Nykaa"
+        }
+      ],
+      "quote": "Один перелёт, две\ntech-столицы."
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Бенгалуру",
+          "days": "дни 1–3",
+          "companies": "Sarvam AI\nKrutrim\nFlipkart\nMeesho\n+ ещё 2"
+        },
+        {
+          "name": "Мумбаи",
+          "days": "дни 4–5",
+          "companies": "Fractal Analytics\nQure.ai\nHaptik\nNykaa",
+          "leg": {
+            "icon": "plane",
+            "text": "≈1,5 ч"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Бенгалуру · <b>Вылет:</b> Мумбаи"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Sarvam AI ·\nKrutrim",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Flipkart ·\nMeesho",
+          "text": "Flipkart — e-commerce в составе Walmart; Meesho — соцкоммерция, IPO в декабре 2025.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Yellow.ai ·\nMad Street Den",
+          "text": "Yellow.ai — разговорный AI для 1300+ компаний; Mad Street Den — Vue.ai для ритейла.",
+          "label": "День 3"
+        },
+        {
+          "sub": "Мумбаи",
+          "title": "Fractal Analytics ·\nQure.ai",
+          "text": "Внутренний перелёт Бенгалуру→Мумбаи (≈1,5 ч).",
+          "label": "День 4"
+        },
+        {
+          "sub": "Мумбаи",
+          "title": "Haptik ·\nNykaa",
+          "text": "Haptik — разговорный AI в составе Reliance Jio; Nykaa — бьюти-маркетплейс с AI-подбором.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Бенгалуру",
+      "title": "Sarvam AI",
+      "logo": "source-videos/логотипы/ии/sarvam-ai.png",
+      "short": "Sarvam AI",
+      "subtitle": "Бенгалуру",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "1 из 67",
+          "label": "выбрана для суверенной LLM",
+          "sub": "правительство Индии, 2025"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$234 млн",
+          "label": "Series B",
+          "sub": "июнь 2026, HCLTech, Bessemer"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$1,5 млрд",
+          "label": "оценка компании",
+          "sub": "статус единорога"
+        },
+        {
+          "icon": "flag",
+          "value": "2023",
+          "label": "год основания",
+          "sub": "август, Бангалор"
+        }
+      ],
+      "why": "Выбрана правительством Индии из 67 претендентов для создания суверенной LLM; основатели — из AI4Bharat (IIT Мадрас).",
+      "learn": "Модели Sarvam-30B/105B, речевая платформа на 22 языках и очки Kaze.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Бенгалуру",
+      "title": "Krutrim",
+      "logo": "source-videos/логотипы/ии/krutrim-ola.png",
+      "short": "Krutrim (Ola)",
+      "subtitle": "Ola · Бенгалуру",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$50 млн",
+          "label": "привлечено",
+          "sub": "январь 2024, Matrix Partners"
+        },
+        {
+          "icon": "star",
+          "value": "Первый",
+          "label": "AI-единорог Индии",
+          "sub": "оценка $1 млрд"
+        },
+        {
+          "icon": "globe",
+          "value": "~22",
+          "label": "языков Индии",
+          "sub": "понимает; генерирует — на 10"
+        },
+        {
+          "icon": "briefcase",
+          "value": "~₹2000 крор",
+          "label": "вложил основатель",
+          "sub": "Бхавиш Агарвал"
+        }
+      ],
+      "why": "Krutrim (санскр. «искусственный») — индийская LLM и облачная AI-инфраструктура от Бхавиша Агарвала, основателя Ola.",
+      "learn": "В январе 2024 г. стала первым AI-единорогом Индии с оценкой $1 млрд — самый быстрый путь к этому статусу в стране.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Бенгалуру",
+      "title": "Flipkart",
+      "logo": "source-videos/логотипы/ритейл/flipkart.svg",
+      "short": "Flipkart (Walmart)",
+      "subtitle": "Walmart · Бенгалуру",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$16 млрд",
+          "label": "сделка с Walmart",
+          "sub": "77% компании, 2018 год"
+        },
+        {
+          "icon": "flag",
+          "value": "2007",
+          "label": "год основания",
+          "sub": "книжный онлайн-магазин"
+        },
+        {
+          "icon": "chart",
+          "value": "IPO",
+          "label": "ожидается в 2026 году",
+          "sub": "HQ снова в Индии"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Индийская e-commerce платформа: в 2018 г. Walmart купил 77% компании за $16 млрд — крупнейшая сделка Walmart в истории.",
+      "learn": "В апреле 2025 г. объявила о возвращении головного офиса из Сингапура в Индию в преддверии IPO, ожидаемого в 2026 г.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Бенгалуру",
+      "title": "Meesho",
+      "logo": "source-videos/логотипы/техгиганты/meesho.png",
+      "short": "Meesho",
+      "subtitle": "Бенгалуру",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "150–230 млн",
+          "label": "годовых покупателей",
+          "sub": "2025–2026"
+        },
+        {
+          "icon": "chart",
+          "value": "$6,2 млрд",
+          "label": "GMV",
+          "sub": "FY25"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$600+ млн",
+          "label": "привлечено на IPO",
+          "sub": "декабрь 2025, NSE/BSE"
+        },
+        {
+          "icon": "trending",
+          "value": "+95%",
+          "label": "рост акций после листинга",
+          "sub": "оценка ~$11 млрд"
+        }
+      ],
+      "why": "Индийская платформа социальной коммерции: 150–230 млн годовых покупателей, GMV — $6,2 млрд (FY25).",
+      "learn": "Основана в 2015 г. выпускниками IIT Дели Видитом Атреем и Санджеевом Барнвалом; начинала с перепродажи через WhatsApp.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Бенгалуру",
+      "title": "Yellow.ai",
+      "logo": "source-videos/логотипы/ии/yellow-ai.png",
+      "short": "Yellow.ai",
+      "subtitle": "Бенгалуру",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "1300+",
+          "label": "компаний-клиентов"
+        },
+        {
+          "icon": "globe",
+          "value": "85+",
+          "label": "стран",
+          "sub": "135+ языков"
+        },
+        {
+          "icon": "chart",
+          "value": "16+ млрд",
+          "label": "диалогов в год"
+        },
+        {
+          "icon": "briefcase",
+          "value": "~$500 млн",
+          "label": "оценка компании",
+          "sub": "привлечено $102 млн"
+        }
+      ],
+      "why": "Платформа разговорного AI на мульти-LLM архитектуре (ранее Yellow Messenger), основана в 2016 году.",
+      "learn": "Клиенты — Sony, Domino's, Hyundai, Volkswagen; Series C на $78 млн (WestBridge, Salesforce Ventures, Lightspeed).",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Бенгалуру",
+      "title": "Mad Street Den",
+      "logo": "source-videos/логотипы/ии/mad-street-den.png",
+      "short": "Mad Street Den",
+      "subtitle": "Бенгалуру",
+      "facts": [
+        {
+          "icon": "cpu",
+          "value": "Vue.ai",
+          "label": "AI-стек для ритейла",
+          "sub": "от витрины до склада"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$57+ млн",
+          "label": "привлечено",
+          "sub": "за 7 раундов"
+        },
+        {
+          "icon": "flag",
+          "value": "2016",
+          "label": "год основания",
+          "sub": "Ченнаи / Редвуд-Сити"
+        },
+        {
+          "icon": "handshake",
+          "value": "M2P Fintech",
+          "label": "покупатель",
+          "sub": "4 марта 2025 года"
+        }
+      ],
+      "why": "Компания компьютерного зрения для ритейла: флагман Vue.ai покрывает весь цикл — от витрины до маркетинга и склада.",
+      "learn": "Привлекла свыше $57 млн (Sequoia Capital India, Falcon Edge, Alpha Wave); в марте 2025 г. куплена финтехом M2P Fintech.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Мумбаи",
+      "title": "Fractal Analytics",
+      "logo": "source-videos/логотипы/ии/fractal-analytics.png",
+      "short": "Fractal Analytics",
+      "subtitle": "Мумбаи",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "+26%",
+          "label": "рост выручки",
+          "sub": "год до марта 2025"
+        },
+        {
+          "icon": "chart",
+          "value": "~$305 млн",
+          "label": "выручка",
+          "sub": "₹27,65 млрд"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$312,5 млн",
+          "label": "первое AI-IPO Индии",
+          "sub": "февраль 2026 года"
+        },
+        {
+          "icon": "flag",
+          "value": "2000",
+          "label": "год основания",
+          "sub": "AI-фокус — с 2022 года"
+        }
+      ],
+      "why": "Ведущая индийская чисто AI-компания для финансов, ритейла и здравоохранения; с 2022 г. — переход от аналитики к AI.",
+      "learn": "В феврале 2026 г. провела первое в Индии AI-IPO ($312,5 млн по ₹900 за акцию), но акции упали ниже цены размещения.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Мумбаи",
+      "title": "Qure.ai",
+      "logo": "source-videos/логотипы/ии/qure-ai.png",
+      "short": "Qure.ai",
+      "subtitle": "Мумбаи",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "18",
+          "label": "одобрений FDA",
+          "sub": "и CE по EU MDR"
+        },
+        {
+          "icon": "globe",
+          "value": "100+",
+          "label": "стран",
+          "sub": "3000+ площадок"
+        },
+        {
+          "icon": "users",
+          "value": "40+ млн",
+          "label": "пациентов"
+        },
+        {
+          "icon": "briefcase",
+          "value": "~$120 млн",
+          "label": "привлечено",
+          "sub": "Novo Holdings, Lightspeed"
+        }
+      ],
+      "why": "AI-диагностика по медицинским снимкам (рентген грудной клетки, КТ головы) с 18 одобрениями FDA и сертификацией CE.",
+      "learn": "Основана в 2016 г. в Мумбаи, офисы — в Нью-Йорке, Лондоне и Дубае; в 2025 г. — в списке самых влиятельных компаний Time.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Мумбаи",
+      "title": "Haptik",
+      "logo": "source-videos/логотипы/ии/haptik-reliance-jio.png",
+      "short": "Haptik (Reliance Jio)",
+      "subtitle": "Reliance Jio · Мумбаи",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "₹700 крор",
+          "label": "сделка с Reliance Jio",
+          "sub": "~$100 млн, апрель 2019"
+        },
+        {
+          "icon": "trending",
+          "value": "~87%",
+          "label": "доля Reliance Jio"
+        },
+        {
+          "icon": "chart",
+          "value": "2+ млрд",
+          "label": "диалогов",
+          "sub": "Samsung, Coca-Cola, KFC, Tata"
+        },
+        {
+          "icon": "flag",
+          "value": "2013",
+          "label": "год основания",
+          "sub": "август, Мумбаи"
+        }
+      ],
+      "why": "Корпоративный разговорный AI из Мумбаи: начинала как чат-ассистент, с 2019 года — в составе Reliance Jio.",
+      "learn": "Сегодня развивает agentic AI и интеграцию с WhatsApp Business API.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Мумбаи",
+      "title": "Nykaa",
+      "logo": "source-videos/логотипы/косметика/nykaa.svg",
+      "short": "Nykaa",
+      "subtitle": "Мумбаи",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "45+ млн",
+          "label": "пользователей",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "globe",
+          "value": "19 000+",
+          "label": "почтовых индексов",
+          "sub": "охват по Индии"
+        },
+        {
+          "icon": "trending",
+          "value": "+30%",
+          "label": "рост GMV",
+          "sub": "год к году"
+        },
+        {
+          "icon": "chart",
+          "value": "~₹4744 крор",
+          "label": "консолидированный GMV",
+          "sub": "за отчётный период"
+        }
+      ],
+      "why": "Ведущий бьюти-маркетплейс Индии (FSN E-Commerce Ventures): свыше 45 млн пользователей в 19 000+ почтовых индексов.",
+      "learn": "AI/ML для персонализированного подбора товаров, рекомендаций по типу кожи, виртуальной примерки и чат-ботов поддержки.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Включены",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На хинди/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "Интернет-гиганты Индии",
+          "text": "ИИ, мессенджеры и e-commerce\nБенгалуру + Мумбаи",
+          "icon": "smartphone"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов"
+        },
+        {
+          "icon": "smartphone",
+          "value": "10 компаний",
+          "label": "Интернет-гиганты Индии",
+          "sub": "ИИ, мессенджеры, e-commerce"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Внутренние перелёты между городами программы",
+        "Сопровождение на хинди/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Бенгалуру (перелёт Москва → Бенгалуру).<br><b>Вылет:</b> Мумбаи — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

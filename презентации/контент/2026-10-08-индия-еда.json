@@ -1,0 +1,564 @@
+{
+  "title": "Продукты питания и молочная промышленность Индии — Global Tech Tour",
+  "output": "2026-10-08-индия-еда",
+  "source": "https://globaltechtour.ru/expeditions/india-food-dairy-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "india",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Еда и молоко Индии",
+      "topright": "Amul · Mother Dairy\nNandini · Britannia",
+      "logos": [
+        {
+          "name": "Amul",
+          "logo": "source-videos/логотипы/еда/amul-gcmmf.png"
+        },
+        {
+          "name": "Mother Dairy",
+          "logo": "source-videos/логотипы/еда/mother-dairy.png"
+        },
+        {
+          "name": "Nestlé",
+          "logo": "source-videos/логотипы/еда/nestle.png"
+        },
+        {
+          "name": "Nandini",
+          "logo": "source-videos/логотипы/еда/nandini-kmf.png"
+        },
+        {
+          "name": "ITC Foods",
+          "logo": "source-videos/логотипы/еда/itc-foods-aashirvaad.png"
+        },
+        {
+          "name": "Britannia",
+          "logo": "source-videos/логотипы/еда/britannia.png"
+        },
+        {
+          "name": "Hatsun Agro",
+          "logo": "source-videos/логотипы/еда/hatsun-agro.png"
+        }
+      ],
+      "box_text": "От завода и музея Amul до Nandini —\n9 компаний, 6 дней, 6 ночей",
+      "box_right": "Гуджарат · Дели-NCR ·\nБенгалуру — 3 региона",
+      "footer": "Global Tech Tour · бизнес-делегации в Индию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Визиты в штаб-квартиры, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на хинди и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "9 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Гуджарат",
+          "text": "Amul (GCMMF) в Ананде, Amul Fed Dairy в Гандинагаре"
+        },
+        {
+          "name": "Дни 3–4 · Дели-NCR + Бенгалуру",
+          "text": "Mother Dairy, Nestlé, Nandini, ITC Foods"
+        },
+        {
+          "name": "День 5 · Бенгалуру",
+          "text": "Britannia, Hatsun Agro"
+        }
+      ],
+      "quote": "Три региона\nи три перелёта."
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Ананд (Гуджарат)",
+          "days": "день 1",
+          "companies": "Amul"
+        },
+        {
+          "name": "Ахмадабад",
+          "days": "день 2",
+          "companies": "Amul Fed Dairy",
+          "leg": {
+            "icon": "car",
+            "text": ""
+          }
+        },
+        {
+          "name": "Дели-NCR",
+          "days": "день 3",
+          "companies": "Mother Dairy\nNestlé",
+          "leg": {
+            "icon": "plane",
+            "text": "≈2 ч"
+          }
+        },
+        {
+          "name": "Бенгалуру",
+          "days": "дни 4–5",
+          "companies": "Nandini\nITC Foods\nBritannia\nHatsun Agro",
+          "leg": {
+            "icon": "plane",
+            "text": "≈2,5 ч"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Ахмадабад · <b>Вылет:</b> Бенгалуру"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Amul",
+          "text": "Прилёт в Ахмадабад, трансфер; Amul — экскурсия по заводу и музей «белой революции».",
+          "label": "День 1"
+        },
+        {
+          "sub": "Ахмадабад",
+          "title": "Amul Fed Dairy",
+          "text": "Amul Fed Dairy — одна из крупнейших площадок Amul; вторая встреча с GCMMF (уточняется).",
+          "label": "День 2"
+        },
+        {
+          "sub": "Дели-NCR",
+          "title": "Mother Dairy ·\nNestlé",
+          "text": "Внутренний перелёт Ахмадабад→Дели (≈2 ч).",
+          "label": "День 3"
+        },
+        {
+          "sub": "Бенгалуру",
+          "title": "Nandini ·\nITC Foods",
+          "text": "Внутренний перелёт Дели→Бенгалуру (≈2,5 ч).",
+          "label": "День 4"
+        },
+        {
+          "sub": "Бенгалуру",
+          "title": "Britannia ·\nHatsun Agro",
+          "text": "Britannia — лидер рынка печенья; Hatsun Agro — крупнейшая частная молочная компания Индии.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Ананд (Гуджарат)",
+      "title": "Amul",
+      "logo": "source-videos/логотипы/еда/amul-gcmmf.png",
+      "short": "Amul (GCMMF)",
+      "subtitle": "GCMMF · Ананд (Гуджарат)",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "~3,6 млн",
+          "label": "фермеров-пайщиков"
+        },
+        {
+          "icon": "flag",
+          "value": "1946",
+          "label": "год основания",
+          "sub": "в Ананде"
+        },
+        {
+          "icon": "building",
+          "value": "Завод",
+          "label": "экскурсия по производству",
+          "sub": "масло и сухое молоко"
+        },
+        {
+          "icon": "star",
+          "value": "Музей",
+          "label": "Вергезе Курьена",
+          "sub": "открыт в 2000 году"
+        }
+      ],
+      "why": "Кооператив GCMMF основан в 1946 году как ответ на монополию посредников и объединяет около 3,6 млн фермеров-пайщиков.",
+      "learn": "Экскурсия по заводу (масло и сухое молоко) и музей доктора Вергезе Курьена — история «белой революции» Индии.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Ахмадабад/Гандинагар",
+      "title": "Amul Fed Dairy",
+      "logo": "source-videos/логотипы/еда/amul-gcmmf.png",
+      "short": "Amul Fed Dairy",
+      "subtitle": "Ахмадабад/Гандинагар",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1973",
+          "label": "год основания",
+          "sub": "Бхат, Гандинагар"
+        },
+        {
+          "icon": "users",
+          "value": "6000+",
+          "label": "сотрудников"
+        },
+        {
+          "icon": "building",
+          "value": "~20 акров",
+          "label": "площадь площадки"
+        },
+        {
+          "icon": "trending",
+          "value": "№1 в Азии",
+          "label": "по ряду оценок",
+          "sub": "молокопереработка"
+        }
+      ],
+      "why": "Одна из крупнейших молокоперерабатывающих площадок Amul (GCMMF) — по ряду оценок, крупнейшая в Азии.",
+      "learn": "Линии розлива и упаковки молока, производство сыра, масла и мороженого; региональный узел кооперативной сети Amul.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Дели-NCR",
+      "title": "Mother Dairy",
+      "logo": "source-videos/логотипы/еда/mother-dairy.png",
+      "short": "Mother Dairy",
+      "subtitle": "Дели-NCR",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "~3,2 млн",
+          "label": "литров молока в сутки"
+        },
+        {
+          "icon": "flag",
+          "value": "1974",
+          "label": "год создания",
+          "sub": "структура NDDB"
+        },
+        {
+          "icon": "star",
+          "value": "ISO",
+          "label": "сертификация",
+          "sub": "9001, 22000 и 14001"
+        },
+        {
+          "icon": "store",
+          "value": "4",
+          "label": "региона продаж",
+          "sub": "Дели, Мумбаи, Саураштра, Хайдарабад"
+        }
+      ],
+      "why": "Создана в 1974 году структурой NDDB в рамках «Операции Потоп» — чтобы сделать Индию самодостаточной по молоку.",
+      "learn": "Одной из первых в стране внедрила автоматизацию переработки на микропроцессорных системах для контроля качества.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Дели-NCR",
+      "title": "Nestlé India",
+      "logo": "source-videos/логотипы/еда/nestle.png",
+      "short": "Nestlé India",
+      "subtitle": "Дели-NCR",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1912",
+          "label": "в Индии с"
+        },
+        {
+          "icon": "building",
+          "value": "7",
+          "label": "заводов по стране",
+          "sub": "первый — Мога, 1961 год"
+        },
+        {
+          "icon": "briefcase",
+          "value": "50 млн CHF",
+          "label": "R&D-центр в Манесаре",
+          "sub": "2012 год, лапша и специи"
+        },
+        {
+          "icon": "star",
+          "value": "Maggi",
+          "label": "бренд",
+          "sub": "с 1983 года"
+        }
+      ],
+      "why": "Работает в Индии с 1912 года: семь заводов, штаб-квартира в Гуруграме; Maggi — одна из ведущих категорий страны.",
+      "learn": "Научный центр в Манесаре (2012 год, 50 млн швейцарских франков) — глобальный инновационный хаб по лапше и специям.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Бенгалуру",
+      "title": "Nandini",
+      "logo": "source-videos/логотипы/еда/nandini-kmf.png",
+      "short": "Nandini (KMF)",
+      "subtitle": "KMF · Бенгалуру",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "2,6+ млн",
+          "label": "фермеров-пайщиков"
+        },
+        {
+          "icon": "chart",
+          "value": "~8,3 млн",
+          "label": "литров молока в день",
+          "sub": "закупка"
+        },
+        {
+          "icon": "briefcase",
+          "value": "~₹14 000 крор",
+          "label": "оборот KMF",
+          "sub": "2022-23"
+        },
+        {
+          "icon": "trending",
+          "value": "№2",
+          "label": "молочный кооператив Индии",
+          "sub": "после Amul"
+        }
+      ],
+      "why": "Розничный бренд кооператива KMF (Карнатака) — второго по величине молочного кооператива Индии после Amul.",
+      "learn": "Трёхуровневая кооперативная модель «Anand Pattern»; KMF основан в 1974 году и принадлежит правительству штата.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Бенгалуру",
+      "title": "ITC Foods",
+      "logo": "source-videos/логотипы/еда/itc-foods-aashirvaad.png",
+      "short": "ITC Foods",
+      "subtitle": "ITC Limited · Бенгалуру",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "~28%",
+          "label": "рынка фасованной муки",
+          "sub": "Aashirvaad"
+        },
+        {
+          "icon": "chart",
+          "value": "₹17 194 крор",
+          "label": "выручка",
+          "sub": "FY2024"
+        },
+        {
+          "icon": "star",
+          "value": "₹8000+ крор",
+          "label": "выручка Aashirvaad в год",
+          "sub": "более $1 млрд"
+        },
+        {
+          "icon": "package",
+          "value": "4",
+          "label": "бренда",
+          "sub": "Aashirvaad, Sunfeast, Bingo!, Yippee!"
+        }
+      ],
+      "why": "Продовольственное подразделение конгломерата ITC Limited: бренды Aashirvaad, Sunfeast, Bingo! и Yippee!.",
+      "learn": "Aashirvaad занимает ~28% рынка фасованной муки; фудтех-линейка готовых блюд — Aashirvaad Soul Creations.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Бенгалуру",
+      "title": "Britannia",
+      "logo": "source-videos/логотипы/еда/britannia.png",
+      "short": "Britannia",
+      "subtitle": "Бенгалуру",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "~38%",
+          "label": "доля рынка выпечки"
+        },
+        {
+          "icon": "chart",
+          "value": "~433 000 т",
+          "label": "мощность заводов в год"
+        },
+        {
+          "icon": "store",
+          "value": "600 000+",
+          "label": "торговых точек",
+          "sub": "Индия и 30+ стран"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$2,1 млрд",
+          "label": "выручка",
+          "sub": "₹18 169 крор, FY2025"
+        }
+      ],
+      "why": "Одна из старейших продовольственных компаний Индии (Калькутта, 1892) — лидер рынка печенья, хлеба и молочных продуктов.",
+      "learn": "Высокоавтоматизированные заводы мощностью около 433 000 тонн в год; поставки в 600 000+ точек в Индии и 30+ странах.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Бенгалуру",
+      "title": "Hatsun Agro",
+      "logo": "source-videos/логотипы/еда/hatsun-agro.png",
+      "short": "Hatsun Agro",
+      "subtitle": "Бенгалуру",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "300 000+",
+          "label": "производителей молока"
+        },
+        {
+          "icon": "building",
+          "value": "68+",
+          "label": "пунктов охлаждения"
+        },
+        {
+          "icon": "trending",
+          "value": "№1",
+          "label": "частная молочная компания Индии"
+        },
+        {
+          "icon": "chart",
+          "value": "$1,1–1,2 млрд",
+          "label": "годовая выручка",
+          "sub": "~9900–10 000 крор рупий"
+        }
+      ],
+      "why": "Крупнейшая частная молочная компания Индии, основана Р. Г. Чандрамоганом в 1970 году в Тамилнаде.",
+      "learn": "Молоко — от 300 000+ производителей через 68+ пунктов охлаждения и 1300+ машин; бренды — Arun Ice Creams и Arokya.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Включены",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На хинди/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "9 компаний",
+          "text": "Amul · Mother Dairy · Nandini\nГуджарат + Дели-NCR + Бенгалуру",
+          "icon": "cart"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов"
+        },
+        {
+          "icon": "cart",
+          "value": "9 компаний",
+          "label": "в программе",
+          "sub": "Amul, Mother Dairy, Nandini"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Внутренние перелёты между городами программы",
+        "Сопровождение на хинди/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Ахмадабад (перелёт Москва → Ахмадабад, ближайший аэропорт к Ананду).<br><b>Вылет:</b> Бенгалуру — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}
