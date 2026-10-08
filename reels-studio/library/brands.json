@@ -1560,5 +1560,220 @@
   ],
   "logo": "source-videos/логотипы/чай-кофе/gong-cha.png",
   "site_logo": "/logos/Gong Cha.png"
+ },
+ "seven-eleven-japan": {
+  "names": [
+   "Seven-Eleven Japan"
+  ],
+  "logo": "source-videos/логотипы/ритейл/seven-eleven.png",
+  "site_logo": "/logos/seven-eleven-japan.png"
+ },
+ "yakult-honsha": {
+  "names": [
+   "Yakult Honsha"
+  ],
+  "logo": "source-videos/логотипы/еда/yakult-honsha.svg",
+  "site_logo": "/logos/yakult-honsha.svg"
+ },
+ "meiji-holdings": {
+  "names": [
+   "Meiji Holdings"
+  ],
+  "logo": "source-videos/логотипы/еда/meiji-holdings.svg",
+  "site_logo": "/logos/meiji-holdings.svg"
+ },
+ "kikkoman": {
+  "names": [
+   "Kikkoman"
+  ],
+  "logo": "source-videos/логотипы/еда/kikkoman.png",
+  "site_logo": "/logos/Kikkoman.png"
+ },
+ "kewpie": {
+  "names": [
+   "Kewpie"
+  ],
+  "logo": "source-videos/логотипы/еда/kewpie.png",
+  "site_logo": "/logos/Kewpie.png"
+ },
+ "ajinomoto": {
+  "names": [
+   "Ajinomoto"
+  ],
+  "logo": "source-videos/логотипы/еда/ajinomoto.svg",
+  "site_logo": "/logos/ajinomoto.svg"
+ },
+ "fuji-oil": {
+  "names": [
+   "Fuji Oil"
+  ],
+  "logo": "source-videos/логотипы/еда/fuji-oil.png",
+  "site_logo": "/logos/Fuji Oil.png"
+ },
+ "nissin-foods": {
+  "names": [
+   "Nissin Foods"
+  ],
+  "logo": "source-videos/логотипы/еда/nissin-foods.png",
+  "site_logo": "/logos/Nissin.png"
+ },
+ "morinaga-milk": {
+  "names": [
+   "Morinaga Milk"
+  ],
+  "logo": "source-videos/логотипы/еда/morinaga-milk.svg",
+  "site_logo": "/logos/morinaga-milk.svg"
+ },
+ "megmilk-snow-brand": {
+  "names": [
+   "Megmilk Snow Brand"
+  ],
+  "logo": "source-videos/логотипы/еда/megmilk-snow-brand.png",
+  "site_logo": "/logos/Meg Milk Snowbrand.png"
+ },
+ "demae-can": {
+  "names": [
+   "Demae-can"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/demae-can.png",
+  "site_logo": "/logos/Demae-can.png"
+ },
+ "uber-eats-japan": {
+  "names": [
+   "Uber Eats Japan"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/uber-eats.svg",
+  "site_logo": "/logos/uber-eats-japan.svg"
+ },
+ "connected-robotics": {
+  "names": [
+   "Connected Robotics"
+  ],
+  "logo": "source-videos/логотипы/роботы/connected-robotics.png",
+  "site_logo": "/logos/Connected Robotics.png"
+ },
+ "techmagic": {
+  "names": [
+   "TechMagic"
+  ],
+  "logo": "source-videos/логотипы/роботы/techmagic.png",
+  "site_logo": "/logos/TechMagic.png"
+ },
+ "softbank-robotics": {
+  "names": [
+   "SoftBank Robotics"
+  ],
+  "logo": "source-videos/логотипы/роботы/softbank-robotics.png",
+  "site_logo": "/logos/softbank-robotics.png"
+ },
+ "zmp": {
+  "names": [
+   "ZMP"
+  ],
+  "logo": "source-videos/логотипы/роботы/zmp.png",
+  "site_logo": "/logos/ZMP.png"
+ },
+ "wolt-japan": {
+  "names": [
+   "Wolt Japan"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/wolt.png",
+  "site_logo": "/logos/Wolt Japan.png"
+ },
+ "panasonic-robotics": {
+  "names": [
+   "Panasonic Robotics"
+  ],
+  "logo": "source-videos/логотипы/роботы/panasonic-robotics.png",
+  "site_logo": "/logos/Panasonic Robotics.png"
+ },
+ "rakuten-delivery-gurunavi": {
+  "names": [
+   "Rakuten Delivery / Gurunavi",
+   "Rakuten Delivery",
+   "Gurunavi"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/rakuten-delivery-gurunavi.svg",
+  "site_logo": "/logos/rakuten-delivery-gurunavi.svg"
+ },
+ "menu": {
+  "names": [
+   "menu (KDDI)",
+   "menu",
+   "KDDI"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/menu-kddi.png",
+  "site_logo": "/logos/menu (KDDI).png"
+ },
+ "preferred-networks": {
+  "names": [
+   "Preferred Networks"
+  ],
+  "logo": "source-videos/логотипы/ии/preferred-networks.png",
+  "site_logo": "/logos/Prefered Networks.png"
+ },
+ "sakana-ai": {
+  "names": [
+   "Sakana AI"
+  ],
+  "logo": "source-videos/логотипы/ии/sakana-ai.png",
+  "site_logo": "/logos/Sakana AI.png"
+ },
+ "ly-corporation": {
+  "names": [
+   "LY Corporation (LINE + Yahoo! Japan)",
+   "LY Corporation"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/ly-corporation.svg",
+  "site_logo": "/logos/ly-corporation.svg"
+ },
+ "paypay": {
+  "names": [
+   "PayPay"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/paypay.png",
+  "site_logo": "/logos/PayPay.png"
+ },
+ "rakuten-crimson-house": {
+  "names": [
+   "Rakuten Crimson House"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/rakuten-crimson-house.svg",
+  "site_logo": "/logos/rakuten-crimson-house.svg"
+ },
+ "mercari": {
+  "names": [
+   "Mercari"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/mercari.png",
+  "site_logo": "/logos/Mercari.png"
+ },
+ "fujitsu": {
+  "names": [
+   "Fujitsu"
+  ],
+  "logo": "source-videos/логотипы/общие/fujitsu.svg",
+  "site_logo": "/logos/fujitsu.svg"
+ },
+ "ntt": {
+  "names": [
+   "NTT"
+  ],
+  "logo": "source-videos/логотипы/общие/ntt.png",
+  "site_logo": "/logos/NTT.png"
+ },
+ "zozo": {
+  "names": [
+   "ZOZO"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/zozo.png",
+  "site_logo": "/logos/Zozo.png"
+ },
+ "sony-ai": {
+  "names": [
+   "Sony AI"
+  ],
+  "logo": "source-videos/логотипы/ии/sony-ai.png",
+  "site_logo": "/logos/Sony AI.png"
  }
 }
