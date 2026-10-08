@@ -20,6 +20,8 @@ def load(p):
 
 def make_map(old, new):
     def to_src(t):
+        if t < old[0]["out_start"]:  # слово чуть раньше нуля (Whisper даёт −0.02) — начало, а не конец ролика
+            return old[0]["src_start"]
         for i, s in enumerate(old):
             end = old[i + 1]["out_start"] if i + 1 < len(old) else s["out_start"] + (s["src_end"] - s["src_start"])
             if s["out_start"] - 1e-6 <= t < end + 1e-6:
