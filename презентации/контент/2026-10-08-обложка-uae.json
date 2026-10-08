@@ -1,0 +1,50 @@
+{
+  "title": "Ритейл и e-commerce ОАЭ: от Noon до люксовых конгломератов Дубая — Global Tech Tour",
+  "output": "2026-10-08-обложка-uae",
+  "source": "https://globaltechtour.ru/expeditions/uae-retail-ecommerce-expedition (данные страницы и карточек компаний на 08.10.2026)",
+  "robot": "uae",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-экспедиция · Ритейл ОАЭ",
+      "topright": "E-commerce · Масс-маркет\nЛюкс",
+      "logos": [
+        {
+          "name": "Noon",
+          "logo": "source-videos/логотипы/ритейл/noon.svg"
+        },
+        {
+          "name": "Amazon.ae",
+          "logo": "source-videos/логотипы/ритейл/amazon-ae.png"
+        },
+        {
+          "name": "Majid Al Futtaim",
+          "logo": "source-videos/логотипы/ритейл/majid-al-futtaim.png"
+        },
+        {
+          "name": "IKEA (Al-Futtaim)",
+          "logo": "source-videos/логотипы/ритейл/ikea-al-futtaim.png"
+        },
+        {
+          "name": "Landmark Group",
+          "logo": "source-videos/логотипы/ритейл/landmark-group.png"
+        },
+        {
+          "name": "Chalhoub Group",
+          "logo": "source-videos/логотипы/ритейл/chalhoub.png"
+        },
+        {
+          "name": "Careem",
+          "logo": "source-videos/логотипы/техгиганты/careem.png"
+        },
+        {
+          "name": "LVMH",
+          "logo": "source-videos/логотипы/ритейл/lvmh.png"
+        }
+      ],
+      "box_text": "От «арабского Amazon» Noon до люкса LVMH —\n10 компаний, 5 дней, 5 ночей",
+      "box_right": "Дубай —\nбез единого перелёта",
+      "footer": "Global Tech Tour · бизнес-экспедиции в ОАЭ · РФ/СНГ"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "title": "Ритейл Индии: от Reliance до quick-commerce — Global Tech Tour",
+  "output": "2026-10-08-обложка-india",
+  "source": "https://globaltechtour.ru/expeditions/india-retail-expedition (данные страницы и карточек компаний на 08.10.2026)",
+  "robot": "india",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Ритейл Индии",
+      "topright": "От Reliance\nдо quick-commerce",
+      "logos": [
+        {
+          "name": "Reliance Retail",
+          "logo": "source-videos/логотипы/ритейл/reliance-retail.png"
+        },
+        {
+          "name": "DMart",
+          "logo": "source-videos/логотипы/ритейл/dmart.png"
+        },
+        {
+          "name": "Zepto",
+          "logo": "source-videos/логотипы/ритейл/zepto.png"
+        },
+        {
+          "name": "Nykaa",
+          "logo": "source-videos/логотипы/косметика/nykaa.svg"
+        },
+        {
+          "name": "Flipkart",
+          "logo": "source-videos/логотипы/ритейл/flipkart.svg"
+        },
+        {
+          "name": "BigBasket",
+          "logo": "source-videos/логотипы/ритейл/bigbasket.svg"
+        },
+        {
+          "name": "Swiggy Instamart",
+          "logo": "source-videos/логотипы/ритейл/swiggy.svg"
+        },
+        {
+          "name": "Blinkit",
+          "logo": "source-videos/логотипы/ритейл/blinkit.svg"
+        }
+      ],
+      "box_text": "От Reliance до 10-минутной доставки —\n9 компаний, 6 дней, 6 ночей",
+      "box_right": "Мумбаи · Бенгалуру ·\nДели-NCR — 3 города",
+      "footer": "Global Tech Tour · бизнес-делегации в Индию · РФ/СНГ"
+    }
+  ]
+}

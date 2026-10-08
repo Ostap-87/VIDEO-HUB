@@ -1,0 +1,50 @@
+{
+  "title": "Технологии и интернет-гиганты Кореи — Global Tech Tour",
+  "output": "2026-10-08-обложка-korea",
+  "source": "https://globaltechtour.ru/expeditions/korea-tech-internet-giants-expedition (данные страницы и карточек компаний на 08.10.2026)",
+  "robot": "korea",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Технологии Кореи",
+      "topright": "Интернет-гиганты\nи робототехника",
+      "logos": [
+        {
+          "name": "Coupang",
+          "logo": "source-videos/логотипы/ритейл/coupang.svg"
+        },
+        {
+          "name": "Woowa Brothers (Baemin)",
+          "logo": "source-videos/логотипы/техгиганты/woowa-brothers.png"
+        },
+        {
+          "name": "SK Telecom",
+          "logo": "source-videos/логотипы/техгиганты/sk-telecom.png"
+        },
+        {
+          "name": "Naver",
+          "logo": "source-videos/логотипы/техгиганты/naver.png"
+        },
+        {
+          "name": "Kakao",
+          "logo": "source-videos/логотипы/техгиганты/kakao.png"
+        },
+        {
+          "name": "NCSoft",
+          "logo": "source-videos/логотипы/техгиганты/ncsoft.png"
+        },
+        {
+          "name": "Doosan Robotics",
+          "logo": "source-videos/логотипы/роботы/doosan-robotics.png"
+        },
+        {
+          "name": "Rainbow Robotics",
+          "logo": "source-videos/логотипы/роботы/rainbow-robotics.png"
+        }
+      ],
+      "box_text": "От e-commerce до гуманоидных роботов —\n8 компаний, 5 дней, 5 ночей",
+      "box_right": "Сеул · Пангё · Сувон ·\nЙонъин — 4 города",
+      "footer": "Global Tech Tour · бизнес-делегации в Корею · РФ/СНГ"
+    }
+  ]
+}

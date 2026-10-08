@@ -1,0 +1,50 @@
+{
+  "title": "Ритейл Вьетнама: от MWG до WinCommerce — Global Tech Tour",
+  "output": "2026-10-08-обложка-vietnam",
+  "source": "https://globaltechtour.ru/expeditions/vietnam-retail-expedition (данные страницы и карточек компаний на 08.10.2026)",
+  "robot": "vietnam",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Ритейл Вьетнама",
+      "topright": "От MWG\nдо WinCommerce",
+      "logos": [
+        {
+          "name": "MWG",
+          "logo": "source-videos/логотипы/ритейл/mwg.png"
+        },
+        {
+          "name": "FPT Retail / Long Châu",
+          "logo": "source-videos/логотипы/ритейл/fpt-long-chau.png"
+        },
+        {
+          "name": "Saigon Co.op",
+          "logo": "source-videos/логотипы/ритейл/saigon-coop.png"
+        },
+        {
+          "name": "Central Retail Vietnam",
+          "logo": "source-videos/логотипы/ритейл/central-retail-vietnam.png"
+        },
+        {
+          "name": "AEON Vietnam",
+          "logo": "source-videos/логотипы/ритейл/aeon.png"
+        },
+        {
+          "name": "WinCommerce",
+          "logo": "source-videos/логотипы/ритейл/wincommerce.png"
+        },
+        {
+          "name": "Circle K",
+          "logo": "source-videos/логотипы/ритейл/circle-k.svg"
+        },
+        {
+          "name": "Con Cưng",
+          "logo": "source-videos/логотипы/ритейл/con-cung.png"
+        }
+      ],
+      "box_text": "От омниканальной MWG до WinMart —\n8 компаний, 6 дней, 6 ночей",
+      "box_right": "Хошимин и Ханой —\nритейл двух столиц",
+      "footer": "Global Tech Tour · бизнес-делегации во Вьетнам · РФ/СНГ"
+    }
+  ]
+}

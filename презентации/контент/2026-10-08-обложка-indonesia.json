@@ -1,0 +1,50 @@
+{
+  "title": "Ритейл Индонезии: от Indomaret до Blibli — Global Tech Tour",
+  "output": "2026-10-08-обложка-indonesia",
+  "source": "https://globaltechtour.ru/expeditions/indonesia-retail-expedition (данные страницы и карточек компаний на 08.10.2026)",
+  "robot": "indonesia",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Ритейл Индонезии",
+      "topright": "От Indomaret\nдо Blibli",
+      "logos": [
+        {
+          "name": "Indomaret",
+          "logo": "source-videos/логотипы/ритейл/indomaret.png"
+        },
+        {
+          "name": "Alfamart",
+          "logo": "source-videos/логотипы/ритейл/alfamart.png"
+        },
+        {
+          "name": "MAP",
+          "logo": "source-videos/логотипы/ритейл/map.png"
+        },
+        {
+          "name": "Erajaya",
+          "logo": "source-videos/логотипы/ритейл/erajaya.png"
+        },
+        {
+          "name": "Transmart",
+          "logo": "source-videos/логотипы/ритейл/transmart.png"
+        },
+        {
+          "name": "Matahari",
+          "logo": "source-videos/логотипы/ритейл/matahari.png"
+        },
+        {
+          "name": "AEON",
+          "logo": "source-videos/логотипы/ритейл/aeon.png"
+        },
+        {
+          "name": "Blibli",
+          "logo": "source-videos/логотипы/ритейл/blibli.svg"
+        }
+      ],
+      "box_text": "От 20 000+ точек Indomaret до O2O Blibli —\n10 компаний, 6 дней, 6 ночей",
+      "box_right": "Джакарта —\nвесь ритейл в одном городе",
+      "footer": "Global Tech Tour · бизнес-делегации в Индонезию · РФ/СНГ"
+    }
+  ]
+}

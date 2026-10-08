@@ -1,0 +1,50 @@
+{
+  "title": "Ритейл Малайзии: от Senheng до роботизированных складов — Global Tech Tour",
+  "output": "2026-10-08-обложка-malaysia",
+  "source": "https://globaltechtour.ru/expeditions/malaysia-retail-expedition (данные страницы и карточек компаний на 08.10.2026)",
+  "robot": "malaysia",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-экспедиция · Ритейл Малайзии",
+      "topright": "От Senheng\nдо роботизированных складов",
+      "logos": [
+        {
+          "name": "Senheng",
+          "logo": "source-videos/логотипы/ритейл/senheng.png"
+        },
+        {
+          "name": "MR D.I.Y.",
+          "logo": "source-videos/логотипы/ритейл/mr-diy.png"
+        },
+        {
+          "name": "7-Eleven Malaysia",
+          "logo": "source-videos/логотипы/ритейл/7-eleven.png"
+        },
+        {
+          "name": "AEON",
+          "logo": "source-videos/логотипы/ритейл/aeon.png"
+        },
+        {
+          "name": "99 Speed Mart",
+          "logo": "source-videos/логотипы/ритейл/99-speed-mart.png"
+        },
+        {
+          "name": "KK Super Mart",
+          "logo": "source-videos/логотипы/ритейл/kk-super-mart.png"
+        },
+        {
+          "name": "Lotus's",
+          "logo": "source-videos/логотипы/ритейл/lotus.svg"
+        },
+        {
+          "name": "Jaya Grocer",
+          "logo": "source-videos/логотипы/ритейл/jaya-grocer.png"
+        }
+      ],
+      "box_text": "От шоурумов Senheng до 7-Eleven без касс —\n10 компаний, 6 дней, 6 ночей",
+      "box_right": "Куала-Лумпур —\nвсё без перелётов",
+      "footer": "Global Tech Tour · бизнес-экспедиции в Малайзию · РФ/СНГ"
+    }
+  ]
+}

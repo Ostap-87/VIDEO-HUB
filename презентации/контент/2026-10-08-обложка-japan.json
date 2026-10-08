@@ -1,0 +1,50 @@
+{
+  "title": "Ритейл Японии: от конбини до tech-дискаунтеров — Global Tech Tour",
+  "output": "2026-10-08-обложка-japan",
+  "source": "https://globaltechtour.ru/expeditions/japan-retail-expedition (данные страницы и карточек компаний на 08.10.2026)",
+  "robot": "japan",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Ритейл Японии",
+      "topright": "Конбини · SPA-бренды\nTech-дискаунтеры",
+      "logos": [
+        {
+          "name": "Seven-Eleven Japan",
+          "logo": "source-videos/логотипы/ритейл/7-eleven.png"
+        },
+        {
+          "name": "Lawson",
+          "logo": "source-videos/логотипы/ритейл/lawson.png"
+        },
+        {
+          "name": "FamilyMart",
+          "logo": "source-videos/логотипы/ритейл/familymart.svg"
+        },
+        {
+          "name": "UNIQLO",
+          "logo": "source-videos/логотипы/ритейл/uniqlo.svg"
+        },
+        {
+          "name": "MUJI",
+          "logo": "source-videos/логотипы/ритейл/muji.svg"
+        },
+        {
+          "name": "Don Quijote",
+          "logo": "source-videos/логотипы/ритейл/don-quijote.png"
+        },
+        {
+          "name": "Trial Holdings",
+          "logo": "source-videos/логотипы/ритейл/trial.png"
+        },
+        {
+          "name": "Rakuten",
+          "logo": "source-videos/логотипы/ритейл/rakuten.svg"
+        }
+      ],
+      "box_text": "От конбини до AI-камер Trial —\n10 компаний, 6 дней, 6 ночей",
+      "box_right": "Токио + Фукуока —\nштаб-квартира Trial",
+      "footer": "Global Tech Tour · бизнес-делегации в Японию · РФ/СНГ"
+    }
+  ]
+}
