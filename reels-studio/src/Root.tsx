@@ -7,6 +7,7 @@ import {TalkReel, talkReelSchema, type TalkReelProps} from "./compositions/TalkR
 import {sampleReel, sampleTextReel} from "./data/sample";
 import talkSample from "../props/2026-10-07-byt-tehnika.json";
 import {SiteLogoPreview} from "./components/SiteLogo";
+import {AuraPreview} from "./components/AuraPreview";
 import {TalkReelPro, talkReelProSchema, type TalkReelProProps} from "./compositions/TalkReelPro";
 import talkProSample from "../props/2026-10-07-byt-tehnika-v3.json";
 
@@ -52,6 +53,7 @@ export const RemotionRoot: React.FC = () => {
           durationInFrames: Math.round((props.speechSeconds + props.ctaSeconds) * VIDEO.fps),
         })}
       />
+      <Composition id="AuraPreview" component={AuraPreview} width={VIDEO.width} height={VIDEO.height} fps={VIDEO.fps} durationInFrames={VIDEO.fps * 15} />
       <Composition
         id="TalkReelPro"
         component={TalkReelPro}
@@ -60,7 +62,7 @@ export const RemotionRoot: React.FC = () => {
         fps={VIDEO.fps}
         durationInFrames={VIDEO.fps * 20}
         schema={talkReelProSchema}
-        defaultProps={talkProSample as TalkReelProProps}
+        defaultProps={talkProSample as unknown as TalkReelProProps}
         calculateMetadata={({props}: {props: TalkReelProProps}) => ({
           durationInFrames: Math.round((props.speechSeconds + props.ctaSeconds) * VIDEO.fps),
         })}

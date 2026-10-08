@@ -536,11 +536,11 @@ def main():
     if not route:
         cache = ROOT / "source-videos" / "сайт" / "маршруты" / th["expedition"].strip("/").split("/")[-1]
         route = sorted(glob.glob(str(cache / "*-day*.png")), key=lambda p: int(re.search(r"day(\d+)", p).group(1)))
-        if not route and th["expedition"].count("/") >= 2:
+        if not route and th["expedition"].count("/") >= 2 and not th.get("brand"):
             subprocess.run(["node", str(STUDIO / "scripts" / "site_route.mjs"), th["expedition"], str(cache), "day"], check=False)
             route = sorted(glob.glob(str(cache / "*-day*.png")), key=lambda p: int(re.search(r"day(\d+)", p).group(1)))
     route = [str(pathlib.Path(p).relative_to(ROOT)) for p in route]
-    if not route:
+    if not route and not th.get("brand"):
         warn.append("Нет скриншотов маршрута — в финале будут только главная и каталог.")
 
     # ---------- акцентные слова ----------
@@ -578,6 +578,12 @@ def main():
     }
     if stock:
         props["stockDrop"] = stock
+    if th.get("brand"):  # другой бренд (aura — Aura Robotics): свой стиль, логотип, маскот и сайт в финале
+        props["brand"] = th["brand"]
+    if th.get("site"):
+        props["site"].update(th["site"])
+    if th.get("cta"):
+        props["cta"] = th["cta"]
     props_path.write_text(json.dumps(props, ensure_ascii=False, indent=1))
 
     # ---------- вырезка спикера и Stories ----------

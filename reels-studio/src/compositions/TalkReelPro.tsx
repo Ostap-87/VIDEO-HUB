@@ -17,6 +17,9 @@ import {theme} from "../theme";
 import {body, display} from "../fonts";
 import {SafeZone} from "../components/SafeZone";
 import {SiteLogo} from "../components/SiteLogo";
+import {BRANDS, BrandCtx, useBrand} from "../brand";
+import {AuraBadge} from "../components/AuraBadge";
+import {AuraMascot, type GestureKind, type MascotPlan, type MascotStay} from "../components/AuraMascot";
 
 // «Говорящая голова» в стиле референса пользователя (07.10.2026):
 // видео на весь экран, сверху плашка ▲ GLOBAL TECH TOUR, крупные белые субтитры по центру
@@ -82,6 +85,8 @@ export const talkReelProSchema = z.object({
   showSafeZone: z.boolean(),
   // reels — как есть; stories — логотип ниже верхней панели Stories (полоски прогресса и аватар занимают ~200 px)
   format: z.enum(["reels", "stories"]).default("reels"),
+  // бренд: gtt — GlobalTechTour, aura — Aura Robotics (свой стиль, круглый логотип и 3D-маскот, src/brand.ts)
+  brand: z.enum(["gtt", "aura"]).default("gtt"),
   // Линия глаз из scripts/grid.py (_work/имя.cut.layout.json): точка между глазами — центр всех зумов,
   // поэтому при наездах глаза остаются на своей линии и не «прыгают»
   focus: z.object({x: z.number(), y: z.number()}).default({x: 540, y: 614}),
@@ -148,6 +153,7 @@ const BigCaptions: React.FC<{
   if (!page || t > page[page.length - 1].end + 0.5) return null;
   const pop = spring({frame: frame - Math.round(page[0].start * fps), fps, config: theme.motion.snappy, durationInFrames: 8});
   const clean = (s: string) => s.toLowerCase().replace(/[^\p{L}\p{N}+]/gu, "");
+  const B = useBrand();
   const dark = false;
   const low = frame >= lowFrom + 10; // в финале субтитры ниже карточки спикера
   return (
@@ -158,14 +164,14 @@ const BigCaptions: React.FC<{
         right: 90,
         top: low ? 1420 : Math.max(cityAmount(cities, t), listAmount(lists, t)) > 0.5 ? 780 : 1250,
         textAlign: "center",
-        fontFamily: display.fontFamily,
-        fontWeight: 700,
+        fontFamily: B.captionFont,
+        fontWeight: B.captionWeight,
         fontSize: 66,
         lineHeight: 1.18,
         color: dark ? theme.colors.text : "#FFFFFF",
         textShadow: dark ? "none" : shadow,
         // тёмная обводка, чтобы белые субтитры читались и на светлых картинках-перебивках
-        WebkitTextStroke: dark ? undefined : "10px rgba(10,12,20,0.55)",
+        WebkitTextStroke: dark ? undefined : `10px ${B.captionStroke}`,
         paintOrder: "stroke fill",
         // на сайте — белая подложка, чтобы текст не сливался с кнопками страницы
         background: dark ? "rgba(255,255,255,0.94)" : undefined,
@@ -177,10 +183,38 @@ const BigCaptions: React.FC<{
       }}
     >
       {page.map((w, i) => {
-        const current = w.start <= t && t < w.end + 0.05;
+        // текущее слово — последнее начавшееся (без «двойных» выделений на стыке слов)
+        const curIdx = page.reduce((k, x, j) => (x.start <= t ? j : k), -1);
+        const current = i === curIdx && t < w.end + 0.35;
         const hot = current || accent.includes(clean(w.text));
+        if (B.highlighter && current) {
+          // Aura: текущее слово выделяется лимонным маркером, как на aura-robotics.ru — маркер «проводится» слева направо
+          const swipe = interpolate(t, [w.start, w.start + 0.1], [0, 100], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
+          const inked = swipe >= 55; // пока маркер не прошёл полслова — текст белый с обводкой, потом графитовый
+          return (
+            <span key={i}>
+              <span
+                style={{
+                  color: inked ? B.accentInk : "#FFFFFF",
+                  WebkitTextStroke: inked ? "0px" : undefined,
+                  textShadow: inked ? "none" : undefined,
+                  backgroundImage: `linear-gradient(${B.accent}, ${B.accent})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: `${swipe}% 78%`,
+                  backgroundPosition: "0% 60%",
+                  borderRadius: 10,
+                  padding: "0 8px",
+                  boxDecorationBreak: "clone",
+                  WebkitBoxDecorationBreak: "clone",
+                }}
+              >
+                {w.text}
+              </span>{" "}
+            </span>
+          );
+        }
         return (
-          <span key={i} style={{color: hot ? (dark ? BLUE : "#3D7BFF") : dark ? theme.colors.text : "#FFFFFF"}}>
+          <span key={i} style={{color: hot ? (dark ? BLUE : B.accent) : dark ? theme.colors.text : "#FFFFFF"}}>
             {w.text}{" "}
           </span>
         );
@@ -198,25 +232,35 @@ const Chip: React.FC<{text: string; delay: number; strike?: number}> = ({text, d
     strike === undefined
       ? 0
       : interpolate(frame, [strike, strike + 8], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
+  const B = useBrand();
+  const aura = B.id === "aura";
   return (
     <div
       style={{
         position: "relative",
         alignSelf: "flex-start",
-        background: "#FFFFFF",
-        color: theme.colors.text,
-        fontFamily: display.fontFamily,
-        fontWeight: 700,
+        background: B.chip.bg,
+        color: B.chip.text,
+        fontFamily: B.chip.font,
+        fontWeight: B.chip.weight,
         fontSize: 32,
-        padding: "14px 26px",
-        borderRadius: 16,
+        padding: aura ? "14px 28px 14px 22px" : "14px 26px",
+        borderRadius: B.chip.radius,
         boxShadow: "0 10px 30px rgba(0,0,0,0.28)",
+        display: "flex",
+        alignItems: "center",
+        gap: 14,
         opacity: s,
-        translate: `${(1 - s) * -140}px 0px`,
+        // Aura: плашку «выдвигает» снизу маскот, стоящий под ней; GTT — выезд слева
+        translate: aura ? `${(1 - s) * 60}px ${(1 - s) * 260}px` : `${(1 - s) * -140}px 0px`,
+        rotate: aura ? `${(1 - s) * -8}deg` : undefined,
         scale: String(0.8 + 0.2 * s),
-        transformOrigin: "left center",
+        transformOrigin: aura ? "left bottom" : "left center",
       }}
     >
+      {B.chip.dot ? (
+        <span style={{width: 18, height: 18, borderRadius: 9, background: B.chip.dot, boxShadow: "0 0 0 3px #262626", flexShrink: 0, scale: String(0.4 + 0.6 * s)}} />
+      ) : null}
       <span style={{opacity: strike === undefined ? 1 : 1 - 0.45 * line}}>{text}</span>
       {strike !== undefined ? (
         <div
@@ -385,6 +429,7 @@ const LogoGroup: React.FC<{group: TalkReelProProps["logos"][number]; start: numb
 // Крупная цифра с «попом» и синим свечением
 const BigNumber: React.FC<{n: TalkReelProProps["numbers"][number]}> = ({n}) => {
   const shift = React.useContext(TopShift);
+  const B = useBrand();
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const s = spring({frame, fps, config: {damping: 9, stiffness: 160, mass: 0.8}});
@@ -396,21 +441,24 @@ const BigNumber: React.FC<{n: TalkReelProProps["numbers"][number]}> = ({n}) => {
     <div style={{position: "absolute", left: 70, top: 290 + shift * 0.6, opacity: out, scale: String(0.6 + 0.4 * s), transformOrigin: "left center"}}>
       <div
         style={{
-          fontFamily: display.fontFamily,
-          fontWeight: 700,
+          fontFamily: B.numberFont,
+          fontWeight: B.id === "aura" ? 800 : 700,
+          letterSpacing: B.id === "aura" ? "-0.03em" : undefined,
           fontSize: n.text.length > 6 ? 120 : n.text.length > 3 ? 140 : 190,
           lineHeight: 1,
-          color: n.tone === "down" ? "#FF3B3B" : "#3D7BFF",
+          color: n.tone === "down" ? "#FF3B3B" : B.accent,
+          WebkitTextStroke: B.id === "aura" && n.tone !== "down" ? "6px #262626" : undefined,
+          paintOrder: "stroke fill",
           textShadow:
             n.tone === "down"
               ? "0 0 40px rgba(255,59,59,0.8), 0 6px 20px rgba(0,0,0,0.45)"
-              : "0 0 40px rgba(61,123,255,0.85), 0 6px 20px rgba(0,0,0,0.45)",
+              : `0 0 40px ${B.accentGlow}, 0 6px 20px rgba(0,0,0,0.45)`,
         }}
       >
         {n.text}
       </div>
       {n.sub ? (
-        <div style={{fontFamily: body.fontFamily, fontWeight: 700, fontSize: 40, color: "#FFFFFF", textShadow: shadow, marginTop: 6}}>
+        <div style={{fontFamily: B.bodyFont, fontWeight: 700, fontSize: 40, color: "#FFFFFF", textShadow: shadow, marginTop: 6}}>
           {n.sub}
         </div>
       ) : null}
@@ -648,6 +696,7 @@ const ChecklistPanel: React.FC<{lists: TalkReelProProps["checklists"]}> = ({list
   const l = lists.find((x) => t >= x.items[0].at - 0.6 && t <= x.until + 0.1);
   if (!l) return null;
   const slide = (1 - amount) * 900;
+  const B = useBrand();
   return (
     <>
       <div
@@ -658,7 +707,7 @@ const ChecklistPanel: React.FC<{lists: TalkReelProProps["checklists"]}> = ({list
           top: PANEL_TOP - 60,
           bottom: 0,
           translate: `0px ${slide}px`,
-          background: "linear-gradient(to bottom, rgba(8,14,32,0) 0px, rgba(8,14,32,0.92) 220px, #070B18 100%)",
+          background: `linear-gradient(to bottom, rgba(${B.veil},0) 0px, rgba(${B.veil},0.92) 220px, ${B.veilSolid} 100%)`,
           backdropFilter: "blur(18px)",
           WebkitBackdropFilter: "blur(18px)",
           maskImage: `linear-gradient(to bottom, transparent 0px, black ${FEATHER}px)`,
@@ -673,7 +722,7 @@ const ChecklistPanel: React.FC<{lists: TalkReelProProps["checklists"]}> = ({list
           top: PANEL_TOP + 40,
           translate: `0px ${slide}px`,
           rotate: `${-1.5 * amount}deg`,
-          background: "#FFFFFF",
+          background: B.paper,
           borderRadius: 34,
           padding: "70px 44px 34px",
           boxShadow: "0 30px 80px rgba(0,0,0,0.55)",
@@ -689,11 +738,11 @@ const ChecklistPanel: React.FC<{lists: TalkReelProProps["checklists"]}> = ({list
             width: 240,
             height: 64,
             borderRadius: 18,
-            background: "linear-gradient(180deg, #3B4254, #1C2130)",
+            background: B.clip,
             boxShadow: "0 8px 18px rgba(0,0,0,0.35)",
           }}
         />
-        <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: 40, color: "#17171D", marginBottom: 18}}>{l.title}</div>
+        <div style={{fontFamily: B.listTitle.font, fontWeight: B.listTitle.weight, fontSize: 40, color: B.listTitle.color, marginBottom: 18}}>{l.title}</div>
         {l.items.map((it, i) => {
           const s = spring({frame: frame - Math.round(it.at * fps), fps, config: {damping: 14, stiffness: 160}});
           const draw = interpolate(frame, [it.at * fps + 3, it.at * fps + 13], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
@@ -711,11 +760,11 @@ const ChecklistPanel: React.FC<{lists: TalkReelProProps["checklists"]}> = ({list
               }}
             >
               <svg width={58} height={58} viewBox="0 0 58 58" style={{flexShrink: 0}}>
-                <circle cx={29} cy={29} r={27} fill={draw > 0 ? "#16A34A" : "#E5E7EB"} opacity={0.15 + 0.85 * Math.min(1, draw * 2)} />
+                <circle cx={29} cy={29} r={27} fill={draw > 0 ? B.tick.bg : B.tick.idle} opacity={0.15 + 0.85 * Math.min(1, draw * 2)} />
                 <path
                   d="M16 30 L25 39 L43 20"
                   fill="none"
-                  stroke="#FFFFFF"
+                  stroke={B.tick.stroke}
                   strokeWidth={6}
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -723,7 +772,7 @@ const ChecklistPanel: React.FC<{lists: TalkReelProProps["checklists"]}> = ({list
                   strokeDashoffset={42 * (1 - draw)}
                 />
               </svg>
-              <div style={{fontFamily: body.fontFamily, fontWeight: 700, fontSize: 42, color: "#17171D", lineHeight: 1.15}}>{it.text}</div>
+              <div style={{fontFamily: B.bodyFont, fontWeight: 700, fontSize: 42, color: "#17171D", lineHeight: 1.15}}>{it.text}</div>
             </div>
           );
         })}
@@ -754,6 +803,7 @@ const CityPanel: React.FC<{cities: TalkReelProProps["cities"]}> = ({cities}) => 
   const {fps} = useVideoConfig();
   const t = frame / fps;
   const amount = cityAmount(cities, t);
+  const B = useBrand();
   if (amount <= 0) return null;
   const ease = Easing.bezier(0.22, 1, 0.36, 1);
   const shown = cities.filter((c) => t >= c.at - 0.05 && t <= c.until + 0.3);
@@ -793,10 +843,10 @@ const CityPanel: React.FC<{cities: TalkReelProProps["cities"]}> = ({cities}) => 
                 translate: `0px ${(1 - label) * 40}px`,
               }}
             >
-              <div style={{fontFamily: body.fontFamily, fontWeight: 700, fontSize: 30, letterSpacing: "0.14em", color: "#BAE6FD", textTransform: "uppercase", textShadow: shadow}}>
+              <div style={{fontFamily: body.fontFamily, fontWeight: 700, fontSize: 30, letterSpacing: "0.14em", color: B.kicker, textTransform: "uppercase", textShadow: shadow}}>
                 {c.kicker ?? `Маршрут · ${n}/${route.length}`}
               </div>
-              <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: 92, color: "#FFFFFF", textShadow: shadow}}>{c.name}</div>
+              <div style={{fontFamily: B.id === "aura" ? B.captionFont : display.fontFamily, fontWeight: B.id === "aura" ? 800 : 700, fontSize: 92, color: "#FFFFFF", textShadow: shadow}}>{c.name}</div>
             </div>
           </AbsoluteFill>
         );
@@ -880,6 +930,7 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
 }) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
+  const B = useBrand();
   const ease = Easing.bezier(0.22, 1, 0.36, 1);
   const k = (a: number, b: number) =>
     interpolate(frame, [a * fps, b * fps], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease});
@@ -894,12 +945,18 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
   const phoneW = 420;
   const phoneH = 900;
   return (
-    <AbsoluteFill
-      style={{
-        background:
-          "radial-gradient(ellipse 70% 45% at 30% 38%, rgba(37,99,235,0.35), rgba(37,99,235,0) 70%), linear-gradient(180deg, #0A1022 0%, #050814 100%)",
-      }}
-    >
+    <AbsoluteFill style={{background: B.finale.bg}}>
+      {B.finale.grid ? (
+        // Aura: тонкая сетка, как на карточках первого экрана сайта; линии «прорисовываются» сверху вниз
+        <AbsoluteFill
+          style={{
+            backgroundImage: `linear-gradient(${B.finale.grid} 2px, transparent 2px), linear-gradient(90deg, ${B.finale.grid} 2px, transparent 2px)`,
+            backgroundSize: "90px 90px",
+            maskImage: `linear-gradient(to bottom, black ${k(0, 1.2) * 100}%, transparent ${k(0, 1.2) * 100 + 8}%)`,
+            WebkitMaskImage: `linear-gradient(to bottom, black ${k(0, 1.2) * 100}%, transparent ${k(0, 1.2) * 100 + 8}%)`,
+          }}
+        />
+      ) : null}
       {/* телефон */}
       <div
         style={{
@@ -931,7 +988,24 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
       </div>
       {/* заголовок и кнопка с адресом */}
       <div style={{position: "absolute", left: 545, right: 40, top: 410, opacity: head, translate: `0px ${(1 - head) * 40}px`}}>
-        <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: title.length > 12 ? 38 : 52, color: "#E9EEF8", whiteSpace: "nowrap"}}>{title}</div>
+        <div
+          style={{
+            fontFamily: B.finale.titleFont,
+            fontWeight: B.finale.titleWeight,
+            fontSize: title.length > 12 ? 38 : 52,
+            letterSpacing: B.id === "aura" ? "-0.02em" : undefined,
+            color: B.finale.title,
+            whiteSpace: "nowrap",
+            display: "inline-block",
+            // Aura: заголовок подчёркивает лимонный маркер, как выделения на сайте
+            backgroundImage: B.id === "aura" ? `linear-gradient(${B.accent}, ${B.accent})` : undefined,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: `${k(1.0, 1.5) * 100}% 40%`,
+            backgroundPosition: "0% 85%",
+          }}
+        >
+          {title}
+        </div>
       </div>
       <div
         style={{
@@ -941,17 +1015,17 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
           opacity: pill * (1 - back),
           scale: String(0.7 + 0.3 * pill),
           transformOrigin: "left center",
-          background: BLUE,
-          color: "#FFFFFF",
-          fontFamily: body.fontFamily,
-          fontWeight: 700,
-          fontSize: 40,
+          background: B.finale.button,
+          color: B.finale.buttonText,
+          fontFamily: B.bodyFont,
+          fontWeight: B.id === "aura" ? 600 : 700,
+          fontSize: B.id === "aura" ? 36 : 40,
           padding: "24px 38px",
           borderRadius: 999,
-          boxShadow: `0 0 ${40 + 30 * glow}px rgba(59,130,246,${0.55 + 0.3 * glow}), 0 16px 40px rgba(0,0,0,0.4)`,
+          boxShadow: `0 0 ${40 + 30 * glow}px rgba(${B.finale.buttonGlow},${0.55 + 0.3 * glow}), 0 16px 40px rgba(0,0,0,0.4)`,
         }}
       >
-        {theme.site}
+        {B.site}
       </div>
       {/* спикер: из полного кадра в карточку */}
       <div
@@ -963,7 +1037,7 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
           height: lerp(1920, CARD.h),
           borderRadius: 32 * card,
           overflow: "hidden",
-          border: `${6 * card}px solid #FFFFFF`,
+          border: `${6 * card}px solid ${B.id === "aura" ? "#262626" : "#FFFFFF"}`,
           boxShadow: `0 30px 70px rgba(0,0,0,${0.5 * card})`,
         }}
       >
@@ -976,6 +1050,77 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
       </div>
     </AbsoluteFill>
   );
+};
+
+// ---------- маскот Aura: план движения из событий ролика ----------
+// Робот живёт в свободных зонах кадра (лицо x 330–790, y 600–1150 не закрывает):
+// HOME — справа внизу; CHIP — слева от головы, под плашками и цифрами (поднимает руки, «выдвигая» их);
+// LIST — на верхнем краю планшета чек-листа (ставит галочки); CITY — на панели городов (показывает);
+// FINAL — на карточке спикера в финале (указывает на кнопку сайта), в конце спрыгивает и машет.
+const auraPlan = (p: TalkReelProProps, total: number): MascotPlan => {
+  const top = p.format === "stories" ? 78 : 0;
+  const HOME = {x: 880, y: 1640, face: -0.35};
+  const CHIP = {x: 185, y: 900 + top, face: 0.45};
+  const LIST = {x: 860, y: PANEL_TOP + 44, face: -0.75};
+  const CITY = {x: 880, y: PANEL_TOP + 160, face: -0.7};
+  const FINAL = {x: 800, y: 846, face: -0.8};
+  type Ev = {from: number; to: number; spot: typeof HOME; g: {at: number; kind: GestureKind}[]};
+  const ev: Ev[] = [];
+  for (const c of p.chips) {
+    const g: Ev["g"] = [{at: c.items[0].at - 0.15, kind: "present"}];
+    for (const it of c.items) if (it.strike !== undefined) g.push({at: it.strike - 0.25, kind: "push"});
+    ev.push({from: c.items[0].at - 0.5, to: c.until, spot: CHIP, g});
+  }
+  for (const n of p.numbers) ev.push({from: n.at - 0.5, to: n.until, spot: CHIP, g: [{at: n.at - 0.35, kind: "jump"}]});
+  for (const l of p.checklists)
+    ev.push({from: l.items[0].at - 0.8, to: l.until, spot: LIST, g: l.items.map((it) => ({at: it.at - 0.3, kind: "tick" as const}))});
+  if (p.cities.length) {
+    const a = Math.min(...p.cities.map((c) => c.at));
+    const b = Math.max(...p.cities.map((c) => c.until));
+    ev.push({from: a - 0.5, to: b, spot: CITY, g: [{at: a, kind: "point"}]});
+  }
+  ev.sort((a, b) => a.from - b.from);
+  // события, которые накладываются, объединяем: робот остаётся на месте
+  const merged: Ev[] = [];
+  for (const e of ev) {
+    const last = merged[merged.length - 1];
+    if (last && e.from < last.to + 0.6 && e.spot === last.spot) {
+      last.to = Math.max(last.to, e.to);
+      last.g.push(...e.g);
+    } else if (last && e.from < last.to) {
+      continue; // другое место занято — пропускаем, чтобы робот не метался
+    } else merged.push({...e, g: [...e.g]});
+  }
+  const end = p.site.at;
+  const stays: MascotStay[] = [{at: 0.9, ...HOME}];
+  const gestures: MascotPlan["gestures"] = [{at: 1.0, kind: "wave"}];
+  let free = 0.9 + 2.4;
+  for (let i = 0; i < merged.length; i++) {
+    const e = merged[i];
+    if (e.from > end - 1.5) break;
+    stays.push({at: Math.max(e.from, stays[stays.length - 1].at + 0.6), ...e.spot});
+    gestures.push(...e.g);
+    const next = merged[i + 1];
+    const nextFrom = next ? next.from : end;
+    if (!next || next.spot !== e.spot || nextFrom - e.to > 3.5) {
+      if (nextFrom - e.to > 2.2) {
+        stays.push({at: e.to + 1.0, ...HOME});
+        // в долгом простое — жест «от скуки»
+        if (nextFrom - e.to > 7) gestures.push({at: e.to + 2.5, kind: (["nod", "scan", "shrug"] as const)[i % 3]});
+      }
+    }
+    free = e.to;
+  }
+  for (const b of p.broll) if (!merged.some((e) => b.at >= e.from && b.at <= e.to)) gestures.push({at: b.at + 0.3, kind: "scan"});
+  // логотипы — показывает на них
+  for (const g of p.logos) if (!merged.some((e) => g.items[0].at >= e.from && g.items[0].at <= e.to)) gestures.push({at: g.items[0].at, kind: "point"});
+  // финал: на карточку спикера, указывает на кнопку; в конце — вниз и помахать
+  stays.push({at: end + 1.1, ...FINAL});
+  gestures.push({at: end + 1.3, kind: "pointUp"});
+  stays.push({at: total - 1.0, ...HOME});
+  gestures.push({at: total - 0.95, kind: "wave"});
+  void free;
+  return {stays, gestures: gestures.sort((a, b) => a.at - b.at)};
 };
 
 export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
@@ -994,7 +1139,10 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
     {at: p.site.at, src: p.sfx.whoosh},
   ];
 
+  const brand = BRANDS[p.brand ?? "gtt"];
+  const plan = React.useMemo(() => (brand.id === "aura" ? auraPlan(p, durationInFrames / fps) : null), [brand.id, p, durationInFrames, fps]);
   return (
+    <BrandCtx.Provider value={brand}>
     <AbsoluteFill style={{backgroundColor: "#0B0D14"}}>
       <Audio src={staticFile(p.mediaSrc)} />
       {p.music ? (
@@ -1065,12 +1213,21 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
         />
       </Sequence>
 
+      {plan ? <AuraMascot plan={plan} scale={1.25} /> : null}
       <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} />
-      {/* логотип: стеклянная пирамида + крупная белая надпись с бликом (как в референсе) */}
-      <div style={{position: "absolute", top: p.format === "stories" ? 210 : 86, left: 56}}>
-        <SiteLogo variant="title" scale={1} />
-      </div>
+      {brand.id === "aura" ? (
+        // Aura: круглая печать крутится над головой спикера, по центру; в Stories — ниже полосок и аватара
+        <div style={{position: "absolute", top: p.format === "stories" ? 200 : 40, left: "50%", translate: "-50% 0"}}>
+          <AuraBadge size={200} />
+        </div>
+      ) : (
+        // логотип: стеклянная пирамида + крупная белая надпись с бликом (как в референсе)
+        <div style={{position: "absolute", top: p.format === "stories" ? 210 : 86, left: 56}}>
+          <SiteLogo variant="title" scale={1} />
+        </div>
+      )}
       {p.showSafeZone ? <SafeZone /> : null}
     </AbsoluteFill>
+    </BrandCtx.Provider>
   );
 };

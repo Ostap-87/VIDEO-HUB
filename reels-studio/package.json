@@ -24,6 +24,7 @@
     "broll": "python3 scripts/broll.py"
   },
   "dependencies": {
+    "@react-three/fiber": "8.17.10",
     "@remotion/captions": "4.0.533",
     "@remotion/cli": "4.0.533",
     "@remotion/elevenlabs": "4.0.533",
@@ -34,14 +35,17 @@
     "@remotion/motion-blur": "4.0.533",
     "@remotion/noise": "4.0.533",
     "@remotion/sfx": "4.0.533",
+    "@remotion/three": "4.0.533",
     "@remotion/transitions": "4.0.533",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "remotion": "4.0.533",
+    "three": "0.170.0",
     "zod": "4.5.4"
   },
   "devDependencies": {
     "@types/react": "^18.3.0",
+    "@types/three": "0.170.0",
     "typescript": "^5.4.0"
   }
 }
