@@ -6,7 +6,7 @@
   "slides": [
     {
       "type": "cover",
-      "tag": "Бизнес-делегация · Вьетнама",
+      "tag": "Лонгевити Вьетнама (anti-aging биотех) — тонкий сегмент",
       "topright": "Vinmec VRISG · VinUniversity\nMedeze",
       "logos": [
         {
@@ -55,11 +55,11 @@
       "items": [
         {
           "name": "Дни 1–2 · Ханой",
-          "text": "Vinmec Research Institute of Stem Cell & Gene Technology, Vinmec Center of Regenerative Medicine & Cell Therapy, VinUniversity"
+          "text": "Vinmec VRISG, Vinmec Center, VinUniversity"
         },
         {
           "name": "Дни 3–4 · Хошимин",
-          "text": "Medeze — клиника эстетической/регенеративной медицины (кластер, 2 визита по согласованию)."
+          "text": "Medeze; клиника эстетической/регенеративной медицины (2 визита по согласованию)"
         },
         {
           "name": "День 5 · Хошимин",
@@ -73,12 +73,12 @@
         {
           "name": "Ханой",
           "days": "дни 1–2",
-          "companies": "3 компании"
+          "companies": "Vinmec VRISG\nVinmec Center\nVinUniversity"
         },
         {
           "name": "Хошимин",
           "days": "дни 3–5",
-          "companies": "Medeze",
+          "companies": "Medeze\nклиники регенеративной\nмедицины",
           "leg": {
             "icon": "plane",
             "text": "≈2 ч"
@@ -94,31 +94,31 @@
       "days": [
         {
           "sub": "10:00–13:00",
-          "title": "Vinmec Research",
-          "text": "Визиты: Vinmec Research Institute of Stem Cell & Gene Technology.",
+          "title": "Vinmec VRISG",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
           "label": "День 1"
         },
         {
           "sub": "10:00–13:00",
           "title": "Vinmec Center ·\nVinUniversity",
-          "text": "Визиты: Vinmec Center of Regenerative Medicine & Cell Therapy, VinUniversity.",
+          "text": "Центр регенеративной медицины Vinmec Times City и университет VinUniversity (Vingroup).",
           "label": "День 2"
         },
         {
-          "sub": "Хошимин · 10:00–13:00",
+          "sub": "Хошимин",
           "title": "Medeze",
           "text": "Внутренний перелёт Ханой→Хошимин (≈2 ч).",
           "label": "День 3"
         },
         {
-          "sub": "Хошимин · 10:00–13:00",
-          "title": "Хошимин",
+          "sub": "Хошимин",
+          "title": "Клиники",
           "text": "Клиника эстетической/регенеративной медицины (кластер, 2 визита по согласованию).",
           "label": "День 4"
         },
         {
-          "sub": "Хошимин · 10:00–13:00",
-          "title": "Хошимин",
+          "sub": "Хошимин",
+          "title": "Резервный день",
           "text": "Резервный день / возможность комбинирования с модулем косметики.",
           "label": "День 5"
         }
@@ -127,26 +127,38 @@
     {
       "type": "company",
       "tag": "День 1 · Ханой",
-      "title": "Vinmec Research",
+      "title": "Vinmec VRISG",
       "logo": "source-videos/логотипы/медицина/vinmec-vrisg.png",
-      "short": "Vinmec Research",
-      "subtitle": "VRISG · Ханой",
+      "short": "Vinmec Research Institute (VRISG)",
+      "subtitle": "Vinmec · Vingroup · Ханой",
       "facts": [
         {
-          "icon": "pin",
-          "value": "Ханой",
-          "label": "площадка визита",
-          "sub": "день 1 программы"
+          "icon": "flag",
+          "value": "2016",
+          "label": "год создания",
+          "sub": "центр — с 2014 года"
         },
         {
-          "icon": "calendar",
-          "value": "День 1",
-          "label": "визит делегации",
-          "sub": "10:00–13:00"
+          "icon": "star",
+          "value": "Единственный",
+          "label": "в стране институт стволовых клеток",
+          "sub": "и генной терапии"
+        },
+        {
+          "icon": "cpu",
+          "value": "CAR-T",
+          "label": "и генная терапия",
+          "sub": "направления исследований"
+        },
+        {
+          "icon": "building",
+          "value": "VinUniversity",
+          "label": "в составе",
+          "sub": "с ноября 2024 года"
         }
       ],
-      "why": "В ноябре 2024 года институт вошёл в состав VinUniversity.",
-      "learn": "Возглавляется профессором Нгуен Тхань Лиемом.",
+      "why": "Некоммерческий институт стволовых клеток и генной терапии в системе Vinmec (Vingroup); с 2024 года — в VinUniversity.",
+      "learn": "Мезенхимальные стволовые клетки, CAR-T и генная терапия; руководитель — профессор Нгуен Тхань Лием.",
       "learn_label": "Фокус визита"
     },
     {
@@ -154,30 +166,36 @@
       "tag": "День 2 · Ханой",
       "title": "Vinmec Center",
       "logo": "source-videos/логотипы/медицина/vinmec-vrisg.png",
-      "short": "Vinmec Center",
-      "subtitle": "Ханой",
+      "short": "Vinmec Center of Regenerative Medicine",
+      "subtitle": "Vinmec · Vingroup · Ханой",
       "facts": [
         {
           "icon": "flag",
           "value": "2019",
-          "label": "год открытия",
-          "sub": "26 августа 2019 года"
+          "label": "открытие",
+          "sub": "26 августа"
         },
         {
-          "icon": "pin",
-          "value": "Ханой",
-          "label": "площадка визита",
-          "sub": "день 2 программы"
+          "icon": "building",
+          "value": "Times City",
+          "label": "больница Vinmec",
+          "sub": "Ханой"
         },
         {
-          "icon": "calendar",
-          "value": "День 2",
-          "label": "визит делегации",
-          "sub": "10:00–13:00"
+          "icon": "users",
+          "value": "2",
+          "label": "подразделения",
+          "sub": "клиника и стационар"
+        },
+        {
+          "icon": "star",
+          "value": "Клетки",
+          "label": "стволовые и иммунные",
+          "sub": "трансплантация"
         }
       ],
-      "why": "Под руководством профессора Нгуен Тхань Лиема центр применяет трансплантацию стволовых и иммунных клеток при лечении.",
-      "learn": "Центр регенеративной медицины и клеточной терапии.",
+      "why": "Трансплантация стволовых и иммунных клеток при ДЦП, аутизме, циррозе печени, инсульте и травмах спинного мозга.",
+      "learn": "Центр регенеративной медицины и клеточной терапии в больнице Vinmec Times City; руководит проф. Нгуен Тхань Лием.",
       "learn_label": "Фокус визита"
     },
     {
@@ -186,28 +204,35 @@
       "title": "VinUniversity",
       "logo": "source-videos/логотипы/общие/vinuniversity.png",
       "short": "VinUniversity",
-      "subtitle": "Ханой",
+      "subtitle": "Vingroup · Ханой",
       "facts": [
         {
           "icon": "flag",
           "value": "2019",
-          "label": "год основания"
+          "label": "год основания",
+          "sub": "Vingroup"
         },
         {
-          "icon": "pin",
-          "value": "Ханой",
-          "label": "площадка визита",
-          "sub": "день 2 программы"
+          "icon": "handshake",
+          "value": "Cornell",
+          "label": "партнёр",
+          "sub": "и Университет Пенсильвании"
         },
         {
-          "icon": "calendar",
-          "value": "День 2",
-          "label": "визит делегации",
-          "sub": "10:00–13:00"
+          "icon": "cpu",
+          "value": "Smart Health",
+          "label": "центр VinUni-Illinois",
+          "sub": "с Университетом Иллинойса"
+        },
+        {
+          "icon": "building",
+          "value": "VRISG",
+          "label": "институт в составе",
+          "sub": "с ноября 2024 года"
         }
       ],
-      "why": "College of Health Sciences развивает кластер исследовательских центров «Innovation in Health Sciences».",
-      "learn": "Частный некоммерческий университет в Ханое, основанный в 2019 году вьетнамским конгломератом Vingroup при партнёрстве с Cornell.",
+      "why": "Частный некоммерческий университет Vingroup; College of Health Sciences развивает кластер «Innovation in Health Sciences».",
+      "learn": "Кластер охватывает стволовые клетки, регенеративную медицину и «умные» медтехнологии.",
       "learn_label": "Фокус визита"
     },
     {
@@ -219,21 +244,28 @@
       "subtitle": "Хошимин",
       "facts": [
         {
-          "icon": "target",
-          "value": "Жировая ткань",
-          "label": "направление"
+          "icon": "flag",
+          "value": "2010",
+          "label": "основание группы",
+          "sub": "Таиланд"
+        },
+        {
+          "icon": "package",
+          "value": "3",
+          "label": "источника стволовых клеток",
+          "sub": "пуповинная кровь, ткань пуповины, жир"
+        },
+        {
+          "icon": "star",
+          "value": "2024",
+          "label": "Компания года в ЮВА",
+          "sub": "Frost & Sullivan"
         },
         {
           "icon": "pin",
           "value": "Хошимин",
-          "label": "площадка визита",
-          "sub": "день 3 программы"
-        },
-        {
-          "icon": "calendar",
-          "value": "День 3",
-          "label": "визит делегации",
-          "sub": "10:00–13:00"
+          "label": "центр регенеративной медицины",
+          "sub": "и долголетия"
         }
       ],
       "why": "Работает в Хошимине как центр регенеративной медицины и долголетия.",
@@ -310,7 +342,7 @@
         "Проживание 6 ночей"
       ],
       "includes_note": "авиаперелёт оплачивается отдельно",
-      "footer": "<b>Прилёт:</b> Хошимин (перелёт Москва → Хошимин).<br><b>Вылет:</b> Хошимин — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+      "footer": "<b>Прилёт:</b> Ханой.<br><b>Вылет:</b> Хошимин — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
     },
     {
       "type": "contacts",

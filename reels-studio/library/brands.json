@@ -2594,5 +2594,24 @@
   ],
   "logo": "source-videos/логотипы/чай-кофе/point-coffee-indomaret.png",
   "site_logo": "/logos/point Coffee.png"
+ },
+ "dutch-lady": {
+  "names": [
+   "Dutch Lady (FrieslandCampina)",
+   "Dutch Lady",
+   "FrieslandCampina"
+  ],
+  "logo": "source-videos/логотипы/еда/dutch-lady-frieslandcampina.png",
+  "site_logo": "/logos/Dutch Lady.png"
+ },
+ "shopee-lazada-vietnam": {
+  "names": [
+   "Shopee/Lazada Vietnam",
+   "Shopee/Lazada",
+   "Shopee",
+   "Lazada Vietnam"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/shopee-lazada.png",
+  "site_logo": "/logos/Shopee:Lazada Vietnam.png"
  }
 }
