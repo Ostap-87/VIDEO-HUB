@@ -1,0 +1,28 @@
+{% import 'slides/_macros.html' as m with context %}
+{# «Почему мы»: 4 пункта; 1–2 простые, 3 — синяя плашка, 4 — голубая. #}
+<section class="slide s-why">
+  <img class="robot" src="{{ (s.hero or 'assets/robot.png')|asset }}" alt="">
+  {{ m.tag(s.tag or 'Почему мы') }}
+  <div class="title">{{ (s.title or 'Почему мы')|br }}</div>
+  {% for it in s['items'][:2] %}
+  <div class="item" style="top: {{ 5 + loop.index0 * 210 }}px">
+    <div class="num outline-num">{{ '%02d'|format(loop.index) }}</div>
+    <div class="slash"></div>
+    <div class="h">{{ it.title }}</div>
+    <div class="p">{{ it.text }}</div>
+  </div>
+  {% endfor %}
+  {% for it in s['items'][2:4] %}
+  <div class="box {{ 'b1' if loop.first else 'b2' }}">
+    {% if loop.first %}<div class="dots white" style="inset:0;border-radius:22px"></div>{% endif %}
+    {% set c = 'white' if loop.first else '' %}
+    <div class="br tl {{ c }}" style="left:20px;top:15px"></div><div class="br tr {{ c }}" style="right:20px;top:15px"></div>
+    <div class="br bl {{ c }}" style="left:20px;bottom:15px"></div><div class="br brr {{ c }}" style="right:20px;bottom:15px"></div>
+    {% set dy = 0 if loop.first else -5 %}
+    <div class="num outline-num {{ c }}" style="top:{{ -5 + dy }}px">{{ '%02d'|format(loop.index + 2) }}</div>
+    <div class="slash" style="top:{{ 39 + dy }}px"></div>
+    <div class="h" style="top:{{ 36 + dy }}px">{{ it.title }}</div>
+    <div class="p" style="top:{{ 92 + dy }}px">{{ it.text }}</div>
+  </div>
+  {% endfor %}
+</section>

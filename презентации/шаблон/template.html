@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>{{ deck.title or 'Global Tech Tour' }}</title>
+<base href="{{ base }}">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="fonts/fonts-extra.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+{% for s in slides %}
+{% include 'slides/' ~ s.type ~ '.html' %}
+{% endfor %}
+<script>
+/* Подгонка: элементы с data-fit="ширина" уменьшают кегль, пока текст не влезет в ширину
+   (так в оригиналах заголовки «10 КОМПАНИЙ / 3 СЛОЯ» и названия городов вписаны в колонку). */
+async function fitAll() {
+  await document.fonts.ready;
+  for (const el of document.querySelectorAll('[data-fit]')) {
+    const max = parseFloat(el.dataset.fit);
+    const min = parseFloat(el.dataset.fitMin || 10);
+    let fs = parseFloat(getComputedStyle(el).fontSize);
+    const grow = el.dataset.fitGrow !== undefined;
+    el.style.whiteSpace = 'nowrap';
+    const w = () => { const r = document.createRange(); r.selectNodeContents(el); return r.getBoundingClientRect().width; };
+    if (grow) { fs = fs * max / w(); el.style.fontSize = fs + 'px'; }
+    let guard = 0;
+    while (w() > max && fs > min && guard++ < 200) { fs -= 1; el.style.fontSize = fs + 'px'; }
+  }
+  document.body.dataset.ready = '1';
+}
+fitAll();
+</script>
+</body>
+</html>

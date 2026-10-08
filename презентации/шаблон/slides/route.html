@@ -1,0 +1,30 @@
+{% import 'slides/_macros.html' as m with context %}
+{# «Маршрут»: 2–5 городов кружками по волнистой пунктирной линии. #}
+{% set n = s.cities|length %}
+{% set step = [460, (1660 / (n - 1)) if n > 1 else 460]|min %}
+{% set x0 = (1920 - ((n - 1) * step + 260)) / 2 - 10 %}
+<section class="slide s-route">
+  {% if s.ghost %}<div class="ghost">{{ s.ghost }}</div>{% endif %}
+  {{ m.tag(s.tag or 'Маршрут') }}
+  <div class="title">{{ s.title or 'Маршрут' }}</div>
+  {% set centers = [] %}{% for c in s.cities %}{% set _ = centers.append([x0 + loop.index0 * step + 130, (450 if loop.index0 % 2 == 0 else 360) + 130]) %}{% endfor %}
+  <svg class="path" width="1920" height="1080"><path d="{{ route_path(centers) }}" fill="none" stroke="#1a73e8" stroke-width="5" stroke-dasharray="16 13" stroke-linecap="round"/></svg>
+  {% for c in s.cities %}
+  {% set left = x0 + loop.index0 * step %}{% set top = 450 if loop.index0 % 2 == 0 else 360 %}
+  <div class="city{% if loop.first %} first{% endif %}" style="left:{{ left }}px;top:{{ top }}px">
+    <div class="no">{{ loop.index }}</div>
+    <div class="nm"><span data-fit="215">{{ c.name }}</span></div>
+    {% if c.days %}<div class="dd">{{ c.days }}</div>{% endif %}
+  </div>
+  <div class="pin" style="left:{{ left + 108 }}px;top:{{ top + 268 }}px">{{ m.icon('pin') }}</div>
+  {% if c.companies %}<div class="card cc" style="left:{{ left - 51 }}px;top:{{ top + 326 }}px;{{ m.rot([-1, 0.8, -0.6, 1.1, -0.9][loop.index0 % 5]) }}">{{ c.companies|br }}</div>{% endif %}
+  {% if not loop.last and s.cities[loop.index].leg %}{% set lg = s.cities[loop.index].leg %}
+  <div class="leg" style="left:{{ left + 130 + step / 2 - 70 }}px;top:345px">{{ m.icon(lg.icon or 'plane') }}{{ lg.text }}</div>
+  {% endif %}
+  {% endfor %}
+  {% if s.footer %}
+  <div class="abs" style="left:330px;top:975px;width:70px;height:80px;border:7px solid #1a73e8;border-right:0;border-radius:12px 0 0 12px"></div>
+  <div class="abs" style="left:1520px;top:975px;width:70px;height:80px;border:7px solid #1a73e8;border-left:0;border-radius:0 12px 12px 0"></div>
+  <div class="foot">{{ s.footer|safe }}</div>
+  {% endif %}
+</section>

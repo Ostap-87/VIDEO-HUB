@@ -1,0 +1,29 @@
+{% import 'slides/_macros.html' as m with context %}
+{# «О рынке»: синий фон, 3 спидометра с цифрами. value_frac — заполненность дуги (0…1). #}
+{% set POS = [ {'l': 87, 't': 514, 'r': -1.5}, {'l': 678, 't': 486, 'r': 1.0}, {'l': 1268, 't': 516, 'r': -1.2} ] %}
+<section class="slide s-market">
+  <svg class="bgfx" width="1920" height="1080">
+    <defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="0.3"><stop offset="0" stop-color="#0f5fd1"/><stop offset=".5" stop-color="#176ce1"/><stop offset="1" stop-color="#3584ee"/></linearGradient></defs>
+    <rect width="1920" height="1080" fill="url(#mg)"/>
+    <g fill="none" stroke="#fff"><circle cx="1640" cy="170" r="140" stroke-opacity=".16" stroke-width="3"/><circle cx="1640" cy="170" r="230" stroke-opacity=".1" stroke-width="2"/>
+    <circle cx="1640" cy="170" r="330" stroke-opacity=".08" stroke-width="2"/><circle cx="1640" cy="170" r="440" stroke-opacity=".06" stroke-width="2"/><circle cx="1640" cy="170" r="560" stroke-opacity=".05" stroke-width="2"/></g>
+    <g fill="#8cc0fa"><circle cx="1519" cy="240" r="9"/><circle cx="1561" cy="386" r="9"/><circle cx="1321" cy="255" r="9"/><circle cx="1388" cy="530" r="9"/></g>
+    <path d="M-2 790 Q 960 640 1920 752" fill="none" stroke="#8cc0fa" stroke-width="4" stroke-dasharray="7 13" stroke-linecap="round"/>
+    <path d="M0 822 Q 960 690 1920 772 L1920 1080 L0 1080 Z" fill="#f3f5f8"/>
+  </svg>
+  <div class="dots white" style="left:40px;top:469px;width:560px;height:262px"></div>
+  {% if s.ghost %}<div class="ghost">{{ s.ghost }}</div>{% endif %}
+  {{ m.tag(s.tag or 'Рынок', 'white') }}
+  <div class="title">{{ s.title or 'О рынке' }}</div>
+  {% if s.lead %}<div class="lead">{{ s.lead|br }}</div>{% endif %}
+  {% for st in s.stats[:3] %}{% set p = POS[loop.index0] %}
+  <div class="card grad stat" style="left:{{ p.l }}px;top:{{ p.t }}px;{{ m.rot(p.r) }}">
+    {{ gauge(st.frac or 0.6)|safe }}
+    <div class="v" data-fit="300">{{ st.value }}</div>
+    <div class="l">{{ st.label }}</div>
+    <div class="s">{{ st.sub }}</div>
+  </div>
+  {% endfor %}
+  {% if s.quote %}<div class="quote">{{ m.quote_mark('#1a73e8', 52, 42) }}{{ s.quote }}</div>{% endif %}
+  {% if s.source %}<div class="src">{{ s.source }}</div>{% endif %}
+</section>

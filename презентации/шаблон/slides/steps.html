@@ -1,0 +1,22 @@
+{% import 'slides/_macros.html' as m with context %}
+{# «Как проходит»: 3–5 шагов карточками на пунктирной линии + строка вопросов-ответов в рамке. hl — номер выделенного шага. #}
+{% set n = s.steps|length %}
+{% set step = 360 if n == 5 else 1800 / n %}
+{% set cw = 330 if n == 5 else step - 30 %}
+<section class="slide s-steps">
+  {{ m.tag(s.tag or 'Как проходит') }}
+  <div class="title">{{ s.title or 'Как проходит' }}</div>
+  <svg class="path" width="1920" height="1080"><path d="M58 552 C 200 520, 330 520, 520 556 S 800 570, 900 548 S 1100 520, 1250 530 S 1650 560, 1857 540" fill="none" stroke="#1a73e8" stroke-width="5" stroke-dasharray="0.1 13" stroke-linecap="round"/></svg>
+  {% for st in s.steps %}{% set x = 66 + loop.index0 * step %}
+  <div class="abs" style="left:{{ x + cw / 2 - 22 }}px;top:{{ [519, 544, 536, 512, 524][loop.index0 % 5] - 4 }}px;width:44px;height:52px">{{ m.icon('flag' if loop.last else 'pin') }}</div>
+  <div class="card grad st{% if s.hl == loop.index %} hl{% endif %}" style="left:{{ x }}px;top:605px;width:{{ cw }}px;{{ m.rot([0.4, -0.3, 0.2, 0.4, -0.3][loop.index0 % 5]) }}">
+    {% if s.hl != loop.index %}<div class="tape" style="left:{{ cw / 2 - 56 }}px;top:-14px;{{ m.rot([-3, 2, -2, 3, -2][loop.index0 % 5]) }}"></div>{% endif %}
+    <div class="n">{{ '%02d'|format(loop.index) }}</div><div class="h">{{ st.title }}</div><div class="p">{{ st.text }}</div>
+  </div>
+  {% endfor %}
+  {% if s.faq %}
+  <div class="br tl" style="left:64px;top:900px"></div><div class="br bl" style="left:64px;top:970px"></div>
+  <div class="br tr" style="left:1790px;top:900px"></div><div class="br brr" style="left:1790px;top:970px"></div>
+  {% for q in s.faq[:4] %}<div class="faq" style="left:{{ 110 + loop.index0 * 437 }}px"><div class="q">{{ q.q }}</div><div class="a">{{ q.a|br }}</div></div>{% endfor %}
+  {% endif %}
+</section>

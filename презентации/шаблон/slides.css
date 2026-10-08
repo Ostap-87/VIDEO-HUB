@@ -1,0 +1,295 @@
+/* Шаблон презентаций Global Tech Tour.
+   Один .slide = один слайд 1920×1080 px (в PDF это 1440×810 pt, как у оригиналов «ИИ» и «Alibaba»).
+   Все координаты сняты с оригинальных PDF (PyMuPDF), шрифты — Sofia Sans (Extra) Condensed + Inter. */
+
+:root {
+  --blue: #1a73e8;
+  --ink: #17171d;
+  --ink2: #2b2d38;
+  --ink3: #3b3d48;
+  --mute: #5e6170;
+  --mute2: #4a4c57;
+  --bg: #f3f5f8;
+  --bg-cover: #f5f7fa;
+  --pale: #e6f1fd;
+  --pale2: #eef5fe;
+  --on-blue: #e3eefc;
+  --tape: #8fbdf5;
+  --ghost: #eaedf2;
+  --sh1: #dce3ec;
+  --sh2: #ebeff5;
+  --display: 'Sofia Sans Extra Condensed', 'Noto Sans SC', 'Noto Sans Thai', sans-serif;
+  --cond: 'Sofia Sans Condensed', 'Noto Sans SC', 'Noto Sans Thai', sans-serif;
+  --text: 'Inter', 'Noto Sans Thai', 'Noto Sans SC', sans-serif;
+  --shadow: 0 7px 0 var(--sh1), 0 13px 0 var(--sh2);
+}
+
+@page { size: 1920px 1080px; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+.slide { text-wrap: pretty;
+  position: relative; width: 1920px; height: 1080px; overflow: hidden;
+  background: var(--bg); color: var(--ink);
+  font-family: var(--text); font-weight: 400;
+  page-break-after: always; break-after: page;
+  -webkit-font-smoothing: antialiased;
+}
+.slide:last-child { page-break-after: auto; break-after: auto; }
+.abs { position: absolute; }
+
+/* ---------- общие элементы ---------- */
+.tag { /* синяя «таблетка» вверху слева */
+  position: absolute; left: 64px; top: 52px; height: 70px; padding: 0 34px;
+  border-radius: 35px; background: var(--blue); color: #fff;
+  font: 900 40px/70px var(--display); text-transform: uppercase; white-space: nowrap;
+}
+.tag.sm { font-size: 36px; }
+.tag.white { background: #fff; color: var(--blue); }
+
+.title { /* огромный заголовок */
+  position: absolute; left: 56px; top: 80px; white-space: nowrap; letter-spacing: .003em;
+  font: 900 200px/1.4 var(--display); color: var(--blue); text-transform: uppercase;
+}
+.title .native { font-family: 'Noto Sans SC', 'Noto Sans Thai', var(--display); font-weight: 900; }
+.ghost { /* бледный иероглиф/надпись на фоне */
+  position: absolute; white-space: nowrap; color: var(--ghost);
+  font: 900 460px/1 'Noto Sans SC', 'Noto Sans Thai', sans-serif; pointer-events: none;
+}
+.ghost.thai { font-family: 'Noto Sans Thai', sans-serif; }
+
+.card { position: absolute; background: #fff; border-radius: 22px; box-shadow: var(--shadow); }
+.card.grad { background: linear-gradient(180deg, #ffffff 0%, #ffffff 45%, #f1f5fa 100%); }
+.card.pale { background: linear-gradient(180deg, #eef5fe 0%, #e3eefc 100%); }
+.card.blue { background: var(--blue); }
+
+.tape { position: absolute; width: 112px; height: 36px; background: var(--tape); }
+
+.br { position: absolute; width: 70px; height: 70px; border: 0 solid var(--blue); }
+.br.tl { border-top-width: 7px; border-left-width: 7px; border-top-left-radius: 12px; }
+.br.tr { border-top-width: 7px; border-right-width: 7px; border-top-right-radius: 12px; }
+.br.bl { border-bottom-width: 7px; border-left-width: 7px; border-bottom-left-radius: 12px; }
+.br.brr { border-bottom-width: 7px; border-right-width: 7px; border-bottom-right-radius: 12px; }
+.br.white { border-color: #fff; }
+
+.dots { position: absolute; background-image: radial-gradient(circle, rgba(26,115,232,.17) 2.2px, transparent 2.8px); background-size: 26px 26px; }
+.dots.fade-l { -webkit-mask-image: linear-gradient(90deg, transparent, #000 45%); }
+.dots.fade-r { -webkit-mask-image: linear-gradient(270deg, transparent, #000 45%); }
+.dots.fade-c { -webkit-mask-image: radial-gradient(closest-side, #000 40%, transparent); }
+.dots.white { background-image: radial-gradient(circle, rgba(255,255,255,.16) 2.2px, transparent 2.8px); }
+
+.ico { display: block; fill: none; stroke: var(--blue); stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+
+.outline-num { /* контурные цифры 01, 02… */
+  font: 500 160px/1.4 var(--display); color: transparent;
+  -webkit-text-stroke: 2.6px var(--blue); letter-spacing: -0.01em;
+}
+.outline-num.white { -webkit-text-stroke-color: #fff; }
+
+.logo-img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.logo-text { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center;
+  font: 900 64px/0.95 var(--display); color: var(--ink); text-transform: uppercase; }
+.placeholder { outline: 3px dashed #e8710a; outline-offset: 4px; color: #e8710a !important; }
+
+/* ---------- 1. Обложка ---------- */
+.s-cover { background: var(--bg-cover); }
+.s-cover .title { left: 56px; top: 73px; font-size: 181.9px; }
+.s-cover .tag { font-size: 36px; }
+.s-cover .robot { position: absolute; left: 1291px; top: 0; width: 596px; height: 1080px; }
+.s-cover .robot-dots { left: 1360px; top: 380px; width: 560px; height: 460px; }
+.s-cover .topright { position: absolute; right: 150px; top: 50px; text-align: right;
+  font: 850 30px/32px var(--cond); color: var(--blue); text-transform: uppercase; }
+.s-cover .arrow { position: absolute; left: 1783px; top: 51px; width: 72px; height: 72px; }
+.s-cover .arrow .ico { stroke-width: 2.3; width: 72px; height: 72px; }
+.s-cover .logos { position: absolute; left: 64px; top: 330px; width: 1160px; }
+.s-cover .lc { position: absolute; width: 275px; height: 150px; padding: 20px 26px; }
+.s-cover .lc .logo-text { font-size: 46px; }
+.s-cover .bigcard { position: absolute; left: 64px; top: 330px; width: 1080px; height: 520px; padding: 110px 120px; }
+.s-cover .box { position: absolute; left: 64px; top: 864px; width: 1160px; height: 150px;
+  display: flex; align-items: center; justify-content: space-between; padding: 0 44px 14px 46px; }
+.s-cover .box.big { top: 888px; height: 140px; }
+.s-cover .box .l { font: 850 34px/39px var(--cond); color: var(--ink); text-transform: uppercase; max-width: 720px; }
+.s-cover .box .l .k { display: block; font-size: 30px; line-height: 41px; color: var(--blue); }
+.s-cover .box.big .l { font-size: 28px; line-height: 34px; }
+.s-cover .box .r { font: 850 28px/36px var(--cond); color: var(--blue); text-transform: uppercase; text-align: right; max-width: 360px; }
+.s-cover .box.big .r { font-size: 26px; line-height: 27px; }
+.s-cover .footer { position: absolute; right: 64px; top: 1021px; height: 29px; padding: 0 10px; border-radius: 8px;
+  background: var(--bg-cover); font: 400 18px/29px var(--text); color: var(--mute); white-space: nowrap; }
+
+/* ---------- 2. Почему мы ---------- */
+.s-why .robot { position: absolute; left: -130px; top: 331px; width: 839px; }
+.s-why .title { left: 40px; top: 149px; font-size: 272.3px; line-height: 218px; white-space: normal; width: 840px; }
+.s-why .item { position: absolute; left: 880px; width: 960px; }
+.s-why .num { position: absolute; left: 0; top: 0; }
+.s-why .slash { position: absolute; left: 109px; top: 44px; width: 74px; height: 177px;
+  background: var(--blue); clip-path: polygon(calc(100% - 5px) 0, 100% 2.5%, 5px 100%, 0 97.5%); }
+.s-why .h { position: absolute; left: 210px; top: 41px; font: 850 36px/1.36 var(--cond); text-transform: uppercase; color: var(--ink); }
+.s-why .p { position: absolute; left: 210px; top: 97px; width: 705px; font: 400 23px/32.5px var(--text); color: var(--ink3); }
+.s-why .box { position: absolute; left: 880px; width: 960px; border-radius: 22px; }
+.s-why .box .num { position: absolute; left: 60px; }
+.s-why .box .slash { left: 184px; width: 59px; height: 140px; }
+.s-why .box .h { left: 270px; }
+.s-why .box .p { left: 270px; width: 655px; }
+.s-why .box.b1 { top: 500px; height: 250px; background: var(--blue); }
+.s-why .box.b1 .slash { background: #fff; }
+.s-why .box.b1 .h { color: #fff; }
+.s-why .box.b1 .p { color: var(--pale); }
+.s-why .box.b2 { top: 780px; height: 260px; background: var(--pale); }
+
+/* ---------- 3. Направления (слои) ---------- */
+.s-layers .ghost { left: -30px; top: 663px; font-size: 420px; }
+.s-layers .t1, .s-layers .t2 { position: absolute; left: 50px; white-space: nowrap; font: 900 156px/1.4 var(--display); color: var(--blue); text-transform: uppercase; }
+.s-layers .t1 { top: 103px; }
+.s-layers .t2 { top: 284px; font-size: 318px; }
+.s-layers .dots { left: 1420px; top: 60px; width: 500px; height: 420px; }
+.s-layers .ly { position: absolute; width: 900px; border-radius: 22px; box-shadow: var(--shadow); }
+.s-layers .ly .tab { position: absolute; right: -2px; top: -38px; width: 396px; height: 52px; border-radius: 18px 18px 0 0; background: inherit; }
+.s-layers .ly .n { position: absolute; left: 56px; font: 900 48px/1.4 var(--display); text-transform: uppercase; color: var(--ink3); }
+.s-layers .ly .d { position: absolute; left: 56px; font: 400 22px/32px var(--text); color: var(--mute); width: 780px; }
+.s-layers .l1 { left: 880px; top: 160px; height: 330px; background: var(--blue); z-index: 3; }
+.s-layers .l1 .n { top: 39px; font-size: 88px; color: #fff; }
+.s-layers .l1 .d { top: 155px; font-size: 24px; color: var(--on-blue); width: 720px; }
+.s-layers .l2 { left: 900px; top: 430px; height: 230px; background: #fff; z-index: 2; }
+.s-layers .l2 .n, .s-layers .l3 .n { top: 90px; }
+.s-layers .l2 .d, .s-layers .l3 .d { top: 160px; }
+.s-layers .l3 { left: 920px; top: 600px; height: 230px; background: #eceff3; z-index: 1; }
+.s-layers .quote { position: absolute; left: 190px; top: 900px; border-left: 4px solid var(--blue); padding-left: 23px;
+  font: italic 400 24px/34px var(--text); color: var(--ink2); width: 520px; }
+
+/* ---------- 4. Маршрут ---------- */
+.s-route .ghost { left: 1120px; top: 43px; font-size: 420px; }
+.s-route .title { left: 50px; top: 65px; font-size: 250px; }
+.s-route svg.path { position: absolute; left: 0; top: 0; }
+.s-route .city { position: absolute; width: 260px; height: 260px; border-radius: 50%; background: #fff; border: 6px solid var(--blue);
+  box-shadow: var(--shadow); text-align: center; color: var(--ink); }
+.s-route .city.first { background: var(--blue); border-color: #fff; color: #fff; }
+.s-route .city .no { position: absolute; left: 103px; top: 55px; width: 41px; height: 41px; border-radius: 50%; border: 3px solid currentColor;
+  font: 700 24px/35px var(--text); }
+.s-route .city .nm { position: absolute; left: 10px; right: 10px; top: 86px; height: 70px; display: flex; align-items: center; justify-content: center;
+  font: 900 64px/1 var(--display); text-transform: uppercase; white-space: nowrap; }
+.s-route .city .dd { position: absolute; left: 50%; top: 164px; transform: translateX(-50%); height: 29px; padding: 0 14px; border: 2px solid currentColor; border-radius: 15px;
+  font: 600 19px/25px var(--text); white-space: nowrap; }
+.s-route .pin { position: absolute; width: 44px; height: 44px; }
+.s-route .pin .ico { width: 44px; height: 44px; stroke-width: 2.2; }
+.s-route .cc { position: absolute; width: 362px; padding: 18px 20px; text-align: center; font: 800 25px/28px var(--cond); text-transform: uppercase; color: var(--ink); }
+.s-route .leg { position: absolute; width: 140px; text-align: center; font: 400 20px/22px var(--text); color: var(--blue); }
+.s-route .leg .ico { width: 50px; height: 50px; margin: 0 auto 10px; stroke-width: 2; }
+.s-route .foot { position: absolute; left: 0; right: 0; top: 990px; text-align: center; font: 400 26px/32px var(--text); color: var(--ink); }
+.s-route .foot b { color: var(--blue); font-weight: 700; }
+
+/* ---------- 5. Компания ---------- */
+.s-company .ghost { left: 1060px; top: 146px; }
+.s-company .fact { position: absolute; width: 480px; padding: 34px 30px 30px 102px; }
+.s-company .fact .ico { position: absolute; left: 38px; top: 42px; width: 46px; height: 46px; stroke-width: 2; }
+.s-company .fact .v { font: 900 68px/0.98 var(--display); color: var(--blue); white-space: nowrap; }
+.s-company .fact .l { margin-top: 4px; font: 800 26px/32px var(--cond); color: var(--ink); }
+.s-company .fact .s { margin-top: 4px; font: 400 20px/27px var(--text); color: var(--mute); }
+.s-company .logo-card { position: absolute; left: 1184px; top: 320px; width: 682px; height: 440px; padding: 70px 72px; }
+.s-company .logo-card .logo-text { font-size: 110px; }
+.s-company .uline { position: absolute; left: 1490px; top: 800px; width: 70px; height: 5px; background: var(--blue); }
+.s-company .cname { position: absolute; left: 1184px; width: 682px; top: 803px; text-align: center; white-space: nowrap;
+  font: 900 84px/1 var(--display); color: var(--blue); text-transform: uppercase; }
+.s-company .csub { position: absolute; left: 1184px; width: 682px; top: 905px; text-align: center; font: 400 24px/30px var(--text); color: var(--mute); }
+.s-company .why { position: absolute; left: 96px; top: 812px; width: 520px; }
+.s-company .why .k { font: 800 24px/28px var(--cond); color: var(--blue); text-transform: uppercase; }
+.s-company .why .q { position: absolute; left: 0; top: 46px; width: 42px; height: 34px; }
+.s-company .why .p { margin: 16px 0 0 60px; font: italic 400 27px/36px var(--text); color: var(--ink2); }
+.s-company .learn { position: absolute; left: 698px; top: 798px; width: 424px; min-height: 178px; padding: 22px 30px 24px 33px; }
+.s-company .learn .k { font: 800 24px/28px var(--cond); color: var(--ink); text-transform: uppercase; }
+.s-company .learn .p { margin-top: 12px; font: 400 20px/28px var(--text); color: var(--ink2); }
+.s-company .desc { position: absolute; left: 64px; top: 1000px; width: 1060px; font: 400 15px/20px var(--text); color: var(--mute); }
+
+/* ---------- 6. Выгоды ---------- */
+.s-benefits .robot-head { position: absolute; left: 1420px; top: 0; width: 500px; height: 313px; }
+.s-benefits .dots { left: 0; top: 560px; width: 600px; height: 500px; }
+.s-benefits .title { left: 56px; top: 118px; font-size: 182.9px; }
+.s-benefits svg.path { position: absolute; left: 0; top: 0; }
+.s-benefits .bc { position: absolute; width: 560px; min-height: 176px; padding: 36px 90px 30px 167px; }
+.s-benefits .bc .num { position: absolute; left: 36px; top: 12px; font-size: 124px; -webkit-text-stroke-width: 2.3px; }
+.s-benefits .bc .h { font: 800 34px/1.03 var(--cond); color: var(--ink); }
+.s-benefits .bc .p { margin-top: 12px; font: 400 20px/27px var(--text); color: var(--mute2); }
+.s-benefits .bc .ico { position: absolute; right: 38px; bottom: 30px; width: 44px; height: 44px; stroke-width: 1.8; }
+.s-benefits .bc .knob { position: absolute; left: -11px; top: 50%; margin-top: -13px; width: 26px; height: 26px; border-radius: 50%; background: #dde4ee; box-shadow: var(--shadow); }
+.s-benefits .deco { position: absolute; width: 52px; height: 52px; }
+.s-benefits .deco .ico { width: 52px; height: 52px; stroke-width: 2.1; }
+
+/* ---------- 7. О рынке ---------- */
+.s-market { background: var(--blue); }
+.s-market .bgfx { position: absolute; inset: 0; }
+.s-market .ghost { left: 1280px; top: 317px; font-size: 300px; color: #2479ea; }
+.s-market .title { left: 50px; top: 60px; font-size: 300px; color: #fff; }
+.s-market .lead { position: absolute; left: 64px; top: 412px; width: 820px; font: 400 28px/41px var(--text); color: var(--on-blue); }
+.s-market .stat { position: absolute; width: 565px; height: 356px; text-align: center; }
+.s-market .stat svg { position: absolute; left: 112px; top: 40px; }
+.s-market .stat .v { position: absolute; left: 0; right: 0; top: 118px; font: 900 84px/1 var(--display); color: var(--blue); white-space: nowrap; }
+.s-market .stat .l { position: absolute; left: 0; right: 0; top: 262px; font: 800 28px/32px var(--cond); color: var(--ink); text-transform: uppercase; }
+.s-market .stat .s { position: absolute; left: 0; right: 0; top: 300px; font: 400 21px/28px var(--text); color: var(--mute); }
+.s-market .quote { position: absolute; left: 250px; top: 950px; display: flex; gap: 22px; align-items: center; font: italic 400 26px/32px var(--text); color: var(--ink2); }
+.s-market .quote svg { flex: none; }
+.s-market .src { position: absolute; right: 64px; top: 1040px; font: 400 16px/20px var(--text); color: var(--mute); }
+
+/* ---------- 8. Программа по дням ---------- */
+.s-days .ghost { left: 1080px; top: 144px; font-size: 440px; }
+.s-days .title { left: 56px; top: 80px; }
+.s-days svg.path { position: absolute; left: 0; top: 0; }
+.s-days .dc { position: absolute; width: 120px; height: 120px; border-radius: 50%; border: 6px solid var(--blue); background: #fff;
+  box-shadow: var(--shadow); font: 900 64px/108px var(--display); color: var(--blue); text-align: center; }
+.s-days .dc.first { background: var(--blue); color: #fff; }
+.s-days .dl { position: absolute; font: 800 30px/35px var(--cond); color: var(--ink); text-transform: uppercase; white-space: nowrap; }
+.s-days .dl small { display: block; font: 400 22px/28px var(--text); color: var(--mute); text-transform: none; }
+.s-days .dcard { position: absolute; top: 572px; height: 384px; padding: 36px 40px; }
+.s-days .dcard .h { font: 900 56px/1.03 var(--display); color: var(--blue); text-transform: uppercase; }
+.s-days .dcard .bar { width: 60px; height: 6px; background: var(--blue); border-radius: 2px; margin: 26px 0 20px; }
+.s-days .dcard .p { font: 400 28px/40px var(--text); color: var(--ink2); }
+.s-days.n4 .dcard .h, .s-days.n5 .dcard .h { font-size: 44px; }
+.s-days.n4 .dcard .p, .s-days.n5 .dcard .p { font-size: 22px; line-height: 31px; }
+.s-days.n5 .dcard { padding: 30px 28px; }
+.s-days.n5 .dl { font-size: 28px; }
+
+/* ---------- 9. Формат и условия ---------- */
+.s-cond .title { left: 56px; top: 91px; font-size: 159.5px; }
+.s-cond .fact { position: absolute; width: 520px; min-height: 196px; padding: 34px 30px 26px 108px; }
+.s-cond .fact .ico { position: absolute; left: 42px; top: 50px; width: 46px; height: 46px; stroke-width: 2.1; }
+.s-cond .fact .v { font: 900 64px/1.02 var(--display); color: var(--blue); text-transform: uppercase; white-space: nowrap; }
+.s-cond .fact .l { margin-top: 4px; font: 800 24px/28px var(--cond); color: var(--ink); text-transform: uppercase; }
+.s-cond .fact .s { margin-top: 3px; font: 400 22px/28px var(--text); color: var(--mute); }
+.s-cond .inc { position: absolute; left: 1238px; top: 400px; width: 624px; min-height: 462px; padding: 36px 50px 36px 52px; color: #fff; }
+.s-cond .inc .k { font: 800 30px/36px var(--cond); text-transform: uppercase; margin-bottom: 18px; }
+.s-cond .inc li { list-style: none; position: relative; padding-left: 52px; font: 500 28px/34px var(--text); margin-bottom: 24px; }
+.s-cond .inc li::before { content: ''; position: absolute; left: 0; top: -2px; width: 38px; height: 38px; border-radius: 50%; background: #fff; }
+.s-cond .inc li svg { position: absolute; left: 10px; top: 8px; width: 18px; height: 18px; stroke: var(--blue); stroke-width: 4; fill: none; z-index: 1; }
+.s-cond .inc .note { font: 400 20px/26px var(--text); color: var(--on-blue); margin-top: 6px; }
+.s-cond .arr { position: absolute; left: 64px; top: 905px; width: 1100px; font: 400 22px/31px var(--text); color: var(--ink2); }
+.s-cond .arr b { color: var(--blue); font-weight: 700; }
+
+/* ---------- 10. Как проходит (шаги) ---------- */
+.s-steps .title { left: 50px; top: 65px; font-size: 250px; }
+.s-steps svg.path { position: absolute; left: 0; top: 0; }
+.s-steps .st { position: absolute; top: 590px; width: 330px; height: 230px; padding: 24px 26px; }
+.s-steps .st .n { font: 900 80px/1 var(--display); color: var(--blue); }
+.s-steps .st .h { margin-top: 4px; font: 800 30px/34px var(--cond); color: var(--ink); text-transform: uppercase; }
+.s-steps .st .p { margin-top: 6px; font: 400 20px/27px var(--text); color: var(--mute); }
+.s-steps .st.hl { background: var(--blue); }
+.s-steps .st.hl .n, .s-steps .st.hl .h { color: #fff; }
+.s-steps .st.hl .p { color: var(--on-blue); }
+.s-steps .faq { position: absolute; top: 926px; width: 400px; }
+.s-steps .faq .q { font: 800 24px/27px var(--cond); color: var(--blue); text-transform: uppercase; }
+.s-steps .faq .a { margin-top: 8px; font: 400 20px/27px var(--text); color: var(--ink); }
+
+/* ---------- 11. Контакты ---------- */
+.s-contacts .title { left: 64px; top: 175px; font-size: 170px; line-height: 145px; text-transform: none; white-space: normal; width: 560px; }
+.s-contacts .robot { position: absolute; left: 560px; top: 40px; width: 575px; }
+.s-contacts .note { position: absolute; left: 82px; top: 640px; width: 424px; padding: 22px 30px 26px; border-radius: 16px;
+  background: linear-gradient(135deg, #3a8af0, #1a73e8 70%); color: #fff; font: 400 30px/43px var(--text); transform: rotate(-4deg); box-shadow: 0 10px 24px rgba(26,115,232,.25); }
+.s-contacts .note .tape { left: 110px; top: -18px; width: 92px; height: 30px; transform: rotate(3deg); }
+.s-contacts .panel { position: absolute; left: 890px; top: 70px; width: 980px; height: 990px; border-radius: 26px; background: #fff;
+  box-shadow: 0 7px 0 var(--sh1), 0 13px 0 var(--sh2), 0 20px 40px rgba(23,23,29,.06); transform: rotate(-2deg); }
+.s-contacts .panel .br { }
+.s-contacts .row { position: absolute; left: 70px; width: 820px; height: 72px; display: flex; align-items: center; gap: 22px;
+  font: 400 29px/1 var(--text); color: var(--ink); border-bottom: 3px dotted #a9c6f2; padding-bottom: 6px; }
+.s-contacts .row .ci { width: 52px; height: 52px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; flex: none; }
+.s-contacts .row .ci .ico { width: 26px; height: 26px; stroke: #fff; stroke-width: 2.2; }
+.s-contacts .qr { position: absolute; top: 700px; width: 230px; text-align: center; font: 800 20px/24px var(--cond); color: var(--blue); text-transform: uppercase; }
+.s-contacts .qr img { display: block; width: 155px; height: 155px; margin: 12px auto 0; image-rendering: pixelated; }
+.s-contacts svg.path { position: absolute; left: 0; top: 0; }

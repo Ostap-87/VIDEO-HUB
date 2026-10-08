@@ -1,0 +1,26 @@
+{% import 'slides/_macros.html' as m with context %}
+{# Обложка. Варианты: logos (сетка до 12 логотипов) или logo (один большой логотип, как в Alibaba). #}
+<section class="slide s-cover">
+  <div class="dots fade-c robot-dots"></div>
+  <img class="robot" src="{{ (s.hero or 'assets/robot.png')|asset }}" alt="">
+  {{ m.tag(s.tag) }}
+  <div class="title" data-fit="1180">{{ s.title or 'GLOBAL TECH TOUR' }}</div>
+  {% if s.topright %}<div class="topright">{{ s.topright|br }}</div>
+  <div class="arrow">{{ m.icon('arrow') }}</div>{% endif %}
+  {% if s.logo %}
+  <div class="card bigcard">{{ m.logo(s.logo) }}</div>
+  {% else %}
+  <div class="logos">
+    {% for c in s.logos %}
+    <div class="card lc" style="left: {{ (loop.index0 % 4) * 295 }}px; top: {{ (loop.index0 // 4) * 170 }}px">{{ m.logo(c) }}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  <div class="box{% if s.logo %} big{% endif %}">
+    <div class="br tl" style="left:0;top:0"></div><div class="br bl" style="left:0;bottom:0"></div>
+    <div class="br tr" style="right:0;top:0"></div><div class="br brr" style="right:0;bottom:0"></div>
+    <div class="l">{% if s.box_kicker %}<span class="k">{{ s.box_kicker }}</span>{% endif %}{{ s.box_text|br }}</div>
+    <div class="r">{{ s.box_right|br }}</div>
+  </div>
+  {% if s.footer %}<div class="footer">{{ s.footer }}</div>{% endif %}
+</section>

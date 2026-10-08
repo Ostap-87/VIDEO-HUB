@@ -1,0 +1,18 @@
+{% import 'slides/_macros.html' as m with context %}
+{# «Программа по дням»: 2–5 колонок. Кружок с номером дня + подпись, карточка: заголовок, черта, текст. #}
+{% set n = s.days|length %}
+{% set gap = 50 if n <= 3 else 28 %}
+{% set cw = (1800 - (n - 1) * gap) / n %}
+<section class="slide s-days n{{ n }}">
+  {% if s.ghost %}<div class="ghost">{{ s.ghost }}</div>{% endif %}
+  {{ m.tag(s.tag or 'Программа по дням') }}
+  <div class="title" data-fit="1800" style="{% if s.title_size %}font-size:{{ s.title_size }}px{% endif %}">{{ s.title }}</div>
+  <svg class="path" width="1920" height="1080"><path d="M58 552 C 300 520, 450 520, 700 548 S 1100 560, 1300 528 S 1700 505, 1875 560" fill="none" stroke="#1a73e8" stroke-width="5" stroke-dasharray="0.1 13" stroke-linecap="round"/></svg>
+  {% for d in s.days %}{% set x = 61 + loop.index0 * (cw + gap) %}
+  <div class="dc{% if loop.first %} first{% endif %}" style="left:{{ x + 3 }}px;top:420px">{{ d.n or loop.index }}</div>
+  <div class="dl" style="left:{{ x + 145 }}px;top:{{ 458 if not d.sub else 444 }}px">{{ d.label or ('День ' ~ (d.n or loop.index)) }}{% if d.sub %}<small>{{ d.sub }}</small>{% endif %}</div>
+  <div class="card {{ 'pale' if loop.index0 % 3 == 1 else 'grad' }} dcard" style="left:{{ x }}px;width:{{ cw }}px;{{ m.rot([0.3, -0.4, 0.4, -0.3, 0.3][loop.index0 % 5]) }}">
+    <div class="h">{{ d.title|br }}</div><div class="bar"></div><div class="p">{{ d.text|br }}</div>
+  </div>
+  {% endfor %}
+</section>

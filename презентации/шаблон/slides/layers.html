@@ -1,0 +1,16 @@
+{% import 'slides/_macros.html' as m with context %}
+{# «Направления»: два заголовка, вписанных в колонку 761 px, и три карточки-«папки». #}
+<section class="slide s-layers">
+  {% if s.ghost %}<div class="ghost">{{ s.ghost }}</div>{% endif %}
+  <div class="dots fade-l"></div>
+  {{ m.tag(s.tag or 'Направления') }}
+  <div class="t1" data-fit="761" data-fit-grow>{{ s.title1 }}</div>
+  <div class="t2" data-fit="761" data-fit-grow>{{ s.title2 }}</div>
+  {% for it in s['items'][:3] %}
+  <div class="ly l{{ loop.index }}"><div class="tab"></div>
+    <div class="n">{{ it.name }}</div><div class="d">{{ it.text }}</div></div>
+  {% endfor %}
+  {% if s.quote %}<div class="quote">{{ s.quote|br }}</div>{% endif %}
+  <div class="br bl" style="left:40px;top:940px"></div>
+  <div class="br brr" style="left:1800px;top:920px"></div>
+</section>

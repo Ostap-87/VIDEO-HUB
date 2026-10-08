@@ -1,0 +1,36 @@
+{% import 'slides/_macros.html' as m with context %}
+{# «Выгоды»: 6 карточек с контурными номерами, разбросанных по пунктирной линии. #}
+{% set POS = [
+  {'l': 760,  't': 104, 'r': -1.2},
+  {'l': 69,   't': 394, 'r': 1.2, 'pale': 1},
+  {'l': 690,  't': 446, 'r': -0.7},
+  {'l': 1318, 't': 401, 'r': 1.5},
+  {'l': 399,  't': 724, 'r': -0.8},
+  {'l': 1149, 't': 736, 'r': 1.2, 'pale': 1}
+] %}
+<section class="slide s-benefits">
+  <div class="dots fade-c"></div>
+  <img class="robot-head" src="{{ (s.hero or 'assets/robot-head.png')|asset }}" alt="">
+  <svg class="path" width="1920" height="1080" fill="none" stroke="#1a73e8" stroke-width="4.5" stroke-dasharray="14 12" stroke-linecap="round">
+    <path d="M509 397 C 580 340, 650 290, 704 248"/>
+    <path d="M1320 272 C 1420 300, 1480 330, 1568 322 S 1800 330, 1920 372"/>
+    <path d="M160 664 C 130 720, 110 750, 0 800"/>
+    <path d="M616 696 C 640 720, 655 735, 672 752"/>
+    <path d="M1272 552 L 1322 528"/>
+    <path d="M864 1000 C 900 1020, 940 1030, 990 1018 S 1100 975, 1146 950"/>
+  </svg>
+  <div class="deco" style="left:1543px;top:290px">{{ m.icon('train') }}</div>
+  <div class="deco" style="left:112px;top:842px">{{ m.icon('plane') }}</div>
+  {{ m.tag(s.tag or 'Выгоды') }}
+  <div class="title">{{ s.title or 'Выгоды' }}</div>
+  {% for it in s['items'][:6] %}{% set p = POS[loop.index0] %}
+  <div class="card {{ 'pale' if p.pale else 'grad' }} bc" style="left:{{ p.l }}px;top:{{ p.t }}px;{{ m.rot(p.r) }}">
+    <div class="knob"></div>
+    <div class="num outline-num">{{ '%02d'|format(loop.index) }}</div>
+    <div class="h">{{ it.title|br }}</div>
+    {% if it.text %}<div class="p">{{ it.text|br }}</div>{% endif %}
+    {{ m.icon(it.icon or 'target') }}
+  </div>
+  {% endfor %}
+  <div class="br brr" style="left:1790px;top:950px"></div>
+</section>

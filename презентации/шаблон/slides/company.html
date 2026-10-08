@@ -1,0 +1,36 @@
+{% import 'slides/_macros.html' as m with context %}
+{# Карточка компании: 4 факта (иконка + крупное значение + подпись), логотип справа, «Почему выбран», «Чему учимся». #}
+{% set FACT_POS = [
+  {'l': 64,  't': 343, 'r': -1.8, 'tape': [181, -14, -3]},
+  {'l': 601, 't': 336, 'r': 1.8},
+  {'l': 84,  't': 567, 'r': 1.0, 'tape': [187, -16, 1]},
+  {'l': 611, 't': 557, 'r': -1.8}
+] %}
+<section class="slide s-company">
+  <div class="ghost{% if s.ghost_thai %} thai{% endif %}" style="{% if s.ghost_size %}font-size:{{ s.ghost_size }}px;{% endif %}">{{ s.ghost or '' }}</div>
+  {{ m.tag(s.tag) }}
+  <div class="title" data-fit="{{ s.title_width or 1808 }}">{{ s.title }}{% if s.native %} <span class="native">{{ s.native }}</span>{% endif %}</div>
+  {% for f in s.facts[:4] %}{% set p = FACT_POS[loop.index0] %}
+  <div class="card grad fact" style="left:{{ p.l }}px;top:{{ p.t }}px;{{ m.rot(p.r) }}">
+    {% if p.tape %}<div class="tape" style="left:{{ p.tape[0] }}px;top:{{ p.tape[1] }}px;{{ m.rot(p.tape[2]) }}"></div>{% endif %}
+    {{ m.icon(f.icon or 'briefcase') }}
+    <div class="v" data-fit="350">{{ f.value }}</div>
+    {% if f.label %}<div class="l">{{ f.label }}</div>{% endif %}
+    {% if f.sub %}<div class="s">{{ f.sub }}</div>{% endif %}
+  </div>
+  {% endfor %}
+  {% if s.why %}
+  <div class="br tl" style="left:64px;top:790px"></div>
+  <div class="why"><div class="k">{{ s.why_label or 'Почему выбран' }}</div>
+    <div class="q">{{ m.quote_mark() }}</div>
+    <div class="p">{{ s.why }}</div></div>
+  {% endif %}
+  {% if s.learn %}
+  <div class="card pale learn" style="{{ m.rot(1.2) }}"><div class="k">{{ s.learn_label or 'Чему учимся' }}</div><div class="p">{{ s.learn }}</div></div>
+  {% endif %}
+  <div class="card logo-card" style="{{ m.rot(1.6) }}">{{ m.logo(s) }}</div>
+  <div class="uline"></div>
+  <div class="cname"><span data-fit="660">{{ s.short or s.title }}</span></div>
+  {% if s.subtitle %}<div class="csub">{{ s.subtitle }}</div>{% endif %}
+  <div class="br brr" style="left:1800px;top:980px"></div>
+</section>
