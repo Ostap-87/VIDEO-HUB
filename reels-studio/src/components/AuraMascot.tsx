@@ -14,12 +14,12 @@ import * as THREE from "three";
 import {RoomEnvironment} from "three/examples/jsm/environments/RoomEnvironment.js";
 import {useCurrentFrame, useVideoConfig} from "remotion";
 
-export type GestureKind = "wave" | "point" | "pointUp" | "tick" | "push" | "present" | "jump" | "nod" | "scan" | "shrug";
+export type GestureKind = "wave" | "point" | "pointUp" | "tick" | "push" | "pull" | "present" | "jump" | "nod" | "scan" | "shrug";
 export type MascotStay = {at: number; x: number; y: number; face?: number};
 export type MascotPlan = {stays: MascotStay[]; gestures: {at: number; kind: GestureKind}[]};
 
 export const GESTURE_DUR: Record<GestureKind, number> = {
-  wave: 2.4, point: 1.8, pointUp: 2.2, tick: 0.9, push: 1.0, present: 1.4, jump: 1.75, nod: 1.2, scan: 2.6, shrug: 1.6,
+  wave: 2.4, point: 1.8, pointUp: 2.2, tick: 0.9, push: 1.0, pull: 1.1, present: 1.4, jump: 1.75, nod: 1.2, scan: 2.6, shrug: 1.6,
 };
 
 const C = {light: "#F8F6F3", dark: "#262626", accent: "#FFF65D", glow: "#FFF65D"};
@@ -268,6 +268,17 @@ function applyGesture(P: Pose, kind: GestureKind, p: number, t: number) {
       A.el = [lerp(A.el[0], -0.1, k), 0, 0];
     }
     P.spine.r = [P.spine.r[0] + k * 0.16, P.spine.r[1], P.spine.r[2]];
+  } else if (kind === "pull") {
+    // «вытаскивает» карточку из-за края: тянется вперёд, хватает и тянет на себя, корпус откидывается назад
+    const reach = p < 0.35 ? smooth(p / 0.35) : 1;
+    const tug = p < 0.35 ? 0 : p < 0.75 ? smooth((p - 0.35) / 0.4) : 1 - smooth((p - 0.75) / 0.25);
+    for (const A of [R, L]) {
+      A.sh = [lerp(A.sh[0], -1.5 + tug * 0.9, reach * (1 - (p > 0.75 ? (p - 0.75) / 0.25 : 0))), 0, A.sh[2] * (1 - reach)];
+      A.el = [lerp(A.el[0], -0.05 - tug * 1.3, reach), 0, 0];
+      A.wr = [0, 0, tug * 0.3];
+    }
+    P.spine.r = [P.spine.r[0] + reach * 0.18 - tug * 0.32, P.spine.r[1], P.spine.r[2]];
+    P.head = [P.head[0] - tug * 0.1, P.head[1], P.head[2]];
   } else if (kind === "present") {
     // руки вверх — «выдвигает» плашки над собой
     R.sh = [lerp(R.sh[0], -2.6, e), 0, lerp(R.sh[2], 0.35, e)];

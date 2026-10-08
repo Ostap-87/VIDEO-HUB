@@ -407,7 +407,16 @@ const LogoGroup: React.FC<{group: TalkReelProProps["logos"][number]; start: numb
   });
   const shift = React.useContext(TopShift);
   // две карточки над головой, две — под субтитрами
-  const slots = [
+  const B = useBrand();
+  const slots = B.id === "aura"
+    ? [
+        // Aura: карточки выезжают из-за левого края над роботом, который их «вытаскивает»
+        {left: 50, top: 270 + shift * 0.6, rot: -3},
+        {left: 50, top: 420 + shift * 0.6, rot: 2},
+        {right: 50, top: 300 + shift * 0.6, rot: 4},
+        {right: 50, top: 450 + shift * 0.6, rot: -3},
+      ]
+    : [
     {left: 50, top: 300 + shift * 0.6, rot: -5},
     {right: 50, top: 300 + shift * 0.6, rot: 4},
     {left: 50, top: 1410, rot: 3},
@@ -565,9 +574,11 @@ const StockChart: React.FC<{drop: NonNullable<TalkReelProProps["stockDrop"]>; t:
 
 // Уровни зума по кускам между склейками: общий план, лёгкий и средний наезд чередуются.
 const LEVELS = [1.0, 1.08, 1.02, 1.14, 1.0, 1.1];
-const zoomAt = (allCuts: number[], zooms: TalkReelProProps["zooms"], t: number) => {
-  // склейки ближе 0,7 с друг к другу не меняют уровень зума — иначе короткий кусок «мелькает» (как ускорение)
-  const cuts = allCuts.filter((c, i) => i === 0 || c - allCuts[i - 1] >= 0.7);
+const zoomAt = (allCuts: number[], zooms: TalkReelProProps["zooms"], t: number, minGap = 0.7) => {
+  // склейки ближе minGap друг к другу не меняют уровень зума — иначе короткий кусок «мелькает» (как ускорение);
+  // у Aura minGap 4 с — спокойный монтаж, зритель успевает сфокусироваться (решение пользователя 08.10.2026)
+  const cuts: number[] = [];
+  for (const c of allCuts) if (!cuts.length || c - cuts[cuts.length - 1] >= minGap) cuts.push(c);
   const idx = cuts.filter((c) => c <= t).length;
   const segStart = cuts[idx - 1] ?? 0;
   const level = (i: number) => LEVELS[i % LEVELS.length];
@@ -619,7 +630,8 @@ const ZoomedVideo: React.FC<{
   const {fps} = useVideoConfig();
   const t = frame / fps;
   const lift = Math.max(cityAmount(cities, t), listAmount(checklists, t), clipAmount(clips ?? [], t)) * 330; // лицо поднимается в верхнюю половину
-  const zoom = zoomAt(cuts, zooms, t);
+  const B = useBrand();
+  const zoom = zoomAt(cuts, zooms, t, B.id === "aura" ? 4 : 0.7);
   const b = broll.find((x) => t >= x.at && t <= x.until) ?? broll.find((x) => t >= x.at - 0.5 && t <= x.until + 0.5);
   const ease = Easing.bezier(0.22, 1, 0.36, 1);
   const p = b
@@ -785,6 +797,7 @@ const ChecklistPanel: React.FC<{lists: TalkReelProProps["checklists"]}> = ({list
   const l = lists.find((x) => t >= x.items[0].at - 0.6 && t <= x.until + 0.1);
   if (!l) return null;
   const slide = (1 - amount) * 900;
+  if (B.id === "aura") return <AuraFlipchart l={l} amount={amount} />;
   return (
     <>
       <div
@@ -864,6 +877,79 @@ const ChecklistPanel: React.FC<{lists: TalkReelProProps["checklists"]}> = ({list
             </div>
           );
         })}
+      </div>
+    </>
+  );
+};
+
+// Aura: флипчарт на треноге слева внизу, справа от него робот ставит галочки (решение пользователя 08.10.2026).
+// Лист — пергамент, заголовок графитом, пункты с квадратами; галочка рисуется графитовым маркером поверх лимонного мазка.
+const AuraFlipchart: React.FC<{l: TalkReelProProps["checklists"][number]; amount: number}> = ({l, amount}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const B = useBrand();
+  const rise = (1 - amount) * 1000;
+  const X = 60;
+  const W = 700;
+  const TOP = PANEL_TOP + 10;
+  return (
+    <>
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          top: PANEL_TOP - 60,
+          bottom: 0,
+          translate: `0px ${rise}px`,
+          background: `linear-gradient(to bottom, rgba(${B.veil},0) 0px, rgba(${B.veil},0.85) 220px, ${B.veilSolid} 100%)`,
+          maskImage: `linear-gradient(to bottom, transparent 0px, black ${FEATHER}px)`,
+          WebkitMaskImage: `linear-gradient(to bottom, transparent 0px, black ${FEATHER}px)`,
+        }}
+      />
+      <div style={{position: "absolute", left: X, top: TOP, width: W, height: 1920 - TOP, translate: `0px ${rise}px`}}>
+        {/* тренога */}
+        <div style={{position: "absolute", left: W * 0.18, top: 470, width: 12, height: 520, background: "#2D2D2D", borderRadius: 6, rotate: "8deg", transformOrigin: "top"}} />
+        <div style={{position: "absolute", left: W * 0.8, top: 470, width: 12, height: 520, background: "#2D2D2D", borderRadius: 6, rotate: "-8deg", transformOrigin: "top"}} />
+        <div style={{position: "absolute", left: W / 2 - 6, top: 470, width: 12, height: 470, background: "#3D3D3D", borderRadius: 6}} />
+        {/* доска и лист */}
+        <div style={{position: "absolute", left: 0, top: 0, width: W, height: 500, background: "#2D2D2D", borderRadius: 14, boxShadow: "0 30px 70px rgba(0,0,0,0.45)"}} />
+        <div style={{position: "absolute", left: W / 2 - 120, top: -22, width: 240, height: 36, background: "#111", borderRadius: 10}} />
+        <div
+          style={{
+            position: "absolute",
+            left: 14,
+            top: 14,
+            width: W - 28,
+            height: 472,
+            background: "#F8F6F3",
+            borderRadius: 6,
+            padding: "36px 40px",
+            boxSizing: "border-box",
+            backgroundImage: "linear-gradient(rgba(38,38,38,0.05) 2px, transparent 2px)",
+            backgroundSize: "100% 56px",
+          }}
+        >
+          <div style={{fontFamily: B.listTitle.font, fontWeight: 700, fontSize: 42, color: "#262626", letterSpacing: "-0.02em", marginBottom: 22}}>
+            <span style={{backgroundImage: `linear-gradient(${B.accent}, ${B.accent})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 38%", backgroundPosition: "0 85%", padding: "0 6px"}}>{l.title}</span>
+          </div>
+          {l.items.map((it, i) => {
+            const s = spring({frame: frame - Math.round(it.at * fps), fps, config: {damping: 14, stiffness: 160}});
+            const draw = interpolate(frame, [it.at * fps + 2, it.at * fps + 11], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
+            return (
+              <div key={i} style={{display: "flex", alignItems: "center", gap: 22, padding: "12px 0", opacity: Math.max(0.25, s)}}>
+                <svg width={58} height={58} viewBox="0 0 58 58" style={{flexShrink: 0, overflow: "visible"}}>
+                  <rect x={6} y={6} width={46} height={46} rx={6} fill="none" stroke="#262626" strokeWidth={4} />
+                  <path d="M10 34 C 18 30, 24 40, 30 44 C 38 30, 48 16, 60 6" fill="none" stroke={B.accent} strokeWidth={14} strokeLinecap="round"
+                    strokeDasharray={90} strokeDashoffset={90 * (1 - draw)} opacity={0.9} />
+                  <path d="M12 30 L26 44 L56 8" fill="none" stroke="#262626" strokeWidth={6} strokeLinecap="round" strokeLinejoin="round"
+                    strokeDasharray={66} strokeDashoffset={66 * (1 - draw)} />
+                </svg>
+                <div style={{fontFamily: B.bodyFont, fontWeight: 700, fontSize: 38, color: "#262626", lineHeight: 1.15}}>{it.text}</div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );
@@ -1202,77 +1288,44 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
   );
 };
 
-// ---------- маскот Aura: план движения из событий ролика ----------
-// Робот живёт в свободных зонах кадра (лицо x 330–790, y 600–1150 не закрывает):
-// HOME — справа внизу; CHIP — слева от головы, под плашками и цифрами (поднимает руки, «выдвигая» их);
-// LIST — на верхнем краю планшета чек-листа (ставит галочки); CITY — на панели городов (показывает);
-// FINAL — на карточке спикера в финале (указывает на кнопку сайта), в конце спрыгивает и машет.
+// ---------- маскот Aura: появляется только по сюжету (решение пользователя 08.10.2026) ----------
+// Робот не бродит по кадру: выходит из-за края под конкретное событие и уходит обратно.
+// - начало: выходит справа, машет, уходит;
+// - логотипы брендов: заходит слева и «вытаскивает» карточки из-за левого края (жест pull) — карточки Aura слева;
+// - перечисления (чек-листы): встаёт у флипчарта и ставит галочки на каждом пункте;
+// - финал: запрыгивает на карточку спикера, показывает на кнопку сайта, в конце машет.
 const auraPlan = (p: TalkReelProProps, total: number): MascotPlan => {
   const top = p.format === "stories" ? 78 : 0;
-  const HOME = {x: 905, y: 1535, face: -0.35}; // справа внизу, но выше нижней зоны интерфейса Instagram (380 px)
-  const CHIP = {x: 185, y: 900 + top, face: 0.45};
-  const LIST = {x: 860, y: PANEL_TOP + 44, face: -0.75};
-  const CITY = {x: 880, y: PANEL_TOP + 160, face: -0.7};
-  const FINAL = {x: 660, y: 905, face: -0.8}; // на левом краю карточки спикера, ниже кнопки сайта
-  type Ev = {from: number; to: number; spot: typeof HOME; g: {at: number; kind: GestureKind}[]};
+  const Y = 1535; // «пол» внизу кадра, выше интерфейса Instagram
+  const OFF_R = {x: 1270, y: Y, face: 0};
+  const HOME = {x: 905, y: Y, face: -0.35};
+  const PULL = {x: 175, y: 880 + top, face: -1.15}; // слева от головы, под карточками логотипов
+  const OFF_L = {x: -190, y: 880 + top, face: 0};
+  const FLIP = {x: 905, y: Y, face: -0.95}; // справа от флипчарта
+  const FINAL = {x: 660, y: 905, face: -0.8};
+  type Ev = {from: number; to: number; spot: typeof HOME; off: typeof HOME; g: {at: number; kind: GestureKind}[]};
   const ev: Ev[] = [];
-  for (const c of p.chips) {
-    const g: Ev["g"] = [{at: c.items[0].at - 0.15, kind: "present"}];
-    for (const it of c.items) if (it.strike !== undefined) g.push({at: it.strike - 0.25, kind: "push"});
-    ev.push({from: c.items[0].at - 0.5, to: c.until, spot: CHIP, g});
-  }
-  // карточка-переворот (справа внизу) — робот уходит налево, чтобы не закрывать её, и показывает
   for (const g of p.logos)
-    if (g.flip) ev.push({from: g.items[0].at - 0.5, to: g.until, spot: CHIP, g: [{at: g.items[0].at, kind: "point"}]});
-  for (const n of p.numbers) ev.push({from: n.at - 0.5, to: n.until, spot: CHIP, g: [{at: n.at - 0.35, kind: "jump"}]});
+    ev.push({from: g.items[0].at - 0.7, to: g.until, spot: PULL, off: OFF_L, g: g.items.map((it) => ({at: it.at - 0.35, kind: "pull" as const}))});
   for (const l of p.checklists)
-    ev.push({from: l.items[0].at - 0.8, to: l.until, spot: LIST, g: l.items.map((it) => ({at: it.at - 0.3, kind: "tick" as const}))});
-  if (p.cities.length) {
-    const a = Math.min(...p.cities.map((c) => c.at));
-    const b = Math.max(...p.cities.map((c) => c.until));
-    ev.push({from: a - 0.5, to: b, spot: CITY, g: [{at: a, kind: "point"}]});
-  }
+    ev.push({from: l.items[0].at - 0.9, to: l.until, spot: FLIP, off: OFF_R, g: l.items.map((it) => ({at: it.at - 0.3, kind: "tick" as const}))});
   ev.sort((a, b) => a.from - b.from);
-  // события, которые накладываются, объединяем: робот остаётся на месте
-  const merged: Ev[] = [];
-  for (const e of ev) {
-    const last = merged[merged.length - 1];
-    if (last && e.from < last.to + 0.6 && e.spot === last.spot) {
-      last.to = Math.max(last.to, e.to);
-      last.g.push(...e.g);
-    } else if (last && e.from < last.to) {
-      continue; // другое место занято — пропускаем, чтобы робот не метался
-    } else merged.push({...e, g: [...e.g]});
-  }
   const end = p.site.at;
-  const stays: MascotStay[] = [{at: 0.9, ...HOME}];
-  const gestures: MascotPlan["gestures"] = [{at: 1.0, kind: "wave"}];
-  let free = 0.9 + 2.4;
-  for (let i = 0; i < merged.length; i++) {
-    const e = merged[i];
-    if (e.from > end - 1.5) break;
-    stays.push({at: Math.max(e.from, stays[stays.length - 1].at + 0.6), ...e.spot});
+  const stays: MascotStay[] = [{at: 0, ...OFF_R}, {at: 1.1, ...HOME}, {at: 4.2, ...OFF_R}];
+  const gestures: MascotPlan["gestures"] = [{at: 1.2, kind: "wave"}];
+  let last = 4.2;
+  for (const e of ev) {
+    if (e.from < last + 1.2 || e.from > end - 2) continue; // события внахлёст пропускаем — без суеты
+    stays.push({at: e.from, ...e.off}); // ждёт за краем
+    stays.push({at: e.from + 0.7, ...e.spot});
     gestures.push(...e.g);
-    const next = merged[i + 1];
-    const nextFrom = next ? next.from : end;
-    if (!next || next.spot !== e.spot || nextFrom - e.to > 3.5) {
-      if (nextFrom - e.to > 2.2) {
-        stays.push({at: e.to + 1.0, ...HOME});
-        // в долгом простое — жест «от скуки»
-        if (nextFrom - e.to > 7) gestures.push({at: e.to + 2.5, kind: (["nod", "scan", "shrug"] as const)[i % 3]});
-      }
-    }
-    free = e.to;
+    stays.push({at: e.to + 0.9, ...e.off});
+    last = e.to + 0.9;
   }
-  for (const b of p.broll) if (!merged.some((e) => b.at >= e.from && b.at <= e.to)) gestures.push({at: b.at + 0.3, kind: "scan"});
-  // логотипы — показывает на них
-  for (const g of p.logos) if (!merged.some((e) => g.items[0].at >= e.from && g.items[0].at <= e.to)) gestures.push({at: g.items[0].at, kind: "point"});
-  // финал: на карточку спикера, указывает на кнопку; в конце — вниз и помахать
+  stays.push({at: Math.max(last + 0.3, end - 0.2), ...OFF_R});
   stays.push({at: end + 1.1, ...FINAL});
   gestures.push({at: end + 1.3, kind: "pointUp"});
-  stays.push({at: total - 1.0, ...HOME});
-  gestures.push({at: total - 0.95, kind: "wave"});
-  void free;
+  gestures.push({at: total - 1.4, kind: "wave"});
   return {stays, gestures: gestures.sort((a, b) => a.at - b.at)};
 };
 
