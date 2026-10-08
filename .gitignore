@@ -1,6 +1,6 @@
 node_modules
 .DS_Store
-source-videos/_test/
+source-videos/_test*/
 finished-videos/frames/
 finished-videos/_*
 reels-studio/whisper.cpp/
@@ -8,3 +8,4 @@ source-videos/**/*.words.json.tmp
 source-videos/**/_work/
 reels-studio/models/
 finished-videos/*-stories.mp4
+__pycache__/
