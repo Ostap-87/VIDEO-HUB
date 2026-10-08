@@ -9,3 +9,4 @@ source-videos/**/_work/
 reels-studio/models/
 finished-videos/*-stories.mp4
 __pycache__/
+reels-studio/props/_test*.json
