@@ -419,8 +419,8 @@ export const AuraMascot: React.FC<{plan: MascotPlan; scale?: number}> = ({plan, 
         }}
       />
       <ThreeCanvas
-        width={W * scale}
-        height={H * scale}
+        width={Math.round(W * scale)}
+        height={Math.round(H * scale)}
         dpr={2}
         gl={{antialias: true, alpha: true, preserveDrawingBuffer: true}}
         camera={{fov: 30, position: [0.9, 2.1, 9.6], near: 0.1, far: 100}}

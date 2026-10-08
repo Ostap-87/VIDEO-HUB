@@ -106,6 +106,7 @@ export const talkReelProSchema = z.object({
   // Линия глаз из scripts/grid.py (_work/имя.cut.layout.json): точка между глазами — центр всех зумов,
   // поэтому при наездах глаза остаются на своей линии и не «прыгают»
   focus: z.object({x: z.number(), y: z.number()}).default({x: 540, y: 614}),
+  faceTop: z.number().optional(), // верх лица (линия роста волос), y в кадре; без поля — focus.y − 230
 });
 export type TalkReelProProps = z.infer<typeof talkReelProSchema>;
 
@@ -1329,6 +1330,36 @@ const auraPlan = (p: TalkReelProProps, total: number): MascotPlan => {
   return {stays, gestures: gestures.sort((a, b) => a.at - b.at)};
 };
 
+// печать Aura над головой не налезает на лоб (решение пользователя 08.10.2026): верх лица следует за зумом и подъёмом
+// спикера (тот же расчёт, что у видео), печать плавно уменьшается и поднимается, оставляя зазор над лбом
+const AuraBadgeSlot: React.FC<TalkReelProProps> = (p) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const t = frame / fps;
+  const stories = p.format === "stories";
+  const top0 = stories ? 200 : 70;
+  const minTop = stories ? 170 : 34;
+  const SIZE = 200;
+  let size = SIZE;
+  let top = top0;
+  if (t < p.site.at) {
+    const lift = Math.max(cityAmount(p.cities, t), listAmount(p.checklists, t), clipAmount(p.clips ?? [], t)) * 330;
+    const zoom = zoomAt(p.cuts, p.zooms, t, 4);
+    const faceTop = p.faceTop ?? p.focus.y - 230; // линия роста волос
+    const forehead = p.focus.y + (faceTop - p.focus.y) * zoom - lift;
+    const room = forehead - 24; // нижний край печати не ниже этой линии
+    if (top + size > room) {
+      top = Math.max(minTop, room - size);
+      size = Math.max(130, Math.min(SIZE, room - top));
+    }
+  }
+  return (
+    <div style={{position: "absolute", top, left: "50%", translate: "-50% 0", width: SIZE, height: SIZE, scale: String(size / SIZE), transformOrigin: "50% 0"}}>
+      <AuraBadge size={SIZE} />
+    </div>
+  );
+};
+
 export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
   const {fps, durationInFrames} = useVideoConfig();
   const f = (s: number) => Math.round(s * fps);
@@ -1434,9 +1465,7 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
       <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} broll={p.broll} clips={p.clips} />
       {brand.id === "aura" ? (
         // Aura: круглая печать крутится над головой спикера, по центру; в Stories — ниже полосок и аватара
-        <div style={{position: "absolute", top: p.format === "stories" ? 200 : 70, left: "50%", translate: "-50% 0"}}>
-          <AuraBadge size={200} />
-        </div>
+        <AuraBadgeSlot {...p} />
       ) : (
         // логотип: стеклянная пирамида + крупная белая надпись с бликом (как в референсе)
         <div style={{position: "absolute", top: p.format === "stories" ? 210 : 86, left: 56}}>

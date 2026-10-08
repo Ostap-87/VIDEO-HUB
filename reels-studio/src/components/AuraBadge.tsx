@@ -35,8 +35,8 @@ export const AuraBadge: React.FC<{size?: number; spinSeconds?: number}> = ({size
   const cycle = t % 6;
   const flip = interpolate(cycle, [4.6, 5.5], [0, 360], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.inOut(Easing.cubic)});
   const float = Math.sin(t * 1.6) * 2.5;
-  // лимонная дуга-маркер обегает круг навстречу тексту
-  const arc = -t * 50;
+  // лимонная дуга-маркер обегает круг по часовой стрелке, быстрее текста (решение пользователя: «крутиться по часовой»)
+  const arc = t * 70;
   return (
     <div
       style={{
