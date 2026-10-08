@@ -93,22 +93,22 @@
    "end": 7.487
   },
   {
-   "text": "Шенчжинь,",
+   "text": "Шэньчжэнь,",
    "start": 7.487,
    "end": 8.227
   },
   {
-   "text": "Агибот,",
+   "text": "AgiBot,",
    "start": 8.227,
    "end": 8.64
   },
   {
-   "text": "Кеплер,",
+   "text": "Kepler,",
    "start": 8.64,
    "end": 9.23
   },
   {
-   "text": "Фурье",
+   "text": "Fourier",
    "start": 9.23,
    "end": 9.65
   },
@@ -738,7 +738,7 @@
    "end": 55.6
   },
   {
-   "text": "А3-5",
+   "text": "3–5",
    "start": 55.92,
    "end": 56.15
   },
@@ -1005,6 +1005,9 @@
   "21",
   "5",
   "70",
+  "agibot",
+  "fourier",
+  "kepler",
   "гуманоидов",
   "гуманоиды",
   "лично",
@@ -1014,7 +1017,8 @@
   "роботов",
   "роботы",
   "сайт",
-  "шанхай"
+  "шанхай",
+  "шенчжинь"
  ],
  "cuts": [
   6.83,
@@ -1034,81 +1038,155 @@
   77.93,
   78.2
  ],
- "chips": [],
- "logos": [],
+ "chips": [
+  {
+   "wrap": false,
+   "items": [
+    {
+     "text": "Не гугли",
+     "at": 3.86
+    }
+   ],
+   "until": 5.28
+  },
+  {
+   "wrap": false,
+   "items": [
+    {
+     "text": "100 визиток в кармане",
+     "at": 54.25,
+     "strike": 55.6
+    }
+   ],
+   "until": 56.3
+  },
+  {
+   "wrap": false,
+   "items": [
+    {
+     "text": "Не к парадной двери, а через неё",
+     "at": 49.78
+    }
+   ],
+   "until": 52.75
+  },
+  {
+   "wrap": false,
+   "items": [
+    {
+     "text": "Свободный китайский",
+     "at": 44.06
+    }
+   ],
+   "until": 46.45
+  }
+ ],
+ "logos": [
+  {
+   "items": [
+    {
+     "src": "source-videos/логотипы/роботы/agibot.png",
+     "at": 8.23
+    },
+    {
+     "src": "source-videos/логотипы/роботы/kepler.png",
+     "at": 8.64
+    },
+    {
+     "src": "source-videos/логотипы/роботы/fourier.png",
+     "at": 9.23
+    }
+   ],
+   "until": 11.58,
+   "scale": 1.5
+  }
+ ],
  "numbers": [
   {
-   "text": "10+",
-   "sub": "лет работы с Китаем",
-   "at": 41.82,
-   "until": 43.11
+   "text": "70%",
+   "sub": "гуманоидов мира собирают в Китае",
+   "at": 15.53,
+   "until": 18.09
+  },
+  {
+   "text": "3–5",
+   "sub": "реальных контактов для контракта",
+   "at": 55.92,
+   "until": 58.2
+  },
+  {
+   "text": "16–21",
+   "sub": "ноября — экспедиция",
+   "at": 67.18,
+   "until": 69.46
   }
  ],
  "broll": [
   {
-   "src": "source-videos/2026-10-08-roboty/broll/hf-1.png",
+   "src": "source-videos/2026-10-08-roboty/broll/hf-553.png",
    "at": 0.12,
    "until": 3.86,
    "transition": "circle"
   },
   {
-   "src": "source-videos/2026-10-08-roboty/broll/hf-328.png",
-   "at": 8.64,
-   "until": 11.08,
+   "src": "source-videos/2026-10-08-roboty/broll/hf-47.png",
+   "at": 11.08,
+   "until": 13.81,
    "transition": "slide"
   },
   {
-   "src": "source-videos/2026-10-08-roboty/broll/hf-365.png",
-   "at": 17.79,
-   "until": 21.51,
+   "src": "source-videos/2026-10-08-roboty/broll/hf-265.png",
+   "at": 21.51,
+   "until": 26.01,
    "transition": "zoom"
-  },
-  {
-   "src": "source-videos/2026-10-08-roboty/broll/hf-327.png",
-   "at": 31.44,
-   "until": 33.55,
-   "transition": "wipe"
-  },
-  {
-   "src": "source-videos/2026-10-08-roboty/broll/hf-86.png",
-   "at": 38.92,
-   "until": 40.62,
-   "transition": "fade"
-  },
-  {
-   "src": "source-videos/2026-10-08-roboty/broll/hf-330.png",
-   "at": 48.41,
-   "until": 51.03,
-   "transition": "circle"
   },
   {
    "src": "source-videos/2026-10-08-roboty/broll/hf-254.png",
    "at": 55.92,
    "until": 59.62,
    "transition": "slide"
-  },
-  {
-   "src": "source-videos/2026-10-08-roboty/broll/hf-331.png",
-   "at": 65.18,
-   "until": 68.96,
-   "transition": "zoom"
   }
  ],
  "cities": [
   {
-   "src": "интернет-материалы/города/pekin.jpg",
+   "src": "интернет-материалы/города/варианты/pekin-hram-neba-b.jpg",
    "name": "Пекин",
    "at": 6.64,
    "until": 6.91
   },
   {
-   "src": "source-videos/2026-10-07-byt-tehnika/cities/shanhai-bund-noch.jpg",
+   "src": "интернет-материалы/города/варианты/shanhai-bund-b.jpg",
    "name": "Шанхай",
    "at": 6.91,
-   "until": 8.29
+   "until": 7.49
+  },
+  {
+   "src": "интернет-материалы/города/shenzhen.jpg",
+   "name": "Шэньчжэнь",
+   "at": 7.49,
+   "until": 9.03
   }
  ],
- "checklists": [],
+ "checklists": [
+  {
+   "title": "Зачем ехать вам",
+   "items": [
+    {
+     "text": "Поймёте рынок за 5 дней",
+     "at": 32.11
+    },
+    {
+     "text": "Увидите, кому доверять деньги",
+     "at": 37.66
+    },
+    {
+     "text": "Проводник: 10+ лет на рынке",
+     "at": 41.82
+    }
+   ],
+   "until": 44.41
+  }
+ ],
  "zooms": [
   {
    "at": 3.86,
@@ -1135,18 +1213,6 @@
    "hold": 1.6
   },
   {
-   "at": 35.69,
-   "kind": "push",
-   "amount": 0.06,
-   "hold": 1.6
-  },
-  {
-   "at": 41.82,
-   "kind": "punch",
-   "amount": 0.18,
-   "hold": 0.6
-  },
-  {
    "at": 48.41,
    "kind": "push",
    "amount": 0.06,
@@ -1160,12 +1226,6 @@
   },
   {
    "at": 61.69,
-   "kind": "push",
-   "amount": 0.06,
-   "hold": 1.6
-  },
-  {
-   "at": 68.96,
    "kind": "push",
    "amount": 0.06,
    "hold": 1.6
@@ -1183,7 +1243,7 @@
  },
  "speechSeconds": 78.395,
  "site": {
-  "at": 71.72,
+  "at": 68.96,
   "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
   "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
   "route": [
@@ -1197,5 +1257,26 @@
  "focus": {
   "x": 538,
   "y": 938
+ },
+ "angleB": {
+  "src": "source-videos/2026-10-08-roboty/_work/roboty.cut.b.mp4",
+  "shots": [
+   {
+    "at": 4.68,
+    "until": 6.64
+   },
+   {
+    "at": 26.93,
+    "until": 30.37
+   },
+   {
+    "at": 51.03,
+    "until": 53.99
+   },
+   {
+    "at": 63.9,
+    "until": 67.4
+   }
+  ]
  }
 }

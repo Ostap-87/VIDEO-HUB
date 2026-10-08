@@ -576,44 +576,9 @@
    "2026-10-07-avto"
   ]
  },
- "1": {
-  "id": "1647ca47-9b48-47ee-81ba-dc3606958f69",
-  "prompt": "Professional editorial photograph of a fully automated robotics factory production line assembling humanoid robot bodies, robotic arms installing components on humanoid robot frames, bright industrial lighting, modern Chinese factory interior, photorealistic, high detail. No text, no logos, no brand names, no watermarks anywhere in the image.",
-  "videos": [
-   "2026-10-08-roboty"
-  ]
- },
- "328": {
-  "id": "901a3579-da27-4227-a4c5-00cdd8d3430f",
-  "prompt": "Photorealistic large dairy factory with milk processing tanks and automated bottling line, no text, no logos",
-  "videos": [
-   "2026-10-08-roboty"
-  ]
- },
- "365": {
-  "id": "d334872b-9e71-4ef2-a5f2-658e10a09fc4",
-  "prompt": "Photorealistic humanoid robot connecting battery components on a factory assembly line, industrial lighting, no text, no logos",
-  "videos": [
-   "2026-10-08-roboty"
-  ]
- },
- "327": {
-  "id": "2842dd11-5314-47a6-ab1b-3815bec4ef90",
-  "prompt": "Photorealistic modern beverage R&D laboratory with scientists testing tea drink formulations, no text, no logos",
-  "videos": [
-   "2026-10-08-roboty"
-  ]
- },
- "86": {
-  "id": "1cb91ce7-67df-4ad2-ad8b-919d929046e5",
-  "prompt": "Photorealistic wide shot of a business negotiation meeting room in a Chinese film and entertainment company headquarters. Large conference table, business delegation of 4-5 Russian business people in business suits sitting across from 3-4 Chinese executives in suits, interpreter standing beside the table gesturing, laptops and documents on the table, city skyline visible through floor-to-ceiling windows behind them, professional atmosphere, discussion moment. Ultra realistic photography, natural window lighting, 16:9 wide composition, documentary business photography style, no visible text or logos.",
-  "videos": [
-   "2026-10-08-roboty"
-  ]
- },
- "330": {
-  "id": "424d2bb7-59d1-45ec-a56d-dcffbee3f6b6",
-  "prompt": "Photorealistic plastic packaging factory production line with cups and containers, no text, no logos",
+ "553": {
+  "id": "e65ad8f0-ef86-4214-bed4-73b39892b75d",
+  "prompt": "Photorealistic editorial photo of a sleek humanoid robot's bionic hand gripping a small mechanical part on an assembly line, close-up shot, bright factory lighting, cinematic color grading, high detail. No text, no logos, no brand names, no watermarks anywhere in the image.",
   "videos": [
    "2026-10-08-roboty"
   ]
@@ -625,9 +590,16 @@
    "2026-10-08-roboty"
   ]
  },
- "331": {
-  "id": "5ed75e32-4e66-46bb-804d-753ca1d8206c",
-  "prompt": "Photorealistic modern dairy processing plant with automated milk production lines, no text, no logos",
+ "47": {
+  "id": "f12c3ba1-9194-4521-a9a2-58cffa675626",
+  "prompt": "Humanoid robots standing in a bright modern Chinese robotics lab, engineers in background. Photorealistic, corporate documentary style, bright natural light, cool neutral palette (light grey, white, blue accents), clean uncluttered composition, calm lower third for a text overlay, no dark vignette or gradient, no text, no logos, 4:5 vertical",
+  "videos": [
+   "2026-10-08-roboty"
+  ]
+ },
+ "265": {
+  "id": "0c7079d6-a8a0-4808-8fc6-452a07e49fe5",
+  "prompt": "Bright modern humanoid robotics factory showroom, daylight streaming through large windows, white and light-gray interior, clean minimal architecture, a few sleek white-and-silver humanoid robots standing on a polished light floor, high-key corporate editorial photography style, soft even lighting, no dramatic shadows, no text, no logos, no watermarks",
   "videos": [
    "2026-10-08-roboty"
   ]
