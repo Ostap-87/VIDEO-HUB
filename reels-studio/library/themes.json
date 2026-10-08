@@ -7,7 +7,7 @@
   "music": "inspiring-corporate-soundrider",
   "logos": ["авто", "общие"],
   "broll": {
-   "include": "electric (car|vehicle|sedan|suv)|\\bev\\b|automotive|car factory|battery|charging|assembly line|showroom",
+   "include": "electric (car|vehicle|sedan|suv)|\\bev\\b|automotive|car factory|battery|charging|car (assembly|factory|showroom)|(ev|vehicle|car|auto\\w*) showroom",
    "tags": {"заря[дж]": "charg", "батаре": "battery", "завод": "factory|plant|assembly", "конвейер": "assembly|conveyor", "робот": "robot", "салон": "interior|showroom", "автопилот": "autonom|self-driving|dashboard", "дилер": "showroom|dealer", "переговор": "meeting|negotiat"}
   },
   "stockDrop": {"re": "(быстро )?забирают рынок|захватывают рынок|растут быстрее", "label": "Рынок EV Китая", "direction": "up", "seconds": 5},

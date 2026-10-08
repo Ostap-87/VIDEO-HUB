@@ -27,7 +27,8 @@ HF = ROOT / "source-videos" / "higgsfield"
 TRANSITIONS = ["circle", "slide", "zoom", "wipe", "fade"]
 # картинки про другие страны в ролики о Китае не берём (в каталоге есть серии про Вьетнам, Таиланд, ОАЭ…)
 FOREIGN = re.compile(r"vietnam|thai|dubai|\buae\b|emirat|europe|malaysia|indonesia|singapore|india|korea|japan|america|\busa\b|"
-                     r"africa|brazil|mexic|turk|saudi|qatar|london|paris|german|italian|french|spain|spanish", re.I)
+                     r"africa|brazil|mexic|turk|saudi|qatar|london|paris|german|italian|french|spain|spanish|kuala|lumpur|manila|philippin|"
+                     r"hanoi|bangkok|jakarta|seoul|tokyo|kazakh|uzbek|vietnamese|moscow", re.I)
 SFX = {
     "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
     "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
@@ -112,7 +113,12 @@ def apply_fixes(words, fixes):
             seg = [norm(x["text"]) for x in words[i : i + len(toks)]]
             if seg == toks:
                 tail = re.search(r"[^\w]*$", words[i + len(toks) - 1]["text"]).group(0)
-                out.append({"text": val + tail, "start": words[i]["start"], "end": words[i + len(toks) - 1]["end"]})
+                parts = val.split()
+                t0, t1 = words[i]["start"], words[i + len(toks) - 1]["end"]
+                step = (t1 - t0) / len(parts)
+                for k, part in enumerate(parts):  # «и Сбере» — два слова, чтобы бренд нашёлся
+                    out.append({"text": part + (tail if k == len(parts) - 1 else ""), "start": round(t0 + k * step, 3),
+                                "end": round(t0 + (k + 1) * step, 3)})
                 i += len(toks)
                 done = True
                 break
@@ -231,6 +237,8 @@ def main():
         for name, c in cities.items():
             if t in [norm(f) for f in c["forms"]]:
                 city_m.append((i, name))
+                if re.search("[A-Za-z]", W[i]["text"]):
+                    W[i]["text"] = name + re.search(r"[^\w]*$", W[i]["text"]).group(0)
     runs, cur = [], []
     for i, name in city_m:
         if cur and W[i]["start"] - W[cur[-1][0]]["end"] > 1.2:

@@ -14,7 +14,8 @@
    "Сбере",
    "Сбербанк",
    "Сбербанке",
-   "Sber"
+   "Sber",
+   "Sbere"
   ],
   "logo": "source-videos/логотипы/общие/sber.png"
  },
@@ -126,14 +127,21 @@
   "names": [
    "Maextro",
    "Маэстро",
-   "Maestro"
+   "Maestro",
+   "MyExtro",
+   "Maextro'",
+   "Маекстро",
+   "Майэкстро"
   ],
   "logo": "source-videos/логотипы/авто/maextro.svg"
  },
  "saic": {
   "names": [
    "SAIC",
-   "САИК"
+   "САИК",
+   "Syke",
+   "Сайк",
+   "SAIK"
   ],
   "logo": "source-videos/логотипы/авто/saic.svg"
  },
@@ -142,7 +150,12 @@
    "GAC Aion",
    "Aion",
    "GAC",
-   "Айон"
+   "Айон",
+   "Sgak Ion",
+   "GAC Ion",
+   "Гак Айон",
+   "Sgac Aion",
+   "Ion"
   ],
   "logo": "source-videos/логотипы/авто/gac-aion.svg"
  },
