@@ -39,7 +39,7 @@
         },
         {
           "name": "Point Coffee",
-          "logo": "source-videos/логотипы/ритейл/indomaret.png"
+          "logo": "source-videos/логотипы/чай-кофе/point-coffee-indomaret.png"
         }
       ],
       "box_text": "От единорога Kopi Kenangan до Chatime —\n9 компаний, 6 дней, 6 ночей",
@@ -108,7 +108,7 @@
         {
           "sub": "10:00–13:00",
           "title": "Chatime ·\nEsteh",
-          "text": "Chatime — тайваньский бренд бабл-ти.",
+          "text": "Chatime — самый популярный бабл-ти страны; Esteh — местный «чай Нусантара».",
           "label": "День 3"
         },
         {
@@ -373,7 +373,7 @@
       "type": "company",
       "tag": "День 4 · Джакарта",
       "title": "Point Coffee",
-      "logo": "source-videos/логотипы/ритейл/indomaret.png",
+      "logo": "source-videos/логотипы/чай-кофе/point-coffee-indomaret.png",
       "short": "Point Coffee (Indomaret)",
       "subtitle": "Indomaret · Джакарта",
       "facts": [

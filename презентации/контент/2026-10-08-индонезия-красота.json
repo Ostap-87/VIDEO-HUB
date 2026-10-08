@@ -128,25 +128,25 @@
           "label": "День 1"
         },
         {
-          "sub": "Джакарта · 10:00–13:00",
+          "sub": "Джакарта",
           "title": "Martha Tilaar ·\nMustika Ratu",
           "text": "Martha Tilaar — бьюти-конгломерат на основе джаму; Mustika Ratu — рецепты дворца Кератон.",
           "label": "День 2"
         },
         {
-          "sub": "Джакарта · 10:00–13:00",
+          "sub": "Джакарта",
           "title": "Somethinc ·\nBase",
           "text": "Somethinc — skincare с научным подходом; Base — digital-first skincare со Smart Skin Test.",
           "label": "День 3"
         },
         {
-          "sub": "Джокьякарта · 10:00–13:00",
+          "sub": "Джокьякарта",
           "title": "Avoskin ·\nESQA Cosmetics",
           "text": "Перелёт Джакарта→Джокьякарта (≈1 ч).",
           "label": "День 4"
         },
         {
-          "sub": "Джакарта · 10:00–13:00",
+          "sub": "Джакарта",
           "title": "MS Glow ·\nRose All Day",
           "text": "Перелёт обратно в Джакарту.",
           "label": "День 5"
@@ -219,7 +219,8 @@
       ],
       "why": "Бренд halal-ухода для мужчин от Paragon — цель создателей повторить успех Wardah в мужском сегменте.",
       "learn": "Умывание, уход за кожей, солнцезащита, парфюмерия, волосы и тело — без спирта и компонентов животного происхождения.",
-      "learn_label": "Фокус визита"
+      "learn_label": "Фокус визита",
+      "logo_text": "Kahf"
     },
     {
       "type": "company",

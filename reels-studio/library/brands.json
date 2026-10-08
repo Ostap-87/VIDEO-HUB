@@ -2070,6 +2070,14 @@
   "logo": "source-videos/логотипы/техгиганты/goto-gofood-gokitchen.png",
   "site_logo": "/logos/GoFood:GoKitchen).png"
  },
+ "goto-campus": {
+  "names": [
+   "GoTo (Gojek + Tokopedia + GoPay)",
+   "GoTo"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/goto-campus.png",
+  "site_logo": "/logos/GoTo.png"
+ },
  "yummy-corp": {
   "names": [
    "Yummy Corp",
@@ -2578,5 +2586,13 @@
   ],
   "logo": "source-videos/логотипы/косметика/milaganics.png",
   "site_logo": "/logos/Milaganics.png"
+ },
+ "point-coffee": {
+  "names": [
+   "Point Coffee (Indomaret)",
+   "Point Coffee"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/point-coffee-indomaret.png",
+  "site_logo": "/logos/point Coffee.png"
  }
 }

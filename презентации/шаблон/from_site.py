@@ -1315,10 +1315,7 @@ GENERIC_SUFFIX = r'\s+(?:Thailand|Japan|Vietnam|India|Malaysia|Indonesia|Korea|U
 def name_keys(c):
     n = c['name_en']
     keys = set()
-    pn = paren_name(n)
-    if pn and not re.fullmatch(r'[A-Z]{2,5}|[A-Z][a-z]+[A-Z]\w*', pn):
-        pn = ''  # «Point Coffee (Indomaret)» — в скобках материнская компания, её логотип не подходит
-    for part in [n, base_name(n), pn] + re.split(r'\s*/\s*|\s+[—–]\s+', base_name(n)):
+    for part in [n, base_name(n), paren_name(n)] + re.split(r'\s*/\s*|\s+[—–]\s+', base_name(n)):
         part = part.strip()
         if not part:
             continue
@@ -1334,6 +1331,7 @@ def find_existing_logo(c, brands):
             return v['logo']
     keys = name_keys(c)
     base_keys = {re.sub(GENERIC_SUFFIX, '', base_name(c['name_en'])).strip().lower()}
+    pn = paren_name(c['name_en']).lower()
     first = None
     for v in brands.values():
         bn = {x.lower() for x in v.get('names', [])}
@@ -1341,7 +1339,10 @@ def find_existing_logo(c, brands):
             continue
         if base_keys & bn:
             return v['logo']
-        if keys & bn and not first:
+        hit = keys & bn
+        if hit == {pn} and v.get('names', [''])[0].lower() == pn:
+            continue  # «Point Coffee (Indomaret)»: в скобках материнская компания — её логотип не подходит
+        if hit and not first:
             first = v['logo']
     return first
 
@@ -1457,6 +1458,8 @@ def register_brands(new_logos, tour, brands):
         key = slugify(c['name_en']) or c['id']
         if key in brands and brands[key].get('logo') == rel:
             continue
+        if key in brands:  # «GoTo (GoFood/GoKitchen)» и «GoTo (Gojek + …)» — разные логотипы, запись не затираем
+            key = c['id'] if c['id'] not in brands else f'{key}-{c["id"]}'
         if any(v.get('logo') == rel for v in brands.values()):
             continue
         names = []
@@ -1765,7 +1768,8 @@ def build_deck(tour, comps, logos_ok=True):
         dlist.append({'sub': d.get('time') or '', 'title': Var(title, title2, title3, title4),
                       'text': Var(*[v for v in variants if v]), 'label': f'День {d["day"]}'})
         if len(cities) > 1 and d['city_ru'] != main_city:  # «Токио / Нода (Тиба)» — тоже подпись
-            dlist[-1]['sub'] = f'{d["city_ru"]} · {d.get("time") or ""}'.strip(' ·')
+            sub = f'{d["city_ru"]} · {d.get("time") or ""}'.strip(' ·')
+            dlist[-1]['sub'] = sub if len(sub) <= 18 or len(itin) <= 3 else d['city_ru']  # «Семаранг · 10:00–13:00» наезжает на кружок следующего дня
     dghost = THAI_DAYS.get(len(itin)) if country == 'th' else (CJK_DAYS.get(len(itin)) if country in ('cn', 'jp') else None)
     slides.append({'type': 'days', 'tag': 'Программа по дням', 'title': f'{cnt(len(itin), "день", "дня", "дней")} визитов',
                    'ghost': dghost, 'days': dlist})

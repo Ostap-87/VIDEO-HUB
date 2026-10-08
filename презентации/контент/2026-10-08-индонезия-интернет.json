@@ -11,7 +11,7 @@
       "logos": [
         {
           "name": "GoTo",
-          "logo": "source-videos/логотипы/техгиганты/goto-gofood-gokitchen.png"
+          "logo": "source-videos/логотипы/техгиганты/goto-campus.png"
         },
         {
           "name": "Grab",
@@ -102,7 +102,7 @@
         {
           "sub": "10:00–13:00",
           "title": "Grab ·\nBlibli",
-          "text": "Grab — сингапурский супер-апп, основанный в 2012 г.; Blibli — индонезийская e-commerce платформа.",
+          "text": "Grab — сингапурский супер-апп, основанный в 2012 г. Энтони; Blibli — индонезийская e-commerce платформа.",
           "label": "День 2"
         },
         {
@@ -129,7 +129,7 @@
       "type": "company",
       "tag": "День 1 · Джакарта",
       "title": "GoTo",
-      "logo": "source-videos/логотипы/техгиганты/goto-gofood-gokitchen.png",
+      "logo": "source-videos/логотипы/техгиганты/goto-campus.png",
       "short": "GoTo (Gojek + Tokopedia + GoPay)",
       "subtitle": "Gojek + Tokopedia + GoPay · Джакарта",
       "facts": [
@@ -498,7 +498,7 @@
           "icon": "smartphone",
           "value": "9 компаний",
           "label": "Интернет-гиганты Индонезии",
-          "sub": "иИ, мессенджеры, e-commerce"
+          "sub": "ИИ, мессенджеры, e-commerce"
         },
         {
           "icon": "briefcase",
