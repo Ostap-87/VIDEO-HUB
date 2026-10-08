@@ -801,7 +801,7 @@
 @font-face {
   font-family: 'Sofia Sans Extra Condensed';
   font-style: normal;
-  font-weight: 100 1000;
+  font-weight: 1 1000;
   font-display: block;
   src: url(SairaExtraCondensed-900-vietnamese.woff2) format('woff2');
   unicode-range: U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0309, U+0323, U+1EA0-1EF1, U+1EF4-1EF9, U+20AB;
@@ -809,7 +809,7 @@
 @font-face {
   font-family: 'Sofia Sans Condensed';
   font-style: normal;
-  font-weight: 100 1000;
+  font-weight: 1 1000;
   font-display: block;
   src: url(BarlowCondensed-800-vietnamese.woff2) format('woff2');
   unicode-range: U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0309, U+0323, U+1EA0-1EF1, U+1EF4-1EF9, U+20AB;
