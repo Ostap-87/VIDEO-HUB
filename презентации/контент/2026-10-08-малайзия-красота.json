@@ -1,0 +1,511 @@
+{
+  "title": "Косметика и бьюти-технологии Малайзии — Global Tech Tour",
+  "output": "2026-10-08-малайзия-красота",
+  "source": "https://globaltechtour.ru/expeditions/malaysia-beauty-industry-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "malaysia",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Косметика и бьюти-технологии Малайзии",
+      "topright": "Wipro Unza · Eng Kah\nElken",
+      "logos": [
+        {
+          "name": "Wipro Unza",
+          "logo": "source-videos/логотипы/косметика/wipro-unza.png"
+        },
+        {
+          "name": "Elken",
+          "logo": "source-videos/логотипы/косметика/elken-elysyle.png"
+        },
+        {
+          "name": "Intercosmetic Asia Pacific",
+          "logo": "source-videos/логотипы/косметика/intercosmetic-asia-pacific.png"
+        },
+        {
+          "name": "Furley Bioextracts",
+          "logo": "source-videos/логотипы/косметика/furley-bioextracts.png"
+        },
+        {
+          "name": "Global Cosmetics",
+          "logo": "source-videos/логотипы/косметика/global-cosmetics.png"
+        },
+        {
+          "name": "Eng Kah",
+          "logo": "source-videos/логотипы/косметика/eng-kah-corporation.png"
+        },
+        {
+          "name": "Halal OEM Cluster",
+          "logo": "source-videos/логотипы/косметика/cl-cosmetic-oem-cluster.png"
+        }
+      ],
+      "box_text": "Глобальный халяль-косметический хаб —\n7 компаний, 6 дней, 6 ночей",
+      "box_right": "Куала-Лумпур + Пенанг",
+      "footer": "Global Tech Tour · бизнес-экспедиции в Малайзию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Доступ к штаб-квартирам и площадкам, обычно закрытым для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы/перелёты между городами программы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на малайском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "7 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Куала-Лумпур",
+          "text": "Wipro Unza, Elken, Intercosmetic Asia Pacific"
+        },
+        {
+          "name": "Дни 3–4 · Куала-Лумпур + Пенанг",
+          "text": "Furley Bioextracts, Global Cosmetics, Eng Kah"
+        },
+        {
+          "name": "День 5 · Куала-Лумпур",
+          "text": "Кластер халяль-OEM (2 точки по согласованию), итоговая встреча"
+        }
+      ]
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Куала-Лумпур",
+          "days": "дни 1–3, 5",
+          "companies": "Wipro Unza · Elken\nIntercosmetic\nFurley Bioextracts\nGlobal Cosmetics\nHalal OEM Cluster"
+        },
+        {
+          "name": "Пенанг",
+          "days": "день 4",
+          "companies": "Eng Kah",
+          "leg": {
+            "icon": "plane",
+            "text": "~1 ч"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Куала-Лумпур · <b>Вылет:</b> Куала-Лумпур"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Wipro Unza",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Elken ·\nIntercosmetic",
+          "text": "Elken — прямые продажи и свой skincare-бренд; Intercosmetic — халяль-OEM/ODM с 1998 года.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Furley ·\nGlobal Cosmetics",
+          "text": "Furley — OEM с 30 000+ рецептур; Global Cosmetics — «умный завод» Industry 4.0.",
+          "label": "День 3"
+        },
+        {
+          "sub": "Пенанг",
+          "title": "Eng Kah",
+          "text": "Перелёт в Пенанг (~1 ч). Ночёвка — Куала-Лумпур (возврат) или Пенанг.",
+          "label": "День 4"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Halal OEM Cluster",
+          "text": "Визит в кластер халяль-OEM производителей (2 точки по согласованию), далее — итоговая встреча.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Куала-Лумпур",
+      "title": "Wipro Unza",
+      "logo": "source-videos/логотипы/косметика/wipro-unza.png",
+      "short": "Wipro Unza",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "30+ млн ринггитов",
+          "label": "R&D-инвестиции",
+          "sub": "Skin Research & Innovation Centre"
+        },
+        {
+          "icon": "package",
+          "value": "70",
+          "label": "новых продуктов в год"
+        },
+        {
+          "icon": "users",
+          "value": "100+",
+          "label": "учёных"
+        },
+        {
+          "icon": "flag",
+          "value": "2013",
+          "label": "открытие R&D-центра"
+        }
+      ],
+      "why": "Wipro Skin Research & Innovation Centre — один из крупнейших в мире халяль-R&D центров, полный цикл по JAKIM.",
+      "learn": "Производитель брендов Safi, Aiken, Enchanteur и Eversoft: 70 новых продуктов в год, 100+ учёных.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Куала-Лумпур",
+      "title": "Elken",
+      "logo": "source-videos/логотипы/косметика/elken-elysyle.png",
+      "short": "Elken",
+      "subtitle": "Elysyle/LUMIGEN · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "Прямые продажи",
+          "label": "модель группы"
+        },
+        {
+          "icon": "package",
+          "value": "Elysyle",
+          "label": "собственный skincare",
+          "sub": "и LUMIGEN"
+        },
+        {
+          "icon": "cpu",
+          "value": "Микрокапсулы",
+          "label": "доставка активов",
+          "sub": "и бьюти-устройства"
+        },
+        {
+          "icon": "building",
+          "value": "Завод",
+          "label": "в Селангоре",
+          "sub": "собственное производство"
+        }
+      ],
+      "learn": "Запатентованные активные вещества, микрокапсульная доставка и бьюти-устройства.",
+      "learn_label": "Фокус визита",
+      "why": "Группа прямых продаж с собственным skincare-брендом и заводом в Селангоре."
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Куала-Лумпур",
+      "title": "Intercosmetic Asia Pacific",
+      "logo": "source-videos/логотипы/косметика/intercosmetic-asia-pacific.png",
+      "short": "Intercosmetic Asia Pacific",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1998",
+          "label": "год основания",
+          "sub": "Кула-Сунгай-Булух, Селангор"
+        },
+        {
+          "icon": "star",
+          "value": "Халяль",
+          "label": "специализация",
+          "sub": "OEM/ODM по контракту"
+        },
+        {
+          "icon": "globe",
+          "value": "5",
+          "label": "стран — технопартнёров",
+          "sub": "Италия, Швейцария, Франция…"
+        },
+        {
+          "icon": "target",
+          "value": "ISO 22716",
+          "label": "и ISO 9001",
+          "sub": "свой R&D-центр"
+        }
+      ],
+      "why": "Малайзийский контрактный производитель косметики (OEM/ODM) с 1998 года, специализируется на халяльной продукции.",
+      "learn": "Собственный исследовательский центр и технологические партнёры из Италии, Швейцарии, Франции, Кореи и Японии.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Куала-Лумпур",
+      "title": "Furley Bioextracts",
+      "logo": "source-videos/логотипы/косметика/furley-bioextracts.png",
+      "short": "Furley Bioextracts",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "package",
+          "value": "30 000+",
+          "label": "готовых рецептур"
+        },
+        {
+          "icon": "users",
+          "value": "2000+",
+          "label": "клиентов из МСБ"
+        },
+        {
+          "icon": "flag",
+          "value": "2006",
+          "label": "начало работы"
+        },
+        {
+          "icon": "target",
+          "value": "ISO 13485",
+          "label": "ISO 22000, cGMP, HACCP",
+          "sub": "и Halal"
+        }
+      ],
+      "why": "Контрактный производитель (OEM) с 2006 года: косметика, продукты питания, БАДы и традиционные средства.",
+      "learn": "Клиенты — на рынках США, Великобритании, Китая, Австралии, Новой Зеландии и Африки.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Куала-Лумпур",
+      "title": "Global Cosmetics",
+      "logo": "source-videos/логотипы/косметика/global-cosmetics.png",
+      "short": "Global Cosmetics",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "cpu",
+          "value": "Industry 4.0",
+          "label": "«умный завод»",
+          "sub": "по словам компании"
+        },
+        {
+          "icon": "cpu",
+          "value": "AI",
+          "label": "производство",
+          "sub": "интеллектуальная автоматизация"
+        },
+        {
+          "icon": "chart",
+          "value": "Онлайн",
+          "label": "аналитика производства",
+          "sub": "в реальном времени"
+        },
+        {
+          "icon": "package",
+          "value": "OEM/ODM",
+          "label": "контрактная косметика"
+        }
+      ],
+      "why": "Позиционирует себя как «умный завод» по стандарту Industry 4.0 для OEM/ODM-производства косметики.",
+      "learn_label": "Фокус визита",
+      "learn": "AI-производство, интеллектуальная автоматизация и аналитика в реальном времени — заявлено компанией, проверим на месте."
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Пенанг",
+      "title": "Eng Kah Corporation",
+      "logo": "source-videos/логотипы/косметика/eng-kah-corporation.png",
+      "short": "Eng Kah Corporation",
+      "subtitle": "Пенанг",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1",
+          "label": "контрактный производитель",
+          "sub": "парфюмерии и косметики"
+        },
+        {
+          "icon": "chart",
+          "value": "Bursa Malaysia",
+          "label": "основная площадка",
+          "sub": "единственный в отрасли"
+        },
+        {
+          "icon": "target",
+          "value": "FDA",
+          "label": "регистрация",
+          "sub": "ISO / GMP / халяль"
+        },
+        {
+          "icon": "handshake",
+          "value": "Avon",
+          "label": "исторический клиент",
+          "sub": "и Johnson & Johnson"
+        }
+      ],
+      "why": "Крупнейший контрактный производитель парфюмерии и косметики в Малайзии — единственный такой на основной площадке Bursa.",
+      "learn_label": "Фокус визита",
+      "learn": "Регистрация FDA, сертификаты ISO/GMP/халяль; исторически производил продукцию для Avon и Johnson & Johnson."
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Куала-Лумпур",
+      "title": "Halal OEM Cluster",
+      "logo": "source-videos/логотипы/косметика/cl-cosmetic-oem-cluster.png",
+      "short": "CL Cosmetic · TCT · Sky Resources",
+      "subtitle": "Селангор · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "3",
+          "label": "производителя",
+          "sub": "CL Cosmetic, TCT, Sky Resources"
+        },
+        {
+          "icon": "flag",
+          "value": "2002",
+          "label": "CL Cosmetic",
+          "sub": "частные марки, OEM/ODM"
+        },
+        {
+          "icon": "package",
+          "value": "Bag-on-Valve",
+          "label": "аэрозоли TCT",
+          "sub": "маски, мыло, skincare"
+        },
+        {
+          "icon": "star",
+          "value": "34+ лет",
+          "label": "опыт Sky Resources",
+          "sub": "с 1991 года"
+        }
+      ],
+      "why": "Кластер халяль-OEM в Селангоре: контрактные производители косметики и нутрицевтики CL Cosmetic, TCT и Sky Resources.",
+      "learn": "Все три компании сертифицированы по GMP и Halal: skincare, тканевые маски, аэрозоли, уход за волосами.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Трансферы/перелёты между городами программы",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На малайском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "7 компаний",
+          "text": "Wipro Unza · Eng Kah · Elken\nКуала-Лумпур + Пенанг",
+          "icon": "store"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов"
+        },
+        {
+          "icon": "store",
+          "value": "7 компаний",
+          "label": "в программе",
+          "sub": "Wipro Unza, Eng Kah, Elken"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы/перелёты между городами программы",
+        "Сопровождение на малайском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Куала-Лумпур (перелёт Москва → Куала-Лумпур).<br><b>Вылет:</b> Куала-Лумпур — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

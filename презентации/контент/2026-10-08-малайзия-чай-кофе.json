@@ -1,0 +1,497 @@
+{
+  "title": "Бабл-ти и кофейная индустрия Малайзии — Global Tech Tour",
+  "output": "2026-10-08-малайзия-чай-кофе",
+  "source": "https://globaltechtour.ru/expeditions/malaysia-bubble-tea-coffee-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "malaysia",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Бабл-ти и кофейная индустрия Малайзии",
+      "topright": "ZUS Coffee · Tealive\nBask Bear",
+      "logos": [
+        {
+          "name": "ZUS Coffee",
+          "logo": "source-videos/логотипы/чай-кофе/zus-coffee.png"
+        },
+        {
+          "name": "Tealive",
+          "logo": "source-videos/логотипы/чай-кофе/tealive-loob-holding.png"
+        },
+        {
+          "name": "Bask Bear Coffee",
+          "logo": "source-videos/логотипы/чай-кофе/bask-bear-coffee.png"
+        },
+        {
+          "name": "Chatime",
+          "logo": "source-videos/логотипы/чай-кофе/chatime.png"
+        },
+        {
+          "name": "Gigi Coffee",
+          "logo": "source-videos/логотипы/чай-кофе/gigi-coffee.png"
+        },
+        {
+          "name": "Luckin Coffee",
+          "logo": "source-videos/логотипы/чай-кофе/luckin-coffee.svg"
+        },
+        {
+          "name": "Inside Scoop",
+          "logo": "source-videos/логотипы/еда/inside-scoop.png"
+        }
+      ],
+      "box_text": "От ZUS Coffee и Tealive до Luckin —\n8 компаний, 6 дней, 6 ночей",
+      "box_right": "Куала-Лумпур —\nвся программа в одном городе",
+      "footer": "Global Tech Tour · бизнес-экспедиции в Малайзию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Доступ к штаб-квартирам и площадкам, обычно закрытым для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы/перелёты между городами программы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на малайском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "8 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2",
+          "text": "ZUS Coffee, Tealive, Bask Bear Coffee, Chatime"
+        },
+        {
+          "name": "Дни 3–4",
+          "text": "Gigi Coffee, обжарочная (по согласованию), Luckin Coffee, Inside Scoop"
+        },
+        {
+          "name": "День 5",
+          "text": "Итоговая встреча и networking с F&B tech-экосистемой."
+        }
+      ]
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "ZUS Coffee ·\nTealive",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Bask Bear Coffee ·\nChatime",
+          "text": "Bask Bear — кофейни-тостерии Loob Holding; Chatime — тайваньский бабл-ти.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Gigi Coffee",
+          "text": "Gigi Coffee — 160+ точек grab-and-go; второй визит — обжарочная в Клэнг-Вэлли (по согласованию).",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Luckin Coffee ·\nInside Scoop",
+          "text": "Luckin — №1 в Китае, в Малайзии с 2025 года; Inside Scoop — премиальное мороженое.",
+          "label": "День 4"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Итоговая\nвстреча",
+          "text": "Итоговая встреча и networking с F&B tech-экосистемой.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Куала-Лумпур",
+      "title": "ZUS Coffee",
+      "logo": "source-videos/логотипы/чай-кофе/zus-coffee.png",
+      "short": "ZUS Coffee",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "1000+",
+          "label": "точек",
+          "sub": "6 стран, конец 2025"
+        },
+        {
+          "icon": "smartphone",
+          "value": "70%",
+          "label": "продаж через приложение",
+          "sub": "1,8 млн загрузок, рейтинг 4,85"
+        },
+        {
+          "icon": "trending",
+          "value": "743",
+          "label": "точки против 320 у Starbucks",
+          "sub": "в Малайзии"
+        },
+        {
+          "icon": "chart",
+          "value": "~21%",
+          "label": "доля рынка"
+        }
+      ],
+      "why": "Tech-first модель «New Retail»: приложение даёт 70% продаж — ZUS обогнала Starbucks в Малайзии (743 против 320 точек).",
+      "learn": "AI/ML-аналитика поведения покупателей для локализации меню и выбора локаций; компания основана в 2019 году.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Куала-Лумпур",
+      "title": "Tealive",
+      "logo": "source-videos/логотипы/чай-кофе/tealive-loob-holding.png",
+      "short": "Tealive",
+      "subtitle": "Loob Holding · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1",
+          "label": "сеть бабл-ти Малайзии",
+          "sub": "с 2017 года"
+        },
+        {
+          "icon": "smartphone",
+          "value": "Приложение",
+          "label": "кошелёк и лояльность",
+          "sub": "самовывоз и доставка"
+        },
+        {
+          "icon": "cpu",
+          "value": "SodaXpress",
+          "label": "своё оборудование",
+          "sub": "собственные разработки"
+        },
+        {
+          "icon": "handshake",
+          "value": "Loob Holding",
+          "label": "владелец",
+          "sub": "основан в 2010 году"
+        }
+      ],
+      "why": "Крупнейшая сеть бабл-ти в Малайзии с 2017 года — бренд Loob Holding.",
+      "learn_label": "Фокус визита",
+      "learn": "Приложение Tealive со встроенным кошельком, лояльностью, самовывозом и доставкой; оборудование SodaXpress."
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Куала-Лумпур",
+      "title": "Bask Bear Coffee",
+      "logo": "source-videos/логотипы/чай-кофе/bask-bear-coffee.png",
+      "short": "Bask Bear Coffee",
+      "subtitle": "Loob Holding · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "150+",
+          "label": "точек",
+          "sub": "100 — к сентябрю 2023"
+        },
+        {
+          "icon": "users",
+          "value": "500 000+",
+          "label": "участников в приложении"
+        },
+        {
+          "icon": "flag",
+          "value": "~2021",
+          "label": "запуск",
+          "sub": "Loob Holding"
+        },
+        {
+          "icon": "car",
+          "value": "Drive-thru",
+          "label": "формат",
+          "sub": "Восточная Малайзия"
+        }
+      ],
+      "why": "Одна из самых быстрорастущих сетей кофеен-тостерий: 100 точек к сентябрю 2023 года, сейчас более 150.",
+      "learn": "Приложение объединяет заказы и лояльность в экосистеме Loob Holding — свыше 500 000 участников.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Куала-Лумпур",
+      "title": "Chatime Malaysia",
+      "logo": "source-videos/логотипы/чай-кофе/chatime.png",
+      "short": "Chatime Malaysia",
+      "subtitle": "La Kaffa International · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2010",
+          "label": "первая точка в Малайзии",
+          "sub": "август"
+        },
+        {
+          "icon": "store",
+          "value": "~160",
+          "label": "точек ушли в Tealive",
+          "sub": "январь 2017"
+        },
+        {
+          "icon": "chart",
+          "value": "Почти ½",
+          "label": "глобальной выручки Chatime",
+          "sub": "одно время — Малайзия"
+        },
+        {
+          "icon": "handshake",
+          "value": "La Kaffa",
+          "label": "тайваньский владелец",
+          "sub": "основана в 2005 году"
+        }
+      ],
+      "why": "Тайваньский бабл-ти La Kaffa International; Малайзия одно время давала почти половину глобальной выручки Chatime.",
+      "learn": "После разрыва с Loob Holding в 2017 году ~160 точек стали Tealive; Chatime вернулась сама — с приложением.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Куала-Лумпур",
+      "title": "Gigi Coffee",
+      "logo": "source-videos/логотипы/чай-кофе/gigi-coffee.png",
+      "short": "Gigi Coffee",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "160+",
+          "label": "точек grab-and-go",
+          "sub": "FY2023"
+        },
+        {
+          "icon": "chart",
+          "value": "53,9 млн ринггитов",
+          "label": "выручка",
+          "sub": "FY2023"
+        },
+        {
+          "icon": "chart",
+          "value": "4 млн ринггитов",
+          "label": "чистая прибыль",
+          "sub": "FY2023"
+        },
+        {
+          "icon": "flag",
+          "value": "2019",
+          "label": "год основания",
+          "sub": "без внешних инвестиций"
+        }
+      ],
+      "why": "Быстрорастущая малайзийская сеть кофеен без внешних инвестиций: 160+ точек grab-and-go в четырёх штатах.",
+      "learn": "Приложение с лояльностью и персонализацией делает её прямым низкоценовым конкурентом ZUS Coffee.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Куала-Лумпур",
+      "title": "Luckin Coffee",
+      "logo": "source-videos/логотипы/чай-кофе/luckin-coffee.svg",
+      "short": "Luckin Coffee",
+      "subtitle": "Hextar Industries · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "20 000+",
+          "label": "точек",
+          "sub": "№1 сеть кофеен Китая"
+        },
+        {
+          "icon": "calendar",
+          "value": "2025",
+          "label": "выход в Малайзию",
+          "sub": "23 января, 2 точки в КЛ"
+        },
+        {
+          "icon": "store",
+          "value": "45",
+          "label": "совместных точек",
+          "sub": "к февралю 2026"
+        },
+        {
+          "icon": "target",
+          "value": "~200",
+          "label": "точек — план",
+          "sub": "к 2028 году"
+        }
+      ],
+      "why": "Крупнейшая сеть кофеен Китая (20 000+ точек) — вышла в Малайзию в январе 2025 года с Hextar Industries.",
+      "learn_label": "Фокус визита",
+      "learn": "Цифровая модель на базе приложения, в основном навынос; Малайзия — второй зарубежный рынок Luckin после Сингапура."
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Куала-Лумпур",
+      "title": "Inside Scoop",
+      "logo": "source-videos/логотипы/еда/inside-scoop.png",
+      "short": "Inside Scoop",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2013",
+          "label": "год основания",
+          "sub": "Бангсар, Куала-Лумпур"
+        },
+        {
+          "icon": "building",
+          "value": "1",
+          "label": "центральная кухня",
+          "sub": "снабжает все точки"
+        },
+        {
+          "icon": "globe",
+          "value": "Сингапур",
+          "label": "выход в регион",
+          "sub": "точка у Bugis"
+        },
+        {
+          "icon": "star",
+          "value": "Премиум",
+          "label": "мороженое и десерты",
+          "sub": "альтернатива глобальным брендам"
+        }
+      ],
+      "why": "Малайзийская сеть кафе премиального мороженого и десертов — альтернатива международным брендам.",
+      "learn": "Всё мороженое готовится свежим на центральной коммерческой кухне, снабжающей несколько торговых точек.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Трансферы/перелёты между городами программы",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На малайском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "8 компаний",
+          "text": "ZUS Coffee · Tealive · Bask Bear\nв одном городе",
+          "icon": "cart"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов в Куала-Лумпуре"
+        },
+        {
+          "icon": "cart",
+          "value": "8 компаний",
+          "label": "в программе",
+          "sub": "ZUS Coffee, Tealive, Bask Bear"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы/перелёты между городами программы",
+        "Сопровождение на малайском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Куала-Лумпур (перелёт Москва → Куала-Лумпур).<br><b>Вылет:</b> Куала-Лумпур — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

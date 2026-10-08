@@ -1,0 +1,556 @@
+{
+  "title": "Продукты питания и молочная промышленность Малайзии — Global Tech Tour",
+  "output": "2026-10-08-малайзия-еда",
+  "source": "https://globaltechtour.ru/expeditions/malaysia-food-dairy-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "malaysia",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Продукты питания и молочная промышленность Малайзии",
+      "topright": "Ajinomoto · Nestlé\nFarm Fresh · Sime Darby",
+      "logos": [
+        {
+          "name": "Ajinomoto",
+          "logo": "source-videos/логотипы/еда/ajinomoto.svg"
+        },
+        {
+          "name": "Dutch Lady Milk Industries",
+          "logo": "source-videos/логотипы/еда/dutch-lady-frieslandcampina.png"
+        },
+        {
+          "name": "Nestlé",
+          "logo": "source-videos/логотипы/еда/nestle.png"
+        },
+        {
+          "name": "Sime Darby Oils",
+          "logo": "source-videos/логотипы/еда/sime-darby-oils.png"
+        },
+        {
+          "name": "Phuture Foods",
+          "logo": "source-videos/логотипы/еда/phuture-foods.png"
+        },
+        {
+          "name": "Mamee-Double Decker",
+          "logo": "source-videos/логотипы/еда/mamee-double-decker.png"
+        },
+        {
+          "name": "Farm Fresh",
+          "logo": "source-videos/логотипы/еда/farm-fresh-berhad.png"
+        },
+        {
+          "name": "Jemaluang Dairy Valley",
+          "logo": "source-videos/логотипы/еда/jemaluang-dairy-valley.png"
+        }
+      ],
+      "box_text": "От халяль-заводов Ajinomoto до Farm Fresh —\n8 компаний, 6 дней, 6 ночей",
+      "box_right": "Куала-Лумпур + Кулаи (Джохор)",
+      "footer": "Global Tech Tour · бизнес-экспедиции в Малайзию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Доступ к штаб-квартирам и площадкам, обычно закрытым для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы/перелёты между городами программы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на малайском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "8 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Куала-Лумпур",
+          "text": "Ajinomoto, Dutch Lady, Nestlé, Sime Darby Oils"
+        },
+        {
+          "name": "Дни 3–4 · Куала-Лумпур + Кулаи (Джохор)",
+          "text": "Phuture Foods, Mamee-Double Decker, Farm Fresh"
+        },
+        {
+          "name": "День 5 · Кулаи (Джохор)",
+          "text": "Jemaluang Dairy Valley"
+        }
+      ]
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Куала-Лумпур",
+          "days": "дни 1–3",
+          "companies": "Ajinomoto · Dutch Lady\nNestlé · Sime Darby\nPhuture Foods\nMamee-Double Decker"
+        },
+        {
+          "name": "Кулаи (Джохор)",
+          "days": "дни 4–5",
+          "companies": "Farm Fresh\nJemaluang Dairy Valley",
+          "leg": {
+            "icon": "plane",
+            "text": "~1 ч перелёт"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Куала-Лумпур · <b>Вылет:</b> Куала-Лумпур"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Ajinomoto ·\nDutch Lady",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Nestlé ·\nSime Darby Oils",
+          "text": "Nestlé — крупнейшее в мире производство MILO; Sime Darby Oils — переработка пальмового масла.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Phuture Foods ·\nMamee",
+          "text": "Phuture Foods — растительное мясо из риса; Mamee — культовый снек Mamee Monster.",
+          "label": "День 3"
+        },
+        {
+          "sub": "Кулаи (Джохор)",
+          "title": "Farm Fresh",
+          "text": "Переезд/перелёт в Джохор (~1 ч перелёт либо ~3–4 ч на машине). Ночёвка — Джохор.",
+          "label": "День 4"
+        },
+        {
+          "sub": "Кулаи (Джохор)",
+          "title": "Jemaluang Dairy Valley",
+          "text": "Второй визит дня — опционально роботизированная ферма Saikris TechDairies (Перак, по согласованию).",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Куала-Лумпур",
+      "title": "Ajinomoto Malaysia",
+      "logo": "source-videos/логотипы/еда/ajinomoto.svg",
+      "short": "Ajinomoto (Malaysia) Berhad",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "355 млн ринггитов",
+          "label": "«умный завод»",
+          "sub": "Бандар-Энстек, декабрь 2022"
+        },
+        {
+          "icon": "building",
+          "value": "46 акров",
+          "label": "площадка завода",
+          "sub": "халяль-хаб, Негери-Сембилан"
+        },
+        {
+          "icon": "star",
+          "value": "Лучший",
+          "label": "держатель халяль-сертификата",
+          "sub": "Малайзия, 2021 год"
+        },
+        {
+          "icon": "flag",
+          "value": "1960-е",
+          "label": "начало работы в стране",
+          "sub": "сертификат JAKIM с 1965 года"
+        }
+      ],
+      "why": "Новый «умный завод» за RM355 млн в халяль-хабе Бандар-Энстек — к 60-летию работы компании в Малайзии.",
+      "learn": "Сертифицированное «зелёное» предприятие с автоматизацией и цифровизацией; сертификат JAKIM — с 1965 года.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Куала-Лумпур",
+      "title": "Dutch Lady Milk Industries",
+      "logo": "source-videos/логотипы/еда/dutch-lady-frieslandcampina.png",
+      "short": "Dutch Lady Milk Industries",
+      "subtitle": "FrieslandCampina · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "540 млн ринггитов",
+          "label": "комплекс Industry 4.0",
+          "sub": "Бандар-Энстек"
+        },
+        {
+          "icon": "flag",
+          "value": "2024",
+          "label": "открытие комплекса",
+          "sub": "май"
+        },
+        {
+          "icon": "building",
+          "value": "Под одной крышей",
+          "label": "производство и логистика",
+          "sub": "новое для молочной отрасли"
+        },
+        {
+          "icon": "handshake",
+          "value": "FrieslandCampina",
+          "label": "контролирующий акционер",
+          "sub": "Нидерланды"
+        }
+      ],
+      "why": "Под контролем нидерландской FrieslandCampina; в мае 2024 года открыл комплекс стандарта Industry 4.0 за RM540 млн.",
+      "learn": "Производство и логистика под одной крышей — модель европейских заводов FrieslandCampina; меньше отходов, энергии и воды.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Куала-Лумпур",
+      "title": "Nestlé Malaysia",
+      "logo": "source-videos/логотипы/еда/nestle.png",
+      "short": "Nestlé (Malaysia) Berhad",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "№1 в мире",
+          "label": "производство MILO",
+          "sub": "завод в Чембонге"
+        },
+        {
+          "icon": "briefcase",
+          "value": "90 млн ринггитов",
+          "label": "инвестиции в завод",
+          "sub": "Чембонг, 1993 год"
+        },
+        {
+          "icon": "building",
+          "value": "Sri Muda",
+          "label": "завод в Шах-Аламе",
+          "sub": "UHT-напитки, растительные блюда"
+        },
+        {
+          "icon": "star",
+          "value": "100%",
+          "label": "местной продукции — халяль",
+          "sub": "глобальный халяль-хаб Nestlé"
+        }
+      ],
+      "why": "Завод в Чембонге (Негери-Сембилан) — крупнейшее в мире производство MILO и глобальный центр компетенций.",
+      "learn": "Малайзия — глобальный халяль-хаб Nestlé; завод Sri Muda в Шах-Аламе с 2021 года выпускает и растительные блюда.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Куала-Лумпур",
+      "title": "Sime Darby Oils",
+      "logo": "source-videos/логотипы/еда/sime-darby-oils.png",
+      "short": "Sime Darby Oils",
+      "subtitle": "Sime Darby Plantation · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "globe",
+          "value": "~16",
+          "label": "стран переработки"
+        },
+        {
+          "icon": "chart",
+          "value": "241",
+          "label": "плантация",
+          "sub": "материнской компании"
+        },
+        {
+          "icon": "building",
+          "value": "71",
+          "label": "маслозавод",
+          "sub": "~600 000 га в четырёх странах"
+        },
+        {
+          "icon": "star",
+          "value": "№1 в мире",
+          "label": "производитель CSPO",
+          "sub": "Sime Darby Plantation"
+        }
+      ],
+      "why": "Переработка и спецжиры Sime Darby Plantation — крупнейшего в мире производителя устойчивого пальмового масла (CSPO).",
+      "learn": "Рафинированные масла, спецжиры для кондитерки и детского питания, биодизель; цифровая прослеживаемость «Crosscheck».",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Куала-Лумпур",
+      "title": "Phuture Foods",
+      "logo": "source-videos/логотипы/еда/phuture-foods.png",
+      "short": "Phuture Foods",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2018",
+          "label": "год основания",
+          "sub": "Кланг, Селангор"
+        },
+        {
+          "icon": "package",
+          "value": "Рис",
+          "label": "основа растительного мяса",
+          "sub": "собственная матрица"
+        },
+        {
+          "icon": "chart",
+          "value": "~70%",
+          "label": "B2B-фудсервис",
+          "sub": "остальное — ритейл"
+        },
+        {
+          "icon": "store",
+          "value": "~1000",
+          "label": "торговых точек — план",
+          "sub": "расширение"
+        }
+      ],
+      "why": "Растительное мясо на собственной матрице из риса — имитирует текстуру и сочность свинины и курицы.",
+      "learn": "Линейка High Fibre Chick’n, Invincible Mince и др.: ~70% — B2B-фудсервис; план — около 1000 торговых точек.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Куала-Лумпур",
+      "title": "Mamee-Double Decker",
+      "logo": "source-videos/логотипы/еда/mamee-double-decker.png",
+      "short": "Mamee-Double Decker",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1971",
+          "label": "год основания",
+          "sub": "Малакка"
+        },
+        {
+          "icon": "star",
+          "value": "Mamee Monster",
+          "label": "культовый снек",
+          "sub": "из лапши «Lucky»"
+        },
+        {
+          "icon": "globe",
+          "value": "100+",
+          "label": "стран экспорта"
+        },
+        {
+          "icon": "chart",
+          "value": "Bursa Malaysia",
+          "label": "акции на бирже"
+        }
+      ],
+      "why": "Лапша, снеки, кондитерские изделия и напитки на автоматизированных линиях; экспорт — более чем в 100 стран.",
+      "learn": "С 1972 года выпускает лапшу быстрого приготовления; превратила лапшу «Lucky» в снек Mamee Monster; OEM-услуги.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Кулаи (Джохор)",
+      "title": "Farm Fresh",
+      "logo": "source-videos/логотипы/еда/farm-fresh-berhad.png",
+      "short": "Farm Fresh",
+      "subtitle": "Кулаи (Джохор)",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1",
+          "label": "производитель свежего молока",
+          "sub": "в Малайзии"
+        },
+        {
+          "icon": "building",
+          "value": "7",
+          "label": "ферм"
+        },
+        {
+          "icon": "building",
+          "value": "4",
+          "label": "завода",
+          "sub": "линии UHT"
+        },
+        {
+          "icon": "handshake",
+          "value": "UPM",
+          "label": "партнёр турцентра",
+          "sub": "Universiti Putra Malaysia"
+        }
+      ],
+      "why": "Крупнейший производитель свежего молока в Малайзии: семь ферм, четыре завода и линии UHT.",
+      "learn_label": "Фокус визита",
+      "learn": "Industry Centre of Excellence и агро/образовательный туристический центр совместно с Universiti Putra Malaysia."
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Кулаи (Джохор)",
+      "title": "Jemaluang Dairy Valley",
+      "logo": "source-videos/логотипы/еда/jemaluang-dairy-valley.png",
+      "short": "Jemaluang Dairy Valley",
+      "subtitle": "JDV · Мерсинг (Джохор)",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "200+ млн ринггитов",
+          "label": "инвестиции",
+          "sub": "кредит MBSB — RM95,8 млн"
+        },
+        {
+          "icon": "users",
+          "value": "~1900",
+          "label": "голов на старте",
+          "sub": "цель — 4000 коров"
+        },
+        {
+          "icon": "package",
+          "value": "12 млн",
+          "label": "литров молока в год",
+          "sub": "к 2027 году"
+        },
+        {
+          "icon": "handshake",
+          "value": "ECER",
+          "label": "партнёр проекта",
+          "sub": "и правительство штата Джохор"
+        }
+      ],
+      "why": "Интегрированный молочный проект с господдержкой в Мерсинге — с правительством Джохора и ECER Development Council.",
+      "learn_label": "Фокус визита",
+      "learn": "Цель — 4000 коров и 12 млн литров молока в год к 2027 году благодаря современной селекции и автоматизации."
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Трансферы/перелёты между городами программы",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На малайском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "8 компаний",
+          "text": "Ajinomoto · Nestlé · Farm Fresh\nКуала-Лумпур + Кулаи (Джохор)",
+          "icon": "cart"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов"
+        },
+        {
+          "icon": "cart",
+          "value": "8 компаний",
+          "label": "в программе",
+          "sub": "Ajinomoto, Nestlé, Farm Fresh"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы/перелёты между городами программы",
+        "Сопровождение на малайском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Куала-Лумпур (перелёт Москва → Куала-Лумпур).<br><b>Вылет:</b> Куала-Лумпур — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

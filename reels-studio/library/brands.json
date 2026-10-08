@@ -2954,5 +2954,277 @@
   ],
   "logo": "source-videos/логотипы/чай-кофе/boba-bhai.png",
   "site_logo": "/logos/boba bhai.png"
+ },
+ "sime-darby-oils-sime-darby-plantation": {
+  "names": [
+   "Sime Darby Oils / Sime Darby Plantation",
+   "Sime Darby Oils",
+   "Sime Darby Plantation"
+  ],
+  "logo": "source-videos/логотипы/еда/sime-darby-oils.png",
+  "site_logo": "/logos/Sime Darby Oils.png"
+ },
+ "phuture-foods": {
+  "names": [
+   "Phuture Foods Sdn Bhd",
+   "Phuture Foods"
+  ],
+  "logo": "source-videos/логотипы/еда/phuture-foods.png",
+  "site_logo": "/logos/Phuture Foods.png"
+ },
+ "mamee-double-decker": {
+  "names": [
+   "Mamee-Double Decker (M) Berhad",
+   "Mamee-Double Decker"
+  ],
+  "logo": "source-videos/логотипы/еда/mamee-double-decker.png",
+  "site_logo": "/logos/Mamee.png"
+ },
+ "farm-fresh": {
+  "names": [
+   "Farm Fresh Berhad",
+   "Farm Fresh"
+  ],
+  "logo": "source-videos/логотипы/еда/farm-fresh-berhad.png",
+  "site_logo": "/logos/farm Fresh.png"
+ },
+ "jemaluang-dairy-valley": {
+  "names": [
+   "Jemaluang Dairy Valley (JDV)",
+   "Jemaluang Dairy Valley",
+   "JDV"
+  ],
+  "logo": "source-videos/логотипы/еда/jemaluang-dairy-valley.png",
+  "site_logo": "/logos/Jemaluang Dairy Walley.png"
+ },
+ "pop-meals": {
+  "names": [
+   "Pop Meals (formerly Dahmakan)",
+   "Pop Meals"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/pop-meals.png",
+  "site_logo": "/logos/Pop Meals.png"
+ },
+ "cookhouse": {
+  "names": [
+   "Cookhouse"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/cookhouse.png",
+  "site_logo": "/logos/Cookhouse.png"
+ },
+ "kyochon-malaysia": {
+  "names": [
+   "KyoChon Malaysia",
+   "KyoChon"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/kyochon.png",
+  "site_logo": "/logos/KyoChon Malaysia.png"
+ },
+ "myburgerlab": {
+  "names": [
+   "MyBurgerLab"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/myburgerlab.png",
+  "site_logo": "/logos/MyBurgerLab.png"
+ },
+ "inside-scoop": {
+  "names": [
+   "Inside Scoop"
+  ],
+  "logo": "source-videos/логотипы/еда/inside-scoop.png",
+  "site_logo": "/logos/inside Scoop.png"
+ },
+ "touch-n-go-ewallet": {
+  "names": [
+   "Touch 'n Go eWallet (TNG Digital)",
+   "Touch 'n Go eWallet"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/touch-n-go-ewallet.png",
+  "site_logo": "/logos/Touch'n Go.png"
+ },
+ "carsome-group": {
+  "names": [
+   "Carsome Group",
+   "Carsome"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/carsome-group.png",
+  "site_logo": "/logos/Carsome Group.png"
+ },
+ "gxbank": {
+  "names": [
+   "GXBank (Grab-led digital bank)",
+   "GXBank"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/gxbank.png",
+  "site_logo": "/logos/GXBank.png"
+ },
+ "aerodyne-group": {
+  "names": [
+   "Aerodyne Group",
+   "Aerodyne"
+  ],
+  "logo": "source-videos/логотипы/ии/aerodyne-group.png",
+  "site_logo": "/logos/Aerodyne Group.png"
+ },
+ "mindvalley": {
+  "names": [
+   "Mindvalley"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/mindvalley.png",
+  "site_logo": "/logos/Mindvalley.png"
+ },
+ "ytl-ai-cloud-ytl-power-international": {
+  "names": [
+   "YTL AI Cloud / YTL Power International",
+   "YTL AI Cloud",
+   "YTL Power International"
+  ],
+  "logo": "source-videos/логотипы/ии/ytl-ai-cloud.png",
+  "site_logo": "/logos/YTL AI Cloud.png"
+ },
+ "homegrown-fintech-cluster": {
+  "names": [
+   "Homegrown Fintech Cluster (Jirnexu/CompareHero, iPay88, Funding Societies)",
+   "Homegrown Fintech Cluster"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/malaysian-fintech-cluster.png",
+  "site_logo": "/logos/Homegrown Fintech Cluster.png"
+ },
+ "wipro-unza": {
+  "names": [
+   "Wipro Unza (Malaysia)",
+   "Wipro Unza"
+  ],
+  "logo": "source-videos/логотипы/косметика/wipro-unza.png",
+  "site_logo": "/logos/Wipro Unza.png"
+ },
+ "elken": {
+  "names": [
+   "Elken Sdn Bhd (Elysyle/LUMIGEN)",
+   "Elken"
+  ],
+  "logo": "source-videos/логотипы/косметика/elken-elysyle.png",
+  "site_logo": "/logos/Elken.png"
+ },
+ "intercosmetic-asia-pacific": {
+  "names": [
+   "Intercosmetic Asia Pacific Sdn Bhd",
+   "Intercosmetic Asia Pacific"
+  ],
+  "logo": "source-videos/логотипы/косметика/intercosmetic-asia-pacific.png",
+  "site_logo": "/logos/Intercosmetic.png"
+ },
+ "furley-bioextracts": {
+  "names": [
+   "Furley Bioextracts Sdn Bhd",
+   "Furley Bioextracts"
+  ],
+  "logo": "source-videos/логотипы/косметика/furley-bioextracts.png",
+  "site_logo": "/logos/Furley.png"
+ },
+ "global-cosmetics": {
+  "names": [
+   "Global Cosmetics (Malaysia)",
+   "Global Cosmetics"
+  ],
+  "logo": "source-videos/логотипы/косметика/global-cosmetics.png",
+  "site_logo": "/logos/Global Cosmetics.png"
+ },
+ "eng-kah-corporation": {
+  "names": [
+   "Eng Kah Corporation Berhad",
+   "Eng Kah Corporation",
+   "Eng Kah"
+  ],
+  "logo": "source-videos/логотипы/косметика/eng-kah-corporation.png",
+  "site_logo": "/logos/Eng Kah.png"
+ },
+ "halal-oem-cluster": {
+  "names": [
+   "Halal OEM Cluster (CL Cosmetic / TCT Nutraceuticals / Sky Resources)",
+   "Halal OEM Cluster"
+  ],
+  "logo": "source-videos/логотипы/косметика/cl-cosmetic-oem-cluster.png",
+  "site_logo": "/logos/Halal OEM Cluster.png"
+ },
+ "cryocord": {
+  "names": [
+   "CryoCord Sdn Bhd",
+   "CryoCord"
+  ],
+  "logo": "source-videos/логотипы/медицина/cryocord.png",
+  "site_logo": "/logos/CryoCord.png"
+ },
+ "cytopeutics": {
+  "names": [
+   "Cytopeutics Sdn Bhd",
+   "Cytopeutics"
+  ],
+  "logo": "source-videos/логотипы/медицина/cytopeutics.png",
+  "site_logo": "/logos/Cytopeutics.png"
+ },
+ "stemlife": {
+  "names": [
+   "StemLife Berhad",
+   "StemLife"
+  ],
+  "logo": "source-videos/логотипы/медицина/stemlife.png",
+  "site_logo": "/logos/StemLife Berhad.png"
+ },
+ "malaysian-genomics-resource-centre": {
+  "names": [
+   "Malaysian Genomics Resource Centre (MGRC)",
+   "Malaysian Genomics Resource Centre",
+   "MGRC"
+  ],
+  "logo": "source-videos/логотипы/медицина/malaysian-genomics-resource-centre.png",
+  "site_logo": "/logos/Malaysian Genomics.png"
+ },
+ "codon-genomics": {
+  "names": [
+   "Codon Genomics Sdn Bhd",
+   "Codon Genomics"
+  ],
+  "logo": "source-videos/логотипы/медицина/codon-genomics.png",
+  "site_logo": "/logos/Codon Genomics.png"
+ },
+ "elixir-biotech-stemtech": {
+  "names": [
+   "Elixir Biotech / StemTech",
+   "Elixir Biotech",
+   "StemTech"
+  ],
+  "logo": "source-videos/логотипы/медицина/elixir-biotech-stemtech.png",
+  "site_logo": "/logos/Elixir Biotech.png"
+ },
+ "zus-coffee": {
+  "names": [
+   "ZUS Coffee"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/zus-coffee.png",
+  "site_logo": "/logos/ZUS Coffee.png"
+ },
+ "tealive": {
+  "names": [
+   "Tealive (Loob Holding)",
+   "Tealive"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/tealive-loob-holding.png",
+  "site_logo": "/logos/Tealive.png"
+ },
+ "bask-bear-coffee": {
+  "names": [
+   "Bask Bear Coffee (Loob Holding)",
+   "Bask Bear Coffee"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/bask-bear-coffee.png",
+  "site_logo": "/logos/Bask Bear Coffee.png"
+ },
+ "gigi-coffee": {
+  "names": [
+   "Gigi Coffee"
+  ],
+  "logo": "source-videos/логотипы/чай-кофе/gigi-coffee.png",
+  "site_logo": "/logos/Gigi Coffee.png"
  }
 }

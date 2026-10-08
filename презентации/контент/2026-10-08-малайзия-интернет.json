@@ -1,0 +1,634 @@
+{
+  "title": "Интернет-гиганты Малайзии: суверенный ИИ, супер-приложения, e-commerce — Global Tech Tour",
+  "output": "2026-10-08-малайзия-интернет",
+  "source": "https://globaltechtour.ru/expeditions/malaysia-tech-internet-giants-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "malaysia",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Интернет-гиганты Малайзии",
+      "topright": "Суверенный ИИ · Супер-приложения\nE-commerce",
+      "logos": [
+        {
+          "name": "Grab",
+          "logo": "source-videos/логотипы/техгиганты/grab.svg"
+        },
+        {
+          "name": "Touch 'n Go eWallet",
+          "logo": "source-videos/логотипы/техгиганты/touch-n-go-ewallet.png"
+        },
+        {
+          "name": "Carsome",
+          "logo": "source-videos/логотипы/техгиганты/carsome-group.png"
+        },
+        {
+          "name": "GXBank",
+          "logo": "source-videos/логотипы/техгиганты/gxbank.png"
+        },
+        {
+          "name": "Aerodyne",
+          "logo": "source-videos/логотипы/ии/aerodyne-group.png"
+        },
+        {
+          "name": "Mindvalley",
+          "logo": "source-videos/логотипы/техгиганты/mindvalley.png"
+        },
+        {
+          "name": "Shopee",
+          "logo": "source-videos/логотипы/техгиганты/shopee.svg"
+        },
+        {
+          "name": "Lazada",
+          "logo": "source-videos/логотипы/техгиганты/lazada.svg"
+        },
+        {
+          "name": "YTL AI Cloud",
+          "logo": "source-videos/логотипы/ии/ytl-ai-cloud.png"
+        },
+        {
+          "name": "Jirnexu",
+          "logo": "source-videos/логотипы/техгиганты/malaysian-fintech-cluster.png"
+        }
+      ],
+      "box_text": "От Grab до AI-дата-центра YTL —\n10 компаний, 6 дней, 6 ночей",
+      "box_right": "Куала-Лумпур + Кулаи (Джохор)",
+      "footer": "Global Tech Tour · бизнес-экспедиции в Малайзию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Доступ к штаб-квартирам и площадкам, обычно закрытым для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы/перелёты между городами программы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на малайском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "10 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Куала-Лумпур",
+          "text": "Grab, Touch 'n Go eWallet, Carsome, GXBank"
+        },
+        {
+          "name": "Дни 3–4 · Куала-Лумпур",
+          "text": "Aerodyne, Mindvalley, Shopee, Lazada"
+        },
+        {
+          "name": "День 5 · Кулаи (Джохор)",
+          "text": "YTL AI Cloud, финтех-кластер"
+        }
+      ]
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Куала-Лумпур",
+          "days": "дни 1–4",
+          "companies": "Grab · Touch 'n Go\nCarsome · GXBank\nAerodyne · Mindvalley\nShopee · Lazada"
+        },
+        {
+          "name": "Кулаи (Джохор)",
+          "days": "день 5",
+          "companies": "YTL AI Cloud\nФинтех-кластер",
+          "leg": {
+            "icon": "plane",
+            "text": "~1 ч перелёт"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Куала-Лумпур · <b>Вылет:</b> Куала-Лумпур"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Grab ·\nTouch 'n Go",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Carsome ·\nGXBank",
+          "text": "Carsome — крупнейшая в ЮВА платформа подержанных авто; GXBank — первый работающий цифровой банк страны.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Aerodyne ·\nMindvalley",
+          "text": "Aerodyne — дроны как сервис с AI-аналитикой; Mindvalley — платформа личностного развития.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Shopee ·\nLazada",
+          "text": "Shopee и Lazada — e-commerce с автоматизированными фулфилмент-центрами.",
+          "label": "День 4"
+        },
+        {
+          "sub": "Кулаи (Джохор)",
+          "title": "YTL AI Cloud ·\nФинтех-кластер",
+          "text": "Перелёт/переезд в Джохор к флагманскому визиту YTL AI Cloud (нужен допуск); итоговая встреча по финтеху.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Куала-Лумпур",
+      "title": "Grab — Regional Centre of Excellence",
+      "logo": "source-videos/логотипы/техгиганты/grab.svg",
+      "short": "Grab",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "54 000 кв. футов",
+          "label": "Centre of Excellence",
+          "sub": "Петалинг-Джая"
+        },
+        {
+          "icon": "cpu",
+          "value": "7-я",
+          "label": "глобальная R&D-площадка Grab",
+          "sub": "R&D-центр в Малайзии"
+        },
+        {
+          "icon": "cpu",
+          "value": "ML",
+          "label": "машинное обучение",
+          "sub": "доверие и безопасность, GrabChat"
+        },
+        {
+          "icon": "pin",
+          "value": "Петалинг-Джая",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        }
+      ],
+      "why": "Региональный Centre of Excellence Grab на 54 000 кв. футов и R&D-центр — 7-я глобальная R&D-площадка компании.",
+      "learn_label": "Фокус визита",
+      "learn": "Направления R&D-центра: машинное обучение, доверие и безопасность, GrabChat/VOIP."
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Куала-Лумпур",
+      "title": "Touch 'n Go eWallet",
+      "logo": "source-videos/логотипы/техгиганты/touch-n-go-ewallet.png",
+      "short": "Touch 'n Go eWallet",
+      "subtitle": "TNG Digital · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "26 млн",
+          "label": "верифицированных пользователей",
+          "sub": "крупнейший e-wallet страны"
+        },
+        {
+          "icon": "star",
+          "value": "Единорог",
+          "label": "статус с августа 2025"
+        },
+        {
+          "icon": "handshake",
+          "value": "Ant Group",
+          "label": "совместное предприятие"
+        },
+        {
+          "icon": "chart",
+          "value": "~3,6 млн",
+          "label": "активных пользователей GO+",
+          "sub": "фонд денежного рынка"
+        }
+      ],
+      "why": "Крупнейший e-wallet Малайзии: 26 млн верифицированных пользователей, статус единорога с августа 2025 года.",
+      "learn_label": "Фокус визита",
+      "learn": "Совместное предприятие с Ant Group; фонд денежного рынка GO+ обслуживает ~3,6 млн активных пользователей."
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Куала-Лумпур",
+      "title": "Carsome",
+      "logo": "source-videos/логотипы/техгиганты/carsome-group.png",
+      "short": "Carsome Group",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1 в ЮВА",
+          "label": "e-commerce подержанных авто",
+          "sub": "единорог"
+        },
+        {
+          "icon": "target",
+          "value": "175",
+          "label": "пунктов инспекции",
+          "sub": "каждого автомобиля"
+        },
+        {
+          "icon": "cpu",
+          "value": "AI",
+          "label": "ценообразование",
+          "sub": "и антифрод"
+        },
+        {
+          "icon": "building",
+          "value": "Центры",
+          "label": "инспекции авто",
+          "sub": "площадки для визитов"
+        }
+      ],
+      "why": "Крупнейшая в Юго-Восточной Азии e-commerce платформа подержанных автомобилей (единорог).",
+      "learn_label": "Фокус визита",
+      "learn": "AI-ценообразование, 175-пунктная инспекция, антифрод и инспекционные центры, которые можно посетить."
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Куала-Лумпур",
+      "title": "GXBank",
+      "logo": "source-videos/логотипы/техгиганты/gxbank.png",
+      "short": "GXBank",
+      "subtitle": "Grab · Singtel · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Первый",
+          "label": "работающий цифровой банк",
+          "sub": "запуск — ноябрь 2023"
+        },
+        {
+          "icon": "users",
+          "value": "100 000",
+          "label": "клиентов за две недели",
+          "sub": "750 000 — за год"
+        },
+        {
+          "icon": "chart",
+          "value": "13+ млн",
+          "label": "транзакций"
+        },
+        {
+          "icon": "briefcase",
+          "value": "~1,5 млрд ринггитов",
+          "label": "план инвестиций",
+          "sub": "региональный центр компетенций"
+        }
+      ],
+      "why": "Дочерняя структура GXS Bank (СП Grab и Singtel) с участием малайзийских инвесторов, включая Kuok Group.",
+      "learn": "Набрал 100 000 клиентов за две недели, 500 000 — к июню 2024 года и 750 000 в течение года.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Куала-Лумпур",
+      "title": "Aerodyne Group",
+      "logo": "source-videos/логотипы/ии/aerodyne-group.png",
+      "short": "Aerodyne Group",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "globe",
+          "value": "45",
+          "label": "стран присутствия"
+        },
+        {
+          "icon": "smartphone",
+          "value": "DRONOS",
+          "label": "платформа на AWS",
+          "sub": "партнёрство с 2023 года"
+        },
+        {
+          "icon": "trending",
+          "value": "до +67%",
+          "label": "урожайность",
+          "sub": "решение Agrimor"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$200–300 млн",
+          "label": "оценка компании",
+          "sub": "2021 год, кандидат в единороги"
+        }
+      ],
+      "why": "Малайзийская компания drone-as-a-service: AI-аналитика дронов для телекома, агро, логистики и энергетики.",
+      "learn": "Инспекция объектов и видеоаналитика умных городов; DRONOS работает на AWS, Agrimor повышает урожайность до 67%.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Куала-Лумпур",
+      "title": "Mindvalley",
+      "logo": "source-videos/логотипы/техгиганты/mindvalley.png",
+      "short": "Mindvalley",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "20+ млн",
+          "label": "учеников и подписчиков"
+        },
+        {
+          "icon": "globe",
+          "value": "195+",
+          "label": "стран"
+        },
+        {
+          "icon": "pin",
+          "value": "2004",
+          "label": "штаб-квартира в Куала-Лумпуре",
+          "sub": "переезд из Нью-Йорка"
+        },
+        {
+          "icon": "cpu",
+          "value": "ИИ",
+          "label": "персонализация курсов",
+          "sub": "по целям и интересам"
+        }
+      ],
+      "why": "Платформа личностного развития: основана Вишеном Лакхиани в 2002 году, с 2004-го — штаб-квартира в Куала-Лумпуре.",
+      "learn": "Курсы по саморазвитию, медитации и продуктивности; ИИ рекомендует курсы по целям и интересам пользователя.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Куала-Лумпур",
+      "title": "Shopee Malaysia",
+      "logo": "source-videos/логотипы/техгиганты/shopee.svg",
+      "short": "Shopee Malaysia",
+      "subtitle": "Sea Group · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "package",
+          "value": "14 000",
+          "label": "посылок в час",
+          "sub": "кросс-белт-сортеры"
+        },
+        {
+          "icon": "cpu",
+          "value": "Роботы",
+          "label": "сортировка посылок",
+          "sub": "люди — только исключения"
+        },
+        {
+          "icon": "star",
+          "value": "Fulfilled by Shopee",
+          "label": "программа для продавцов"
+        },
+        {
+          "icon": "chart",
+          "value": "NYSE",
+          "label": "листинг Sea Group",
+          "sub": "Сингапур"
+        }
+      ],
+      "why": "Местное подразделение e-commerce платформы Shopee, принадлежащей сингапурской Sea Group (листинг NYSE).",
+      "learn": "Фулфилмент-центры с роботизированной сортировкой — до 14 000 посылок в час; запуск доставки день-в-день.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Куала-Лумпур",
+      "title": "Lazada Malaysia",
+      "logo": "source-videos/логотипы/техгиганты/lazada.svg",
+      "short": "Lazada Malaysia",
+      "subtitle": "Lazada Group · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "globe",
+          "value": "17",
+          "label": "городов с фулфилмент-центрами",
+          "sub": "в регионе"
+        },
+        {
+          "icon": "handshake",
+          "value": "Alibaba",
+          "label": "флагманская платформа в ЮВА",
+          "sub": "с 2016 года"
+        },
+        {
+          "icon": "cpu",
+          "value": "RFID",
+          "label": "маркировка",
+          "sub": "автоматизация и роботы на складах"
+        },
+        {
+          "icon": "smartphone",
+          "value": "FBL",
+          "label": "Fulfilment by Lazada",
+          "sub": "запасы в реальном времени"
+        }
+      ],
+      "why": "Часть Lazada Group — с 2016 года флагманской платформы Alibaba в Юго-Восточной Азии.",
+      "learn": "Фулфилмент- и сортировочные центры в 17 городах региона: RFID-маркировка, автоматизация и роботы для комплектации.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Кулаи (Джохор)",
+      "title": "YTL AI Cloud",
+      "logo": "source-videos/логотипы/ии/ytl-ai-cloud.png",
+      "short": "YTL AI Cloud",
+      "subtitle": "YTL Power International · Кулаи (Джохор)",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "600 МВт",
+          "label": "Green Data Center Park",
+          "sub": "кампус 1640 акров"
+        },
+        {
+          "icon": "star",
+          "value": "Первый",
+          "label": "AI-дата-центр на чипах Nvidia",
+          "sub": "в Малайзии"
+        },
+        {
+          "icon": "briefcase",
+          "value": "10 млрд ринггитов",
+          "label": "проект YTL Power и Nvidia"
+        },
+        {
+          "icon": "cpu",
+          "value": "GB200",
+          "label": "Nvidia Grace Blackwell",
+          "sub": "жидкостное охлаждение"
+        }
+      ],
+      "why": "Первый в Малайзии AI-дата-центр на чипах Nvidia — Green Data Center Park YTL на 600 МВт в Джохоре.",
+      "learn": "GPU Nvidia NVL72 Grace Blackwell (GB200) с жидкостным охлаждением и суверенная LLM «Ilmu»; нужен допуск.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Кулаи (Джохор)",
+      "title": "Homegrown Fintech Cluster",
+      "logo": "source-videos/логотипы/техгиганты/malaysian-fintech-cluster.png",
+      "short": "Jirnexu · iPay88 · Funding Societies",
+      "subtitle": "Кулаи (Джохор)",
+      "facts": [
+        {
+          "icon": "smartphone",
+          "value": "RinggitPlus",
+          "label": "сравнение финпродуктов",
+          "sub": "Jirnexu, с 2012 года"
+        },
+        {
+          "icon": "handshake",
+          "value": "CompareHero",
+          "label": "куплен Jirnexu",
+          "sub": "2024 год, у MoneyHero"
+        },
+        {
+          "icon": "cart",
+          "value": "iPay88",
+          "label": "платёжный шлюз",
+          "sub": "для e-commerce-продавцов"
+        },
+        {
+          "icon": "briefcase",
+          "value": "Funding Societies",
+          "label": "финансирование МСБ",
+          "sub": "в т. ч. шариатское"
+        }
+      ],
+      "why": "Ведущие локальные игроки малайзийского финтеха: Jirnexu/CompareHero, iPay88 и Funding Societies.",
+      "learn": "Funding Societies — ведущая платформа цифрового финансирования МСБ с обычным и шариатским кредитованием.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Трансферы/перелёты между городами программы",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На малайском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "Интернет-гиганты Малайзии",
+          "text": "Суверенный ИИ, супер-приложения и e-commerce",
+          "icon": "cpu"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов"
+        },
+        {
+          "icon": "cpu",
+          "value": "10 компаний",
+          "label": "Интернет-гиганты Малайзии",
+          "sub": "YTL AI Cloud, Grab"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы/перелёты между городами программы",
+        "Сопровождение на малайском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Куала-Лумпур (перелёт Москва → Куала-Лумпур).<br><b>Вылет:</b> Куала-Лумпур — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

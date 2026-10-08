@@ -1,0 +1,533 @@
+{
+  "title": "Central/Dark Kitchen и быстрая доставка еды в Малайзии — Global Tech Tour",
+  "output": "2026-10-08-малайзия-доставка",
+  "source": "https://globaltechtour.ru/expeditions/malaysia-dark-kitchen-delivery-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "malaysia",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Central/Dark Kitchen и быстрая доставка еды в Малайзии",
+      "topright": "Grab · foodpanda\nPop Meals · GrabKitchen",
+      "logos": [
+        {
+          "name": "Grab",
+          "logo": "source-videos/логотипы/техгиганты/grab.svg"
+        },
+        {
+          "name": "foodpanda",
+          "logo": "source-videos/логотипы/техгиганты/foodpanda.svg"
+        },
+        {
+          "name": "Pop Meals",
+          "logo": "source-videos/логотипы/техгиганты/pop-meals.png"
+        },
+        {
+          "name": "Cookhouse",
+          "logo": "source-videos/логотипы/техгиганты/cookhouse.png"
+        },
+        {
+          "name": "KyoChon",
+          "logo": "source-videos/логотипы/техгиганты/kyochon.png"
+        },
+        {
+          "name": "MyBurgerLab",
+          "logo": "source-videos/логотипы/техгиганты/myburgerlab.png"
+        },
+        {
+          "name": "Inside Scoop",
+          "logo": "source-videos/логотипы/еда/inside-scoop.png"
+        }
+      ],
+      "box_text": "От GrabFood и GrabKitchen до Pop Meals —\n8 компаний, 6 дней, 6 ночей",
+      "box_right": "Куала-Лумпур —\nвся программа в одном городе",
+      "footer": "Global Tech Tour · бизнес-экспедиции в Малайзию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Доступ к штаб-квартирам и площадкам, обычно закрытым для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы/перелёты между городами программы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на малайском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "8 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2",
+          "text": "Grab, foodpanda, Pop Meals, Cookhouse"
+        },
+        {
+          "name": "Дни 3–4",
+          "text": "GrabKitchen, KyoChon, MyBurgerLab, Inside Scoop"
+        },
+        {
+          "name": "День 5",
+          "text": "Итоговая встреча с партнёрами экосистемы Grab."
+        }
+      ]
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Grab ·\nfoodpanda",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Pop Meals ·\nCookhouse",
+          "text": "Pop Meals — пионер full-stack облачных кухонь; Cookhouse — первая независимая площадка облачных кухонь.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "GrabKitchen ·\nKyoChon",
+          "text": "GrabKitchen — крупнейшая сеть облачных кухонь ЮВА; KyoChon — одни из первых облачных кухонь страны.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "MyBurgerLab ·\nInside Scoop",
+          "text": "MyBurgerLab — пионер гурмэ-бургеров; Inside Scoop — мороженое с центральной кухни.",
+          "label": "День 4"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Итоговая\nвстреча",
+          "text": "Итоговая встреча с партнёрами экосистемы Grab.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Куала-Лумпур",
+      "title": "Grab",
+      "logo": "source-videos/логотипы/техгиганты/grab.svg",
+      "short": "Grab",
+      "subtitle": "GrabFood / GrabKitchen · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "globe",
+          "value": "8",
+          "label": "стран",
+          "sub": "супер-приложение ЮВА"
+        },
+        {
+          "icon": "chart",
+          "value": "$700–740 млн",
+          "label": "скорр. EBITDA — прогноз",
+          "sub": "2026 год, +40–44% г/г"
+        },
+        {
+          "icon": "smartphone",
+          "value": "GrabMart",
+          "label": "товары повседневного спроса",
+          "sub": "вместе с GrabFood"
+        },
+        {
+          "icon": "store",
+          "value": "GrabKitchen",
+          "label": "облачные кухни",
+          "sub": "доставочный сегмент"
+        }
+      ],
+      "why": "Супер-приложение ЮВА в восьми странах; GrabFood — один из крупнейших операторов доставки еды в Малайзии.",
+      "learn": "GrabFood, GrabMart и облачные кухни GrabKitchen вместе формируют доставочный сегмент компании.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Куала-Лумпур",
+      "title": "foodpanda Malaysia",
+      "logo": "source-videos/логотипы/техгиганты/foodpanda.svg",
+      "short": "foodpanda Malaysia",
+      "subtitle": "Delivery Hero · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "handshake",
+          "value": "Delivery Hero",
+          "label": "владелец с 2016 года",
+          "sub": "флагманский бренд в Азии"
+        },
+        {
+          "icon": "store",
+          "value": "~25",
+          "label": "дарксторов pandamart",
+          "sub": "Селангор, Пенанг, Джохор"
+        },
+        {
+          "icon": "target",
+          "value": "~20 мин",
+          "label": "доставка бакалеи",
+          "sub": "pandamart, с июля 2020"
+        },
+        {
+          "icon": "calendar",
+          "value": "Март 2026",
+          "label": "Grab купил лишь Тайвань",
+          "sub": "Малайзия в сделку не вошла"
+        }
+      ],
+      "why": "Крупная платформа доставки еды из берлинской группы Delivery Hero, купившей foodpanda в декабре 2016 года.",
+      "learn": "С июля 2020 года — бакалея pandamart с доставкой за ~20 минут; сеть выросла до ~25 дарксторов по стране.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Куала-Лумпур",
+      "title": "Pop Meals",
+      "logo": "source-videos/логотипы/техгиганты/pop-meals.png",
+      "short": "Pop Meals",
+      "subtitle": "бывший Dahmakan · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2015",
+          "label": "пионер облачных кухонь",
+          "sub": "full-stack модель"
+        },
+        {
+          "icon": "cpu",
+          "value": "AI/ML",
+          "label": "операционная система",
+          "sub": "от рецептов до последней мили"
+        },
+        {
+          "icon": "trending",
+          "value": "~80%",
+          "label": "процессов автоматизировано"
+        },
+        {
+          "icon": "star",
+          "value": "Y Combinator",
+          "label": "резидент акселератора"
+        }
+      ],
+      "why": "Локальный пионер «full-stack» облачных кухонь с 2015 года (бывший Dahmakan); резидент Y Combinator.",
+      "learn_label": "Фокус визита",
+      "learn": "Собственная AI/ML-операционная система автоматизирует ~80% процессов — от разработки рецептов до последней мили."
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Куала-Лумпур",
+      "title": "Cookhouse",
+      "logo": "source-videos/логотипы/техгиганты/cookhouse.png",
+      "short": "Cookhouse",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Первая",
+          "label": "площадка облачных кухонь",
+          "sub": "независимая, в Малайзии"
+        },
+        {
+          "icon": "building",
+          "value": "10 000 кв. футов",
+          "label": "площадка",
+          "sub": "Петалинг-Джая"
+        },
+        {
+          "icon": "store",
+          "value": "5",
+          "label": "частных кухонных студий",
+          "sub": "плюс пекарня и две кухни"
+        },
+        {
+          "icon": "target",
+          "value": "10",
+          "label": "точек — план",
+          "sub": "по Клэнг-Вэлли"
+        }
+      ],
+      "why": "Первая в Малайзии независимая площадка совместных/облачных кухонь; основана шеф-поваром Хюэн Су Саном.",
+      "learn": "Модель «kitchen as a service»: студии, склад и выдача курьерам — фуд-предприниматели работают без своей аренды.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Куала-Лумпур",
+      "title": "GrabKitchen",
+      "logo": "source-videos/логотипы/техгиганты/grab.svg",
+      "short": "GrabKitchen",
+      "subtitle": "Grab · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "~56",
+          "label": "облачных кухонь",
+          "sub": "48 из них — в Индонезии"
+        },
+        {
+          "icon": "star",
+          "value": "№1",
+          "label": "сеть облачных кухонь ЮВА"
+        },
+        {
+          "icon": "flag",
+          "value": "2018",
+          "label": "первая площадка",
+          "sub": "Джакарта"
+        },
+        {
+          "icon": "globe",
+          "value": "5",
+          "label": "стран",
+          "sub": "Индонезия, Таиланд, Вьетнам и др."
+        }
+      ],
+      "why": "Собственный формат облачных кухонь Grab: несколько ресторанных брендов под одной крышей для оптимизации доставки.",
+      "learn": "Помогает малым и семейным закусочным выходить в новые районы без затрат на аренду отдельных помещений.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Куала-Лумпур",
+      "title": "KyoChon Malaysia",
+      "logo": "source-videos/логотипы/техгиганты/kyochon.png",
+      "short": "KyoChon Malaysia",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "2019",
+          "label": "облачные кухни с GrabFood",
+          "sub": "сентябрь, одни из первых"
+        },
+        {
+          "icon": "store",
+          "value": "3",
+          "label": "точки",
+          "sub": "Wisma Central, Damansara"
+        },
+        {
+          "icon": "package",
+          "value": "Халяль",
+          "label": "жареная курица",
+          "sub": "корейская сеть KyoChon"
+        },
+        {
+          "icon": "target",
+          "value": "Только доставка",
+          "label": "без зала для гостей",
+          "sub": "меню под курьерские порции"
+        }
+      ],
+      "why": "Местный оператор корейской сети халяльной курицы; в 2019 году одним из первых запустил облачные кухни с GrabFood.",
+      "learn": "Кухни работают только на доставку, без зала, с меню под курьерские порции — ранний кейс брендовой облачной кухни.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Куала-Лумпур",
+      "title": "MyBurgerLab",
+      "logo": "source-videos/логотипы/техгиганты/myburgerlab.png",
+      "short": "MyBurgerLab",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2012",
+          "label": "год основания",
+          "sub": "трое друзей"
+        },
+        {
+          "icon": "star",
+          "value": "Первые",
+          "label": "булочки с активированным углём",
+          "sub": "в индустрии"
+        },
+        {
+          "icon": "smartphone",
+          "value": "Онлайн",
+          "label": "цифровой заказ и доставка",
+          "sub": "data-driven операции"
+        },
+        {
+          "icon": "users",
+          "value": "Соцсети",
+          "label": "и блогеры — канал роста",
+          "sub": "старт с дегустаций"
+        }
+      ],
+      "why": "Один из пионеров гурмэ-бургеров Клэнг-Вэлли: первыми в индустрии внедрили булочки с активированным углём.",
+      "learn": "Начинали с дегустаций в кафе друга, выросли в сеть с сильным цифровым заказом, доставкой и data-driven операциями.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Куала-Лумпур",
+      "title": "Inside Scoop",
+      "logo": "source-videos/логотипы/еда/inside-scoop.png",
+      "short": "Inside Scoop",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2013",
+          "label": "год основания",
+          "sub": "Бангсар, Куала-Лумпур"
+        },
+        {
+          "icon": "building",
+          "value": "1",
+          "label": "центральная кухня",
+          "sub": "снабжает все точки"
+        },
+        {
+          "icon": "globe",
+          "value": "Сингапур",
+          "label": "выход в регион",
+          "sub": "точка у Bugis"
+        },
+        {
+          "icon": "star",
+          "value": "Премиум",
+          "label": "мороженое и десерты",
+          "sub": "альтернатива глобальным брендам"
+        }
+      ],
+      "why": "Малайзийская сеть кафе премиального мороженого и десертов — альтернатива международным брендам.",
+      "learn": "Всё мороженое готовится свежим на центральной коммерческой кухне, снабжающей несколько торговых точек.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Трансферы/перелёты между городами программы",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На малайском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "8 компаний",
+          "text": "Grab · foodpanda · Pop Meals\nв одном городе",
+          "icon": "smartphone"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов в Куала-Лумпуре"
+        },
+        {
+          "icon": "smartphone",
+          "value": "8 компаний",
+          "label": "в программе",
+          "sub": "Grab, foodpanda, Pop Meals"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы/перелёты между городами программы",
+        "Сопровождение на малайском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Куала-Лумпур (перелёт Москва → Куала-Лумпур).<br><b>Вылет:</b> Куала-Лумпур — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

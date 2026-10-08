@@ -1,0 +1,535 @@
+{
+  "title": "Малайзия: регенеративная медицина, банкинг стволовых клеток и геномика — Global Tech Tour",
+  "output": "2026-10-08-малайзия-лонгевити",
+  "source": "https://globaltechtour.ru/expeditions/malaysia-longevity-biotech-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "malaysia",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Регенеративная медицина Малайзии",
+      "topright": "Регенеративная медицина\nСтволовые клетки · Геномика",
+      "logos": [
+        {
+          "name": "CryoCord",
+          "logo": "source-videos/логотипы/медицина/cryocord.png"
+        },
+        {
+          "name": "Cytopeutics",
+          "logo": "source-videos/логотипы/медицина/cytopeutics.png"
+        },
+        {
+          "name": "StemLife",
+          "logo": "source-videos/логотипы/медицина/stemlife.png"
+        },
+        {
+          "name": "Malaysian Genomics Resource Centre",
+          "logo": "source-videos/логотипы/медицина/malaysian-genomics-resource-centre.png"
+        },
+        {
+          "name": "Codon Genomics",
+          "logo": "source-videos/логотипы/медицина/codon-genomics.png"
+        },
+        {
+          "name": "Elixir Biotech",
+          "logo": "source-videos/логотипы/медицина/elixir-biotech-stemtech.png"
+        },
+        {
+          "name": "Synamatix"
+        },
+        {
+          "name": "National Stem Cell Centre",
+          "logo_text": "NSCC · UKM"
+        }
+      ],
+      "box_text": "Банкинг стволовых клеток и геномика —\n8 компаний, 6 дней, 6 ночей",
+      "box_right": "Cyberjaya + Клэнг-Вэлли —\nбез перелётов",
+      "footer": "Global Tech Tour · бизнес-экспедиции в Малайзию · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Доступ к штаб-квартирам и площадкам, обычно закрытым для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы/перелёты между городами программы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на малайском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "8 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2",
+          "text": "CryoCord, Cytopeutics, StemLife, MGRC"
+        },
+        {
+          "name": "Дни 3–4",
+          "text": "Codon Genomics, Synamatix, Elixir Biotech, NSCC (UKM)"
+        },
+        {
+          "name": "День 5",
+          "text": "Резервный день или объединение с модулем косметики"
+        }
+      ]
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "CryoCord ·\nCytopeutics",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "StemLife ·\nMGRC",
+          "text": "StemLife — пионер банка пуповинной крови; MGRC — частная лаборатория BSL-2 + cGMP.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Codon Genomics ·\nSynamatix",
+          "text": "Codon Genomics — секвенирование нового поколения; Synamatix — биоинформатика и геномика.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Elixir Biotech ·\nNSCC (UKM)",
+          "text": "Elixir Biotech — иммуноклеточная терапия (группа CryoCord); NSCC — стволовые клетки при UKM.",
+          "label": "День 4"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Резервный день",
+          "text": "Резервный день или объединение с модулем косметики: сегмент в Малайзии тонкий и не растянут искусственно.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Cyberjaya",
+      "title": "CryoCord",
+      "logo": "source-videos/логотипы/медицина/cryocord.png",
+      "short": "CryoCord",
+      "subtitle": "Cyberjaya · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2002",
+          "label": "на рынке",
+          "sub": "банк стволовых клеток"
+        },
+        {
+          "icon": "star",
+          "value": "Первый в ЮВА",
+          "label": "хранение CordMSCs",
+          "sub": "2009; CordPSCs-i — 2022"
+        },
+        {
+          "icon": "target",
+          "value": "3 + 11",
+          "label": "патентов",
+          "sub": "США и Малайзия"
+        },
+        {
+          "icon": "building",
+          "value": "cGMP (PIC/S)",
+          "label": "лаборатория",
+          "sub": "Cyberjaya"
+        }
+      ],
+      "why": "Ведущий малазийский банк стволовых клеток и пуповинной крови с 2002 года; лаборатория cGMP (PIC/S) в Cyberjaya.",
+      "learn_label": "Фокус визита",
+      "learn": "Первым в ЮВА предложил хранение CordMSCs (2009) и CordPSCs-i (2022); 3 патента США и 11 малазийских."
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Cyberjaya",
+      "title": "Cytopeutics",
+      "logo": "source-videos/логотипы/медицина/cytopeutics.png",
+      "short": "Cytopeutics",
+      "subtitle": "Cyberjaya · Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Первая",
+          "label": "в Малайзии — РКИ",
+          "sub": "аутологичных МСК"
+        },
+        {
+          "icon": "target",
+          "value": "МСК",
+          "label": "клеточная терапия",
+          "sub": "мезенхимальные стволовые клетки"
+        },
+        {
+          "icon": "chart",
+          "value": "Сердце",
+          "label": "заживление рубца с МСК",
+          "sub": "знаковое исследование"
+        },
+        {
+          "icon": "pin",
+          "value": "Cyberjaya",
+          "label": "площадка визита",
+          "sub": "день 1 программы"
+        }
+      ],
+      "why": "Первая малазийская компания, получившая одобрение на рандомизированные клинические испытания аутологичных МСК.",
+      "learn_label": "Фокус визита",
+      "learn": "Опубликовала знаковое исследование о заживлении рубца сердца с помощью мезенхимальных стволовых клеток."
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Куала-Лумпур",
+      "title": "StemLife",
+      "logo": "source-videos/логотипы/медицина/stemlife.png",
+      "short": "StemLife",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2001",
+          "label": "пионер банка",
+          "sub": "пуповинной крови и тканей"
+        },
+        {
+          "icon": "target",
+          "value": "NIPT",
+          "label": "неинвазивный тест",
+          "sub": "и хромосомный микрочип"
+        },
+        {
+          "icon": "users",
+          "value": "Скрининг",
+          "label": "новорождённых",
+          "sub": "метаболический и генетический"
+        },
+        {
+          "icon": "star",
+          "value": "US-FDA",
+          "label": "стандарты криохранения"
+        }
+      ],
+      "why": "Пионер банка пуповинной крови и тканей в Малайзии с 2001 года (Megan Avenue II, Куала-Лумпур).",
+      "learn_label": "Фокус визита",
+      "learn": "NIPT, хромосомный микрочип, неонатальный метаболический и генетический скрининг; криохранение по стандартам US-FDA."
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Куала-Лумпур",
+      "title": "Malaysian Genomics Resource Centre",
+      "logo": "source-videos/логотипы/медицина/malaysian-genomics-resource-centre.png",
+      "short": "Malaysian Genomics (MGRC)",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Единственная",
+          "label": "частная лаборатория BSL-2 + cGMP",
+          "sub": "в Малайзии"
+        },
+        {
+          "icon": "cpu",
+          "value": "CAR-T",
+          "label": "и NK-клетки",
+          "sub": "иммунотерапия рака"
+        },
+        {
+          "icon": "target",
+          "value": "Геном",
+          "label": "секвенирование и биоинформатика",
+          "sub": "генетический скрининг"
+        },
+        {
+          "icon": "flag",
+          "value": "COVID-19",
+          "label": "геномный надзор",
+          "sub": "для Минздрава"
+        }
+      ],
+      "why": "Единственная в Малайзии частная лаборатория уровня BSL-2 + cGMP: геномика, скрининг и иммунотерапия рака.",
+      "learn_label": "Фокус визита",
+      "learn": "Секвенирование генома, биоинформатика, CAR-T и NK-клетки; вела геномный надзор COVID-19 для Минздрава."
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Куала-Лумпур",
+      "title": "Codon Genomics",
+      "logo": "source-videos/логотипы/медицина/codon-genomics.png",
+      "short": "Codon Genomics",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2009–2010",
+          "label": "год основания",
+          "sub": "Иван Хо, Куала-Лумпур"
+        },
+        {
+          "icon": "cpu",
+          "value": "NGS",
+          "label": "секвенирование нового поколения",
+          "sub": "Illumina, SOLiD, 454"
+        },
+        {
+          "icon": "target",
+          "value": "Агро и медицина",
+          "label": "направления геномики"
+        },
+        {
+          "icon": "cpu",
+          "value": "ИИ",
+          "label": "анализ данных",
+          "sub": "и биоинформатика"
+        }
+      ],
+      "why": "Малайзийская биотех-компания: секвенирование нового поколения и биоинформатика для агро- и медицинской геномики.",
+      "learn": "Сочетает экспериментальные подходы с технологиями ИИ и анализа данных.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Куала-Лумпур",
+      "title": "Synamatix",
+      "short": "Synamatix",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2001",
+          "label": "год основания",
+          "sub": "Роберт Херкус"
+        },
+        {
+          "icon": "cpu",
+          "value": "SynaBASE™",
+          "label": "собственная платформа",
+          "sub": "поиск и хранение ДНК/РНК"
+        },
+        {
+          "icon": "globe",
+          "value": "4",
+          "label": "региона клиентов",
+          "sub": "США, Европа, Азия, Австралия"
+        },
+        {
+          "icon": "target",
+          "value": "Заказные",
+          "label": "биоинформатические решения",
+          "sub": "программное обеспечение"
+        }
+      ],
+      "why": "Малайзийская компания биоинформатики и геномики, основанная в 2001 году Робертом Херкусом.",
+      "learn": "SynaBASE™ — сетевая система поиска и хранения последовательностей ДНК/РНК с высокой масштабируемостью.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Куала-Лумпур",
+      "title": "Elixir Biotech / StemTech",
+      "logo": "source-videos/логотипы/медицина/elixir-biotech-stemtech.png",
+      "short": "Elixir Biotech / StemTech",
+      "subtitle": "CryoCord · Cyberjaya",
+      "facts": [
+        {
+          "icon": "handshake",
+          "value": "CryoCord",
+          "label": "в составе группы",
+          "sub": "банкинг клеток с 2002 года"
+        },
+        {
+          "icon": "target",
+          "value": "Иммуноклеточная",
+          "label": "терапия",
+          "sub": "специализация компании"
+        },
+        {
+          "icon": "cpu",
+          "value": "CAR-T",
+          "label": "и NK-клетки",
+          "sub": "а также МСК и гемопоэтические"
+        },
+        {
+          "icon": "building",
+          "value": "cGMP (PIC/S)",
+          "label": "лаборатория",
+          "sub": "сертификат NPRA"
+        }
+      ],
+      "why": "Компания группы CryoCord, созданная для иммуноклеточной терапии; штаб-квартира — Bio-X Centre в Cyberjaya.",
+      "learn": "Группа работает с гемопоэтическими и мезенхимальными стволовыми клетками, NK- и CAR-T-клетками.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Куала-Лумпур",
+      "title": "National Stem Cell Centre",
+      "short": "NSCC · UKM",
+      "subtitle": "Куала-Лумпур",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "UKM",
+          "label": "Национальный университет",
+          "sub": "Малайзии"
+        },
+        {
+          "icon": "target",
+          "value": "CTERM",
+          "label": "тканевая инженерия",
+          "sub": "и регенеративная медицина"
+        },
+        {
+          "icon": "flag",
+          "value": "2006",
+          "label": "Центр клеточной терапии UKM"
+        },
+        {
+          "icon": "star",
+          "value": "Хрящ, кожа, кость",
+          "label": "клеточная регенерация",
+          "sub": "дегенеративные заболевания"
+        }
+      ],
+      "learn": "CTERM (основатель — проф. Рузимах Идрус) и Центр клеточной терапии разрабатывают регенерацию хряща, кожи и кости.",
+      "learn_label": "Фокус визита",
+      "logo_text": "NSCC · UKM",
+      "why": "Академический и клинический центр стволовых клеток и тканевой инженерии при Национальном университете Малайзии."
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Трансферы/перелёты между городами программы",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На малайском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "Регенеративная медицина",
+          "text": "Стволовые клетки и геномика\nCyberjaya + Клэнг-Вэлли",
+          "icon": "target"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов в Куала-Лумпуре"
+        },
+        {
+          "icon": "target",
+          "value": "8 компаний",
+          "label": "в программе",
+          "sub": "CryoCord, Cytopeutics, MGRC"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы/перелёты между городами программы",
+        "Сопровождение на малайском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Куала-Лумпур (перелёт Москва → Куала-Лумпур).<br><b>Вылет:</b> Куала-Лумпур — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}
