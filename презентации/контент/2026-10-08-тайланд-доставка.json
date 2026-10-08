@@ -1,0 +1,584 @@
+{
+  "title": "Central/Dark Kitchen и быстрая доставка еды в Таиланде — Global Tech Tour",
+  "output": "2026-10-08-тайланд-доставка",
+  "source": "https://globaltechtour.ru/expeditions/thailand-dark-kitchen-delivery-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "bangkok",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Central/Dark Kitchen и быстрая доставка еды в Таиланде",
+      "topright": "LINE MAN Wongnai · GrabFood\nShopee Food",
+      "logos": [
+        {
+          "name": "LINE MAN Wongnai",
+          "logo": "source-videos/логотипы/техгиганты/line-man-wongnai.png"
+        },
+        {
+          "name": "Grab",
+          "logo": "source-videos/логотипы/техгиганты/grab.svg"
+        },
+        {
+          "name": "foodpanda",
+          "logo": "source-videos/логотипы/техгиганты/foodpanda.svg"
+        },
+        {
+          "name": "Robinhood",
+          "logo": "source-videos/логотипы/техгиганты/robinhood-scb.png"
+        },
+        {
+          "name": "Freshket",
+          "logo": "source-videos/логотипы/техгиганты/freshket.png"
+        },
+        {
+          "name": "CloudEats",
+          "logo": "source-videos/логотипы/техгиганты/cloudeats.png"
+        },
+        {
+          "name": "CP Cloud Kitchen",
+          "logo": "source-videos/логотипы/техгиганты/cp-cloud-kitchen.png"
+        },
+        {
+          "name": "Shopee Food",
+          "logo": "source-videos/логотипы/техгиганты/shopee-food.svg"
+        }
+      ],
+      "box_text": "9 компаний, 6 дней, 6 ночей",
+      "box_right": "Бангкок —\nвся программа в одном городе",
+      "footer": "Global Tech Tour · бизнес-делегации в Таиланд · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Визиты в штаб-квартиры, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы в пределах Бангкока и региона включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на тайском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "ghost": "ไทย",
+      "title1": "9 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2",
+          "text": "LINE MAN Wongnai, Grab, foodpanda, Robinhood"
+        },
+        {
+          "name": "Дни 3–4",
+          "text": "Freshket, CloudEats, CP Cloud Kitchen, Shopee Food"
+        },
+        {
+          "name": "День 5",
+          "text": "True Digital — день завершается итоговой встречей."
+        }
+      ],
+      "quote": "Вся доставка еды Бангкока в одном\nмаршруте, без перелётов."
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "ghost": "ห้าวัน",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "LINE MAN Wongnai ·\nGrab",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "foodpanda ·\nRobinhood",
+          "text": "foodpanda — платформа доставки еды и товаров; Robinhood — приложение доставки еды, запущенное в 2020 году банком.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Freshket ·\nCloudEats",
+          "text": "Freshket — таиландская B2B-платформа поставок свежих продуктов; CloudEats — оператор облачных кухонь.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "CP Cloud Kitchen ·\nShopee Food",
+          "text": "CP Cloud Kitchen — проект в сфере облачных; Shopee Food — сервис доставки еды в.",
+          "label": "День 4"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "True Digital",
+          "text": "День завершается итоговой встречей.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Бангкок",
+      "title": "LINE MAN Wongnai",
+      "logo": "source-videos/логотипы/техгиганты/line-man-wongnai.png",
+      "short": "LINE MAN Wongnai",
+      "subtitle": "Бангкок",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$265 млн",
+          "label": "привлечено инвестиций",
+          "sub": "2022 год"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$1 млрд",
+          "label": "оценка компании",
+          "sub": "2022 год"
+        },
+        {
+          "icon": "users",
+          "value": "10+ млн",
+          "label": "пользователей"
+        },
+        {
+          "icon": "trending",
+          "value": "~40%",
+          "label": "рынка доставки"
+        }
+      ],
+      "why": "Бангкокская штаб-квартира обслуживает свыше 10 млн пользователей, 500 000 точек и 250 000 курьеров.",
+      "learn": "LINE MAN Wongnai образована в 2020 году слиянием сервиса LINE MAN и платформы отзывов Wongnai при поддержке LY Corporation.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Бангкок",
+      "title": "Grab Thailand",
+      "native": "แกร็บ ประเทศไทย",
+      "ghost": "แกร็บ",
+      "ghost_thai": true,
+      "logo": "source-videos/логотипы/техгиганты/grab.svg",
+      "short": "Grab Thailand (GrabFood)",
+      "subtitle": "GrabFood · Бангкок",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "47%",
+          "label": "доля рынка доставки еды"
+        },
+        {
+          "icon": "smartphone",
+          "value": "GrabPay",
+          "label": "кошелёк",
+          "sub": "часть сети сервиса"
+        },
+        {
+          "icon": "flag",
+          "value": "2012",
+          "label": "год основания"
+        },
+        {
+          "icon": "chart",
+          "value": "Nasdaq",
+          "label": "акции на бирже"
+        }
+      ],
+      "why": "Занимает крупнейшую долю рынка доставки еды, опережая LINE MAN Wongnai.",
+      "learn": "Экосистема Grab в Таиланде включает райдхейлинг, GrabMart и кошелёк GrabPay.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Бангкок",
+      "title": "foodpanda",
+      "native": "ฟู้ดแพนด้า ประเทศไทย",
+      "ghost": "ฟู้ดแพนด้า",
+      "ghost_thai": true,
+      "logo": "source-videos/логотипы/техгиганты/foodpanda.svg",
+      "short": "foodpanda Thailand",
+      "subtitle": "Delivery Hero · Бангкок",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2012",
+          "label": "год основания"
+        },
+        {
+          "icon": "handshake",
+          "value": "Delivery Hero",
+          "label": "в составе группы"
+        },
+        {
+          "icon": "pin",
+          "value": "Бангкок",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Платформа доставки еды и товаров, принадлежащая немецкой Delivery Hero.",
+      "learn": "Delivery Hero в последние годы сокращала присутствие foodpanda в Азии на фоне убыточности операций и роста конкуренции.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Бангкок",
+      "title": "Robinhood",
+      "native": "โรบินฮู้ด",
+      "ghost": "โรบินฮู้ด",
+      "ghost_thai": true,
+      "logo": "source-videos/логотипы/техгиганты/robinhood-scb.png",
+      "short": "Robinhood (SCB)",
+      "subtitle": "SCB · Бангкок",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "2,1 млрд бат",
+          "label": "убытки",
+          "sub": "к 2024 году"
+        },
+        {
+          "icon": "briefcase",
+          "value": "2 млрд бат",
+          "label": "сумма сделки",
+          "sub": "сентябрь 2024"
+        },
+        {
+          "icon": "flag",
+          "value": "2020",
+          "label": "год запуска"
+        },
+        {
+          "icon": "pin",
+          "value": "Бангкок",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        }
+      ],
+      "why": "Приложение доставки еды.",
+      "learn": "К 2024 году убытки достигли 2,1 млрд бат: SCB закрыл сопутствующие сервисы 31 июля 2024-го.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Бангкок",
+      "title": "Freshket",
+      "native": "เฟรชเก็ต",
+      "ghost": "เฟรชเก็ต",
+      "ghost_thai": true,
+      "logo": "source-videos/логотипы/техгиганты/freshket.png",
+      "short": "Freshket",
+      "subtitle": "Бангкок",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "26 000+",
+          "label": "ресторанов"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$34+ млн",
+          "label": "привлечено инвестиций",
+          "sub": "раунд Series A"
+        },
+        {
+          "icon": "flag",
+          "value": "2016",
+          "label": "год основания",
+          "sub": "в Бангкоке"
+        },
+        {
+          "icon": "pin",
+          "value": "Бангкок",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        }
+      ],
+      "why": "Таиландская B2B-платформа поставок свежих продуктов для ресторанов.",
+      "learn": "Сервис связывает фермеров и поставщиков напрямую с более чем 26 000 ресторанов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Бангкок",
+      "title": "CloudEats",
+      "native": "คลาวด์อีทส์",
+      "ghost": "คลาวด์อีทส์",
+      "ghost_thai": true,
+      "logo": "source-videos/логотипы/техгиганты/cloudeats.png",
+      "short": "CloudEats",
+      "subtitle": "Бангкок",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$1,4 млн",
+          "label": "привлечено инвестиций",
+          "sub": "посевной раунд"
+        },
+        {
+          "icon": "flag",
+          "value": "2019",
+          "label": "год основания",
+          "sub": "со штаб-квартирой в"
+        },
+        {
+          "icon": "pin",
+          "value": "Бангкок",
+          "label": "площадка визита",
+          "sub": "день 3 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Оператор облачных кухонь и виртуальных ресторанных брендов.",
+      "learn": "Компания создаёт бренды для доставки и вышла в Таиланд, Малайзию и Сингапур.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Бангкок",
+      "title": "CP Cloud Kitchen",
+      "native": "ซีพี คลาวด์ คิทเช่น",
+      "ghost": "ซีพี",
+      "ghost_thai": true,
+      "logo": "source-videos/логотипы/техгиганты/cp-cloud-kitchen.png",
+      "short": "CP Cloud Kitchen",
+      "subtitle": "Charoen Pokphand · Бангкок",
+      "facts": [
+        {
+          "icon": "handshake",
+          "value": "Charoen Pokphand",
+          "label": "в составе группы"
+        },
+        {
+          "icon": "pin",
+          "value": "Бангкок",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Проект в сфере облачных кухонь структур конгломерата Charoen Pokphand.",
+      "learn": "CP Group управляет активами от животноводства и пищевого производства до розницы и телекома.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Бангкок",
+      "title": "Shopee Food",
+      "native": "ช้อปปี้ฟู้ด",
+      "ghost": "ช้อปปี้ฟู้ด",
+      "ghost_thai": true,
+      "logo": "source-videos/логотипы/техгиганты/shopee-food.svg",
+      "short": "Shopee Food",
+      "subtitle": "Sea Limited · Бангкок",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2015",
+          "label": "год запуска",
+          "sub": "в Таиланде"
+        },
+        {
+          "icon": "handshake",
+          "value": "Sea Limited",
+          "label": "в составе группы"
+        },
+        {
+          "icon": "pin",
+          "value": "Бангкок",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Сервис доставки еды в приложении Shopee, принадлежащем сингапурской Sea Limited.",
+      "learn": "Shopee запустился в Таиланде в 2015 году, а функция Shopee Food добавлена в 2021-м.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Бангкок",
+      "title": "True Digital",
+      "native": "ทรู ดิจิทัล",
+      "ghost": "ทรู",
+      "ghost_thai": true,
+      "logo": "source-videos/логотипы/техгиганты/true-digital.png",
+      "short": "True Digital",
+      "subtitle": "True Corporation · Бангкок",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "35 млн",
+          "label": "пользователей ежедневно"
+        },
+        {
+          "icon": "smartphone",
+          "value": "TrueMoney",
+          "label": "кошелёк"
+        },
+        {
+          "icon": "handshake",
+          "value": "True Corporation",
+          "label": "в составе группы"
+        },
+        {
+          "icon": "pin",
+          "value": "Бангкок",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        }
+      ],
+      "why": "Цифровое подразделение True Corporation, крупнейшего телеком-оператора Таиланда.",
+      "learn": "Группа развивает кошелёк TrueMoney, медиаплатформу TrueID, а также инициативы в доставке и цифровом ретейле.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "В пределах Бангкока и региона",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На тайском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "9 компаний",
+          "text": "LINE MAN Wongnai · GrabFood · Shopee Food\nв одном городе",
+          "icon": "smartphone"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов в Бангкоке"
+        },
+        {
+          "icon": "smartphone",
+          "value": "9 компаний",
+          "label": "в программе",
+          "sub": "LINE MAN Wongnai, GrabFood"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы в пределах Бангкока и региона",
+        "Сопровождение на тайском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Бангкок (перелёт Москва → Бангкок, аэропорт Суварнабхуми).<br><b>Вылет:</b> Бангкок — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

@@ -1,1121 +1,1540 @@
 {
- "alibaba": {
-  "names": [
-   "Alibaba",
-   "Алибаба",
-   "Алибабе",
-   "Алибабу"
-  ],
-  "logo": "source-videos/логотипы/общие/alibaba.svg"
- },
- "sber": {
-  "names": [
-   "Сбер",
-   "Сбере",
-   "Сбербанк",
-   "Сбербанке",
-   "Sber",
-   "Sbere"
-  ],
-  "logo": "source-videos/логотипы/общие/sber.png"
- },
- "huawei": {
-  "names": [
-   "Huawei",
-   "Хуавей",
-   "Хуавэй",
-   "Хуавея"
-  ],
-  "logo": "source-videos/логотипы/общие/huawei.svg"
- },
- "xiaomi": {
-  "names": [
-   "Xiaomi",
-   "Сяоми",
-   "Шаоми",
-   "Ксиаоми"
-  ],
-  "logo": "source-videos/логотипы/общие/xiaomi.svg"
- },
- "tencent": {
-  "names": [
-   "Tencent",
-   "Тенсент",
-   "Тенцент"
-  ],
-  "logo": "source-videos/логотипы/общие/tencent.svg"
- },
- "baidu": {
-  "names": [
-   "Baidu",
-   "Байду"
-  ],
-  "logo": "source-videos/логотипы/общие/baidu.png"
- },
- "bytedance": {
-  "names": [
-   "ByteDance",
-   "Байтденс",
-   "Байтдэнс"
-  ],
-  "logo": "source-videos/логотипы/общие/bytedance.png"
- },
- "nvidia": {
-  "names": [
-   "NVIDIA",
-   "Nvidia",
-   "Нвидиа",
-   "Энвидиа",
-   "Нвидия"
-  ],
-  "logo": "source-videos/логотипы/ии/nvidia.svg"
- },
- "deepseek": {
-  "names": [
-   "DeepSeek",
-   "Дипсик"
-  ],
-  "logo": "source-videos/логотипы/ии/deepseek.svg"
- },
- "zhipu": {
-  "names": [
-   "Zhipu",
-   "Zhipu AI",
-   "Чжипу",
-   "Джипу"
-  ],
-  "logo": "source-videos/логотипы/ии/zhipu.png"
- },
- "kimi": {
-  "names": [
-   "Kimi",
-   "Кими",
-   "Moonshot"
-  ],
-  "logo": "source-videos/логотипы/ии/kimi.png"
- },
- "kuaishou": {
-  "names": [
-   "Kuaishou",
-   "Куайшоу",
-   "Квайшоу"
-  ],
-  "logo": "source-videos/логотипы/ии/kuaishou.png"
- },
- "sensetime": {
-  "names": [
-   "SenseTime",
-   "Сенстайм"
-  ],
-  "logo": "source-videos/логотипы/ии/sensetime.png"
- },
- "brainco": {
-  "names": [
-   "BrainCo",
-   "Брейнко"
-  ],
-  "logo": "source-videos/логотипы/ии/brainco.png"
- },
- "nio": {
-  "names": [
-   "NIO",
-   "Нио"
-  ],
-  "logo": "source-videos/логотипы/авто/nio.svg"
- },
- "maextro": {
-  "names": [
-   "Maextro",
-   "Маэстро",
-   "Maestro",
-   "MyExtro",
-   "Maextro'",
-   "Маекстро",
-   "Майэкстро"
-  ],
-  "logo": "source-videos/логотипы/авто/maextro.svg"
- },
- "saic": {
-  "names": [
-   "SAIC",
-   "САИК",
-   "Syke",
-   "Сайк",
-   "SAIK"
-  ],
-  "logo": "source-videos/логотипы/авто/saic.svg"
- },
- "gac-aion": {
-  "names": [
-   "GAC Aion",
-   "Aion",
-   "GAC",
-   "Айон",
-   "Sgak Ion",
-   "GAC Ion",
-   "Гак Айон",
-   "Sgac Aion",
-   "Ion"
-  ],
-  "logo": "source-videos/логотипы/авто/gac-aion.svg"
- },
- "xpeng": {
-  "names": [
-   "Xpeng",
-   "XPeng",
-   "Сяопэн",
-   "Икспенг"
-  ],
-  "logo": "source-videos/логотипы/авто/xpeng.svg"
- },
- "haier": {
-  "names": [
-   "Haier",
-   "Хайер",
-   "Хаер"
-  ],
-  "logo": "source-videos/логотипы/бытовая-техника/haier.svg"
- },
- "hisense": {
-  "names": [
-   "Hisense",
-   "Хайсенс"
-  ],
-  "logo": "source-videos/логотипы/бытовая-техника/hisense.svg"
- },
- "robam": {
-  "names": [
-   "Robam",
-   "Робам"
-  ],
-  "logo": "source-videos/логотипы/бытовая-техника/robam.png"
- },
- "supor": {
-  "names": [
-   "Supor",
-   "Супор"
-  ],
-  "logo": "source-videos/логотипы/бытовая-техника/supor.png"
- },
- "midea": {
-  "names": [
-   "Midea",
-   "Мидеа",
-   "Мидея"
-  ],
-  "logo": "source-videos/логотипы/бытовая-техника/midea.svg"
- },
- "galanz": {
-  "names": [
-   "Galanz",
-   "Галанз"
-  ],
-  "logo": "source-videos/логотипы/бытовая-техника/galanz.png"
- },
- "gree": {
-  "names": [
-   "Gree",
-   "Грии",
-   "Гри"
-  ],
-  "logo": "source-videos/логотипы/бытовая-техника/gree.svg"
- },
- "skyworth": {
-  "names": [
-   "Skyworth",
-   "Скайворт"
-  ],
-  "logo": "source-videos/логотипы/бытовая-техника/skyworth.png"
- },
- "chagee": {
-  "names": [
-   "Chagee",
-   "Чаги",
-   "Чагии"
-  ],
-  "logo": "source-videos/логотипы/чай-кофе/chagee.svg"
- },
- "heytea": {
-  "names": [
-   "HeyTea",
-   "Хэйти",
-   "Хейти"
-  ],
-  "logo": "source-videos/логотипы/чай-кофе/heytea.svg"
- },
- "luckin-coffee": {
-  "names": [
-   "Luckin Coffee",
-   "Luckin",
-   "Лакин"
-  ],
-  "logo": "source-videos/логотипы/чай-кофе/luckin-coffee.svg"
- },
- "manner-coffee": {
-  "names": [
-   "Manner Coffee",
-   "Manner",
-   "Маннер"
-  ],
-  "logo": "source-videos/логотипы/чай-кофе/manner-coffee.png"
- },
- "m-stand": {
-  "names": [
-   "M Stand",
-   "Эм Стэнд"
-  ],
-  "logo": "source-videos/логотипы/чай-кофе/m-stand.png"
- },
- "alittle-tea": {
-  "names": [
-   "Yidiandian",
-   "A Little Tea",
-   "Идяньдянь"
-  ],
-  "logo": "source-videos/логотипы/чай-кофе/alittle-tea.png"
- },
- "wang-lao-ji": {
-  "names": [
-   "Wang Lao Ji",
-   "Ван Лао Цзи",
-   "Ванлаоцзи"
-  ],
-  "logo": "source-videos/логотипы/чай-кофе/wang-lao-ji.png"
- },
- "21cake": {
-  "names": [
-   "21Cake",
-   "21 Cake"
-  ],
-  "logo": "source-videos/логотипы/кондитерка/21cake.png"
- },
- "ganso": {
-  "names": [
-   "Ganso",
-   "Гансо"
-  ],
-  "logo": "source-videos/логотипы/кондитерка/ganso.png"
- },
- "xingfu-xibing": {
-  "names": [
-   "Xingfu Xibing",
-   "Синфу Сибин"
-  ],
-  "logo": "source-videos/логотипы/кондитерка/xingfu-xibing.png"
- },
- "maxims": {
-  "names": [
-   "Maxim's Cakes",
-   "Maxim's",
-   "Максимс"
-  ],
-  "logo": "source-videos/логотипы/кондитерка/maxims.png"
- },
- "holiland": {
-  "names": [
-   "Holiland",
-   "Холиленд"
-  ],
-  "logo": "source-videos/логотипы/кондитерка/holiland.png"
- },
- "wedome": {
-  "names": [
-   "Wedome",
-   "Видом"
-  ],
-  "logo": "source-videos/логотипы/кондитерка/wedome.svg"
- },
- "85c": {
-  "names": [
-   "85°C",
-   "85C",
-   "85 градусов"
-  ],
-  "logo": "source-videos/логотипы/кондитерка/85c.png"
- },
- "carslan": {
-  "names": [
-   "Carslan",
-   "Карслан"
-  ],
-  "logo": "source-videos/логотипы/косметика/carslan.png"
- },
- "pechoin": {
-  "names": [
-   "Pechoin",
-   "Печоин"
-  ],
-  "logo": "source-videos/логотипы/косметика/pechoin.png"
- },
- "kans": {
-  "names": [
-   "KANS",
-   "Канс"
-  ],
-  "logo": "source-videos/логотипы/косметика/kans.png"
- },
- "proya": {
-  "names": [
-   "Proya",
-   "Пройя",
-   "Прoя"
-  ],
-  "logo": "source-videos/логотипы/косметика/proya.png"
- },
- "florasis": {
-  "names": [
-   "Florasis",
-   "Флорасис"
-  ],
-  "logo": "source-videos/логотипы/косметика/florasis.png"
- },
- "maogeping": {
-  "names": [
-   "Mao Geping",
-   "MAOGEPING",
-   "Мао Гепин"
-  ],
-  "logo": "source-videos/логотипы/косметика/maogeping.png"
- },
- "chando": {
-  "names": [
-   "CHANDO",
-   "Chando",
-   "Чандо"
-  ],
-  "logo": "source-videos/логотипы/косметика/chando.png"
- },
- "kylin-way": {
-  "names": [
-   "Kylin Way",
-   "Килин Вэй"
-  ],
-  "logo": "source-videos/логотипы/косметика/kylin-way.svg"
- },
- "perfect-diary": {
-  "names": [
-   "Perfect Diary",
-   "Перфект Дайри"
-  ],
-  "logo": "source-videos/логотипы/косметика/perfect-diary.svg"
- },
- "loreal": {
-  "names": [
-   "L'Oréal",
-   "L'Oreal",
-   "Лореаль",
-   "Лореаля"
-  ],
-  "logo": "source-videos/логотипы/косметика/loreal.png"
- },
- "hema": {
-  "names": [
-   "Hema",
-   "Хема",
-   "Хэма"
-  ],
-  "logo": "source-videos/логотипы/ритейл/hema.png"
- },
- "sams-club": {
-  "names": [
-   "Sam's Club",
-   "Сэмс Клаб"
-  ],
-  "logo": "source-videos/логотипы/ритейл/sams-club.svg"
- },
- "pinduoduo": {
-  "names": [
-   "Pinduoduo",
-   "Пиндуодуо"
-  ],
-  "logo": "source-videos/логотипы/ритейл/pinduoduo.svg"
- },
- "yonghui": {
-  "names": [
-   "Yonghui",
-   "Юнхуэй"
-  ],
-  "logo": "source-videos/логотипы/ритейл/yonghui.png"
- },
- "meituan": {
-  "names": [
-   "Meituan",
-   "Мейтуань",
-   "Мэйтуань"
-  ],
-  "logo": "source-videos/логотипы/ритейл/meituan.svg"
- },
- "jd": {
-  "names": [
-   "JD",
-   "JD.com",
-   "Цзиндун"
-  ],
-  "logo": "source-videos/логотипы/ритейл/jd.svg"
- },
- "instagram": {
-  "names": [
-   "Instagram",
-   "Инстаграм",
-   "Инстаграма"
-  ],
-  "logo": "source-videos/логотипы/техгиганты/instagram.svg"
- },
- "ubtech": {
-  "names": [
-   "UBTech",
-   "UBTECH",
-   "Юбитек"
-  ],
-  "logo": "source-videos/логотипы/техгиганты/ubtech.svg"
- },
- "unitree": {
-  "names": [
-   "Unitree",
-   "Юнитри",
-   "Унитри"
-  ],
-  "logo": "source-videos/логотипы/техгиганты/unitree.png"
- },
- "wechat": {
-  "names": [
-   "WeChat",
-   "Вичат"
-  ],
-  "logo": "source-videos/логотипы/техгиганты/wechat.png"
- },
- "xiaohongshu": {
-  "names": [
-   "Xiaohongshu",
-   "Сяохуншу",
-   "RedNote"
-  ],
-  "logo": "source-videos/логотипы/техгиганты/xiaohongshu.svg"
- },
- "agibot": {
-  "names": [
-   "AgiBot",
-   "Агибот",
-   "Аджибот",
-   "Zhiyuan"
-  ],
-  "logo": "source-videos/логотипы/роботы/agibot.png"
- },
- "kepler": {
-  "names": [
-   "Kepler",
-   "Кеплер"
-  ],
-  "logo": "source-videos/логотипы/роботы/kepler.png"
- },
- "fourier": {
-  "names": [
-   "Fourier",
-   "Фурье"
-  ],
-  "logo": "source-videos/логотипы/роботы/fourier.png"
- },
- "robotera": {
-  "names": [
-   "Robotera",
-   "RobotEra",
-   "Роботера"
-  ],
-  "logo": "source-videos/логотипы/роботы/robotera.png"
- },
- "reliance-retail": {
-  "names": [
-   "Reliance Retail",
-   "Reliance",
-   "Релаенс",
-   "Рилаенс",
-   "Рилайенс",
-   "Рилайенс Ритейл",
-   "JioMart"
-  ],
-  "logo": "source-videos/логотипы/ритейл/reliance-retail.png"
- },
- "dmart": {
-  "names": [
-   "DMart",
-   "D-Mart",
-   "Avenue Supermarts",
-   "ДиМарт",
-   "Ди-Март"
-  ],
-  "logo": "source-videos/логотипы/ритейл/dmart.png"
- },
- "zepto": {
-  "names": [
-   "Zepto",
-   "Зепто"
-  ],
-  "logo": "source-videos/логотипы/ритейл/zepto.png"
- },
- "nykaa": {
-  "names": [
-   "Nykaa",
-   "Найка",
-   "Нийка"
-  ],
-  "logo": "source-videos/логотипы/косметика/nykaa.svg"
- },
- "flipkart": {
-  "names": [
-   "Flipkart",
-   "Флипкарт",
-   "Флипкарта"
-  ],
-  "logo": "source-videos/логотипы/ритейл/flipkart.svg"
- },
- "bigbasket": {
-  "names": [
-   "BigBasket",
-   "bigbasket",
-   "Бигбаскет",
-   "Биг Баскет"
-  ],
-  "logo": "source-videos/логотипы/ритейл/bigbasket.svg"
- },
- "swiggy": {
-  "names": [
-   "Swiggy",
-   "Swiggy Instamart",
-   "Instamart",
-   "Свигги",
-   "Свиги"
-  ],
-  "logo": "source-videos/логотипы/ритейл/swiggy.svg"
- },
- "blinkit": {
-  "names": [
-   "Blinkit",
-   "Блинкит"
-  ],
-  "logo": "source-videos/логотипы/ритейл/blinkit.svg"
- },
- "vishal-mega-mart": {
-  "names": [
-   "Vishal Mega Mart",
-   "Вишал Мега Март"
-  ],
-  "logo": "source-videos/логотипы/ритейл/vishal-mega-mart.png"
- },
- "mwg": {
-  "names": [
-   "MWG",
-   "Mobile World",
-   "Thế Giới Di Động",
-   "The Gioi Di Dong",
-   "Thegioididong",
-   "Тхе Зой Зи Донг"
-  ],
-  "logo": "source-videos/логотипы/ритейл/mwg.png"
- },
- "fpt-retail": {
-  "names": [
-   "FPT Retail",
-   "Long Châu",
-   "Long Chau",
-   "ФПТ Ритейл",
-   "Лонг Тяу"
-  ],
-  "logo": "source-videos/логотипы/ритейл/fpt-long-chau.png"
- },
- "saigon-coop": {
-  "names": [
-   "Saigon Co.op",
-   "Saigon Coop",
-   "Сайгон Коп",
-   "Сайгон Ко-оп"
-  ],
-  "logo": "source-videos/логотипы/ритейл/saigon-coop.png"
- },
- "central-retail-vietnam": {
-  "names": [
-   "Central Retail Vietnam",
-   "GO!",
-   "Tops Market",
-   "Централ Ритейл Вьетнам"
-  ],
-  "logo": "source-videos/логотипы/ритейл/central-retail-vietnam.png"
- },
- "aeon": {
-  "names": [
-   "AEON",
-   "Aeon",
-   "Эон",
-   "Эона"
-  ],
-  "logo": "source-videos/логотипы/ритейл/aeon.png"
- },
- "wincommerce": {
-  "names": [
-   "WinCommerce",
-   "WinMart",
-   "WinMart+",
-   "ВинКоммерс",
-   "ВинМарт"
-  ],
-  "logo": "source-videos/логотипы/ритейл/wincommerce.png"
- },
- "circle-k": {
-  "names": [
-   "Circle K",
-   "Circle-K",
-   "Серкл Кей",
-   "Сёркл Кей"
-  ],
-  "logo": "source-videos/логотипы/ритейл/circle-k.svg"
- },
- "con-cung": {
-  "names": [
-   "Con Cưng",
-   "Con Cung",
-   "Кон Кынг"
-  ],
-  "logo": "source-videos/логотипы/ритейл/con-cung.png"
- },
- "senheng": {
-  "names": [
-   "Senheng",
-   "Senheng New Retail",
-   "Сенхенг",
-   "Сенхэнг"
-  ],
-  "logo": "source-videos/логотипы/ритейл/senheng.png"
- },
- "mr-diy": {
-  "names": [
-   "MR DIY",
-   "MR D.I.Y.",
-   "Mr DIY",
-   "Мистер Ди-Ай-Уай",
-   "Мистер ДИЙ"
-  ],
-  "logo": "source-videos/логотипы/ритейл/mr-diy.png"
- },
- "7-eleven": {
-  "names": [
-   "7-Eleven",
-   "Seven-Eleven",
-   "7 Eleven",
-   "Севен-Элевен",
-   "Севен Элевен",
-   "Семь-Одиннадцать"
-  ],
-  "logo": "source-videos/логотипы/ритейл/7-eleven.png"
- },
- "99-speed-mart": {
-  "names": [
-   "99 Speed Mart",
-   "99 Спид Март"
-  ],
-  "logo": "source-videos/логотипы/ритейл/99-speed-mart.png"
- },
- "kk-super-mart": {
-  "names": [
-   "KK Super Mart",
-   "KK Mart",
-   "КейКей Супер Март",
-   "КК Март"
-  ],
-  "logo": "source-videos/логотипы/ритейл/kk-super-mart.png"
- },
- "jaya-grocer": {
-  "names": [
-   "Jaya Grocer",
-   "Джая Гроусер",
-   "Джая Гросер"
-  ],
-  "logo": "source-videos/логотипы/ритейл/jaya-grocer.png"
- },
- "padini": {
-  "names": [
-   "Padini",
-   "Padini Holdings",
-   "Падини"
-  ],
-  "logo": "source-videos/логотипы/ритейл/padini.png"
- },
- "eco-shop": {
-  "names": [
-   "Eco-Shop",
-   "Eco Shop",
-   "Эко-Шоп",
-   "Экошоп"
-  ],
-  "logo": "source-videos/логотипы/ритейл/eco-shop.png"
- },
- "lawson": {
-  "names": [
-   "Lawson",
-   "Лоусон",
-   "Лоусона"
-  ],
-  "logo": "source-videos/логотипы/ритейл/lawson.png"
- },
- "familymart": {
-  "names": [
-   "FamilyMart",
-   "Family Mart",
-   "ФэмилиМарт",
-   "Фэмили Март"
-  ],
-  "logo": "source-videos/логотипы/ритейл/familymart.svg"
- },
- "uniqlo": {
-  "names": [
-   "UNIQLO",
-   "Uniqlo",
-   "Fast Retailing",
-   "Юникло",
-   "Юникло́"
-  ],
-  "logo": "source-videos/логотипы/ритейл/uniqlo.svg"
- },
- "muji": {
-  "names": [
-   "MUJI",
-   "Muji",
-   "Муджи",
-   "Мудзи"
-  ],
-  "logo": "source-videos/логотипы/ритейл/muji.svg"
- },
- "don-quijote": {
-  "names": [
-   "Don Quijote",
-   "Don Quixote",
-   "Donki",
-   "PPIH",
-   "Дон Кихот",
-   "Донки"
-  ],
-  "logo": "source-videos/логотипы/ритейл/don-quijote.png"
- },
- "nitori": {
-  "names": [
-   "Nitori",
-   "Нитори"
-  ],
-  "logo": "source-videos/логотипы/ритейл/nitori.png"
- },
- "trial": {
-  "names": [
-   "Trial Holdings",
-   "Триал",
-   "Траял"
-  ],
-  "logo": "source-videos/логотипы/ритейл/trial.png"
- },
- "rakuten": {
-  "names": [
-   "Rakuten",
-   "Ракутен",
-   "Ракутена"
-  ],
-  "logo": "source-videos/логотипы/ритейл/rakuten.svg"
- },
- "coupang": {
-  "names": [
-   "Coupang",
-   "Купанг",
-   "Купанга"
-  ],
-  "logo": "source-videos/логотипы/ритейл/coupang.svg"
- },
- "woowa-brothers": {
-  "names": [
-   "Woowa Brothers",
-   "Baemin",
-   "Baedal Minjok",
-   "Ууа Бразерс",
-   "Ваува Бразерс",
-   "Пэмин",
-   "Бэмин"
-  ],
-  "logo": "source-videos/логотипы/техгиганты/woowa-brothers.png"
- },
- "sk-telecom": {
-  "names": [
-   "SK Telecom",
-   "SKT",
-   "СК Телеком",
-   "Эс-Кей Телеком"
-  ],
-  "logo": "source-videos/логотипы/техгиганты/sk-telecom.png"
- },
- "naver": {
-  "names": [
-   "Naver",
-   "NAVER",
-   "Навер",
-   "Нэйвер",
-   "Нейвер"
-  ],
-  "logo": "source-videos/логотипы/техгиганты/naver.png"
- },
- "kakao": {
-  "names": [
-   "Kakao",
-   "KakaoTalk",
-   "Какао",
-   "Какаоток"
-  ],
-  "logo": "source-videos/логотипы/техгиганты/kakao.png"
- },
- "ncsoft": {
-  "names": [
-   "NCSoft",
-   "NCSOFT",
-   "НКсофт",
-   "Эн-Си Софт",
-   "ЭнСиСофт"
-  ],
-  "logo": "source-videos/логотипы/техгиганты/ncsoft.png"
- },
- "doosan-robotics": {
-  "names": [
-   "Doosan Robotics",
-   "Doosan",
-   "Дусан Роботикс",
-   "Дусан"
-  ],
-  "logo": "source-videos/логотипы/роботы/doosan-robotics.png"
- },
- "rainbow-robotics": {
-  "names": [
-   "Rainbow Robotics",
-   "Рейнбоу Роботикс",
-   "Рэйнбоу Роботикс"
-  ],
-  "logo": "source-videos/логотипы/роботы/rainbow-robotics.png"
- },
- "indomaret": {
-  "names": [
-   "Indomaret",
-   "Индомарет"
-  ],
-  "logo": "source-videos/логотипы/ритейл/indomaret.png"
- },
- "alfamart": {
-  "names": [
-   "Alfamart",
-   "Альфамарт"
-  ],
-  "logo": "source-videos/логотипы/ритейл/alfamart.png"
- },
- "map-mitra-adiperkasa": {
-  "names": [
-   "MAP Indonesia",
-   "Mitra Adiperkasa",
-   "Митра Адиперкаса"
-  ],
-  "logo": "source-videos/логотипы/ритейл/map.png"
- },
- "erajaya": {
-  "names": [
-   "Erajaya",
-   "Erafone",
-   "Эраджая",
-   "Эрафон"
-  ],
-  "logo": "source-videos/логотипы/ритейл/erajaya.png"
- },
- "transmart": {
-  "names": [
-   "Transmart",
-   "CT Corp",
-   "Трансмарт"
-  ],
-  "logo": "source-videos/логотипы/ритейл/transmart.png"
- },
- "matahari": {
-  "names": [
-   "Matahari",
-   "Matahari Department Store",
-   "Матахари"
-  ],
-  "logo": "source-videos/логотипы/ритейл/matahari.png"
- },
- "ace-hardware": {
-  "names": [
-   "Ace Hardware",
-   "ACE Hardware",
-   "Kawan Lama",
-   "Эйс Хардвер"
-  ],
-  "logo": "source-videos/логотипы/ритейл/ace-hardware.png"
- },
- "ranch-market": {
-  "names": [
-   "Ranch Market",
-   "Ранч Маркет"
-  ],
-  "logo": "source-videos/логотипы/ритейл/ranch-market.png"
- },
- "blibli": {
-  "names": [
-   "Blibli",
-   "Блибли"
-  ],
-  "logo": "source-videos/логотипы/ритейл/blibli.svg"
- },
- "noon": {
-  "names": [
-   "Noon",
-   "noon",
-   "Нун",
-   "Нуна"
-  ],
-  "logo": "source-videos/логотипы/ритейл/noon.svg"
- },
- "amazon-ae": {
-  "names": [
-   "Amazon.ae",
-   "Амазон ОАЭ"
-  ],
-  "logo": "source-videos/логотипы/ритейл/amazon-ae.png"
- },
- "apple": {
-  "names": [
-   "Apple",
-   "Эпл",
-   "Эппл",
-   "Apple Middle East"
-  ],
-  "logo": "source-videos/логотипы/техгиганты/apple.png"
- },
- "majid-al-futtaim": {
-  "names": [
-   "Majid Al Futtaim",
-   "MAF",
-   "Маджид Аль Футтайм",
-   "Маджид аль-Футтаим"
-  ],
-  "logo": "source-videos/логотипы/ритейл/majid-al-futtaim.png"
- },
- "al-futtaim": {
-  "names": [
-   "Al-Futtaim",
-   "Al Futtaim",
-   "IKEA Middle East",
-   "Аль-Футтаим",
-   "Аль Футтайм"
-  ],
-  "logo": "source-videos/логотипы/ритейл/ikea-al-futtaim.png"
- },
- "landmark-group": {
-  "names": [
-   "Landmark Group",
-   "Landmark",
-   "Лэндмарк Груп",
-   "Лендмарк"
-  ],
-  "logo": "source-videos/логотипы/ритейл/landmark-group.png"
- },
- "chalhoub": {
-  "names": [
-   "Chalhoub Group",
-   "Chalhoub",
-   "Шальхуб",
-   "Шалхуб"
-  ],
-  "logo": "source-videos/логотипы/ритейл/chalhoub.png"
- },
- "careem": {
-  "names": [
-   "Careem",
-   "Карим",
-   "Карима"
-  ],
-  "logo": "source-videos/логотипы/техгиганты/careem.png"
- },
- "instashop": {
-  "names": [
-   "InstaShop",
-   "Instashop",
-   "ИнстаШоп",
-   "Инсташоп"
-  ],
-  "logo": "source-videos/логотипы/ритейл/instashop.png"
- },
- "lvmh": {
-  "names": [
-   "LVMH",
-   "ЛВМХ",
-   "Louis Vuitton Moët Hennessy"
-  ],
-  "logo": "source-videos/логотипы/ритейл/lvmh.png"
- },
- "cp-all": {
-  "names": [
-   "CP All",
-   "Си Пи Олл",
-   "СиПи Олл"
-  ],
-  "logo": "source-videos/логотипы/ритейл/cp-all.png"
- },
- "central-retail": {
-  "names": [
-   "Central Retail",
-   "Central Group",
-   "Централ Ритейл",
-   "Сентрал Ритейл"
-  ],
-  "logo": "source-videos/логотипы/ритейл/central-retail.png"
- },
- "siam-piwat": {
-  "names": [
-   "Siam Piwat",
-   "ICONSIAM",
-   "Сиам Пиват",
-   "Айконсиам"
-  ],
-  "logo": "source-videos/логотипы/ритейл/siam-piwat.png"
- },
- "siam-paragon": {
-  "names": [
-   "Siam Paragon",
-   "The Mall Group",
-   "Сиам Парагон"
-  ],
-  "logo": "source-videos/логотипы/ритейл/siam-paragon.png"
- },
- "cp-axtra": {
-  "names": [
-   "CP Axtra",
-   "Makro",
-   "Си Пи Акстра",
-   "Макро"
-  ],
-  "logo": "source-videos/логотипы/ритейл/cp-axtra.png"
- },
- "lotuss": {
-  "names": [
-   "Lotus's",
-   "Lotuss",
-   "Лотус",
-   "Лотуса",
-   "Лотусс"
-  ],
-  "logo": "source-videos/логотипы/ритейл/lotus.svg"
- },
- "big-c": {
-  "names": [
-   "Big C",
-   "BigC",
-   "Биг Си"
-  ],
-  "logo": "source-videos/логотипы/ритейл/big-c.svg"
- },
- "homepro": {
-  "names": [
-   "HomePro",
-   "Хоумпро",
-   "Хоум Про"
-  ],
-  "logo": "source-videos/логотипы/ритейл/homepro.png"
- }
+  "alibaba": {
+    "names": [
+      "Alibaba",
+      "Алибаба",
+      "Алибабе",
+      "Алибабу"
+    ],
+    "logo": "source-videos/логотипы/общие/alibaba.svg"
+  },
+  "sber": {
+    "names": [
+      "Сбер",
+      "Сбере",
+      "Сбербанк",
+      "Сбербанке",
+      "Sber",
+      "Sbere"
+    ],
+    "logo": "source-videos/логотипы/общие/sber.png"
+  },
+  "huawei": {
+    "names": [
+      "Huawei",
+      "Хуавей",
+      "Хуавэй",
+      "Хуавея"
+    ],
+    "logo": "source-videos/логотипы/общие/huawei.svg"
+  },
+  "xiaomi": {
+    "names": [
+      "Xiaomi",
+      "Сяоми",
+      "Шаоми",
+      "Ксиаоми"
+    ],
+    "logo": "source-videos/логотипы/общие/xiaomi.svg"
+  },
+  "tencent": {
+    "names": [
+      "Tencent",
+      "Тенсент",
+      "Тенцент"
+    ],
+    "logo": "source-videos/логотипы/общие/tencent.svg"
+  },
+  "baidu": {
+    "names": [
+      "Baidu",
+      "Байду"
+    ],
+    "logo": "source-videos/логотипы/общие/baidu.png"
+  },
+  "bytedance": {
+    "names": [
+      "ByteDance",
+      "Байтденс",
+      "Байтдэнс"
+    ],
+    "logo": "source-videos/логотипы/общие/bytedance.png"
+  },
+  "nvidia": {
+    "names": [
+      "NVIDIA",
+      "Nvidia",
+      "Нвидиа",
+      "Энвидиа",
+      "Нвидия"
+    ],
+    "logo": "source-videos/логотипы/ии/nvidia.svg"
+  },
+  "deepseek": {
+    "names": [
+      "DeepSeek",
+      "Дипсик"
+    ],
+    "logo": "source-videos/логотипы/ии/deepseek.svg"
+  },
+  "zhipu": {
+    "names": [
+      "Zhipu",
+      "Zhipu AI",
+      "Чжипу",
+      "Джипу"
+    ],
+    "logo": "source-videos/логотипы/ии/zhipu.png"
+  },
+  "kimi": {
+    "names": [
+      "Kimi",
+      "Кими",
+      "Moonshot"
+    ],
+    "logo": "source-videos/логотипы/ии/kimi.png"
+  },
+  "kuaishou": {
+    "names": [
+      "Kuaishou",
+      "Куайшоу",
+      "Квайшоу"
+    ],
+    "logo": "source-videos/логотипы/ии/kuaishou.png"
+  },
+  "sensetime": {
+    "names": [
+      "SenseTime",
+      "Сенстайм"
+    ],
+    "logo": "source-videos/логотипы/ии/sensetime.png"
+  },
+  "brainco": {
+    "names": [
+      "BrainCo",
+      "Брейнко"
+    ],
+    "logo": "source-videos/логотипы/ии/brainco.png"
+  },
+  "nio": {
+    "names": [
+      "NIO",
+      "Нио"
+    ],
+    "logo": "source-videos/логотипы/авто/nio.svg"
+  },
+  "maextro": {
+    "names": [
+      "Maextro",
+      "Маэстро",
+      "Maestro",
+      "MyExtro",
+      "Maextro'",
+      "Маекстро",
+      "Майэкстро"
+    ],
+    "logo": "source-videos/логотипы/авто/maextro.svg"
+  },
+  "saic": {
+    "names": [
+      "SAIC",
+      "САИК",
+      "Syke",
+      "Сайк",
+      "SAIK"
+    ],
+    "logo": "source-videos/логотипы/авто/saic.svg"
+  },
+  "gac-aion": {
+    "names": [
+      "GAC Aion",
+      "Aion",
+      "GAC",
+      "Айон",
+      "Sgak Ion",
+      "GAC Ion",
+      "Гак Айон",
+      "Sgac Aion",
+      "Ion"
+    ],
+    "logo": "source-videos/логотипы/авто/gac-aion.svg"
+  },
+  "xpeng": {
+    "names": [
+      "Xpeng",
+      "XPeng",
+      "Сяопэн",
+      "Икспенг"
+    ],
+    "logo": "source-videos/логотипы/авто/xpeng.svg"
+  },
+  "haier": {
+    "names": [
+      "Haier",
+      "Хайер",
+      "Хаер"
+    ],
+    "logo": "source-videos/логотипы/бытовая-техника/haier.svg"
+  },
+  "hisense": {
+    "names": [
+      "Hisense",
+      "Хайсенс"
+    ],
+    "logo": "source-videos/логотипы/бытовая-техника/hisense.svg"
+  },
+  "robam": {
+    "names": [
+      "Robam",
+      "Робам"
+    ],
+    "logo": "source-videos/логотипы/бытовая-техника/robam.png"
+  },
+  "supor": {
+    "names": [
+      "Supor",
+      "Супор"
+    ],
+    "logo": "source-videos/логотипы/бытовая-техника/supor.png"
+  },
+  "midea": {
+    "names": [
+      "Midea",
+      "Мидеа",
+      "Мидея"
+    ],
+    "logo": "source-videos/логотипы/бытовая-техника/midea.svg"
+  },
+  "galanz": {
+    "names": [
+      "Galanz",
+      "Галанз"
+    ],
+    "logo": "source-videos/логотипы/бытовая-техника/galanz.png"
+  },
+  "gree": {
+    "names": [
+      "Gree",
+      "Грии",
+      "Гри"
+    ],
+    "logo": "source-videos/логотипы/бытовая-техника/gree.svg"
+  },
+  "skyworth": {
+    "names": [
+      "Skyworth",
+      "Скайворт"
+    ],
+    "logo": "source-videos/логотипы/бытовая-техника/skyworth.png"
+  },
+  "chagee": {
+    "names": [
+      "Chagee",
+      "Чаги",
+      "Чагии"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/chagee.svg"
+  },
+  "heytea": {
+    "names": [
+      "HeyTea",
+      "Хэйти",
+      "Хейти"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/heytea.svg"
+  },
+  "luckin-coffee": {
+    "names": [
+      "Luckin Coffee",
+      "Luckin",
+      "Лакин"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/luckin-coffee.svg"
+  },
+  "manner-coffee": {
+    "names": [
+      "Manner Coffee",
+      "Manner",
+      "Маннер"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/manner-coffee.png"
+  },
+  "m-stand": {
+    "names": [
+      "M Stand",
+      "Эм Стэнд"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/m-stand.png"
+  },
+  "alittle-tea": {
+    "names": [
+      "Yidiandian",
+      "A Little Tea",
+      "Идяньдянь"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/alittle-tea.png"
+  },
+  "wang-lao-ji": {
+    "names": [
+      "Wang Lao Ji",
+      "Ван Лао Цзи",
+      "Ванлаоцзи"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/wang-lao-ji.png"
+  },
+  "21cake": {
+    "names": [
+      "21Cake",
+      "21 Cake"
+    ],
+    "logo": "source-videos/логотипы/кондитерка/21cake.png"
+  },
+  "ganso": {
+    "names": [
+      "Ganso",
+      "Гансо"
+    ],
+    "logo": "source-videos/логотипы/кондитерка/ganso.png"
+  },
+  "xingfu-xibing": {
+    "names": [
+      "Xingfu Xibing",
+      "Синфу Сибин"
+    ],
+    "logo": "source-videos/логотипы/кондитерка/xingfu-xibing.png"
+  },
+  "maxims": {
+    "names": [
+      "Maxim's Cakes",
+      "Maxim's",
+      "Максимс"
+    ],
+    "logo": "source-videos/логотипы/кондитерка/maxims.png"
+  },
+  "holiland": {
+    "names": [
+      "Holiland",
+      "Холиленд"
+    ],
+    "logo": "source-videos/логотипы/кондитерка/holiland.png"
+  },
+  "wedome": {
+    "names": [
+      "Wedome",
+      "Видом"
+    ],
+    "logo": "source-videos/логотипы/кондитерка/wedome.svg"
+  },
+  "85c": {
+    "names": [
+      "85°C",
+      "85C",
+      "85 градусов"
+    ],
+    "logo": "source-videos/логотипы/кондитерка/85c.png"
+  },
+  "carslan": {
+    "names": [
+      "Carslan",
+      "Карслан"
+    ],
+    "logo": "source-videos/логотипы/косметика/carslan.png"
+  },
+  "pechoin": {
+    "names": [
+      "Pechoin",
+      "Печоин"
+    ],
+    "logo": "source-videos/логотипы/косметика/pechoin.png"
+  },
+  "kans": {
+    "names": [
+      "KANS",
+      "Канс"
+    ],
+    "logo": "source-videos/логотипы/косметика/kans.png"
+  },
+  "proya": {
+    "names": [
+      "Proya",
+      "Пройя",
+      "Прoя"
+    ],
+    "logo": "source-videos/логотипы/косметика/proya.png"
+  },
+  "florasis": {
+    "names": [
+      "Florasis",
+      "Флорасис"
+    ],
+    "logo": "source-videos/логотипы/косметика/florasis.png"
+  },
+  "maogeping": {
+    "names": [
+      "Mao Geping",
+      "MAOGEPING",
+      "Мао Гепин"
+    ],
+    "logo": "source-videos/логотипы/косметика/maogeping.png"
+  },
+  "chando": {
+    "names": [
+      "CHANDO",
+      "Chando",
+      "Чандо"
+    ],
+    "logo": "source-videos/логотипы/косметика/chando.png"
+  },
+  "kylin-way": {
+    "names": [
+      "Kylin Way",
+      "Килин Вэй"
+    ],
+    "logo": "source-videos/логотипы/косметика/kylin-way.svg"
+  },
+  "perfect-diary": {
+    "names": [
+      "Perfect Diary",
+      "Перфект Дайри"
+    ],
+    "logo": "source-videos/логотипы/косметика/perfect-diary.svg"
+  },
+  "loreal": {
+    "names": [
+      "L'Oréal",
+      "L'Oreal",
+      "Лореаль",
+      "Лореаля"
+    ],
+    "logo": "source-videos/логотипы/косметика/loreal.png"
+  },
+  "hema": {
+    "names": [
+      "Hema",
+      "Хема",
+      "Хэма"
+    ],
+    "logo": "source-videos/логотипы/ритейл/hema.png"
+  },
+  "sams-club": {
+    "names": [
+      "Sam's Club",
+      "Сэмс Клаб"
+    ],
+    "logo": "source-videos/логотипы/ритейл/sams-club.svg"
+  },
+  "pinduoduo": {
+    "names": [
+      "Pinduoduo",
+      "Пиндуодуо"
+    ],
+    "logo": "source-videos/логотипы/ритейл/pinduoduo.svg"
+  },
+  "yonghui": {
+    "names": [
+      "Yonghui",
+      "Юнхуэй"
+    ],
+    "logo": "source-videos/логотипы/ритейл/yonghui.png"
+  },
+  "meituan": {
+    "names": [
+      "Meituan",
+      "Мейтуань",
+      "Мэйтуань"
+    ],
+    "logo": "source-videos/логотипы/ритейл/meituan.svg"
+  },
+  "jd": {
+    "names": [
+      "JD",
+      "JD.com",
+      "Цзиндун"
+    ],
+    "logo": "source-videos/логотипы/ритейл/jd.svg"
+  },
+  "instagram": {
+    "names": [
+      "Instagram",
+      "Инстаграм",
+      "Инстаграма"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/instagram.svg"
+  },
+  "ubtech": {
+    "names": [
+      "UBTech",
+      "UBTECH",
+      "Юбитек"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/ubtech.svg"
+  },
+  "unitree": {
+    "names": [
+      "Unitree",
+      "Юнитри",
+      "Унитри"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/unitree.png"
+  },
+  "wechat": {
+    "names": [
+      "WeChat",
+      "Вичат"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/wechat.png"
+  },
+  "xiaohongshu": {
+    "names": [
+      "Xiaohongshu",
+      "Сяохуншу",
+      "RedNote"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/xiaohongshu.svg"
+  },
+  "agibot": {
+    "names": [
+      "AgiBot",
+      "Агибот",
+      "Аджибот",
+      "Zhiyuan"
+    ],
+    "logo": "source-videos/логотипы/роботы/agibot.png"
+  },
+  "kepler": {
+    "names": [
+      "Kepler",
+      "Кеплер"
+    ],
+    "logo": "source-videos/логотипы/роботы/kepler.png"
+  },
+  "fourier": {
+    "names": [
+      "Fourier",
+      "Фурье"
+    ],
+    "logo": "source-videos/логотипы/роботы/fourier.png"
+  },
+  "robotera": {
+    "names": [
+      "Robotera",
+      "RobotEra",
+      "Роботера"
+    ],
+    "logo": "source-videos/логотипы/роботы/robotera.png"
+  },
+  "reliance-retail": {
+    "names": [
+      "Reliance Retail",
+      "Reliance",
+      "Релаенс",
+      "Рилаенс",
+      "Рилайенс",
+      "Рилайенс Ритейл",
+      "JioMart"
+    ],
+    "logo": "source-videos/логотипы/ритейл/reliance-retail.png"
+  },
+  "dmart": {
+    "names": [
+      "DMart",
+      "D-Mart",
+      "Avenue Supermarts",
+      "ДиМарт",
+      "Ди-Март"
+    ],
+    "logo": "source-videos/логотипы/ритейл/dmart.png"
+  },
+  "zepto": {
+    "names": [
+      "Zepto",
+      "Зепто"
+    ],
+    "logo": "source-videos/логотипы/ритейл/zepto.png"
+  },
+  "nykaa": {
+    "names": [
+      "Nykaa",
+      "Найка",
+      "Нийка"
+    ],
+    "logo": "source-videos/логотипы/косметика/nykaa.svg"
+  },
+  "flipkart": {
+    "names": [
+      "Flipkart",
+      "Флипкарт",
+      "Флипкарта"
+    ],
+    "logo": "source-videos/логотипы/ритейл/flipkart.svg"
+  },
+  "bigbasket": {
+    "names": [
+      "BigBasket",
+      "bigbasket",
+      "Бигбаскет",
+      "Биг Баскет"
+    ],
+    "logo": "source-videos/логотипы/ритейл/bigbasket.svg"
+  },
+  "swiggy": {
+    "names": [
+      "Swiggy",
+      "Swiggy Instamart",
+      "Instamart",
+      "Свигги",
+      "Свиги"
+    ],
+    "logo": "source-videos/логотипы/ритейл/swiggy.svg"
+  },
+  "blinkit": {
+    "names": [
+      "Blinkit",
+      "Блинкит"
+    ],
+    "logo": "source-videos/логотипы/ритейл/blinkit.svg"
+  },
+  "vishal-mega-mart": {
+    "names": [
+      "Vishal Mega Mart",
+      "Вишал Мега Март"
+    ],
+    "logo": "source-videos/логотипы/ритейл/vishal-mega-mart.png"
+  },
+  "mwg": {
+    "names": [
+      "MWG",
+      "Mobile World",
+      "Thế Giới Di Động",
+      "The Gioi Di Dong",
+      "Thegioididong",
+      "Тхе Зой Зи Донг"
+    ],
+    "logo": "source-videos/логотипы/ритейл/mwg.png"
+  },
+  "fpt-retail": {
+    "names": [
+      "FPT Retail",
+      "Long Châu",
+      "Long Chau",
+      "ФПТ Ритейл",
+      "Лонг Тяу"
+    ],
+    "logo": "source-videos/логотипы/ритейл/fpt-long-chau.png"
+  },
+  "saigon-coop": {
+    "names": [
+      "Saigon Co.op",
+      "Saigon Coop",
+      "Сайгон Коп",
+      "Сайгон Ко-оп"
+    ],
+    "logo": "source-videos/логотипы/ритейл/saigon-coop.png"
+  },
+  "central-retail-vietnam": {
+    "names": [
+      "Central Retail Vietnam",
+      "GO!",
+      "Tops Market",
+      "Централ Ритейл Вьетнам"
+    ],
+    "logo": "source-videos/логотипы/ритейл/central-retail-vietnam.png"
+  },
+  "aeon": {
+    "names": [
+      "AEON",
+      "Aeon",
+      "Эон",
+      "Эона"
+    ],
+    "logo": "source-videos/логотипы/ритейл/aeon.png"
+  },
+  "wincommerce": {
+    "names": [
+      "WinCommerce",
+      "WinMart",
+      "WinMart+",
+      "ВинКоммерс",
+      "ВинМарт"
+    ],
+    "logo": "source-videos/логотипы/ритейл/wincommerce.png"
+  },
+  "circle-k": {
+    "names": [
+      "Circle K",
+      "Circle-K",
+      "Серкл Кей",
+      "Сёркл Кей"
+    ],
+    "logo": "source-videos/логотипы/ритейл/circle-k.svg"
+  },
+  "con-cung": {
+    "names": [
+      "Con Cưng",
+      "Con Cung",
+      "Кон Кынг"
+    ],
+    "logo": "source-videos/логотипы/ритейл/con-cung.png"
+  },
+  "senheng": {
+    "names": [
+      "Senheng",
+      "Senheng New Retail",
+      "Сенхенг",
+      "Сенхэнг"
+    ],
+    "logo": "source-videos/логотипы/ритейл/senheng.png"
+  },
+  "mr-diy": {
+    "names": [
+      "MR DIY",
+      "MR D.I.Y.",
+      "Mr DIY",
+      "Мистер Ди-Ай-Уай",
+      "Мистер ДИЙ"
+    ],
+    "logo": "source-videos/логотипы/ритейл/mr-diy.png"
+  },
+  "7-eleven": {
+    "names": [
+      "7-Eleven",
+      "Seven-Eleven",
+      "7 Eleven",
+      "Севен-Элевен",
+      "Севен Элевен",
+      "Семь-Одиннадцать"
+    ],
+    "logo": "source-videos/логотипы/ритейл/7-eleven.png"
+  },
+  "99-speed-mart": {
+    "names": [
+      "99 Speed Mart",
+      "99 Спид Март"
+    ],
+    "logo": "source-videos/логотипы/ритейл/99-speed-mart.png"
+  },
+  "kk-super-mart": {
+    "names": [
+      "KK Super Mart",
+      "KK Mart",
+      "КейКей Супер Март",
+      "КК Март"
+    ],
+    "logo": "source-videos/логотипы/ритейл/kk-super-mart.png"
+  },
+  "jaya-grocer": {
+    "names": [
+      "Jaya Grocer",
+      "Джая Гроусер",
+      "Джая Гросер"
+    ],
+    "logo": "source-videos/логотипы/ритейл/jaya-grocer.png"
+  },
+  "padini": {
+    "names": [
+      "Padini",
+      "Padini Holdings",
+      "Падини"
+    ],
+    "logo": "source-videos/логотипы/ритейл/padini.png"
+  },
+  "eco-shop": {
+    "names": [
+      "Eco-Shop",
+      "Eco Shop",
+      "Эко-Шоп",
+      "Экошоп"
+    ],
+    "logo": "source-videos/логотипы/ритейл/eco-shop.png"
+  },
+  "lawson": {
+    "names": [
+      "Lawson",
+      "Лоусон",
+      "Лоусона"
+    ],
+    "logo": "source-videos/логотипы/ритейл/lawson.png"
+  },
+  "familymart": {
+    "names": [
+      "FamilyMart",
+      "Family Mart",
+      "ФэмилиМарт",
+      "Фэмили Март"
+    ],
+    "logo": "source-videos/логотипы/ритейл/familymart.svg"
+  },
+  "uniqlo": {
+    "names": [
+      "UNIQLO",
+      "Uniqlo",
+      "Fast Retailing",
+      "Юникло",
+      "Юникло́"
+    ],
+    "logo": "source-videos/логотипы/ритейл/uniqlo.svg"
+  },
+  "muji": {
+    "names": [
+      "MUJI",
+      "Muji",
+      "Муджи",
+      "Мудзи"
+    ],
+    "logo": "source-videos/логотипы/ритейл/muji.svg"
+  },
+  "don-quijote": {
+    "names": [
+      "Don Quijote",
+      "Don Quixote",
+      "Donki",
+      "PPIH",
+      "Дон Кихот",
+      "Донки"
+    ],
+    "logo": "source-videos/логотипы/ритейл/don-quijote.png"
+  },
+  "nitori": {
+    "names": [
+      "Nitori",
+      "Нитори"
+    ],
+    "logo": "source-videos/логотипы/ритейл/nitori.png"
+  },
+  "trial": {
+    "names": [
+      "Trial Holdings",
+      "Триал",
+      "Траял"
+    ],
+    "logo": "source-videos/логотипы/ритейл/trial.png"
+  },
+  "rakuten": {
+    "names": [
+      "Rakuten",
+      "Ракутен",
+      "Ракутена"
+    ],
+    "logo": "source-videos/логотипы/ритейл/rakuten.svg"
+  },
+  "coupang": {
+    "names": [
+      "Coupang",
+      "Купанг",
+      "Купанга"
+    ],
+    "logo": "source-videos/логотипы/ритейл/coupang.svg"
+  },
+  "woowa-brothers": {
+    "names": [
+      "Woowa Brothers",
+      "Baemin",
+      "Baedal Minjok",
+      "Ууа Бразерс",
+      "Ваува Бразерс",
+      "Пэмин",
+      "Бэмин"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/woowa-brothers.png"
+  },
+  "sk-telecom": {
+    "names": [
+      "SK Telecom",
+      "SKT",
+      "СК Телеком",
+      "Эс-Кей Телеком"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/sk-telecom.png"
+  },
+  "naver": {
+    "names": [
+      "Naver",
+      "NAVER",
+      "Навер",
+      "Нэйвер",
+      "Нейвер"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/naver.png"
+  },
+  "kakao": {
+    "names": [
+      "Kakao",
+      "KakaoTalk",
+      "Какао",
+      "Какаоток"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/kakao.png"
+  },
+  "ncsoft": {
+    "names": [
+      "NCSoft",
+      "NCSOFT",
+      "НКсофт",
+      "Эн-Си Софт",
+      "ЭнСиСофт"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/ncsoft.png"
+  },
+  "doosan-robotics": {
+    "names": [
+      "Doosan Robotics",
+      "Doosan",
+      "Дусан Роботикс",
+      "Дусан"
+    ],
+    "logo": "source-videos/логотипы/роботы/doosan-robotics.png"
+  },
+  "rainbow-robotics": {
+    "names": [
+      "Rainbow Robotics",
+      "Рейнбоу Роботикс",
+      "Рэйнбоу Роботикс"
+    ],
+    "logo": "source-videos/логотипы/роботы/rainbow-robotics.png"
+  },
+  "indomaret": {
+    "names": [
+      "Indomaret",
+      "Индомарет"
+    ],
+    "logo": "source-videos/логотипы/ритейл/indomaret.png"
+  },
+  "alfamart": {
+    "names": [
+      "Alfamart",
+      "Альфамарт"
+    ],
+    "logo": "source-videos/логотипы/ритейл/alfamart.png"
+  },
+  "map-mitra-adiperkasa": {
+    "names": [
+      "MAP Indonesia",
+      "Mitra Adiperkasa",
+      "Митра Адиперкаса"
+    ],
+    "logo": "source-videos/логотипы/ритейл/map.png"
+  },
+  "erajaya": {
+    "names": [
+      "Erajaya",
+      "Erafone",
+      "Эраджая",
+      "Эрафон"
+    ],
+    "logo": "source-videos/логотипы/ритейл/erajaya.png"
+  },
+  "transmart": {
+    "names": [
+      "Transmart",
+      "CT Corp",
+      "Трансмарт"
+    ],
+    "logo": "source-videos/логотипы/ритейл/transmart.png"
+  },
+  "matahari": {
+    "names": [
+      "Matahari",
+      "Matahari Department Store",
+      "Матахари"
+    ],
+    "logo": "source-videos/логотипы/ритейл/matahari.png"
+  },
+  "ace-hardware": {
+    "names": [
+      "Ace Hardware",
+      "ACE Hardware",
+      "Kawan Lama",
+      "Эйс Хардвер"
+    ],
+    "logo": "source-videos/логотипы/ритейл/ace-hardware.png"
+  },
+  "ranch-market": {
+    "names": [
+      "Ranch Market",
+      "Ранч Маркет"
+    ],
+    "logo": "source-videos/логотипы/ритейл/ranch-market.png"
+  },
+  "blibli": {
+    "names": [
+      "Blibli",
+      "Блибли"
+    ],
+    "logo": "source-videos/логотипы/ритейл/blibli.svg"
+  },
+  "noon": {
+    "names": [
+      "Noon",
+      "noon",
+      "Нун",
+      "Нуна"
+    ],
+    "logo": "source-videos/логотипы/ритейл/noon.svg"
+  },
+  "amazon-ae": {
+    "names": [
+      "Amazon.ae",
+      "Амазон ОАЭ"
+    ],
+    "logo": "source-videos/логотипы/ритейл/amazon-ae.png"
+  },
+  "apple": {
+    "names": [
+      "Apple",
+      "Эпл",
+      "Эппл",
+      "Apple Middle East"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/apple.png"
+  },
+  "majid-al-futtaim": {
+    "names": [
+      "Majid Al Futtaim",
+      "MAF",
+      "Маджид Аль Футтайм",
+      "Маджид аль-Футтаим"
+    ],
+    "logo": "source-videos/логотипы/ритейл/majid-al-futtaim.png"
+  },
+  "al-futtaim": {
+    "names": [
+      "Al-Futtaim",
+      "Al Futtaim",
+      "IKEA Middle East",
+      "Аль-Футтаим",
+      "Аль Футтайм"
+    ],
+    "logo": "source-videos/логотипы/ритейл/ikea-al-futtaim.png"
+  },
+  "landmark-group": {
+    "names": [
+      "Landmark Group",
+      "Landmark",
+      "Лэндмарк Груп",
+      "Лендмарк"
+    ],
+    "logo": "source-videos/логотипы/ритейл/landmark-group.png"
+  },
+  "chalhoub": {
+    "names": [
+      "Chalhoub Group",
+      "Chalhoub",
+      "Шальхуб",
+      "Шалхуб"
+    ],
+    "logo": "source-videos/логотипы/ритейл/chalhoub.png"
+  },
+  "careem": {
+    "names": [
+      "Careem",
+      "Карим",
+      "Карима"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/careem.png"
+  },
+  "instashop": {
+    "names": [
+      "InstaShop",
+      "Instashop",
+      "ИнстаШоп",
+      "Инсташоп"
+    ],
+    "logo": "source-videos/логотипы/ритейл/instashop.png"
+  },
+  "lvmh": {
+    "names": [
+      "LVMH",
+      "ЛВМХ",
+      "Louis Vuitton Moët Hennessy"
+    ],
+    "logo": "source-videos/логотипы/ритейл/lvmh.png"
+  },
+  "cp-all": {
+    "names": [
+      "CP All",
+      "Си Пи Олл",
+      "СиПи Олл"
+    ],
+    "logo": "source-videos/логотипы/ритейл/cp-all.png"
+  },
+  "central-retail": {
+    "names": [
+      "Central Retail",
+      "Central Group",
+      "Централ Ритейл",
+      "Сентрал Ритейл"
+    ],
+    "logo": "source-videos/логотипы/ритейл/central-retail.png"
+  },
+  "siam-piwat": {
+    "names": [
+      "Siam Piwat",
+      "ICONSIAM",
+      "Сиам Пиват",
+      "Айконсиам"
+    ],
+    "logo": "source-videos/логотипы/ритейл/siam-piwat.png"
+  },
+  "siam-paragon": {
+    "names": [
+      "Siam Paragon",
+      "The Mall Group",
+      "Сиам Парагон"
+    ],
+    "logo": "source-videos/логотипы/ритейл/siam-paragon.png"
+  },
+  "cp-axtra": {
+    "names": [
+      "CP Axtra",
+      "Makro",
+      "Си Пи Акстра",
+      "Макро"
+    ],
+    "logo": "source-videos/логотипы/ритейл/cp-axtra.png"
+  },
+  "lotuss": {
+    "names": [
+      "Lotus's",
+      "Lotuss",
+      "Лотус",
+      "Лотуса",
+      "Лотусс"
+    ],
+    "logo": "source-videos/логотипы/ритейл/lotus.svg"
+  },
+  "big-c": {
+    "names": [
+      "Big C",
+      "BigC",
+      "Биг Си"
+    ],
+    "logo": "source-videos/логотипы/ритейл/big-c.svg"
+  },
+  "homepro": {
+    "names": [
+      "HomePro",
+      "Хоумпро",
+      "Хоум Про"
+    ],
+    "logo": "source-videos/логотипы/ритейл/homepro.png"
+  },
+  "charoen-pokphand-foods": {
+    "names": [
+      "Charoen Pokphand Foods (CPF)",
+      "Charoen Pokphand Foods",
+      "CPF"
+    ],
+    "logo": "source-videos/логотипы/еда/charoen-pokphand-foods.png",
+    "site_logo": "/logos/Charoen Pokphand Foods.png"
+  },
+  "thai-union-group": {
+    "names": [
+      "Thai Union Group"
+    ],
+    "logo": "source-videos/логотипы/еда/thai-union-group.png",
+    "site_logo": "/logos/Thai Union.png"
+  },
+  "space-f": {
+    "names": [
+      "SPACE-F"
+    ],
+    "logo": "source-videos/логотипы/еда/space-f.png",
+    "site_logo": "/logos/Space-F.png"
+  },
+  "betagro": {
+    "names": [
+      "Betagro"
+    ],
+    "logo": "source-videos/логотипы/еда/betagro.png",
+    "site_logo": "/logos/Betagro.png"
+  },
+  "dutch-mill": {
+    "names": [
+      "Dutch Mill"
+    ],
+    "logo": "source-videos/логотипы/еда/dutch-mill.png",
+    "site_logo": "/logos/Dutch Mill.png"
+  },
+  "nr-instant-produce": {
+    "names": [
+      "NR Instant Produce (NRF)",
+      "NR Instant Produce",
+      "NRF"
+    ],
+    "logo": "source-videos/логотипы/еда/nr-instant-produce.png",
+    "site_logo": "/logos/NR Instant Produce.png"
+  },
+  "more-meat": {
+    "names": [
+      "More Meat"
+    ],
+    "logo": "source-videos/логотипы/еда/more-meat.png",
+    "site_logo": "/logos/More Meat.png"
+  },
+  "foremost-frieslandcampina-thailand": {
+    "names": [
+      "Foremost / FrieslandCampina Thailand"
+    ],
+    "logo": "source-videos/логотипы/еда/foremost-frieslandcampina.png",
+    "site_logo": "/logos/Foremost.png"
+  },
+  "meiji-thailand": {
+    "names": [
+      "Meiji Thailand"
+    ],
+    "logo": "source-videos/логотипы/еда/meiji.svg",
+    "site_logo": "/logos/meiji-thailand.svg"
+  },
+  "line-man-wongnai": {
+    "names": [
+      "LINE MAN Wongnai"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/line-man-wongnai.png",
+    "site_logo": "/logos/LINE MAN Wongnai.png"
+  },
+  "grab-thailand": {
+    "names": [
+      "Grab Thailand (GrabFood)",
+      "Grab Thailand",
+      "GrabFood"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/grab.svg",
+    "site_logo": "/logos/grab-thailand.svg"
+  },
+  "foodpanda-thailand": {
+    "names": [
+      "foodpanda Thailand"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/foodpanda.svg",
+    "site_logo": "/logos/foodpanda-thailand.svg"
+  },
+  "robinhood": {
+    "names": [
+      "Robinhood (SCB)",
+      "Robinhood"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/robinhood-scb.png",
+    "site_logo": "/logos/Robinhood.png"
+  },
+  "freshket": {
+    "names": [
+      "Freshket"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/freshket.png",
+    "site_logo": "/logos/Freshket.png"
+  },
+  "cloudeats": {
+    "names": [
+      "CloudEats"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/cloudeats.png",
+    "site_logo": "/logos/CloudEats.png"
+  },
+  "cp-cloud-kitchen": {
+    "names": [
+      "CP Cloud Kitchen"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/cp-cloud-kitchen.png",
+    "site_logo": "/logos/CP Cloud Kitchen.png"
+  },
+  "shopee-food": {
+    "names": [
+      "Shopee Food"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/shopee-food.svg",
+    "site_logo": "/logos/shopee-food-th.svg"
+  },
+  "true-digital": {
+    "names": [
+      "True Digital"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/true-digital.png",
+    "site_logo": "/logos/True Digital.png"
+  },
+  "scb-10x-scb-abacus": {
+    "names": [
+      "SCB 10X / SCB Abacus"
+    ],
+    "logo": "source-videos/логотипы/ии/scb-10x-abacus.png",
+    "site_logo": "/logos/SCB 10X.png"
+  },
+  "sertis": {
+    "names": [
+      "Sertis"
+    ],
+    "logo": "source-videos/логотипы/ии/sertis.png",
+    "site_logo": "/logos/Sertis.png"
+  },
+  "line-thailand": {
+    "names": [
+      "LINE Thailand"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/line.svg",
+    "site_logo": "/logos/line-thailand.svg"
+  },
+  "amity-solutions": {
+    "names": [
+      "Amity Solutions"
+    ],
+    "logo": "source-videos/логотипы/ии/amity-solutions.png",
+    "site_logo": "/logos/Amity Solutions.png"
+  },
+  "lazada-thailand": {
+    "names": [
+      "Lazada Thailand"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/lazada.svg",
+    "site_logo": "/logos/lazada-thailand.svg"
+  },
+  "shopee-thailand": {
+    "names": [
+      "Shopee Thailand"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/shopee.svg",
+    "site_logo": "/logos/shopee-thailand.svg"
+  },
+  "central-jd": {
+    "names": [
+      "Central JD"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/central-jd.png",
+    "site_logo": "/logos/Central JD.png"
+  },
+  "tiktok-shop-thailand": {
+    "names": [
+      "TikTok Shop Thailand"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/tiktok-shop.png",
+    "site_logo": "/logos/TikTok Shop Thailand.png"
+  },
+  "truemoney": {
+    "names": [
+      "TrueMoney (Ascend Group)",
+      "TrueMoney",
+      "Ascend Group"
+    ],
+    "logo": "source-videos/логотипы/техгиганты/truemoney-ascend.png",
+    "site_logo": "/logos/TrueMoney.png"
+  },
+  "botnoi": {
+    "names": [
+      "Botnoi"
+    ],
+    "logo": "source-videos/логотипы/ии/botnoi.png",
+    "site_logo": "/logos/Botnoi.png"
+  },
+  "better-way": {
+    "names": [
+      "Better Way (Mistine)",
+      "Mistine"
+    ],
+    "logo": "source-videos/логотипы/косметика/better-way-mistine.png",
+    "site_logo": "/logos/Better Way.png"
+  },
+  "karmarts": {
+    "names": [
+      "Karmarts"
+    ],
+    "logo": "source-videos/логотипы/косметика/karmarts.png",
+    "site_logo": "/logos/Karmarts.png"
+  },
+  "srichand": {
+    "names": [
+      "Srichand (SNP)",
+      "Srichand",
+      "SNP"
+    ],
+    "logo": "source-videos/логотипы/косметика/srichand-snp.png",
+    "site_logo": "/logos/Srichand.png"
+  },
+  "beauty-buffet": {
+    "names": [
+      "Beauty Buffet"
+    ],
+    "logo": "source-videos/логотипы/косметика/beauty-buffet.png",
+    "site_logo": "/logos/Beauty Buffet.png"
+  },
+  "harnn": {
+    "names": [
+      "HARNN"
+    ],
+    "logo": "source-videos/логотипы/косметика/harnn.png",
+    "site_logo": "/logos/HARNN.png"
+  },
+  "divana": {
+    "names": [
+      "Divana"
+    ],
+    "logo": "source-videos/логотипы/косметика/divana.png",
+    "site_logo": "/logos/Divana.png"
+  },
+  "provamed-greater-pharma": {
+    "names": [
+      "Provamed / Greater Pharma"
+    ],
+    "logo": "source-videos/логотипы/косметика/provamed-greater-pharma.png",
+    "site_logo": "/logos/Provamed.png"
+  },
+  "oriental-princess": {
+    "names": [
+      "Oriental Princess"
+    ],
+    "logo": "source-videos/логотипы/косметика/oriental-princess.png",
+    "site_logo": "/logos/Oriental Princess.png"
+  },
+  "cute-press": {
+    "names": [
+      "Cute Press"
+    ],
+    "logo": "source-videos/логотипы/косметика/cute-press.png",
+    "site_logo": "/logos/Cute Press.png"
+  },
+  "beiersdorf-thailand": {
+    "names": [
+      "Beiersdorf Thailand (Eucerin)",
+      "Beiersdorf Thailand",
+      "Eucerin"
+    ],
+    "logo": "source-videos/логотипы/косметика/beiersdorf.png",
+    "site_logo": "/logos/Beiersdorf Thailand.png"
+  },
+  "bdms-wellness-clinic": {
+    "names": [
+      "BDMS Wellness Clinic"
+    ],
+    "logo": "source-videos/логотипы/медицина/bdms-wellness-clinic.png",
+    "site_logo": "/logos/BDMS.png"
+  },
+  "vitallife-scientific-wellness-center": {
+    "names": [
+      "VitalLife Scientific Wellness Center (Bumrungrad)",
+      "VitalLife Scientific Wellness Center",
+      "Bumrungrad"
+    ],
+    "logo": "source-videos/логотипы/медицина/vitallife-bumrungrad.png",
+    "site_logo": "/logos/VitalLife.png"
+  },
+  "medeze-group": {
+    "names": [
+      "MEDEZE Group"
+    ],
+    "logo": "source-videos/логотипы/медицина/medeze-group.png",
+    "site_logo": "/logos/MEDEZE Group.png"
+  },
+  "vaanaa-longevity-clinic": {
+    "names": [
+      "VAANAA Longevity Clinic"
+    ],
+    "logo": "source-videos/логотипы/медицина/vaanaa-longevity-clinic.png",
+    "site_logo": "/logos/VAANAA.png"
+  },
+  "rakxa-integrative-wellness": {
+    "names": [
+      "RAKxa Integrative Wellness"
+    ],
+    "logo": "source-videos/логотипы/медицина/rakxa-integrative-wellness.png",
+    "site_logo": "/logos/RAKxa.png"
+  },
+  "mousai-wellness-center": {
+    "names": [
+      "Mousai Wellness Center"
+    ],
+    "logo": "source-videos/логотипы/медицина/mousai-wellness-center.png",
+    "site_logo": "/logos/Mousai.png"
+  },
+  "boston-health-longevity": {
+    "names": [
+      "Boston Health Longevity"
+    ],
+    "logo": "source-videos/логотипы/медицина/boston-health-longevity.png",
+    "site_logo": "/logos/Boston Health Longevity.png"
+  },
+  "vega-clinic": {
+    "names": [
+      "Vega Clinic"
+    ],
+    "logo": "source-videos/логотипы/медицина/vega-clinic.png",
+    "site_logo": "/logos/Vega Clinic.png"
+  },
+  "caf-amazon": {
+    "names": [
+      "Café Amazon (PTT OR)",
+      "Café Amazon",
+      "PTT OR"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/cafe-amazon-ptt.svg",
+    "site_logo": "/logos/cafe-amazon-ptt.svg"
+  },
+  "inthanin": {
+    "names": [
+      "Inthanin (Bangchak)",
+      "Inthanin",
+      "Bangchak"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/inthanin-bangchak.png",
+    "site_logo": "/logos/Inthanin.png"
+  },
+  "chatramue": {
+    "names": [
+      "ChaTraMue"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/chatramue.png",
+    "site_logo": "/logos/ChaTraMue.png"
+  },
+  "karun-thai-tea": {
+    "names": [
+      "Karun Thai Tea"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/karun-thai-tea.png",
+    "site_logo": "/logos/Karun.png"
+  },
+  "pacamara": {
+    "names": [
+      "Pacamara"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/pacamara.png",
+    "site_logo": "/logos/Pacamara.png"
+  },
+  "roots-coffee": {
+    "names": [
+      "Roots Coffee"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/roots-coffee.png",
+    "site_logo": "/logos/Roots Coffee.png"
+  },
+  "class-caf": {
+    "names": [
+      "Class Café"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/class-cafe.png",
+    "site_logo": "/logos/Class Cafe.png"
+  },
+  "true-coffee": {
+    "names": [
+      "True Coffee"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/true-coffee.png",
+    "site_logo": "/logos/True Coffee.png"
+  },
+  "fire-tiger": {
+    "names": [
+      "Fire Tiger"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/fire-tiger.png",
+    "site_logo": "/logos/Fire Tiger.png"
+  },
+  "koi-th-thailand": {
+    "names": [
+      "KOI Thé Thailand"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/koi-the.png",
+    "site_logo": "/logos/KOI the.png"
+  },
+  "gong-cha-thailand": {
+    "names": [
+      "Gong Cha Thailand"
+    ],
+    "logo": "source-videos/логотипы/чай-кофе/gong-cha.png",
+    "site_logo": "/logos/Gong Cha.png"
+  }
 }

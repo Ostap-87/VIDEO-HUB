@@ -1,0 +1,594 @@
+{
+  "title": "Продукты питания и молочная промышленность Таиланда — Global Tech Tour",
+  "output": "2026-10-08-тайланд-еда",
+  "source": "https://globaltechtour.ru/expeditions/thailand-food-dairy-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 08.10.2026)",
+  "robot": "bangkok",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Продукты питания и молочная промышленность Таиланда",
+      "topright": "CPF · Thai Union\nBetagro · Dutch Mill",
+      "logos": [
+        {
+          "name": "Charoen Pokphand Foods",
+          "logo": "source-videos/логотипы/еда/charoen-pokphand-foods.png"
+        },
+        {
+          "name": "Thai Union",
+          "logo": "source-videos/логотипы/еда/thai-union-group.png"
+        },
+        {
+          "name": "SPACE-F",
+          "logo": "source-videos/логотипы/еда/space-f.png"
+        },
+        {
+          "name": "Betagro",
+          "logo": "source-videos/логотипы/еда/betagro.png"
+        },
+        {
+          "name": "Dutch Mill",
+          "logo": "source-videos/логотипы/еда/dutch-mill.png"
+        },
+        {
+          "name": "NR Instant Produce",
+          "logo": "source-videos/логотипы/еда/nr-instant-produce.png"
+        },
+        {
+          "name": "More Meat",
+          "logo": "source-videos/логотипы/еда/more-meat.png"
+        },
+        {
+          "name": "Foremost",
+          "logo": "source-videos/логотипы/еда/foremost-frieslandcampina.png"
+        }
+      ],
+      "box_text": "От штаб-квартиры CPF —\n9 компаний, 6 дней, 6 ночей",
+      "box_right": "Бангкок + Самутсакхон —\nс однодневным выездом в Самутсакхон",
+      "footer": "Global Tech Tour · бизнес-делегации в Таиланд · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Визиты в штаб-квартиры, обычно закрытые для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы в пределах Бангкока и региона включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на тайском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "ghost": "ไทย",
+      "title1": "9 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2",
+          "text": "Charoen Pokphand Foods, Thai Union, SPACE-F"
+        },
+        {
+          "name": "Дни 3–4 · Бангкок",
+          "text": "Betagro, Dutch Mill, NR Instant Produce, More Meat"
+        },
+        {
+          "name": "День 5 · Бангкок",
+          "text": "Foremost, Meiji"
+        }
+      ],
+      "quote": "С однодневным выездом\nв Самутсакхон."
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Бангкок",
+          "days": "дни 1, 3–5",
+          "companies": "Charoen Pokphand Foods\nBetagro\nDutch Mill\nNR Instant Produce\n+ ещё 3"
+        },
+        {
+          "name": "Самутсакхон",
+          "days": "день 2",
+          "companies": "Thai Union\nSPACE-F",
+          "leg": {
+            "icon": "car",
+            "text": "≈1 ч от Бангкока"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Бангкок · <b>Вылет:</b> Бангкок · выезды — однодневные, ночёвка в Бангкоке"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "ghost": "ห้าวัน",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Charoen Pokphand Foods",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "Самутсакхон · 10:00–13:00",
+          "title": "Thai Union ·\nSPACE-F",
+          "text": "Однодневная поездка в Самутсакхон (≈1 ч от Бангкока). Ночёвка — Бангкок.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Betagro ·\nDutch Mill",
+          "text": "Dutch Mill — доминирующий производитель питьевого йогурта в Таиланде.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "NR Instant Produce ·\nMore Meat",
+          "text": "More Meat — тайский бренд растительного мяса.",
+          "label": "День 4"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Foremost ·\nMeiji",
+          "text": "Визиты: Foremost, Meiji.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Бангкок",
+      "title": "Charoen Pokphand",
+      "native": "เจริญโภคภัณฑ์อาหาร",
+      "ghost": "เจริญโภคภัณฑ์อาหาร",
+      "ghost_thai": true,
+      "logo": "source-videos/логотипы/еда/charoen-pokphand-foods.png",
+      "short": "Charoen Pokphand Foods (CPF)",
+      "subtitle": "CPF · CP Group · Бангкок",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "500+ млрд бат",
+          "label": "выручка"
+        },
+        {
+          "icon": "star",
+          "value": "Meat Zero",
+          "label": "линейка"
+        },
+        {
+          "icon": "flag",
+          "value": "1978",
+          "label": "год основания",
+          "sub": "со штаб-квартирой в Бангкоке"
+        },
+        {
+          "icon": "handshake",
+          "value": "CP Group",
+          "label": "в составе группы"
+        }
+      ],
+      "why": "Глобальный агропромышленный конгломерат в составе CP Group, охватывающий комбикорма, животноводство, аквакультуру.",
+      "learn": "Разработанная R&D-центром линейка Meat Zero на базе технологии Plant-Tec — растительный заменитель мяса.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Самутсакхон",
+      "title": "Thai Union Group",
+      "native": "ไทยยูเนี่ยน กรุ๊ป",
+      "ghost": "ไทยยูเนี่ยน",
+      "ghost_thai": true,
+      "logo": "source-videos/логотипы/еда/thai-union-group.png",
+      "short": "Thai Union Group",
+      "subtitle": "Самутсакхон",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "~$3,9 млрд",
+          "label": "выручка",
+          "sub": "2024 год"
+        },
+        {
+          "icon": "building",
+          "value": "40+",
+          "label": "предприятий мира"
+        },
+        {
+          "icon": "trending",
+          "value": "№1 в мире",
+          "label": "переработчик консервированного тунца"
+        },
+        {
+          "icon": "flag",
+          "value": "1977",
+          "label": "год основания",
+          "sub": "в Таиланде"
+        }
+      ],
+      "why": "Крупнейший в мире переработчик консервированного тунца, владелец брендов Chicken of the Sea и John West.",
+      "learn": "В 2022 году запущена линейка OMG Meat — растительная продукция для тайского рынка.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Самутсакхон",
+      "title": "SPACE-F",
+      "native": "สเปซ-เอฟ",
+      "ghost": "สเปซ-เอฟ",
+      "ghost_thai": true,
+      "logo": "source-videos/логотипы/еда/space-f.png",
+      "short": "SPACE-F",
+      "subtitle": "Самутсакхон",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Первый в Таиланде",
+          "label": "глобальный фудтех-инкубатор"
+        },
+        {
+          "icon": "pin",
+          "value": "Самутсакхон",
+          "label": "площадка визита",
+          "sub": "день 2 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Первый в Таиланде глобальный фудтех-инкубатор и акселератор, созданный Национальным инновационным агентством Таиланда.",
+      "learn": "Программа проводит ежегодные наборы со стартапами из Таиланда, США, Сингапура, Китая, Индии, Израиля и других стран, давая доступ.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Бангкок",
+      "title": "Betagro",
+      "native": "เบทาโกร",
+      "ghost": "เบทาโกร",
+      "ghost_thai": true,
+      "logo": "source-videos/логотипы/еда/betagro.png",
+      "short": "Betagro",
+      "subtitle": "Бангкок",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Первая в стране",
+          "label": "система прослеживаемости от фермы"
+        },
+        {
+          "icon": "star",
+          "value": "S-Pure",
+          "label": "бренд"
+        },
+        {
+          "icon": "star",
+          "value": "Betagro E-Traceability",
+          "label": "создание"
+        },
+        {
+          "icon": "flag",
+          "value": "1967",
+          "label": "год основания"
+        }
+      ],
+      "why": "Ведущая интегрированная тайская агропродовольственная группа.",
+      "learn": "Бренд S-Pure стал первым в Таиланде, сертифицированным NSF USA по стандарту «выращено без антибиотиков».",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Бангкок",
+      "title": "Dutch Mill",
+      "native": "ดัชมิลล์",
+      "ghost": "ดัชมิลล์",
+      "ghost_thai": true,
+      "logo": "source-videos/логотипы/еда/dutch-mill.png",
+      "short": "Dutch Mill",
+      "subtitle": "Бангкок",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "90%+",
+          "label": "сегмента"
+        },
+        {
+          "icon": "trending",
+          "value": "~40%",
+          "label": "всей категории йогуртов"
+        },
+        {
+          "icon": "star",
+          "value": "Dutchmill",
+          "label": "бренд"
+        },
+        {
+          "icon": "flag",
+          "value": "1984",
+          "label": "год основания",
+          "sub": "27 января 1984 года"
+        }
+      ],
+      "why": "Доминирующий производитель питьевого йогурта в Таиланде.",
+      "learn": "Также выпускает UHT-молоко и молочные напитки под брендом Dutchmill, экспортируемые почти во все страны АСЕАН.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Бангкок",
+      "title": "NR Instant",
+      "native": "เอ็นอาร์ อินสแตนท์ โปรดิวซ์",
+      "ghost": "เอ็นอาร์",
+      "ghost_thai": true,
+      "logo": "source-videos/логотипы/еда/nr-instant-produce.png",
+      "short": "NR Instant Produce (NRF)",
+      "subtitle": "NRF · Бангкок",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "~$51,4 млн",
+          "label": "привлечено инвестиций"
+        },
+        {
+          "icon": "briefcase",
+          "value": "~408 млн бат",
+          "label": "инвестиции"
+        },
+        {
+          "icon": "flag",
+          "value": "2020",
+          "label": "IPO на бирже"
+        },
+        {
+          "icon": "chart",
+          "value": "SET",
+          "label": "акции на бирже"
+        }
+      ],
+      "why": "NR Instant Produce, вышедшая на Фондовую биржу Таиланда в октябре 2020 года.",
+      "learn": "Группа производит быстрорастворимые продукты и приправы на экспорт.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Бангкок",
+      "title": "More Meat",
+      "native": "มอร์มีท",
+      "ghost": "มอร์มีท",
+      "ghost_thai": true,
+      "logo": "source-videos/логотипы/еда/more-meat.png",
+      "short": "More Meat",
+      "subtitle": "Бангкок",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "80+",
+          "label": "точек сетей Tesco Lotus"
+        },
+        {
+          "icon": "flag",
+          "value": "2019",
+          "label": "год основания"
+        },
+        {
+          "icon": "pin",
+          "value": "Бангкок",
+          "label": "площадка визита",
+          "sub": "день 4 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Тайский бренд растительного мяса, основанный около 2019 года Воракан Танашотеворапонгом.",
+      "learn": "Продукция продаётся более чем в 80 точках сетей Tesco Lotus, Rimping и Gourmet Market.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Бангкок",
+      "title": "Foremost",
+      "native": "โฟร์โมสต์",
+      "ghost": "โฟร์โมสต์",
+      "ghost_thai": true,
+      "logo": "source-videos/логотипы/еда/foremost-frieslandcampina.png",
+      "short": "Foremost",
+      "subtitle": "Бангкок",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1956",
+          "label": "год регистрации"
+        },
+        {
+          "icon": "pin",
+          "value": "Бангкок",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Часть нидерландского кооператива FrieslandCampina выпускает бренд Foremost в Таиланде свыше 65 лет.",
+      "learn": "Foremost Dairy Products была зарегистрирована в 1956 году как производитель мороженого.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Бангкок",
+      "title": "Meiji Thailand",
+      "native": "เมจิ ไทยแลนด์",
+      "ghost": "เมจิ",
+      "ghost_thai": true,
+      "logo": "source-videos/логотипы/еда/meiji.svg",
+      "short": "Meiji Thailand",
+      "subtitle": "Charoen Pokphand Group · Бангкок",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1989",
+          "label": "год основания",
+          "sub": "1 февраля 1989 года"
+        },
+        {
+          "icon": "handshake",
+          "value": "Charoen Pokphand Group",
+          "label": "в составе группы"
+        },
+        {
+          "icon": "pin",
+          "value": "Бангкок",
+          "label": "площадка визита",
+          "sub": "день 5 программы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Компания занимает первое место по пастеризованному молоку в Таиланде.",
+      "learn": "CP-Meiji, основанная 1 февраля 1989 года как совместное предприятие тайской Charoen Pokphand Group и японской Meiji Co.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "В пределах Бангкока и региона",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 6 ночей",
+          "text": "Включая ночь после дня 5",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На тайском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "9 компаний",
+          "text": "CPF · Thai Union · Betagro\nБангкок + Самутсакхон",
+          "icon": "cart"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "5 дней визитов"
+        },
+        {
+          "icon": "cart",
+          "value": "9 компаний",
+          "label": "в программе",
+          "sub": "CPF, Thai Union, Betagro"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы в пределах Бангкока и региона",
+        "Сопровождение на тайском/английском",
+        "Проживание 6 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Бангкок (перелёт Москва → Бангкок, аэропорт Суварнабхуми).<br><b>Вылет:</b> Бангкок — дополнительная ночь после дня 5, выезд из отеля и трансфер в аэропорт ранним утром следующего дня."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

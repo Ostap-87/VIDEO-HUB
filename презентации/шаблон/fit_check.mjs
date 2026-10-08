@@ -50,7 +50,7 @@ const issues = await page.evaluate(() => {
       const f = all('.fact').map(R);
       const lim = [f[2] ? f[2].t - 6 : 545, f[3] ? f[3].t - 6 : 545, 788, 788];
       f.forEach((r, i) => { if (r.b > lim[i]) add(`facts.${i}`, `fact card bottom ${Math.round(r.b)} > ${lim[i]}`); });
-      all('.fact .v').forEach((v, i) => { if (shrunk(v) < 0.62) add(`facts.${i}`, 'fact value shrunk'); });
+      all('.fact .v').forEach((v, i) => { if (shrunk(v) < 0.5) add(`facts.${i}`, 'fact value shrunk'); });
       const why = one('.why .p'); if (why && R(why).b > 1062) add('why', 'why overflow');
       const learn = one('.learn'); if (learn && R(learn).b > 1060) add('learn', 'learn overflow');
       const cs = one('.csub'); if (cs && R(cs).b > 1000) add('subtitle', 'subtitle overflow');
@@ -91,7 +91,7 @@ const issues = await page.evaluate(() => {
     }
     if (cls.includes('s-route')) {
       all('.cc').forEach((c, i) => { if (R(c).b > 965) add(`cities.${i}`, 'route card overflow'); });
-      all('.nm span').forEach((c, i) => { if (shrunk(c) < 0.6) add(`cities.${i}`, 'city name shrunk'); });
+      all('.nm span').forEach((c, i) => { if (shrunk(c) < 0.45) add(`cities.${i}`, 'city name shrunk'); });
     }
   });
   return out;

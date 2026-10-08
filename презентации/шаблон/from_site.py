@@ -744,6 +744,8 @@ def extract_facts(desc, names=()):
             p = parse_word(w0)
             if MORPH and p and p.tag.case not in ('nomn', 'ablt', 'accs'):
                 continue
+            if MORPH and p and p.tag.case == 'ablt' and not re.search(r'(?:стал\w*|являе\w*|являл\w*|оставаясь|остаётся|остается|признан\w*|назван\w*|считается)\s+(?:\S+\s+)?$', before):
+                continue  # «основанная X — единственным инструктором» — это про основателя
             words = np_after(rest, 0, 4)
             if not words or words[0].lower().startswith(TOP_BAD):
                 continue
@@ -778,7 +780,7 @@ def extract_facts(desc, names=()):
             if re.search(r'\d{4}', mid) or in_parens(sent, m.start()):
                 continue
             pv = parse_word(verb)
-            if MORPH and pv and pv.tag.POS == 'PRTF' and (pv.tag.case not in ('nomn',) or m.start() > 80):
+            if MORPH and pv and pv.tag.POS not in ('VERB', 'PRTS') and (pv.tag.case not in ('nomn', None) or m.start() > 80):
                 continue
             if not subj_is_company or (si == 0 and m.start() > 120 and not sent.lower().startswith(tuple(lname))):
                 continue
@@ -810,9 +812,9 @@ def extract_facts(desc, names=()):
                 sub = f'в {sm.group(1)}' if sm else ''
             add('year', year, lab, [sub], 'flag', base + m.start(), 3)
         # --- названия брендов / платформ / моделей
-        for m in re.finditer(r'(?:([А-ЯЁа-яё-]+)\s+)?\b(бренд\w*|агрегатор\w*|мессенджер\w*|логистик\w*|соцкоммерци\w*|линейк\w+|платформ\w+|приложени\w+|модел\w+|сервис\w*|кошел[её]к\w*|кошельк\w*|'
+        for m in re.finditer(r'(?:([А-ЯЁа-яё-]+)\s+)?\b((?i:бренд\w*|агрегатор\w*|мессенджер\w*|логистик\w*|соцкоммерци\w*|линейк\w+|платформ\w+|приложени\w+|модел\w+|сервис\w*|кошел[её]к\w*|кошельк\w*|'
                              r'программ\w+|формат\w*|технологи\w+|систем\w+|проект\w*|суббренд\w*|маркетплейс\w*|стратеги\w+|'
-                             r'ассистент\w*|супер-апп\w*|акселератор\w*|инкубатор\w*|тест\w*|сет[ьи])\s+'
+                             r'ассистент\w*|супер-апп\w*|акселератор\w*|инкубатор\w*|тест\w*|сет[ьи]))\s+'
                              r'(?:под (?:брендом|названием)\s+)?«?([A-Z][\w&+\'’.!-]*(?:\s+(?:[A-Z0-9][\w&+\'’.!-]*|of|the|by|for|&))*)»?', sent):
             adj, kw, name = m.group(1), m.group(2), m.group(3).strip().rstrip('.')
             if len(name) < 2 or name.upper() in ('NYSE', 'SE', 'COVID-19', 'IPO', 'USA', 'NSF', 'FDA', 'AI', 'DNA', 'LLM', 'ML', 'AWS'):
@@ -826,7 +828,7 @@ def extract_facts(desc, names=()):
             name = ' '.join(nw[:4])
             if any(name.lower() == n or name.lower() in n.split() or name.lower() in n for n in lname if len(name) >= 3) or name.lower() in lname:
                 continue
-            lab = inflect(kw, {'nomn', 'sing'}) if MORPH else kw
+            lab = (inflect(kw.lower(), {'nomn', 'sing'}) if MORPH else kw).lower()
             adj = adj.lower() if adj else adj
             if adj and MORPH and first_pos(adj) == 'ADJF':
                 pa = parse_word(adj)
@@ -844,6 +846,18 @@ def extract_facts(desc, names=()):
                   'ассис': 'cpu', 'серви': 'smartphone', 'марке': 'cart', 'тест': 'target', 'техно': 'cpu', 'систе': 'cpu',
                   'страт': 'target', 'сеть': 'store', 'сети': 'store', 'супер': 'smartphone'}.get(k5, 'star')
             add('name', name, lab, [sub], ic, base + m.start(), 4)
+        # --- запуски/внедрения: «внедрила Copilot для Microsoft 365», «запущено подразделение AXTRA Digital»
+        for m in re.finditer(r'\b(запустил\w*|запущен\w*|внедрил\w*|создал\w*|разработал\w*)\s+(?:[а-яё-]+\s+){0,2}«?([A-Z][\w&+.\'’-]*(?:\s+[A-Z0-9][\w&+.\'’-]*){0,3})»?', sent):
+            if in_parens(sent, m.start()):
+                continue
+            name = m.group(2).strip()
+            if len(name) < 3 or any(name.lower() == n for n in lname) or any(name == f['value'] for f in facts):
+                continue
+            lab = {'запус': 'запуск', 'запущ': 'запуск', 'внедр': 'внедрение', 'созда': 'создание', 'разра': 'разработка'}[m.group(1)[:5].lower()]
+            tail = sent[m.end():]
+            sm = re.match(r'\s+((?:для|с|на базе|совместно с)\s+[^,.;:()—]{3,30})', tail)
+            sub = sm.group(1) if sm else year_phrase(sent[max(0, m.start() - 40):m.start()])
+            add('name', name, lab, [sub], 'star', base + m.start(), 4)
         # --- «запустило «Tops Chef Bot» — ИИ-ассистента …»
         for m in re.finditer(r'«([A-Z][^»]{1,28})»\s*—\s*([^,.;:()]{3,60})', sent):
             name = m.group(1)
@@ -909,20 +923,32 @@ def extract_facts(desc, names=()):
     return res
 
 
+def _vs(x):
+    return x.v[0] if isinstance(x, Var) else x
+
+
 def pick_facts(cands, extra):
-    """4 факта: цифры → «№1/первый» → бренды → год → партнёр/биржа → группа, город визита."""
-    chosen, kinds = [], {}
+    """4 факта: сначала по одному каждого вида (цифры, №1, бренд, год…), потом добор; в конце — группа, город."""
     limits = {'year': 1, 'name': 2, 'listing': 1, 'top': 2, 'money': 2, 'count': 3, 'pct': 2, 'partner': 1, 'spec': 2}
-    for f in sorted(cands, key=lambda f: (f['prio'], f['pos'])) + extra:
-        k = f['kind']
-        if kinds.get(k, 0) >= limits.get(k, 9):
-            continue
-        if any(f['value'].lower() == c['value'].lower() for c in chosen):
-            continue
+    ranked = sorted(cands, key=lambda f: (f['prio'], f['pos']))
+    chosen, kinds = [], {}
+
+    def take(f):
+        if len(chosen) >= 4 or kinds.get(f['kind'], 0) >= limits.get(f['kind'], 9):
+            return
+        if any(_vs(f['value']).lower() == _vs(c['value']).lower() for c in chosen):
+            return
         chosen.append(f)
-        kinds[k] = kinds.get(k, 0) + 1
-        if len(chosen) == 4:
-            break
+        kinds[f['kind']] = kinds.get(f['kind'], 0) + 1
+
+    numeric = [f for f in ranked if f['kind'] in ('count', 'pct', 'money') and f['prio'] <= 2]
+    for f in numeric[:2]:
+        take(f)
+    for f in ranked:  # по одному каждого вида
+        if f['kind'] not in kinds:
+            take(f)
+    for f in ranked + extra:
+        take(f)
     order = {'count': 0, 'pct': 0, 'money': 0, 'top': 1, 'name': 2, 'spec': 2, 'partner': 3, 'year': 4, 'listing': 5, 'group': 6, 'city': 7, 'city2': 8}
     chosen.sort(key=lambda f: (order.get(f['kind'], 9), f.get('pos', 0)))
     return chosen
@@ -1095,6 +1121,10 @@ def nominal_kind(c, limit=55):
     dm = re.search(r'\s[—–]\s', s0)
     if not dm or re.search(ACTIVITY, s0[:dm.start()]) or len(s0[:dm.start()].split()) > 14:
         return ''
+    w0 = s0[dm.end():].split()[0] if s0[dm.end():].split() else ''
+    p0 = parse_word(w0.lower())
+    if not w0 or (p0 and p0.tag.case not in ('nomn', None)) or any(is_verb(w) for w in s0[:dm.start()].split()):
+        return ''
     v = clause_cuts(s0[dm.end():].strip(), limit)
     v = [x for x in v if len(x) <= limit]
     return v[0] if v else ''
@@ -1133,7 +1163,7 @@ def title_variants(c):
     if short and short != n:
         out.append(short)
     if '/' in n:
-        out.append(n.split('/')[0].strip())
+        out += [x.strip() for x in n.split('/')]
     if len(n.split()) > 2:
         out.append(' '.join(n.split()[:2]))
     res = []
@@ -1147,9 +1177,10 @@ def native_variants(c):
     z = (c.get('name_zh') or '').strip()
     if not z or re.fullmatch(r'[\x00-\x7fÀ-ɏ\s.,&()\'’-]+', z):
         return [None]
-    out = [z]
+    out = []
     if '(' in z:
         out.append(base_name(z))
+    out.append(z)
     if '/' in z:
         out.append(z.split('/')[0].strip())
     out.append(None)
@@ -1182,16 +1213,38 @@ def load_brands():
     return json.loads(BRANDS.read_text(encoding='utf-8')) if BRANDS.exists() else {}
 
 
+GENERIC_SUFFIX = r'\s+(?:Thailand|Group|Corporation|Corp\.?|Holdings|Public Company Limited|PCL|Co\.?,? Ltd\.?|Ltd\.?|Inc\.?)$'
+
+
+def name_keys(c):
+    n = c['name_en']
+    keys = set()
+    for part in [n, base_name(n), paren_name(n)] + re.split(r'\s*/\s*|\s+[—–]\s+', base_name(n)):
+        part = part.strip()
+        if not part:
+            continue
+        keys.add(part.lower())
+        keys.add(re.sub(GENERIC_SUFFIX, '', part).strip().lower())
+    return {k for k in keys if len(k) >= 3}
+
+
 def find_existing_logo(c, brands):
-    names = {c['name_en'].lower(), base_name(c['name_en']).lower()}
-    for k, v in brands.items():
-        if v.get('site_logo') == c.get('logo') and v.get('logo'):
+    """Логотип уже в библиотеке? Сначала по ссылке сайта, потом по названиям из brands.json."""
+    for v in brands.values():
+        if v.get('site_logo') and v.get('site_logo') == c.get('logo') and v.get('logo') and (ROOT / v['logo']).exists():
             return v['logo']
-    for k, v in brands.items():
+    keys = name_keys(c)
+    base_keys = {re.sub(GENERIC_SUFFIX, '', base_name(c['name_en'])).strip().lower()}
+    first = None
+    for v in brands.values():
         bn = {x.lower() for x in v.get('names', [])}
-        if names & bn and v.get('logo') and (ROOT / v['logo']).exists():
+        if not (v.get('logo') and (ROOT / v['logo']).exists()):
+            continue
+        if base_keys & bn:
             return v['logo']
-    return None
+        if keys & bn and not first:
+            first = v['logo']
+    return first
 
 
 def trim_logo(path):
@@ -1241,7 +1294,7 @@ def trim_logo(path):
     if out != path:
         path.unlink()
     # белый логотип на прозрачном фоне на белой карточке не виден — предупреждаем
-    a = [p for p in im.getdata() if p[3] > 128]
+    a = [p for p in (im.get_flattened_data() if hasattr(im, 'get_flattened_data') else im.getdata()) if p[3] > 128]
     if a and sum(1 for p in a if p[0] > 235 and p[1] > 235 and p[2] > 235) > 0.85 * len(a):
         print(f'  ! логотип почти весь белый: {out}', file=sys.stderr)
     return out
@@ -1332,7 +1385,8 @@ class Var:
                 vs.extend(v)
             else:
                 vs.append(v)
-        self.v = [x for i, x in enumerate(vs) if x not in vs[:i]] or ['']
+        vs = [x for x in vs if x is not None] or ([None] if variants == (None,) else [''])
+        self.v = [x for i, x in enumerate(vs) if x not in vs[:i]]
 
     def get(self, level):
         return self.v[min(level, len(self.v) - 1)]
@@ -1383,7 +1437,8 @@ def lines2(items, sep=' · '):
 
 
 def company_short(c):
-    return base_name(c['name_en'])
+    n = re.split(r'\s*/\s*|\s+[—–]\s+', base_name(c['name_en']))[0]
+    return re.sub(GENERIC_SUFFIX, '', n).strip() or n
 
 
 def build_deck(tour, comps, logos_ok=True):
@@ -1458,7 +1513,7 @@ def build_deck(tour, comps, logos_ok=True):
         'logos': logos,
         'box_text': box_text,
         'box_right': box_right,
-        'footer': f'Global Tech Tour · {tour.get("eyebrow_ru", "").lower() or "бизнес-делегации"} · РФ/СНГ',
+        'footer': f'Global Tech Tour · {(lambda e: e[:1].lower() + e[1:])(tour.get("eyebrow_ru", "")) or "бизнес-делегации"} · РФ/СНГ',
     })
 
     # 2. почему мы
@@ -1502,7 +1557,7 @@ def build_deck(tour, comps, logos_ok=True):
         if notes and not names:
             txt = notes[0]
         full = txt + (' — ' + notes[0][0].lower() + notes[0][1:] if notes and names else '')
-        items.append({'name': name, 'text': Var(full, txt)})
+        items.append({'name': Var(name, name.split(' · ')[0]), 'text': Var(full, txt)})
     quote = f'{cap(pos_tail)}.' if pos_tail else ''
     q2 = quote
     if quote and len(quote) > 28:
@@ -1562,7 +1617,7 @@ def build_deck(tour, comps, logos_ok=True):
         cs = [comps[cid] for cid in d['companies'] if cid in comps]
         names = [company_short(c) for c in cs]
         title = ' ·\n'.join(names) if names else (d.get('area_ru') or d['city_ru'])
-        title2 = ' ·\n'.join(re.sub(r'\s+(Group|Thailand|Corporation)$', '', n) for n in names) if names else title
+        title2 = ' ·\n'.join(company_short(c) for c in cs) if names else title
         tx = []
         if d.get('transfer_ru'):
             tx.append(d['transfer_ru'])
@@ -1575,15 +1630,18 @@ def build_deck(tour, comps, logos_ok=True):
                 kinds.append(f'{company_short(c)} — {k}')
         alt = '; '.join(kinds)
         full = ' '.join(tx) if tx else (end_dot(alt) if alt else '')
-        short_tx = ' '.join(clause_cuts(tx[0], 70)[-1:]) + ('.' if tx else '') if tx else ''
+        short_tx = clause_cuts(tx[0], 70)[0] if tx else ''
         variants = [full]
         if tx:
-            variants += [end_dot(short_tx)] + ([d['note_ru']] if d.get('note_ru') else [])
+            variants += [sentences(tx[0])[0], end_dot(short_tx)] + ([d['note_ru']] if d.get('note_ru') else [])
         else:
             variants += [end_dot('; '.join(k.split(' — ')[0] + ' — ' + ' '.join(k.split(' — ')[1].split()[:4]) for k in kinds))] if kinds else []
         variants += [f'Визиты: {", ".join(names)}.' if names else '']
-        dlist.append({'sub': d.get('time') or '', 'title': Var(title, title2),
-                      'text': Var(*[v for v in variants if v]), 'label': f'День {d["day"]}' + (f' · {d["city_ru"]}' if len(cities) > 1 and d['city_ru'] != main_city else '')})
+        title3 = ' ·\n'.join(' '.join(n.split()[:2]) for n in names) if names else title
+        dlist.append({'sub': d.get('time') or '', 'title': Var(title, title2, title3),
+                      'text': Var(*[v for v in variants if v]), 'label': f'День {d["day"]}'})
+        if len(cities) > 1 and d['city_ru'] != main_city:
+            dlist[-1]['sub'] = f'{d["city_ru"]} · {d.get("time") or ""}'.strip(' ·')
     dghost = THAI_DAYS.get(len(itin)) if country == 'th' else (CJK_DAYS.get(len(itin)) if country in ('cn', 'jp') else None)
     slides.append({'type': 'days', 'tag': 'Программа по дням', 'title': f'{cnt(len(itin), "день", "дня", "дней")} визитов',
                    'ghost': dghost, 'days': dlist})
@@ -1596,17 +1654,24 @@ def build_deck(tour, comps, logos_ok=True):
         extra = []
         grp = parent_group(c)
         if grp and grp.lower() not in c['name_en'].lower():
-            extra.append({'kind': 'group', 'value': grp, 'labels': ['в составе группы'], 'subs': [], 'icon': 'handshake', 'pos': 999})
+            ws_ = grp.split()
+            gval = Var(grp, ''.join(w[0] for w in ws_ if w[0].isupper())) if len(ws_) >= 3 else grp
+            extra.append({'kind': 'group', 'value': gval, 'labels': ['в составе группы'], 'subs': [], 'icon': 'handshake', 'pos': 999})
         extra.append({'kind': 'city', 'value': city, 'labels': ['площадка визита'], 'subs': [f'день {d["day"]} программы'], 'icon': 'pin', 'pos': 1000})
         extra.append({'kind': 'city2', 'value': f'День {d["day"]}', 'labels': ['визит делегации'], 'subs': [d.get('time') or ''], 'icon': 'calendar', 'pos': 1001})
         facts = pick_facts(cands, extra)
         wl = why_learn(c)
         fl = []
         for f in facts:
-            subs = [s for s in f['subs'] if s]
-            fl.append({'icon': f['icon'], 'value': f['value'],
+            fsubs = [x for x in f['subs'] if x]
+            vv = f['value']
+            if f['kind'] == 'top' and ' в ' in vv and not fsubs:
+                head, _, scope = vv.partition(' в ')
+                vv = Var(f['value'], head)
+                fsubs = ['', 'в ' + scope]
+            fl.append({'icon': f['icon'], 'value': vv,
                        'label': Var(*f['labels']) if len(f['labels']) > 1 else f['labels'][0],
-                       'sub': Var(*(subs + [''])) if subs else ''})
+                       'sub': Var(*(fsubs + [''])) if fsubs else ''})
         pn = paren_name(c['name_en'])
         sub_parts = []
         if pn and pn.lower() not in base_name(c['name_en']).lower():
@@ -1621,18 +1686,32 @@ def build_deck(tour, comps, logos_ok=True):
         for t in tv:
             for n in nv:
                 combos.append((t, n))
-        combos.sort(key=lambda x: (len(x[0]) + len(x[1] or '') * 0.9) if x != (tv[0], nv[0]) else -1)
+        combos.sort(key=lambda x: (x[1] is None, len(x[0]) + len(x[1] or '') * 0.9) if x != (tv[0], nv[0]) else (False, -1))
         slide = {'type': 'company', 'tag': f'День {d["day"]} · {city}',
-                 'title': Var(*[t for t, n in combos]), 'native': Var(*[n for t, n in combos]),
+                 'title': Var(None), 'native': Var(None),
                  '_combo': True,
                  'ghost': gh, 'ghost_thai': thai,
                  'logo': logo_of.get(c['id']),
-                 'short': Var(c['name_en'], base_name(c['name_en'])),
+                 'short': Var(c['name_en'], base_name(c['name_en']), company_short(c), title_variants(c)[-1]),
                  'subtitle': Var(' · '.join(sub_parts), ' · '.join(sub_parts[-2:]), city),
                  'facts': fl,
                  'why': Var(*(wl[0] or [''])),
                  'learn': Var(*(wl[1] or [''])),
                  'learn_label': 'Фокус визита'}
+        z = (c.get('name_zh') or '').strip()
+        bn = base_name(c['name_en'])
+        pairs = []
+        if '/' in bn and '/' in z:
+            pairs.append((bn.split('/')[0].strip(), z.split('/')[0].strip()))
+        elif re.search(r'\s[—–]\s', bn) and nv[0]:
+            head = re.split(r'\s[—–]\s', bn)[0]
+            zw = base_name(z).split()
+            if len(zw) > len(head.split()):
+                pairs.append((head, ' '.join(zw[:len(head.split())])))
+        for pr in reversed(pairs):
+            combos.insert(1, pr)
+        slide['title'].v = [t for t, n in combos]  # без удаления повторов: title и native идут парами
+        slide['native'].v = [n for t, n in combos]
         if not slide['logo']:
             slide.pop('logo')
         if not gh:
@@ -1646,7 +1725,8 @@ def build_deck(tour, comps, logos_ok=True):
     extra_night = re.search(r'ночь после дня (\d+)', tour.get('departure_ru', ''))
     sector_icon = SECTOR_ICON.get(tour.get('sector'), 'target')
     sixth_title = topic if len(topic) <= 26 else cnt(n_comp, 'компания', 'компании', 'компаний')
-    sixth_text = (', '.join(s.lower() if i else s for i, s in enumerate(subs[:-1])) + (' и ' + subs[-1] if len(subs) > 1 else '') if subs else ' · '.join(tagline[:3]))
+    low = lambda x: x if re.match(r'[A-Z]{2}|[A-Z]\w*[A-Z]', x) else x[:1].lower() + x[1:]
+    sixth_text = (', '.join(low(s) if i else s for i, s in enumerate(subs[:-1])) + (' и ' + low(subs[-1]) if len(subs) > 1 else '') if subs else ' · '.join(tagline[:3]))
     sixth_text = cap(sixth_text) + ('\nв одном городе' if len(cities) == 1 else '\n' + ' + '.join(cities))
     slides.append({'type': 'benefits', 'items': [
         {'title': 'Переговоры\nс компаниями', 'text': Var(inc_short[0] if inc_short else 'Все визиты и переговоры программы', 'Все визиты программы'), 'icon': 'users'},
@@ -1668,8 +1748,8 @@ def build_deck(tour, comps, logos_ok=True):
     slides.append({'type': 'conditions', 'facts': [
         {'icon': 'calendar', 'value': cnt(days, 'день', 'дня', 'дней'), 'label': f'/ {cnt(nights, "ночь", "ночи", "ночей")}',
          'sub': Var(f'{cnt(len(itin), "день", "дня", "дней")} визитов в {vis_city}', f'{cnt(len(itin), "день", "дня", "дней")} визитов')},
-        {'icon': sector_icon, 'value': cnt(n_comp, 'компания', 'компании', 'компаний'), 'label': Var(topic, cinfo[2] and f'программа {cinfo[2]}'),
-         'sub': Var(', '.join(s.lower() for s in subs) if subs else ', '.join(tagline[:3]), ', '.join(tagline[:2]), '')},
+        {'icon': sector_icon, 'value': cnt(n_comp, 'компания', 'компании', 'компаний'), 'label': Var(topic, 'в программе'),
+         'sub': Var(', '.join(low(s) for s in subs) if subs else ', '.join(tagline[:3]), ', '.join(tagline[:2]), '')},
         {'icon': 'briefcase', 'value': price_val, 'label': 'стоимость', 'sub': price_sub},
         {'icon': 'flag', 'value': start if start else 'По запросу', 'label': 'ближайшие даты', 'sub': '' if start else 'даты уточняются'},
     ],
@@ -1756,7 +1836,7 @@ def autofit(deck_var, rounds=8, verbose=True):
             levels[p] = levels.get(p, 0) + 1
             bumped = True
         if verbose:
-            print(f'Автоподгонка, проход {rnd + 1}: {len(issues)} замечаний' + (f', не исправить: {len(stuck)}' if stuck else ''), file=sys.stderr)
+            print(f"Автоподгонка, проход {rnd + 1}: " + "; ".join(f"{it['slide'] + 1}:{it['field']}" for it in issues) + (f", не исправить: {len(stuck)}" if stuck else ""), file=sys.stderr)
         if not bumped:
             return plain, stuck
     plain = combo_fix(resolve(deck_var, levels), deck_var, levels)
