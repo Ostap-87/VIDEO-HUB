@@ -2,7 +2,7 @@
 {# Обложка. Варианты: logos (сетка до 12 логотипов) или logo (один большой логотип, как в Alibaba). #}
 <section class="slide s-cover">
   <div class="dots fade-c robot-dots"></div>
-  <img class="robot" src="{{ (s.hero or 'assets/robot.png')|asset }}" alt="">
+  <img class="robot" src="{{ (s.hero or (('assets/роботы/robot-' ~ deck.robot ~ '.png') if deck.robot else 'assets/robot.png'))|asset }}" alt="">
   {{ m.tag(s.tag) }}
   <div class="title" data-fit="1180">{{ s.title or 'GLOBAL TECH TOUR' }}</div>
   {% if s.topright %}<div class="topright">{{ s.topright|br }}</div>

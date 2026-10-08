@@ -1,7 +1,7 @@
 {% import 'slides/_macros.html' as m with context %}
 {# «Почему мы»: 4 пункта; 1–2 простые, 3 — синяя плашка, 4 — голубая. #}
 <section class="slide s-why">
-  <img class="robot" src="{{ (s.hero or 'assets/robot.png')|asset }}" alt="">
+  <img class="robot" src="{{ (s.hero or (('assets/роботы/robot-' ~ deck.robot ~ '.png') if deck.robot else 'assets/robot.png'))|asset }}" alt="">
   {{ m.tag(s.tag or 'Почему мы') }}
   <div class="title">{{ (s.title or 'Почему мы')|br }}</div>
   {% for it in s['items'][:2] %}

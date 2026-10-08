@@ -4,7 +4,7 @@
 <section class="slide s-contacts">
   {{ m.tag(s.tag or 'Контакты') }}
   <div class="title">{{ (s.title or 'Global\nTech Tour')|br }}</div>
-  <img class="robot" src="{{ (s.hero or 'assets/robot.png')|asset }}" alt="">
+  <img class="robot" src="{{ (s.hero or (('assets/роботы/robot-' ~ deck.robot ~ '.png') if deck.robot else 'assets/robot.png'))|asset }}" alt="">
   {% if s.note %}<div class="note"><div class="tape"></div>{{ s.note|br }}</div>{% endif %}
   <svg class="path" width="1920" height="1080"><path d="M68 820 C 55 880, 95 935, 251 932" fill="none" stroke="#1a73e8" stroke-width="3.5" stroke-dasharray="9 9" stroke-linecap="round"/></svg>
   <div class="panel">
