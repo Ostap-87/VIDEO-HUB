@@ -52,7 +52,7 @@ body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   position: absolute; left: 56px; top: 80px; white-space: nowrap; letter-spacing: .003em;
   font: 900 200px/1.4 var(--display); color: var(--blue); text-transform: uppercase;
 }
-.title .native { font-family: 'Noto Sans SC', 'Noto Sans Thai', var(--display); font-weight: 900; }
+.title .native { font-family: 'Noto Sans SC', 'Noto Sans Thai', var(--display); font-weight: 900; font-size: .78em; line-height: 0; }
 .ghost { /* бледный иероглиф/надпись на фоне */
   position: absolute; white-space: nowrap; color: var(--ghost);
   font: 900 460px/1 'Noto Sans SC', 'Noto Sans Thai', sans-serif; pointer-events: none;
@@ -182,33 +182,33 @@ body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .s-company .ghost { left: 1060px; top: 146px; }
 .s-company .fact { position: absolute; width: 480px; padding: 34px 30px 30px 102px; }
 .s-company .fact .ico { position: absolute; left: 38px; top: 42px; width: 46px; height: 46px; stroke-width: 2; }
-.s-company .fact .v { font: 900 68px/0.98 var(--display); color: var(--blue); white-space: nowrap; }
-.s-company .fact .l { margin-top: 4px; font: 800 26px/32px var(--cond); color: var(--ink); }
+.s-company .fact .v { font: 900 68px/0.95 var(--display); color: var(--blue); white-space: nowrap; }
+.s-company .fact .l { margin-top: 2px; font: 800 26px/32px var(--cond); color: var(--ink); }
 .s-company .fact .s { margin-top: 4px; font: 400 20px/27px var(--text); color: var(--mute); }
-.s-company .logo-card { position: absolute; left: 1184px; top: 320px; width: 682px; height: 440px; padding: 70px 72px; }
+.s-company .logo-card { position: absolute; left: 1190px; top: 330px; width: 670px; height: 422px; padding: 70px 72px; }
 .s-company .logo-card .logo-text { font-size: 110px; }
 .s-company .uline { position: absolute; left: 1490px; top: 800px; width: 70px; height: 5px; background: var(--blue); }
 .s-company .cname { position: absolute; left: 1184px; width: 682px; top: 803px; text-align: center; white-space: nowrap;
-  font: 900 84px/1 var(--display); color: var(--blue); text-transform: uppercase; }
+  font: 900 84px/1.4 var(--display); color: var(--blue); text-transform: uppercase; }
 .s-company .csub { position: absolute; left: 1184px; width: 682px; top: 905px; text-align: center; font: 400 24px/30px var(--text); color: var(--mute); }
-.s-company .why { position: absolute; left: 96px; top: 812px; width: 520px; }
+.s-company .why { position: absolute; left: 96px; top: 816px; width: 520px; }
 .s-company .why .k { font: 800 24px/28px var(--cond); color: var(--blue); text-transform: uppercase; }
 .s-company .why .q { position: absolute; left: 0; top: 46px; width: 42px; height: 34px; }
-.s-company .why .p { margin: 16px 0 0 60px; font: italic 400 27px/36px var(--text); color: var(--ink2); }
-.s-company .learn { position: absolute; left: 698px; top: 798px; width: 424px; min-height: 178px; padding: 22px 30px 24px 33px; }
+.s-company .why .p { margin: 12px 0 0 60px; font: italic 400 27px/36px var(--text); color: var(--ink2); }
+.s-company .learn { position: absolute; left: 698px; top: 798px; width: 424px; min-height: 178px; padding: 27px 30px 24px 33px; }
 .s-company .learn .k { font: 800 24px/28px var(--cond); color: var(--ink); text-transform: uppercase; }
-.s-company .learn .p { margin-top: 12px; font: 400 20px/28px var(--text); color: var(--ink2); }
+.s-company .learn .p { max-width: 310px; text-wrap: wrap; margin-top: 6px; font: 400 20px/28px var(--text); color: var(--ink2); }
 .s-company .desc { position: absolute; left: 64px; top: 1000px; width: 1060px; font: 400 15px/20px var(--text); color: var(--mute); }
 
 /* ---------- 6. Выгоды ---------- */
 .s-benefits .robot-head { position: absolute; left: 1420px; top: 0; width: 500px; height: 313px; }
 .s-benefits .dots { left: 0; top: 560px; width: 600px; height: 500px; }
-.s-benefits .title { left: 56px; top: 118px; font-size: 182.9px; }
+.s-benefits .title { left: 56px; top: 89px; font-size: 182.9px; }
 .s-benefits svg.path { position: absolute; left: 0; top: 0; }
-.s-benefits .bc { position: absolute; width: 560px; min-height: 176px; padding: 36px 90px 30px 167px; }
+.s-benefits .bc { position: absolute; width: 560px; min-height: 176px; padding: 36px 40px 30px 167px; }
 .s-benefits .bc .num { position: absolute; left: 36px; top: 12px; font-size: 124px; -webkit-text-stroke-width: 2.3px; }
 .s-benefits .bc .h { font: 800 34px/1.03 var(--cond); color: var(--ink); }
-.s-benefits .bc .p { margin-top: 12px; font: 400 20px/27px var(--text); color: var(--mute2); }
+.s-benefits .bc .p { padding-right: 60px; margin-top: 12px; font: 400 20px/27px var(--text); color: var(--mute2); }
 .s-benefits .bc .ico { position: absolute; right: 38px; bottom: 30px; width: 44px; height: 44px; stroke-width: 1.8; }
 .s-benefits .bc .knob { position: absolute; left: -11px; top: 50%; margin-top: -13px; width: 26px; height: 26px; border-radius: 50%; background: #dde4ee; box-shadow: var(--shadow); }
 .s-benefits .deco { position: absolute; width: 52px; height: 52px; }
@@ -222,10 +222,10 @@ body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .s-market .lead { position: absolute; left: 64px; top: 412px; width: 820px; font: 400 28px/41px var(--text); color: var(--on-blue); }
 .s-market .stat { position: absolute; width: 565px; height: 356px; text-align: center; }
 .s-market .stat svg { position: absolute; left: 112px; top: 40px; }
-.s-market .stat .v { position: absolute; left: 0; right: 0; top: 118px; font: 900 84px/1 var(--display); color: var(--blue); white-space: nowrap; }
+.s-market .stat .v { position: absolute; left: 0; right: 0; top: 95px; height: 130px; display: flex; align-items: center; justify-content: center; font: 900 84px/1 var(--display); color: var(--blue); white-space: nowrap; }
 .s-market .stat .l { position: absolute; left: 0; right: 0; top: 262px; font: 800 28px/32px var(--cond); color: var(--ink); text-transform: uppercase; }
 .s-market .stat .s { position: absolute; left: 0; right: 0; top: 300px; font: 400 21px/28px var(--text); color: var(--mute); }
-.s-market .quote { position: absolute; left: 250px; top: 950px; display: flex; gap: 22px; align-items: center; font: italic 400 26px/32px var(--text); color: var(--ink2); }
+.s-market .quote { position: absolute; left: 250px; top: 962px; display: flex; gap: 22px; align-items: center; font: italic 400 26px/32px var(--text); color: var(--ink2); }
 .s-market .quote svg { flex: none; }
 .s-market .src { position: absolute; right: 64px; top: 1040px; font: 400 16px/20px var(--text); color: var(--mute); }
 
@@ -241,7 +241,7 @@ body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .s-days .dcard { position: absolute; top: 572px; height: 384px; padding: 36px 40px; }
 .s-days .dcard .h { font: 900 56px/1.03 var(--display); color: var(--blue); text-transform: uppercase; }
 .s-days .dcard .bar { width: 60px; height: 6px; background: var(--blue); border-radius: 2px; margin: 26px 0 20px; }
-.s-days .dcard .p { font: 400 28px/40px var(--text); color: var(--ink2); }
+.s-days .dcard .p { font: 400 28px/40px var(--text); color: var(--ink2); max-width: 445px; }
 .s-days.n4 .dcard .h, .s-days.n5 .dcard .h { font-size: 44px; }
 .s-days.n4 .dcard .p, .s-days.n5 .dcard .p { font-size: 22px; line-height: 31px; }
 .s-days.n5 .dcard { padding: 30px 28px; }
@@ -267,29 +267,29 @@ body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .s-steps .title { left: 50px; top: 65px; font-size: 250px; }
 .s-steps svg.path { position: absolute; left: 0; top: 0; }
 .s-steps .st { position: absolute; top: 590px; width: 330px; height: 230px; padding: 24px 26px; }
-.s-steps .st .n { font: 900 80px/1 var(--display); color: var(--blue); }
+.s-steps .st .n { font: 600 80px/1 var(--display); color: transparent; -webkit-text-stroke: 2.4px var(--blue); }
 .s-steps .st .h { margin-top: 4px; font: 800 30px/34px var(--cond); color: var(--ink); text-transform: uppercase; }
 .s-steps .st .p { margin-top: 6px; font: 400 20px/27px var(--text); color: var(--mute); }
 .s-steps .st.hl { background: var(--blue); }
-.s-steps .st.hl .n, .s-steps .st.hl .h { color: #fff; }
+.s-steps .st.hl .h { color: #fff; }
+.s-steps .st.hl .n { -webkit-text-stroke-color: #fff; }
 .s-steps .st.hl .p { color: var(--on-blue); }
 .s-steps .faq { position: absolute; top: 926px; width: 400px; }
 .s-steps .faq .q { font: 800 24px/27px var(--cond); color: var(--blue); text-transform: uppercase; }
 .s-steps .faq .a { margin-top: 8px; font: 400 20px/27px var(--text); color: var(--ink); }
 
 /* ---------- 11. Контакты ---------- */
-.s-contacts .title { left: 64px; top: 175px; font-size: 170px; line-height: 145px; text-transform: none; white-space: normal; width: 560px; }
+.s-contacts .title { left: 64px; top: 223px; font-size: 170px; line-height: 145px; text-transform: none; white-space: normal; width: 560px; }
 .s-contacts .robot { position: absolute; left: 560px; top: 40px; width: 575px; }
-.s-contacts .note { position: absolute; left: 82px; top: 640px; width: 424px; padding: 22px 30px 26px; border-radius: 16px;
-  background: linear-gradient(135deg, #3a8af0, #1a73e8 70%); color: #fff; font: 400 30px/43px var(--text); transform: rotate(-4deg); box-shadow: 0 10px 24px rgba(26,115,232,.25); }
+.s-contacts .note { position: absolute; left: 78px; top: 650px; width: 448px; padding: 22px 30px 26px; border-radius: 16px;
+  background: linear-gradient(135deg, #3a8af0, #1a73e8 70%); color: #fff; font: 400 30px/43px var(--text); transform: rotate(-5.5deg); box-shadow: 0 10px 24px rgba(26,115,232,.25); }
 .s-contacts .note .tape { left: 110px; top: -18px; width: 92px; height: 30px; transform: rotate(3deg); }
-.s-contacts .panel { position: absolute; left: 890px; top: 70px; width: 980px; height: 990px; border-radius: 26px; background: #fff;
-  box-shadow: 0 7px 0 var(--sh1), 0 13px 0 var(--sh2), 0 20px 40px rgba(23,23,29,.06); transform: rotate(-2deg); }
-.s-contacts .panel .br { }
-.s-contacts .row { position: absolute; left: 70px; width: 820px; height: 72px; display: flex; align-items: center; gap: 22px;
+.s-contacts .panel { position: absolute; left: 1080px; top: 78px; width: 795px; height: 935px; border-radius: 26px; background: #fff;
+  box-shadow: 0 7px 0 var(--sh1), 0 13px 0 var(--sh2), 0 20px 40px rgba(23,23,29,.06); transform: rotate(-1.6deg); }
+.s-contacts .row { position: absolute; left: 62px; width: 690px; height: 72px; display: flex; align-items: center; gap: 22px;
   font: 400 29px/1 var(--text); color: var(--ink); border-bottom: 3px dotted #a9c6f2; padding-bottom: 6px; }
-.s-contacts .row .ci { width: 52px; height: 52px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; flex: none; }
-.s-contacts .row .ci .ico { width: 26px; height: 26px; stroke: #fff; stroke-width: 2.2; }
-.s-contacts .qr { position: absolute; top: 700px; width: 230px; text-align: center; font: 800 20px/24px var(--cond); color: var(--blue); text-transform: uppercase; }
+.s-contacts .row .ci { width: 56px; height: 56px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; flex: none; }
+.s-contacts .row .ci .ico { width: 28px; height: 28px; stroke: #fff; stroke-width: 2.2; }
+.s-contacts .qr { position: absolute; top: 672px; width: 230px; text-align: center; font: 800 20px/24px var(--cond); color: var(--blue); text-transform: uppercase; }
 .s-contacts .qr img { display: block; width: 155px; height: 155px; margin: 12px auto 0; image-rendering: pixelated; }
 .s-contacts svg.path { position: absolute; left: 0; top: 0; }

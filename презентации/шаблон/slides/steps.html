@@ -6,10 +6,10 @@
 <section class="slide s-steps">
   {{ m.tag(s.tag or 'Как проходит') }}
   <div class="title">{{ s.title or 'Как проходит' }}</div>
-  <svg class="path" width="1920" height="1080"><path d="M58 552 C 200 520, 330 520, 520 556 S 800 570, 900 548 S 1100 520, 1250 530 S 1650 560, 1857 540" fill="none" stroke="#1a73e8" stroke-width="5" stroke-dasharray="0.1 13" stroke-linecap="round"/></svg>
+  <svg class="path" width="1920" height="1080"><path d="{{ [[58,560],[174,540],[540,560],[888,560],[1254,498],[1602,517],[1862,560]]|spline }}" fill="none" stroke="#1a73e8" stroke-width="5" stroke-dasharray="0.1 13" stroke-linecap="round"/></svg>
   {% for st in s.steps %}{% set x = 66 + loop.index0 * step %}
-  <div class="abs" style="left:{{ x + cw / 2 - 22 }}px;top:{{ [519, 544, 536, 512, 524][loop.index0 % 5] - 4 }}px;width:44px;height:52px">{{ m.icon('flag' if loop.last else 'pin') }}</div>
-  <div class="card grad st{% if s.hl == loop.index %} hl{% endif %}" style="left:{{ x }}px;top:605px;width:{{ cw }}px;{{ m.rot([0.4, -0.3, 0.2, 0.4, -0.3][loop.index0 % 5]) }}">
+  <div class="abs" style="left:{{ x + 88 }}px;top:{{ [517, 542, 534, 510, 522][loop.index0 % 5] }}px;width:44px;height:52px">{{ m.icon('flag' if loop.last else 'pin') }}</div>
+  <div class="card grad st{% if s.hl == loop.index %} hl{% endif %}" style="left:{{ x }}px;top:605px;width:{{ cw }}px;{{ m.rot([-1.5, 1.4, -0.8, 1.5, -1.0][loop.index0 % 5]) }}">
     {% if s.hl != loop.index %}<div class="tape" style="left:{{ cw / 2 - 56 }}px;top:-14px;{{ m.rot([-3, 2, -2, 3, -2][loop.index0 % 5]) }}"></div>{% endif %}
     <div class="n">{{ '%02d'|format(loop.index) }}</div><div class="h">{{ st.title }}</div><div class="p">{{ st.text }}</div>
   </div>

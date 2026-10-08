@@ -1,0 +1,207 @@
+{
+  "title": "Ритейл Таиланда: конвиниенс, phygital и B2B-опт — Global Tech Tour",
+  "output": "2026-10-08-тайланд",
+  "source": "https://globaltechtour.ru/expeditions/thailand-retail-expedition (данные страницы и карточек компаний на 08.10.2026)",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Ритейл Таиланда",
+      "topright": "Конвиниенс · Phygital\nB2B-опт",
+      "logos": [
+        {"name": "CP All", "logo": "source-videos/логотипы/ритейл/cp-all.png"},
+        {"name": "Central Retail", "logo": "source-videos/логотипы/ритейл/central-retail.png"},
+        {"name": "Siam Piwat", "logo": "source-videos/логотипы/ритейл/siam-piwat.png"},
+        {"name": "Siam Paragon", "logo": "source-videos/логотипы/ритейл/siam-paragon.png"},
+        {"name": "CP Axtra", "logo": "source-videos/логотипы/ритейл/cp-axtra.png"},
+        {"name": "Lotus's", "logo": "source-videos/логотипы/ритейл/lotus.svg"},
+        {"name": "Big C", "logo": "source-videos/логотипы/ритейл/big-c.svg"},
+        {"name": "HomePro", "logo": "source-videos/логотипы/ритейл/homepro.png"}
+      ],
+      "box_text": "От 7-Eleven до phygital-ритейла ICONSIAM —\n9 компаний, 6 дней, 6 ночей",
+      "box_right": "Бангкок —\nвесь ритейл в одном городе",
+      "footer": "Global Tech Tour · бизнес-делегации в Таиланд · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {"title": "Большой опыт", "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."},
+        {"title": "Доступ к штаб-квартирам", "text": "Визиты в штаб-квартиры, обычно закрытые для случайных визитов. Маршрут и визиты согласованы по нашей сети контактов."},
+        {"title": "Готовый маршрут", "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы в пределах Бангкока и региона включены."},
+        {"title": "Сопровождение и перевод", "text": "Сопровождение и синхронный перевод на всех встречах — на тайском и английском."}
+      ]
+    },
+    {
+      "type": "layers",
+      "ghost": "ค้าปลีก",
+      "title1": "9 компаний",
+      "title2": "3 формата",
+      "items": [
+        {"name": "Конвиниенс", "text": "CP All — сеть 7-Eleven в Таиланде: 15 430 магазинов во всех 77 провинциях"},
+        {"name": "Phygital", "text": "Siam Piwat (ICONSIAM), The Mall Group / Siam Paragon, Central Retail — моллы и омниканальность"},
+        {"name": "B2B-опт и сети", "text": "Makro, Lotus's, Big C, HomePro, CP Axtra Technology Center — опт, доставка, цифровизация"}
+      ],
+      "quote": "Весь тайский ритейл —\nв пределах Бангкока."
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "ghost": "ห้าวัน",
+      "days": [
+        {"sub": "10:00–13:00", "title": "CP All ·\nCentral Retail", "text": "Прилёт в первой половине дня, трансфер, заселение — программа стартует в день прилёта."},
+        {"sub": "10:00–13:00", "title": "ICONSIAM ·\nSiam Paragon", "text": "Siam Piwat и The Mall Group: phygital-ритейл и люксовые моллы."},
+        {"sub": "10:00–13:00", "title": "Makro ·\nLotus's", "text": "CP Axtra: опт-розница, Makro PRO и быстрая доставка Lotus's."},
+        {"sub": "10:00–13:00", "title": "Big C ·\nHomePro", "text": "BJC и Home Product Center: новые форматы и омниканальность."},
+        {"sub": "10:00–13:00", "title": "CP Axtra Tech Center", "text": "Технологический центр CP Axtra. День завершается итоговой встречей и networking."}
+      ]
+    },
+    {
+      "type": "company", "tag": "День 1 · Бангкок", "title": "CP All", "native": "ซีพี ออลล์", "ghost": "ซีพี", "ghost_thai": true,
+      "logo": "source-videos/логотипы/ритейл/cp-all.png", "short": "CP All", "subtitle": "7-Eleven в Таиланде · Charoen Pokphand Group",
+      "facts": [
+        {"icon": "store", "value": "15 430", "label": "магазинов 7-Eleven", "sub": "по состоянию на май 2025"},
+        {"icon": "pin", "value": "77", "label": "провинций", "sub": "охват всей страны"},
+        {"icon": "trending", "value": "№2 в мире", "label": "по числу 7-Eleven", "sub": "после Японии (21 600+ точек)"},
+        {"icon": "users", "value": "51%", "label": "собственных магазинов", "sub": "49% — франшиза и суб-лицензии"}
+      ],
+      "why": "Управляет сетью 7-Eleven в Таиланде — второй в мире по числу магазинов.",
+      "learn": "Как устроена сеть из 15 тысяч магазинов у дома: свои точки и франшиза."
+    },
+    {
+      "type": "company", "tag": "День 1 · Бангкок", "title": "Central Retail", "native": "เซ็นทรัล รีเทล", "ghost": "เซ็นทรัล", "ghost_thai": true,
+      "logo": "source-videos/логотипы/ритейл/central-retail.png", "short": "Central Retail", "subtitle": "Central Retail Corporation · Central Group",
+      "facts": [
+        {"icon": "cpu", "value": "Retailligence", "label": "омниканальная стратегия", "sub": "«CRC Retailligence»"},
+        {"icon": "smartphone", "value": "Tops Chef Bot", "label": "ИИ-ассистент по покупкам", "sub": "с Google Cloud, декабрь 2024"},
+        {"icon": "target", "value": "Данные", "label": "о покупателях", "sub": "из магазинов, приложений и соцсетей"},
+        {"icon": "cart", "value": "Tops", "label": "сеть супермаркетов", "sub": "сервис персонального шопера"}
+      ],
+      "why": "Первый в тайских супермаркетах ИИ-ассистент по покупкам на генеративном ИИ.",
+      "learn": "Как данные о покупателях превращаются в персональные предложения."
+    },
+    {
+      "type": "company", "tag": "День 2 · Бангкок", "title": "Siam Piwat", "native": "สยามพิวรรธน์", "ghost": "สยาม", "ghost_thai": true,
+      "logo": "source-videos/логотипы/ритейл/siam-piwat.png", "short": "Siam Piwat", "subtitle": "ICONSIAM · Siam Paragon · Siam Center",
+      "facts": [
+        {"icon": "building", "value": "ICONSIAM", "label": "флагманский проект", "sub": "открыт 9 ноября 2018 года"},
+        {"icon": "pin", "value": "525 тыс. м²", "label": "торговых площадей", "sub": "на берегу реки Чаупхрая"},
+        {"icon": "smartphone", "value": "Parallel World", "label": "цифровая платформа", "sub": "phygital-подход к ритейлу"},
+        {"icon": "star", "value": "Топ-3", "label": "MAPIC Awards 2025", "sub": "самых влиятельных проектов"}
+      ],
+      "why": "Девелопер и оператор ICONSIAM, Siam Paragon, Siam Center и Siam Discovery.",
+      "learn": "Как объединить физический и цифровой опыт покупок."
+    },
+    {
+      "type": "company", "tag": "День 2 · Бангкок", "title": "Siam Paragon", "native": "สยามพารากอน", "ghost": "สยาม", "ghost_thai": true,
+      "logo": "source-videos/логотипы/ритейл/siam-paragon.png", "short": "The Mall Group", "subtitle": "Siam Paragon — флагманский люксовый молл",
+      "facts": [
+        {"icon": "trending", "value": "~70%", "label": "рынка люксового ритейла", "sub": "Таиланда"},
+        {"icon": "users", "value": "50+ млн", "label": "посетителей в год", "sub": "открыт в 2005 году"},
+        {"icon": "briefcase", "value": "1,25 млрд бат", "label": "инвестиций", "sub": "к 20-летию, 2025"},
+        {"icon": "store", "value": "70+", "label": "люксовых бутиков", "sub": "на 20 000 кв. м"}
+      ],
+      "why": "Флагманский люксовый молл The Mall Group, открытый вместе с Siam Piwat.",
+      "learn": "Как молл обновляет формат: зоны EATELIER, NEXTOPIA и MELAND."
+    },
+    {
+      "type": "company", "tag": "День 3 · Бангкок", "title": "Makro", "native": "แม็คโคร", "ghost": "แม็คโคร", "ghost_thai": true,
+      "logo": "source-videos/логотипы/ритейл/cp-axtra.png", "short": "Makro (CP Axtra)", "subtitle": "Makro PRO · опт-розничная торговля",
+      "facts": [
+        {"icon": "trending", "value": "№1", "label": "e-commerce в Таиланде", "sub": "Makro PRO, Euromonitor"},
+        {"icon": "cart", "value": "B2B + B2C", "label": "продажи", "sub": "на одной платформе"},
+        {"icon": "cpu", "value": "LLM-поиск", "label": "на тайском языке", "sub": "AI/ML и векторный поиск"},
+        {"icon": "users", "value": "AXTRA Digital", "label": "с июня 2025", "sub": "agile-модель «сквадов»"}
+      ],
+      "why": "Входит в CP AXTRA — крупнейшего игрока опт-розничной торговли Таиланда.",
+      "learn": "Как ИИ и LLM-поиск работают в оптовой e-commerce."
+    },
+    {
+      "type": "company", "tag": "День 3 · Бангкок", "title": "Lotus's", "native": "โลตัส", "ghost": "โลตัส", "ghost_thai": true,
+      "logo": "source-videos/логотипы/ритейл/lotus.svg", "short": "Lotus's (CP Axtra)", "subtitle": "Lotus's SMART App · grocery-on-demand",
+      "facts": [
+        {"icon": "smartphone", "value": "21 млн+", "label": "онлайн-заказов", "sub": "через приложение, 2025"},
+        {"icon": "car", "value": "1–3 часа", "label": "доставка продуктов", "sub": "grocery-on-demand"},
+        {"icon": "store", "value": "2 500+", "label": "филиалов", "sub": "единая micro fulfillment network"},
+        {"icon": "chart", "value": "Retail media", "label": "и shopper-аналитика", "sub": "под брендом Lotus's"}
+      ],
+      "why": "Лидер сегмента grocery-on-demand в Таиланде.",
+      "learn": "Как магазины становятся складами для быстрой доставки."
+    },
+    {
+      "type": "company", "tag": "День 4 · Бангкок", "title": "Big C", "native": "บิ๊กซี", "ghost": "บิ๊กซี", "ghost_thai": true,
+      "logo": "source-videos/логотипы/ритейл/big-c.svg", "short": "Big C (BJC)", "subtitle": "Berli Jucker · TCC Group",
+      "facts": [
+        {"icon": "building", "value": "Big C at Phenix", "label": "новый формат", "sub": "июнь 2025, Пратунам"},
+        {"icon": "smartphone", "value": "Live", "label": "Promotion Corner", "sub": "трансляции в TikTok и Instagram"},
+        {"icon": "chart", "value": "24,27 млрд", "label": "бат продаж за 3-й квартал", "sub": "−4,4% г/г"},
+        {"icon": "target", "value": "Платформа", "label": "новая стратегия BJC", "sub": "вместо продуктовой модели"}
+      ],
+      "why": "Ритейл, туризм и гастрономия в одном новом формате вместе с AWC.",
+      "learn": "Как гипермаркет перестраивается на фоне падения продаж."
+    },
+    {
+      "type": "company", "tag": "День 4 · Бангкок", "title": "HomePro", "native": "โฮมโปร", "ghost": "โฮมโปร", "ghost_thai": true,
+      "logo": "source-videos/логотипы/ритейл/homepro.png", "short": "HomePro", "subtitle": "Home Product Center PCL",
+      "facts": [
+        {"icon": "trending", "value": "Топ-2", "label": "сетей для дома и DIY", "sub": "в Таиланде по продажам"},
+        {"icon": "globe", "value": "Omni Channel", "label": "система", "sub": "маркетплейс и дистрибуция"},
+        {"icon": "smartphone", "value": "Онлайн → офлайн", "label": "путь покупателя", "sub": "изучить онлайн, купить в магазине"},
+        {"icon": "home", "value": "DIY", "label": "товары для дома", "sub": "и ремонта"}
+      ],
+      "why": "Одна из двух крупнейших сетей товаров для дома и DIY в Таиланде.",
+      "learn": "Как связать e-commerce и физические магазины в одну воронку."
+    },
+    {
+      "type": "company", "tag": "День 5 · Бангкок", "title": "CP Axtra", "native": "ซีพี แอ็กซ์ตร้า", "ghost": "ซีพี", "ghost_thai": true,
+      "logo": "source-videos/логотипы/ритейл/cp-axtra.png", "short": "CP Axtra Tech Center", "subtitle": "AXTRA Digital · Technology Center",
+      "facts": [
+        {"icon": "users", "value": "AXTRA Digital", "label": "ИТ и цифровые команды", "sub": "с июня 2025"},
+        {"icon": "cpu", "value": "AI Task Force", "label": "совместно", "sub": "с Alibaba Cloud"},
+        {"icon": "star", "value": "Copilot", "label": "для Microsoft 365", "sub": "первыми среди тайских ритейлеров"},
+        {"icon": "package", "value": "CJ Logistics", "label": "стратегический партнёр", "sub": "розничная логистика"}
+      ],
+      "why": "Подала несколько патентов на ИИ-решения, включая поиск на тайском языке.",
+      "learn": "Как ритейлер строит собственную ИИ-команду."
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {"title": "Переговоры\nс компаниями", "text": "Все визиты и переговоры программы", "icon": "users"},
+        {"title": "Закрытые двери", "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов", "icon": "building"},
+        {"title": "Трансферы", "text": "В пределах Бангкока и региона", "icon": "car"},
+        {"title": "Проживание 6 ночей", "text": "Включая ночь после дня 5", "icon": "home"},
+        {"title": "Перевод и сопровождение", "text": "На тайском/английском\nна всех встречах", "icon": "headphones"},
+        {"title": "Весь тайский ритейл", "text": "Конвиниенс, phygital и B2B-опт\nв одном городе", "icon": "store"}
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {"icon": "calendar", "value": "6 дней", "label": "/ 6 ночей", "sub": "5 дней визитов в Бангкоке"},
+        {"icon": "store", "value": "9 компаний", "label": "ритейл Таиланда", "sub": "конвиниенс, phygital, B2B-опт"},
+        {"icon": "briefcase", "value": "По запросу", "label": "стоимость", "sub": "на участника, без авиаперелёта"},
+        {"icon": "flag", "value": "По запросу", "label": "ближайшие даты", "sub": "даты уточняются"}
+      ],
+      "includes": ["Все визиты и переговоры", "Трансферы в Бангкоке и регионе", "Сопровождение на тайском/английском", "Проживание 6 ночей"],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Бангкок (Москва → Бангкок, аэропорт Суварнабхуми).<br><b>Вылет:</b> Бангкок — дополнительная ночь после дня 5, трансфер в аэропорт ранним утром."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {"type": "email", "text": "info@globaltechtour.ru"},
+        {"type": "site", "text": "globaltechtour.ru"},
+        {"type": "phone", "text": "+86 137 6171 63 55"},
+        {"type": "whatsapp", "text": "WhatsApp: +79858744958"},
+        {"type": "telegram", "text": "TG: @ostapdotcenko"},
+        {"type": "wechat", "text": "WeChat: ostap10081987"}
+      ],
+      "qr": [
+        {"label": "Сайт", "img": "assets/qr-site.png"},
+        {"label": "TG @globaltechtour", "img": "assets/qr-tg-globaltechtour.png"},
+        {"label": "TG @ostapdotcenko", "img": "assets/qr-tg-ostapdotcenko.png"}
+      ]
+    }
+  ]
+}

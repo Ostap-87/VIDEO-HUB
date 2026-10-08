@@ -6,15 +6,15 @@
   <div class="title">{{ (s.title or 'Global\nTech Tour')|br }}</div>
   <img class="robot" src="{{ (s.hero or 'assets/robot.png')|asset }}" alt="">
   {% if s.note %}<div class="note"><div class="tape"></div>{{ s.note|br }}</div>{% endif %}
-  <svg class="path" width="1920" height="1080"><path d="M62 880 C 50 930, 80 975, 210 972" fill="none" stroke="#1a73e8" stroke-width="3.5" stroke-dasharray="9 9" stroke-linecap="round"/></svg>
+  <svg class="path" width="1920" height="1080"><path d="M68 820 C 55 880, 95 935, 251 932" fill="none" stroke="#1a73e8" stroke-width="3.5" stroke-dasharray="9 9" stroke-linecap="round"/></svg>
   <div class="panel">
     <div class="br tl" style="left:22px;top:22px"></div><div class="br tr" style="right:22px;top:22px"></div>
     <div class="br bl" style="left:22px;bottom:22px"></div><div class="br brr" style="right:22px;bottom:22px"></div>
     {% for c in s.contacts[:6] %}
-    <div class="row" style="top:{{ 80 + loop.index0 * 96 }}px"><span class="ci">{{ m.icon(ICON.get(c.type, 'chat')) }}</span>{{ c.text }}</div>
+    <div class="row" style="top:{{ 84 + loop.index0 * 96 }}px"><span class="ci">{{ m.icon(ICON.get(c.type, 'chat')) }}</span>{{ c.text }}</div>
     {% endfor %}
     {% for q in s.qr[:3] %}
-    <div class="qr" style="left:{{ 60 + loop.index0 * 290 }}px">{{ q.label }}<img src="{{ q.img|asset }}" alt=""></div>
+    <div class="qr" style="left:{{ 59 + loop.index0 * 230 }}px">{{ q.label }}<img src="{{ q.img|asset }}" alt=""></div>
     {% endfor %}
   </div>
 </section>

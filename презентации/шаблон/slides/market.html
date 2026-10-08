@@ -19,7 +19,7 @@
   {% for st in s.stats[:3] %}{% set p = POS[loop.index0] %}
   <div class="card grad stat" style="left:{{ p.l }}px;top:{{ p.t }}px;{{ m.rot(p.r) }}">
     {{ gauge(st.frac or 0.6)|safe }}
-    <div class="v" data-fit="300">{{ st.value }}</div>
+    <div class="v" style="font-size:{{ 112 if st.value|length <= 3 else (84 if st.value|length <= 6 else 68) }}px"><span data-fit="300">{{ st.value }}</span></div>
     <div class="l">{{ st.label }}</div>
     <div class="s">{{ st.sub }}</div>
   </div>

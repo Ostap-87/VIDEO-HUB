@@ -7,7 +7,8 @@
     презентации/готовые/<output>.pdf                — PDF 1440×810 pt (как оригиналы)
     презентации/готовые/превью/<output>/NN.png      — каждый слайд картинкой (1280×720)
     презентации/готовые/превью/<output>.jpg         — лист-обзор всех слайдов
-Ключи: --only 1,5,7 (собрать только эти слайды), --no-pdf, --html (оставить HTML рядом с PDF).
+Ключи: --only 1,5,7 (собрать только эти слайды), --no-pdf, --html (оставить HTML рядом с PDF),
+--keep (оставить PNG 1920×1080 во временной папке), --outdir (другая папка результата).
 """
 import argparse, html, json, math, os, shutil, subprocess, sys, tempfile
 from pathlib import Path
@@ -136,6 +137,7 @@ def main():
     ap.add_argument('--html', action='store_true', help='сохранить HTML рядом с PDF')
     ap.add_argument('--out', help='имя результата (по умолчанию поле output или имя JSON)')
     ap.add_argument('--outdir', help='куда класть (по умолчанию презентации/готовые)')
+    ap.add_argument('--keep', action='store_true', help='не удалять временную папку с PNG 1920×1080')
     a = ap.parse_args()
 
     deck = json.loads(Path(a.content).read_text(encoding='utf-8'))
@@ -172,7 +174,10 @@ def main():
         print('  PDF   ', pdf)
     print('  превью', prevdir)
     print('  обзор ', sheet)
-    print('  полноразмерные PNG (временно)', tmp)
+    if a.keep:
+        print('  PNG 1920×1080', tmp)
+    else:
+        shutil.rmtree(tmp, ignore_errors=True)
 
 
 if __name__ == '__main__':
