@@ -312,7 +312,21 @@
           "text": "Для «Солартека» (гендиректор и главный инженер): R&D-центры, решения для опасных производств, роборуки с обратной связью"
         }
       ],
-      "quote": "Принимали профессора,\nинженерные команды\nи руководителей R&D."
+      "quote": "Принимали профессора,\nинженерные команды\nи руководителей R&D.",
+      "logos": [
+        {
+          "name": "Baidu",
+          "logo": "source-videos/логотипы/общие/baidu.png"
+        },
+        {
+          "name": "ShanghaiTech University",
+          "logo": "source-videos/логотипы/общие/shanghaitech.svg"
+        },
+        {
+          "name": "Kepler",
+          "logo": "source-videos/логотипы/роботы/kepler.png"
+        }
+      ]
     },
     {
       "type": "conditions",

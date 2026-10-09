@@ -3846,5 +3846,14 @@
    "Лэцзюй"
   ],
   "logo": "source-videos/логотипы/роботы/leju-robotics.png"
+ },
+ "shanghaitech": {
+  "names": [
+   "ShanghaiTech University",
+   "ShanghaiTech",
+   "Шанхайский технологический университет",
+   "上海科技大学"
+  ],
+  "logo": "source-videos/логотипы/общие/shanghaitech.svg"
  }
 }
