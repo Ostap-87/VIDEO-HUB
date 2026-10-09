@@ -246,6 +246,13 @@ body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .s-days.n4 .dcard .p, .s-days.n5 .dcard .p { font-size: 22px; line-height: 31px; }
 .s-days.n5 .dcard { padding: 30px 28px; }
 .s-days.n5 .dl { font-size: 28px; }
+/* 6 дней (Корея: промышленность, фудтех) — колонки ~277 px */
+.s-days.n6 .dcard .h { font-size: 36px; }
+.s-days.n6 .dcard .p { font-size: 20px; line-height: 28px; }
+.s-days.n6 .dcard { padding: 28px 22px; }
+.s-days.n6 .dcard .bar { margin: 20px 0 16px; }
+.s-days.n6 .dl { font-size: 26px; }
+.s-days.n6 .dl small { font-size: 20px; }
 
 /* ---------- 9. Формат и условия ---------- */
 .s-cond .title { left: 56px; top: 91px; font-size: 159.5px; }

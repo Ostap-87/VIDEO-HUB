@@ -1,0 +1,504 @@
+{
+  "title": "Промышленность и производство Кореи — Global Tech Tour",
+  "output": "2026-10-08-корея-промышленность",
+  "source": "https://globaltechtour.ru/expeditions/korea-industry-manufacturing-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 09.10.2026)",
+  "robot": "korea",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Промышленность и производство Кореи",
+      "topright": "Samsung · LG\nHyundai · POSCO",
+      "logos": [
+        {
+          "name": "Samsung",
+          "logo": "source-videos/логотипы/техгиганты/samsung.svg"
+        },
+        {
+          "name": "LG Display",
+          "logo": "source-videos/логотипы/техгиганты/lg-display.png"
+        },
+        {
+          "name": "Hyundai Motor",
+          "logo": "source-videos/логотипы/авто/hyundai-motor-group.png"
+        },
+        {
+          "name": "Hyundai Heavy Industries",
+          "logo": "source-videos/логотипы/общие/hyundai-heavy-industries.png"
+        },
+        {
+          "name": "POSCO",
+          "logo": "source-videos/логотипы/общие/posco.png"
+        }
+      ],
+      "box_text": "От дисплеев до автозаводов, верфей и стали —\n6 компаний, 6 дней, 6 ночей",
+      "box_right": "Сеул · Пхаджу · Сувон ·\nУльсан · Пхохан",
+      "footer": "Global Tech Tour · бизнес-делегации в Корею · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Часть заводов не отвечает на запросы без корпоративных связей — мы согласуем визиты, которые не бронируются онлайн."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Дисплеи, авто, судостроение и сталь в одной поездке: 5 городов материковой Кореи, без внутренних перелётов."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Переводчик и техническая экспертиза на каждой встрече — готовая программа под ключ."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "6 компаний",
+      "title2": "6 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Сеул + Пхаджу",
+          "text": "Samsung d'light, дисплейный кластер LG Display"
+        },
+        {
+          "name": "Дни 3–4 · Сувон + Ульсан",
+          "text": "Samsung Innovation Museum, автозавод Hyundai Motor"
+        },
+        {
+          "name": "Дни 5–6 · Ульсан + Пхохан",
+          "text": "Верфь Hyundai Heavy Industries, сталь POSCO"
+        }
+      ],
+      "quote": "Маршрут по производственным\nфлагманам Южной Кореи."
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Сеул",
+          "days": "день 1",
+          "companies": "Samsung d'light"
+        },
+        {
+          "name": "Пхаджу",
+          "days": "день 2",
+          "companies": "LG Display",
+          "leg": {
+            "icon": "car",
+            "text": "~1 ч"
+          }
+        },
+        {
+          "name": "Сувон",
+          "days": "день 3",
+          "companies": "Samsung Innovation Museum",
+          "leg": {
+            "icon": "car",
+            "text": ""
+          }
+        },
+        {
+          "name": "Ульсан",
+          "days": "дни 4–5",
+          "companies": "Hyundai Motor\nHyundai Heavy Industries",
+          "leg": {
+            "icon": "train",
+            "text": "~2,5 ч"
+          }
+        },
+        {
+          "name": "Пхохан",
+          "days": "день 6",
+          "companies": "POSCO",
+          "leg": {
+            "icon": "car",
+            "text": "~1 ч"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Сеул · <b>Вылет:</b> Пхохан (→ Сеул → Москва) · Пхаджу — выезд на день из Сеула"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "6 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Samsung d'light",
+          "text": "Шоурум-музей Samsung в Гангнаме: VR-зона и новинки. Вход свободный.",
+          "label": "День 1"
+        },
+        {
+          "sub": "Пхаджу",
+          "title": "LG Display",
+          "text": "«Display City» — по согласованию, ~1 ч от Сеула; вечером — возврат.",
+          "label": "День 2"
+        },
+        {
+          "sub": "Сувон",
+          "title": "Samsung\nInnovation\nMuseum",
+          "text": "Докент-тур в будни; днём — в Ульсан (KTX + автобус, ~2,5 ч).",
+          "label": "День 3"
+        },
+        {
+          "sub": "Ульсан",
+          "title": "Hyundai\nMotor",
+          "text": "Крупнейший автозавод мира: групповой тур от 30 человек.",
+          "label": "День 4"
+        },
+        {
+          "sub": "Ульсан",
+          "title": "Hyundai\nHeavy\nIndustries",
+          "text": "Верфь: тур от 15 человек; переезд в Пхохан (~1 ч).",
+          "label": "День 5"
+        },
+        {
+          "sub": "Пхохан",
+          "title": "POSCO",
+          "text": "Музей и завод (только по субботам). Завершение программы.",
+          "label": "День 6"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Сеул",
+      "title": "Samsung d'light",
+      "logo": "source-videos/логотипы/техгиганты/samsung.svg",
+      "short": "Samsung d'light",
+      "subtitle": "Сеул",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "Гангнам",
+          "label": "шоурум-музей Samsung",
+          "sub": "Сеул"
+        },
+        {
+          "icon": "cpu",
+          "value": "VR-зона",
+          "label": "интерактивные инсталляции",
+          "sub": "о будущем технологий"
+        },
+        {
+          "icon": "smartphone",
+          "value": "Новинки",
+          "label": "витрина продуктов Samsung"
+        },
+        {
+          "icon": "star",
+          "value": "Бесплатно",
+          "label": "вход без брони",
+          "sub": "открыт для всех"
+        }
+      ],
+      "why": "Бесплатный шоурум-музей Samsung в Гангнаме: интерактивные инсталляции о будущем технологий и VR-зона.",
+      "learn": "Витрина новейших продуктов компании; открыт для всех, бронь не нужна.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Пхаджу",
+      "title": "LG Display — Paju",
+      "logo": "source-videos/логотипы/техгиганты/lg-display.png",
+      "short": "LG Display — Paju",
+      "subtitle": "Пхаджу",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1 в мире",
+          "label": "кластер дисплеев",
+          "sub": "«Display City»"
+        },
+        {
+          "icon": "building",
+          "value": "8+",
+          "label": "корпусов",
+          "sub": "на площади 170+ га"
+        },
+        {
+          "icon": "flag",
+          "value": "2004",
+          "label": "начало строительства"
+        },
+        {
+          "icon": "trending",
+          "value": "Лидер",
+          "label": "OLED-панелей в мире",
+          "sub": "ТВ, смартфоны, авто"
+        }
+      ],
+      "why": "Кампус LG Display в Пхаджу — «Display City», крупнейший в мире кластер по производству дисплеев.",
+      "learn": "Заводы поколений P8/P10 для LCD и OLED, панели, модули и поставщики; LG Display — на Корейской бирже и NYSE.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Сувон",
+      "title": "Samsung Innovation Museum",
+      "logo": "source-videos/логотипы/техгиганты/samsung.svg",
+      "short": "Samsung Innovation Museum",
+      "subtitle": "Сувон",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1",
+          "label": "музей электроники Кореи",
+          "sub": "крупнейший"
+        },
+        {
+          "icon": "building",
+          "value": "Первый завод",
+          "label": "Samsung Electronics",
+          "sub": "музей — на его территории"
+        },
+        {
+          "icon": "cpu",
+          "value": "Чипы · дисплеи",
+          "label": "история полупроводников",
+          "sub": "и мобильных технологий"
+        },
+        {
+          "icon": "users",
+          "value": "Докент-тур",
+          "label": "по записи",
+          "sub": "только в будни"
+        }
+      ],
+      "why": "Крупнейший в Корее музей электронной промышленности — на территории первого завода Samsung Electronics.",
+      "learn": "История полупроводников, дисплеев и мобильных технологий; докент-тур по записи, только в будни.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Ульсан",
+      "title": "Hyundai Motor — Ulsan Plant",
+      "logo": "source-videos/логотипы/авто/hyundai-motor-group.png",
+      "short": "Hyundai Motor — Ulsan Plant",
+      "subtitle": "Ульсан",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1 в мире",
+          "label": "единый автозавод",
+          "sub": "крупнейший"
+        },
+        {
+          "icon": "building",
+          "value": "5 000 000 м²",
+          "label": "площадь",
+          "sub": "5 производственных корпусов"
+        },
+        {
+          "icon": "car",
+          "value": "5 600",
+          "label": "автомобилей в день",
+          "sub": "в среднем"
+        },
+        {
+          "icon": "package",
+          "value": "Свой порт",
+          "label": "экспортный"
+        }
+      ],
+      "why": "Крупнейший в мире единый автозавод: 5 производственных корпусов и собственный экспортный порт.",
+      "learn": "В среднем 5 600 автомобилей в день; групповой тур — от 30 человек, бронь заранее.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Ульсан",
+      "title": "Hyundai Heavy Industries",
+      "logo": "source-videos/логотипы/общие/hyundai-heavy-industries.png",
+      "short": "Hyundai Heavy Industries",
+      "subtitle": "Ульсан",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1 в мире",
+          "label": "судостроительная компания",
+          "sub": "крупнейшая"
+        },
+        {
+          "icon": "building",
+          "value": "Верфь",
+          "label": "производственный комплекс",
+          "sub": "и культурный центр"
+        },
+        {
+          "icon": "users",
+          "value": "от 15",
+          "label": "человек — групповой тур",
+          "sub": "свой автобус"
+        },
+        {
+          "icon": "pin",
+          "value": "Ульсан",
+          "label": "верфь",
+          "sub": "~1 ч до Пхохана"
+        }
+      ],
+      "why": "Крупнейшая судостроительная компания мира — экскурсия по производственному комплексу верфи в Ульсане.",
+      "learn": "Производственный комплекс и культурный центр верфи; групповой тур от 15 человек на своём автобусе.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 6 · Пхохан",
+      "title": "POSCO",
+      "logo": "source-videos/логотипы/общие/posco.png",
+      "short": "POSCO",
+      "subtitle": "Пхохан",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1",
+          "label": "сталелитейная компания Кореи",
+          "sub": "одна из крупнейших в мире"
+        },
+        {
+          "icon": "building",
+          "value": "Pohang Steelworks",
+          "label": "экскурсия на завод",
+          "sub": "только по субботам"
+        },
+        {
+          "icon": "flag",
+          "value": "Музей",
+          "label": "истории компании",
+          "sub": "Пхохан"
+        },
+        {
+          "icon": "calendar",
+          "value": "За 2 дня",
+          "label": "онлайн-бронь"
+        }
+      ],
+      "why": "Крупнейшая сталелитейная компания Кореи и один из мировых лидеров чёрной металлургии.",
+      "learn": "Музей истории компании в Пхохане и экскурсия на завод Pohang Steelworks — по субботам, бронь онлайн за 2 дня.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Координация визитов\nс официальным согласованием",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Визиты, которые\nне бронируются онлайн",
+          "icon": "building"
+        },
+        {
+          "title": "Логистика",
+          "text": "Сеул, Пхаджу, Сувон,\nУльсан и Пхохан",
+          "icon": "train"
+        },
+        {
+          "title": "Без перелётов",
+          "text": "Весь маршрут —\nпо материковой Корее",
+          "icon": "pin"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "Переводчик и техэксперт\nна каждой площадке",
+          "icon": "headphones"
+        },
+        {
+          "title": "6 компаний",
+          "text": "Дисплеи, автозавод,\nверфь и сталь",
+          "icon": "target"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "6 дней визитов"
+        },
+        {
+          "icon": "target",
+          "value": "6 компаний",
+          "label": "в программе",
+          "sub": "Samsung, LG, Hyundai, POSCO"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Экскурсии по производствам: дисплеи, автозавод, верфь",
+        "Координация визитов с официальным согласованием",
+        "Переводчик и техническая экспертиза на каждой площадке",
+        "Логистика: Сеул, Пхаджу, Сувон, Ульсан, Пхохан"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Сеул (перелёт Москва → Сеул, аэропорт Инчхон).<br><b>Вылет:</b> Пхохан (→ Сеул → Москва)"
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

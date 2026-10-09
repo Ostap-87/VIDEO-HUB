@@ -1,0 +1,623 @@
+{
+  "title": "Высокотехнологичное производство продуктов питания Кореи — Global Tech Tour",
+  "output": "2026-10-08-корея-фудтех",
+  "source": "https://globaltechtour.ru/expeditions/korea-foodtech-smart-farming-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 09.10.2026)",
+  "robot": "korea",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Высокотехнологичное производство продуктов питания Кореи",
+      "topright": "CJ · Market Kurly\nSamyang · hy",
+      "logos": [
+        {
+          "name": "CJ CheilJedang",
+          "logo": "source-videos/логотипы/еда/cj-cheiljedang.png"
+        },
+        {
+          "name": "CJ Freshway",
+          "logo": "source-videos/логотипы/еда/cj-freshway.png"
+        },
+        {
+          "name": "Market Kurly",
+          "logo": "source-videos/логотипы/еда/market-kurly.png"
+        },
+        {
+          "name": "Nongshim Farm",
+          "logo": "source-videos/логотипы/еда/nongshim-farm.png"
+        },
+        {
+          "name": "Seoul Milk",
+          "logo": "source-videos/логотипы/еда/seoul-milk.png"
+        },
+        {
+          "name": "Samyang Foods",
+          "logo": "source-videos/логотипы/еда/samyang-foods.png"
+        },
+        {
+          "name": "Jungkwanjang",
+          "logo": "source-videos/логотипы/еда/jungkwanjang-kgc.png"
+        },
+        {
+          "name": "hy",
+          "logo": "source-videos/логотипы/еда/hy-korea-yakult.png"
+        }
+      ],
+      "box_text": "От биотех-холдингов до рамёна Buldak —\n9 компаний, 6 дней, 6 ночей",
+      "box_right": "Сеул · Янджу · Вонджу ·\nЙонъин · Пхёнтхэк",
+      "footer": "Global Tech Tour · бизнес-делегации в Корею · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Samyang и Fresheasy обычно закрыты для случайных визитов — мы согласуем площадки, закрытые для посторонних."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "9 компаний за 6 дней — от биотеха и логистики доставки до молочных и лапшичных заводов, без перелётов."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Переводчик и техническая экспертиза на каждой встрече — готовая программа под ключ."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "9 компаний",
+      "title2": "6 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Сеул",
+          "text": "CJ CheilJedang, CJ Freshway, Market Kurly, Nongshim Farm"
+        },
+        {
+          "name": "Дни 3–4 · Янджу + Вонджу",
+          "text": "Seoul Milk, Samyang Foods, Jungkwanjang (KGC)"
+        },
+        {
+          "name": "Дни 5–6 · Йонъин + Пхёнтхэк",
+          "text": "Fresheasy, hy (Korea Yakult). Завершение программы."
+        }
+      ]
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Сеул",
+          "days": "дни 1–2",
+          "companies": "CJ CheilJedang\nCJ Freshway\nMarket Kurly\nNongshim Farm"
+        },
+        {
+          "name": "Янджу",
+          "days": "день 3",
+          "companies": "Seoul Milk",
+          "leg": {
+            "icon": "car",
+            "text": ""
+          }
+        },
+        {
+          "name": "Вонджу",
+          "days": "день 4",
+          "companies": "Samyang Foods\nJungkwanjang",
+          "leg": {
+            "icon": "car",
+            "text": "~1,5–2 ч"
+          }
+        },
+        {
+          "name": "Йонъин",
+          "days": "день 5",
+          "companies": "Fresheasy",
+          "leg": {
+            "icon": "car",
+            "text": "~2 ч"
+          }
+        },
+        {
+          "name": "Пхёнтхэк",
+          "days": "день 6",
+          "companies": "hy",
+          "leg": {
+            "icon": "car",
+            "text": "~30–40 мин"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Сеул · <b>Вылет:</b> Пхёнтхэк (→ Сеул → Москва)"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "6 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "CJ CheilJedang ·\nCJ Freshway",
+          "text": "Биотех и централизованное производство готовой еды. Ночёвка в Сеуле.",
+          "label": "День 1"
+        },
+        {
+          "sub": "Сеул / Кимпхо",
+          "title": "Market Kurly ·\nNongshim Farm",
+          "text": "«Рассветная доставка» и умное земледелие. Ночёвка в Сеуле.",
+          "label": "День 2"
+        },
+        {
+          "sub": "Янджу",
+          "title": "Seoul Milk",
+          "text": "Открытый заводской тур; вечером — переезд в Вонджу (~1,5–2 ч).",
+          "label": "День 3"
+        },
+        {
+          "sub": "Вонджу",
+          "title": "Samyang ·\nJungkwanjang",
+          "text": "Завод Buldak — организованный тур; вечером — в Йонъин (~2 ч).",
+          "label": "День 4"
+        },
+        {
+          "sub": "Йонъин",
+          "title": "Fresheasy",
+          "text": "Фабрика мил-китов — по согласованию; вечером — в Пхёнтхэк.",
+          "label": "День 5"
+        },
+        {
+          "sub": "Пхёнтхэк",
+          "title": "hy",
+          "text": "Интерактивное пространство hy Factory+. Завершение программы.",
+          "label": "День 6"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Сеул",
+      "title": "CJ CheilJedang",
+      "logo": "source-videos/логотипы/еда/cj-cheiljedang.png",
+      "short": "CJ CheilJedang",
+      "subtitle": "CJ Group · Сеул",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1953",
+          "label": "год основания",
+          "sub": "как Cheil Jedang, Samsung Group"
+        },
+        {
+          "icon": "handshake",
+          "value": "CJ Group",
+          "label": "независимая группа",
+          "sub": "выделена в 1993–1997 годах"
+        },
+        {
+          "icon": "chart",
+          "value": "1,2+ трлн вон",
+          "label": "продажи Bibigo",
+          "sub": "2024 год"
+        },
+        {
+          "icon": "cpu",
+          "value": "Биотех",
+          "label": "аминокислоты и биополимеры"
+        }
+      ],
+      "why": "Ведущий фудтех- и биотех-холдинг Кореи: бренды Bibigo и готовый рис Hetbahn.",
+      "learn": "Основана в 1953 году как первое производственное предприятие Ли Бён Чхоля; биотех — аминокислоты и биополимеры.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Сеул",
+      "title": "CJ Freshway",
+      "logo": "source-videos/логотипы/еда/cj-freshway.png",
+      "short": "CJ Freshway",
+      "subtitle": "Сеул",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "550+",
+          "label": "столовых, офисов и больниц",
+          "sub": "готовые блюда"
+        },
+        {
+          "icon": "cpu",
+          "value": "Central Kitchen",
+          "label": "централизованные кухни"
+        },
+        {
+          "icon": "package",
+          "value": "B2B",
+          "label": "дистрибьютор продуктов",
+          "sub": "крупный"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "по официальному согласованию"
+        }
+      ],
+      "why": "Оператор централизованных кухонь (Central Kitchen): готовые блюда для 550+ корпоративных столовых, офисов и больниц.",
+      "learn": "Крупный B2B-дистрибьютор продуктов питания; визит — по официальному согласованию.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Сеул / Кимпхо",
+      "title": "Market Kurly",
+      "logo": "source-videos/логотипы/еда/market-kurly.png",
+      "short": "Market Kurly",
+      "subtitle": "Сеул / Кимпхо",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Пионер",
+          "label": "«рассветной доставки»",
+          "sub": "Saetbyul-delivery"
+        },
+        {
+          "icon": "calendar",
+          "value": "до 7 утра",
+          "label": "доставка",
+          "sub": "при заказе до 23:00"
+        },
+        {
+          "icon": "package",
+          "value": "300 000+",
+          "label": "заказов в день",
+          "sub": "центры в Кимпхо и Пхёнтхэке"
+        },
+        {
+          "icon": "cpu",
+          "value": "<1%",
+          "label": "списание товара",
+          "sub": "ИИ-прогноз спроса"
+        }
+      ],
+      "why": "Пионер «рассветной доставки» в Корее: свежие продукты — до 7 утра при заказе до 23:00.",
+      "learn": "Автоматизированные центры в Кимпхо и Пхёнтхэке — 300 000+ заказов в день; ИИ-прогноз держит списание ниже 1%.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Сеул / Кимпхо",
+      "title": "Nongshim Farm",
+      "logo": "source-videos/логотипы/еда/nongshim-farm.png",
+      "short": "Nongshim Farm",
+      "subtitle": "Сеул / Кимпхо",
+      "facts": [
+        {
+          "icon": "cpu",
+          "value": "Agtech",
+          "label": "вертикальное земледелие",
+          "sub": "гидропоника"
+        },
+        {
+          "icon": "globe",
+          "value": "3 страны",
+          "label": "экспорт smart farm",
+          "sub": "Саудовская Аравия, Оман, Катар"
+        },
+        {
+          "icon": "handshake",
+          "value": "Nongshim",
+          "label": "подразделение"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "по официальному согласованию"
+        }
+      ],
+      "why": "Подразделение Nongshim по вертикальному земледелию: гидропоника и agtech.",
+      "learn": "Экспортирует smart farm решения в Саудовскую Аравию, Оман и Катар; визит — по официальному согласованию.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Янджу",
+      "title": "Seoul Milk",
+      "logo": "source-videos/логотипы/еда/seoul-milk.png",
+      "short": "Seoul Milk",
+      "subtitle": "Янджу",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1 в Азии",
+          "label": "завод переработки молока",
+          "sub": "крупнейший"
+        },
+        {
+          "icon": "chart",
+          "value": "300 млрд вон",
+          "label": "инвестиции в завод"
+        },
+        {
+          "icon": "package",
+          "value": "до 1700 т",
+          "label": "сырого молока в сутки",
+          "sub": "~60 видов продукции"
+        },
+        {
+          "icon": "cpu",
+          "value": "В тот же день",
+          "label": "«произведено и доставлено»",
+          "sub": "полная автоматизация"
+        }
+      ],
+      "why": "Крупнейший в Азии завод по переработке молока в Янджу — до 1700 тонн сырого молока в сутки.",
+      "learn": "Полностью автоматизированное производство «произведено и доставлено в тот же день»; заводской тур открыт для всех.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Вонджу",
+      "title": "Samyang Foods — Buldak Plant",
+      "logo": "source-videos/логотипы/еда/samyang-foods.png",
+      "short": "Samyang Foods — Buldak Plant",
+      "subtitle": "Вонджу",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Buldak",
+          "label": "культовый острый рамён"
+        },
+        {
+          "icon": "flag",
+          "value": "1989",
+          "label": "завод в Вонджу",
+          "sub": "первая площадка компании"
+        },
+        {
+          "icon": "building",
+          "value": "Закрытый завод",
+          "label": "только организованные туры"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "вместе с Jungkwanjang"
+        }
+      ],
+      "why": "Производитель культового острого рамёна Buldak; завод в Вонджу — первая и старейшая площадка компании (с 1989 года).",
+      "learn": "Площадка обычно закрыта для широкой публики, но принимает организованные туры.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Вонджу",
+      "title": "Jungkwanjang",
+      "logo": "source-videos/логотипы/еда/jungkwanjang-kgc.png",
+      "short": "Jungkwanjang",
+      "subtitle": "KGC · Вонджу",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1",
+          "label": "красный женьшень в Корее",
+          "sub": "премиум-класс"
+        },
+        {
+          "icon": "handshake",
+          "value": "KGC",
+          "label": "Korea Ginseng Corporation"
+        },
+        {
+          "icon": "pin",
+          "value": "Вонджу",
+          "label": "завод",
+          "sub": "в одном маршруте с Samyang"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Крупнейший в Корее производитель красного женьшеня премиум-класса (Korea Ginseng Corporation).",
+      "learn": "Завод в Вонджу часто посещают вместе с Samyang в рамках одного маршрута.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Йонъин",
+      "title": "Fresheasy",
+      "short": "Fresheasy",
+      "subtitle": "Йонъин",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "~70%",
+          "label": "рынка мил-китов Кореи",
+          "sub": "крупнейший производитель"
+        },
+        {
+          "icon": "building",
+          "value": "~26 400 м²",
+          "label": "фабрика HMR",
+          "sub": "Йонъин"
+        },
+        {
+          "icon": "package",
+          "value": "OEM / ODM",
+          "label": "для крупных брендов",
+          "sub": "и собственные продукты"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "по официальному согласованию"
+        }
+      ],
+      "why": "Крупнейший производитель мил-китов (наборов для приготовления) в Корее — около 70% рынка.",
+      "learn": "Фабрика свежих HMR-продуктов в Йонъине (~26 400 м²) выпускает собственные и OEM/ODM продукты для брендов.",
+      "learn_label": "Фокус визита",
+      "logo_text": "Fresheasy"
+    },
+    {
+      "type": "company",
+      "tag": "День 6 · Пхёнтхэк",
+      "title": "hy · Korea Yakult",
+      "logo": "source-videos/логотипы/еда/hy-korea-yakult.png",
+      "short": "hy",
+      "subtitle": "Korea Yakult · Пхёнтхэк",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1",
+          "label": "пробиотики в Корее",
+          "sub": "и ферментированные продукты"
+        },
+        {
+          "icon": "package",
+          "value": "12+",
+          "label": "видов продукции",
+          "sub": "Yakult и ещё 11+"
+        },
+        {
+          "icon": "cpu",
+          "value": "hy Factory+",
+          "label": "интерактивное пространство",
+          "sub": "путь пробиотика"
+        },
+        {
+          "icon": "car",
+          "value": "CoCo",
+          "label": "электротележки-холодильники",
+          "sub": "доставка «Fresh Managers»"
+        }
+      ],
+      "why": "Крупнейший в Корее производитель пробиотиков и ферментированных молочных продуктов — Yakult и ещё 11+ видов.",
+      "learn": "hy Factory+ показывает путь пробиотика от производства до организма; доставка — электротележки CoCo.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Заводы и R&D-центры\nпищевого биотеха",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Samyang и Fresheasy —\nобычно закрыты для визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Заводские туры",
+          "text": "Открытые туры\nSeoul Milk и hy",
+          "icon": "building"
+        },
+        {
+          "title": "Без перелётов",
+          "text": "Компактный маршрут\nвокруг Сеула",
+          "icon": "pin"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "Переводчик и техэксперт\nна каждой площадке",
+          "icon": "headphones"
+        },
+        {
+          "title": "9 компаний",
+          "text": "CJ · Market Kurly\nSamyang · hy",
+          "icon": "cart"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "6 дней",
+          "label": "/ 6 ночей",
+          "sub": "6 дней визитов"
+        },
+        {
+          "icon": "cart",
+          "value": "9 компаний",
+          "label": "в программе",
+          "sub": "CJ, Market Kurly, Samyang"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Заводы и R&D-центры пищевого биотеха и умного земледелия",
+        "Открытые туры (Seoul Milk, hy) и закрытые площадки",
+        "Координация визитов с официальным согласованием",
+        "Переводчик и техническая экспертиза на каждой площадке"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Сеул (перелёт Москва → Сеул, аэропорт Инчхон).<br><b>Вылет:</b> Пхёнтхэк (→ Сеул → Москва)"
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

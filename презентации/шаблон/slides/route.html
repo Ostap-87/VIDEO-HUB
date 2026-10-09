@@ -1,7 +1,8 @@
 {% import 'slides/_macros.html' as m with context %}
 {# «Маршрут»: 2–5 городов кружками по волнистой пунктирной линии. #}
 {% set n = s.cities|length %}
-{% set step = [460, (1660 / (n - 1)) if n > 1 else 460]|min %}
+{# 5 городов: шаг такой, чтобы крайние карточки компаний (362 px) не обрезались краем слайда; 2–4 — как было #}
+{% set step = [460, (1498 / (n - 1)) if n > 1 else 460]|min %}
 {% set x0 = (1920 - ((n - 1) * step + 260)) / 2 - 10 %}
 <section class="slide s-route">
   {% if s.ghost %}<div class="ghost">{{ s.ghost }}</div>{% endif %}

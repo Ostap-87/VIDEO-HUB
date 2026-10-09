@@ -1,0 +1,634 @@
+{
+  "title": "K-Beauty индустрия Кореи — Global Tech Tour",
+  "output": "2026-10-08-корея-красота",
+  "source": "https://globaltechtour.ru/expeditions/korea-beauty-industry-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 09.10.2026)",
+  "robot": "korea",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · K-Beauty индустрия Кореи",
+      "topright": "Amorepacific · Sulwhasoo\nCosmax · LG H&H",
+      "logos": [
+        {
+          "name": "Amorepacific",
+          "logo": "source-videos/логотипы/косметика/amorepacific.png"
+        },
+        {
+          "name": "Innisfree",
+          "logo": "source-videos/логотипы/косметика/innisfree.png"
+        },
+        {
+          "name": "Kolmar",
+          "logo": "source-videos/логотипы/косметика/kolmar.png"
+        },
+        {
+          "name": "Cosmax",
+          "logo": "source-videos/логотипы/косметика/cosmax.png"
+        },
+        {
+          "name": "Sulwhasoo House",
+          "logo": "source-videos/логотипы/косметика/sulwhasoo-house.png"
+        },
+        {
+          "name": "LG H&H",
+          "logo": "source-videos/логотипы/косметика/lg-hnh-history-of-whoo.png"
+        },
+        {
+          "name": "PharmaResearch",
+          "logo": "source-videos/логотипы/косметика/pharmaresearch.png"
+        },
+        {
+          "name": "Caregen",
+          "logo": "source-videos/логотипы/косметика/caregen.png"
+        }
+      ],
+      "box_text": "От брендовых холдингов до ODM-фабрик —\n10 компаний, 5 дней, 5 ночей",
+      "box_right": "Сеул · Осан · Соннам ·\nАнъян — без перелётов",
+      "footer": "Global Tech Tour · бизнес-делегации в Корею · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Kolmar, Cosmax и LG H&H не открыты для случайных визитов — согласование под каждый бренд и завод берём на себя."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "10 компаний за 5 дней — от люксовых брендов до ODM-гигантов и longevity-биотеха, в Сеуле и ближайших городах."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Переводчик и техническая экспертиза на каждой площадке; мастер-классы — Ginseng Class и подбор тона HERA."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "10 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Сеул",
+          "text": "Amorepacific, Innisfree, Kolmar Korea, Cosmax"
+        },
+        {
+          "name": "Дни 3–4 · Осан + Сеул",
+          "text": "Amorepacific Beauty Park, Sulwhasoo House, LG H&H, Amore Seongsu"
+        },
+        {
+          "name": "День 5 · Соннам + Анъян",
+          "text": "PharmaResearch, Caregen — longevity-биотех. Завершение программы."
+        }
+      ]
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Сеул",
+          "days": "дни 1–4",
+          "companies": "Amorepacific · Innisfree\nKolmar · Cosmax\nSulwhasoo · LG H&H\nAmore Seongsu"
+        },
+        {
+          "name": "Осан",
+          "days": "день 3",
+          "companies": "Amorepacific\nBeauty Park",
+          "leg": {
+            "icon": "car",
+            "text": "~1 ч"
+          }
+        },
+        {
+          "name": "Соннам / Анъян",
+          "days": "день 5",
+          "companies": "PharmaResearch\nCaregen",
+          "leg": {
+            "icon": "car",
+            "text": ""
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Сеул · <b>Вылет:</b> Анъян (→ Сеул → Москва) · Осан — выезд на день, ночёвки в Сеуле"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–14:00",
+          "title": "Amorepacific ·\nInnisfree",
+          "text": "Штаб-квартира Amorepacific в Йонсане: подбор тона HERA и анализ кожи. Ночёвка в Сеуле.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–14:00",
+          "title": "Kolmar Korea ·\nCosmax",
+          "text": "Незаметные лидеры: ODM-фабрики, которые производят K-beauty для 600+ брендов мира.",
+          "label": "День 2"
+        },
+        {
+          "sub": "Осан → Сеул",
+          "title": "Beauty Park ·\nSulwhasoo House",
+          "text": "Заводской тур Amorepacific в Осане; днём — возврат в Сеул (~1 ч), Ginseng Class.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–14:00",
+          "title": "LG H&H ·\nAmore Seongsu",
+          "text": "The History of Whoo — VIP-формат по запросу в компанию; Amore Seongsu — 2000+ продуктов.",
+          "label": "День 4"
+        },
+        {
+          "sub": "Соннам / Анъян",
+          "title": "PharmaResearch\nCaregen",
+          "text": "Longevity-биотех: регенеративная медицина и anti-age пептиды. Завершение программы.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Сеул",
+      "title": "Amorepacific",
+      "logo": "source-videos/логотипы/косметика/amorepacific.png",
+      "short": "Amorepacific",
+      "subtitle": "Сеул",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1",
+          "label": "косметический холдинг Кореи"
+        },
+        {
+          "icon": "store",
+          "value": "Sulwhasoo · Hera",
+          "label": "бренды группы",
+          "sub": "Innisfree, Laneige, Mamonde"
+        },
+        {
+          "icon": "building",
+          "value": "Йонсан",
+          "label": "штаб-квартира",
+          "sub": "с арт-музеем, Сеул"
+        },
+        {
+          "icon": "target",
+          "value": "HERA",
+          "label": "подбор кастомного тона",
+          "sub": "и анализ кожи"
+        }
+      ],
+      "why": "Крупнейший косметический холдинг Кореи: Sulwhasoo, Hera, Innisfree, Laneige, Mamonde и другие бренды.",
+      "learn_label": "Фокус визита",
+      "learn": "Штаб-квартира в Йонсане с арт-музеем и сервисом подбора кастомного тонального средства."
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Сеул",
+      "title": "Innisfree",
+      "logo": "source-videos/логотипы/косметика/innisfree.png",
+      "short": "Innisfree",
+      "subtitle": "Amorepacific · Сеул",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2000",
+          "label": "год основания",
+          "sub": "в составе Amorepacific"
+        },
+        {
+          "icon": "pin",
+          "value": "Чеджудо",
+          "label": "ингредиенты острова",
+          "sub": "зелёный чай, водоросли, глина"
+        },
+        {
+          "icon": "star",
+          "value": "100%",
+          "label": "производство в Корее"
+        },
+        {
+          "icon": "handshake",
+          "value": "Amorepacific",
+          "label": "в составе группы",
+          "sub": "Holdings — с 2025 года"
+        }
+      ],
+      "why": "Южнокорейский бренд натуральной косметики группы Amorepacific — «остров исцеления для кожи».",
+      "learn": "Философия бренда — вулканический остров Чеджудо: зелёный чай, морские водоросли и вулканическая глина в рецептурах.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Сеул",
+      "title": "Kolmar Korea",
+      "logo": "source-videos/логотипы/косметика/kolmar.png",
+      "short": "Kolmar Korea",
+      "subtitle": "Сеул",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1",
+          "label": "ODM-производитель Кореи",
+          "sub": "косметика"
+        },
+        {
+          "icon": "flag",
+          "value": "1990",
+          "label": "первая ODM-компания",
+          "sub": "в Корее"
+        },
+        {
+          "icon": "users",
+          "value": "600+",
+          "label": "мировых брендов",
+          "sub": "и Amorepacific, LG H&H"
+        },
+        {
+          "icon": "cpu",
+          "value": "AI Factory",
+          "label": "пилот правительства",
+          "sub": "в косметическом производстве"
+        }
+      ],
+      "why": "Крупнейший ODM-производитель косметики Кореи и первая ODM-компания страны (с 1990 года).",
+      "learn": "Выпускает продукцию для Amorepacific, LG H&H и 600+ мировых брендов; выбрана правительством для пилота «AI Factory».",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Сеул",
+      "title": "Cosmax",
+      "logo": "source-videos/логотипы/косметика/cosmax.png",
+      "short": "Cosmax",
+      "subtitle": "Сеул",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "15 из 20",
+          "label": "крупнейших косметических",
+          "sub": "компаний мира — клиенты"
+        },
+        {
+          "icon": "users",
+          "value": "600+",
+          "label": "брендов"
+        },
+        {
+          "icon": "handshake",
+          "value": "L'Oréal",
+          "label": "среди клиентов"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "по официальному согласованию"
+        }
+      ],
+      "why": "Один из крупнейших ODM-производителей косметики в мире: работает с 15 из 20 крупнейших косметических компаний.",
+      "learn": "Производит для 600+ брендов, включая L'Oréal; визит — по официальному согласованию.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Осан",
+      "title": "Amorepacific Beauty Park",
+      "logo": "source-videos/логотипы/косметика/amorepacific.png",
+      "short": "Amorepacific Beauty Park",
+      "subtitle": "Factory Tour · Осан",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "80 000+",
+          "label": "экспонатов",
+          "sub": "архив истории бренда"
+        },
+        {
+          "icon": "flag",
+          "value": "1932",
+          "label": "история бренда с"
+        },
+        {
+          "icon": "target",
+          "value": "Ботанический сад",
+          "label": "растительное сырьё"
+        },
+        {
+          "icon": "pin",
+          "value": "Осан",
+          "label": "Amore Beauty Park",
+          "sub": "~1 ч от Сеула"
+        }
+      ],
+      "learn": "Производство, ботанический сад с растительным сырьём и архив бренда с 1932 года; бронь — на tour.amorepacific.com.",
+      "learn_label": "Фокус визита",
+      "why": "Официальная туристическая программа Amorepacific на территории Amore Beauty Park в Осане."
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Сеул (Букчон)",
+      "title": "Sulwhasoo House",
+      "logo": "source-videos/логотипы/косметика/sulwhasoo-house.png",
+      "short": "Sulwhasoo House",
+      "subtitle": "Amorepacific · Букчон, Сеул",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Премиум",
+          "label": "ханбан-косметика",
+          "sub": "традиционная медицина + наука"
+        },
+        {
+          "icon": "building",
+          "value": "Букчон",
+          "label": "флагман бренда",
+          "sub": "Сеул"
+        },
+        {
+          "icon": "users",
+          "value": "Ginseng Class",
+          "label": "фирменный мастер-класс",
+          "sub": "по записи"
+        },
+        {
+          "icon": "handshake",
+          "value": "Amorepacific",
+          "label": "бренд группы"
+        }
+      ],
+      "why": "Флагман премиального бренда ханбан-косметики: традиционная корейская медицина и современная наука.",
+      "learn_label": "Фокус визита",
+      "learn": "Фирменный мастер-класс «Ginseng Class» по записи — в доме бренда в Букчоне."
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Сеул",
+      "title": "LG H&H — The History of Whoo",
+      "logo": "source-videos/логотипы/косметика/lg-hnh-history-of-whoo.png",
+      "short": "LG H&H — The History of Whoo",
+      "subtitle": "Сеул",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№2",
+          "label": "косметический холдинг Кореи"
+        },
+        {
+          "icon": "target",
+          "value": "The History of Whoo",
+          "label": "премиальный бренд",
+          "sub": "«королевская» дерматология"
+        },
+        {
+          "icon": "users",
+          "value": "VIP",
+          "label": "формат классов",
+          "sub": "обычно — клиенты универмагов"
+        },
+        {
+          "icon": "briefcase",
+          "value": "B2B-визит",
+          "label": "по прямому запросу",
+          "sub": "в компанию"
+        }
+      ],
+      "why": "Второй по величине косметический холдинг Кореи; The History of Whoo — премиальный бренд «королевской» дерматологии.",
+      "learn": "Классы обычно проводят только для VIP-клиентов универмагов — групповой B2B-визит согласуем напрямую с компанией.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Сеул",
+      "title": "Amore Seongsu",
+      "logo": "source-videos/логотипы/косметика/amorepacific.png",
+      "short": "Amore Seongsu",
+      "subtitle": "Сеул",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "2000+",
+          "label": "продуктов для теста",
+          "sub": "вход бесплатный"
+        },
+        {
+          "icon": "star",
+          "value": "30+",
+          "label": "брендов группы",
+          "sub": "Sulwhasoo, Laneige, HERA, IOPE"
+        },
+        {
+          "icon": "cpu",
+          "value": "CUSTOM.ME",
+          "label": "эссенция по анализу кожи",
+          "sub": "и Custom Beauty Service"
+        },
+        {
+          "icon": "pin",
+          "value": "Сонсу-дон",
+          "label": "флагманский шоурум",
+          "sub": "бывшая автомастерская"
+        }
+      ],
+      "why": "Флагманский шоурум Amorepacific в Сонсу-доне — в переоборудованном здании бывшей автомастерской.",
+      "learn": "2000+ продуктов 30+ брендов группы, сервисы Custom Beauty Service и CUSTOM.ME; каждый месяц — новые выставки.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Соннам",
+      "title": "PharmaResearch",
+      "logo": "source-videos/логотипы/косметика/pharmaresearch.png",
+      "short": "PharmaResearch",
+      "subtitle": "Соннам",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1",
+          "label": "скин-бустеры в Корее",
+          "sub": "Rejuran — лидер рынка"
+        },
+        {
+          "icon": "globe",
+          "value": "30+",
+          "label": "стран продаж",
+          "sub": "Rejuran"
+        },
+        {
+          "icon": "cpu",
+          "value": "DOT™",
+          "label": "технология PN и PDRN",
+          "sub": "из ДНК лосося"
+        },
+        {
+          "icon": "briefcase",
+          "value": "Ботулотоксин",
+          "label": "PharmaResearch Bio",
+          "sub": "дочерняя компания"
+        }
+      ],
+      "why": "Биотех-компания регенеративной медицины и эстетики: флагманский Rejuran — лидер корейского рынка скин-бустеров.",
+      "learn": "Технология DOT™ извлекает полинуклеотиды (PN) и PDRN из ДНК лосося для регенерации тканей.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Анъян",
+      "title": "Caregen",
+      "logo": "source-videos/логотипы/косметика/caregen.png",
+      "short": "Caregen",
+      "subtitle": "Анъян",
+      "facts": [
+        {
+          "icon": "globe",
+          "value": "130+",
+          "label": "стран экспорта"
+        },
+        {
+          "icon": "cpu",
+          "value": "Пептиды",
+          "label": "anti-age препараты",
+          "sub": "морщины, пигментация, волосы"
+        },
+        {
+          "icon": "pin",
+          "value": "Ближний Восток",
+          "label": "крупнейший рынок",
+          "sub": "а также Европа и АТР"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "по официальному согласованию"
+        }
+      ],
+      "why": "Публичная биотех-компания из Анъяна: пептидные препараты anti-age действия — против морщин, пигментации и воспалений.",
+      "learn": "Также средства для роста волос; экспорт в 130+ стран, крупнейшие рынки — Ближний Восток, Европа и АТР.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Бренд-холдинги\nи ODM-фабрики K-beauty",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Kolmar, Cosmax и LG H&H —\nне для случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Мастер-классы",
+          "text": "Ginseng Class\nи подбор тона HERA",
+          "icon": "star"
+        },
+        {
+          "title": "Без перелётов",
+          "text": "Сеул и ближайшие\nгорода",
+          "icon": "pin"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "Переводчик и техэксперт\nна каждой площадке",
+          "icon": "headphones"
+        },
+        {
+          "title": "K-Beauty индустрия Кореи",
+          "text": "Amorepacific · Sulwhasoo\nCosmax · LG H&H",
+          "icon": "store"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "5 дней",
+          "label": "/ 5 ночей",
+          "sub": "5 дней визитов"
+        },
+        {
+          "icon": "store",
+          "value": "10 компаний",
+          "label": "K-Beauty индустрия Кореи",
+          "sub": "Amorepacific, Sulwhasoo, Cosmax"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Бренд-холдинги и фабрики ODM-производителей K-beauty",
+        "Мастер-классы: Ginseng Class, подбор тона HERA",
+        "Согласование визитов, в том числе напрямую с компанией",
+        "Переводчик и техническая экспертиза на каждой площадке"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Сеул (перелёт Москва → Сеул, аэропорт Инчхон).<br><b>Вылет:</b> Анъян (→ Сеул → Москва)"
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

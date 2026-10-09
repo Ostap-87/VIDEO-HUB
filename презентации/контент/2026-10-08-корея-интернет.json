@@ -1,0 +1,575 @@
+{
+  "title": "Технологии и интернет-гиганты Кореи — Global Tech Tour",
+  "output": "2026-10-08-корея-интернет",
+  "source": "https://globaltechtour.ru/expeditions/korea-tech-internet-giants-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 09.10.2026)",
+  "robot": "korea",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-делегация · Технологии Кореи",
+      "topright": "Интернет-гиганты\nи робототехника",
+      "logos": [
+        {
+          "name": "Coupang",
+          "logo": "source-videos/логотипы/ритейл/coupang.svg"
+        },
+        {
+          "name": "Woowa Brothers (Baemin)",
+          "logo": "source-videos/логотипы/техгиганты/woowa-brothers.png"
+        },
+        {
+          "name": "SK Telecom",
+          "logo": "source-videos/логотипы/техгиганты/sk-telecom.png"
+        },
+        {
+          "name": "Naver",
+          "logo": "source-videos/логотипы/техгиганты/naver.png"
+        },
+        {
+          "name": "Kakao",
+          "logo": "source-videos/логотипы/техгиганты/kakao.png"
+        },
+        {
+          "name": "NCSoft",
+          "logo": "source-videos/логотипы/техгиганты/ncsoft.png"
+        },
+        {
+          "name": "Doosan Robotics",
+          "logo": "source-videos/логотипы/роботы/doosan-robotics.png"
+        },
+        {
+          "name": "Rainbow Robotics",
+          "logo": "source-videos/логотипы/роботы/rainbow-robotics.png"
+        }
+      ],
+      "box_text": "От e-commerce до гуманоидных роботов —\n8 компаний, 5 дней, 5 ночей",
+      "box_right": "Сеул · Пангё · Сувон ·\nЙонъин — 4 города",
+      "footer": "Global Tech Tour · бизнес-делегации в Корею · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Coupang, Naver, Kakao, NCSoft, Doosan и Rainbow Robotics не принимают открытые заявки — мы заранее согласуем визиты через официальные каналы."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "8 компаний за 5 дней: компактная география вокруг Сеула и технопарка Пангё, без внутренних перелётов."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Переводчик и техническая экспертиза на каждой встрече — готовая программа под ключ."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "8 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Сеул",
+          "text": "Coupang, Woowa Brothers (Baemin), SK Telecom T.um"
+        },
+        {
+          "name": "Дни 3–4 · Пангё + Сувон",
+          "text": "Naver, Kakao, NCSoft, Doosan Robotics"
+        },
+        {
+          "name": "День 5 · Йонъин",
+          "text": "Rainbow Robotics — гуманоидные роботы. Завершение программы."
+        }
+      ],
+      "quote": "Интернет-экосистема\nКореи изнутри."
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Сеул",
+          "days": "дни 1–2",
+          "companies": "Coupang\nWoowa Brothers\nSK Telecom"
+        },
+        {
+          "name": "Соннам (Пангё)",
+          "days": "дни 3–4",
+          "companies": "Naver\nKakao\nNCSoft",
+          "leg": {
+            "icon": "car",
+            "text": ""
+          }
+        },
+        {
+          "name": "Сувон",
+          "days": "день 4",
+          "companies": "Doosan Robotics",
+          "leg": {
+            "icon": "car",
+            "text": "~20–30 мин"
+          }
+        },
+        {
+          "name": "Йонъин",
+          "days": "день 5",
+          "companies": "Rainbow Robotics",
+          "leg": {
+            "icon": "car",
+            "text": ""
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Сеул · <b>Вылет:</b> Йонъин (→ Сеул → Москва)"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–14:00",
+          "title": "Coupang ·\nWoowa Brothers",
+          "text": "Coupang — крупнейший e-commerce Кореи; Baemin — крупнейшая доставка еды. Оба визита — по согласованию.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "SK Telecom",
+          "text": "T.um — выставочный центр SK Telecom: 5G, ИИ, дроны, робототехника. Вечером — переезд в Пангё.",
+          "label": "День 2"
+        },
+        {
+          "sub": "Соннам (Пангё)",
+          "title": "Naver ·\nKakao",
+          "text": "Naver — поиск, карты, облако и ИИ; Kakao — мессенджер KakaoTalk №1 в Корее. Оба визита — по согласованию.",
+          "label": "День 3"
+        },
+        {
+          "sub": "Пангё / Сувон",
+          "title": "NCSoft ·\nDoosan Robotics",
+          "text": "NCSoft (Lineage) в Пангё, днём — переезд в Сувон (~20–30 мин) к Doosan Robotics.",
+          "label": "День 4"
+        },
+        {
+          "sub": "Йонъин",
+          "title": "Rainbow Robotics",
+          "text": "Создатель двуногого робота HUBO, офис в Йонъин Техно Вэлли. Завершение программы.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Сеул",
+      "title": "Coupang",
+      "logo": "source-videos/логотипы/ритейл/coupang.svg",
+      "short": "Coupang",
+      "subtitle": "Сеул",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1",
+          "label": "e-commerce Кореи",
+          "sub": "и логистическая платформа"
+        },
+        {
+          "icon": "globe",
+          "value": "Amazon / JD.com",
+          "label": "корейский аналог"
+        },
+        {
+          "icon": "building",
+          "value": "Сонпха",
+          "label": "штаб-квартира и хаб",
+          "sub": "логистика, Сеул"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "по официальному согласованию"
+        }
+      ],
+      "why": "Крупнейшая e-commerce и логистическая платформа Кореи — корейский аналог Amazon и JD.com.",
+      "learn": "Штаб-квартира и логистический хаб в районе Сонпха (Сеул) — e-commerce и логистика изнутри.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Сеул",
+      "title": "Woowa Brothers",
+      "logo": "source-videos/логотипы/техгиганты/woowa-brothers.png",
+      "short": "Woowa Brothers",
+      "subtitle": "Baemin · Сеул",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1",
+          "label": "доставка еды в Корее",
+          "sub": "сервис Baedal Minjok"
+        },
+        {
+          "icon": "globe",
+          "value": "Meituan",
+          "label": "корейский аналог"
+        },
+        {
+          "icon": "building",
+          "value": "Lotte World Tower",
+          "label": "штаб-квартира",
+          "sub": "Сонпха / Чамсиль, Сеул"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 1",
+          "label": "визит делегации",
+          "sub": "по официальному согласованию"
+        }
+      ],
+      "why": "Оператор Baedal Minjok (Baemin) — крупнейшего сервиса доставки еды в Корее, аналога Meituan.",
+      "learn": "Штаб-квартира в Lotte World Tower; визит — по официальному согласованию.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Сеул",
+      "title": "SK Telecom — T.um",
+      "logo": "source-videos/логотипы/техгиганты/sk-telecom.png",
+      "short": "SK Telecom — T.um",
+      "subtitle": "Сеул",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "2 этажа",
+          "label": "экспозиции",
+          "sub": "2-й — по онлайн-брони"
+        },
+        {
+          "icon": "cpu",
+          "value": "5G · ИИ",
+          "label": "big data, VR/AR",
+          "sub": "дроны, 3D-печать"
+        },
+        {
+          "icon": "star",
+          "value": "Hyperloop",
+          "label": "и Space Control Center",
+          "sub": "зоны экспозиции"
+        },
+        {
+          "icon": "pin",
+          "value": "Ыльджиро",
+          "label": "штаб-квартира SK Telecom",
+          "sub": "Сеул"
+        }
+      ],
+      "why": "T.um (Technology, U-topia, Museum) — флагманский выставочный центр SK Telecom в штаб-квартире компании.",
+      "learn": "5G, автономный транспорт, дроны, ИИ, big data, VR/AR и робототехника; закрыт по выходным и праздникам.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Соннам (Пангё)",
+      "title": "Naver",
+      "logo": "source-videos/логотипы/техгиганты/naver.png",
+      "short": "Naver",
+      "subtitle": "Соннам (Пангё)",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1",
+          "label": "поисковик Кореи",
+          "sub": "интернет-холдинг"
+        },
+        {
+          "icon": "globe",
+          "value": "Поиск · карты",
+          "label": "вебтун, облако, ИИ"
+        },
+        {
+          "icon": "building",
+          "value": "«1784»",
+          "label": "кампус в Соннаме",
+          "sub": "здание-полигон с роботами"
+        },
+        {
+          "icon": "handshake",
+          "value": "NVIDIA",
+          "label": "AI Factory партнёрство",
+          "sub": "подписание — 2026 год"
+        }
+      ],
+      "why": "Крупнейший поисковик и интернет-холдинг Кореи: поиск, карты, вебтун, облако и ИИ.",
+      "learn": "Кампус «1784» — здание-полигон с интегрированной робототехникой; здесь в 2026 году подписано AI Factory партнёрство с NVIDIA.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Соннам (Пангё)",
+      "title": "Kakao",
+      "logo": "source-videos/логотипы/техгиганты/kakao.png",
+      "short": "Kakao",
+      "subtitle": "Соннам (Пангё)",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "№1",
+          "label": "мессенджер Кореи",
+          "sub": "KakaoTalk"
+        },
+        {
+          "icon": "smartphone",
+          "value": "Игры · платежи",
+          "label": "такси, контент",
+          "sub": "экосистема Kakao"
+        },
+        {
+          "icon": "building",
+          "value": "Пангё",
+          "label": "штаб-квартира",
+          "sub": "технопарк, Соннам"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "по официальному согласованию"
+        }
+      ],
+      "why": "Оператор KakaoTalk — мессенджера №1 в Корее; также игры, платежи, такси и контент.",
+      "learn": "Штаб-квартира — в технопарке Пангё; визит — по официальному согласованию.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Соннам (Пангё)",
+      "title": "NCSoft",
+      "logo": "source-videos/логотипы/техгиганты/ncsoft.png",
+      "short": "NCSoft",
+      "subtitle": "Соннам (Пангё)",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Lineage",
+          "label": "и Blade & Soul",
+          "sub": "игры компании"
+        },
+        {
+          "icon": "trending",
+          "value": "Один из крупнейших",
+          "label": "издателей видеоигр",
+          "sub": "в Корее"
+        },
+        {
+          "icon": "building",
+          "value": "Пангё Techno Valley",
+          "label": "штаб-квартира",
+          "sub": "Соннам"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "по официальному согласованию"
+        }
+      ],
+      "why": "Один из крупнейших корейских издателей видеоигр — Lineage и Blade & Soul.",
+      "learn": "Штаб-квартира — в Пангё Techno Valley; визит — по официальному согласованию.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Сувон",
+      "title": "Doosan Robotics",
+      "logo": "source-videos/логотипы/роботы/doosan-robotics.png",
+      "short": "Doosan Robotics",
+      "subtitle": "Doosan · Сувон",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "5-е место",
+          "label": "в мире по доле рынка коботов",
+          "sub": "2022 год"
+        },
+        {
+          "icon": "handshake",
+          "value": "Doosan",
+          "label": "в составе группы",
+          "sub": "промышленная группа"
+        },
+        {
+          "icon": "chart",
+          "value": "KRX",
+          "label": "публичная компания",
+          "sub": "Корейская биржа"
+        },
+        {
+          "icon": "cpu",
+          "value": "Коботы",
+          "label": "сварка, шлифовка, паллеты",
+          "sub": "и даже жарка фастфуда"
+        }
+      ],
+      "why": "Южнокорейский производитель коллаборативных роботов (коботов) — 5-е место в мире по доле рынка (2022).",
+      "learn": "Коботы для сварки, шлифовки, паллетирования и даже жарки фастфуда; входит в промышленную группу Doosan.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Йонъин",
+      "title": "Rainbow Robotics",
+      "logo": "source-videos/логотипы/роботы/rainbow-robotics.png",
+      "short": "Rainbow Robotics",
+      "subtitle": "Йонъин",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "HUBO",
+          "label": "первый коммерческий",
+          "sub": "двуногий робот в мире"
+        },
+        {
+          "icon": "briefcase",
+          "value": "35%",
+          "label": "у Samsung Electronics",
+          "sub": "доля в компании"
+        },
+        {
+          "icon": "users",
+          "value": "MIT · Google",
+          "label": "клиенты HUBO"
+        },
+        {
+          "icon": "target",
+          "value": "2028",
+          "label": "доступный двуногий робот",
+          "sub": "цель K-Humanoid Alliance"
+        }
+      ],
+      "why": "Выросла из лаборатории гуманоидных роботов KAIST (HUBO Lab) — создатель первого в мире коммерциализированного двуногого робота HUBO.",
+      "learn": "Участник госальянса K-Humanoid Alliance с LG Electronics и Doosan Robotics: цель — коммерчески доступный двуногий робот к 2028 году.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Штаб-квартиры e-commerce,\nпоиска, мессенджеров и игр",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Визиты, недоступные\nдля обычного туриста",
+          "icon": "building"
+        },
+        {
+          "title": "Логистика",
+          "text": "Сеул, Пангё, Сувон\nи Йонъин",
+          "icon": "car"
+        },
+        {
+          "title": "Без перелётов",
+          "text": "Компактный маршрут\nвокруг Сеула и Пангё",
+          "icon": "pin"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "Переводчик и техэксперт\nна каждой встрече",
+          "icon": "headphones"
+        },
+        {
+          "title": "8 компаний",
+          "text": "Coupang · Naver · Kakao\nСеул · Пангё · Сувон · Йонъин",
+          "icon": "smartphone"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "5 дней",
+          "label": "/ 5 ночей",
+          "sub": "5 дней визитов"
+        },
+        {
+          "icon": "smartphone",
+          "value": "8 компаний",
+          "label": "в программе",
+          "sub": "Coupang, Naver, Kakao"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Штаб-квартиры e-commerce, доставки, поиска, мессенджеров и игр",
+        "Согласование визитов через официальные каналы",
+        "Переводчик и техническая экспертиза на каждой встрече",
+        "Логистика между Сеулом, Пангё, Сувоном и Йонъином"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Сеул (перелёт Москва → Сеул, аэропорт Инчхон).<br><b>Вылет:</b> Йонъин (→ Сеул → Москва)"
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

@@ -57,13 +57,17 @@ TOPIC = [  # хвост tour_id → тема в имени файла
 ]
 SECTOR_FOLDER = {'consumer': 'ритейл', 'food': 'еда', 'internet': 'техгиганты', 'ai': 'ии', 'finance': 'финансы',
                  'medtech': 'медицина', 'robotics': 'роботы', 'auto': 'авто', 'appliances': 'бытовая-техника',
-                 'logistics': 'логистика', 'aerospace': 'авиация', 'realestate': 'недвижимость', 'energy': 'энергетика'}
+                 'logistics': 'логистика', 'aerospace': 'авиация', 'realestate': 'недвижимость', 'energy': 'энергетика',
+                 'electronics': 'техгиганты', 'telecom': 'техгиганты'}
 SECTOR_ICON = {'consumer': 'store', 'food': 'cart', 'internet': 'smartphone', 'ai': 'cpu', 'finance': 'chart',
                'medtech': 'target', 'robotics': 'cpu', 'auto': 'car',
                'logistics': 'package', 'aerospace': 'plane', 'realestate': 'building', 'energy': 'zap'}
 THAI_DAYS = {1: 'หนึ่งวัน', 2: 'สองวัน', 3: 'สามวัน', 4: 'สี่วัน', 5: 'ห้าวัน', 6: 'หกวัน', 7: 'เจ็ดวัน'}
 CJK_DAYS = {1: '一天', 2: '两天', 3: '三天', 4: '四天', 5: '五天', 6: '六天', 7: '七天'}
 GHOST_COUNTRY = {'th': ('ไทย', True), 'cn': ('中国', False), 'jp': ('日本', False)}
+# родное письмо страны, которое есть в шрифтах шаблона: только такое `name_zh` идёт в `native` и `ghost`;
+# у корейских компаний на сайте в `name_zh` китайские названия («酷澎»), а хангыля в шрифтах шаблона нет — не показываем
+NATIVE_SCRIPT = {'cn': r'[一-鿿]', 'jp': r'[぀-ヿ一-鿿]', 'th': r'[฀-๿]'}
 LANG = {'тайском': 'тайском', 'английском': 'английском'}
 GENERIC_ALIAS = {'line', 'true', 'class', 'roots', 'central', 'more', 'space', 'group', 'thailand', 'meiji', 'vega',
                  'better way', 'divana', 'harnn', 'scb', 'bjc', 'ptt', 'or', 'cp', 'jd', 'ai', 'one', 'go', 'ascend'}
@@ -1274,8 +1278,13 @@ def parent_group(c):
 
 
 def city_base(city):
-    """«Токио / Нода (Тиба)», «Осака / Кобе» → основной город (для маршрута и списка городов)."""
-    return re.split(r'\s*/\s*', city or '')[0].strip() or city
+    """«Токио / Нода (Тиба)», «Осака / Кобе», «Осан → Сеул (Букчон)» → основной город (для маршрута и списка городов)."""
+    return re.split(r'\s*(?:/|→)\s*', city or '')[0].strip() or city
+
+
+def city_clean(city):
+    """«Ульсан, день 1», «Пхохан, финал», «Шэньчжэнь, день 2 (финал)» → город без пометок дня (Корея, Китай)."""
+    return re.sub(r'(?:,\s*день\s+\d+)?(?:,?\s*\(?финал\)?)?\s*$', '', city or '').strip() or city
 
 
 LEGAL_RX = r'(?:\s+Co\.)?\s+(?:Sdn\.?\s*Bhd\.?|Berhad|Bhd\.?)(?=\s*[(（]|$)'  # малайзийские формы собственности
@@ -1636,7 +1645,7 @@ def company_short(c):
 def build_deck(tour, comps, logos_ok=True):
     country = tour['country']
     cinfo = COUNTRY.get(country, (country, None, '', ''))
-    itin = tour['itinerary']
+    itin = [dict(d, city_ru=city_clean(d['city_ru'])) for d in tour['itinerary']]
     plain = {strip_parens(city_base(d['city_ru'])) for d in itin if '(' not in city_base(d['city_ru'])}
     if any('(' in city_base(d['city_ru']) and strip_parens(city_base(d['city_ru'])) in plain for d in itin):
         # «Куала-Лумпур (Cyberjaya)» и «Куала-Лумпур» — один город: район остаётся только в подписи дня
@@ -1660,6 +1669,8 @@ def build_deck(tour, comps, logos_ok=True):
             if not c:
                 missing.append(cid)
                 continue
+            if c.get('name_zh') and not re.search(NATIVE_SCRIPT.get(country, r'(?!)'), c['name_zh']):
+                c = dict(c, name_zh=None)  # «酷澎» у Coupang — китайское, не родное название
             clist.append((d, c))
     logo_of = {}
     by_site = {}  # один файл сайта у двух компаний (Grab и GrabKitchen) — один логотип, без второй копии
@@ -1733,9 +1744,12 @@ def build_deck(tour, comps, logos_ok=True):
         inc_ru = [re.sub(r'^(Трансферы)\s+между городами программы$', r'\1 по программе', i) for i in inc_ru]
     transfers = next((i for i in inc_ru if i.lower().startswith('трансфер')), '')
     tr_generic = transfers == 'Трансферы по программе'  # один город: «Трансферы включены», а не «… между городами»
-    hq = next((a for a in adv if 'штаб' in a.lower()), adv[0] if adv else '')
-    route = next((a for a in adv if 'маршрут' in a.lower()), adv[1] if len(adv) > 1 else '')
-    support = next((a for a in adv if 'сопровожд' in a.lower() or 'перевод' in a.lower()), adv[2] if len(adv) > 2 else '')
+    pick = lambda pool, rx: next((a for a in pool if re.search(rx, a.lower())), '')
+    # у туров Кореи и ОАЭ преимущества без слов «штаб», «маршрут», «перевод» — ищем по смыслу, иначе заголовок и текст
+    # не совпадают («Сопровождение и перевод» → «Мы берём на себя согласование визитов…»)
+    hq = pick(adv, r'штаб') or pick(adv, r'согласован|закрыт|недоступн') or (adv[0] if adv else '')
+    route = pick(adv, r'маршрут') or pick(adv, r'географ|перел[её]т') or (adv[1] if len(adv) > 1 else '')
+    support = pick(adv, r'сопровожд|перевод') or pick(inc_ru + with_us, r'сопровожд|перевод') or (adv[2] if len(adv) > 2 else '')
     slides.append({'type': 'why', 'items': [
         {'title': 'Большой опыт', 'text': 'Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний.'},
         {'title': 'Доступ к штаб-квартирам', 'text': Var(end_dot(cap(re.sub(r'^Доступ к штаб-квартирам, обычно закрытым', 'Визиты в штаб-квартиры, обычно закрытые', hq))) + (' ' + end_dot(cap(with_us[0])) if with_us else ''), end_dot(cap(hq)))},  # «к площадкам, обычно закрытым» — падеж не трогаем
@@ -1769,7 +1783,10 @@ def build_deck(tour, comps, logos_ok=True):
         txt = ', '.join(names) if names else ''
         if notes and not names:
             txt = notes[0]
-        full = txt + (' — ' + notes[0][0].lower() + notes[0][1:] if notes and names else '')
+        # «Оба визита — …» одного дня к блоку из нескольких дней не подходит («Coupang, Woowa Brothers, SK Telecom — оба визита»);
+        # строчная — только у русского слова («Rakuten Crimson House», «ZOZO», «LG H&H» не портим)
+        nt = notes[0] if notes and (len(g) == 1 or not re.match(r'(?:Оба|Все)\s', notes[0])) else ''
+        full = txt + (' — ' + (nt[0].lower() + nt[1:] if re.match(r'[А-ЯЁ][а-яё]', nt) else nt) if nt and names else '')
         items.append({'name': Var(name, name.split(' · ')[0]), 'text': Var(full, txt)})
     quote = f'{cap(pos_tail)}.' if pos_tail else ''
     q2 = quote
@@ -1810,13 +1827,19 @@ def build_deck(tour, comps, logos_ok=True):
                      'companies': Var('\n'.join(names), '\n'.join(names[:4]) + (f'\n+ ещё {len(names) - 4}' if len(names) > 4 else ''),
                                       cnt(len(names), 'компания', 'компании', 'компаний'))}
             if ci > 0:
-                tr = next((d.get('transfer_ru', '') for d in dd if d.get('transfer_ru')), '')
-                k0 = itin.index(dd[0])
-                prev_tr = itin[k0 - 1].get('transfer_ru') or '' if k0 else ''
-                if not tr and '→' in prev_tr and cname in prev_tr.split('→')[-1]:  # «После утреннего визита — трансфер Абу-Даби → Дубай» накануне
-                    tr = itin[k0 - 1]['transfer_ru']
-                m = re.search(r'\(([≈~][^)]*)\)', tr)
-                icon = ('plane' if re.search(r'[Пп]ерел[её]т|рейс', tr) else 'train' if re.search(r'[Пп]оезд(?!к)|[Сс]инкансэн', tr)
+                # переезд в город описан в его дне или накануне («Днём — переезд в Ульсан (KTX + автобус, ~2,5 ч)» у дня 3,
+                # Корея; «трансфер Абу-Даби → Дубай» накануне, ОАЭ): сначала текст, где этот город назван, иначе — первый
+                # переезд дней города
+                stem_of = lambda c: re.escape(strip_parens(c)[:-1] if len(strip_parens(c)) > 5 else strip_parens(c))
+                others = [stem_of(c) for c in cities if c != cname]
+                prev = [x for x in itin if x['day'] == dd[0]['day'] - 1]
+                tr = (next((d['transfer_ru'] for d in dd + prev if re.search(r'(?:\sв|\sво|→)\s+' + stem_of(cname), d.get('transfer_ru') or '')
+                            and not re.match(r'Прил[её]т', d['transfer_ru'])), '')  # «Прилёт делегации в Ахмадабад» — не перегон
+                      or next((d['transfer_ru'] for d in dd if d.get('transfer_ru')  # «переезд в Ульсан» — это уже следующий город
+                               and (re.search(stem_of(cname), d['transfer_ru'])
+                                    or not any(re.search(r'\sв\s' + o, d['transfer_ru']) for o in others))), ''))
+                m = re.search(r'\((?:[^()]*?,\s*)?([≈~][^()]*)\)', tr)
+                icon = ('plane' if re.search(r'[Пп]ерел[её]т|рейс', tr) else 'train' if re.search(r'[Пп]оезд(?!к)|[Сс]инкансэн|KTX', tr)
                         else 'car' if re.search(r'[Пп]оездк|[Пп]ереезд|[Тт]рансфер|[Вв]ыезд', tr)
                         else 'plane' if stats.get('flights') else 'car')
                 entry['leg'] = {'icon': icon, 'text': re.sub(r'^[≈~]\s*(\d+(?:,\d+)?)\s*час\w*.*$', r'≈\1 ч', m.group(1)) if m else ''}  # «~1,5 часа по трассе» → «≈1,5 ч»
@@ -1866,8 +1889,11 @@ def build_deck(tour, comps, logos_ok=True):
                       'text': Var(*[v for v in variants if v]), 'label': f'День {d["day"]}'})
         if len(cities) > 1 and d['city_ru'] != main_city:  # «Токио / Нода (Тиба)» — тоже подпись
             sub = f'{d["city_ru"]} · {d.get("time") or ""}'.strip(' ·')
-            short_city = d['city_ru'] if len(d['city_ru']) <= 18 or d is itin[-1] else city_base(d['city_ru'])  # «Ахмадабад/Гандинагар»
-            dlist[-1]['sub'] = sub if len(sub) <= 18 or len(itin) <= 3 else short_city  # «Семаранг · 10:00–13:00» наезжает на кружок следующего дня
+            # «Ахмадабад/Гандинагар»; у последнего дня справа нет кружка, но длиннее ~20 знаков подпись уходит за край слайда
+            short_city = d['city_ru'] if len(d['city_ru']) <= (20 if d is itin[-1] else 18) else city_base(d['city_ru'])
+            first = sub if len(sub) <= 18 or len(itin) <= 3 else short_city  # «Семаранг · 10:00–13:00» наезжает на кружок следующего дня
+            # не влезло (fit_check: days.N.sub) — короче: город без времени, основной город
+            dlist[-1]['sub'] = Var(*dict.fromkeys([first, short_city, city_base(d['city_ru'])]))
     dghost = THAI_DAYS.get(len(itin)) if country == 'th' else (CJK_DAYS.get(len(itin)) if country in ('cn', 'jp') else None)
     slides.append({'type': 'days', 'tag': 'Программа по дням', 'title': f'{cnt(len(itin), "день", "дня", "дней")} визитов',
                    'ghost': dghost, 'days': dlist})

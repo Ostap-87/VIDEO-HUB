@@ -64,6 +64,9 @@ const issues = await page.evaluate(() => {
         if (h && R(h).w > R(c).w) add(`days.${i}`, 'day title too wide');
         if (h && h.offsetHeight > 140) add(`days.${i}`, 'day title 3+ lines');
       });
+      // подпись дня («Пхёнтхэк · 10:00–13:00») не должна наезжать на кружок следующего дня или уходить за край слайда
+      const dcs = all('.dc');
+      all('.dl').forEach((l, i) => { const lim = dcs[i + 1] ? R(dcs[i + 1]).l - 6 : 1905; if (R(l).r > lim) add(`days.${i}.sub`, 'day label too wide'); });
       const t = one('.title'); if (t && shrunk(t) < 0.62) add('title', 'title shrunk');
     }
     if (cls.includes('s-layers')) {

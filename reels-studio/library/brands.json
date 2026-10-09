@@ -3643,5 +3643,171 @@
   ],
   "logo": "source-videos/логотипы/энергетика/al-maktoum-solar-park.png",
   "site_logo": "/logos/Mohammed bin Rashid Al Maktoum.png"
+ },
+ "samsung": {
+  "names": [
+   "Samsung",
+   "Samsung Electronics",
+   "Samsung d'light",
+   "Samsung Innovation Museum"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/samsung.svg",
+  "site_logo": "/logos/samsung-dlight.svg"
+ },
+ "lg-display": {
+  "names": [
+   "LG Display",
+   "LG Display — Paju"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/lg-display.png",
+  "site_logo": "/logos/LG Display.png"
+ },
+ "hyundai-motor": {
+  "names": [
+   "Hyundai Motor Group",
+   "Hyundai Motor",
+   "Hyundai Motor — Ulsan Plant"
+  ],
+  "logo": "source-videos/логотипы/авто/hyundai-motor-group.png",
+  "site_logo": "/logos/Hyundai.png"
+ },
+ "hyundai-heavy-industries": {
+  "names": [
+   "Hyundai Heavy Industries",
+   "Hyundai Heavy Industries — Ulsan Shipyard",
+   "HHI"
+  ],
+  "logo": "source-videos/логотипы/общие/hyundai-heavy-industries.png",
+  "site_logo": "/logos/Hyundai Heavy Industries.png"
+ },
+ "posco": {
+  "names": [
+   "POSCO"
+  ],
+  "logo": "source-videos/логотипы/общие/posco.png",
+  "site_logo": "/logos/POSCO.png"
+ },
+ "amorepacific": {
+  "names": [
+   "Amorepacific"
+  ],
+  "logo": "source-videos/логотипы/косметика/amorepacific.png",
+  "site_logo": "/logos/Amorepacific.png"
+ },
+ "innisfree": {
+  "names": [
+   "Innisfree"
+  ],
+  "logo": "source-videos/логотипы/косметика/innisfree.png",
+  "site_logo": "/logos/Innisfree.png"
+ },
+ "kolmar-korea": {
+  "names": [
+   "Kolmar Korea",
+   "Kolmar"
+  ],
+  "logo": "source-videos/логотипы/косметика/kolmar.png",
+  "site_logo": "/logos/Kolmar.png"
+ },
+ "cosmax": {
+  "names": [
+   "Cosmax"
+  ],
+  "logo": "source-videos/логотипы/косметика/cosmax.png",
+  "site_logo": "/logos/Cosmax.png"
+ },
+ "sulwhasoo-house": {
+  "names": [
+   "Sulwhasoo House",
+   "Sulwhasoo"
+  ],
+  "logo": "source-videos/логотипы/косметика/sulwhasoo-house.png",
+  "site_logo": "/logos/Sulwhasoo House.png"
+ },
+ "lg-handh-the-history-of-whoo": {
+  "names": [
+   "LG H&H — The History of Whoo",
+   "LG H&H",
+   "The History of Whoo"
+  ],
+  "logo": "source-videos/логотипы/косметика/lg-hnh-history-of-whoo.png",
+  "site_logo": "/logos/LG H&H.png"
+ },
+ "pharmaresearch": {
+  "names": [
+   "PharmaResearch"
+  ],
+  "logo": "source-videos/логотипы/косметика/pharmaresearch.png",
+  "site_logo": "/logos/PharmaResearch.png"
+ },
+ "caregen": {
+  "names": [
+   "Caregen"
+  ],
+  "logo": "source-videos/логотипы/косметика/caregen.png",
+  "site_logo": "/logos/Caregen.png"
+ },
+ "cj-cheiljedang": {
+  "names": [
+   "CJ CheilJedang"
+  ],
+  "logo": "source-videos/логотипы/еда/cj-cheiljedang.png",
+  "site_logo": "/logos/CJ CheilJedang.png"
+ },
+ "cj-freshway": {
+  "names": [
+   "CJ Freshway"
+  ],
+  "logo": "source-videos/логотипы/еда/cj-freshway.png",
+  "site_logo": "/logos/CJ Freshway.png"
+ },
+ "market-kurly": {
+  "names": [
+   "Market Kurly",
+   "Kurly"
+  ],
+  "logo": "source-videos/логотипы/еда/market-kurly.png",
+  "site_logo": "/logos/Market Kurly.png"
+ },
+ "nongshim-farm": {
+  "names": [
+   "Nongshim Farm"
+  ],
+  "logo": "source-videos/логотипы/еда/nongshim-farm.png",
+  "site_logo": "/logos/Nongshim farm.png"
+ },
+ "seoul-milk": {
+  "names": [
+   "Seoul Milk"
+  ],
+  "logo": "source-videos/логотипы/еда/seoul-milk.png",
+  "site_logo": "/logos/Seoul Milk.png"
+ },
+ "samyang-foods-buldak-plant": {
+  "names": [
+   "Samyang Foods — Buldak Plant",
+   "Samyang Foods",
+   "Samyang",
+   "Buldak"
+  ],
+  "logo": "source-videos/логотипы/еда/samyang-foods.png",
+  "site_logo": "/logos/Samyang Food.png"
+ },
+ "jungkwanjang": {
+  "names": [
+   "Jungkwanjang (KGC)",
+   "Jungkwanjang",
+   "KGC"
+  ],
+  "logo": "source-videos/логотипы/еда/jungkwanjang-kgc.png",
+  "site_logo": "/logos/Jungkwanjiang.png"
+ },
+ "hy": {
+  "names": [
+   "hy (Korea Yakult)",
+   "Korea Yakult"
+  ],
+  "logo": "source-videos/логотипы/еда/hy-korea-yakult.png",
+  "site_logo": "/logos/Yakult.png"
  }
 }
