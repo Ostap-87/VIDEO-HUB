@@ -1,0 +1,428 @@
+{
+  "title": "Индивидуальная AI-миссия в Китай: обмен опытом с разработчиками AI-моделей",
+  "output": "2026-10-09-китай-ai-миссия",
+  "source": "Файл пользователя «AI-миссия в Китай» (презентации/примеры/AI-миссия в Китай (запрос клиента).pdf), 09.10.2026",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Индивидуальная бизнес-миссия · AI в Китае",
+      "topright": "Ваш запрос ·\nобновлённое предложение",
+      "logos": [
+        {
+          "name": "DeepSeek",
+          "logo": "source-videos/логотипы/ии/deepseek.svg"
+        },
+        {
+          "name": "Z.ai",
+          "logo": "source-videos/логотипы/ии/zhipu.png"
+        },
+        {
+          "name": "Moonshot AI",
+          "logo": "source-videos/логотипы/ии/moonshot-ai.png"
+        },
+        {
+          "name": "ByteDance Seed",
+          "logo": "source-videos/логотипы/общие/bytedance.png"
+        },
+        {
+          "name": "Alibaba · Qwen",
+          "logo": "source-videos/логотипы/ии/qwen.svg"
+        },
+        {
+          "name": "MiniMax",
+          "logo": "source-videos/логотипы/ии/minimax.svg"
+        },
+        {
+          "name": "StepFun",
+          "logo": "source-videos/логотипы/ии/stepfun.svg"
+        },
+        {
+          "name": "SenseTime",
+          "logo": "source-videos/логотипы/ии/sensetime.png"
+        }
+      ],
+      "box_text": "Обмен опытом с разработчиками AI-моделей —\n10 человек, ноябрь 2026, 5 дней",
+      "box_right": "Пекин · Ханчжоу · Шанхай —\nинженеры с инженерами",
+      "footer": "Global Tech Tour · индивидуальная бизнес-миссия в Китай · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "tag": "Почему мы",
+      "items": [
+        {
+          "title": "Работаем в Китае, на месте",
+          "text": "Опыт организации встреч и корпоративного обучения по 18+ отраслям — от протокольных визитов для госсектора до коммерческих холдингов."
+        },
+        {
+          "title": "Более 10 лет в Китае",
+          "text": "Опыт в китайских и российских корпорациях; свободный китайский и знание культуры делового взаимодействия."
+        },
+        {
+          "title": "Выводим на инженеров",
+          "text": "Технические встречи с инженерами, исследователями и R&D-командами — архитектура, обучение, инференс. Знаем рынок AI и робототехники."
+        },
+        {
+          "title": "Делаем всё под ключ",
+          "text": "Повестка и собеседники до поездки, логистика и технический перевод на месте, резюме и контакты после."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Приоритетные команды",
+      "ghost": "人工智能",
+      "title1": "3 команды",
+      "title2": "инженер — инженеру",
+      "items": [
+        {
+          "name": "DeepSeek · Ханчжоу",
+          "text": "Разреженное внимание и MoE, контекст 1 млн токенов, FP8-обучение, переход V3.2 → V4"
+        },
+        {
+          "name": "Z.ai · Пекин",
+          "text": "RL-фреймворк slime и post-training GLM-5.x, перенос обучения и инференса на китайские чипы"
+        },
+        {
+          "name": "Moonshot AI · Пекин",
+          "text": "Оптимизатор Muon / MuonClip, Kimi Linear в продакшене, Agent Swarm и coding-агент Kimi Code"
+        }
+      ],
+      "quote": "Главный акцент — встречи\nс техническими командами,\nа не с топ-менеджментом."
+    },
+    {
+      "type": "company",
+      "tag": "Ханчжоу · приоритет",
+      "title": "DeepSeek",
+      "native": "深度求索",
+      "ghost": "深度",
+      "logo": "source-videos/логотипы/ии/deepseek.svg",
+      "short": "DeepSeek",
+      "subtitle": "Темы встреч · инженеры, а не топ-менеджмент",
+      "facts": [
+        {
+          "icon": "cpu",
+          "value": "MoE · 1 млн",
+          "label": "токенов контекста",
+          "sub": "разреженное внимание и MoE"
+        },
+        {
+          "icon": "zap",
+          "value": "FP8",
+          "label": "обучение",
+          "sub": "загрузка кластеров, цена инференса"
+        },
+        {
+          "icon": "chart",
+          "value": "V3.2 → V4",
+          "label": "оценка качества",
+          "sub": "свои бенчмарки и контроль регрессий"
+        },
+        {
+          "icon": "globe",
+          "value": "Open source",
+          "label": "развитие AI",
+          "sub": "что выкладывать и как это влияет на команду"
+        }
+      ],
+      "why_label": "Отделы",
+      "why": "Архитектура и предобучение; системы обучения и инференса; оценка моделей.",
+      "learn_label": "С кем встречаемся — запрос",
+      "learn": "Research Engineer (MoE), ML Systems Engineer, Inference Engineer, Evaluation Engineer."
+    },
+    {
+      "type": "company",
+      "tag": "Пекин · приоритет",
+      "title": "Z.ai",
+      "native": "智谱",
+      "ghost": "智谱",
+      "logo": "source-videos/логотипы/ии/zhipu.png",
+      "short": "Z.ai",
+      "subtitle": "Темы встреч · инженеры, а не топ-менеджмент",
+      "facts": [
+        {
+          "icon": "cpu",
+          "value": "slime",
+          "label": "RL-фреймворк",
+          "sub": "как устроен post-training GLM-5.x"
+        },
+        {
+          "icon": "zap",
+          "value": "Свои чипы",
+          "label": "задачи и ограничения",
+          "sub": "перенос обучения и инференса на китайские чипы"
+        },
+        {
+          "icon": "chart",
+          "value": "Coding",
+          "label": "оценка качества",
+          "sub": "бенчмарки против реальных репозиториев"
+        },
+        {
+          "icon": "target",
+          "value": "Агенты",
+          "label": "развитие AI",
+          "sub": "где модели ещё ломаются"
+        }
+      ],
+      "why_label": "Отделы",
+      "why": "Post-training и RL (slime); coding- и агентные продукты; адаптация под китайские чипы.",
+      "learn_label": "С кем встречаемся — запрос",
+      "learn": "RL / Post-training Engineer, Agent Engineer (GLM Coding, AutoGLM), AI Infra Engineer, Evaluation Engineer."
+    },
+    {
+      "type": "company",
+      "tag": "Пекин · приоритет",
+      "title": "Moonshot AI",
+      "native": "月之暗面",
+      "ghost": "月之",
+      "logo": "source-videos/логотипы/ии/moonshot-ai.png",
+      "short": "Moonshot AI",
+      "subtitle": "Kimi · темы встреч · инженеры, а не топ-менеджмент",
+      "facts": [
+        {
+          "icon": "cpu",
+          "value": "Muon",
+          "label": "оптимизатор / MuonClip",
+          "sub": "стабильность обучения на 1 трлн параметров"
+        },
+        {
+          "icon": "zap",
+          "value": "Kimi Linear",
+          "label": "линейное внимание",
+          "sub": "в продакшене"
+        },
+        {
+          "icon": "users",
+          "value": "Agent Swarm",
+          "label": "оценка качества",
+          "sub": "сотни субагентов в одной задаче"
+        },
+        {
+          "icon": "target",
+          "value": "Kimi Code",
+          "label": "coding-агенты",
+          "sub": "как команда использует их сама"
+        }
+      ],
+      "why_label": "Отделы",
+      "why": "Архитектура и оптимизация; агентные системы; Kimi Code.",
+      "learn_label": "С кем встречаемся — запрос",
+      "learn": "Research Engineer (Muon, Kimi Linear), Agent Engineer (Agent Swarm), Kimi Code Developer, Training Infra Engineer."
+    },
+    {
+      "type": "route",
+      "tag": "Маршрут · предварительно · 5 дней",
+      "ghost": "路线",
+      "cities": [
+        {
+          "name": "Пекин",
+          "days": "2 дня",
+          "companies": "Z.ai\nMoonshot AI\n+ ByteDance Seed"
+        },
+        {
+          "name": "Ханчжоу",
+          "days": "1 день",
+          "companies": "DeepSeek\n+ Alibaba · Qwen",
+          "leg": {
+            "icon": "plane",
+            "text": "переезд"
+          }
+        },
+        {
+          "name": "Шанхай",
+          "days": "2 дня",
+          "companies": "MiniMax\nStepFun\nSenseTime",
+          "leg": {
+            "icon": "train",
+            "text": "переезд"
+          }
+        }
+      ],
+      "footer": "<b>Сначала встречи — потом маршрут:</b> города и дни подстраиваем под подтверждённые встречи"
+    },
+    {
+      "type": "days",
+      "tag": "Второй уровень",
+      "title": "Ещё 5 команд",
+      "ghost": "模型",
+      "days": [
+        {
+          "label": "Пекин",
+          "sub": "второй уровень",
+          "title": "ByteDance Seed",
+          "text": "Модели ассистента Doubao, внедрение на огромной аудитории."
+        },
+        {
+          "label": "Ханчжоу",
+          "sub": "второй уровень",
+          "title": "Alibaba · Qwen",
+          "text": "Одно из крупнейших семейств открытых моделей в мире."
+        },
+        {
+          "label": "Шанхай",
+          "sub": "второй уровень",
+          "title": "MiniMax",
+          "text": "Модели серии M, агенты, видео и голос."
+        },
+        {
+          "label": "Шанхай",
+          "sub": "второй уровень",
+          "title": "StepFun",
+          "text": "Мультимодальные модели: текст, изображения, речь."
+        },
+        {
+          "label": "Шанхай",
+          "sub": "второй уровень",
+          "title": "SenseTime",
+          "text": "Модели SenseNova и своя AI-инфраструктура."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Кейсы",
+      "ghost": "案例",
+      "title1": "Наши кейсы",
+      "title2": "3 примера",
+      "items": [
+        {
+          "name": "Baidu · AI и чипы",
+          "text": "Шэньчжэнь. Data Engineer Architect, Training Team Lead: модели ERNIE, создание чипов и безопасного контура, тестирование, подходы BAT"
+        },
+        {
+          "name": "ShanghaiTech University",
+          "text": "Делегация Правительства Москвы во главе с министром А. М. Гарбузовым: квантовый компьютер, наночастицы и новые материалы"
+        },
+        {
+          "name": "Agibot · Kepler · Leju",
+          "text": "Для «Солартека» (гендиректор и главный инженер): R&D-центры, решения для опасных производств, роборуки с обратной связью"
+        }
+      ],
+      "quote": "Принимали профессора,\nинженерные команды\nи руководителей R&D."
+    },
+    {
+      "type": "conditions",
+      "tag": "Формат миссии",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "10 человек",
+          "label": "группа",
+          "sub": "индивидуальная миссия"
+        },
+        {
+          "icon": "calendar",
+          "value": "Ноябрь 2026",
+          "label": "сроки",
+          "sub": "предварительно"
+        },
+        {
+          "icon": "pin",
+          "value": "5 дней",
+          "label": "3 города",
+          "sub": "Пекин · Ханчжоу · Шанхай"
+        },
+        {
+          "icon": "cpu",
+          "value": "8 команд",
+          "label": "AI-разработчиков",
+          "sub": "3 приоритетные + 5 второго уровня"
+        }
+      ],
+      "includes": [
+        "Повестка и собеседники до поездки",
+        "Логистика на месте",
+        "Технический перевод на встречах",
+        "Резюме и контакты после"
+      ],
+      "includes_note": "стоимость — по запросу",
+      "footer": "<b>Приоритет:</b> DeepSeek · Z.ai · Moonshot AI — разговор инженеров с инженерами."
+    },
+    {
+      "type": "steps",
+      "tag": "Следующие шаги",
+      "title": "Следующие шаги",
+      "hl": 1,
+      "steps": [
+        {
+          "title": "Ответ компаний",
+          "text": "Три приоритетные команды: 2 из 3 уже готовы"
+        },
+        {
+          "title": "Собеседники",
+          "text": "Подтверждаем команды и уровень собеседников"
+        },
+        {
+          "title": "Даты",
+          "text": "Согласуем возможные даты в ноябре"
+        },
+        {
+          "title": "Темы",
+          "text": "Фиксируем темы, которые компании готовы обсуждать"
+        }
+      ],
+      "faq": [
+        {
+          "q": "Состав группы",
+          "a": "Роли, должности и имена"
+        },
+        {
+          "q": "Профиль компании",
+          "a": "Краткое описание"
+        },
+        {
+          "q": "Вопросы к техкомандам",
+          "a": "5–7 ключевых — для\nпредварительного подтверждения"
+        },
+        {
+          "q": "Даты",
+          "a": "Окно дат и ограничения"
+        }
+      ]
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём AI-миссию\nпод задачи вашей команды",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 63 55"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

@@ -3809,5 +3809,42 @@
   ],
   "logo": "source-videos/логотипы/еда/hy-korea-yakult.png",
   "site_logo": "/logos/Yakult.png"
+ },
+ "moonshot-ai": {
+  "names": [
+   "Moonshot AI",
+   "Moonshot",
+   "Муншот"
+  ],
+  "logo": "source-videos/логотипы/ии/moonshot-ai.png"
+ },
+ "minimax": {
+  "names": [
+   "MiniMax",
+   "Минимакс"
+  ],
+  "logo": "source-videos/логотипы/ии/minimax.svg"
+ },
+ "qwen": {
+  "names": [
+   "Qwen",
+   "Квен"
+  ],
+  "logo": "source-videos/логотипы/ии/qwen.svg"
+ },
+ "stepfun": {
+  "names": [
+   "StepFun",
+   "Степфан"
+  ],
+  "logo": "source-videos/логотипы/ии/stepfun.svg"
+ },
+ "leju-robotics": {
+  "names": [
+   "Leju Robotics",
+   "Leju",
+   "Лэцзюй"
+  ],
+  "logo": "source-videos/логотипы/роботы/leju-robotics.png"
  }
 }
