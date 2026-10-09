@@ -111,7 +111,6 @@
       "ghost": "深度",
       "logo": "source-videos/логотипы/ии/deepseek.svg",
       "short": "DeepSeek",
-      "subtitle": "Темы встреч · инженеры, а не топ-менеджмент",
       "facts": [
         {
           "icon": "cpu",
@@ -151,7 +150,6 @@
       "ghost": "智谱",
       "logo": "source-videos/логотипы/ии/zhipu.png",
       "short": "Z.ai",
-      "subtitle": "Темы встреч · инженеры, а не топ-менеджмент",
       "facts": [
         {
           "icon": "cpu",
@@ -191,7 +189,6 @@
       "ghost": "月之",
       "logo": "source-videos/логотипы/ии/moonshot-ai.png",
       "short": "Moonshot AI",
-      "subtitle": "Kimi · темы встреч · инженеры, а не топ-менеджмент",
       "facts": [
         {
           "icon": "cpu",
