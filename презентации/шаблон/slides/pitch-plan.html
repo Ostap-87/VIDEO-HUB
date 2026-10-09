@@ -1,0 +1,53 @@
+{% import 'slides/_macros.html' as m with context %}
+{# Питч-дек, стр. 2: слева маршрут, второй уровень (таблица) и следующие шаги; справа «Почему мы» и кейсы; контакты в шапке. #}
+<section class="slide s-pitch s-pitch-plan">
+  {% if s.ghost %}<div class="ghost">{{ s.ghost }}</div>{% endif %}
+  {{ m.tag(s.tag) }}
+  <div class="ttl" data-fit="1150">{{ s.title }}</div>
+  {% if s.contacts %}<div class="cts">{% for c in s.contacts %}<span>{{ c }}</span>{% endfor %}</div>{% endif %}
+
+  <div class="sec" style="left:64px;top:214px">{{ s.route_label or 'Маршрут' }}</div>
+  {% for c in s.route %}
+  <div class="card rc{% if loop.index0 == 1 %} pale{% endif %}" data-box="route.{{ loop.index0 }}" style="left:{{ 64 + loop.index0 * 332 }}px">
+    <div class="nm">{{ c.name }} <span class="dy">{{ c.days }}</span></div>
+    {% if c.main %}<div class="ln"><b>Приоритет:</b> {{ c.main }}</div>{% endif %}
+    {% if c.more %}<div class="ln"><b>Второй уровень:</b> {{ c.more }}</div>{% endif %}
+  </div>
+  {% if c.leg %}<div class="leg" style="left:{{ 64 + loop.index0 * 332 - 40 }}px">{{ m.icon(c.leg) }}</div>{% endif %}
+  {% endfor %}
+
+  <div class="sec" style="left:64px;top:436px">{{ s.tier_label or 'Второй уровень' }}</div>
+  <div class="card tier" data-box="tier">
+    <table>
+      <tr><th>Компания</th><th>Чем сильны</th><th>Что даст вашей группе</th></tr>
+      {% for r in s.tier %}<tr><td><b>{{ r.name }}</b><small>{{ r.city }}</small></td><td>{{ r.strong }}</td><td>{{ r.gain }}</td></tr>{% endfor %}
+    </table>
+  </div>
+
+  <div class="sec" style="left:64px;top:826px">{{ s.steps_label or 'Следующие шаги' }}</div>
+  <div class="card stp" data-box="now" style="left:64px">
+    <div class="k">{{ s.now.title }}</div>
+    {% if s.now.lead %}<div class="ld">{{ s.now.lead }}</div>{% endif %}
+    {% if s.now.items_label %}<div class="sl">{{ s.now.items_label }}</div>{% endif %}
+    <ul>{% for it in s.now['items'] %}<li>{{ it }}</li>{% endfor %}</ul>
+  </div>
+  <div class="card blue stp" data-box="need" style="left:544px">
+    <div class="k">{{ s.need.title }}</div>
+    <ul>{% for it in s.need['items'] %}<li>{{ it }}</li>{% endfor %}</ul>
+    {% if s.need.note %}<div class="nt">{{ s.need.note }}</div>{% endif %}
+  </div>
+
+  <div class="sec" style="left:1040px;top:214px">{{ s.why_label or 'Почему мы' }}</div>
+  <div class="card why" data-box="why">
+    {% for w in s.why %}<div class="wi"><b>{{ w.title }}.</b> {{ w.text }}</div>{% endfor %}
+  </div>
+
+  <div class="sec" style="left:1040px;top:636px">{{ s.cases_label or 'Кейсы' }}</div>
+  {% for c in s.cases %}
+  <div class="card cs{% if loop.index0 == 1 %} pale{% endif %}" data-box="cases.{{ loop.index0 }}" style="top:{{ 676 + loop.index0 * 127 }}px">
+    <div class="ch"><span class="kk">{{ c.kicker }}</span><span class="hh">{{ c.title }}</span>
+      {% if c.logos %}<span class="lgs">{% for l in c.logos %}<span class="li">{{ m.logo(l) }}</span>{% endfor %}</span>{% endif %}</div>
+    <div class="tx">{{ c.text }}</div>
+  </div>
+  {% endfor %}
+</section>

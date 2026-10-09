@@ -57,6 +57,8 @@ const issues = await page.evaluate(() => {
       const t = one('.title'); if (t && shrunk(t) < 0.62) add('title', 'title shrunk');
       const cn = one('.cname span'); if (cn && shrunk(cn) < 0.6) add('short', 'short name shrunk');
     }
+    // блоки с фиксированной высотой (питч-дек): содержимое не должно вылезать
+    all('[data-box]').forEach((b) => { if (b.scrollHeight > b.clientHeight + 2) add(b.dataset.box, `box overflow ${b.scrollHeight - b.clientHeight}px`); });
     if (cls.includes('s-cases')) {
       all('.case').forEach((c, i) => { const last = c.lastElementChild; if (last && R(last).b > R(c).b - 14) add(`cases.${i}`, 'case text overflow'); });
       const t = one('.title'); if (t && shrunk(t) < 0.5) add('title', 'title shrunk');

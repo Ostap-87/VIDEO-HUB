@@ -336,3 +336,67 @@ body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .s-cases .case ul { margin: 14px 0 0; padding: 0; list-style: none; }
 .s-cases .case li { position: relative; padding-left: 24px; margin-bottom: 7px; font: 400 21px/29px var(--text); color: var(--ink2); }
 .s-cases .case li::before { content: ''; position: absolute; left: 2px; top: 11px; width: 9px; height: 9px; border-radius: 50%; background: var(--blue); }
+
+/* ---------- Питч-дек на 2 страницы (pitch-teams, pitch-plan) ---------- */
+.s-pitch .ghost { left: 1300px; top: -50px; font-size: 280px; }
+.s-pitch .dots { left: 1460px; top: 120px; width: 440px; height: 170px; }
+.s-pitch .tag { top: 40px; height: 60px; padding: 0 28px; font-size: 32px; line-height: 60px; }
+.s-pitch .corner { position: absolute; right: 64px; top: 40px; text-align: right; font: 850 26px/30px var(--cond); color: var(--blue); text-transform: uppercase; }
+.s-pitch .ttl { position: absolute; left: 58px; top: 112px; white-space: nowrap; font: 900 100px/1 var(--display); color: var(--blue); text-transform: uppercase; }
+.s-pitch .sec { position: absolute; padding-left: 16px; border-left: 6px solid var(--blue); font: 900 30px/32px var(--display); color: var(--ink); text-transform: uppercase; white-space: nowrap; }
+.s-pitch ul { margin: 0; padding: 0; list-style: none; }
+.s-pitch li { position: relative; padding-left: 18px; }
+.s-pitch li::before { content: ''; position: absolute; left: 2px; top: .62em; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+.s-pitch b { font-weight: 600; color: var(--ink); }
+
+.s-pitch-teams .lead { position: absolute; left: 64px; top: 228px; width: 1560px; padding-left: 22px; border-left: 4px solid var(--blue); font: italic 400 25px/33px var(--text); color: var(--ink2); }
+.s-pitch-teams .stats { position: absolute; left: 64px; top: 304px; width: 1792px; display: flex; gap: 22px; }
+.s-pitch-teams .st { position: relative; flex: 1; height: 114px; padding: 14px 24px; }
+.s-pitch-teams .st .v { font: 900 46px/1 var(--display); color: var(--blue); text-transform: uppercase; white-space: nowrap; }
+.s-pitch-teams .st .l { margin-top: 6px; font: 400 18px/22px var(--text); color: var(--mute); }
+.s-pitch-teams .tm { top: 486px; height: 570px; padding: 20px 28px; }
+.s-pitch-teams .tm .hd { display: flex; align-items: center; justify-content: space-between; height: 50px; margin-bottom: 4px; }
+.s-pitch-teams .tm .lg { height: 46px; }
+.s-pitch-teams .tm .lg .logo-img { width: auto; height: 46px; max-width: 280px; }
+.s-pitch-teams .tm .city { height: 38px; padding: 0 18px; border-radius: 19px; background: var(--blue); color: #fff; font: 900 23px/38px var(--display); text-transform: uppercase; }
+.s-pitch-teams .tm .k { margin: 11px 0 4px; font: 800 18px/22px var(--cond); color: var(--blue); text-transform: uppercase; }
+.s-pitch-teams .tm .tp { margin-bottom: 4px; font: 400 18.5px/24px var(--text); color: var(--ink2); }
+.s-pitch-teams .tm .tx { font: 400 18.5px/24px var(--text); color: var(--ink2); }
+.s-pitch-teams .tm li { font: 400 18.5px/25px var(--text); color: var(--ink2); }
+
+.s-pitch-plan .ttl { font-size: 84px; top: 116px; }
+.s-pitch-plan .cts { position: absolute; right: 64px; top: 44px; width: 640px; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 22px;
+  font: 400 18px/26px var(--text); color: var(--ink2); text-align: right; }
+.s-pitch-plan .cts span:nth-child(-n+2) { font-weight: 600; color: var(--blue); }
+.s-pitch-plan .rc { top: 256px; width: 284px; height: 158px; padding: 16px 20px; }
+.s-pitch-plan .rc .nm { font: 900 38px/1.05 var(--display); color: var(--blue); text-transform: uppercase; margin-bottom: 6px; white-space: nowrap; }
+.s-pitch-plan .rc .dy { display: inline-block; vertical-align: 6px; height: 28px; padding: 0 12px; border-radius: 14px; background: var(--blue); color: #fff; font: 900 19px/28px var(--display); }
+.s-pitch-plan .rc .ln { font: 400 16.5px/22px var(--text); color: var(--ink2); }
+.s-pitch-plan .leg { position: absolute; top: 316px; width: 40px; height: 40px; color: var(--blue); }
+.s-pitch-plan .leg svg { width: 40px; height: 40px; stroke: var(--blue); }
+.s-pitch-plan .tier { left: 64px; top: 476px; width: 936px; height: 332px; padding: 12px 18px; }
+.s-pitch-plan .tier table { width: 100%; border-collapse: collapse; font: 400 16px/21px var(--text); color: var(--ink2); }
+.s-pitch-plan .tier th { padding: 6px 8px; text-align: left; font: 800 17px/22px var(--cond); color: var(--blue); text-transform: uppercase; border-bottom: 2px solid var(--blue); }
+.s-pitch-plan .tier td { padding: 7px 8px; vertical-align: top; border-bottom: 1px solid #e3e8f0; }
+.s-pitch-plan .tier tr:last-child td { border-bottom: 0; }
+.s-pitch-plan .tier td:first-child { width: 160px; }
+.s-pitch-plan .tier td:nth-child(2) { width: 370px; }
+.s-pitch-plan .tier td small { display: block; font-size: 15px; color: var(--mute); }
+.s-pitch-plan .stp { top: 866px; width: 456px; height: 190px; padding: 16px 22px; font: 400 16.5px/22px var(--text); color: var(--ink2); }
+.s-pitch-plan .stp .k { margin-bottom: 6px; font: 900 26px/28px var(--display); color: var(--blue); text-transform: uppercase; }
+.s-pitch-plan .stp .ld { font-weight: 600; color: var(--ink); }
+.s-pitch-plan .stp .sl { margin-top: 4px; color: var(--mute); }
+.s-pitch-plan .stp.blue { color: #fff; }
+.s-pitch-plan .stp.blue .k { color: #fff; }
+.s-pitch-plan .stp.blue li::before { background: #fff; }
+.s-pitch-plan .stp .nt { margin-top: 6px; font-size: 15px; color: var(--on-blue); }
+.s-pitch-plan .why { left: 1040px; top: 256px; width: 816px; height: 362px; padding: 18px 28px; }
+.s-pitch-plan .why .wi { margin-bottom: 9px; font: 400 16.5px/22px var(--text); color: var(--ink2); }
+.s-pitch-plan .cs { left: 1040px; width: 816px; height: 118px; padding: 13px 24px; }
+.s-pitch-plan .cs .ch { display: flex; align-items: center; gap: 12px; height: 30px; margin-bottom: 4px; }
+.s-pitch-plan .cs .kk { font: 800 17px/22px var(--cond); color: var(--blue); text-transform: uppercase; white-space: nowrap; }
+.s-pitch-plan .cs .hh { font: 900 26px/28px var(--display); color: var(--ink); text-transform: uppercase; white-space: nowrap; }
+.s-pitch-plan .cs .lgs { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+.s-pitch-plan .cs .li { display: block; height: 28px; }
+.s-pitch-plan .cs .li .logo-img { width: auto; height: 28px; max-width: 110px; }
+.s-pitch-plan .cs .tx { font: 400 15.5px/20px var(--text); color: var(--ink2); }

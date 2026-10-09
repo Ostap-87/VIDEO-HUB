@@ -1,0 +1,25 @@
+{% import 'slides/_macros.html' as m with context %}
+{# Питч-дек, стр. 1: задача, ключевые цифры и приоритетные команды (темы встреч, отделы, собеседники) — всё на одном слайде. #}
+{% set n = s.teams|length %}{% set cw = ((1792 - (n - 1) * 28) / n)|int %}
+<section class="slide s-pitch s-pitch-teams">
+  {% if s.ghost %}<div class="ghost">{{ s.ghost }}</div>{% endif %}
+  <div class="dots fade-l"></div>
+  {{ m.tag(s.tag) }}
+  {% if s.corner %}<div class="corner">{{ s.corner|br }}</div>{% endif %}
+  <div class="ttl" data-fit="1790">{{ s.title }}</div>
+  {% if s.lead %}<div class="lead">{{ s.lead }}</div>{% endif %}
+  <div class="stats">
+    {% for st in s.stats %}<div class="card st"><div class="v">{{ st.value }}</div><div class="l">{{ st.label }}</div></div>{% endfor %}
+  </div>
+  {% if s.teams_label %}<div class="sec" style="left:64px;top:442px">{{ s.teams_label }}</div>{% endif %}
+  {% for t in s.teams %}
+  <div class="card tm" data-box="teams.{{ loop.index0 }}" style="left:{{ 64 + loop.index0 * (cw + 28) }}px;width:{{ cw }}px">
+    <div class="hd"><div class="lg">{{ m.logo(t) }}</div><div class="city">{{ t.city }}</div></div>
+    <div class="k">{{ s.topics_label or 'Темы встреч' }}</div>
+    {% for tp in t.topics %}<div class="tp"><b>{{ tp.k }}.</b> {{ tp.v }}</div>{% endfor %}
+    {% if t.otdely %}<div class="k">Отделы</div><div class="tx">{{ t.otdely }}</div>{% endif %}
+    <div class="k">{{ s.roles_label or 'С кем встречаемся' }}</div>
+    <ul>{% for r in t.roles %}<li><b>{{ r.role }}</b>{% if r.focus %} — {{ r.focus }}{% endif %}</li>{% endfor %}</ul>
+  </div>
+  {% endfor %}
+</section>

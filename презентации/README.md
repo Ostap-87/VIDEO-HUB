@@ -244,6 +244,8 @@ Museum — один файл `техгиганты/samsung.svg`. В турах �
 | `company` | Карточка компании (ИИ 5–14) | `title`, `native` (иероглифы/тайский), `ghost`, `ghost_thai`, `logo`, `facts[4]` {icon, value, label, sub}, `why` (+ `why_label`), `learn` (+ `learn_label`) **или** `roles[]` {role, focus} — список собеседников в карточке под логотипом вместо названия (факты компактнее, `sub` до 3 строк), `short`, `subtitle`, `title_dy` (сдвиг заголовка вниз, px) |
 | `days` | «Программа по дням» (Alibaba 6) | `title`, `days[2–6]` {label, sub, title, text, gain}, `ghost`; `text_label` / `gain_label` (на слайде или у дня) — подписанные абзацы в карточке, например «Чем сильны» / «Что даст вашей группе» (с `gain` карточка выше) |
 | `cases` | «Кейсы» (AI-миссия в Китай) | `tag`, `title`, `ghost`, `cases[2–3]` {kicker, title, logos[] {name, logo}, meta[] {k, v} — строка «**Метка** текст», bullets[]} |
+| `pitch-teams` | Питч-дек, стр. 1 (AI-миссия в Китай) | `tag`, `corner`, `title`, `lead`, `ghost`, `stats[5]` {value, label}, `teams_label`, `topics_label`, `roles_label`, `teams[3]` {name, city, logo, topics[] {k, v}, otdely, roles[] {role, focus}} — задача, цифры и приоритетные команды на одном слайде |
+| `pitch-plan` | Питч-дек, стр. 2 (AI-миссия в Китай) | `tag`, `title`, `ghost`, `contacts[]` (строки в шапке), `route[3]` {name, days, main, more, leg: plane/train}, `tier[]` {name, city, strong, gain} — таблица, `now` {title, lead, items_label, items[]}, `need` {title, items[], note}, `why[]` {title, text}, `cases[3]` {kicker, title, logos[], text}; подписи блоков — `*_label` |
 | `benefits` | «Выгоды» (ИИ 15) | `items[6]` {title, text, icon} |
 | `market` | «О рынке» (ИИ 16) | `lead`, `stats[3]` {value, label, sub, frac 0…1 — заполнение дуги}, `quote`, `source`, `ghost` |
 | `conditions` | «Формат и условия» (Alibaba 8) | `facts[4]` {icon, value, label, sub}, `includes[]`, `includes_note`, `footer` |
@@ -273,3 +275,12 @@ zap (энергия), sun (солнце), ship (порт), bank (банк), card
 в Higgsfield (GPT Image 2.5, medium, 2k, 9:16, ~1 кредит; промпт — «то же самое, заменить только город и отражение в очках»,
 пример в истории коммитов), затем `robot_assets.py` (обрезка и прозрачные края оригинала).
 Отдельное `hero` / `hero_head` в слайде по-прежнему важнее.
+
+## Питч-дек на 2 страницы
+
+Выжимка большой презентации на два плотных слайда (`pitch-teams` — задача и команды, `pitch-plan` — маршрут, второй уровень, почему мы, кейсы, шаги): максимум текста из презентации, мелкий кегль 15–18 px.
+Блоки фиксированной высоты помечены `data-box`, `fit_check.mjs` сообщает, если текст в них не влезает. Пример — `контент/2026-10-09-китай-ai-миссия-питч.json`:
+
+```
+python3 презентации/шаблон/build.py презентации/контент/2026-10-09-китай-ai-миссия-питч.json
+```
