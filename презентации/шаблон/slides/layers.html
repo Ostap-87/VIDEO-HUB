@@ -10,6 +10,9 @@
   <div class="ly l{{ loop.index }}"><div class="tab"></div>
     <div class="n">{{ it.name }}</div><div class="d">{{ it.text }}</div></div>
   {% endfor %}
+  {% for c in (s.logos or [])[:3] %}
+  <div class="card lc" style="left: {{ 50 + loop.index0 * 280 }}px">{{ m.logo(c) }}</div>
+  {% endfor %}
   {% if s.quote %}<div class="quote">{{ s.quote|br }}</div>{% endif %}
   <div class="br bl" style="left:40px;top:940px"></div>
   <div class="br brr" style="left:1800px;top:920px"></div>

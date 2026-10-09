@@ -154,6 +154,7 @@ body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .s-layers .l2 .n, .s-layers .l3 .n { top: 90px; }
 .s-layers .l2 .d, .s-layers .l3 .d { top: 160px; }
 .s-layers .l3 { left: 920px; top: 600px; height: 230px; background: #eceff3; z-index: 1; }
+.s-layers .lc { top: 570px; width: 250px; height: 140px; padding: 26px 30px; z-index: 1; }  /* логотипы в левой колонке (поле logos) */
 .s-layers .quote { position: absolute; left: 190px; top: 900px; border-left: 4px solid var(--blue); padding-left: 23px;
   font: italic 400 24px/34px var(--text); color: var(--ink2); width: 520px; }
 

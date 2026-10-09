@@ -87,7 +87,21 @@
           "text": "Оптимизатор Muon / MuonClip, Kimi Linear в продакшене, Agent Swarm и coding-агент Kimi Code"
         }
       ],
-      "quote": "Главный акцент — встречи\nс техническими командами,\nа не с топ-менеджментом."
+      "quote": "Главный акцент — встречи\nс техническими командами,\nа не с топ-менеджментом.",
+      "logos": [
+        {
+          "name": "DeepSeek",
+          "logo": "source-videos/логотипы/ии/deepseek.svg"
+        },
+        {
+          "name": "Z.ai",
+          "logo": "source-videos/логотипы/ии/zhipu.png"
+        },
+        {
+          "name": "Moonshot AI",
+          "logo": "source-videos/логотипы/ии/moonshot-ai.png"
+        }
+      ]
     },
     {
       "type": "company",
