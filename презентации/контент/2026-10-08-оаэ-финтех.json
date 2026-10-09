@@ -1,0 +1,663 @@
+{
+  "title": "Финтех и цифровой банкинг ОАЭ: от Mashreq Neo до Wio Bank — Global Tech Tour",
+  "output": "2026-10-08-оаэ-финтех",
+  "source": "https://globaltechtour.ru/expeditions/uae-fintech-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 09.10.2026)",
+  "robot": "uae",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-экспедиция · Финтех ОАЭ",
+      "topright": "Банки · платежи\nцифровые банки",
+      "logos": [
+        {
+          "name": "Mashreq Bank",
+          "logo": "source-videos/логотипы/финансы/mashreq-bank.png"
+        },
+        {
+          "name": "Emirates NBD"
+        },
+        {
+          "name": "Visa",
+          "logo": "source-videos/логотипы/финансы/visa-mena.png"
+        },
+        {
+          "name": "Mastercard",
+          "logo": "source-videos/логотипы/финансы/mastercard-mena.png"
+        },
+        {
+          "name": "Astra Tech",
+          "logo": "source-videos/логотипы/техгиганты/careem.png"
+        },
+        {
+          "name": "Bayzat",
+          "logo": "source-videos/логотипы/финансы/bayzat.png"
+        },
+        {
+          "name": "NymCard",
+          "logo": "source-videos/логотипы/финансы/nymcard.png"
+        },
+        {
+          "name": "Abu Dhabi Commercial Bank",
+          "logo": "source-videos/логотипы/финансы/adcb.png"
+        }
+      ],
+      "box_text": "От цифрового банкинга Дубая до Wio Bank —\n11 компаний, 5 дней, 5 ночей",
+      "box_right": "Дубай + Абу-Даби —\nвся финтех-инфраструктура ОАЭ за одну поездку",
+      "footer": "Global Tech Tour · бизнес-экспедиции в ОАЭ · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Доступ к штаб-квартирам и площадкам, обычно закрытым для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы между городами программы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на арабском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "11 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Дубай",
+          "text": "Mashreq Bank, Emirates NBD, Visa, Mastercard"
+        },
+        {
+          "name": "Дни 3–4 · Дубай + Абу-Даби",
+          "text": "Astra Tech, Bayzat, NymCard, Abu Dhabi Commercial Bank, Wio Bank"
+        },
+        {
+          "name": "День 5 · Абу-Даби",
+          "text": "Abu Dhabi Global Market, Hub71 FinTech Cluster"
+        }
+      ],
+      "quote": "Вся финтех-инфраструктура\nОАЭ за одну поездку."
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Дубай",
+          "days": "дни 1–3",
+          "companies": "Mashreq Bank\nEmirates NBD\nVisa\nMastercard\n+ ещё 3"
+        },
+        {
+          "name": "Абу-Даби",
+          "days": "дни 4–5",
+          "companies": "Abu Dhabi Commercial Bank\nWio Bank\nAbu Dhabi Global Market\nHub71 FinTech Cluster",
+          "leg": {
+            "icon": "car",
+            "text": "≈1,5 ч"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Дубай · <b>Вылет:</b> Дубай"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Mashreq ·\nEmirates NBD",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Visa ·\nMastercard",
+          "text": "Visa — глобальная платёжная сеть; Mastercard — международная платёжная система.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Astra Tech ·\nBayzat ·\nNymCard",
+          "text": "Astra Tech — BOTIM и PayBy; Bayzat — HR и страхование; NymCard — Banking-as-a-Service.",
+          "label": "День 3"
+        },
+        {
+          "sub": "Абу-Даби",
+          "title": "ADCB ·\nWio Bank",
+          "text": "Трансфер Дубай → Абу-Даби (≈1,5 ч); ADCB — №3 банк ОАЭ, Wio — первый цифровой банк.",
+          "label": "День 4"
+        },
+        {
+          "sub": "Абу-Даби",
+          "title": "ADGM ·\nHub71",
+          "text": "ADGM — финансовый центр Абу-Даби; Hub71 — финтех-кластер технохаба.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Дубай",
+      "title": "Mashreq Bank",
+      "logo": "source-videos/логотипы/финансы/mashreq-bank.png",
+      "short": "Mashreq Bank",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "305+ млрд дирхамов",
+          "label": "активы",
+          "sub": "сентябрь 2025, +20% г/г"
+        },
+        {
+          "icon": "flag",
+          "value": "1967",
+          "label": "год основания",
+          "sub": "как Bank of Oman"
+        },
+        {
+          "icon": "globe",
+          "value": "10+",
+          "label": "стран присутствия"
+        },
+        {
+          "icon": "smartphone",
+          "value": "Mashreq Neo",
+          "label": "цифровой банк",
+          "sub": "мгновенные кредиты"
+        }
+      ],
+      "why": "Старейший банк ОАЭ и пионер цифрового банкинга региона благодаря платформе Mashreq Neo.",
+      "learn": "Mashreq Neo — мгновенные кредиты и цифровой онбординг; частный банк семьи Al Ghurair работает более чем в 10 странах.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Дубай",
+      "title": "Emirates NBD",
+      "short": "Emirates NBD",
+      "subtitle": "Investment Corporation of Dubai · Дубай",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "1,16 трлн дирхамов",
+          "label": "активы",
+          "sub": "2025 год, ~$317 млрд"
+        },
+        {
+          "icon": "store",
+          "value": "150+",
+          "label": "отделений в ОАЭ"
+        },
+        {
+          "icon": "flag",
+          "value": "2007",
+          "label": "год образования",
+          "sub": "слияние двух банков"
+        },
+        {
+          "icon": "handshake",
+          "value": "ICD",
+          "label": "Investment Corporation of Dubai",
+          "sub": "контролирующий акционер"
+        }
+      ],
+      "why": "Флагманская банковская группа Дубая: образована в 2007 году слиянием Emirates Bank International и National Bank of Dubai.",
+      "learn": "Присутствие в Великобритании, Саудовской Аравии, Сингапуре, Египте и Индии; контроль — у Investment Corporation of Dubai.",
+      "learn_label": "Фокус визита",
+      "logo_text": "Emirates NBD"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Дубай",
+      "title": "Visa",
+      "logo": "source-videos/логотипы/финансы/visa-mena.png",
+      "short": "Visa Middle East & Central Asia",
+      "subtitle": "Dubai Internet City · Дубай",
+      "facts": [
+        {
+          "icon": "globe",
+          "value": "200+",
+          "label": "стран",
+          "sub": "основана в 1958, США"
+        },
+        {
+          "icon": "building",
+          "value": "9290 м²",
+          "label": "штаб-квартира CEMEA",
+          "sub": "Dubai Internet City, 2021"
+        },
+        {
+          "icon": "users",
+          "value": "750",
+          "label": "сотрудников",
+          "sub": "вместимость офиса"
+        },
+        {
+          "icon": "globe",
+          "value": "96",
+          "label": "стран",
+          "sub": "в зоне дубайского офиса"
+        }
+      ],
+      "why": "Глобальная платёжная сеть: в 2021 году открыла в Дубае региональную штаб-квартиру для CEMEA.",
+      "learn": "В дубайском офисе — первый в регионе кампус Visa University; зона ответственности охватывает 96 стран.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Дубай",
+      "title": "Mastercard",
+      "logo": "source-videos/логотипы/финансы/mastercard-mena.png",
+      "short": "Mastercard Middle East & Africa",
+      "subtitle": "Dubai Internet City · Дубай",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "~40%",
+          "label": "рынка кредитных карт ОАЭ"
+        },
+        {
+          "icon": "flag",
+          "value": "1966",
+          "label": "год основания"
+        },
+        {
+          "icon": "building",
+          "value": "Dubai Internet City",
+          "label": "штаб-квартира MEA",
+          "sub": "офис перенесён из Брюсселя"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Международная платёжная система (1966); штаб-квартира для Ближнего Востока и Африки — в Dubai Internet City.",
+      "learn": "ОАЭ — крупнейший рынок региона: на Mastercard приходится около 40% местного рынка кредитных карт.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Дубай",
+      "title": "Astra Tech / Careem Pay",
+      "logo": "source-videos/логотипы/техгиганты/careem.png",
+      "short": "Astra Tech / Careem Pay",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "smartphone",
+          "value": "BOTIM",
+          "label": "мессенджер — основа супераппа",
+          "sub": "куплен в 2023 году"
+        },
+        {
+          "icon": "star",
+          "value": "Первая",
+          "label": "лицензии SVF и RPS в ОАЭ",
+          "sub": "PayBy, январь 2023"
+        },
+        {
+          "icon": "smartphone",
+          "value": "Careem Pay",
+          "label": "платформа",
+          "sub": "в экосистеме Careem"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Абудабийский технохолдинг, строящий суперапп на базе мессенджера BOTIM и финтех-платформы PayBy.",
+      "learn": "Botim Finance — первая финтех-платформа ОАЭ с полной лицензией финансовой компании; Astra Tech владеет Careem Pay.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Дубай",
+      "title": "Bayzat",
+      "logo": "source-videos/логотипы/финансы/bayzat.png",
+      "short": "Bayzat",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$60+ млн",
+          "label": "привлечено",
+          "sub": "Series C — $25 млн, ADQ"
+        },
+        {
+          "icon": "users",
+          "value": "3000+",
+          "label": "компаний-клиентов",
+          "sub": "в ОАЭ"
+        },
+        {
+          "icon": "trending",
+          "value": "100%+",
+          "label": "ежегодный рост",
+          "sub": "три года подряд"
+        },
+        {
+          "icon": "flag",
+          "value": "2012",
+          "label": "год основания",
+          "sub": "Дубай"
+        }
+      ],
+      "why": "Дубайская финтех-компания: облачная HR-система, расчёт зарплат, льготы и корпоративное страхование на одной платформе.",
+      "learn": "Привлекла свыше $60 млн, включая раунд Series C на $25 млн под руководством ADQ (2022).",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Дубай",
+      "title": "NymCard",
+      "logo": "source-videos/логотипы/финансы/nymcard.png",
+      "short": "NymCard",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "cpu",
+          "value": "150+",
+          "label": "API",
+          "sub": "выпуск карт, комплаенс"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$63+ млн",
+          "label": "привлечено"
+        },
+        {
+          "icon": "star",
+          "value": "Visa · Mastercard",
+          "label": "принципальный член"
+        },
+        {
+          "icon": "flag",
+          "value": "2018",
+          "label": "год основания",
+          "sub": "Омар Онси"
+        }
+      ],
+      "why": "Платформа Banking-as-a-Service: инфраструктура выпуска карт для финтех-стартапов и необанков MENA.",
+      "learn": "Card-issuing, BIN-спонсорство, комплаенс и казначейство через 150+ API; прямая лицензия ЦБ ОАЭ.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Абу-Даби",
+      "title": "ADCB",
+      "logo": "source-videos/логотипы/финансы/adcb.png",
+      "short": "Abu Dhabi Commercial Bank",
+      "subtitle": "Абу-Даби",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "2,4+ млн",
+          "label": "клиентов",
+          "sub": "ОАЭ, Египет, Казахстан, KSA"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$200+ млрд",
+          "label": "активы",
+          "sub": "конец 2025 года"
+        },
+        {
+          "icon": "trending",
+          "value": "№3",
+          "label": "банк ОАЭ по активам",
+          "sub": "после слияния 2019 года"
+        },
+        {
+          "icon": "flag",
+          "value": "1985",
+          "label": "год образования",
+          "sub": "слияние трёх банков"
+        }
+      ],
+      "why": "Третий по активам банк ОАЭ: образован в 1985 году слиянием трёх банков, в 2019 году присоединил Union National и Al Hilal.",
+      "learn": "Обслуживает свыше 2,4 млн клиентов в ОАЭ, Египте, Казахстане и Саудовской Аравии; активы превысили $200 млрд.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Абу-Даби",
+      "title": "Wio Bank",
+      "logo": "source-videos/логотипы/финансы/wio-bank.png",
+      "short": "Wio Bank",
+      "subtitle": "Абу-Даби",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Первый",
+          "label": "полностью цифровой банк ОАЭ",
+          "sub": "запуск — сентябрь 2022"
+        },
+        {
+          "icon": "briefcase",
+          "value": "61 млрд дирхамов",
+          "label": "активы",
+          "sub": "за три года"
+        },
+        {
+          "icon": "chart",
+          "value": "622 млн дирхамов",
+          "label": "чистая прибыль",
+          "sub": "2025 год"
+        },
+        {
+          "icon": "handshake",
+          "value": "ADQ · e& · FAB",
+          "label": "акционеры",
+          "sub": "и Alpha Dhabi Holding"
+        }
+      ],
+      "why": "Первый в ОАЭ полностью цифровой платформенный банк, запущен в 2022 году в Абу-Даби с лицензией Центробанка.",
+      "learn": "Акционеры — ADQ, Alpha Dhabi, e& и First Abu Dhabi Bank; кроме банкинга — embedded finance и BaaS.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Абу-Даби",
+      "title": "ADGM",
+      "logo": "source-videos/логотипы/финансы/adgm.png",
+      "short": "Abu Dhabi Global Market",
+      "subtitle": "Острова Аль-Марьях и Аль-Рим · Абу-Даби",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2013",
+          "label": "учреждён указом",
+          "sub": "работает с 2015 года"
+        },
+        {
+          "icon": "target",
+          "value": "Английское право",
+          "label": "общее право",
+          "sub": "свои суды и регулятор FSRA"
+        },
+        {
+          "icon": "trending",
+          "value": "100%",
+          "label": "иностранное владение"
+        },
+        {
+          "icon": "users",
+          "value": "Goldman Sachs",
+          "label": "среди резидентов",
+          "sub": "и Rothschild, SoftBank"
+        }
+      ],
+      "why": "Независимый международный финансовый центр Абу-Даби на островах Аль-Марьях и Аль-Рим, работает с 2015 года.",
+      "learn": "Английское общее право, регистрационный орган, регулятор FSRA и собственные суды; среди резидентов — Goldman Sachs и SoftBank.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Абу-Даби",
+      "title": "Hub71 FinTech Cluster",
+      "logo": "source-videos/логотипы/ии/hub71.png",
+      "short": "Hub71 FinTech Cluster",
+      "subtitle": "Абу-Даби",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "500+",
+          "label": "стартапов",
+          "sub": "к 2026 году"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$2+ млрд",
+          "label": "привлекли стартапы"
+        },
+        {
+          "icon": "trending",
+          "value": "№1",
+          "label": "кластер Hub71 — финтех",
+          "sub": "по числу компаний и инвестиций"
+        },
+        {
+          "icon": "star",
+          "value": "Hub71+",
+          "label": "трек Digital Assets",
+          "sub": "с 2023 года"
+        }
+      ],
+      "why": "Финтех — крупнейший кластер государственного технохаба Абу-Даби по числу компаний и объёму инвестиций.",
+      "learn": "Резидентам — субсидированное жильё, бесплатные офисы и облачные кредиты Microsoft Azure и AWS; трек Hub71+ Digital Assets.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Между городами программы",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 5 ночей",
+          "text": "",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На арабском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "Финтех ОАЭ",
+          "text": "От Mashreq Neo до Wio Bank\nДубай + Абу-Даби",
+          "icon": "chart"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "5 дней",
+          "label": "/ 5 ночей",
+          "sub": "5 дней визитов в Дубае и Абу-Даби"
+        },
+        {
+          "icon": "chart",
+          "value": "11 компаний",
+          "label": "финтех и цифровой банкинг",
+          "sub": "банки, платежи, финтех"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы между городами программы",
+        "Сопровождение на арабском/английском",
+        "Проживание 5 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Дубай (перелёт Москва → Дубай).<br><b>Вылет:</b> Дубай — выезд из отеля и трансфер в аэропорт после дня 5."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

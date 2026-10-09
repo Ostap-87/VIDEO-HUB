@@ -1,0 +1,583 @@
+{
+  "title": "Энергетика и зелёные технологии ОАЭ: от ADNOC и Masdar до крупнейшего солнечного парка — Global Tech Tour",
+  "output": "2026-10-08-оаэ-энергетика",
+  "source": "https://globaltechtour.ru/expeditions/uae-energy-green-tech-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 09.10.2026)",
+  "robot": "uae",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-экспедиция · Энергетика ОАЭ",
+      "topright": "Нефть и газ · ВИЭ\nсолнечный парк",
+      "logos": [
+        {
+          "name": "ADNOC",
+          "logo": "source-videos/логотипы/энергетика/adnoc.png"
+        },
+        {
+          "name": "Masdar",
+          "logo": "source-videos/логотипы/энергетика/masdar.png"
+        },
+        {
+          "name": "Siemens Energy",
+          "logo": "source-videos/логотипы/энергетика/siemens-energy-me.png"
+        },
+        {
+          "name": "TAQA",
+          "logo": "source-videos/логотипы/энергетика/taqa.png"
+        },
+        {
+          "name": "bp",
+          "logo": "source-videos/логотипы/энергетика/bp-me.png"
+        },
+        {
+          "name": "DEWA",
+          "logo": "source-videos/логотипы/энергетика/dewa.png"
+        },
+        {
+          "name": "Shell",
+          "logo": "source-videos/логотипы/энергетика/shell-me.png"
+        },
+        {
+          "name": "TotalEnergies",
+          "logo": "source-videos/логотипы/энергетика/totalenergies-me.png"
+        }
+      ],
+      "box_text": "От ADNOC и Masdar до солнечного парка —\n9 компаний, 5 дней, 5 ночей",
+      "box_right": "Абу-Даби + Дубай —\nбез перелётов",
+      "footer": "Global Tech Tour · бизнес-экспедиции в ОАЭ · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Доступ к штаб-квартирам и площадкам, обычно закрытым для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы между городами программы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на арабском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "9 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Абу-Даби",
+          "text": "ADNOC, Masdar, Siemens Energy, TAQA"
+        },
+        {
+          "name": "Дни 3–4 · Абу-Даби + Дубай",
+          "text": "bp, DEWA, Shell"
+        },
+        {
+          "name": "День 5 · Дубай",
+          "text": "TotalEnergies, Al Maktoum Solar Park"
+        }
+      ],
+      "quote": "Весь энергопереход ОАЭ —\nот нефти до солнца."
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Абу-Даби",
+          "days": "дни 1–3",
+          "companies": "ADNOC\nMasdar\nSiemens Energy\nTAQA\nbp"
+        },
+        {
+          "name": "Дубай",
+          "days": "дни 4–5",
+          "companies": "DEWA\nShell\nTotalEnergies\nAl Maktoum Solar Park",
+          "leg": {
+            "icon": "car",
+            "text": "≈1,5 ч"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Дубай · <b>Вылет:</b> Дубай"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "ADNOC ·\nMasdar",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Siemens Energy ·\nTAQA",
+          "text": "Siemens Energy — штаб-квартира в Masdar City; TAQA — энергия и опреснение.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "bp",
+          "text": "После утреннего визита — трансфер Абу-Даби → Дубай (~1,5 часа по трассе).",
+          "label": "День 3"
+        },
+        {
+          "sub": "Дубай",
+          "title": "DEWA ·\nShell",
+          "text": "DEWA — энергия и вода Дубая; Shell — доля в ADNOC Gas Processing.",
+          "label": "День 4"
+        },
+        {
+          "sub": "Дубай",
+          "title": "TotalEnergies ·\nSolar Park",
+          "text": "TotalEnergies — старейший иностранный партнёр; солнечный парк — крупнейший в мире.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Абу-Даби",
+      "title": "ADNOC",
+      "logo": "source-videos/логотипы/энергетика/adnoc.png",
+      "short": "ADNOC",
+      "subtitle": "Абу-Даби",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "~98 млрд",
+          "label": "баррелей запасов нефти"
+        },
+        {
+          "icon": "chart",
+          "value": "~273 трлн",
+          "label": "куб. футов газа",
+          "sub": "запасы"
+        },
+        {
+          "icon": "chart",
+          "value": "4+ млн",
+          "label": "баррелей нефти в сутки",
+          "sub": "цель — 5 млн к 2027"
+        },
+        {
+          "icon": "flag",
+          "value": "1971",
+          "label": "год основания",
+          "sub": "год образования ОАЭ"
+        }
+      ],
+      "why": "Государственная нефтегазовая компания Абу-Даби, основана в 1971 году — в год образования ОАЭ.",
+      "learn": "Дочерние и совместные компании в разведке, переработке и сбыте, включая крупные СП с bp, Shell и TotalEnergies.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Абу-Даби",
+      "title": "Masdar",
+      "logo": "source-videos/логотипы/энергетика/masdar.png",
+      "short": "Masdar",
+      "subtitle": "ADNOC · TAQA · Mubadala · Абу-Даби",
+      "facts": [
+        {
+          "icon": "zap",
+          "value": "65+ ГВт",
+          "label": "портфель мощностей",
+          "sub": "цель — 100 ГВт к 2030"
+        },
+        {
+          "icon": "globe",
+          "value": "40+",
+          "label": "стран"
+        },
+        {
+          "icon": "sun",
+          "value": "2 ГВт",
+          "label": "станция Al Dhafra",
+          "sub": "крупнейшая площадка, 2023"
+        },
+        {
+          "icon": "flag",
+          "value": "2006",
+          "label": "год основания"
+        }
+      ],
+      "why": "Государственная компания возобновляемой энергетики Абу-Даби (2006); владельцы — ADNOC, TAQA и Mubadala.",
+      "learn": "Солнечная станция Al Dhafra на 2 ГВт, плавучие солнечные и ветровые проекты; разработчик Masdar City.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Абу-Даби",
+      "title": "Siemens Energy",
+      "logo": "source-videos/логотипы/энергетика/siemens-energy-me.png",
+      "short": "Siemens Energy Middle East",
+      "subtitle": "Masdar City · Абу-Даби",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "~800",
+          "label": "сотрудников",
+          "sub": "вместимость офиса"
+        },
+        {
+          "icon": "star",
+          "value": "LEED Platinum",
+          "label": "первое такое здание эмирата",
+          "sub": "Masdar City"
+        },
+        {
+          "icon": "cpu",
+          "value": "Power-to-X",
+          "label": "инновационный центр",
+          "sub": "при Khalifa University"
+        },
+        {
+          "icon": "flag",
+          "value": "2020",
+          "label": "выделение из Siemens AG"
+        }
+      ],
+      "why": "Региональное подразделение Siemens Energy со штаб-квартирой в Masdar City — первом здании эмирата с LEED Platinum.",
+      "learn": "При Khalifa University — один из четырёх глобальных инновационных центров: Power-to-X, водород и накопители.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Абу-Даби",
+      "title": "TAQA",
+      "logo": "source-videos/логотипы/энергетика/taqa.png",
+      "short": "TAQA",
+      "subtitle": "Abu Dhabi National Energy Company · Абу-Даби",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "Топ-10",
+          "label": "коммунальных компаний EMEA"
+        },
+        {
+          "icon": "handshake",
+          "value": "2020",
+          "label": "слияние",
+          "sub": "с Abu Dhabi Power Corporation"
+        },
+        {
+          "icon": "zap",
+          "value": "Энергия",
+          "label": "генерация и сети",
+          "sub": "плюс опреснение воды"
+        },
+        {
+          "icon": "flag",
+          "value": "2005",
+          "label": "год основания"
+        }
+      ],
+      "why": "Диверсифицированная энергокомпания Абу-Даби: после слияния с Abu Dhabi Power Corporation — одна из крупнейших в EMEA.",
+      "learn": "Генерация и распределение электроэнергии, опреснение воды, нефть и газ и растущий портфель ВИЭ в Европе.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Абу-Даби",
+      "title": "bp",
+      "logo": "source-videos/логотипы/энергетика/bp-me.png",
+      "short": "bp Middle East",
+      "subtitle": "Абу-Даби",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "50+ лет",
+          "label": "в Абу-Даби"
+        },
+        {
+          "icon": "trending",
+          "value": "10%",
+          "label": "доля в Bab Gas Cap",
+          "sub": "проект ADNOC"
+        },
+        {
+          "icon": "chart",
+          "value": "до 1,5 млрд",
+          "label": "куб. футов газа в сутки",
+          "sub": "Bab Gas Cap"
+        },
+        {
+          "icon": "handshake",
+          "value": "Masdar",
+          "label": "партнёр",
+          "sub": "ВИЭ и водород"
+        }
+      ],
+      "why": "Региональный офис британского концерна bp, работающего в Абу-Даби более 50 лет; доли в концессиях ADNOC.",
+      "learn": "СП с ADNOC по газу, проекты улавливания и хранения углерода; с Masdar — ВИЭ и водород на Ближнем Востоке.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Дубай",
+      "title": "DEWA",
+      "logo": "source-videos/логотипы/энергетика/dewa.png",
+      "short": "DEWA",
+      "subtitle": "Dubai Electricity & Water Authority · Дубай",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "~1,6 млн",
+          "label": "абонентов"
+        },
+        {
+          "icon": "zap",
+          "value": "11 400+ МВт",
+          "label": "мощность"
+        },
+        {
+          "icon": "briefcase",
+          "value": "22,3 млрд дирхамов",
+          "label": "IPO",
+          "sub": "18% акций, 2022 год"
+        },
+        {
+          "icon": "flag",
+          "value": "1992",
+          "label": "год образования"
+        }
+      ],
+      "why": "Государственная энергетическая и водная компания Дубая (1992); провела второе по величине IPO в истории Персидского залива.",
+      "learn": "Около 1,6 млн абонентов; мощность — свыше 11 400 МВт и 470 млн галлонов опреснённой воды в сутки.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Дубай",
+      "title": "Shell",
+      "logo": "source-videos/логотипы/энергетика/shell-me.png",
+      "short": "Shell Middle East",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1939",
+          "label": "в ОАЭ",
+          "sub": "в Дубае — с 1959 года"
+        },
+        {
+          "icon": "users",
+          "value": "~500",
+          "label": "сотрудников"
+        },
+        {
+          "icon": "trending",
+          "value": "до 70%",
+          "label": "газа Абу-Даби",
+          "sub": "СП ADNOC Gas Processing"
+        },
+        {
+          "icon": "package",
+          "value": "1–2 млн т",
+          "label": "СПГ в Дубай в год"
+        }
+      ],
+      "why": "Региональное подразделение Shell, присутствующего в ОАЭ с 1939 года: разведка, добыча, переработка и трейдинг.",
+      "learn": "Доля в СП ADNOC Gas Processing (до 70% газа Абу-Даби); топливо для около 100 рейсов в сутки в аэропортах региона.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Дубай",
+      "title": "TotalEnergies",
+      "logo": "source-videos/логотипы/энергетика/totalenergies-me.png",
+      "short": "TotalEnergies Middle East",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "87 лет",
+          "label": "в ОАЭ",
+          "sub": "старейший иностранный партнёр"
+        },
+        {
+          "icon": "chart",
+          "value": "~393 тыс.",
+          "label": "баррелей н. э. в сутки",
+          "sub": "добыча в ОАЭ, 2025"
+        },
+        {
+          "icon": "trending",
+          "value": "20%",
+          "label": "в Umm Shaif/Nasr",
+          "sub": "концессия ADNOC"
+        },
+        {
+          "icon": "trending",
+          "value": "10%",
+          "label": "в ADNOC Onshore"
+        }
+      ],
+      "why": "Региональный офис TotalEnergies — старейшего иностранного партнёра ОАЭ в нефтегазовой отрасли (87 лет в стране).",
+      "learn": "Доли в концессиях ADNOC: 20% в Umm Shaif/Nasr и SARB/Umm Lulu, 10% в ADNOC Onshore, 15% в ADNOC Gas Processing.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Дубай",
+      "title": "Al Maktoum Solar Park",
+      "logo": "source-videos/логотипы/энергетика/al-maktoum-solar-park.png",
+      "short": "Al Maktoum Solar Park",
+      "subtitle": "Имени Мохаммеда бин Рашида · Дубай",
+      "facts": [
+        {
+          "icon": "sun",
+          "value": "5000 МВт",
+          "label": "целевая мощность",
+          "sub": "к 2030 году"
+        },
+        {
+          "icon": "zap",
+          "value": "2600+ МВт",
+          "label": "введено",
+          "sub": "к 2025 году"
+        },
+        {
+          "icon": "briefcase",
+          "value": "~50 млрд дирхамов",
+          "label": "инвестиции"
+        },
+        {
+          "icon": "trending",
+          "value": "№1 в мире",
+          "label": "единый солнечный парк"
+        }
+      ],
+      "why": "Крупнейший в мире единый солнечный парк: DEWA строит его к югу от Дубая с 2012 года.",
+      "learn": "PV-панели и технология CSP; ещё около 2000 МВт строится, включая шестую фазу на 1800 МВт; до −6,5 млн т CO2 в год.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Между городами программы",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 5 ночей",
+          "text": "",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На арабском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "Энергетика ОАЭ",
+          "text": "От ADNOC и Masdar до солнечного парка\nАбу-Даби + Дубай",
+          "icon": "zap"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "5 дней",
+          "label": "/ 5 ночей",
+          "sub": "5 дней визитов в Абу-Даби и Дубае"
+        },
+        {
+          "icon": "zap",
+          "value": "9 компаний",
+          "label": "в программе",
+          "sub": "нефть и газ, ВИЭ, энергосети"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы между городами программы",
+        "Сопровождение на арабском/английском",
+        "Проживание 5 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Дубай (перелёт Москва → Дубай).<br><b>Вылет:</b> Дубай — выезд из отеля и трансфер в аэропорт после дня 5."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,667 @@
+{
+  "title": "ИИ и технологии в ОАЭ: от G42 до региональных штаб-квартир Big Tech — Global Tech Tour",
+  "output": "2026-10-08-оаэ-ии",
+  "source": "https://globaltechtour.ru/expeditions/uae-ai-tech-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 09.10.2026)",
+  "robot": "uae",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-экспедиция · ИИ и технологии ОАЭ",
+      "topright": "G42 · Hub71 · Google · AWS\nMeta · Microsoft · TikTok",
+      "logos": [
+        {
+          "name": "G42",
+          "logo": "source-videos/логотипы/ии/g42.png"
+        },
+        {
+          "name": "Hub71",
+          "logo": "source-videos/логотипы/ии/hub71.png"
+        },
+        {
+          "name": "Technology Innovation Institute",
+          "logo": "source-videos/логотипы/ии/tii.png"
+        },
+        {
+          "name": "Google",
+          "logo": "source-videos/логотипы/ии/google-mena.png"
+        },
+        {
+          "name": "AWS",
+          "logo": "source-videos/логотипы/ии/aws-mena.png"
+        },
+        {
+          "name": "Meta",
+          "logo": "source-videos/логотипы/ии/meta-mena.png"
+        },
+        {
+          "name": "Microsoft",
+          "logo": "source-videos/логотипы/ии/microsoft-mea.png"
+        },
+        {
+          "name": "Alibaba Cloud",
+          "logo": "source-videos/логотипы/ии/alibaba-cloud-me.png"
+        }
+      ],
+      "box_text": "От ИИ-чемпиона G42 до штаб-квартир Big Tech —\n11 компаний, 5 дней, 5 ночей",
+      "box_right": "Абу-Даби + Дубай —\nбез перелётов",
+      "footer": "Global Tech Tour · бизнес-экспедиции в ОАЭ · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Доступ к штаб-квартирам и площадкам, обычно закрытым для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы между городами программы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на арабском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "11 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Абу-Даби",
+          "text": "G42, Hub71, Technology Innovation Institute"
+        },
+        {
+          "name": "Дни 3–4 · Дубай",
+          "text": "Google, AWS, Meta, Microsoft, Alibaba Cloud"
+        },
+        {
+          "name": "День 5 · Дубай",
+          "text": "TikTok, Careem, Dubai Future Foundation"
+        }
+      ],
+      "quote": "Вся ИИ- и tech-инфраструктура\nрегиона MENA в одной поездке."
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Абу-Даби",
+          "days": "дни 1–2",
+          "companies": "G42\nHub71\nTechnology Innovation Institute"
+        },
+        {
+          "name": "Дубай",
+          "days": "дни 3–5",
+          "companies": "Google\nAWS\nMeta\nMicrosoft\nAlibaba Cloud\nTikTok\nCareem\nDubai Future Foundation",
+          "leg": {
+            "icon": "car",
+            "text": "≈1,5 ч"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Дубай · <b>Вылет:</b> Дубай"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "G42 ·\nHub71",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Technology Innovation Institute",
+          "text": "После утреннего визита — трансфер Абу-Даби → Дубай (~1,5 часа по трассе).",
+          "label": "День 2"
+        },
+        {
+          "sub": "Дубай",
+          "title": "Google ·\nAWS",
+          "text": "Google и AWS — штаб-квартира MENA и облачный регион в Дубае.",
+          "label": "День 3"
+        },
+        {
+          "sub": "Дубай",
+          "title": "Meta ·\nMicrosoft ·\nAlibaba Cloud",
+          "text": "Meta, Microsoft и Alibaba Cloud — региональные центры в Dubai Internet City.",
+          "label": "День 4"
+        },
+        {
+          "sub": "Дубай",
+          "title": "TikTok · Careem ·\nDubai Future",
+          "text": "TikTok — офис MENA; Careem — суперапп; фонд — Museum of the Future.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Абу-Даби",
+      "title": "G42",
+      "logo": "source-videos/логотипы/ии/g42.png",
+      "short": "G42",
+      "subtitle": "Абу-Даби",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2018",
+          "label": "год основания",
+          "sub": "Абу-Даби"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$1,5 млрд",
+          "label": "инвестиция Microsoft",
+          "sub": "апрель 2024, место в совете"
+        },
+        {
+          "icon": "cpu",
+          "value": "Jais",
+          "label": "арабоязычная LLM",
+          "sub": "с MBZUAI и Cerebras"
+        },
+        {
+          "icon": "target",
+          "value": "Azure",
+          "label": "перенос инфраструктуры данных"
+        }
+      ],
+      "why": "ИИ-компания из Абу-Даби (2018): облака, здравоохранение, умные города и AI для энергетики и госсектора.",
+      "learn": "В 2024 году Microsoft вложила $1,5 млрд с местом в совете директоров; G42 разработала арабоязычную LLM Jais.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Абу-Даби",
+      "title": "Hub71",
+      "logo": "source-videos/логотипы/ии/hub71.png",
+      "short": "Hub71",
+      "subtitle": "Абу-Даби",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "525",
+          "label": "стартапов в экосистеме",
+          "sub": "июнь 2026 года"
+        },
+        {
+          "icon": "briefcase",
+          "value": "5,4+ млрд дирхамов",
+          "label": "привлекли резиденты",
+          "sub": "за первые пять лет"
+        },
+        {
+          "icon": "handshake",
+          "value": "Mubadala",
+          "label": "сооснователь",
+          "sub": "и ADGM, Microsoft, SoftBank"
+        },
+        {
+          "icon": "flag",
+          "value": "2019",
+          "label": "год основания"
+        }
+      ],
+      "why": "Государственный технохаб Абу-Даби, основан в 2019 году правительством эмирата с Mubadala, ADGM, Microsoft и SoftBank.",
+      "learn": "Гранты, льготы на визы и жильё, доступ к капиталу; 525 стартапов в AI, климатических технологиях и финтехе.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Абу-Даби",
+      "title": "Technology Innovation Institute",
+      "logo": "source-videos/логотипы/ии/tii.png",
+      "short": "Technology Innovation Institute",
+      "subtitle": "TII · Абу-Даби",
+      "facts": [
+        {
+          "icon": "cpu",
+          "value": "Falcon LLM",
+          "label": "модель на 40 млрд параметров",
+          "sub": "март 2023 года"
+        },
+        {
+          "icon": "chart",
+          "value": "1 трлн",
+          "label": "токенов обучения",
+          "sub": "превзошла GPT-3"
+        },
+        {
+          "icon": "cpu",
+          "value": "Falcon H1 Arabic",
+          "label": "арабоязычная модель"
+        },
+        {
+          "icon": "building",
+          "value": "ATRC",
+          "label": "Совет по передовым технологиям",
+          "sub": "Абу-Даби"
+        }
+      ],
+      "why": "Прикладное исследовательское подразделение Совета по передовым технологиям Абу-Даби (ATRC), создатель моделей Falcon.",
+      "learn": "Falcon LLM (2023), компактные Falcon 3 для ноутбуков, Falcon H1 Arabic; также квантовые технологии, робототехника и биотех.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Дубай",
+      "title": "Google MENA",
+      "logo": "source-videos/логотипы/ии/google-mena.png",
+      "short": "Google MENA",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2008",
+          "label": "год открытия",
+          "sub": "Dubai Internet City"
+        },
+        {
+          "icon": "users",
+          "value": "Сотни",
+          "label": "сотрудников",
+          "sub": "начинали с пяти"
+        },
+        {
+          "icon": "globe",
+          "value": "MENA",
+          "label": "весь регион",
+          "sub": "поиск, реклама, Google Cloud"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Региональная штаб-квартира Google для Ближнего Востока и Северной Африки в Dubai Internet City, открыта в 2008 году.",
+      "learn": "Поиск, онлайн-реклама, Google Cloud и устройства по региону MENA; программы цифровых навыков и AI-экосистемы с властями Дубая.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Дубай",
+      "title": "AWS MENA",
+      "logo": "source-videos/логотипы/ии/aws-mena.png",
+      "short": "AWS MENA",
+      "subtitle": "Amazon Web Services · Дубай",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2022",
+          "label": "запуск региона",
+          "sub": "AWS Middle East (UAE)"
+        },
+        {
+          "icon": "building",
+          "value": "3",
+          "label": "зоны доступности",
+          "sub": "данные хранятся локально"
+        },
+        {
+          "icon": "chart",
+          "value": "~$11 млрд",
+          "label": "вклад в экономику ОАЭ",
+          "sub": "прогноз AWS на 15 лет"
+        },
+        {
+          "icon": "globe",
+          "value": "Второй",
+          "label": "облачный регион Amazon",
+          "sub": "на Ближнем Востоке, после Бахрейна"
+        }
+      ],
+      "why": "Облачный регион AWS Middle East (UAE) в Дубае заработал 29 августа 2022 года — второй на Ближнем Востоке после Бахрейна.",
+      "learn": "Три зоны доступности для размещения данных локально с низкой задержкой; поддержка цифровой трансформации госсектора и бизнеса.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Дубай",
+      "title": "Meta MENA",
+      "logo": "source-videos/логотипы/ии/meta-mena.png",
+      "short": "Meta MENA",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2022",
+          "label": "год открытия",
+          "sub": "март, Dubai Internet City"
+        },
+        {
+          "icon": "smartphone",
+          "value": "Instagram",
+          "label": "и Facebook, WhatsApp",
+          "sub": "платформы компании"
+        },
+        {
+          "icon": "users",
+          "value": "MENA",
+          "label": "рекламодатели и разработчики",
+          "sub": "весь регион"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Региональная штаб-квартира Meta для Ближнего Востока и Северной Африки, открыта в марте 2022 года в Dubai Internet City.",
+      "learn": "Работа с рекламодателями, партнёрами и разработчиками региона; цифровая грамотность и поддержка малого бизнеса.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Дубай",
+      "title": "Microsoft MEA",
+      "logo": "source-videos/логотипы/ии/microsoft-mea.png",
+      "short": "Microsoft MEA",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1991",
+          "label": "офис в Дубае",
+          "sub": "Microsoft Gulf"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$1,5 млрд",
+          "label": "инвестиция в G42",
+          "sub": "2024 год"
+        },
+        {
+          "icon": "cpu",
+          "value": "Azure",
+          "label": "продажи и партнёры",
+          "sub": "десятки стран MEA"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Microsoft Gulf открыл штаб-квартиру в Дубае в 1991 году; сегодня это центр Microsoft для Ближнего Востока и Африки.",
+      "learn": "Продажи Azure, партнёрская экосистема и цифровая трансформация; инвестиции в дата-центры и AI-инфраструктуру региона.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Дубай",
+      "title": "Alibaba Cloud Middle East",
+      "logo": "source-videos/логотипы/ии/alibaba-cloud-me.png",
+      "short": "Alibaba Cloud Middle East",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2016",
+          "label": "выход на рынок",
+          "sub": "первый дата-центр в Дубае"
+        },
+        {
+          "icon": "building",
+          "value": "2",
+          "label": "дата-центра в Дубае",
+          "sub": "второй — октябрь 2025"
+        },
+        {
+          "icon": "briefcase",
+          "value": "380 млрд юаней",
+          "label": "план инвестиций в облако и AI",
+          "sub": "~$53 млрд за три года"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Облачное подразделение Alibaba вышло на Ближний Восток в 2016 году, открыв первый дата-центр в Дубае.",
+      "learn": "В октябре 2025 года на GITEX Global представлен второй дата-центр в Дубае — под растущий спрос на AI-сервисы.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Дубай",
+      "title": "TikTok MENA",
+      "logo": "source-videos/логотипы/ии/tiktok-mena.png",
+      "short": "TikTok MENA",
+      "subtitle": "ByteDance · Дубай",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "1+ млрд",
+          "label": "активных пользователей",
+          "sub": "глобально"
+        },
+        {
+          "icon": "handshake",
+          "value": "ByteDance",
+          "label": "владелец"
+        },
+        {
+          "icon": "trending",
+          "value": "MENA",
+          "label": "один из самых быстрорастущих рынков"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Региональный офис TikTok (ByteDance) для Ближнего Востока и Северной Африки в Dubai Internet City.",
+      "learn": "Работа с брендами, локальный контент, live-операции и партнёрства с креаторами и правительствами региона.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Дубай",
+      "title": "Careem",
+      "logo": "source-videos/логотипы/техгиганты/careem.png",
+      "short": "Careem",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$3,1 млрд",
+          "label": "покупка компании Uber",
+          "sub": "2019 год — рекорд региона"
+        },
+        {
+          "icon": "globe",
+          "value": "80+",
+          "label": "городов",
+          "sub": "в девяти странах"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$400 млн",
+          "label": "вложила e&",
+          "sub": "за 50,03%, 2023 год"
+        },
+        {
+          "icon": "flag",
+          "value": "2012",
+          "label": "год основания",
+          "sub": "в Дубае"
+        }
+      ],
+      "why": "Первый технологический единорог региона: основан в Дубае в 2012 году как такси-сервис, в 2019 году куплен Uber за $3,1 млрд.",
+      "learn": "С 2020 года — суперапп: доставка еды, микромобильность, кошелёк и финтех-сервисы в 80+ городах девяти стран.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Дубай",
+      "title": "Dubai Future Foundation",
+      "logo": "source-videos/логотипы/ии/dubai-future-foundation.png",
+      "short": "Dubai Future Foundation",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2016",
+          "label": "год основания",
+          "sub": "инициатива шейха Мохаммеда"
+        },
+        {
+          "icon": "building",
+          "value": "Museum of the Future",
+          "label": "ключевой проект",
+          "sub": "открыт 22 февраля 2022"
+        },
+        {
+          "icon": "target",
+          "value": "Акселераторы",
+          "label": "и инкубаторы",
+          "sub": "плюс регуляторные песочницы"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Фонд будущего Дубая, учреждён в 2016 году по инициативе шейха Мохаммеда бин Рашида Аль Мактума.",
+      "learn": "Акселераторы, инкубаторы и регуляторные песочницы; ключевой проект — Museum of the Future, визитная карточка города.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Между городами программы",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 5 ночей",
+          "text": "",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На арабском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "ИИ и технологии в ОАЭ",
+          "text": "От G42 до региональных штаб-квартир Big Tech\nАбу-Даби + Дубай",
+          "icon": "cpu"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "5 дней",
+          "label": "/ 5 ночей",
+          "sub": "5 дней визитов в Абу-Даби и Дубае"
+        },
+        {
+          "icon": "cpu",
+          "value": "11 компаний",
+          "label": "ИИ и технологии в ОАЭ",
+          "sub": "от G42 до штаб-квартир Big Tech"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы между городами программы",
+        "Сопровождение на арабском/английском",
+        "Проживание 5 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Дубай (перелёт Москва → Дубай).<br><b>Вылет:</b> Дубай — выезд из отеля и трансфер в аэропорт после дня 5."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

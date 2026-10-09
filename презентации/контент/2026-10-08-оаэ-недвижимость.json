@@ -1,0 +1,590 @@
+{
+  "title": "Недвижимость и девелопмент ОАЭ: от Emaar и Palm Jumeirah до острова Яс — Global Tech Tour",
+  "output": "2026-10-08-оаэ-недвижимость",
+  "source": "https://globaltechtour.ru/expeditions/uae-realestate-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 09.10.2026)",
+  "robot": "uae",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-экспедиция · Недвижимость ОАЭ",
+      "topright": "Emaar · DAMAC · Nakheel\nDubai Holding · Aldar",
+      "logos": [
+        {
+          "name": "Emaar Properties",
+          "logo": "source-videos/логотипы/недвижимость/emaar-properties.png"
+        },
+        {
+          "name": "DAMAC Properties",
+          "logo": "source-videos/логотипы/недвижимость/damac-properties.png"
+        },
+        {
+          "name": "Nakheel",
+          "logo": "source-videos/логотипы/недвижимость/nakheel.png"
+        },
+        {
+          "name": "Dubai Holding",
+          "logo": "source-videos/логотипы/недвижимость/dubai-holding.png"
+        },
+        {
+          "name": "Meraas",
+          "logo": "source-videos/логотипы/недвижимость/meraas.png"
+        },
+        {
+          "name": "JLL",
+          "logo": "source-videos/логотипы/недвижимость/jll-mena.png"
+        },
+        {
+          "name": "CBRE",
+          "logo": "source-videos/логотипы/недвижимость/cbre-mena.png"
+        },
+        {
+          "name": "Knight Frank",
+          "logo": "source-videos/логотипы/недвижимость/knight-frank-mena.png"
+        }
+      ],
+      "box_text": "От застройщика Burj Khalifa до острова Яс —\n9 компаний, 5 дней, 5 ночей",
+      "box_right": "Дубай + Абу-Даби —\nбез перелётов",
+      "footer": "Global Tech Tour · бизнес-экспедиции в ОАЭ · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Доступ к штаб-квартирам и площадкам, обычно закрытым для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы между городами программы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на арабском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "9 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Дубай",
+          "text": "Emaar Properties, DAMAC Properties, Nakheel, Dubai Holding"
+        },
+        {
+          "name": "Дни 3–4 · Дубай",
+          "text": "Meraas, JLL, CBRE, Knight Frank"
+        },
+        {
+          "name": "День 5 · Абу-Даби",
+          "text": "Aldar Properties"
+        }
+      ],
+      "quote": "Вся индустрия недвижимости\nОАЭ в одной поездке."
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Дубай",
+          "days": "дни 1–4",
+          "companies": "Emaar Properties\nDAMAC Properties\nNakheel\nDubai Holding\n+ ещё 4"
+        },
+        {
+          "name": "Абу-Даби",
+          "days": "день 5",
+          "companies": "Aldar Properties",
+          "leg": {
+            "icon": "car",
+            "text": "≈1,5 ч"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Дубай · <b>Вылет:</b> Дубай"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Emaar ·\nDAMAC",
+          "text": "Прилёт и заселение; Emaar — застройщик Burj Khalifa, DAMAC — брендированные башни.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Nakheel ·\nDubai Holding",
+          "text": "Nakheel — Palm Jumeirah и The World; Dubai Holding — холдинг правителя Дубая.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Meraas ·\nJLL",
+          "text": "Meraas — City Walk и Bluewaters; JLL — консалтинг, штаб-квартира MENA.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "CBRE ·\nKnight Frank",
+          "text": "CBRE — №1 в мире в коммерческой недвижимости; Knight Frank — в Дубае с 2009 года.",
+          "label": "День 4"
+        },
+        {
+          "sub": "Абу-Даби",
+          "title": "Aldar Properties",
+          "text": "Утренний трансфер Дубай → Абу-Даби (≈1,5 ч); Aldar — мастер-девелопер острова Яс.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Дубай",
+      "title": "Emaar Properties",
+      "logo": "source-videos/логотипы/недвижимость/emaar-properties.png",
+      "short": "Emaar Properties",
+      "subtitle": "ICD · Дубай",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "35,5 млрд дирхамов",
+          "label": "выручка",
+          "sub": "2024 год, +33%"
+        },
+        {
+          "icon": "star",
+          "value": "Burj Khalifa",
+          "label": "самое высокое здание мира",
+          "sub": "828 м, 2010 год"
+        },
+        {
+          "icon": "flag",
+          "value": "1997",
+          "label": "год основания",
+          "sub": "Мохамед Алаббар"
+        },
+        {
+          "icon": "handshake",
+          "value": "ICD",
+          "label": "акционер",
+          "sub": "частично госкомпания"
+        }
+      ],
+      "why": "Застройщик Burj Khalifa, Downtown Dubai, Dubai Marina и Dubai Mall; основан в 1997 году Мохамедом Алаббаром.",
+      "learn": "Рекордная выручка 2024 года — 35,5 млрд дирхамов (+33%); проекты в Египте, Саудовской Аравии, Индии, Турции и Пакистане.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Дубай",
+      "title": "DAMAC Properties",
+      "logo": "source-videos/логотипы/недвижимость/damac-properties.png",
+      "short": "DAMAC Properties",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "~$3,6 млрд",
+          "label": "выручка",
+          "sub": "2024 год"
+        },
+        {
+          "icon": "star",
+          "value": "Versace",
+          "label": "брендированные башни",
+          "sub": "и Fendi Casa, Cavalli"
+        },
+        {
+          "icon": "flag",
+          "value": "2002",
+          "label": "девелопер выделен",
+          "sub": "группа — с 1982 года"
+        },
+        {
+          "icon": "chart",
+          "value": "DFM",
+          "label": "листинг",
+          "sub": "декабрь 2015 года"
+        }
+      ],
+      "why": "Девелопер люксовых башен под брендами Versace, Fendi Casa и Cavalli; основатель и председатель — Хусейн Саджвани.",
+      "learn": "Гольф-проекты с Trump Organization; сданы десятки тысяч юнитов в ОАЭ, Саудовской Аравии и других странах.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Дубай",
+      "title": "Nakheel",
+      "logo": "source-videos/логотипы/недвижимость/nakheel.png",
+      "short": "Nakheel",
+      "subtitle": "Dubai Holding · Дубай",
+      "facts": [
+        {
+          "icon": "star",
+          "value": "Palm Jumeirah",
+          "label": "искусственный остров",
+          "sub": "и Palm Jebel Ali, The World"
+        },
+        {
+          "icon": "globe",
+          "value": "300+ км",
+          "label": "береговой линии",
+          "sub": "добавлено Дубаю"
+        },
+        {
+          "icon": "flag",
+          "value": "2003",
+          "label": "год основания"
+        },
+        {
+          "icon": "handshake",
+          "value": "Dubai Holding",
+          "label": "в составе",
+          "sub": "с марта 2024 года"
+        }
+      ],
+      "why": "Создатель островов Palm Jumeirah, Palm Jebel Ali и архипелага The World — плюс 300 км береговой линии Дубая.",
+      "learn": "С марта 2024 года вместе с Meydan входит в Dubai Holding и больше не существует как отдельное юрлицо.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Дубай",
+      "title": "Dubai Holding",
+      "logo": "source-videos/логотипы/недвижимость/dubai-holding.png",
+      "short": "Dubai Holding",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "130+ млрд дирхамов",
+          "label": "активы"
+        },
+        {
+          "icon": "globe",
+          "value": "~13",
+          "label": "стран"
+        },
+        {
+          "icon": "users",
+          "value": "~20 000",
+          "label": "сотрудников"
+        },
+        {
+          "icon": "flag",
+          "value": "2004",
+          "label": "год создания",
+          "sub": "октябрь"
+        }
+      ],
+      "why": "Глобальный инвестиционный холдинг правителя Дубая шейха Мохаммеда бин Рашида Аль Мактума, создан в 2004 году.",
+      "learn": "Недвижимость, отели, медиа и ритейл; в 2024 году девелоперский блок пополнили Nakheel, Meydan, Dubai Properties и TECOM.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Дубай",
+      "title": "Meraas",
+      "logo": "source-videos/логотипы/недвижимость/meraas.png",
+      "short": "Meraas",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "2007",
+          "label": "год основания"
+        },
+        {
+          "icon": "star",
+          "value": "City Walk",
+          "label": "и La Mer, Box Park",
+          "sub": "проекты в Дубае"
+        },
+        {
+          "icon": "star",
+          "value": "Ain Dubai",
+          "label": "колесо обозрения",
+          "sub": "остров Bluewaters"
+        },
+        {
+          "icon": "handshake",
+          "value": "Dubai Holding",
+          "label": "в составе",
+          "sub": "с 2023 года"
+        }
+      ],
+      "why": "Девелопер «лайфстайл»-проектов при поддержке правительства Дубая (2007) — вместо массовой застройки.",
+      "learn": "В портфеле — City Walk, La Mer, остров Bluewaters с Ain Dubai, Box Park и Jumeirah Central.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Дубай",
+      "title": "JLL",
+      "logo": "source-videos/логотипы/недвижимость/jll-mena.png",
+      "short": "JLL MENA",
+      "subtitle": "Emaar Square · Дубай",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "550+",
+          "label": "специалистов в MENA"
+        },
+        {
+          "icon": "globe",
+          "value": "35",
+          "label": "стран региона"
+        },
+        {
+          "icon": "chart",
+          "value": "$20+ млрд",
+          "label": "выручка в год",
+          "sub": "компания из Fortune 500"
+        },
+        {
+          "icon": "flag",
+          "value": "1999",
+          "label": "год образования",
+          "sub": "слияние JLW и LaSalle"
+        }
+      ],
+      "why": "Международный консультант по недвижимости из Fortune 500; региональная штаб-квартира MENA — в Emaar Square, Дубай.",
+      "learn": "Офисы в Дубае, Абу-Даби, Эр-Рияде, Джидде, Эль-Хубаре и Каире охватывают 35 стран региона.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Дубай",
+      "title": "CBRE",
+      "logo": "source-videos/логотипы/недвижимость/cbre-mena.png",
+      "short": "CBRE MENA",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "№1 в мире",
+          "label": "коммерческая недвижимость",
+          "sub": "по выручке"
+        },
+        {
+          "icon": "chart",
+          "value": "~$35 млрд",
+          "label": "выручка",
+          "sub": "2024 год"
+        },
+        {
+          "icon": "users",
+          "value": "1400+",
+          "label": "специалистов в регионе",
+          "sub": "9 офисов в 6 странах"
+        },
+        {
+          "icon": "flag",
+          "value": "1906",
+          "label": "год основания",
+          "sub": "Сан-Франциско"
+        }
+      ],
+      "why": "Крупнейшая в мире компания по коммерческой недвижимости и инвестициям; на Ближнем Востоке — почти 20 лет.",
+      "learn": "Крупнейшая в Дубае команда по оценке недвижимости; среди клиентов — суверенные фонды и крупные девелоперы.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Дубай",
+      "title": "Knight Frank",
+      "logo": "source-videos/логотипы/недвижимость/knight-frank-mena.png",
+      "short": "Knight Frank MENA",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1896",
+          "label": "год основания",
+          "sub": "Лондон"
+        },
+        {
+          "icon": "building",
+          "value": "2009",
+          "label": "офис в Дубае",
+          "sub": "выход на Ближний Восток"
+        },
+        {
+          "icon": "globe",
+          "value": "5",
+          "label": "стран присутствия",
+          "sub": "ОАЭ, KSA, Катар, Бахрейн, Египет"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 4",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Британский консультант по недвижимости (Лондон, 1896); на Ближнем Востоке — с открытия офиса в Дубае в 2009 году.",
+      "learn_label": "Фокус визита",
+      "learn": "Офисы в ОАЭ, Саудовской Аравии, Катаре, Бахрейне и Египте: брокеридж, оценка, консалтинг и управление недвижимостью."
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Абу-Даби",
+      "title": "Aldar Properties",
+      "logo": "source-videos/логотипы/недвижимость/aldar-properties.png",
+      "short": "Aldar Properties",
+      "subtitle": "Абу-Даби",
+      "facts": [
+        {
+          "icon": "chart",
+          "value": "40,6 млрд дирхамов",
+          "label": "продажи",
+          "sub": "2025 год, рекорд"
+        },
+        {
+          "icon": "chart",
+          "value": "8,8 млрд дирхамов",
+          "label": "прибыль",
+          "sub": "2025 год, рекорд"
+        },
+        {
+          "icon": "trending",
+          "value": "№1",
+          "label": "публичный девелопер Абу-Даби"
+        },
+        {
+          "icon": "star",
+          "value": "Остров Яс",
+          "label": "мастер-девелопер",
+          "sub": "Ferrari World, Yas Marina"
+        }
+      ],
+      "why": "Крупнейший публичный девелопер Абу-Даби (2004), с 2005 года торгуется на бирже ADX.",
+      "learn": "Мастер-девелопер острова Яс — Yas Marina Circuit, Ferrari World, Yas Mall; проекты на островах Саадият и Аль-Рим.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Между городами программы",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 5 ночей",
+          "text": "",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На арабском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "Недвижимость ОАЭ",
+          "text": "От Emaar и Palm Jumeirah до острова Яс\nДубай + Абу-Даби",
+          "icon": "building"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "5 дней",
+          "label": "/ 5 ночей",
+          "sub": "5 дней визитов в Дубае и Абу-Даби"
+        },
+        {
+          "icon": "building",
+          "value": "9 компаний",
+          "label": "Недвижимость и девелопмент ОАЭ",
+          "sub": "девелоперы и консультанты"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы между городами программы",
+        "Сопровождение на арабском/английском",
+        "Проживание 5 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Дубай (перелёт Москва → Дубай).<br><b>Вылет:</b> Дубай — выезд из отеля и трансфер в аэропорт после дня 5."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

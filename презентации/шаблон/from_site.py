@@ -52,11 +52,15 @@ TOPIC = [  # хвост tour_id → тема в имени файла
     ('retail-ecommerce', 'ритейл'), ('retail', 'ритейл'), ('food-dairy', 'еда'), ('dark-kitchen-delivery', 'доставка'),
     ('tech-internet-giants', 'интернет'), ('beauty-industry', 'красота'), ('beauty-antiage', 'красота'),
     ('longevity-biotech', 'лонгевити'), ('bubble-tea-coffee', 'чай-кофе'), ('tea-coffee-retail', 'чай-кофе'),
+    ('ai-tech', 'ии'), ('fintech', 'финтех'), ('logistics-ports', 'логистика'), ('aviation', 'авиация'),  # ОАЭ
+    ('realestate', 'недвижимость'), ('energy-green-tech', 'энергетика'),
 ]
-SECTOR_FOLDER = {'consumer': 'ритейл', 'food': 'еда', 'internet': 'техгиганты', 'ai': 'ии', 'finance': 'техгиганты',
-                 'medtech': 'медицина', 'robotics': 'роботы', 'auto': 'авто', 'appliances': 'бытовая-техника'}
+SECTOR_FOLDER = {'consumer': 'ритейл', 'food': 'еда', 'internet': 'техгиганты', 'ai': 'ии', 'finance': 'финансы',
+                 'medtech': 'медицина', 'robotics': 'роботы', 'auto': 'авто', 'appliances': 'бытовая-техника',
+                 'logistics': 'логистика', 'aerospace': 'авиация', 'realestate': 'недвижимость', 'energy': 'энергетика'}
 SECTOR_ICON = {'consumer': 'store', 'food': 'cart', 'internet': 'smartphone', 'ai': 'cpu', 'finance': 'chart',
-               'medtech': 'target', 'robotics': 'cpu', 'auto': 'car'}
+               'medtech': 'target', 'robotics': 'cpu', 'auto': 'car',
+               'logistics': 'package', 'aerospace': 'plane', 'realestate': 'building', 'energy': 'zap'}
 THAI_DAYS = {1: 'หนึ่งวัน', 2: 'สองวัน', 3: 'สามวัน', 4: 'สี่วัน', 5: 'ห้าวัน', 6: 'หกวัน', 7: 'เจ็ดวัน'}
 CJK_DAYS = {1: '一天', 2: '两天', 3: '三天', 4: '四天', 5: '五天', 6: '六天', 7: '七天'}
 GHOST_COUNTRY = {'th': ('ไทย', True), 'cn': ('中国', False), 'jp': ('日本', False)}
@@ -236,12 +240,16 @@ def parse_word(w):
 
 def inflect(word, grams):
     p = parse_word(word)
-    if not p:
+    if not p or ('Fixd' in p.tag and word[:1].isupper()):  # несклоняемое имя: «Абу-Даби» (не «абу-даби»)
         return word
+    if '-' in word and word[:1].isupper() and not MORPH.word_is_known(word.lower()):
+        return word  # «Абу-Даби», «Куала-Лумпур», «Нави-Мумбаи» — не «навях-мумбаях»
     q = p.inflect(set(grams))
     if not q:
         return word
     w = q.word
+    if '-' in word and w.count('-') == word.count('-'):  # «Эр-Рияд» → «Эр-Рияде», регистр каждой части
+        w = '-'.join(a[:1].upper() + a[1:] if b[:1].isupper() else a for a, b in zip(w.split('-'), word.split('-')))
     if word[:1].isupper():
         w = w[:1].upper() + w[1:]
     return w
@@ -317,7 +325,8 @@ def bad_start(s):
     return first_pos(w) == 'GRND' or (first_pos(w) == 'PRTF' and w[:1].islower())
 
 
-COMPOUND_PREP = {('за', 'счёт'), ('за', 'счет'), ('в', 'составе'), ('на', 'основе'), ('в', 'рамках'), ('при', 'поддержке'),
+EN_STOPW = {'of', 'the', 'and', 'for', 'by', '&', 'a', 'an', 'in', 'at', 'to', 'on', 'de'}  # «… в Mall of the» — обрыв названия
+COMPOUND_PREP = {('за', 'счёт'), ('за', 'счет'), ('в', 'составе'), ('на', 'основе'), ('на', 'базе'), ('в', 'рамках'), ('при', 'поддержке'),
                  ('с', 'помощью'), ('в', 'течение'), ('в', 'области'), ('по', 'данным'), ('в', 'сфере')}
 
 
@@ -369,7 +378,7 @@ def clause_cuts(s, limit):
                 break
             acc = (acc + ' ' + w).strip()
         ws = trim_tail(acc.split())
-        while len(ws) > 3 and (ws[-1].lower() in STOPW or first_pos(ws[-1]) in ('PREP', 'CONJ', 'ADJF', 'PRTF', 'PRCL', 'ADVB', 'NUMR')
+        while len(ws) > 3 and (ws[-1].lower() in STOPW or ws[-1].lower() in EN_STOPW or first_pos(ws[-1]) in ('PREP', 'CONJ', 'ADJF', 'PRTF', 'PRCL', 'ADVB', 'NUMR')
                                or ws[-1].lower() in ('под', 'над', 'для', 'их', 'его', 'её', 'чем', 'которые', 'который')):
             ws.pop()
             ws = trim_tail(ws)
@@ -393,7 +402,7 @@ def area_unit(a):
     a = a.lower()
     return 'га' if a.startswith(('га', 'гект')) else 'кв. футов' if 'фут' in a else 'акров' if a.startswith('акр') else 'м²'
 APPROX = [('более чем в', '+'), ('более чем на', '+'), ('более чем', '+'), ('свыше', '+'), ('более', '+'), ('больше', '+'),
-          ('не менее', '+'), ('превысила', '+'), ('превысил', '+'), ('около', '~'), ('почти', '~'), ('примерно', '~'),
+          ('не менее', '+'), ('превысила', '+'), ('превысили', '+'), ('превысило', '+'), ('превысил', '+'), ('превышает', '+'), ('превышают', '+'), ('около', '~'), ('почти', '~'), ('примерно', '~'),
           ('порядка', '~'), ('приблизительно', '~'), ('менее', '<'), ('до', 'до ')]
 MONTHS = ['январ', 'феврал', 'март', 'апрел', 'ма', 'июн', 'июл', 'август', 'сентябр', 'октябр', 'ноябр', 'декабр']
 MONTH_NOM = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь']
@@ -432,7 +441,7 @@ def num_value(raw, sign, mult='', unit='', money_cur=''):
     if money_cur:
         if money_cur == '₹' or (money_cur.startswith('рупи') and mult.startswith('крор')):  # индийская рупия: «₹4744 крор»
             v = '₹' + v
-        elif money_cur.startswith('долл'):
+        elif money_cur.startswith(('долл', '$')):
             v = '$' + v
         elif money_cur.startswith('евро'):
             v = '€' + v
@@ -621,6 +630,7 @@ def extract_facts(desc, names=()):
     """Факты из описания: числа с подписью, «№1/первый», год основания, названия брендов и платформ, биржа."""
     text = re.sub(r'\s+', ' ', desc or '').strip()
     text = re.sub(r'\bRM\s?(?=\d)', 'RM ', text)  # «RM355 млн» — ринггиты перед числом, как «$»
+    text = re.sub(r'\bAED\s?(?=\d)', 'AED ', text)  # «AED 5,4 млрд» — дирхамы ОАЭ перед числом
     facts = []
     sents = sentences(text)
     lname = [n.lower() for n in names if n]
@@ -638,7 +648,7 @@ def extract_facts(desc, names=()):
         gpos += len(sent) + 1
         subj_is_company = si == 0 or any(sent.lower().startswith(n) for n in lname) or re.match(r'(Компания|Сеть|Бренд|Группа|Клиника|Сервис|Платформа)\b', sent)
         # --- числа
-        for m in re.finditer(r'([$₹]\s?|RM )?(?<![\w.,/–×-])(?<!\d[ \u00a0\u202f])' + NUMRE + r'(\+)?(?![.,]\d|[/–×-]\d|\d|-[а-я]|[A-Za-zА-Яа-я])', sent):
+        for m in re.finditer(r'([$₹]\s?|RM |AED )?(?<![\w.,/–×-])(?<!\d[ \u00a0\u202f])' + NUMRE + r'(\+)?(?![.,]\d|[/–×-]\d|\d|-[а-я]|[A-Za-zА-Яа-я])', sent):
             if in_parens(sent, m.start()) and not re.search(r'%|' + MULT + '|' + AREA, sent[m.end():m.end() + 14]):
                 continue
             raw = m.group(2)
@@ -665,12 +675,14 @@ def extract_facts(desc, names=()):
             unit = area_unit(am.group(1)) if am else ''
             if am:
                 aft2 = aft2[am.end():]
-            cm = re.match(r'\s*' + CUR, aft2)
+            cm = re.match(r'\s*' + CUR, aft2) or re.match(r'\s*(\$)(?!\w)', aft2)  # «около 35 млрд $»
             cur = cm.group(1) if cm else ''
             aft3 = aft2[cm.end():] if cm else aft2
+            if cur.startswith('дирхам'):
+                aft3 = re.sub(r'^\s*ОАЭ\b', '', aft3)  # «305 млрд дирхамов ОАЭ»
             pct = re.match(r'\s*%', aft2)
             if m.group(1):
-                cur = cur or ('₹' if '₹' in m.group(1) else 'ринггитов' if m.group(1).startswith('RM') else 'долл')
+                cur = cur or ('₹' if '₹' in m.group(1) else 'ринггитов' if m.group(1).startswith('RM') else 'дирхамов' if m.group(1).startswith('AED') else 'долл')
             sign = '+' if m.group(3) or plus2 else ''
             for word, sg in APPROX:
                 if re.search(r'(?:^|\s)' + word + r'\s*$', before, re.I):
@@ -686,7 +698,7 @@ def extract_facts(desc, names=()):
             except ValueError:
                 nval = 0
             if pct:
-                after_pct = aft2[pct.end():]
+                after_pct = re.sub(r'^-(?:ное|ный|ная|ным|ной|ную)\b', '', aft2[pct.end():])  # «100%-ное иностранное владение»
                 words = np_after(after_pct, 0, 4)
                 if not words or after_pct.strip().startswith((')', ',')):
                     pre = re.sub(r'\(\s*(?:около|свыше|более|почти|примерно)?\s*$', '', before).strip()
@@ -738,7 +750,7 @@ def extract_facts(desc, names=()):
                 for rx, lb in [(r'выручк|доход|продаж', 'выручка'), (r'капитализац', 'капитализация'), (r'оцен', 'оценка компании'),
                                (r'убыт', 'убытки'), (r'привлек|раунд|series|посевн', 'привлечено инвестиций'),
                                (r'инвест|вложи|вложен', 'инвестиции'), (r'продал|сделк|приобр\w+ компани|куплен', 'сумма сделки'),
-                               (r'оборот', 'оборот'), (r'\bgmv\b', 'GMV'),
+                               (r'оборот', 'оборот'), (r'\bgmv\b', 'GMV'), (r'\bактив', 'активы'),
                                (r'стоимост|модернизац', 'стоимость проекта'), (r'прибыл', 'прибыль')]:
                     for mm2 in re.finditer(rx, ctx):
                         if mm2.start() > best:
@@ -1165,7 +1177,7 @@ def text_variants(s, limits, kind='sentence'):
                     break
                 acc = (acc + ' ' + w).strip()
             wl = trim_tail(acc.split())
-            while len(wl) > 3 and (wl[-1].lower() in STOPW or first_pos(wl[-1].strip(',')) in ('PREP', 'CONJ', 'ADJF', 'PRTF', 'PRCL', 'ADVB', 'NUMR')):
+            while len(wl) > 3 and (wl[-1].lower() in STOPW or wl[-1].lower() in EN_STOPW or first_pos(wl[-1].strip(',')) in ('PREP', 'CONJ', 'ADJF', 'PRTF', 'PRCL', 'ADVB', 'NUMR')):
                 wl.pop()
             cuts = [' '.join(wl).rstrip(',')] + cuts
         for v in cuts:
@@ -1238,9 +1250,10 @@ def nominal_kind(c, limit=55):
         return ''
     if any(first_pos(w) == 'PRTS' for w in s0[:dm.start()].split()) or any(is_verb(w) for w in re.split(r'[,;:]', s0[dm.end():])[0].split()):
         return ''  # «… основана в 2018 году — первая точка продавала …»
-    v = clause_cuts(s0[dm.end():].strip(), limit)
-    v = [x for x in v if len(x) <= limit and x.split() and not x.endswith('-')
-         and first_pos(x.split()[-1].strip('.,')) not in ('ADJF', 'PRTF')]  # «государственный телеком-» — обрывок
+    np_ = re.sub(r',\s+(?:основан|запущен|создан|учрежд[её]н|открыт)\w*\s.*$', '', s0[dm.end():].strip())  # «…, основанная в 2012 году …» — только суть  # «…, основанная в 2012 году …»
+    v = clause_cuts(np_, limit)
+    v = [x for x in v if len(x) <= limit and x.split() and not x.endswith('-') and not re.search(r'\b(?:19|20)\d\d$', x)
+         and first_pos(x.split()[-1].strip('.,')) not in ('ADJF', 'PRTF')]  # «государственный телеком-», «…, основанная в 2012» — обрывки
     return v[0] if v else ''
 
 
@@ -1288,7 +1301,7 @@ def title_variants(c):
     n = base_name(c['name_en'])
     out = [n]
     short = re.sub(r'\s+(Thailand|Japan|Vietnam|India|Malaysia|Indonesia|Korea|K\.K\.|Group|Corporation|Holdings|Public Company Limited|PCL|Co\.?,? Ltd\.?|Integrative Wellness|'
-                   r'Scientific Wellness Center|Wellness Center|Wellness Clinic|Longevity Clinic|Clinic|International|Coffee Roasters)$', '', n).strip()
+                   r'Scientific Wellness Center|Wellness Center|Wellness Clinic|Longevity Clinic|Clinic|International|Coffee Roasters|' + REGION_SUFFIX + r')$', '', n).strip()
     if short and short != n:
         out.append(short)
     if '/' in n:
@@ -1360,7 +1373,8 @@ def load_brands():
     return json.loads(BRANDS.read_text(encoding='utf-8')) if BRANDS.exists() else {}
 
 
-GENERIC_SUFFIX = r'\s+(?:Thailand|Japan|Vietnam|India|Malaysia|Indonesia|Korea|UAE|K\.K\.|Group|Corporation|Corp\.?|Holdings|Public Company Limited|PCL|Co\.?,? Ltd\.?|Ltd\.?|Inc\.?|Stores|Marketing)$'
+REGION_SUFFIX = r'MENA|MEA|Middle East(?: & (?:Africa|Central Asia))?|Middle East & North Africa'  # «Google MENA», «Visa Middle East & Central Asia»
+GENERIC_SUFFIX = r'\s+(?:Thailand|Japan|Vietnam|India|Malaysia|Indonesia|Korea|UAE|K\.K\.|Group|Corporation|Corp\.?|Holdings|Public Company Limited|PCL|Co\.?,? Ltd\.?|Ltd\.?|Inc\.?|Stores|Marketing|' + REGION_SUFFIX + r')$'
 
 
 def name_keys(c):
@@ -1600,6 +1614,8 @@ def subtopics(tour):
     if ':' not in t:
         return []
     tail = t.split(':', 1)[1]
+    if re.match(r'\s*[Оо]т\s.+\sдо\s', tail):  # «от Emaar и Palm Jumeirah до острова Яс» — одна фраза, не перечисление
+        return [cap(tail.strip())]
     parts = [p.strip() for p in re.split(r',\s*|\s+и\s+', tail) if p.strip()]
     return [cap(p) for p in parts]
 
@@ -1711,14 +1727,20 @@ def build_deck(tour, comps, logos_ok=True):
     adv = [a['ru'] for a in tour.get('advantages', [])]
     with_us = (tour.get('why_vs_self') or {}).get('with_us_ru', [])
     inc_ru = [i['ru'] for i in tour.get('includes', [])]
+    if not stats.get('flights'):  # «Трансферы/перелёты между городами» без единого перелёта (ОАЭ)
+        inc_ru = [re.sub(r'^Трансферы/перел[её]ты\b', 'Трансферы', i) for i in inc_ru]
+    if len(cities) == 1:  # один город — «между городами программы» не про него
+        inc_ru = [re.sub(r'^(Трансферы)\s+между городами программы$', r'\1 по программе', i) for i in inc_ru]
     transfers = next((i for i in inc_ru if i.lower().startswith('трансфер')), '')
+    tr_generic = transfers == 'Трансферы по программе'  # один город: «Трансферы включены», а не «… между городами»
     hq = next((a for a in adv if 'штаб' in a.lower()), adv[0] if adv else '')
     route = next((a for a in adv if 'маршрут' in a.lower()), adv[1] if len(adv) > 1 else '')
     support = next((a for a in adv if 'сопровожд' in a.lower() or 'перевод' in a.lower()), adv[2] if len(adv) > 2 else '')
     slides.append({'type': 'why', 'items': [
         {'title': 'Большой опыт', 'text': 'Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний.'},
         {'title': 'Доступ к штаб-квартирам', 'text': Var(end_dot(cap(re.sub(r'^Доступ к штаб-квартирам, обычно закрытым', 'Визиты в штаб-квартиры, обычно закрытые', hq))) + (' ' + end_dot(cap(with_us[0])) if with_us else ''), end_dot(cap(hq)))},  # «к площадкам, обычно закрытым» — падеж не трогаем
-        {'title': 'Готовый маршрут', 'text': Var(end_dot(cap(route)) + (f' {transfers} включены.' if transfers else ''), end_dot(cap(route)))},
+        {'title': 'Готовый маршрут', 'text': Var(end_dot(cap(route)) + (' Трансферы включены.' if tr_generic else f' {transfers} включены.' if transfers else ''),
+                                                 end_dot(cap(route)))},
         {'title': 'Сопровождение и перевод', 'text': Var(end_dot(cap(support) + (f' — {lang}' if lang else '')), end_dot(cap(support)))},
     ]})
 
@@ -1789,11 +1811,15 @@ def build_deck(tour, comps, logos_ok=True):
                                       cnt(len(names), 'компания', 'компании', 'компаний'))}
             if ci > 0:
                 tr = next((d.get('transfer_ru', '') for d in dd if d.get('transfer_ru')), '')
+                k0 = itin.index(dd[0])
+                prev_tr = itin[k0 - 1].get('transfer_ru') or '' if k0 else ''
+                if not tr and '→' in prev_tr and cname in prev_tr.split('→')[-1]:  # «После утреннего визита — трансфер Абу-Даби → Дубай» накануне
+                    tr = itin[k0 - 1]['transfer_ru']
                 m = re.search(r'\(([≈~][^)]*)\)', tr)
                 icon = ('plane' if re.search(r'[Пп]ерел[её]т|рейс', tr) else 'train' if re.search(r'[Пп]оезд(?!к)|[Сс]инкансэн', tr)
                         else 'car' if re.search(r'[Пп]оездк|[Пп]ереезд|[Тт]рансфер|[Вв]ыезд', tr)
                         else 'plane' if stats.get('flights') else 'car')
-                entry['leg'] = {'icon': icon, 'text': m.group(1) if m else ''}
+                entry['leg'] = {'icon': icon, 'text': re.sub(r'^[≈~]\s*(\d+(?:,\d+)?)\s*час\w*.*$', r'≈\1 ч', m.group(1)) if m else ''}  # «~1,5 часа по трассе» → «≈1,5 ч»
             cl.append(entry)
         foot = []
         if tour.get('arrival_ru'):
@@ -1936,14 +1962,15 @@ def build_deck(tour, comps, logos_ok=True):
     extra_night = re.search(r'ночь после дня (\d+)', tour.get('departure_ru', ''))
     sector_icon = SECTOR_ICON.get(tour.get('sector'), 'target')
     sixth_title = topic if len(topic) <= 26 else cnt(n_comp, 'компания', 'компании', 'компаний')
-    low = lambda x: x if re.match(r'[A-ZА-ЯЁ]{2}|[A-Z]\w*[A-Z]', x) else x[:1].lower() + x[1:]
+    # регистр — как в названии тура: «e-commerce», «от Emaar …», но «Jebel Ali», «Абу-Даби»
+    low = lambda x: x[:1].lower() + x[1:] if (x[:1].lower() + x[1:]) in tour.get('title_ru', '') else x
     sixth_text = (', '.join(low(s) if i else s for i, s in enumerate(subs[:-1])) + ' и ' + low(subs[-1]) if len(subs) > 1
                   else subs[0] if subs else ' · '.join(tagline[:3]))
     sixth_text = cap(sixth_text) + ('\nв одном городе' if len(cities) == 1 else '\n' + ' + '.join(cities))
     slides.append({'type': 'benefits', 'items': [
         {'title': 'Переговоры\nс компаниями', 'text': Var(inc_short[0] if inc_short else 'Все визиты и переговоры программы', 'Все визиты программы'), 'icon': 'users'},
         {'title': 'Закрытые двери', 'text': Var('Штаб-квартиры, обычно закрытые\nдля случайных визитов' if 'штаб' in hq.lower() else hq, 'Штаб-квартиры компаний'), 'icon': 'building'},
-        {'title': 'Трансферы', 'text': Var(cap(re.sub(r'^Трансферы\s+', '', transfers)) if transfers else 'Включены', 'Включены'), 'icon': 'car'},
+        {'title': 'Трансферы', 'text': Var(cap(re.sub(r'^Трансферы\s+', '', transfers)) if transfers and not tr_generic else 'Включены', 'Включены'), 'icon': 'car'},
         {'title': cap(stay), 'text': f'Включая ночь после дня {extra_night.group(1)}' if extra_night else '', 'icon': 'home'},
         {'title': 'Перевод и сопровождение', 'text': Var(f'{cap(lang_slash)}\nна всех встречах' if lang else 'На всех встречах', 'На всех встречах'), 'icon': 'headphones'},
         {'title': Var(sixth_title, cnt(n_comp, 'компания', 'компании', 'компаний')), 'text': Var(sixth_text, sixth_text.split('\n')[0]), 'icon': sector_icon},

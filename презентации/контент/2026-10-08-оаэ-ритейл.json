@@ -1,0 +1,612 @@
+{
+  "title": "Ритейл и e-commerce ОАЭ: от Noon до люксовых конгломератов Дубая — Global Tech Tour",
+  "output": "2026-10-08-оаэ-ритейл",
+  "source": "https://globaltechtour.ru/expeditions/uae-retail-ecommerce-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 09.10.2026)",
+  "robot": "uae",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-экспедиция · Ритейл ОАЭ",
+      "topright": "E-commerce · Масс-маркет\nЛюкс",
+      "logos": [
+        {
+          "name": "Noon",
+          "logo": "source-videos/логотипы/ритейл/noon.svg"
+        },
+        {
+          "name": "Amazon.ae",
+          "logo": "source-videos/логотипы/ритейл/amazon-ae.png"
+        },
+        {
+          "name": "Majid Al Futtaim",
+          "logo": "source-videos/логотипы/ритейл/majid-al-futtaim.png"
+        },
+        {
+          "name": "IKEA (Al-Futtaim)",
+          "logo": "source-videos/логотипы/ритейл/ikea-al-futtaim.png"
+        },
+        {
+          "name": "Landmark Group",
+          "logo": "source-videos/логотипы/ритейл/landmark-group.png"
+        },
+        {
+          "name": "Chalhoub Group",
+          "logo": "source-videos/логотипы/ритейл/chalhoub.png"
+        },
+        {
+          "name": "Careem",
+          "logo": "source-videos/логотипы/техгиганты/careem.png"
+        },
+        {
+          "name": "LVMH",
+          "logo": "source-videos/логотипы/ритейл/lvmh.png"
+        }
+      ],
+      "box_text": "От «арабского Amazon» Noon до люкса LVMH —\n10 компаний, 5 дней, 5 ночей",
+      "box_right": "Дубай —\nбез единого перелёта",
+      "footer": "Global Tech Tour · бизнес-экспедиции в ОАЭ · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Доступ к штаб-квартирам и площадкам, обычно закрытым для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на арабском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "10 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2",
+          "text": "Noon, Amazon.ae, Apple, Majid Al Futtaim"
+        },
+        {
+          "name": "Дни 3–4",
+          "text": "IKEA, Landmark, Chalhoub, Careem"
+        },
+        {
+          "name": "День 5",
+          "text": "InstaShop, LVMH"
+        }
+      ],
+      "quote": "Весь ритейл Дубая —\nот масс-маркета до люкса."
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Noon ·\nAmazon.ae",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение — программа стартует в день прилёта.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Apple ·\nMajid Al Futtaim",
+          "text": "Apple — офис Ближнего Востока и розница; Majid Al Futtaim — франчайзи Carrefour.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "IKEA ·\nLandmark",
+          "text": "IKEA (Al-Futtaim) — франшиза IKEA в регионе; Landmark — крупнейший частный ритейл-конгломерат.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Chalhoub ·\nCareem",
+          "text": "Chalhoub — люксовый ритейл-конгломерат; Careem — первый единорог региона, суперапп.",
+          "label": "День 4"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "InstaShop ·\nLVMH",
+          "text": "InstaShop — доставка продуктов (Talabat); LVMH — региональный офис группы.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Дубай",
+      "title": "Noon",
+      "logo": "source-videos/логотипы/ритейл/noon.svg",
+      "short": "Noon",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "4+ млн",
+          "label": "активных пользователей в день",
+          "sub": "по данным компании"
+        },
+        {
+          "icon": "briefcase",
+          "value": "~$2,7 млрд",
+          "label": "привлечено инвестиций",
+          "sub": "к концу 2025 года"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$500 млн",
+          "label": "раунд с участием PIF",
+          "sub": "саудовский фонд"
+        },
+        {
+          "icon": "flag",
+          "value": "2016",
+          "label": "год запуска",
+          "sub": "Мохамед Алаббар"
+        }
+      ],
+      "why": "Крупная e-commerce платформа Ближнего Востока: товары, доставка еды и продуктов в ОАЭ, Саудовской Аравии и Египте.",
+      "learn": "Запущена в 2016 году Мохамедом Алаббаром; к концу 2025 года привлекла около $2,7 млрд, готовясь к возможному IPO.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Дубай",
+      "title": "Amazon.ae",
+      "logo": "source-videos/логотипы/ритейл/amazon-ae.png",
+      "short": "Amazon.ae",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "package",
+          "value": "30+ млн",
+          "label": "товаров",
+          "sub": "каталог Souq + Amazon"
+        },
+        {
+          "icon": "briefcase",
+          "value": "~$580 млн",
+          "label": "покупка Souq.com",
+          "sub": "2017 год"
+        },
+        {
+          "icon": "building",
+          "value": "40 000 м²",
+          "label": "фулфилмент-центр",
+          "sub": "Dubai South"
+        },
+        {
+          "icon": "users",
+          "value": "1000+",
+          "label": "региональных продавцов",
+          "sub": "сервис FBA"
+        }
+      ],
+      "why": "Вырос из Souq.com — торговой площадки, основанной в Дубае в 2005 году и купленной Amazon в 2017 году.",
+      "learn": "Fulfillment by Amazon (FBA): фулфилмент-центр 40 000 м² в Dubai South обслуживает более 1000 региональных продавцов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Дубай",
+      "title": "Apple Middle East",
+      "logo": "source-videos/логотипы/техгиганты/apple.png",
+      "short": "Apple Middle East",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "5",
+          "label": "магазинов в ОАЭ",
+          "sub": "пятый — сентябрь 2025"
+        },
+        {
+          "icon": "star",
+          "value": "100%",
+          "label": "возобновляемой энергии",
+          "sub": "магазин в Al Jimi Mall"
+        },
+        {
+          "icon": "building",
+          "value": "Emaar Square",
+          "label": "офис Ближнего Востока",
+          "sub": "и Африки, Дубай"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Региональный офис Apple для Ближнего Востока и Африки — в Дубае, в Emaar Square; розничная сеть в ОАЭ растёт.",
+      "learn": "В сентябре 2025 года открыт пятый магазин в стране — в Al Jimi Mall (Эль-Айн), полностью на возобновляемой энергии.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Дубай",
+      "title": "Majid Al Futtaim",
+      "logo": "source-videos/логотипы/ритейл/majid-al-futtaim.png",
+      "short": "Majid Al Futtaim",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1995",
+          "label": "франчайзи Carrefour",
+          "sub": "полный контроль с 2013"
+        },
+        {
+          "icon": "store",
+          "value": "65 + 85",
+          "label": "гипер- и супермаркетов",
+          "sub": "в 12 странах"
+        },
+        {
+          "icon": "building",
+          "value": "545+",
+          "label": "магазинов в Mall of the Emirates",
+          "sub": "и курорт Ski Dubai"
+        },
+        {
+          "icon": "star",
+          "value": "HyperMax",
+          "label": "новый формат",
+          "sub": "2025 год"
+        }
+      ],
+      "why": "Эксклюзивный франчайзи Carrefour на Ближнем Востоке с 1995 года и владелец Mall of the Emirates в Дубае.",
+      "learn": "В 2025 году закрыла часть магазинов Carrefour в Бахрейне, Кувейте, Омане и Иордании, развивая формат HyperMax.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Дубай",
+      "title": "IKEA (Al-Futtaim)",
+      "logo": "source-videos/логотипы/ритейл/ikea-al-futtaim.png",
+      "short": "IKEA Middle East",
+      "subtitle": "Al-Futtaim · Дубай",
+      "facts": [
+        {
+          "icon": "globe",
+          "value": "4",
+          "label": "страны",
+          "sub": "ОАЭ, Катар, Египет, Оман"
+        },
+        {
+          "icon": "star",
+          "value": "Первый",
+          "label": "распределительный центр IKEA",
+          "sub": "на Ближнем Востоке"
+        },
+        {
+          "icon": "store",
+          "value": "2013",
+          "label": "первый магазин в Египте",
+          "sub": "Cairo Festival City"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Al-Futtaim владеет франшизой IKEA на Ближнем Востоке: магазины в ОАЭ, Катаре, Египте и Омане.",
+      "learn": "В ОАЭ — крупные магазины в Дубае и на острове Яс, малые форматы в Dalma Mall и City Centre Fujairah.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Дубай",
+      "title": "Landmark Group",
+      "logo": "source-videos/логотипы/ритейл/landmark-group.png",
+      "short": "Landmark Group",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "store",
+          "value": "2200+",
+          "label": "магазинов",
+          "sub": "в 17 странах"
+        },
+        {
+          "icon": "users",
+          "value": "~53 000",
+          "label": "сотрудников"
+        },
+        {
+          "icon": "chart",
+          "value": "$7+ млрд",
+          "label": "годовая выручка"
+        },
+        {
+          "icon": "flag",
+          "value": "1973",
+          "label": "год основания",
+          "sub": "Дубай, Микки Джагтиани"
+        }
+      ],
+      "why": "Крупнейший частный ритейл-конгломерат Ближнего Востока, основан в Дубае в 1973 году Микки Джагтиани.",
+      "learn": "Бренды Splash, Centrepoint, Max, Home Centre, Babyshop и Lifestyle; с 2023 года группу возглавляет Ренука Джагтиани.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Дубай",
+      "title": "Chalhoub Group",
+      "logo": "source-videos/логотипы/ритейл/chalhoub.png",
+      "short": "Chalhoub Group",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1955",
+          "label": "год основания",
+          "sub": "70-летие — в 2025 году"
+        },
+        {
+          "icon": "handshake",
+          "value": "Louis Vuitton",
+          "label": "совместные предприятия",
+          "sub": "и Dior, Chanel, Sephora"
+        },
+        {
+          "icon": "store",
+          "value": "Solitaire",
+          "label": "флагманские бутики",
+          "sub": "Эр-Рияд, апрель 2025"
+        },
+        {
+          "icon": "target",
+          "value": "Vision 2033",
+          "label": "стратегия",
+          "sub": "от дистрибьютора к бренд-билдеру"
+        }
+      ],
+      "why": "Люксовый ритейл-конгломерат Ближнего Востока, основан в 1955 году; СП с Louis Vuitton, Dior, Chanel и Sephora.",
+      "learn": "Стратегия Vision 2033 — из дистрибьютора в бренд-билдера; в 2025 году — флагманские бутики в новом молле Solitaire в Эр-Рияде.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Дубай",
+      "title": "Careem",
+      "logo": "source-videos/логотипы/техгиганты/careem.png",
+      "short": "Careem",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$3,1 млрд",
+          "label": "покупка компании Uber",
+          "sub": "2019 год — рекорд региона"
+        },
+        {
+          "icon": "globe",
+          "value": "80+",
+          "label": "городов",
+          "sub": "в девяти странах"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$400 млн",
+          "label": "вложила e&",
+          "sub": "за 50,03%, 2023 год"
+        },
+        {
+          "icon": "flag",
+          "value": "2012",
+          "label": "год основания",
+          "sub": "в Дубае"
+        }
+      ],
+      "why": "Первый технологический единорог региона: основан в Дубае в 2012 году как такси-сервис, в 2019 году куплен Uber за $3,1 млрд.",
+      "learn": "С 2020 года — суперапп: доставка еды, микромобильность, кошелёк и финтех-сервисы в 80+ городах девяти стран.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Дубай",
+      "title": "InstaShop",
+      "logo": "source-videos/логотипы/ритейл/instashop.png",
+      "short": "InstaShop",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "$631 млн",
+          "label": "GMV",
+          "sub": "2024 год"
+        },
+        {
+          "icon": "trending",
+          "value": "+16%",
+          "label": "рост GMV",
+          "sub": "год к году"
+        },
+        {
+          "icon": "handshake",
+          "value": "Talabat",
+          "label": "владелец с марта 2025",
+          "sub": "выкуп у Delivery Hero"
+        },
+        {
+          "icon": "flag",
+          "value": "2015",
+          "label": "год основания"
+        }
+      ],
+      "why": "Платформа доставки продуктов в MENA, основана в 2015 году; работает в ОАЭ, Бахрейне, Египте, Ливане и Катаре.",
+      "learn": "В марте 2025 года выкуплена у Delivery Hero сервисом Talabat и работает как самостоятельный бренд в его продуктовом подразделении.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Дубай",
+      "title": "LVMH Middle East",
+      "logo": "source-videos/логотипы/ритейл/lvmh.png",
+      "short": "LVMH Middle East",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "Дубай",
+          "label": "региональный офис",
+          "sub": "Ближний Восток"
+        },
+        {
+          "icon": "star",
+          "value": "Louis Vuitton",
+          "label": "дома LVMH в регионе",
+          "sub": "от Bulgari до бьюти-марок"
+        },
+        {
+          "icon": "plane",
+          "value": "Travel retail",
+          "label": "направление",
+          "sub": "вакансии в Дубае"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 5",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Региональный офис LVMH для Ближнего Востока в Дубае координирует деятельность домов группы в регионе.",
+      "learn": "От Louis Vuitton и travel retail-подразделений вроде Bulgari до бьюти-марок; интерьер офиса — студия HTS Interiors.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Включены",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 5 ночей",
+          "text": "",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На арабском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "Ритейл и e-commerce ОАЭ",
+          "text": "От Noon до люксовых конгломератов Дубая\nв одном городе",
+          "icon": "store"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "5 дней",
+          "label": "/ 5 ночей",
+          "sub": "5 дней визитов в Дубае"
+        },
+        {
+          "icon": "store",
+          "value": "10 компаний",
+          "label": "Ритейл и e-commerce ОАЭ",
+          "sub": "e-commerce, масс-маркет и люкс"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы по программе",
+        "Сопровождение на арабском/английском",
+        "Проживание 5 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Дубай (перелёт Москва → Дубай).<br><b>Вылет:</b> Дубай — выезд из отеля и трансфер в аэропорт после дня 5."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

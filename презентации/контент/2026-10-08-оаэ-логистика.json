@@ -1,0 +1,600 @@
+{
+  "title": "Логистика и порты ОАЭ: DP World, Jebel Ali и грузовая авиация Дубая — Global Tech Tour",
+  "output": "2026-10-08-оаэ-логистика",
+  "source": "https://globaltechtour.ru/expeditions/uae-logistics-ports-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 09.10.2026)",
+  "robot": "uae",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-экспедиция · Логистика и порты ОАЭ",
+      "topright": "DP World · Jebel Ali\nГрузовая авиация Дубая",
+      "logos": [
+        {
+          "name": "DP World",
+          "logo": "source-videos/логотипы/логистика/dp-world.png"
+        },
+        {
+          "name": "Jebel Ali Free Zone",
+          "logo": "source-videos/логотипы/логистика/jafza.png"
+        },
+        {
+          "name": "Maersk",
+          "logo": "source-videos/логотипы/логистика/maersk-me.png"
+        },
+        {
+          "name": "DHL Express",
+          "logo": "source-videos/логотипы/логистика/dhl-express-mena.png"
+        },
+        {
+          "name": "FedEx",
+          "logo": "source-videos/логотипы/логистика/fedex-me.png"
+        },
+        {
+          "name": "Aramex",
+          "logo": "source-videos/логотипы/логистика/aramex.png"
+        },
+        {
+          "name": "Emirates SkyCargo",
+          "logo": "source-videos/логотипы/авиация/emirates.png"
+        },
+        {
+          "name": "dnata",
+          "logo": "source-videos/логотипы/логистика/dnata.png"
+        }
+      ],
+      "box_text": "От DP World и Jebel Ali до Emirates SkyCargo —\n10 компаний, 5 дней, 5 ночей",
+      "box_right": "Дубай —\nбез единого перелёта",
+      "footer": "Global Tech Tour · бизнес-экспедиции в ОАЭ · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Доступ к штаб-квартирам и площадкам, обычно закрытым для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на арабском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "10 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2",
+          "text": "DP World, Jebel Ali Free Zone, Maersk, DHL Express"
+        },
+        {
+          "name": "Дни 3–4",
+          "text": "FedEx, Aramex, Emirates SkyCargo, dnata"
+        },
+        {
+          "name": "День 5",
+          "text": "Dubai Multi Commodities Centre, Amazon.ae"
+        }
+      ],
+      "quote": "Вся логистическая инфраструктура\nДубая без единого перелёта."
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "DP World ·\nJAFZA",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Maersk ·\nDHL Express",
+          "text": "Maersk — штаб-квартира MENA; DHL Express — хаб в аэропорту Дубая.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "FedEx ·\nAramex",
+          "text": "FedEx — хаб MEISA; Aramex — первая арабская компания на NASDAQ.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Emirates SkyCargo ·\ndnata",
+          "text": "Emirates SkyCargo — грузовое подразделение Emirates; dnata — авиационные услуги.",
+          "label": "День 4"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "DMCC ·\nAmazon.ae",
+          "text": "DMCC — свободная зона сырьевой торговли; Amazon.ae — фулфилмент в Dubai South.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Дубай",
+      "title": "DP World",
+      "logo": "source-videos/логотипы/логистика/dp-world.png",
+      "short": "DP World",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "ship",
+          "value": "80+",
+          "label": "морских и внутренних терминалов"
+        },
+        {
+          "icon": "globe",
+          "value": "40+",
+          "label": "стран"
+        },
+        {
+          "icon": "flag",
+          "value": "2005",
+          "label": "год образования",
+          "sub": "слияние DPA и DPI"
+        },
+        {
+          "icon": "star",
+          "value": "Джебель-Али",
+          "label": "флагманский порт",
+          "sub": "крупнейший искусственный"
+        }
+      ],
+      "why": "Глобальный портовый и логистический оператор со штаб-квартирой в Дубае; принадлежит правительству через Dubai World.",
+      "learn": "Флагман — Джебель-Али, крупнейший искусственный морской порт мира; акции торгуются на Nasdaq Dubai.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Дубай",
+      "title": "JAFZA",
+      "logo": "source-videos/логотипы/логистика/jafza.png",
+      "short": "Jebel Ali Free Zone",
+      "subtitle": "DP World · Дубай",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "9500+",
+          "label": "компаний"
+        },
+        {
+          "icon": "globe",
+          "value": "130+",
+          "label": "стран"
+        },
+        {
+          "icon": "chart",
+          "value": "~¼",
+          "label": "ВВП Дубая",
+          "sub": "по оценкам властей"
+        },
+        {
+          "icon": "trending",
+          "value": "100%",
+          "label": "иностранное владение",
+          "sub": "и льготные налоги"
+        }
+      ],
+      "why": "Крупнейшая свободная экономическая зона Ближнего Востока (1985) у порта Джебель-Али, управляется структурой DP World.",
+      "learn": "Резидентам — 100%-ное иностранное владение и льготный налоговый режим; по оценкам властей — около четверти ВВП Дубая.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Дубай",
+      "title": "Maersk",
+      "logo": "source-videos/логотипы/логистика/maersk-me.png",
+      "short": "Maersk Middle East",
+      "subtitle": "A.P. Moller-Maersk · Дубай",
+      "facts": [
+        {
+          "icon": "trending",
+          "value": "№1 в мире",
+          "label": "оператор контейнерных перевозок"
+        },
+        {
+          "icon": "handshake",
+          "value": "A.P. Moller-Maersk",
+          "label": "материнская компания",
+          "sub": "Дания"
+        },
+        {
+          "icon": "ship",
+          "value": "Джебель-Али",
+          "label": "штаб-квартира рядом с портом"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 2",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Региональная штаб-квартира A.P. Moller-Maersk для Ближнего Востока и Северной Африки — в Дубае, у порта Джебель-Али.",
+      "learn": "Дубайский хаб координирует морские линии, наземную логистику и цепочки поставок клиентов региона.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Дубай",
+      "title": "DHL Express",
+      "logo": "source-videos/логотипы/логистика/dhl-express-mena.png",
+      "short": "DHL Express MENA",
+      "subtitle": "Deutsche Post DHL Group · Дубай",
+      "facts": [
+        {
+          "icon": "globe",
+          "value": "19+",
+          "label": "стран MENA"
+        },
+        {
+          "icon": "users",
+          "value": "5000+",
+          "label": "сотрудников"
+        },
+        {
+          "icon": "plane",
+          "value": "1996",
+          "label": "экспресс-хаб в аэропорту Дубая"
+        },
+        {
+          "icon": "star",
+          "value": "2025",
+          "label": "Инновационный центр",
+          "sub": "Дубай"
+        }
+      ],
+      "why": "Региональное подразделение DHL Express (Deutsche Post DHL Group) со штаб-квартирами в Дубае и Бахрейне.",
+      "learn": "Экспресс-хаб в аэропорту Дубая работает с 1996 года; в 2025 году открыт новый Инновационный центр.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Дубай",
+      "title": "FedEx",
+      "logo": "source-videos/логотипы/логистика/fedex-me.png",
+      "short": "FedEx Middle East",
+      "subtitle": "Хаб MEISA · Дубай",
+      "facts": [
+        {
+          "icon": "flag",
+          "value": "1989",
+          "label": "штаб-квартира в Дубае"
+        },
+        {
+          "icon": "plane",
+          "value": "~60",
+          "label": "рейсов в неделю",
+          "sub": "хаб MEISA с 1998 года"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$350 млн",
+          "label": "новый хаб в DWC",
+          "sub": "2024 год"
+        },
+        {
+          "icon": "globe",
+          "value": "MEISA",
+          "label": "Ближний Восток, Индия, Африка",
+          "sub": "зона хаба"
+        }
+      ],
+      "why": "Региональная штаб-квартира FedEx на Ближнем Востоке — в Дубае с 1989 года; хаб MEISA работает с 1998 года.",
+      "learn": "Хаб связывает Дубай с США, Европой, Индией, Гонконгом и Сингапуром; $350 млн — в новый хаб в Dubai World Central.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Дубай",
+      "title": "Aramex",
+      "logo": "source-videos/логотипы/логистика/aramex.png",
+      "short": "Aramex",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "globe",
+          "value": "70+",
+          "label": "стран",
+          "sub": "и 600+ городов"
+        },
+        {
+          "icon": "chart",
+          "value": "$1,6+ млрд",
+          "label": "выручка"
+        },
+        {
+          "icon": "star",
+          "value": "Первая",
+          "label": "арабская компания на NASDAQ",
+          "sub": "1997 год"
+        },
+        {
+          "icon": "flag",
+          "value": "1982",
+          "label": "год основания",
+          "sub": "Амман, Иордания"
+        }
+      ],
+      "why": "Логистическая компания, основанная в 1982 году в Аммане (название — от «Arab American Express»); с 1985 года — в Дубае.",
+      "learn": "В 1997 году — первая арабская компания на NASDAQ; с 2005 года торгуется на Dubai Financial Market, контроль — у ADQ.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Дубай",
+      "title": "Emirates SkyCargo",
+      "logo": "source-videos/логотипы/авиация/emirates.png",
+      "short": "Emirates SkyCargo",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "plane",
+          "value": "140+",
+          "label": "направлений",
+          "sub": "шесть континентов"
+        },
+        {
+          "icon": "package",
+          "value": "2,4 млн т",
+          "label": "грузов",
+          "sub": "2025 финансовый год"
+        },
+        {
+          "icon": "chart",
+          "value": "~16,2 млрд дирхамов",
+          "label": "выручка",
+          "sub": "~12% выручки группы"
+        },
+        {
+          "icon": "plane",
+          "value": "до 21",
+          "label": "Boeing 777F",
+          "sub": "к концу 2026 года"
+        }
+      ],
+      "why": "Грузовое подразделение авиакомпании Emirates: из аэропорта Дубая по 140+ направлениям на шести континентах.",
+      "learn": "Парк Boeing 777F растёт до 21 самолёта к концу 2026 года; плюс грузовместимость пассажирских рейсов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Дубай",
+      "title": "dnata",
+      "logo": "source-videos/логотипы/логистика/dnata.png",
+      "short": "dnata",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "40 000+",
+          "label": "сотрудников"
+        },
+        {
+          "icon": "globe",
+          "value": "35",
+          "label": "стран",
+          "sub": "на шести континентах"
+        },
+        {
+          "icon": "plane",
+          "value": "~190",
+          "label": "авиакомпаний-клиентов"
+        },
+        {
+          "icon": "flag",
+          "value": "1959",
+          "label": "год основания",
+          "sub": "всего два сотрудника"
+        }
+      ],
+      "why": "Один из крупнейших в мире операторов авиационных услуг, входит в Emirates Group; основан в 1959 году.",
+      "learn_label": "Фокус визита",
+      "learn": "Наземное обслуживание, грузовые, кейтеринговые и туристические услуги для около 190 авиакомпаний в 35 странах."
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Дубай",
+      "title": "DMCC",
+      "logo": "source-videos/логотипы/логистика/dmcc.png",
+      "short": "Dubai Multi Commodities Centre",
+      "subtitle": "Jumeirah Lake Towers · Дубай",
+      "facts": [
+        {
+          "icon": "briefcase",
+          "value": "25 000+",
+          "label": "компаний"
+        },
+        {
+          "icon": "trending",
+          "value": "~15%",
+          "label": "годовых ПИИ Дубая"
+        },
+        {
+          "icon": "star",
+          "value": "9 лет",
+          "label": "лучшая свободная зона мира",
+          "sub": "по версии fDi"
+        },
+        {
+          "icon": "flag",
+          "value": "2002",
+          "label": "год основания",
+          "sub": "Jumeirah Lake Towers"
+        }
+      ],
+      "why": "Свободная зона для торговли сырьём — металлами, алмазами, чаем, энергоносителями; девять лет подряд лучшая по версии fDi.",
+      "learn": "Учреждена в 2002 году указом правителя Дубая; свыше 25 000 компаний дают около 15% годовых ПИИ эмирата.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Дубай",
+      "title": "Amazon.ae",
+      "logo": "source-videos/логотипы/ритейл/amazon-ae.png",
+      "short": "Amazon.ae",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "package",
+          "value": "30+ млн",
+          "label": "товаров",
+          "sub": "каталог Souq + Amazon"
+        },
+        {
+          "icon": "briefcase",
+          "value": "~$580 млн",
+          "label": "покупка Souq.com",
+          "sub": "2017 год"
+        },
+        {
+          "icon": "building",
+          "value": "40 000 м²",
+          "label": "фулфилмент-центр",
+          "sub": "Dubai South"
+        },
+        {
+          "icon": "users",
+          "value": "1000+",
+          "label": "региональных продавцов",
+          "sub": "сервис FBA"
+        }
+      ],
+      "why": "Вырос из Souq.com — торговой площадки, основанной в Дубае в 2005 году и купленной Amazon в 2017 году.",
+      "learn": "Fulfillment by Amazon (FBA): фулфилмент-центр 40 000 м² в Dubai South обслуживает более 1000 региональных продавцов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Включены",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 5 ночей",
+          "text": "",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На арабском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "Логистика и порты ОАЭ",
+          "text": "DP World, Jebel Ali и грузовая авиация Дубая\nв одном городе",
+          "icon": "package"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "5 дней",
+          "label": "/ 5 ночей",
+          "sub": "5 дней визитов в Дубае"
+        },
+        {
+          "icon": "package",
+          "value": "10 компаний",
+          "label": "Логистика и порты ОАЭ",
+          "sub": "порты, свободные зоны, авиагрузы"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы по программе",
+        "Сопровождение на арабском/английском",
+        "Проживание 5 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Дубай (перелёт Москва → Дубай).<br><b>Вылет:</b> Дубай — выезд из отеля и трансфер в аэропорт после дня 5."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}

@@ -3226,5 +3226,422 @@
   ],
   "logo": "source-videos/логотипы/чай-кофе/gigi-coffee.png",
   "site_logo": "/logos/Gigi Coffee.png"
+ },
+ "g42": {
+  "names": [
+   "G42"
+  ],
+  "logo": "source-videos/логотипы/ии/g42.png",
+  "site_logo": "/logos/G42.png"
+ },
+ "hub71": {
+  "names": [
+   "Hub71"
+  ],
+  "logo": "source-videos/логотипы/ии/hub71.png",
+  "site_logo": "/logos/Hub71.png"
+ },
+ "technology-innovation-institute": {
+  "names": [
+   "Technology Innovation Institute (TII)",
+   "Technology Innovation Institute",
+   "TII"
+  ],
+  "logo": "source-videos/логотипы/ии/tii.png",
+  "site_logo": "/logos/Technology Innovation Institute.png"
+ },
+ "google-mena": {
+  "names": [
+   "Google MENA",
+   "Google"
+  ],
+  "logo": "source-videos/логотипы/ии/google-mena.png",
+  "site_logo": "/logos/Google MENA.png"
+ },
+ "aws-mena": {
+  "names": [
+   "AWS (Amazon Web Services) MENA",
+   "AWS MENA",
+   "AWS"
+  ],
+  "logo": "source-videos/логотипы/ии/aws-mena.png",
+  "site_logo": "/logos/AWS.png"
+ },
+ "meta-mena": {
+  "names": [
+   "Meta MENA",
+   "Meta"
+  ],
+  "logo": "source-videos/логотипы/ии/meta-mena.png",
+  "site_logo": "/logos/Meta MENA.png"
+ },
+ "microsoft-mea": {
+  "names": [
+   "Microsoft MEA",
+   "Microsoft"
+  ],
+  "logo": "source-videos/логотипы/ии/microsoft-mea.png",
+  "site_logo": "/logos/Microsoft MEA.png"
+ },
+ "alibaba-cloud-middle-east": {
+  "names": [
+   "Alibaba Cloud Middle East",
+   "Alibaba Cloud"
+  ],
+  "logo": "source-videos/логотипы/ии/alibaba-cloud-me.png",
+  "site_logo": "/logos/Alibaba Cloud Middle East.png"
+ },
+ "tiktok-mena": {
+  "names": [
+   "TikTok MENA",
+   "TikTok"
+  ],
+  "logo": "source-videos/логотипы/ии/tiktok-mena.png",
+  "site_logo": "/logos/TikTok MENA.png"
+ },
+ "dubai-future-foundation": {
+  "names": [
+   "Dubai Future Foundation"
+  ],
+  "logo": "source-videos/логотипы/ии/dubai-future-foundation.png",
+  "site_logo": "/logos/Dubai Future Fondation.png"
+ },
+ "mashreq-bank": {
+  "names": [
+   "Mashreq Bank"
+  ],
+  "logo": "source-videos/логотипы/финансы/mashreq-bank.png",
+  "site_logo": "/logos/Mashreq Bank.png"
+ },
+ "emirates": {
+  "names": [
+   "Emirates",
+   "Emirates Group",
+   "Emirates SkyCargo",
+   "Emirates Flight Training Academy",
+   "Эмирейтс"
+  ],
+  "logo": "source-videos/логотипы/авиация/emirates.png",
+  "site_logo": "/logos/emirates-logo-alt.png"
+ },
+ "visa-middle-east-and-central-asia": {
+  "names": [
+   "Visa Middle East & Central Asia",
+   "Visa"
+  ],
+  "logo": "source-videos/логотипы/финансы/visa-mena.png",
+  "site_logo": "/logos/Visa Middle East & Central Asia.png"
+ },
+ "mastercard-middle-east-and-africa": {
+  "names": [
+   "Mastercard Middle East & Africa",
+   "Mastercard"
+  ],
+  "logo": "source-videos/логотипы/финансы/mastercard-mena.png",
+  "site_logo": "/logos/Mastercard.png"
+ },
+ "astra-tech-careem-pay": {
+  "names": [
+   "Astra Tech / Careem Pay",
+   "Careem Pay"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/careem.png",
+  "site_logo": "/logos/Careem.png"
+ },
+ "bayzat": {
+  "names": [
+   "Bayzat"
+  ],
+  "logo": "source-videos/логотипы/финансы/bayzat.png",
+  "site_logo": "/logos/Bayzat.png"
+ },
+ "nymcard": {
+  "names": [
+   "NymCard"
+  ],
+  "logo": "source-videos/логотипы/финансы/nymcard.png",
+  "site_logo": "/logos/NymCard.png"
+ },
+ "abu-dhabi-commercial-bank": {
+  "names": [
+   "Abu Dhabi Commercial Bank (ADCB)",
+   "Abu Dhabi Commercial Bank",
+   "ADCB"
+  ],
+  "logo": "source-videos/логотипы/финансы/adcb.png",
+  "site_logo": "/logos/Abu Dhabi Commercial Bank.png"
+ },
+ "wio-bank": {
+  "names": [
+   "Wio Bank"
+  ],
+  "logo": "source-videos/логотипы/финансы/wio-bank.png",
+  "site_logo": "/logos/Wio Bank.png"
+ },
+ "abu-dhabi-global-market": {
+  "names": [
+   "Abu Dhabi Global Market (ADGM)",
+   "Abu Dhabi Global Market",
+   "ADGM"
+  ],
+  "logo": "source-videos/логотипы/финансы/adgm.png",
+  "site_logo": "/logos/Abu Dhabi Global Market.png"
+ },
+ "dp-world": {
+  "names": [
+   "DP World"
+  ],
+  "logo": "source-videos/логотипы/логистика/dp-world.png",
+  "site_logo": "/logos/DP World.png"
+ },
+ "jebel-ali-free-zone": {
+  "names": [
+   "Jebel Ali Free Zone (JAFZA)",
+   "Jebel Ali Free Zone",
+   "JAFZA"
+  ],
+  "logo": "source-videos/логотипы/логистика/jafza.png",
+  "site_logo": "/logos/Jebel Ali Free Zone.png"
+ },
+ "maersk-middle-east": {
+  "names": [
+   "Maersk Middle East",
+   "Maersk"
+  ],
+  "logo": "source-videos/логотипы/логистика/maersk-me.png",
+  "site_logo": "/logos/Maersk.png"
+ },
+ "dhl-express-mena": {
+  "names": [
+   "DHL Express MENA",
+   "DHL Express"
+  ],
+  "logo": "source-videos/логотипы/логистика/dhl-express-mena.png",
+  "site_logo": "/logos/DHL Express MENA.png"
+ },
+ "fedex-middle-east": {
+  "names": [
+   "FedEx Middle East",
+   "FedEx"
+  ],
+  "logo": "source-videos/логотипы/логистика/fedex-me.png",
+  "site_logo": "/logos/FedEx.png"
+ },
+ "aramex": {
+  "names": [
+   "Aramex"
+  ],
+  "logo": "source-videos/логотипы/логистика/aramex.png",
+  "site_logo": "/logos/Aramex.png"
+ },
+ "dnata": {
+  "names": [
+   "dnata"
+  ],
+  "logo": "source-videos/логотипы/логистика/dnata.png",
+  "site_logo": "/logos/dnata.png"
+ },
+ "dubai-multi-commodities-centre": {
+  "names": [
+   "Dubai Multi Commodities Centre (DMCC)",
+   "Dubai Multi Commodities Centre",
+   "DMCC"
+  ],
+  "logo": "source-videos/логотипы/логистика/dmcc.png",
+  "site_logo": "/logos/Dubai Multi Commodities Centre.png"
+ },
+ "emirates-engineering": {
+  "names": [
+   "Emirates Engineering"
+  ],
+  "logo": "source-videos/логотипы/авиация/emirates-engineering.png",
+  "site_logo": "/logos/Emirates Enginiring.png"
+ },
+ "flydubai": {
+  "names": [
+   "flydubai"
+  ],
+  "logo": "source-videos/логотипы/авиация/flydubai.png",
+  "site_logo": "/logos/flydubai-logo-alt.png"
+ },
+ "dubai-airports": {
+  "names": [
+   "Dubai Airports (DXB)",
+   "Dubai Airports",
+   "DXB"
+  ],
+  "logo": "source-videos/логотипы/авиация/dubai-airports.png",
+  "site_logo": "/logos/dubai airport.png"
+ },
+ "airbus-middle-east": {
+  "names": [
+   "Airbus Middle East",
+   "Airbus"
+  ],
+  "logo": "source-videos/логотипы/авиация/airbus-me.png",
+  "site_logo": "/logos/airbus.png"
+ },
+ "boeing-middle-east": {
+  "names": [
+   "Boeing Middle East",
+   "Boeing"
+  ],
+  "logo": "source-videos/логотипы/авиация/boeing-me.png",
+  "site_logo": "/logos/boeing.png"
+ },
+ "etihad-airways": {
+  "names": [
+   "Etihad Airways"
+  ],
+  "logo": "source-videos/логотипы/авиация/etihad-airways.png",
+  "site_logo": "/logos/Etihad_Airways_idZ6i-mTSP_1.png"
+ },
+ "etihad-engineering": {
+  "names": [
+   "Etihad Engineering"
+  ],
+  "logo": "source-videos/логотипы/авиация/etihad-engineering.png",
+  "site_logo": "/logos/Etihad Enginiring.png"
+ },
+ "zayed-international-airport": {
+  "names": [
+   "Zayed International Airport"
+  ],
+  "logo": "source-videos/логотипы/авиация/zayed-international-airport.svg",
+  "site_logo": "/logos/Zayed_International_Aiport_Logo.svg"
+ },
+ "emaar-properties": {
+  "names": [
+   "Emaar Properties"
+  ],
+  "logo": "source-videos/логотипы/недвижимость/emaar-properties.png",
+  "site_logo": "/logos/EMAAR.png"
+ },
+ "damac-properties": {
+  "names": [
+   "DAMAC Properties"
+  ],
+  "logo": "source-videos/логотипы/недвижимость/damac-properties.png",
+  "site_logo": "/logos/DAMAC Properties.png"
+ },
+ "nakheel": {
+  "names": [
+   "Nakheel"
+  ],
+  "logo": "source-videos/логотипы/недвижимость/nakheel.png",
+  "site_logo": "/logos/Nakheel.png"
+ },
+ "dubai-holding": {
+  "names": [
+   "Dubai Holding"
+  ],
+  "logo": "source-videos/логотипы/недвижимость/dubai-holding.png",
+  "site_logo": "/logos/Dubai Holding.png"
+ },
+ "meraas": {
+  "names": [
+   "Meraas"
+  ],
+  "logo": "source-videos/логотипы/недвижимость/meraas.png",
+  "site_logo": "/logos/Meraas.png"
+ },
+ "jll-mena": {
+  "names": [
+   "JLL MENA",
+   "JLL"
+  ],
+  "logo": "source-videos/логотипы/недвижимость/jll-mena.png",
+  "site_logo": "/logos/JLL MENA.png"
+ },
+ "cbre-mena": {
+  "names": [
+   "CBRE MENA",
+   "CBRE"
+  ],
+  "logo": "source-videos/логотипы/недвижимость/cbre-mena.png",
+  "site_logo": "/logos/CBRE MENA.png"
+ },
+ "knight-frank-mena": {
+  "names": [
+   "Knight Frank MENA",
+   "Knight Frank"
+  ],
+  "logo": "source-videos/логотипы/недвижимость/knight-frank-mena.png",
+  "site_logo": "/logos/Knight Frank MENA.png"
+ },
+ "aldar-properties": {
+  "names": [
+   "Aldar Properties"
+  ],
+  "logo": "source-videos/логотипы/недвижимость/aldar-properties.png",
+  "site_logo": "/logos/Aldar Properties.png"
+ },
+ "adnoc": {
+  "names": [
+   "ADNOC"
+  ],
+  "logo": "source-videos/логотипы/энергетика/adnoc.png",
+  "site_logo": "/logos/ADNOC.png"
+ },
+ "masdar": {
+  "names": [
+   "Masdar"
+  ],
+  "logo": "source-videos/логотипы/энергетика/masdar.png",
+  "site_logo": "/logos/Masdar.png"
+ },
+ "siemens-energy-middle-east": {
+  "names": [
+   "Siemens Energy Middle East",
+   "Siemens Energy"
+  ],
+  "logo": "source-videos/логотипы/энергетика/siemens-energy-me.png",
+  "site_logo": "/logos/Siemens Energy.png"
+ },
+ "taqa": {
+  "names": [
+   "TAQA (Abu Dhabi National Energy Company)",
+   "TAQA"
+  ],
+  "logo": "source-videos/логотипы/энергетика/taqa.png",
+  "site_logo": "/logos/TAQA.png"
+ },
+ "bp-middle-east": {
+  "names": [
+   "bp Middle East"
+  ],
+  "logo": "source-videos/логотипы/энергетика/bp-me.png",
+  "site_logo": "/logos/bp Middle East.png"
+ },
+ "dewa": {
+  "names": [
+   "DEWA (Dubai Electricity & Water Authority)",
+   "DEWA"
+  ],
+  "logo": "source-videos/логотипы/энергетика/dewa.png",
+  "site_logo": "/logos/DEWA.png"
+ },
+ "shell-middle-east": {
+  "names": [
+   "Shell Middle East",
+   "Shell"
+  ],
+  "logo": "source-videos/логотипы/энергетика/shell-me.png",
+  "site_logo": "/logos/Shell Middle East.png"
+ },
+ "totalenergies-middle-east": {
+  "names": [
+   "TotalEnergies Middle East",
+   "TotalEnergies"
+  ],
+  "logo": "source-videos/логотипы/энергетика/totalenergies-me.png",
+  "site_logo": "/logos/TotalEnergies.png"
+ },
+ "mohammed-bin-rashid-al-maktoum-solar-park": {
+  "names": [
+   "Mohammed bin Rashid Al Maktoum Solar Park"
+  ],
+  "logo": "source-videos/логотипы/энергетика/al-maktoum-solar-park.png",
+  "site_logo": "/logos/Mohammed bin Rashid Al Maktoum.png"
  }
 }

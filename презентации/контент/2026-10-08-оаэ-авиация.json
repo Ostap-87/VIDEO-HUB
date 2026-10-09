@@ -1,0 +1,657 @@
+{
+  "title": "Авиация ОАЭ: от Emirates Engineering до Etihad и аэропортов Дубая и Абу-Даби — Global Tech Tour",
+  "output": "2026-10-08-оаэ-авиация",
+  "source": "https://globaltechtour.ru/expeditions/uae-aviation-expedition (данные экспедиции и карточек компаний с сайта, конвертер from_site.py, 09.10.2026)",
+  "robot": "uae",
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "Бизнес-экспедиция · Авиация ОАЭ",
+      "topright": "Emirates · flydubai · Airbus\nBoeing · Etihad",
+      "logos": [
+        {
+          "name": "Emirates",
+          "logo": "source-videos/логотипы/авиация/emirates.png"
+        },
+        {
+          "name": "Emirates Engineering",
+          "logo": "source-videos/логотипы/авиация/emirates-engineering.png"
+        },
+        {
+          "name": "flydubai",
+          "logo": "source-videos/логотипы/авиация/flydubai.png"
+        },
+        {
+          "name": "Dubai Airports",
+          "logo": "source-videos/логотипы/авиация/dubai-airports.png"
+        },
+        {
+          "name": "Airbus",
+          "logo": "source-videos/логотипы/авиация/airbus-me.png"
+        },
+        {
+          "name": "Boeing",
+          "logo": "source-videos/логотипы/авиация/boeing-me.png"
+        },
+        {
+          "name": "dnata",
+          "logo": "source-videos/логотипы/логистика/dnata.png"
+        },
+        {
+          "name": "Etihad Airways",
+          "logo": "source-videos/логотипы/авиация/etihad-airways.png"
+        }
+      ],
+      "box_text": "От Emirates Engineering до Etihad —\n11 компаний, 5 дней, 5 ночей",
+      "box_right": "Дубай + Абу-Даби —\nбез перелётов",
+      "footer": "Global Tech Tour · бизнес-экспедиции в ОАЭ · РФ/СНГ"
+    },
+    {
+      "type": "why",
+      "items": [
+        {
+          "title": "Большой опыт",
+          "text": "Организуем benchmark‑туры и технологические экспедиции — от робототехники до общепита и напитков. Прямые контакты с руководством сотен компаний."
+        },
+        {
+          "title": "Доступ к штаб-квартирам",
+          "text": "Доступ к штаб-квартирам и площадкам, обычно закрытым для случайных визитов. Маршрут и визиты уже согласованы по нашей сети контактов."
+        },
+        {
+          "title": "Готовый маршрут",
+          "text": "Готовый согласованный маршрут без потери дней на логистику. Трансферы между городами программы включены."
+        },
+        {
+          "title": "Сопровождение и перевод",
+          "text": "Сопровождение и синхронный перевод на всех встречах — на арабском и английском."
+        }
+      ]
+    },
+    {
+      "type": "layers",
+      "tag": "Программа",
+      "title1": "11 компаний",
+      "title2": "5 дней",
+      "items": [
+        {
+          "name": "Дни 1–2 · Дубай",
+          "text": "Emirates, Emirates Engineering, flydubai, Dubai Airports"
+        },
+        {
+          "name": "Дни 3–4 · Дубай",
+          "text": "Airbus, Boeing, dnata, Emirates Flight Training Academy"
+        },
+        {
+          "name": "День 5 · Абу-Даби",
+          "text": "Etihad Airways, Etihad Engineering, Zayed International Airport"
+        }
+      ],
+      "quote": "Вся авиационная экосистема\nОАЭ за одну поездку."
+    },
+    {
+      "type": "route",
+      "cities": [
+        {
+          "name": "Дубай",
+          "days": "дни 1–4",
+          "companies": "Emirates\nEmirates Engineering\nflydubai\nDubai Airports\n+ ещё 4"
+        },
+        {
+          "name": "Абу-Даби",
+          "days": "день 5",
+          "companies": "Etihad Airways\nEtihad Engineering\nZayed International Airport",
+          "leg": {
+            "icon": "car",
+            "text": "≈1,5 ч"
+          }
+        }
+      ],
+      "footer": "<b>Прилёт:</b> Дубай · <b>Вылет:</b> Дубай"
+    },
+    {
+      "type": "days",
+      "tag": "Программа по дням",
+      "title": "5 дней визитов",
+      "days": [
+        {
+          "sub": "10:00–13:00",
+          "title": "Emirates ·\nEmirates Engineering",
+          "text": "Прилёт делегации в первой половине дня, трансфер, короткое заселение.",
+          "label": "День 1"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "flydubai ·\nDubai Airports",
+          "text": "flydubai — низкобюджетная авиакомпания; Dubai Airports — государственная структура эмирата Дубай.",
+          "label": "День 2"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "Airbus ·\nBoeing",
+          "text": "Airbus и Boeing — региональные офисы в свободной зоне аэропорта Дубая.",
+          "label": "День 3"
+        },
+        {
+          "sub": "10:00–13:00",
+          "title": "dnata ·\nEmirates Academy",
+          "text": "dnata — наземное обслуживание; лётная академия Emirates в Dubai South.",
+          "label": "День 4"
+        },
+        {
+          "sub": "Абу-Даби",
+          "title": "Etihad ·\nZayed Airport",
+          "text": "Трансфер в Абу-Даби (≈1,5 ч): Etihad Airways, Etihad Engineering, аэропорт AUH.",
+          "label": "День 5"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Дубай",
+      "title": "Emirates Group",
+      "logo": "source-videos/логотипы/авиация/emirates.png",
+      "short": "Emirates Group",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "121 000+",
+          "label": "сотрудников",
+          "sub": "180+ национальностей"
+        },
+        {
+          "icon": "chart",
+          "value": "~145,4 млрд дирхамов",
+          "label": "выручка",
+          "sub": "2024/25, ~$39,6 млрд"
+        },
+        {
+          "icon": "trending",
+          "value": "№1",
+          "label": "работодатель Дубая"
+        },
+        {
+          "icon": "flag",
+          "value": "1985",
+          "label": "год основания",
+          "sub": "запуск Emirates"
+        }
+      ],
+      "why": "Крупнейший работодатель Дубая: Emirates, Emirates SkyCargo и dnata; принадлежит Investment Corporation of Dubai.",
+      "learn": "Сформирована в 1985 году вокруг запуска Emirates; рекордная выручка 2024/25 года — около 145,4 млрд дирхамов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 1 · Дубай",
+      "title": "Emirates Engineering",
+      "logo": "source-videos/логотипы/авиация/emirates-engineering.png",
+      "short": "Emirates Engineering",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "plane",
+          "value": "260+",
+          "label": "A380 и Boeing 777",
+          "sub": "в обслуживании"
+        },
+        {
+          "icon": "briefcase",
+          "value": "$5,1 млрд",
+          "label": "новый комплекс MRO",
+          "sub": "заложен в мае 2026"
+        },
+        {
+          "icon": "building",
+          "value": "1,1 млн м²",
+          "label": "площадь комплекса",
+          "sub": "Dubai South"
+        },
+        {
+          "icon": "plane",
+          "value": "28",
+          "label": "самолётов одновременно",
+          "sub": "ввод к 2030 году"
+        }
+      ],
+      "why": "Подразделение техобслуживания Emirates: один из крупнейших в мире широкофюзеляжных флотов — 260+ A380 и Boeing 777.",
+      "learn": "В мае 2026 года заложен комплекс MRO за $5,1 млрд на 28 широкофюзеляжных самолётов в Dubai South, ввод — к 2030 году.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Дубай",
+      "title": "flydubai",
+      "logo": "source-videos/логотипы/авиация/flydubai.png",
+      "short": "flydubai",
+      "subtitle": "Investment Corporation of Dubai · Дубай",
+      "facts": [
+        {
+          "icon": "globe",
+          "value": "130+",
+          "label": "направлений"
+        },
+        {
+          "icon": "plane",
+          "value": "~90–97",
+          "label": "Boeing 737",
+          "sub": "весь флот"
+        },
+        {
+          "icon": "flag",
+          "value": "2008",
+          "label": "год основания",
+          "sub": "19 марта"
+        },
+        {
+          "icon": "handshake",
+          "value": "Emirates",
+          "label": "код-шеринг",
+          "sub": "стыковки через Дубай"
+        }
+      ],
+      "why": "Низкобюджетная авиакомпания Дубая (2008), полностью принадлежит правительству через Investment Corporation of Dubai.",
+      "learn": "Флот только из Boeing 737 (737-800, MAX 8/9); 130+ направлений на Ближнем Востоке, в Африке, Азии и Европе.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 2 · Дубай",
+      "title": "Dubai Airports",
+      "logo": "source-videos/логотипы/авиация/dubai-airports.png",
+      "short": "Dubai Airports",
+      "subtitle": "DXB · Дубай",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "92,3 млн",
+          "label": "пассажиров DXB",
+          "sub": "2024 год, рекорд"
+        },
+        {
+          "icon": "trending",
+          "value": "№1",
+          "label": "по международным перевозкам",
+          "sub": "десятый год подряд"
+        },
+        {
+          "icon": "trending",
+          "value": "№2 в мире",
+          "label": "по пассажиропотоку",
+          "sub": "рейтинг ACI"
+        },
+        {
+          "icon": "flag",
+          "value": "2007",
+          "label": "год создания",
+          "sub": "DXB и DWC"
+        }
+      ],
+      "why": "Госструктура Дубая (2007): управляет международным аэропортом DXB и аэропортом Al Maktoum International (DWC).",
+      "learn": "В 2024 году DXB обслужил рекордные 92,3 млн пассажиров — №1 в мире по международным перевозкам десятый год подряд.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Дубай",
+      "title": "Airbus",
+      "logo": "source-videos/логотипы/авиация/airbus-me.png",
+      "short": "Airbus Middle East",
+      "subtitle": "Свободная зона аэропорта · Дубай",
+      "facts": [
+        {
+          "icon": "plane",
+          "value": "1000+",
+          "label": "самолётов Airbus в регионе"
+        },
+        {
+          "icon": "flag",
+          "value": "2006",
+          "label": "год создания",
+          "sub": "свободная зона DXB"
+        },
+        {
+          "icon": "star",
+          "value": "4-я",
+          "label": "зарубежная «дочка» Airbus",
+          "sub": "после США, Китая, Японии"
+        },
+        {
+          "icon": "calendar",
+          "value": "День 3",
+          "label": "визит делегации",
+          "sub": "10:00–13:00"
+        }
+      ],
+      "why": "Региональное подразделение Airbus (2006) в свободной зоне аэропорта Дубая — четвёртая зарубежная «дочка» концерна.",
+      "learn": "Продажи, контракты, запчасти, обучение и техподдержка: Персидский залив, Левант, Египет, Ирак, Иран и Южная Азия.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 3 · Дубай",
+      "title": "Boeing",
+      "logo": "source-videos/логотипы/авиация/boeing-me.png",
+      "short": "Boeing Middle East",
+      "subtitle": "Свободная зона аэропорта · Дубай",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "3000+",
+          "label": "сотрудников в регионе"
+        },
+        {
+          "icon": "flag",
+          "value": "1945",
+          "label": "история в регионе"
+        },
+        {
+          "icon": "package",
+          "value": "2",
+          "label": "центра запчастей в Дубае"
+        },
+        {
+          "icon": "plane",
+          "value": "737 · 777 · 787",
+          "label": "парк перевозчиков региона"
+        }
+      ],
+      "why": "Региональный офис Boeing — в свободной зоне аэропорта Дубая; присутствие в регионе с 1945 года.",
+      "learn": "В Дубае — выездные сервисные группы и два центра запчастей для парка 737, 777 и 787 региональных перевозчиков.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Дубай",
+      "title": "dnata",
+      "logo": "source-videos/логотипы/логистика/dnata.png",
+      "short": "dnata",
+      "subtitle": "Дубай",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "40 000+",
+          "label": "сотрудников"
+        },
+        {
+          "icon": "globe",
+          "value": "35",
+          "label": "стран",
+          "sub": "на шести континентах"
+        },
+        {
+          "icon": "plane",
+          "value": "~190",
+          "label": "авиакомпаний-клиентов"
+        },
+        {
+          "icon": "flag",
+          "value": "1959",
+          "label": "год основания",
+          "sub": "всего два сотрудника"
+        }
+      ],
+      "why": "Один из крупнейших в мире операторов авиационных услуг, входит в Emirates Group; основан в 1959 году.",
+      "learn_label": "Фокус визита",
+      "learn": "Наземное обслуживание, грузовые, кейтеринговые и туристические услуги для около 190 авиакомпаний в 35 странах."
+    },
+    {
+      "type": "company",
+      "tag": "День 4 · Дубай",
+      "title": "Emirates Flight Training Academy",
+      "logo": "source-videos/логотипы/авиация/emirates.png",
+      "short": "Emirates Flight Training Academy",
+      "subtitle": "Emirates Group · Дубай",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "200",
+          "label": "футбольных полей",
+          "sub": "площадь кампуса"
+        },
+        {
+          "icon": "plane",
+          "value": "~30",
+          "label": "самолётов учебного флота",
+          "sub": "Cirrus, Diamond, Embraer"
+        },
+        {
+          "icon": "target",
+          "value": "6",
+          "label": "полнопилотажных тренажёров",
+          "sub": "36 учебных классов"
+        },
+        {
+          "icon": "flag",
+          "value": "2017",
+          "label": "год открытия",
+          "sub": "Dubai South"
+        }
+      ],
+      "why": "Лётная академия Emirates Group (2017) в Dubai South: готовит коммерческих пилотов из граждан ОАЭ и иностранцев.",
+      "learn": "Своя ВПП 1800 м, 36 классов, 6 полнопилотажных тренажёров; выпущено уже несколько сотен курсантов.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Абу-Даби",
+      "title": "Etihad Airways",
+      "logo": "source-videos/логотипы/авиация/etihad-airways.png",
+      "short": "Etihad Airways",
+      "subtitle": "Абу-Даби",
+      "facts": [
+        {
+          "icon": "plane",
+          "value": "1000+",
+          "label": "рейсов в неделю"
+        },
+        {
+          "icon": "globe",
+          "value": "120+",
+          "label": "направлений"
+        },
+        {
+          "icon": "plane",
+          "value": "~100–110",
+          "label": "самолётов",
+          "sub": "Airbus и Boeing"
+        },
+        {
+          "icon": "flag",
+          "value": "2003",
+          "label": "год основания",
+          "sub": "11 июля"
+        }
+      ],
+      "why": "Второй флагманский авиаперевозчик ОАЭ, основан в 2003 году; полностью принадлежит правительству Абу-Даби.",
+      "learn": "Штаб-квартира в Khalifa City у аэропорта Zayed International; свыше 1000 рейсов в неделю по 120+ направлениям.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Абу-Даби",
+      "title": "Etihad Engineering",
+      "logo": "source-videos/логотипы/авиация/etihad-engineering.png",
+      "short": "Etihad Engineering",
+      "subtitle": "Etihad Aviation Group · Абу-Даби",
+      "facts": [
+        {
+          "icon": "building",
+          "value": "545 000 м²",
+          "label": "территория"
+        },
+        {
+          "icon": "building",
+          "value": "66 000 м²",
+          "label": "ангаров"
+        },
+        {
+          "icon": "plane",
+          "value": "~40",
+          "label": "самолётов одновременно",
+          "sub": "в т. ч. три A380"
+        },
+        {
+          "icon": "star",
+          "value": "2024",
+          "label": "«MRO-провайдер года»"
+        }
+      ],
+      "why": "Крупнейший MRO-комплекс такого рода на Ближнем Востоке — техобслуживание Etihad Aviation Group у аэропорта Абу-Даби.",
+      "learn": "Принимает одновременно около 40 широко- и узкофюзеляжных самолётов, включая ангар сразу для трёх Airbus A380.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "company",
+      "tag": "День 5 · Абу-Даби",
+      "title": "Zayed International Airport",
+      "logo": "source-videos/логотипы/авиация/zayed-international-airport.svg",
+      "short": "Zayed International Airport",
+      "subtitle": "Абу-Даби",
+      "facts": [
+        {
+          "icon": "users",
+          "value": "45 млн",
+          "label": "пассажиров в год",
+          "sub": "мощность терминала A"
+        },
+        {
+          "icon": "plane",
+          "value": "до 79",
+          "label": "самолётов",
+          "sub": "одновременно"
+        },
+        {
+          "icon": "users",
+          "value": "11 000",
+          "label": "пассажиров в час"
+        },
+        {
+          "icon": "flag",
+          "value": "2024",
+          "label": "новое название",
+          "sub": "с 9 февраля"
+        }
+      ],
+      "why": "Главный аэропорт столицы ОАЭ (код AUH) и хаб Etihad; до 2024 года — Abu Dhabi International.",
+      "learn": "Новый терминал A — до 45 млн пассажиров в год, почти втрое больше прежних 15,5 млн.",
+      "learn_label": "Фокус визита"
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Переговоры\nс компаниями",
+          "text": "Все визиты и переговоры программы",
+          "icon": "users"
+        },
+        {
+          "title": "Закрытые двери",
+          "text": "Штаб-квартиры, обычно закрытые\nдля случайных визитов",
+          "icon": "building"
+        },
+        {
+          "title": "Трансферы",
+          "text": "Между городами программы",
+          "icon": "car"
+        },
+        {
+          "title": "Проживание 5 ночей",
+          "text": "",
+          "icon": "home"
+        },
+        {
+          "title": "Перевод и сопровождение",
+          "text": "На арабском/английском\nна всех встречах",
+          "icon": "headphones"
+        },
+        {
+          "title": "Авиация ОАЭ",
+          "text": "От Emirates Engineering до Etihad\nДубай + Абу-Даби",
+          "icon": "plane"
+        }
+      ]
+    },
+    {
+      "type": "conditions",
+      "facts": [
+        {
+          "icon": "calendar",
+          "value": "5 дней",
+          "label": "/ 5 ночей",
+          "sub": "5 дней визитов в Дубае и Абу-Даби"
+        },
+        {
+          "icon": "plane",
+          "value": "11 компаний",
+          "label": "Авиация ОАЭ",
+          "sub": "авиакомпании, MRO, аэропорты"
+        },
+        {
+          "icon": "briefcase",
+          "value": "По запросу",
+          "label": "стоимость",
+          "sub": "на участника, без авиаперелёта"
+        },
+        {
+          "icon": "flag",
+          "value": "По запросу",
+          "label": "ближайшие даты",
+          "sub": "даты уточняются"
+        }
+      ],
+      "includes": [
+        "Все визиты и переговоры с компаниями программы",
+        "Трансферы между городами программы",
+        "Сопровождение на арабском/английском",
+        "Проживание 5 ночей"
+      ],
+      "includes_note": "авиаперелёт оплачивается отдельно",
+      "footer": "<b>Прилёт:</b> Дубай (перелёт Москва → Дубай).<br><b>Вылет:</b> Дубай — выезд из отеля и трансфер в аэропорт после дня 5."
+    },
+    {
+      "type": "contacts",
+      "note": "Соберём делегацию под\nзадачи вашей компании",
+      "contacts": [
+        {
+          "type": "email",
+          "text": "info@globaltechtour.ru"
+        },
+        {
+          "type": "site",
+          "text": "globaltechtour.ru"
+        },
+        {
+          "type": "phone",
+          "text": "+86 137 6171 6355"
+        },
+        {
+          "type": "whatsapp",
+          "text": "WhatsApp: +79858744958"
+        },
+        {
+          "type": "telegram",
+          "text": "TG: @ostapdotcenko"
+        },
+        {
+          "type": "wechat",
+          "text": "WeChat: ostap10081987"
+        }
+      ],
+      "qr": [
+        {
+          "label": "Сайт",
+          "img": "assets/qr-site.png"
+        },
+        {
+          "label": "TG @globaltechtour",
+          "img": "assets/qr-tg-globaltechtour.png"
+        },
+        {
+          "label": "TG @ostapdotcenko",
+          "img": "assets/qr-tg-ostapdotcenko.png"
+        }
+      ]
+    }
+  ]
+}
