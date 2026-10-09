@@ -241,8 +241,9 @@ Museum — один файл `техгиганты/samsung.svg`. В турах �
 | `why` | «Почему мы» (ИИ 2) | `items[4]` {title, text}; 3-й — синяя плашка, 4-й — голубая |
 | `layers` | «Направления» (ИИ 3) | `title1`, `title2` (вписываются в колонку), `items[3]` {name, text}, `quote`, `ghost`, `logos[≤3]` {name, logo} — карточки логотипов в свободной левой колонке под заголовком (`logos_layout: "column"` — столбиком, вдвое крупнее; влезает при заголовке в 2 строки, как «3 команды») |
 | `route` | «Маршрут» (ИИ 4) | `cities[2–5]` {name, days, companies, leg {icon: plane/train/car, text}}, `footer` (HTML, `<b>` — синим), `ghost` |
-| `company` | Карточка компании (ИИ 5–14) | `title`, `native` (иероглифы/тайский), `ghost`, `ghost_thai`, `logo`, `facts[4]` {icon, value, label, sub}, `why`, `learn`, `short`, `subtitle`, `title_dy` (сдвиг заголовка вниз, px) |
-| `days` | «Программа по дням» (Alibaba 6) | `title`, `days[2–6]` {label, sub, title, text}, `ghost` |
+| `company` | Карточка компании (ИИ 5–14) | `title`, `native` (иероглифы/тайский), `ghost`, `ghost_thai`, `logo`, `facts[4]` {icon, value, label, sub}, `why` (+ `why_label`), `learn` (+ `learn_label`) **или** `roles[]` {role, focus} — список собеседников в карточке под логотипом вместо названия (факты компактнее, `sub` до 3 строк), `short`, `subtitle`, `title_dy` (сдвиг заголовка вниз, px) |
+| `days` | «Программа по дням» (Alibaba 6) | `title`, `days[2–6]` {label, sub, title, text, gain}, `ghost`; `text_label` / `gain_label` (на слайде или у дня) — подписанные абзацы в карточке, например «Чем сильны» / «Что даст вашей группе» (с `gain` карточка выше) |
+| `cases` | «Кейсы» (AI-миссия в Китай) | `tag`, `title`, `ghost`, `cases[2–3]` {kicker, title, logos[] {name, logo}, meta[] {k, v} — строка «**Метка** текст», bullets[]} |
 | `benefits` | «Выгоды» (ИИ 15) | `items[6]` {title, text, icon} |
 | `market` | «О рынке» (ИИ 16) | `lead`, `stats[3]` {value, label, sub, frac 0…1 — заполнение дуги}, `quote`, `source`, `ghost` |
 | `conditions` | «Формат и условия» (Alibaba 8) | `facts[4]` {icon, value, label, sub}, `includes[]`, `includes_note`, `footer` |

@@ -1,0 +1,17 @@
+{% import 'slides/_macros.html' as m with context %}
+{# «Кейсы»: 2–3 карточки — логотипы, надзаголовок, название, строки «Метка: текст», список пунктов. #}
+{% set n = s.cases|length %}{% set gap = 40 %}{% set cw = ((1792 - (n - 1) * gap) / n)|int %}
+<section class="slide s-cases">
+  {% if s.ghost %}<div class="ghost">{{ s.ghost }}</div>{% endif %}
+  {{ m.tag(s.tag or 'Кейсы') }}
+  <div class="title" data-fit="1500">{{ s.title }}</div>
+  {% for c in s.cases %}
+  <div class="card {{ 'pale' if loop.index0 == 1 else 'grad' }} case" style="left:{{ 64 + loop.index0 * (cw + gap) }}px;width:{{ cw }}px;{{ m.rot([-0.3, 0.3, -0.3][loop.index0 % 3]) }}">
+    {% if c.logos %}<div class="lg">{% for l in c.logos %}<div class="li">{{ m.logo(l) }}</div>{% endfor %}</div>{% endif %}
+    {% if c.kicker %}<div class="k">{{ c.kicker }}</div>{% endif %}
+    <div class="h">{{ c.title }}</div>
+    {% for mt in c.meta or [] %}<div class="mt"><b>{{ mt.k }}</b> {{ mt.v }}</div>{% endfor %}
+    {% if c.bullets %}<ul>{% for b in c.bullets %}<li>{{ b }}</li>{% endfor %}</ul>{% endif %}
+  </div>
+  {% endfor %}
+</section>

@@ -57,9 +57,16 @@ const issues = await page.evaluate(() => {
       const t = one('.title'); if (t && shrunk(t) < 0.62) add('title', 'title shrunk');
       const cn = one('.cname span'); if (cn && shrunk(cn) < 0.6) add('short', 'short name shrunk');
     }
+    if (cls.includes('s-cases')) {
+      all('.case').forEach((c, i) => { const last = c.lastElementChild; if (last && R(last).b > R(c).b - 14) add(`cases.${i}`, 'case text overflow'); });
+      const t = one('.title'); if (t && shrunk(t) < 0.5) add('title', 'title shrunk');
+    }
+    if (cls.includes('s-company')) {
+      const lw = one('.learn.wide'); if (lw && R(lw).b > 1050) add('roles', 'roles overflow');
+    }
     if (cls.includes('s-days')) {
       all('.dcard').forEach((c, i) => {
-        const p = c.querySelector('.p'), h = c.querySelector('.h');
+        const ps = c.querySelectorAll('.p'), p = ps[ps.length - 1], h = c.querySelector('.h');
         if (p && textBottom(p) > R(c).b - 18) add(`days.${i}`, 'day text overflow');
         if (h && R(h).w > R(c).w) add(`days.${i}`, 'day title too wide');
         if (h && h.offsetHeight > 140) add(`days.${i}`, 'day title 3+ lines');

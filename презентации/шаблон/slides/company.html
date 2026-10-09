@@ -1,12 +1,13 @@
 {% import 'slides/_macros.html' as m with context %}
-{# Карточка компании: 4 факта (иконка + крупное значение + подпись), логотип справа, «Почему выбран», «Чему учимся». #}
+{# Карточка компании: 4 факта (иконка + крупное значение + подпись), логотип справа, «Почему выбран», «Чему учимся».
+   roles [{role, focus}] — список собеседников в карточке под логотипом (вместо названия компании). #}
 {% set FACT_POS = [
   {'l': 64,  't': 343, 'r': -1.8, 'tape': [181, -14, -3]},
   {'l': 601, 't': 331, 'r': 1.8},
   {'l': 84,  't': 562, 'r': 1.0, 'tape': [187, -16, 1]},
   {'l': 611, 't': 552, 'r': -1.8}
 ] %}
-<section class="slide s-company">
+<section class="slide s-company{% if s.roles %} roles{% endif %}">
   <div class="ghost{% if s.ghost_thai %} thai{% endif %}" style="{% if s.ghost_size %}font-size:{{ s.ghost_size }}px;{% endif %}">{{ s.ghost or '' }}</div>
   {{ m.tag(s.tag) }}
   <div class="title" data-fit="{{ s.title_width or 1808 }}"{% if s.title_dy %} style="margin-top:{{ s.title_dy }}px"{% endif %}>{{ s.title }}{% if s.native %} <span class="native">{{ s.native }}</span>{% endif %}</div>
@@ -25,12 +26,17 @@
     <div class="q">{{ m.quote_mark() }}</div>
     <div class="p">{{ s.why }}</div></div>
   {% endif %}
-  {% if s.learn %}
+  {% if s.roles %}
+  <div class="card pale learn wide" style="{{ m.rot(-0.6) }}"><div class="k">{{ s.learn_label or 'С кем встречаемся' }}</div>
+    <ul>{% for r in s.roles %}<li><b>{{ r.role }}</b>{% if r.focus %} — {{ r.focus }}{% endif %}</li>{% endfor %}</ul></div>
+  {% elif s.learn %}
   <div class="card pale learn" style="{{ m.rot(1.2) }}"><div class="k">{{ s.learn_label or 'Чему учимся' }}</div><div class="p">{{ s.learn }}</div></div>
   {% endif %}
   <div class="card logo-card" style="{{ m.rot(1.6) }}">{{ m.logo(s) }}</div>
+  {% if not s.roles %}
   <div class="uline"></div>
   <div class="cname"><span data-fit="660">{{ s.short or s.title }}</span></div>
+  {% endif %}
   {% if s.subtitle %}<div class="csub">{{ s.subtitle }}</div>{% endif %}
   <div class="br brr" style="left:1800px;top:980px"></div>
 </section>

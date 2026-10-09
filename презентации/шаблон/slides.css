@@ -203,6 +203,18 @@ body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .s-company .learn { position: absolute; left: 698px; top: 798px; width: 424px; min-height: 178px; padding: 27px 30px 24px 33px; }
 .s-company .learn .k { font: 800 24px/28px var(--cond); color: var(--ink); text-transform: uppercase; }
 .s-company .learn .p { max-width: 310px; text-wrap: wrap; margin-top: 6px; font: 400 20px/28px var(--text); color: var(--ink2); }
+.s-company.roles .fact { width: 500px; padding: 26px 26px 22px 96px; }
+.s-company.roles .fact .ico { left: 34px; top: 32px; }
+.s-company.roles .fact .v { font-size: 54px; }
+.s-company.roles .fact .l { font-size: 23px; line-height: 28px; color: var(--blue); text-transform: uppercase; }
+.s-company.roles .fact .s { font-size: 19px; line-height: 25px; color: var(--ink2); }
+.s-company.roles .logo-card { height: 370px; padding: 60px 72px; }
+.s-company.roles .why { width: 1000px; }
+.s-company .learn.wide { left: 1190px; top: 742px; width: 670px; min-height: 0; padding: 26px 34px 24px; }
+.s-company .learn.wide ul { margin: 12px 0 0; padding: 0; list-style: none; }
+.s-company .learn.wide li { position: relative; padding-left: 24px; font: 400 23px/33px var(--text); color: var(--ink2); }
+.s-company .learn.wide li::before { content: ''; position: absolute; left: 2px; top: 13px; width: 9px; height: 9px; border-radius: 50%; background: var(--blue); }
+.s-company .learn.wide li b { font-weight: 600; color: var(--ink); }
 .s-company .desc { position: absolute; left: 64px; top: 1000px; width: 1060px; font: 400 15px/20px var(--text); color: var(--mute); }
 
 /* ---------- 6. Выгоды ---------- */
@@ -252,6 +264,10 @@ body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .s-days.n5 .dcard { padding: 30px 28px; }
 .s-days.n5 .dl { font-size: 28px; }
 /* 6 дней (Корея: промышленность, фудтех) — колонки ~277 px */
+.s-days .dcard .k { font: 800 21px/26px var(--cond); color: var(--blue); text-transform: uppercase; margin-bottom: 4px; }
+.s-days .dcard .k2 { margin-top: 16px; }
+.s-days.gain .dcard { height: 470px; }
+.s-days.gain .dcard .p { font-size: 21px; line-height: 29px; }
 .s-days.n6 .dcard .h { font-size: 36px; }
 .s-days.n6 .dcard .p { font-size: 20px; line-height: 28px; }
 .s-days.n6 .dcard { padding: 28px 22px; }
@@ -305,3 +321,18 @@ body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .s-contacts .qr { position: absolute; top: 672px; width: 230px; text-align: center; font: 800 20px/24px var(--cond); color: var(--blue); text-transform: uppercase; }
 .s-contacts .qr img { display: block; width: 155px; height: 155px; margin: 12px auto 0; image-rendering: pixelated; }
 .s-contacts svg.path { position: absolute; left: 0; top: 0; }
+
+/* ---------- Кейсы (cases) ---------- */
+.s-cases .ghost { left: 1180px; top: 40px; font-size: 400px; }
+.s-cases .title { font-size: 150px; top: 100px; }
+.s-cases .case { position: absolute; top: 330px; height: 700px; padding: 32px 38px; }
+.s-cases .case .lg { display: flex; align-items: center; gap: 26px; height: 76px; margin-bottom: 18px; }
+.s-cases .case .li { height: 76px; }
+.s-cases .case .li .logo-img { width: auto; height: 76px; max-width: 170px; }
+.s-cases .case .k { font: 800 24px/30px var(--cond); color: var(--blue); text-transform: uppercase; }
+.s-cases .case .h { margin: 4px 0 14px; font: 900 46px/1.05 var(--display); color: var(--ink); text-transform: uppercase; }
+.s-cases .case .mt { margin-bottom: 8px; font: 400 21px/29px var(--text); color: var(--ink2); }
+.s-cases .case .mt b { font-weight: 700; color: var(--ink); }
+.s-cases .case ul { margin: 14px 0 0; padding: 0; list-style: none; }
+.s-cases .case li { position: relative; padding-left: 24px; margin-bottom: 7px; font: 400 21px/29px var(--text); color: var(--ink2); }
+.s-cases .case li::before { content: ''; position: absolute; left: 2px; top: 11px; width: 9px; height: 9px; border-radius: 50%; background: var(--blue); }
