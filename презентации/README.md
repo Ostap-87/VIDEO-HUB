@@ -237,9 +237,9 @@ Museum — один файл `техгиганты/samsung.svg`. В турах �
 
 | `type` | Слайд (пример) | Поля |
 |---|---|---|
-| `cover` | Обложка (ИИ стр. 1, Alibaba стр. 1) | `tag`, `title` (по умолч. GLOBAL TECH TOUR), `topright`, `logos[]` {name, logo} до 12 **или** `logo` {name, logo} — один большой; `box_kicker`, `box_text`, `box_right`, `footer` |
+| `cover` | Обложка (ИИ стр. 1, Alibaba стр. 1) | `tag`, `title` (по умолч. GLOBAL TECH TOUR), `topright`, `logos[]` {name, logo} до 12 (с `logos_big: N` первые N — крупно в ряд, остальные — мелко вторым рядом) **или** `logo` {name, logo} — один большой; `box_kicker`, `box_text`, `box_right`, `footer` |
 | `why` | «Почему мы» (ИИ 2) | `items[4]` {title, text}; 3-й — синяя плашка, 4-й — голубая |
-| `layers` | «Направления» (ИИ 3) | `title1`, `title2` (вписываются в колонку), `items[3]` {name, text}, `quote`, `ghost`, `logos[≤3]` {name, logo} — карточки логотипов в свободной левой колонке под заголовком |
+| `layers` | «Направления» (ИИ 3) | `title1`, `title2` (вписываются в колонку), `items[3]` {name, text}, `quote`, `ghost`, `logos[≤3]` {name, logo} — карточки логотипов в свободной левой колонке под заголовком (`logos_layout: "column"` — столбиком, вдвое крупнее; влезает при заголовке в 2 строки, как «3 команды») |
 | `route` | «Маршрут» (ИИ 4) | `cities[2–5]` {name, days, companies, leg {icon: plane/train/car, text}}, `footer` (HTML, `<b>` — синим), `ghost` |
 | `company` | Карточка компании (ИИ 5–14) | `title`, `native` (иероглифы/тайский), `ghost`, `ghost_thai`, `logo`, `facts[4]` {icon, value, label, sub}, `why`, `learn`, `short`, `subtitle`, `title_dy` (сдвиг заголовка вниз, px) |
 | `days` | «Программа по дням» (Alibaba 6) | `title`, `days[2–6]` {label, sub, title, text}, `ghost` |

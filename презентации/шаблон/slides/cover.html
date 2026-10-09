@@ -1,5 +1,5 @@
 {% import 'slides/_macros.html' as m with context %}
-{# Обложка. Варианты: logos (сетка до 12 логотипов) или logo (один большой логотип, как в Alibaba). #}
+{# Обложка. Варианты: logos (сетка до 12 логотипов; с logos_big: N — первые N крупно, остальные мелко) или logo (один большой логотип, как в Alibaba). #}
 <section class="slide s-cover">
   <div class="dots fade-c robot-dots"></div>
   <img class="robot" src="{{ (s.hero or (('assets/роботы/robot-' ~ deck.robot ~ '.png') if deck.robot else 'assets/robot.png'))|asset }}" alt="">
@@ -9,6 +9,19 @@
   <div class="arrow">{{ m.icon('arrow') }}</div>{% endif %}
   {% if s.logo %}
   <div class="card bigcard">{{ m.logo(s.logo) }}</div>
+  {% elif s.logos_big %}
+  {# первые logos_big логотипов — крупно в первый ряд, остальные — мелко во второй #}
+  {% set nb = s.logos_big %}{% set ns = s.logos|length - nb %}
+  {% set bw = ((1160 - (nb - 1) * 30) / nb)|int %}{% set sw = ((1160 - (ns - 1) * 24) / ns)|int if ns > 0 else 0 %}
+  <div class="logos">
+    {% for c in s.logos %}
+    {% if loop.index0 < nb %}
+    <div class="card lc big" style="left: {{ loop.index0 * (bw + 30) }}px; width: {{ bw }}px">{{ m.logo(c) }}</div>
+    {% else %}
+    <div class="card lc small" style="left: {{ (loop.index0 - nb) * (sw + 24) }}px; width: {{ sw }}px">{{ m.logo(c) }}</div>
+    {% endif %}
+    {% endfor %}
+  </div>
   {% else %}
   <div class="logos">
     {% for c in s.logos %}

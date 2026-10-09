@@ -43,7 +43,8 @@
       ],
       "box_text": "Обмен опытом с разработчиками AI-моделей —\n10 человек, ноябрь 2026, 5 дней",
       "box_right": "Пекин · Ханчжоу · Шанхай —\nинженеры с инженерами",
-      "footer": "Global Tech Tour · индивидуальная бизнес-миссия в Китай · РФ/СНГ"
+      "footer": "Global Tech Tour · индивидуальная бизнес-миссия в Китай · РФ/СНГ",
+      "logos_big": 3
     },
     {
       "type": "why",
@@ -101,7 +102,8 @@
           "name": "Moonshot AI",
           "logo": "source-videos/логотипы/ии/moonshot-ai.png"
         }
-      ]
+      ],
+      "logos_layout": "column"
     },
     {
       "type": "company",

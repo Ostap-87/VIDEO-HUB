@@ -105,6 +105,9 @@ body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .s-cover .logos { position: absolute; left: 64px; top: 330px; width: 1160px; }
 .s-cover .lc { position: absolute; width: 275px; height: 150px; padding: 20px 26px; }
 .s-cover .lc .logo-text { font-size: 46px; }
+.s-cover .lc.big { top: 10px; height: 260px; padding: 40px 32px; }
+.s-cover .lc.small { top: 300px; height: 130px; padding: 22px 24px; }
+.s-cover .lc.small .logo-text { font-size: 34px; }
 .s-cover .bigcard { position: absolute; left: 64px; top: 330px; width: 1080px; height: 520px; padding: 110px 120px; }
 .s-cover .box { position: absolute; left: 64px; top: 864px; width: 1160px; height: 150px;
   display: flex; align-items: center; justify-content: space-between; padding: 0 44px 14px 46px; }
@@ -155,6 +158,7 @@ body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 .s-layers .l2 .d, .s-layers .l3 .d { top: 160px; }
 .s-layers .l3 { left: 920px; top: 600px; height: 230px; background: #eceff3; z-index: 1; }
 .s-layers .lc { top: 585px; width: 250px; height: 165px; padding: 20px 28px; z-index: 1; }  /* логотипы в левой колонке (поле logos) */
+.s-layers .lc.column { left: 50px; width: 540px; height: 130px; padding: 17px 60px; }  /* logos_layout: column — столбиком, вдвое крупнее */
 .s-layers .quote { position: absolute; left: 190px; top: 900px; border-left: 4px solid var(--blue); padding-left: 23px;
   font: italic 400 24px/34px var(--text); color: var(--ink2); width: 520px; }
 

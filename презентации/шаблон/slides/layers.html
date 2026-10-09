@@ -11,7 +11,11 @@
     <div class="n">{{ it.name }}</div><div class="d">{{ it.text }}</div></div>
   {% endfor %}
   {% for c in (s.logos or [])[:3] %}
+  {% if s.logos_layout == 'column' %}
+  <div class="card lc column" style="top: {{ 420 + loop.index0 * 150 }}px">{{ m.logo(c) }}</div>
+  {% else %}
   <div class="card lc" style="left: {{ 50 + loop.index0 * 280 }}px">{{ m.logo(c) }}</div>
+  {% endif %}
   {% endfor %}
   {% if s.quote %}<div class="quote">{{ s.quote|br }}</div>{% endif %}
   <div class="br bl" style="left:40px;top:940px"></div>
