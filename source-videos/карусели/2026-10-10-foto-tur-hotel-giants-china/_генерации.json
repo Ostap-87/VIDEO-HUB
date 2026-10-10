@@ -1,0 +1,86 @@
+{
+ "01.jpg": {
+  "job": "3c5b8ba3-ac36-4b15-a110-97adf9d0027e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170638_3c5b8ba3-ac36-4b15-a110-97adf9d0027e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in the lobby of a stylish Chinese mid-scale hotel in Shanghai: a tall wall of bookshelves, warm wood, armchairs and tea tables, a smiling Chinese hotel general manager guides a Russian business delegation with visitor badges on lanyards, one delegate takes a book with a plain cover from the shelf, soft daylight, wide 4:3 composition, subject centered, cozy business mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "134c0393-6013-43b6-8481-cd13c3e78407",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170638_134c0393-6013-43b6-8481-cd13c3e78407.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo of a very long bright hotel corridor in a big Chinese hotel, rows of identical room doors without visible numbers stretching into the distance, a smiling Chinese housekeeper in a grey uniform rolls a linen cart, two Russian delegates with lanyard badges look down the corridor in amazement and laugh, main subject in the upper half of the frame, the lower third is calm patterned carpet, vertical 4:5, sense of huge scale. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "843e70b4-db8f-44b9-b756-6fa8b6bb7ce1",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170637_843e70b4-db8f-44b9-b756-6fa8b6bb7ce1.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a Russian business delegation with visitor badges on lanyards strolling along the West Lake promenade in Hangzhou between hotel visits, weeping willows, a distant pagoda on a green hill across the calm water, a Chinese guide in a light jacket pointing ahead, people chatting and smiling, bright morning sun, wide 4:3 composition, subject centered, pleasant travelling mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "fd2d7a44-3acb-4bb9-9838-6be8e8cc2c56",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170638_fd2d7a44-3acb-4bb9-9838-6be8e8cc2c56.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in the development office of a Chinese hotel group in Shanghai: a Chinese franchise director stands at a white architectural scale model of a hotel tower and a cutaway model of a standard guest room, explaining to three Russian delegates with lanyard badges who smile and point, bright meeting room, main subject in the upper half of the frame, the lower third is calm pale wooden table, vertical 4:5, focused business mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "17dea144-2416-4519-a749-58ae13d70fc0",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170716_17dea144-2416-4519-a749-58ae13d70fc0.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright sleep-products showroom of a Chinese hotel brand: Russian business delegates with visitor badges test soft pillows and mattresses, one businessman lies on a white bed laughing with arms spread, a smiling Chinese sales manager holds up a plush pillow, neutral linen colors and warm lamps, wide 4:3 composition, subject centered, light playful mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "ad70c99e-5a14-468e-99fe-920cebbd3b86",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170715_ad70c99e-5a14-468e-99fe-920cebbd3b86.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo of a Russian business delegation and Chinese hotel executives at a round banquet table with a glass lazy Susan full of colorful Chinese dishes in a bright five-star hotel restaurant, everyone raising small cups of tea in a cheerful toast, large windows with daylight, main subject in the upper half of the frame, the lower third is calm white tablecloth, vertical 4:5, warm hospitable mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "4e9af827-3a04-4ae1-b186-98af203e5f36",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170715_4e9af827-3a04-4ae1-b186-98af203e5f36.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of two Russian investors and a Chinese hotel developer on the rooftop terrace of a new hotel in Guangzhou, the slender twisted Canton Tower and modern skyline behind them in sunlight, the developer shows plans on a tablet with a blurred screen, everyone smiling and engaged, potted greenery around, wide 4:3 composition, subject centered, promising investment mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}

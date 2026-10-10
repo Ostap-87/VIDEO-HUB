@@ -1,0 +1,110 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Китай",
+   "title": "Как китайские отели **растут на франшизе**",
+   "text": "Китайские гостиничные гиганты · 5 дней · 4 города"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Рынок",
+   "title": "гостиничный рынок мира",
+   "text": "Китай — крупнейший по числу номеров",
+   "value": "№1"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут",
+   "title": "5 дней · **4 города**",
+   "items": [
+    "День 1 · Шанхай: Jin Jiang, H World",
+    "День 2 · Шанхай: GreenTree, Atour",
+    "День 3 · Ханчжоу: Kaiyuan Hotel Group",
+    "День 4 · Гуанчжоу: Dossen Group",
+    "День 5 · Пекин: BTG Hotels Group"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "**7 гостиничных** групп",
+   "items": [
+    "Jin Jiang International · H World",
+    "GreenTree · Atour (Yaduo)",
+    "Kaiyuan Hotel Group · Dossen",
+    "BTG Hotels Group"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **увидите** изнутри",
+   "items": [
+    "Как сети растут по франшизе",
+    "Госгруппы и биржевые лидеры рядом",
+    "Как Atour продаёт товары для сна",
+    "Что из этого применимо в России"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/06.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё готово **до вылета**",
+   "items": [
+    "Отели 5 звёзд, 6 ночей",
+    "Обед и ужин ежедневно",
+    "Перелёты, поезда и трансферы",
+    "Перевод на каждой встрече"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Для кого",
+   "title": "Для отельеров и **инвесторов**",
+   "text": "Прямые выходы на франчайзинг, управление и инвестиции в гостиничные активы"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}
