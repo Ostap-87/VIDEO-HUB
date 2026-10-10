@@ -1,0 +1,131 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-ai/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Китай",
+   "title": "Китай — второй мировой **центр ИИ**",
+   "text": "China AI Expedition · 5 дней · 4 города"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-ai/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Moonshot AI",
+   "title": "токенов контекста в Kimi K2",
+   "text": "Оценка компании к 2025 году — выше $20 млрд",
+   "value": "1 млн",
+   "logo": "moonshot-ai"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-ai/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут",
+   "title": "5 дней · **4 города**",
+   "items": [
+    "День 1 · Пекин: Zhipu, Moonshot, Kuaishou",
+    "День 2 · Пекин: ByteDance, Baidu",
+    "День 3 · Шанхай → Ханчжоу: SenseTime",
+    "День 4 · Ханчжоу: Alibaba, DeepSeek",
+    "День 5 · Шэньчжэнь: Tencent, BrainCo"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-ai/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "**10 компаний** за поездку",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/ии/deepseek.svg"
+    },
+    {
+     "src": "source-videos/логотипы/ии/kimi.png"
+    },
+    {
+     "src": "source-videos/логотипы/ии/zhipu.png"
+    },
+    {
+     "src": "source-videos/логотипы/общие/baidu.png"
+    },
+    {
+     "src": "source-videos/логотипы/общие/alibaba.svg"
+    },
+    {
+     "src": "source-videos/логотипы/общие/bytedance.png"
+    },
+    {
+     "src": "source-videos/логотипы/общие/tencent.svg"
+    },
+    {
+     "src": "source-videos/логотипы/ии/sensetime.png"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-ai/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **увидите** изнутри",
+   "items": [
+    "Как делают LLM: GLM, Kimi, DeepSeek",
+    "Как ИИ встраивают Baidu и Alibaba",
+    "Где ИИ уже в продуктах: видео, поиск",
+    "Нейроинтерфейсы и бионика BrainCo"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-ai/06.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё готово **до вылета**",
+   "items": [
+    "Отели 5 звёзд, 6 ночей",
+    "Обед и ужин ежедневно",
+    "Перелёты и трансферы между городами",
+    "Перевод на каждой встрече"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-ai/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Для кого",
+   "title": "Для тех, кто внедряет **ИИ**",
+   "text": "Прямые выходы на партнёрство, интеграцию и дистрибуцию"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-ai/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-ai/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-ai/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}

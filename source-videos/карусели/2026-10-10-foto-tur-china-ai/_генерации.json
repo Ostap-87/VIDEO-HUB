@@ -1,0 +1,86 @@
+{
+ "01.jpg": {
+  "job": "f9e838b2-be1f-40a6-acd0-42746dcaaebc",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171101_f9e838b2-be1f-40a6-acd0-42746dcaaebc.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a vast bright AI research floor in Beijing: rows of young engineers at desks with large monitors, a giant curved screen shows a glowing abstract neural network of blue and violet light, a Chinese researcher in a hoodie walks a Russian business delegation with visitor badges on lanyards through the space, people smiling and curious, screens blurred, wide 4:3 composition, subject centered, ambitious future mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "3b36e46f-3364-4d8f-884d-6af15e763807",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171101_3b36e46f-3364-4d8f-884d-6af15e763807.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright AI startup office in Beijing: a laughing Russian delegate with a lanyard badge sets a tall stack of thick plain books and bound reports on a white desk next to a laptop, a smiling Chinese engineer gestures that the AI reads all of it at once, glass walls and green plants, main subject in the upper half of the frame, the lower third is calm white desk, vertical 4:5, witty sense of scale. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "febe87e7-23a3-4d9d-9693-c4c1eb09e968",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171101_febe87e7-23a3-4d9d-9693-c4c1eb09e968.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a wide sunny avenue in Beijing's technology district: a Russian business delegation with visitor badges on lanyards gets into a white driverless robotaxi with a compact roof sensor, the empty driver's seat visible through the open door, a Chinese guide holding the door and laughing, modern office buildings and trees behind, car without badges, wide 4:3 composition, subject centered, exciting ride mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "93105131-474f-4124-84f0-f10589e3a4a7",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171102_93105131-474f-4124-84f0-f10589e3a4a7.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at a busy AI exhibition in Shanghai: a Russian business delegation with lanyard badges talks with young Chinese startup founders at a white minimalist booth, large screens behind them show abstract colorful visuals, one founder demonstrates a voice assistant on a tablet, everyone animated and smiling, main subject in the upper half of the frame, the lower third is calm light exhibition carpet, vertical 4:5, lively networking mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "8d59977b-bff9-40e7-83b1-0ac8e35a68ac",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171139_8d59977b-bff9-40e7-83b1-0ac8e35a68ac.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright neurotechnology lab in Shenzhen: a smiling young Chinese man with a sleek black-and-white bionic prosthetic hand gently picks up a paper cup of water, a Chinese engineer with a tablet stands beside him, Russian business delegates with visitor badges lean in amazed and smiling, white desks and soft light, wide 4:3 composition, subject centered, wonder and progress mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "f0ca9c94-ca15-4b38-97de-1e64eb8a86c8",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171139_f0ca9c94-ca15-4b38-97de-1e64eb8a86c8.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright Beijing restaurant: a chef in a white hat slices a glossy roast duck at a trolley beside the table, Russian business delegates with lanyard badges and their Chinese guide smile and wrap thin pancakes with cucumber and scallion, warm daylight through wooden lattice windows, main subject in the upper half of the frame, the lower third is calm white tablecloth, vertical 4:5, festive hospitable mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "df5c5551-f234-495f-887b-cc5a14107c8a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171139_df5c5551-f234-495f-887b-cc5a14107c8a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at a demo table of a Shenzhen hardware company: a Russian businesswoman with a lanyard badge tries on lightweight AI smart glasses, a smiling Chinese engineer adjusts the frame while a Russian colleague films her on his phone and laughs, prototypes neatly laid out, bright open office, wide 4:3 composition, subject centered, curious hands-on partnership mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
