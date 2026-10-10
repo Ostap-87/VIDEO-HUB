@@ -1,0 +1,159 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-beauty-industry/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Япония",
+   "title": "Как Япония **изобретает** косметику",
+   "text": "Косметика и бьюти-технологии Японии · 4 города"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-beauty-industry/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Panasonic Beauty",
+   "title": "устройств с технологией nanoe",
+   "text": "Поставки по всему миру к 2024 году",
+   "value": "100 млн+",
+   "logo": "panasonic-beauty"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-beauty-industry/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут",
+   "title": "4 города на **Синкансэне**",
+   "items": [
+    "День 1 · Иокогама: Shiseido, Fancl",
+    "День 2 · Токио: Kao, Kanebo",
+    "День 3 · Токио: Pola Orbis, Kosé",
+    "День 4 · Осака: Panasonic, Mandom, Rohto",
+    "День 5 · Нагоя: MTG (ReFa)"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-beauty-industry/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "**10 компаний** на маршруте",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/косметика/shiseido.svg"
+    },
+    {
+     "src": "source-videos/логотипы/косметика/fancl.png"
+    },
+    {
+     "src": "source-videos/логотипы/косметика/kao.png"
+    },
+    {
+     "src": "source-videos/логотипы/косметика/kanebo.png"
+    },
+    {
+     "src": "source-videos/логотипы/косметика/pola-orbis.png"
+    },
+    {
+     "src": "source-videos/логотипы/косметика/kose.png"
+    },
+    {
+     "src": "source-videos/логотипы/косметика/mandom.png"
+    },
+    {
+     "src": "source-videos/логотипы/косметика/rohto.png"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-beauty-industry/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **увидите** изнутри",
+   "items": [
+    "R&D-центр Shiseido почти на 800 учёных",
+    "ИИ-диагностика кожи у POLA и Kao",
+    "Бьюти-девайсы: nanoe и ReFa",
+    "Косметика без консервантов Fancl"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-beauty-industry/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Месяцы переписки ради доступа в R&D",
+      "Нет гарантии, что визит согласуют вовремя",
+      "Логистика между городами — сами"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-beauty-industry/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Визиты — через нашу сеть контактов",
+      "Синкансэн и трансферы включены",
+      "Сопровождение на каждой встрече"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-beauty-industry/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё готово **до вылета**",
+   "items": [
+    "Визиты и переговоры по программе",
+    "Синкансэн Токио–Осака–Нагоя",
+    "Трансферы и сопровождение",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-beauty-industry/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Для кого",
+   "title": "Для **бьюти**-индустрии",
+   "text": "Тем, кто создаёт, производит или продаёт косметику и бьюти-девайсы"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-beauty-industry/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-beauty-industry/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-beauty-industry/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}

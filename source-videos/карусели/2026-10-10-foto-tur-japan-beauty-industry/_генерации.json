@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "456e88e7-3238-49c2-8a22-ea163f66ac08",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161615_456e88e7-3238-49c2-8a22-ea163f66ac08.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside a bright cosmetics research laboratory in Yokohama: a smiling Japanese female chemist in a white lab coat gently swirls a pale pink cream emulsion in a glass beaker, three members of a Russian business delegation with visitor badges on lanyards and lab coats over their suits lean in with delighted curiosity, glass shelves of unlabeled sample jars and pipettes around, soft daylight, wide 4:3 composition, subject centered, inspiring discovery mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "73f451b2-4f56-417d-ba3e-a22e1b60f15e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161615_73f451b2-4f56-417d-ba3e-a22e1b60f15e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a clean beauty-device factory in Osaka: a long conveyor carries hundreds of identical pearl-white hair dryers without any markings, in front a smiling Japanese technician in a light grey uniform tests one dryer that releases a fine visible mist of water particles onto a mannequin's glossy hair, a Russian delegate with a visitor badge on a lanyard watches impressed, main subject in the upper half of the frame, the lower third is calm polished factory floor, vertical 4:5. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "33a2cf84-a2f5-41e5-83c0-745f175ff915",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161614_33a2cf84-a2f5-41e5-83c0-745f175ff915.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside a Japanese bullet train carriage: four members of a Russian business delegation with visitor badges on lanyards sit in rotated facing seats, laughing and comparing small elegant paper gift bags with cosmetic samples on the fold-down tables, bright green tea fields and a seaside town blur past the wide window, a pleasant sense of moving between cities, wide 4:3 composition, subject centered, cheerful travel mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "08822d89-3742-4fcd-bc2a-e42543ee7d24",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161614_08822d89-3742-4fcd-bc2a-e42543ee7d24.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a minimalist Tokyo skincare brand gallery with white curved shelves of unlabeled frosted glass bottles: an elegant Japanese brand manager in a navy dress places a drop of clear serum on the back of a smiling Russian businesswoman's hand, two colleagues from the delegation with visitor badges on lanyards lean in and laugh, soft diffused light, main subject in the upper half of the frame, the lower third is a calm pale stone floor, vertical 4:5. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "6543c594-4f46-4b97-b179-84887e9af28a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171921_6543c594-4f46-4b97-b179-84887e9af28a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at an AI skin diagnosis counter in a bright Tokyo beauty research center: a Japanese consultant in a white uniform holds a compact skin-scanning camera close to the cheek of a smiling Russian delegate, a tablet on the counter shows a blurred colorful skin map without readable details, two other delegation members with visitor badges on lanyards watch fascinated, clean white interior, wide 4:3 composition, subject centered. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "cf1c824b-3b89-4ab3-b648-e82269cf56d3",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171922_cf1c824b-3b89-4ab3-b648-e82269cf56d3.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian businesswoman in her forties sitting at a desk in her small Moscow office, a laptop with a long blurred email thread in front of her, jars of cream samples and a notebook nearby, chin resting on her hand, thoughtful and a little tired but calm, soft daylight from a window with snowy rooftops, subject in the center of the vertical frame, vertical 9:16, quiet patient mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "a502d2a4-c011-44b4-af0a-48eaf4c1da7f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171921_a502d2a4-c011-44b4-af0a-48eaf4c1da7f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo on a sunny wide Tokyo shopping boulevard with elegant flagship store facades and blurred signage: a cheerful Russian-speaking guide holding a folder walks half-turned toward a laughing Russian business delegation with visitor badges on lanyards, a Japanese host walks beside them pointing ahead to the next visit, everyone relaxed and engaged, subject in the center of the vertical frame, vertical 9:16, light confident mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "9c4b5341-1b8a-4d21-b939-c3b0d32b9757",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172029_9c4b5341-1b8a-4d21-b939-c3b0d32b9757.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a high-floor Tokyo hotel lounge in the morning: a smiling Russian guide with a tablet briefs a small Russian business delegation with visitor badges on lanyards over coffee and Japanese pastries at a low table, panoramic windows show the sunny Tokyo skyline with a red-and-white lattice tower in the distance, everyone relaxed and ready for the day, wide 4:3 composition, subject centered. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "97d18448-9e08-4bdb-ade7-4af1dfad1bd1",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172028_97d18448-9e08-4bdb-ade7-4af1dfad1bd1.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a colorful Japanese drugstore aisle packed with neat rows of skincare bottles and sheet masks in blurred unreadable packaging: a smiling Russian businesswoman with a visitor badge on a lanyard photographs a display with her phone while her colleague takes notes and laughs, a friendly Japanese shop assistant explains a product, bright even lighting, main subject in the upper half of the frame, the lower third is a calm clean floor between shelves, vertical 4:5. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
