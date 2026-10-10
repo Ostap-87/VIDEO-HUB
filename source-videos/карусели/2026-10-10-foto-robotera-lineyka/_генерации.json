@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "be64a200-f037-4ed3-9207-d32f1f058e72",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163814_be64a200-f037-4ed3-9207-d32f1f058e72.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright white robotics showroom in Beijing: a neat lineup on a low podium of a white-and-silver athletic humanoid robot, a black-and-silver humanoid in plain white sneakers, a humanoid upper body on a graphite stand, a slim-waisted white wheeled humanoid and a black five-fingered robotic hand on a pedestal, two proud Chinese engineers smile beside them, wide 4:3 composition, subject centered, choose-your-robot mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "014637b6-7b1a-4388-9179-977ee38f6d57",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163814_014637b6-7b1a-4388-9179-977ee38f6d57.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a large bright dispatch hall in Beijing: dozens of white-and-silver humanoid robots with compact heads ringed by dark camera bands stand secured on wheeled transport stands in long rows, smiling Chinese staff push one toward an open loading gate with a sunny yard outside, main subject in the upper half of the frame, the lower third is calm clean grey floor, vertical 4:5, proven-delivery mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "ecb3ce8b-2f48-4704-867a-0c4cbaf4fded",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163815_ecb3ce8b-2f48-4704-867a-0c4cbaf4fded.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a long bright parcel hub aisle: a 171 cm athletic humanoid robot with a white-and-silver shell, black joints, a compact head ringed by a dark camera band and dexterous black five-fingered hands jogs quickly between conveyor lines carrying a large parcel with a blank label in both arms, a smiling Russian logistics manager steps aside laughing, wide 4:3 composition, subject centered, fast flagship mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "5be7ae37-d9fa-4671-a9b6-c3f7d9b123fa",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163814_5be7ae37-d9fa-4671-a9b6-c3f7d9b123fa.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in the sunny Gobi desert: a 171 cm humanoid robot with an exposed black-and-silver mechanical body, visible metal joint actuators and plain white running sneakers runs fast across rocky gravel and dry grass, kicking up light dust, a smiling Chinese support team in sun hats cheers beside an off-road car in the distance, main subject in the upper half of the frame, the lower third is calm sandy gravel ground, vertical 4:5, adventurous mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "25ffa325-1dbd-4cd1-ba34-0e625b94b2ce",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163931_25ffa325-1dbd-4cd1-ba34-0e625b94b2ce.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at a bright lab workbench: the white-and-silver upper body of a humanoid robot with a compact head ringed by a dark camera band and dexterous black five-fingered hands, mounted on a vertical graphite stand, sorts small electronic parts into trays, its arms reaching across the whole table and up to a shelf, a smiling Chinese researcher and a Russian colleague watch, wide 4:3 composition, subject centered, focused desk-work mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "d2eed308-6311-44af-8f88-3b1386510c69",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163931_d2eed308-6311-44af-8f88-3b1386510c69.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a sunny hotel lobby: a slim-waisted white wheeled service humanoid robot with a compact rounded head, long white arms and a round wheeled base carries a guest's medium suitcase in one hand and greets a smiling Russian traveler with a little bow, a Chinese receptionist laughs behind a light wooden desk, main subject in the upper half of the frame, the lower third is calm polished marble floor, vertical 4:5, warm service mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "ed58e528-4aaf-4e7e-aa59-d97f8c50d2fa",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163932_ed58e528-4aaf-4e7e-aa59-d97f8c50d2fa.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright lab: a black-and-silver five-fingered robotic hand with direct-drive joints and tactile fingertips, mounted on a slim robotic arm, plays rapid notes on a piano keyboard, its fingers slightly motion-blurred, while a smiling Russian engineer and a Chinese engineer listen in delight, wide 4:3 composition, subject centered, nimble playful mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "54ac984e-5eb5-4f80-b74f-48c87867d7e9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163932_54ac984e-5eb5-4f80-b74f-48c87867d7e9.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at a bright robotics expo in Beijing: a smiling Chinese consultant guides three Russian business clients past different demo zones, a slim-waisted white wheeled humanoid greeting in front, a white-and-silver humanoid carrying a box further back and a black robotic hand on a stand, main subject in the upper half of the frame, the lower third is calm light exhibition carpet, vertical 4:5, thoughtful choice mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "09.jpg": {
+  "job": "0fb5d226-5882-44cf-bd8d-41c1716bd327",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164018_0fb5d226-5882-44cf-bd8d-41c1716bd327.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright factory test bay: a Chinese technician fixes a small blank metal serial plate to the back of a 171 cm athletic humanoid robot with a white-and-silver shell, black joints, a compact head ringed by a dark camera band and dexterous black five-fingered hands, while a Russian client representative watches with a warm smile, a straight test track behind, wide 4:3 composition, subject centered, personal-robot mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
