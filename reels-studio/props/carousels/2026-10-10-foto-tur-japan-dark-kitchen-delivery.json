@@ -1,0 +1,159 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-dark-kitchen-delivery/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Япония",
+   "title": "Кухня, где **готовят роботы**",
+   "text": "Dark kitchen и быстрая доставка еды в Японии · Большой Токио"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-dark-kitchen-delivery/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "TechMagic",
+   "title": "порций приготовили роботы",
+   "text": "Кухонные роботы для жарки, пасты и мойки посуды — по данным пресс-релизов",
+   "value": "1 млн+",
+   "logo": "techmagic"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-dark-kitchen-delivery/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут",
+   "title": "Всё в **Большом Токио**",
+   "items": [
+    "День 1 · Demae-can, Uber Eats Japan",
+    "День 2 · Connected Robotics, TechMagic",
+    "День 3 · SoftBank Robotics, ZMP",
+    "День 4 · Wolt Japan, Panasonic Robotics",
+    "День 5 · Rakuten Delivery / Gurunavi"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-dark-kitchen-delivery/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "Компании **на маршруте**",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/техгиганты/demae-can.png"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/uber-eats.svg"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/wolt.png"
+    },
+    {
+     "src": "source-videos/логотипы/роботы/connected-robotics.png"
+    },
+    {
+     "src": "source-videos/логотипы/роботы/techmagic.png"
+    },
+    {
+     "src": "source-videos/логотипы/роботы/softbank-robotics.png"
+    },
+    {
+     "src": "source-videos/логотипы/роботы/zmp.png"
+    },
+    {
+     "src": "source-videos/логотипы/роботы/panasonic-robotics.png"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-dark-kitchen-delivery/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **увидите** изнутри",
+   "items": [
+    "Как роботы жарят, варят и моют посуду",
+    "Как робот Servi работает в Denny's",
+    "Роботы-курьеры на улицах Токио",
+    "Как Demae-can, Uber Eats и Wolt делят рынок"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-dark-kitchen-delivery/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Месяцы переписки ради доступа в лаборатории",
+      "Нет гарантии, что визит согласуют вовремя",
+      "Маршрут по Токио — сами"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-dark-kitchen-delivery/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Визиты — через нашу сеть контактов",
+      "Трансферы включены",
+      "Сопровождение на каждой встрече"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-dark-kitchen-delivery/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё готово **до вылета**",
+   "items": [
+    "Визиты и переговоры по программе",
+    "Трансферы по Большому Токио",
+    "Сопровождение: японский и английский",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-dark-kitchen-delivery/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Для кого",
+   "title": "Для ресторанов и **доставки**",
+   "text": "Тем, кто запускает dark kitchen, сервис доставки или автоматизирует кухню"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-dark-kitchen-delivery/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-dark-kitchen-delivery/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-dark-kitchen-delivery/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}

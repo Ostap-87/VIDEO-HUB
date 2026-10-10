@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "be9d22d8-1f6b-4b4d-86f8-a02092f889c3",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171455_be9d22d8-1f6b-4b4d-86f8-a02092f889c3.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a gleaming commercial kitchen in Tokyo: a white robotic arm tosses golden fried rice in a rotating steel pan with a small puff of steam, a Japanese chef in a white jacket stands beside it smiling, a Russian business delegation with visitor badges on lanyards watches in amazement and films on phones, stainless steel counters, wide 4:3 composition, subject centered, amazing high-tech kitchen mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "75be77c3-4798-4f0a-b71f-8596a9fb51f7",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171455_75be77c3-4798-4f0a-b71f-8596a9fb51f7.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright automated restaurant kitchen in Tokyo: a compact cooking robot plates steaming pasta, dozens of identical white plates of spaghetti lined up on a long pass, a Japanese cook in a navy apron carries two plates away, two Russian delegates with lanyard badges count the plates laughing, main subject in the upper half of the frame, the lower third is calm stainless steel counter, vertical 4:5, abundant scale mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "3c595475-9150-40fb-9004-e12653ad2c38",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171455_3c595475-9150-40fb-9004-e12653ad2c38.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a quiet sunny residential street in Tokyo: a small white six-wheeled delivery robot with friendly round light eyes rolls along the sidewalk, a Russian business delegation with visitor badges on lanyards follows it smiling, a Japanese guide walks alongside explaining, low houses, potted plants and overhead wires, wide 4:3 composition, subject centered, curious exploring mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "25ac299a-5d5b-4e66-b6cc-7435f1096dbd",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171537_25ac299a-5d5b-4e66-b6cc-7435f1096dbd.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright Tokyo dark kitchen hub: several compact kitchen stations along a corridor, food couriers with plain insulated backpacks pick up sealed paper bags from a pickup shelf, a Japanese operator in a black cap explains the order flow to a Russian business delegation with lanyard badges, everyone smiling and nodding, main subject in the upper half of the frame, the lower third is calm grey epoxy floor, vertical 4:5, busy efficient mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "ba62f2ef-8ef1-4813-b9a9-ec31f92d88d7",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171538_ba62f2ef-8ef1-4813-b9a9-ec31f92d88d7.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in the dishwashing zone of a large Tokyo restaurant kitchen: a white robotic arm places clean plates into a rack beside a steaming conveyor dishwasher, neat stacks of white bowls, a Japanese engineer with a tablet shows a Russian business delegation with visitor badges how it works, delegates laughing in surprise, bright light, wide 4:3 composition, subject centered, clever helpful mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "8815a472-aff8-454c-80b2-5b01bdebe09c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171537_8815a472-aff8-454c-80b2-5b01bdebe09c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian restaurateur in his thirties standing alone in a bright Tokyo subway station corridor, studying a complex colorful transit map on his phone with a paper notebook under his arm, commuters passing in a soft blur, slightly tired but calm thoughtful expression, signs blurred and unreadable, subject in the center of the vertical frame, vertical 9:16, patient self-reliant mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "23f3a48e-31fc-4810-8680-b5551261adfa",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171615_23f3a48e-31fc-4810-8680-b5551261adfa.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo at the demo counter of a Tokyo food-robotics lab: a smiling Japanese engineer offers small bowls of robot-cooked fried noodles to a cheerful Russian business delegation with lanyard badges, they taste with chopsticks and laugh, a robotic cooking arm softly visible behind, bright clean light, subject in the center of the vertical frame, vertical 9:16, friendly guided mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "ece2fcfa-d388-4c30-9f27-c07408e33cd1",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171616_ece2fcfa-d388-4c30-9f27-c07408e33cd1.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a clean Tokyo street: the automatic rear door of a dark navy Japanese taxi van slides open, white lace covers on the seats inside, a Japanese driver in white gloves and a cap bows politely while a Russian business delegation with visitor badges and a Japanese guide get in smiling, green trees and low buildings behind, car without badges, wide 4:3 composition, subject centered, smooth transfer mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "ffda8741-8b5a-4ddc-820b-393065656495",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171803_ffda8741-8b5a-4ddc-820b-393065656495.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at a compact ghost kitchen counter in Tokyo: a Russian restaurateur in her thirties with a lanyard badge packs a neat bento box into a plain paper delivery bag together with a smiling Japanese cook in a white bandana, an order tablet with a blurred screen nearby, main subject in the upper half of the frame, the lower third is calm stainless steel counter, vertical 4:5, practical launch mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
