@@ -50,7 +50,8 @@ npm run auto -- --name 2026-10-09-avto --render                   # Reels + Stor
 
 Библиотеки в `library/`: `brands.json` (бренд → варианты написания → логотип), `cities.json`, `phrases.json`
 (стандартные фразы → плашки, цифры, чек-листы), `themes.json`, `music.json`, `blocked-images.json`.
-Новый бренд: логотип в `source-videos/логотипы/<отрасль>/` и строка в `brands.json`.
+Новый бренд: логотип в `source-videos/логотипы/<отрасль>/` и строка в `brands.json`. Белые или прозрачные поля вокруг логотипа
+обрезает `python3 scripts/trim_logos.py --apply` (без `--apply` — пробный список; цветные плашки не трогает).
 Скриншоты маршрута экспедиции: `npm run route -- /expeditions/<slug> ../source-videos/сайт/маршруты/<slug> day`.
 Установка всего нужного: `npm run setup` (в облаке Claude запускается сама при старте сессии).
 
