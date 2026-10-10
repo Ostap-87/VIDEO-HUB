@@ -1,0 +1,150 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-dark-kitchen-delivery/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Таиланд",
+   "title": "Кто **выигрывает** доставку Бангкока",
+   "text": "Dark kitchen и быстрая доставка еды в Таиланде · Бангкок"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-dark-kitchen-delivery/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "LINE MAN Wongnai",
+   "title": "курьеров у LINE MAN Wongnai",
+   "text": "10 млн+ пользователей и 500 000 точек",
+   "value": "250 000",
+   "logo": "line-man-wongnai"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-dark-kitchen-delivery/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут по дням",
+   "title": "Вся доставка — **в Бангкоке**",
+   "items": [
+    "День 1 · LINE MAN Wongnai, Grab",
+    "День 2 · foodpanda, Robinhood",
+    "День 3 · Freshket, CloudEats",
+    "День 4 · CP Cloud Kitchen, Shopee Food",
+    "День 5 · True Digital"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-dark-kitchen-delivery/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "Куда **едем**",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/техгиганты/line-man-wongnai.png"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/grab.svg"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/foodpanda.svg"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/robinhood-scb.png"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/freshket.png"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/cloudeats.png"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/cp-cloud-kitchen.png"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/shopee-food.svg"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-dark-kitchen-delivery/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Вопросы, на которые **ответит** тур",
+   "items": [
+    "Как LINE MAN Wongnai вышел на прибыль",
+    "Почему Robinhood продал доставку еды",
+    "Как облачные кухни встроены в CP Group",
+    "Как Freshket снабжает 26 000 ресторанов"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-dark-kitchen-delivery/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Месяцы переписки ради доступа",
+      "Нет гарантии, что визит согласуют",
+      "Логистика — на вас"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-dark-kitchen-delivery/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Трансферы включены",
+      "Сопровождение на каждой встрече",
+      "Синхронный перевод на встречах"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-dark-kitchen-delivery/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё **на месте**",
+   "items": [
+    "Организация визитов по программе",
+    "Трансферы по Бангкоку и региону",
+    "Сопровождение на тайском/английском",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-dark-kitchen-delivery/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-dark-kitchen-delivery/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-dark-kitchen-delivery/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}
