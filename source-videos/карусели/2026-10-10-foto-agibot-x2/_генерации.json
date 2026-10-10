@@ -1,0 +1,122 @@
+{
+ "01.jpg": {
+  "job": "0c68617d-bdaf-488b-ae4e-12ac77fdcaa9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162637_0c68617d-bdaf-488b-ae4e-12ac77fdcaa9.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at the bright entrance of a modern Shanghai department store: a child-sized 131 cm humanoid robot with a rounded white shell, light-grey joints and a big round head with a dark face screen showing cheerful glowing eyes walks briskly toward the camera with a lively bounce, waving one small hand, a laughing Chinese shop assistant and a smiling Russian shopper turn to watch, wide 4:3 composition, subject centered, quick playful mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "855e557f-73f7-4dd2-8fc2-b1596ed2c967",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162718_855e557f-73f7-4dd2-8fc2-b1596ed2c967.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo of a launch event in a sunlit Shanghai shopping mall atrium: a neat line of a dozen identical child-sized 131 cm humanoid robots with rounded white shells, light-grey joints and big round heads with dark face screens stands ready, Chinese staff in polo shirts adjust them while shoppers take photos, main subject in the upper half of the frame, the lower third is calm glossy marble floor, vertical 4:5, exciting rollout mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "b22d0083-3a30-453e-8205-d4c31242bd69",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162717_b22d0083-3a30-453e-8205-d4c31242bd69.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright convenience store aisle: a child-sized 131 cm humanoid robot with a rounded white shell, light-grey joints and a big round head with a dark face screen showing cheerful glowing eyes stretches one arm to a middle shelf and takes down a small plain snack box for a smiling Russian woman customer, colorful unlabeled packages softly blurred, wide 4:3 composition, subject centered, helpful neighborly mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "922d098b-07fa-45ac-a8d2-34d75ea2b1b2",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162718_922d098b-07fa-45ac-a8d2-34d75ea2b1b2.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo on a wide bright shopping mall concourse: a child-sized 131 cm humanoid robot with a rounded white shell, light-grey joints and a big round head with a dark face screen showing cheerful glowing eyes hurries past a Russian couple carrying shopping bags, its little legs blurred in a quick stride, the couple laughing as they are overtaken, skylight daylight, main subject in the upper half of the frame, the lower third is calm glossy floor, vertical 4:5, fast cheerful mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "de8e7227-0963-4216-a95a-01124944acd3",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162718_de8e7227-0963-4216-a95a-01124944acd3.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a cozy bright staff room of a toy store: a child-sized 131 cm humanoid robot with a rounded white shell, light-grey joints and a big round head with a dark face screen showing sleepy happy eyes sits on a low bench with a charging cable plugged into its back, while two shop assistants, Chinese and Russian, laugh over tea beside it, wide 4:3 composition, subject centered, cozy recharge-break mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "c6d0a18e-6a12-451e-bb25-ad37fb5652e6",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162828_c6d0a18e-6a12-451e-bb25-ad37fb5652e6.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo at the sunny entrance of a bakery cafe: a child-sized 131 cm humanoid robot with a rounded white shell, light-grey joints and a big round head with a dark face screen showing cheerful glowing eyes bows politely and waves to arriving guests with simple friendly gestures, a smiling Chinese mother and her son wave back, pastries in a softly blurred window, subject in the center of the vertical frame, vertical 9:16, simple charming mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "2235213d-6205-4137-9c74-641f0f075ac8",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162828_2235213d-6205-4137-9c74-641f0f075ac8.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo in a bright modern bookstore with softly blurred book spines: a child-sized 131 cm humanoid robot with a rounded white shell, light-grey joints, a small round sensor dome on its big round head and a dark face screen walks on its own between tall shelves, a smiling Russian engineer holding a laptop with a blurred screen watches from the end of the aisle, subject in the center of the vertical frame, vertical 9:16, smart self-guided mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "eabd4b86-9164-4f5d-ae5a-ec27a36cdf46",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162828_eabd4b86-9164-4f5d-ae5a-ec27a36cdf46.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at a bright daytime corporate party in a loft decorated with balloons: a child-sized 131 cm humanoid robot with a rounded white shell, light-grey joints and a big round head with a dark face screen showing cheerful glowing eyes dances in sync with a row of laughing Russian office employees doing the same move, confetti floating in the air, wide 4:3 composition, subject centered, festive energetic mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "9e92b73f-5173-4f58-87c5-68da21cc9d62",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162828_9e92b73f-5173-4f58-87c5-68da21cc9d62.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright flower shop: a child-sized 131 cm humanoid robot with a rounded white shell, light-grey joints and a big round head with a dark face screen showing cheerful glowing eyes carefully carries a small wrapped bouquet in both hands toward a delighted Chinese woman customer, a smiling florist watches from the counter, main subject in the upper half of the frame, the lower third is calm light tiled floor with flower buckets, vertical 4:5, gentle careful mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "09.jpg": {
+  "job": "c243591e-f22a-4ffc-96bd-43e8c9183d1c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162911_c243591e-f22a-4ffc-96bd-43e8c9183d1c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright back office of a Moscow store: a Russian store owner and her colleague smile and point at an open laptop that shows a softly blurred video of a child-sized white humanoid robot with a big round head walking along a factory test track, cups of tea and a potted plant on the desk, wide 4:3 composition, subject centered, reassured happy mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}

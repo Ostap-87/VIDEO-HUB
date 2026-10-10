@@ -1,0 +1,150 @@
+{
+ "brand": "aura",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-x2/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Робомодели · AgiBot",
+   "title": "AgiBot X2: **маленький, но шустрый**",
+   "text": "Компактный гуманоид для магазинов и мероприятий",
+   "logo": "agibot",
+   "mascot": "wave"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-x2/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Кто делает",
+   "title": "AgiBot, **Шанхай**",
+   "text": "Один из самых быстрорастущих разработчиков воплощённого ИИ в Китае. На сайте компании — новость о 100 роботах X2 в 100 магазинах.",
+   "logo": "agibot"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-x2/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Размеры",
+   "title": "X2 **в цифрах**",
+   "items": [
+    "Рост 1,31 м",
+    "Вес около 35 кг, Ultra — 39 кг",
+    "25 степеней свободы, Ultra — 30",
+    "Вылет руки 558 мм"
+   ]
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-x2/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Скорость",
+   "title": "максимум на ходу",
+   "text": "Обычный темп — до 0,8 м/с",
+   "value": "1,8 м/с"
+  },
+  {
+   "kind": "photoStat",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-x2/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Автономность",
+   "title": "от батареи 500 Вт·ч",
+   "text": "Зарядка до 1,5 ч, батарея сменная",
+   "value": "≈2 ч"
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-x2/06a.jpg",
+     "focus": "50% 30%",
+     "label": "X2",
+     "items": [
+      "25 степеней свободы",
+      "2 × RK3588",
+      "Без лидара",
+      "Без SDK"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-x2/06b.jpg",
+     "focus": "50% 30%",
+     "label": "X2 Ultra",
+     "items": [
+      "30 степеней свободы",
+      "+ Orin NX 157 TOPS",
+      "Лидар и RGB-D",
+      "SDK и навигация"
+     ]
+    }
+   ],
+   "pair": "story",
+   "kicker": "Две версии",
+   "title": "X2 или **X2 Ultra**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-x2/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Применение",
+   "title": "Где X2 **работает**",
+   "items": [
+    "Встреча покупателей",
+    "Развлечение гостей",
+    "Танцы на мероприятиях",
+    "Выставки и промо"
+   ]
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-x2/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Честно",
+   "title": "нагрузка во всём диапазоне",
+   "text": "До 3 кг — только в отдельных позах",
+   "value": "1 кг"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-x2/09.jpg",
+   "focus": "50% 30%",
+   "kicker": "Цена и поставка",
+   "title": "Цена **по запросу**",
+   "items": [
+    "Закупка на заводе по ВЭД-контракту",
+    "Ввоз на вашу компанию",
+    "Видео теста вашего робота с серийным номером",
+    "Поставка 4–7 недель"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Подберём решение",
+   "title": "Пиши в **личные сообщения** или оставляй заявку на сайте",
+   "text": "Рассчитаем стоимость и окупаемость",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-x2/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-x2/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-x2/04.jpg",
+     "focus": "50% 30%"
+    }
+   ],
+   "mascot": "pointUp"
+  }
+ ]
+}
