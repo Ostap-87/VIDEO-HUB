@@ -1,0 +1,109 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-hongkong-luxury-legacy/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Гонконг",
+   "title": "Люкс на **наследии**, а не на франшизе",
+   "text": "Гонконгская школа отельного люкса · 5 дней · Гонконг"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-hongkong-luxury-legacy/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "The Peninsula",
+   "title": "год открытия The Peninsula",
+   "text": "Один из легендарных люксовых отелей Гонконга",
+   "value": "1928"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-hongkong-luxury-legacy/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут",
+   "title": "5 дней · **Гонконг**",
+   "items": [
+    "День 1 · The Peninsula, Mandarin Oriental",
+    "День 2 · Rosewood, Shangri-La",
+    "День 3 · Langham, Wharf Hotels",
+    "День 4 · Rosewood, The Murray"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-hongkong-luxury-legacy/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "**6 семейных** групп",
+   "items": [
+    "The Peninsula (семья Kadoorie)",
+    "Mandarin Oriental (семья Keswick)",
+    "Rosewood (Cheng) · Shangri-La (Kuok)",
+    "Langham (Lo) · Wharf Hotels (Woo)"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-hongkong-luxury-legacy/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **увидите** изнутри",
+   "items": [
+    "Как семьи строят люкс на наследии",
+    "Клубная модель вместо франчайзинга",
+    "Как здание-брутализм стало люкс-отелем",
+    "Чем Гонконг отличается от материка"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-hongkong-luxury-legacy/06.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё готово **до вылета**",
+   "items": [
+    "Отели 5 звёзд, 6 ночей",
+    "Обед и ужин ежедневно",
+    "Трансферы и встреча в аэропорту",
+    "Перевод на каждой встрече"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-hongkong-luxury-legacy/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Для кого",
+   "title": "Для инвесторов в **премиум**",
+   "text": "Тем, кто вкладывает в премиальный, а не массовый сегмент: выходы на управление и инвестиции в люкс-отели"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-hongkong-luxury-legacy/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-hongkong-luxury-legacy/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-hongkong-luxury-legacy/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}

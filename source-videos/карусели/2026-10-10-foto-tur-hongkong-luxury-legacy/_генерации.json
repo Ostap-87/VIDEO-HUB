@@ -1,0 +1,86 @@
+{
+ "01.jpg": {
+  "job": "1996279a-9e70-43ac-97da-8cdebf7184f9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170829_1996279a-9e70-43ac-97da-8cdebf7184f9.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a grand heritage hotel lobby in Hong Kong: high gilded ceiling, white columns, palms and elegant afternoon tea tables with silver tiered stands, a string trio playing in the gallery above, a Hong Kong hotel manager in a classic suit welcomes a Russian business delegation with visitor badges on lanyards, soft daylight, wide 4:3 composition, subject centered, timeless luxury mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "ce01006a-7dc2-4c81-9626-91c175235531",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170829_ce01006a-7dc2-4c81-9626-91c175235531.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo of a classic 1920s hotel facade in Kowloon with a curved forecourt and fountain, a row of polished dark green vintage-style luxury cars without badges parked in front, a doorman in a crisp white uniform and cap opens a car door for a smiling Russian businesswoman with a lanyard badge, main subject in the upper half of the frame, the lower third is calm sunlit driveway, vertical 4:5, heritage elegance mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "f859df6a-340c-4f6e-9567-1d6a03a0f8be",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170907_f859df6a-340c-4f6e-9567-1d6a03a0f8be.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a Russian business delegation with visitor badges on lanyards on the open deck of a green-and-white harbour ferry crossing Victoria Harbour, the Hong Kong Island skyline and green mountain behind them, wooden benches, a Hong Kong guide pointing at the waterfront, wind in their hair, people smiling, bright sunny day, wide 4:3 composition, subject centered, joyful journey mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "afe51d31-80d1-486d-87b3-27348f8c8d74",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170908_afe51d31-80d1-486d-87b3-27348f8c8d74.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a wood-panelled library of a family-owned Hong Kong hotel group: an elegant elderly Chinese chairman with silver hair shows an album of old black-and-white hotel photographs to three Russian delegates with lanyard badges, everyone smiling, leather armchairs and a brass lamp, daylight from a tall window, main subject in the upper half of the frame, the lower third is calm patterned rug, vertical 4:5, respectful warm mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "2f200b47-fc69-4e87-8264-ec589e4ae238",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170908_2f200b47-fc69-4e87-8264-ec589e4ae238.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a Russian business delegation with visitor badges on lanyards on a green lawn in central Hong Kong in front of a 1960s modernist tower with deep-set arched windows converted into a luxury hotel, old trees around, a Hong Kong architect in a linen suit explains the conversion, everyone looking up and smiling, bright sun, wide 4:3 composition, subject centered, inspiring transformation mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "4acadbf1-0408-488f-ad4c-cccda33f4d50",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170908_4acadbf1-0408-488f-ad4c-cccda33f4d50.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo of a dim sum lunch in an elegant Cantonese restaurant in Hong Kong with a harbour view: a smiling waiter lifts the lids of bamboo steamers releasing steam over translucent shrimp dumplings, Russian business delegates with lanyard badges and their Hong Kong guide laugh and reach with chopsticks, porcelain teapots, main subject in the upper half of the frame, the lower third is calm white tablecloth, vertical 4:5, generous hospitable mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "9dd62043-a5f5-4ac4-91f5-aa0b48aa5e62",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170945_9dd62043-a5f5-4ac4-91f5-aa0b48aa5e62.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a sunlit high-floor hotel terrace overlooking Victoria Harbour and the Kowloon waterfront: a Hong Kong hotel director in a navy suit talks with two Russian investors, one holding a leather folder, glasses of sparkling water on a marble table, everyone smiling, the harbour busy with ferries below, wide 4:3 composition, subject centered, confident premium mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
