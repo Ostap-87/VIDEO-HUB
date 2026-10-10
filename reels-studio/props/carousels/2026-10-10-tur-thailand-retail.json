@@ -1,0 +1,110 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "cover",
+   "kicker": "Бизнес-экспедиция · Таиланд",
+   "title": "Вторая в мире сеть **7-Eleven**",
+   "text": "Ритейл Таиланда: конвиниенс, phygital и B2B-опт · Бангкок"
+  },
+  {
+   "kind": "stat",
+   "kicker": "CP All · 7-Eleven",
+   "value": "15 430",
+   "title": "магазинов 7-Eleven в Таиланде",
+   "text": "Больше только в Японии (данные на май 2025)"
+  },
+  {
+   "kind": "steps",
+   "kicker": "Маршрут по дням",
+   "title": "Весь ритейл — **в Бангкоке**",
+   "items": [
+    "День 1 · CP All, Central Retail",
+    "День 2 · ICONSIAM, Siam Paragon",
+    "День 3 · Makro, Lotus's",
+    "День 4 · Big C, HomePro",
+    "День 5 · CP Axtra Technology Center"
+   ]
+  },
+  {
+   "kind": "logos",
+   "kicker": "Компании маршрута",
+   "title": "Куда **едем**",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/ритейл/cp-all.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/central-retail.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/siam-piwat.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/siam-paragon.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/cp-axtra.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/lotus.svg"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/big-c.svg"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/homepro.png"
+    }
+   ]
+  },
+  {
+   "kind": "list",
+   "kicker": "Что вы поймёте",
+   "title": "Вопросы, на которые **ответит** тур",
+   "items": [
+    "Как Lotus's собрал 21 млн онлайн-заказов",
+    "Как устроен phygital-ритейл ICONSIAM",
+    "Как Makro PRO стал e-commerce №1",
+    "Как ИИ помогает покупать в Tops"
+   ]
+  },
+  {
+   "kind": "compare",
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**",
+   "left": {
+    "title": "Самостоятельно",
+    "items": [
+     "Месяцы переписки ради доступа",
+     "Нет гарантии, что визит согласуют",
+     "Логистика — на вас"
+    ]
+   },
+   "right": {
+    "title": "Global Tech Tour",
+    "items": [
+     "Трансферы включены",
+     "Сопровождение на каждой встрече",
+     "Синхронный перевод на встречах"
+    ]
+   }
+  },
+  {
+   "kind": "list",
+   "kicker": "Что входит",
+   "title": "Всё **на месте**",
+   "items": [
+    "Организация визитов по программе",
+    "Трансферы по Бангкоку и региону",
+    "Сопровождение на тайском/английском",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "cta",
+   "kicker": "Программа по дням",
+   "title": "Ритейл-маршрут **Таиланда**",
+   "text": "Стоимость и что входит — на сайте"
+  }
+ ]
+}

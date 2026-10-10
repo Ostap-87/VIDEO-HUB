@@ -1,0 +1,94 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "cover",
+   "kicker": "Бизнес-экспедиция · Китай",
+   "title": "Девять **гигантов** Китая за одну поездку",
+   "text": "China Tech Giants Expedition · 5 дней · 4 города"
+  },
+  {
+   "kind": "stat",
+   "kicker": "Unitree, Ханчжоу",
+   "value": "+335%",
+   "title": "рост выручки **Unitree** в 2025",
+   "text": "Больше половины — гуманоидные роботы"
+  },
+  {
+   "kind": "steps",
+   "kicker": "Маршрут",
+   "title": "Четыре города — **одна** линия",
+   "items": [
+    "День 1 · Пекин: Baidu, Xiaomi",
+    "День 2 · Ханчжоу: Alibaba, Unitree",
+    "День 3 · Шанхай: Meituan, RedNote",
+    "Дни 4–5 · Шэньчжэнь: Tencent, Huawei, UBTech"
+   ]
+  },
+  {
+   "kind": "logos",
+   "kicker": "Компании маршрута",
+   "title": "Компании **маршрута**",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/общие/baidu.png"
+    },
+    {
+     "src": "source-videos/логотипы/общие/xiaomi.svg"
+    },
+    {
+     "src": "source-videos/логотипы/общие/alibaba.svg"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/unitree.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/meituan.svg"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/xiaohongshu.svg"
+    },
+    {
+     "src": "source-videos/логотипы/общие/tencent.svg"
+    },
+    {
+     "src": "source-videos/логотипы/общие/huawei.svg"
+    }
+   ]
+  },
+  {
+   "kind": "list",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **поймёте**",
+   "items": [
+    "Как Baidu строит ИИ и автопилот",
+    "Экосистема Xiaomi: от смартфона до EV",
+    "Как устроен e-commerce Alibaba",
+    "Соцкоммерция RedNote"
+   ]
+  },
+  {
+   "kind": "list",
+   "kicker": "Что входит",
+   "title": "Что **входит** в тур",
+   "items": [
+    "5 дней, отели 5 звёзд",
+    "Обед и ужин ежедневно",
+    "Перелёты и трансферы внутри Китая",
+    "Перевод и сопровождение на встречах"
+   ]
+  },
+  {
+   "kind": "text",
+   "kicker": "Для кого",
+   "title": "Для тех, кто ищет **партнёров**",
+   "text": "Переговоры с топ-менеджментом девяти компаний и прямые выходы на дистрибуцию"
+  },
+  {
+   "kind": "cta",
+   "kicker": "Программа по дням",
+   "title": "Посмотрите **маршрут** целиком",
+   "text": "Стоимость и что входит — на сайте"
+  }
+ ]
+}

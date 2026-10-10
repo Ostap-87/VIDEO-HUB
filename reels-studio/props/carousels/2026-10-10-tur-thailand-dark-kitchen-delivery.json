@@ -1,0 +1,110 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "cover",
+   "kicker": "Бизнес-экспедиция · Таиланд",
+   "title": "Кто **выигрывает** доставку Бангкока",
+   "text": "Dark kitchen и быстрая доставка еды в Таиланде · Бангкок"
+  },
+  {
+   "kind": "stat",
+   "kicker": "LINE MAN Wongnai",
+   "value": "250 000",
+   "title": "курьеров у LINE MAN Wongnai",
+   "text": "10 млн+ пользователей и 500 000 точек"
+  },
+  {
+   "kind": "steps",
+   "kicker": "Маршрут по дням",
+   "title": "Вся доставка — **в Бангкоке**",
+   "items": [
+    "День 1 · LINE MAN Wongnai, Grab",
+    "День 2 · foodpanda, Robinhood",
+    "День 3 · Freshket, CloudEats",
+    "День 4 · CP Cloud Kitchen, Shopee Food",
+    "День 5 · True Digital"
+   ]
+  },
+  {
+   "kind": "logos",
+   "kicker": "Компании маршрута",
+   "title": "Куда **едем**",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/техгиганты/line-man-wongnai.png"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/grab.svg"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/foodpanda.svg"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/robinhood-scb.png"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/freshket.png"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/cloudeats.png"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/cp-cloud-kitchen.png"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/shopee-food.svg"
+    }
+   ]
+  },
+  {
+   "kind": "list",
+   "kicker": "Что вы поймёте",
+   "title": "Вопросы, на которые **ответит** тур",
+   "items": [
+    "Как LINE MAN Wongnai вышел на прибыль",
+    "Почему Robinhood продал доставку еды",
+    "Как облачные кухни встроены в CP Group",
+    "Как Freshket снабжает 26 000 ресторанов"
+   ]
+  },
+  {
+   "kind": "compare",
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**",
+   "left": {
+    "title": "Самостоятельно",
+    "items": [
+     "Месяцы переписки ради доступа",
+     "Нет гарантии, что визит согласуют",
+     "Логистика — на вас"
+    ]
+   },
+   "right": {
+    "title": "Global Tech Tour",
+    "items": [
+     "Трансферы включены",
+     "Сопровождение на каждой встрече",
+     "Синхронный перевод на встречах"
+    ]
+   }
+  },
+  {
+   "kind": "list",
+   "kicker": "Что входит",
+   "title": "Всё **на месте**",
+   "items": [
+    "Организация визитов по программе",
+    "Трансферы по Бангкоку и региону",
+    "Сопровождение на тайском/английском",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "cta",
+   "kicker": "Программа по дням",
+   "title": "Маршрут доставки **Таиланда**",
+   "text": "Стоимость и что входит — на сайте"
+  }
+ ]
+}

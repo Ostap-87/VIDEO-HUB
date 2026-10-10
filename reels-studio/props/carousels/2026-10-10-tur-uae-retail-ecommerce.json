@@ -1,0 +1,116 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "cover",
+   "kicker": "Бизнес-экспедиция · ОАЭ",
+   "title": "Как продают в Дубае: **от Noon** до люкса",
+   "text": "Ритейл и e-commerce ОАЭ · 5 дней · без перелётов"
+  },
+  {
+   "kind": "stat",
+   "kicker": "Landmark Group",
+   "value": "2200+",
+   "title": "**магазинов** в 17 странах",
+   "text": "Крупнейший частный ритейл-конгломерат Ближнего Востока"
+  },
+  {
+   "kind": "steps",
+   "kicker": "Маршрут",
+   "title": "5 дней в **Дубае**",
+   "items": [
+    "День 1 · Noon и Amazon.ae",
+    "День 2 · Apple и Majid Al Futtaim",
+    "День 3 · IKEA и Landmark Group",
+    "День 4 · Chalhoub Group и Careem",
+    "День 5 · InstaShop и LVMH"
+   ]
+  },
+  {
+   "kind": "logos",
+   "kicker": "Компании маршрута",
+   "title": "10 компаний **в программе**",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/ритейл/noon.svg"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/amazon-ae.png"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/apple.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/majid-al-futtaim.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/ikea-al-futtaim.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/landmark-group.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/chalhoub.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/lvmh.png"
+    }
+   ]
+  },
+  {
+   "kind": "list",
+   "kicker": "Что вы поймёте",
+   "title": "Как устроен **ритейл** Залива",
+   "items": [
+    "Как Noon спорит с Amazon за регион",
+    "Как Majid Al Futtaim ведёт Carrefour",
+    "Как Chalhoub работает с люксом",
+    "Как растёт доставка: Careem, InstaShop"
+   ]
+  },
+  {
+   "kind": "compare",
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**",
+   "left": {
+    "title": "Самостоятельно",
+    "items": [
+     "Месяцы переписки ради доступа",
+     "Нет гарантии, что визит согласуют",
+     "Логистика — на вас"
+    ]
+   },
+   "right": {
+    "title": "Global Tech Tour",
+    "items": [
+     "Маршрут по нашей сети контактов",
+     "Трансферы включены",
+     "Сопровождение на каждой встрече"
+    ]
+   }
+  },
+  {
+   "kind": "list",
+   "kicker": "Что входит",
+   "title": "Всё **под ключ**",
+   "items": [
+    "Визиты по программе — доступ подтверждаем",
+    "Трансферы по программе",
+    "Сопровождение на английском/арабском",
+    "Проживание 5 ночей"
+   ]
+  },
+  {
+   "kind": "text",
+   "kicker": "Для кого",
+   "title": "Для тех, кто **продаёт**",
+   "text": "Ритейлерам, брендам и e-commerce, которые смотрят на рынок Залива"
+  },
+  {
+   "kind": "cta",
+   "kicker": "Программа по дням",
+   "title": "Весь **ритейл** Дубая за 5 дней",
+   "text": "Стоимость и что входит — на сайте"
+  }
+ ]
+}

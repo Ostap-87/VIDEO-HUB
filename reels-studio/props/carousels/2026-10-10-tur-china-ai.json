@@ -1,0 +1,95 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "cover",
+   "kicker": "Бизнес-экспедиция · Китай",
+   "title": "Китай — второй мировой **центр ИИ**",
+   "text": "China AI Expedition · 5 дней · 4 города"
+  },
+  {
+   "kind": "stat",
+   "kicker": "Moonshot AI",
+   "value": "1 млн",
+   "title": "токенов контекста в Kimi K2",
+   "text": "Оценка компании к 2025 году — выше $20 млрд"
+  },
+  {
+   "kind": "steps",
+   "kicker": "Маршрут",
+   "title": "5 дней · **4 города**",
+   "items": [
+    "День 1 · Пекин: Zhipu, Moonshot, Kuaishou",
+    "День 2 · Пекин: ByteDance, Baidu",
+    "День 3 · Шанхай → Ханчжоу: SenseTime",
+    "День 4 · Ханчжоу: Alibaba, DeepSeek",
+    "День 5 · Шэньчжэнь: Tencent, BrainCo"
+   ]
+  },
+  {
+   "kind": "logos",
+   "kicker": "Компании маршрута",
+   "title": "**10 компаний** за поездку",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/ии/deepseek.svg"
+    },
+    {
+     "src": "source-videos/логотипы/ии/kimi.png"
+    },
+    {
+     "src": "source-videos/логотипы/ии/zhipu.png"
+    },
+    {
+     "src": "source-videos/логотипы/общие/baidu.png"
+    },
+    {
+     "src": "source-videos/логотипы/общие/alibaba.svg"
+    },
+    {
+     "src": "source-videos/логотипы/общие/bytedance.png"
+    },
+    {
+     "src": "source-videos/логотипы/общие/tencent.svg"
+    },
+    {
+     "src": "source-videos/логотипы/ии/sensetime.png"
+    }
+   ]
+  },
+  {
+   "kind": "list",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **увидите** изнутри",
+   "items": [
+    "Как делают LLM: GLM, Kimi, DeepSeek",
+    "Как ИИ встраивают Baidu и Alibaba",
+    "Где ИИ уже в продуктах: видео, поиск",
+    "Нейроинтерфейсы и бионика BrainCo"
+   ]
+  },
+  {
+   "kind": "list",
+   "kicker": "Что входит",
+   "title": "Всё готово **до вылета**",
+   "items": [
+    "Отели 5 звёзд, 6 ночей",
+    "Обед и ужин ежедневно",
+    "Перелёты и трансферы между городами",
+    "Перевод на каждой встрече"
+   ]
+  },
+  {
+   "kind": "text",
+   "kicker": "Для кого",
+   "title": "Для тех, кто внедряет **ИИ**",
+   "text": "Прямые выходы на партнёрство, интеграцию и дистрибуцию"
+  },
+  {
+   "kind": "cta",
+   "kicker": "Программа по дням",
+   "title": "ИИ-компании Китая — **изнутри**",
+   "text": "Стоимость и что входит — на сайте"
+  }
+ ]
+}

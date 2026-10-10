@@ -1,0 +1,110 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "cover",
+   "kicker": "Бизнес-экспедиция · Таиланд",
+   "title": "Как Таиланд строит **свой** ИИ",
+   "text": "Интернет-гиганты Таиланда: ИИ, мессенджеры, e-commerce · Бангкок"
+  },
+  {
+   "kind": "stat",
+   "kicker": "LINE Thailand",
+   "value": "50 млн+",
+   "title": "аудитория LINE в Таиланде",
+   "text": "При населении страны около 70 млн"
+  },
+  {
+   "kind": "steps",
+   "kicker": "Маршрут по дням",
+   "title": "Весь tech-стек — **в Бангкоке**",
+   "items": [
+    "День 1 · SCB 10X, Sertis",
+    "День 2 · LINE, Amity Solutions",
+    "День 3 · Lazada, Shopee",
+    "День 4 · Central JD, TikTok Shop",
+    "День 5 · TrueMoney, Botnoi"
+   ]
+  },
+  {
+   "kind": "logos",
+   "kicker": "Компании маршрута",
+   "title": "Куда **едем**",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/ии/scb-10x-abacus.png"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/line.svg"
+    },
+    {
+     "src": "source-videos/логотипы/ии/amity-solutions.png"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/lazada.svg"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/shopee.svg"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/tiktok-shop.png"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/truemoney-ascend.png"
+    },
+    {
+     "src": "source-videos/логотипы/ии/botnoi.png"
+    }
+   ]
+  },
+  {
+   "kind": "list",
+   "kicker": "Что вы поймёте",
+   "title": "Вопросы, на которые **ответит** тур",
+   "items": [
+    "Как SCB 10X создал тайскую LLM Typhoon",
+    "Как TrueMoney стал первым единорогом",
+    "Почему JD Central ушёл из Таиланда",
+    "Как TikTok Shop спорит с Shopee и Lazada"
+   ]
+  },
+  {
+   "kind": "compare",
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**",
+   "left": {
+    "title": "Самостоятельно",
+    "items": [
+     "Месяцы переписки ради доступа",
+     "Нет гарантии, что визит согласуют",
+     "Логистика — на вас"
+    ]
+   },
+   "right": {
+    "title": "Global Tech Tour",
+    "items": [
+     "Трансферы включены",
+     "Сопровождение на каждой встрече",
+     "Синхронный перевод на встречах"
+    ]
+   }
+  },
+  {
+   "kind": "list",
+   "kicker": "Что входит",
+   "title": "Всё **на месте**",
+   "items": [
+    "Организация визитов по программе",
+    "Трансферы по Бангкоку и региону",
+    "Сопровождение на тайском/английском",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "cta",
+   "kicker": "Программа по дням",
+   "title": "Tech-маршрут **Таиланда**",
+   "text": "Стоимость и что входит — на сайте"
+  }
+ ]
+}
