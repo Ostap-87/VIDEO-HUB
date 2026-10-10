@@ -1,0 +1,86 @@
+{
+ "01.jpg": {
+  "job": "77e80810-869c-4812-a5c1-b547c2935b5c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170945_77e80810-869c-4812-a5c1-b547c2935b5c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside a bright Chinese cake shop in Beijing: long glass display cases filled with colorful fresh cream cakes, mango mousse and fruit tarts, a smiling Chinese pastry chef in a white jacket presents a cake decorated with fresh berries to a Russian business delegation with visitor badges on lanyards, delegates smiling and taking photos, wide 4:3 composition, subject centered, sweet delightful mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "8ea0cb30-4fba-4eea-bd45-c3873e046f13",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170945_8ea0cb30-4fba-4eea-bd45-c3873e046f13.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a large bright bakery factory in China: a long conveyor carries hundreds of identical golden sponge cake bases toward the cream station, a smiling Chinese worker in white uniform and hairnet checks them, two Russian delegates in white coats and hairnets look along the line in amazement, main subject in the upper half of the frame, the lower third is calm clean factory floor, vertical 4:5, sense of mass scale. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "2406a418-e8ff-486d-88ec-3e493cf8b264",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170945_2406a418-e8ff-486d-88ec-3e493cf8b264.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a Russian business delegation with visitor badges on lanyards walking down a sunny tree-lined street in Shanghai's former French Concession, each holding a small white pastry box, plane trees, low brick villas and café terraces with blurred signs, a Chinese guide leading and laughing, wide 4:3 composition, subject centered, sweet travel mood between visits. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "40cac9d3-dc3e-41ae-8272-70347091998f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171021_40cac9d3-dc3e-41ae-8272-70347091998f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright tasting room of a Chinese confectionery company: a team of Chinese pastry developers in white coats presents rows of small mousse cakes and fruit tartlets on a long table, Russian business delegates with lanyard badges taste with tiny forks and smile, one gives a thumbs up, main subject in the upper half of the frame, the lower third is calm white marble table, vertical 4:5, friendly partnership mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "7ee5b34e-e852-4ee3-ab0e-a7577918976b",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171022_7ee5b34e-e852-4ee3-ab0e-a7577918976b.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright mooncake workshop in southern China: Chinese bakers in white uniforms press golden mooncakes out of carved wooden molds with flower patterns, trays of glossy baked mooncakes and egg rolls cooling on racks, a Russian business delegation in hairnets and white coats watches closely and smiles, wide 4:3 composition, subject centered, crafted traditional mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "de381e35-baf8-4f4a-9479-66c93636d99c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171023_de381e35-baf8-4f4a-9479-66c93636d99c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at a marble counter of a bakery café in Shenzhen: a young Chinese interpreter in a light blouse translates while a cheerful pastry chef holding a whisk explains a recipe to a Russian businesswoman with a lanyard badge, all three laughing, croissants and pastel macarons nearby, main subject in the upper half of the frame, the lower third is calm white marble counter, vertical 4:5, easy communication mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "bc22af32-0e9f-48e3-8d53-3c0b59082fec",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171022_bc22af32-0e9f-48e3-8d53-3c0b59082fec.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright bakery kitchen in southern China: a Russian bakery-chain owner in his forties with a lanyard badge holds a tray of fresh egg tarts with caramelized tops, laughing together with a Chinese head baker in a white cap, ovens and flour-dusted wooden tables behind, warm daylight, wide 4:3 composition, subject centered, partnership and craft mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
