@@ -281,7 +281,7 @@ const Value: React.FC<{text?: string; s: Style}> = ({text, s}) => {
 };
 
 const PhotoStat: React.FC<P> = (p) => {
-  const {sl, s} = p;
+  const {sl, s, mascot} = p;
   if (!frameOf(sl)) return <Overlay {...p} titleSize={46} top={420} stat />;
   const pic = mainPic(sl);
   const OVERLAP = 96; // плашка с цифрой заходит на фото снизу
@@ -299,7 +299,7 @@ const PhotoStat: React.FC<P> = (p) => {
       ) : (
         <Missing s={s} style={{flex: "1 1 0", minHeight: 400}} />
       )}
-      <Plate s={s} style={{marginTop: -OVERLAP, marginLeft: 32, marginRight: 32, position: "relative", display: "flex", flexDirection: "column", padding: "30px 40px 32px", flexShrink: 0}}>
+      <Plate s={s} style={{marginTop: -OVERLAP, marginLeft: 32, marginRight: 32, position: "relative", display: "flex", flexDirection: "column", padding: `30px ${mascot ? MASCOT_SPOT.room - 32 : 40}px 32px 40px`, flexShrink: 0}}>
         <Kicker text={sl.kicker} s={s} style={{marginBottom: 10}} />
         <Value text={sl.value} s={s} />
         <Title text={sl.title} s={s} size={46} lh={1.14} style={{marginTop: 14}} />

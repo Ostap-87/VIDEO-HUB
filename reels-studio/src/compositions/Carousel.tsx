@@ -254,7 +254,9 @@ export const Carousel: React.FC<CarouselProps> = ({brand, slides, guides}) => {
   const full = isFullBleed(sl);
   // робот Aura: на обложке и финале текстовых слайдов, на photoCta; на остальных — если указан mascot
   const auto: GestureKind | undefined = sl.kind === "cover" ? "wave" : sl.kind === "cta" || sl.kind === "photoCta" ? "pointUp" : undefined;
-  const gesture: GestureKind | null = brand !== "aura" || sl.mascot === "none" || full ? null : (sl.mascot as GestureKind | undefined) ?? auto ?? null;
+  // робота нет на слайдах без рамки и там, где фото занимают всё место (photoPair, photoFull)
+  const noRoom = full || sl.kind === "photoPair" || sl.kind === "photoFull";
+  const gesture: GestureKind | null = brand !== "aura" || sl.mascot === "none" || noRoom ? null : (sl.mascot as GestureKind | undefined) ?? auto ?? null;
   const t = i; // fps 1: кадр = секунда
   const spot = photo ? {x: MASCOT_SPOT.x, y: MASCOT_SPOT.y} : {x: sl.kind === "cta" ? 830 : 890, y: sl.kind === "cta" ? 1170 : 1160};
   const scale = photo ? MASCOT_SPOT.scale : 1.2;
