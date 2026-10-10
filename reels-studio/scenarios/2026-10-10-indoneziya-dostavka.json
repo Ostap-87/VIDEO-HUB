@@ -1,0 +1,203 @@
+{
+ "name": "2026-10-10-indoneziya-dostavka",
+ "brand": "gtt",
+ "theme": "obshchee",
+ "tour_id": "indonesia-dark-kitchen-delivery-expedition",
+ "title": "Central/Dark Kitchen и быстрая доставка еды в Индонезии",
+ "targetSeconds": 90,
+ "status": "draft",
+ "sources": [
+  "Ostap-87/SINOTECH src/data/tours.json и companies.json (данные сайта globaltechtour.ru), тур indonesia-dark-kitchen-delivery-expedition"
+ ],
+ "blocks": [
+  {
+   "part": "hook",
+   "say": "ShopeeFood пришёл в Индонезию, когда рынок уже держали Grab и GoFood. А к 2024 году обогнал GoFood по обороту: 2,3 миллиарда долларов против 1,9. Как? Едем разбираться.",
+   "overlays": [
+    {
+     "type": "numbers",
+     "text": "$2,3 vs $1,9 млрд",
+     "sub": "GMV ShopeeFood и GoFood, 2024",
+     "on": "2,3 миллиарда долларов"
+    },
+    {
+     "type": "zoom",
+     "kind": "punch",
+     "on": "обогнал GoFood"
+    },
+    {
+     "type": "broll",
+     "find": "курьер доставки еды на мотобайке Джакарта",
+     "on": "рынок уже держали",
+     "transition": "circle"
+    }
+   ]
+  },
+  {
+   "part": "route",
+   "say": "Шесть дней в Джакарте, без перелётов. Платформы доставки, облачные кухни и цифровые закусочные.",
+   "overlays": [
+    {
+     "type": "cities",
+     "names": [
+      "Джакарта"
+     ],
+     "on": "Джакарте"
+    },
+    {
+     "type": "checklists",
+     "title": "Маршрут",
+     "items": [
+      {
+       "text": "Платформы доставки",
+       "on": "Платформы доставки"
+      },
+      {
+       "text": "Облачные кухни",
+       "on": "облачные кухни"
+      },
+      {
+       "text": "Цифровые закусочные",
+       "on": "цифровые закусочные"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "part": "platforms",
+   "say": "GoTo с GoFood и сетью GoKitchen, Grab и ShopeeFood. Три лидера доставки еды в стране.",
+   "overlays": [
+    {
+     "type": "logos",
+     "items": [
+      "goto",
+      "grab-indonesia",
+      "shopee-food"
+     ],
+     "on": "GoTo"
+    },
+    {
+     "type": "zoom",
+     "kind": "push",
+     "on": "Три лидера"
+    }
+   ]
+  },
+  {
+   "part": "kitchens",
+   "say": "Yummy Corp, крупнейший оператор облачных кухонь: больше семидесяти кухонь и деньги SoftBank. Everplate, кухни больше чем для полутора сотен брендов, включая Wingstop. Hangry, сто семнадцать точек и выход в Малайзию. Legit Group и Dailybox. И Wahyoo, который оцифровывает уличные закусочные, туда вложилась Coca-Cola.",
+   "overlays": [
+    {
+     "type": "logos",
+     "items": [
+      "yummy-corp"
+     ],
+     "flip": true,
+     "on": "Yummy Corp"
+    },
+    {
+     "type": "numbers",
+     "text": "70+",
+     "sub": "облачных кухонь Yummykitchen",
+     "on": "больше семидесяти кухонь"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "everplate",
+      "hangry"
+     ],
+     "on": "Everplate"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "legit-group",
+      "dailybox-group"
+     ],
+     "on": "Legit Group"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "wahyoo"
+     ],
+     "flip": true,
+     "on": "Wahyoo"
+    },
+    {
+     "type": "broll",
+     "find": "облачная кухня повара заказы доставки",
+     "on": "облачных кухонь",
+     "transition": "wipe"
+    }
+   ]
+  },
+  {
+   "part": "value",
+   "say": "Вы увидите, как ресторан живёт без зала, только в доставке, и поймёте, какую модель кухни запускать у себя.",
+   "overlays": [
+    {
+     "type": "chips",
+     "items": [
+      {
+       "text": "Зал ресторана",
+       "strikeOn": "без зала"
+      }
+     ],
+     "on": "ресторан живёт"
+    },
+    {
+     "type": "zoom",
+     "kind": "punch",
+     "on": "только в доставке"
+    }
+   ]
+  },
+  {
+   "part": "about",
+   "say": "Меня зовут Остап Доценко. Больше десяти лет организую бизнес-визиты в Азии. На всех встречах сопровождение и синхронный перевод, трансферы включены.",
+   "overlays": [
+    {
+     "type": "chips",
+     "items": [
+      {
+       "text": "Остап Доценко"
+      }
+     ],
+     "on": "Остап Доценко"
+    },
+    {
+     "type": "numbers",
+     "text": "10+",
+     "sub": "лет бизнес-визитов в Азии",
+     "on": "десяти лет"
+    }
+   ]
+  },
+  {
+   "part": "cta",
+   "say": "Рестораторы, сервисы доставки, владельцы dark kitchen и франшиз общепита. Заходите на сайт Global Tech Tour или пишите мне в личные сообщения.",
+   "overlays": [
+    {
+     "type": "site",
+     "on": "Заходите на сайт"
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "title": "Экспедиции",
+  "button": "globaltechtour.ru"
+ },
+ "notes": [
+  "Расхождение: в stats 10 компаний, в маршруте и описаниях 9. Число компаний не называю.",
+  "По market_note визиты требуют подтверждения у компаний: в тексте не говорю «визиты согласованы».",
+  "start_date не указан — даты не называю.",
+  "Логотипа Grab Indonesia (grab-indonesia) нет в library/brands.json (есть только grab-thailand)."
+ ],
+ "fullText": "ShopeeFood пришёл в Индонезию, когда рынок уже держали Grab и GoFood. А к 2024 году обогнал GoFood по обороту: 2,3 миллиарда долларов против 1,9. Как? Едем разбираться.\n\nШесть дней в Джакарте, без перелётов. Платформы доставки, облачные кухни и цифровые закусочные.\n\nGoTo с GoFood и сетью GoKitchen, Grab и ShopeeFood. Три лидера доставки еды в стране.\n\nYummy Corp, крупнейший оператор облачных кухонь: больше семидесяти кухонь и деньги SoftBank. Everplate, кухни больше чем для полутора сотен брендов, включая Wingstop. Hangry, сто семнадцать точек и выход в Малайзию. Legit Group и Dailybox. И Wahyoo, который оцифровывает уличные закусочные, туда вложилась Coca-Cola.\n\nВы увидите, как ресторан живёт без зала, только в доставке, и поймёте, какую модель кухни запускать у себя.\n\nМеня зовут Остап Доценко. Больше десяти лет организую бизнес-визиты в Азии. На всех встречах сопровождение и синхронный перевод, трансферы включены.\n\nРестораторы, сервисы доставки, владельцы dark kitchen и франшиз общепита. Заходите на сайт Global Tech Tour или пишите мне в личные сообщения.",
+ "wordCount": 159,
+ "estSeconds": 65
+}

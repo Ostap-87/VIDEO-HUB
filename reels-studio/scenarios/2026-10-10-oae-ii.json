@@ -1,0 +1,207 @@
+{
+ "name": "2026-10-10-oae-ii",
+ "brand": "gtt",
+ "theme": "ai",
+ "tour_id": "uae-ai-tech-expedition",
+ "title": "ИИ и технологии в ОАЭ: от G42 до региональных штаб-квартир Big Tech",
+ "targetSeconds": 90,
+ "status": "draft",
+ "sources": [
+  "Ostap-87/SINOTECH src/data/tours.json и companies.json (данные сайта globaltechtour.ru), тур uae-ai-tech-expedition"
+ ],
+ "blocks": [
+  {
+   "part": "hook",
+   "say": "Языковую модель Falcon на сорок миллиардов параметров сделали не в Кремниевой долине, а в Абу-Даби.",
+   "overlays": [
+    {
+     "type": "numbers",
+     "text": "40 млрд",
+     "sub": "параметров у Falcon LLM",
+     "on": "сорок миллиардов"
+    },
+    {
+     "type": "zoom",
+     "kind": "punch",
+     "on": "в Абу-Даби"
+    },
+    {
+     "type": "broll",
+     "find": "Абу-Даби футуристичный город ночью",
+     "on": "Абу-Даби",
+     "transition": "circle"
+    }
+   ]
+  },
+  {
+   "part": "route",
+   "say": "Пять дней, одиннадцать компаний: Абу-Даби и Дубай.",
+   "overlays": [
+    {
+     "type": "numbers",
+     "text": "11",
+     "sub": "компаний за 5 дней",
+     "on": "одиннадцать компаний"
+    },
+    {
+     "type": "cities",
+     "names": [
+      "Абу-Даби",
+      "Дубай"
+     ],
+     "on": "Абу-Даби и Дубай"
+    }
+   ]
+  },
+  {
+   "part": "abudhabi",
+   "say": "G42, государственный ИИ-чемпион: Microsoft вложил в него полтора миллиарда долларов. Hub71, где уже 525 стартапов. И институт TII, создатель Falcon.",
+   "overlays": [
+    {
+     "type": "logos",
+     "items": [
+      "g42"
+     ],
+     "on": "G42",
+     "flip": true
+    },
+    {
+     "type": "numbers",
+     "text": "$1,5 млрд",
+     "sub": "инвестиция Microsoft в G42",
+     "on": "полтора миллиарда"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "hub71"
+     ],
+     "on": "Hub71"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "technology-innovation-institute"
+     ],
+     "on": "TII"
+    }
+   ]
+  },
+  {
+   "part": "dubai",
+   "say": "Потом Dubai Internet City: региональные штаб-квартиры Google, AWS, Meta, Microsoft, Alibaba Cloud и TikTok. Офис Google начинался здесь в 2008 году с пяти человек, сегодня их сотни.",
+   "overlays": [
+    {
+     "type": "logos",
+     "items": [
+      "google-mena",
+      "aws-mena",
+      "meta-mena"
+     ],
+     "on": "Google"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "microsoft-mea",
+      "alibaba-cloud-middle-east",
+      "tiktok-mena"
+     ],
+     "on": "Microsoft"
+    },
+    {
+     "type": "broll",
+     "find": "Dubai Internet City офисы",
+     "on": "Dubai Internet City",
+     "transition": "wipe"
+    }
+   ]
+  },
+  {
+   "part": "finale",
+   "say": "Финал в Careem, первом технологическом единороге региона, Uber купил его за 3,1 миллиарда долларов. И в Dubai Future Foundation, который построил Музей будущего.",
+   "overlays": [
+    {
+     "type": "logos",
+     "items": [
+      "careem"
+     ],
+     "on": "Careem"
+    },
+    {
+     "type": "numbers",
+     "text": "$3,1 млрд",
+     "sub": "сделка Uber и Careem, 2019",
+     "on": "3,1 миллиарда"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "dubai-future-foundation"
+     ],
+     "on": "Dubai Future Foundation"
+    },
+    {
+     "type": "broll",
+     "find": "Музей будущего Дубай",
+     "on": "Музей будущего",
+     "transition": "zoom"
+    }
+   ]
+  },
+  {
+   "part": "value",
+   "say": "Вы увидите, как одна страна собирает у себя ИИ-инфраструктуру всего региона, и поймёте, как выходить на рынок MENA.",
+   "overlays": [
+    {
+     "type": "zoom",
+     "kind": "push",
+     "on": "рынок MENA"
+    }
+   ]
+  },
+  {
+   "part": "about",
+   "say": "Меня зовут Остап Доценко. Больше десяти лет организую бизнес-визиты в Азии. Трансферы включены, на каждой встрече сопровождение на арабском и английском.",
+   "overlays": [
+    {
+     "type": "chips",
+     "items": [
+      {
+       "text": "Остап Доценко"
+      }
+     ],
+     "on": "Остап Доценко"
+    },
+    {
+     "type": "numbers",
+     "text": "10+",
+     "sub": "лет бизнес-визитов в Азии",
+     "on": "десяти лет"
+    }
+   ]
+  },
+  {
+   "part": "cta",
+   "say": "IT-компании, разработчики ИИ, стартапы и инвесторы. Заходите на сайт Global Tech Tour или пишите мне в личные сообщения.",
+   "overlays": [
+    {
+     "type": "site",
+     "on": "Заходите на сайт"
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "title": "Экспедиции",
+  "button": "globaltechtour.ru"
+ },
+ "notes": [
+  "«Музей будущего построил» — по описанию: ключевой проект Dubai Future Foundation — Museum of the Future.",
+  "Визиты подтверждаются у компаний индивидуально, возможны NDA (market_note) — не обещаю «заходим во все».",
+  "Hub71: 525 стартапов — к июню 2026 (описание hub71)."
+ ],
+ "fullText": "Языковую модель Falcon на сорок миллиардов параметров сделали не в Кремниевой долине, а в Абу-Даби.\n\nПять дней, одиннадцать компаний: Абу-Даби и Дубай.\n\nG42, государственный ИИ-чемпион: Microsoft вложил в него полтора миллиарда долларов. Hub71, где уже 525 стартапов. И институт TII, создатель Falcon.\n\nПотом Dubai Internet City: региональные штаб-квартиры Google, AWS, Meta, Microsoft, Alibaba Cloud и TikTok. Офис Google начинался здесь в 2008 году с пяти человек, сегодня их сотни.\n\nФинал в Careem, первом технологическом единороге региона, Uber купил его за 3,1 миллиарда долларов. И в Dubai Future Foundation, который построил Музей будущего.\n\nВы увидите, как одна страна собирает у себя ИИ-инфраструктуру всего региона, и поймёте, как выходить на рынок MENA.\n\nМеня зовут Остап Доценко. Больше десяти лет организую бизнес-визиты в Азии. Трансферы включены, на каждой встрече сопровождение на арабском и английском.\n\nIT-компании, разработчики ИИ, стартапы и инвесторы. Заходите на сайт Global Tech Tour или пишите мне в личные сообщения.",
+ "wordCount": 150,
+ "estSeconds": 61
+}

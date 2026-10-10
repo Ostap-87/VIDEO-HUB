@@ -1,0 +1,214 @@
+{
+ "name": "2026-10-10-tailand-chai-kofe",
+ "brand": "gtt",
+ "theme": "chai-kofe",
+ "tour_id": "thailand-bubble-tea-coffee-expedition",
+ "title": "Бабл-ти и кофейная индустрия Таиланда",
+ "targetSeconds": 90,
+ "status": "draft",
+ "sources": [
+  "Ostap-87/SINOTECH src/data/tours.json и companies.json (данные сайта globaltechtour.ru), тур thailand-bubble-tea-coffee-expedition"
+ ],
+ "blocks": [
+  {
+   "part": "hook",
+   "say": "Больше 5000 кофеен, в основном на заправках. Это Café Amazon, одна из крупнейших кофейных сетей мира, и она из Таиланда.",
+   "overlays": [
+    {
+     "type": "numbers",
+     "text": "5000+",
+     "sub": "точек Café Amazon в мире",
+     "on": "5000 кофеен"
+    },
+    {
+     "type": "zoom",
+     "kind": "punch",
+     "on": "на заправках"
+    },
+    {
+     "type": "broll",
+     "find": "кофейня на заправке Таиланд",
+     "on": "заправках",
+     "transition": "circle"
+    }
+   ]
+  },
+  {
+   "part": "route",
+   "say": "Десять компаний: кофе, тайский чай и бабл-ти. Весь маршрут в Бангкоке.",
+   "overlays": [
+    {
+     "type": "numbers",
+     "text": "10",
+     "sub": "компаний кофе и чая",
+     "on": "Десять компаний"
+    },
+    {
+     "type": "cities",
+     "names": [
+      "Бангкок"
+     ],
+     "on": "Бангкоке"
+    }
+   ]
+  },
+  {
+   "part": "chains",
+   "say": "Café Amazon и Inthanin, ещё одна сеть с заправок, больше 1400 точек. ChaTraMue, тот самый оранжевый тайский чай, около 70% брендированного рынка. И премиальный Karun Thai Tea.",
+   "overlays": [
+    {
+     "type": "logos",
+     "items": [
+      "cafe-amazon",
+      "inthanin"
+     ],
+     "on": "Inthanin"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "chatramue"
+     ],
+     "flip": true,
+     "on": "ChaTraMue"
+    },
+    {
+     "type": "numbers",
+     "text": "70%",
+     "sub": "брендированного рынка чая у ChaTraMue",
+     "on": "70%"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "karun-thai-tea"
+     ],
+     "on": "Karun Thai Tea"
+    }
+   ]
+  },
+  {
+   "part": "specialty",
+   "say": "Specialty-кофе: Pacamara и Roots Coffee, пионеры third-wave в Бангкоке. Class Café и True Coffee, где работал робот-бариста.",
+   "overlays": [
+    {
+     "type": "logos",
+     "items": [
+      "pacamara",
+      "roots-coffee"
+     ],
+     "on": "Pacamara"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "class-cafe",
+      "true-coffee"
+     ],
+     "on": "Class Café"
+    },
+    {
+     "type": "broll",
+     "find": "робот бариста кофейня",
+     "on": "робот-бариста",
+     "transition": "wipe"
+    }
+   ]
+  },
+  {
+   "part": "bubble",
+   "say": "Финал — бабл-ти: Fire Tiger с сырной пенкой, популярный ещё до прихода тайваньских сетей, KOI Thé и Gong Cha.",
+   "overlays": [
+    {
+     "type": "logos",
+     "items": [
+      "fire-tiger"
+     ],
+     "on": "Fire Tiger"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "koi-the-thailand",
+      "gong-cha-thailand"
+     ],
+     "on": "KOI Thé"
+    },
+    {
+     "type": "broll",
+     "find": "бабл-ти тапиока стакан",
+     "on": "бабл-ти",
+     "transition": "zoom"
+    }
+   ]
+  },
+  {
+   "part": "value",
+   "say": "Вы увидите, как напитки продают на заправке, в торговом центре и в киоске. И поймёте, какой формат подойдёт вам.",
+   "overlays": [
+    {
+     "type": "checklists",
+     "title": "Форматы",
+     "items": [
+      {
+       "text": "Заправка",
+       "on": "на заправке"
+      },
+      {
+       "text": "Торговый центр",
+       "on": "в торговом центре"
+      },
+      {
+       "text": "Киоск",
+       "on": "в киоске"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "part": "about",
+   "say": "Меня зовут Остап Доценко. Больше десяти лет организую бизнес-визиты в Азии. Трансферы, сопровождение и синхронный перевод на всех встречах включены.",
+   "overlays": [
+    {
+     "type": "chips",
+     "items": [
+      {
+       "text": "Остап Доценко"
+      }
+     ],
+     "on": "Остап Доценко"
+    },
+    {
+     "type": "numbers",
+     "text": "10+",
+     "sub": "лет бизнес-визитов в Азии",
+     "on": "десяти лет"
+    }
+   ]
+  },
+  {
+   "part": "cta",
+   "say": "Владельцы кофеен и сетей бабл-ти, франчайзи и обжарщики. Заходите на сайт Global Tech Tour или пишите мне в личные сообщения.",
+   "overlays": [
+    {
+     "type": "site",
+     "on": "Заходите на сайт"
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "title": "Экспедиции",
+  "button": "globaltechtour.ru"
+ },
+ "notes": [
+  "Дни не называю: в stats 6 дней, а в программе по дням 5 дней визитов (6 ночей).",
+  "market_note: визиты требуют подтверждения у компаний — в тексте не обещаю «зайдём во все» и «всё согласовано», только то, что включено (трансферы, сопровождение, перевод).",
+  "«Пионеры third-wave» — по описанию Roots Coffee; Pacamara — specialty-обжарщик с академией бариста.",
+  "Робот-бариста работал во флагмане True Coffee 2021 года — поэтому в прошедшем времени."
+ ],
+ "fullText": "Больше 5000 кофеен, в основном на заправках. Это Café Amazon, одна из крупнейших кофейных сетей мира, и она из Таиланда.\n\nДесять компаний: кофе, тайский чай и бабл-ти. Весь маршрут в Бангкоке.\n\nCafé Amazon и Inthanin, ещё одна сеть с заправок, больше 1400 точек. ChaTraMue, тот самый оранжевый тайский чай, около 70% брендированного рынка. И премиальный Karun Thai Tea.\n\nSpecialty-кофе: Pacamara и Roots Coffee, пионеры third-wave в Бангкоке. Class Café и True Coffee, где работал робот-бариста.\n\nФинал — бабл-ти: Fire Tiger с сырной пенкой, популярный ещё до прихода тайваньских сетей, KOI Thé и Gong Cha.\n\nВы увидите, как напитки продают на заправке, в торговом центре и в киоске. И поймёте, какой формат подойдёт вам.\n\nМеня зовут Остап Доценко. Больше десяти лет организую бизнес-визиты в Азии. Трансферы, сопровождение и синхронный перевод на всех встречах включены.\n\nВладельцы кофеен и сетей бабл-ти, франчайзи и обжарщики. Заходите на сайт Global Tech Tour или пишите мне в личные сообщения.",
+ "wordCount": 152,
+ "estSeconds": 62
+}

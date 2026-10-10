@@ -1,0 +1,202 @@
+{
+ "name": "2026-10-10-gonkong-lyuks",
+ "brand": "gtt",
+ "theme": "obshchee",
+ "tour_id": "hongkong-luxury-legacy",
+ "title": "Гонконгская школа отельного люкса",
+ "targetSeconds": 90,
+ "status": "draft",
+ "sources": [
+  "Ostap-87/SINOTECH src/data/tours.json и companies.json (данные сайта globaltechtour.ru), тур hongkong-luxury-legacy"
+ ],
+ "blocks": [
+  {
+   "part": "hook",
+   "say": "Отель открылся в 1928 году и до сих пор считается легендой. Это The Peninsula в Гонконге. Как семьи десятилетиями держат люкс без массовой франшизы?",
+   "overlays": [
+    {
+     "type": "numbers",
+     "text": "1928",
+     "sub": "год открытия The Peninsula Hong Kong",
+     "on": "1928 году"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "hsh-peninsula-hongkong"
+     ],
+     "on": "The Peninsula"
+    },
+    {
+     "type": "chips",
+     "items": [
+      {
+       "text": "Массовая франшиза",
+       "strikeOn": "без массовой франшизы"
+      }
+     ],
+     "on": "держат люкс"
+    }
+   ]
+  },
+  {
+   "part": "route",
+   "say": "Пять дней в Гонконге, без перелётов. Шесть семейных гостиничных групп и визиты в их знаковые отели.",
+   "overlays": [
+    {
+     "type": "cities",
+     "names": [
+      "Гонконг"
+     ],
+     "on": "в Гонконге"
+    },
+    {
+     "type": "numbers",
+     "text": "6",
+     "sub": "семейных гостиничных групп",
+     "on": "Шесть семейных"
+    }
+   ]
+  },
+  {
+   "part": "families",
+   "say": "Peninsula семьи Kadoorie. Mandarin Oriental, флагман работает с 1963 года. Rosewood семьи Cheng. Shangri-La Роберта Куока, один из крупнейших люксовых операторов Азии. Langham и Wharf Hotels с брендами Marco Polo и Niccolo.",
+   "overlays": [
+    {
+     "type": "logos",
+     "items": [
+      "mandarin-oriental-hotel-group"
+     ],
+     "on": "Mandarin Oriental"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "rosewood-hotel-group"
+     ],
+     "on": "Rosewood"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "shangri-la-asia"
+     ],
+     "flip": true,
+     "on": "Shangri-La"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "langham-hospitality-great-eagle",
+      "wharf-hotels"
+     ],
+     "on": "Langham и Wharf"
+    }
+   ]
+  },
+  {
+   "part": "design",
+   "say": "Отдельный день про дизайн: Rosewood на Victoria Dockside и The Murray, бывшее правительственное здание в стиле брутализм, которое стало люксовым отелем.",
+   "overlays": [
+    {
+     "type": "broll",
+     "find": "люксовый отель Гонконг гавань Виктория",
+     "on": "Victoria Dockside",
+     "transition": "circle"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "the-murray-niccolo-hongkong"
+     ],
+     "on": "The Murray"
+    },
+    {
+     "type": "zoom",
+     "kind": "punch",
+     "on": "стало люксовым отелем"
+    }
+   ]
+  },
+  {
+   "part": "value",
+   "say": "Вы поймёте, как строят люкс на наследии и частном капитале, а не на числе номеров. Это особенно ценно, если вы работаете в премиуме.",
+   "overlays": [
+    {
+     "type": "checklists",
+     "title": "Клубная модель",
+     "items": [
+      {
+       "text": "Наследие",
+       "on": "на наследии"
+      },
+      {
+       "text": "Частный капитал",
+       "on": "частном капитале"
+      },
+      {
+       "text": "Премиум, а не масса",
+       "on": "работаете в премиуме"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "part": "about",
+   "say": "Меня зовут Остап Доценко. Больше десяти лет работаю с Китаем и свободно говорю по-китайски. Встречи с топ-менеджментом, перевод на каждой встрече и жильё в пятизвёздочных отелях.",
+   "overlays": [
+    {
+     "type": "chips",
+     "items": [
+      {
+       "text": "Остап Доценко"
+      }
+     ],
+     "on": "Остап Доценко"
+    },
+    {
+     "type": "numbers",
+     "text": "10+",
+     "sub": "лет работы с Китаем",
+     "on": "десяти лет"
+    },
+    {
+     "type": "chips",
+     "items": [
+      {
+       "text": "Топ-менеджмент"
+      },
+      {
+       "text": "Отели 5*"
+      }
+     ],
+     "on": "Встречи с топ-менеджментом"
+    }
+   ]
+  },
+  {
+   "part": "cta",
+   "say": "Владельцы бутик-отелей, инвесторы в люкс, девелоперы и управляющие. Заходите на сайт Global Tech Tour или пишите мне в личные сообщения.",
+   "overlays": [
+    {
+     "type": "site",
+     "on": "Заходите на сайт"
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "title": "Экспедиции",
+  "button": "globaltechtour.ru"
+ },
+ "notes": [
+  "Расхождение: в stats 8 компаний, а в маршруте 7 разных (Rosewood стоит в днях 2 и 4); число компаний не называю — «шесть семейных групп» по tagline и includes.",
+  "Закрытая сессия с семьями в день 5 — «по подтверждению», в тексте её не обещаю.",
+  "Тур в Гонконг (country cn) — блок «about» в китайском варианте.",
+  "Логотипов Peninsula, Mandarin Oriental, Rosewood, Shangri-La, Langham, Wharf Hotels, The Murray нет в library/brands.json."
+ ],
+ "fullText": "Отель открылся в 1928 году и до сих пор считается легендой. Это The Peninsula в Гонконге. Как семьи десятилетиями держат люкс без массовой франшизы?\n\nПять дней в Гонконге, без перелётов. Шесть семейных гостиничных групп и визиты в их знаковые отели.\n\nPeninsula семьи Kadoorie. Mandarin Oriental, флагман работает с 1963 года. Rosewood семьи Cheng. Shangri-La Роберта Куока, один из крупнейших люксовых операторов Азии. Langham и Wharf Hotels с брендами Marco Polo и Niccolo.\n\nОтдельный день про дизайн: Rosewood на Victoria Dockside и The Murray, бывшее правительственное здание в стиле брутализм, которое стало люксовым отелем.\n\nВы поймёте, как строят люкс на наследии и частном капитале, а не на числе номеров. Это особенно ценно, если вы работаете в премиуме.\n\nМеня зовут Остап Доценко. Больше десяти лет работаю с Китаем и свободно говорю по-китайски. Встречи с топ-менеджментом, перевод на каждой встрече и жильё в пятизвёздочных отелях.\n\nВладельцы бутик-отелей, инвесторы в люкс, девелоперы и управляющие. Заходите на сайт Global Tech Tour или пишите мне в личные сообщения.",
+ "wordCount": 162,
+ "estSeconds": 66
+}

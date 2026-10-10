@@ -1,0 +1,222 @@
+{
+ "name": "2026-10-10-oae-logistika",
+ "brand": "gtt",
+ "theme": "obshchee",
+ "tour_id": "uae-logistics-ports-expedition",
+ "title": "Логистика и порты ОАЭ: DP World, Jebel Ali и грузовая авиация Дубая",
+ "targetSeconds": 90,
+ "status": "draft",
+ "sources": [
+  "Ostap-87/SINOTECH src/data/tours.json и companies.json (данные сайта globaltechtour.ru), тур uae-logistics-ports-expedition"
+ ],
+ "blocks": [
+  {
+   "part": "hook",
+   "say": "Крупнейший искусственный морской порт мира — Джебель-Али в Дубае. А рядом с ним свободная зона, где больше 9500 компаний.",
+   "overlays": [
+    {
+     "type": "zoom",
+     "kind": "punch",
+     "on": "Крупнейший искусственный"
+    },
+    {
+     "type": "broll",
+     "find": "порт Джебель-Али контейнеры краны с высоты",
+     "on": "морской порт",
+     "transition": "circle"
+    },
+    {
+     "type": "numbers",
+     "text": "9500+",
+     "sub": "компаний в свободной зоне JAFZA",
+     "on": "9500 компаний"
+    }
+   ]
+  },
+  {
+   "part": "route",
+   "say": "Пять дней, десять компаний, и всё в Дубае, без единого перелёта.",
+   "overlays": [
+    {
+     "type": "numbers",
+     "text": "10",
+     "sub": "компаний за 5 дней",
+     "on": "десять компаний"
+    },
+    {
+     "type": "cities",
+     "names": [
+      "Дубай"
+     ],
+     "on": "в Дубае"
+    }
+   ]
+  },
+  {
+   "part": "port",
+   "say": "DP World, оператор больше 80 терминалов в сорока с лишним странах. Свободная зона JAFZA, около четверти ВВП Дубая. Maersk, крупнейший в мире контейнерный перевозчик.",
+   "overlays": [
+    {
+     "type": "logos",
+     "items": [
+      "dp-world"
+     ],
+     "on": "DP World",
+     "flip": true
+    },
+    {
+     "type": "numbers",
+     "text": "80+",
+     "sub": "терминалов DP World",
+     "on": "80 терминалов"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "jebel-ali-free-zone"
+     ],
+     "on": "JAFZA"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "maersk-middle-east"
+     ],
+     "on": "Maersk"
+    }
+   ]
+  },
+  {
+   "part": "express",
+   "say": "DHL, FedEx и Aramex, первая арабская компания на NASDAQ. Emirates SkyCargo: два и четыре десятых миллиона тонн грузов за год. И dnata.",
+   "overlays": [
+    {
+     "type": "logos",
+     "items": [
+      "dhl-express-mena",
+      "fedex-middle-east",
+      "aramex"
+     ],
+     "on": "DHL, FedEx"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "emirates-skycargo"
+     ],
+     "on": "Emirates SkyCargo"
+    },
+    {
+     "type": "numbers",
+     "text": "2,4 млн т",
+     "sub": "грузов Emirates SkyCargo за год",
+     "on": "миллиона тонн"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "dnata"
+     ],
+     "on": "dnata"
+    }
+   ]
+  },
+  {
+   "part": "trade",
+   "say": "Ещё DMCC, девять лет подряд лучшая свободная зона мира, и фулфилмент-центр Amazon в Dubai South на сорок тысяч квадратных метров.",
+   "overlays": [
+    {
+     "type": "logos",
+     "items": [
+      "dubai-multi-commodities-centre"
+     ],
+     "on": "DMCC"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "amazon-ae"
+     ],
+     "on": "Amazon"
+    },
+    {
+     "type": "broll",
+     "find": "фулфилмент-центр склад стеллажи",
+     "on": "фулфилмент",
+     "transition": "wipe"
+    }
+   ]
+  },
+  {
+   "part": "value",
+   "say": "Вся цепочка в одном городе: море, авиа, свободная зона и e-commerce. Вы поймёте, как построить через Дубай свой хаб на регион.",
+   "overlays": [
+    {
+     "type": "checklists",
+     "title": "Вся цепочка",
+     "items": [
+      {
+       "text": "Море",
+       "on": "море"
+      },
+      {
+       "text": "Авиа",
+       "on": "авиа"
+      },
+      {
+       "text": "Свободная зона",
+       "on": "свободная зона"
+      },
+      {
+       "text": "E-commerce",
+       "on": "e-commerce"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "part": "about",
+   "say": "Меня зовут Остап Доценко. Больше десяти лет организую бизнес-визиты в Азии. Трансферы включены, на каждой встрече сопровождение на арабском и английском.",
+   "overlays": [
+    {
+     "type": "chips",
+     "items": [
+      {
+       "text": "Остап Доценко"
+      }
+     ],
+     "on": "Остап Доценко"
+    },
+    {
+     "type": "numbers",
+     "text": "10+",
+     "sub": "лет бизнес-визитов в Азии",
+     "on": "десяти лет"
+    }
+   ]
+  },
+  {
+   "part": "cta",
+   "say": "Логисты, импортёры, экспортёры и e-commerce. Заходите на сайт Global Tech Tour или пишите мне в личные сообщения.",
+   "overlays": [
+    {
+     "type": "site",
+     "on": "Заходите на сайт"
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "title": "Экспедиции",
+  "button": "globaltechtour.ru"
+ },
+ "notes": [
+  "«Около четверти ВВП Дубая» — по официальным оценкам властей Дубая, как в описании JAFZA. 2,4 млн т — Emirates SkyCargo за 2025 финансовый год.",
+  "Визиты подтверждаются у компаний индивидуально, возможны NDA (market_note) — не обещаю «заходим во все».",
+  "Логотипа Emirates SkyCargo (emirates-skycargo) нет в library/brands.json (можно взять emirates)."
+ ],
+ "fullText": "Крупнейший искусственный морской порт мира — Джебель-Али в Дубае. А рядом с ним свободная зона, где больше 9500 компаний.\n\nПять дней, десять компаний, и всё в Дубае, без единого перелёта.\n\nDP World, оператор больше 80 терминалов в сорока с лишним странах. Свободная зона JAFZA, около четверти ВВП Дубая. Maersk, крупнейший в мире контейнерный перевозчик.\n\nDHL, FedEx и Aramex, первая арабская компания на NASDAQ. Emirates SkyCargo: два и четыре десятых миллиона тонн грузов за год. И dnata.\n\nЕщё DMCC, девять лет подряд лучшая свободная зона мира, и фулфилмент-центр Amazon в Dubai South на сорок тысяч квадратных метров.\n\nВся цепочка в одном городе: море, авиа, свободная зона и e-commerce. Вы поймёте, как построить через Дубай свой хаб на регион.\n\nМеня зовут Остап Доценко. Больше десяти лет организую бизнес-визиты в Азии. Трансферы включены, на каждой встрече сопровождение на арабском и английском.\n\nЛогисты, импортёры, экспортёры и e-commerce. Заходите на сайт Global Tech Tour или пишите мне в личные сообщения.",
+ "wordCount": 154,
+ "estSeconds": 63
+}

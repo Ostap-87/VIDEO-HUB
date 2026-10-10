@@ -1,0 +1,209 @@
+{
+ "name": "2026-10-10-indiya-internet",
+ "brand": "gtt",
+ "theme": "tech-giganty",
+ "tour_id": "india-tech-internet-giants-expedition",
+ "title": "Интернет-гиганты Индии: ИИ, мессенджеры, e-commerce",
+ "targetSeconds": 90,
+ "status": "draft",
+ "sources": [
+  "Ostap-87/SINOTECH src/data/tours.json и companies.json (данные сайта globaltechtour.ru), тур india-tech-internet-giants-expedition"
+ ],
+ "blocks": [
+  {
+   "part": "hook",
+   "say": "Правительство Индии выбрало одну компанию из 67 претендентов, чтобы построить свою суверенную нейросеть. Это Sarvam AI, и мы едем к ним в Бенгалуру.",
+   "overlays": [
+    {
+     "type": "numbers",
+     "text": "1 из 67",
+     "sub": "Sarvam AI выбрана для суверенной LLM",
+     "on": "67 претендентов"
+    },
+    {
+     "type": "zoom",
+     "kind": "punch",
+     "on": "суверенную нейросеть"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "sarvam-ai"
+     ],
+     "on": "Sarvam AI"
+    }
+   ]
+  },
+  {
+   "part": "route",
+   "say": "Шесть дней, две tech-столицы, десять компаний. Бенгалуру и Мумбаи.",
+   "overlays": [
+    {
+     "type": "numbers",
+     "text": "10",
+     "sub": "компаний за 6 дней",
+     "on": "десять компаний"
+    },
+    {
+     "type": "cities",
+     "names": [
+      "Бенгалуру",
+      "Мумбаи"
+     ],
+     "on": "Бенгалуру и Мумбаи"
+    }
+   ]
+  },
+  {
+   "part": "ai",
+   "say": "У Sarvam речевая платформа на 22 языках. Krutrim от основателя Ola, первый AI-единорог Индии. Yellow.ai, 16 миллиардов диалогов в год. И Mad Street Den с компьютерным зрением для ритейла.",
+   "overlays": [
+    {
+     "type": "logos",
+     "items": [
+      "krutrim"
+     ],
+     "on": "Krutrim"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "yellow-ai"
+     ],
+     "on": "Yellow.ai"
+    },
+    {
+     "type": "numbers",
+     "text": "16 млрд",
+     "sub": "диалогов в год у Yellow.ai",
+     "on": "16 миллиардов"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "mad-street-den"
+     ],
+     "on": "Mad Street Den",
+     "flip": true
+    }
+   ]
+  },
+  {
+   "part": "ecommerce",
+   "say": "Flipkart и Meesho, которая начинала с продаж через WhatsApp, а в 2025 году вышла на биржу.",
+   "overlays": [
+    {
+     "type": "logos",
+     "items": [
+      "flipkart",
+      "meesho"
+     ],
+     "on": "Flipkart"
+    },
+    {
+     "type": "broll",
+     "find": "смартфон онлайн-покупки Индия",
+     "on": "через WhatsApp",
+     "transition": "slide"
+    }
+   ]
+  },
+  {
+   "part": "mumbai",
+   "say": "В Мумбаи Fractal Analytics, первое AI-IPO Индии. Qure.ai, их ИИ читает рентген больше чем в ста странах. Haptik от Reliance Jio и Nykaa.",
+   "overlays": [
+    {
+     "type": "logos",
+     "items": [
+      "fractal-analytics"
+     ],
+     "on": "Fractal Analytics"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "qure-ai"
+     ],
+     "on": "Qure.ai"
+    },
+    {
+     "type": "numbers",
+     "text": "100+",
+     "sub": "стран с ИИ-диагностикой Qure.ai",
+     "on": "ста странах"
+    },
+    {
+     "type": "logos",
+     "items": [
+      "haptik",
+      "nykaa"
+     ],
+     "on": "Haptik"
+    }
+   ]
+  },
+  {
+   "part": "value",
+   "say": "Вы увидите, как Индия строит свой ИИ на своих языках и встраивает его в торговлю, медицину и мессенджеры.",
+   "overlays": [
+    {
+     "type": "chips",
+     "items": [
+      {
+       "text": "Торговля"
+      },
+      {
+       "text": "Медицина"
+      },
+      {
+       "text": "Мессенджеры"
+      }
+     ],
+     "on": "торговлю",
+     "wrap": true
+    }
+   ]
+  },
+  {
+   "part": "about",
+   "say": "Меня зовут Остап Доценко. Больше десяти лет организую бизнес-визиты в Азии. На каждой встрече сопровождение и синхронный перевод, перелёт в Мумбаи включён.",
+   "overlays": [
+    {
+     "type": "chips",
+     "items": [
+      {
+       "text": "Остап Доценко"
+      }
+     ],
+     "on": "Остап Доценко"
+    },
+    {
+     "type": "numbers",
+     "text": "10+",
+     "sub": "лет бизнес-визитов в Азии",
+     "on": "десяти лет"
+    }
+   ]
+  },
+  {
+   "part": "cta",
+   "say": "IT-компании, разработчики ИИ, e-commerce и инвесторы. Заходите на сайт Global Tech Tour или пишите мне в личные сообщения.",
+   "overlays": [
+    {
+     "type": "site",
+     "on": "Заходите на сайт"
+    }
+   ]
+  }
+ ],
+ "cta": {
+  "title": "Экспедиции",
+  "button": "globaltechtour.ru"
+ },
+ "notes": [
+  "По market_note сайта даты и доступность визитов подтверждаются у компаний индивидуально: в тексте не обещаю «зайдём во все»."
+ ],
+ "fullText": "Правительство Индии выбрало одну компанию из 67 претендентов, чтобы построить свою суверенную нейросеть. Это Sarvam AI, и мы едем к ним в Бенгалуру.\n\nШесть дней, две tech-столицы, десять компаний. Бенгалуру и Мумбаи.\n\nУ Sarvam речевая платформа на 22 языках. Krutrim от основателя Ola, первый AI-единорог Индии. Yellow.ai, 16 миллиардов диалогов в год. И Mad Street Den с компьютерным зрением для ритейла.\n\nFlipkart и Meesho, которая начинала с продаж через WhatsApp, а в 2025 году вышла на биржу.\n\nВ Мумбаи Fractal Analytics, первое AI-IPO Индии. Qure.ai, их ИИ читает рентген больше чем в ста странах. Haptik от Reliance Jio и Nykaa.\n\nВы увидите, как Индия строит свой ИИ на своих языках и встраивает его в торговлю, медицину и мессенджеры.\n\nМеня зовут Остап Доценко. Больше десяти лет организую бизнес-визиты в Азии. На каждой встрече сопровождение и синхронный перевод, перелёт в Мумбаи включён.\n\nIT-компании, разработчики ИИ, e-commerce и инвесторы. Заходите на сайт Global Tech Tour или пишите мне в личные сообщения.",
+ "wordCount": 160,
+ "estSeconds": 65
+}
