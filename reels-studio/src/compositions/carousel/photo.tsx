@@ -103,9 +103,10 @@ const Items: React.FC<{items?: string[]; numbered?: boolean; s: Style; size?: nu
 const LogoRow: React.FC<{logos?: {src: string; name?: string}[]; s: Style; style?: React.CSSProperties}> = ({logos, s, style}) => {
   const k = useFit();
   if (!logos?.length) return null;
-  const h = Math.round(110 * k);
+  const many = logos.length > 6; // 7–8 логотипов — по четыре в ряд, ниже карточки
+  const h = Math.round((many ? 96 : 110) * k);
   return (
-    <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, ...style}}>
+    <div style={{display: "grid", gridTemplateColumns: many ? "1fr 1fr 1fr 1fr" : "1fr 1fr 1fr", gap: many ? 14 : 16, ...style}}>
       {logos.map((l, i) => (
         <div
           key={i}
