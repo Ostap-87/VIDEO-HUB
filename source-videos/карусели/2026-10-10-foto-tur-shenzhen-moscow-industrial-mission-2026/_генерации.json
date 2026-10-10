@@ -1,0 +1,86 @@
+{
+ "01.jpg": {
+  "job": "35f9221d-a8be-4e8f-8ab1-ce5804899010",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164748_35f9221d-a8be-4e8f-8ab1-ce5804899010.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a wide sunny boulevard of the Futian business district in Shenzhen: a Russian business delegation with blank visitor badges on lanyards walks alongside Chinese hosts in dark suits toward a modern conference centre, glittering skyscrapers and palm trees around, everyone talking and smiling, wide 4:3 composition, subject centered, purposeful optimistic mood of a business week. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "387b1ab9-a5a6-4ead-83e4-c43f6a45900a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164749_387b1ab9-a5a6-4ead-83e4-c43f6a45900a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo of a bright B2B matchmaking hall in Shenzhen: long rows of small round tables stretch into the distance, at each a Russian entrepreneur with a blank visitor badge talks with Chinese company representatives and an interpreter, in the foreground a pair examines a small machined product sample and laughs, main subject in the upper half of the frame, the lower third is calm blue conference carpet, vertical 4:5, busy productive mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "ab7a59e3-a9b5-4337-9df0-2620a14de0fa",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164749_ab7a59e3-a9b5-4337-9df0-2620a14de0fa.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a morning welcome briefing in a hotel meeting room in Shenzhen: a smiling Russian tour leader stands by a large screen showing a colorful week timeline of blank blocks, a Russian business delegation with blank visitor badges sits at tables with coffee and notebooks, a Chinese coordinator beside him, bright daylight through tall windows, wide 4:3 composition, subject centered, organised confident mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "e8d3a063-a133-4d83-bebc-09b3673f7fb1",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164749_e8d3a063-a133-4d83-bebc-09b3673f7fb1.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright Shenzhen exhibition hall: neighbouring stands show a white industrial robot arm, a sleek medical ultrasound scanner and a prefabricated modular building unit with large windows, a Russian business delegation with blank visitor badges walks between them with a Chinese host who gestures to the robot arm, all equipment without markings, main subject in the upper half of the frame, the lower third is calm grey exhibition floor, vertical 4:5, varied opportunities mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "2140bc82-fd19-4292-9b95-a263c0a60a9d",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164826_2140bc82-fd19-4292-9b95-a263c0a60a9d.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a modern forum hall in Shenzhen: a Russian speaker in a navy suit presents on stage beside a large screen showing a blurred architectural render of a green technopark, Chinese and Russian business guests in the audience listen with interpreter headsets and smile, a moderator nods, wide 4:3 composition, subject centered, constructive cooperative mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "7344991a-df57-4f54-9ae9-5ecb182b327e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164825_7344991a-df57-4f54-9ae9-5ecb182b327e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo during a coffee break at a business conference in Shenzhen: a Russian businesswoman with a blank visitor badge and a Chinese entrepreneur exchange plain white business cards with both hands, bowing slightly and smiling, colleagues chat with coffee cups and pastries nearby, bright foyer with tall windows, main subject in the upper half of the frame, the lower third is calm high table with coffee cups, vertical 4:5, warm networking mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "63496723-a0a1-4b58-a76d-b552432e40d3",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164827_63496723-a0a1-4b58-a76d-b552432e40d3.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a grand bright reception hall of a regional government building in Guangdong: a Russian business delegation sits on one side of a long polished table and Chinese officials in dark suits on the other, a floral arrangement in the middle, interpreters beside the leaders, everyone smiling during a friendly formal meeting, high ceilings and large windows, wide 4:3 composition, subject centered, respectful official mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
