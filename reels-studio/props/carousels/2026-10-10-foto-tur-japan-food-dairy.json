@@ -1,0 +1,159 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-food-dairy/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Япония",
+   "title": "Где придумали умами и **Cup Noodles**",
+   "text": "Продукты питания и молочная промышленность Японии · Токио и Осака"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-food-dairy/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Kikkoman",
+   "title": "рынка соевого соуса США",
+   "text": "Традиции варки соуса в Ноде — свыше 350 лет",
+   "value": "50%+",
+   "logo": "kikkoman"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-food-dairy/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут",
+   "title": "Токио → **Осака**",
+   "items": [
+    "День 1 · Токио: Yakult, Meiji",
+    "День 2 · Токио, Нода: Kikkoman, Kewpie",
+    "День 3 · Осака: Ajinomoto, Fuji Oil",
+    "День 4 · Осака: Nissin Foods",
+    "День 5 · Осака, Кобе: Morinaga, Megmilk"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-food-dairy/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "**9 компаний** на маршруте",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/еда/yakult-honsha.svg"
+    },
+    {
+     "src": "source-videos/логотипы/еда/meiji-holdings.svg"
+    },
+    {
+     "src": "source-videos/логотипы/еда/kikkoman.png"
+    },
+    {
+     "src": "source-videos/логотипы/еда/kewpie.png"
+    },
+    {
+     "src": "source-videos/логотипы/еда/ajinomoto.svg"
+    },
+    {
+     "src": "source-videos/логотипы/еда/fuji-oil.png"
+    },
+    {
+     "src": "source-videos/логотипы/еда/nissin-foods.png"
+    },
+    {
+     "src": "source-videos/логотипы/еда/morinaga-milk.svg"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-food-dairy/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **увидите** изнутри",
+   "items": [
+    "Пробиотики: от Yakult до BB536",
+    "Ферментация соевого соуса Kikkoman",
+    "ИИ проверяет овощи на заводах Kewpie",
+    "Аминокислотные биотехнологии Ajinomoto"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-food-dairy/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Месяцы переписки ради доступа на заводы",
+      "Нет гарантии, что визит согласуют вовремя",
+      "Логистика Токио–Кансай — сами"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-food-dairy/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Визиты — через нашу сеть контактов",
+      "Синкансэн и трансферы включены",
+      "Сопровождение на каждой встрече"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-food-dairy/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё готово **до вылета**",
+   "items": [
+    "Визиты и переговоры по программе",
+    "Синкансэн Токио–Осака",
+    "Трансферы и сопровождение",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-food-dairy/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Для кого",
+   "title": "Для пищевых и **молочных** компаний",
+   "text": "Тем, кто производит продукты и хочет увидеть японские технологии ферментации, пробиотиков и упаковки"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-food-dairy/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-food-dairy/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-food-dairy/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}

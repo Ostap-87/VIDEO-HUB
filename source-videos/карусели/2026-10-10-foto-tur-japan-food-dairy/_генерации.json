@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "b4308509-3f3a-432e-8a77-a2ddc9b6681e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171339_b4308509-3f3a-432e-8a77-a2ddc9b6681e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright instant-noodle workshop in Osaka: Russian business delegates with visitor badges on lanyards sit at a long table decorating plain white noodle cups with colorful marker doodles of vegetables, a Japanese staff member in a red apron laughs with them, finished cups lined up on a shelf, drawings without letters, wide 4:3 composition, subject centered, playful creative mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "c59ca0b7-064c-4946-9590-c47d5ac8774d",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171338_c59ca0b7-064c-4946-9590-c47d5ac8774d.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo inside a traditional soy sauce brewery in Noda, Japan: huge old cedar barrels filled with dark fermenting soybean mash, a Japanese brewer in an indigo apron stirs with a long wooden paddle, two Russian delegates with lanyard badges lean over the rim smiling and enjoying the aroma, wooden beams and soft daylight, main subject in the upper half of the frame, the lower third is calm wooden floorboards, vertical 4:5. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "bc532493-c92e-4137-bf57-de46ab32fd1c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171339_bc532493-c92e-4137-bf57-de46ab32fd1c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a Russian business delegation with visitor badges on lanyards walking through the park toward Osaka Castle, its white walls and green roofs rising above stone ramparts and a moat, a Japanese guide in a light coat pointing at the castle, autumn maples in red and gold, people smiling, bright clear day, wide 4:3 composition, subject centered, inspiring route mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "1129b517-44ae-45a8-9d1a-bfc3ac34661a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171339_1129b517-44ae-45a8-9d1a-bfc3ac34661a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in the R&D kitchen of a Japanese food company: researchers in white coats serve small porcelain cups of clear golden dashi broth beside bowls of kombu and bonito flakes, Russian business delegates with lanyard badges taste and smile with surprise, one nods at a Japanese scientist, main subject in the upper half of the frame, the lower third is calm stainless steel counter, vertical 4:5, discovery of umami mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "172f2a5d-86a8-4a63-822d-57136f2aa37e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171418_172f2a5d-86a8-4a63-822d-57136f2aa37e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a clean food factory near Tokyo: a conveyor of diced potatoes passes under a camera inspection unit with a small robotic sorter, a Japanese technologist in white hygiene clothing points at a monitor where the cubes are outlined in green squares, a Russian business delegation in white coats and caps watches from behind a glass window and smiles, wide 4:3 composition, subject centered, precise smart mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "01c5c023-4804-4193-a1c1-8a34e51e004f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171418_01c5c023-4804-4193-a1c1-8a34e51e004f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian food producer in his fifties sitting alone at a low table in a small Japanese room with tatami mats and shoji screens, papers and train timetables spread out, holding a phone to his ear, slightly tired but calm thoughtful expression, soft daylight through the paper screens, papers blurred, subject in the center of the vertical frame, vertical 9:16, quiet planning mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "ab4aa6c9-2622-43cc-bf28-0027a46c2a49",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171418_ab4aa6c9-2622-43cc-bf28-0027a46c2a49.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a cheerful Russian business delegation in white hygiene suits and caps on a viewing gallery of a Japanese dairy plant, a smiling Japanese guide gestures toward a gleaming line filling small bottles of milk below, the delegates laugh and point, stainless steel and bright light, subject in the center of the vertical frame, vertical 9:16, easy guided mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "fa3850b4-9f2e-40ba-898e-147bb943b862",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171419_fa3850b4-9f2e-40ba-898e-147bb943b862.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside a bullet train car between Tokyo and Osaka: Russian business delegates with visitor badges on lanyards open beautiful bento lunch boxes on their tray tables, rice, grilled fish and pickles in neat compartments, a Japanese guide shows how to unwrap them, everyone laughing, green rice fields rushing past the window, wide 4:3 composition, subject centered, comfortable journey mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "19f820fc-4844-4ed1-aeea-157184bd9000",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171455_19f820fc-4844-4ed1-aeea-157184bd9000.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright Japanese dairy quality laboratory: a Russian dairy entrepreneur in her forties wearing a white coat holds up a small plain bottle of fermented milk drink to the light, a Japanese technologist beside her smiles and points at it, glassware and incubators behind, main subject in the upper half of the frame, the lower third is calm white lab bench, vertical 4:5, curious professional mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
