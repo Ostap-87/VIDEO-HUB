@@ -1,0 +1,98 @@
+{
+ "01.jpg": {
+  "job": "7f965748-ccaa-4a1d-807d-ec070399e6b6",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173405_7f965748-ccaa-4a1d-807d-ec070399e6b6.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at the opening of a new neighborhood mini-mart in Ho Chi Minh City: smiling Vietnamese staff in matching polo shirts line up at the glass entrance beside tall stands of congratulatory flowers, the store manager welcomes the first customers, a Russian business delegation with visitor badges on lanyards applauds from the sidewalk, motorbikes parked in front, signage blurred, wide 4:3 composition, subject centered, festive growth mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "7cb23aef-c838-46cb-9416-565ba430a707",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173445_7cb23aef-c838-46cb-9416-565ba430a707.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a huge modern retail distribution center near Hanoi: long rows of rolling cages packed with fresh produce and groceries wait at loading docks for dozens of new stores, a smiling Vietnamese logistics manager in a hi-vis vest walks a Russian delegate with a visitor badge on a lanyard along the rows, both laughing, main subject in the upper half of the frame, the lower third is a calm polished concrete floor, vertical 4:5. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "0d7ec98d-1a5f-4d69-beb4-efcd12cabe71",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173444_0d7ec98d-1a5f-4d69-beb4-efcd12cabe71.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a busy sunny street in Ho Chi Minh City: a confident Vietnamese guide raises her hand and leads a laughing Russian business delegation with visitor badges on lanyards across the road through a slow stream of motorbikes, riders smile and give way, shop fronts and tamarind trees behind with blurred signs, wide 4:3 composition, subject centered, energetic route of the day. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "69fd2992-501b-4fa2-885c-e5f27189b5a8",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173444_69fd2992-501b-4fa2-885c-e5f27189b5a8.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a glass-walled meeting room on a high floor in Ho Chi Minh City: Vietnamese retail executives in crisp shirts discuss store formats with a smiling Russian business delegation with visitor badges on lanyards, metal phin filters drip Vietnamese coffee into glasses on the table, the sunny city skyline and the river behind, main subject in the upper half of the frame, the lower third is a calm glossy table, vertical 4:5. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "59a49d23-0976-4eb7-bc38-71ebed785ae4",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173445_59a49d23-0976-4eb7-bc38-71ebed785ae4.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a village in the Mekong Delta: a bright new grocery store with neat shelves of rice, noodles and fresh fruit opens onto a quiet lane with palm trees, a Vietnamese woman in a conical hat parks her bicycle, a smiling store manager chats with a curious Russian business delegation with visitor badges on lanyards at the doorway, wide 4:3 composition, subject centered, optimistic rural growth. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "f747985c-53f1-41b0-9e64-fa51e09f4464",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173527_f747985c-53f1-41b0-9e64-fa51e09f4464.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian businesswoman in her thirties sitting alone on a low plastic stool at a sidewalk café in Hanoi with a laptop on her knees and a glass of iced Vietnamese coffee, rereading an email chain that has stalled for weeks, thoughtful and slightly tired but calm, passing motorbikes softly blurred, subject in the center of the vertical frame, vertical 9:16. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "8c1766b5-01cb-4bf8-9c1f-6251561d6b01",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173527_8c1766b5-01cb-4bf8-9c1f-6251561d6b01.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo at a bright domestic check-in hall of a Vietnamese airport: a smiling Vietnamese guide hands boarding passes to a cheerful Russian business delegation with visitor badges on lanyards, their suitcases already on the belt, everyone laughing and relaxed before the flight to Hanoi, big windows with sunlight, subject in the center of the vertical frame, vertical 9:16, easy cared-for travel. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "8b8cf280-14f8-4551-beb1-ecdab28340fd",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173527_8b8cf280-14f8-4551-beb1-ecdab28340fd.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at Hoan Kiem Lake in Hanoi on a fresh sunny morning: a Russian business delegation with visitor badges on lanyards walks with a smiling Vietnamese guide along the lakeside promenade near a red wooden bridge, local residents do morning exercises under old trees, delegates chat over takeaway coffee before the day's visits, wide 4:3 composition, subject centered, calm well-organized mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
