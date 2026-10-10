@@ -1,0 +1,86 @@
+{
+ "01.jpg": {
+  "job": "af894b98-f045-436e-80cf-9cef8773c217",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170715_af894b98-f045-436e-80cf-9cef8773c217.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in the grand lobby of an international luxury hotel in Shanghai with Chinese design accents: marble floor, a round moon-gate opening, a tea lounge with porcelain tea sets, a smiling Chinese general manager in a dark suit welcomes a Russian business delegation with visitor badges on lanyards, soft daylight, wide 4:3 composition, subject centered, elegant refined mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "79f9a154-528e-421c-838c-4505a172de56",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170753_79f9a154-528e-421c-838c-4505a172de56.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic close-up photo at the concierge desk of a Shanghai hotel: a smiling Chinese concierge in white gloves fans out six plain room key cards in six different colors, a Russian delegate with a lanyard badge reaches for one and laughs, a polished brass bell and white orchids on the desk, main subject in the upper half of the frame, the lower third is calm dark marble counter, vertical 4:5, playful sense of choice. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "1f356140-5969-4cc2-8078-4ae1d0586cfb",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170752_1f356140-5969-4cc2-8078-4ae1d0586cfb.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a Russian business delegation with visitor badges on lanyards walking along the Bund promenade in Shanghai on a clear morning, historic stone buildings with columns and domes on one side, the river and passing boats on the other, a Chinese guide holding a slim folder leads the way, people smiling, wide 4:3 composition, subject centered, inspiring travel mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "71897bdf-928e-4c52-8e3b-d0c7dd2173d2",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170752_71897bdf-928e-4c52-8e3b-d0c7dd2173d2.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a restored historic hall of a 1910s hotel on the Shanghai riverfront: marble columns, a long polished wooden bar, brass lamps and tall arched windows, a Chinese hotel historian in a tweed jacket tells a story to three Russian delegates with lanyard badges who listen with fascination, daylight streaming in, main subject in the upper half of the frame, the lower third is calm checkered marble floor, vertical 4:5. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "90021e85-6270-4a3b-bddc-87de476e0a23",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170753_90021e85-6270-4a3b-bddc-87de476e0a23.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a guest room of an international hotel in Shanghai adapted for Chinese travelers: a Chinese housekeeping manager shows a Russian business delegation with visitor badges a tea set with gaiwan cups, an electric kettle and jasmine tea, embroidered slippers by the bed, a delegate smiles holding a teacup, bright daylight, wide 4:3 composition, subject centered, attentive detailed mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "6b037002-fb43-4f34-810c-8997c061973f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170830_6b037002-fb43-4f34-810c-8997c061973f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in the bright arrivals hall of a Shanghai airport: a smiling Chinese guide in a navy blazer with a small plain blue flag greets a Russian business delegation with rolling suitcases and visitor badges, a woman delegate waves happily, a driver takes a suitcase, huge glass windows and a curved white roof, main subject in the upper half of the frame, the lower third is calm shiny floor, vertical 4:5, carefree arrival mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "c3374b00-bc89-45a6-aa99-e93781d6a440",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170830_c3374b00-bc89-45a6-aa99-e93781d6a440.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a round-table discussion in a bright conference room on a high floor of a Shanghai tower: Russian hoteliers with visitor badges and Chinese hotel executives sit around a round white table with water glasses and notebooks, a Chinese woman executive gestures while explaining, everyone listening with smiles, the city skyline in light haze behind the windows, wide 4:3 composition, subject centered, open collaborative mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}

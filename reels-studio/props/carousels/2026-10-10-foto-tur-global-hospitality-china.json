@@ -1,0 +1,110 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-global-hospitality-china/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Китай",
+   "title": "Как Marriott и Hilton **адаптируются** к Китаю",
+   "text": "Глобальные гостиничные сети в Китае · 5 дней · Шанхай"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-global-hospitality-china/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Масштаб",
+   "title": "мировых гостиничных сетей в одном городе",
+   "text": "Marriott, Hilton, IHG, Accor, Hyatt, Wyndham — плюс два знаковых отеля",
+   "value": "6"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-global-hospitality-china/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут",
+   "title": "5 дней · **Шанхай**",
+   "items": [
+    "День 1 · Marriott, Hilton",
+    "День 2 · IHG, Accor",
+    "День 3 · Hyatt, Wyndham",
+    "День 4 · Waldorf Astoria и Tomorrow Square",
+    "Круглый стол о локализации бренда"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-global-hospitality-china/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "**6 сетей** и 2 знаковых отеля",
+   "items": [
+    "Marriott · Hilton · IHG",
+    "Accor · Hyatt · Wyndham",
+    "Waldorf Astoria Shanghai on the Bund",
+    "Tomorrow Square Shanghai"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-global-hospitality-china/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **увидите** изнутри",
+   "items": [
+    "Как мировой стандарт меняют под Китай",
+    "Как IHG создала бренд для Китая",
+    "Как историческое здание стало люксом",
+    "Как сети работают с местными франчайзи"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-global-hospitality-china/06.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё готово **до вылета**",
+   "items": [
+    "Отели 5 звёзд, 6 ночей",
+    "Обед и ужин ежедневно",
+    "Трансферы и встреча в аэропорту",
+    "Перевод на каждой встрече"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-global-hospitality-china/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Для кого",
+   "title": "Для отельеров и **инвесторов**",
+   "text": "Прямые выходы на развитие сети, франчайзинг и управление отелями в Китае"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-global-hospitality-china/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-global-hospitality-china/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-global-hospitality-china/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}
