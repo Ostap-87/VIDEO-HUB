@@ -1,0 +1,98 @@
+{
+ "01.jpg": {
+  "job": "a5c3cdb3-caea-4456-8f3d-7649878bbc70",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172028_a5c3cdb3-caea-4456-8f3d-7649878bbc70.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a university campus in Kyoto in autumn: a friendly Japanese professor in a tweed jacket leads a smiling Russian business delegation with visitor badges on lanyards along a path under glowing golden ginkgo trees toward a modern glass research building, one delegate photographs the falling leaves, crisp sunny day, wide 4:3 composition, subject centered, curious optimistic mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "2f7ff2c3-6614-44b3-8b27-8b3f67e3cf55",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172029_2f7ff2c3-6614-44b3-8b27-8b3f67e3cf55.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright stem cell laboratory in Kyoto: a young Japanese researcher in a white coat and blue gloves adjusts a fluorescence microscope while a large monitor beside her glows with green cell colonies on a black background, a Russian delegate with a visitor badge on a lanyard leans in with an amazed smile, main subject in the upper half of the frame, the lower third is a calm white lab bench, vertical 4:5. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "aeb2525f-2d70-43d9-a2c2-3b42e7aaaee9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172108_aeb2525f-2d70-43d9-a2c2-3b42e7aaaee9.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a busy Tokyo railway station concourse: members of a Russian business delegation with visitor badges on lanyards and small rolling suitcases pick colorful boxed bento lunches at a bright station kiosk before the trip to Osaka and Kyoto, a smiling Japanese vendor hands over a box, the group laughs while their guide checks the time, wide 4:3 composition, subject centered, lively travel mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "5eddbdcf-f53b-4eaa-aba3-2df4834c2349",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172108_5eddbdcf-f53b-4eaa-aba3-2df4834c2349.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a sunlit meeting room of a pharmaceutical research campus near Tokyo: a Japanese executive in a dark suit bows slightly and offers a blank business card with both hands to a smiling Russian delegate, other delegation members with visitor badges on lanyards and Japanese scientists stand around a table with a large molecule model, warm respectful atmosphere, main subject in the upper half of the frame, the lower third is a calm wooden table, vertical 4:5. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "1bc2d1a7-9a2f-4f71-8749-3b9a375e14c9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172107_1bc2d1a7-9a2f-4f71-8749-3b9a375e14c9.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a clean corridor of a cell therapy production center in Japan: through a large glass window, technicians in full white cleanroom suits work at a biosafety cabinet with flasks of pink culture medium, in the foreground a Russian business delegation with visitor badges on lanyards watches with fascination while a Japanese specialist explains, bright cool lighting, wide 4:3 composition, subject centered. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "2a076763-034c-4e28-bbb9-6455ed7386c1",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172108_2a076763-034c-4e28-bbb9-6455ed7386c1.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian businessman in his thirties standing alone in a vast bright Tokyo station concourse with a small suitcase, holding an unfolded paper map with only colored lines and trying to plan his own way to Kyoto, thoughtful and slightly tired but calm, crowds of commuters softly blurred around him, subject in the center of the vertical frame, vertical 9:16. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "d02354d3-a923-4a30-8009-a4a8d7be6392",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172147_d02354d3-a923-4a30-8009-a4a8d7be6392.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo in a bright meeting room of a Japanese research institute: a Russian interpreter in a light blazer translates live between a smiling Japanese scientist holding a tablet and two delighted Russian delegates with visitor badges on lanyards, everyone laughing at the same moment, cups of green tea on the table, subject in the center of the vertical frame, vertical 9:16, warm effortless communication. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "27231826-b21d-4f32-9734-38749ea17a58",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172147_27231826-b21d-4f32-9734-38749ea17a58.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at the entrance of a modern Osaka hotel with neat green landscaping: a Japanese driver in a dark uniform and white gloves bows beside a black minivan with its sliding door open, a smiling Russian business delegation with visitor badges on lanyards steps in with light luggage while their guide holds the day's schedule, clear morning sun, wide 4:3 composition, subject centered, smooth organized mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}

@@ -1,0 +1,149 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-longevity-biotech/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Япония",
+   "title": "Лаборатория **нобелевского** открытия",
+   "text": "Лонгевити и anti-aging биотех Японии · 3 города"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-longevity-biotech/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Киото · CiRA",
+   "title": "Нобелевская премия Яманаки за iPS-клетки",
+   "text": "CiRA — мировой центр репрограммирования клеток",
+   "value": "2012"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-longevity-biotech/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут по дням",
+   "title": "Токио — Осака — **Киото**",
+   "items": [
+    "День 1 · Токио: FUJIFILM, Healios",
+    "День 2 · Токио: Eisai, Shiseido",
+    "День 3 · Осака: Kaneka, Rohto",
+    "День 4 · Киото: CiRA",
+    "День 5 · Токио: RIKEN, Cellusion, Metcela"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-longevity-biotech/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "Куда **едем**",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/медицина/fujifilm-ips.svg"
+    },
+    {
+     "src": "source-videos/логотипы/медицина/healios.png"
+    },
+    {
+     "src": "source-videos/логотипы/медицина/eisai.png"
+    },
+    {
+     "src": "source-videos/логотипы/косметика/shiseido.svg"
+    },
+    {
+     "src": "source-videos/логотипы/медицина/kaneka.png"
+    },
+    {
+     "src": "source-videos/логотипы/косметика/rohto.png"
+    },
+    {
+     "src": "source-videos/логотипы/общие/kyoto-university-cira.png"
+    },
+    {
+     "src": "source-videos/логотипы/общие/riken-wako.png"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-longevity-biotech/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Вопросы, на которые **ответит** тур",
+   "items": [
+    "Как iPS-клетки идут из лаборатории в терапию",
+    "Как Eisai вывела препарат от Альцгеймера",
+    "Как Kaneka строит бизнес на CoQ10",
+    "Что RIKEN изучает в долголетии"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-longevity-biotech/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Месяцы переписки ради доступа",
+      "Нет гарантии, что визит согласуют",
+      "Логистика Токио–Кансай — на вас"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-longevity-biotech/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Синкансэн и трансферы включены",
+      "Сопровождение на каждой встрече",
+      "Синхронный перевод на встречах"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-longevity-biotech/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё **на месте**",
+   "items": [
+    "Организация визитов по программе",
+    "Синкансэн Токио–Осака–Токио",
+    "Трансферы и сопровождение",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-longevity-biotech/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-longevity-biotech/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-longevity-biotech/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}
