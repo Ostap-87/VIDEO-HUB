@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "e72ea38b-92a6-4090-9425-4f7b6d785f53",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163110_e72ea38b-92a6-4090-9425-4f7b6d785f53.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright minimalist showroom: a slender 170 cm humanoid robot covered in soft light-grey knitted fabric skin, with a white faceless head, a dark visor and delicate five-fingered hands, exchanges a gentle high-five with a laughing young Chinese woman, the fine knitted texture of its palm clearly visible, a Russian visitor smiles in the background, wide 4:3 composition, subject centered, warm human-touch mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "eda3c08a-c0ae-4574-969f-586e8e4e95ed",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163110_eda3c08a-c0ae-4574-969f-586e8e4e95ed.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a large bright robot assembly hall in Shanghai: Chinese workers in light uniforms fit soft light-grey knitted fabric skin sleeves onto the arms of several slender 170 cm humanoid robots with white faceless heads and dark visors standing on assembly stands in a long row, main subject in the upper half of the frame, the lower third is calm clean grey floor, vertical 4:5, scaling-up production mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "c3cd1908-4877-4736-9830-7d1fc7ad954a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163204_c3cd1908-4877-4736-9830-7d1fc7ad954a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright family science center: a light foam ball tossed by a laughing Chinese girl softly bounces off the back of a slender 170 cm humanoid robot covered in soft light-grey knitted fabric skin, with a white faceless head, a dark visor and delicate five-fingered hands, which turns around gently with an open palm as if it felt the touch, wide 4:3 composition, subject centered, playful sensitive mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "2503bef0-e1d7-4f98-87b3-83d1a93008c0",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163204_2503bef0-e1d7-4f98-87b3-83d1a93008c0.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic close-up photo in a bright office: a slender 170 cm humanoid robot covered in soft light-grey knitted fabric skin, with a white faceless head and a dark visor, delicately lifts two thin blank sheets of paper from a desk between its fabric-covered fingertips, a smiling Chinese office worker watches in amazement, main subject in the upper half of the frame, the lower third is calm light desk surface, vertical 4:5, delicate precise mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "2881fdb6-235b-414f-8cfa-4f3e66dd54e8",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163203_2881fdb6-235b-414f-8cfa-4f3e66dd54e8.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright restaurant kitchen: a slender 170 cm humanoid robot covered in soft light-grey knitted fabric skin, with a white faceless head, a dark visor and delicate five-fingered hands, carries a full wooden crate of fresh oranges in both arms past steel counters, a smiling Russian chef in white nods with approval, wide 4:3 composition, subject centered, capable everyday mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "1321006e-d576-41f0-bad1-c9d66572dbef",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163203_1321006e-d576-41f0-bad1-c9d66572dbef.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright apartment-style test lab: a slender 170 cm humanoid robot covered in soft light-grey knitted fabric skin, with a white faceless head and a dark visor, studies a cluttered dining table of mugs, fruit and plain notebooks and neatly sorts them into a basket, two smiling Chinese researchers watch from a sofa with a laptop, main subject in the upper half of the frame, the lower third is calm light rug, vertical 4:5, thoughtful planning mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "ad38be94-6e4a-49e1-8185-9bb6fb08385d",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163314_ad38be94-6e4a-49e1-8185-9bb6fb08385d.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at a sunny specialty coffee bar: a slender 170 cm humanoid robot covered in soft light-grey knitted fabric skin, with a white faceless head, a dark visor and delicate five-fingered hands, stands behind the counter pouring a latte art heart into a ceramic cup, a smiling Russian couple at the counter watch delighted, glass jars and an unbranded espresso machine softly blurred, wide 4:3 composition, subject centered, cozy cafe mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "fe19bfa3-9c6c-4cff-9676-b814ec9ceb50",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163314_fe19bfa3-9c6c-4cff-9676-b814ec9ceb50.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright Shanghai robot showroom: a Russian couple of cafe owners admire a slender 170 cm humanoid robot covered in soft light-grey knitted fabric skin, with a white faceless head and a dark visor, the woman gently holding its fabric-covered hand while a smiling Chinese sales manager presents it with an open palm, main subject in the upper half of the frame, the lower third is calm glossy white floor, vertical 4:5, confident purchase mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "09.jpg": {
+  "job": "5796a95e-d97e-4147-b341-e554f767c452",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163314_5796a95e-d97e-4147-b341-e554f767c452.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a sunny Moscow courtyard with golden autumn trees: two smiling Russian movers wheel a slender 170 cm humanoid robot covered in soft light-grey knitted fabric skin, with a white faceless head and a dark visor, secured upright on a padded wheeled transport stand, down the ramp of a white delivery van toward a cafe entrance where the owner applauds, wide 4:3 composition, subject centered, happy arrival mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
