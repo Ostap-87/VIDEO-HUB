@@ -1,0 +1,122 @@
+{
+ "01.jpg": {
+  "job": "31ae22b4-c751-439b-8dcc-795bd81bf65e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161822_31ae22b4-c751-439b-8dcc-795bd81bf65e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a sunlit modern shopping plaza atrium: a knee-high four-legged robot dog with a matte graphite body, white side panels, black jointed legs with rubber feet and a small camera head performs a backflip in mid-air above a smooth light floor, Russian and Chinese visitors around it gasp and laugh, a young woman covers her mouth in delighted surprise, crisp frozen motion, wide 4:3 composition, subject centered, playful wow mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "b79450e7-7a02-4db8-8eb4-7509ec9bf436",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161823_b79450e7-7a02-4db8-8eb4-7509ec9bf436.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo of an outdoor test yard on a green tech campus in Shanghai: three knee-high four-legged robot dogs with matte graphite bodies, white side panels, black jointed legs and small camera heads trot over low wooden ramps and short concrete steps, smiling Chinese engineers in light jackets watch with tablets, modern glass buildings behind, main subject in the upper half of the frame, the lower third is calm trimmed green lawn, vertical 4:5, energetic sunny mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "dc0cf069-b664-4448-9fbe-39e48915bb07",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161919_dc0cf069-b664-4448-9fbe-39e48915bb07.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a sunny tree-lined city street: a knee-high four-legged robot dog with a matte graphite body, white side panels, black jointed legs with rubber feet and a small camera head sprints along the pavement, legs blurred with speed, ahead of a laughing young Russian man in a light suit running with his briefcase toward an arriving plain white city bus, wide 4:3 composition, subject centered, fun dynamic mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "528ca37c-b05d-4b6f-ad08-94761272d015",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161918_528ca37c-b05d-4b6f-ad08-94761272d015.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright robotics workshop: a smiling Chinese engineer in a navy polo lifts a knee-high four-legged robot dog with a matte graphite body, white side panels, black jointed legs with rubber feet and a small camera head in both arms as easily as a medium suitcase, its legs hanging relaxed, a Russian colleague laughs by the workbench, main subject in the upper half of the frame, the lower third is calm light epoxy floor, vertical 4:5, light compact feel. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "8c59c21d-5845-4b80-bf4a-ebd9139b17e3",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161918_8c59c21d-5845-4b80-bf4a-ebd9139b17e3.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a modern city park on a clear day: a knee-high four-legged robot dog with a matte graphite body, white side panels, black jointed legs with rubber feet and a small camera head confidently climbs a wide flight of light concrete steps beside a steep grassy slope, a Russian and a Chinese engineer cheer at the top, one clapping, wide 4:3 composition, subject centered, adventurous cheerful mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "f121f0f5-5739-475a-90bc-7780ae04307d",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161919_f121f0f5-5739-475a-90bc-7780ae04307d.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo on a long straight waterfront promenade of a sunny technology park: a knee-high four-legged robot dog with a matte graphite body, white side panels, black jointed legs with rubber feet and a small camera head trots steadily beside a smiling Chinese technician, the path stretching far into the distance between young trees and calm water, main subject in the upper half of the frame, the lower third is calm pale paving stones, vertical 4:5, steady long-walk mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07a.jpg": {
+  "job": "7ffe7661-8981-46fb-8c98-93aa1ded637a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162140_7ffe7661-8981-46fb-8c98-93aa1ded637a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at a bright exhibition stand: a knee-high four-legged robot dog with a matte graphite body, white side panels, black jointed legs with rubber feet and a small camera head rises on its hind legs and waves a front paw while a smiling young Russian presenter steers it with a handheld game-style remote controller, visitors laughing in the soft background, vertical 4:5 composition, subject centered, ready-to-show fun mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07b.jpg": {
+  "job": "b29f98ce-d1b8-4605-accc-1d4a73ca5def",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162139_b29f98ce-d1b8-4605-accc-1d4a73ca5def.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a university robotics lab: a knee-high four-legged robot dog with a matte graphite body, white side panels, black jointed legs and a small camera head, fitted with a compact round lidar module on its back, stands on a workbench while a smiling Chinese student plugs a cable from an open laptop into its side port, laptop screen softly blurred, vertical 4:5 composition, subject centered, focused developer mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "c9795658-31ad-46d5-aaae-ea68d9410dbc",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162139_c9795658-31ad-46d5-aaae-ea68d9410dbc.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright science museum workshop: a knee-high four-legged robot dog with a matte graphite body, white side panels, black jointed legs with rubber feet and a small camera head sits like a pet and offers its front paw to a delighted little girl, children sitting on the floor around laugh and a Russian teacher smiles, main subject in the upper half of the frame, the lower third is calm light wooden floor, vertical 4:5, joyful learning mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "09.jpg": {
+  "job": "3f4bf33c-cf05-41ac-ba81-231ba9047f59",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162139_3f4bf33c-cf05-41ac-ba81-231ba9047f59.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright factory dispatch area: a Chinese worker and a Russian client representative gently lower a knee-high four-legged robot dog with a matte graphite body, white side panels, black jointed legs and a small camera head into an open hard-shell transport case with grey foam cut to its shape, both smiling, neat stacks of plain cardboard boxes behind, wide 4:3 composition, subject centered, careful reliable mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}

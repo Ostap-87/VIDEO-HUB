@@ -1,0 +1,152 @@
+{
+ "brand": "aura",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-d1/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Робомодели · AgiBot",
+   "title": "AgiBot D1: **робопёс с сальто**",
+   "text": "Четвероногий робот для разработки и демонстраций",
+   "logo": "agibot",
+   "mascot": "wave"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-d1/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Кто делает",
+   "title": "AgiBot, **Шанхай**",
+   "text": "Один из самых быстрорастущих разработчиков воплощённого ИИ в Китае. Кроме гуманоидов делает линейку четвероногих D1.",
+   "logo": "agibot"
+  },
+  {
+   "kind": "photoStat",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-d1/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Скорость",
+   "title": "это больше 12 км/ч",
+   "text": "Быстрее, чем большинство бежит за автобусом",
+   "value": "3,5 м/с"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-d1/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Размеры",
+   "title": "D1 **в цифрах**",
+   "items": [
+    "Вес 15,5 кг с батареей",
+    "Стоя 635 × 360 × 420 мм",
+    "12 моторов в суставах",
+    "Груз до 5 кг"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-d1/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Проходимость",
+   "title": "Что **умеет**",
+   "items": [
+    "Ступени до 16 см",
+    "Уклон до 40°",
+    "Прыжок на 35 см",
+    "Сальто назад"
+   ]
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-d1/06.jpg",
+   "focus": "50% 30%",
+   "kicker": "Автономность",
+   "title": "работы, запас хода около 6 км",
+   "text": "Зарядка с 10 до 90 % примерно за час",
+   "value": "1–2 ч"
+  },
+  {
+   "kind": "photoPair",
+   "frame": true,
+   "layout": "row",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-d1/07a.jpg",
+     "focus": "50% 30%",
+     "label": "D1 Pro",
+     "items": [
+      "Готовые движения",
+      "Пульт в комплекте",
+      "Без доработки"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-d1/07b.jpg",
+     "focus": "50% 30%",
+     "label": "D1 Edu",
+     "items": [
+      "SDK для разработки",
+      "Ethernet, USB, UART",
+      "Лидар, RTK, 4G/5G"
+     ]
+    }
+   ],
+   "pair": "story",
+   "kicker": "Две версии",
+   "title": "Pro или **Edu**"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-d1/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Применение",
+   "title": "Где D1 **пригодится**",
+   "items": [
+    "Обучение и исследования",
+    "Выставки и шоу",
+    "Свои разработки на SDK"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-d1/09.jpg",
+   "focus": "50% 30%",
+   "kicker": "Цена и поставка",
+   "title": "Цена **по запросу**",
+   "items": [
+    "Закупка на заводе по ВЭД-контракту",
+    "Ввоз на вашу компанию",
+    "Видео теста вашего робота с серийным номером",
+    "Поставка 4–7 недель"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Подберём решение",
+   "title": "Пиши в **личные сообщения** или оставляй заявку на сайте",
+   "text": "Рассчитаем стоимость и окупаемость",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-d1/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-d1/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-d1/04.jpg",
+     "focus": "50% 30%"
+    }
+   ],
+   "mascot": "pointUp"
+  }
+ ]
+}
