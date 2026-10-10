@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "2bd341ce-6272-43d4-868f-0adc37a88674",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171140_2bd341ce-6272-43d4-868f-0adc37a88674.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside a bright Tokyo convenience store: behind the glass doors of the drinks fridge a white robotic arm restocks bottles of tea from the back room, a Russian business delegation with visitor badges on lanyards watches in delight with a Japanese store manager in a neat uniform, tidy shelves of rice balls and snacks with blurred labels, wide 4:3 composition, subject centered, surprising high-tech mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "f41d7aa8-39fb-4439-bfb2-a9816fb11a77",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171220_f41d7aa8-39fb-4439-bfb2-a9816fb11a77.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a vast bright Japanese supermarket in Fukuoka: rows of small white dome cameras dot the ceiling above long aisles, slim digital screens on the shelves show blurred colorful ads, a Japanese store manager points upward while two Russian delegates with lanyard badges look up in amazement, main subject in the upper half of the frame, the lower third is calm shiny aisle floor, vertical 4:5, smart retail mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "f7023e15-0a4d-48eb-a14d-175a015c2965",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171219_f7023e15-0a4d-48eb-a14d-175a015c2965.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a Russian business delegation with visitor badges on lanyards crossing the famous scramble crossing in Shibuya, Tokyo on a sunny morning, a Japanese guide in front holding a small plain blue flag, crowds of pedestrians around, tall buildings with screens and billboards softly blurred and unreadable, the delegates smiling and looking around, wide 4:3 composition, subject centered, energetic city route mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "66f0f909-531e-49fd-9b60-a4221cde9e19",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171219_66f0f909-531e-49fd-9b60-a4221cde9e19.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright meeting room of a Japanese retail company in Tokyo: Japanese managers in dark suits bow slightly and present blank business cards with both hands to a Russian business delegation with lanyard badges, who receive them with smiles, a low table with green tea cups, main subject in the upper half of the frame, the lower third is calm light wood table, vertical 4:5, respectful partnership mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "1a93f559-3196-40bd-a27c-b523886ed516",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171219_1a93f559-3196-40bd-a27c-b523886ed516.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside an automated apparel warehouse near Tokyo: robotic arms pick folded clothes in clear bags from moving totes, long conveyors and white racks, a Japanese logistics engineer in a light blue jacket explains to a Russian business delegation with visitor badges standing on a viewing gallery, everyone smiling and pointing, bright clean light, wide 4:3 composition, subject centered, precise efficient mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "485a05e3-e519-4ead-a2b0-864474bda359",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171257_485a05e3-e519-4ead-a2b0-864474bda359.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian retail executive in his forties sitting alone at the window counter of a quiet Tokyo café in daylight, a laptop, a phone and a matcha latte in front of him, he rubs his temple while reading a long email thread, slightly tired but calm thoughtful expression, the street outside softly blurred, screens unreadable, subject in the center of the vertical frame, vertical 9:16, patient waiting mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "dfdaa758-9a67-41a8-8ad9-af70f552d319",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171258_dfdaa758-9a67-41a8-8ad9-af70f552d319.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo in a narrow Japanese discount store aisle packed floor to ceiling with colorful products, all labels blurred, a smiling Japanese guide explains the dense display to a cheerful Russian business delegation with lanyard badges, a woman delegate laughs holding a small item, bright lights, subject in the center of the vertical frame, vertical 9:16, fun discovery mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "b275f98b-b75f-4ba1-a0dd-5929c526aa4f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171257_b275f98b-b75f-4ba1-a0dd-5929c526aa4f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside a domestic airliner cabin flying from Tokyo to Fukuoka: Russian business delegates with visitor badges in window seats smile and point at the snow-capped cone of Mount Fuji visible through the oval window above white clouds, a Japanese guide in the aisle seat leans in, soft morning light, wide 4:3 composition, subject centered, smooth well-planned journey mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "429c9738-091d-4fa9-9cd9-6d128b977f9a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171258_429c9738-091d-4fa9-9cd9-6d128b977f9a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a minimalist Japanese lifestyle store in Tokyo: natural wood shelves with white ceramics, linen clothes and plain storage boxes, a Russian retail chain owner in her forties touches a linen shirt and smiles at a Japanese store manager explaining the layout, soft daylight, main subject in the upper half of the frame, the lower third is calm pale wooden floor, vertical 4:5, calm inspiring mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}

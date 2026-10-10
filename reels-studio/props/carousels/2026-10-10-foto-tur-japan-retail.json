@@ -1,0 +1,159 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-retail/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Япония",
+   "title": "Как Япония **автоматизирует** магазины",
+   "text": "Ритейл Японии: от конбини до tech-дискаунтеров · Токио и Фукуока"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-retail/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Trial Holdings",
+   "title": "ИИ-камер в одном смарт-магазине",
+   "text": "Super Center Trial на Island City настраивает рекламу в зале в реальном времени",
+   "value": "~700",
+   "logo": "trial"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-retail/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут",
+   "title": "Токио и **Фукуока**",
+   "items": [
+    "День 1 · Токио: Seven-Eleven, Lawson",
+    "День 2 · Токио: FamilyMart, AEON Regi Go",
+    "День 3 · Токио: UNIQLO, MUJI",
+    "День 4 · Токио: Don Quijote, Nitori",
+    "День 5 · Trial (Фукуока), Rakuten"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-retail/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "**10 компаний** на маршруте",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/ритейл/seven-eleven.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/lawson.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/familymart.svg"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/uniqlo.svg"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/muji.svg"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/don-quijote.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/nitori.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/trial.png"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-retail/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **увидите** изнутри",
+   "items": [
+    "Как конбини тестируют роботов и аватаров",
+    "Склад UNIQLO: ручного труда на 90% меньше",
+    "«Сжатая» выкладка Don Quijote",
+    "Умные тележки и ИИ-камеры Trial"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-retail/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Месяцы переписки ради доступа в штабы",
+      "Нет гарантии, что визит согласуют вовремя",
+      "Перелёт и логистика — сами"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-retail/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Визиты — через нашу сеть контактов",
+      "Перелёт Токио–Фукуока и трансферы включены",
+      "Сопровождение на каждой встрече"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-retail/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё готово **до вылета**",
+   "items": [
+    "Визиты и переговоры по программе",
+    "Перелёт Токио–Фукуока–Токио",
+    "Трансферы и сопровождение",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-retail/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Для кого",
+   "title": "Для ритейла и **сетей**",
+   "text": "Тем, кто управляет магазинами и хочет увидеть автоматизацию японской розницы вживую"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-retail/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-retail/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-retail/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}
