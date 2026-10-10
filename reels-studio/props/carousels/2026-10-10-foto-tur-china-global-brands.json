@@ -1,0 +1,138 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-global-brands/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Китай",
+   "title": "Как китайские бренды **покорили мир**",
+   "text": "Китайские бренды, покорившие мир · 5 дней · 6 городов"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-global-brands/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Anta Sports",
+   "title": "в мире после Nike и Adidas",
+   "text": "Владелец Amer Sports: Salomon, Wilson",
+   "value": "№3"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-global-brands/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут",
+   "title": "5 дней · **6 городов**",
+   "items": [
+    "День 1 · Пекин: Li-Ning",
+    "День 2 · Шанхай: Anta Sports",
+    "День 3 · Чаншу: Bosideng",
+    "День 4 · Ханчжоу, Нинбо: JNBY, Peacebird",
+    "День 5 · Гуанчжоу: Urban Revivo"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-global-brands/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "**6 брендов** за поездку",
+   "items": [
+    "Anta Sports · Li-Ning",
+    "Bosideng — крупнейший бренд пуховиков",
+    "JNBY · Peacebird",
+    "Urban Revivo — «азиатский ответ Zara»"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-global-brands/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **увидите** изнутри",
+   "items": [
+    "Как Anta стала №3 после Nike и Adidas",
+    "Как Bosideng вышла на недели моды",
+    "Как Peacebird держит 4000+ магазинов",
+    "Как UR открывает флагманы в NY и Лондоне"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-global-brands/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Легко спутать старый и новый штаб Anta",
+      "3 поезда и 2 перелёта — сами",
+      "Нет гарантии общих дат на 6 площадок"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-global-brands/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Маршрут по действующим адресам",
+      "Перелёты и поезда включены",
+      "Даты визитов согласуем под группу"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-global-brands/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё готово **до вылета**",
+   "items": [
+    "Визиты и переговоры по программе",
+    "Трансферы между городами",
+    "Перевод: китайский и английский",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-global-brands/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Для кого",
+   "title": "Для fashion и **ритейла**",
+   "text": "Тем, кто строит бренд одежды или сеть магазинов и хочет понять, как китайцы выходят на мировой рынок"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-global-brands/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-global-brands/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-global-brands/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}

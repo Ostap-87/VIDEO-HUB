@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "55965cdd-d753-40d9-939d-2769e4d9a8c5",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170330_55965cdd-d753-40d9-939d-2769e4d9a8c5.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside a bright sportswear design center in Beijing: a wall of plain unbranded running shoes in bold colors on illuminated shelves, a young Chinese footwear designer holds up a new sneaker prototype and explains it to a smiling Russian business delegation with visitor badges on lanyards, one delegate turns a shoe in her hands, wide 4:3 composition, subject centered, energetic modern mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "8bdf4738-2754-4cbb-ba41-fdbacafabe34",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170331_8bdf4738-2754-4cbb-ba41-fdbacafabe34.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in the sports science laboratory of a large Chinese sportswear company: a Chinese athlete runs on a treadmill with small motion-capture markers on her legs, a smiling engineer follows the data on a laptop, two Russian delegates with lanyard badges watch with excitement, white walls and soft light, main subject in the upper half of the frame, the lower third is calm grey rubber floor, vertical 4:5, dynamic winning mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "fdf9aaa6-188a-423f-8261-c9af0b18624c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170410_fdf9aaa6-188a-423f-8261-c9af0b18624c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a Russian business delegation with visitor badges on lanyards crossing an arched stone bridge over a canal in a Jiangnan water town between factory visits, whitewashed houses with black tile roofs, willows and a small wooden boat below, a Chinese guide in front raising a small plain blue flag, sunny spring day, wide 4:3 composition, subject centered, cheerful travelling mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "c30ca048-c8e5-475a-9f03-38775c2532f1",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170410_c30ca048-c8e5-475a-9f03-38775c2532f1.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright down-jacket factory in Changshu: a Chinese technician in a white coat demonstrates a transparent filling machine blowing fluffy white down into a long puffer coat, two Russian delegates with lanyard badges laugh while touching the soft down, racks of colorful puffer jackets behind, main subject in the upper half of the frame, the lower third is calm clean factory floor, vertical 4:5, warm tactile mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "f1f8313b-d1ae-4e7a-b4c1-b0a046a0bb88",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170410_f1f8313b-d1ae-4e7a-b4c1-b0a046a0bb88.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a sunlit fashion design studio in Hangzhou: Chinese designers drape soft fabric on dress forms, fabric rolls and pinned pencil sketches lie on a long table, a Russian business delegation with visitor badges on lanyards watches a young designer adjust a collar, everyone smiling, large windows with greenery outside, wide 4:3 composition, subject centered, creative inspiring mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "b1f78fdd-9494-4817-b432-5177feb02f39",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170411_b1f78fdd-9494-4817-b432-5177feb02f39.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian retail entrepreneur in her late thirties in a beige trench coat sitting alone on a bench in a vast modern Chinese railway station waiting hall, a rolling suitcase beside her, an open notebook and a phone in her hands, slightly tired but calm thoughtful expression, bright daylight through a huge glass roof, departure boards blurred, subject in the center of the vertical frame, vertical 9:16. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "04eb8424-25a5-4fc8-9f47-8948ff1a84ad",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170450_04eb8424-25a5-4fc8-9f47-8948ff1a84ad.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo inside a tall bright fashion flagship store in Guangzhou: two Russian businesswomen and a businessman with lanyard badges try on stylish wool coats in front of a large mirror and laugh, a smiling Chinese guide holding a folder gives a thumbs up, minimalist racks and soft light, subject in the center of the vertical frame, vertical 9:16, easy joyful mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "8f2b49c1-1cce-4b2f-952d-bed205bf7206",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170449_8f2b49c1-1cce-4b2f-952d-bed205bf7206.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside a comfortable modern minibus driving along a green highway in eastern China: a Russian business delegation with visitor badges on lanyards sits in leather seats chatting and laughing, a young Chinese interpreter at the front turns to answer a question, sunlight through large windows, rice fields and hills outside, wide 4:3 composition, subject centered, relaxed well-organized mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "bf43b586-6f70-4e7e-aae6-ec25f2538756",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170450_bf43b586-6f70-4e7e-aae6-ec25f2538756.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo of a bright store window being styled in a Chinese fashion boutique: a Russian woman brand founder in her thirties adjusts the scarf on a mannequin together with a smiling young Chinese visual merchandiser, folded sweaters in soft colors on wooden tables nearby, main subject in the upper half of the frame, the lower third is calm light oak floor, vertical 4:5, confident creative mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
