@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "71010cae-66c3-4bfe-991f-21a54aeb712f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163315_71010cae-66c3-4bfe-991f-21a54aeb712f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright modern robotics test hall: a 171 cm athletic humanoid robot with a white-and-silver shell, black joints, a compact head ringed by a dark camera band and dexterous black five-fingered hands strides forward carrying a toolbox in one hand and a parcel in the other, a grinning Chinese engineer and a Russian colleague walk behind it, sunlight through high windows, wide 4:3 composition, subject centered, quick and handy mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "730f1385-436a-4347-ad6d-e680e0de5961",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163440_730f1385-436a-4347-ad6d-e680e0de5961.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a sunlit university robotics lab in Beijing with tall windows onto historic grey-brick campus buildings and golden ginkgo trees: young Chinese researchers gather around a 171 cm athletic humanoid robot with a white-and-silver shell, black joints, a compact head ringed by a dark camera band and dexterous black five-fingered hands, adjusting its fingers, main subject in the upper half of the frame, the lower third is calm light lab floor, vertical 4:5, academic proud mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "d9433f23-c89f-47f5-b259-e3e1d0e1a128",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163440_d9433f23-c89f-47f5-b259-e3e1d0e1a128.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a sunny outdoor university running track: a 171 cm athletic humanoid robot with a white-and-silver shell, black joints, a compact head ringed by a dark camera band and black five-fingered hands runs at full speed, overtaking a laughing Chinese student jogging in the next lane, legs slightly motion-blurred, green stands behind, wide 4:3 composition, subject centered, energetic sporty mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "ad549e4f-d57e-40af-82ce-652bcd53a98c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163440_ad549e4f-d57e-40af-82ce-652bcd53a98c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright spare-parts warehouse: a 171 cm athletic humanoid robot with a white-and-silver shell, black joints, a compact head ringed by a dark camera band and dexterous black five-fingered hands lifts a heavy steel crate of metal fittings onto a shoulder-high shelf with both arms, a Chinese worker gives a thumbs up, main subject in the upper half of the frame, the lower third is calm grey floor, vertical 4:5, strong confident mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "983ce431-1512-4cc0-aa8e-9fdd5dd23922",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163440_983ce431-1512-4cc0-aa8e-9fdd5dd23922.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a motion test platform in a bright lab: a 171 cm athletic humanoid robot with a white-and-silver shell, black joints, a compact head ringed by a dark camera band and dexterous black five-fingered hands holds a deep balanced lunge with arms spread wide, while a Russian engineer and a Chinese engineer watch motion graphs on a large blurred monitor and smile, wide 4:3 composition, subject centered, agile precise mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "94be3a58-4f0b-4555-9a03-36cc55f35571",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163730_94be3a58-4f0b-4555-9a03-36cc55f35571.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright indoor sports arena: a 171 cm athletic humanoid robot with a white-and-silver shell, black joints, a compact head ringed by a dark camera band and black five-fingered hands soars mid-air in a standing high jump over a light bar nearly a meter high, knees tucked, Chinese and Russian spectators cheering in the soft background, main subject in the upper half of the frame, the lower third is calm blue sports mat, vertical 4:5, champion mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "b1da60cc-08e9-42b0-8e5e-fcb0ce79bc3c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163731_b1da60cc-08e9-42b0-8e5e-fcb0ce79bc3c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright parcel sorting hub: a 171 cm athletic humanoid robot with a white-and-silver shell, black joints, a compact head ringed by a dark camera band and dexterous black five-fingered hands picks parcels with blank labels off a moving conveyor and drops them into sorting bins, scanning one with a handheld scanner, smiling Chinese logistics workers in vests nearby, wide 4:3 composition, subject centered, busy productive mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "d7fd659c-46f3-46c8-9d76-48afbc72836a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163731_d7fd659c-46f3-46c8-9d76-48afbc72836a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo on a bright Russian electronics assembly line: a 171 cm athletic humanoid robot with a white-and-silver shell, black joints and a compact head ringed by a dark camera band works at one station tightening screws with an electric screwdriver, people work calmly along the rest of the line, a Russian and a Chinese engineer review it on a tablet, main subject in the upper half of the frame, the lower third is calm clean floor, vertical 4:5, step-by-step pilot mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "09.jpg": {
+  "job": "67149330-94e0-4ba6-b403-2376a77a6784",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163731_67149330-94e0-4ba6-b403-2376a77a6784.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright customs warehouse near Moscow: a smiling Russian logistics officer with a tablet checks an open wooden crate in which a 171 cm athletic humanoid robot with a white-and-silver shell, black joints and a compact head ringed by a dark camera band stands secured with padded straps, a Chinese freight agent beside him laughs, neat rows of crates behind, wide 4:3 composition, subject centered, smooth clearance mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
