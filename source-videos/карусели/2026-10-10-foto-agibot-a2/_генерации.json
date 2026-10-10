@@ -1,0 +1,122 @@
+{
+ "01.jpg": {
+  "job": "8f8c187f-8ebc-4340-b194-f5b143511fb3",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161701_8f8c187f-8ebc-4340-b194-f5b143511fb3.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright modern technology exhibition hall: a 169 cm bipedal humanoid robot with a glossy white shell, graphite joints, dark five-fingered hands and a black face screen with glowing cyan eyes stands at a clean white booth and waves at arriving visitors, a smiling Russian businesswoman waves back while her Chinese colleague laughs, softly blurred crowd behind, wide 4:3 composition, subject centered, welcoming festive mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "ffda52c4-1267-4af1-8dd0-d247a22873e6",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161702_ffda52c4-1267-4af1-8dd0-d247a22873e6.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo inside a bright robot factory hall in Shanghai: a long neat row of identical 169 cm bipedal humanoid robots with glossy white shells, graphite joints and black face screens with glowing cyan eyes stands on calibration spots, two smiling Chinese technicians in light-blue uniforms check them with tablets, tall windows with soft daylight, main subject in the upper half of the frame, the lower third is calm polished grey floor, vertical 4:5, proud productive mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "b747535c-6a42-4d34-bfbc-9e0150d392f4",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161701_b747535c-6a42-4d34-bfbc-9e0150d392f4.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a long-distance walk on a quiet tree-lined country road among green hills in eastern China: a 169 cm bipedal humanoid robot with a glossy white shell, graphite joints, dark five-fingered hands and a black face screen with glowing cyan eyes strides forward in soft morning sun, three cheerful Chinese engineers with backpacks walk beside it and one raises a fist in celebration, wide 4:3 composition, subject centered, endurance and joy. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "961f33a6-0531-4c95-852a-69848c48a6c0",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161702_961f33a6-0531-4c95-852a-69848c48a6c0.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright glass corridor of a Moscow business center: a 169 cm bipedal humanoid robot with a glossy white shell, graphite joints, dark five-fingered hands and a black face screen with glowing cyan eyes walks side by side with a Russian manager in a grey suit of the same height, both mid-stride at an easy pace, the man laughing, main subject in the upper half of the frame, the lower third is calm light stone floor, vertical 4:5, friendly mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "c0294e35-6e06-4df1-88ae-9493e6c0deb9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161743_c0294e35-6e06-4df1-88ae-9493e6c0deb9.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a clean electronics lab: a 169 cm bipedal humanoid robot with a glossy white shell, graphite joints and a black face screen showing two smiling cyan eyes stands with its back panel open, revealing tidy cables, a compact computer module and a small lidar unit, a Chinese female engineer in a white coat points inside with a slim screwdriver while a Russian colleague smiles, wide 4:3 composition, subject centered, curious mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "31196c30-bcf2-4324-a16f-2ae99a90dc81",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161742_31196c30-bcf2-4324-a16f-2ae99a90dc81.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a sunny modern museum lobby late in the afternoon: a 169 cm bipedal humanoid robot with a glossy white shell, graphite joints, dark five-fingered hands and a black face screen with glowing cyan eyes stands tirelessly by the entrance greeting a smiling Russian family with two children, warm low sunlight across the hall, main subject in the upper half of the frame, the lower third is calm sunlit parquet floor, vertical 4:5, long steady shift mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07a.jpg": {
+  "job": "07039f94-6559-4a17-8fd6-5e1300953286",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161743_07039f94-6559-4a17-8fd6-5e1300953286.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at a calm bright office reception: a 169 cm bipedal humanoid robot with a glossy white shell, graphite joints, simple dark hands and a black face screen with glowing cyan eyes stands beside a light wooden reception desk and bows slightly to a smiling Chinese visitor holding a coffee cup, soft daylight from tall windows, vertical 4:5 composition, subject centered, simple and welcoming mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07b.jpg": {
+  "job": "7491ff06-7387-47fc-a8be-fa789f933bf5",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161743_7491ff06-7387-47fc-a8be-fa789f933bf5.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a premium electronics showroom: a 169 cm bipedal humanoid robot with a glossy white shell, graphite joints, a small round sensor dome on top of its head and a black face screen with glowing cyan eyes delicately holds a tiny earbud case between dexterous five-fingered dark fingers and offers it to a delighted Russian visitor, vertical 4:5 composition, subject centered, precise high-tech mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "2f9f3317-04f5-4bbd-9f09-fe7ffee91567",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161822_2f9f3317-04f5-4bbd-9f09-fe7ffee91567.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo of a bright daytime corporate conference stage: a 169 cm bipedal humanoid robot with a glossy white shell, graphite joints, dark five-fingered hands and a black face screen with glowing cyan eyes gestures to the audience beside a smiling Russian woman host with a microphone, soft white stage light and a plain pale backdrop, main subject in the upper half of the frame, the lower third is calm softly blurred applauding audience, vertical 4:5, celebratory mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "09.jpg": {
+  "job": "03742144-773a-45a0-85db-9381f8e73694",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_161822_03742144-773a-45a0-85db-9381f8e73694.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright factory meeting room with a glass wall: a Russian purchasing manager and a Chinese sales manager smile over a folder of blank contract papers at a light wooden table, while behind the glass a 169 cm bipedal humanoid robot with a glossy white shell, graphite joints and a black face screen with glowing cyan eyes waits on the production floor, wide 4:3 composition, subject centered, trustworthy calm mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}

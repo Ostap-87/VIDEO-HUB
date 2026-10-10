@@ -1,0 +1,152 @@
+{
+ "brand": "aura",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-a2/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Робомодели · AgiBot",
+   "title": "AgiBot A2: **гуманоид-рекордсмен**",
+   "text": "Полноразмерный робот для встреч, выставок и сцены",
+   "mascot": "wave"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-a2/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Кто делает",
+   "title": "AgiBot, **Шанхай**",
+   "text": "Один из самых быстрорастущих разработчиков воплощённого ИИ в Китае. По данным производителя, в работе уже больше 1000 роботов A2."
+  },
+  {
+   "kind": "photoStat",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-a2/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Рекорд Гиннесса",
+   "title": "пешком между провинциями",
+   "text": "Плюс 24 часа ходьбы в прямом эфире на улице",
+   "value": "106 км"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-a2/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Размеры",
+   "title": "A2 **в цифрах**",
+   "items": [
+    "Рост 169 см",
+    "Вес около 69 кг",
+    "40 степеней свободы у Ultra",
+    "Скорость до 1,2 м/с"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-a2/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Начинка",
+   "title": "Что **внутри**",
+   "items": [
+    "3D-лидар и RGB-D-камера",
+    "NVIDIA Jetson Orin 64 ГБ",
+    "Экран-лицо с эмоциями",
+    "Wi-Fi и 4G/5G"
+   ]
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-a2/06.jpg",
+   "focus": "50% 30%",
+   "kicker": "Автономность",
+   "title": "работы стоя, 1,5+ ч в ходьбе",
+   "text": "Батарея меняется на ходу, зарядка за 2 часа",
+   "value": "3 ч"
+  },
+  {
+   "kind": "photoPair",
+   "frame": true,
+   "layout": "row",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-a2/07a.jpg",
+     "focus": "50% 30%",
+     "label": "A2 Lite",
+     "items": [
+      "23 степени свободы",
+      "До 0,8 м/с",
+      "4,5 ч стоя",
+      "Без лидара и Orin"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-a2/07b.jpg",
+     "focus": "50% 30%",
+     "label": "A2 Ultra",
+     "items": [
+      "40 степеней свободы",
+      "До 1,2 м/с",
+      "3 ч стоя",
+      "Лидар, камеры, Orin"
+     ]
+    }
+   ],
+   "kicker": "Две версии",
+   "title": "Ultra или **Lite**"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-a2/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Применение",
+   "title": "Где A2 **работает**",
+   "items": [
+    "Гид в шоуруме и на выставке",
+    "Приветствие гостей по лицу",
+    "Выступления и шоу",
+    "Амбассадор бренда"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-a2/09.jpg",
+   "focus": "50% 30%",
+   "kicker": "Цена и поставка",
+   "title": "Цена **по запросу**",
+   "items": [
+    "Закупка на заводе по ВЭД-контракту",
+    "Ввоз на вашу компанию",
+    "Видео теста вашего робота с серийным номером",
+    "Поставка 4–7 недель"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Подберём решение",
+   "title": "Пиши в **личные сообщения** или оставляй заявку на сайте",
+   "text": "Рассчитаем стоимость и окупаемость",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-a2/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-a2/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-a2/04.jpg",
+     "focus": "50% 30%"
+    }
+   ],
+   "mascot": "pointUp"
+  }
+ ]
+}
