@@ -9,15 +9,13 @@
    "mascot": "wave",
    "kicker": "Робомодели · AgiBot",
    "title": "AgiBot A2-W: **гуманоид на колёсах** для цеха",
-   "text": "Две руки, лидар и разворот на месте",
-   "caption": "Иллюстрация: колёсный гуманоид в цехе"
+   "text": "Две руки, лидар и разворот на месте"
   },
   {
    "kind": "photoFull",
    "image": "source-videos/карусели/2026-10-10-foto-agibot-a2-w/02.jpg",
    "focus": "50% 25%",
    "logo": "agibot",
-   "caption": "Иллюстрация",
    "kicker": "Кто делает",
    "title": "AgiBot, **Шанхай**",
    "text": "Один из самых быстрорастущих разработчиков воплощённого ИИ в Китае. A2-W сделан для гибкого производства и логистики."
@@ -26,7 +24,6 @@
    "kind": "photoCard",
    "image": "source-videos/карусели/2026-10-10-foto-agibot-a2-w/03.jpg",
    "focus": "55% 35%",
-   "caption": "Иллюстрация",
    "kicker": "Размеры",
    "title": "A2-W **в цифрах**",
    "items": [
@@ -41,7 +38,6 @@
    "frame": false,
    "image": "source-videos/карусели/2026-10-10-foto-agibot-a2-w/04.jpg",
    "focus": "50% 20%",
-   "caption": "Иллюстрация",
    "kicker": "Руки",
    "value": "5 кг",
    "title": "на каждую руку",
@@ -51,7 +47,6 @@
    "kind": "photoStat",
    "image": "source-videos/карусели/2026-10-10-foto-agibot-a2-w/05.jpg",
    "focus": "50% 35%",
-   "caption": "Иллюстрация",
    "kicker": "Рабочая зона",
    "value": "0–2 м",
    "title": "от пола до верхней полки",
@@ -61,7 +56,6 @@
    "kind": "photoFull",
    "image": "source-videos/карусели/2026-10-10-foto-agibot-a2-w/06.jpg",
    "focus": "50% 20%",
-   "caption": "Иллюстрация",
    "kicker": "Начинка",
    "title": "Что **видит** и чувствует",
    "items": [
@@ -75,7 +69,6 @@
    "kind": "photoStat",
    "image": "source-videos/карусели/2026-10-10-foto-agibot-a2-w/07.jpg",
    "focus": "50% 40%",
-   "caption": "Иллюстрация",
    "kicker": "Автономность",
    "value": "5 ч",
    "title": "от батареи 2 кВт·ч",
@@ -85,7 +78,6 @@
    "kind": "photoFull",
    "image": "source-videos/карусели/2026-10-10-foto-agibot-a2-w/08.jpg",
    "focus": "50% 25%",
-   "caption": "Иллюстрация",
    "kicker": "Применение",
    "title": "Где A2-W **работает**",
    "items": [
@@ -98,7 +90,6 @@
    "kind": "photoCard",
    "image": "source-videos/карусели/2026-10-10-foto-agibot-a2-w/09.jpg",
    "focus": "50% 35%",
-   "caption": "Иллюстрация",
    "kicker": "Цена и поставка",
    "title": "Цена **по запросу**",
    "numbered": true,
@@ -112,9 +103,8 @@
   {
    "kind": "photoCta",
    "kicker": "Подберём решение",
-   "title": "Посчитаем, **когда окупится**",
-   "text": "Пришлите задачу: подберём робота и рассчитаем окупаемость",
-   "button": "Подобрать решение",
+   "title": "Пиши в **личные сообщения** или оставляй заявку на сайте",
+   "text": "Рассчитаем стоимость и окупаемость",
    "mascot": "pointUp",
    "images": [
     {
