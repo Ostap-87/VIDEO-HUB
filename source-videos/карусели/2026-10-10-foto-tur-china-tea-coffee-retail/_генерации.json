@@ -1,0 +1,86 @@
+{
+ "01.jpg": {
+  "job": "8a2eee55-07cf-41f4-b2dd-0bbc4c5988f7",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164211_8a2eee55-07cf-41f4-b2dd-0bbc4c5988f7.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a sunny Shanghai street corner: a young Chinese barista in a plain beige apron hands plain white coffee cups through the window of a compact glass-fronted coffee kiosk to a Russian business delegation with blank visitor badges on lanyards, the delegates laugh and toast with their cups, plane trees and passers-by softly blurred, wide 4:3 composition, subject centered, lively curious mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "78f002c6-f92d-4517-b854-a76ee76fe138",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164212_78f002c6-f92d-4517-b854-a76ee76fe138.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo inside a compact app-order coffee shop in Xiamen: a tall pickup shelf holds dozens of identical plain paper cups and bags, two young Chinese baristas work fast at sleek espresso machines, a courier collects an order while a smiling Russian businesswoman with a blank visitor badge watches the flow in amazement, main subject in the upper half of the frame, the lower third is calm light terrazzo counter, vertical 4:5, brisk efficient mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "658f760f-1e9f-4de7-bdd4-194dff892223",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164212_658f760f-1e9f-4de7-bdd4-194dff892223.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a quiet plane-tree lined street of Shanghai's old French Concession in soft morning light: a Russian business delegation with blank visitor badges walks with takeaway coffee cups from one café to the next, a Chinese guide holds up a tablet with a blurred route map and points down the street, red-brick villas and café terraces around, wide 4:3 composition, subject centered, relaxed exploring mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "6d825f79-e279-4037-856e-ac5807ac1dce",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164213_6d825f79-e279-4037-856e-ac5807ac1dce.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in the bright tasting lab of a Chinese tea-drink company headquarters in Shenzhen: a beverage trainer in a white apron lines up glasses of pink fruit tea with cheese foam, jasmine milk tea and iced coffee, three Russian delegates with blank visitor badges taste and laugh, main subject in the upper half of the frame, the lower third is calm white marble counter, vertical 4:5, playful tasting mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "496c46e3-86f8-4f63-a5e4-815dc9d5fc94",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164317_496c46e3-86f8-4f63-a5e4-815dc9d5fc94.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in the heritage hall of a historic herbal tea maker in Guangzhou: antique bronze tea urns, porcelain jars and dried herbs in glass cases, a Chinese guide in an elegant modern dress pours dark herbal tea into small cups for a smiling Russian business delegation with blank visitor badges, warm daylight and carved wood details, wide 4:3 composition, subject centered, respectful curious mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "46a1349f-b1f3-49d6-95d6-6b4b31f63e5f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164315_46a1349f-b1f3-49d6-95d6-6b4b31f63e5f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo on the breakfast terrace of a five-star seaside hotel in Xiamen on a bright morning: Russian business delegates enjoy dim sum and fresh tropical fruit, a smiling Chinese waiter pours tea, the calm sea and a green island with red-roof villas behind them, main subject in the upper half of the frame, the lower third is calm white tablecloth, vertical 4:5, rested cheerful mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "f3284a59-54dc-4a8a-b07b-6d57380186fe",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164318_f3284a59-54dc-4a8a-b07b-6d57380186fe.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo behind the counter of a modern Chinese tea shop with pale wood lattice decor in Shenzhen: a Russian businesswoman with a blank visitor badge, wearing a borrowed apron, shakes a fruit tea in a steel shaker under the guidance of a laughing young Chinese trainer, fresh fruit, glass jars and tea leaves on the counter, a fellow delegate applauds, wide 4:3 composition, subject centered, hands-on franchise trial mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
