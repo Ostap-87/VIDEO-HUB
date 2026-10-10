@@ -1,0 +1,98 @@
+{
+ "01.jpg": {
+  "job": "c8c0aa29-7825-46fe-a529-677f0903c971",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172425_c8c0aa29-7825-46fe-a529-677f0903c971.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright food innovation test kitchen in Bangkok: a smiling Thai food technologist in a white coat and hairnet presents a tray with three tasting plates, seared tuna, small cups of creamy yogurt with mango, and a plant-based burger patty, to a Russian business delegation with visitor badges on lanyards who taste with forks and laugh, stainless steel counters around, wide 4:3 composition, subject centered. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "5bbf5c55-f0e0-4f86-af25-b034be3db48f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172424_5bbf5c55-f0e0-4f86-af25-b034be3db48f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a large seafood cannery in Samut Sakhon: a fast stainless steel line carries thousands of shiny unlabeled tuna cans in neat rows, a smiling Thai worker in a white uniform and hairnet lifts one can for inspection, a Russian delegate in a white coat and hairnet with a visitor badge on a lanyard watches impressed, main subject in the upper half of the frame, the lower third is a calm clean floor, vertical 4:5. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "2cc132c3-12a8-4e04-a5c5-46b70903f648",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172502_2cc132c3-12a8-4e04-a5c5-46b70903f648.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at the fishing port of Samut Sakhon in the morning: colorful wooden fishing boats moored along the pier, Thai fishermen unload crates of fresh fish on ice, a cheerful Thai guide walks a Russian business delegation with visitor badges on lanyards along the quay toward the processing plants, delegates smile and take photos, bright sky, wide 4:3 composition, subject centered, active route of the day. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "844a16ad-b6fb-4601-856d-3580cef29ee8",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172502_844a16ad-b6fb-4601-856d-3580cef29ee8.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a food-tech startup accelerator in Bangkok with open lab benches and colorful lounge corners: young Thai founders in casual shirts present glass jars of plant-based protein to a Russian business delegation with visitor badges on lanyards, one founder hands a tasting spoon to a smiling delegate, lively startup energy, main subject in the upper half of the frame, the lower third is a calm polished concrete floor, vertical 4:5. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "f01d86b4-8c87-4e6d-9f4c-d88e1a989f4a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172502_f01d86b4-8c87-4e6d-9f4c-d88e1a989f4a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a cold-chain distribution center near Bangkok: a smiling Thai quality manager in a thermal vest scans a chilled package of fresh chicken with a handheld scanner beside tall racks of insulated crates, members of a Russian business delegation with visitor badges on lanyards and warm jackets watch with interest, light frosty air, bright LED lighting, wide 4:3 composition, subject centered. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "9a33bbe4-21fa-4dc9-9f08-78dd795e6902",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172503_9a33bbe4-21fa-4dc9-9f08-78dd795e6902.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian businesswoman in her thirties standing outside the closed gate of a food factory near Bangkok in bright sunshine, holding a notebook and phone and waiting for an answer about a visit that was never confirmed, a palm tree and a small guard booth behind her, thoughtful and slightly tired but calm, subject in the center of the vertical frame, vertical 9:16. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "8f3774f9-5e2e-42a0-8a4a-d591ca58347e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172544_8f3774f9-5e2e-42a0-8a4a-d591ca58347e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo on a factory tour in a bright Thai dairy plant: a Russian business delegation in white coats and hairnets with visitor badges on lanyards wears small radio headsets, a smiling interpreter speaks into a tour microphone while a Thai engineer gestures toward rows of stainless steel tanks, everyone nodding and laughing, subject in the center of the vertical frame, vertical 9:16. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "23782a7c-431e-4785-a9eb-c00e416f8d53",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172543_23782a7c-431e-4785-a9eb-c00e416f8d53.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in an airy Bangkok hotel lobby with teak wood and orchids: smiling Thai receptionists greet a Russian business delegation with visitor badges on lanyards with a polite wai gesture and glasses of bright blue butterfly pea iced tea, their guide hands over room key cards, rolling suitcases beside them, wide 4:3 composition, subject centered, warm welcoming arrival. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
