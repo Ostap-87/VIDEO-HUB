@@ -1,0 +1,147 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-vietnam-food-dairy/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Вьетнам",
+   "title": "Ферма на **70 000** коров",
+   "text": "Продукты питания и молочная промышленность Вьетнама · 3 города"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-vietnam-food-dairy/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Vinamilk",
+   "title": "литров молока в год на мегазаводе Vinamilk",
+   "text": "Бинь Зыонг: 20 га и склады Industry 4.0",
+   "value": "400 млн",
+   "logo": "vinamilk"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-vietnam-food-dairy/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут по дням",
+   "title": "Хошимин — Нгеан — **Ханой**",
+   "items": [
+    "День 1 · Хошимин: Vinamilk",
+    "День 2 · Хошимин: Nutifood, Masan",
+    "День 3 · Хошимин: Vissan, Dutch Lady",
+    "День 4 · Нгеан: TH True Milk",
+    "День 5 · Ханой: Acecook"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-vietnam-food-dairy/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "Куда **едем**",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/еда/vinamilk.svg"
+    },
+    {
+     "src": "source-videos/логотипы/еда/nutifood.png"
+    },
+    {
+     "src": "source-videos/логотипы/еда/masan-consumer.png"
+    },
+    {
+     "src": "source-videos/логотипы/еда/vissan.png"
+    },
+    {
+     "src": "source-videos/логотипы/еда/dutch-lady-frieslandcampina.png"
+    },
+    {
+     "src": "source-videos/логотипы/еда/th-true-milk.png"
+    },
+    {
+     "src": "source-videos/логотипы/еда/acecook.png"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-vietnam-food-dairy/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Вопросы, на которые **ответит** тур",
+   "items": [
+    "Как роботы работают на заводе Vinamilk",
+    "Как чипы следят за каждой коровой TH",
+    "Как Acecook продаёт 3 млрд пачек в год",
+    "Как Masan автоматизировал рыбный соус"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-vietnam-food-dairy/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Месяцы переписки ради доступа",
+      "Нет гарантии, что визит согласуют",
+      "Перелёты и логистика — на вас"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-vietnam-food-dairy/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Внутренние перелёты и трансферы",
+      "Сопровождение на каждой встрече",
+      "Синхронный перевод на встречах"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-vietnam-food-dairy/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё **на месте**",
+   "items": [
+    "Организация визитов по программе",
+    "Внутренние перелёты между городами",
+    "Сопровождение на вьетнамском/английском",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-vietnam-food-dairy/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-vietnam-food-dairy/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-vietnam-food-dairy/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}
