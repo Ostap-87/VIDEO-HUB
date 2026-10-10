@@ -1,0 +1,149 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-longevity-biotech/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Таиланд",
+   "title": "Биовозраст, теломеры и **стволовые** клетки",
+   "text": "Лонгевити Таиланда — региональный лидер ЮВА · 2 города"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-longevity-biotech/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "MEDEZE Group",
+   "title": "рынка банков стволовых клеток Таиланда",
+   "text": "MEDEZE: 12 000+ клиентов, 260+ больниц-партнёров",
+   "value": "50%+",
+   "logo": "medeze-group"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-longevity-biotech/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут по дням",
+   "title": "Бангкок и **Накхонпатхом**",
+   "items": [
+    "День 1 · Бангкок: BDMS Wellness, VitalLife",
+    "День 2 · Накхонпатхом: MEDEZE, VAANAA",
+    "День 3 · Бангкок: RAKxa, Mousai",
+    "День 4 · Бангкок: Boston Health, Vega Clinic"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-longevity-biotech/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "Куда **едем**",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/медицина/bdms-wellness-clinic.png"
+    },
+    {
+     "src": "source-videos/логотипы/медицина/vitallife-bumrungrad.png"
+    },
+    {
+     "src": "source-videos/логотипы/медицина/medeze-group.png"
+    },
+    {
+     "src": "source-videos/логотипы/медицина/vaanaa-longevity-clinic.png"
+    },
+    {
+     "src": "source-videos/логотипы/медицина/rakxa-integrative-wellness.png"
+    },
+    {
+     "src": "source-videos/логотипы/медицина/mousai-wellness-center.png"
+    },
+    {
+     "src": "source-videos/логотипы/медицина/boston-health-longevity.png"
+    },
+    {
+     "src": "source-videos/логотипы/медицина/vega-clinic.png"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-longevity-biotech/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Вопросы, на которые **ответит** тур",
+   "items": [
+    "Как BDMS измеряет биологический возраст",
+    "Как MEDEZE вышла на биржу в 2024",
+    "Как устроен медицинский wellness-ретрит",
+    "Почему клиники лечат гостей из Европы и США"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-longevity-biotech/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Месяцы переписки ради доступа",
+      "Нет гарантии, что визит согласуют",
+      "Логистика — на вас"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-longevity-biotech/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Трансферы включены",
+      "Сопровождение на каждой встрече",
+      "Синхронный перевод на встречах"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-longevity-biotech/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё **на месте**",
+   "items": [
+    "Организация визитов по программе",
+    "Трансферы по Бангкоку и региону",
+    "Сопровождение на тайском/английском",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-longevity-biotech/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-longevity-biotech/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-longevity-biotech/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}
