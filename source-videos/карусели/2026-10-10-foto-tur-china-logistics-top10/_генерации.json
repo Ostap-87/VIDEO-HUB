@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "f570d99a-0264-479f-a25f-3684123fe6ce",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165501_f570d99a-0264-479f-a25f-3684123fe6ce.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo from a mezzanine walkway above a giant express parcel sorting centre near Shanghai: thousands of brown parcels flow along looping cross-belt sorters and chutes below, a Russian business delegation with blank visitor badges on lanyards leans on the railing smiling, a Chinese operations manager in a reflective vest explains, bright industrial lighting, wide 4:3 composition, subject centered, impressive high-speed mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "00243556-76cd-4c74-8de6-5e7a6a9e246e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165502_00243556-76cd-4c74-8de6-5e7a6a9e246e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo on the quay of an automated container terminal in Shanghai on a sunny day: giant ship-to-shore cranes lift colourful containers onto a huge container ship, a Russian business delegation in white hard hats and reflective vests with blank visitor badges looks up and smiles beside a Chinese port engineer, main subject in the upper half of the frame, the lower third is calm grey quay concrete, vertical 4:5, massive scale mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "05f3aeec-8f4d-4dd4-aef9-084f6c0f7f29",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165554_05f3aeec-8f4d-4dd4-aef9-084f6c0f7f29.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright Shanghai office: a Chinese guide stands by a large minimalist wall map of China with no labels, only four glowing dots joined by a line from north to south, a Russian business delegation with blank visitor badges sits facing it with coffee and smiles, one delegate points at a dot, wide 4:3 composition, subject centered, clear well-planned route mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "f9e6c286-4752-4794-b225-bfc9aac880b6",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165554_f9e6c286-4752-4794-b225-bfc9aac880b6.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at a busy rail freight terminal near Beijing: a gantry crane lowers a container onto a long freight train while trucks wait in line, a Russian business delegation in hard hats and reflective vests with blank visitor badges stands with a Chinese terminal manager who points along the train, main subject in the upper half of the frame, the lower third is calm smooth concrete platform, vertical 4:5, connected supply-chain mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "11951a30-621d-40f8-9ec1-cf76f77c5898",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165554_11951a30-621d-40f8-9ec1-cf76f77c5898.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a bright air cargo apron in Shenzhen: a white cargo jet without markings has its large side door open as cargo pallets roll up a loader, a Russian business delegation in reflective vests with blank visitor badges watches with a smiling Chinese cargo manager who explains, clear blue sky, wide 4:3 composition, subject centered, fast global-delivery mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "566c17c2-8a02-4e28-a2c8-1ef94795574b",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165554_566c17c2-8a02-4e28-a2c8-1ef94795574b.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian businesswoman in her forties at a kitchen table in a bright Moscow apartment, scrolling through a long chain of emails on a softly blurred laptop screen, a cup of tea and a notebook beside her, cheek resting on her hand, thoughtful and a little tired but calm, soft daylight from the window, subject in the center of the vertical frame, vertical 9:16, quiet patient mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "e6d3952a-0bb3-4102-87cb-d5be5f644dc9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165631_e6d3952a-0bb3-4102-87cb-d5be5f644dc9.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo in a bright automated warehouse: orange autonomous mobile robots carry tall shelving units across a gridded floor, a Chinese escort smiles and explains while a Russian business delegation with blank visitor badges watches, two delegates laugh and point at a robot gliding past, subject in the center of the vertical frame, vertical 9:16, guided wow mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "0d698e56-ce6f-470f-84f9-e8dd06dbb893",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165633_0d698e56-ce6f-470f-84f9-e8dd06dbb893.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in the arrivals hall of a Shanghai airport: a smiling Chinese guide greets a Russian business delegation with blank visitor badges as a porter wheels their suitcases on a trolley toward a waiting black business van visible through glass doors, bright daylight, everyone relaxed and cheerful, wide 4:3 composition, subject centered, carefree organised mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "ba17a984-ef4a-483e-906e-29d08fca70b1",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165633_ba17a984-ef4a-483e-906e-29d08fca70b1.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo on a sunny logistics campus in Hangzhou: a small white self-driving delivery vehicle with rows of locker doors stops beside a Russian business delegation with blank visitor badges, a Chinese showroom host opens a locker to show a parcel, the delegates laugh, a glass showroom building and lawns behind, main subject in the upper half of the frame, the lower third is calm smooth paved path, vertical 4:5, futuristic fun mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
