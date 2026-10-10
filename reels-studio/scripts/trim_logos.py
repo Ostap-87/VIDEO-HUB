@@ -20,20 +20,36 @@ FILL = 0.9
 MARGIN = 0.04
 
 
-def content_box(im):
-    """(left, top, right, bottom) содержимого логотипа или None."""
-    rgba = im.convert('RGBA')
-    w, h = rgba.size
-    abox = rgba.getchannel('A').point(lambda v: 255 if v > 16 else 0).getbbox()
-    if abox and (abox[2] - abox[0] < 0.98 * w or abox[3] - abox[1] < 0.98 * h):   # прозрачные поля — режем по альфе
-        return abox
-    rgb = Image.alpha_composite(Image.new('RGBA', rgba.size, (255, 255, 255, 255)), rgba).convert('RGB')
+def white_bg_box(rgb):
+    """Рамка содержимого на белом (почти белом) фоне или None, если фон цветной — плашка бренда."""
+    w, h = rgb.size
     corners = [rgb.getpixel(p) for p in ((0, 0), (w - 1, 0), (0, h - 1), (w - 1, h - 1))]
     bg = tuple(sorted(c[i] for c in corners)[1] for i in range(3))
     if min(bg) < 235:                                   # цветная плашка — часть дизайна логотипа, не режем
         return None
     diff = ImageChops.difference(rgb, Image.new('RGB', rgb.size, bg)).convert('L')
     return diff.point(lambda v: 255 if v > 20 else 0).getbbox()
+
+
+def content_box(im):
+    """(left, top, right, bottom) содержимого логотипа или None."""
+    rgba = im.convert('RGBA')
+    w, h = rgba.size
+    alpha = rgba.getchannel('A')
+    abox = alpha.point(lambda v: 255 if v > 16 else 0).getbbox()
+    if not abox:
+        return None
+    inner = rgba.crop(abox)
+    a_in = inner.getchannel('A').point(lambda v: 255 if v > 16 else 0)
+    opaque = sum(a_in.histogram()[255:]) / (inner.size[0] * inner.size[1])
+    if opaque < 0.9:                                     # прозрачный фон — режем по альфе
+        return abox
+    # внутри непрозрачная карточка: ищем логотип на белом фоне карточки
+    rgb = Image.alpha_composite(Image.new('RGBA', inner.size, (255, 255, 255, 255)), inner).convert('RGB')
+    box = white_bg_box(rgb)
+    if not box:
+        return abox if abox != (0, 0, w, h) else None
+    return (abox[0] + box[0], abox[1] + box[1], abox[0] + box[2], abox[1] + box[3])
 
 
 def main():
