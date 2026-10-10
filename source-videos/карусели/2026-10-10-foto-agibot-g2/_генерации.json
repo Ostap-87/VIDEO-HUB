@@ -1,0 +1,122 @@
+{
+ "01.jpg": {
+  "job": "9f059f91-af69-43db-b9fe-36bdd62dd9b6",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162223_9f059f91-af69-43db-b9fe-36bdd62dd9b6.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in the sunlit lobby of an automotive research center with a sleek unbranded concept car in the background: a wheeled humanoid robot with a white torso, a black-visor head, slim white arms with dark hands, a telescoping graphite waist and a wide white four-wheel base rolls forward with arms open in greeting toward smiling Russian and Chinese engineers, glossy floor reflecting daylight, wide 4:3 composition, subject centered, confident modern mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "a9dd7ced-25f8-46c8-beea-4da9b5d8357c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162222_a9dd7ced-25f8-46c8-beea-4da9b5d8357c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a clean component quality lab in Shanghai: two smiling Chinese engineers inspect an automotive-grade motor and a wheel module on a bench, behind them a wheeled humanoid robot with a white torso, a black-visor head, slim white arms with dark hands, a telescoping graphite waist and a wide white four-wheel base stands with one side cover removed, main subject in the upper half of the frame, the lower third is calm white workbench surface, vertical 4:5, precise engineering mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "6b9209ef-5e5d-49f7-bffc-15601da4f408",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162223_6b9209ef-5e5d-49f7-bffc-15601da4f408.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright supermarket stockroom: a wheeled humanoid robot with a white torso, a black-visor head, slim white arms with dark hands, a telescoping graphite waist and a wide white four-wheel base lifts a shrink-wrapped pack of six large plain unlabeled water bottles from a pallet with both arms, a smiling Russian store worker in a green apron gives a thumbs up, wide 4:3 composition, subject centered, strong capable mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "7aceec82-129a-4827-9378-372dcd2a0ac5",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162223_7aceec82-129a-4827-9378-372dcd2a0ac5.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a long bright warehouse aisle: a wheeled humanoid robot with a white torso, a black-visor head, slim white arms with dark hands, a telescoping graphite waist and a wide white four-wheel base glides briskly forward with motion blur on its wheels, a laughing Russian worker on a kick scooter keeps pace, tall racks of plain boxes around, main subject in the upper half of the frame, the lower third is calm smooth grey floor, vertical 4:5, fast smooth mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "c4ecf47f-886b-4532-9b90-4f6662a430ec",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162335_c4ecf47f-886b-4532-9b90-4f6662a430ec.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a modern office: a wheeled humanoid robot with a white torso, a black-visor head, slim white arms with dark hands, a telescoping graphite waist raised to full height and a wide white four-wheel base passes neatly through a standard glass doorway with a little room on each side, a smiling Russian facility manager holds the door open while a Chinese colleague watches, wide 4:3 composition, subject centered, neat practical mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "6d5cc21d-d510-4801-a26d-c83f27d570a3",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162336_6d5cc21d-d510-4801-a26d-c83f27d570a3.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic afternoon photo at a sunny electronics kitting station: a wheeled humanoid robot with a white torso, a black-visor head, slim white arms with dark hands, a telescoping graphite waist and a wide white four-wheel base keeps sorting small parts into blue trays while a Chinese technician on a tea break laughs with a Russian colleague, warm light through high windows, main subject in the upper half of the frame, the lower third is calm clean floor, vertical 4:5, steady all-shift mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07a.jpg": {
+  "job": "1b2ad3d4-afe6-42c5-8e2b-09ab58df71f2",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162335_1b2ad3d4-afe6-42c5-8e2b-09ab58df71f2.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at an electronics plant with blue anti-static bench mats: a slim wheeled humanoid robot with a white torso, a black face visor and two white arms on a single narrow black column above a compact white rectangular wheeled base hands a tray of small electronic components across the bench to a smiling Chinese technician, soft even factory light, vertical 4:5 composition, subject centered, cooperative mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07b.jpg": {
+  "job": "a8eff531-8eb6-410f-ae32-b51f81f4be6a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162335_a8eff531-8eb6-410f-ae32-b51f81f4be6a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright modern greenhouse packing area with fine mist in the air: a wheeled humanoid robot with a white torso, a black-visor head, slim white arms with dark hands, a telescoping graphite waist and a wide white four-wheel base lifts a full crate of red tomatoes with both arms, droplets glistening on its white shell, a smiling Russian agronomist in a green vest watches, vertical 4:5 composition, subject centered, fresh robust mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "a4fde763-ce23-4f21-b183-1d3bece6cdcd",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162420_a4fde763-ce23-4f21-b183-1d3bece6cdcd.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright white data center aisle: a wheeled humanoid robot with a white torso, a black-visor head, slim white arms with dark hands, a telescoping graphite waist and a wide white four-wheel base patrols slowly between tall server racks with tiny green lights, a smiling Russian security officer with a coffee cup walks beside it, main subject in the upper half of the frame, the lower third is calm white perforated floor tiles, vertical 4:5, calm secure mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "09.jpg": {
+  "job": "97c4b87c-8fef-498b-973f-5d31b97c2032",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162421_97c4b87c-8fef-498b-973f-5d31b97c2032.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at a sunny logistics hub: a wheeled humanoid robot with a white torso, a black-visor head, slim white arms, a telescoping graphite waist and a wide white four-wheel base, strapped inside an open wooden crate frame on a pallet, is lifted by a forklift into a shipping container, a Chinese forklift driver smiles and a Russian logistics coordinator with a blank clipboard gives a thumbs up, wide 4:3 composition, subject centered, organized export mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
