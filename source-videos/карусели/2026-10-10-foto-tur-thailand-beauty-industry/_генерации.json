@@ -1,0 +1,98 @@
+{
+ "01.jpg": {
+  "job": "7ddc7b7b-4296-42be-a1f5-140a9a00fdc3",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172823_7ddc7b7b-4296-42be-a1f5-140a9a00fdc3.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright natural cosmetics workshop near Bangkok: a smiling Thai formulator in a white coat blends a golden cream in a glass bowl surrounded by fresh turmeric, tamarind, lemongrass, jasmine flowers and coconut, a Russian business delegation with visitor badges on lanyards leans in to smell the herbs and laughs, sunlight through tall windows, wide 4:3 composition, subject centered, fresh fragrant mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "a24c6fb8-dc28-4fdf-9d9f-667d2eddd1dd",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172822_a24c6fb8-dc28-4fdf-9d9f-667d2eddd1dd.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a modern Bangkok pharmacy with long white shelves dominated by rows of identical white and blue dermocosmetic bottles with blurred labels: a friendly Thai pharmacist in a white coat recommends a cream to a smiling Russian businesswoman with a visitor badge on a lanyard while her colleague photographs the full shelf, clean bright light, main subject in the upper half of the frame, the lower third is a calm white counter, vertical 4:5. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "febb4ab9-8b04-4e38-912c-1283f1054cec",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172903_febb4ab9-8b04-4e38-912c-1283f1054cec.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a green industrial estate on the outskirts of Bangkok: a Russian business delegation with visitor badges on lanyards steps out of a white minivan in front of a modern cosmetics factory with landscaped lawns and palm trees, a smiling Thai host greets them with a wai while their guide checks the route on a clipboard, bright morning sun, wide 4:3 composition, subject centered. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "96deae70-4816-42fe-808d-588006e3299f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172903_96deae70-4816-42fe-808d-588006e3299f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at a busy beauty trade fair in Bangkok: at a stylish booth decorated with orchids and rattan, young Thai brand representatives offer tester jars of herbal skincare to a Russian business delegation with visitor badges on lanyards, one delegate smells a jasmine balm and laughs, crowds and other booths softly blurred, main subject in the upper half of the frame, the lower third is a calm carpeted aisle, vertical 4:5. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "fd2ecb0c-356f-437f-ae21-bda14ad37929",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172904_fd2ecb0c-356f-437f-ae21-bda14ad37929.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a modern skincare production line near Bangkok: an automated machine fills rows of plain white cream tubes, Thai operators in white uniforms and hairnets check the flow with a smile, a Russian business delegation in white coats and hairnets with visitor badges on lanyards watches through a glass partition, bright clean light, wide 4:3 composition, subject centered. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "8c8a71a9-d923-4246-a75a-769fab4728ac",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_172904_8c8a71a9-d923-4246-a75a-769fab4728ac.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian businesswoman in her thirties sitting alone on a bench in a bright Bangkok shopping mall, surrounded by small shopping bags of cosmetic samples, comparing two jars and making notes on her phone by herself, thoughtful and a little tired but calm, shoppers softly blurred behind, subject in the center of the vertical frame, vertical 9:16. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "4b53ef55-2bb0-4483-9e37-d0e44baaec55",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173015_4b53ef55-2bb0-4483-9e37-d0e44baaec55.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo in an elegant dermatology and beauty clinic in Bangkok with white marble and orchids: a smiling Russian interpreter translates as a Thai dermatologist in a white coat explains a skincare routine to two cheerful Russian businesswomen with visitor badges on lanyards, everyone laughing, soft daylight, subject in the center of the vertical frame, vertical 9:16. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "d607b9ec-c067-4557-b340-5ff5c581f840",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173014_d607b9ec-c067-4557-b340-5ff5c581f840.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright hotel meeting room in Bangkok before the first day of visits: a smiling guide hands out lanyard visitor badges and thin program folders to a Russian business delegation around a table with bottles of water and orchids, everyone laughing and chatting, sunny city view through the window, wide 4:3 composition, subject centered, well-prepared mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}

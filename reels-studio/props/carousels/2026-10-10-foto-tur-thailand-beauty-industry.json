@@ -1,0 +1,149 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-beauty-industry/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Таиланд",
+   "title": "Тайская **косметика** изнутри",
+   "text": "Косметика и бьюти-технологии Таиланда · Бангкок"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-beauty-industry/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Beiersdorf · Eucerin",
+   "title": "тайского рынка дермокосметики — у Eucerin",
+   "text": "Завод Beiersdorf под Бангкоком — с 1982 года",
+   "value": "70%+"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-beauty-industry/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут по дням",
+   "title": "Вся бьюти-индустрия — **в Бангкоке**",
+   "items": [
+    "День 1 · Mistine, Karmarts",
+    "День 2 · Srichand, Beauty Buffet",
+    "День 3 · HARNN, Divana",
+    "День 4 · Provamed, Oriental Princess",
+    "День 5 · Cute Press, Beiersdorf"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-beauty-industry/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "Куда **едем**",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/косметика/better-way-mistine.png"
+    },
+    {
+     "src": "source-videos/логотипы/косметика/karmarts.png"
+    },
+    {
+     "src": "source-videos/логотипы/косметика/srichand-snp.png"
+    },
+    {
+     "src": "source-videos/логотипы/косметика/beauty-buffet.png"
+    },
+    {
+     "src": "source-videos/логотипы/косметика/harnn.png"
+    },
+    {
+     "src": "source-videos/логотипы/косметика/divana.png"
+    },
+    {
+     "src": "source-videos/логотипы/косметика/oriental-princess.png"
+    },
+    {
+     "src": "source-videos/логотипы/косметика/beiersdorf.png"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-beauty-industry/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Вопросы, на которые **ответит** тур",
+   "items": [
+    "Как Mistine лидирует в прямых продажах",
+    "Как Srichand перезапустился через блогеров",
+    "Как HARNN вышел в 16+ стран",
+    "Как работает завод Nivea и Eucerin"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-beauty-industry/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Месяцы переписки ради доступа",
+      "Нет гарантии, что визит согласуют",
+      "Логистика — на вас"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-beauty-industry/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Трансферы включены",
+      "Сопровождение на каждой встрече",
+      "Синхронный перевод на встречах"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-beauty-industry/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё **на месте**",
+   "items": [
+    "Организация визитов по программе",
+    "Трансферы по Бангкоку и региону",
+    "Сопровождение на тайском/английском",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-beauty-industry/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-beauty-industry/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-beauty-industry/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}
