@@ -1,0 +1,150 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-bubble-tea-coffee/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Таиланд",
+   "title": "Кофейня на заправке — **5000+** точек",
+   "text": "Бабл-ти и кофейная индустрия Таиланда · Бангкок"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-bubble-tea-coffee/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "ChaTraMue",
+   "title": "брендированного чая Таиланда — у ChaTraMue",
+   "text": "Оранжевый тайский чай, бренд с 1945 года",
+   "value": "~70%",
+   "logo": "chatramue"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-bubble-tea-coffee/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут по дням",
+   "title": "Чай и кофе — **в Бангкоке**",
+   "items": [
+    "День 1 · Café Amazon, Inthanin",
+    "День 2 · ChaTraMue, Karun Thai Tea",
+    "День 3 · Pacamara, Roots Coffee",
+    "День 4 · Class Café, True Coffee",
+    "День 5 · Fire Tiger, KOI Thé, Gong Cha"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-bubble-tea-coffee/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "Куда **едем**",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/чай-кофе/cafe-amazon-ptt.svg"
+    },
+    {
+     "src": "source-videos/логотипы/чай-кофе/inthanin-bangchak.png"
+    },
+    {
+     "src": "source-videos/логотипы/чай-кофе/chatramue.png"
+    },
+    {
+     "src": "source-videos/логотипы/чай-кофе/karun-thai-tea.png"
+    },
+    {
+     "src": "source-videos/логотипы/чай-кофе/pacamara.png"
+    },
+    {
+     "src": "source-videos/логотипы/чай-кофе/roots-coffee.png"
+    },
+    {
+     "src": "source-videos/логотипы/чай-кофе/true-coffee.png"
+    },
+    {
+     "src": "source-videos/логотипы/чай-кофе/koi-the.png"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-bubble-tea-coffee/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Вопросы, на которые **ответит** тур",
+   "items": [
+    "Как кофейни на АЗС выросли в сети",
+    "Как тайский чай стал франшизой",
+    "Как specialty-обжарщики учат бариста",
+    "Как тайский бабл-ти опередил Тайвань"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-bubble-tea-coffee/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Месяцы переписки ради доступа",
+      "Нет гарантии, что визит согласуют",
+      "Логистика — на вас"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-bubble-tea-coffee/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Трансферы включены",
+      "Сопровождение на каждой встрече",
+      "Синхронный перевод на встречах"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-bubble-tea-coffee/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё **на месте**",
+   "items": [
+    "Организация визитов по программе",
+    "Трансферы по Бангкоку и региону",
+    "Сопровождение на тайском/английском",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-bubble-tea-coffee/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-bubble-tea-coffee/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-bubble-tea-coffee/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}

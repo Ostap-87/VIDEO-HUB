@@ -1,0 +1,98 @@
+{
+ "01.jpg": {
+  "job": "8b2134ff-fee7-461e-8cc5-2cce18ae61ee",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173206_8b2134ff-fee7-461e-8cc5-2cce18ae61ee.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at a bright highway service station in Thailand: a cozy café with warm wooden walls and green plants sits right beside the fuel pumps, a smiling Thai barista hands iced coffees across the counter to a cheerful Russian business delegation with visitor badges on lanyards, a car refuelling in the soft background, all signage blurred, wide 4:3 composition, subject centered, surprising everyday business mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "dd3c683d-8660-44b0-a804-2f79a2b6fe76",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173324_dd3c683d-8660-44b0-a804-2f79a2b6fe76.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at a Thai tea stall in Bangkok: a smiling Thai tea master pours vivid orange Thai milk tea from a great height through a cloth filter into a tall glass full of ice, a long arc of orange tea catching the sunlight, a Russian delegate with a visitor badge on a lanyard films the moment on his phone and laughs, main subject in the upper half of the frame, the lower third is a calm stainless steel counter, vertical 4:5. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "81efbdf6-e990-4bfe-b885-d32a527d426b",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173325_81efbdf6-e990-4bfe-b885-d32a527d426b.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in the old town of Bangkok: a Thai guide leads a Russian business delegation with visitor badges on lanyards along a street of pastel colonial shophouses with small specialty cafés and potted plants, delegates carry iced drinks from the last stop and chat cheerfully, bougainvillea above, bright afternoon, wide 4:3 composition, subject centered, relaxed route between visits. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "21b8e00f-45c8-4011-bd68-f26a38458d60",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173324_21b8e00f-45c8-4011-bd68-f26a38458d60.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in the bright meeting room of a tea franchise headquarters in Bangkok: smiling Thai managers present a long row of colorful drinks, orange tea, green matcha, pink fruit tea and brown bubble milk tea in clear unbranded cups, to a Russian business delegation with visitor badges on lanyards who photograph them and laugh, main subject in the upper half of the frame, the lower third is a calm white table, vertical 4:5. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "6f4d3b55-0d05-4d46-a589-7efeb36cfd57",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173324_6f4d3b55-0d05-4d46-a589-7efeb36cfd57.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a specialty coffee roastery training room in Bangkok: a Thai head barista in a denim apron guides a Russian businesswoman with a visitor badge on a lanyard as she pours her first latte art heart, her delegation colleagues laugh and applaud around the espresso bar, sacks of green beans and a small roaster behind, wide 4:3 composition, subject centered, joyful learning mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "7e5e8588-f3b4-4139-b885-64be9555cfcd",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173404_7e5e8588-f3b4-4139-b885-64be9555cfcd.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian businessman in his forties sitting alone in the back seat of a taxi stuck in heavy Bangkok traffic, glancing at his wristwatch with his phone in the other hand, thoughtful and a little tired but calm, the sunny city and lines of cars softly blurred through the window, subject in the center of the vertical frame, vertical 9:16. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "7ad27faa-b90b-4222-9315-3f4b2ad0c6ac",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173404_7ad27faa-b90b-4222-9315-3f4b2ad0c6ac.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo on a narrow Bangkok canal in bright sunshine: a cheerful Russian business delegation with visitor badges on lanyards rides a long-tail boat with a smiling Thai boatman, their guide sits in front and points to a waterside coffee roastery, wooden stilt houses and green trees along the water, everyone laughing, subject in the center of the vertical frame, vertical 9:16. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "728406ee-ef1c-44b0-8179-b6039a8627c4",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_173405_728406ee-ef1c-44b0-8179-b6039a8627c4.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in the bright arrivals hall of Bangkok airport: a smiling Thai guide places fragrant jasmine and marigold garlands around the necks of a Russian business delegation with visitor badges on lanyards, delegates with suitcases laugh and thank her, a driver waits nearby to take their luggage, wide 4:3 composition, subject centered, warm welcoming start of the trip. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
