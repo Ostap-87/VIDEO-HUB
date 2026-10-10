@@ -3855,5 +3855,15 @@
    "上海科技大学"
   ],
   "logo": "source-videos/логотипы/общие/shanghaitech.svg"
+ },
+ "matrix": {
+  "names": [
+   "Matrix Robotics",
+   "Matrix",
+   "MATRIX",
+   "矩阵超智"
+  ],
+  "logo": "source-videos/логотипы/роботы/matrix-robotics.png",
+  "source": "https://www.matrixrobotics.ai/01.png (официальный сайт, подвал)"
  }
 }
