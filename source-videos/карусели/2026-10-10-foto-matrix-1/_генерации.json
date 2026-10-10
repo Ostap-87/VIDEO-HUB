@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "8d1cef6f-eb08-4cae-abdc-6014b18b7b64",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162911_8d1cef6f-eb08-4cae-abdc-6014b18b7b64.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a bright glass skybridge between modern office towers: a tall 180 cm humanoid robot with a sleek matte pearl-white body, charcoal joints, a smooth faceless glossy black oval head and dark five-fingered hands strides confidently along the walkway, a smiling Chinese woman colleague with a coffee cup walks beside it and a Russian manager waves from the far end, wide 4:3 composition, subject centered, big and steady mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "2c0f5aca-e7f5-4caa-946c-4910ac2cd318",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162910_2c0f5aca-e7f5-4caa-946c-4910ac2cd318.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright industrial design studio in Shanghai: two smiling Chinese designers compare a white foam scale model of a humanoid with a tall 180 cm humanoid robot with a sleek matte pearl-white body, charcoal joints, a smooth faceless glossy black oval head and dark five-fingered hands standing beside their table, pinned sketches softly blurred on the wall, main subject in the upper half of the frame, the lower third is calm pale studio floor, vertical 4:5, elegant creative mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "642e85c6-74e0-4569-931f-a31a87512899",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162910_642e85c6-74e0-4569-931f-a31a87512899.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright modern office corridor: a tall 180 cm humanoid robot with a sleek matte pearl-white body, charcoal joints, a smooth faceless glossy black oval head and dark five-fingered hands steps onto its own compact white charging base by the wall all by itself, while a passing Russian office worker smiles and gives a thumbs up, soft daylight through glass partitions, wide 4:3 composition, subject centered, self-sufficient easy mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "8c33dd8a-cc82-4af3-af28-bfa0432a11d1",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162950_8c33dd8a-cc82-4af3-af28-bfa0432a11d1.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright open-plan office kitchen: a tall 180 cm humanoid robot with a sleek matte pearl-white body, charcoal joints, a smooth faceless glossy black oval head and dark five-fingered hands carries two full plain 10-liter water bottles, one in each hand, toward a water cooler, a laughing Russian office manager applauds, main subject in the upper half of the frame, the lower third is calm light wooden floor, vertical 4:5, strong helpful mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "65cbbd03-f78d-4886-890a-822212b34ed3",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162949_65cbbd03-f78d-4886-890a-822212b34ed3.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright robotics lab: a smiling Chinese female engineer looks up at a tall 180 cm humanoid robot with a sleek matte pearl-white body, charcoal joints, a smooth faceless glossy black oval head and dark five-fingered hands, a head taller than her, and points at the small camera lenses around its head while a Russian engineer checks a tablet with a blurred screen, wide 4:3 composition, subject centered, impressive tall-stature mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "8b3bf7d5-9bbf-48d4-a6f5-76121223f22e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162949_8b3bf7d5-9bbf-48d4-a6f5-76121223f22e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at the bright entrance of a modern business center: a tall 180 cm humanoid robot with a sleek matte pearl-white body, charcoal joints, a smooth faceless glossy black oval head and dark five-fingered hands stands by the glass turnstiles and checks a blank badge held out by a smiling Russian visitor, a Chinese receptionist laughs behind the desk, main subject in the upper half of the frame, the lower third is calm polished stone floor, vertical 4:5, polite secure mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07a.jpg": {
+  "job": "20195837-a538-4b95-9660-cb1c0bffb18f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162950_20195837-a538-4b95-9660-cb1c0bffb18f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo on a sunny outdoor path around a modern office campus with green lawns: a tall 180 cm humanoid robot with a sleek matte pearl-white body, charcoal joints, a smooth faceless glossy black oval head and dark five-fingered hands walks a long steady patrol route past young trees, a smiling Chinese groundskeeper waves from the lawn, vertical 4:5 composition, subject centered, enduring first-generation mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07b.jpg": {
+  "job": "a199e269-011d-479a-9eb1-3d38ad9e4965",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163111_a199e269-011d-479a-9eb1-3d38ad9e4965.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright lab: a slender 170 cm humanoid robot covered in soft light-grey knitted fabric skin, with a white faceless head, a dark visor and delicate five-fingered hands, turns its head toward a smiling Russian engineer who lightly taps its knitted shoulder with two fingers, the soft textile weave visible in fine detail, vertical 4:5 composition, subject centered, sensitive next-generation mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "fd434658-60ae-4fb1-80c6-80f7f9359e0d",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_163110_fd434658-60ae-4fb1-80c6-80f7f9359e0d.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright factory acceptance area: a tall 180 cm humanoid robot with a sleek matte pearl-white body, charcoal joints, a smooth faceless glossy black oval head and dark five-fingered hands walks along a test lane while a Chinese QA engineer ticks a checklist on a blurred tablet and a Russian client gives a thumbs up, main subject in the upper half of the frame, the lower third is calm grey epoxy floor, vertical 4:5, verified quality mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}

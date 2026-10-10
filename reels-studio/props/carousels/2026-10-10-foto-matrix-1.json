@@ -1,0 +1,137 @@
+{
+ "brand": "aura",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-matrix-1/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Робомодели · Matrix",
+   "title": "MATRIX-1: **большой и выносливый**",
+   "text": "Первое поколение гуманоида Matrix Robotics",
+   "mascot": "wave"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-matrix-1/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Кто делает",
+   "title": "Matrix Robotics, **Шанхай**",
+   "text": "Команда Чжан Хайсина, бывшего руководителя китайского дизайн-центра Tesla. MATRIX-1 — первое поколение, с него началась линейка."
+  },
+  {
+   "kind": "photoStat",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-matrix-1/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Автономность",
+   "title": "работы от батареи 2,28 кВт·ч",
+   "text": "Быстрая зарядка за 45 минут и своя зарядная база",
+   "value": "5 ч"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-matrix-1/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Руки",
+   "title": "на каждую руку",
+   "text": "Пятипалые кисти на 22 степени свободы с тактильными датчиками",
+   "value": "10 кг"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-matrix-1/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Характеристики",
+   "title": "MATRIX-1 **в цифрах**",
+   "items": [
+    "Рост 180 см, вес 67 кг",
+    "55 актуаторов MPA 3.0",
+    "8 камер, опционально лидар",
+    "8 ядер + GPU, ИИ на борту"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-matrix-1/06.jpg",
+   "focus": "50% 30%",
+   "kicker": "Применение",
+   "title": "Где MATRIX-1 **на месте**",
+   "items": [
+    "Обход офисных зданий",
+    "Проверка пропусков на входе",
+    "Задачи с ношением до 10 кг",
+    "Исследования и R&D"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": true,
+   "layout": "row",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-matrix-1/07a.jpg",
+     "focus": "50% 30%",
+     "label": "MATRIX-1",
+     "items": [
+      "180 см, 67 кг",
+      "5 часов работы",
+      "10 кг на руку"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-matrix-1/07b.jpg",
+     "focus": "50% 30%",
+     "label": "MATRIX-3",
+     "items": [
+      "170 см, 65 кг",
+      "Тактильная кожа",
+      "Кисть на 27 степеней"
+     ]
+    }
+   ],
+   "pair": "story",
+   "kicker": "Два поколения",
+   "title": "MATRIX-1 или **MATRIX-3**"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-matrix-1/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Цена и поставка",
+   "title": "Цена **по запросу**",
+   "items": [
+    "Закупка на заводе по ВЭД-контракту",
+    "Ввоз на вашу компанию",
+    "Видео теста вашего робота с серийным номером",
+    "Поставка 4–7 недель"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Подберём решение",
+   "title": "Пиши в **личные сообщения** или оставляй заявку на сайте",
+   "text": "Рассчитаем стоимость и окупаемость",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-matrix-1/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-matrix-1/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-matrix-1/04.jpg",
+     "focus": "50% 30%"
+    }
+   ],
+   "mascot": "pointUp"
+  }
+ ]
+}
