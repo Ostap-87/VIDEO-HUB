@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "4666f395-3e85-42fd-b2f2-8678458b2b87",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165319_4666f395-3e85-42fd-b2f2-8678458b2b87.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside a large modern concert arena in Beijing during a daytime sound check with house lights on: a Chinese event manager leads a Russian business delegation with blank visitor badges across the empty floor toward a big stage with lighting rigs and LED panels glowing in soft colours, the delegates smile and look up, wide 4:3 composition, subject centered, exciting backstage-access mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "829fe964-7182-430e-af22-d432fe6f87e8",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165320_829fe964-7182-430e-af22-d432fe6f87e8.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright glass mini karaoke booth at a music streaming company office in Shenzhen: a cheerful Chinese host and a Russian businessman with a blank visitor badge sing together into microphones wearing headphones, colleagues outside the glass laugh and clap, colorful acoustic panels, main subject in the upper half of the frame, the lower third is calm wooden floor, vertical 4:5, joyful music-for-millions mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "f4fa5899-5d8c-4f3e-b30e-3b48e579642f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165319_f4fa5899-5d8c-4f3e-b30e-3b48e579642f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a sunny Beijing hutong lane with grey brick walls, red wooden doors and parked bicycles: a Russian business delegation with blank visitor badges walks with a Chinese guide toward a modern office building rising beyond the old roofs, the guide gestures ahead, the delegates chat and smile, wide 4:3 composition, subject centered, curious start-of-route mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "17bc317d-9534-4644-9687-d3b1e2613e97",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165418_17bc317d-9534-4644-9687-d3b1e2613e97.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in the airy lobby of an online travel company headquarters in Shanghai: a giant curved wall screen shows bright travel images of mountains, beaches and city lights, a Chinese host greets a Russian business delegation with blank visitor badges, everyone smiling and looking up at the screen, main subject in the upper half of the frame, the lower third is calm pale stone floor, vertical 4:5, inspiring wanderlust mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "6b243dd2-2977-4324-b64a-aae6ec00440f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165418_6b243dd2-2977-4324-b64a-aae6ec00440f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at the entrance of a concert venue in Shanghai: Russian business delegates with blank visitor badges pass through sleek face-recognition turnstiles with small screens glowing soft green, a smiling Chinese staff member waves them in, one delegate laughs at how quickly the gate opens, wide 4:3 composition, subject centered, smooth modern-ticketing mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "b8825795-8bc7-424e-8d15-309d89f50149",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165417_b8825795-8bc7-424e-8d15-309d89f50149.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian businessman in his forties sitting alone at a departure gate of a bright Chinese airport, holding his phone and a folder of printed bookings, gazing thoughtfully out of the window at parked aircraft, a little tired but calm, a carry-on bag at his feet, subject in the center of the vertical frame, vertical 9:16, quiet pensive mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "0b176bc2-bb9e-4732-9a26-88506670885d",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165417_0b176bc2-bb9e-4732-9a26-88506670885d.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo on a sunny office terrace in Shenzhen: a young Chinese travel consultant laughs as she reviews an action plan in an open notebook with a Russian business delegation with blank visitor badges, coffee cups on a small table, city towers and greenery behind, everyone smiling and nodding, subject in the center of the vertical frame, vertical 9:16, confident clear-plan mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "21313967-65a5-4769-864e-b4b8abe54ca2",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165502_21313967-65a5-4769-864e-b4b8abe54ca2.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in the lobby of an elegant five-star hotel in Hangzhou with warm wood, stone and a tea-garden view: a smiling Chinese receptionist hands key cards to a Russian business delegation with blank visitor badges, a bellboy loads suitcases onto a brass cart, the guide chats with them, wide 4:3 composition, subject centered, comfortable well-organised mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "263f8ce4-f041-42d3-a111-80a751addc19",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165503_263f8ce4-f041-42d3-a111-80a751addc19.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo of a Q&A session in a small modern auditorium of a ticketing company in Beijing: a Chinese executive with a microphone answers with a smile as a Russian businesswoman with a blank visitor badge raises her hand, about fifteen delegates in rows of chairs laugh and listen, main subject in the upper half of the frame, the lower third is calm rows of chair backs, vertical 4:5, engaged lively mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
