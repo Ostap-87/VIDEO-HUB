@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "df6fe028-0d51-4aa8-96ee-56dd4366afd4",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165021_df6fe028-0d51-4aa8-96ee-56dd4366afd4.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside a spectacular new-format supermarket in Shanghai: insulated delivery bags glide along an overhead conveyor rail across the ceiling, below a Russian business delegation with blank visitor badges on lanyards looks up and laughs in amazement, a Chinese store manager points to the rail, abundant fresh produce displays and bright clean aisles, wide 4:3 composition, subject centered, wow-effect mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "7b60ee06-307e-4bf6-b5e7-5a506eb1cadf",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165020_7b60ee06-307e-4bf6-b5e7-5a506eb1cadf.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo outside a busy delivery pickup hub on a Beijing shopping street at midday: dozens of couriers in plain jackets and helmets ride off on electric scooters with insulated boxes, one waves cheerfully, two smiling Russian delegates with blank visitor badges and a Chinese guide watch the flow from the sidewalk, main subject in the upper half of the frame, the lower third is calm clean pavement, vertical 4:5, fast dynamic mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "1a534b6b-7ca1-440d-93f0-55a5dbd86709",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165020_1a534b6b-7ca1-440d-93f0-55a5dbd86709.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside the spacious business-class cabin of a Chinese high-speed train: a Chinese guide shows the route on a tablet with a blurred map to a Russian business delegation with blank visitor badges sitting in wide leather seats with cups of tea, green fields and hills blur past the large windows, everyone relaxed and smiling, wide 4:3 composition, subject centered, smooth journey mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "410d274d-ed4e-47ba-a9ea-642b279f5077",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165021_410d274d-ed4e-47ba-a9ea-642b279f5077.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a glass-walled meeting room above the floor of a flagship hypermarket in Shenzhen: Chinese retail executives and a Russian business delegation with blank visitor badges talk and laugh around a table with unmarked private-label product samples, through the glass a bright sales floor with long aisles below, main subject in the upper half of the frame, the lower third is calm white tabletop, vertical 4:5, friendly business mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "1af66410-3466-43a1-bf95-d927e99e0914",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165154_1af66410-3466-43a1-bf95-d927e99e0914.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at the in-store seafood kitchen of a modern Shanghai supermarket: a Chinese cook in white hands steaming plates of freshly cooked lobster and crab, just chosen from glass tanks, to a laughing Russian business delegation with blank visitor badges sitting at a counter, live seafood tanks and shoppers behind, wide 4:3 composition, subject centered, appetising discovery mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "dae74988-bbc1-4458-b307-ede2c712f748",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165154_dae74988-bbc1-4458-b307-ede2c712f748.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian businesswoman in her thirties standing alone at a busy crosswalk in Shanghai with a small suitcase, checking a map on her phone, thoughtful and a little tired but calm, sunlit skyscrapers and blurred crowds around her, subject in the center of the vertical frame, vertical 9:16, quiet reflective mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "1d027f18-c1ef-4247-b77d-e922139f8bad",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165153_1d027f18-c1ef-4247-b77d-e922139f8bad.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo in the bakery section of a bright Chinese supermarket: a smiling Chinese store manager offers warm bread samples on a tray while a young Chinese guide translates his story to a Russian business delegation with blank visitor badges, everyone laughing and tasting, golden pastries on wooden shelves around, subject in the center of the vertical frame, vertical 9:16, lively welcoming mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "e0d2deeb-f9be-4515-8fa9-0a9694a1b0d5",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165153_e0d2deeb-f9be-4515-8fa9-0a9694a1b0d5.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a huge warehouse-club store in Shenzhen: towering shelves stacked with bulk packs of unmarked private-label goods, a laughing Russian businessman with a blank visitor badge pushes an oversized shopping cart while colleagues and a Chinese guide walk alongside pointing at the shelves, bright high ceilings, wide 4:3 composition, subject centered, fun eye-opening mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "e8130e0c-7b34-4858-b254-2d72a3bfbb5c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165320_e8130e0c-7b34-4858-b254-2d72a3bfbb5c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a vivid fresh-produce hall of a flagship supermarket in Shenzhen: neat pyramids of mangoes, dragon fruit, oranges and lychees under bright lights, a Russian businesswoman with a blank visitor badge picks up a mango to examine it as a Chinese store employee smiles, colleagues look around, main subject in the upper half of the frame, the lower third is calm polished floor, vertical 4:5, see-it-yourself mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
