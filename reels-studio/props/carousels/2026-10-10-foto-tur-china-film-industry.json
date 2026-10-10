@@ -1,0 +1,138 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-film-industry/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Китай",
+   "title": "Киноиндустрия Китая **изнутри**",
+   "text": "Киноиндустрия Китая: госгиганты, частные студии, tech-платформы · 5 дней · 3 города"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-film-industry/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "iQiyi",
+   "title": "платных подписчиков у iQiyi",
+   "text": "«Китайский Netflix» из экосистемы Baidu, данные 2026 года",
+   "value": "100 млн+"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-film-industry/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут",
+   "title": "5 дней · **3 города**",
+   "items": [
+    "День 1 · Пекин: China Film Group, Youku",
+    "День 2 · Пекин: Bona, Huayi Brothers",
+    "День 3 · Пекин: iQiyi, перелёт в Шанхай",
+    "День 4 · Шанхай: SFG, Tencent Penguin",
+    "День 5 · Ханчжоу: Zhejiang Huace"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-film-industry/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "**8 компаний** за поездку",
+   "items": [
+    "China Film Group · Shanghai Film Group",
+    "Bona Film Group · Huayi Brothers",
+    "iQiyi · Youku · Tencent Penguin Pictures",
+    "Zhejiang Huace Film & TV"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-film-industry/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **увидите** изнутри",
+   "items": [
+    "Как работают госстудии и частные",
+    "Как стриминг делает свой контент",
+    "Как Huace снимает сериалы на поток",
+    "Где в кино уже работает ИИ"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-film-industry/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Госстудии — только через согласование",
+      "Youku: адрес в Ханчжоу, офис в Пекине",
+      "День 5: поезд, визит и рейс — сами"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-film-industry/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Согласование с госстудиями — на нас",
+      "Адреса компаний уже проверены",
+      "День 5 рассчитан с запасом до рейса"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-film-industry/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё готово **до вылета**",
+   "items": [
+    "Визиты и переговоры по программе",
+    "Трансферы между городами",
+    "Перевод: китайский и английский",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-film-industry/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Для кого",
+   "title": "Продюсерам, стримингу и **прокату**",
+   "text": "Тем, кто делает кино, сериалы и видеоконтент и хочет увидеть, как это устроено в Китае"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-film-industry/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-film-industry/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-film-industry/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}

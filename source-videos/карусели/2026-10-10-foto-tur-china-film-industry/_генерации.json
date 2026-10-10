@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "553b02a0-27a5-4450-ae55-f08438c32def",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170211_553b02a0-27a5-4450-ae55-f08438c32def.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a sunny outdoor film set of an ancient Chinese palace near Beijing: red lacquered walls, golden roof tiles, actors in flowing silk Tang-dynasty costumes rehearsing a scene, a camera crane raised above them, a Russian business delegation with visitor badges on lanyards watching with delight beside a smiling Chinese producer in a cap, wide 4:3 composition, subject centered, bright natural light, exciting behind-the-scenes mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "2382ecfb-218a-41c0-ba91-e679bf25c0a6",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170210_2382ecfb-218a-41c0-ba91-e679bf25c0a6.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo inside the bright content center of a Chinese streaming platform in Beijing: a huge curved video wall made of hundreds of small colorful video thumbnails, all blurred and abstract, two Russian delegates with visitor badges on lanyards look up in amazement while a young Chinese analyst in a white shirt gestures across the wall, main subject in the upper half of the frame, the lower third is calm polished grey floor, vertical 4:5, sense of an enormous audience. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "d89b7f3a-b824-4c8c-8754-73660207fcb8",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170211_d89b7f3a-b824-4c8c-8754-73660207fcb8.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a Russian business delegation with visitor badges on lanyards walking along a recreated 1930s old Shanghai street in a film park: brick shophouses, a vintage tram, period street lamps, a smiling Chinese guide in front holding a tablet and pointing the way, shop signs blurred and unreadable, morning sunlight, wide 4:3 composition, subject centered, sense of a journey from city to city. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "52d22faf-86a8-4820-9dcd-0c152a71fb5e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170248_52d22faf-86a8-4820-9dcd-0c152a71fb5e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright Foley sound studio of a Beijing film company: a cheerful Chinese sound artist steps on a small gravel pit holding a pair of old boots and a coconut shell, three Russian visitors with lanyard badges wear headphones and laugh, microphones on booms and wooden panels around, main subject in the upper half of the frame, the lower third is calm wooden studio floor, vertical 4:5, playful curious mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "c90369fc-c931-4038-b56a-491b2d3e38c7",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170248_c90369fc-c931-4038-b56a-491b2d3e38c7.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a virtual production stage in Shanghai: a giant curved LED wall shows a misty green mountain landscape, two actors in modern costumes stand on a small set in front of it, a Chinese director at a monitor cart explains the shot to a Russian business delegation with visitor badges on lanyards, people smiling and leaning in, bright work lights, wide 4:3 composition, subject centered, sense of new technology in cinema. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "73fb24ad-7b3f-4057-a147-f0beba5abdf9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170248_73fb24ad-7b3f-4057-a147-f0beba5abdf9.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian film producer in his forties in a navy blazer standing alone at the closed entrance gate of a large state film studio complex in Beijing, a small security booth behind him, he holds a phone and a paper folder, slightly tired but calm thoughtful expression, soft daylight, gate signs blurred and unreadable, subject in the center of the vertical frame, vertical 9:16, quiet patient mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "17c9c7c4-2a6f-4245-bf65-2611c8fccb17",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170249_17c9c7c4-2a6f-4245-bf65-2611c8fccb17.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a smiling young Chinese studio coordinator in a dark polo shirt leading three Russian visitors with lanyard badges through the open giant door of a bright soundstage, behind them a colorful film set and lighting rigs, the visitors laugh and chat, one of them points inside, subject in the center of the vertical frame, vertical 9:16, warm welcoming mood, feeling of open doors. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "6e2f5f17-e4f7-43d1-8719-e5e99645a3ef",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170330_6e2f5f17-e4f7-43d1-8719-e5e99645a3ef.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a Russian business delegation with visitor badges relaxing in a bright executive lounge of a Beijing hotel in the morning: coffee cups, croissants, soft armchairs, a panoramic window behind them with the Beijing CBD skyline and the loop-shaped television headquarters tower, a Chinese guide in a light suit going over the day's plan with them, wide 4:3 composition, subject centered, calm comfortable mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "674dd961-d7a5-4615-bcc9-91023c40a09a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170330_674dd961-d7a5-4615-bcc9-91023c40a09a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo on a modern apartment set at a TV series production base in Hangzhou: a Russian woman producer in her thirties with a visitor badge stands beside a cinema camera on a dolly, smiling as a Chinese director of photography shows her the shot on a handheld monitor, soft studio lights, crew members in the background, main subject in the upper half of the frame, the lower third is calm studio floor with neatly coiled cables, vertical 4:5, inspired creative mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
