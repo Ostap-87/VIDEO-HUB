@@ -72,6 +72,8 @@ python3 scripts/matte.py ../source-videos/…/_work/клип.cut.mp4 --ranges �
 ## Карусели Instagram
 
 ```bash
+# Сценарий до съёмки: текст для суфлёра + где какие плашки
+python3 scripts/scenario.py 2026-10-10-тема   # scenarios/2026-10-10-тема.json → проверка, длина, суфлёр .txt
 cp props/carousels/пример-gtt.json props/carousels/2026-10-10-тема.json   # или пример-aura.json
 npm run carousel -- 2026-10-10-тема      # → finished-videos/карусели/2026-10-10-тема/01.png …
 ```
