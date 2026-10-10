@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "f5c162cf-9267-41a5-9fe0-e7e1bb1a9bd5",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170058_f5c162cf-9267-41a5-9fe0-e7e1bb1a9bd5.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo outside a sleek modern waste-to-energy plant in Shanghai with a clean geometric facade, landscaped lawns and a slim chimney under blue sky: a Russian business delegation with blank visitor badges on lanyards walks toward the entrance with a Chinese host who points up at the building, everyone smiling and curious, wide 4:3 composition, subject centered, clean modern mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "dcce7cd0-b90e-451a-979a-89c84527d3bf",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170057_dcce7cd0-b90e-451a-979a-89c84527d3bf.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright glass-walled visitor gallery of a waste-to-energy plant in Shanghai: through the window a giant yellow crane grab lifts a huge load inside the vast well-lit bunker, a Russian business delegation with blank visitor badges watches in amazement as a smiling Chinese engineer explains, main subject in the upper half of the frame, the lower third is calm polished gallery floor, vertical 4:5, awe at the scale. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "24379b3b-89af-4279-9754-2be9b24d1d56",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170058_24379b3b-89af-4279-9754-2be9b24d1d56.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside the cabin of a domestic flight over southern China: a Russian business delegation with blank visitor badges chats cheerfully across the aisle, a Chinese guide leans over to show the next stop on a tablet with a blurred map, white clouds and a green river delta coastline visible through the oval window, bright daylight, wide 4:3 composition, subject centered, easy single-flight mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "ae1bbdc9-34c4-46c2-b337-edafea126160",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170057_ae1bbdc9-34c4-46c2-b337-edafea126160.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a clean bright battery recycling plant in Shenzhen: rows of sorted spent electric car battery modules move along a conveyor toward robotic disassembly cells, a Chinese plant manager in a white uniform explains to a smiling Russian business delegation with blank visitor badges and safety glasses, main subject in the upper half of the frame, the lower third is calm green epoxy floor, vertical 4:5, circular-economy optimism. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "664624e6-394c-4861-81bc-efce64a9facd",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170135_664624e6-394c-4861-81bc-efce64a9facd.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a green hilltop eco-park in Shenzhen built on a former landfill: winding walking paths, lush lawns, flower beds and solar panels on the slopes, a Chinese guide shows a Russian business delegation with blank visitor badges the view of the sea bay and port cranes in the distance, everyone smiling, wide 4:3 composition, subject centered, fresh hopeful mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "633458a3-4ede-40a7-a3c7-c9e7254017b9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170134_633458a3-4ede-40a7-a3c7-c9e7254017b9.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian businesswoman in her thirties standing alone in a vast bright railway station hall in China with a small suitcase, looking up thoughtfully at a large departure board blurred beyond reading, a coffee in her hand, a little tired but calm, travellers passing in soft focus, subject in the center of the vertical frame, vertical 9:16, quiet reflective mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "027f4f57-9100-4dc1-9eaf-42c5c582f494",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170134_027f4f57-9100-4dc1-9eaf-42c5c582f494.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo in a spacious bright turbine hall of a waste-to-energy plant: a large green steam turbine generator stands behind a railing, a young Chinese guide translates the plant engineer's explanation to a Russian business delegation in white hard hats with blank visitor badges, everyone laughing and engaged, subject in the center of the vertical frame, vertical 9:16, friendly guided mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "26bad66c-9d1b-4945-b819-8e589017580f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170134_26bad66c-9d1b-4945-b819-8e589017580f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in the bright staff canteen of an environmental company in Guangdong at lunchtime: a Russian business delegation with blank visitor badges and Chinese hosts sit together at a long table with trays of colourful rice, vegetables and dumplings, laughing and chatting, an interpreter beside them, big windows onto greenery, wide 4:3 composition, subject centered, warm sociable mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "a89e9120-9314-4123-98f2-183f5f774566",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170210_a89e9120-9314-4123-98f2-183f5f774566.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at the reception desk of a modern plant visitor centre: a smiling Chinese receptionist hands a stack of blank visitor badges to a Russian delegation leader who shows the confirmed booking on a tablet with a blurred screen, the rest of the delegation smiles behind him, a green living wall in the background, main subject in the upper half of the frame, the lower third is calm light stone counter, vertical 4:5, smooth booked-in-advance mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}

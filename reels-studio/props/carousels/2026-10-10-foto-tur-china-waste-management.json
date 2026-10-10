@@ -1,0 +1,140 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Китай",
+   "title": "Завод, где сгорает **треть** мусора Шанхая",
+   "text": "Обращение с отходами Китая · 5 дней · 5 городов"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "«Лаоган», Шанхай",
+   "title": "тонн отходов в сутки — **«Лаоган»**",
+   "text": "Крупнейший в мире моно-завод энергоутилизации",
+   "value": "11 000"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут",
+   "title": "Три провинции, **один** перелёт",
+   "items": [
+    "День 1 · Шэньчжэнь: GEM",
+    "День 2 · Shenzhen Energy и Grandblue",
+    "День 3 · Гуандун: China Everbright",
+    "День 4 · Шанхай: Shanghai Environment",
+    "День 5 · Хайань: China Tianying"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "Шесть **лидеров** отрасли",
+   "items": [
+    "GEM — переработка батарей NEV",
+    "Shenzhen Energy — парк «Яньтянь»",
+    "Grandblue — мусоросжигание и вода",
+    "China Everbright — 600+ экопроектов",
+    "Shanghai Environment — «Лаоган»",
+    "China Tianying — оператор отходов"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **поймёте**",
+   "items": [
+    "Как перерабатывают батареи электромобилей",
+    "Как свалка становится эко-парком",
+    "1,6 млрд кВт·ч в год из мусора",
+    "Как отрасль выходила за рубеж"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Объект Everbright из 220+ — ищете сами",
+      "«Лаоган»: риск не получить слот",
+      "Логистика по 3 провинциям — самому"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Подбираем объект Everbright заранее",
+      "Бронируем слот на «Лаоган»",
+      "Перелёт и сопровождение включены"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Что **входит** в тур",
+   "items": [
+    "Визиты и переговоры по программе",
+    "Трансферы между городами",
+    "Перевод: китайский и английский",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Важно",
+   "title": "Бронируем **заранее**",
+   "text": "«Лаоган» — за 6 недель, объект Everbright — за 6–8 недель"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}
