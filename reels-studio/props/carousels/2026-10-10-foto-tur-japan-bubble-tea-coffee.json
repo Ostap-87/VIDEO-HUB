@@ -1,0 +1,146 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Япония",
+   "title": "Кофе Японии **от завода** до чашки",
+   "text": "Бабл-ти и кофейная индустрия Японии · 4 города"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Starbucks Reserve · Токио",
+   "title": "кофе в год обжаривает Roastery в Накамэгуро",
+   "text": "17-метровая колонна, здание Кэнго Кумы",
+   "value": "680 т"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут по дням",
+   "title": "Кобе — Киото — **Токио**",
+   "items": [
+    "День 1 · Кобе: UCC",
+    "День 2 · Осака: Suntory BOSS",
+    "День 3 · Киото: %Arabica, Ogawa",
+    "День 4 · Токио: Starbucks Reserve, Blue Bottle",
+    "День 5 · Токио: Doutor, Gong Cha"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "Куда **едем**",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/чай-кофе/ucc-ueshima-coffee.png"
+    },
+    {
+     "src": "source-videos/логотипы/чай-кофе/suntory-boss-coffee.png"
+    },
+    {
+     "src": "source-videos/логотипы/чай-кофе/arabica-percent.png"
+    },
+    {
+     "src": "source-videos/логотипы/чай-кофе/ogawa-coffee.png"
+    },
+    {
+     "src": "source-videos/логотипы/чай-кофе/starbucks-reserve-roastery-nakameguro.png"
+    },
+    {
+     "src": "source-videos/логотипы/чай-кофе/blue-bottle.png"
+    },
+    {
+     "src": "source-videos/логотипы/чай-кофе/doutor-coffee.png"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Вопросы, на которые **ответит** тур",
+   "items": [
+    "Как UCC обжаривает кофе с 1933 года",
+    "Как BOSS стал хитом кофе в банках",
+    "Как работает specialty-обжарка Киото",
+    "Как Doutor держит ~900 кофеен"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Месяцы переписки ради доступа",
+      "Нет гарантии, что визит согласуют",
+      "Логистика Кансай–Токио — на вас"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Синкансэн и трансферы включены",
+      "Сопровождение на каждой встрече",
+      "Синхронный перевод на встречах"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё **на месте**",
+   "items": [
+    "Организация визитов по программе",
+    "Синкансэн Токио–Кобе и Осака–Токио",
+    "Трансферы и сопровождение",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}
