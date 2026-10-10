@@ -1,0 +1,139 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-petrochemicals-guangdong/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Китай",
+   "title": "6 крупнейших **комплексов** Гуандуна",
+   "text": "Нефтехимия Китая · 5 дней · 4 города"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-petrochemicals-guangdong/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "BASF Zhanjiang Verbund",
+   "title": "этилена в год — **BASF**",
+   "text": "Первый крекинг на 100% возобновляемой энергии",
+   "value": "1 млн т"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-petrochemicals-guangdong/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут",
+   "title": "Весь маршрут — **на авто**",
+   "items": [
+    "День 1 · Чжаньцзян: Sinopec Zhongke",
+    "День 2 · Чжаньцзян, Маомин: BASF, Sinopec",
+    "День 3 · Гуанчжоу: Guangzhou Petrochemical",
+    "День 4 · Хуэйчжоу: CSPC, ExxonMobil",
+    "День 5 · Вылет"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-petrochemicals-guangdong/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "Шесть **гигантов** отрасли",
+   "items": [
+    "Sinopec Zhongke — СП с Kuwait Petroleum",
+    "BASF Zhanjiang Verbund",
+    "Sinopec Maoming и Guangzhou Petrochemical",
+    "CSPC — СП CNOOC и Shell",
+    "ExxonMobil Huizhou"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-petrochemicals-guangdong/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **поймёте**",
+   "items": [
+    "Как устроен интегрированный НПЗ",
+    "Иностранные СП: BASF, Shell, ExxonMobil",
+    "От переговоров до стройки — 18 месяцев",
+    "Порт на 34 млн т в год при НПЗ"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-petrochemicals-guangdong/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Sinopec — согласование через Пекин",
+      "Нет гарантии, что визит одобрят",
+      "Логистика по кластеру — самому"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-petrochemicals-guangdong/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Запросы через нашу сеть контактов",
+      "Все переезды на авто включены",
+      "Сопровождение на каждой встрече"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-petrochemicals-guangdong/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Что **входит** в тур",
+   "items": [
+    "Визиты и переговоры по программе",
+    "Трансферы между городами",
+    "Перевод: китайский и английский",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-petrochemicals-guangdong/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Важно",
+   "title": "Заявку подаём **заранее**",
+   "text": "Визиты на объекты Sinopec согласуются через Пекин за 6–8 недель"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-petrochemicals-guangdong/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-petrochemicals-guangdong/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-petrochemicals-guangdong/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}

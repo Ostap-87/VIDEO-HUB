@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "3e2b3c67-24c1-4841-9983-dea748963675",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165632_3e2b3c67-24c1-4841-9983-dea748963675.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo from a hilltop viewpoint over a vast gleaming petrochemical complex on the Guangdong coast on a clear day: silver distillation columns, pipe racks and white storage tanks stretch to the sea, a Russian business delegation in white hard hats and reflective vests with blank visitor badges stands with a Chinese host who points across the site, everyone smiling, wide 4:3 composition, subject centered, grand industrial mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "0ab2c78a-eb8c-41a8-8842-bd092770659b",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165714_0ab2c78a-eb8c-41a8-8842-bd092770659b.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo on the solar-panelled roof of a control building at a new chemical complex in Zhanjiang: a Chinese engineer in a white hard hat and a smiling Russian businessman with a blank visitor badge look out at tall shining cracker columns, white wind turbines turning along the coast behind, bright blue sky, main subject in the upper half of the frame, the lower third is calm rows of solar panels, vertical 4:5, clean-energy optimism. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "9cfe2d7a-9135-4c0c-a97d-154ef042b301",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165715_9cfe2d7a-9135-4c0c-a97d-154ef042b301.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside a comfortable minibus driving along a coastal highway in Guangdong: a Russian business delegation with blank visitor badges looks out of large windows at palm trees, green fields and the sea, a Chinese guide in the front seat turns back smiling and points ahead, bottles of water in the seat pockets, bright daylight, wide 4:3 composition, subject centered, relaxed road-trip mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "bd32bbfa-e9cc-4008-8b72-c2872887b11c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165714_bd32bbfa-e9cc-4008-8b72-c2872887b11c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in front of giant white spherical storage tanks at a petrochemical park in Huizhou: a Russian business delegation in white hard hats and reflective vests with blank visitor badges talks with Chinese and European joint-venture managers, everyone laughing, neat pipe racks and blue sky behind, main subject in the upper half of the frame, the lower third is calm clean paved road, vertical 4:5, international partnership mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "0401b3a8-b1a4-4f86-9c61-af0358bf5207",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165714_0401b3a8-b1a4-4f86-9c61-af0358bf5207.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright modern central control room of an integrated refinery in Guangzhou: a long curved wall of process displays shows soft blurred diagrams, a Chinese operator in a white shirt explains to a Russian business delegation with blank visitor badges gathered behind his console, everyone attentive and smiling, wide 4:3 composition, subject centered, smart-operations mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "ebeb3f36-aab6-4fd4-bf5e-49bfe802411f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165750_ebeb3f36-aab6-4fd4-bf5e-49bfe802411f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian businessman in his fifties sitting alone on a sofa in a bright hotel lobby in Guangzhou, holding his phone to his ear while waiting on hold, a folder of documents on his knees, gazing thoughtfully toward the window, a little tired but calm, palm plants and marble around, subject in the center of the vertical frame, vertical 9:16, patient waiting mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "42ddb6e9-8b24-4e79-95f9-c2bcf5879a6c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165749_42ddb6e9-8b24-4e79-95f9-c2bcf5879a6c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo at the visitor gate of a petrochemical plant on a sunny day: a Russian business delegation with blank visitor badges steps off an air-conditioned white minibus, a smiling Chinese escort in a white hard hat greets them and hands out helmets, everyone cheerful, green palms and a clean guardhouse behind, subject in the center of the vertical frame, vertical 9:16, smooth well-arranged mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "8b73417a-34a7-44b6-90c3-058c0b6254f9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165750_8b73417a-34a7-44b6-90c3-058c0b6254f9.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a riverside restaurant terrace in Guangzhou at golden hour: a Russian business delegation and their Chinese guide share a Cantonese seafood dinner at a round table, raising glasses and laughing, a slender twisted TV tower and the calm Pearl River glowing in warm light behind, wide 4:3 composition, subject centered, rewarding end-of-day mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "98cdae88-d982-4069-a1b1-7388aa4c7b80",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_165750_98cdae88-d982-4069-a1b1-7388aa4c7b80.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright modern office: a smiling Russian tour coordinator and a Chinese colleague place colourful blank sticky notes on a large week-by-week planning board, a laptop and coffee on the desk, sunlight through the windows, both relaxed and laughing, main subject in the upper half of the frame, the lower third is calm white desk, vertical 4:5, calm well-in-advance planning mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
