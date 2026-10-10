@@ -1,0 +1,130 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-tech-giants/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Китай",
+   "title": "Девять **гигантов** Китая за одну поездку",
+   "text": "China Tech Giants Expedition · 5 дней · 4 города"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-tech-giants/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Unitree, Ханчжоу",
+   "title": "рост выручки **Unitree** в 2025",
+   "text": "Больше половины — гуманоидные роботы",
+   "value": "+335%",
+   "logo": "unitree"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-tech-giants/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут",
+   "title": "Четыре города — **одна** линия",
+   "items": [
+    "День 1 · Пекин: Baidu, Xiaomi",
+    "День 2 · Ханчжоу: Alibaba, Unitree",
+    "День 3 · Шанхай: Meituan, RedNote",
+    "Дни 4–5 · Шэньчжэнь: Tencent, Huawei, UBTech"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-tech-giants/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "Компании **маршрута**",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/общие/baidu.png"
+    },
+    {
+     "src": "source-videos/логотипы/общие/xiaomi.svg"
+    },
+    {
+     "src": "source-videos/логотипы/общие/alibaba.svg"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/unitree.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/meituan.svg"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/xiaohongshu.svg"
+    },
+    {
+     "src": "source-videos/логотипы/общие/tencent.svg"
+    },
+    {
+     "src": "source-videos/логотипы/общие/huawei.svg"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-tech-giants/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **поймёте**",
+   "items": [
+    "Как Baidu строит ИИ и автопилот",
+    "Экосистема Xiaomi: от смартфона до EV",
+    "Как устроен e-commerce Alibaba",
+    "Соцкоммерция RedNote"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-tech-giants/06.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Что **входит** в тур",
+   "items": [
+    "5 дней, отели 5 звёзд",
+    "Обед и ужин ежедневно",
+    "Перелёты и трансферы внутри Китая",
+    "Перевод и сопровождение на встречах"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-tech-giants/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Для кого",
+   "title": "Для тех, кто ищет **партнёров**",
+   "text": "Переговоры с топ-менеджментом девяти компаний и прямые выходы на дистрибуцию"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-tech-giants/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-tech-giants/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-tech-giants/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}

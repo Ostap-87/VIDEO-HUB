@@ -1,0 +1,86 @@
+{
+ "01.jpg": {
+  "job": "659abbe7-9703-4f7f-b2ac-d2b789d3f71f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164018_659abbe7-9703-4f7f-b2ac-d2b789d3f71f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a sunlit rooftop terrace of a futuristic curved glass technology headquarters in Shenzhen: a delegation of eight Russian entrepreneurs in smart business attire with blank visitor badges on lanyards stands at the glass railing, a young Chinese host in a light grey blazer points toward a skyline of corporate towers, everyone smiling and leaning in with curiosity, green planters and wooden decking around, clear blue sky, wide 4:3 composition, subject centered, energetic inspiring mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "772f5974-95ed-4053-8575-577690859942",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164018_772f5974-95ed-4053-8575-577690859942.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright dispatch hall of a robotics company in Hangzhou: rows of compact dark-grey humanoid robots stand in open wooden shipping crates, in front a sleek four-legged robot dog raises a paw toward a laughing Russian businesswoman with a blank visitor badge who crouches to greet it, a smiling Chinese engineer looks on, main subject in the upper half of the frame, the lower third is calm grey epoxy floor, vertical 4:5, joyful sense of fast growth. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "a70461a4-bff4-45e5-a961-e5c94794457e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164019_a70461a4-bff4-45e5-a961-e5c94794457e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside a vast modern airport terminal in Beijing with a flowing white curved ceiling and daylight streaming through skylights: a Russian business delegation with blank visitor badges on lanyards rides a long moving walkway with compact carry-on suitcases, a Chinese guide in a navy jacket walks ahead and gestures forward, two delegates laugh while chatting, blurred travellers in the background, wide 4:3 composition, subject centered, sense of an efficient journey across four cities. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "5dc5ce65-9c0b-4fb4-9985-6554f8846d37",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164053_5dc5ce65-9c0b-4fb4-9985-6554f8846d37.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a spacious flagship showroom of a Chinese consumer technology giant: a young Chinese product manager unfolds a slim foldable smartphone for three smiling Russian delegates with blank visitor badges, behind them a silver electric sedan, smart speakers and laptops on light-wood podiums, all devices without markings, soft daylight from tall windows, main subject in the upper half of the frame, the lower third is calm pale wooden display table, vertical 4:5, curious excited mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "acd539be-cdfe-482e-8a1b-203799787b82",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164054_acd539be-cdfe-482e-8a1b-203799787b82.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo from the back seat of a driverless robotaxi gliding along a wide sunny Beijing avenue: the driver's seat is empty and the steering wheel turns by itself, two Russian entrepreneurs with blank visitor badges laugh in amazement in the back seat, a Chinese host turns around from the front passenger seat to explain, the dashboard screen shows only soft blurred map colors, green trees and modern buildings pass outside, wide 4:3 composition, subject centered, delighted discovery mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "ec351e6b-eafe-4068-a18d-7663c1421f53",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164053_ec351e6b-eafe-4068-a18d-7663c1421f53.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in an elegant private dining room of a five-star Beijing restaurant: a chef in a white jacket carves a glossy roast duck beside a large round table with a glass lazy Susan full of colourful dishes, a Russian business delegation with blank visitor badges and a Chinese interpreter laugh and raise tea cups, warm daylight through lattice screens, main subject in the upper half of the frame, the lower third is calm white tablecloth, vertical 4:5, generous hospitable mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "ee3bfadf-b590-4b3c-9576-e1f78d56cd3d",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164053_ee3bfadf-b590-4b3c-9576-e1f78d56cd3d.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a glass-walled executive meeting room high above Shanghai: a Russian entrepreneur with a blank visitor badge and a Chinese senior executive in a dark suit stand at a whiteboard sketching a distribution scheme of arrows and boxes with markers, both laughing, two colleagues at the table smile and take notes, city towers softly blurred outside, the whiteboard drawing has only shapes and lines, wide 4:3 composition, subject centered, open partnership mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
