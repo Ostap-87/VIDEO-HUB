@@ -1,0 +1,86 @@
+{
+ "01.jpg": {
+  "job": "8a0e3d7c-2fa9-420c-ab3f-1bc6e857f1be",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164453_8a0e3d7c-2fa9-420c-ab3f-1bc6e857f1be.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo from a glass visitor gallery above a bright automated car body shop in Beijing: rows of orange robotic arms assemble gleaming white car bodies on a long line below, a Russian business delegation with blank visitor badges leans on the railing, smiling and pointing, a Chinese plant guide in a white uniform explains, clean daylight from skylights, wide 4:3 composition, subject centered, impressive industrial mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "7c7c2fe7-214c-43c5-b018-5f1f643f6faa",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164453_7c7c2fe7-214c-43c5-b018-5f1f643f6faa.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo inside a compact bright battery swap station in Hefei: a sleek unbadged white electric sedan sits on the platform while an automated lift slides a fresh flat battery pack under its floor, a smiling Russian businessman with a blank visitor badge taps his wristwatch in amazement next to a Chinese engineer in a grey uniform, main subject in the upper half of the frame, the lower third is calm white tiled floor, vertical 4:5, quick effortless mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "b6a3ab58-80a1-472b-a4de-7dae7d0e0d0c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164557_b6a3ab58-80a1-472b-a4de-7dae7d0e0d0c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a Russian business delegation with blank visitor badges riding an open electric visitor tram along a long assembly line of a car plant in Shanghai, a Chinese guide with a headset microphone gestures toward car bodies moving on overhead hangers, the delegates smile and look around, bright clean hall with green floor markings, wide 4:3 composition, subject centered, smooth journey mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "0b597fbf-08b9-498f-8aee-ebe799a7f3a0",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164557_0b597fbf-08b9-498f-8aee-ebe799a7f3a0.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a sleek electric car showroom in Hefei: new unbadged electric cars in pearl white, graphite and deep blue stand on glossy podiums, a smiling Russian businessman with a blank visitor badge sits behind the wheel of a luxury sedan as a Chinese sales engineer holds the door open, two colleagues laugh beside, main subject in the upper half of the frame, the lower third is calm glossy grey floor, vertical 4:5, premium excited mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "d0afe700-74e2-4611-96a4-01d150d28967",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164556_d0afe700-74e2-4611-96a4-01d150d28967.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a sunny outdoor demo pad in Guangzhou: a futuristic white two-seat flying car with folded rotor arms stands on the tarmac, a Russian businessman with a blank visitor badge sits in the open cockpit grinning, a Chinese engineer explains the controls, other delegates gather around for a closer look, green hills and blue sky behind, wide 4:3 composition, subject centered, wonder and excitement. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "dd2137f5-a79c-454f-b207-f3d18d78fc68",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164558_dd2137f5-a79c-454f-b207-f3d18d78fc68.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright meeting room of a car plant: a young Chinese interpreter in a navy dress sits between Russian delegates with blank visitor badges and Chinese engineers, translating with a warm smile as everyone laughs at a friendly joke, a scale model of an unbadged electric car and tea cups on the table, main subject in the upper half of the frame, the lower third is calm light wooden tabletop, vertical 4:5, easy open communication. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "1e03a577-e781-49d3-aee9-bce69d2d35a8",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164634_1e03a577-e781-49d3-aee9-bce69d2d35a8.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside an unbadged electric crossover on a sunny proving ground: a Russian car dealer with a blank visitor badge drives along a sweeping test track, a Chinese test engineer in the passenger seat points ahead and both laugh, the minimal dashboard screen shows only soft blurred colors, green grass and orange cones outside, wide 4:3 composition, subject centered, confident test-drive mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
