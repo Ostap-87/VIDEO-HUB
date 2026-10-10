@@ -1,0 +1,86 @@
+{
+ "01.jpg": {
+  "job": "48671f36-0440-4f81-8d92-0a01209cae78",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164317_48671f36-0440-4f81-8d92-0a01209cae78.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright cosmetics factory in Shanghai: a filling line with rows of pale pink cream jars glides past, a Chinese technologist in a white coat and hairnet explains the process to a smiling Russian business delegation in white visitor coats with blank badges on lanyards, polished stainless steel machines and soft daylight, wide 4:3 composition, subject centered, fresh clean curious mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "767161e8-e0f1-4362-bf17-0cc797bed3bc",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164357_767161e8-e0f1-4362-bf17-0cc797bed3bc.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at a premium makeup flagship counter in a Hangzhou shopping mall: a Chinese makeup artist in black applies foundation with a brush to a smiling young customer while a line of eager shoppers waits, two Russian businesswomen with blank visitor badges watch the crowd in delighted surprise, rows of elegant unmarked compacts in warm light, main subject in the upper half of the frame, the lower third is calm cream marble floor, vertical 4:5, buzzing high-demand mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "f8bba104-63db-40af-b51d-8c278367bb07",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164357_f8bba104-63db-40af-b51d-8c278367bb07.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a willow-lined stone causeway across the lake in Hangzhou on a sunny day: a Russian business delegation with blank visitor badges walks with a Chinese guide who points toward a distant pagoda on a green hill, small wooden boats on calm water, the delegates smile and chat, wide 4:3 composition, subject centered, light travelling mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "255b5348-9998-4b70-821e-390bb7a8d918",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164356_255b5348-9998-4b70-821e-390bb7a8d918.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a pastel brand showroom of a Chinese beauty company: a Chinese brand manager in a cream suit dabs a swatch of serum onto the wrist of a smiling Russian businesswoman with a blank visitor badge, two colleagues lean in, shelves of elegant unmarked glass bottles and jars glow behind them, main subject in the upper half of the frame, the lower third is calm pale pink display counter, vertical 4:5, refined friendly mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "c471e7d5-f043-4f07-9d34-181dd5785cef",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164356_c471e7d5-f043-4f07-9d34-181dd5785cef.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright livestream studio in Hangzhou: a cheerful young Chinese host presents a serum bottle to a smartphone on a ring light, unmarked product boxes arranged on a pastel set, behind the camera a Russian business delegation with blank visitor badges watches and smiles, a producer gives a thumbs-up, wide 4:3 composition, subject centered, energetic behind-the-scenes mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "d554c25e-ab58-46d4-9aa4-9ee6bb56fdef",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164454_d554c25e-ab58-46d4-9aa4-9ee6bb56fdef.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a busy traditional Cantonese teahouse in Guangzhou at lunchtime: a waitress lifts the lid of a bamboo steamer of shrimp dumplings, a round table with many small dishes and teapots, a Russian business delegation and a Chinese interpreter laugh together, carved wood screens and red lanterns around, main subject in the upper half of the frame, the lower third is calm tablecloth with porcelain bowls, vertical 4:5, warm sociable mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "b9e79fdc-0929-47eb-9b58-f505ee1d2433",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164453_b9e79fdc-0929-47eb-9b58-f505ee1d2433.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a sunlit negotiation room of a cosmetics company in Guangzhou: unmarked bottles, lipsticks and palettes laid out on a white table, a Russian businesswoman with a blank visitor badge holds a glass serum bottle up to the light, a Chinese brand director smiles and explains, a colleague takes notes on a laptop, wide 4:3 composition, subject centered, confident partnership mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
