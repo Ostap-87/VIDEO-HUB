@@ -3,9 +3,11 @@
 // photoCard — фото-карточка + заголовок + текст; photoFull — фото на весь слайд, текст на плашке внизу;
 // photoPair — два фото с подписями (compare — «обычно / с нами», story — два кадра одной истории; row или column);
 // photoStat — фото + крупная цифра на плашке; photoCta — финал: коллаж из 2–3 фото, заголовок, кнопка сайта.
+// Сценарии каруселей (10.10.2026): items — список на фото-слайде (галочки, numbered — шаги), logos — карточки логотипов
+// компаний под заголовком, photoPair с frame: false — два фото на весь слайд рядом, пункты сторон (pics[].items) на плашке.
 // Все размеры в пределах полей безопасности (kit.tsx: SAFE, CONTENT); текст подгоняется под место (FitBox).
 import React from "react";
-import {AbsoluteFill} from "remotion";
+import {AbsoluteFill, Img, staticFile} from "remotion";
 import {
   Body,
   Caption,
@@ -21,6 +23,9 @@ import {
   Pill,
   Plate,
   PlateFooter,
+  resolveLogo,
+  Rich,
+  ROW,
   SAFE,
   Source,
   Title,
@@ -47,6 +52,83 @@ const Missing: React.FC<{s: Style; style?: React.CSSProperties}> = ({s, style}) 
     нет фото (image)
   </div>
 );
+
+// Пункт списка: Aura — лимонный квадрат в графитовом ободке, GTT — голубой кружок; внутри галочка или номер шага
+const Mark: React.FC<{s: Style; n?: number; size: number}> = ({s, n, size}) => (
+  <div
+    style={{
+      width: size,
+      height: size,
+      flexShrink: 0,
+      boxSizing: "border-box",
+      borderRadius: s.marker ? 8 : size / 2,
+      background: s.accent,
+      border: s.marker ? "2px solid #262626" : undefined,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+  >
+    {n === undefined ? (
+      <svg width={Math.round(size * 0.6)} height={Math.round(size * 0.6)} viewBox="0 0 34 34">
+        <path d="M7 18 L14 25 L27 10" fill="none" stroke={s.marker ? "#262626" : "#14318C"} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ) : (
+      <span style={{fontFamily: s.head, fontWeight: 700, fontSize: MIN_FONT, lineHeight: 1, color: s.marker ? "#262626" : "#14318C"}}>{n}</span>
+    )}
+  </div>
+);
+
+// список на фото-слайде (сценарии «Список» и «Шаги»): значок + текст цвета плашки, подгоняется вместе со слайдом
+const Items: React.FC<{items?: string[]; numbered?: boolean; s: Style; size?: number; style?: React.CSSProperties}> = ({items, numbered, s, size = 34, style}) => {
+  const k = useFit();
+  if (!items?.length) return null;
+  const fs = Math.max(MIN_FONT, Math.round(size * k));
+  return (
+    <div style={{display: "flex", flexDirection: "column", gap: Math.round(16 * k), ...style}}>
+      {items.map((it, i) => (
+        <div key={i} data-safe="" style={{display: "flex", alignItems: "flex-start", gap: 18}}>
+          {/* номер шага — не мельче 30 px, поэтому значок с номером не меньше 48 px */}
+          <Mark s={s} n={numbered ? i + 1 : undefined} size={numbered ? Math.max(48, Math.round(fs * 1.3)) : Math.round(fs * 1.3)} />
+          <div style={{fontFamily: s.body, fontWeight: 500, fontSize: fs, lineHeight: 1.3, color: s.ink, minWidth: 0}}>
+            <Rich text={it} s={s} />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// логотипы компаний на фото-слайде (сценарий «Логотипы»): белые карточки по три в ряд; src — путь или id из brands.json
+const LogoRow: React.FC<{logos?: {src: string; name?: string}[]; s: Style; style?: React.CSSProperties}> = ({logos, s, style}) => {
+  const k = useFit();
+  if (!logos?.length) return null;
+  const h = Math.round(110 * k);
+  return (
+    <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, ...style}}>
+      {logos.map((l, i) => (
+        <div
+          key={i}
+          data-safe=""
+          style={{
+            background: "#FFFFFF",
+            borderRadius: s.marker ? 10 : 22,
+            height: h,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "0 18px",
+            border: s.marker ? "2px solid #D9D7D5" : undefined,
+            boxShadow: "0 3px 12px rgba(0,0,0,0.18)",
+          }}
+        >
+          {/* широкий логотип упирается в ширину, квадратный (значок + надпись) — в высоту 78 %, чтобы надпись читалась */}
+          <Img src={staticFile(resolveLogo(l.src) ?? l.src)} style={{height: "78%", width: "88%", objectFit: "contain"}} />
+        </div>
+      ))}
+    </div>
+  );
+};
 
 // Подача фото (решение пользователя 10.10.2026): слайды «без рамки» (фото на весь слайд, плашка с текстом поверх)
 // чередуются со слайдами «в рамке» (фото в карточке со скруглением на фоне бренда). Поле frame: true / false;
@@ -80,6 +162,8 @@ const Overlay: React.FC<P & {titleSize: number; top: number; framed?: boolean; s
       {stat ? <Value text={sl.value} s={s} /> : null}
       <Title text={sl.title} s={s} size={stat ? 46 : titleSize} lh={stat ? 1.14 : 1.06} isKey={sl.kind === "photoCover"} style={stat ? {marginTop: 14} : undefined} />
       <Body text={sl.text} s={s} size={stat ? 34 : 36} style={{marginTop: stat ? 12 : 16}} />
+      <Items items={sl.items} numbered={sl.numbered} s={s} size={34} style={{marginTop: 22}} />
+      <LogoRow logos={sl.logos} s={s} style={{marginTop: 24}} />
       <Source text={sl.source} s={s} style={{marginTop: 14}} />
       {framed ? null : <PlateFooter s={s} last={last} />}
     </Plate>
@@ -153,6 +237,8 @@ const PhotoCard: React.FC<P> = (p) => {
         <Kicker text={sl.kicker} s={s} />
         <Title text={sl.title} s={s} size={62} />
         <Body text={sl.text} s={s} size={36} style={{marginTop: 16}} />
+        <Items items={sl.items} numbered={sl.numbered} s={s} size={34} style={{marginTop: 22}} />
+        <LogoRow logos={sl.logos} s={s} style={{marginTop: 24}} />
         <Source text={sl.source} s={s} style={{marginTop: 14}} />
       </div>
     </FitBox>
@@ -196,9 +282,74 @@ const PairCaption: React.FC<{text?: string; s: Style; style?: React.CSSPropertie
   ) : null;
 };
 
-const PhotoPair: React.FC<P> = ({sl, s}) => {
+// пункты сторон сравнения: у первого фото ✕ («обычно»), у второго — галочка бренда («с нами»); в story — галочки у обоих
+const SideItems: React.FC<{items?: string[]; s: Style; cross: boolean}> = ({items, s, cross}) => {
+  const k = useFit();
+  if (!items?.length) return null;
+  const fs = Math.max(MIN_FONT, Math.round(32 * k));
+  return (
+    <div style={{display: "flex", flexDirection: "column", gap: Math.round(12 * k)}}>
+      {items.map((it, i) => (
+        <div key={i} data-safe="" style={{display: "flex", alignItems: "flex-start", gap: 14}}>
+          {cross ? (
+            <span style={{width: Math.round(fs * 1.1), flexShrink: 0, textAlign: "center", fontFamily: s.body, fontWeight: 800, fontSize: fs, lineHeight: 1.3, color: s.marker ? s.muted : "#FFA3A5"}}>✕</span>
+          ) : (
+            <span style={{paddingTop: Math.round(fs * 0.12)}}>
+              <Mark s={s} size={Math.round(fs * 1.1)} />
+            </span>
+          )}
+          <div style={{fontFamily: s.body, fontWeight: 500, fontSize: fs, lineHeight: 1.3, color: s.ink, minWidth: 0}}>{typo(it)}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// без рамки: два фото на весь слайд (левая и правая половины), метки сверху, внизу плашка с заголовком и пунктами сторон
+const PairFull: React.FC<P & {pics: Pic[]; compare: boolean}> = ({sl, s, last, pics, compare}) => {
+  const tone = (i: number) => (compare ? (i === 0 ? "dim" : "accent") : "plain") as "dim" | "accent" | "plain";
+  const top = SAFE.top + ROW + 22;
+  return (
+    <>
+      <AbsoluteFill style={{display: "flex", flexDirection: "row"}}>
+        {pics.map((p, i) => (
+          <Photo key={i} pic={p} s={s} framed={false} style={{flex: 1, height: "100%"}} />
+        ))}
+      </AbsoluteFill>
+      <div style={{position: "absolute", left: "50%", top: 0, bottom: 0, width: 6, translate: "-50% 0", background: s.marker ? "#262626" : "#FFFFFF"}} />
+      {pics.map((p, i) =>
+        p.label ? <Chip key={i} text={p.label} s={s} tone={tone(i)} style={{position: "absolute", top, left: i === 0 ? SAFE.side : 540 + 30, maxWidth: 540 - SAFE.side - 30}} /> : null,
+      )}
+      {compare && pics.length === 2 ? (
+        <div style={{position: "absolute", left: 0, right: 0, top: top + 60, height: 420}}>
+          <Connector s={s} />
+        </div>
+      ) : null}
+      <FitBox style={{position: "absolute", left: SAFE.side, right: SAFE.side, top: 560, bottom: SAFE.bottom, display: "flex", flexDirection: "column"}}>
+        <div style={{marginTop: "auto"}} />
+        <Plate s={s} style={{padding: "32px 40px 26px", flexShrink: 0, display: "flex", flexDirection: "column"}}>
+          <Kicker text={sl.kicker} s={s} />
+          <Title text={sl.title} s={s} size={56} />
+          <div style={{display: "flex", gap: 30, marginTop: 24}}>
+            {pics.map((p, i) => (
+              <div key={i} style={{flex: 1, minWidth: 0}}>
+                <SideItems items={p.items} s={s} cross={compare && i === 0} />
+              </div>
+            ))}
+          </div>
+          <Body text={sl.text} s={s} size={32} style={{marginTop: 18}} />
+          <PlateFooter s={s} last={last} />
+        </Plate>
+      </FitBox>
+    </>
+  );
+};
+
+const PhotoPair: React.FC<P> = (p) => {
+  const {sl, s} = p;
   const pics = picsOf(sl).slice(0, 2);
   const compare = (sl.pair ?? "compare") === "compare";
+  if (!frameOf(sl)) return <PairFull {...p} pics={pics} compare={compare} />;
   const tone = (i: number) => (compare ? (i === 0 ? "dim" : "accent") : "plain") as "dim" | "accent" | "plain";
   const head = (
     <div>
@@ -236,11 +387,12 @@ const PhotoPair: React.FC<P> = ({sl, s}) => {
         ))}
         {compare && pics.length === 2 ? <Connector s={s} /> : null}
       </div>
-      {pics.some((p) => p.caption) ? (
+      {pics.some((p) => p.caption || p.items?.length) ? (
         <div style={{display: "flex", gap: 24, marginTop: 18}}>
           {pics.map((p, i) => (
             <div key={i} style={{flex: 1, minWidth: 0}}>
               <PairCaption text={p.caption} s={s} />
+              <SideItems items={p.items} s={s} cross={compare && i === 0} />
             </div>
           ))}
         </div>

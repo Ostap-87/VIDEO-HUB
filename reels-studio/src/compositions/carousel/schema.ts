@@ -11,6 +11,7 @@ export const picSchema = z.union([
     label: z.string().optional(), // photoPair: плашка на фото («Обычно», «С нами»)
     caption: z.string().optional(), // подпись под фото
     logo: z.union([z.string(), z.array(z.string())]).optional(), // логотип бренда на фото (id из brands.json или путь)
+    items: z.array(z.string()).optional(), // photoPair: пункты под фото (в сравнении — ✕ у первого, ✓ у второго)
   }),
 ]);
 
@@ -47,7 +48,8 @@ export const slideSchema = z.object({
   frame: z.boolean().optional(), // подача фото: true — в рамке на фоне бренда, false — на весь слайд, текст на плашке
   layout: z.enum(["card", "full", "row", "column"]).optional(), // photoCover: card | full (= frame: false), photoPair: row | column
   pair: z.enum(["compare", "story"]).optional(), // photoPair: сравнение (по умолчанию) или два кадра одной истории
-  items: z.array(z.string()).optional(), // list, steps
+  items: z.array(z.string()).optional(), // list, steps; фото-слайды — список на плашке (галочки или номера)
+  numbered: z.boolean().optional(), // фото-слайды: пункты items с номерами (шаги), без поля — с галочками
   value: z.string().optional(), // stat, photoStat: «1000+»
   author: z.string().optional(), // quote
   left: z.object({title: z.string(), items: z.array(z.string())}).optional(), // compare
@@ -65,4 +67,4 @@ export const carouselSchema = z.object({
 
 export type CarouselProps = z.infer<typeof carouselSchema>;
 export type Slide = z.infer<typeof slideSchema>;
-export type Pic = {src: string; focus?: string; zoom?: number; label?: string; caption?: string; logo?: string | string[]};
+export type Pic = {src: string; focus?: string; zoom?: number; label?: string; caption?: string; logo?: string | string[]; items?: string[]};

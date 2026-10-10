@@ -99,6 +99,12 @@ npm run carousel -- 2026-10-10-тема --guides   # проверка полей
 | `photoStat` | фото + крупная цифра на плашке + подпись |
 | `photoCta` | финал: коллаж из 2–3 фото, заголовок, кнопка с сайтом бренда (у Aura — робот) |
 
+На любом фото-слайде с текстом (`photoCard`, `photoFull`) можно дать список `items` (галочки; `"numbered": true` — шаги
+с номерами) и карточки логотипов `logos` (`[{"src": "agibot"}, …]` — id из `library/brands.json` или путь). Сравнение
+«самому / с нами» без рамки: `photoPair` с `"frame": false` — два фото на весь слайд рядом, пункты сторон — `images[].items`.
+Карусели по сценариям пользователя: фото Higgsfield (0,5 кредита) лежат в `source-videos/карусели/<имя>/NN.jpg`, журнал
+генераций — `_генерации.json` рядом. Образцы: `props/carousels/2026-10-10-foto-agibot-a2-w.json`, `2026-10-10-foto-tur-robotics.json`.
+
 Главные поля: `image` (путь от корня репозитория), `focus` («50% 30%» — что оставить при обрезке), `zoom`,
 `images` (для пар и коллажа: путь или `{src, focus, zoom, label, caption, logo}`), `caption` (подпись к фото),
 `source` (источник цифры), `logo` (логотип бренда на фото: id из `library/brands.json`, например `"ubtech"`,

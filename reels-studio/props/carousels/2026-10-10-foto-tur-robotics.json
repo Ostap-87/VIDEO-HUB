@@ -1,0 +1,146 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-robotics/01.jpg",
+   "focus": "50% 45%",
+   "kicker": "Бизнес-экспедиция · Китай",
+   "title": "12 заводов **роботов** за одну поездку",
+   "text": "Robotics Expedition · 5 дней · 3 города"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-robotics/02.jpg",
+   "focus": "50% 25%",
+   "logo": "ubtech",
+   "kicker": "UBTech, Шэньчжэнь",
+   "value": "800 млн",
+   "title": "юаней — заказы на **Walker S2**",
+   "text": "Промышленный гуманоид для автозаводов"
+  },
+  {
+   "kind": "photoCard",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-robotics/03.jpg",
+   "focus": "50% 40%",
+   "kicker": "Маршрут",
+   "title": "Север → центр → **юг**",
+   "numbered": true,
+   "items": [
+    "День 1 · Пекин: Galbot, Robotera",
+    "Дни 2–3 · Шанхай: AgiBot, Kepler, Fourier",
+    "Дни 4–5 · Шэньчжэнь: UBTech, LimX, Pudu"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-robotics/04.jpg",
+   "focus": "50% 22%",
+   "kicker": "Компании маршрута",
+   "title": "12 **лидеров** индустрии",
+   "logos": [
+    {
+     "src": "robotera"
+    },
+    {
+     "src": "agibot"
+    },
+    {
+     "src": "kepler"
+    },
+    {
+     "src": "fourier"
+    },
+    {
+     "src": "ubtech"
+    },
+    {
+     "src": "leju-robotics"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-robotics/05.jpg",
+   "focus": "50% 40%",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **поймёте**",
+   "items": [
+    "Как гуманоидов выпускают серийно",
+    "Где роботы уже работают: завод, ритейл",
+    "Сервисные роботы для ресторанов и отелей",
+    "С кем говорить о закупках"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-robotics/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Заводы молчат на «холодные» запросы",
+      "Языковой барьер",
+      "Недели переписки ради встречи"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-robotics/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Подтверждённые визиты к 12 лидерам",
+      "Перевод и техэкспертиза",
+      "Программа «под ключ»"
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-robotics/07.jpg",
+   "focus": "50% 35%",
+   "kicker": "Что входит",
+   "title": "Что **входит** в тур",
+   "items": [
+    "Экскурсии по цехам и лабораториям",
+    "Живые демо гуманоидов",
+    "Встречи с основателями и топами",
+    "Наши инженеры на каждой встрече"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-robotics/08.jpg",
+   "focus": "50% 35%",
+   "kicker": "Для кого",
+   "title": "Для **закупок** и дистрибуции",
+   "text": "Прямые выходы на производителей роботов и партнёрство"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "Посмотрите **маршрут** целиком",
+   "text": "Стоимость и что входит — на сайте",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-robotics/01.jpg",
+     "focus": "50% 45%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-robotics/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-robotics/07.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}

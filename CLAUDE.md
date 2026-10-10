@@ -47,6 +47,7 @@
 Полный каталог генераций пользователя — `source-videos/higgsfield/каталог.json`, использованные в роликах —
 `source-videos/higgsfield/использовано.json`. Одна картинка — один раз (в ролике и между роликами).
 Картинки, которые нельзя ставить (чужой бренд, искажённая надпись), — `reels-studio/library/blocked-images.json`.
+Новые генерации для каруселей Instagram по сценариям — `source-videos/карусели/<имя>/` (журнал `_генерации.json`).
 
 ## Два проекта: GlobalTechTour и Aura Robotics
 
