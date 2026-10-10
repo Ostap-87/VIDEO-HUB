@@ -1,0 +1,132 @@
+{
+ "brand": "aura",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-x1/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Робомодели · AgiBot",
+   "title": "AgiBot X1: **гуманоид с открытым кодом**",
+   "text": "Платформа для вузов и R&D-команд",
+   "logo": "agibot",
+   "mascot": "wave"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-x1/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Кто делает",
+   "title": "AgiBot, **Шанхай**",
+   "text": "Один из самых быстрорастущих разработчиков воплощённого ИИ в Китае. X1 — полностью открытая платформа гуманоида.",
+   "logo": "agibot"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-x1/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Размеры",
+   "title": "X1 **в цифрах**",
+   "items": [
+    "Рост 130 см",
+    "Вес 33 кг",
+    "34 активных степени свободы",
+    "Скорость до 1 м/с"
+   ]
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-x1/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Приводы PowerFlow",
+   "title": "пиковый момент привода R86-3",
+   "text": "Сам привод весит 1,28 кг",
+   "value": "200 Н·м"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-x1/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Открытость",
+   "title": "Что **открыто**",
+   "items": [
+    "Документация X1",
+    "Фреймворк AimRT",
+    "Датасет AgiBot World",
+    "Модульная конструкция"
+   ]
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-x1/06.jpg",
+   "focus": "50% 30%",
+   "kicker": "Автономность",
+   "title": "работы от батареи",
+   "text": "Для лабораторных сессий хватает",
+   "value": "≈2 ч"
+  },
+  {
+   "kind": "photoStat",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-x1/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Честно",
+   "title": "нагрузка на руку",
+   "text": "Это платформа для обучения, а не грузчик",
+   "value": "0,5 кг"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-x1/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Применение",
+   "title": "Кому **подходит**",
+   "items": [
+    "Университеты и лаборатории",
+    "Обучение роботов навыкам",
+    "Разработка своих алгоритмов"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-agibot-x1/09.jpg",
+   "focus": "50% 30%",
+   "kicker": "Цена и поставка",
+   "title": "Цена **по запросу**",
+   "items": [
+    "Закупка на заводе по ВЭД-контракту",
+    "Ввоз на вашу компанию",
+    "Видео теста вашего робота с серийным номером",
+    "Поставка 4–7 недель"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Подберём решение",
+   "title": "Пиши в **личные сообщения** или оставляй заявку на сайте",
+   "text": "Рассчитаем стоимость и окупаемость",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-x1/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-x1/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-agibot-x1/04.jpg",
+     "focus": "50% 30%"
+    }
+   ],
+   "mascot": "pointUp"
+  }
+ ]
+}

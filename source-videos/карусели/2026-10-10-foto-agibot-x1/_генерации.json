@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "24bdebad-5ed5-413c-8b6e-ddbf9e43aa76",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162421_24bdebad-5ed5-413c-8b6e-ddbf9e43aa76.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a sunny university robotics lab: a 130 cm open-frame humanoid robot with an exposed black-and-silver aluminium skeleton, round visible joint motors, a small dark sensor head and simple grippers stands among laughing Russian and Chinese students, one gently adjusts its elbow while another cheers, workbenches with tools and laptops with blurred screens behind, wide 4:3 composition, subject centered, open curious mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "a4d3cbf0-e3b4-49dc-af3a-52985c8b1cb4",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162420_a4d3cbf0-e3b4-49dc-af3a-52985c8b1cb4.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at an open developer meetup in a bright Shanghai tech park loft: Chinese and Russian developers with laptops gather around a long wooden table with neatly laid out robot limbs, joint motors and circuit boards, at its end stands a 130 cm open-frame humanoid robot with an exposed black-and-silver aluminium skeleton and a small dark sensor head, main subject in the upper half of the frame, the lower third is calm wooden table surface, vertical 4:5, collaborative mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "6d87e1de-152a-47c4-8297-9a51ebde96b6",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162512_6d87e1de-152a-47c4-8297-9a51ebde96b6.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright lab: a smiling Russian engineer kneels at eye level with a 130 cm open-frame humanoid robot with an exposed black-and-silver aluminium skeleton, round visible joint motors, a small dark sensor head and simple grippers, which reaches only to the shoulder of a standing Chinese female researcher, the engineer adjusts its knee joint with a small hex key, wide 4:3 composition, subject centered, friendly hands-on mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "5065b7dc-e802-4349-a870-d45ac87a564a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162511_5065b7dc-e802-4349-a870-d45ac87a564a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic close-up photo in a bright workshop: a smiling Chinese engineer holds a compact round joint actuator the size of a large coffee mug lightly in one open palm, right next to the exposed knee of a 130 cm open-frame humanoid robot with a black-and-silver aluminium skeleton and round joint motors, metal surfaces gleaming, main subject in the upper half of the frame, the lower third is calm soft-focus workbench, vertical 4:5, compact power mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "10b47c4c-d572-4ef2-ac51-055df465f32a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162512_10b47c4c-d572-4ef2-ac51-055df465f32a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at a bright student workbench: two cheerful students, one Russian and one Chinese, swap a complete arm module on a 130 cm open-frame humanoid robot with an exposed black-and-silver aluminium skeleton, round visible joint motors and a small dark sensor head lying on a padded table, spare limbs and an open laptop with softly blurred code nearby, wide 4:3 composition, subject centered, tinkering mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "46cd6c32-4364-4e9c-984e-bb739753bee9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162512_46cd6c32-4364-4e9c-984e-bb739753bee9.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a sunlit university seminar room: a 130 cm open-frame humanoid robot with an exposed black-and-silver aluminium skeleton, round visible joint motors and a small dark sensor head performs a slow walking demo in front of a blank whiteboard, attentive students at desks smile and take notes, a Russian professor gestures toward it, main subject in the upper half of the frame, the lower third is calm row of light desks, vertical 4:5, engaged learning mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "cb78b318-72a3-435f-bb77-afd5bb0d0b7a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162638_cb78b318-72a3-435f-bb77-afd5bb0d0b7a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a friendly lab kitchen corner: a 130 cm open-frame humanoid robot with an exposed black-and-silver aluminium skeleton, round visible joint motors, a small dark sensor head and simple grippers carefully holds a small plain half-liter water bottle in one gripper and offers it to a laughing Chinese student, a heavy grocery bag left untouched on the floor nearby, wide 4:3 composition, subject centered, honest light-hearted mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "19ed670f-400a-4cfb-85ff-efa9e0fffccc",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162637_19ed670f-400a-4cfb-85ff-efa9e0fffccc.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright research lab: a smiling Russian researcher in a VR headset moves her arms while a 130 cm open-frame humanoid robot with an exposed black-and-silver aluminium skeleton and simple grippers mirrors her motion and picks up a soft toy from a table, a Chinese colleague records data on a laptop with a blurred screen, main subject in the upper half of the frame, the lower third is calm light lab floor, vertical 4:5, teaching-by-example mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "09.jpg": {
+  "job": "a9c48c1c-f58e-4acb-8349-9f19ca065b49",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_162637_a9c48c1c-f58e-4acb-8349-9f19ca065b49.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a Russian university lab with golden autumn birch trees outside the window: smiling staff and students open a wooden crate and lift out a 130 cm open-frame humanoid robot with an exposed black-and-silver aluminium skeleton, round visible joint motors and a small dark sensor head, partly wrapped in protective film, one student laughing with excitement, wide 4:3 composition, subject centered, long-awaited delivery mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
