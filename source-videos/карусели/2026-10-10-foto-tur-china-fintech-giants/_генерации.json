@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "fbeb3ddc-211b-4359-9980-28128c3e8541",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170450_fbeb3ddc-211b-4359-9980-28128c3e8541.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright glass atrium of a fintech headquarters in Hangzhou: a giant wall screen shows an abstract glowing map with flowing lines of light and dots, no numbers, a Russian business delegation with visitor badges on lanyards watches with interest while a young Chinese product lead explains, green plants and sunlight around, wide 4:3 composition, subject centered, modern optimistic mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "fa817912-2737-43ab-b092-b5a9c47d36ef",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170524_fa817912-2737-43ab-b092-b5a9c47d36ef.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at a busy morning street-food stall in Hangzhou: a smiling Chinese vendor cooks a crispy jianbing pancake while a Russian delegate with a lanyard badge pays by scanning a plain QR stand with his phone, behind him a queue of locals also holding phones ready to pay, steam and warm sunlight, main subject in the upper half of the frame, the lower third is calm sunlit pavement, vertical 4:5, everyday cashless mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "0d8c62ce-23ec-4943-8be8-9b9685cfeee9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170524_0d8c62ce-23ec-4943-8be8-9b9685cfeee9.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a Russian business delegation with visitor badges on lanyards walking along a sunlit elevated glass skybridge between skyscrapers in Shenzhen's financial district, a Chinese guide in front pointing to the next tower, green parks and avenues below, people chatting with coffee cups in hand, wide 4:3 composition, subject centered, brisk purposeful mood of moving from one meeting to the next. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "fa8c11b2-8bc2-4fe8-80f5-af2f026c1273",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170524_fa8c11b2-8bc2-4fe8-80f5-af2f026c1273.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a fintech product lab in Shenzhen: a young Chinese product manager demonstrates a mobile banking app prototype on a large touchscreen table with colorful blurred interface tiles, three Russian delegates with lanyard badges lean over the table smiling, one tapping the screen, main subject in the upper half of the frame, the lower third is calm white floor, vertical 4:5, engaged curious mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "cfb2deb3-2af1-42f6-9520-5f29f9805ac8",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170525_cfb2deb3-2af1-42f6-9520-5f29f9805ac8.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside a futuristic bank branch without tellers in Shanghai: sleek white self-service kiosks, a video-banking booth with a friendly Chinese consultant on screen, a Chinese bank officer shows a Russian business delegation with visitor badges how a customer opens an account in minutes, everyone smiling, bright daylight and light wood details, screens blurred, wide 4:3 composition, subject centered. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "5a869eaa-8a2d-457e-96aa-54b611d3d53c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170602_5a869eaa-8a2d-457e-96aa-54b611d3d53c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian banker in his fifties in a grey suit sitting alone on a sofa in the spacious reception lobby of a Shenzhen office tower, a leather folder on his knees and a phone in his hand, waiting for an unconfirmed meeting, slightly tired but calm thoughtful expression, reception desk and visitors softly blurred behind, bright daylight, subject in the center of the vertical frame, vertical 9:16. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "28e658bb-fc89-42eb-bf3b-eeee3bafc7eb",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170602_28e658bb-fc89-42eb-bf3b-eeee3bafc7eb.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo at the bright reception of a fintech tower in Shenzhen: a smiling Chinese host hands visitor badges on lanyards to a cheerful Russian business delegation, a Chinese guide nearby checks the list on a tablet, glass turnstiles opening behind them, sunlit lobby with tall plants, subject in the center of the vertical frame, vertical 9:16, smooth welcoming mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "ad4f8f3f-97b2-4f90-8b18-e5178c9b03f8",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170602_ad4f8f3f-97b2-4f90-8b18-e5178c9b03f8.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside the spacious business-class cabin of a Chinese high-speed train: a Russian business delegation with visitor badges sits in wide cream leather seats facing each other, laughing over green tea in glass cups, a Chinese guide shows the schedule on a tablet with a blurred screen, green hills and rice terraces blurring past the window, wide 4:3 composition, subject centered, comfortable smooth journey mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "c712e56a-a96e-4909-be11-cae63a382a41",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_170601_c712e56a-a96e-4909-be11-cae63a382a41.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at a bright convenience-store counter in Shanghai: a Russian woman banking executive in her forties smiles at a small face-recognition payment terminal that completes her purchase, a young Chinese cashier smiles back, a Chinese colleague beside her explains the technology, products softly blurred behind, main subject in the upper half of the frame, the lower third is calm white counter, vertical 4:5, seamless future banking mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}

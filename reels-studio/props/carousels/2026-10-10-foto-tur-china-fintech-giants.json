@@ -1,0 +1,138 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-fintech-giants/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Китай",
+   "title": "Кто построил **финтех** Китая",
+   "text": "Финтех-гиганты Китая · 5 дней · 4 города"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-fintech-giants/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Ant Group",
+   "title": "пользователей Alipay",
+   "text": "Больше половины мобильных платежей Китая",
+   "value": "1 млрд+"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-fintech-giants/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут",
+   "title": "5 дней · **4 города**",
+   "items": [
+    "День 1 · Пекин: JD Digits, Du Xiaoman",
+    "День 2 · Шэньчжэнь: Tencent",
+    "День 3 · Шэньчжэнь: OneConnect, Lexin",
+    "День 4 · Ханчжоу: Ant Group",
+    "День 5 · Шанхай: Lufax, East Money"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-fintech-giants/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "**8 компаний** за поездку",
+   "items": [
+    "Ant Group · Tencent · JD Digits",
+    "Du Xiaoman · Lufax",
+    "OneConnect · LexinFintech",
+    "East Money Information"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-fintech-giants/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **увидите** изнутри",
+   "items": [
+    "Как устроены платежи, банкинг, кредиты",
+    "Как Alipay и WeChat Pay делят рынок",
+    "Как банки Китая уходят в облако",
+    "Как кредитуют молодых онлайн"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-fintech-giants/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Конкуренты — каждый со своим согласованием",
+      "Нет гарантии, что визит согласуют вовремя",
+      "2 перелёта и поезд по 4 городам — сами"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-fintech-giants/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Визиты — через нашу сеть контактов",
+      "Перелёты и поезд включены",
+      "Сопровождение на каждой встрече"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-fintech-giants/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё готово **до вылета**",
+   "items": [
+    "Визиты и переговоры по программе",
+    "2 внутренних перелёта и скоростной поезд",
+    "Перевод: китайский и английский",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-fintech-giants/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Для кого",
+   "title": "Для банков и **финтеха**",
+   "text": "Тем, кто строит платежи, цифровой банкинг или кредитование и хочет увидеть, как это работает в Китае"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-fintech-giants/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-fintech-giants/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-fintech-giants/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}
