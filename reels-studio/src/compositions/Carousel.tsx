@@ -106,7 +106,7 @@ const SlideBody: React.FC<{sl: Slide; s: Style; brand: BrandId; last: boolean}> 
               lineHeight: 1,
               letterSpacing: s.marker ? "-0.04em" : "0",
               color: s.marker ? s.ink : s.accent,
-              textShadow: s.marker ? "none" : "0 0 60px rgba(61,123,255,0.7)",
+              textShadow: s.glow,
               backgroundImage: s.marker ? `linear-gradient(${s.accent}, ${s.accent})` : undefined,
               backgroundSize: "100% 38%",
               backgroundPosition: "0 82%",
@@ -156,7 +156,7 @@ const SlideBody: React.FC<{sl: Slide; s: Style; brand: BrandId; last: boolean}> 
           <div style={{display: "flex", gap: 24}}>
             {[sl.left, sl.right].map((col, ci) =>
               col ? (
-                <Card key={ci} s={s} style={{flex: 1, opacity: 1, background: ci === 1 ? (s.marker ? "#262626" : "rgba(61,123,255,0.18)") : s.card, border: ci === 1 && !s.marker ? `2px solid ${s.accent}` : undefined}}>
+                <Card key={ci} s={s} style={{flex: 1, opacity: 1, background: ci === 1 ? (s.marker ? "#262626" : "rgba(255,255,255,0.18)") : s.card, border: ci === 1 && !s.marker ? `2px solid ${s.accent}` : undefined}}>
                   <div style={{fontFamily: s.head, fontWeight: 700, fontSize: 34, color: ci === 1 && s.marker ? s.accent : s.cardInk, marginBottom: 22}}>{col.title}</div>
                   {col.items.map((it, i) => (
                     <div key={i} style={{display: "flex", gap: 14, alignItems: "flex-start", marginBottom: 16}}>
@@ -192,7 +192,7 @@ const SlideBody: React.FC<{sl: Slide; s: Style; brand: BrandId; last: boolean}> 
       return (
         <div style={{display: "flex", flexDirection: "column", justifyContent: "center", height: "100%"}}>
           {brand === "aura" ? (
-            <div style={{alignSelf: "flex-start", marginBottom: 40}}>
+            <div data-nofont="" style={{alignSelf: "flex-start", marginBottom: 40}}>
               {/* статичный кадр печати: кольцо прорисовано, монограмма ровно (без 3D-поворота) */}
               <Freeze frame={2}>
                 <AuraBadge size={190} />
@@ -256,7 +256,7 @@ export const Carousel: React.FC<CarouselProps> = ({brand, slides, guides}) => {
   const auto: GestureKind | undefined = sl.kind === "cover" ? "wave" : sl.kind === "cta" || sl.kind === "photoCta" ? "pointUp" : undefined;
   const gesture: GestureKind | null = brand !== "aura" || sl.mascot === "none" || full ? null : (sl.mascot as GestureKind | undefined) ?? auto ?? null;
   const t = i; // fps 1: кадр = секунда
-  const spot = photo ? {x: MASCOT_SPOT.x, y: MASCOT_SPOT.y} : {x: sl.kind === "cta" ? 830 : 900, y: sl.kind === "cta" ? 1170 : 1160};
+  const spot = photo ? {x: MASCOT_SPOT.x, y: MASCOT_SPOT.y} : {x: sl.kind === "cta" ? 830 : 890, y: sl.kind === "cta" ? 1170 : 1160};
   const scale = photo ? MASCOT_SPOT.scale : 1.2;
   // где виден робот (для проверки полей): от центра ступней влево ~85, вправо ~115, вверх ~325 px при масштабе 1.2
   const mascotBox = gesture ? {x1: spot.x - 72 * scale, x2: spot.x + 98 * scale, y1: spot.y - 272 * scale, y2: spot.y + 14 * scale} : null;

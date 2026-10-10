@@ -44,7 +44,8 @@ export const slideSchema = z.object({
   caption: z.string().optional(), // подпись к фото (что в кадре)
   source: z.string().optional(), // источник цифры или факта
   logo: z.union([z.string(), z.array(z.string())]).optional(), // логотип бренда на фото: "ubtech" или ["huawei", "tencent"]
-  layout: z.enum(["card", "full", "row", "column"]).optional(), // photoCover: card | full, photoPair: row | column
+  frame: z.boolean().optional(), // подача фото: true — в рамке на фоне бренда, false — на весь слайд, текст на плашке
+  layout: z.enum(["card", "full", "row", "column"]).optional(), // photoCover: card | full (= frame: false), photoPair: row | column
   pair: z.enum(["compare", "story"]).optional(), // photoPair: сравнение (по умолчанию) или два кадра одной истории
   items: z.array(z.string()).optional(), // list, steps
   value: z.string().optional(), // stat, photoStat: «1000+»

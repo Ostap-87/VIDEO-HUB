@@ -5,8 +5,8 @@
 // - красные рамки — найденные нарушения: элемент за полем, заголовок обложки вне квадрата, текст не влез;
 // - внизу — итог проверки слайда.
 import React, {useEffect, useLayoutEffect, useRef, useState} from "react";
-import {AbsoluteFill, continueRender, delayRender} from "remotion";
-import {fitsPending, GRID, H, MIN_FONT, SAFE, W} from "./kit";
+import {continueRender, delayRender} from "remotion";
+import {fitsPending, fonts, GRID, H, MIN_FONT, SAFE, W} from "./kit";
 
 type Box = {x1: number; y1: number; x2: number; y2: number};
 type Mark = Box & {label: string};
@@ -32,16 +32,24 @@ export const Guides: React.FC<{index: number; mascot: Box | null}> = ({index, ma
   const [job] = useState(() => ({handle: delayRender("Проверка полей безопасности"), open: true}));
   useLayoutEffect(() => {
     let alive = true;
+    let fontsOk = false;
+    let calm = 0; // сколько проверок подряд всё готово: меряем, когда вёрстка устоялась
+    fonts().then(() => {
+      fontsOk = true;
+    });
+    const started = Date.now();
     const measure = () => {
       if (!alive) return;
       const root = ref.current?.parentElement;
       const imgs = root ? Array.from(root.querySelectorAll("img")) : [];
-      if (!root || fitsPending() > 0 || imgs.some((im) => !im.complete)) {
-        setTimeout(measure, 30);
+      const ready = Boolean(root) && fontsOk && root!.getBoundingClientRect().width > 0 && fitsPending() === 0 && imgs.every((im) => im.complete);
+      calm = ready ? calm + 1 : 0;
+      if (calm < 3 && Date.now() - started < 15000) {
+        setTimeout(measure, 40);
         return;
       }
-      requestAnimationFrame(() => {
-        if (!alive) return;
+      if (!root) return setMarks([{x1: 0, y1: 0, x2: W, y2: H, label: "проверка не запустилась"}]);
+      {
         const rr = root.getBoundingClientRect();
         const k = rr.width / W;
         const rect = (el: Element): Box => {
@@ -64,14 +72,14 @@ export const Guides: React.FC<{index: number; mascot: Box | null}> = ({index, ma
         root.querySelectorAll("[data-overflow]").forEach((el) => out.push({...rect(el), label: "текст не влезает"}));
         // кегль: любой видимый текст не мельче 30 px
         root.querySelectorAll("*").forEach((el) => {
-          if (ref.current?.contains(el)) return;
+          if (ref.current?.contains(el) || el.closest("[data-nofont]")) return; // логотипы (кольцо печати AR) не проверяем
           const own = Array.from(el.childNodes).some((n) => n.nodeType === 3 && (n.textContent ?? "").trim());
           if (!own) return;
           const fs = parseFloat(getComputedStyle(el).fontSize);
           if (fs < MIN_FONT - 0.5) out.push({...rect(el), label: `кегль ${Math.round(fs)} px`});
         });
         setMarks(out);
-      });
+      }
     };
     measure();
     return () => {
@@ -95,7 +103,7 @@ export const Guides: React.FC<{index: number; mascot: Box | null}> = ({index, ma
   );
   const cover = index === 0;
   return (
-    <AbsoluteFill ref={ref} style={{pointerEvents: "none"}}>
+    <div ref={ref} style={{position: "absolute", inset: 0, pointerEvents: "none"}}>
       <svg width={W} height={H} style={{position: "absolute", inset: 0}}>
         {/* поля безопасности */}
         <path d={`M0 0 H${W} V${H} H0 Z M${SAFE.side} ${SAFE.top} V${H - SAFE.bottom} H${W - SAFE.side} V${SAFE.top} Z`} fill="rgba(255,45,85,0.22)" fillRule="evenodd" />
@@ -116,10 +124,12 @@ export const Guides: React.FC<{index: number; mascot: Box | null}> = ({index, ma
           <rect key={i} x={m.x1} y={m.y1} width={m.x2 - m.x1} height={m.y2 - m.y1} fill="rgba(255,0,51,0.12)" stroke="#FF0033" strokeWidth={5} />
         ))}
       </svg>
-      <div style={{...label, left: SAFE.side + 8, top: GRID.squareTop + 6, background: CYAN}}>1:1 сетка профиля</div>
-      <div style={{...label, left: SAFE.side + 8, top: GRID.squareBottom - 40, background: CYAN}}>1:1 сетка профиля</div>
-      <div style={{...label, right: SAFE.side + 8, top: SAFE.top + 8 + 64 + 10, background: PINK}}>поля 72 / 64 px</div>
-      {cover ? <div style={{...label, left: SAFE.side + 8, top: 20, background: "rgba(0,120,170,0.95)"}}>обложка: заголовок и главное — между голубыми линиями</div> : null}
+      {/* легенда — в верхнем поле (там нет элементов слайда), итог — в нижнем */}
+      <div style={{...label, left: "50%", translate: "-50% 0", top: 16, display: "flex", gap: 18, background: "rgba(15,15,20,0.88)"}}>
+        <span style={{color: PINK}}>▬ поля 72 / 64</span>
+        <span style={{color: CYAN}}>▬ квадрат 1:1{cover ? " — главное внутри" : ""}</span>
+        <span style={{color: AMBER}}>▬ сетка 3:4</span>
+      </div>
       {mascot ? <div style={{...label, left: mascot.x1, top: mascot.y1 - 36, background: "#B05BFF"}}>робот</div> : null}
       {(marks ?? []).map((m, i) => (
         <div key={i} style={{...label, left: Math.min(m.x1, W - 360), top: Math.max(0, m.y1 - 36), background: "#FF0033"}}>
@@ -139,6 +149,6 @@ export const Guides: React.FC<{index: number; mascot: Box | null}> = ({index, ma
       >
         {marks === null ? "проверка…" : marks.length ? `✕ нарушений: ${marks.length}` : "✓ поля, кегль и сетка в норме"}
       </div>
-    </AbsoluteFill>
+    </div>
   );
 };

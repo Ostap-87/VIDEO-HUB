@@ -1,5 +1,5 @@
 // Фото-слайды карусели (решение пользователя 10.10.2026): фото главное, текст коротко.
-// photoCover — обложка с крупным фото (layout card — карточка сверху, full — фото на весь слайд и плашка внизу);
+// photoCover — обложка с крупным фото (в рамке — карточка сверху; frame: false или layout: full — фото на весь слайд);
 // photoCard — фото-карточка + заголовок + текст; photoFull — фото на весь слайд, текст на плашке внизу;
 // photoPair — два фото с подписями (compare — «обычно / с нами», story — два кадра одной истории; row или column);
 // photoStat — фото + крупная цифра на плашке; photoCta — финал: коллаж из 2–3 фото, заголовок, кнопка сайта.
@@ -48,33 +48,65 @@ const Missing: React.FC<{s: Style; style?: React.CSSProperties}> = ({s, style}) 
   </div>
 );
 
-// фото на весь слайд + плашка внизу (photoFull и photoCover layout: full)
-const FullBleed: React.FC<P & {titleSize: number; top: number}> = ({sl, s, last, titleSize, top}) => {
+// Подача фото (решение пользователя 10.10.2026): слайды «без рамки» (фото на весь слайд, плашка с текстом поверх)
+// чередуются со слайдами «в рамке» (фото в карточке со скруглением на фоне бренда). Поле frame: true / false;
+// по умолчанию без рамки — photoFull (и photoCover с layout: "full"), в рамке — остальные. photoPair и photoCta — всегда в рамке.
+export const frameOf = (sl: Slide): boolean => {
+  if (sl.kind === "photoFull") return sl.frame ?? false;
+  if (sl.kind === "photoCover") return sl.frame ?? sl.layout !== "full";
+  return sl.frame ?? true;
+};
+
+// Фото + плашка с текстом поверх. Без рамки: фото на весь слайд, плашка доходит до нижнего поля (64 px), подвал
+// (сайт, «листай») — внутри плашки. В рамке (photoFull с frame: true): фото в карточке, плашка внутри неё, подвал обычный.
+// stat — на плашке крупная цифра (photoStat без рамки).
+const Overlay: React.FC<P & {titleSize: number; top: number; framed?: boolean; stat?: boolean}> = ({sl, s, last, titleSize, top, framed, stat}) => {
   const pic = mainPic(sl);
   const logos = logoList(sl.logo);
+  const extras =
+    logos.length || sl.caption ? (
+      <div style={{display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 20, marginBottom: 20}}>
+        <LogoBadges logos={logos} inline />
+        {sl.caption ? (
+          <Pill s={s} style={{fontFamily: "JetBrains Mono, monospace", fontWeight: 500, fontSize: MIN_FONT, color: s.ink, marginLeft: "auto", minWidth: 0}}>
+            <span style={{whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>{sl.caption}</span>
+          </Pill>
+        ) : null}
+      </div>
+    ) : null;
+  const plate = (
+    <Plate s={s} style={{padding: framed ? "30px 36px" : "34px 40px 26px", flexShrink: 0, display: "flex", flexDirection: "column"}}>
+      <Kicker text={sl.kicker} s={s} style={stat ? {marginBottom: 10} : undefined} />
+      {stat ? <Value text={sl.value} s={s} /> : null}
+      <Title text={sl.title} s={s} size={stat ? 46 : titleSize} lh={stat ? 1.14 : 1.06} isKey={sl.kind === "photoCover"} style={stat ? {marginTop: 14} : undefined} />
+      <Body text={sl.text} s={s} size={stat ? 34 : 36} style={{marginTop: stat ? 12 : 16}} />
+      <Source text={sl.source} s={s} style={{marginTop: 14}} />
+      {framed ? null : <PlateFooter s={s} last={last} />}
+    </Plate>
+  );
+  if (framed)
+    return (
+      <FitBox style={box}>
+        {pic ? (
+          <Photo pic={pic} s={s} style={{flex: "1 1 0", minHeight: 600}}>
+            <div style={{position: "absolute", left: 24, right: 24, top: 24, bottom: 24, display: "flex", flexDirection: "column"}}>
+              <div style={{marginTop: "auto"}} />
+              {extras}
+              {plate}
+            </div>
+          </Photo>
+        ) : (
+          <Missing s={s} style={{flex: "1 1 0", minHeight: 600}} />
+        )}
+      </FitBox>
+    );
   return (
     <>
       <AbsoluteFill>{pic ? <Photo pic={pic} s={s} framed={false} style={{position: "absolute", inset: 0}} /> : <Missing s={s} style={{position: "absolute", inset: 0, borderRadius: 0}} />}</AbsoluteFill>
-      {/* плашка доходит до нижнего поля (64 px); подвал (сайт, «листай») — внутри неё */}
       <FitBox style={{position: "absolute", left: SAFE.side, right: SAFE.side, top, bottom: SAFE.bottom, display: "flex", flexDirection: "column"}}>
         <div style={{marginTop: "auto"}} />
-        {logos.length || sl.caption ? (
-          <div style={{display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 20, marginBottom: 20}}>
-            <LogoBadges logos={logos} inline />
-            {sl.caption ? (
-              <Pill s={s} style={{fontFamily: "JetBrains Mono, monospace", fontWeight: 500, fontSize: MIN_FONT, color: s.marker ? s.ink : "#E6ECFA", marginLeft: "auto", minWidth: 0}}>
-                <span style={{whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>{sl.caption}</span>
-              </Pill>
-            ) : null}
-          </div>
-        ) : null}
-        <Plate s={s} style={{padding: "34px 40px 26px", flexShrink: 0}}>
-          <Kicker text={sl.kicker} s={s} />
-          <Title text={sl.title} s={s} size={titleSize} lh={1.06} isKey={sl.kind === "photoCover"} />
-          <Body text={sl.text} s={s} size={36} style={{marginTop: 16}} />
-          <Source text={sl.source} s={s} style={{marginTop: 14}} />
-          <PlateFooter s={s} last={last} />
-        </Plate>
+        {extras}
+        {plate}
       </FitBox>
     </>
   );
@@ -82,7 +114,7 @@ const FullBleed: React.FC<P & {titleSize: number; top: number}> = ({sl, s, last,
 
 const PhotoCover: React.FC<P> = (p) => {
   const {sl, s, mascot} = p;
-  if (sl.layout === "full") return <FullBleed {...p} titleSize={78} top={440} />;
+  if (!frameOf(sl)) return <Overlay {...p} titleSize={78} top={440} />;
   const pic = mainPic(sl);
   return (
     <FitBox style={box}>
@@ -103,7 +135,9 @@ const PhotoCover: React.FC<P> = (p) => {
   );
 };
 
-const PhotoCard: React.FC<P> = ({sl, s, mascot}) => {
+const PhotoCard: React.FC<P> = (p) => {
+  const {sl, s, mascot} = p;
+  if (!frameOf(sl)) return <Overlay {...p} titleSize={64} top={500} />;
   const pic = mainPic(sl);
   return (
     <FitBox style={box}>
@@ -125,7 +159,7 @@ const PhotoCard: React.FC<P> = ({sl, s, mascot}) => {
   );
 };
 
-const PhotoFull: React.FC<P> = (p) => <FullBleed {...p} titleSize={64} top={500} />;
+const PhotoFull: React.FC<P> = (p) => <Overlay {...p} titleSize={64} top={500} framed={frameOf(p.sl)} />;
 
 // значок между фото в сравнении
 const Connector: React.FC<{s: Style}> = ({s}) => (
@@ -138,8 +172,8 @@ const Connector: React.FC<{s: Style}> = ({s}) => (
       width: 84,
       height: 84,
       borderRadius: 42,
-      background: s.marker ? s.accent : "#2563EB",
-      border: s.marker ? "2px solid #262626" : "6px solid #0A1022",
+      background: s.marker ? s.accent : "#FFFFFF",
+      border: s.marker ? "2px solid #262626" : "6px solid #1D50CD",
       boxSizing: "border-box",
       display: "flex",
       alignItems: "center",
@@ -147,7 +181,7 @@ const Connector: React.FC<{s: Style}> = ({s}) => (
     }}
   >
     <svg width={36} height={36} viewBox="0 0 30 30">
-      <path d="M6 15 H23 M16 8 L23 15 L16 22" fill="none" stroke={s.marker ? "#262626" : "#FFFFFF"} strokeWidth={3.5} strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M6 15 H23 M16 8 L23 15 L16 22" fill="none" stroke={s.marker ? "#262626" : "#2563EB"} strokeWidth={3.5} strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   </div>
 );
@@ -156,7 +190,7 @@ const Connector: React.FC<{s: Style}> = ({s}) => (
 const PairCaption: React.FC<{text?: string; s: Style; style?: React.CSSProperties}> = ({text, s, style}) => {
   const k = useFit();
   return text ? (
-    <div data-safe="" style={{fontFamily: s.body, fontWeight: 500, fontSize: Math.max(MIN_FONT, Math.round(34 * k)), lineHeight: 1.3, color: s.marker ? s.ink : "#E6ECFA", ...style}}>
+    <div data-safe="" style={{fontFamily: s.body, fontWeight: 500, fontSize: Math.max(MIN_FONT, Math.round(34 * k)), lineHeight: 1.3, color: s.ink, ...style}}>
       {typo(text)}
     </div>
   ) : null;
@@ -232,7 +266,7 @@ const Value: React.FC<{text?: string; s: Style}> = ({text, s}) => {
         letterSpacing: s.marker ? "-0.04em" : "0",
         whiteSpace: "nowrap",
         color: s.marker ? s.ink : s.accent,
-        textShadow: s.marker ? "none" : "0 0 60px rgba(61,123,255,0.7)",
+        textShadow: s.glow,
         backgroundImage: s.marker ? `linear-gradient(${s.accent}, ${s.accent})` : undefined,
         backgroundSize: "100% 38%",
         backgroundPosition: "0 82%",
@@ -246,7 +280,9 @@ const Value: React.FC<{text?: string; s: Style}> = ({text, s}) => {
   );
 };
 
-const PhotoStat: React.FC<P> = ({sl, s}) => {
+const PhotoStat: React.FC<P> = (p) => {
+  const {sl, s} = p;
+  if (!frameOf(sl)) return <Overlay {...p} titleSize={46} top={420} stat />;
   const pic = mainPic(sl);
   const OVERLAP = 96; // плашка с цифрой заходит на фото снизу
   return (
@@ -254,7 +290,7 @@ const PhotoStat: React.FC<P> = ({sl, s}) => {
       {pic ? (
         <Photo pic={pic} s={s} style={{flex: "1 1 0", minHeight: 400}}>
           {sl.caption ? (
-            <Pill s={s} style={{position: "absolute", left: 20, top: 20, maxWidth: "calc(100% - 40px)", fontFamily: "JetBrains Mono, monospace", fontWeight: 500, fontSize: MIN_FONT, color: s.marker ? s.ink : "#E6ECFA"}}>
+            <Pill s={s} style={{position: "absolute", left: 20, top: 20, maxWidth: "calc(100% - 40px)", fontFamily: "JetBrains Mono, monospace", fontWeight: 500, fontSize: MIN_FONT, color: s.ink}}>
               <span style={{whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>{sl.caption}</span>
             </Pill>
           ) : null}
@@ -314,8 +350,8 @@ const PhotoCta: React.FC<P> = ({sl, s, mascot}) => {
 
 export const PHOTO_KINDS = ["photoCover", "photoCard", "photoFull", "photoPair", "photoStat", "photoCta"] as const;
 export const isPhotoKind = (k: string) => (PHOTO_KINDS as readonly string[]).includes(k);
-// фото на весь слайд: шапка на «пилюлях», подвал внутри плашки
-export const isFullBleed = (sl: Slide) => sl.kind === "photoFull" || (sl.kind === "photoCover" && sl.layout === "full");
+// без рамки (фото на весь слайд): шапка на «пилюлях», подвал внутри плашки, робота нет
+export const isFullBleed = (sl: Slide) => isPhotoKind(sl.kind) && !frameOf(sl);
 
 export const PhotoSlide: React.FC<P> = (p) => {
   switch (p.sl.kind) {

@@ -31,6 +31,7 @@ export type Style = {
   ink: string;
   muted: string;
   accent: string;
+  glow: string; // свечение крупных цифр
   head: string;
   headWeight: number;
   headTrack: string;
@@ -50,34 +51,44 @@ export type Style = {
   pill: React.CSSProperties; // «пилюли» шапки поверх фото
   chipAccent: React.CSSProperties; // плашка «после» / «с нами» на фото
   button: React.CSSProperties;
+  swipe: {bg: string; ink: string}; // кружок со стрелкой «листай»
+  pyramid: [string, string, string]; // грани значка GTT в шапке
 };
 
 export const STYLES: Record<BrandId, Style> = {
+  // GTT (обновлено 10.10.2026 по просьбе пользователя: фон светлее, ближе к синему сайта #2563EB, без неона).
+  // Контраст на фоне: белый 5,7–8,1 : 1, основной текст #EEF2FC ≥ 4,5 : 1, серые подписи #E3EAFB ≥ 4,5 : 1 (кроме блика
+  // в левом верхнем углу), акцент #7DD3FC (голубая грань логотипа) 3,4–4,9 : 1 — только для крупного текста (≥ 30 px).
+  // Прежний акцент #3D7BFF на новом фоне не виден (1,6 : 1), поэтому заменён.
   gtt: {
-    bg: {background: "radial-gradient(ellipse 80% 55% at 20% 15%, rgba(37,99,235,0.45), rgba(37,99,235,0) 70%), radial-gradient(ellipse 60% 45% at 95% 100%, rgba(56,189,248,0.25), rgba(56,189,248,0) 70%), linear-gradient(180deg, #0A1022 0%, #050814 100%)"},
-    pattern: {backgroundImage: "radial-gradient(rgba(255,255,255,0.09) 2px, transparent 2px)", backgroundSize: "40px 40px"},
-    ink: "#F4F7FF",
-    muted: "#9AA8C7",
-    accent: "#3D7BFF",
+    bg: {background: "radial-gradient(ellipse 75% 50% at 15% 8%, rgba(125,211,252,0.10), rgba(125,211,252,0) 70%), radial-gradient(ellipse 60% 45% at 95% 100%, rgba(224,242,254,0.10), rgba(224,242,254,0) 70%), linear-gradient(180deg, #215BE2 0%, #1A45B8 100%)"},
+    pattern: {backgroundImage: "radial-gradient(rgba(255,255,255,0.10) 2px, transparent 2px)", backgroundSize: "40px 40px"},
+    ink: "#FFFFFF",
+    muted: "#E3EAFB",
+    accent: "#7DD3FC",
+    glow: "0 0 50px rgba(125,211,252,0.55)",
     head: display.fontFamily,
     headWeight: 700,
     headTrack: "0",
     body: inter.fontFamily,
-    bodyInk: "#C9D3EA",
-    card: "rgba(255,255,255,0.06)",
-    cardInk: "#F4F7FF",
+    bodyInk: "#EEF2FC",
+    card: "rgba(255,255,255,0.10)",
+    cardInk: "#FFFFFF",
     tick: "#16A34A",
     tickInk: "#FFFFFF",
     site: "globaltechtour.ru",
     marker: false,
-    photo: {radius: 36, border: "2px solid rgba(255,255,255,0.14)", shadow: "0 24px 60px rgba(0,0,0,0.35)", empty: "#0E1530"},
-    // тёмно-синее стекло с размытием; само фото не затемняем
-    plate: {background: "rgba(8,14,32,0.74)", border: "2px solid rgba(255,255,255,0.12)", backdropFilter: "blur(22px)", boxShadow: "0 20px 50px rgba(0,0,0,0.35)"},
+    photo: {radius: 36, border: "2px solid rgba(255,255,255,0.24)", shadow: "0 24px 60px rgba(10,25,80,0.35)", empty: "#1A45B8"},
+    // синее стекло с размытием (#14318C, 80 %): белый текст ≥ 6 : 1 даже на светлом фото; само фото не затемняем
+    plate: {background: "rgba(20,49,140,0.80)", border: "2px solid rgba(255,255,255,0.16)", backdropFilter: "blur(22px)", boxShadow: "0 20px 50px rgba(10,25,80,0.35)"},
     plateRadius: 36,
-    line: "rgba(255,255,255,0.14)",
-    pill: {background: "rgba(8,14,32,0.66)", border: "2px solid rgba(255,255,255,0.14)", backdropFilter: "blur(16px)", borderRadius: 32},
+    line: "rgba(255,255,255,0.18)",
+    pill: {background: "rgba(20,49,140,0.74)", border: "2px solid rgba(255,255,255,0.18)", backdropFilter: "blur(16px)", borderRadius: 32},
     chipAccent: {background: "#2563EB", color: "#FFFFFF", border: "2px solid #2563EB"},
-    button: {background: "#2563EB", color: "#FFFFFF", boxShadow: "0 0 60px rgba(59,130,246,0.75)"},
+    // на синем фоне синяя кнопка не видна: белая «пилюля» с синим текстом (#1D4ED8 на белом — 6,7 : 1)
+    button: {background: "#FFFFFF", color: "#1D4ED8", boxShadow: "0 0 60px rgba(125,211,252,0.6)"},
+    swipe: {bg: "#FFFFFF", ink: "#2563EB"},
+    pyramid: ["#E0F2FE", "#7DD3FC", "#BAE6FD"],
   },
   aura: {
     bg: {background: "radial-gradient(ellipse 70% 50% at 85% 10%, rgba(255,246,93,0.35), rgba(255,246,93,0) 70%), linear-gradient(180deg, #F8F6F3 0%, #EFECE7 100%)"},
@@ -85,6 +96,7 @@ export const STYLES: Record<BrandId, Style> = {
     ink: "#262626",
     muted: "#727272",
     accent: "#FFF65D",
+    glow: "none",
     head: inter.fontFamily,
     headWeight: 600,
     headTrack: "-0.03em",
@@ -104,6 +116,8 @@ export const STYLES: Record<BrandId, Style> = {
     pill: {background: "rgba(248,246,243,0.94)", border: "2px solid #262626", backdropFilter: "blur(12px)", borderRadius: 24},
     chipAccent: {background: "#262626", color: "#F8F6F3", border: "2px solid #262626"},
     button: {background: "#000000", color: "#FFFFFF", boxShadow: "0 0 50px rgba(255,246,93,0.7)"},
+    swipe: {bg: "#FFF65D", ink: "#262626"},
+    pyramid: ["#E0F2FE", "#7DD3FC", "#BAE6FD"],
   },
 };
 
@@ -114,7 +128,7 @@ const FitContext = React.createContext(1);
 export const useFit = () => useContext(FitContext);
 let pendingFits = 0;
 export const fitsPending = () => pendingFits;
-const fonts = () => Promise.all([inter.waitUntilDone(), display.waitUntilDone(), mono.waitUntilDone()]);
+export const fonts = () => Promise.all([inter.waitUntilDone(), display.waitUntilDone(), mono.waitUntilDone()]);
 
 export const FitBox: React.FC<{style?: React.CSSProperties; min?: number; children: React.ReactNode}> = ({style, min = 0.62, children}) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -231,7 +245,7 @@ const Dot: React.FC<{s: Style; size?: number}> = ({s, size = 16}) => (
       borderRadius: s.marker ? 3 : size,
       background: s.accent,
       border: s.marker ? "2px solid #262626" : undefined,
-      boxShadow: s.marker ? undefined : "0 0 14px rgba(61,123,255,0.8)",
+      boxShadow: s.marker ? undefined : "0 0 14px rgba(125,211,252,0.8)",
     }}
   />
 );
@@ -284,7 +298,7 @@ export const Chip: React.FC<{text: string; s: Style; tone?: "plain" | "dim" | "a
       fontFamily: s.body,
       fontWeight: 600,
       fontSize: MIN_FONT,
-      color: tone === "accent" ? (s.chipAccent.color as string) : tone === "dim" && !s.marker ? "#C9D3EA" : s.marker ? s.ink : "#FFFFFF",
+      color: tone === "accent" ? (s.chipAccent.color as string) : tone === "dim" && !s.marker ? s.muted : s.marker ? s.ink : "#FFFFFF",
       ...style,
     }}
   >
@@ -298,9 +312,9 @@ export const Chip: React.FC<{text: string; s: Style; tone?: "plain" | "dim" | "a
 export const Swipe: React.FC<{s: Style}> = ({s}) => (
   <div data-safe="" style={{display: "flex", alignItems: "center", gap: 14, fontFamily: s.body, fontWeight: 600, fontSize: MIN_FONT, color: s.ink}}>
     листай
-    <div style={{width: 64, height: 64, borderRadius: 32, background: s.accent, display: "flex", alignItems: "center", justifyContent: "center"}}>
+    <div style={{width: 64, height: 64, borderRadius: 32, background: s.swipe.bg, display: "flex", alignItems: "center", justifyContent: "center"}}>
       <svg width={30} height={30} viewBox="0 0 30 30">
-        <path d="M6 15 H23 M16 8 L23 15 L16 22" fill="none" stroke={s.marker ? "#262626" : "#FFFFFF"} strokeWidth={3.5} strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M6 15 H23 M16 8 L23 15 L16 22" fill="none" stroke={s.swipe.ink} strokeWidth={3.5} strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </div>
   </div>
@@ -329,9 +343,9 @@ export const BrandMark: React.FC<{brand: BrandId; s: Style}> = ({brand, s}) =>
   ) : (
     <div data-safe="" style={{display: "flex", alignItems: "center", gap: 14}}>
       <svg width="46" height="46" viewBox="0 0 64 64">
-        <path d="M24 6 L58 46 L8 54 Z" fill="#5BB8F5" />
-        <path d="M24 6 L58 46 L36 40 Z" fill="#2F8FE0" />
-        <path d="M24 6 L36 40 L8 54 Z" fill="#8AD0FA" />
+        <path d="M24 6 L58 46 L8 54 Z" fill={s.pyramid[0]} />
+        <path d="M24 6 L58 46 L36 40 Z" fill={s.pyramid[1]} />
+        <path d="M24 6 L36 40 L8 54 Z" fill={s.pyramid[2]} />
       </svg>
       <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: MIN_FONT, color: s.ink, letterSpacing: "0.02em"}}>GLOBAL TECH TOUR</div>
     </div>
@@ -356,7 +370,7 @@ export const Photo: React.FC<{pic: Pic; s: Style; framed?: boolean; style?: Reac
     >
       <Img
         src={staticFile(pic.src)}
-        style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: pic.focus ?? "50% 50%", scale: pic.zoom ?? 1, transformOrigin: pic.focus ?? "50% 50%"}}
+        style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: pic.focus ?? "50% 50%", scale: String(pic.zoom ?? 1), transformOrigin: pic.focus ?? "50% 50%"}}
       />
     </div>
     {children}
