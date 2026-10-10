@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "3d5b2f12-53ed-4368-92ab-38265efaae4e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171616_3d5b2f12-53ed-4368-92ab-38265efaae4e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a Tokyo AI startup office in a renovated building: light wood, glass walls, a small tatami meeting nook with floor cushions, engineers with laptops in the background, a young Japanese founder in a grey sweater explains an idea to a Russian business delegation with visitor badges on lanyards, everyone smiling, soft daylight, screens blurred, wide 4:3 composition, subject centered, smart creative mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "5e04bfe8-6c90-4403-9e67-3af1a98e7da7",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171803_5e04bfe8-6c90-4403-9e67-3af1a98e7da7.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at a small traditional taiyaki stand on a Tokyo shopping street: a smiling elderly Japanese vendor hands over a warm fish-shaped waffle while a Russian delegate with a lanyard badge pays by scanning a plain QR stand with her phone, behind her a short queue of locals holding phones ready, plain paper lanterns, main subject in the upper half of the frame, the lower third is calm stone pavement, vertical 4:5, cashless everyday mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "faf94929-602a-49a7-8a2a-c07b916e58ae",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171803_faf94929-602a-49a7-8a2a-c07b916e58ae.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in the front car of a driverless elevated train in Tokyo: Russian business delegates with visitor badges on lanyards stand at the wide panoramic front window as the train glides across the bay toward a large white suspension bridge, a Japanese guide points at the waterfront towers, bright clear day, everyone smiling, wide 4:3 composition, subject centered, futuristic route mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "97c8298f-c9d0-4764-80f5-9ca9e6486ad1",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171803_97c8298f-c9d0-4764-80f5-9ca9e6486ad1.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright multi-level staff cafeteria of a Tokyo internet company: Japanese product managers and a Russian business delegation with lanyard badges share lunch at a long wooden table, trays with rice, miso soup and salad, everyone talking animatedly, large windows with city views and green plants, main subject in the upper half of the frame, the lower third is calm wooden floor, vertical 4:5, open friendly networking mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "21b6417d-9adb-43b8-a0b3-77abcbfbc383",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171840_21b6417d-9adb-43b8-a0b3-77abcbfbc383.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a clean bright supercomputer hall in Japan: long rows of black compute cabinets with small blue status lights, a Japanese engineer slides out a server board to show a large processor chip with copper cooling plates, a Russian business delegation with visitor badges leans in curiously and smiles, white floor tiles and even light, wide 4:3 composition, subject centered, impressive technology mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "56656623-5bbf-44b2-8f40-b41423cf6cd2",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171841_56656623-5bbf-44b2-8f40-b41423cf6cd2.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian IT entrepreneur in his thirties in a dark jacket leaning on the railing of a pedestrian footbridge over a busy Tokyo avenue in daylight, scrolling through unanswered messages on his phone, a backpack on one shoulder, slightly tired but calm thoughtful expression, glass office towers and traffic softly blurred, subject in the center of the vertical frame, vertical 9:16, quiet patient mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "935b8fa3-6c9a-4f71-9358-955acf9dec8b",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171841_935b8fa3-6c9a-4f71-9358-955acf9dec8b.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a cheerful Russian business delegation with lanyard badges walking with a smiling Japanese guide along a sunny seaside promenade in Chiba, glass office towers and young trees behind, the bay sparkling, the guide holding a slim folder and pointing ahead, everyone laughing, subject in the center of the vertical frame, vertical 9:16, light carefree mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "de7dfab7-bc4f-4dc4-a9b4-f149d6a4698e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171840_de7dfab7-bc4f-4dc4-a9b4-f149d6a4698e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a Russian business delegation with visitor badges on lanyards strolling in the Japanese garden of a Tokyo hotel in the morning: a stone path, a small red bridge over a koi pond, clipped pines and a waterfall, skyscrapers rising behind the trees, a Japanese guide in a light suit walks with them, everyone relaxed and smiling, wide 4:3 composition, subject centered. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "083c15b4-cf39-43ed-af6c-df03602fa0fa",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_171921_083c15b4-cf39-43ed-af6c-df03602fa0fa.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright Tokyo office of an online marketplace: a Russian IT entrepreneur in his thirties with a lanyard badge photographs a pair of plain vintage sneakers on a white table with his phone, a Japanese machine-learning engineer beside him smiles and points at the instantly recognized item on the phone screen, blurred interface, main subject in the upper half of the frame, the lower third is calm white tabletop, vertical 4:5, clever practical mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}

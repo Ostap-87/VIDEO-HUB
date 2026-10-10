@@ -1,0 +1,159 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-tech-internet-giants/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Япония",
+   "title": "Японский ИИ и интернет **изнутри**",
+   "text": "Интернет-гиганты Японии: ИИ, мессенджеры, e-commerce · Токио"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-tech-internet-giants/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "PayPay",
+   "title": "пользователей QR-кошелька",
+   "text": "Около двух третей QR-платежей Японии, данные на декабрь 2025",
+   "value": "72 млн",
+   "logo": "paypay"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-tech-internet-giants/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут",
+   "title": "Всё в **Токио**",
+   "items": [
+    "День 1 · Preferred Networks, Sakana AI",
+    "День 2 · LY Corporation, PayPay",
+    "День 3 · Rakuten Crimson House, Mercari",
+    "День 4 · Fujitsu, NTT",
+    "День 5 · ZOZO (Тиба), Sony AI"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-tech-internet-giants/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "**10 компаний** на маршруте",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/ии/preferred-networks.png"
+    },
+    {
+     "src": "source-videos/логотипы/ии/sakana-ai.png"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/ly-corporation.svg"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/paypay.png"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/rakuten-crimson-house.svg"
+    },
+    {
+     "src": "source-videos/логотипы/техгиганты/mercari.png"
+    },
+    {
+     "src": "source-videos/логотипы/общие/fujitsu.svg"
+    },
+    {
+     "src": "source-videos/логотипы/общие/ntt.png"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-tech-internet-giants/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **увидите** изнутри",
+   "items": [
+    "Свои ИИ-чипы и суперкомпьютеры",
+    "Японские LLM: Takane, tsuzumi, Sakana",
+    "Как PayPay взял 2/3 QR-платежей",
+    "ML в Mercari: товар и цена по фото"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-tech-internet-giants/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Месяцы переписки ради доступа в лаборатории",
+      "Нет гарантии, что визит согласуют вовремя",
+      "Маршрут по Токио — сами"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-tech-internet-giants/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Визиты — через нашу сеть контактов",
+      "Трансферы включены, с выездом в Тибу",
+      "Сопровождение на каждой встрече"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-tech-internet-giants/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё готово **до вылета**",
+   "items": [
+    "Визиты и переговоры по программе",
+    "Трансферы по Токио и выезд в Тибу",
+    "Сопровождение: японский и английский",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-japan-tech-internet-giants/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Для кого",
+   "title": "Для IT и **цифровых** сервисов",
+   "text": "Тем, кто строит ИИ, платежи или маркетплейс и хочет увидеть японский рынок изнутри"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-tech-internet-giants/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-tech-internet-giants/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-japan-tech-internet-giants/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}
