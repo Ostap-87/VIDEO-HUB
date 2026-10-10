@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "e016628d-e29e-4665-a9c0-e92933ea3d3a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164826_e016628d-e29e-4665-a9c0-e92933ea3d3a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a glass pedestrian skybridge over a green high-tech park in Shenzhen: a Russian business delegation with blank visitor badges on lanyards walks with a Chinese park representative who gestures toward modern R&D buildings, lawns and young trees below, the delegates smile and look around, bright morning sun, wide 4:3 composition, subject centered, open inviting mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "f97c4750-722a-46c8-9f88-9d851f9e57b4",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164904_f97c4750-722a-46c8-9f88-9d851f9e57b4.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo from a raised viewing deck in the Lingang zone of Shanghai: two smiling Russian delegates with blank visitor badges and a Chinese guide at the railing point at a vast lot of thousands of new unbadged white and grey sedans in perfect rows stretching toward a giant factory, car carriers loading at the edge, main subject in the upper half of the frame, the lower third is calm smooth concrete deck, vertical 4:5, awe at the scale. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "f4fd8f97-e691-4dea-993f-92e4e21baece",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164904_f4fd8f97-e691-4dea-993f-92e4e21baece.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a Russian business delegation with blank visitor badges riding a white electric shuttle cart along a tree-lined avenue of a science park in Shanghai, a Chinese guide beside the driver turns and points to a glass laboratory building, the delegates laugh and look around, sunny day with flower beds, wide 4:3 composition, subject centered, smooth route mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "03651db0-4704-43df-b81f-6dda83746a04",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164904_03651db0-4704-43df-b81f-6dda83746a04.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in the exhibition centre of an innovation zone in Beijing: a large white architectural scale model of the tech district with tiny glass towers and green parks lit from within, a Chinese park official points at it while Russian delegates with blank visitor badges bend over the model smiling, main subject in the upper half of the frame, the lower third is calm white edge of the model table, vertical 4:5, curious planning mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "19a1b9e6-4a0a-4ae2-9d9b-f6360a863434",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164905_19a1b9e6-4a0a-4ae2-9d9b-f6360a863434.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on an observation terrace in the Qianhai zone of Shenzhen: a Chinese guide points across the bay toward misty green hills on the Hong Kong side while a Russian business delegation with blank visitor badges listens and smiles, new towers, a waterfront park and a long bridge in the background, bright breezy day, wide 4:3 composition, subject centered, wide-horizon mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06a.jpg": {
+  "job": "bc51e11f-ecb8-481e-a987-eb4fa2d539ca",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164941_bc51e11f-ecb8-481e-a987-eb4fa2d539ca.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo of a Russian entrepreneur in his forties sitting alone at a café table by a window in Shenzhen, surrounded by printed application forms, a pen and a cooling cup of coffee, chin resting on his hand, thoughtful and a little tired but calm, sunny street softly blurred outside, subject in the center of the vertical frame, vertical 9:16, quiet pensive mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06b.jpg": {
+  "job": "0bc18a7b-37ce-488f-9960-6616ab6aa947",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164941_0bc18a7b-37ce-488f-9960-6616ab6aa947.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo in the bright lobby of a tech park administration building: smiling Chinese park managers welcome a Russian business delegation with blank visitor badges, a young Chinese guide translates with a laugh, everyone nodding and cheerful, a green living wall and a glass staircase behind, subject in the center of the vertical frame, vertical 9:16, warm open-doors mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "a082723d-698a-4bb3-a7c0-fc44049dfe7c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164942_a082723d-698a-4bb3-a7c0-fc44049dfe7c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in the R&D lab of a young resident company in a Shanghai science park: a Chinese researcher in a white coat shows a green circuit board under a large illuminated magnifier to a Russian business delegation with blank visitor badges, oscilloscopes with blurred waveforms and neat workbenches around, everyone leaning in and smiling, wide 4:3 composition, subject centered, inquisitive hands-on mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "cf2db065-7b28-435a-a131-70b06b8ecd47",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164942_cf2db065-7b28-435a-a131-70b06b8ecd47.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright netted flight-test hall of a drone startup in Shenzhen: a compact white quadcopter hovers at eye level while a young Chinese engineer steers it with a remote, a Russian business delegation with blank visitor badges watches and laughs in delight, workbenches with propellers behind, main subject in the upper half of the frame, the lower third is calm light grey floor, vertical 4:5, playful high-tech mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
