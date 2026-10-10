@@ -1,0 +1,86 @@
+{
+ "01.jpg": {
+  "job": "5228fcd1-fb61-4f70-9358-87ee379e72d3",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164634_5228fcd1-fb61-4f70-9358-87ee379e72d3.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a bright washing machine assembly line in Qingdao: long rows of white front-loading washers move along a conveyor, a Chinese foreman in a light blue uniform shows an open drum to a smiling Russian business delegation with blank visitor badges on lanyards, workers in caps at tidy stations, clean daylight, wide 4:3 composition, subject centered, impressive large-scale mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "b5bf5af8-6174-4b52-af37-bfc8cb9eb660",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164635_b5bf5af8-6174-4b52-af37-bfc8cb9eb660.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at the end of a microwave oven production line in Foshan: hundreds of identical silver microwave ovens stand in long rows with doors open and interiors softly glowing during a quality test, a smiling Russian businesswoman with a blank visitor badge opens one door as a Chinese quality inspector in a white cap nods, main subject in the upper half of the frame, the lower third is calm light grey floor, vertical 4:5, sense of huge scale. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "7e27112d-949a-4a2b-9dcb-523cf5a30033",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164634_7e27112d-949a-4a2b-9dcb-523cf5a30033.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on the seaside boulevard of Qingdao on a clear morning: a Russian business delegation with blank visitor badges rolls compact suitcases toward a white minibus, a Chinese guide checks the day's route on a tablet and waves them on, red-roofed old town houses and the blue bay behind, wide 4:3 composition, subject centered, upbeat start of a north-to-south route. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "d1c8b59a-fb50-4b38-9904-32bb829d4678",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164710_d1c8b59a-fb50-4b38-9904-32bb829d4678.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a smart-home showroom of a Chinese appliance maker: a Chinese host opens a large refrigerator with a transparent glass door full of fresh food, three Russian delegates with blank visitor badges smile and lean in, a sleek washer, induction hob and air purifier without markings around, main subject in the upper half of the frame, the lower third is calm warm oak floor, vertical 4:5, friendly modern-living mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "6a765426-7bec-4684-b69a-91b8c1237138",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164709_6a765426-7bec-4684-b69a-91b8c1237138.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright demo kitchen of a kitchen appliance company in Hangzhou: a Chinese chef stir-fries vegetables in a wok while a powerful stainless range hood draws every wisp of steam upward, a Russian business delegation with blank visitor badges watches and laughs in surprise, a host holds a paper napkin near the hood to show the suction, wide 4:3 composition, subject centered, lively demonstration mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "6e9a19c3-7ec0-42ac-b73b-cfb63a1755b9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164710_6e9a19c3-7ec0-42ac-b73b-cfb63a1755b9.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright five-star hotel suite in Shenzhen on a sunny morning: a smiling Russian businessman in a crisp white shirt pulls open floor-to-ceiling curtains revealing a panoramic view of skyscrapers and green hills, a breakfast tray with coffee on a side table, main subject in the upper half of the frame, the lower third is calm neatly made bed with white linen, vertical 4:5, fresh rested mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "00e414e2-716f-4162-a6c0-7ceb20fa026f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261010_164710_00e414e2-716f-4162-a6c0-7ceb20fa026f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in the sample hall of an air conditioner factory in Zhuhai: a Russian distributor with a blank visitor badge and a Chinese export manager walk past a wall of white split-system indoor units, checking an order list on a tablet together and laughing, outdoor units neatly lined on the floor, wide 4:3 composition, subject centered, productive partnership mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}

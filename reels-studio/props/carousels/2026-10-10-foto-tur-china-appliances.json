@@ -1,0 +1,131 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-appliances/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Китай",
+   "title": "9 заводов **техники**: от Циндао до Шуньдэ",
+   "text": "Бытовая техника и умный дом · 5 дней · 5 городов"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-appliances/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Galanz, Фошань",
+   "title": "мирового рынка СВЧ — **Galanz**",
+   "text": "Крупнейший производитель микроволновок с 1998 года",
+   "value": "~40%",
+   "logo": "galanz"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-appliances/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут",
+   "title": "Строго с севера на **юг**",
+   "items": [
+    "День 1 · Пекин: Xiaomi",
+    "День 2 · Циндао: Haier, Hisense",
+    "День 3 · Ханчжоу: Robam, Supor",
+    "День 4 · Фошань: Midea, Galanz",
+    "День 5 · Чжухай, Шэньчжэнь: Gree, Skyworth"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-appliances/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "Девять **флагманов** отрасли",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/бытовая-техника/haier.svg"
+    },
+    {
+     "src": "source-videos/логотипы/бытовая-техника/hisense.svg"
+    },
+    {
+     "src": "source-videos/логотипы/бытовая-техника/robam.png"
+    },
+    {
+     "src": "source-videos/логотипы/бытовая-техника/supor.png"
+    },
+    {
+     "src": "source-videos/логотипы/бытовая-техника/midea.svg"
+    },
+    {
+     "src": "source-videos/логотипы/бытовая-техника/galanz.png"
+    },
+    {
+     "src": "source-videos/логотипы/бытовая-техника/gree.svg"
+    },
+    {
+     "src": "source-videos/логотипы/бытовая-техника/skyworth.png"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-appliances/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Что вы **поймёте**",
+   "items": [
+    "Умный дом и IoT Xiaomi",
+    "Кухонная техника под китайский рынок",
+    "Midea и роботы KUKA",
+    "Как Gree стал №1 по кондиционерам"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-appliances/06.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Что **входит** в тур",
+   "items": [
+    "5 дней, отели 5 звёзд",
+    "Обед и ужин ежедневно",
+    "Перелёты и трансферы внутри Китая",
+    "Перевод и сопровождение на встречах"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-china-appliances/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Для кого",
+   "title": "Для **дистрибьюторов** техники",
+   "text": "Переговоры с топ-менеджментом девяти заводов и прямые выходы на партнёрство"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-appliances/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-appliances/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-appliances/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}
