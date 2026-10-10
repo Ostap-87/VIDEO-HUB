@@ -3,155 +3,19 @@
 // стеклянная пирамида), brand "aura" — Aura Robotics (пергамент с сеткой, Inter, лимонный маркер, печать AR, робот).
 // Слайды описываются в props/carousels/<имя>.json, рендер всех слайдов в PNG: npm run carousel -- <имя>.
 // Типы слайдов: cover, text, list, stat, photo, quote, steps, compare, logos, cta. **слова** — акцент.
+// Фото-слайды (10.10.2026, carousel/photo.tsx): photoCover, photoCard, photoFull, photoPair, photoStat, photoCta.
+// Поля безопасности: по бокам 72 px, сверху и снизу 64 px; кегль от 30 px; проверочная версия — "guides": true.
 import React from "react";
 import {AbsoluteFill, Freeze, Img, staticFile, useCurrentFrame} from "remotion";
-import {z} from "zod";
-import {loadFont as loadInter} from "@remotion/google-fonts/Inter";
-import {display} from "../fonts";
-import {AuraBadge, ArMonogram} from "../components/AuraBadge";
+import {AuraBadge} from "../components/AuraBadge";
 import {AuraMascot, GESTURE_DUR, type GestureKind} from "../components/AuraMascot";
+import {carouselSchema, type CarouselProps, type Slide} from "./carousel/schema";
+import {BrandMark, Body, CtaButton, H, Kicker, MONO, MIN_FONT, Pill, ROW, Rich, SAFE, Site, STYLES, Swipe, Title, W, type BrandId, type Style} from "./carousel/kit";
+import {isFullBleed, isPhotoKind, MASCOT_SPOT, PhotoSlide} from "./carousel/photo";
+import {Guides} from "./carousel/guides";
 
-const inter = loadInter("normal", {weights: ["400", "500", "600", "700", "800"], subsets: ["cyrillic", "latin"]});
-
-const slide = z.object({
-  kind: z.enum(["cover", "text", "list", "stat", "photo", "quote", "steps", "compare", "logos", "cta"]),
-  kicker: z.string().optional(), // надпись над заголовком (капсом, моно)
-  title: z.string().optional(), // **слова** — акцент
-  text: z.string().optional(),
-  image: z.string().optional(), // путь от корня репозитория
-  items: z.array(z.string()).optional(), // list, steps
-  value: z.string().optional(), // stat: «1000+»
-  author: z.string().optional(), // quote
-  left: z.object({title: z.string(), items: z.array(z.string())}).optional(), // compare
-  right: z.object({title: z.string(), items: z.array(z.string())}).optional(),
-  logos: z.array(z.object({src: z.string(), name: z.string().optional()})).optional(),
-  button: z.string().optional(), // cta: текст кнопки (по умолчанию сайт бренда)
-  mascot: z.enum(["wave", "point", "pointUp", "present", "jump", "tick", "none"]).optional(), // только aura
-});
-export const carouselSchema = z.object({
-  brand: z.enum(["gtt", "aura"]),
-  slides: z.array(slide),
-});
-export type CarouselProps = z.infer<typeof carouselSchema>;
-type Slide = z.infer<typeof slide>;
-
-const W = 1080;
-const H = 1350;
-
-type Style = {
-  bg: React.CSSProperties;
-  pattern: React.CSSProperties;
-  ink: string;
-  muted: string;
-  accent: string;
-  head: string;
-  headWeight: number;
-  headTrack: string;
-  body: string;
-  card: string;
-  cardInk: string;
-  tick: string;
-  tickInk: string;
-  site: string;
-  marker: boolean; // акцент маркером (aura) или цветом (gtt)
-};
-
-const STYLES: Record<"gtt" | "aura", Style> = {
-  gtt: {
-    bg: {background: "radial-gradient(ellipse 80% 55% at 20% 15%, rgba(37,99,235,0.45), rgba(37,99,235,0) 70%), radial-gradient(ellipse 60% 45% at 95% 100%, rgba(56,189,248,0.25), rgba(56,189,248,0) 70%), linear-gradient(180deg, #0A1022 0%, #050814 100%)"},
-    pattern: {backgroundImage: "radial-gradient(rgba(255,255,255,0.09) 2px, transparent 2px)", backgroundSize: "40px 40px"},
-    ink: "#F4F7FF",
-    muted: "#9AA8C7",
-    accent: "#3D7BFF",
-    head: display.fontFamily,
-    headWeight: 700,
-    headTrack: "0",
-    body: inter.fontFamily,
-    card: "rgba(255,255,255,0.06)",
-    cardInk: "#F4F7FF",
-    tick: "#16A34A",
-    tickInk: "#FFFFFF",
-    site: "globaltechtour.ru",
-    marker: false,
-  },
-  aura: {
-    bg: {background: "radial-gradient(ellipse 70% 50% at 85% 10%, rgba(255,246,93,0.35), rgba(255,246,93,0) 70%), linear-gradient(180deg, #F8F6F3 0%, #EFECE7 100%)"},
-    pattern: {backgroundImage: "linear-gradient(rgba(38,38,38,0.06) 2px, transparent 2px), linear-gradient(90deg, rgba(38,38,38,0.06) 2px, transparent 2px)", backgroundSize: "90px 90px"},
-    ink: "#262626",
-    muted: "#727272",
-    accent: "#FFF65D",
-    head: inter.fontFamily,
-    headWeight: 600,
-    headTrack: "-0.03em",
-    body: inter.fontFamily,
-    card: "#FFFFFF",
-    cardInk: "#262626",
-    tick: "#262626",
-    tickInk: "#FFF65D",
-    site: "aura-robotics.ru",
-    marker: true,
-  },
-};
-
-// **слово** → акцент: GTT — синий цвет, Aura — лимонный маркер под словом
-const Rich: React.FC<{text: string; s: Style}> = ({text, s}) => (
-  <>
-    {text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
-      part.startsWith("**") ? (
-        <span
-          key={i}
-          style={
-            s.marker
-              ? {backgroundImage: `linear-gradient(${s.accent}, ${s.accent})`, backgroundSize: "100% 42%", backgroundPosition: "0 88%", backgroundRepeat: "no-repeat", padding: "0 4px"}
-              : {color: s.accent}
-          }
-        >
-          {part.slice(2, -2)}
-        </span>
-      ) : (
-        <React.Fragment key={i}>{part}</React.Fragment>
-      ),
-    )}
-  </>
-);
-
-const Logo: React.FC<{brand: "gtt" | "aura"; s: Style}> = ({brand, s}) =>
-  brand === "aura" ? (
-    <div style={{display: "flex", alignItems: "center", gap: 16}}>
-      <ArMonogram width={64} color={s.ink} />
-      <div style={{fontFamily: s.body, fontWeight: 600, fontSize: 24, letterSpacing: "0.16em", color: s.ink}}>AURA ROBOTICS</div>
-    </div>
-  ) : (
-    <div style={{display: "flex", alignItems: "center", gap: 16}}>
-      <svg width="46" height="46" viewBox="0 0 64 64">
-        <path d="M24 6 L58 46 L8 54 Z" fill="#5BB8F5" />
-        <path d="M24 6 L58 46 L36 40 Z" fill="#2F8FE0" />
-        <path d="M24 6 L36 40 L8 54 Z" fill="#8AD0FA" />
-      </svg>
-      <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: 26, color: s.ink, letterSpacing: "0.02em"}}>GLOBAL TECH TOUR</div>
-    </div>
-  );
-
-const Kicker: React.FC<{text?: string; s: Style}> = ({text, s}) =>
-  text ? (
-    <div style={{fontFamily: "JetBrains Mono, monospace", fontWeight: 500, fontSize: 26, letterSpacing: "0.14em", textTransform: "uppercase", color: s.marker ? s.muted : s.accent, marginBottom: 22}}>
-      {text}
-    </div>
-  ) : null;
-
-const Title: React.FC<{text?: string; s: Style; size?: number}> = ({text, s, size = 76}) =>
-  text ? (
-    <div style={{fontFamily: s.head, fontWeight: s.headWeight, fontSize: size, lineHeight: 1.08, letterSpacing: s.headTrack, color: s.ink}}>
-      <Rich text={text} s={s} />
-    </div>
-  ) : null;
-
-const Body: React.FC<{text?: string; s: Style; size?: number}> = ({text, s, size = 38}) =>
-  text ? (
-    <div style={{fontFamily: s.body, fontWeight: 400, fontSize: size, lineHeight: 1.38, color: s.marker ? "#3D3D3D" : "#C9D3EA", whiteSpace: "pre-line"}}>
-      <Rich text={text} s={s} />
-    </div>
-  ) : null;
+export {carouselSchema};
+export type {CarouselProps};
 
 const Tick: React.FC<{s: Style; n?: number}> = ({s, n}) => (
   <div style={{width: 58, height: 58, borderRadius: 29, background: s.tick, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0}}>
@@ -160,7 +24,7 @@ const Tick: React.FC<{s: Style; n?: number}> = ({s, n}) => (
         <path d="M7 18 L14 25 L27 10" fill="none" stroke={s.tickInk} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ) : (
-      <span style={{fontFamily: s.head, fontWeight: 700, fontSize: 28, color: s.tickInk}}>{n}</span>
+      <span style={{fontFamily: s.head, fontWeight: 700, fontSize: MIN_FONT, color: s.tickInk}}>{n}</span>
     )}
   </div>
 );
@@ -180,7 +44,8 @@ const Card: React.FC<{s: Style; children: React.ReactNode; style?: React.CSSProp
   </div>
 );
 
-const SlideBody: React.FC<{sl: Slide; s: Style; brand: "gtt" | "aura"; last: boolean}> = ({sl, s, brand}) => {
+// текстовые слайды (первая версия шаблона, 08.10.2026)
+const SlideBody: React.FC<{sl: Slide; s: Style; brand: BrandId; last: boolean}> = ({sl, s, brand}) => {
   switch (sl.kind) {
     case "cover":
       return (
@@ -261,7 +126,7 @@ const SlideBody: React.FC<{sl: Slide; s: Style; brand: "gtt" | "aura"; last: boo
       return (
         <div style={{display: "flex", flexDirection: "column", height: "100%", gap: 36}}>
           <div style={{flex: 1, borderRadius: s.marker ? 10 : 36, overflow: "hidden", boxShadow: "0 24px 60px rgba(0,0,0,0.35)"}}>
-            {sl.image ? <Img src={staticFile(sl.image)} style={{width: "100%", height: "100%", objectFit: "cover"}} /> : null}
+            {sl.image ? <Img src={staticFile(sl.image)} style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: sl.focus ?? "50% 50%"}} /> : null}
           </div>
           <div>
             <Kicker text={sl.kicker} s={s} />
@@ -314,9 +179,9 @@ const SlideBody: React.FC<{sl: Slide; s: Style; brand: "gtt" | "aura"; last: boo
           </div>
           <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 22}}>
             {(sl.logos ?? []).map((l, i) => (
-              <div key={i} style={{background: "#FFFFFF", borderRadius: s.marker ? 10 : 24, height: 170, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 10, padding: 18, border: s.marker ? "2px solid #D9D7D5" : undefined}}>
-                <Img src={staticFile(l.src)} style={{maxHeight: 84, maxWidth: "88%", objectFit: "contain"}} />
-                {l.name ? <div style={{fontFamily: s.body, fontWeight: 600, fontSize: 20, color: "#6B6B76"}}>{l.name}</div> : null}
+              <div key={i} style={{background: "#FFFFFF", borderRadius: s.marker ? 10 : 24, height: 170, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8, padding: 18, border: s.marker ? "2px solid #D9D7D5" : undefined}}>
+                <Img src={staticFile(l.src)} style={{maxHeight: l.name ? 72 : 84, maxWidth: "88%", objectFit: "contain"}} />
+                {l.name ? <div style={{fontFamily: s.body, fontWeight: 600, fontSize: MIN_FONT, lineHeight: 1.1, color: "#6B6B76"}}>{l.name}</div> : null}
               </div>
             ))}
           </div>
@@ -338,73 +203,85 @@ const SlideBody: React.FC<{sl: Slide; s: Style; brand: "gtt" | "aura"; last: boo
           <Title text={sl.title} s={s} size={80} />
           <div style={{height: 28}} />
           <Body text={sl.text} s={s} />
-          <div
-            style={{
-              alignSelf: "flex-start",
-              marginTop: 54,
-              background: s.marker ? "#000000" : "#2563EB",
-              color: "#FFFFFF",
-              fontFamily: s.body,
-              fontWeight: 600,
-              fontSize: 40,
-              padding: "28px 46px",
-              borderRadius: 999,
-              boxShadow: s.marker ? "0 0 50px rgba(255,246,93,0.7)" : "0 0 60px rgba(59,130,246,0.75)",
-            }}
-          >
-            {sl.button ?? s.site} →
-          </div>
+          <CtaButton text={sl.button ?? s.site} s={s} style={{marginTop: 54}} />
         </div>
       );
+    default:
+      return null;
   }
 };
 
-export const Carousel: React.FC<CarouselProps> = ({brand, slides}) => {
+// шапка: знак бренда и счётчик «n / N»; на фото во весь слайд — на «пилюлях», чтобы читались на любом кадре
+const Header: React.FC<{brand: BrandId; s: Style; n: number; total: number; glass: boolean}> = ({brand, s, n, total, glass}) => {
+  const counter = (
+    <div data-safe="" style={{fontFamily: MONO, fontWeight: 500, fontSize: MIN_FONT, color: glass ? s.ink : s.muted, letterSpacing: "0.08em"}}>
+      {n} / {total}
+    </div>
+  );
+  return (
+    <div style={{position: "absolute", left: SAFE.side, right: SAFE.side, top: SAFE.top, height: ROW, display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+      {glass ? (
+        <>
+          <Pill s={s}>
+            <BrandMark brand={brand} s={s} />
+          </Pill>
+          <Pill s={s}>{counter}</Pill>
+        </>
+      ) : (
+        <>
+          <BrandMark brand={brand} s={s} />
+          {counter}
+        </>
+      )}
+    </div>
+  );
+};
+
+// подвал: сайт и стрелка «листай» (на последнем слайде стрелки нет)
+const Footer: React.FC<{s: Style; last: boolean}> = ({s, last}) => (
+  <div style={{position: "absolute", left: SAFE.side, right: SAFE.side, bottom: SAFE.bottom, height: ROW, display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+    <Site s={s} />
+    {last ? null : <Swipe s={s} />}
+  </div>
+);
+
+export const Carousel: React.FC<CarouselProps> = ({brand, slides, guides}) => {
   const i = useCurrentFrame();
   const sl = slides[Math.min(i, slides.length - 1)];
   const s = STYLES[brand];
   const last = i === slides.length - 1;
-  // робот Aura на обложке и последнем слайде (или где указан mascot)
-  const gesture: GestureKind | null =
-    brand !== "aura" || sl.mascot === "none" ? null : (sl.mascot as GestureKind | undefined) ?? (sl.kind === "cover" ? "wave" : sl.kind === "cta" ? "pointUp" : null);
+  const photo = isPhotoKind(sl.kind);
+  const full = isFullBleed(sl);
+  // робот Aura: на обложке и финале текстовых слайдов, на photoCta; на остальных — если указан mascot
+  const auto: GestureKind | undefined = sl.kind === "cover" ? "wave" : sl.kind === "cta" || sl.kind === "photoCta" ? "pointUp" : undefined;
+  const gesture: GestureKind | null = brand !== "aura" || sl.mascot === "none" || full ? null : (sl.mascot as GestureKind | undefined) ?? auto ?? null;
   const t = i; // fps 1: кадр = секунда
+  const spot = photo ? {x: MASCOT_SPOT.x, y: MASCOT_SPOT.y} : {x: sl.kind === "cta" ? 830 : 900, y: sl.kind === "cta" ? 1170 : 1160};
+  const scale = photo ? MASCOT_SPOT.scale : 1.2;
+  // где виден робот (для проверки полей): от центра ступней влево ~85, вправо ~115, вверх ~325 px при масштабе 1.2
+  const mascotBox = gesture ? {x1: spot.x - 72 * scale, x2: spot.x + 98 * scale, y1: spot.y - 272 * scale, y2: spot.y + 14 * scale} : null;
   return (
-    <AbsoluteFill style={s.bg}>
+    <AbsoluteFill key={i} style={s.bg}>
       <AbsoluteFill style={s.pattern} />
-      {/* шапка: логотип и счётчик */}
-      <div style={{position: "absolute", left: 72, right: 72, top: 64, display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <Logo brand={brand} s={s} />
-        <div style={{fontFamily: "JetBrains Mono, monospace", fontWeight: 500, fontSize: 26, color: s.muted, letterSpacing: "0.08em"}}>
-          {i + 1} / {slides.length}
+      {photo ? (
+        <PhotoSlide sl={sl} s={s} brand={brand} last={last} mascot={Boolean(gesture)} />
+      ) : (
+        <div style={{position: "absolute", left: SAFE.side, right: gesture && sl.kind !== "cta" ? 300 : SAFE.side, top: 170, bottom: 150}}>
+          <SlideBody sl={sl} s={s} brand={brand} last={last} />
         </div>
-      </div>
-      {/* содержимое */}
-      <div style={{position: "absolute", left: 72, right: gesture && sl.kind !== "cta" ? 300 : 72, top: 170, bottom: 150}}>
-        <SlideBody sl={sl} s={s} brand={brand} last={last} />
-      </div>
-      {/* подвал: сайт и стрелка «листай» */}
-      <div style={{position: "absolute", left: 72, right: 72, bottom: 64, display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div style={{fontFamily: "JetBrains Mono, monospace", fontSize: 26, color: s.muted}}>{s.site}</div>
-        {last ? null : (
-          <div style={{display: "flex", alignItems: "center", gap: 14, fontFamily: s.body, fontWeight: 600, fontSize: 26, color: s.ink}}>
-            листай
-            <div style={{width: 64, height: 64, borderRadius: 32, background: s.marker ? s.accent : s.accent, display: "flex", alignItems: "center", justifyContent: "center"}}>
-              <svg width={30} height={30} viewBox="0 0 30 30">
-                <path d="M6 15 H23 M16 8 L23 15 L16 22" fill="none" stroke={s.marker ? "#262626" : "#FFFFFF"} strokeWidth={3.5} strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-          </div>
-        )}
-      </div>
+      )}
+      <Header brand={brand} s={s} n={i + 1} total={slides.length} glass={full} />
+      {full ? null : <Footer s={s} last={last} />}
       {gesture ? (
         <AuraMascot
-          scale={1.2}
+          scale={scale}
           plan={{
-            stays: [{at: -10, x: sl.kind === "cta" ? 830 : 900, y: sl.kind === "cta" ? 1170 : 1160, face: -0.35}],
+            stays: [{at: -10, x: spot.x, y: spot.y, face: -0.35}],
             gestures: [{at: t - GESTURE_DUR[gesture] * 0.42, kind: gesture}],
           }}
         />
       ) : null}
+      {guides ? <Guides index={i} mascot={mascotBox} /> : null}
     </AbsoluteFill>
   );
 };
