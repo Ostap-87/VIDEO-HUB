@@ -1,0 +1,150 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-retail/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Бизнес-экспедиция · Таиланд",
+   "title": "Вторая в мире сеть **7-Eleven**",
+   "text": "Ритейл Таиланда: конвиниенс, phygital и B2B-опт · Бангкок"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-retail/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "CP All · 7-Eleven",
+   "title": "магазинов 7-Eleven в Таиланде",
+   "text": "Больше только в Японии (данные на май 2025)",
+   "value": "15 430",
+   "logo": "cp-all"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-retail/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Маршрут по дням",
+   "title": "Весь ритейл — **в Бангкоке**",
+   "items": [
+    "День 1 · CP All, Central Retail",
+    "День 2 · ICONSIAM, Siam Paragon",
+    "День 3 · Makro, Lotus's",
+    "День 4 · Big C, HomePro",
+    "День 5 · CP Axtra Technology Center"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-retail/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Компании маршрута",
+   "title": "Куда **едем**",
+   "logos": [
+    {
+     "src": "source-videos/логотипы/ритейл/cp-all.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/central-retail.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/siam-piwat.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/siam-paragon.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/cp-axtra.png"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/lotus.svg"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/big-c.svg"
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/homepro.png"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-retail/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что вы поймёте",
+   "title": "Вопросы, на которые **ответит** тур",
+   "items": [
+    "Как Lotus's собрал 21 млн онлайн-заказов",
+    "Как устроен phygital-ритейл ICONSIAM",
+    "Как Makro PRO стал e-commerce №1",
+    "Как ИИ помогает покупать в Tops"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-retail/06a.jpg",
+     "focus": "50% 30%",
+     "label": "Самостоятельно",
+     "items": [
+      "Месяцы переписки ради доступа",
+      "Нет гарантии, что визит согласуют",
+      "Логистика — на вас"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-retail/06b.jpg",
+     "focus": "50% 30%",
+     "label": "Global Tech Tour",
+     "items": [
+      "Трансферы включены",
+      "Сопровождение на каждой встрече",
+      "Синхронный перевод на встречах"
+     ]
+    }
+   ],
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-10-foto-tur-thailand-retail/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Что входит",
+   "title": "Всё **на месте**",
+   "items": [
+    "Организация визитов по программе",
+    "Трансферы по Бангкоку и региону",
+    "Сопровождение на тайском/английском",
+    "Проживание 6 ночей"
+   ]
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-retail/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-retail/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-thailand-retail/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}
