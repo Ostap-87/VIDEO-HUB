@@ -1,0 +1,11 @@
+{
+  "brand": "aura",
+  "stories": [
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-agibot-a2-w/01.png",
+      "back": ["finished-videos/карусели/2026-10-10-foto-agibot-a2-w/02.png", "finished-videos/карусели/2026-10-10-foto-agibot-a2-w/03.png"],
+      "title": "Листай карусель **в профиле**",
+      "note": "Сохрани, чтобы не потерять"
+    }
+  ]
+}

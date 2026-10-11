@@ -13,6 +13,8 @@ import {Carousel, carouselSchema, type CarouselProps} from "./compositions/Carou
 import carouselSample from "../props/carousels/пример-gtt.json";
 import {TalkReelPro, talkReelProSchema, type TalkReelProProps} from "./compositions/TalkReelPro";
 import talkProSample from "../props/2026-10-07-byt-tehnika-v3.json";
+import {StoryAnnounce, storyAnnounceSchema, type StoryAnnounceProps} from "./compositions/StoryAnnounce";
+import announceSample from "../props/announces/пример-gtt.json";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -66,6 +68,17 @@ export const RemotionRoot: React.FC = () => {
         schema={carouselSchema}
         defaultProps={carouselSample as CarouselProps}
         calculateMetadata={({props}: {props: CarouselProps}) => ({durationInFrames: props.slides.length})}
+      />
+      <Composition
+        id="StoryAnnounce"
+        component={StoryAnnounce}
+        width={1080}
+        height={1920}
+        fps={1}
+        durationInFrames={1}
+        schema={storyAnnounceSchema}
+        defaultProps={announceSample as StoryAnnounceProps}
+        calculateMetadata={({props}: {props: StoryAnnounceProps}) => ({durationInFrames: props.stories.length})}
       />
       <Composition id="FlagTest" component={FlagTest} width={1080} height={1920} fps={30} durationInFrames={300} />
       <Composition id="AuraPreview" component={AuraPreview} width={VIDEO.width} height={VIDEO.height} fps={VIDEO.fps} durationInFrames={VIDEO.fps * 15} />

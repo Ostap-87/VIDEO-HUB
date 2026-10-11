@@ -23,6 +23,7 @@
     "setup": "bash scripts/setup.sh",
     "broll": "python3 scripts/broll.py",
     "carousel": "python3 scripts/carousel.py",
+    "announce": "python3 scripts/announce.py",
     "rebuild": "python3 scripts/rebuild.py",
     "angle-b": "python3 scripts/angle_b.py"
   },
