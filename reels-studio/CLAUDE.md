@@ -437,6 +437,8 @@ nod, scan, shrug`. Превью логотипа и всех жестов — к
 `npm run announce -- <имя>` (props `props/announces/<имя>.json`, примеры `пример-gtt.json`, `пример-aura.json`) →
 `finished-videos/анонсы/<имя>/01.png…` и лист `_лист.jpg`; `--guides` — лист `_лист-зоны.jpg` с безопасной зоной.
 Кредитов не тратит — картинки берутся из готовых каруселей. В POST-HUB — `<ПРОЕКТ>/INSTAGRAM/STORIES/PHOTO/<дата>_<время>_anons-<тема>/01.jpg`.
+Анонсы Instagram GTT собирает раскладка POST-HUB сама (`python3 CONTROL/TOOLS/instagram_plan.py GTT --apply`): props
+`props/announces/gtt-instagram.json` (порядок — по датам выхода) → `finished-videos/анонсы/gtt-instagram/`; руками этот файл не правим.
 
 # Правки 08.10.2026: звук, синхрон, вырезки, новые эффекты
 
