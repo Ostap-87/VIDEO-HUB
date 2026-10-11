@@ -86,6 +86,10 @@ Stories-анонсы каруселей — `npm run announce` (`finished-videos
 Посты, картинки к ним и автопубликация (Telegram, Instagram, блоги сайтов, Facebook и LinkedIn через Make) живут в
 `Ostap-87/POST-HUB` (решение пользователя 10.10.2026, старт публикаций 1 ноября 2026). Правила — в его `CLAUDE.md`.
 Картинки Higgsfield для постов учитываются и там, и в `source-videos/higgsfield/использовано.json`: одна картинка — один раз.
+Публичные файлы для автопубликации Instagram — `finished-videos/publish/<проект>-instagram/<имя поста>/` (VIDEO-HUB публичный,
+POST-HUB закрытый, а Instagram забирает файлы только по ссылке): их кладёт `to_ready.py` POST-HUB при переносе утверждённого
+поста в очередь, руками не правим и не удаляем — ссылки вшиты в вышедшие посты. Видео Reels и Stories публикатор берёт
+прямо из `finished-videos/` (Git LFS).
 
 ## Куда отправлять
 
