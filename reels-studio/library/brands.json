@@ -3865,5 +3865,53 @@
   ],
   "logo": "source-videos/логотипы/роботы/matrix-robotics.png",
   "source": "https://www.matrixrobotics.ai/01.png (официальный сайт, подвал)"
+ },
+ "evst": {
+  "names": [
+   "EVST",
+   "Эвст"
+  ],
+  "logo": "source-videos/логотипы/роботы/evst.png",
+  "source": "Ostap-87/SINOTECH public/logos/evst.png"
+ },
+ "estun": {
+  "names": [
+   "Estun",
+   "ESTUN",
+   "Эстун",
+   "埃斯顿"
+  ],
+  "logo": "source-videos/логотипы/роботы/estun.png",
+  "source": "Ostap-87/SINOTECH public/logos/estun.svg"
+ },
+ "jaka": {
+  "names": [
+   "JAKA",
+   "Jaka",
+   "Джака",
+   "节卡"
+  ],
+  "logo": "source-videos/логотипы/роботы/jaka.png",
+  "source": "Ostap-87/SINOTECH public/logos/jaka.png"
+ },
+ "dobot": {
+  "names": [
+   "DOBOT",
+   "Dobot",
+   "Добот",
+   "越疆"
+  ],
+  "logo": "source-videos/логотипы/роботы/dobot.png",
+  "source": "Ostap-87/SINOTECH public/logos/dobot.png"
+ },
+ "huayan": {
+  "names": [
+   "Huayan Robotics",
+   "Huayan",
+   "Хуаянь",
+   "华沿"
+  ],
+  "logo": "source-videos/логотипы/роботы/huayan-robotics.png",
+  "source": "Ostap-87/SINOTECH public/logos/huayan-robotics.png"
  }
 }
