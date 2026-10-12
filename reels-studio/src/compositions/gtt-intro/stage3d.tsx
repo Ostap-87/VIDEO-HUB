@@ -216,6 +216,7 @@ export type PyramidState = {
   glass: number; // 0..1 — видимость стеклянных граней
   edges: number; // 0..1 — прорисовка рёбер (световая линия)
   glow: number; // свечение рёбер (0 — обычное)
+  shine?: number; // усиление отражений (вспышка)
   z?: number;
 };
 
@@ -243,7 +244,7 @@ export const GlassPyramid: React.FC<{s: PyramidState}> = ({s}) => {
               clearcoat={1}
               clearcoatRoughness={0.02}
               specularIntensity={1}
-              envMapIntensity={1.1}
+              envMapIntensity={1.1 + (s.shine ?? 0) * 2.2}
               transparent={glass < 0.999}
               opacity={glass}
               depthWrite={glass > 0.5}
@@ -289,7 +290,8 @@ export const GlassStage: React.FC<{
   exposure?: number;
   shadow?: number; // 0..1
   children?: React.ReactNode;
-}> = ({pyramid, bgZoom, zoom, exposure = 1.0, shadow = 1, children}) => {
+  front?: React.ReactNode; // слои, которые сами учитывают наезд (кубики «blocks»)
+}> = ({pyramid, bgZoom, zoom, exposure = 1.0, shadow = 1, children, front}) => {
   const bg = useMemo(() => makeBackdrop(pyramid.y), []); // eslint-disable-line react-hooks/exhaustive-deps
   const shadowTex = useMemo(() => makeBlob("38,48,86"), []);
   const causticTex = useMemo(() => makeBlob("200,240,255", 0.05), []);
@@ -329,6 +331,7 @@ export const GlassStage: React.FC<{
         <GlassPyramid s={pyramid} />
         {children}
       </group>
+      {front}
     </ThreeCanvas>
   );
 };
