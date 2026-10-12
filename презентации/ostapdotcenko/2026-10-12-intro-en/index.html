@@ -1,0 +1,232 @@
+<!doctype html>
+<!-- Мини-интро Остапа Доценко на английском (третья версия к 2026-10-12-intro-zh и -ru), 2 страницы A4 (решение пользователя 12.10.2026: «в стиле моего сайта, с моим фото»).
+     Стиль — брендбук ostapdotcenko (POST-HUB OSTAPDOTCENKO/BRAND/BRAND.md): «швейцарский плакат» — костяная бумага, чернила,
+     жёлтый маркер, красные печати, жёсткие офсетные тени, без скруглений, точечная сетка 26 px, зерно.
+     Тексты — с сайта ostapdotcenko.ru (английская версия: hero, about, career, projects, contact) и подтверждённые факты Aura / GTT.
+     Сборка: python3 build.py → готовые/2026-10-12-ostap-intro-zh.pdf и превью PNG. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ostap Dotsenko — intro</title>
+<link rel="stylesheet" href="fonts/noto-sans-sc.css">
+<style>
+@font-face { font-family: "Unbounded"; src: url("fonts/Unbounded-variable.ttf"); font-weight: 200 900; }
+@font-face { font-family: "Golos"; src: url("fonts/GolosText-variable.ttf"); font-weight: 400 900; }
+@font-face { font-family: "JB"; src: url("fonts/JetBrainsMono-variable.ttf"); font-weight: 100 800; }
+:root {
+  --bone: #EDEAE2; --card: #F7F4EC; --ink: #191922; --yellow: #FFD92E; --blue: #2B49FF; --red: #FF4A1F;
+  --dim: #6E6D66; --line: #D5D1C4;
+  --zh: "Golos", "NSC", "Noto Sans SC", "WenQuanYi Zen Hei", sans-serif; /* латиница — Golos, иероглифы — Noto Sans SC */
+  --disp: "Unbounded", var(--zh); --text: "Golos", var(--zh); --mono: "JB", var(--zh);
+  --shadow: 8px 8px 0 rgba(25, 25, 34, 0.12);
+}
+@page { size: 210mm 297mm; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #b9b6ad; }
+body { font-family: var(--text); color: var(--ink); -webkit-font-smoothing: antialiased; }
+.page { width: 794px; height: 1123px; position: relative; overflow: hidden; background: var(--bone); margin: 0 auto 24px; page-break-after: always; break-after: page; }
+@media print { html, body { background: none; } .page { margin: 0; } }
+.dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(25, 25, 34, 0.17) 1px, transparent 1.3px); background-size: 26px 26px; background-position: 13px 13px; }
+.grain { position: absolute; inset: 0; opacity: 0.055; mix-blend-mode: multiply; pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>"); }
+.abs { position: absolute; }
+.mono { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 500; }
+.red { color: var(--red); }
+.blue { color: var(--blue); }
+.dim { color: var(--dim); }
+.zh { font-family: var(--zh); }
+/* маркер — сплошная жёлтая плашка под текстом (градиент с прозрачностью некоторые программы просмотра PDF рисуют чёрным) */
+mark { background: none; color: inherit; padding: 0 2px; position: relative; z-index: 0; }
+mark::before { content: ""; position: absolute; left: 0; right: 0; top: 56%; bottom: 6%; background: var(--yellow); z-index: -1; }
+.hdr { left: 36px; right: 36px; top: 24px; display: flex; justify-content: space-between; align-items: center; }
+.rule { left: 36px; right: 36px; top: 48px; height: 2px; background: var(--ink); }
+.ftr { left: 36px; right: 36px; bottom: 20px; display: flex; justify-content: space-between; }
+.box { background: var(--card); border: 2px solid var(--ink); box-shadow: var(--shadow); }
+.stamp { width: 118px; height: 118px; border-radius: 50%; border: 3px dashed var(--red); color: var(--red); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center; transform: rotate(-12deg); background: rgba(237, 234, 226, 0.55); }
+.stamp b { font-family: var(--disp); font-weight: 800; font-size: 15px; letter-spacing: 0.04em; line-height: 1.1; }
+.stamp i { font-style: normal; font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em; margin-top: 3px; }
+.tape { width: 118px; height: 28px; background: rgba(255, 217, 46, 0.86); transform: rotate(-4deg); }
+.ticker { left: -40px; right: -40px; height: 34px; display: flex; align-items: center; white-space: nowrap; overflow: hidden; transform: rotate(-1deg); }
+.ticker span { padding-left: 28px; }
+/* стр. 1 */
+.name { left: 33px; top: 100px; font-family: var(--disp); font-weight: 800; font-size: 50px; line-height: 1.1; letter-spacing: -0.02em; text-transform: uppercase; }
+.latin { left: 36px; top: 226px; font-family: var(--zh); font-weight: 900; font-size: 30px; letter-spacing: 0.06em; }
+.polaroid { left: 432px; top: 78px; width: 326px; padding: 12px 12px 42px; transform: rotate(2deg); }
+.polaroid img { display: block; width: 100%; height: 372px; object-fit: cover; object-position: 50% 20%; border: 1px solid rgba(25, 25, 34, 0.25); }
+.polaroid .cap { position: absolute; left: 14px; right: 14px; bottom: 13px; display: flex; justify-content: space-between; }
+.statement { left: 36px; top: 500px; font-family: var(--disp); font-weight: 800; font-size: 40px; line-height: 1.22; letter-spacing: -0.01em; }
+.bio { left: 36px; top: 656px; width: 474px; font-family: var(--text); font-size: 13px; line-height: 1.58; }
+.bio p + p { margin-top: 9px; }
+.langs { left: 540px; top: 690px; width: 218px; padding: 14px 16px 12px; }
+.lang { display: grid; grid-template-columns: 58px 1fr 56px; align-items: center; gap: 8px; margin-top: 9px; font-size: 12px; }
+.lang .bar { height: 7px; border: 1px solid var(--ink); position: relative; }
+.lang .bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--ink); }
+.lang em { font-style: normal; font-family: var(--zh); font-size: 10px; color: var(--dim); text-align: right; white-space: nowrap; }
+.stats { left: 36px; right: 36px; top: 890px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.stat { padding: 12px 16px 12px; height: 92px; }
+.stat b { display: block; font-family: var(--disp); font-weight: 800; font-size: 44px; line-height: 1; font-variant-numeric: tabular-nums; }
+.stat span { display: block; font-family: var(--zh); font-size: 13.5px; font-weight: 700; margin-top: 8px; }
+/* стр. 2 */
+.title2 { left: 34px; top: 80px; font-family: var(--disp); font-weight: 800; font-size: 44px; line-height: 1.1; letter-spacing: -0.01em; }
+.company { left: 36px; top: 152px; width: 722px; line-height: 1.7; }
+.cards { left: 36px; right: 36px; top: 206px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.card { padding: 16px 18px 16px; height: 332px; position: relative; }
+.card .top { display: flex; justify-content: space-between; }
+.card h3 { font-family: var(--disp); font-weight: 800; font-size: 24px; line-height: 1.05; margin-top: 12px; letter-spacing: 0.01em; }
+.card .lead { font-family: var(--text); font-weight: 700; font-size: 13px; line-height: 1.45; margin-top: 10px; text-wrap: balance; }
+.card li, .bio p { text-wrap: pretty; }
+.card ul { list-style: none; margin-top: 10px; }
+.card li { font-family: var(--text); font-size: 12px; line-height: 1.5; padding-left: 16px; position: relative; margin-top: 6px; }
+.card li::before { content: ""; position: absolute; left: 0; top: 6px; width: 7px; height: 7px; background: var(--red); }
+.card .link { position: absolute; left: 18px; bottom: 14px; font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; }
+.career { left: 36px; top: 572px; width: 486px; }
+.row { display: grid; grid-template-columns: 104px 1fr; gap: 10px; padding: 9px 0 8px; border-top: 1px solid rgba(25, 25, 34, 0.25); }
+.row:last-child { border-bottom: 1px solid rgba(25, 25, 34, 0.25); }
+.row .y { font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.04em; padding-top: 2px; font-variant-numeric: tabular-nums; }
+.row b { font-family: var(--zh); font-size: 13.5px; font-weight: 700; display: block; }
+.row span { font-family: var(--zh); font-size: 12px; color: var(--dim); display: block; margin-top: 2px; }
+.results { left: 546px; top: 572px; width: 212px; display: flex; flex-direction: column; gap: 12px; }
+.res { padding: 10px 14px 10px; }
+.res b { display: block; font-family: var(--disp); font-weight: 800; font-size: 30px; line-height: 1; font-variant-numeric: tabular-nums; }
+.res span { display: block; font-family: var(--zh); font-size: 12px; font-weight: 700; margin-top: 6px; }
+.res em { display: block; font-style: normal; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; color: var(--dim); margin-top: 3px; text-transform: uppercase; }
+.motto { left: 36px; top: 912px; width: 352px; padding: 16px 20px 18px; background: var(--yellow); border: 2px solid var(--ink); box-shadow: var(--shadow); transform: rotate(-1.5deg); }
+.motto b { display: block; font-family: var(--zh); font-weight: 900; font-size: 30px; line-height: 1.2; margin-top: 8px; }
+.motto p { font-family: var(--text); font-weight: 600; font-size: 13.5px; line-height: 1.4; margin-top: 6px; text-wrap: balance; }
+.contacts { left: 412px; top: 902px; width: 346px; padding: 14px 16px; display: grid; grid-template-columns: 1fr 96px; gap: 12px; }
+.contacts .r { display: grid; grid-template-columns: 80px 1fr; font-size: 12.5px; line-height: 1.95; }
+.contacts .r .k { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.18em; color: var(--dim); padding-top: 4px; }
+.contacts .r .v { font-family: var(--mono); font-weight: 600; font-size: 12px; }
+.qr { background: #fff; border: 2px solid var(--ink); padding: 6px; text-align: center; }
+.qr img { width: 100%; display: block; image-rendering: pixelated; }
+.qr span { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.16em; display: block; margin-top: 3px; }
+</style>
+</head>
+<body>
+
+<!-- ============ стр. 1 · 关于我 ============ -->
+<section class="page">
+  <div class="dots"></div>
+  <div class="abs hdr mono"><span>( <span class="red">01</span> ) About</span><span>ostap dotsenko ©26</span></div>
+  <div class="abs rule"></div>
+
+  <div class="abs mono dim" style="left:36px; top:74px; letter-spacing:0.2em">B2B Marketing · Global Business · AdTech</div>
+  <div class="abs name">Ostap<br>Dotsenko</div>
+  <div class="abs latin">奥斯塔普·多增科</div>
+  <div class="abs mono blue" style="left:36px; top:292px; font-size:12.5px; letter-spacing:0.16em; font-weight:700">Russia ↔ China ↔ SEA</div>
+  <div class="abs mono" style="left:36px; top:330px; width:380px; line-height:1.9; letter-spacing:0.12em">Shanghai · Moscow — hybrid<br><span class="dim">AI × robotics · tech expeditions</span></div>
+
+  <div class="abs polaroid box">
+    <img src="img/portrait.jpg" alt="Ostap Dotsenko">
+    <div class="cap mono"><span>portrait</span><span class="red">2026</span></div>
+  </div>
+  <div class="abs tape" style="left:540px; top:64px"></div>
+  <div class="abs stamp" style="left:352px; top:396px"><b style="font-size:13px">SHANGHAI</b><i>上海</i><i>★ 2026 ★</i></div>
+
+  <div class="abs statement">Strategist. Leader.<br><mark>Bridge builder.</mark></div>
+
+  <div class="abs mono" style="left:36px; top:632px">( <span class="red">A</span> ) In short</div>
+  <div class="abs bio">
+    <p>I live in Shanghai and work right where the most interesting things are happening today — at the intersection of artificial intelligence and robotics. For over 13 years I’ve been building business at the crossroads of Russia, China and Southeast Asia.</p>
+    <p>Before this, I ran departments at <b>Alibaba</b> and <b>Sberbank</b> — in both places, the results showed up in money, not just pretty slides.</p>
+    <p>Now I lead tech expeditions across China and SEA, and through Aura Robotics connect companies directly with robot factories.</p>
+  </div>
+
+  <div class="abs langs box">
+    <div class="mono">( <span class="red">B</span> ) Languages</div>
+    <div class="lang"><span>Русский</span><div class="bar"><i style="width:100%"></i></div><em>native</em></div>
+    <div class="lang"><span>English</span><div class="bar"><i style="width:88%"></i></div><em>C1</em></div>
+    <div class="lang"><span class="zh" style="font-weight:700">中文</span><div class="bar"><i style="width:74%; background:var(--red)"></i></div><em>B2+</em></div>
+    <div class="lang"><span>O'zbek</span><div class="bar"><i style="width:58%"></i></div><em>B1</em></div>
+    <div class="lang"><span>한국어</span><div class="bar"><i style="width:36%"></i></div><em>A2</em></div>
+  </div>
+
+  <div class="abs stats">
+    <div class="stat box"><b>13+</b><span>years of experience</span></div>
+    <div class="stat box" style="background:var(--yellow)"><b>20+</b><span>countries</span></div>
+    <div class="stat box"><b>5</b><span>languages</span></div>
+  </div>
+
+  <div class="abs ticker" style="top:1016px; background:var(--ink); color:var(--bone); font-family:var(--disp); font-weight:600; font-size:13px; letter-spacing:0.08em">
+    <span>B2B MARKETING •</span><span>GLOBAL BUSINESS •</span><span>AI × ROBOTICS •</span><span>TECH TOURS •</span><span>CHINA • SEA • RUSSIA •</span><span>B2B MARKETING •</span>
+  </div>
+  <div class="abs ticker" style="top:1049px; background:var(--yellow); color:var(--ink); font-family:var(--text); font-weight:700; font-size:13.5px">
+    <span>Russia ↔ China ↔ SEA •</span><span>Tech expeditions •</span><span>Robot factories •</span><span>Negotiations •</span><span>Business development •</span><span>Russia ↔ China ↔ SEA •</span>
+  </div>
+  <div class="abs ftr mono" style="bottom:12px"><span>OSTAPDOTCENKO.RU</span><span>01 / 02</span></div>
+  <div class="grain"></div>
+</section>
+
+<!-- ============ стр. 2 · 我在中国的项目 ============ -->
+<section class="page">
+  <div class="dots"></div>
+  <div class="abs hdr mono"><span>( <span class="red">02</span> ) Now</span><span>ostap dotsenko ©26</span></div>
+  <div class="abs rule"></div>
+
+  <div class="abs title2">My projects in&nbsp;<mark>China</mark></div>
+  <div class="abs mono company" style="letter-spacing:0.1em">Shanghai Pinnacle Technology Co., Ltd. · 上海拼那克了科技有限公司<br><span class="red">Owner &amp; founder of ventures</span> · 2025 — now</div>
+
+  <div class="abs cards">
+    <div class="card box">
+      <div class="top mono"><span>( <span class="red">01</span> ) Tech expeditions</span><span class="dim">2025 —</span></div>
+      <h3>GLOBAL<br>TECH TOUR</h3>
+      <div class="lead">Benchmark tours and tech expeditions across China and Southeast Asia.</div>
+      <ul>
+        <li>I take founders and management where tourists never get: robot factories, tech HQs and closed R&amp;D centers.</li>
+        <li>Factory and R&amp;D visits: BYD, Xiaomi, Baidu, Meituan, Poizon, Leju Robotics.</li>
+        <li>Turnkey corporate forum for Megamarket (Sber) in Shenzhen, 1,200+ attendees.</li>
+      </ul>
+      <div class="link blue">↗ GLOBALTECHTOUR.RU</div>
+    </div>
+    <div class="card box">
+      <div class="top mono"><span>( <span class="red">02</span> ) Robotics</span><span class="dim">2025 —</span></div>
+      <h3>AURA<br>ROBOTICS</h3>
+      <div class="lead">Robotics and automation at the intersection of AI and the physical world.</div>
+      <ul>
+        <li>Direct from Chinese factories, no middlemen: humanoids, cobots, AGVs, industrial robots and production equipment.</li>
+        <li>Every 2 months — a tour of 10 robot factories with direct access to leadership and R&amp;D, not rank-and-file managers.</li>
+      </ul>
+      <div class="link blue">↗ AURA-ROBOTICS.RU</div>
+      <div class="abs stamp" style="right:-16px; bottom:-30px; width:96px; height:96px"><b style="font-size:12px">AI ×</b><i>ROBOTICS</i></div>
+    </div>
+  </div>
+
+  <div class="abs mono" style="left:36px; top:552px">( <span class="red">03</span> ) Career · 13+ years</div>
+  <div class="abs career">
+    <div class="row"><div class="y">2023 — 2025</div><div><b>Head of B2B Marketing</b><span>Megamarket (Sber ecosystem) — Russia’s #3 e-commerce</span></div></div>
+    <div class="row"><div class="y">2020 — 2022</div><div><b>Head of O2O &amp; New Business</b><span>Alibaba Group — AliExpress Russia &amp; CIS</span></div></div>
+    <div class="row"><div class="y">2018 — 2020</div><div><b>Co-founder</b><span>O.F.D Creative Agency — Shanghai / Hong Kong</span></div></div>
+    <div class="row"><div class="y">2015 — 2017</div><div><b>Head of Commerce &amp; BD</b><span>Data Centric Alliance — Moscow / Shanghai</span></div></div>
+    <div class="row"><div class="y">2013 — 2015</div><div><b>BD Manager — China / SEA</b><span>CityAds Media — performance &amp; affiliate marketing</span></div></div>
+  </div>
+
+  <div class="abs mono" style="left:546px; top:552px">( <span class="red">04</span> ) Results</div>
+  <div class="abs results">
+    <div class="res box"><b class="red">$48M</b><span>AliExpress GMV</span><em>Russia &amp; CIS</em></div>
+    <div class="res box" style="background:var(--yellow)"><b>+350%</b><span>Seller growth YoY</span><em>Megamarket</em></div>
+    <div class="res box"><b>25×</b><span>Average campaign ROI</span><em>2020 — 2022</em></div>
+  </div>
+
+  <div class="abs motto">
+    <div class="mono">My motto</div>
+    <b>千里之行，始于足下</b>
+    <p>“A journey of a thousand miles begins with a single step”</p>
+  </div>
+  <div class="abs contacts box">
+    <div>
+      <div class="mono" style="margin-bottom:6px">( <span class="red">05</span> ) Contacts</div>
+      <div class="r"><span class="k">WEBSITE</span><span class="v">ostapdotcenko.ru</span></div>
+      <div class="r"><span class="k">TELEGRAM</span><span class="v">@ostapdotcenko</span></div>
+      <div class="r"><span class="k">WECHAT</span><span class="v">ostap10081987</span></div>
+      <div class="r"><span class="k">CITIES</span><span class="v">Moscow · Shanghai</span></div>
+    </div>
+    <div class="qr"><img src="img/qr-telegram.png" alt="QR Telegram"><span>TELEGRAM</span></div>
+  </div>
+
+  <div class="abs ftr mono" style="bottom:12px"><span>OSTAPDOTCENKO.RU</span><span>02 / 02</span></div>
+  <div class="grain"></div>
+</section>
+
+</body>
+</html>
