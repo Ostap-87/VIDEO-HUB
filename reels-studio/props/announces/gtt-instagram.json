@@ -2,91 +2,199 @@
   "brand": "gtt",
   "stories": [
     {
-      "cover": "finished-videos/карусели/2026-10-10-foto-tur-robotics/01.png",
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-china-tech-parks/01.png",
       "back": [
-        "finished-videos/карусели/2026-10-10-foto-tur-robotics/02.png",
-        "finished-videos/карусели/2026-10-10-foto-tur-robotics/03.png"
+        "finished-videos/карусели/2026-10-10-foto-tur-china-tech-parks/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-china-tech-parks/03.png"
       ],
       "title": "Листай карусель **в профиле**",
-      "note": "В среду в 19:00 — ролик об этом туре"
+      "note": "Сохрани, чтобы не потерять"
     },
     {
-      "cover": "finished-videos/карусели/2026-10-10-foto-tur-china-tech-giants/01.png",
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-china-ticketing-travel/01.png",
       "back": [
-        "finished-videos/карусели/2026-10-10-foto-tur-china-tech-giants/02.png",
-        "finished-videos/карусели/2026-10-10-foto-tur-china-tech-giants/03.png"
+        "finished-videos/карусели/2026-10-10-foto-tur-china-ticketing-travel/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-china-ticketing-travel/03.png"
       ],
       "title": "Листай карусель **в профиле**",
-      "note": "Завтра в 19:00 — ролик об этом туре"
+      "note": "Сохрани, чтобы не потерять"
     },
     {
-      "cover": "finished-videos/карусели/2026-10-10-foto-tur-china-tea-coffee-retail/01.png",
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-china-logistics-top10/01.png",
       "back": [
-        "finished-videos/карусели/2026-10-10-foto-tur-china-tea-coffee-retail/02.png",
-        "finished-videos/карусели/2026-10-10-foto-tur-china-tea-coffee-retail/03.png"
+        "finished-videos/карусели/2026-10-10-foto-tur-china-logistics-top10/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-china-logistics-top10/03.png"
       ],
       "title": "Листай карусель **в профиле**",
-      "note": "Завтра в 19:00 — ролик об этом туре"
+      "note": "Сохрани, чтобы не потерять"
     },
     {
-      "cover": "finished-videos/карусели/2026-10-10-foto-tur-china-beauty-antiage/01.png",
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-china-petrochemicals-guangdong/01.png",
       "back": [
-        "finished-videos/карусели/2026-10-10-foto-tur-china-beauty-antiage/02.png",
-        "finished-videos/карусели/2026-10-10-foto-tur-china-beauty-antiage/03.png"
+        "finished-videos/карусели/2026-10-10-foto-tur-china-petrochemicals-guangdong/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-china-petrochemicals-guangdong/03.png"
       ],
       "title": "Листай карусель **в профиле**",
-      "note": "Завтра в 19:00 — ролик об этом туре"
+      "note": "Сохрани, чтобы не потерять"
     },
     {
-      "cover": "finished-videos/карусели/2026-10-10-foto-tur-china-auto-plants/01.png",
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-china-waste-management/01.png",
       "back": [
-        "finished-videos/карусели/2026-10-10-foto-tur-china-auto-plants/02.png",
-        "finished-videos/карусели/2026-10-10-foto-tur-china-auto-plants/03.png"
+        "finished-videos/карусели/2026-10-10-foto-tur-china-waste-management/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-china-waste-management/03.png"
       ],
       "title": "Листай карусель **в профиле**",
-      "note": "Завтра в 19:00 — ролик об этом туре"
+      "note": "Сохрани, чтобы не потерять"
     },
     {
-      "cover": "finished-videos/карусели/2026-10-10-foto-tur-china-appliances/01.png",
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-china-film-industry/01.png",
       "back": [
-        "finished-videos/карусели/2026-10-10-foto-tur-china-appliances/02.png",
-        "finished-videos/карусели/2026-10-10-foto-tur-china-appliances/03.png"
+        "finished-videos/карусели/2026-10-10-foto-tur-china-film-industry/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-china-film-industry/03.png"
       ],
       "title": "Листай карусель **в профиле**",
-      "note": "Завтра в 19:00 — ролик об этом туре"
+      "note": "Сохрани, чтобы не потерять"
     },
     {
-      "cover": "finished-videos/карусели/2026-10-10-foto-tur-china-retail-showrooms/01.png",
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-china-global-brands/01.png",
       "back": [
-        "finished-videos/карусели/2026-10-10-foto-tur-china-retail-showrooms/02.png",
-        "finished-videos/карусели/2026-10-10-foto-tur-china-retail-showrooms/03.png"
+        "finished-videos/карусели/2026-10-10-foto-tur-china-global-brands/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-china-global-brands/03.png"
       ],
       "title": "Листай карусель **в профиле**",
-      "note": "Завтра в 19:00 — ролик об этом туре"
+      "note": "Сохрани, чтобы не потерять"
     },
     {
-      "cover": "finished-videos/карусели/2026-10-10-foto-tur-confectionery/01.png",
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-china-fintech-giants/01.png",
       "back": [
-        "finished-videos/карусели/2026-10-10-foto-tur-confectionery/02.png",
-        "finished-videos/карусели/2026-10-10-foto-tur-confectionery/03.png"
+        "finished-videos/карусели/2026-10-10-foto-tur-china-fintech-giants/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-china-fintech-giants/03.png"
       ],
       "title": "Листай карусель **в профиле**",
-      "note": "Завтра в 19:00 — ролик об этом туре"
+      "note": "Сохрани, чтобы не потерять"
     },
     {
-      "cover": "finished-videos/карусели/2026-10-10-foto-tur-china-ai/01.png",
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/01.png",
       "back": [
-        "finished-videos/карусели/2026-10-10-foto-tur-china-ai/02.png",
-        "finished-videos/карусели/2026-10-10-foto-tur-china-ai/03.png"
+        "finished-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/03.png"
       ],
       "title": "Листай карусель **в профиле**",
-      "note": "Завтра в 19:00 — ролик об этом туре"
+      "note": "Сохрани, чтобы не потерять"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-global-hospitality-china/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-tur-global-hospitality-china/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-global-hospitality-china/03.png"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Сохрани, чтобы не потерять"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-hongkong-luxury-legacy/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-tur-hongkong-luxury-legacy/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-hongkong-luxury-legacy/03.png"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Сохрани, чтобы не потерять"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-japan-retail/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-tur-japan-retail/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-japan-retail/03.png"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Сохрани, чтобы не потерять"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-japan-food-dairy/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-tur-japan-food-dairy/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-japan-food-dairy/03.png"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Сохрани, чтобы не потерять"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-japan-tech-internet-giants/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-tur-japan-tech-internet-giants/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-japan-tech-internet-giants/03.png"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Сохрани, чтобы не потерять"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-japan-beauty-industry/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-tur-japan-beauty-industry/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-japan-beauty-industry/03.png"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Сохрани, чтобы не потерять"
     },
     {
       "cover": "finished-videos/карусели/2026-10-10-foto-tur-japan-longevity-biotech/01.png",
       "back": [
         "finished-videos/карусели/2026-10-10-foto-tur-japan-longevity-biotech/02.png",
         "finished-videos/карусели/2026-10-10-foto-tur-japan-longevity-biotech/03.png"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Сохрани, чтобы не потерять"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/03.png"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Сохрани, чтобы не потерять"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-thailand-retail/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-tur-thailand-retail/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-thailand-retail/03.png"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Сохрани, чтобы не потерять"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-thailand-food-dairy/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-tur-thailand-food-dairy/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-thailand-food-dairy/03.png"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Сохрани, чтобы не потерять"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-thailand-dark-kitchen-delivery/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-tur-thailand-dark-kitchen-delivery/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-thailand-dark-kitchen-delivery/03.png"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Сохрани, чтобы не потерять"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-thailand-tech-internet-giants/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-tur-thailand-tech-internet-giants/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-thailand-tech-internet-giants/03.png"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Сохрани, чтобы не потерять"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-thailand-beauty-industry/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-tur-thailand-beauty-industry/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-thailand-beauty-industry/03.png"
       ],
       "title": "Листай карусель **в профиле**",
       "note": "Сохрани, чтобы не потерять"
@@ -101,10 +209,28 @@
       "note": "Сохрани, чтобы не потерять"
     },
     {
-      "cover": "finished-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/01.png",
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-thailand-bubble-tea-coffee/01.png",
       "back": [
-        "finished-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/02.png",
-        "finished-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/03.png"
+        "finished-videos/карусели/2026-10-10-foto-tur-thailand-bubble-tea-coffee/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-thailand-bubble-tea-coffee/03.png"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Сохрани, чтобы не потерять"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-vietnam-retail/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-tur-vietnam-retail/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-vietnam-retail/03.png"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Сохрани, чтобы не потерять"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-tur-vietnam-food-dairy/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-tur-vietnam-food-dairy/02.png",
+        "finished-videos/карусели/2026-10-10-foto-tur-vietnam-food-dairy/03.png"
       ],
       "title": "Листай карусель **в профиле**",
       "note": "Сохрани, чтобы не потерять"
