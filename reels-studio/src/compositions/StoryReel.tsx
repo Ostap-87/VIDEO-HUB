@@ -13,7 +13,7 @@ export const storyReelSchema = z.object({
   brand: z.enum(["gtt", "aura"]),
   video: z.string(), // ролик 9:16, путь от корня репозитория
   seconds: z.number(), // длина ролика (с)
-  kicker: z.string().optional(), // плашка справа сверху («Новый Reels», «Мой проект»)
+  kicker: z.string().optional(), // плашка справа сверху («Новый Reels», «Мой проект»; "" — без плашки)
   title: z.string().optional(), // заголовок над роликом, **слово** — акцент
   note: z.string().optional(), // плашка под роликом
 });
@@ -29,7 +29,7 @@ export const StoryReel: React.FC<StoryReelProps> = ({brand, video, kicker, title
       <AbsoluteFill style={{...s.pattern}} />
       <div style={{position: "absolute", top: STORY.top + 10, left: STORY.side, right: STORY.side, display: "flex", alignItems: "center", justifyContent: "space-between"}}>
         <BrandMark brand={brand} s={s} />
-        <Badge text={kicker ?? "Новый Reels"} s={s} />
+        {kicker === "" ? null : <Badge text={kicker ?? "Новый Reels"} s={s} />}
       </div>
       {title ? (
         <div style={{position: "absolute", top: STORY.top + 105, left: STORY.side, right: STORY.side, fontFamily: s.head, fontWeight: s.headWeight, letterSpacing: s.headTrack, fontSize: 54, lineHeight: 1.1, color: s.ink, textAlign: "center", whiteSpace: "pre-line"}}>
