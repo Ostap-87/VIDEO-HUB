@@ -1,8 +1,9 @@
-// Превью бренда Aura Robotics: логотип-печать и маскот проходят все жесты (композиция AuraPreview в Studio).
+// Превью бренда Aura Robotics: логотип-печать, маскот проходит все жесты, рядом робособака подпрыгивает (композиция AuraPreview в Studio).
 import React from "react";
 import {AbsoluteFill} from "remotion";
 import {AuraBadge} from "./AuraBadge";
 import {AuraMascot, type MascotPlan} from "./AuraMascot";
+import {AuraDog} from "./AuraDog";
 
 const plan: MascotPlan = {
   stays: [
@@ -34,6 +35,7 @@ export const AuraPreview: React.FC = () => (
     <div style={{position: "absolute", top: 90, left: "50%", translate: "-50% 0"}}>
       <AuraBadge size={250} />
     </div>
+    <AuraDog x={520} y={1500} scale={0.95} face={-0.6} hops={[2, 5.2, 8.6, 11.4, 13.6]} />
     <AuraMascot plan={plan} />
   </AbsoluteFill>
 );
