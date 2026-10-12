@@ -1,0 +1,133 @@
+{
+ "brand": "aura",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-12-foto-xhand1/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Робомодели · Robotera",
+   "title": "XHAND1: **кисть для гуманоидов**",
+   "text": "Её покупают MIT, Беркли и ByteDance",
+   "logo": "robotera",
+   "mascot": "wave"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-xhand1/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Кто делает",
+   "title": "Robotera, **Пекин**",
+   "text": "Выросла из Института междисциплинарных информационных наук Университета Цинхуа. Цинхуа — совладелец. Поставлено более 600 роботов.",
+   "logo": "robotera"
+  },
+  {
+   "kind": "photoStat",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-xhand1/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Подвижность",
+   "title": "активных степеней свободы",
+   "text": "Пять пальцев, полный прямой привод",
+   "value": "12"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-xhand1/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Сила",
+   "title": "поднимает кистью",
+   "text": "Захват одной кистью до 80 Н",
+   "value": "25 кг"
+  },
+  {
+   "kind": "photoStat",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-xhand1/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Скорость",
+   "title": "касаний пальцем в секунду",
+   "text": "Быстрее, чем вы набираете СМС",
+   "value": "10"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-xhand1/06.jpg",
+   "focus": "50% 30%",
+   "kicker": "Характеристики",
+   "title": "XHAND1 **в цифрах**",
+   "items": [
+    "Вес 1,1 кг",
+    "Тактильные датчики на каждом пальце",
+    "Чувствует силу и температуру",
+    "Обратимые шарниры"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-xhand1/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Кто берёт",
+   "title": "Кисть **в работе**",
+   "items": [
+    "Skild AI, Extend Robotics",
+    "MIT и UC Berkeley",
+    "ByteDance Seed",
+    "~1000 кистей серии XHAND за 2025"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-xhand1/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Применение",
+   "title": "Куда **ставить**",
+   "items": [
+    "На свой гуманоид или манипулятор",
+    "Обучение ИИ хватанию",
+    "Тонкая сборка и сортировка",
+    "Лаборатории робототехники"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-xhand1/09.jpg",
+   "focus": "50% 30%",
+   "kicker": "Цена и поставка",
+   "title": "Цена **по запросу**",
+   "items": [
+    "Закупка на заводе по ВЭД-контракту",
+    "Ввоз на вашу компанию",
+    "Видео теста вашего робота с серийным номером",
+    "Поставка 4–7 недель"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoCta",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-xhand1/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-xhand1/03.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-xhand1/05.jpg",
+     "focus": "50% 30%"
+    }
+   ],
+   "kicker": "Подберём решение",
+   "title": "Пиши в **личные сообщения** или оставляй заявку на сайте",
+   "text": "Рассчитаем стоимость и окупаемость",
+   "mascot": "pointUp"
+  }
+ ]
+}

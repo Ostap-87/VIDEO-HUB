@@ -1,0 +1,139 @@
+{
+ "brand": "aura",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-12-foto-robotera-star1/01.jpg",
+   "focus": "50% 15%",
+   "kicker": "Робомодели · Robotera",
+   "title": "Robotera STAR1: **бегун по Гоби**",
+   "text": "Гуманоид, который бегал по пустыне в кроссовках",
+   "logo": "robotera",
+   "mascot": "wave"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-robotera-star1/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Кто делает",
+   "title": "Robotera, **Пекин**",
+   "text": "Выросла из Института междисциплинарных информационных наук Университета Цинхуа. Цинхуа — совладелец. Поставлено более 600 роботов.",
+   "logo": "robotera"
+  },
+  {
+   "kind": "photoStat",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-robotera-star1/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Скорость",
+   "title": "бег по пустыне Гоби",
+   "text": "Камни, трава и извилистые дороги, а не ровный пол",
+   "value": "3,6 м/с"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-robotera-star1/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Шарниры",
+   "title": "момент собственных моторов",
+   "text": "Хватает, чтобы бежать по бездорожью",
+   "value": "400 Н·м"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-robotera-star1/05.jpg",
+   "focus": "50% 10%",
+   "kicker": "Характеристики",
+   "title": "STAR1 **в цифрах**",
+   "items": [
+    "Рост 171 см, вес 65 кг",
+    "55 степеней свободы",
+    "Кисти XHAND1 по 12 степеней",
+    "Бег до 3,6 м/с (≈13 км/ч)"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-robotera-star1/06.jpg",
+   "focus": "50% 30%",
+   "kicker": "Применение",
+   "title": "Кому **STAR1**",
+   "items": [
+    "Исследования ходьбы и бега",
+    "Испытания на улице и бездорожье",
+    "R&D по ловким кистям",
+    "Демонстрации и шоу"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": true,
+   "layout": "row",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-robotera-star1/07a.jpg",
+     "focus": "50% 5%",
+     "label": "L7 (2025)",
+     "items": [
+      "До 4 м/с",
+      "До 20 кг двумя руками",
+      "Уже сортирует посылки"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-robotera-star1/07b.jpg",
+     "focus": "50% 10%",
+     "label": "STAR1 (2024)",
+     "items": [
+      "3,6 м/с по бездорожью",
+      "Проверен в Гоби",
+      "55 степеней свободы"
+     ]
+    }
+   ],
+   "pair": "story",
+   "kicker": "Выбор под задачу",
+   "title": "STAR1 или **L7**"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-robotera-star1/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Цена и поставка",
+   "title": "Цена **по запросу**",
+   "items": [
+    "Закупка на заводе по ВЭД-контракту",
+    "Ввоз на вашу компанию",
+    "Видео теста вашего робота с серийным номером",
+    "Поставка 4–7 недель"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoCta",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-robotera-star1/01.jpg",
+     "focus": "50% 15%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-robotera-star1/03.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-robotera-star1/05.jpg",
+     "focus": "50% 10%"
+    }
+   ],
+   "kicker": "Подберём решение",
+   "title": "Пиши в **личные сообщения** или оставляй заявку на сайте",
+   "text": "Рассчитаем стоимость и окупаемость",
+   "mascot": "pointUp"
+  }
+ ]
+}

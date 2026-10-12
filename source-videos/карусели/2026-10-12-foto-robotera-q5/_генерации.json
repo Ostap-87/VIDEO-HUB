@@ -1,0 +1,112 @@
+{
+ "01.jpg": {
+  "job": "e3377c88-cd6a-4e05-b3ff-1a0775a2b9cc",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041149_e3377c88-cd6a-4e05-b3ff-1a0775a2b9cc.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a sunlit modern shopping mall atrium: a 165 cm white wheeled humanoid robot with a human-like white torso, a compact head with a dark glossy face visor, two long white arms with dexterous five-fingered hands, an extremely thin graphite waist column narrower than a smartphone and a compact rectangular white wheeled base rolls forward and greets a smiling Russian family with an open-hand wave, a laughing child waves back, a Chinese store assistant smiles nearby, glossy floor, wide 4:3 composition, subject centered, welcoming service mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "catalog": 403,
+  "job": "d07cf4fd-bd02-41c7-85c1-4f2ec316a5d6",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20260918_141427_d07cf4fd-bd02-41c7-85c1-4f2ec316a5d6.png",
+  "model": "каталог Higgsfield (source-videos/higgsfield/каталог.json)",
+  "aspect": "3:4",
+  "cost": 0,
+  "size": [
+   880,
+   1168
+  ],
+  "prompt": "Photorealistic image of university students working with a humanoid robot in a modern robotics engineering lab classroom, Chinese university campus, no text, no logos"
+ },
+ "03.jpg": {
+  "job": "e0cbdd21-cb1a-48ab-ae67-21ea467e2894",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041325_e0cbdd21-cb1a-48ab-ae67-21ea467e2894.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright tea boutique: a 165 cm white wheeled humanoid robot with a human-like white torso, a compact head with a dark glossy face visor, two long white arms with dexterous five-fingered hands, an extremely thin graphite waist column narrower than a smartphone and a compact rectangular white wheeled base pours tea from a small porcelain teapot into a cup with one hand while steadying the cup with the other, fingers delicately posed, a smiling Russian woman and a Chinese tea master watch delighted, wide 4:3 composition, subject centered, graceful dexterous mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "cd0e3018-b14f-4324-9387-0bb68064780e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041325_cd0e3018-b14f-4324-9387-0bb68064780e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright modern electronics store: a 165 cm white wheeled humanoid robot with a human-like white torso, a compact head with a dark glossy face visor, two long white arms with dexterous five-fingered hands, an extremely thin graphite waist column narrower than a smartphone and a compact rectangular white wheeled base lifts a medium cardboard box with one outstretched arm onto a top shelf above two meters high, its other arm relaxed, a smiling Chinese shop assistant gives a thumbs up, main subject in the upper half of the frame, the lower third is calm light polished floor, vertical 4:5, strong helpful mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "f0b84101-9a63-429f-abef-cde004ad6548",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041324_f0b84101-9a63-429f-abef-cde004ad6548.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright busy exhibition hall: a 165 cm white wheeled humanoid robot with a human-like white torso, a compact head with a dark glossy face visor, two long white arms with dexterous five-fingered hands, an extremely thin graphite waist column narrower than a smartphone and a compact rectangular white wheeled base glides between visitors, explaining something to a smiling Russian businessman and a Chinese businesswoman who listen with interest, a small lidar dome visible on its base, wide 4:3 composition, subject centered, smart attentive mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks.",
+  "note": "ретушь: размыта вывеска с псевдотекстом на заднем плане"
+ },
+ "06.jpg": {
+  "job": "da66a539-0eeb-4302-b4ff-9678554b9602",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041332_da66a539-0eeb-4302-b4ff-9678554b9602.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright modern museum hall with large abstract sculptures: a 165 cm white wheeled humanoid robot with a human-like white torso, a compact head with a dark glossy face visor, two long white arms with dexterous five-fingered hands, an extremely thin graphite waist column narrower than a smartphone and a compact rectangular white wheeled base guides a group of smiling Russian tourists and points toward an exhibit with an open hand, a Chinese guide smiles beside it, main subject in the upper half of the frame, the lower third is calm light stone floor, vertical 4:5, friendly guide mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07a.jpg": {
+  "job": "565b60b3-568a-4e5d-af15-8d4637718ddf",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041011_565b60b3-568a-4e5d-af15-8d4637718ddf.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo in a bright parcel warehouse aisle: a 171 cm athletic humanoid robot with a white-and-silver shell, black joints, a compact head ringed by a dark camera band and dexterous black five-fingered hands walks briskly carrying a large plain cardboard box in both arms, a smiling Chinese warehouse worker in a vest walks beside it, tall vertical 9:16 composition, subject centered in the upper two thirds, strong walking mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07b.jpg": {
+  "job": "53f4e4c0-5755-4fa5-a6a9-f681acda463f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041257_53f4e4c0-5755-4fa5-a6a9-f681acda463f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo in a bright hotel lobby: a 165 cm white wheeled humanoid robot with a human-like white torso, a compact head with a dark glossy face visor, two long white arms with dexterous five-fingered hands, an extremely thin graphite waist column narrower than a smartphone and a compact rectangular white wheeled base rolls on its compact base and offers a glass of water on a small tray to a smiling Russian guest, tall vertical 9:16 composition, subject centered in the upper two thirds, gentle service mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "2a22da54-eab7-442b-aaaa-80ec7d32cabe",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041417_2a22da54-eab7-442b-aaaa-80ec7d32cabe.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright factory dispatch area: a 165 cm white wheeled humanoid robot with a human-like white torso, a compact head with a dark glossy face visor, two long white arms with dexterous five-fingered hands, an extremely thin graphite waist column narrower than a smartphone and a compact rectangular white wheeled base stands strapped inside an open wooden crate frame on a pallet, a smiling Chinese worker checks the straps and a Russian client representative holds a blank clipboard and smiles, main subject in the upper half of the frame, the lower third is calm clean grey floor, vertical 4:5, ready-to-ship mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}

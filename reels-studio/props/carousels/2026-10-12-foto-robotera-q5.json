@@ -1,0 +1,140 @@
+{
+ "brand": "aura",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-12-foto-robotera-q5/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Робомодели · Robotera",
+   "title": "Robotera Q5: **талия уже iPhone**",
+   "text": "Колёсный гуманоид для сервиса и ритейла",
+   "logo": "robotera",
+   "mascot": "wave"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-robotera-q5/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Кто делает",
+   "title": "Robotera, **Пекин**",
+   "text": "Выросла из Института междисциплинарных информационных наук Университета Цинхуа. Цинхуа — совладелец. Поставлено более 600 роботов.",
+   "logo": "robotera"
+  },
+  {
+   "kind": "photoStat",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-robotera-q5/03.jpg",
+   "focus": "50% 5%",
+   "kicker": "Степени свободы",
+   "title": "по всему телу",
+   "text": "Руки по 7 осей, кисти XHAND Lite по 11 степеней",
+   "value": "44"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-robotera-q5/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Руки",
+   "title": "одной рукой",
+   "text": "Вылет руки 1,38 м, с подъёмом достаёт выше 2 м",
+   "value": "10 кг"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-robotera-q5/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Характеристики",
+   "title": "Q5 **в цифрах**",
+   "items": [
+    "Рост 165 см, вес 70 кг",
+    "База 58 × 52 см",
+    "Работа больше 4 часов",
+    "Навигация: лидар + стереозрение",
+    "Понимает команды на 37+ языках"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-robotera-q5/06.jpg",
+   "focus": "50% 30%",
+   "kicker": "Применение",
+   "title": "Где Q5 **работает**",
+   "items": [
+    "Встреча гостей и выставки",
+    "Ритейл и консультации",
+    "Туризм и образование",
+    "Медицина и сервис"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": true,
+   "layout": "row",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-robotera-q5/07a.jpg",
+     "focus": "50% 30%",
+     "label": "L7",
+     "items": [
+      "Ходит и бегает",
+      "До 20 кг двумя руками",
+      "Склад и производство"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-robotera-q5/07b.jpg",
+     "focus": "50% 30%",
+     "label": "Q5",
+     "items": [
+      "Едет на компактной базе",
+      "10 кг на одну руку",
+      "Сервис и общение"
+     ]
+    }
+   ],
+   "pair": "story",
+   "kicker": "Колёса или ноги",
+   "title": "Q5 или **L7**"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-robotera-q5/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Цена и поставка",
+   "title": "Цена **по запросу**",
+   "items": [
+    "Закупка на заводе по ВЭД-контракту",
+    "Ввоз на вашу компанию",
+    "Видео теста вашего робота с серийным номером",
+    "Поставка 4–7 недель"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoCta",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-robotera-q5/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-robotera-q5/03.jpg",
+     "focus": "50% 5%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-robotera-q5/05.jpg",
+     "focus": "50% 30%"
+    }
+   ],
+   "kicker": "Подберём решение",
+   "title": "Пиши в **личные сообщения** или оставляй заявку на сайте",
+   "text": "Рассчитаем стоимость и окупаемость",
+   "mascot": "pointUp"
+  }
+ ]
+}

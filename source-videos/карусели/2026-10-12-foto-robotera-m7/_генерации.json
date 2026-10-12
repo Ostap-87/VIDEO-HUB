@@ -1,0 +1,102 @@
+{
+ "01.jpg": {
+  "job": "34a57590-70ca-4502-8b92-ea951e129165",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041010_34a57590-70ca-4502-8b92-ea951e129165.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright modern robotics lab: the white-and-silver upper body of a humanoid robot with a compact head ringed by a dark camera band, two long seven-axis white arms and dexterous black five-fingered hands, mounted on a vertical graphite stand with a round floor base stands at a white workbench and hands a small machined part to a smiling Russian engineer with one hand while holding a tray with the other, a Chinese colleague laughs beside it, wide 4:3 composition, subject centered, friendly capable mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "catalog": 364,
+  "job": "6f35a6ed-813e-40b8-b9b7-0ba709a2c9f3",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20260918_144633_6f35a6ed-813e-40b8-b9b7-0ba709a2c9f3.png",
+  "model": "каталог Higgsfield (source-videos/higgsfield/каталог.json)",
+  "aspect": "3:4",
+  "cost": 0,
+  "size": [
+   880,
+   1168
+  ],
+  "prompt": "Photorealistic university robotics lab with students and a humanoid robot, modern Chinese campus, no text, no logos"
+ },
+ "03.jpg": {
+  "job": "120739f7-fe64-432a-b21b-a0ea2def6de0",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041011_120739f7-fe64-432a-b21b-a0ea2def6de0.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright white robotics showroom: on the left the white-and-silver upper body of a humanoid robot with a compact head ringed by a dark camera band, two long seven-axis white arms and dexterous black five-fingered hands, mounted on a vertical graphite stand with a round floor base, on the right a full-size robot of exactly the same design with legs, a 171 cm athletic humanoid robot with a white-and-silver shell, black joints, a compact head ringed by a dark camera band and dexterous black five-fingered hands, standing on the floor, a smiling Russian client and a Chinese engineer stand between them comparing the two, wide 4:3 composition, subject centered, choose-and-grow mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks.",
+  "note": "ретушь: убран значок-искра в правом нижнем углу"
+ },
+ "04.jpg": {
+  "job": "16154cd2-1fca-4ead-a21f-d3dc452a6f8e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041149_16154cd2-1fca-4ead-a21f-d3dc452a6f8e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at a bright lab table, close view: the white-and-silver upper body of a humanoid robot with a compact head ringed by a dark camera band, two long seven-axis white arms and dexterous black five-fingered hands, mounted on a vertical graphite stand with a round floor base uses both dexterous black five-fingered hands at once to thread a small cable through a connector and hold a tiny screwdriver, fingers precisely posed, a smiling Chinese researcher watches over its shoulder, main subject in the upper half of the frame, the lower third is calm light tabletop with neat trays, vertical 4:5, precise skilled mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "b69350df-2434-4344-9220-df0c581988ab",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041150_b69350df-2434-4344-9220-df0c581988ab.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright electronics lab: the white-and-silver upper body of a humanoid robot with a compact head ringed by a dark camera band, two long seven-axis white arms and dexterous black five-fingered hands, mounted on a vertical graphite stand with a round floor base stretches one arm up to place a box on a high shelf while its other arm reaches far across a wide workbench to pick a part, showing a large reach all around it, a Russian engineer and a Chinese engineer smile and measure the reach with a tape measure, wide 4:3 composition, subject centered, spacious reach mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "49ff52ea-a3d6-45ba-911f-048b581bfda8",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041149_49ff52ea-a3d6-45ba-911f-048b581bfda8.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright AI research lab: a smiling young Chinese operator wearing a white VR headset and holding motion controllers raises his hands, and the white-and-silver upper body of a humanoid robot with a compact head ringed by a dark camera band, two long seven-axis white arms and dexterous black five-fingered hands, mounted on a vertical graphite stand with a round floor base beside him mirrors the same gesture while gently picking up a cup, small stereo and depth cameras on tripods around them, a Russian researcher smiles at a laptop with blurred screen, main subject in the upper half of the frame, the lower third is calm light lab floor, vertical 4:5, teaching by example mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "8d94a5b4-0238-41c3-9bb1-9da6907e5841",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041011_8d94a5b4-0238-41c3-9bb1-9da6907e5841.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a large bright AI data collection lab: a row of several units of the white-and-silver upper body of a humanoid robot with a compact head ringed by a dark camera band, two long seven-axis white arms and dexterous black five-fingered hands, mounted on a vertical graphite stand with a round floor base work at white tables sorting small parts and folding small towels, young Chinese and Russian researchers in casual clothes supervise and chat cheerfully, wide 4:3 composition, subject centered, productive research mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "catalog": 554,
+  "job": "fc2375c8-0970-466f-aa2a-0534b9245b29",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20260826_082227_fc2375c8-0970-466f-aa2a-0534b9245b29.png",
+  "model": "каталог Higgsfield (source-videos/higgsfield/каталог.json)",
+  "aspect": "4:5",
+  "cost": 0,
+  "size": [
+   1080,
+   1351
+  ],
+  "prompt": "Photorealistic editorial photo of a humanoid robot crate being unloaded at a European logistics facility, workers checking documentation, overcast daylight, cinematic color grading, high detail. No text, no logos, no brand names, no watermarks anywhere in the image.",
+  "note": "обрезана тонкая чёрная рамка по краям"
+ }
+}

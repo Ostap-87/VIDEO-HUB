@@ -1,0 +1,128 @@
+{
+ "01.jpg": {
+  "job": "feed4c1e-4c56-485b-968e-30b774f9864c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041619_feed4c1e-4c56-485b-968e-30b774f9864c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright university robotics lab: a black-and-silver five-fingered robotic hand with direct-drive joints and tactile fingertips, mounted on a slim robotic arm, gently holds a ripe strawberry between its fingertips without squeezing, a smiling Russian researcher and a Chinese researcher lean in delighted, wide 4:3 composition, subject centered, delicate wonder mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "catalog": 1,
+  "job": "1647ca47-9b48-47ee-81ba-dc3606958f69",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261002_233810_1647ca47-9b48-47ee-81ba-dc3606958f69.png",
+  "model": "каталог Higgsfield (source-videos/higgsfield/каталог.json)",
+  "aspect": "3:4",
+  "cost": 0,
+  "size": [
+   880,
+   1168
+  ],
+  "prompt": "Professional editorial photograph of a fully automated robotics factory production line assembling humanoid robot bodies, robotic arms installing components on humanoid robot frames, bright industrial lighting, modern Chinese factory interior, photorealistic, high detail. No text, no logos, no brand names, no watermarks anywhere in the image."
+ },
+ "03.jpg": {
+  "job": "3ccacc6a-25d3-42be-830b-9269ff0cc78d",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041914_3ccacc6a-25d3-42be-830b-9269ff0cc78d.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright lab, close view: a black-and-silver five-fingered robotic hand with direct-drive joints and tactile fingertips, exactly four fingers and one thumb, mounted on a robotic arm, makes a precise pinch with its thumb and index finger holding a small shiny steel ball bearing while the other three fingers stay gracefully open at different angles, a smiling Chinese engineer watches in the soft background, wide 4:3 composition, subject centered, nimble precise mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks.",
+  "note": "ретушь: убран значок-искра в правом нижнем углу"
+ },
+ "04.jpg": {
+  "job": "e45d26e1-27f7-4ce8-92c1-8d67a96a7f0f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041619_e45d26e1-27f7-4ce8-92c1-8d67a96a7f0f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright workshop: a black-and-silver five-fingered robotic hand with direct-drive joints and tactile fingertips on a sturdy robotic arm firmly lifts a heavy black kettlebell by its handle, a smiling Russian engineer gives a thumbs up beside it, main subject in the upper half of the frame, the lower third is calm light workbench, vertical 4:5, strong mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "c0225089-cf3b-470a-9a33-097cba40aca6",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041724_c0225089-cf3b-470a-9a33-097cba40aca6.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright office lab: a black-and-silver five-fingered robotic hand with direct-drive joints and tactile fingertips on a robotic arm taps very fast on a blank glowing tablet screen with its index finger, finger slightly motion-blurred, a laughing young Chinese woman holding a plain unbranded smartphone tries to keep up, wide 4:3 composition, subject centered, speedy playful mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks.",
+  "note": "ретушь: убран логотип на телефоне"
+ },
+ "06.jpg": {
+  "job": "3303be87-6fb9-486a-b5d1-c5760ec2b57b",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041724_3303be87-6fb9-486a-b5d1-c5760ec2b57b.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a cozy bright lab kitchen: a black-and-silver five-fingered robotic hand with direct-drive joints and tactile fingertips on a robotic arm gently holds a warm white porcelain cup of tea with light steam rising, its tactile fingertips softly touching the cup, a smiling Chinese researcher holds out a saucer, main subject in the upper half of the frame, the lower third is calm light wooden table, vertical 4:5, gentle sensitive mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "e1223c0a-103d-43b2-9b87-df1099a8b53d",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041725_e1223c0a-103d-43b2-9b87-df1099a8b53d.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a large bright international robotics research lab: several units of a black-and-silver five-fingered robotic hand with direct-drive joints and tactile fingertips mounted on robotic arms along a long white table, smiling young researchers of different nationalities test them with small objects and plain unbranded laptops, wide 4:3 composition, subject centered, busy collaborative mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks.",
+  "note": "ретушь: убраны логотипы на ноутбуках"
+ },
+ "08.jpg": {
+  "job": "5771f3bd-6b5a-4a92-aaa7-ad14712ed9fe",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041725_5771f3bd-6b5a-4a92-aaa7-ad14712ed9fe.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at a bright electronics assembly bench: a white humanoid robot fitted with a black-and-silver five-fingered robotic hand with direct-drive joints and tactile fingertips plugs a tiny connector into a circuit board with precise fingertips, a smiling Chinese technician in a light-blue coat watches, main subject in the upper half of the frame, the lower third is calm light workbench, vertical 4:5, fine precise mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "09.jpg": {
+  "catalog": 41,
+  "job": "cc80ddcd-30ff-44e0-b5bf-a078faad85b4",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261002_105008_cc80ddcd-30ff-44e0-b5bf-a078faad85b4.png",
+  "model": "каталог Higgsfield (source-videos/higgsfield/каталог.json)",
+  "aspect": "3:4",
+  "cost": 0,
+  "size": [
+   880,
+   1168
+  ],
+  "prompt": "Signed business contract and pen on a clean white desk, top view. Photorealistic, corporate documentary style, bright natural light, cool neutral palette (light grey, white, blue accents), clean uncluttered composition, calm lower third for a text overlay, no dark vignette or gradient, no text, no logos, 4:5 vertical"
+ },
+ "_брак-03-1": {
+  "job": "3be8316c-a340-4f8e-bdd0-12f85ae7a0df",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041619_3be8316c-a340-4f8e-bdd0-12f85ae7a0df.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright lab, close view: a black-and-silver five-fingered robotic hand with direct-drive joints and tactile fingertips on a robotic arm solves a plain colorful puzzle cube, each finger bent at a different angle, a smiling Chinese engineer watches in the soft background, wide 4:3 composition, subject centered, nimble mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks.",
+  "note": "брак: кисть с лишними пальцами, перегенерировано"
+ }
+}

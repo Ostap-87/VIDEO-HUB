@@ -1,0 +1,112 @@
+{
+ "01.jpg": {
+  "job": "6e11e231-9d81-41d2-8cea-fe919298ea76",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041417_6e11e231-9d81-41d2-8cea-fe919298ea76.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in the sunny Gobi desert at golden morning light: a 171 cm humanoid robot with an exposed black-and-silver mechanical body, visible metal joint actuators, black five-fingered hands and plain white running sneakers runs along a rocky trail toward the camera, light dust behind its sneakers, a cheering Chinese support team and a Russian engineer in sun hats run alongside by an off-road car, wide 4:3 composition, subject centered, adventurous mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "catalog": 47,
+  "job": "f12c3ba1-9194-4521-a9a2-58cffa675626",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261002_104429_f12c3ba1-9194-4521-a9a2-58cffa675626.png",
+  "model": "каталог Higgsfield (source-videos/higgsfield/каталог.json)",
+  "aspect": "3:4",
+  "cost": 0,
+  "size": [
+   880,
+   1168
+  ],
+  "prompt": "Humanoid robots standing in a bright modern Chinese robotics lab, engineers in background. Photorealistic, corporate documentary style, bright natural light, cool neutral palette (light grey, white, blue accents), clean uncluttered composition, calm lower third for a text overlay, no dark vignette or gradient, no text, no logos, 4:5 vertical"
+ },
+ "03.jpg": {
+  "job": "4d8ab0a4-0ede-405e-8446-2f5bec5ae6b5",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041417_4d8ab0a4-0ede-405e-8446-2f5bec5ae6b5.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a winding dirt road through dry grass and scattered stones in the Gobi: a 171 cm humanoid robot with an exposed black-and-silver mechanical body, visible metal joint actuators, black five-fingered hands and plain white running sneakers runs fast around a bend, legs slightly motion-blurred, a smiling Chinese engineer films it from a slow off-road car, wide 4:3 composition, subject centered, fast free mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "944ccf78-9793-40ba-a1fb-8fe86239a1a9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041418_944ccf78-9793-40ba-a1fb-8fe86239a1a9.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo on a steep rocky hillside under a blue sky: side view of a 171 cm humanoid robot with an exposed black-and-silver mechanical body, visible metal joint actuators, black five-fingered hands and plain white running sneakers bounding up the rocks, the metal knee and hip actuators clearly visible and working hard, a smiling Chinese engineer with a tablet follows below, main subject in the upper half of the frame, the lower third is calm sandy gravel ground, vertical 4:5, powerful mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "38248537-1b27-479c-a2ca-0a8d4ba5f887",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041540_38248537-1b27-479c-a2ca-0a8d4ba5f887.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright robotics test lab: a 171 cm humanoid robot with an exposed black-and-silver mechanical body, visible metal joint actuators, black five-fingered hands and plain white running sneakers jogs on a wide treadmill with its dexterous black hands swinging, a smiling Russian engineer and a Chinese engineer check blurred graphs on a monitor and give a high five, wide 4:3 composition, subject centered, precise testing mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "1a70eb4b-9e96-4455-8ee2-4d4385036b59",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041540_1a70eb4b-9e96-4455-8ee2-4d4385036b59.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo on a green outdoor university test field with low obstacles: a 171 cm humanoid robot with an exposed black-and-silver mechanical body, visible metal joint actuators, black five-fingered hands and plain white running sneakers steps over a wooden beam while young Chinese and Russian researchers with laptops and a measuring wheel cheer, main subject in the upper half of the frame, the lower third is calm green grass, vertical 4:5, research curiosity mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks.",
+  "note": "ретушь: размыты мелкие значки на куртках и ноутбуке"
+ },
+ "07a.jpg": {
+  "job": "e59fb12c-5f42-4235-9929-402ace97edce",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041539_e59fb12c-5f42-4235-9929-402ace97edce.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo in a bright parcel sorting hub: a 171 cm athletic humanoid robot with a white-and-silver shell, black joints, a compact head ringed by a dark camera band and dexterous black five-fingered hands carries a parcel with a blank label in both hands beside a conveyor, a smiling Chinese worker nearby, tall vertical 9:16 composition, subject centered in the upper two thirds, productive mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07b.jpg": {
+  "job": "cc7fe6ab-a00f-421a-9100-c00371d9a4f9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041539_cc7fe6ab-a00f-421a-9100-c00371d9a4f9.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic photo on a rocky desert trail in the Gobi: a 171 cm humanoid robot with an exposed black-and-silver mechanical body, visible metal joint actuators, black five-fingered hands and plain white running sneakers runs toward the camera with dust behind its sneakers, a distant smiling support team, tall vertical 9:16 composition, subject centered in the upper two thirds, adventurous mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "42b05e28-b3ed-4320-9b3f-9301fbe41fcd",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041619_42b05e28-b3ed-4320-9b3f-9301fbe41fcd.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright factory dispatch area: a smiling Chinese worker and a Russian client representative carefully lower a 171 cm humanoid robot with an exposed black-and-silver mechanical body, visible metal joint actuators, black five-fingered hands and plain white running sneakers into a large open hard-shell transport case with grey foam cut to its shape, main subject in the upper half of the frame, the lower third is calm clean grey floor, vertical 4:5, careful delivery mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
