@@ -64,18 +64,18 @@ const ArmScene: React.FC = () => (
   </group>
 );
 
-const HAND_A: V3 = [0.25, 0.55, 0.1];
-const HAND_B: V3 = [-0.45, 0.55, 0.1];
+const HAND_A: V3 = [0.3, 0.55, 0.1];
+const HAND_B: V3 = [-0.4, 0.55, 0.1];
 const RA: V3 = [-1.2, Math.PI / 2, 0];
 const RB: V3 = [-1.15, Math.PI / 2 + 0.45, 0.25];
 const HandScene: React.FC = () => (
-  <group position={[0.1, 0, 0]}>
+  <group>
     <HandStand p={[HAND_A[0], 0, HAND_A[2]]} />
     <HandStand p={[HAND_B[0], 0, HAND_B[2]]} />
     <HandModel
       plan={{
         keys: [
-          {at: 0, pose: "open", p: [0.9, 0.45, -0.1], rot: [0, 0.55, 0]},
+          {at: 0, pose: "open", p: [0.62, 0.78, -0.1], rot: [0, 0.55, 0]},
           {at: 1.0, pose: "open"},
           {at: 1.5, pose: "pinchOpen", p: up(handReach(HAND_A, RA), 0.28), rot: RA},
           {at: 1.9, p: handReach(HAND_A, RA)},
@@ -87,7 +87,7 @@ const HandScene: React.FC = () => (
           {at: 4.4, p: up(handReach(HAND_B, RB), 0.3), pose: "relaxed"},
         ],
         wiggle: [[0.1, 1.0]],
-        items: [{start: HAND_A, size: 0.1, carry: [[2.2, 3.85]]}],
+        items: [{start: HAND_A, size: 0.12, carry: [[2.2, 3.85]]}],
       }}
     />
   </group>
@@ -103,7 +103,7 @@ export const GuestStage: React.FC<{kind: GuestKind; r: GuestRegion; from?: 1 | -
   look = 0.6,
 }) => {
   if (kind === "dog") return null;
-  const cx = kind === "hand" ? -0.1 : 0;
+  const cx = 0;
   return (
     <Stage cam={guestCam(r, cx, look)} left={r.left} top={r.top} width={r.width} height={r.height} dpr={dpr}>
       {kind === "agv" ? <AgvScene from={from} reach={r.width / 2 / r.k + 1.4} leaveAt={leaveAt} /> : null}

@@ -59,7 +59,7 @@ export const introTiming = (guest?: GuestKind) => {
 // гость: во вступлении — справа от большого гуманоида (гуманоид и собака сдвинуты влево), на финале — под слайдом слева от собаки
 const GUEST_HERO: GuestRegion = {left: 600, top: 980, width: 480, height: 620, floor: 560, k: 150};
 const GUEST_END: GuestRegion = {left: 30, top: 1290, width: 700, height: 290, floor: 245, k: 105};
-const GUEST_K: Record<Exclude<GuestKind, "dog">, {hero: number; end: number}> = {agv: {hero: 150, end: 105}, arm: {hero: 125, end: 58}, hand: {hero: 300, end: 150}};
+const GUEST_K: Record<Exclude<GuestKind, "dog">, {hero: number; end: number}> = {agv: {hero: 150, end: 105}, arm: {hero: 150, end: 58}, hand: {hero: 230, end: 150}};
 // гуманоид-ведущий (решение пользователя 12.10.2026: «использовать нового гуманоида и новую робособаку в самом начале»):
 // стоит на месте под правым углом слайда и только поворачивается — к краю (тянет слайд правой рукой) и к зрителю
 const H_HOST = {x: 905, edge: -0.3, home: -Math.PI / 2 - 0.35, scale: 1.08};
@@ -274,7 +274,7 @@ export const CarouselReel: React.FC<CarouselReelProps> = ({brand, slides, host, 
       {sideGuest && t < HERO_T + 0.2 ? (
         // гость во вступлении: справа от гуманоида; AGV уезжает вправо, остальные тают, пока робот и собака уменьшаются
         <AbsoluteFill style={{opacity: g === "agv" ? 1 : interpolate(t, [SHRINK[0] - 0.2, SHRINK[0] + 0.3], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"})}}>
-          <GuestStage kind={g} r={{...GUEST_HERO, k: GUEST_K[g].hero}} from={1} leaveAt={SHRINK[0] - 0.3} />
+          <GuestStage kind={g} r={g === "hand" ? {...GUEST_HERO, left: 560, width: 520, k: GUEST_K.hand.hero} : {...GUEST_HERO, k: GUEST_K[g].hero}} from={1} leaveAt={SHRINK[0] - 0.3} />
         </AbsoluteFill>
       ) : null}
       {sideGuest ? (
