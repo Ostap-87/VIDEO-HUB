@@ -20,11 +20,14 @@ import {STYLES} from "./carousel/kit";
 import {AuraMascot, GESTURE_DUR, smooth, type GestureKind, type MascotPlan, type MascotStay} from "../components/AuraMascot";
 import {AuraBadge} from "../components/AuraBadge";
 import {AuraDog} from "../components/AuraDog";
+import {AuraHumanoidSpot, type HumanoidSpotPlan} from "../components/AuraHumanoidSpot";
+import {H_DUR, type HumanoidGesture} from "../components/aura3d/AuraHumanoid";
 
 export const carouselReelSchema = z.object({
   brand: z.enum(["gtt", "aura"]),
   slides: z.array(z.object({src: z.string(), seconds: z.number()})), // PNG 1080×1350 (путь от корня репозитория) и сколько секунд на экране
   host: z.boolean().optional(), // робот Aura под слайдом вытаскивает слайды из-за правого края
+  hostModel: z.enum(["humanoid", "mascot"]).optional(), // кто ведущий: новый гуманоид из 3D-арсенала (по умолчанию) или маскот сайта
   music: z.object({src: z.string(), volume: z.number(), fadeOut: z.number().optional()}).optional(),
   swipeSfx: z.string().optional(), // звук пролистывания (whoosh из @remotion/sfx)
   guides: z.boolean().optional(), // показать безопасную зону Reels и кадр ленты 4:5
@@ -48,6 +51,11 @@ const DOG_HOME = {x: 760, y: FLOOR, scale: 0.95, face: -0.6}; // под слай
 const BADGE = {x: 540, y: 720, size: 900}; // печать за роботом (верх — у края безопасной зоны)
 const SHRINK: [number, number] = [2.4, HERO]; // робот и собака уменьшаются и переходят под слайд
 const BADGE_OUT: [number, number] = [2.1, 2.7];
+// гуманоид-ведущий (решение пользователя 12.10.2026: «использовать нового гуманоида и новую робособаку в самом начале»):
+// стоит на месте под правым углом слайда и только поворачивается — к краю (тянет слайд правой рукой) и к зрителю
+const H_HOST = {x: 905, edge: -0.3, home: -Math.PI / 2 - 0.35, scale: 1.08};
+const H_HERO = {x: 540, y: 1540, scale: 3.7}; // большой гуманоид: поднятая в приветствии рука — у верха кадра
+const H_TURN = 0.6; // поворот на месте (pathAt в AuraHumanoid)
 
 const hasHost = (p: {host?: boolean; brand: string}) => Boolean(p.host) && p.brand === "aura";
 export const reelSeconds = (p: CarouselReelProps) => p.slides.reduce((a, s) => a + s.seconds, 0) + (hasHost(p) ? INTRO : 0);
@@ -83,12 +91,44 @@ export const hostPlan = (starts: number[], secs: number[]): MascotPlan => {
   return {stays, gestures};
 };
 
-export const CarouselReel: React.FC<CarouselReelProps> = ({brand, slides, host, music, swipeSfx, guides}) => {
+// тот же сценарий для гуманоида: поворот к краю → pull → поворот к зрителю → жест; жесты маскота → жесты гуманоида
+export const humanoidHostPlan = (starts: number[], secs: number[]): HumanoidSpotPlan => {
+  const stays: HumanoidSpotPlan["stays"] = [{at: -10, x: H_HOST.x, face: H_HOST.edge}];
+  const gestures: HumanoidGesture[] = [];
+  const idle: HumanoidGesture["kind"][] = ["nod", "point", "look"];
+  let n = 0;
+  starts.forEach((start, i) => {
+    const pull = Math.max(0, start - PULL_SWIPE - 0.39);
+    if (i > 0) stays.push({at: pull - 0.05, x: H_HOST.x, face: H_HOST.edge});
+    const back = pull + H_DUR.pull + H_TURN;
+    stays.push({at: back, x: H_HOST.x, face: H_HOST.home});
+    gestures.push({at: pull, kind: "pull"});
+    const from = back + 0.05;
+    if (i === 0) {
+      gestures.push({at: from, kind: "wave"});
+      return;
+    }
+    if (i === starts.length - 1) {
+      gestures.push({at: from, kind: "pointUp"}, {at: from + H_DUR.pointUp + 0.2, kind: "wave"});
+      return;
+    }
+    const room = start + secs[i] - PULL_SWIPE - 0.39 - H_TURN - 0.1 - from; // до поворота к краю за следующим слайдом
+    const fit = [...idle.slice(n % idle.length), ...idle].find((k) => H_DUR[k] <= room);
+    if (fit) {
+      gestures.push({at: from, kind: fit});
+      n++;
+    }
+  });
+  return {stays, gestures};
+};
+
+export const CarouselReel: React.FC<CarouselReelProps> = ({brand, slides, host, hostModel, music, swipeSfx, guides}) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames, width} = useVideoConfig();
   const s = STYLES[brand];
   const t = frame / fps;
   const robot = hasHost({host, brand});
+  const human = robot && (hostModel ?? "humanoid") === "humanoid";
   const card = robot ? HOST_CARD : REEL_CARD;
   const swipe = robot ? PULL_SWIPE : SWIPE;
   // начало каждого слайда; пролистывание k → k+1 идёт в последние swipe секунд слайда k; с роботом и первый слайд въезжает
@@ -104,7 +144,8 @@ export const CarouselReel: React.FC<CarouselReelProps> = ({brand, slides, host, 
   });
   const step = card.w + card.gap;
   const left = (width - card.w) / 2;
-  const plan = robot ? hostPlan(starts, slides.map((sl) => sl.seconds)) : null;
+  const plan = robot && !human ? hostPlan(starts, slides.map((sl) => sl.seconds)) : null;
+  const hplan = human ? humanoidHostPlan(starts, slides.map((sl) => sl.seconds)) : null;
   const shrink = smooth(interpolate(t, SHRINK, [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}));
   return (
     <AbsoluteFill style={s.bg}>
@@ -150,6 +191,25 @@ export const CarouselReel: React.FC<CarouselReelProps> = ({brand, slides, host, 
       {robot && t < HERO ? (
         // большой робот и собака: рисуются крупно, уменьшаются CSS-масштабом от точки ступней и едут под слайд
         <>
+          {human ? (
+            <AbsoluteFill
+              style={{
+                transformOrigin: `${H_HERO.x}px ${H_HERO.y}px`,
+                scale: String(interpolate(shrink, [0, 1], [1, H_HOST.scale / H_HERO.scale])),
+                translate: `${(H_HOST.x - H_HERO.x) * shrink}px ${(FLOOR - H_HERO.y) * shrink - Math.sin(Math.PI * shrink) * 90}px`,
+              }}
+            >
+              <AuraHumanoidSpot
+                y={H_HERO.y}
+                scale={H_HERO.scale}
+                dpr={1}
+                plan={{
+                  stays: [{at: -10, x: H_HERO.x, face: -Math.PI / 2 + (H_HOST.edge + Math.PI / 2) * shrink}],
+                  gestures: [{at: -0.6, kind: "wave"}, {at: 2.05, kind: "nod"}],
+                }}
+              />
+            </AbsoluteFill>
+          ) : (
           <AbsoluteFill
             style={{
               transformOrigin: `${HERO_BOT.x}px ${HERO_BOT.y}px`,
@@ -166,6 +226,7 @@ export const CarouselReel: React.FC<CarouselReelProps> = ({brand, slides, host, 
               }}
             />
           </AbsoluteFill>
+          )}
           <AbsoluteFill
             style={{
               transformOrigin: `${DOG_HERO.x}px ${DOG_HERO.y}px`,
@@ -173,12 +234,21 @@ export const CarouselReel: React.FC<CarouselReelProps> = ({brand, slides, host, 
               translate: `${(DOG_HOME.x - DOG_HERO.x) * shrink}px ${(DOG_HOME.y - DOG_HERO.y) * shrink - Math.sin(Math.PI * shrink) * 60}px`,
             }}
           >
-            <AuraDog x={DOG_HERO.x} y={DOG_HERO.y} scale={DOG_HERO.scale} dpr={1} face={DOG_HERO.face + (DOG_HOME.face - DOG_HERO.face) * shrink} hops={[0.9, 1.9]} />
+            <AuraDog
+              x={DOG_HERO.x}
+              y={DOG_HERO.y}
+              scale={DOG_HERO.scale}
+              dpr={1}
+              face={DOG_HERO.face + (DOG_HOME.face - DOG_HERO.face) * shrink}
+              hops={human ? [] : [0.9, 1.9]}
+              stands={human ? [{at: -0.4, dur: 2.5}] : []}
+            />
           </AbsoluteFill>
         </>
       ) : null}
       {robot && t >= HERO ? <AuraDog x={DOG_HOME.x} y={DOG_HOME.y} scale={DOG_HOME.scale} face={DOG_HOME.face} hops={[...starts, starts[starts.length - 1] + 3.1]} /> : null}
       {plan && t >= HERO ? <AuraMascot scale={ROBOT_SCALE} plan={plan} /> : null}
+      {hplan && t >= HERO ? <AuraHumanoidSpot y={FLOOR} scale={H_HOST.scale} plan={hplan} /> : null}
       {music ? (
         <Audio
           src={staticFile(music.src)}

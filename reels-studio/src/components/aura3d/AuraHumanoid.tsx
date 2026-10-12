@@ -13,10 +13,11 @@ import {useCurrentFrame, useVideoConfig} from "remotion";
 import {Box, Capsule, Cyl, Glow, Graphite, Metal, Parchment, RBox, Ring, Seam, Shadow, Sph, Visor, clamp01, pathAt, smooth, type Stay, type V3} from "./kit";
 import {HandRig, POSES, type HandPose} from "./AuraHand";
 
-export type HumanoidGesture = {at: number; kind: "wave" | "point" | "present" | "bow" | "nod" | "look"};
+export type HumanoidGesture = {at: number; kind: "wave" | "point" | "pointUp" | "present" | "bow" | "nod" | "look" | "pull"};
 export type HumanoidPlan = {stays: Stay[]; speed?: number; gestures?: HumanoidGesture[]};
 export const HUMANOID = {hipY: 1.71, hipX: 0.15, L1: 0.82, L2: 0.78, ankle: 0.14, shX: 0.47, shY: 0.73, UA: 0.58, FA: 0.5, hand: 0.4, cycle: 1.1};
-export const H_DUR: Record<HumanoidGesture["kind"], number> = {wave: 2.6, point: 1.9, present: 1.9, bow: 2.0, nod: 1.2, look: 2.4};
+// pull — «вытащить из-за края» (Reels из карусели): правая рука тянется вперёд, на 35 % хватает, тянет на себя, отпускает
+export const H_DUR: Record<HumanoidGesture["kind"], number> = {wave: 2.6, point: 1.9, pointUp: 2.1, present: 1.9, bow: 2.0, nod: 1.2, look: 2.4, pull: 1.1};
 
 type Arm = {flex: number; abd: number; elbow: number; twist: number; hand: HandPose};
 type Leg = {hip: number; knee: number; ankle: number};
@@ -115,6 +116,19 @@ export const humanoidPose = (plan: HumanoidPlan, t: number): HPose => {
       pose.head.pitch += 0.2 * w;
       to(A.R, {flex: 0.05, abd: 0.05, elbow: 0.15});
       to(A.L, {flex: 0.05, abd: 0.05, elbow: 0.15});
+    }
+    if (g.kind === "pointUp") {
+      to(A.R, {flex: 2.15, abd: 0.1, elbow: 0.08}, POSES.point);
+      pose.head.pitch -= 0.12 * w;
+    }
+    if (g.kind === "pull") {
+      // 0–0,35 тянется вперёд раскрытой ладонью, 0,35–0,75 сжимает и тянет на себя (локоть назад, корпус откидывается)
+      const k = smooth(clamp01((p - 0.35) / 0.4));
+      const grip = smooth(clamp01((p - 0.3) / 0.08)) * (1 - smooth(clamp01((p - 0.8) / 0.12)));
+      to(A.R, {flex: 1.5 - 0.95 * k, abd: 0.1, elbow: 0.1 + 1.45 * k, twist: 0.1}, mixHand(POSES.open, POSES.fist, grip));
+      pose.spine.pitch += (0.1 - 0.2 * k) * w;
+      pose.spine.yaw -= 0.15 * k * w;
+      pose.head.pitch += 0.06 * w;
     }
     if (g.kind === "nod") pose.head.pitch += 0.24 * Math.sin(Math.PI * p * 2) * Math.sin(Math.PI * p);
     if (g.kind === "look") pose.head.yaw += 0.6 * Math.sin(2 * Math.PI * p) * w;
