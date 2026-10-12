@@ -37,6 +37,7 @@
 Презентация по туру с сайта собирается автоматически: `python3 презентации/шаблон/from_site.py <tour_id> --build`
 (данные из бандла сайта, факты — дословно из описаний компаний, логотипы с `globaltechtour.ru/logos`, автоподгонка текста
 `fit_check.mjs`); список всех 74 туров и что готово — `презентации/ЭКСПЕДИЦИИ.md`. Робот на фоне страны — поле `robot`.
+Личные документы в стиле сайта ostapdotcenko.ru (не GTT): `презентации/ostapdotcenko/<дата-тема>/index.html` → `python3 презентации/ostapdotcenko/build.py <дата-тема>` (PDF A4 + превью), первое — мини-интро на китайском `2026-10-12-intro-zh`; фото Остапа — `source-videos/фото-от-пользователя/остап/`.
 Типы слайдов: cover, why, layers, route, company, days, cases, benefits, market, conditions, steps, contacts, pitch-teams + pitch-plan (питч-дек на 2 страницы) —
 формат JSON и команды в `презентации/README.md`. Факты — только с сайта globaltechtour.ru или от пользователя,
 нет данных — явная заглушка `[уточнить …]`. Логотипы — из `source-videos/логотипы/` (карточки компаний на сайте
