@@ -1,0 +1,205 @@
+{
+  "brand": "aura",
+  "stories": [
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-agibot-a2-w/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-agibot-a2-w/02.png",
+        "finished-videos/карусели/2026-10-10-foto-agibot-a2-w/03.png"
+      ],
+      "title": "**AgiBot A2-W**",
+      "note": "Гуманоид на колёсах для цеха",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-matrix-1/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-matrix-1/02.png",
+        "finished-videos/карусели/2026-10-10-foto-matrix-1/03.png"
+      ],
+      "title": "**MATRIX-1**",
+      "note": "Большой и выносливый",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-robotera-l7/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-robotera-l7/02.png",
+        "finished-videos/карусели/2026-10-10-foto-robotera-l7/03.png"
+      ],
+      "title": "**Robotera L7**",
+      "note": "Быстрый и рукастый",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-agibot-d1/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-agibot-d1/02.png",
+        "finished-videos/карусели/2026-10-10-foto-agibot-d1/03.png"
+      ],
+      "title": "**AgiBot D1**",
+      "note": "Робопёс с сальто",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-agibot-g2/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-agibot-g2/02.png",
+        "finished-videos/карусели/2026-10-10-foto-agibot-g2/03.png"
+      ],
+      "title": "**AgiBot G2**",
+      "note": "Гуманоид на колёсах",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-agibot-x1/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-agibot-x1/02.png",
+        "finished-videos/карусели/2026-10-10-foto-agibot-x1/03.png"
+      ],
+      "title": "**AgiBot X1**",
+      "note": "Гуманоид с открытым кодом",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-matrix-3/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-matrix-3/02.png",
+        "finished-videos/карусели/2026-10-10-foto-matrix-3/03.png"
+      ],
+      "title": "**MATRIX-3**",
+      "note": "Гуманоид, который чувствует кожей",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-agibot-a2/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-agibot-a2/02.png",
+        "finished-videos/карусели/2026-10-10-foto-agibot-a2/03.png"
+      ],
+      "title": "**AgiBot A2**",
+      "note": "Гуманоид-рекордсмен",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-agibot-x2/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-agibot-x2/02.png",
+        "finished-videos/карусели/2026-10-10-foto-agibot-x2/03.png"
+      ],
+      "title": "**AgiBot X2**",
+      "note": "Маленький, но шустрый",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-10-foto-robotera-lineyka/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-10-foto-robotera-lineyka/02.png",
+        "finished-videos/карусели/2026-10-10-foto-robotera-lineyka/03.png"
+      ],
+      "title": "**Линейка Robotera**",
+      "note": "L7, STAR1, M7, Q5 и кисть XHAND1: кого выбрать",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-12-foto-xhand1/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-12-foto-xhand1/02.png",
+        "finished-videos/карусели/2026-10-12-foto-xhand1/03.png"
+      ],
+      "title": "**XHAND1**",
+      "note": "Кисть для гуманоидов",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-12-foto-unitree-go2/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-12-foto-unitree-go2/02.png",
+        "finished-videos/карусели/2026-10-12-foto-unitree-go2/03.png"
+      ],
+      "title": "**Unitree Go2**",
+      "note": "Робособака на каждый день",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-12-foto-robotera-q5/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-12-foto-robotera-q5/02.png",
+        "finished-videos/карусели/2026-10-12-foto-robotera-q5/03.png"
+      ],
+      "title": "**Robotera Q5**",
+      "note": "Талия уже iPhone",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-12-foto-robotera-m7/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-12-foto-robotera-m7/02.png",
+        "finished-videos/карусели/2026-10-12-foto-robotera-m7/03.png"
+      ],
+      "title": "**Robotera M7**",
+      "note": "L7 без ног",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-12-foto-robotera-star1/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-12-foto-robotera-star1/02.png",
+        "finished-videos/карусели/2026-10-12-foto-robotera-star1/03.png"
+      ],
+      "title": "**Robotera STAR1**",
+      "note": "Бегун по Гоби",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-12-foto-unitree-b2/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-12-foto-unitree-b2/02.png",
+        "finished-videos/карусели/2026-10-12-foto-unitree-b2/03.png"
+      ],
+      "title": "**Unitree B2**",
+      "note": "Промышленный пёс",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-12-foto-unitree-h2/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-12-foto-unitree-h2/02.png",
+        "finished-videos/карусели/2026-10-12-foto-unitree-h2/03.png"
+      ],
+      "title": "**Unitree H2**",
+      "note": "Гуманоид ростом 180 см",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-12-foto-unitree-g1/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-12-foto-unitree-g1/02.png",
+        "finished-videos/карусели/2026-10-12-foto-unitree-g1/03.png"
+      ],
+      "title": "**Unitree G1**",
+      "note": "Гуманоид для лаборатории",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-12-foto-unitree-r1/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-12-foto-unitree-r1/02.png",
+        "finished-videos/карусели/2026-10-12-foto-unitree-r1/03.png"
+      ],
+      "title": "**Unitree R1**",
+      "note": "Гуманоид дешевле машины",
+      "kicker": "Модель дня"
+    },
+    {
+      "cover": "finished-videos/карусели/2026-10-12-foto-unitree-h1/01.png",
+      "back": [
+        "finished-videos/карусели/2026-10-12-foto-unitree-h1/02.png",
+        "finished-videos/карусели/2026-10-12-foto-unitree-h1/03.png"
+      ],
+      "title": "**Unitree H1**",
+      "note": "Гуманоид, который бегает",
+      "kicker": "Модель дня"
+    }
+  ]
+}

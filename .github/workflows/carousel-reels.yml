@@ -1,0 +1,90 @@
+# Reels из каруселей — рендер в GitHub Actions (решение 12.10.2026: 20 Reels Aura за раз; в облаке Claude 4 ядра и ~8 часов,
+# здесь — параллельно, по ролику на машину). Репозиторий публичный — минуты бесплатные.
+# Каждый ролик: scripts/carousel_reel.py <карусель> --guest … --music … → finished-videos/<карусель>-reels.mp4,
+# раскадровка finished-videos/раскадровки/<карусель>-reels.jpg, props reels-studio/props/carousel-reels/<карусель>-reels.json.
+# Последний шаг собирает все ролики и одним коммитом кладёт в main (видео — Git LFS).
+# Запуск: Actions → «Reels из каруселей» → Run workflow → items: JSON-список
+#   [{"name": "2026-10-10-foto-agibot-a2-w", "guest": "agv", "music": "inspiring-ambient-motivation-soundrider"}, …]
+# (guest: agv / arm / hand / dog / "" — без гостя; music — трек из reels-studio/library/music.json).
+name: Reels из каруселей
+
+on:
+  workflow_dispatch:
+    inputs:
+      items:
+        description: 'JSON: [{"name": "<карусель>", "guest": "agv|arm|hand|dog|", "music": "<трек>"}]'
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: carousel-reels
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        item: ${{ fromJSON(inputs.items) }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          lfs: false
+      - name: Звук пролистывания (единственный файл из LFS)
+        run: git lfs pull --include="source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: reels-studio/package-lock.json
+      - name: ffmpeg и Pillow
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+          python3 -m pip install -q pillow
+      - name: npm ci
+        working-directory: reels-studio
+        run: npm ci --no-audit --no-fund
+      - name: Рендер
+        working-directory: reels-studio
+        run: |
+          G="${{ matrix.item.guest }}"
+          python3 scripts/carousel_reel.py "${{ matrix.item.name }}" --music "${{ matrix.item.music }}" --reset ${G:+--guest "$G"}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reels-${{ matrix.item.name }}
+          retention-days: 7
+          path: |
+            finished-videos/${{ matrix.item.name }}-reels.mp4
+            finished-videos/раскадровки/${{ matrix.item.name }}-reels.jpg
+            reels-studio/props/carousel-reels/${{ matrix.item.name }}-reels.json
+
+  commit:
+    needs: render
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          lfs: false
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: reels-*
+          path: _art
+      - name: Положить ролики в репозиторий
+        run: |
+          shopt -s nullglob
+          for d in _art/*/; do cp -r "$d"* . ; done
+          rm -rf _art
+          git lfs install --local
+          git add finished-videos reels-studio/props/carousel-reels
+          if git diff --cached --quiet; then echo "Нечего записывать"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "Reels из каруселей: рендер GitHub Actions $(date -u '+%Y-%m-%d %H:%M') UTC"
+          for i in 1 2 3 4; do git pull --rebase -q && git push -q && exit 0; sleep 8; done
+          exit 1

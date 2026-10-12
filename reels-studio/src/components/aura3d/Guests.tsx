@@ -29,11 +29,11 @@ export const guestCam = (r: GuestRegion, cx = 0, look = 0): Cam => {
 const AgvScene: React.FC<{from: 1 | -1; reach: number; leaveAt?: number}> = ({from, reach, leaveAt}) => {
   const yaw = from > 0 ? Math.PI : 0; // едет передом к центру
   const stays = [
-    {at: 0, x: from * reach, z: 0, yaw},
-    {at: 1.7, x: 0, z: 0, yaw: yaw + from * 0.35},
+    {at: 0, x: from * (leaveAt ? Math.min(reach, 1.1) : reach), z: 0, yaw}, // во вступлении на первом кадре (обложка) AGV уже в кадре
+    {at: 1.3, x: 0, z: 0, yaw: yaw + from * 0.35},
     ...(leaveAt ? [{at: leaveAt, x: 0, z: 0, yaw: yaw + from * 0.35}, {at: leaveAt + 1.6, x: from * reach, z: 0, yaw: yaw + Math.PI}] : []),
   ];
-  return <AgvModel plan={{stays, boxes: 2, lift: [[1.9, 0], [2.4, 1], ...(leaveAt ? ([[leaveAt - 0.4, 1], [leaveAt, 0]] as [number, number][]) : [])]}} />;
+  return <AgvModel plan={{stays, boxes: 2, lift: [[1.5, 0], [2.0, 1], ...(leaveAt ? ([[leaveAt - 0.4, 1], [leaveAt, 0]] as [number, number][]) : [])]}} />;
 };
 
 const PICK: V3 = [1.1, 0.78, 0.75];

@@ -22,12 +22,14 @@ import {AuraBadge} from "../components/AuraBadge";
 import {AuraDog} from "../components/AuraDog";
 import {AuraHumanoidSpot, type HumanoidSpotPlan} from "../components/AuraHumanoidSpot";
 import {H_DUR, type HumanoidGesture} from "../components/aura3d/AuraHumanoid";
+import {GuestStage, type GuestKind, type GuestRegion} from "../components/aura3d/Guests";
 
 export const carouselReelSchema = z.object({
   brand: z.enum(["gtt", "aura"]),
   slides: z.array(z.object({src: z.string(), seconds: z.number()})), // PNG 1080×1350 (путь от корня репозитория) и сколько секунд на экране
   host: z.boolean().optional(), // робот Aura под слайдом вытаскивает слайды из-за правого края
   hostModel: z.enum(["humanoid", "mascot"]).optional(), // кто ведущий: новый гуманоид из 3D-арсенала (по умолчанию) или маскот сайта
+  guest: z.enum(["agv", "arm", "hand", "dog"]).optional(), // гость дня (по кругу): во вступлении рядом с гуманоидом и на финальном слайде
   music: z.object({src: z.string(), volume: z.number(), fadeOut: z.number().optional()}).optional(),
   swipeSfx: z.string().optional(), // звук пролистывания (whoosh из @remotion/sfx)
   guides: z.boolean().optional(), // показать безопасную зону Reels и кадр ленты 4:5
@@ -44,13 +46,20 @@ const HOST = {x: 890, y: FLOOR, face: -0.3}; // дом: справа под сл
 const EDGE = {x: 962, y: FLOOR, face: 1.15}; // у правого края, лицом к краю
 const ROBOT_SCALE = 1.08; // голова заходит на нижний правый угол слайда — там пусто (стрелки «листай» в видео нет)
 const HERO = 3.1; // вступление: большой робот, собака и печать; к этому моменту робот уже маленький у правого края
-const INTRO = HERO + 0.95; // робот сразу тянет первый слайд
+const GUEST_EXTRA = 1.0; // с гостем вступление на секунду дольше — гость успевает показать, что умеет
 const HERO_BOT = {x: 540, y: 1540, scale: 4}; // большой робот: голова у верха безопасной зоны
 const DOG_HERO = {x: 245, y: 1540, scale: 2.6, face: -0.7}; // собака слева у ног робота, мордой к нему и к зрителю
 const DOG_HOME = {x: 760, y: FLOOR, scale: 0.95, face: -0.6}; // под слайдом левее робота
 const BADGE = {x: 540, y: 720, size: 900}; // печать за роботом (верх — у края безопасной зоны)
-const SHRINK: [number, number] = [2.4, HERO]; // робот и собака уменьшаются и переходят под слайд
-const BADGE_OUT: [number, number] = [2.1, 2.7];
+// тайминг вступления: hero — длина, shrink — робот и собака уменьшаются и переходят под слайд, badgeOut — печать тает
+export const introTiming = (guest?: GuestKind) => {
+  const hero = HERO + (guest ? GUEST_EXTRA : 0);
+  return {hero, intro: hero + 0.95, shrink: [hero - 0.7, hero] as [number, number], badgeOut: [hero - 1.0, hero - 0.4] as [number, number]};
+};
+// гость: во вступлении — справа от большого гуманоида (гуманоид и собака сдвинуты влево), на финале — под слайдом слева от собаки
+const GUEST_HERO: GuestRegion = {left: 600, top: 980, width: 480, height: 620, floor: 560, k: 150};
+const GUEST_END: GuestRegion = {left: 30, top: 1290, width: 700, height: 290, floor: 245, k: 105};
+const GUEST_K: Record<Exclude<GuestKind, "dog">, {hero: number; end: number}> = {agv: {hero: 150, end: 105}, arm: {hero: 125, end: 58}, hand: {hero: 300, end: 150}};
 // гуманоид-ведущий (решение пользователя 12.10.2026: «использовать нового гуманоида и новую робособаку в самом начале»):
 // стоит на месте под правым углом слайда и только поворачивается — к краю (тянет слайд правой рукой) и к зрителю
 const H_HOST = {x: 905, edge: -0.3, home: -Math.PI / 2 - 0.35, scale: 1.08};
@@ -58,7 +67,7 @@ const H_HERO = {x: 540, y: 1540, scale: 3.7}; // большой гуманоид
 const H_TURN = 0.6; // поворот на месте (pathAt в AuraHumanoid)
 
 const hasHost = (p: {host?: boolean; brand: string}) => Boolean(p.host) && p.brand === "aura";
-export const reelSeconds = (p: CarouselReelProps) => p.slides.reduce((a, s) => a + s.seconds, 0) + (hasHost(p) ? INTRO : 0);
+export const reelSeconds = (p: CarouselReelProps) => p.slides.reduce((a, s) => a + s.seconds, 0) + (hasHost(p) ? introTiming(p.guest).intro : 0);
 
 // план робота: начала слайдов (с) → где стоит и что делает
 export const hostPlan = (starts: number[], secs: number[]): MascotPlan => {
@@ -122,13 +131,18 @@ export const humanoidHostPlan = (starts: number[], secs: number[]): HumanoidSpot
   return {stays, gestures};
 };
 
-export const CarouselReel: React.FC<CarouselReelProps> = ({brand, slides, host, hostModel, music, swipeSfx, guides}) => {
+export const CarouselReel: React.FC<CarouselReelProps> = ({brand, slides, host, hostModel, guest, music, swipeSfx, guides}) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames, width} = useVideoConfig();
   const s = STYLES[brand];
   const t = frame / fps;
   const robot = hasHost({host, brand});
   const human = robot && (hostModel ?? "humanoid") === "humanoid";
+  const g = robot ? guest : undefined;
+  const {hero: HERO_T, intro: INTRO, shrink: SHRINK, badgeOut: BADGE_OUT} = introTiming(g);
+  const sideGuest = g && g !== "dog"; // гость со своей сценой справа — гуманоид и собака сдвигаются влево
+  const hx = sideGuest ? 430 : H_HERO.x;
+  const dogHero = sideGuest ? {...DOG_HERO, x: 175} : DOG_HERO;
   const card = robot ? HOST_CARD : REEL_CARD;
   const swipe = robot ? PULL_SWIPE : SWIPE;
   // начало каждого слайда; пролистывание k → k+1 идёт в последние swipe секунд слайда k; с роботом и первый слайд въезжает
@@ -188,15 +202,15 @@ export const CarouselReel: React.FC<CarouselReelProps> = ({brand, slides, host, 
           </div>
         </Sequence>
       ) : null}
-      {robot && t < HERO ? (
+      {robot && t < HERO_T ? (
         // большой робот и собака: рисуются крупно, уменьшаются CSS-масштабом от точки ступней и едут под слайд
         <>
           {human ? (
             <AbsoluteFill
               style={{
-                transformOrigin: `${H_HERO.x}px ${H_HERO.y}px`,
+                transformOrigin: `${hx}px ${H_HERO.y}px`,
                 scale: String(interpolate(shrink, [0, 1], [1, H_HOST.scale / H_HERO.scale])),
-                translate: `${(H_HOST.x - H_HERO.x) * shrink}px ${(FLOOR - H_HERO.y) * shrink - Math.sin(Math.PI * shrink) * 90}px`,
+                translate: `${(H_HOST.x - hx) * shrink}px ${(FLOOR - H_HERO.y) * shrink - Math.sin(Math.PI * shrink) * 90}px`,
               }}
             >
               <AuraHumanoidSpot
@@ -204,8 +218,8 @@ export const CarouselReel: React.FC<CarouselReelProps> = ({brand, slides, host, 
                 scale={H_HERO.scale}
                 dpr={1}
                 plan={{
-                  stays: [{at: -10, x: H_HERO.x, face: -Math.PI / 2 + (H_HOST.edge + Math.PI / 2) * shrink}],
-                  gestures: [{at: -0.6, kind: "wave"}, {at: 2.05, kind: "nod"}],
+                  stays: [{at: -10, x: hx, face: -Math.PI / 2 + (H_HOST.edge + Math.PI / 2) * shrink}],
+                  gestures: g ? [{at: -0.6, kind: "wave"}, {at: 2.1, kind: "present"}] : [{at: -0.6, kind: "wave"}, {at: 2.05, kind: "nod"}],
                 }}
               />
             </AbsoluteFill>
@@ -229,26 +243,48 @@ export const CarouselReel: React.FC<CarouselReelProps> = ({brand, slides, host, 
           )}
           <AbsoluteFill
             style={{
-              transformOrigin: `${DOG_HERO.x}px ${DOG_HERO.y}px`,
-              scale: String(interpolate(shrink, [0, 1], [1, DOG_HOME.scale / DOG_HERO.scale])),
-              translate: `${(DOG_HOME.x - DOG_HERO.x) * shrink}px ${(DOG_HOME.y - DOG_HERO.y) * shrink - Math.sin(Math.PI * shrink) * 60}px`,
+              transformOrigin: `${dogHero.x}px ${dogHero.y}px`,
+              scale: String(interpolate(shrink, [0, 1], [1, DOG_HOME.scale / dogHero.scale])),
+              translate: `${(DOG_HOME.x - dogHero.x) * shrink}px ${(DOG_HOME.y - dogHero.y) * shrink - Math.sin(Math.PI * shrink) * 60}px`,
             }}
           >
             <AuraDog
-              x={DOG_HERO.x}
-              y={DOG_HERO.y}
-              scale={DOG_HERO.scale}
+              x={dogHero.x}
+              y={dogHero.y}
+              scale={dogHero.scale}
               dpr={1}
-              face={DOG_HERO.face + (DOG_HOME.face - DOG_HERO.face) * shrink}
+              face={dogHero.face + (DOG_HOME.face - dogHero.face) * shrink}
               hops={human ? [] : [0.9, 1.9]}
-              stands={human ? [{at: -0.4, dur: 2.5}] : []}
+              stands={human && g !== "dog" ? [{at: -0.4, dur: 2.5}] : []}
+              dances={g === "dog" ? [{at: -0.3, dur: 4.0}] : []}
             />
           </AbsoluteFill>
         </>
       ) : null}
-      {robot && t >= HERO ? <AuraDog x={DOG_HOME.x} y={DOG_HOME.y} scale={DOG_HOME.scale} face={DOG_HOME.face} hops={[...starts, starts[starts.length - 1] + 3.1]} /> : null}
-      {plan && t >= HERO ? <AuraMascot scale={ROBOT_SCALE} plan={plan} /> : null}
-      {hplan && t >= HERO ? <AuraHumanoidSpot y={FLOOR} scale={H_HOST.scale} plan={hplan} /> : null}
+      {robot && t >= HERO_T ? (
+        <AuraDog
+          x={DOG_HOME.x}
+          y={DOG_HOME.y}
+          scale={DOG_HOME.scale}
+          face={DOG_HOME.face}
+          hops={g === "dog" ? starts.slice(0, -1) : [...starts, starts[starts.length - 1] + 3.1]}
+          dances={g === "dog" ? [{at: starts[starts.length - 1] + 1.0, dur: 4.0}] : []}
+        />
+      ) : null}
+      {sideGuest && t < HERO_T + 0.2 ? (
+        // гость во вступлении: справа от гуманоида; AGV уезжает вправо, остальные тают, пока робот и собака уменьшаются
+        <AbsoluteFill style={{opacity: g === "agv" ? 1 : interpolate(t, [SHRINK[0] - 0.2, SHRINK[0] + 0.3], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"})}}>
+          <GuestStage kind={g} r={{...GUEST_HERO, k: GUEST_K[g].hero}} from={1} leaveAt={SHRINK[0] - 0.3} />
+        </AbsoluteFill>
+      ) : null}
+      {sideGuest ? (
+        // гость на финальном слайде: под слайдом слева от собаки
+        <Sequence from={Math.round((starts[starts.length - 1] + 1.0) * fps)} premountFor={fps}>
+          <GuestStage kind={g} r={{...GUEST_END, k: GUEST_K[g].end}} from={-1} dpr={2} />
+        </Sequence>
+      ) : null}
+      {plan && t >= HERO_T ? <AuraMascot scale={ROBOT_SCALE} plan={plan} /> : null}
+      {hplan && t >= HERO_T ? <AuraHumanoidSpot y={FLOOR} scale={H_HOST.scale} plan={hplan} /> : null}
       {music ? (
         <Audio
           src={staticFile(music.src)}

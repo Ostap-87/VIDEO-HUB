@@ -82,6 +82,14 @@ python3 scripts/matte.py ../source-videos/…/_work/клип.cut.mp4 --ranges �
 ```
 Склейка точная по кадрам (без рассинхрона), голос — шумодав DeepFilterNet3 + студийный эквалайзер, −14 LUFS.
 
+### Reels из карусели Aura: гость дня и рендер пачкой
+
+```bash
+npm run carousel-reel -- 2026-10-10-foto-agibot-a2-w --guest agv --music inspiring-ambient-motivation-soundrider
+```
+Гости по кругу: `agv` → `arm` → `hand` → `dog`. 20 роликов сразу — GitHub → Actions → «Reels из каруселей» → Run workflow,
+в `items` JSON-список `[{"name": "<карусель>", "guest": "agv", "music": "<трек>"}, …]`; готовые ролики сами придут в main.
+
 ## Карусели Instagram
 
 ```bash

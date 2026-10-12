@@ -7,6 +7,7 @@ API Instagram не ставит музыку к каруселям — поэт�
   npm run carousel-reel -- <имя> --seconds 4      # одинаково на каждый слайд (без поля — по длине текста слайда)
   npm run carousel-reel -- <имя> --guides         # проверочный кадр: безопасная зона Reels и кадр ленты 4:5
   npm run carousel-reel -- <имя> --no-host        # Aura без живого робота-ведущего (робот остаётся картинкой на слайдах)
+  npm run carousel-reel -- <имя> --guest agv      # гость дня Aura: agv / arm / hand / dog (по кругу, решение пользователя 12.10.2026)
 
 Aura по умолчанию — с роботом-ведущим (`host`): 3D-робот стоит справа под слайдом и «вытаскивает» каждый слайд (начиная
 с первого) из-за правого края — вперёд, как листают карусель; после обложки машет, на финале показывает на кнопку и машет
@@ -35,6 +36,8 @@ ap.add_argument("--seconds", type=float, help="одинаково секунд �
 ap.add_argument("--guides", action="store_true", help="проверочный кадр с безопасной зоной Reels")
 ap.add_argument("--reset", action="store_true", help="пересчитать секунды, даже если props уже есть")
 ap.add_argument("--no-host", action="store_true", help="Aura без робота-ведущего")
+ap.add_argument("--guest", choices=["agv", "arm", "hand", "dog"], help="гость дня Aura: во вступлении и на финальном слайде")
+ap.add_argument("--host-model", choices=["humanoid", "mascot"], help="ведущий Aura: новый гуманоид (по умолчанию) или маскот сайта")
 a = ap.parse_args()
 name = a.name.removesuffix(".json")
 music_id, fixed, guides, reset = a.music, a.seconds, a.guides, a.reset
@@ -105,6 +108,10 @@ props = {
 }
 if host:
     props["host"] = True
+    if a.host_model:
+        props["hostModel"] = a.host_model
+    if a.guest:
+        props["guest"] = a.guest
 if guides:
     props["guides"] = True
 reel_props.parent.mkdir(parents=True, exist_ok=True)
@@ -130,4 +137,5 @@ board = ROOT / "finished-videos" / "раскадровки" / f"{reel_name}.jpg"
 board.parent.mkdir(parents=True, exist_ok=True)
 shutil.copy(work / f"{reel_name}.jpg", board)
 mb = out.stat().st_size / 1e6
-print(f"REELS {out.relative_to(ROOT)} ({total + (4.05 if host else 0):.1f} с, {mb:.1f} МБ), раскадровка {board.relative_to(ROOT)}")
+intro = (4.05 + (1.0 if a.guest else 0.0)) if host else 0.0  # вступление (introTiming в CarouselReel.tsx)
+print(f"REELS {out.relative_to(ROOT)} ({total + intro:.1f} с, {mb:.1f} МБ), раскадровка {board.relative_to(ROOT)}")
