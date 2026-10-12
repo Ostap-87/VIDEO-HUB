@@ -87,7 +87,9 @@ python3 scripts/matte.py ../source-videos/…/_work/клип.cut.mp4 --ranges �
 ```bash
 npx remotion render src/index.ts StoryReel ../finished-videos/stories/2026-10-12-aura-intro-reels-story-aura.mp4 --props=./props/stories/2026-10-12-aura-intro-reels-story-aura.json
 ```
-Ролик в карточке, сверху кикер и заголовок, снизу плашка («Весь ролик — в профиле» или @аккаунт). До 60 секунд.
+Ролик в карточке, сверху кикер и заголовок, снизу плашка (адрес сайта или @аккаунт). До 60 секунд.
+Видео-тизер (анонс завтрашней модели) — кусок ролика: в props `from` (с какой секунды) и `seconds` (длина, 10–12 с), пример —
+`props/stories/пример-тизер-aura.json`.
 
 ### Reels из карусели Aura: гость дня и рендер пачкой
 
