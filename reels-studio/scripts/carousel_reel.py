@@ -6,6 +6,10 @@ API Instagram не ставит музыку к каруселям — поэт�
   npm run carousel-reel -- <имя> --music inspiring-ambient-motivation-soundrider   # трек из library/music.json
   npm run carousel-reel -- <имя> --seconds 4      # одинаково на каждый слайд (без поля — по длине текста слайда)
   npm run carousel-reel -- <имя> --guides         # проверочный кадр: безопасная зона Reels и кадр ленты 4:5
+  npm run carousel-reel -- <имя> --no-host        # Aura без живого робота-ведущего (робот остаётся картинкой на слайдах)
+
+Aura по умолчанию — с роботом-ведущим (`host`): 3D-робот стоит под слайдом и «вытаскивает» каждый следующий слайд из-за
+левого края, на обложке машет, на финале показывает на кнопку и машет на прощание; со слайдов робот-картинка убирается.
 
 Что делает: рендерит видео-версию слайдов (`"video": true` — без стрелки «листай») в finished-videos/frames/ (в git не идут),
 пишет props/carousel-reels/<имя>-reels.json (секунды слайдов можно поправить там руками — при повторном запуске они
@@ -28,6 +32,7 @@ ap.add_argument("--music", default="upbeat-corporate-soundrider", help="трек
 ap.add_argument("--seconds", type=float, help="одинаково секунд на слайд (без поля — по длине текста)")
 ap.add_argument("--guides", action="store_true", help="проверочный кадр с безопасной зоной Reels")
 ap.add_argument("--reset", action="store_true", help="пересчитать секунды, даже если props уже есть")
+ap.add_argument("--no-host", action="store_true", help="Aura без робота-ведущего")
 a = ap.parse_args()
 name = a.name.removesuffix(".json")
 music_id, fixed, guides, reset = a.music, a.seconds, a.guides, a.reset
@@ -49,7 +54,8 @@ def words(sl: dict) -> int:
 def seconds(sl: dict, last: bool) -> float:
     # ~2 с на «увидеть» слайд + 0,11 с на слово, от 3,5 до 5,5 с; финал — на секунду дольше
     s = fixed if fixed else min(5.5, max(3.5, 2.0 + 0.11 * words(sl)))
-    return math.ceil(s * 2) / 2 + (1.0 if last else 0.0)
+    s = math.ceil(s * 2) / 2 + (1.0 if last else 0.0)
+    return max(s, 6.0) if last and host else s  # с роботом на финале: показать на кнопку и помахать
 
 
 def lufs(path: pathlib.Path) -> float:
@@ -58,7 +64,11 @@ def lufs(path: pathlib.Path) -> float:
 
 
 data = json.loads(src_props.read_text())
+host = data["brand"] == "aura" and not a.no_host
 data["video"] = True
+if host:  # робот — живой, под слайдом; на самих слайдах его нет
+    for sl in data["slides"]:
+        sl["mascot"] = "none"
 data.pop("guides", None)
 work.mkdir(parents=True, exist_ok=True)
 vprops = work / f"_carousel-reel-{name}.json"
@@ -89,13 +99,15 @@ props = {
     "music": {"src": track, "volume": vol, "fadeOut": 1.6},
     "swipeSfx": SFX,
 }
+if host:
+    props["host"] = True
 if guides:
     props["guides"] = True
 reel_props.parent.mkdir(parents=True, exist_ok=True)
 if not guides:
     reel_props.write_text(json.dumps(props, ensure_ascii=False, indent=2) + "\n")
 total = sum(secs)
-print(f"▶ ролик {total:.1f} с: {', '.join(f'{s:g}' for s in secs)}; музыка {music_id}, громкость {vol}")
+print(f"▶ ролик {total:.1f} с: {', '.join(f'{s:g}' for s in secs)}; музыка {music_id}, громкость {vol}" + ("; робот-ведущий" if host else ""))
 
 if guides:
     gp = work / f"_carousel-reel-{name}-зоны.json"
