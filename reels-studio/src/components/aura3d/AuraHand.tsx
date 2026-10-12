@@ -153,6 +153,39 @@ const Digit: React.FC<{lens: V3; curls: V3; i?: number; w?: number}> = ({lens, c
   );
 };
 
+// кисть без предплечья: ладонь, четыре пальца и большой — по позе (её же ставит гуманоид AuraHumanoid, масштабом ~0,33)
+export const HandRig: React.FC<{pose: HandPose}> = ({pose}) => (
+  <>
+    {/* ладонь: графитовый каркас сужается к запястью, пергаментная тыльная накладка, костяшки на графитовой оси */}
+    <RBox s={[0.44, 0.3, 0.11]} r={0.05} p={[0, 0.45, -0.01]}>
+      <Graphite cc={1} />
+    </RBox>
+    <RBox s={[0.34, 0.22, 0.1]} r={0.05} p={[0.02, 0.22, -0.01]}>
+      <Graphite cc={1} />
+    </RBox>
+    <RBox s={[0.39, 0.3, 0.045]} r={0.1} p={[0.01, 0.44, 0.05]}>
+      <Parchment />
+    </RBox>
+    <RBox s={[0.28, 0.18, 0.04]} r={0.08} p={[0.03, 0.21, 0.045]}>
+      <Parchment />
+    </RBox>
+    <Cyl a={0.04} b={0.04} h={0.44} p={[0, 0.6, 0]} r={[0, 0, Math.PI / 2]}>
+      <Graphite cc={1} />
+    </Cyl>
+    <RBox s={[0.15, 0.2, 0.08]} r={0.04} p={[-0.16, 0.27, -0.05]} rot={[0, 0, 0.35]}>
+      <Parchment />
+    </RBox>
+    {HAND.fingers.map((F, k) => (
+      <group key={k} position={F.base} rotation={[0, 0, F.spread]}>
+        <Digit lens={F.lens} curls={pose.f[k]} w={k === 3 ? 0.88 : 1} />
+      </group>
+    ))}
+    <group position={HAND.thumb.base} rotation={new THREE.Euler(pose.th[0], pose.th[1], pose.th[2], "XYZ")}>
+      <Digit lens={HAND.thumb.lens} curls={[pose.th[3], pose.th[4], pose.th[5]]} w={1.08} />
+    </group>
+  </>
+);
+
 export const HandModel: React.FC<{plan: HandPlan; t?: number}> = ({plan, t: tProp}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -175,33 +208,7 @@ export const HandModel: React.FC<{plan: HandPlan; t?: number}> = ({plan, t: tPro
         <Ring r={0.125} tube={0.008} p={[0, 0.03, 0]} rot={[Math.PI / 2, 0, 0]}>
           <Glow k={2} />
         </Ring>
-        {/* ладонь: графитовый каркас сужается к запястью, пергаментная тыльная накладка, костяшки на графитовой оси */}
-        <RBox s={[0.44, 0.3, 0.11]} r={0.05} p={[0, 0.45, -0.01]}>
-          <Graphite cc={1} />
-        </RBox>
-        <RBox s={[0.34, 0.22, 0.1]} r={0.05} p={[0.02, 0.22, -0.01]}>
-          <Graphite cc={1} />
-        </RBox>
-        <RBox s={[0.39, 0.3, 0.045]} r={0.1} p={[0.01, 0.44, 0.05]}>
-          <Parchment />
-        </RBox>
-        <RBox s={[0.28, 0.18, 0.04]} r={0.08} p={[0.03, 0.21, 0.045]}>
-          <Parchment />
-        </RBox>
-        <Cyl a={0.04} b={0.04} h={0.44} p={[0, 0.6, 0]} r={[0, 0, Math.PI / 2]}>
-          <Graphite cc={1} />
-        </Cyl>
-        <RBox s={[0.15, 0.2, 0.08]} r={0.04} p={[-0.16, 0.27, -0.05]} rot={[0, 0, 0.35]}>
-          <Parchment />
-        </RBox>
-        {HAND.fingers.map((F, k) => (
-          <group key={k} position={F.base} rotation={[0, 0, F.spread]}>
-            <Digit lens={F.lens} curls={pose.f[k]} w={k === 3 ? 0.88 : 1} />
-          </group>
-        ))}
-        <group position={HAND.thumb.base} rotation={new THREE.Euler(pose.th[0], pose.th[1], pose.th[2], "XYZ")}>
-          <Digit lens={HAND.thumb.lens} curls={[pose.th[3], pose.th[4], pose.th[5]]} w={1.08} />
-        </group>
+        <HandRig pose={pose} />
       </group>
       {(plan.items ?? []).map((it, k) => {
         const size = it.size ?? 0.1;

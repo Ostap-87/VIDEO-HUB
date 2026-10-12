@@ -10,6 +10,7 @@ import {ArmModel, HOME} from "../components/aura3d/AuraArm";
 import {Pedestal} from "../components/aura3d/kit";
 import {DogModel} from "../components/aura3d/AuraDog";
 import {HandModel, HandStand, handReach} from "../components/aura3d/AuraHand";
+import {HumanoidModel} from "../components/aura3d/AuraHumanoid";
 import type {V3} from "../components/aura3d/kit";
 
 const s = STYLES.aura;
@@ -34,7 +35,7 @@ const Segment: React.FC<{dur: number; cam: Cam; kicker: string; title: string; c
   );
 };
 
-export const SHOWCASE = {agv: 8, arm: 9, dog: 11, hand: 9.5};
+export const SHOWCASE = {humanoid: 12, agv: 8, arm: 9, dog: 11, hand: 9.5};
 export const showcaseSeconds = () => Object.values(SHOWCASE).reduce((a, b) => a + b, 0);
 
 export const Aura3DShowcase: React.FC = () => {
@@ -42,7 +43,26 @@ export const Aura3DShowcase: React.FC = () => {
   return (
     <AbsoluteFill style={s.bg}>
       <AbsoluteFill style={s.pattern} />
-      <Sequence from={0} durationInFrames={SHOWCASE.agv * fps} premountFor={fps}>
+      <Sequence from={0} durationInFrames={SHOWCASE.humanoid * fps} premountFor={fps}>
+        <Segment dur={SHOWCASE.humanoid} cam={{pos: [1.9, 2.6, 11.4], target: [0, 1.95, 0], fov: 30}} kicker="3D · Aura Robotics" title="Гуманоид">
+          <HumanoidModel
+            plan={{
+              stays: [
+                {at: 0, x: -4.6, z: 0, yaw: 0},
+                {at: 3.4, x: 0, z: 0, yaw: 0},
+                {at: 4.0, x: 0, z: 0, yaw: -Math.PI / 2},
+              ],
+              gestures: [
+                {at: 4.0, kind: "wave"},
+                {at: 6.7, kind: "present"},
+                {at: 8.7, kind: "point"},
+                {at: 10.4, kind: "bow"},
+              ],
+            }}
+          />
+        </Segment>
+      </Sequence>
+      <Sequence from={SHOWCASE.humanoid * fps} durationInFrames={SHOWCASE.agv * fps} premountFor={fps}>
         <Segment dur={SHOWCASE.agv} cam={{pos: [6.2, 5.2, 9.5], target: [0, 0.3, 0], fov: 30}} kicker="3D · Aura Robotics" title="AGV подвозит коробки">
           <AgvModel
             plan={{
@@ -64,7 +84,7 @@ export const Aura3DShowcase: React.FC = () => {
           <CargoBox p={[-2.6, 0.21, -1.6]} rot={[0, 0.3, 0]} />
         </Segment>
       </Sequence>
-      <Sequence from={SHOWCASE.agv * fps} durationInFrames={SHOWCASE.arm * fps} premountFor={fps}>
+      <Sequence from={(SHOWCASE.humanoid + SHOWCASE.agv) * fps} durationInFrames={SHOWCASE.arm * fps} premountFor={fps}>
         <Segment dur={SHOWCASE.arm} cam={{pos: [8.4, 3.9, 9.4], target: [0.6, 1.25, 0], fov: 32}} kicker="3D · Aura Robotics" title="Манипулятор">
           <Pedestal p={[1.75, 0, 0.95]} />
           <Pedestal p={[1.75, 0, -0.95]} />
@@ -90,7 +110,7 @@ export const Aura3DShowcase: React.FC = () => {
           />
         </Segment>
       </Sequence>
-      <Sequence from={(SHOWCASE.agv + SHOWCASE.arm) * fps} durationInFrames={SHOWCASE.dog * fps} premountFor={fps}>
+      <Sequence from={(SHOWCASE.humanoid + SHOWCASE.agv + SHOWCASE.arm) * fps} durationInFrames={SHOWCASE.dog * fps} premountFor={fps}>
         <Segment dur={SHOWCASE.dog} cam={{pos: [1.2, 2.0, 7.2], target: [0, 0.75, 0], fov: 30}} kicker="3D · Aura Robotics" title="Робособака">
           <DogModel
             plan={{
@@ -109,7 +129,7 @@ export const Aura3DShowcase: React.FC = () => {
           />
         </Segment>
       </Sequence>
-      <Sequence from={(SHOWCASE.agv + SHOWCASE.arm + SHOWCASE.dog) * fps} durationInFrames={SHOWCASE.hand * fps} premountFor={fps}>
+      <Sequence from={(SHOWCASE.humanoid + SHOWCASE.agv + SHOWCASE.arm + SHOWCASE.dog) * fps} durationInFrames={SHOWCASE.hand * fps} premountFor={fps}>
         <Segment dur={SHOWCASE.hand} cam={{pos: [0.5, 1.75, 6.6], target: [-0.15, 0.8, 0], fov: 30}} kicker="3D · Aura Robotics" title="Роборука">
           <HandStand p={[HAND_A[0], 0, HAND_A[2]]} />
           <HandStand p={[HAND_B[0], 0, HAND_B[2]]} />
