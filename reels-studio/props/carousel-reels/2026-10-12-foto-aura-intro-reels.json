@@ -36,7 +36,7 @@
     },
     {
       "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-aura-intro/09.png",
-      "seconds": 5.0
+      "seconds": 6.0
     }
   ],
   "music": {
@@ -44,5 +44,6 @@
     "volume": 0.77,
     "fadeOut": 1.6
   },
-  "swipeSfx": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav"
+  "swipeSfx": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+  "host": true
 }
