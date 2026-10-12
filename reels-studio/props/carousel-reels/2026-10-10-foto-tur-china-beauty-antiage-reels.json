@@ -1,0 +1,44 @@
+{
+  "_": "Reels из карусели props/carousels/2026-10-10-foto-tur-china-beauty-antiage.json (scripts/carousel_reel.py). Секунды слайдов можно править здесь.",
+  "brand": "gtt",
+  "slides": [
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-tur-china-beauty-antiage/01.png",
+      "seconds": 4.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-tur-china-beauty-antiage/02.png",
+      "seconds": 4.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-tur-china-beauty-antiage/03.png",
+      "seconds": 5.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-tur-china-beauty-antiage/04.png",
+      "seconds": 3.5
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-tur-china-beauty-antiage/05.png",
+      "seconds": 5.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-tur-china-beauty-antiage/06.png",
+      "seconds": 5.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-tur-china-beauty-antiage/07.png",
+      "seconds": 4.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-tur-china-beauty-antiage/08.png",
+      "seconds": 5.5
+    }
+  ],
+  "music": {
+    "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+    "volume": 0.55,
+    "fadeOut": 1.6
+  },
+  "swipeSfx": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav"
+}
