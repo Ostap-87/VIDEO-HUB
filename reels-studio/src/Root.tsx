@@ -18,6 +18,7 @@ import announceSample from "../props/announces/пример-gtt.json";
 import {CarouselReel, carouselReelSchema, reelSeconds, type CarouselReelProps} from "./compositions/CarouselReel";
 import carouselReelSample from "../props/carousel-reels/пример-aura.json";
 import {Aura3DShowcase, showcaseSeconds} from "./compositions/Aura3DShowcase";
+import {GttIntro, gttIntroSchema, gttIntroSeconds, type GttIntroProps} from "./compositions/GttIntro";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -93,6 +94,17 @@ export const RemotionRoot: React.FC = () => {
         schema={carouselReelSchema}
         defaultProps={carouselReelSample as CarouselReelProps}
         calculateMetadata={({props}: {props: CarouselReelProps}) => ({durationInFrames: Math.round(reelSeconds(props) * 30)})}
+      />
+      <Composition
+        id="GttIntro"
+        component={GttIntro}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={54}
+        schema={gttIntroSchema}
+        defaultProps={{variant: "shards", mode: "intro"} as GttIntroProps}
+        calculateMetadata={({props}: {props: GttIntroProps}) => ({durationInFrames: Math.round(gttIntroSeconds(props.mode) * 30)})}
       />
       <Composition id="Aura3DShowcase" component={Aura3DShowcase} width={1080} height={1920} fps={30} durationInFrames={Math.round(showcaseSeconds() * 30)} />
       <Composition id="FlagTest" component={FlagTest} width={1080} height={1920} fps={30} durationInFrames={300} />
