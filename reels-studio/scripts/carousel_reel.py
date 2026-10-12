@@ -138,4 +138,5 @@ board.parent.mkdir(parents=True, exist_ok=True)
 shutil.copy(work / f"{reel_name}.jpg", board)
 mb = out.stat().st_size / 1e6
 intro = (4.05 + (1.0 if a.guest else 0.0)) if host else 0.0  # вступление (introTiming в CarouselReel.tsx)
+intro += (44 + 35) / 30 if data["brand"] == "gtt" else 0.0       # заставка GTT в начале и в конце
 print(f"REELS {out.relative_to(ROOT)} ({total + intro:.1f} с, {mb:.1f} МБ), раскадровка {board.relative_to(ROOT)}")

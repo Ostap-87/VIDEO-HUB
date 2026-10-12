@@ -23,6 +23,7 @@ import {AuraDog} from "../components/AuraDog";
 import {AuraHumanoidSpot, type HumanoidSpotPlan} from "../components/AuraHumanoidSpot";
 import {H_DUR, type HumanoidGesture} from "../components/aura3d/AuraHumanoid";
 import {GuestStage, type GuestKind, type GuestRegion} from "../components/aura3d/Guests";
+import {GttIntro} from "./GttIntro";
 
 export const carouselReelSchema = z.object({
   brand: z.enum(["gtt", "aura"]),
@@ -30,6 +31,7 @@ export const carouselReelSchema = z.object({
   host: z.boolean().optional(), // робот Aura под слайдом вытаскивает слайды из-за правого края
   hostModel: z.enum(["humanoid", "mascot"]).optional(), // кто ведущий: новый гуманоид из 3D-арсенала (по умолчанию) или маскот сайта
   guest: z.enum(["agv", "arm", "hand", "dog"]).optional(), // гость дня (по кругу): во вступлении рядом с гуманоидом и на финальном слайде
+  bumper: z.boolean().optional(), // GTT: фирменная заставка (осколки) в начале и в конце; по умолчанию у GTT есть, false — без неё
   music: z.object({src: z.string(), volume: z.number(), fadeOut: z.number().optional()}).optional(),
   swipeSfx: z.string().optional(), // звук пролистывания (whoosh из @remotion/sfx)
   guides: z.boolean().optional(), // показать безопасную зону Reels и кадр ленты 4:5
@@ -67,7 +69,34 @@ const H_HERO = {x: 540, y: 1540, scale: 3.7}; // большой гуманоид
 const H_TURN = 0.6; // поворот на месте (pathAt в AuraHumanoid)
 
 const hasHost = (p: {host?: boolean; brand: string}) => Boolean(p.host) && p.brand === "aura";
-export const reelSeconds = (p: CarouselReelProps) => p.slides.reduce((a, s) => a + s.seconds, 0) + (hasHost(p) ? introTiming(p.guest).intro : 0);
+// заставка GTT (как в TalkReelPro): интро 54 кадра, аутро 45, перекрытие с роликом по 10 кадров
+const BUMPER = {intro: 54, outro: 45, overlap: 10};
+const hasBumper = (p: {brand: string; bumper?: boolean}) => p.brand === "gtt" && p.bumper !== false;
+export const reelSeconds = (p: CarouselReelProps) =>
+  p.slides.reduce((a, s) => a + s.seconds, 0) +
+  (hasHost(p) ? introTiming(p.guest).intro : 0) +
+  (hasBumper(p) ? (BUMPER.intro + BUMPER.outro - 2 * BUMPER.overlap) / 30 : 0);
+
+// GTT: ролик идёт после интро-заставки и уходит в аутро (решение пользователя 12.10.2026 — заставка в начале и конце каждого ролика)
+export const CarouselReel: React.FC<CarouselReelProps> = (p) => {
+  const {durationInFrames} = useVideoConfig();
+  if (!hasBumper(p)) return <CarouselReelBody {...p} />;
+  const lead = BUMPER.intro - BUMPER.overlap;
+  const main = durationInFrames - lead - (BUMPER.outro - BUMPER.overlap);
+  return (
+    <AbsoluteFill style={{backgroundColor: "#EEEEF2"}}>
+      <Sequence from={lead} durationInFrames={main} name="Ролик">
+        <CarouselReelBody {...p} />
+      </Sequence>
+      <Sequence from={0} durationInFrames={BUMPER.intro} name="Заставка: интро">
+        <GttIntro variant="shards" mode="intro" transparent />
+      </Sequence>
+      <Sequence from={lead + main - BUMPER.overlap} durationInFrames={BUMPER.outro} name="Заставка: аутро">
+        <GttIntro variant="shards" mode="outro" transparent />
+      </Sequence>
+    </AbsoluteFill>
+  );
+};
 
 // план робота: начала слайдов (с) → где стоит и что делает
 export const hostPlan = (starts: number[], secs: number[]): MascotPlan => {
@@ -131,7 +160,7 @@ export const humanoidHostPlan = (starts: number[], secs: number[]): HumanoidSpot
   return {stays, gestures};
 };
 
-export const CarouselReel: React.FC<CarouselReelProps> = ({brand, slides, host, hostModel, guest, music, swipeSfx, guides}) => {
+const CarouselReelBody: React.FC<CarouselReelProps> = ({brand, slides, host, hostModel, guest, music, swipeSfx, guides}) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames, width} = useVideoConfig();
   const s = STYLES[brand];
