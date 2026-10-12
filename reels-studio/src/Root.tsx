@@ -15,6 +15,8 @@ import {TalkReelPro, talkReelProSchema, type TalkReelProProps} from "./compositi
 import talkProSample from "../props/2026-10-07-byt-tehnika-v3.json";
 import {StoryAnnounce, storyAnnounceSchema, type StoryAnnounceProps} from "./compositions/StoryAnnounce";
 import announceSample from "../props/announces/пример-gtt.json";
+import {CarouselReel, carouselReelSchema, reelSeconds, type CarouselReelProps} from "./compositions/CarouselReel";
+import carouselReelSample from "../props/carousel-reels/пример-aura.json";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -79,6 +81,17 @@ export const RemotionRoot: React.FC = () => {
         schema={storyAnnounceSchema}
         defaultProps={announceSample as StoryAnnounceProps}
         calculateMetadata={({props}: {props: StoryAnnounceProps}) => ({durationInFrames: props.stories.length})}
+      />
+      <Composition
+        id="CarouselReel"
+        component={CarouselReel}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={30 * 20}
+        schema={carouselReelSchema}
+        defaultProps={carouselReelSample as CarouselReelProps}
+        calculateMetadata={({props}: {props: CarouselReelProps}) => ({durationInFrames: Math.round(reelSeconds(props) * 30)})}
       />
       <Composition id="FlagTest" component={FlagTest} width={1080} height={1920} fps={30} durationInFrames={300} />
       <Composition id="AuraPreview" component={AuraPreview} width={VIDEO.width} height={VIDEO.height} fps={VIDEO.fps} durationInFrames={VIDEO.fps * 15} />

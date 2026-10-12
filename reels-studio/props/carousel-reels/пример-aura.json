@@ -1,0 +1,39 @@
+{
+  "_": "Пример CarouselReel (Reels из карусели). Свой ролик собирает scripts/carousel_reel.py: npm run carousel-reel -- <карусель>",
+  "brand": "aura",
+  "slides": [
+    {
+      "src": "finished-videos/карусели/пример-фото-aura/01.png",
+      "seconds": 3.5
+    },
+    {
+      "src": "finished-videos/карусели/пример-фото-aura/02.png",
+      "seconds": 3.5
+    },
+    {
+      "src": "finished-videos/карусели/пример-фото-aura/03.png",
+      "seconds": 3.5
+    },
+    {
+      "src": "finished-videos/карусели/пример-фото-aura/04.png",
+      "seconds": 3.5
+    },
+    {
+      "src": "finished-videos/карусели/пример-фото-aura/05.png",
+      "seconds": 3.5
+    },
+    {
+      "src": "finished-videos/карусели/пример-фото-aura/06.png",
+      "seconds": 3.5
+    },
+    {
+      "src": "finished-videos/карусели/пример-фото-aura/07.png",
+      "seconds": 3.5
+    }
+  ],
+  "music": {
+    "src": "интернет-материалы/музыка/upbeat-corporate-soundrider.mp3",
+    "volume": 0.7
+  },
+  "swipeSfx": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav"
+}

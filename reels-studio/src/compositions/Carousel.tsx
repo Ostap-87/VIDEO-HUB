@@ -245,11 +245,11 @@ const Footer: React.FC<{s: Style; last: boolean}> = ({s, last}) => (
   </div>
 );
 
-export const Carousel: React.FC<CarouselProps> = ({brand, slides, guides}) => {
+export const Carousel: React.FC<CarouselProps> = ({brand, slides, guides, video}) => {
   const i = useCurrentFrame();
   const sl = slides[Math.min(i, slides.length - 1)];
   const s = STYLES[brand];
-  const last = i === slides.length - 1;
+  const last = i === slides.length - 1 || Boolean(video); // в видео-версии стрелки «листай» нет ни на одном слайде
   const photo = isPhotoKind(sl.kind);
   const full = isFullBleed(sl);
   // робот Aura: на обложке и финале текстовых слайдов, на photoCta; на остальных — если указан mascot

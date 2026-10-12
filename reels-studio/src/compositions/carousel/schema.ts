@@ -62,6 +62,7 @@ export const slideSchema = z.object({
 export const carouselSchema = z.object({
   brand: z.enum(["gtt", "aura"]),
   guides: z.boolean().optional(), // проверочная версия: поля безопасности, обрезка сетки профиля, нарушения
+  video: z.boolean().optional(), // слайды для Reels из карусели (CarouselReel): без стрелки «листай» — видео листается само
   slides: z.array(slideSchema),
 });
 
