@@ -21,6 +21,7 @@ import {FlagArc, WavingFlag3D} from "../components/Flags";
 import {BRANDS, BrandCtx, useBrand} from "../brand";
 import {AuraBadge} from "../components/AuraBadge";
 import {AuraMascot, type GestureKind, type MascotPlan, type MascotStay} from "../components/AuraMascot";
+import {GttIntro} from "./GttIntro";
 
 // «Говорящая голова» в стиле референса пользователя (07.10.2026):
 // видео на весь экран, сверху плашка ▲ GLOBAL TECH TOUR, крупные белые субтитры по центру
@@ -104,6 +105,19 @@ export const talkReelProSchema = z.object({
   format: z.enum(["reels", "stories"]).default("reels"),
   // бренд: gtt — GlobalTechTour, aura — Aura Robotics (свой стиль, круглый логотип и 3D-маскот, src/brand.ts)
   brand: z.enum(["gtt", "aura"]).default("gtt"),
+  // фирменная заставка GTT в начале и конце (решение пользователя 12.10.2026: интро shards, аутро shards); у Aura её нет;
+  // false — без заставки; {intro, outro, introVariant, outroVariant} — выборочно
+  bumper: z
+    .union([
+      z.literal(false),
+      z.object({
+        intro: z.boolean().optional(),
+        outro: z.boolean().optional(),
+        introVariant: z.enum(["shards", "blocks", "light"]).optional(),
+        outroVariant: z.enum(["shards", "blocks", "light"]).optional(),
+      }),
+    ])
+    .optional(),
   // Линия глаз из scripts/grid.py (_work/имя.cut.layout.json): точка между глазами — центр всех зумов,
   // поэтому при наездах глаза остаются на своей линии и не «прыгают»
   focus: z.object({x: z.number(), y: z.number()}).default({x: 540, y: 614}),
@@ -1365,7 +1379,47 @@ const AuraBadgeSlot: React.FC<TalkReelProProps> = (p) => {
   );
 };
 
+// ---------- фирменная заставка GTT в начале и конце (GttIntro) ----------
+// Интро 1,8 с (54 кадра): последние 10 кадров — треугольное окно раскрывается на начало ролика, поэтому ролик стартует
+// на 44-м кадре. Аутро 1,5 с (45 кадров): первые 10 кадров окно закрывается на конце ролика, потом 35 кадров логотипа.
+const BUMPER = {intro: 54, outro: 45, overlap: 10};
+export const bumperOf = (p: Pick<TalkReelProProps, "brand" | "bumper">) => {
+  if ((p.brand ?? "gtt") === "aura" || p.bumper === false) return null;
+  const b = p.bumper || {};
+  return {intro: b.intro ?? true, outro: b.outro ?? true, introVariant: b.introVariant ?? "shards", outroVariant: b.outroVariant ?? "shards"};
+};
+// сколько кадров заставка добавляет в начале (lead) и в конце (tail) — для длины композиции и точек разреза Stories
+export const bumperFrames = (p: Pick<TalkReelProProps, "brand" | "bumper">) => {
+  const b = bumperOf(p);
+  return {lead: b?.intro ? BUMPER.intro - BUMPER.overlap : 0, tail: b?.outro ? BUMPER.outro - BUMPER.overlap : 0};
+};
+
 export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
+  const {durationInFrames} = useVideoConfig();
+  const b = bumperOf(p);
+  if (!b) return <TalkReelProBody {...p} />;
+  const {lead, tail} = bumperFrames(p);
+  const main = durationInFrames - lead - tail;
+  return (
+    <AbsoluteFill style={{backgroundColor: "#EEEEF2"}}>
+      <Sequence from={lead} durationInFrames={main} name="Ролик">
+        <TalkReelProBody {...p} />
+      </Sequence>
+      {b.intro ? (
+        <Sequence from={0} durationInFrames={BUMPER.intro} name="Заставка: интро">
+          <GttIntro variant={b.introVariant} mode="intro" transparent />
+        </Sequence>
+      ) : null}
+      {b.outro ? (
+        <Sequence from={lead + main - BUMPER.overlap} durationInFrames={BUMPER.outro} name="Заставка: аутро">
+          <GttIntro variant={b.outroVariant} mode="outro" transparent />
+        </Sequence>
+      ) : null}
+    </AbsoluteFill>
+  );
+};
+
+const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
   const {fps, durationInFrames} = useVideoConfig();
   const f = (s: number) => Math.round(s * fps);
   const siteFrom = f(p.site.at);

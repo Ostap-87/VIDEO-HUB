@@ -11,7 +11,7 @@ import {AuraPreview} from "./components/AuraPreview";
 import {FlagTest} from "./components/FlagTest";
 import {Carousel, carouselSchema, type CarouselProps} from "./compositions/Carousel";
 import carouselSample from "../props/carousels/пример-gtt.json";
-import {TalkReelPro, talkReelProSchema, type TalkReelProProps} from "./compositions/TalkReelPro";
+import {TalkReelPro, bumperFrames, talkReelProSchema, type TalkReelProProps} from "./compositions/TalkReelPro";
 import talkProSample from "../props/2026-10-07-byt-tehnika-v3.json";
 import {StoryAnnounce, storyAnnounceSchema, type StoryAnnounceProps} from "./compositions/StoryAnnounce";
 import announceSample from "../props/announces/пример-gtt.json";
@@ -118,9 +118,11 @@ export const RemotionRoot: React.FC = () => {
         durationInFrames={VIDEO.fps * 20}
         schema={talkReelProSchema}
         defaultProps={talkProSample as unknown as TalkReelProProps}
-        calculateMetadata={({props}: {props: TalkReelProProps}) => ({
-          durationInFrames: Math.round((props.speechSeconds + props.ctaSeconds) * VIDEO.fps),
-        })}
+        calculateMetadata={({props}: {props: TalkReelProProps}) => {
+          // + фирменная заставка GTT в начале и конце (у Aura и при bumper: false — нет)
+          const b = bumperFrames(props);
+          return {durationInFrames: Math.round((props.speechSeconds + props.ctaSeconds) * VIDEO.fps) + b.lead + b.tail};
+        }}
       />
       <Composition
         id="GTTLogo"

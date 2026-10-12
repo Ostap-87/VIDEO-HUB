@@ -240,6 +240,13 @@ npx remotion render src/index.ts TalkReelPro ../finished-videos/имя-stories.m
 npm run stories -- ../finished-videos/имя-stories.mp4 --at 58.3   # части по ≤60 с для Stories
 ```
 
+Ролики GTT сами начинаются и заканчиваются фирменной заставкой (стеклянная пирамида, надпись GLOBAL TECH TOUR из осколков):
++1,8 с в начале, +1,5 с в конце. Без заставки — `"bumper": false` в props. Готовые ролики перерисовать с заставкой:
+
+```bash
+python3 scripts/rebumper.py 2026-10-07-intro 2026-10-08-roboty   # Reels + Stories + лёгкие копии + раскадровка
+```
+
 ## Раскадровка
 
 ```bash

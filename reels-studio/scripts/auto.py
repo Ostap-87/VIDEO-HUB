@@ -164,7 +164,14 @@ def main():
         stories = FIN / f"{a.name}-stories.mp4"
         step("Рендер Stories")
         run(R + [stories, f"--props={st_props}", f"--concurrency={CONCURRENCY}", "--log=error"])
-        split = a.split or ",".join(map(str, rep["storiesAt"]))
+        # фирменная заставка GTT (интро 1,47 с в начале, аутро 1,17 с в конце) сдвигает точки разреза; у Aura её нет
+        lead, tail = (0.0, 0.0) if sp.get("brand") == "aura" or sp.get("bumper") is False else (44 / 30, 35 / 30)
+        cuts = [round(c + lead, 2) for c in rep["storiesAt"]]
+        total = sp["speechSeconds"] + sp["ctaSeconds"] + lead + tail
+        for x0, x1 in zip([0.0] + cuts, cuts + [total]):
+            if x1 - x0 > 59.5 and not a.split:
+                print(f"AUTO_WARN часть Stories {x0:.1f}–{x1:.1f} с длиннее 59,5 с (заставка) — поставь --split", flush=True)
+        split = a.split or ",".join(map(str, cuts))
         for old in FIN.glob(f"{a.name}-stories-*.mp4"):
             old.unlink()
         if split:

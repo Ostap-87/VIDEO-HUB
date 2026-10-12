@@ -9,6 +9,8 @@
 //  - "outro" (1,5 с): обратное — треугольное окно с роликом сжимается в точку, логотип собирается и держится,
 //    под ним плашка globaltechtour.ru.
 // variant: "shards" — стеклянные осколки, "blocks" — синие 3D-кубики со щелчком, "light" — световая линия и налив.
+// В ролики GTT заставка встроена (решение пользователя 12.10.2026: в начало — интро shards, в конец — аутро shards):
+// TalkReelPro рисует её поверх ролика с transparent: true (bumperOf / bumperFrames в TalkReelPro.tsx).
 // underlay / underlayFrom — только для просмотра примеров: какой ролик виден в «окне» (по умолчанию готовый ролик
 // «ИИ»; "" — без ролика). При вставке в ролики окно открывается на сам ролик.
 import React from "react";
@@ -29,6 +31,7 @@ export const gttIntroSchema = z.object({
   underlay: z.string().optional(),
   underlayFrom: z.number().optional(),
   sound: z.boolean().optional(),
+  transparent: z.boolean().optional(), // поверх ролика (TalkReelPro): без своего фона — в окне виден сам ролик под заставкой
 });
 export type GttIntroProps = z.infer<typeof gttIntroSchema>;
 
@@ -97,7 +100,7 @@ const PortalRim: React.FC<{h: number; k: number}> = ({h, k}) => {
   );
 };
 
-export const GttIntro: React.FC<GttIntroProps> = ({variant, mode, underlay, underlayFrom, sound = true}) => {
+export const GttIntro: React.FC<GttIntroProps> = ({variant, mode, underlay, underlayFrom, sound = true, transparent = false}) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames: N} = useVideoConfig();
   const L = useWordmarkLayout();
@@ -143,11 +146,11 @@ export const GttIntro: React.FC<GttIntroProps> = ({variant, mode, underlay, unde
   const textScale = zoom * (1 + 0.3 * easeInCubic(exitP));
   const pill = intro ? 0 : smooth(prog(t, 0.92, 1.18));
   const id = `gtt-${variant}-${mode}`;
-  const src = underlay === undefined ? DEMO_REEL : underlay;
+  const src = transparent ? "" : underlay === undefined ? DEMO_REEL : underlay;
   const from = underlayFrom ?? (intro ? 0 : DEMO_REEL_END - 10 / fps);
 
   return (
-    <AbsoluteFill style={{background: src ? "#000" : "#EEEEF2"}}>
+    <AbsoluteFill style={{background: transparent ? "transparent" : src ? "#000" : "#EEEEF2"}}>
       {/* ролик под заставкой (виден в треугольном окне) */}
       {src ? (
         intro ? (
