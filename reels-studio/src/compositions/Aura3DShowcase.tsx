@@ -44,7 +44,7 @@ export const Aura3DShowcase: React.FC = () => {
     <AbsoluteFill style={s.bg}>
       <AbsoluteFill style={s.pattern} />
       <Sequence from={0} durationInFrames={SHOWCASE.humanoid * fps} premountFor={fps}>
-        <Segment dur={SHOWCASE.humanoid} cam={{pos: [1.9, 2.6, 11.4], target: [0, 1.95, 0], fov: 30}} kicker="3D · Aura Robotics" title="Гуманоид">
+        <Segment dur={SHOWCASE.humanoid} cam={{pos: [1.9, 2.8, 12.0], target: [0, 2.2, 0], fov: 30}} kicker="3D · Aura Robotics" title="Гуманоид">
           <HumanoidModel
             plan={{
               stays: [
