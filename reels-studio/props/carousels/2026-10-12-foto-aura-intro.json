@@ -23,7 +23,7 @@
     {
       "kind": "photoCard",
       "image": "source-videos/карусели/2026-10-12-foto-aura-intro/03.jpg",
-      "focus": "50% 40%",
+      "focus": "50% 35%",
       "kicker": "Чем мы занимаемся",
       "title": "Три **направления**",
       "items": [
@@ -36,7 +36,7 @@
       "kind": "photoStat",
       "frame": false,
       "image": "source-videos/карусели/2026-10-12-foto-aura-intro/04.jpg",
-      "focus": "50% 30%",
+      "focus": "50% 18%",
       "kicker": "Напрямую",
       "value": "100+",
       "title": "заводов-производителей — **напрямую**",
@@ -45,7 +45,7 @@
     {
       "kind": "photoCard",
       "image": "source-videos/карусели/2026-10-12-foto-aura-intro/05.jpg",
-      "focus": "50% 45%",
+      "focus": "50% 50%",
       "kicker": "Заводы",
       "title": "С кем **работаем**",
       "text": "Каталог собран по заводам-производителям",
@@ -95,7 +95,7 @@
     {
       "kind": "photoCard",
       "image": "source-videos/карусели/2026-10-12-foto-aura-intro/07.jpg",
-      "focus": "50% 40%",
+      "focus": "45% 35%",
       "kicker": "Контроль",
       "title": "Доказательства вместо **обещаний**",
       "text": "Фото и видео из цехов и тестовый прогон именно вашего экземпляра — с серийным номером в кадре"
@@ -103,7 +103,7 @@
     {
       "kind": "photoFull",
       "image": "source-videos/карусели/2026-10-12-foto-aura-intro/08.jpg",
-      "focus": "50% 30%",
+      "focus": "50% 22%",
       "kicker": "Aura Robotics Tour",
       "title": "10 фабрик роботов **каждые 2 месяца**",
       "items": [
@@ -114,22 +114,22 @@
     },
     {
       "kind": "photoCta",
-      "kicker": "Робот под задачу или место в туре",
+      "kicker": "Робот или место в туре",
       "title": "Пиши в **личные сообщения** или оставляй заявку на сайте",
       "text": "Рассчитаем стоимость и окупаемость",
       "mascot": "pointUp",
       "images": [
         {
           "src": "source-videos/карусели/2026-10-12-foto-aura-intro/01.jpg",
-          "focus": "50% 40%"
+          "focus": "40% 35%"
         },
         {
           "src": "source-videos/карусели/2026-10-12-foto-aura-intro/04.jpg",
-          "focus": "50% 30%"
+          "focus": "50% 20%"
         },
         {
           "src": "source-videos/карусели/2026-10-12-foto-aura-intro/08.jpg",
-          "focus": "50% 30%"
+          "focus": "60% 25%"
         }
       ]
     }
