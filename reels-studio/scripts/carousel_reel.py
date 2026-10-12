@@ -8,8 +8,10 @@ API Instagram не ставит музыку к каруселям — поэт�
   npm run carousel-reel -- <имя> --guides         # проверочный кадр: безопасная зона Reels и кадр ленты 4:5
   npm run carousel-reel -- <имя> --no-host        # Aura без живого робота-ведущего (робот остаётся картинкой на слайдах)
 
-Aura по умолчанию — с роботом-ведущим (`host`): 3D-робот стоит под слайдом и «вытаскивает» каждый следующий слайд из-за
-левого края, на обложке машет, на финале показывает на кнопку и машет на прощание; со слайдов робот-картинка убирается.
+Aura по умолчанию — с роботом-ведущим (`host`): 3D-робот стоит справа под слайдом и «вытаскивает» каждый слайд (начиная
+с первого) из-за правого края — вперёд, как листают карусель; после обложки машет, на финале показывает на кнопку и машет
+на прощание; со слайдов робот-картинка убирается. Ролик начинается с пустого фона — обложку Reels задаёт `thumb_offset`
+в посте POST-HUB (печатается в конце).
 
 Что делает: рендерит видео-версию слайдов (`"video": true` — без стрелки «листай») в finished-videos/frames/ (в git не идут),
 пишет props/carousel-reels/<имя>-reels.json (секунды слайдов можно поправить там руками — при повторном запуске они
@@ -51,10 +53,12 @@ def words(sl: dict) -> int:
     return len(re.sub(r"\*\*", "", " ".join(parts)).split())
 
 
-def seconds(sl: dict, last: bool) -> float:
+def seconds(sl: dict, first: bool, last: bool) -> float:
     # ~2 с на «увидеть» слайд + 0,11 с на слово, от 3,5 до 5,5 с; финал — на секунду дольше
     s = fixed if fixed else min(5.5, max(3.5, 2.0 + 0.11 * words(sl)))
     s = math.ceil(s * 2) / 2 + (1.0 if last else 0.0)
+    if host and first:
+        s += 1.0  # с роботом: вытащил обложку — успеть помахать
     return max(s, 6.0) if last and host else s  # с роботом на финале: показать на кнопку и помахать
 
 
@@ -91,7 +95,7 @@ vol = round(min(1.0, 10 ** ((-15 - lufs(ROOT / track)) / 20)), 2)
 old = json.loads(reel_props.read_text()) if reel_props.exists() and not reset and not fixed else {}
 old_secs = [s["seconds"] for s in old.get("slides", [])]
 n = len(data["slides"])
-secs = old_secs if len(old_secs) == n else [seconds(sl, i == n - 1) for i, sl in enumerate(data["slides"])]
+secs = old_secs if len(old_secs) == n else [seconds(sl, i == 0, i == n - 1) for i, sl in enumerate(data["slides"])]
 props = {
     "_": f"Reels из карусели props/carousels/{name}.json (scripts/carousel_reel.py). Секунды слайдов можно править здесь.",
     "brand": data["brand"],
@@ -126,4 +130,5 @@ board = ROOT / "finished-videos" / "раскадровки" / f"{reel_name}.jpg"
 board.parent.mkdir(parents=True, exist_ok=True)
 shutil.copy(work / f"{reel_name}.jpg", board)
 mb = out.stat().st_size / 1e6
-print(f"REELS {out.relative_to(ROOT)} ({total:.1f} с, {mb:.1f} МБ), раскадровка {board.relative_to(ROOT)}")
+print(f"REELS {out.relative_to(ROOT)} ({total + (1.0 if host else 0):.1f} с, {mb:.1f} МБ), раскадровка {board.relative_to(ROOT)}"
+      + ("; обложка Reels: thumb_offset 2600 (первый слайд на месте, робот машет)" if host else ""))
