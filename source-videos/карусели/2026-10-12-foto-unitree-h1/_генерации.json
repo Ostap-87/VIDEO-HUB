@@ -1,0 +1,137 @@
+{
+ "01.jpg": {
+  "job": "5160ee92-ff07-48f9-8590-c91cf2f81373",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041355_5160ee92-ff07-48f9-8590-c91cf2f81373.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright stadium in the morning: a tall 180 cm slim full-size bipedal humanoid robot with a matte black and dark graphite body, long legs with large exposed silver-grey knee and hip actuators, slender arms ending in simple rounded caps without hands, a smooth black oval head without a face runs along a blue athletics track in mid-stride, smiling Chinese engineers on the sideline cheer and one films it on a phone, wide 4:3 composition, subject centered, fast confident mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "catalog": 584,
+  "job": "234a8eef-3cb6-47f0-8f44-acc032232518",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20260826_074829_234a8eef-3cb6-47f0-8f44-acc032232518.png",
+  "model": "каталог Higgsfield",
+  "aspect": "4:5",
+  "cost": 0,
+  "size": [
+   1088,
+   1350
+  ],
+  "source_size": [
+   1856,
+   2304
+  ],
+  "prompt": "Photorealistic editorial photo of a small group of international business visitors touring a modern robotics factory floor with an engineer guide explaining equipment, bright industrial lighting, cinematic color grading, high detail. No text, no logos, no brand names, no watermarks anywhere in the image."
+ },
+ "03.jpg": {
+  "job": "bc3359b7-b43f-4ce2-9af7-2ec7a7b4b603",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041355_bc3359b7-b43f-4ce2-9af7-2ec7a7b4b603.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a riverside embankment path on a sunny morning: a tall 180 cm slim full-size bipedal humanoid robot with a matte black and dark graphite body, long legs with large exposed silver-grey knee and hip actuators, slender arms ending in simple rounded caps without hands, a smooth black oval head without a face jogs side by side with a laughing Russian man in running clothes, both mid-stride at the same pace, city trees and calm water behind, wide 4:3 composition, subject centered, sporty friendly mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks.",
+  "retouch": "убран мелкий знак на груди робота (заплатка из соседней области)"
+ },
+ "04.jpg": {
+  "job": "f834c240-a63f-4c57-96a7-472c2b0c2733",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_042359_f834c240-a63f-4c57-96a7-472c2b0c2733.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright robotics lab seen from a few meters away: a tall 180 cm slim full-size bipedal humanoid robot with a matte black and dark graphite body, long legs with large exposed silver-grey knee and hip actuators, slender arms ending in simple rounded caps without hands, a smooth black oval head without a face stands shoulder to shoulder with a smiling tall Russian engineer in a navy polo, both exactly the same height, the engineer rests a hand on the robot's shoulder, a Chinese colleague smiles in the soft background, generous empty space above their heads with a white ceiling and lights, both heads at about one quarter of the frame height, main subject in the upper half of the frame, the lower third is calm light grey epoxy floor, vertical 4:5, proud full-size mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks.",
+  "replaced": [
+   {
+    "job": "65993626-ff0b-47df-9a6e-084104be370b",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041355_65993626-ff0b-47df-9a6e-084104be370b.png",
+    "cost": 0.5,
+    "why": "голова робота уходила под шапку слайда"
+   }
+  ]
+ },
+ "05a.jpg": {
+  "job": "1a50426e-ed61-429a-90bb-2b8fe2b265e0",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041356_1a50426e-ed61-429a-90bb-2b8fe2b265e0.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic full-length photo in a bright robotics lab: a tall 180 cm slim full-size bipedal humanoid robot with a matte black and dark graphite body, long legs with large exposed silver-grey knee and hip actuators, slender arms ending in simple rounded caps without hands, a smooth black oval head without a face walks briskly across a light test floor, a smiling Chinese engineer with a tablet follows behind, main subject in the upper two thirds of the frame, the lower part is calm light floor, vertical 9:16, light and fast mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05b.jpg": {
+  "job": "a148fc2e-216a-407e-912a-f90777f5f998",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041449_a148fc2e-216a-407e-912a-f90777f5f998.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "Photorealistic full-length photo in a bright robotics lab: a tall 180 cm full-size bipedal humanoid robot with a sturdier matte black and dark graphite body, large exposed silver-grey knee and hip actuators, long seven-jointed arms with dexterous five-fingered black robotic hands, a smooth black oval head without a face lifts a medium cardboard box from a workbench with both hands, a smiling Russian engineer watches with approval, main subject in the upper two thirds of the frame, the lower part is calm light floor, vertical 9:16, strong capable mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "348e41e5-2568-4988-aedf-7be4fcf1dc7c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041449_348e41e5-2568-4988-aedf-7be4fcf1dc7c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic close-up photo of the head and chest of a tall 180 cm slim full-size bipedal humanoid robot with a matte black and dark graphite body, long legs with large exposed silver-grey knee and hip actuators, slender arms ending in simple rounded caps without hands, a smooth black oval head without a face: a small lidar sensor and a depth camera on its smooth black head, an open chest panel reveals a compact computer module and tidy cables, a smiling Chinese engineer points inside with a stylus, bright lab light, main subject in the upper half of the frame, the lower third is calm softly blurred workbench, vertical 4:5, curious high-tech mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "9fe8458e-2baa-460e-8de5-e0b6df33587e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_042119_9fe8458e-2baa-460e-8de5-e0b6df33587e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo of a grand festive concert stage with warm red and gold lights and plain red silk drapes, glowing round paper lanterns and a smooth golden arch without any symbols or characters: a row of tall 180 cm slim full-size bipedal humanoid robots with matte black bodies and silver-grey knee actuators, dressed in bright red floral jackets, dance in perfect sync and twirl red handkerchiefs, the audience in the foreground in soft silhouettes applauds, wide 4:3 composition, subject centered, festive spectacular mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks.",
+  "replaced": [
+   {
+    "job": "d8b3ee82-945c-4310-b3dd-90547edc4716",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041450_d8b3ee82-945c-4310-b3dd-90547edc4716.png",
+    "cost": 0.5,
+    "why": "на арке сцены — псевдоиероглифы"
+   }
+  ]
+ },
+ "08.jpg": {
+  "catalog": 647,
+  "job": "1e07fbbf-30dc-4ff8-81fc-70e81e56425d",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20260826_065643_1e07fbbf-30dc-4ff8-81fc-70e81e56425d.png",
+  "model": "каталог Higgsfield",
+  "aspect": "4:5",
+  "cost": 0,
+  "size": [
+   1088,
+   1350
+  ],
+  "source_size": [
+   1856,
+   2304
+  ],
+  "prompt": "Photorealistic editorial photo of a long line of freight trucks at a busy Chinese highway logistics hub at sunrise, drivers checking a mobile app near their cabs, wide industrial scale, cinematic golden lighting, high detail. No text, no logos, no brand names, no watermarks anywhere in the image."
+ }
+}

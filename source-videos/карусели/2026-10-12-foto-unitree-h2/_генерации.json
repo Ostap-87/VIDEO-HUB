@@ -1,0 +1,120 @@
+{
+ "01.jpg": {
+  "job": "00a72026-1fe3-433a-8ad0-7587b92e408a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041701_00a72026-1fe3-433a-8ad0-7587b92e408a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright modern exhibition hall: a tall 182 cm full-size bipedal humanoid robot with sleek pearl-white and light silver-grey body covers, dark graphite joints, slim athletic human-like proportions, five-fingered dark hands and a smooth oval head with a softly rounded featureless pale face panel stands on a low white platform and greets arriving visitors with a raised open hand, a smiling Russian businesswoman and a tall Chinese man wave back, the robot is as tall as the man, softly blurred crowd behind, wide 4:3 composition, subject centered, impressive welcoming mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "catalog": 265,
+  "job": "0c7079d6-a8a0-4808-8fc6-452a07e49fe5",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20260921_083037_0c7079d6-a8a0-4808-8fc6-452a07e49fe5.png",
+  "model": "каталог Higgsfield",
+  "aspect": "3:4",
+  "cost": 0,
+  "size": [
+   880,
+   1168
+  ],
+  "source_size": [
+   880,
+   1168
+  ],
+  "prompt": "Bright modern humanoid robotics factory showroom, daylight streaming through large windows, white and light-gray interior, clean minimal architecture, a few sleek white-and-silver humanoid robots standing on a polished light floor, high-key corporate editorial photography style, soft even lighting, no dramatic shadows, no text, no logos, no watermarks"
+ },
+ "03.jpg": {
+  "job": "411fe209-49b4-435c-95c6-d6f8b1d680f1",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041700_411fe209-49b4-435c-95c6-d6f8b1d680f1.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright robotics lab: a tall 182 cm full-size bipedal humanoid robot with sleek pearl-white and light silver-grey body covers, dark graphite joints, slim athletic human-like proportions, five-fingered dark hands and a smooth oval head with a softly rounded featureless pale face panel turns its head to look at a smiling Chinese female engineer beside it who holds a tablet, a tall Russian colleague of the same height stands on the other side and smiles, wide 4:3 composition, subject centered, attentive friendly mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "a731d678-f6ff-4c7b-b5d2-98a27e23d434",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041700_a731d678-f6ff-4c7b-b5d2-98a27e23d434.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright robotics test hall: a tall 182 cm full-size bipedal humanoid robot with sleek pearl-white and light silver-grey body covers, dark graphite joints, slim athletic human-like proportions, five-fingered dark hands and a smooth oval head with a softly rounded featureless pale face panel performs a powerful high front kick with perfect balance, two smiling Chinese engineers applaud behind it, tall windows with soft daylight, main subject in the upper half of the frame, the lower third is calm light grey sports mat, vertical 4:5, strong athletic mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "d43e5845-a1f6-42d3-ab9c-fe5c26700434",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041700_d43e5845-a1f6-42d3-ab9c-fe5c26700434.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a clean bright modern warehouse: a tall 182 cm full-size bipedal humanoid robot with sleek pearl-white and light silver-grey body covers, dark graphite joints, slim athletic human-like proportions, five-fingered dark hands and a smooth oval head with a softly rounded featureless pale face panel carries a medium cardboard box with both hands between tall shelves, a smiling Russian logistics manager with a clipboard walks beside it, wide 4:3 composition, subject centered, steady helpful mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "9bc96f11-99b2-4ed6-bdce-d552f13cb3b4",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041739_9bc96f11-99b2-4ed6-bdce-d552f13cb3b4.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a long bright glass gallery of a business center in soft late-afternoon sun: a tall 182 cm full-size bipedal humanoid robot with sleek pearl-white and light silver-grey body covers, dark graphite joints, slim athletic human-like proportions, five-fingered dark hands and a smooth oval head with a softly rounded featureless pale face panel walks steadily beside a smiling Chinese guide in a light suit, warm light across the hall, main subject in the upper half of the frame, the lower third is calm sunlit light stone floor, vertical 4:5, long steady shift mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "289a196e-844f-44b4-8292-b77d19a1fe30",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041739_289a196e-844f-44b4-8292-b77d19a1fe30.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic close-up photo of the head and shoulders of a tall 182 cm full-size bipedal humanoid robot with sleek pearl-white and light silver-grey body covers, dark graphite joints, slim athletic human-like proportions, five-fingered dark hands and a smooth oval head with a softly rounded featureless pale face panel: two small binocular camera lenses set in its smooth pale face panel, a small speaker grille at the neck, a smiling Russian engineer adjusts settings on a laptop beside it in a bright lab, wide 4:3 composition, subject centered, precise high-tech mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "b51eeb84-c7a7-4dfa-81f8-6ffe7ee551bb",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041739_b51eeb84-c7a7-4dfa-81f8-6ffe7ee551bb.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright science museum hall: a tall 182 cm full-size bipedal humanoid robot with sleek pearl-white and light silver-grey body covers, dark graphite joints, slim athletic human-like proportions, five-fingered dark hands and a smooth oval head with a softly rounded featureless pale face panel talks with a smiling Chinese family, a curious child asks a question and the robot gestures with an open hand, main subject in the upper half of the frame, the lower third is calm polished light floor, vertical 4:5, warm conversational mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "09.jpg": {
+  "catalog": 657,
+  "job": "87406d06-20b4-4eed-8eb2-f23df5ff78b7",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20260826_065429_87406d06-20b4-4eed-8eb2-f23df5ff78b7.png",
+  "model": "каталог Higgsfield",
+  "aspect": "16:9",
+  "cost": 0,
+  "size": [
+   1600,
+   893
+  ],
+  "source_size": [
+   2752,
+   1536
+  ],
+  "prompt": "Photorealistic editorial photo of a massive international logistics sorting hub with conveyor belts full of parcels and cargo containers being loaded onto trucks, workers coordinating with tablets, bright industrial lighting, wide angle, cinematic color grading, high detail. No text, no logos, no brand names, no watermarks anywhere in the image."
+ }
+}

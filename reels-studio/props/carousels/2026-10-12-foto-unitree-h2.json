@@ -1,0 +1,133 @@
+{
+ "brand": "aura",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-h2/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Робомодели · Unitree",
+   "title": "Unitree H2: **гуманоид ростом 180 см**",
+   "text": "Новый полноразмерный флагман Unitree",
+   "logo": "unitree",
+   "mascot": "wave"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-h2/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Кто делает",
+   "title": "Unitree, **Ханчжоу**",
+   "text": "Основана в 2016 году Ван Синсином. Сама делает моторы, редукторы, контроллеры и лидары. Первой в мире начала продавать четвероногих роботов в розницу.",
+   "logo": "unitree"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-h2/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Размеры",
+   "title": "H2 **в цифрах**",
+   "items": [
+    "Рост 182 см",
+    "Вес около 70 кг",
+    "31 степень свободы",
+    "Голова поворачивается: 2 оси"
+   ]
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-h2/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Сила",
+   "title": "момент в суставах ног",
+   "text": "Руки — до 120 Н·м",
+   "value": "360 Н·м"
+  },
+  {
+   "kind": "photoStat",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-h2/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Грузоподъёмность",
+   "title": "номинальная нагрузка на руки",
+   "text": "Пиковая — около 15 кг, зависит от конфигурации",
+   "value": "≈7 кг"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-h2/06.jpg",
+   "focus": "50% 30%",
+   "kicker": "Автономность",
+   "title": "от батареи 0,972 кВт·ч",
+   "text": "Батарея быстросъёмная",
+   "value": "≈3 ч"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-h2/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Начинка",
+   "title": "Что **внутри**",
+   "items": [
+    "Широкоугольная бинокулярная камера",
+    "Микрофоны и мощный динамик",
+    "Intel Core i5, у EDU — i7",
+    "Модуль Thor — отдельно"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-h2/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Применение",
+   "title": "Где H2 **работает**",
+   "items": [
+    "Исследования и R&D",
+    "Выставки и сцена",
+    "Свои разработки на H2 EDU",
+    "Голосовое общение с гостями"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-h2/09.jpg",
+   "focus": "50% 30%",
+   "kicker": "Цена и поставка",
+   "title": "H2 — **$29 900**",
+   "items": [
+    "Закупка на заводе по ВЭД-контракту",
+    "Ввоз на вашу компанию",
+    "Видео теста вашего робота с серийным номером",
+    "Поставка 4–7 недель"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Подберём решение",
+   "title": "Пиши в **личные сообщения** или оставляй заявку на сайте",
+   "text": "Рассчитаем стоимость и окупаемость",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-unitree-h2/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-unitree-h2/04.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-unitree-h2/08.jpg",
+     "focus": "50% 30%"
+    }
+   ],
+   "mascot": "pointUp"
+  }
+ ]
+}

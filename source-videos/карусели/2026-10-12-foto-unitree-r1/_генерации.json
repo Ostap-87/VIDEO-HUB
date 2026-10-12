@@ -1,0 +1,109 @@
+{
+ "01.jpg": {
+  "job": "4f8e52b0-2ef1-449a-997b-a141010ef65b",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041814_4f8e52b0-2ef1-449a-997b-a141010ef65b.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright school robotics club: a small 123 cm bipedal humanoid robot with a light silver-grey and graphite body, compact rounded torso, slim limbs with black joint motors, simple dark hands and a rounded head with a dark glossy face visor waves to a group of smiling Russian teenagers around a work table with simple robot kits, a young teacher laughs, large windows with daylight, wide 4:3 composition, subject centered, friendly accessible mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks.",
+  "retouch": "убрана мелкая псевдонадпись на груди робота (заплатка из соседней области)"
+ },
+ "02.jpg": {
+  "catalog": 539,
+  "job": "07edcbcf-51e5-45b6-a82d-6743a0a60f96",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20260826_084212_07edcbcf-51e5-45b6-a82d-6743a0a60f96.png",
+  "model": "каталог Higgsfield",
+  "aspect": "4:5",
+  "cost": 0,
+  "size": [
+   1088,
+   1350
+  ],
+  "source_size": [
+   1856,
+   2304
+  ],
+  "prompt": "Photorealistic editorial photo of a row of identical humanoid robots on an assembly line conveyor in a bright modern factory, quality control workers checking units, cinematic color grading, high detail. No text, no logos, no brand names, no watermarks anywhere in the image."
+ },
+ "03.jpg": {
+  "job": "cea0a2f8-07eb-458d-9184-862dcbc91773",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041814_cea0a2f8-07eb-458d-9184-862dcbc91773.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright car showroom: a small 123 cm bipedal humanoid robot with a light silver-grey and graphite body, compact rounded torso, slim limbs with black joint motors, simple dark hands and a rounded head with a dark glossy face visor stands beside a compact unbranded silver hatchback without any badges, a smiling young Russian couple looks at the robot with interest while a friendly Chinese consultant gestures toward it, wide 4:3 composition, subject centered, pleasant surprise mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "aa1d49f1-6be2-418a-821b-084cdc34b8cd",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041813_aa1d49f1-6be2-418a-821b-084cdc34b8cd.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright modern classroom: a small 123 cm bipedal humanoid robot with a light silver-grey and graphite body, compact rounded torso, slim limbs with black joint motors, simple dark hands and a rounded head with a dark glossy face visor gives a high five to a smiling ten-year-old Russian boy of about the same height, classmates laugh in the soft background, main subject in the upper half of the frame, the lower third is calm light wooden floor, vertical 4:5, playful mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "442d8390-a850-4171-85d0-ad608f872265",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041814_442d8390-a850-4171-85d0-ad608f872265.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright school lab: a smiling Chinese teacher slides a compact battery pack into the back of a small 123 cm bipedal humanoid robot with a light silver-grey and graphite body, compact rounded torso, slim limbs with black joint motors, simple dark hands and a rounded head with a dark glossy face visor, a spare battery charges on a dock on the table, two curious Russian pupils watch, wide 4:3 composition, subject centered, simple practical mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "63f9aa69-66ca-429e-b6a6-00550842c41e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_042016_63f9aa69-66ca-429e-b6a6-00550842c41e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright library corner: a small 123 cm bipedal humanoid robot with a light silver-grey and graphite body, compact rounded torso, slim limbs with black joint motors, simple dark hands and a rounded head with a dark glossy face visor holds up a red apple and looks at it with its camera face while a smiling Chinese girl asks it a question, main subject in the upper half of the frame, the lower third is calm light carpet floor, vertical 4:5, curious smart mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "b42178b9-295c-4eec-85e0-6bd550e7e883",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_042016_b42178b9-295c-4eec-85e0-6bd550e7e883.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at a bright technology expo booth with plain white walls and no signage: a small 123 cm bipedal humanoid robot with a light silver-grey and graphite body, compact rounded torso, slim limbs with black joint motors, simple dark hands and a rounded head with a dark glossy face visor talks with smiling Russian students and a Chinese visitor, one student films it on a phone, wide 4:3 composition, subject centered, lively demo mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "catalog": 568,
+  "job": "84f1c969-0cf6-45d4-ade5-6cb0cb1b54e3",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20260826_080025_84f1c969-0cf6-45d4-ade5-6cb0cb1b54e3.png",
+  "model": "каталог Higgsfield",
+  "aspect": "4:5",
+  "cost": 0,
+  "size": [
+   1088,
+   1350
+  ],
+  "source_size": [
+   1856,
+   2304
+  ],
+  "prompt": "Photorealistic editorial photo of a wide industrial harbor at dusk with a container ship, warehouse buildings, and city lights in soft cinematic transition lighting, high detail. No text, no logos, no brand names, no watermarks anywhere in the image."
+ }
+}

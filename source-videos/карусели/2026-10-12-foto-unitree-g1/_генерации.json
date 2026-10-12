@@ -1,0 +1,120 @@
+{
+ "01.jpg": {
+  "job": "99a7d417-641f-4f70-8f43-4ffca217dcc2",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041031_99a7d417-641f-4f70-8f43-4ffca217dcc2.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright modern university robotics lab: a compact 132 cm bipedal humanoid robot with a slim dark graphite and matte silver-grey body, exposed round black joint motors at the shoulders, hips and knees, thin limbs, simple dark three-fingered hands and a small rounded black head with a glossy face visor stands on a light floor and waves at a group of smiling Russian and Chinese students with laptops, a young female student waves back laughing, large windows with soft daylight, wide 4:3 composition, subject centered, curious friendly mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "catalog": 551,
+  "job": "23d26a96-c3a1-49cd-862f-8b142ae55734",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20260826_082824_23d26a96-c3a1-49cd-862f-8b142ae55734.png",
+  "model": "каталог Higgsfield",
+  "aspect": "4:5",
+  "cost": 0,
+  "size": [
+   1088,
+   1350
+  ],
+  "source_size": [
+   1856,
+   2304
+  ],
+  "prompt": "Photorealistic editorial photo of a large modern robotics manufacturing floor with multiple humanoid robots in various assembly stages, bright industrial lighting, cinematic wide shot, high detail. No text, no logos, no brand names, no watermarks anywhere in the image."
+ },
+ "03.jpg": {
+  "job": "0b07c042-6be2-4e65-ab21-8d87aaffe090",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_040938_0b07c042-6be2-4e65-ab21-8d87aaffe090.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a sunny university parking lot: a compact 132 cm bipedal humanoid robot with a slim dark graphite and matte silver-grey body, exposed round black joint motors at the shoulders, hips and knees, thin limbs, simple dark three-fingered hands and a small rounded black head with a glossy face visor stands beside the open trunk of a plain unbranded silver hatchback with a grey foam-padded transport case inside, the robot is a bit shorter than the car roof, a smiling Chinese engineer in a light jacket holds the trunk lid and a Russian colleague laughs and gives a thumbs up, wide 4:3 composition, subject centered, light practical mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "96221872-26b0-4371-91d3-d0eaa9e560da",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_040937_96221872-26b0-4371-91d3-d0eaa9e560da.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright robotics test hall: a compact 132 cm bipedal humanoid robot with a slim dark graphite and matte silver-grey body, exposed round black joint motors at the shoulders, hips and knees, thin limbs, simple dark three-fingered hands and a small rounded black head with a glossy face visor performs a graceful high side kick with arms balanced wide, two smiling Chinese engineers in light polos applaud nearby, tall windows with soft daylight, main subject in the upper half of the frame, the lower third is calm light grey sports mat, vertical 4:5, agile dynamic mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "45b3fc0e-5e85-4127-8251-440d0c22e69e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_040937_45b3fc0e-5e85-4127-8251-440d0c22e69e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a clean university lab: a compact 132 cm bipedal humanoid robot with a slim dark graphite and matte silver-grey body, exposed round black joint motors at the shoulders, hips and knees, thin limbs, simple dark three-fingered hands and a small rounded black head with a glossy face visor stands calmly while a smiling Chinese female technician slides a compact black battery pack out of the back of its torso, a second battery waits on a charging dock on the workbench, a Russian colleague with a tablet smiles, wide 4:3 composition, subject centered, quick and easy mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "c09e0e88-e1ca-4909-aac3-30b266c0ed2f",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041030_c09e0e88-e1ca-4909-aac3-30b266c0ed2f.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic close-up photo of the head and upper torso of a compact 132 cm bipedal humanoid robot with a slim dark graphite and matte silver-grey body, exposed round black joint motors at the shoulders, hips and knees, thin limbs, simple dark three-fingered hands and a small rounded black head with a glossy face visor: a small cylindrical lidar sensor on top of the head, depth camera lenses behind the glossy visor, tidy cables at the neck, a smiling Chinese engineer in the softly blurred background checks a laptop, bright lab light, main subject in the upper half of the frame, the lower third is calm soft-focus light workbench, vertical 4:5, precise high-tech mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "dc50b3b2-7a1f-46f1-89b6-eb9dbdab8db5",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041030_dc50b3b2-7a1f-46f1-89b6-eb9dbdab8db5.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at a student robotics competition in a bright university sports hall with plain white walls: two compact 132 cm bipedal humanoid robots with slim dark graphite and silver-grey bodies, round black joint motors and rounded black heads play football with a small orange ball on a green artificial-turf pitch, cheering Russian and Chinese students behind a low plain barrier, wide 4:3 composition, subject centered, joyful competitive mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "ac442940-8cad-483d-a49e-7297a4ddc0a1",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_040938_ac442940-8cad-483d-a49e-7297a4ddc0a1.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright modern robotics office: a compact 132 cm bipedal humanoid robot with a slim dark graphite and matte silver-grey body, exposed round black joint motors at the shoulders, hips and knees, thin limbs, simple dark three-fingered hands and a small rounded black head with a glossy face visor stands beside a desk where a young smiling Russian programmer works at two monitors filled edge to edge with abstract 3D renders of a walking humanoid figure on a grid floor, no interface, a Chinese colleague leans in smiling, main subject in the upper half of the frame, the lower third is calm light wooden desk surface, vertical 4:5, collaborative mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "09.jpg": {
+  "catalog": 527,
+  "job": "16079bdd-76ee-437c-a463-16b3877b35d8",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20260918_040248_16079bdd-76ee-437c-a463-16b3877b35d8.png",
+  "model": "каталог Higgsfield",
+  "aspect": "4:3",
+  "cost": 0,
+  "size": [
+   1168,
+   880
+  ],
+  "source_size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic editorial photo of a massive e-commerce logistics warehouse with conveyor belts and packages, bright industrial lighting, cinematic wide shot, high detail. No text, no logos, no brand names, no watermarks anywhere in the image."
+ }
+}

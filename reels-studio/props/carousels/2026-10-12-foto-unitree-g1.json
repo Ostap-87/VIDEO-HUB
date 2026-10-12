@@ -1,0 +1,132 @@
+{
+ "brand": "aura",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-g1/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Робомодели · Unitree",
+   "title": "Unitree G1: **гуманоид для лаборатории**",
+   "text": "Самый ходовой двуногий для вузов и R&D",
+   "logo": "unitree",
+   "mascot": "wave"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-g1/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Кто делает",
+   "title": "Unitree, **Ханчжоу**",
+   "text": "Основана в 2016 году Ван Синсином. Сама делает моторы, редукторы, контроллеры и лидары. Первой в мире начала продавать четвероногих роботов в розницу.",
+   "logo": "unitree"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-g1/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Размеры",
+   "title": "G1 **в цифрах**",
+   "items": [
+    "Рост 132 см",
+    "Вес около 35 кг с батареей",
+    "Сложенный: 69 × 45 × 30 см",
+    "Влезает в багажник"
+   ]
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-g1/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Подвижность",
+   "title": "степени свободы у базовой версии",
+   "text": "У G1 EDU — от 23 до 43, с опциональной кистью Dex3-1",
+   "value": "23"
+  },
+  {
+   "kind": "photoStat",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-g1/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Автономность",
+   "title": "от батареи 9000 мА·ч",
+   "text": "Батарея быстросъёмная: вторую лучше взять сразу",
+   "value": "≈2 ч"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-g1/06.jpg",
+   "focus": "50% 30%",
+   "kicker": "Начинка",
+   "title": "Что **внутри**",
+   "items": [
+    "Глубинная камера и 3D-лидар",
+    "4 микрофона и динамик",
+    "8-ядерный процессор, у EDU — Orin",
+    "Рука: ≈2 кг, у EDU ≈3 кг"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-g1/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Применение",
+   "title": "Где G1 **работает**",
+   "items": [
+    "Кафедры и лаборатории",
+    "Обучение с подкреплением",
+    "Соревнования роботов",
+    "Выставки и демонстрации"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-g1/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Экосистема",
+   "title": "Готовый код **на GitHub**",
+   "text": "Открытый unitree_rl_gym: обучение в Isaac Gym, проверка в MuJoCo и перенос на реального робота. Гарантия: 8 мес. на G1, 18 мес. на EDU."
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-g1/09.jpg",
+   "focus": "50% 30%",
+   "kicker": "Цена и поставка",
+   "title": "Базовый G1 — **$13 500**",
+   "items": [
+    "Закупка на заводе по ВЭД-контракту",
+    "Ввоз на вашу компанию",
+    "Видео теста вашего робота с серийным номером",
+    "Поставка 4–7 недель"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Подберём решение",
+   "title": "Пиши в **личные сообщения** или оставляй заявку на сайте",
+   "text": "Рассчитаем стоимость и окупаемость",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-unitree-g1/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-unitree-g1/04.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-unitree-g1/06.jpg",
+     "focus": "50% 30%"
+    }
+   ],
+   "mascot": "pointUp"
+  }
+ ]
+}

@@ -1,0 +1,143 @@
+{
+ "brand": "aura",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-h1/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Робомодели · Unitree",
+   "title": "Unitree H1: **гуманоид, который бегает**",
+   "text": "Полноразмерный робот с рекордом скорости",
+   "logo": "unitree",
+   "mascot": "wave"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-h1/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Кто делает",
+   "title": "Unitree, **Ханчжоу**",
+   "text": "Основана в 2016 году Ван Синсином. Сама делает моторы, редукторы, контроллеры и лидары. Первой в мире начала продавать четвероногих роботов в розницу.",
+   "logo": "unitree"
+  },
+  {
+   "kind": "photoStat",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-h1/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Скорость",
+   "title": "рекорд, заявленный Unitree",
+   "text": "Это почти 12 км/ч: быстрый бег трусцой",
+   "value": "3,3 м/с"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-h1/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Размеры",
+   "title": "H1 **в цифрах**",
+   "items": [
+    "Рост около 180 см",
+    "Вес около 47 кг",
+    "Колено: ≈360 Н·м",
+    "Батарея 0,864 кВт·ч, быстрая замена"
+   ]
+  },
+  {
+   "kind": "photoPair",
+   "frame": true,
+   "layout": "row",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-unitree-h1/05a.jpg",
+     "focus": "50% 30%",
+     "label": "H1",
+     "items": [
+      "≈47 кг",
+      "Рука 4 оси",
+      "До 3,3 м/с"
+     ]
+    },
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-unitree-h1/05b.jpg",
+     "focus": "50% 30%",
+     "label": "H1-2",
+     "items": [
+      "≈70 кг, 27 осей",
+      "Рука 7 осей, кисти Dex5-1",
+      "Руки: до ≈21 кг пик"
+     ]
+    }
+   ],
+   "pair": "story",
+   "kicker": "Две версии",
+   "title": "H1 или **H1-2**"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-h1/06.jpg",
+   "focus": "50% 30%",
+   "kicker": "Начинка",
+   "title": "Что **внутри**",
+   "items": [
+    "3D-лидар и глубинная камера",
+    "Обзор 360°",
+    "Intel Core i5 + i7 для разработки",
+    "Опц. Orin NX, до 3 модулей"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-h1/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Применение",
+   "title": "Где H1 **работает**",
+   "items": [
+    "Исследования локомоции",
+    "Сцена: 16 H1 на гала-концерте 2025",
+    "Выставки и шоу",
+    "Платформа для своих разработок"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-h1/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Цена и поставка",
+   "title": "Цена **по запросу**",
+   "items": [
+    "Закупка на заводе по ВЭД-контракту",
+    "Ввоз на вашу компанию",
+    "Видео теста вашего робота с серийным номером",
+    "Поставка 4–7 недель"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Подберём решение",
+   "title": "Пиши в **личные сообщения** или оставляй заявку на сайте",
+   "text": "Рассчитаем стоимость и окупаемость",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-unitree-h1/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-unitree-h1/04.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-unitree-h1/07.jpg",
+     "focus": "50% 30%"
+    }
+   ],
+   "mascot": "pointUp"
+  }
+ ]
+}

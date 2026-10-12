@@ -1,0 +1,128 @@
+{
+ "01.jpg": {
+  "job": "dd496b7c-4033-405c-8f1c-9f8c4528bef9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041256_dd496b7c-4033-405c-8f1c-9f8c4528bef9.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a sunny green city park in the morning: a medium-sized four-legged robot dog about 70 cm long with a smooth pale silver-white body shell, light grey thighs with rounded black hip motors, black lower legs with rubber feet, a dark front face panel with two small headlights and a small round lidar sensor under its chin trots happily along a light gravel path next to a smiling young Russian woman in a light coat, a laughing Chinese boy runs alongside and points at it, fresh trees and soft sunlight, wide 4:3 composition, subject centered, friendly everyday mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "catalog": 263,
+  "job": "bb6d85e8-6ba5-4361-99c2-083a32b7a4aa",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20260921_083038_bb6d85e8-6ba5-4361-99c2-083a32b7a4aa.png",
+  "model": "каталог Higgsfield",
+  "aspect": "3:4",
+  "cost": 0,
+  "size": [
+   880,
+   1168
+  ],
+  "source_size": [
+   880,
+   1168
+  ],
+  "prompt": "Bright daylight photo of a small business delegation group in smart-casual attire observing a robotics assembly line through a glass viewing corridor, modern light-filled Chinese factory, white walls, light gray floor, high-key editorial corporate photography, soft natural light, no dramatic shadows, no text, no logos, no watermarks"
+ },
+ "03.jpg": {
+  "job": "1cee297a-0d82-4fc4-b8b4-adef554b57cb",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041257_1cee297a-0d82-4fc4-b8b4-adef554b57cb.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo on a red running track of a bright modern stadium: a medium-sized four-legged robot dog about 70 cm long with a smooth pale silver-white body shell, light grey thighs with rounded black hip motors, black lower legs with rubber feet, a dark front face panel with two small headlights and a small round lidar sensor under its chin sprints at full speed beside a laughing Chinese young man in sportswear who jogs and can barely keep up, the robot legs slightly blurred with speed, wide 4:3 composition, subject centered, energetic fun mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "d51edc6e-a1ff-4773-a086-707a86fd1647",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041219_d51edc6e-a1ff-4773-a086-707a86fd1647.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo on a modern campus plaza: a medium-sized four-legged robot dog about 70 cm long with a smooth pale silver-white body shell, light grey thighs with rounded black hip motors, black lower legs with rubber feet, a dark front face panel with two small headlights and a small round lidar sensor under its chin carries a small dark canvas cargo bag strapped on its back and confidently steps up onto a low concrete curb, a smiling Russian engineer in a light jacket walks beside it and watches, glass buildings and young trees behind, main subject in the upper half of the frame, the lower third is calm pale paving stones, vertical 4:5, capable compact mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "b5e4d7ba-fd24-458b-941e-82290350ab19",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041218_b5e4d7ba-fd24-458b-941e-82290350ab19.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at golden hour in a large landscaped technology park: a medium-sized four-legged robot dog about 70 cm long with a smooth pale silver-white body shell, light grey thighs with rounded black hip motors, black lower legs with rubber feet, a dark front face panel with two small headlights and a small round lidar sensor under its chin patrols at a steady pace along a long winding path between lawns and young trees, a smiling Chinese security officer in a light uniform walks a few steps behind with a tablet, the path stretches far into the distance, wide 4:3 composition, subject centered, calm long-shift mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "4a494568-82a9-4993-bcd2-56111f740817",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_042119_4a494568-82a9-4993-bcd2-56111f740817.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic close-up photo in a bright modern shopping arcade: a medium-sized four-legged robot dog about 70 cm long with a smooth pale silver-white body shell, light grey thighs with rounded black hip motors, black lower legs with rubber feet, a dark front face panel with two small headlights and a small round lidar sensor under its chin stands on a waist-high plain white display podium, its head turned toward a smiling Chinese woman in a light trench coat who leans in and points at the small round lidar sensor under its chin, warm daylight through a glass roof, main subject in the upper half of the frame, the lower third is calm plain white podium front, vertical 4:5, curious high-tech mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks.",
+  "replaced": [
+   {
+    "job": "fa8daf84-5c44-4bbf-a650-a63c6d03d82a",
+    "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041257_fa8daf84-5c44-4bbf-a650-a63c6d03d82a.png",
+    "cost": 0.5,
+    "why": "робособака внизу кадра закрывалась плашкой"
+   }
+  ]
+ },
+ "07.jpg": {
+  "job": "c79be784-6029-4af2-aa74-49c4eafac7a0",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041219_c79be784-6029-4af2-aa74-49c4eafac7a0.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright minimalist showroom: four identical medium-sized four-legged robot dogs with smooth pale silver-white body shells, black lower legs and dark front face panels stand in a neat row on a clean white podium, a smiling Russian couple discuss which one to choose with a friendly Chinese consultant, wide 4:3 composition, subject centered, choice and curiosity mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "fe3e7eb9-924d-41d4-bc98-dc1ea0bdc0bc",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041219_fe3e7eb9-924d-41d4-bc98-dc1ea0bdc0bc.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright school robotics club classroom: smiling Russian schoolchildren sit on the floor around a medium-sized four-legged robot dog about 70 cm long with a smooth pale silver-white body shell, light grey thighs with rounded black hip motors, black lower legs with rubber feet, a dark front face panel with two small headlights and a small round lidar sensor under its chin, the robot raises one front paw to give a high five to a delighted girl while a young teacher holds a tablet, main subject in the upper half of the frame, the lower third is calm light wooden floor, vertical 4:5, joyful learning mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "09.jpg": {
+  "catalog": 586,
+  "job": "899d0904-3488-44e9-94f5-817439a67cc0",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20260826_074556_899d0904-3488-44e9-94f5-817439a67cc0.png",
+  "model": "каталог Higgsfield",
+  "aspect": "16:9",
+  "cost": 0,
+  "size": [
+   1600,
+   893
+  ],
+  "source_size": [
+   2752,
+   1536
+  ],
+  "prompt": "Photorealistic editorial photo of a busy e-commerce fulfillment warehouse interior, workers packing international shipping boxes on conveyor lines, bright industrial lighting, wide angle composition, cinematic color grading, high detail. No text, no logos, no brand names, no watermarks anywhere in the image."
+ }
+}

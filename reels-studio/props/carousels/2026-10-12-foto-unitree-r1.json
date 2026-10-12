@@ -1,0 +1,123 @@
+{
+ "brand": "aura",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-r1/01.jpg",
+   "focus": "50% 30%",
+   "kicker": "Робомодели · Unitree",
+   "title": "Unitree R1: **гуманоид дешевле машины**",
+   "text": "Самый доступный гуманоид в линейке Unitree",
+   "logo": "unitree",
+   "mascot": "wave"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-r1/02.jpg",
+   "focus": "50% 30%",
+   "kicker": "Кто делает",
+   "title": "Unitree, **Ханчжоу**",
+   "text": "Основана в 2016 году Ван Синсином. Сама делает моторы, редукторы, контроллеры и лидары. Первой в мире начала продавать четвероногих роботов в розницу.",
+   "logo": "unitree"
+  },
+  {
+   "kind": "photoStat",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-r1/03.jpg",
+   "focus": "50% 30%",
+   "kicker": "Цена",
+   "title": "R1 на сайте Unitree",
+   "text": "R1 AIR — $4 900, R1 EDU — по запросу. Без налогов и доставки",
+   "value": "$5 900"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-r1/04.jpg",
+   "focus": "50% 30%",
+   "kicker": "Размеры",
+   "title": "R1 **в цифрах**",
+   "items": [
+    "Рост 123 см",
+    "Вес около 29 кг",
+    "26 степеней свободы",
+    "У AIR — 20, у EDU — до 40"
+   ]
+  },
+  {
+   "kind": "photoStat",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-r1/05.jpg",
+   "focus": "50% 30%",
+   "kicker": "Автономность",
+   "title": "работы от батареи",
+   "text": "Батарея быстросъёмная: запасная обязательна",
+   "value": "≈1 ч"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-r1/06.jpg",
+   "focus": "50% 30%",
+   "kicker": "Начинка",
+   "title": "Что **внутри**",
+   "items": [
+    "Бинокулярная камера",
+    "4 микрофона и динамик",
+    "Большая модель для голоса и картинок",
+    "У EDU — Orin, 40–100 TOPS"
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-r1/07.jpg",
+   "focus": "50% 30%",
+   "kicker": "Применение",
+   "title": "Где R1 **работает**",
+   "items": [
+    "Обучение и кружки робототехники",
+    "Выставки и голосовые демо",
+    "Первый гуманоид для R&D",
+    "Разработка — только на EDU"
+   ]
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-12-foto-unitree-r1/08.jpg",
+   "focus": "50% 30%",
+   "kicker": "Цена и поставка",
+   "title": "Поставка **через Aura**",
+   "items": [
+    "Закупка на заводе по ВЭД-контракту",
+    "Ввоз на вашу компанию",
+    "Видео теста вашего робота с серийным номером",
+    "Поставка 4–7 недель"
+   ],
+   "numbered": true
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Подберём решение",
+   "title": "Пиши в **личные сообщения** или оставляй заявку на сайте",
+   "text": "Рассчитаем стоимость и окупаемость",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-unitree-r1/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-unitree-r1/04.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-12-foto-unitree-r1/06.jpg",
+     "focus": "50% 30%"
+    }
+   ],
+   "mascot": "pointUp"
+  }
+ ]
+}

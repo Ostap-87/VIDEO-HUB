@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "431cc872-6931-4c24-b87f-2f8516e80145",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041915_431cc872-6931-4c24-b87f-2f8516e80145.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at a bright electrical substation on a clear day: a large industrial four-legged robot dog about 1.1 m long with a sturdy matte black-and-dark-grey armored body, a flat top deck with mounting rails, a squared front face with stereo camera lenses, powerful legs with large exposed silver-grey knee motors and rubber feet walks confidently along a gravel path between transformers, a smiling Russian engineer in a hard hat and a Chinese colleague with a tablet follow it, wide 4:3 composition, subject centered, reliable industrial mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "02.jpg": {
+  "job": "772b75a7-e89f-4a41-80ee-db4d219194d2",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041914_772b75a7-e89f-4a41-80ee-db4d219194d2.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo in a bright robotics assembly workshop in Hangzhou: smiling Chinese engineers assemble black four-legged robot dogs on workbenches, fitting large joint motors and lidar modules, a finished robot, a large industrial four-legged robot dog about 1.1 m long with a sturdy matte black-and-dark-grey armored body, a flat top deck with mounting rails, a squared front face with stereo camera lenses, powerful legs with large exposed silver-grey knee motors and rubber feet stands in front, main subject in the upper half of the frame, the lower third is calm clean light floor, vertical 4:5, proud engineering mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "03.jpg": {
+  "job": "0b6af930-c696-4de3-bed1-9858e29a22ad",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_041914_0b6af930-c696-4de3-bed1-9858e29a22ad.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo at a sunny construction site: a large industrial four-legged robot dog about 1.1 m long with a sturdy matte black-and-dark-grey armored body, a flat top deck with mounting rails, a squared front face with stereo camera lenses, powerful legs with large exposed silver-grey knee motors and rubber feet walks over uneven ground carrying two heavy equipment cases strapped on its top deck, a smiling Russian foreman and a Chinese engineer walk beside it, wide 4:3 composition, subject centered, strong mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "04.jpg": {
+  "job": "cc2ee7c8-d1b7-424f-8ddd-fd451ad39ad6",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_042018_cc2ee7c8-d1b7-424f-8ddd-fd451ad39ad6.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo on an outdoor test track at a technology park: a large industrial four-legged robot dog about 1.1 m long with a sturdy matte black-and-dark-grey armored body, a flat top deck with mounting rails, a squared front face with stereo camera lenses, powerful legs with large exposed silver-grey knee motors and rubber feet gallops at full speed, legs motion-blurred, dust kicked up, a laughing Chinese engineer with a stopwatch stands at the side, main subject in the upper half of the frame, the lower third is calm grey asphalt, vertical 4:5, fast energetic mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "05.jpg": {
+  "job": "7fd54421-859b-47e8-8e54-eb818f66393a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_042018_7fd54421-859b-47e8-8e54-eb818f66393a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo inside a bright industrial plant: a large industrial four-legged robot dog about 1.1 m long with a sturdy matte black-and-dark-grey armored body, a flat top deck with mounting rails, a squared front face with stereo camera lenses, powerful legs with large exposed silver-grey knee motors and rubber feet climbs a flight of steel grating stairs, a smiling Russian engineer waits at the top landing and a Chinese engineer watches from below, wide 4:3 composition, subject centered, capable mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "06.jpg": {
+  "job": "8313091b-7948-4682-ada9-bd1c314a0c70",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_042104_8313091b-7948-4682-ada9-bd1c314a0c70.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at a large bright chemical plant on a sunny day: a large industrial four-legged robot dog about 1.1 m long with a sturdy matte black-and-dark-grey armored body, a flat top deck with mounting rails, a squared front face with stereo camera lenses, powerful legs with large exposed silver-grey knee motors and rubber feet patrols along a long row of pipelines, a smiling Chinese engineer with a tablet walks beside it in the distance, main subject in the upper half of the frame, the lower third is calm concrete path, vertical 4:5, endurance mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "07.jpg": {
+  "job": "66c36f71-d0ee-42e9-8066-96df2e20616a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_042105_66c36f71-d0ee-42e9-8066-96df2e20616a.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo outdoors in light snowfall at an industrial site: a large industrial four-legged robot dog about 1.1 m long with a sturdy matte black-and-dark-grey armored body, a flat top deck with mounting rails, a squared front face with stereo camera lenses, powerful legs with large exposed silver-grey knee motors and rubber feet walks through fresh snow and a shallow puddle, water and snow on its armored body, a smiling Russian engineer in a winter jacket and hard hat watches with a coffee cup, wide 4:3 composition, subject centered, tough weatherproof mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "08.jpg": {
+  "job": "b15de141-9276-44fb-8c5d-0807b0dabc43",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_042105_b15de141-9276-44fb-8c5d-0807b0dabc43.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "Photorealistic photo at a bright power plant: a large industrial four-legged robot dog about 1.1 m long with a sturdy matte black-and-dark-grey armored body, a flat top deck with mounting rails, a squared front face with stereo camera lenses, powerful legs with large exposed silver-grey knee motors and rubber feet with a compact thermal camera on its top deck inspects a row of electrical cabinets, a smiling Russian engineer and a Chinese colleague look at a blurred thermal image on a tablet, main subject in the upper half of the frame, the lower third is calm concrete floor, vertical 4:5, attentive inspection mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ },
+ "09.jpg": {
+  "job": "de2af445-4f78-4ab4-8d01-121d50bc15fa",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261012_042104_de2af445-4f78-4ab4-8d01-121d50bc15fa.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "Photorealistic photo in a bright factory dispatch area: a smiling Chinese worker and a Russian client representative lower a large industrial four-legged robot dog about 1.1 m long with a sturdy matte black-and-dark-grey armored body, a flat top deck with mounting rails, a squared front face with stereo camera lenses, powerful legs with large exposed silver-grey knee motors and rubber feet into a large open hard-shell transport case with grey foam cut to its shape, neat stacks of plain boxes behind, wide 4:3 composition, subject centered, careful delivery mood. Realistic materials, natural colors. No text, no letters, no logos, no watermarks."
+ }
+}
