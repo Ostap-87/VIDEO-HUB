@@ -3,7 +3,7 @@
 // Фон и шапка — как у Stories-анонса (StoryAnnounce: знак бренда, плашка-кикер), заголовок, ролик со звуком в карточке 9:16,
 // внизу плашка-подсказка. Всё в безопасной зоне Stories (сверху 250, снизу 380, по бокам 64).
 import React from "react";
-import {AbsoluteFill, staticFile} from "remotion";
+import {AbsoluteFill, interpolate, staticFile, useVideoConfig} from "remotion";
 import {Video} from "@remotion/media";
 import {z} from "zod";
 import {BrandMark, Rich, STYLES, typo} from "./carousel/kit";
@@ -12,7 +12,8 @@ import {Badge, STORY} from "./StoryAnnounce";
 export const storyReelSchema = z.object({
   brand: z.enum(["gtt", "aura"]),
   video: z.string(), // ролик 9:16, путь от корня репозитория
-  seconds: z.number(), // длина ролика (с)
+  seconds: z.number(), // длина Stories (с): весь ролик или кусок для тизера
+  from: z.number().optional(), // с какой секунды ролика начать (тизер-анонс — кусок ролика; по умолчанию 0)
   kicker: z.string().optional(), // плашка справа сверху («Новый Reels», «Мой проект»; "" — без плашки)
   title: z.string().optional(), // заголовок над роликом, **слово** — акцент
   note: z.string().optional(), // плашка под роликом
@@ -22,8 +23,9 @@ export type StoryReelProps = z.infer<typeof storyReelSchema>;
 const CARD = {h: 910, top: 505};
 const CW = Math.round((CARD.h * 9) / 16);
 
-export const StoryReel: React.FC<StoryReelProps> = ({brand, video, kicker, title, note}) => {
+export const StoryReel: React.FC<StoryReelProps> = ({brand, video, from = 0, kicker, title, note}) => {
   const s = STYLES[brand];
+  const {fps, durationInFrames} = useVideoConfig();
   return (
     <AbsoluteFill style={{...s.bg}}>
       <AbsoluteFill style={{...s.pattern}} />
@@ -49,7 +51,12 @@ export const StoryReel: React.FC<StoryReelProps> = ({brand, video, kicker, title
           boxShadow: "0 30px 70px rgba(38,38,38,0.25)",
         }}
       >
-        <Video src={staticFile(video)} style={{width: "100%", height: "100%", objectFit: "cover"}} />
+        <Video
+          src={staticFile(video)}
+          trimBefore={Math.round(from * fps)}
+          volume={(f) => interpolate(f, [durationInFrames - 0.6 * fps, durationInFrames], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"})}
+          style={{width: "100%", height: "100%", objectFit: "cover"}}
+        />
       </div>
       {note ? (
         <div style={{position: "absolute", left: STORY.side, right: STORY.side, bottom: STORY.bottom - 6, display: "flex", justifyContent: "center"}}>
