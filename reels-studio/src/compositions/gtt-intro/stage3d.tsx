@@ -175,6 +175,7 @@ const pyramidData = (R: number, Hh: number) => {
   });
   const geo = new THREE.BufferGeometry();
   geo.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
+  geo.setAttribute("color", new THREE.Float32BufferAttribute(new Array(pos.length).fill(1), 3));
   geo.computeVertexNormals();
   const edges: [V3, V3][] = [
     [apex, base[0]],
@@ -190,6 +191,8 @@ const pyramidData = (R: number, Hh: number) => {
 };
 
 const UP = new THREE.Vector3(0, 1, 0);
+const SIDE = new THREE.Color("#7DD3FC");
+const FACE = new THREE.Color("#EAF7FF");
 const Edge: React.FC<{a: V3; b: V3; r: number; p: number; children: React.ReactNode}> = ({a, b, r, p, children}) => {
   const A = new THREE.Vector3(...a);
   const d = new THREE.Vector3(...b).sub(A);
@@ -226,6 +229,23 @@ export const GlassPyramid: React.FC<{s: PyramidState}> = ({s}) => {
   const {geo, edges, verts} = useMemo(() => pyramidData(R, H), [R, H]);
   const er = Math.max(2.2, H * 0.0062);
   const glass = Math.max(0, Math.min(1, s.glass));
+  // оттенок граней как у логотипа сайта: грань, повёрнутая к зрителю, — светло-голубая #E0F2FE,
+  // грань боком — небесно-голубая #7DD3FC (цвет вершин умножает прошедший сквозь стекло свет)
+  useLayoutEffect(() => {
+    const m = new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(s.pitch, 0, s.roll, "XYZ"));
+    m.multiply(new THREE.Matrix4().makeRotationY(s.yaw));
+    const nrm = geo.attributes.normal;
+    const col = geo.attributes.color;
+    const v = new THREE.Vector3();
+    const c = new THREE.Color();
+    for (let f = 0; f < nrm.count; f += 3) {
+      v.set(nrm.getX(f), nrm.getY(f), nrm.getZ(f)).applyMatrix4(m);
+      const lit = Math.pow(Math.abs(v.z), 0.8);
+      c.copy(SIDE).lerp(FACE, lit);
+      for (let k = 0; k < 3; k++) col.setXYZ(f + k, c.r, c.g, c.b);
+    }
+    col.needsUpdate = true;
+  });
   const [x, y] = atDepth(s.x, s.y, 0);
   return (
     <group position={[x, y, s.z ?? 0]} rotation={[s.pitch, 0, s.roll]} scale={s.scale}>
@@ -233,14 +253,15 @@ export const GlassPyramid: React.FC<{s: PyramidState}> = ({s}) => {
         {glass > 0.002 ? (
           <mesh geometry={geo}>
             <meshPhysicalMaterial
-              color="#E6F6FF"
+              color="#FFFFFF"
+              vertexColors
               transmission={1}
               thickness={H * 0.3}
-              roughness={0.03}
-              ior={1.47}
+              roughness={0.025}
+              ior={1.5}
               dispersion={3}
-              attenuationColor="#4FB8F5"
-              attenuationDistance={H * 0.9}
+              attenuationColor="#9ADCFF"
+              attenuationDistance={H * 3.5}
               clearcoat={1}
               clearcoatRoughness={0.02}
               specularIntensity={1}
@@ -256,25 +277,32 @@ export const GlassPyramid: React.FC<{s: PyramidState}> = ({s}) => {
           const order = i < 4 ? i * 0.06 : 0.3 + (i - 4) * 0.08;
           const p = Math.max(0, Math.min(1, (s.edges - order) / 0.45));
           return (
-            <Edge key={i} a={a} b={b} r={er} p={s.edges >= 1 ? 1 : p}>
+            <React.Fragment key={i}>
+            {s.glow > 0.02 ? (
+              <Edge a={a} b={b} r={er * 3} p={s.edges >= 1 ? 1 : p}>
+                <meshBasicMaterial color="#7DD3FC" transparent opacity={Math.min(0.3, 0.14 * s.glow)} blending={THREE.AdditiveBlending} depthWrite={false} toneMapped={false} />
+              </Edge>
+            ) : null}
+            <Edge a={a} b={b} r={er * (1 + Math.min(1, s.glow) * 0.2)} p={s.edges >= 1 ? 1 : p}>
               <meshPhysicalMaterial
                 color="#E8F7FF"
                 emissive="#38BDF8"
-                emissiveIntensity={0.22 + s.glow * 2.2}
+                emissiveIntensity={0.22 + (s.glow + (s.shine ?? 0) * 1.4) * 2.2}
                 roughness={0.18}
                 metalness={0}
                 clearcoat={1}
                 clearcoatRoughness={0.05}
                 envMapIntensity={1.4}
-                toneMapped={s.glow < 0.05}
+                toneMapped={s.glow + (s.shine ?? 0) < 0.05}
               />
             </Edge>
+            </React.Fragment>
           );
         })}
         {verts.map((v, i) => (
           <mesh key={i} position={v} visible={s.edges > 0.75}>
             <sphereGeometry args={[er * 1.02, 14, 10]} />
-            <meshPhysicalMaterial color="#F4FBFF" emissive="#7DD3FC" emissiveIntensity={0.18 + s.glow * 2.2} roughness={0.18} clearcoat={1} toneMapped={s.glow < 0.05} />
+            <meshPhysicalMaterial color="#F4FBFF" emissive="#7DD3FC" emissiveIntensity={0.18 + (s.glow + (s.shine ?? 0) * 1.4) * 2.2} roughness={0.18} clearcoat={1} toneMapped={s.glow + (s.shine ?? 0) < 0.05} />
           </mesh>
         ))}
       </group>
@@ -289,9 +317,10 @@ export const GlassStage: React.FC<{
   zoom: number;
   exposure?: number;
   shadow?: number; // 0..1
+  dim?: number; // 0..1 — приглушить студию (вариант «свет» в начале)
   children?: React.ReactNode;
   front?: React.ReactNode; // слои, которые сами учитывают наезд (кубики «blocks»)
-}> = ({pyramid, bgZoom, zoom, exposure = 1.0, shadow = 1, children, front}) => {
+}> = ({pyramid, bgZoom, zoom, exposure = 1.0, shadow = 1, dim = 0, children, front}) => {
   const bg = useMemo(() => makeBackdrop(pyramid.y), []); // eslint-disable-line react-hooks/exhaustive-deps
   const shadowTex = useMemo(() => makeBlob("38,48,86"), []);
   const causticTex = useMemo(() => makeBlob("200,240,255", 0.05), []);
@@ -308,14 +337,14 @@ export const GlassStage: React.FC<{
       style={{position: "absolute", inset: 0}}
     >
       <Env exposure={exposure} />
-      <ambientLight intensity={0.35} />
-      <directionalLight position={[-900, 1600, 1800]} intensity={2.0} />
-      <directionalLight position={[1200, -300, 900]} intensity={0.7} color="#CFEFFF" />
+      <ambientLight intensity={0.08} />
+      <directionalLight position={[-900, 1600, 1800]} intensity={0.9} />
+      <directionalLight position={[1200, -300, 900]} intensity={0.35} color="#CFEFFF" />
       {/* задник */}
       <group scale={[bgZoom, bgZoom, 1]}>
         <mesh position={[0, 0, BG_Z]}>
           <planeGeometry args={[BG_W, BG_H]} />
-          <meshBasicMaterial map={bg} toneMapped={false} />
+          <meshBasicMaterial map={bg} toneMapped={false} color={new THREE.Color("#FFFFFF").lerp(new THREE.Color("#C6CCDA"), dim)} />
         </mesh>
         <mesh position={sh} scale={[pyramid.height * 1.25 * shK * pyramid.scale, pyramid.height * 0.34 * shK * pyramid.scale, 1]}>
           <planeGeometry args={[1, 1]} />
@@ -334,4 +363,15 @@ export const GlassStage: React.FC<{
       {front}
     </ThreeCanvas>
   );
+};
+
+// где на экране вершина пирамиды (для блика)
+export const apexOnScreen = (s: PyramidState, zoom: number): [number, number] => {
+  const v = new THREE.Vector3(0, (s.height / 2) * s.scale, 0).applyEuler(new THREE.Euler(s.pitch, 0, s.roll, "XYZ"));
+  const [x, y] = atDepth(s.x, s.y, 0);
+  const wx = (x + v.x) * zoom;
+  const wy = (y + v.y) * zoom;
+  const wz = v.z * zoom;
+  const k = CAM_Z / (CAM_Z - wz);
+  return [FW / 2 + wx * k, FH / 2 - wy * k];
 };

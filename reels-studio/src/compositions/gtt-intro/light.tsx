@@ -6,11 +6,10 @@
 import React from "react";
 import {Glyphs} from "./wordmark";
 import {PYR_Y, type Layout} from "./layout";
-import {easeInOutCubic, easeOutCubic, prog, smooth} from "./util";
+import {easeInOutCubic, prog, smooth} from "./util";
 
-const DASH = 1700;
-const start = (i: number) => 0.05 + i * 0.03;
-const DRAW = 0.42;
+const start = (i: number) => 0.04 + i * 0.028;
+const DRAW = 0.5;
 export const LIGHT_DONE = 0.96; // надпись налита — вспышка пирамиды
 export const LIGHT_DEPTH: [number, number] = [0.98, 1.16]; // объём и тень проявляются
 
@@ -20,7 +19,7 @@ export const lightPyramid = (tau: number) => {
   return {
     edges: easeInOutCubic(prog(tau, 0.0, 0.72)),
     glass: smooth(prog(tau, 0.34, 0.82)),
-    glow: Math.max(0, 1.1 * (1 - smooth(prog(tau, 0.55, 0.9)))) + flash * 1.4,
+    glow: Math.max(0, 1.1 * (1 - smooth(prog(tau, 0.55, 0.9)))),
     flash,
   };
 };
@@ -75,8 +74,10 @@ export const LightLayer: React.FC<{L: Layout; tau: number; id: string}> = ({L, t
         ? L.glyphs.map((g) => {
             const p = prog(tau, start(g.i), start(g.i) + DRAW);
             if (p <= 0) return null;
-            const off = DASH * (1 - easeOutCubic(p));
-            const dash = {strokeDasharray: `${DASH} ${DASH}`, strokeDashoffset: off};
+            // штрих длиной в контур буквы: линия «бежит» по контуру и замыкается к концу
+            const D = Math.max(200, g.perim);
+            const off = D * (1 - easeInOutCubic(p));
+            const dash = {strokeDasharray: `${D.toFixed(0)} ${(D * 2).toFixed(0)}`, strokeDashoffset: off};
             return (
               <g key={`s${g.i}`} opacity={strokeFade}>
                 <g filter={`url(#${id}-glow)`} opacity={0.95}>
@@ -91,39 +92,63 @@ export const LightLayer: React.FC<{L: Layout; tau: number; id: string}> = ({L, t
   );
 };
 
-// приглушённая студия в начале и вспышка пирамиды (HTML поверх 3D-сцены)
-export const LightAtmosphere: React.FC<{tau: number; flash: number}> = ({tau, flash}) => {
-  const dim = 1 - smooth(prog(tau, 0.1, 0.85));
+// вспышка пирамиды (HTML поверх 3D-сцены): мягкое свечение и звёздный блик на вершине пирамиды
+export const studioDim = (tau: number) => 1 - smooth(prog(tau, 0.1, 0.85));
+
+export const LightFlash: React.FC<{flash: number; apex: [number, number]}> = ({flash, apex}) => {
+  if (flash < 0.01) return null;
+  const [ax, ay] = apex;
   return (
     <>
-      <div style={{position: "absolute", inset: 0, background: "rgba(24,32,62,0.24)", opacity: dim, mixBlendMode: "multiply"}} />
       <div
         style={{
           position: "absolute",
-          left: 540 - 620,
-          top: PYR_Y - 620,
-          width: 1240,
-          height: 1240,
+          left: 540 - 640,
+          top: PYR_Y - 640,
+          width: 1280,
+          height: 1280,
           borderRadius: "50%",
-          background: "radial-gradient(closest-side, rgba(255,255,255,0.95), rgba(186,230,253,0.55) 38%, rgba(186,230,253,0) 100%)",
-          opacity: flash * 0.75,
+          background: "radial-gradient(closest-side, rgba(255,255,255,0.9), rgba(186,230,253,0.45) 40%, rgba(186,230,253,0) 100%)",
+          opacity: flash * 0.6,
           mixBlendMode: "screen",
         }}
       />
-      <div
-        style={{
-          position: "absolute",
-          left: -200,
-          top: PYR_Y - 330 - 14,
-          width: 1480,
-          height: 28,
-          borderRadius: "50%",
-          background: "radial-gradient(closest-side, rgba(255,255,255,1), rgba(125,211,252,0.6) 45%, rgba(125,211,252,0) 100%)",
-          opacity: flash * 0.9,
-          scale: `${0.6 + flash * 0.5} 1`,
-          mixBlendMode: "screen",
-        }}
-      />
+      {/* звёздный блик: яркое ядро и два луча */}
+      <div style={{position: "absolute", left: ax, top: ay, width: 0, height: 0, opacity: flash, mixBlendMode: "screen"}}>
+        <div
+          style={{
+            position: "absolute",
+            left: -110,
+            top: -110,
+            width: 220,
+            height: 220,
+            borderRadius: "50%",
+            background: "radial-gradient(closest-side, rgba(255,255,255,1), rgba(186,230,253,0.7) 30%, rgba(125,211,252,0) 100%)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            left: -520 * (0.5 + flash * 0.5),
+            top: -5,
+            width: 1040 * (0.5 + flash * 0.5),
+            height: 10,
+            borderRadius: "50%",
+            background: "radial-gradient(closest-side, rgba(255,255,255,1), rgba(125,211,252,0.5) 50%, rgba(125,211,252,0) 100%)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            left: -4,
+            top: -190 * (0.5 + flash * 0.5),
+            width: 8,
+            height: 380 * (0.5 + flash * 0.5),
+            borderRadius: "50%",
+            background: "radial-gradient(closest-side, rgba(255,255,255,1), rgba(125,211,252,0.45) 50%, rgba(125,211,252,0) 100%)",
+          }}
+        />
+      </div>
     </>
   );
 };

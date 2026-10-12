@@ -65,7 +65,7 @@ const makePieces = (L: Layout): Piece[] => {
           const dy = cy - PYR_Y;
           const base = Math.atan2(dy, dx) + (r() - 0.5) * 1.1;
           const dist = 420 + r() * 620;
-          const z = 380 + r() * 1150;
+          const z = 500 + r() * 1500;
           const ax: [number, number, number] = [r() - 0.5, r() - 0.5, (r() - 0.5) * 0.6];
           const al = Math.hypot(...ax) || 1;
           out.push({
@@ -139,9 +139,9 @@ export const ShardsLayer: React.FC<{L: Layout; tau: number; id: string; fps: num
     const now = pose(pc, tau);
     const prev = pose(pc, tau - 0.5 / fps);
     const moved = Math.hypot(now.sx - prev.sx, now.sy - prev.sy) + Math.abs(now.a - prev.a) * 60 + Math.abs(now.d - prev.d) * 60;
-    const samples = moved > 2 ? 4 : 1;
+    const samples = Math.max(1, Math.min(14, Math.ceil(moved / 5)));
     const land = pc.s + pc.d * 0.78;
-    const landK = smooth(prog(tau, land - 0.05, land + 0.1));
+    const landK = smooth(prog(tau, land - 0.08, land + 0.05));
     const flash = Math.exp(-Math.pow((tau - land) / 0.055, 2));
     const appear = smooth(prog(tau, pc.s, pc.s + 0.08));
     const solo = pc.ink ? 1 : 1 - smooth(prog(tau, land - 0.12, land + 0.02)); // пустые осколки растворяются на подлёте
@@ -149,7 +149,7 @@ export const ShardsLayer: React.FC<{L: Layout; tau: number; id: string; fps: num
     const g = glyphOf.get(pc.g)!;
     for (let j = 0; j < samples; j++) {
       const q = j === 0 ? now : pose(pc, tau - (j / (samples - 1)) * (0.5 / fps));
-      const op = (samples > 1 ? 0.5 : 1) * appear * solo;
+      const op = (samples > 1 ? 1 - Math.pow(0.06, 1 / samples) : 1) * appear * solo;
       if (op < 0.01) continue;
       items.push(
         <g
@@ -158,18 +158,24 @@ export const ShardsLayer: React.FC<{L: Layout; tau: number; id: string; fps: num
           opacity={op}
         >
           <g clipPath={`url(#${id}-c${k})`}>
-            {pc.ink ? <Glyphs L={L} only={(x) => x.i === g.i} fill={`url(#${id}-fill)`} /> : null}
+            {pc.ink ? (
+              <g opacity={0.45 + 0.55 * landK}>
+                <Glyphs L={L} only={(x) => x.i === g.i} fill={`url(#${id}-fill)`} />
+              </g>
+            ) : null}
             <polygon points={pts} fill={`url(#${id}-glass)`} opacity={(pc.ink ? 0.62 : 0.9) * (1 - landK)} />
             <polygon points={pts} fill="#FFFFFF" opacity={Math.min(0.95, q.spec * 0.9 + flash * 0.55) * (pc.ink ? 1 : 0.8)} />
           </g>
-          <polygon
-            points={pts}
-            fill="none"
-            stroke="#FFFFFF"
-            strokeWidth={1.8}
-            strokeLinejoin="round"
-            opacity={Math.min(1, (0.85 + flash) * (1 - landK) + flash * 0.6)}
-          />
+          {j === 0 ? (
+            <polygon
+              points={pts}
+              fill="none"
+              stroke="#FFFFFF"
+              strokeWidth={1.8}
+              strokeLinejoin="round"
+              opacity={Math.min(1, (0.85 + flash) * (1 - landK) + flash * 0.6) * (samples > 1 ? 0.45 : 1)}
+            />
+          ) : null}
         </g>,
       );
     }

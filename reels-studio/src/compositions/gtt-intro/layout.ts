@@ -19,6 +19,7 @@ export type Glyph = {
   y: number; // базовая линия
   w: number;
   ink: {l: number; t: number; r: number; b: number}; // реальные границы «чернил» буквы, px кадра
+  perim: number; // примерная длина контура (для прорисовки линией)
 };
 export type Layout = {
   family: string;
@@ -58,6 +59,7 @@ const measure = (family: string): Layout => {
         y,
         w: m.width,
         ink: {l: x - m.actualBoundingBoxLeft, r: x + m.actualBoundingBoxRight, t: y - m.actualBoundingBoxAscent, b: y + m.actualBoundingBoxDescent},
+        perim: 0,
       });
     }
   });
@@ -80,6 +82,19 @@ const measure = (family: string): Layout => {
   const data = g.getImageData(0, 0, w, h).data;
   const alpha = new Uint8ClampedArray(w * h);
   for (let i = 0; i < w * h; i++) alpha[i] = data[i * 4 + 3];
+  // длина контура буквы ≈ число граничных пикселей (×0.9 — поправка на «лесенку»)
+  glyphs.forEach((q) => {
+    let n = 0;
+    for (let yy = Math.floor(q.ink.t - y0) - 1; yy <= Math.ceil(q.ink.b - y0) + 1; yy++) {
+      for (let xx = Math.floor(q.ink.l - x0) - 1; xx <= Math.ceil(q.ink.r - x0) + 1; xx++) {
+        if (xx < 1 || yy < 1 || xx >= w - 1 || yy >= h - 1) continue;
+        const on = alpha[yy * w + xx] > 127;
+        if (!on) continue;
+        if (alpha[yy * w + xx - 1] <= 127 || alpha[yy * w + xx + 1] <= 127 || alpha[(yy - 1) * w + xx] <= 127 || alpha[(yy + 1) * w + xx] <= 127) n++;
+      }
+    }
+    q.perim = n * 0.9;
+  });
   return {family, fs: FS, glyphs, box, capH, mask: {data: alpha, x0, y0, w, h}};
 };
 

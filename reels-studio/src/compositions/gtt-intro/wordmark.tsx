@@ -108,7 +108,7 @@ export const WordmarkBody: React.FC<{L: Layout; id: string; depth?: number; shin
 
 // плашка сайта под надписью (аутро): белая «пилюля» с моноширинным адресом, как плашка сайта в роликах
 export const SitePill: React.FC<{L: Layout; p: number}> = ({L, p}) => {
-  const y = L.box.b + 92;
+  const y = L.box.b + 100;
   return (
     <div
       style={{
@@ -127,7 +127,7 @@ export const SitePill: React.FC<{L: Layout; p: number}> = ({L, p}) => {
         gap: 14,
         fontFamily: mono.fontFamily,
         fontWeight: 500,
-        fontSize: 36,
+        fontSize: 40,
         letterSpacing: "0.06em",
         color: "#17171D",
         whiteSpace: "nowrap",
