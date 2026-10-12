@@ -52,7 +52,7 @@
 ## Два проекта: GlobalTechTour и Aura Robotics
 
 Ролики делаются для двух брендов одним шаблоном `TalkReelPro`: GlobalTechTour (по умолчанию) и Aura Robotics
-(aura-robotics.ru, `"brand": "aura"`, тема пайплайна `aura`). Стиль Aura, логотип, маскот и робособака (`AuraDog`) описаны в `reels-studio/CLAUDE.md`
+(aura-robotics.ru, `"brand": "aura"`, тема пайплайна `aura`). Стиль Aura, логотип, маскот, робособака (`AuraDog`) и 3D-арсенал (AGV, манипулятор, робособака, роборука — `reels-studio/src/components/aura3d/`, референсы `source-videos/aura-robotics/3d-референсы/`, витрина `finished-videos/3d-арсенал/`) описаны в `reels-studio/CLAUDE.md`
 (раздел «Второй бренд: Aura Robotics»). Материалы Aura — `source-videos/aura-robotics/` (логотип: оригинал от пользователя
 в `логотип/оригиналы/`, вектор монограммы `логотип/ar-monogram.svg`; скриншоты сайта — `site/`; фото для примеров
 каруселей — `карусели-пример/`). Карусели Instagram (текстовые и фото) — `reels-studio/CLAUDE.md`, раздел «Карусели Instagram».
