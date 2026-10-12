@@ -93,7 +93,7 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         durationInFrames={300}
         schema={storyReelSchema}
-        defaultProps={{brand: "aura", video: "finished-videos/2026-10-12-foto-aura-intro-reels.mp4", seconds: 48.5, kicker: "Новый Reels", title: "Роботы **без посредников**", note: "Смотри в профиле"} as StoryReelProps}
+        defaultProps={{brand: "aura", video: "finished-videos/2026-10-12-foto-aura-intro-reels.mp4", seconds: 48.5, title: "Роботы **без посредников**", note: "Смотри в профиле"} as StoryReelProps}
         calculateMetadata={({props}: {props: StoryReelProps}) => ({durationInFrames: Math.round(props.seconds * 30)})}
       />
       <Composition

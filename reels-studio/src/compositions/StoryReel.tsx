@@ -14,7 +14,7 @@ export const storyReelSchema = z.object({
   video: z.string(), // ролик 9:16, путь от корня репозитория
   seconds: z.number(), // длина Stories (с): весь ролик или кусок для тизера
   from: z.number().optional(), // с какой секунды ролика начать (тизер-анонс — кусок ролика; по умолчанию 0)
-  kicker: z.string().optional(), // плашка справа сверху («Новый Reels», «Мой проект»; "" — без плашки)
+  kicker: z.string().optional(), // плашка справа сверху («Мой проект», «Завтра»); без поля — без плашки («Новый Reels» / «Новый пост» не ставим)
   title: z.string().optional(), // заголовок над роликом, **слово** — акцент
   note: z.string().optional(), // плашка под роликом
 });
@@ -31,7 +31,7 @@ export const StoryReel: React.FC<StoryReelProps> = ({brand, video, from = 0, kic
       <AbsoluteFill style={{...s.pattern}} />
       <div style={{position: "absolute", top: STORY.top + 10, left: STORY.side, right: STORY.side, display: "flex", alignItems: "center", justifyContent: "space-between"}}>
         <BrandMark brand={brand} s={s} />
-        {kicker === "" ? null : <Badge text={kicker ?? "Новый Reels"} s={s} />}
+        {kicker ? <Badge text={kicker} s={s} /> : null}
       </div>
       {title ? (
         <div style={{position: "absolute", top: STORY.top + 105, left: STORY.side, right: STORY.side, fontFamily: s.head, fontWeight: s.headWeight, letterSpacing: s.headTrack, fontSize: 54, lineHeight: 1.1, color: s.ink, textAlign: "center", whiteSpace: "pre-line"}}>

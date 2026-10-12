@@ -1,6 +1,7 @@
 // Сторис-анонс карусели (решение пользователя 11.10.2026: «Пн — карусель, Вт — сторис-анонс, Ср — Reels по тому же туру»).
 // 1080×1920, один кадр = одна сторис. Обложка карусели стопкой со следующими слайдами на фоне бренда (стили — carousel/kit.tsx),
-// сверху знак бренда и «Новый пост», заголовок, внизу плашка-подсказка («Завтра в 19:00 — ролик об этом туре»).
+// сверху знак бренда (и плашка-кикер, если задана: «Модель дня»), заголовок, внизу плашка-подсказка.
+// Плашку «Новый пост» не ставим нигде (решение пользователя 12.10.2026: «название новый пост убрать с картинки и больше нигде не использовать»).
 // Безопасная зона Stories: сверху 250 px (полоски и аватар), снизу 380 px (строка ответа), по бокам 64 px.
 // Рендер всех анонсов: npm run announce -- <имя> (props/announces/<имя>.json → finished-videos/анонсы/<имя>/01.png …).
 import React from "react";
@@ -14,7 +15,7 @@ export const storyAnnounceSchema = z.object({
     z.object({
       cover: z.string(), // обложка карусели (01.png), путь от корня репозитория
       back: z.array(z.string()).optional(), // 1–2 следующих слайда — «стопка» за обложкой, видно, что это карусель
-      kicker: z.string().optional(), // плашка справа сверху, по умолчанию «Новый пост»
+      kicker: z.string().optional(), // плашка справа сверху («Модель дня»); без поля — без плашки
       title: z.string().optional(), // заголовок над обложкой, **слово** — акцент
       note: z.string().optional(), // плашка под обложкой
     }),
@@ -76,10 +77,10 @@ export const StoryAnnounce: React.FC<StoryAnnounceProps> = ({brand, stories, gui
   return (
     <AbsoluteFill style={{...s.bg}}>
       <AbsoluteFill style={{...s.pattern}} />
-      {/* шапка: знак бренда и плашка «Новый пост» */}
+      {/* шапка: знак бренда и плашка-кикер, если задана */}
       <div style={{position: "absolute", top: STORY.top + 10, left: STORY.side, right: STORY.side, display: "flex", alignItems: "center", justifyContent: "space-between"}}>
         <BrandMark brand={brand} s={s} />
-        <Badge text={st.kicker ?? "Новый пост"} s={s} />
+        {st.kicker ? <Badge text={st.kicker} s={s} /> : null}
       </div>
       {/* заголовок */}
       {st.title ? (
