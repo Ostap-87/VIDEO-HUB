@@ -35,8 +35,8 @@ jobs:
       - uses: actions/checkout@v5
         with:
           lfs: false
-      - name: Звук пролистывания (единственный файл из LFS)
-        run: git lfs pull --include="source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav"
+      - name: Звуки из LFS (пролистывание, щелчок и вжух заставки GTT — три маленьких файла)
+        run: git lfs pull --include="source-videos/2026-10-07-byt-tehnika/sfx/*.wav"
       - uses: actions/setup-node@v4
         with:
           node-version: 22
