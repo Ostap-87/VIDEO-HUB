@@ -10,8 +10,8 @@ API Instagram не ставит музыку к каруселям — поэт�
 
 Aura по умолчанию — с роботом-ведущим (`host`): 3D-робот стоит справа под слайдом и «вытаскивает» каждый слайд (начиная
 с первого) из-за правого края — вперёд, как листают карусель; после обложки машет, на финале показывает на кнопку и машет
-на прощание; со слайдов робот-картинка убирается. Ролик начинается с пустого фона — обложку Reels задаёт `thumb_offset`
-в посте POST-HUB (печатается в конце).
+на прощание; со слайдов робот-картинка убирается. Вступление ~3 с: большой робот машет, рядом робособака, за ними крутится
+печать Aura Robotics; печать исчезает, робот с собакой уменьшаются и переходят под слайд. Первый кадр — обложка Reels.
 
 Что делает: рендерит видео-версию слайдов (`"video": true` — без стрелки «листай») в finished-videos/frames/ (в git не идут),
 пишет props/carousel-reels/<имя>-reels.json (секунды слайдов можно поправить там руками — при повторном запуске они
@@ -58,7 +58,7 @@ def seconds(sl: dict, first: bool, last: bool) -> float:
     s = fixed if fixed else min(5.5, max(3.5, 2.0 + 0.11 * words(sl)))
     s = math.ceil(s * 2) / 2 + (1.0 if last else 0.0)
     if host and first:
-        s += 1.0  # с роботом: вытащил обложку — успеть помахать
+        s += 1.0  # с роботом: вытащил первый слайд — успеть помахать
     return max(s, 6.0) if last and host else s  # с роботом на финале: показать на кнопку и помахать
 
 
@@ -130,5 +130,4 @@ board = ROOT / "finished-videos" / "раскадровки" / f"{reel_name}.jpg"
 board.parent.mkdir(parents=True, exist_ok=True)
 shutil.copy(work / f"{reel_name}.jpg", board)
 mb = out.stat().st_size / 1e6
-print(f"REELS {out.relative_to(ROOT)} ({total + (1.0 if host else 0):.1f} с, {mb:.1f} МБ), раскадровка {board.relative_to(ROOT)}"
-      + ("; обложка Reels: thumb_offset 2600 (первый слайд на месте, робот машет)" if host else ""))
+print(f"REELS {out.relative_to(ROOT)} ({total + (4.05 if host else 0):.1f} с, {mb:.1f} МБ), раскадровка {board.relative_to(ROOT)}")

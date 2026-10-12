@@ -22,46 +22,46 @@ export const GESTURE_DUR: Record<GestureKind, number> = {
   wave: 2.4, point: 1.8, pointUp: 2.2, tick: 0.9, push: 1.0, pull: 1.1, present: 1.4, jump: 1.75, nod: 1.2, scan: 2.6, shrug: 1.6,
 };
 
-const C = {light: "#F8F6F3", dark: "#262626", accent: "#FFF65D", glow: "#FFF65D"};
+export const C = {light: "#F8F6F3", dark: "#262626", accent: "#FFF65D", glow: "#FFF65D"};
 const W = 320; // размер холста маскота, px
 const H = 400;
 const FOOT = 318; // где на холсте стоят ступни (px от верха)
 
-const env = (p: number) => Math.sin(Math.min(Math.max(p, 0), 1) * Math.PI);
-const lerp = (a: number, b: number, w: number) => a + (b - a) * w;
-const smooth = (p: number) => p * p * (3 - 2 * p);
+export const env = (p: number) => Math.sin(Math.min(Math.max(p, 0), 1) * Math.PI);
+export const lerp = (a: number, b: number, w: number) => a + (b - a) * w;
+export const smooth = (p: number) => p * p * (3 - 2 * p);
 
-type V3 = [number, number, number];
+export type V3 = [number, number, number];
 
 // --- материалы (как MeshPhysicalMaterial на сайте) ---
-const Paint: React.FC<{c: string; cc?: number}> = ({c, cc = 1}) => (
+export const Paint: React.FC<{c: string; cc?: number}> = ({c, cc = 1}) => (
   <meshPhysicalMaterial color={c} metalness={0.1} roughness={0.3} clearcoat={cc} clearcoatRoughness={0.06} />
 );
-const Joint = () => <meshStandardMaterial color="#2C333B" metalness={0.85} roughness={0.38} />;
-const Rubber = () => <meshStandardMaterial color="#14171B" roughness={0.92} />;
-const Metal = () => <meshStandardMaterial color="#9AA4AE" metalness={0.95} roughness={0.24} />;
-const Seam = () => <meshStandardMaterial color="#0D1014" roughness={0.9} />;
+export const Joint = () => <meshStandardMaterial color="#2C333B" metalness={0.85} roughness={0.38} />;
+export const Rubber = () => <meshStandardMaterial color="#14171B" roughness={0.92} />;
+export const Metal = () => <meshStandardMaterial color="#9AA4AE" metalness={0.95} roughness={0.24} />;
+export const Seam = () => <meshStandardMaterial color="#0D1014" roughness={0.9} />;
 
-const Box: React.FC<{s: V3; p?: V3; r?: V3; children: React.ReactNode}> = ({s, p = [0, 0, 0], r, children}) => (
+export const Box: React.FC<{s: V3; p?: V3; r?: V3; children: React.ReactNode}> = ({s, p = [0, 0, 0], r, children}) => (
   <mesh position={p} rotation={r}>
     <boxGeometry args={s} />
     {children}
   </mesh>
 );
-const Sph: React.FC<{r: number; p?: V3; children: React.ReactNode}> = ({r, p = [0, 0, 0], children}) => (
+export const Sph: React.FC<{r: number; p?: V3; children: React.ReactNode}> = ({r, p = [0, 0, 0], children}) => (
   <mesh position={p}>
     <sphereGeometry args={[r, 20, 14]} />
     {children}
   </mesh>
 );
-const Cyl: React.FC<{a: number; b: number; h: number; p?: V3; r?: V3; children: React.ReactNode}> = ({a, b, h, p = [0, 0, 0], r, children}) => (
+export const Cyl: React.FC<{a: number; b: number; h: number; p?: V3; r?: V3; children: React.ReactNode}> = ({a, b, h, p = [0, 0, 0], r, children}) => (
   <mesh position={p} rotation={r}>
     <cylinderGeometry args={[a, b, h, 12]} />
     {children}
   </mesh>
 );
 // панель со швом, как plate() на сайте
-const Plate: React.FC<{s: V3; p: V3; c: string; cc?: number}> = ({s, p, c, cc}) => (
+export const Plate: React.FC<{s: V3; p: V3; c: string; cc?: number}> = ({s, p, c, cc}) => (
   <>
     <Box s={[s[0] + 0.035, s[1] + 0.035, s[2] * 0.9]} p={[p[0], p[1], p[2] - 0.006]}>
       <Seam />
@@ -393,7 +393,7 @@ export function mascotState(plan: MascotPlan, t: number) {
   return {x, y, face, move, gesture: g ? {kind: g.kind, p: (t - g.at) / GESTURE_DUR[g.kind]} : null};
 }
 
-export const AuraMascot: React.FC<{plan: MascotPlan; scale?: number}> = ({plan, scale = 1}) => {
+export const AuraMascot: React.FC<{plan: MascotPlan; scale?: number; dpr?: number}> = ({plan, scale = 1, dpr = 2}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -430,7 +430,7 @@ export const AuraMascot: React.FC<{plan: MascotPlan; scale?: number}> = ({plan, 
       <ThreeCanvas
         width={Math.round(W * scale)}
         height={Math.round(H * scale)}
-        dpr={2}
+        dpr={dpr}
         gl={{antialias: true, alpha: true, preserveDrawingBuffer: true}}
         camera={{fov: 30, position: [0.9, 2.1, 9.6], near: 0.1, far: 100}}
         style={{position: "absolute", inset: 0}}
@@ -445,13 +445,13 @@ export const AuraMascot: React.FC<{plan: MascotPlan; scale?: number}> = ({plan, 
   );
 };
 
-// камера смотрит на середину робота, как на сайте (camera.lookAt(0, 1.62, 0))
-const CameraLook: React.FC = () => {
+// камера смотрит на середину робота, как на сайте (camera.lookAt(0, 1.62, 0)); target — для других моделей (робособака)
+export const CameraLook: React.FC<{target?: V3}> = ({target = [0, 1.62, 0]}) => {
   const camera = useThree((st) => st.camera);
   const gl = useThree((st) => st.gl);
   const scene = useThree((st) => st.scene);
   React.useLayoutEffect(() => {
-    camera.lookAt(0, 1.62, 0);
+    camera.lookAt(...target);
     camera.updateProjectionMatrix();
     // студийное окружение для отражений и лака, как на сайте (там PMREM из «комнаты» со светлыми панелями)
     gl.toneMapping = THREE.ACESFilmicToneMapping;
@@ -461,6 +461,6 @@ const CameraLook: React.FC = () => {
     scene.environment = envTex;
     pm.dispose();
     return () => envTex.dispose();
-  }, [camera, gl, scene]);
+  }, [camera, gl, scene, target[0], target[1], target[2]]); // по числам: новый массив на каждом кадре не пересоздаёт окружение
   return null;
 };

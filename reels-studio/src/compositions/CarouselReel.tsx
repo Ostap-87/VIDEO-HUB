@@ -5,15 +5,21 @@
 // С роботом Aura (`host: true`, решение пользователя 12.10.2026: «маскот выдвигает картинки из угла экрана, вытаскивает
 // из-за экрана»): слайд 860 px, сверху 256 px, под ним «пол», на нём 3D-робот справа. Каждый слайд, начиная с первого, робот
 // «вытаскивает» из-за правого края жестом pull — слайды идут вперёд, как при листании карусели (справа налево), старый
-// уезжает влево; ролик начинается с пустого фона (обложку Reels задаёт thumb_offset поста). После обложки робот машет,
+// уезжает влево. После обложки робот машет,
 // между слайдами кивает, осматривается и показывает на слайд, на финале — на кнопку сайта и машет на прощание.
-// Всё лежит в безопасной зоне Reels (сверху 250, снизу 380) и в кадре ленты 4:5 (y 285–1635). Без робота первый кадр — обложка.
+// Вступление (решение пользователя 12.10.2026): первый кадр — большой робот на весь экран машет, рядом небольшая робособака
+// (AuraDog), за ними крутится печать Aura Robotics (AuraBadge); печать исчезает, робот с собакой уменьшаются и переходят
+// под слайд — и робот начинает вытаскивать слайды. Собака остаётся рядом и подпрыгивает на каждом новом слайде.
+// Всё лежит в безопасной зоне Reels (сверху 250, снизу 380) и в кадре ленты 4:5 (y 285–1635). Первый кадр — обложка Reels
+// (с роботом — большой робот машет на фоне печати, без робота — первый слайд).
 import React from "react";
 import {AbsoluteFill, Easing, Img, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
 import {Audio} from "@remotion/media";
 import {z} from "zod";
 import {STYLES} from "./carousel/kit";
-import {AuraMascot, GESTURE_DUR, type GestureKind, type MascotPlan, type MascotStay} from "../components/AuraMascot";
+import {AuraMascot, GESTURE_DUR, smooth, type GestureKind, type MascotPlan, type MascotStay} from "../components/AuraMascot";
+import {AuraBadge} from "../components/AuraBadge";
+import {AuraDog} from "../components/AuraDog";
 
 export const carouselReelSchema = z.object({
   brand: z.enum(["gtt", "aura"]),
@@ -34,7 +40,14 @@ const FLOOR = 1535; // ступни робота: под слайдом, выш�
 const HOST = {x: 890, y: FLOOR, face: -0.3}; // дом: справа под слайдом, чуть повернут к слайду (левее кнопок Instagram)
 const EDGE = {x: 962, y: FLOOR, face: 1.15}; // у правого края, лицом к краю
 const ROBOT_SCALE = 1.08; // голова заходит на нижний правый угол слайда — там пусто (стрелки «листай» в видео нет)
-const INTRO = 1.0; // с роботом: секунда в начале — робот вытаскивает первый слайд
+const HERO = 3.1; // вступление: большой робот, собака и печать; к этому моменту робот уже маленький у правого края
+const INTRO = HERO + 0.95; // робот сразу тянет первый слайд
+const HERO_BOT = {x: 540, y: 1540, scale: 4}; // большой робот: голова у верха безопасной зоны
+const DOG_HERO = {x: 190, y: 1540, scale: 2.6, face: -0.7}; // собака слева у ног робота, мордой к нему и к зрителю
+const DOG_HOME = {x: 760, y: FLOOR, scale: 0.95, face: -0.6}; // под слайдом левее робота
+const BADGE = {x: 540, y: 720, size: 900}; // печать за роботом (верх — у края безопасной зоны)
+const SHRINK: [number, number] = [2.4, HERO]; // робот и собака уменьшаются и переходят под слайд
+const BADGE_OUT: [number, number] = [2.1, 2.7];
 
 const hasHost = (p: {host?: boolean; brand: string}) => Boolean(p.host) && p.brand === "aura";
 export const reelSeconds = (p: CarouselReelProps) => p.slides.reduce((a, s) => a + s.seconds, 0) + (hasHost(p) ? INTRO : 0);
@@ -92,6 +105,7 @@ export const CarouselReel: React.FC<CarouselReelProps> = ({brand, slides, host, 
   const step = card.w + card.gap;
   const left = (width - card.w) / 2;
   const plan = robot ? hostPlan(starts, slides.map((sl) => sl.seconds)) : null;
+  const shrink = smooth(interpolate(t, SHRINK, [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}));
   return (
     <AbsoluteFill style={s.bg}>
       <AbsoluteFill style={s.pattern} />
@@ -116,7 +130,55 @@ export const CarouselReel: React.FC<CarouselReelProps> = ({brand, slides, host, 
           </div>
         ) : null,
       )}
-      {plan ? <AuraMascot scale={ROBOT_SCALE} plan={plan} /> : null}
+      {robot && t < BADGE_OUT[1] ? (
+        // печать: уже «проштампована» к первому кадру (время сдвинуто на 1,5 с), уходит — уменьшается и тает
+        <Sequence from={-45} layout="none">
+          <div
+            style={{
+              position: "absolute",
+              left: BADGE.x - BADGE.size / 2,
+              top: BADGE.y - BADGE.size / 2,
+              opacity: interpolate(t, BADGE_OUT, [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}),
+              scale: String(interpolate(t, BADGE_OUT, [1, 0.55], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.in(Easing.cubic)})),
+              rotate: `${interpolate(t, BADGE_OUT, [0, 50], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.in(Easing.cubic)})}deg`,
+            }}
+          >
+            <AuraBadge size={BADGE.size} />
+          </div>
+        </Sequence>
+      ) : null}
+      {robot && t < HERO ? (
+        // большой робот и собака: рисуются крупно, уменьшаются CSS-масштабом от точки ступней и едут под слайд
+        <>
+          <AbsoluteFill
+            style={{
+              transformOrigin: `${HERO_BOT.x}px ${HERO_BOT.y}px`,
+              scale: String(interpolate(shrink, [0, 1], [1, ROBOT_SCALE / HERO_BOT.scale])),
+              translate: `${(EDGE.x - HERO_BOT.x) * shrink}px ${(EDGE.y - HERO_BOT.y) * shrink - Math.sin(Math.PI * shrink) * 90}px`,
+            }}
+          >
+            <AuraMascot
+              scale={HERO_BOT.scale}
+              dpr={1}
+              plan={{
+                stays: [{at: -10, x: HERO_BOT.x, y: HERO_BOT.y, face: EDGE.face * shrink}],
+                gestures: [{at: -0.6, kind: "wave"}, {at: 1.95, kind: "nod"}],
+              }}
+            />
+          </AbsoluteFill>
+          <AbsoluteFill
+            style={{
+              transformOrigin: `${DOG_HERO.x}px ${DOG_HERO.y}px`,
+              scale: String(interpolate(shrink, [0, 1], [1, DOG_HOME.scale / DOG_HERO.scale])),
+              translate: `${(DOG_HOME.x - DOG_HERO.x) * shrink}px ${(DOG_HOME.y - DOG_HERO.y) * shrink - Math.sin(Math.PI * shrink) * 60}px`,
+            }}
+          >
+            <AuraDog x={DOG_HERO.x} y={DOG_HERO.y} scale={DOG_HERO.scale} dpr={1} face={DOG_HERO.face + (DOG_HOME.face - DOG_HERO.face) * shrink} hops={[0.9, 1.9]} />
+          </AbsoluteFill>
+        </>
+      ) : null}
+      {robot && t >= HERO ? <AuraDog x={DOG_HOME.x} y={DOG_HOME.y} scale={DOG_HOME.scale} face={DOG_HOME.face} hops={[...starts, starts[starts.length - 1] + 3.1]} /> : null}
+      {plan && t >= HERO ? <AuraMascot scale={ROBOT_SCALE} plan={plan} /> : null}
       {music ? (
         <Audio
           src={staticFile(music.src)}
@@ -127,6 +189,11 @@ export const CarouselReel: React.FC<CarouselReelProps> = ({brand, slides, host, 
             })
           }
         />
+      ) : null}
+      {swipeSfx && robot ? (
+        <Sequence from={Math.round((SHRINK[0] - 0.1) * fps)} durationInFrames={fps} premountFor={fps}>
+          <Audio src={staticFile(swipeSfx)} volume={0.32} />
+        </Sequence>
       ) : null}
       {swipeSfx
         ? swipes.map((end, i) => (
