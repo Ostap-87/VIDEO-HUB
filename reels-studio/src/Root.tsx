@@ -14,6 +14,7 @@ import carouselSample from "../props/carousels/пример-gtt.json";
 import {TalkReelPro, bumperFrames, talkReelProSchema, type TalkReelProProps} from "./compositions/TalkReelPro";
 import talkProSample from "../props/2026-10-07-byt-tehnika-v3.json";
 import {StoryAnnounce, storyAnnounceSchema, type StoryAnnounceProps} from "./compositions/StoryAnnounce";
+import {StoryReel, storyReelSchema, type StoryReelProps} from "./compositions/StoryReel";
 import announceSample from "../props/announces/пример-gtt.json";
 import {CarouselReel, carouselReelSchema, reelSeconds, type CarouselReelProps} from "./compositions/CarouselReel";
 import carouselReelSample from "../props/carousel-reels/пример-aura.json";
@@ -83,6 +84,17 @@ export const RemotionRoot: React.FC = () => {
         schema={storyAnnounceSchema}
         defaultProps={announceSample as StoryAnnounceProps}
         calculateMetadata={({props}: {props: StoryAnnounceProps}) => ({durationInFrames: props.stories.length})}
+      />
+      <Composition
+        id="StoryReel"
+        component={StoryReel}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={300}
+        schema={storyReelSchema}
+        defaultProps={{brand: "aura", video: "finished-videos/2026-10-12-foto-aura-intro-reels.mp4", seconds: 48.5, kicker: "Новый Reels", title: "Роботы **без посредников**", note: "Смотри в профиле"} as StoryReelProps}
+        calculateMetadata={({props}: {props: StoryReelProps}) => ({durationInFrames: Math.round(props.seconds * 30)})}
       />
       <Composition
         id="CarouselReel"

@@ -26,7 +26,7 @@ export type StoryAnnounceProps = z.infer<typeof storyAnnounceSchema>;
 export const STORY = {w: 1080, h: 1920, top: 250, bottom: 380, side: 64};
 const CARD = {w: 680, h: 850}; // 4:5, как слайд карусели
 
-const Badge: React.FC<{text: string; s: Style}> = ({text, s}) => (
+export const Badge: React.FC<{text: string; s: Style}> = ({text, s}) => (
   <div
     style={{
       height: 64,

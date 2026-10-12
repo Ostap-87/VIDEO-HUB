@@ -82,6 +82,13 @@ python3 scripts/matte.py ../source-videos/…/_work/клип.cut.mp4 --ranges �
 ```
 Склейка точная по кадрам (без рассинхрона), голос — шумодав DeepFilterNet3 + студийный эквалайзер, −14 LUFS.
 
+### Stories из готового Reels
+
+```bash
+npx remotion render src/index.ts StoryReel ../finished-videos/stories/2026-10-12-aura-intro-reels-story-aura.mp4 --props=./props/stories/2026-10-12-aura-intro-reels-story-aura.json
+```
+Ролик в карточке, сверху кикер и заголовок, снизу плашка («Весь ролик — в профиле» или @аккаунт). До 60 секунд.
+
 ### Reels из карусели Aura: гость дня и рендер пачкой
 
 ```bash
