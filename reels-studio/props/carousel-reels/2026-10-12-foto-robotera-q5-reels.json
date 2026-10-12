@@ -1,0 +1,50 @@
+{
+  "_": "Reels из карусели props/carousels/2026-10-12-foto-robotera-q5.json (scripts/carousel_reel.py). Секунды слайдов можно править здесь.",
+  "brand": "aura",
+  "slides": [
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-robotera-q5/01.png",
+      "seconds": 5.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-robotera-q5/02.png",
+      "seconds": 4.5
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-robotera-q5/03.png",
+      "seconds": 4.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-robotera-q5/04.png",
+      "seconds": 4.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-robotera-q5/05.png",
+      "seconds": 5.5
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-robotera-q5/06.png",
+      "seconds": 4.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-robotera-q5/07.png",
+      "seconds": 3.5
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-robotera-q5/08.png",
+      "seconds": 5.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-robotera-q5/09.png",
+      "seconds": 6.0
+    }
+  ],
+  "music": {
+    "src": "интернет-материалы/музыка/inspiring-ambient-motivation-soundrider.mp3",
+    "volume": 0.52,
+    "fadeOut": 1.6
+  },
+  "swipeSfx": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+  "host": true,
+  "guest": "agv"
+}

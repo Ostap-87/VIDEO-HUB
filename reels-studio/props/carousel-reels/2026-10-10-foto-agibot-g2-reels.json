@@ -1,0 +1,54 @@
+{
+  "_": "Reels из карусели props/carousels/2026-10-10-foto-agibot-g2.json (scripts/carousel_reel.py). Секунды слайдов можно править здесь.",
+  "brand": "aura",
+  "slides": [
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-agibot-g2/01.png",
+      "seconds": 5.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-agibot-g2/02.png",
+      "seconds": 4.5
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-agibot-g2/03.png",
+      "seconds": 4.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-agibot-g2/04.png",
+      "seconds": 3.5
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-agibot-g2/05.png",
+      "seconds": 4.5
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-agibot-g2/06.png",
+      "seconds": 4.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-agibot-g2/07.png",
+      "seconds": 3.5
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-agibot-g2/08.png",
+      "seconds": 4.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-agibot-g2/09.png",
+      "seconds": 5.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-agibot-g2/10.png",
+      "seconds": 6.0
+    }
+  ],
+  "music": {
+    "src": "интернет-материалы/музыка/inspiring-ambient-motivation-soundrider.mp3",
+    "volume": 0.52,
+    "fadeOut": 1.6
+  },
+  "swipeSfx": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+  "host": true,
+  "guest": "agv"
+}

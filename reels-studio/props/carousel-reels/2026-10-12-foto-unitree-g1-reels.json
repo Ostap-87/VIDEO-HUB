@@ -1,0 +1,54 @@
+{
+  "_": "Reels из карусели props/carousels/2026-10-12-foto-unitree-g1.json (scripts/carousel_reel.py). Секунды слайдов можно править здесь.",
+  "brand": "aura",
+  "slides": [
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-unitree-g1/01.png",
+      "seconds": 5.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-unitree-g1/02.png",
+      "seconds": 5.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-unitree-g1/03.png",
+      "seconds": 5.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-unitree-g1/04.png",
+      "seconds": 4.5
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-unitree-g1/05.png",
+      "seconds": 3.5
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-unitree-g1/06.png",
+      "seconds": 5.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-unitree-g1/07.png",
+      "seconds": 4.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-unitree-g1/08.png",
+      "seconds": 5.5
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-unitree-g1/09.png",
+      "seconds": 5.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-12-foto-unitree-g1/10.png",
+      "seconds": 6.0
+    }
+  ],
+  "music": {
+    "src": "интернет-материалы/музыка/upbeat-corporate-soundrider.mp3",
+    "volume": 0.77,
+    "fadeOut": 1.6
+  },
+  "swipeSfx": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+  "host": true,
+  "guest": "arm"
+}
