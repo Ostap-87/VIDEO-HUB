@@ -1,0 +1,107 @@
+{
+ "brand": "gtt",
+ "_": "Карусель GTT «Кто делает гуманоидов в Китае» (решение пользователя 13.10.2026: вместо японской №24 в день ролика «Роботы» — карусель про роботов Китая). Факты — описания компаний сайта GTT (SINOTECH companies.json), фото Higgsfield GPT Image 2.5 medium 1k.",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-13-foto-tur-robotics-humanoids/01.jpg",
+   "focus": "50% 40%",
+   "kicker": "Китай · робототехника",
+   "title": "Кто делает **гуманоидов** в Китае",
+   "text": "8 компаний из маршрута Robotics Expedition"
+  },
+  {
+   "kind": "photoFull",
+   "image": "source-videos/карусели/2026-10-13-foto-tur-robotics-humanoids/02.jpg",
+   "focus": "50% 22%",
+   "logo": "agibot",
+   "kicker": "AgiBot · Шанхай",
+   "title": "Гуманоиды **серийно**",
+   "text": "Основана в 2023 году бывшими инженерами Huawei. С конца 2024 года выпускает гуманоидов серийно на своём заводе в Шанхае. Робот Yuanzheng A2 — рекорд Гиннесса по дальности ходьбы."
+  },
+  {
+   "kind": "photoCard",
+   "image": "source-videos/карусели/2026-10-13-foto-tur-robotics-humanoids/03.jpg",
+   "focus": "50% 35%",
+   "logo": "ubtech",
+   "kicker": "UBTech · Шэньчжэнь",
+   "title": "Крупнейший в Китае **производитель** гуманоидов",
+   "text": "Walker S2 работает на автозаводах, заказы на него превысили 800 млн юаней. На бирже Гонконга с 2023 года."
+  },
+  {
+   "kind": "photoFull",
+   "image": "source-videos/карусели/2026-10-13-foto-tur-robotics-humanoids/04.jpg",
+   "focus": "50% 25%",
+   "logo": "fourier",
+   "kicker": "Fourier · Шанхай",
+   "title": "От **реабилитации** к гуманоидам",
+   "text": "Экзоскелеты — в 2000+ больницах в 40+ странах. С 2023 года выпускает гуманоидов GR-1 (1,65 м) и GR-2 (1,75 м, кисти с тактильными датчиками)."
+  },
+  {
+   "kind": "photoCard",
+   "image": "source-videos/карусели/2026-10-13-foto-tur-robotics-humanoids/05.jpg",
+   "focus": "50% 35%",
+   "logo": "kepler",
+   "kicker": "Kepler · Шанхай",
+   "title": "Гуманоид **на автозаводе**",
+   "text": "Forerunner K2: 52 степени свободы и до ~15 кг на каждую руку. Работает на заводе SAIC-GM в Шанхае: контроль качества и сборка."
+  },
+  {
+   "kind": "photoFull",
+   "image": "source-videos/карусели/2026-10-13-foto-tur-robotics-humanoids/06.jpg",
+   "focus": "50% 25%",
+   "logo": "galbot",
+   "kicker": "Galbot · Пекин",
+   "title": "Гуманоид **на колёсах**",
+   "text": "G1: рост 173 см, 47 степеней свободы, колёсное шасси вместо ног. Работает в ритейле и аптеках, а в 2026 году выступил в эфире новогоднего гала CCTV."
+  },
+  {
+   "kind": "photoStat",
+   "image": "source-videos/карусели/2026-10-13-foto-tur-robotics-humanoids/07.jpg",
+   "focus": "50% 25%",
+   "logo": "robotera",
+   "kicker": "Robotera · Пекин",
+   "value": "55",
+   "title": "степеней свободы у **L7**",
+   "text": "Рост 171 см, до 20 кг полезной нагрузки. Кисть XHAND1 используют MIT, UC Berkeley и ByteDance Seed."
+  },
+  {
+   "kind": "photoFull",
+   "image": "source-videos/карусели/2026-10-13-foto-tur-robotics-humanoids/08.jpg",
+   "focus": "50% 25%",
+   "logo": "limx-dynamics",
+   "kicker": "LimX Dynamics · Шэньчжэнь",
+   "title": "Оценка **$2,2 млрд**",
+   "text": "Шагающие роботы CL-1, TRON1, Oli и Luna. В июле 2026 года компания привлекла $200 млн в раунде перед IPO."
+  },
+  {
+   "kind": "photoCard",
+   "image": "source-videos/карусели/2026-10-13-foto-tur-robotics-humanoids/09.jpg",
+   "focus": "50% 40%",
+   "logo": "pudu-robotics",
+   "kicker": "Pudu · Шэньчжэнь",
+   "title": "Роботы **в ресторанах**",
+   "text": "BellaBot и KettyBot работают в ресторанах и отелях, поставки — в 60+ стран. BellaBot стоит в большем числе ресторанов, чем любой другой робот."
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Robotics Expedition · 5 дней · 3 города",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-13-foto-tur-robotics-humanoids/01.jpg",
+     "focus": "50% 40%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-13-foto-tur-robotics-humanoids/03.jpg",
+     "focus": "50% 35%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-13-foto-tur-robotics-humanoids/09.jpg",
+     "focus": "50% 40%"
+    }
+   ]
+  }
+ ]
+}
