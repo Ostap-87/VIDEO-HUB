@@ -1,0 +1,43 @@
+<!doctype html>
+<meta charset="utf-8">
+<!-- Подпись для почты GTT: две картинки (с фото и без), рендер — render.sh. Шрифт Inter (OFL) из шаблона презентаций. -->
+<link rel="stylesheet" href="../шаблон/fonts/fonts.css">
+<style>
+  :root { --blue: #2563eb; --ink: #111827; --muted: #5b6472; }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: #fff; font-family: Inter, sans-serif; color: var(--ink); }
+  .card { width: 600px; height: 170px; position: relative; background: #fff; display: flex; align-items: center; padding: 0 28px; gap: 24px; overflow: hidden; }
+  .card::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: var(--blue); }
+  .photo { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; flex: none; box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--blue); }
+  .name { font-weight: 700; font-size: 27px; letter-spacing: -0.01em; line-height: 1.1; }
+  .role { font-weight: 500; font-size: 15px; color: var(--muted); margin-top: 6px; }
+  .brand { white-space: nowrap; display: flex; align-items: center; gap: 9px; margin-top: 16px; }
+  .tri { width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 17px solid var(--blue); flex: none; }
+  .word { font-weight: 700; font-size: 13px; letter-spacing: 0.14em; }
+  .sub { font-weight: 500; font-size: 13px; color: var(--muted); }
+  .sub b { color: var(--blue); font-weight: 600; }
+  /* без фото: знак слева, разделитель, текст справа */
+  .logo { width: 150px; flex: none; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .logo .big { width: 0; height: 0; border-left: 34px solid transparent; border-right: 34px solid transparent; border-bottom: 58px solid var(--blue); }
+  .logo .word { font-size: 12px; letter-spacing: 0.16em; text-align: center; line-height: 1.35; }
+  .line { width: 1px; align-self: stretch; margin: 34px 0; background: #d9dee6; flex: none; }
+</style>
+<body>
+<div class="card" id="photo">
+  <img class="photo" src="portret.jpg" alt="">
+  <div>
+    <div class="name">Остап Доценко</div>
+    <div class="role">Основатель · бизнес-экспедиции в Китай</div>
+    <div class="brand"><span class="tri"></span><span class="word">GLOBAL TECH TOUR</span><span class="sub">&nbsp;·&nbsp; <b>globaltechtour.ru</b></span></div>
+  </div>
+</div>
+<div class="card" id="logo">
+  <div class="logo"><span class="big"></span><span class="word">GLOBAL<br>TECH TOUR</span></div>
+  <div class="line"></div>
+  <div>
+    <div class="name">Остап Доценко</div>
+    <div class="role">Основатель Global Tech Tour</div>
+    <div class="sub" style="margin-top:16px">Бизнес-экспедиции в Китай · <b>globaltechtour.ru</b></div>
+  </div>
+</div>
+</body>
