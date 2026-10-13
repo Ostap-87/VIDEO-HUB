@@ -1,30 +1,22 @@
 <!doctype html>
 <meta charset="utf-8">
-<!-- Подпись для почты GTT: логотип пользователя (source-videos/логотипы/общие/globaltechtour.png), рендер — render.sh.
-     Фото не используется (решение пользователя 13.10.2026). Шрифт Inter (OFL) из шаблона презентаций. -->
+<!-- Подпись для почты GTT: имя по-английски, под ним строка о деле и логотип пользователя
+     (source-videos/логотипы/общие/globaltechtour.png). Без фото (решения пользователя 13.10.2026). Рендер — render.sh. -->
 <link rel="stylesheet" href="../шаблон/fonts/fonts.css">
 <style>
-  :root { --blue: #2563eb; --logo: #5168a1; --ink: #111827; --muted: #5b6472; }
+  :root { --blue: #2563eb; --ink: #111827; --muted: #5b6472; }
   * { box-sizing: border-box; margin: 0; }
   body { background: #fff; font-family: Inter, sans-serif; color: var(--ink); }
-  .card { width: 600px; height: 150px; position: relative; background: #fff; display: flex; align-items: center; padding: 0 26px; gap: 24px; }
+  .card { width: 380px; height: 140px; position: relative; background: #fff; padding: 20px 22px 0; }
   .card::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--blue); }
-  .logo { width: 262px; flex: none; display: block; }
-  .line { width: 1px; align-self: stretch; margin: 30px 0; background: #d9dee6; flex: none; }
-  .name { font-weight: 700; font-size: 25px; letter-spacing: -0.01em; line-height: 1.1; white-space: nowrap; }
-  .role { font-weight: 500; font-size: 14px; color: var(--muted); margin-top: 6px; white-space: nowrap; }
-  .role.sub { margin-top: 2px; }
-  .site { font-weight: 600; font-size: 14px; color: var(--blue); margin-top: 10px; }
+  .name { font-weight: 700; font-size: 27px; letter-spacing: -0.01em; line-height: 1.1; white-space: nowrap; }
+  .role { font-weight: 500; font-size: 13.5px; color: var(--muted); margin-top: 6px; white-space: nowrap; }
+  .logo { width: 262px; display: block; margin: 12px 0 0 -4px; }
 </style>
 <body>
 <div class="card">
+  <div class="name">Ostap Dotcenko</div>
+  <div class="role">Основатель · бизнес-экспедиции в Китай</div>
   <img class="logo" src="../../source-videos/логотипы/общие/globaltechtour.png" alt="Global Tech Tour">
-  <div class="line"></div>
-  <div>
-    <div class="name">Остап Доценко</div>
-    <div class="role">Основатель</div>
-    <div class="role sub">Бизнес-экспедиции в Китай</div>
-    <div class="site">globaltechtour.ru</div>
-  </div>
 </div>
 </body>
