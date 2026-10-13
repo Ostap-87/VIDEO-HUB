@@ -3940,5 +3940,58 @@
       "普渡科技"
     ],
     "logo": "source-videos/логотипы/роботы/pudu-robotics.png"
+  },
+  "innovent": {
+    "names": [
+      "Innovent",
+      "Innovent Biologics",
+      "Иновент",
+      "信达生物"
+    ],
+    "logo": "source-videos/логотипы/медицина/innovent.png"
+  },
+  "huadong-medicine": {
+    "names": [
+      "Huadong Medicine",
+      "Huadong",
+      "Хуадун",
+      "华东医药"
+    ],
+    "logo": "source-videos/логотипы/медицина/huadong-medicine.png"
+  },
+  "jiuyuan-gene": {
+    "names": [
+      "Jiuyuan Gene",
+      "Jiuyuan",
+      "Цзююань",
+      "九源基因"
+    ],
+    "logo": "source-videos/логотипы/медицина/jiuyuan-gene.png"
+  },
+  "langhua": {
+    "names": [
+      "Langhua",
+      "Langhua Pharma",
+      "Ланхуа",
+      "朗华制药"
+    ],
+    "logo": "source-videos/логотипы/медицина/langhua.png"
+  },
+  "sciwind": {
+    "names": [
+      "Sciwind",
+      "Sciwind Biosciences",
+      "先为达生物"
+    ],
+    "logo": "source-videos/логотипы/медицина/sciwind.png"
+  },
+  "wuxi-apptec": {
+    "names": [
+      "WuXi AppTec",
+      "WuXi TIDES",
+      "WuXi",
+      "药明康德"
+    ],
+    "logo": "source-videos/логотипы/медицина/wuxi-apptec.png"
   }
 }
