@@ -20,6 +20,8 @@ import {CarouselReel, carouselReelSchema, reelSeconds, type CarouselReelProps} f
 import carouselReelSample from "../props/carousel-reels/пример-aura.json";
 import {Aura3DShowcase, showcaseSeconds} from "./compositions/Aura3DShowcase";
 import {GttIntro, gttIntroSchema, gttIntroSeconds, type GttIntroProps} from "./compositions/GttIntro";
+import {ReelCover, reelCoverSchema, type ReelCoverProps} from "./compositions/ReelCover";
+import coverSample from "../props/covers/2026-10-07-tech-giganty.json";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -84,6 +86,16 @@ export const RemotionRoot: React.FC = () => {
         schema={storyAnnounceSchema}
         defaultProps={announceSample as StoryAnnounceProps}
         calculateMetadata={({props}: {props: StoryAnnounceProps}) => ({durationInFrames: props.stories.length})}
+      />
+      <Composition
+        id="ReelCover"
+        component={ReelCover}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={1}
+        schema={reelCoverSchema}
+        defaultProps={coverSample as ReelCoverProps}
       />
       <Composition
         id="StoryReel"

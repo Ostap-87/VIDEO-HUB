@@ -1,0 +1,27 @@
+{
+  "brand": "gtt",
+  "layout": "speaker",
+  "kicker": "Бизнес-экспедиция",
+  "title": "**9 техгигантов**\nКитая за 5 дней",
+  "titleSize": 92,
+  "subtitle": "Пекин → Ханчжоу → Шанхай → Шэньчжэнь",
+  "logos": [
+    "baidu",
+    "xiaomi",
+    "alibaba",
+    "unitree",
+    "meituan",
+    "xiaohongshu",
+    "tencent",
+    "huawei",
+    "ubtech"
+  ],
+  "hero": {
+    "src": "source-videos/обложки/2026-10-07-tech-giganty/ostap.png",
+    "height": 900,
+    "x": 560,
+    "bottom": 1920
+  },
+  "subtitleSize": 38,
+  "logoColumns": 3
+}

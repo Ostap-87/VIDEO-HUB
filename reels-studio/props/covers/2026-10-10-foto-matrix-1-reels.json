@@ -1,0 +1,24 @@
+{
+  "brand": "aura",
+  "layout": "robot",
+  "kicker": "Модель дня",
+  "title": "**MATRIX-1**",
+  "subtitle": "Гуманоид из Шанхая: что умеет и где уже работает",
+  "facts": [
+    "Рост **180 см**",
+    "До **5 часов** работы",
+    "**10 кг** на каждую руку",
+    "22 степени свободы в кисти"
+  ],
+  "logos": [
+    "matrix"
+  ],
+  "hero": {
+    "src": "source-videos/обложки/2026-10-10-foto-matrix-1-reels/matrix-1.png",
+    "height": 1000,
+    "x": 800,
+    "bottom": 1610,
+    "shadow": true
+  },
+  "titleSize": 196
+}
