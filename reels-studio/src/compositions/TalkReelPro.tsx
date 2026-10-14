@@ -24,6 +24,7 @@ import {AuraMascot, type GestureKind, type MascotPlan, type MascotStay} from "..
 import {GttIntro} from "./GttIntro";
 import {OdBadge} from "../components/OdBadge";
 import {LinkArrow, SocialCard, SocialGrid} from "../components/SocialCard";
+import {activeScreen, captionTopFor, ScreenPanel, speakerShift} from "../components/ScreenOverlay";
 
 // «Говорящая голова» в стиле референса пользователя (07.10.2026):
 // видео на весь экран, сверху плашка ▲ GLOBAL TECH TOUR, крупные белые субтитры по центру
@@ -107,6 +108,27 @@ export const talkReelProSchema = z.object({
   captionTop: z.number().optional(),
   // строка значков соцсетей с заголовком («Подписывайтесь везде»): значки выскакивают по очереди, сверху слева
   socialGrid: z.array(z.object({at: z.number(), until: z.number(), title: z.string(), items: z.array(z.string())})).optional(),
+  // «экраны» сайтов и Telegram-каналов (видео прокрутки scripts/site_scroll.mjs): drop — шторка сверху, спикер вниз;
+  // bottom — панель снизу, спикер вверх; full — страница на весь кадр, спикер вырезан и уменьшен внизу справа (нужна вырезка
+  // cutoutSrc на этот отрезок — npm run matte --ranges). title — полное название канала/сайта, url — адрес
+  screens: z
+    .array(
+      z.object({
+        at: z.number(),
+        until: z.number(),
+        src: z.string(),
+        from: z.number().optional(),
+        layout: z.enum(["drop", "bottom", "full"]),
+        title: z.string().optional(),
+        url: z.string().optional(),
+        network: z.enum(["telegram", "site", "linkedin", "youtube", "instagram"]).optional(),
+      }),
+    )
+    .optional(),
+  // размер субтитров (px, по умолчанию 66; Stories ostapdotcenko — 52, решение пользователя 14.10.2026 «уменьшить субтитры»)
+  captionSize: z.number().optional(),
+  // знак бренда сверху (печать / логотип): false — не показывать
+  badge: z.boolean().optional(),
   // большая стрелка вверх с подписью («Ссылка выше») — справа сверху, на словах «ссылочка будет выше»
   arrows: z.array(z.object({at: z.number(), until: z.number(), text: z.string()})).optional(),
   // второй ракурс (вторая камера, scripts/angle_b.py): в отрезках shots кадр переключается на боковой план
@@ -202,7 +224,9 @@ const BigCaptions: React.FC<{
   broll?: TalkReelProProps["broll"];
   clips?: TalkReelProProps["clips"];
   top?: number;
-}> = ({words, accent, until, lowFrom, cities, lists, broll = [], clips, top = 1250}) => {
+  size?: number;
+  screens?: TalkReelProProps["screens"];
+}> = ({words, accent, until, lowFrom, cities, lists, broll = [], clips, top = 1250, size = 66, screens}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -223,11 +247,11 @@ const BigCaptions: React.FC<{
         position: "absolute",
         left: 90 - 40 * pipAmount(broll, t),
         right: 90 + 300 * pipAmount(broll, t), // при карточке спикера в углу субтитры сдвигаются влево
-        top: low ? 1420 : Math.max(cityAmount(cities, t), listAmount(lists, t), clipAmount(clips ?? [], t)) > 0.5 ? 780 : top,
+        top: low ? 1420 : Math.max(cityAmount(cities, t), listAmount(lists, t), clipAmount(clips ?? [], t)) > 0.5 ? 780 : captionTopFor(screens, t, top),
         textAlign: "center",
         fontFamily: B.captionFont,
         fontWeight: B.captionWeight,
-        fontSize: 66,
+        fontSize: size,
         lineHeight: 1.18,
         color: dark ? theme.colors.text : onLight ? B.accentInk : "#FFFFFF",
         textShadow: dark || onLight ? "none" : B.captionShadow ?? shadow,
@@ -1463,6 +1487,7 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
 
 const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
   const {fps, durationInFrames} = useVideoConfig();
+  const frame = useCurrentFrame();
   const f = (s: number) => Math.round(s * fps);
   const siteFrom = f(p.site.at);
   const sfxAt: {at: number; src: string; volume?: number}[] = [
@@ -1507,6 +1532,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
         </Sequence>
       ))}
 
+      <AbsoluteFill style={{translate: `0px ${speakerShift(p.screens, frame / fps)}px`}}>
       <ZoomedVideo
         src={p.mediaSrc}
         cutoutSrc={p.cutoutSrc}
@@ -1521,6 +1547,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
         angleB={p.angleB}
         clips={p.clips}
       />
+      </AbsoluteFill>
       <CityPanel cities={p.cities} />
       {p.clips ? <ClipPanel clips={p.clips} /> : null}
       <ChecklistPanel lists={p.checklists} />
@@ -1571,6 +1598,11 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
       ))}
       </TopShift.Provider>
 
+      {(p.screens ?? []).map((sc, i) => (
+        <Sequence key={`screen-${i}`} from={f(sc.at - 0.1)} durationInFrames={f(sc.until - sc.at + 0.1)} premountFor={fps}>
+          <ScreenPanel s={{...sc, at: sc.at - 0.1}} cutoutSrc={p.cutoutSrc} />
+        </Sequence>
+      ))}
       <Sequence from={siteFrom}>
         <Finale
           src={p.mediaSrc}
@@ -1587,13 +1619,14 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
           <FlagArc items={fl.items} at={fl.at} until={fl.until} center={p.focus} />
         </Sequence>
       ))}
-      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} broll={p.broll} clips={p.clips} top={p.captionTop} />
+      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} broll={p.broll} clips={p.clips} top={p.captionTop} size={p.captionSize} screens={p.screens} />
       {brand.id === "aura" ? (
         // Aura: круглая печать крутится над головой спикера, по центру; в Stories — ниже полосок и аватара
         <AuraBadgeSlot {...p} />
       ) : brand.id === "od" ? (
-        // od: красная печать «ОД» и бумажная плашка «ОСТАП ДОЦЕНКО ©26» слева сверху (как шапка сайта)
-        <div style={{position: "absolute", top: p.format === "stories" ? 196 : 76, left: 48}}>
+        // od: красная печать «ОД» и бумажная плашка «Остап Доценко.» слева сверху (как шапка сайта); пока на экране сайт — прячется
+        p.badge === false ? null :
+        <div style={{position: "absolute", top: p.format === "stories" ? 196 : 76, left: 48, opacity: 1 - (activeScreen(p.screens, frame / fps)?.k ?? 0)}}>
           <OdBadge scale={0.9} />
         </div>
       ) : (

@@ -75,6 +75,8 @@ python3 scripts/auto.py --name 2026-10-14-od-тема --render --stories-only
 ```
 
 Паузы, цыканья и «э-э» вырезаются по звуку после шумодава (`npm run cut`, `--vad raw` — по-старому, `--no-fillers` — без поиска «эканий»).
+Видео прокрутки сайта или канала для «экранов»: `node scripts/site_scroll.mjs https://ostapdotcenko.ru/ ../source-videos/сайты-прокрутка/ostapdotcenko-home-photo.mp4 --from "#about"`;
+в props — `screens` (`layout`: `drop` / `bottom` / `full`, `title` — полное название канала, `url`), `captionSize: 52`, `badge: false`.
 Stories «про мои соцсети»: в props `socials` (карточка канала с кнопкой «Подписаться»), `arrows` («Ссылка выше»),
 `captionTop: 1320` (субтитры под подбородком в селфи), без финала с сайтом (`site.at` за концом речи, `ctaSeconds: 0.5`).
 Кость, чернила, жёлтый маркер, красная печать «ОД» (`src/components/OdBadge.tsx`), квадратные углы, жёсткие тени.
