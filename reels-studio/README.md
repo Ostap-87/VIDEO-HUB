@@ -79,6 +79,8 @@ python3 scripts/auto.py --name 2026-10-14-od-тема --render --stories-only
 канал Telegram — со свежих постов: `node scripts/site_scroll.mjs https://t.me/s/aura_robots ../source-videos/сайты-прокрутка/tg-aura_robots.mp4 --seconds 14 --end --hide ".tgme_channel_info_counters, .tgme_header_counter, .tgme_widget_message_views, .tgme_widget_message_wrap:has(.message_media_not_supported)"` (каналы — по одному);
 в props — `screens` (`layout`: `drop` / `bottom` / `full`, `title` — полное название канала, `url`), `captionSize: 52`, `badge: false`;
 пока экран на месте, субтитры сами встают на бумажную плашку поверх экрана (лица не касаются).
+Экраны по плану сразу во все ролики: `python3 scripts/screens.py 2026-10-14-od-1 2026-10-14-od-2 --plan props/od-варианты/план-экранов.json --layout drop`
+(`drop` — шторка сверху, `bottom` — панель снизу, `full` — на весь экран со спикером-вырезкой).
 Stories «про мои соцсети»: в props `socials` (карточка канала с кнопкой «Подписаться»), `arrows` («Ссылка выше»),
 `captionTop: 1320` (субтитры под подбородком в селфи), без финала с сайтом (`site.at` за концом речи, `ctaSeconds: 0.5`).
 Кость, чернила, жёлтый маркер, красная печать «ОД» (`src/components/OdBadge.tsx`), квадратные углы, жёсткие тени.

@@ -19,6 +19,7 @@ export type ScreenItem = {
   title?: string; // полное название: «|AURA Robotics| Робототехника», «ostapdotcenko.ru — блог»
   url?: string; // t.me/aura_robots, ostapdotcenko.ru/blog
   network?: "telegram" | "site" | "linkedin" | "youtube" | "instagram";
+  icon?: string; // свой значок в подписи (логотип сайта Aura / GTT); без поля — значок сети
   joinIn?: boolean; // ставит chainScreens: экран сразу сменяет предыдущий той же подачи (без отъезда и въезда)
   joinOut?: boolean;
 };
@@ -93,7 +94,7 @@ const Media: React.FC<{s: ScreenItem; style: React.CSSProperties}> = ({s, style}
 const Label: React.FC<{s: ScreenItem; k: number}> = ({s, k}) => {
   const B = useBrand();
   const od = B.id === "od";
-  const icon = s.network ? ICON[s.network] : undefined;
+  const icon = s.icon ?? (s.network ? ICON[s.network] : undefined);
   if (!s.title && !s.url) return null;
   return (
     <div

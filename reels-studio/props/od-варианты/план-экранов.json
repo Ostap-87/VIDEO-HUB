@@ -1,0 +1,23 @@
+{
+  "_": "Stories ostapdotcenko, версия 2 (решение пользователя 14.10.2026): какие «экраны» сайтов и каналов где стоят. Время — секунды склеенного ролика (_work/<клип>.cut.words.json). Подача (drop / bottom / full) — по выбору пользователя, ставится скриптом scripts/screens.py. end — где закончить ролик (вырезать оговорку в конце).",
+  "media": {
+    "TGA": {"src": "source-videos/сайты-прокрутка/tg-aura_robots.mp4", "title": "|AURA Robotics| Робототехника", "url": "t.me/aura_robots", "network": "telegram"},
+    "TGG": {"src": "source-videos/сайты-прокрутка/tg-GlobalTechTour.mp4", "title": "GlobalTechTour", "url": "t.me/GlobalTechTour", "network": "telegram"},
+    "ODH": {"src": "source-videos/сайты-прокрутка/ostapdotcenko-home-photo.mp4", "title": "Остап Доценко", "url": "ostapdotcenko.ru", "network": "site"},
+    "ODB": {"src": "source-videos/сайты-прокрутка/ostapdotcenko-blog.mp4", "title": "Блог Остапа Доценко", "url": "ostapdotcenko.ru/blog", "network": "site"},
+    "AUR": {"src": "source-videos/сайты-прокрутка/aura-robotics-home.mp4", "title": "Aura Robotics", "url": "aura-robotics.ru", "network": "site", "icon": "source-videos/aura-robotics/логотип/оригиналы/aura-robotics-круг.jpg"},
+    "GTT": {"src": "source-videos/сайты-прокрутка/globaltechtour-home.mp4", "title": "Global Tech Tour", "url": "globaltechtour.ru", "network": "site", "icon": "source-videos/логотипы/общие/globaltechtour.png"}
+  },
+  "videos": {
+    "2026-10-14-od-1": {"screens": [["TGA", 2.85, 15.15]]},
+    "2026-10-14-od-2": {"screens": [["TGG", 1.0, 15.0]]},
+    "2026-10-14-od-3": {"screens": [], "todo": "LinkedIn 8.3–26.8 («новости в LinkedIn, в моём профиле… Юго-Восточной Азии») — нужна запись профиля от пользователя"},
+    "2026-10-14-od-4": {"screens": [["ODH", 0.9, 6.45], ["ODB", 6.45, 22.3]]},
+    "2026-10-14-od-5": {"screens": [["TGA", 3.0, 6.4], ["TGG", 6.4, 9.9], ["ODB", 9.9, 13.5, 2]]},
+    "2026-10-14-od-6": {"screens": [["AUR", 35.8, 41.2], ["AUR", 76.4, 82.65, 5]]},
+    "2026-10-14-od-7": {"screens": [["GTT", 3.0, 9.0], ["GTT", 34.3, 47.8], ["TGG", 48.3, 56.75]], "end": 56.74},
+    "2026-10-14-od-8": {"screens": [["GTT", 2.1, 6.3], ["GTT", 45.3, 53.0, 4]], "end": 53.0},
+    "2026-10-14-od-9": {"screens": [["GTT", 3.1, 11.0]]},
+    "2026-10-14-od-10": {"screens": [["GTT", 2.2, 6.0], ["GTT", 18.6, 30.0, 2], ["TGG", 47.9, 56.8]]}
+  }
+}

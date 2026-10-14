@@ -122,6 +122,7 @@ export const talkReelProSchema = z.object({
         title: z.string().optional(),
         url: z.string().optional(),
         network: z.enum(["telegram", "site", "linkedin", "youtube", "instagram"]).optional(),
+        icon: z.string().optional(), // свой значок в подписи (логотип сайта Aura / GTT); без поля — значок сети
       }),
     )
     .optional(),
@@ -1513,6 +1514,8 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
     {at: p.site.at, src: p.sfx.whoosh},
     ...(p.socials ?? []).flatMap((c) => [{at: c.at, src: p.sfx.whoosh}, ...(c.pressAt !== undefined ? [{at: c.pressAt, src: p.sfx.pop}] : [])]),
     ...(p.arrows ?? []).map((a) => ({at: a.at, src: p.sfx.pop})),
+    // экран въезжает — «вжух»; смена страницы встык — тихий щелчок
+    ...screens.map((sc) => (sc.joinIn ? {at: sc.at, src: p.sfx.pop, volume: 0.25} : {at: sc.at - 0.1, src: p.sfx.whoosh, volume: 0.35})),
     ...(p.socialGrid ?? []).flatMap((g) => g.items.map((_, i) => ({at: g.at + (8 + i * 4) / 30, src: p.sfx.pop, volume: 0.25}))),
   ];
 
