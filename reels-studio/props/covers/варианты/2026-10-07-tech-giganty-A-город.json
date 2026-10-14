@@ -1,0 +1,37 @@
+{
+  "brand": "gtt",
+  "theme": "light",
+  "layout": "card",
+  "kicker": "Бизнес-экспедиция",
+  "title": "**9 техгигантов**\nКитая за 5 дней",
+  "titleSize": 92,
+  "subtitle": "Пекин → Ханчжоу → Шанхай → Шэньчжэнь",
+  "subtitleSize": 38,
+  "logos": [
+    "baidu",
+    "xiaomi",
+    "alibaba",
+    "unitree",
+    "meituan",
+    "xiaohongshu",
+    "tencent",
+    "huawei",
+    "ubtech"
+  ],
+  "logoColumns": 3,
+  "background": {
+    "src": "source-videos/обложки/2026-10-07-tech-giganty/tech-city.jpg",
+    "focus": "50% 55%"
+  },
+  "titlePlate": true,
+  "logosTop": 1250,
+  "avatar": {
+    "src": "source-videos/обложки/2026-10-07-tech-giganty/ostap-kadr.jpg",
+    "x": 800,
+    "y": 930,
+    "size": 330,
+    "focus": "46% 41%",
+    "zoom": 1.9,
+    "label": "Остап Доценко"
+  }
+}

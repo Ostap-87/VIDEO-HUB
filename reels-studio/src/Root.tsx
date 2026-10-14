@@ -21,7 +21,6 @@ import carouselReelSample from "../props/carousel-reels/пример-aura.json";
 import {Aura3DShowcase, showcaseSeconds} from "./compositions/Aura3DShowcase";
 import {GttIntro, gttIntroSchema, gttIntroSeconds, type GttIntroProps} from "./compositions/GttIntro";
 import {ReelCover, reelCoverSchema, type ReelCoverProps} from "./compositions/ReelCover";
-import coverSample from "../props/covers/2026-10-07-tech-giganty.json";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -95,7 +94,7 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         durationInFrames={1}
         schema={reelCoverSchema}
-        defaultProps={coverSample as ReelCoverProps}
+        defaultProps={{brand: "gtt", title: "**Обложка** Reels", layout: "speaker"} as ReelCoverProps}
       />
       <Composition
         id="StoryReel"

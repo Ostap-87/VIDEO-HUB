@@ -42,6 +42,13 @@ export const reelCoverSchema = z.object({
       zoom: z.number().optional(),
     })
     .optional(), // layout "card": фото в карточке со скруглением, логотипы — на белой плашке поверх низа фото
+  background: z.object({src: z.string(), focus: z.string().optional()}).optional(), // фото на весь кадр вместо фона бренда
+  titlePlate: z.boolean().optional(), // белая (у light) или синяя плашка под шапкой и заголовком — для фото на фоне
+  photoFull: z.boolean().optional(), // photo — на весь кадр без карточки (кадр ролика целиком)
+  avatar: z
+    .object({src: z.string(), x: z.number(), y: z.number(), size: z.number(), focus: z.string().optional(), zoom: z.number().optional(), label: z.string().optional()})
+    .optional(), // круглое фото спикера (центр x, y) с подписью — когда главное на обложке фон (город, завод)
+  logosTop: z.number().optional(), // верх плашки логотипов без фото-карточки (layout card без photo), px
   guides: z.boolean().optional(), // зоны: сетка 3:4 и подпись Reels
 });
 export type ReelCoverProps = z.infer<typeof reelCoverSchema>;
@@ -101,7 +108,7 @@ const Fact: React.FC<{text: string; s: Style}> = ({text, s}) => (
   </div>
 );
 
-export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, titleSize, subtitle, subtitleSize, logos, logosTitle, logoColumns, facts, hero, layout, theme, photo, guides}) => {
+export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, titleSize, subtitle, subtitleSize, logos, logosTitle, logoColumns, facts, hero, layout, theme, photo, background, titlePlate, photoFull, avatar, logosTop, guides}) => {
   const light = theme === "light" && brand === "gtt";
   const s = light ? LIGHT : STYLES[brand];
   const card = layout === "card";
@@ -110,6 +117,9 @@ export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, title
   return (
     <AbsoluteFill style={{...s.bg, overflow: "hidden"}}>
       <AbsoluteFill style={{...s.pattern}} />
+      {background ? (
+        <Img src={staticFile(background.src)} style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: background.focus ?? "50% 50%"}} />
+      ) : null}
       {/* герой: под текстом, чтобы заголовок всегда читался */}
       {hero ? (
         <>
@@ -137,14 +147,14 @@ export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, title
         <div
           style={{
             position: "absolute",
-            left: COVER.side,
-            right: COVER.side,
-            top: photo.top,
-            height: photo.height,
-            borderRadius: 48,
+            left: photoFull ? 0 : COVER.side,
+            right: photoFull ? 0 : COVER.side,
+            top: photoFull ? 0 : photo.top,
+            height: photoFull ? COVER.h : photo.height,
+            borderRadius: photoFull ? 0 : 48,
             overflow: "hidden",
-            border: light ? "8px solid #FFFFFF" : "6px solid rgba(255,255,255,0.9)",
-            boxShadow: light ? "0 30px 70px rgba(23,23,29,0.18), 0 0 0 2px #D5D5DD" : "0 30px 70px rgba(10,25,80,0.45)",
+            border: photoFull ? undefined : light ? "8px solid #FFFFFF" : "6px solid rgba(255,255,255,0.9)",
+            boxShadow: photoFull ? undefined : light ? "0 30px 70px rgba(23,23,29,0.18), 0 0 0 2px #D5D5DD" : "0 30px 70px rgba(10,25,80,0.45)",
             background: "#D5D5DD",
           }}
         >
@@ -154,14 +164,14 @@ export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, title
           />
         </div>
       ) : null}
-      {card && photo && logoSrc.length ? (
+      {card && (photo || logosTop) && logoSrc.length ? (
         <div
           style={{
             position: "absolute",
-            left: COVER.side + 28,
-            right: COVER.side + 28,
-            top: photo.top + photo.height - 36,
-            translate: "0 -100%",
+            left: COVER.side + (photo ? 28 : 0),
+            right: COVER.side + (photo ? 28 : 0),
+            top: photo ? photo.top + photo.height - 36 : logosTop,
+            translate: photo ? "0 -100%" : undefined,
             padding: 20,
             borderRadius: 32,
             background: "rgba(255,255,255,0.94)",
@@ -178,6 +188,21 @@ export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, title
             </div>
           ))}
         </div>
+      ) : null}
+      {titlePlate ? (
+        <div
+          style={{
+            position: "absolute",
+            left: COVER.side - 28,
+            right: COVER.side - 28,
+            top: COVER.top - 18,
+            height: (subtitle ? 480 : 420) + ((titleSize ?? 88) - 88) * 2,
+            borderRadius: 40,
+            background: light ? "rgba(255,255,255,0.93)" : "rgba(20,49,140,0.84)",
+            backdropFilter: "blur(18px)",
+            boxShadow: light ? "0 24px 60px rgba(23,23,29,0.20)" : "0 24px 60px rgba(5,20,80,0.40)",
+          }}
+        />
       ) : null}
       {/* шапка */}
       <div style={{position: "absolute", top: COVER.top + 16, left: COVER.side, right: COVER.side, display: "flex", alignItems: "center", justifyContent: "space-between"}}>
@@ -228,6 +253,18 @@ export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, title
           </div>
         ) : null}
       </div>
+      {avatar ? (
+        <div style={{position: "absolute", left: avatar.x - avatar.size / 2, top: avatar.y - avatar.size / 2, width: avatar.size, display: "flex", flexDirection: "column", alignItems: "center"}}>
+          <div style={{width: avatar.size, height: avatar.size, borderRadius: "50%", overflow: "hidden", border: "10px solid #FFFFFF", boxShadow: "0 20px 50px rgba(23,23,29,0.30)", background: "#D5D5DD"}}>
+            <Img src={staticFile(avatar.src)} style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: avatar.focus ?? "50% 40%", scale: String(avatar.zoom ?? 1), transformOrigin: avatar.focus ?? "50% 40%"}} />
+          </div>
+          {avatar.label ? (
+            <div style={{marginTop: -26, padding: "12px 24px", borderRadius: 999, background: "#2563EB", color: "#FFFFFF", fontFamily: s.body, fontWeight: 700, fontSize: 30, whiteSpace: "nowrap", boxShadow: "0 10px 26px rgba(37,99,235,0.35)"}}>
+              {typo(avatar.label)}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
       {/* у робота — факты слева столбиком, логотип производителя под ними */}
       {robot && (facts?.length || logoSrc.length) ? (
         <div style={{position: "absolute", left: COVER.side, top: 860, width: 470, display: "flex", flexDirection: "column", gap: 18}}>
