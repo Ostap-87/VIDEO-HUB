@@ -39,11 +39,15 @@ def run(cmd, **kw):
 
 
 def light_copy(src, dst):
+    """Копия для телефона и чата — до 29 МБ (лимит чата 30 МиБ): битрейт по длине ролика, не выше 12 Мбит/с.
+    Короткие Stories получают почти полное качество (решение 14.10.2026: прежние 2 Мбит/с — «мыльно» для 15-секундных)."""
     dst.parent.mkdir(parents=True, exist_ok=True)
     log = f"/tmp/auto-2pass-{src.stem}"
-    run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, "-c:v", "libx264", "-b:v", "2000k", "-pass", "1", "-passlogfile", log, "-an", "-f", "mp4", "/dev/null"])
-    run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, "-c:v", "libx264", "-b:v", "2000k", "-pass", "2", "-passlogfile", log,
-         "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", dst])
+    sec = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(src)]))
+    kbps = max(2000, min(12000, int(29 * 8 * 1024 * 0.95 / sec) - 160))
+    run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, "-c:v", "libx264", "-preset", "slow", "-b:v", f"{kbps}k", "-pass", "1", "-passlogfile", log, "-an", "-f", "mp4", "/dev/null"])
+    run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, "-c:v", "libx264", "-preset", "slow", "-b:v", f"{kbps}k", "-pass", "2", "-passlogfile", log,
+         "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", dst])
 
 
 def main():
