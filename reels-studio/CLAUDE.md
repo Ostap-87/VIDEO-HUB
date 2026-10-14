@@ -487,6 +487,9 @@ nod, scan, shrug`. Превью логотипа и всех жестов — к
     потом ошибка, а не пустое видео; каналы записывать **по одному** (два сразу прокси обрывает). Если страница крутится не
     окном, а внутренним блоком (globaltechtour.ru: у окна всего ~1200 px), скрипт сам находит этот блок и крутит его.
     Готовые — `source-videos/сайты-прокрутка/` (ostapdotcenko — главная с фото `#about` и блог, aura-robotics.ru,
+    globaltechtour.ru — главная (на телефоне короткая: заголовок и меню), `/expeditions` (каталог программ), `/companies`
+    («более 900 компаний по 18 отраслям»), `/industries`, `/corporate-training` (интенсивы в кампусах Huawei, Alibaba…);
+    у GTT анимированный фон из треугольников прячется `--hide "canvas"`, иначе кадр снимается в разы дольше;
     каналы `t.me/s/aura_robots` и `t.me/s/GlobalTechTour`: `--end`, спрятаны счётчик подписчиков, просмотры постов и посты
     с заглушкой «Media is too big» — `--hide ".tgme_channel_info_counters, .tgme_header_counter, .tgme_widget_message_views,
     .tgme_widget_message_wrap:has(.message_media_not_supported)"`).
