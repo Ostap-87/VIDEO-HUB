@@ -28,7 +28,7 @@
    "end": 2.48
   },
   {
-   "text": "astabdozenko.ru,",
+   "text": "ostapdotcenko.ru,",
    "start": 2.48,
    "end": 3.92
   },
@@ -123,7 +123,7 @@
    "end": 15.577
   },
   {
-   "text": "про",
+   "text": "по",
    "start": 15.577,
    "end": 15.907
   },
@@ -303,7 +303,7 @@
    "end": 34.477
   },
   {
-   "text": "топорщинью",
+   "text": "топорщенья",
    "start": 34.477,
    "end": 35.597
   },
@@ -323,16 +323,22 @@
    "end": 36.947
   },
   {
-   "text": "щек.",
+   "text": "щёк.",
    "start": 36.947,
    "end": 37.967
   }
  ],
  "accentWords": [
-  "лично",
-  "никаких",
-  "прозрачные",
-  "сайт"
+  "сайт",
+  "ostapdotcenkoru",
+  "статьи",
+  "аналитические",
+  "юмористические",
+  "рефлексия",
+  "заходите",
+  "читайте",
+  "юмором",
+  "иронией"
  ],
  "cuts": [
   0.13,
@@ -349,34 +355,46 @@
  "chips": [],
  "logos": [],
  "numbers": [],
- "broll": [
+ "broll": [],
+ "cities": [],
+ "checklists": [
   {
-   "src": "source-videos/2026-10-14-od-4/broll/hf-330.png",
-   "at": 0.0,
-   "until": 3.92,
-   "transition": "circle"
-  },
-  {
-   "src": "source-videos/2026-10-14-od-4/broll/hf-376.png",
-   "at": 9.84,
-   "until": 13.62,
-   "transition": "slide"
-  },
-  {
-   "src": "source-videos/2026-10-14-od-4/broll/hf-86.png",
-   "at": 20.65,
-   "until": 25.15,
-   "transition": "zoom"
+   "title": "Какие статьи",
+   "until": 20.3,
+   "items": [
+    {
+     "text": "Аналитика",
+     "at": 10.31
+    },
+    {
+     "text": "Юмор",
+     "at": 12.1
+    },
+    {
+     "text": "Рефлексия о жизни в Азии и Китае",
+     "at": 14.59
+    }
+   ]
   }
  ],
- "cities": [],
- "checklists": [],
  "zooms": [
   {
-   "at": 20.65,
+   "at": 0.0,
    "kind": "push",
    "amount": 0.06,
-   "hold": 1.6
+   "hold": 1.2
+  },
+  {
+   "at": 1.81,
+   "kind": "punch",
+   "amount": 0.12,
+   "hold": 1.0
+  },
+  {
+   "at": 5.79,
+   "kind": "push",
+   "amount": 0.07,
+   "hold": 1.4
   }
  ],
  "sfx": {
@@ -391,18 +409,30 @@
  },
  "speechSeconds": 38.166,
  "site": {
-  "at": 31.97,
+  "at": 20.65,
   "home": "source-videos/ostapdotcenko/site/home-mobile-full.png",
-  "catalog": "source-videos/ostapdotcenko/site/results-mobile.png",
+  "catalog": "source-videos/ostapdotcenko/site/career-mobile.png",
   "route": []
  },
- "cta": "Подробнее на сайте",
- "ctaSeconds": 3,
+ "cta": "Заходите, читайте",
+ "ctaSeconds": 1.5,
  "showSafeZone": false,
- "format": "reels",
+ "format": "stories",
  "focus": {
   "x": 527,
   "y": 972
  },
- "brand": "od"
+ "brand": "od",
+ "socials": [
+  {
+   "at": 1.7,
+   "until": 8.2,
+   "network": "site",
+   "name": "ostapdotcenko.ru",
+   "note": "Статьи каждый день",
+   "logo": "source-videos/ostapdotcenko/logo/site-icon-512.png",
+   "button": "Читать"
+  }
+ ],
+ "captionTop": 1320
 }

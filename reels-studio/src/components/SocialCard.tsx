@@ -92,7 +92,7 @@ export const SocialCard: React.FC<{
         <div style={{fontFamily: B.monoFont, fontSize: 24, letterSpacing: "0.14em", textTransform: "uppercase", color: od ? "#FF4A1F" : n.color}}>
           {n.label}
         </div>
-        <div style={{fontFamily: B.captionFont, fontWeight: 700, fontSize: name.length > 16 ? 38 : 46, lineHeight: 1.08, color: ink, letterSpacing: "-0.01em"}}>
+        <div style={{fontFamily: B.captionFont, fontWeight: 700, fontSize: name.length > 18 ? 34 : name.length > 13 ? 38 : 46, lineHeight: 1.08, color: ink, letterSpacing: "-0.01em"}}>
           <span
             style={{
               backgroundImage: od ? `linear-gradient(${B.accent}, ${B.accent})` : undefined,
