@@ -64,6 +64,19 @@ npm run auto -- --name 2026-10-09-avto --render                   # Reels + Stor
 (`src/components/AuraDog.tsx`: виляет хвостом, наклоняет голову, подпрыгивает в моменты `hops`). Превью логотипа, жестов
 робота и робособаки — композиция `AuraPreview` в Studio. Настройки брендов — `src/brand.ts`.
 
+## Третий бренд: личный сайт ostapdotcenko.ru
+
+Тот же `TalkReelPro` в стиле сайта ostapdotcenko.ru: `"brand": "od"` в props или тема пайплайна `ostapdotcenko`.
+Только Stories:
+
+```bash
+python3 scripts/auto.py <ссылка или файл> --theme ostapdotcenko --name 2026-10-14-od-тема --until prep
+python3 scripts/auto.py --name 2026-10-14-od-тема --render --stories-only
+```
+
+Кость, чернила, жёлтый маркер, красная печать «ОД» (`src/components/OdBadge.tsx`), квадратные углы, жёсткие тени.
+Подробно — `CLAUDE.md`, раздел «Третий бренд».
+
 ### 3D-арсенал Aura: AGV, манипулятор, робособака, роборука
 
 Модели для роликов в стиле Aura — `src/components/aura3d/` (референсы — `source-videos/aura-robotics/3d-референсы/`):

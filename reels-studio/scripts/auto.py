@@ -56,6 +56,7 @@ def main():
     ap.add_argument("--render", action="store_true", help="только рендер (props уже проверены)")
     ap.add_argument("--split", help="точки разреза Stories в секундах через запятую")
     ap.add_argument("--rematte", action="store_true", help="пересчитать вырезку спикера (после правки перебивок)")
+    ap.add_argument("--stories-only", action="store_true", help="только Stories (без Reels): рендер, части до 60 с, раскадровка")
     a = ap.parse_args()
 
     if not a.name:
@@ -142,19 +143,20 @@ def main():
             print(f"PREP_DONE {a.name}", flush=True)
             return
 
-        stage = "render-reels"
         R = ["./node_modules/.bin/remotion", "render", "src/index.ts", "TalkReelPro"]
-        reels = FIN / f"{a.name}.mp4"
-        step("Рендер Reels")
-        run(R + [reels, f"--props=./props/{a.name}.json", f"--concurrency={CONCURRENCY}", "--log=error"])
-        print(f"REELS {a.name}", flush=True)
+        if not a.stories_only:
+            stage = "render-reels"
+            reels = FIN / f"{a.name}.mp4"
+            step("Рендер Reels")
+            run(R + [reels, f"--props=./props/{a.name}.json", f"--concurrency={CONCURRENCY}", "--log=error"])
+            print(f"REELS {a.name}", flush=True)
 
-        stage = "storyboard"
-        step("Раскадровка")
-        run(["python3", "scripts/frames.py", reels, "--every", "3"])
-        (FIN / "раскадровки").mkdir(exist_ok=True)
-        shutil.copyfile(FIN / "frames" / f"{a.name}.jpg", FIN / "раскадровки" / f"{a.name}.jpg")
-        light_copy(reels, FIN / "для-телефона" / f"{a.name}.mp4")
+            stage = "storyboard"
+            step("Раскадровка")
+            run(["python3", "scripts/frames.py", reels, "--every", "3"])
+            (FIN / "раскадровки").mkdir(exist_ok=True)
+            shutil.copyfile(FIN / "frames" / f"{a.name}.jpg", FIN / "раскадровки" / f"{a.name}.jpg")
+            light_copy(reels, FIN / "для-телефона" / f"{a.name}.mp4")
 
         stage = "render-stories"
         sp = json.loads((STUDIO / "props" / f"{a.name}.json").read_text())
@@ -165,7 +167,7 @@ def main():
         step("Рендер Stories")
         run(R + [stories, f"--props={st_props}", f"--concurrency={CONCURRENCY}", "--log=error"])
         # фирменная заставка GTT (интро 1,47 с в начале, аутро 1,17 с в конце) сдвигает точки разреза; у Aura её нет
-        lead, tail = (0.0, 0.0) if sp.get("brand") == "aura" or sp.get("bumper") is False else (44 / 30, 35 / 30)
+        lead, tail = (0.0, 0.0) if sp.get("brand", "gtt") != "gtt" or sp.get("bumper") is False else (44 / 30, 35 / 30)
         cuts = [round(c + lead, 2) for c in rep["storiesAt"]]
         total = sp["speechSeconds"] + sp["ctaSeconds"] + lead + tail
         for x0, x1 in zip([0.0] + cuts, cuts + [total]):
@@ -180,6 +182,10 @@ def main():
             shutil.copyfile(stories, FIN / f"{a.name}-stories-1.mp4")
         for part in sorted(FIN.glob(f"{a.name}-stories-[0-9]*.mp4")):
             light_copy(part, FIN / "для-телефона" / part.name)
+        if a.stories_only:  # раскадровка — по Stories, раз Reels нет
+            run(["python3", "scripts/frames.py", stories, "--every", "3"])
+            (FIN / "раскадровки").mkdir(exist_ok=True)
+            shutil.copyfile(FIN / "frames" / f"{a.name}-stories.jpg", FIN / "раскадровки" / f"{a.name}-stories.jpg")
         print(f"STORIES {a.name}", flush=True)
         print(f"AUTO_DONE {a.name}", flush=True)
     except (subprocess.CalledProcessError, StopIteration, SystemExit) as e:

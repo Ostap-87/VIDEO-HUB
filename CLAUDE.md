@@ -50,14 +50,15 @@
 Картинки, которые нельзя ставить (чужой бренд, искажённая надпись), — `reels-studio/library/blocked-images.json`.
 Новые генерации для каруселей Instagram по сценариям — `source-videos/карусели/<имя>/` (журнал `_генерации.json`).
 
-## Два проекта: GlobalTechTour и Aura Robotics
+## Проекты: GlobalTechTour, Aura Robotics и ostapdotcenko
 
-Ролики делаются для двух брендов одним шаблоном `TalkReelPro`: GlobalTechTour (по умолчанию) и Aura Robotics
+Ролики делаются одним шаблоном `TalkReelPro` для GlobalTechTour (по умолчанию), Aura Robotics и ostapdotcenko (ниже). Aura Robotics
 (aura-robotics.ru, `"brand": "aura"`, тема пайплайна `aura`). Стиль Aura, логотип, маскот, робособака (`AuraDog`) и 3D-арсенал (AGV, манипулятор, робособака, роборука — `reels-studio/src/components/aura3d/`, референсы `source-videos/aura-robotics/3d-референсы/`, витрина `finished-videos/3d-арсенал/`) описаны в `reels-studio/CLAUDE.md`
 (раздел «Второй бренд: Aura Robotics»). Материалы Aura — `source-videos/aura-robotics/` (логотип: оригинал от пользователя
 в `логотип/оригиналы/`, вектор монограммы `логотип/ar-monogram.svg`; скриншоты сайта — `site/`; фото для примеров
 каруселей — `карусели-пример/`). Карусели Instagram (текстовые и фото) — `reels-studio/CLAUDE.md`, раздел «Карусели Instagram».
 Stories-анонсы каруселей — `npm run announce` (`finished-videos/анонсы/<имя>/`), описание там же, «Stories-анонс карусели». Reels из карусели с музыкой (API Instagram музыку к каруселям не ставит) — `npm run carousel-reel -- <карусель>` → `finished-videos/<карусель>-reels.mp4`, там же, «Reels из карусели».
+Третий бренд — личный сайт ostapdotcenko.ru (`"brand": "od"`, тема пайплайна `ostapdotcenko`, только Stories — `auto.py --render --stories-only`), стиль — `reels-studio/CLAUDE.md`, «Третий бренд»; снимки сайта — `source-videos/ostapdotcenko/site/`.
 Какой бренд у ролика, понятно из слов пользователя; не ясно — спроси, работу не останавливая.
 
 ## Присланный ролик — сразу в работу (решение пользователя 08.10.2026)

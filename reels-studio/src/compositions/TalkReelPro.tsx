@@ -22,6 +22,7 @@ import {BRANDS, BrandCtx, useBrand} from "../brand";
 import {AuraBadge} from "../components/AuraBadge";
 import {AuraMascot, type GestureKind, type MascotPlan, type MascotStay} from "../components/AuraMascot";
 import {GttIntro} from "./GttIntro";
+import {OdBadge} from "../components/OdBadge";
 
 // «Говорящая голова» в стиле референса пользователя (07.10.2026):
 // видео на весь экран, сверху плашка ▲ GLOBAL TECH TOUR, крупные белые субтитры по центру
@@ -103,8 +104,9 @@ export const talkReelProSchema = z.object({
   showSafeZone: z.boolean(),
   // reels — как есть; stories — логотип ниже верхней панели Stories (полоски прогресса и аватар занимают ~200 px)
   format: z.enum(["reels", "stories"]).default("reels"),
-  // бренд: gtt — GlobalTechTour, aura — Aura Robotics (свой стиль, круглый логотип и 3D-маскот, src/brand.ts)
-  brand: z.enum(["gtt", "aura"]).default("gtt"),
+  // бренд: gtt — GlobalTechTour, aura — Aura Robotics (свой стиль, круглый логотип и 3D-маскот, src/brand.ts),
+  // od — личный сайт ostapdotcenko.ru (кость, чернила, маркер, печать-штамп «ОД»)
+  brand: z.enum(["gtt", "aura", "od"]).default("gtt"),
   // фирменная заставка GTT в начале и конце (решение пользователя 12.10.2026: интро shards, аутро shards); у Aura её нет;
   // false — без заставки; {intro, outro, introVariant, outroVariant} — выборочно
   bumper: z
@@ -203,9 +205,9 @@ const BigCaptions: React.FC<{
         fontSize: 66,
         lineHeight: 1.18,
         color: dark ? theme.colors.text : "#FFFFFF",
-        textShadow: dark ? "none" : shadow,
-        // тёмная обводка, чтобы белые субтитры читались и на светлых картинках-перебивках
-        WebkitTextStroke: dark ? undefined : `10px ${B.captionStroke}`,
+        textShadow: dark ? "none" : B.captionShadow ?? shadow,
+        // тёмная обводка, чтобы белые субтитры читались и на светлых картинках-перебивках (od — без обводки, жёсткая тень)
+        WebkitTextStroke: dark || B.captionShadow ? undefined : `10px ${B.captionStroke}`,
         paintOrder: "stroke fill",
         // на сайте — белая подложка, чтобы текст не сливался с кнопками страницы
         background: dark ? "rgba(255,255,255,0.94)" : undefined,
@@ -236,7 +238,7 @@ const BigCaptions: React.FC<{
                   backgroundRepeat: "no-repeat",
                   backgroundSize: `${swipe}% 78%`,
                   backgroundPosition: "0% 60%",
-                  borderRadius: 10,
+                  borderRadius: B.square ? 0 : 10,
                   padding: "0 8px",
                   boxDecorationBreak: "clone",
                   WebkitBoxDecorationBreak: "clone",
@@ -280,7 +282,8 @@ const Chip: React.FC<{text: string; delay: number; strike?: number}> = ({text, d
         fontSize: 32,
         padding: aura ? "14px 28px 14px 22px" : "14px 26px",
         borderRadius: B.chip.radius,
-        boxShadow: "0 10px 30px rgba(0,0,0,0.28)",
+        border: B.chip.border,
+        boxShadow: B.chip.shadow ?? "0 10px 30px rgba(0,0,0,0.28)",
         display: "flex",
         alignItems: "center",
         gap: 14,
@@ -293,7 +296,7 @@ const Chip: React.FC<{text: string; delay: number; strike?: number}> = ({text, d
       }}
     >
       {B.chip.dot ? (
-        <span style={{width: 18, height: 18, borderRadius: 9, background: B.chip.dot, boxShadow: "0 0 0 3px #262626", flexShrink: 0, scale: String(0.4 + 0.6 * s)}} />
+        <span style={{width: 18, height: 18, borderRadius: B.square ? 0 : 9, background: B.chip.dot, boxShadow: `0 0 0 3px ${B.chip.text}`, flexShrink: 0, scale: String(0.4 + 0.6 * s)}} />
       ) : null}
       <span style={{opacity: strike === undefined ? 1 : 1 - 0.45 * line}}>{text}</span>
       {strike !== undefined ? (
@@ -492,18 +495,18 @@ const BigNumber: React.FC<{n: TalkReelProProps["numbers"][number]}> = ({n}) => {
           fontSize: n.text.length > 6 ? 120 : n.text.length > 3 ? 140 : 190,
           lineHeight: 1,
           color: n.tone === "down" ? "#FF3B3B" : B.accent,
-          WebkitTextStroke: B.id === "aura" && n.tone !== "down" ? "6px #262626" : undefined,
+          WebkitTextStroke: B.id === "aura" && n.tone !== "down" ? "6px #262626" : B.number?.stroke,
           paintOrder: "stroke fill",
           textShadow:
             n.tone === "down"
               ? "0 0 40px rgba(255,59,59,0.8), 0 6px 20px rgba(0,0,0,0.45)"
-              : `0 0 40px ${B.accentGlow}, 0 6px 20px rgba(0,0,0,0.45)`,
+              : B.number?.shadow ?? `0 0 40px ${B.accentGlow}, 0 6px 20px rgba(0,0,0,0.45)`,
         }}
       >
         {n.text}
       </div>
       {n.sub ? (
-        <div style={{fontFamily: B.bodyFont, fontWeight: 700, fontSize: 40, color: "#FFFFFF", textShadow: shadow, marginTop: 6}}>
+        <div style={{fontFamily: B.bodyFont, fontWeight: 700, fontSize: 40, color: "#FFFFFF", textShadow: B.captionShadow ?? shadow, marginTop: 6}}>
           {n.sub}
         </div>
       ) : null}
@@ -722,10 +725,10 @@ const ZoomedVideo: React.FC<{
               top: R.y * p,
               width: 1080 + (R.w - 1080) * p,
               height: 1920 + (R.h - 1920) * p,
-              borderRadius: R.r * p,
+              borderRadius: B.square ? 0 : R.r * p,
               overflow: "hidden",
-              border: `${R.border * p}px solid ${B.id === "aura" ? "#262626" : "#FFFFFF"}`,
-              boxShadow: `0 30px 80px rgba(0,0,0,${0.55 * p})`,
+              border: `${R.border * p}px solid ${B.frameBorder}`,
+              boxShadow: B.square ? `${16 * p}px ${16 * p}px 0 rgba(25,25,34,${p})` : `0 30px 80px rgba(0,0,0,${0.55 * p})`,
               transform: b.mode === "screen" ? `perspective(1800px) rotateY(${-6 * p}deg)` : undefined,
             }}
           >
@@ -1213,6 +1216,17 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
           }}
         />
       ) : null}
+      {B.finale.dots ? (
+        // od: точечная сетка, как на светлых секциях сайта; точки проявляются сверху вниз
+        <AbsoluteFill
+          style={{
+            backgroundImage: `radial-gradient(${B.finale.dots} 2.2px, transparent 2.6px)`,
+            backgroundSize: "36px 36px",
+            maskImage: `linear-gradient(to bottom, black ${k(0, 1.2) * 100}%, transparent ${k(0, 1.2) * 100 + 8}%)`,
+            WebkitMaskImage: `linear-gradient(to bottom, black ${k(0, 1.2) * 100}%, transparent ${k(0, 1.2) * 100 + 8}%)`,
+          }}
+        />
+      ) : null}
       {/* телефон */}
       <div
         style={{
@@ -1253,8 +1267,8 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
             color: B.finale.title,
             whiteSpace: "nowrap",
             display: "inline-block",
-            // Aura: заголовок подчёркивает лимонный маркер, как выделения на сайте
-            backgroundImage: B.id === "aura" ? `linear-gradient(${B.accent}, ${B.accent})` : undefined,
+            // Aura и od: заголовок подчёркивает маркер, как выделения на сайте
+            backgroundImage: B.highlighter ? `linear-gradient(${B.accent}, ${B.accent})` : undefined,
             backgroundRepeat: "no-repeat",
             backgroundSize: `${k(1.0, 1.5) * 100}% 40%`,
             backgroundPosition: "0% 85%",
@@ -1273,12 +1287,13 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
           transformOrigin: "left center",
           background: B.finale.button,
           color: B.finale.buttonText,
-          fontFamily: B.bodyFont,
-          fontWeight: B.id === "aura" ? 600 : 700,
-          fontSize: B.id === "aura" ? 36 : 40,
+          fontFamily: B.id === "od" ? B.monoFont : B.bodyFont,
+          fontWeight: B.id === "aura" ? 600 : B.id === "od" ? 500 : 700,
+          fontSize: B.id === "aura" ? 36 : B.id === "od" ? 34 : 40,
           padding: "24px 38px",
-          borderRadius: 999,
-          boxShadow: `0 0 ${40 + 30 * glow}px rgba(${B.finale.buttonGlow},${0.55 + 0.3 * glow}), 0 16px 40px rgba(0,0,0,0.4)`,
+          borderRadius: B.square ? 0 : 999,
+          border: B.square ? `2px solid ${B.finale.button}` : undefined,
+          boxShadow: B.finale.buttonShadow ?? `0 0 ${40 + 30 * glow}px rgba(${B.finale.buttonGlow},${0.55 + 0.3 * glow}), 0 16px 40px rgba(0,0,0,0.4)`,
         }}
       >
         {B.site}
@@ -1291,10 +1306,10 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
           top: lerp(0, CARD.top),
           width: lerp(1080, CARD.w),
           height: lerp(1920, CARD.h),
-          borderRadius: 32 * card,
+          borderRadius: B.square ? 0 : 32 * card,
           overflow: "hidden",
-          border: `${6 * card}px solid ${B.id === "aura" ? "#262626" : "#FFFFFF"}`,
-          boxShadow: `0 30px 70px rgba(0,0,0,${0.5 * card})`,
+          border: `${6 * card}px solid ${B.frameBorder}`,
+          boxShadow: B.square ? `${14 * card}px ${14 * card}px 0 rgba(25,25,34,${card})` : `0 30px 70px rgba(0,0,0,${0.5 * card})`,
         }}
       >
         <OffthreadVideo
@@ -1384,7 +1399,7 @@ const AuraBadgeSlot: React.FC<TalkReelProProps> = (p) => {
 // на 44-м кадре. Аутро 1,5 с (45 кадров): первые 10 кадров окно закрывается на конце ролика, потом 35 кадров логотипа.
 const BUMPER = {intro: 54, outro: 45, overlap: 10};
 export const bumperOf = (p: Pick<TalkReelProProps, "brand" | "bumper">) => {
-  if ((p.brand ?? "gtt") === "aura" || p.bumper === false) return null;
+  if ((p.brand ?? "gtt") !== "gtt" || p.bumper === false) return null; // заставка только у GTT
   const b = p.bumper || {};
   return {intro: b.intro ?? true, outro: b.outro ?? true, introVariant: b.introVariant ?? "shards", outroVariant: b.outroVariant ?? "shards"};
 };
@@ -1525,6 +1540,11 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
       {brand.id === "aura" ? (
         // Aura: круглая печать крутится над головой спикера, по центру; в Stories — ниже полосок и аватара
         <AuraBadgeSlot {...p} />
+      ) : brand.id === "od" ? (
+        // od: красная печать «ОД» и бумажная плашка «ОСТАП ДОЦЕНКО ©26» слева сверху (как шапка сайта)
+        <div style={{position: "absolute", top: p.format === "stories" ? 196 : 76, left: 48}}>
+          <OdBadge scale={0.9} />
+        </div>
       ) : (
         // логотип: стеклянная пирамида + крупная белая надпись с бликом (как в референсе)
         <div style={{position: "absolute", top: p.format === "stories" ? 210 : 86, left: 56}}>
