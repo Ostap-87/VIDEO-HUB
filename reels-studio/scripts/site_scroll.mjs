@@ -51,26 +51,41 @@ for (let i = 1; ; i++) {
 }
 const hide = opt("hide", "");
 if (hide) await page.addStyleTag({content: `${hide} { display: none !important; }`});
+// что прокручивать: окно, а если страница крутится во внутреннем блоке (globaltechtour.ru: у окна всего ~1200 px) —
+// самый высокий прокручиваемый блок
+await page.evaluate(() => {
+  const root = document.scrollingElement || document.documentElement;
+  let best = root;
+  if (root.scrollHeight < innerHeight * 1.5) {
+    for (const el of document.querySelectorAll("*")) {
+      const st = getComputedStyle(el);
+      if (/(auto|scroll)/.test(st.overflowY) && el.scrollHeight > el.clientHeight + 50 && el.scrollHeight > (best.scrollHeight || 0)) best = el;
+    }
+  }
+  window.__sc = best;
+});
+const scrollTo = (yy) => page.evaluate((y) => (window.__sc === document.scrollingElement ? window.scrollTo(0, y) : (window.__sc.scrollTop = y)), yy);
+const heightNow = () => page.evaluate(() => window.__sc.scrollHeight);
 // прогреть ленивые картинки и анимации появления: пройти страницу и вернуться
-const total = await page.evaluate(() => document.documentElement.scrollHeight);
+const total = await heightNow();
 for (let y = 0; y < Math.min(total, 40000); y += 500) {
-  await page.evaluate((yy) => window.scrollTo(0, yy), y);
+  await scrollTo(y);
   await page.waitForTimeout(120);
 }
 const from = opt("from", "0");
 const END = args.includes("--end");
 const frames = Math.round(SECONDS * FPS);
 const hold = 0.6, ramp = 0.8, move = Math.max(0.1, SECONDS - 2 * hold);
-const total2 = await page.evaluate(() => document.documentElement.scrollHeight);
+const total2 = await heightNow();
 let startY = END
   ? Math.max(0, total2 - H - SPEED * (move - ramp))
   : /^\d+$/.test(from)
   ? Number(from)
   : await page.evaluate((sel) => {
       const el = document.querySelector(sel);
-      return el ? el.getBoundingClientRect().top + window.scrollY : 0;
+      return el ? el.getBoundingClientRect().top + (window.__sc === document.scrollingElement ? window.scrollY : window.__sc.scrollTop) : 0;
     }, from);
-await page.evaluate((yy) => window.scrollTo(0, yy), startY);
+await scrollTo(startY);
 await page.waitForTimeout(Number(opt("wait", 1500)));
 await page.screenshot({type: "jpeg", quality: 50}); // первый снимок бывает пустым (страница ещё не перерисована) — пропускаем
 
@@ -91,7 +106,7 @@ const posAt = (t) => {
 const ff = spawn("ffmpeg", ["-v", "error", "-y", "-f", "image2pipe", "-framerate", String(FPS), "-i", "-",
   "-vf", `scale=${Math.round(W * DPR / 2) * 2}:${Math.round(H * DPR / 2) * 2},format=yuv420p`, "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-movflags", "+faststart", out], {stdio: ["pipe", "inherit", "inherit"]});
 for (let i = 0; i < frames; i++) {
-  await page.evaluate((yy) => window.scrollTo(0, yy), Math.round(posAt(i / FPS)));
+  await scrollTo(Math.round(posAt(i / FPS)));
   const buf = await page.screenshot({type: "jpeg", quality: 92});
   if (!ff.stdin.write(buf)) await new Promise((r) => ff.stdin.once("drain", r));
 }
