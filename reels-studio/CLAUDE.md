@@ -444,7 +444,7 @@ nod, scan, shrug`. Превью логотипа и всех жестов — к
   ссылочка будет выше»): эффекты собираются руками по тексту, автоматический черновик (перебивки с заводами, финал с сайтом)
   тут не подходит. Новые поля `TalkReelPro` (работают во всех брендах, стиль — от бренда):
   - `socials: [{at, until, network, name, handle, logo, note, button, pressAt}]` — карточка канала сверху слева
-    (`src/components/SocialCard.tsx`): значок сети (`telegram` / `youtube` / `vk` / `instagram` / `site`; значки —
+    (`src/components/SocialCard.tsx`): значок сети (`telegram` / `youtube` / `vk` / `instagram` / `linkedin` / `site`; значки —
     `source-videos/логотипы/общие/`, Simple Icons CC0), логотип канала, кикер «TELEGRAM-КАНАЛ», название на маркере, @адрес,
     кнопка «Подписаться», которая в `pressAt` (секунды ролика, на слове «подписывайтесь») «нажимается» и становится
     «✓ Вы подписаны»; у od — бумага, рамка и жёсткая тень, квадратные углы. Каналы: Aura — `@aura_robots`, GTT — `@GlobalTechTour`;

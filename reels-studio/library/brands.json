@@ -4023,5 +4023,14 @@
    "vk"
   ],
   "logo": "source-videos/логотипы/общие/vk.svg"
+ },
+ "linkedin": {
+  "names": [
+   "linkedin",
+   "линкедин",
+   "линкедине",
+   "линкедин-профиль"
+  ],
+  "logo": "source-videos/логотипы/общие/linkedin.svg"
  }
 }

@@ -93,7 +93,7 @@ export const talkReelProSchema = z.object({
       z.object({
         at: z.number(),
         until: z.number(),
-        network: z.enum(["telegram", "youtube", "vk", "instagram", "site"]),
+        network: z.enum(["telegram", "youtube", "vk", "instagram", "linkedin", "site"]),
         name: z.string(),
         handle: z.string().optional(),
         note: z.string().optional(),

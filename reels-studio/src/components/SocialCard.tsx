@@ -6,13 +6,14 @@ import React from "react";
 import {Easing, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
 import {useBrand} from "../brand";
 
-export type Network = "telegram" | "youtube" | "vk" | "instagram" | "site";
+export type Network = "telegram" | "youtube" | "vk" | "instagram" | "linkedin" | "site";
 
 const NET: Record<Network, {label: string; color: string; icon?: string}> = {
   telegram: {label: "Telegram-канал", color: "#26A5E4", icon: "source-videos/логотипы/общие/telegram.svg"},
   youtube: {label: "YouTube-канал", color: "#FF0000", icon: "source-videos/логотипы/общие/youtube.svg"},
   vk: {label: "ВКонтакте", color: "#0077FF", icon: "source-videos/логотипы/общие/vk.svg"},
   instagram: {label: "Instagram", color: "#E1306C", icon: "source-videos/логотипы/техгиганты/instagram.svg"},
+  linkedin: {label: "LinkedIn", color: "#0A66C2", icon: "source-videos/логотипы/общие/linkedin.svg"},
   site: {label: "Сайт", color: "#191922"},
 };
 
