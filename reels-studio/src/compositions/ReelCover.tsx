@@ -49,6 +49,7 @@ export const reelCoverSchema = z.object({
     .object({src: z.string(), x: z.number(), y: z.number(), size: z.number(), focus: z.string().optional(), zoom: z.number().optional(), label: z.string().optional()})
     .optional(), // круглое фото спикера (центр x, y) с подписью — когда главное на обложке фон (город, завод)
   logosTop: z.number().optional(), // верх плашки логотипов без фото-карточки (layout card без photo), px
+  headerTop: z.number().optional(), // верх шапки (по умолчанию 250 — безопасная зона Reels); не выше 224, иначе шапку срежет сетка 3:4
   guides: z.boolean().optional(), // зоны: сетка 3:4 и подпись Reels
 });
 export type ReelCoverProps = z.infer<typeof reelCoverSchema>;
@@ -108,7 +109,8 @@ const Fact: React.FC<{text: string; s: Style}> = ({text, s}) => (
   </div>
 );
 
-export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, titleSize, subtitle, subtitleSize, logos, logosTitle, logoColumns, facts, hero, layout, theme, photo, background, titlePlate, photoFull, avatar, logosTop, guides}) => {
+export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, titleSize, subtitle, subtitleSize, logos, logosTitle, logoColumns, facts, hero, layout, theme, photo, background, titlePlate, photoFull, avatar, logosTop, headerTop, guides}) => {
+  const top = headerTop ?? COVER.top;
   const light = theme === "light" && brand === "gtt";
   const s = light ? LIGHT : STYLES[brand];
   const card = layout === "card";
@@ -195,8 +197,9 @@ export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, title
             position: "absolute",
             left: COVER.side - 28,
             right: COVER.side - 28,
-            top: COVER.top - 18,
-            height: (subtitle ? 480 : 420) + ((titleSize ?? 88) - 88) * 2,
+            top: top - 18,
+            height:
+              18 + 120 + title.split("\n").length * (titleSize ?? 88) * 1.08 + (subtitle ? 26 + (subtitleSize ?? 44) * 1.2 * Math.ceil(subtitle.length / 40) : 0) + 36,
             borderRadius: 40,
             background: light ? "rgba(255,255,255,0.93)" : "rgba(20,49,140,0.84)",
             backdropFilter: "blur(18px)",
@@ -205,7 +208,7 @@ export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, title
         />
       ) : null}
       {/* шапка */}
-      <div style={{position: "absolute", top: COVER.top + 16, left: COVER.side, right: COVER.side, display: "flex", alignItems: "center", justifyContent: "space-between"}}>
+      <div style={{position: "absolute", top: top + 16, left: COVER.side, right: COVER.side, display: "flex", alignItems: "center", justifyContent: "space-between"}}>
         <BrandMark brand={brand} s={s} />
         {kicker ? (
           light ? (
@@ -218,7 +221,7 @@ export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, title
         ) : null}
       </div>
       {/* заголовок и подзаголовок */}
-      <div style={{position: "absolute", top: COVER.top + 120, left: COVER.side, right: COVER.side}}>
+      <div style={{position: "absolute", top: top + 120, left: COVER.side, right: COVER.side}}>
         <div
           style={{
             fontFamily: s.head,

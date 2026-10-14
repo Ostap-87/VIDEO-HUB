@@ -21,9 +21,12 @@
   "logoColumns": 3,
   "photo": {
     "src": "source-videos/обложки/2026-10-07-tech-giganty/ostap-kadr.jpg",
-    "top": 700,
-    "height": 940,
-    "focus": "50% 61%",
-    "zoom": 1.15
-  }
+    "top": 0,
+    "height": 1700,
+    "focus": "50% 0%",
+    "zoom": 1.09
+  },
+  "titlePlate": true,
+  "photoFull": true,
+  "headerTop": 236
 }
