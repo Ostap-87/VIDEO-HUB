@@ -1,0 +1,408 @@
+{
+ "mediaSrc": "source-videos/2026-10-14-od-4/_work/od4.cut.mp4",
+ "cutoutSrc": "source-videos/2026-10-14-od-4/_work/od4.cut.alpha.webm",
+ "words": [
+  {
+   "text": "У",
+   "start": 0.0,
+   "end": 0.24
+  },
+  {
+   "text": "меня",
+   "start": 0.24,
+   "end": 0.32
+  },
+  {
+   "text": "есть",
+   "start": 0.32,
+   "end": 0.89
+  },
+  {
+   "text": "личный",
+   "start": 0.89,
+   "end": 1.81
+  },
+  {
+   "text": "сайт",
+   "start": 1.81,
+   "end": 2.48
+  },
+  {
+   "text": "astabdozenko.ru,",
+   "start": 2.48,
+   "end": 3.92
+  },
+  {
+   "text": "где",
+   "start": 3.92,
+   "end": 4.22
+  },
+  {
+   "text": "на",
+   "start": 4.22,
+   "end": 4.3
+  },
+  {
+   "text": "ежедневной",
+   "start": 4.3,
+   "end": 5.17
+  },
+  {
+   "text": "основе",
+   "start": 5.17,
+   "end": 5.79
+  },
+  {
+   "text": "выходят",
+   "start": 5.79,
+   "end": 6.52
+  },
+  {
+   "text": "статьи,",
+   "start": 6.52,
+   "end": 7.3
+  },
+  {
+   "text": "они",
+   "start": 7.3,
+   "end": 7.72
+  },
+  {
+   "text": "разного",
+   "start": 7.72,
+   "end": 8.4
+  },
+  {
+   "text": "характера,",
+   "start": 8.4,
+   "end": 9.84
+  },
+  {
+   "text": "есть",
+   "start": 9.84,
+   "end": 10.21
+  },
+  {
+   "text": "и",
+   "start": 10.21,
+   "end": 10.31
+  },
+  {
+   "text": "аналитические,",
+   "start": 10.31,
+   "end": 11.64
+  },
+  {
+   "text": "есть",
+   "start": 11.64,
+   "end": 12.02
+  },
+  {
+   "text": "и",
+   "start": 12.02,
+   "end": 12.1
+  },
+  {
+   "text": "юмористические,",
+   "start": 12.1,
+   "end": 13.62
+  },
+  {
+   "text": "есть",
+   "start": 13.62,
+   "end": 14.017
+  },
+  {
+   "text": "просто",
+   "start": 14.017,
+   "end": 14.587
+  },
+  {
+   "text": "рефлексия",
+   "start": 14.587,
+   "end": 15.577
+  },
+  {
+   "text": "про",
+   "start": 15.577,
+   "end": 15.907
+  },
+  {
+   "text": "поводу",
+   "start": 15.907,
+   "end": 16.567
+  },
+  {
+   "text": "жизни",
+   "start": 16.567,
+   "end": 17.117
+  },
+  {
+   "text": "в",
+   "start": 17.117,
+   "end": 17.227
+  },
+  {
+   "text": "Азии",
+   "start": 17.227,
+   "end": 17.667
+  },
+  {
+   "text": "Юго-Восточной",
+   "start": 17.667,
+   "end": 19.137
+  },
+  {
+   "text": "и",
+   "start": 19.137,
+   "end": 19.217
+  },
+  {
+   "text": "в",
+   "start": 19.217,
+   "end": 19.297
+  },
+  {
+   "text": "Китае.",
+   "start": 19.297,
+   "end": 20.047
+  },
+  {
+   "text": "Поэтому",
+   "start": 20.653,
+   "end": 20.733
+  },
+  {
+   "text": "заходите,",
+   "start": 20.733,
+   "end": 21.683
+  },
+  {
+   "text": "читайте,",
+   "start": 21.683,
+   "end": 22.207
+  },
+  {
+   "text": "всегда",
+   "start": 22.207,
+   "end": 22.857
+  },
+  {
+   "text": "готов",
+   "start": 22.857,
+   "end": 23.467
+  },
+  {
+   "text": "к",
+   "start": 23.467,
+   "end": 23.547
+  },
+  {
+   "text": "вашим",
+   "start": 23.547,
+   "end": 24.027
+  },
+  {
+   "text": "предложениям,",
+   "start": 24.027,
+   "end": 25.417
+  },
+  {
+   "text": "готов",
+   "start": 25.417,
+   "end": 25.957
+  },
+  {
+   "text": "рассказать,",
+   "start": 25.957,
+   "end": 27.147
+  },
+  {
+   "text": "описать,",
+   "start": 27.147,
+   "end": 27.753
+  },
+  {
+   "text": "либо",
+   "start": 27.753,
+   "end": 28.173
+  },
+  {
+   "text": "осветить",
+   "start": 28.173,
+   "end": 29.033
+  },
+  {
+   "text": "ту",
+   "start": 29.033,
+   "end": 29.283
+  },
+  {
+   "text": "или",
+   "start": 29.283,
+   "end": 29.583
+  },
+  {
+   "text": "иную",
+   "start": 29.583,
+   "end": 29.85
+  },
+  {
+   "text": "тему",
+   "start": 29.85,
+   "end": 30.27
+  },
+  {
+   "text": "в",
+   "start": 30.27,
+   "end": 30.37
+  },
+  {
+   "text": "своей",
+   "start": 30.37,
+   "end": 30.91
+  },
+  {
+   "text": "манере,",
+   "start": 30.91,
+   "end": 31.64
+  },
+  {
+   "text": "в",
+   "start": 31.64,
+   "end": 31.81
+  },
+  {
+   "text": "легкой,",
+   "start": 31.81,
+   "end": 32.47
+  },
+  {
+   "text": "с",
+   "start": 32.47,
+   "end": 32.66
+  },
+  {
+   "text": "юмором,",
+   "start": 32.66,
+   "end": 33.3
+  },
+  {
+   "text": "с",
+   "start": 33.3,
+   "end": 33.42
+  },
+  {
+   "text": "иронией,",
+   "start": 33.42,
+   "end": 34.397
+  },
+  {
+   "text": "без",
+   "start": 34.397,
+   "end": 34.477
+  },
+  {
+   "text": "топорщинью",
+   "start": 34.477,
+   "end": 35.597
+  },
+  {
+   "text": "усов",
+   "start": 35.597,
+   "end": 35.897
+  },
+  {
+   "text": "и",
+   "start": 35.897,
+   "end": 35.987
+  },
+  {
+   "text": "надувания",
+   "start": 35.987,
+   "end": 36.947
+  },
+  {
+   "text": "щек.",
+   "start": 36.947,
+   "end": 37.967
+  }
+ ],
+ "accentWords": [
+  "лично",
+  "никаких",
+  "прозрачные",
+  "сайт"
+ ],
+ "cuts": [
+  0.13,
+  4.1,
+  8.13,
+  13.9,
+  20.17,
+  21.73,
+  27.2,
+  29.77,
+  34.07,
+  38.03
+ ],
+ "chips": [],
+ "logos": [],
+ "numbers": [],
+ "broll": [
+  {
+   "src": "source-videos/2026-10-14-od-4/broll/hf-330.png",
+   "at": 0.0,
+   "until": 3.92,
+   "transition": "circle"
+  },
+  {
+   "src": "source-videos/2026-10-14-od-4/broll/hf-376.png",
+   "at": 9.84,
+   "until": 13.62,
+   "transition": "slide"
+  },
+  {
+   "src": "source-videos/2026-10-14-od-4/broll/hf-86.png",
+   "at": 20.65,
+   "until": 25.15,
+   "transition": "zoom"
+  }
+ ],
+ "cities": [],
+ "checklists": [],
+ "zooms": [
+  {
+   "at": 20.65,
+   "kind": "push",
+   "amount": 0.06,
+   "hold": 1.6
+  }
+ ],
+ "sfx": {
+  "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+  "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav"
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+  "volume": 0.078,
+  "outroVolume": 0.18
+ },
+ "speechSeconds": 38.166,
+ "site": {
+  "at": 31.97,
+  "home": "source-videos/ostapdotcenko/site/home-mobile-full.png",
+  "catalog": "source-videos/ostapdotcenko/site/results-mobile.png",
+  "route": []
+ },
+ "cta": "Подробнее на сайте",
+ "ctaSeconds": 3,
+ "showSafeZone": false,
+ "format": "reels",
+ "focus": {
+  "x": 527,
+  "y": 972
+ },
+ "brand": "od"
+}
