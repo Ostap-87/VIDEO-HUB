@@ -240,7 +240,15 @@ const BigCaptions: React.FC<{
   const B = useBrand();
   const dark = false;
   const low = frame >= lowFrom + 10; // в финале субтитры ниже карточки спикера
-  const onLight = low && B.id === "od"; // od: финал на «кости» — субтитры чернилами, акцентные слова красным штампом
+  // пока на экране сайт или канал (screens), субтитры стоят на бумажной плашке поверх экрана, а не на лице:
+  // текст чернилами, акцентные слова — красным штампом (od) / синим (GTT) / графитом (Aura)
+  const boxed = !low && (activeScreen(screens, t)?.k ?? 0) > 0.5;
+  const onLight = (low && B.id === "od") || boxed; // od: финал на «кости» — субтитры чернилами, акцентные слова красным штампом
+  const hotOnLight = B.id === "od" ? "#FF4A1F" : B.id === "gtt" ? B.accent : B.accentInk;
+  const od = B.id === "od";
+  const box: React.CSSProperties = boxed
+    ? {display: "inline-block", background: od ? "#F7F4EC" : "#FFFFFF", border: od ? `3px solid ${B.accentInk}` : undefined, borderRadius: B.square ? 0 : 24, boxShadow: od ? `8px 8px 0 ${B.accentInk}` : "0 14px 34px rgba(0,0,0,0.3)", padding: "12px 22px 14px"}
+    : {};
   return (
     <div
       style={{
@@ -256,7 +264,7 @@ const BigCaptions: React.FC<{
         color: dark ? theme.colors.text : onLight ? B.accentInk : "#FFFFFF",
         textShadow: dark || onLight ? "none" : B.captionShadow ?? shadow,
         // тёмная обводка, чтобы белые субтитры читались и на светлых картинках-перебивках (od — без обводки, жёсткая тень)
-        WebkitTextStroke: dark || B.captionShadow ? undefined : `10px ${B.captionStroke}`,
+        WebkitTextStroke: dark || boxed || B.captionShadow ? undefined : `10px ${B.captionStroke}`,
         paintOrder: "stroke fill",
         // на сайте — белая подложка, чтобы текст не сливался с кнопками страницы
         background: dark ? "rgba(255,255,255,0.94)" : undefined,
@@ -267,6 +275,7 @@ const BigCaptions: React.FC<{
         opacity: pop,
       }}
     >
+      <span style={box}>
       {page.map((w, i) => {
         // текущее слово — последнее начавшееся (без «двойных» выделений на стыке слов)
         const curIdx = page.reduce((k, x, j) => (x.start <= t ? j : k), -1);
@@ -281,7 +290,7 @@ const BigCaptions: React.FC<{
               <span
                 style={{
                   color: inked || onLight ? B.accentInk : "#FFFFFF",
-                  WebkitTextStroke: inked ? "0px" : undefined,
+                  WebkitTextStroke: inked || boxed ? "0px" : undefined,
                   textShadow: inked ? "none" : undefined,
                   backgroundImage: `linear-gradient(${B.accent}, ${B.accent})`,
                   backgroundRepeat: "no-repeat",
@@ -299,11 +308,12 @@ const BigCaptions: React.FC<{
           );
         }
         return (
-          <span key={i} style={{color: hot ? (dark ? BLUE : onLight ? "#FF4A1F" : B.accent) : dark ? theme.colors.text : onLight ? B.accentInk : "#FFFFFF"}}>
-            {w.text}{" "}
+          <span key={i} style={{color: hot ? (dark ? BLUE : onLight ? hotOnLight : B.accent) : dark ? theme.colors.text : onLight ? B.accentInk : "#FFFFFF"}}>
+            {w.text}{i < page.length - 1 ? " " : ""}
           </span>
         );
       })}
+      </span>
     </div>
   );
 };

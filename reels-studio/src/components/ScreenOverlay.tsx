@@ -55,11 +55,13 @@ export const speakerShift = (screens: ScreenItem[] | undefined, t: number) => {
   if (!a) return 0;
   return a.s.layout === "drop" ? DROP_SHIFT * a.k : a.s.layout === "bottom" ? -BOTTOM_SHIFT * a.k : 0;
 };
-// где ставить субтитры, пока экран на месте
+export const FULL_LABEL_TOP = 250; // подпись экрана в режиме full — ниже полосок и аватара Stories
+// где ставить субтитры, пока экран на месте: на бумажной плашке поверх самого экрана, лица не касаются
+// (drop — над подписью внизу шторки, bottom — под подписью панели, full — под подписью сверху)
 export const captionTopFor = (screens: ScreenItem[] | undefined, t: number, normal: number) => {
   const a = activeScreen(screens, t);
   if (!a || a.k < 0.5) return normal;
-  return a.s.layout === "drop" ? DROP_H + 50 : a.s.layout === "bottom" ? BOTTOM_TOP - 190 : 330;
+  return a.s.layout === "drop" ? DROP_H - 300 : a.s.layout === "bottom" ? BOTTOM_TOP + 160 : FULL_LABEL_TOP + 170;
 };
 
 const Media: React.FC<{s: ScreenItem; style: React.CSSProperties}> = ({s, style}) => {
@@ -144,7 +146,7 @@ export const ScreenPanel: React.FC<{s: ScreenItem; cutoutSrc: string}> = ({s, cu
     <AbsoluteFill>
       <AbsoluteFill style={{clipPath: `circle(${r}% at 72% 82%)`, background: "#FFFFFF"}}>
         <Media s={s} style={{position: "absolute", inset: 0, width: "100%", height: "100%"}} />
-        <div style={{position: "absolute", left: 0, right: 0, top: 210}}>
+        <div style={{position: "absolute", left: 0, right: 0, top: FULL_LABEL_TOP}}>
           <Label s={s} k={k} />
         </div>
       </AbsoluteFill>

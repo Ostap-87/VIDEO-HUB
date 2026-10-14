@@ -2,11 +2,12 @@
 // (решение пользователя 14.10.2026: «предварительно сняв видео главных страниц со скролом» и показывать их в ролике).
 //
 //   node scripts/site_scroll.mjs <url> <out.mp4> [--from <css-селектор или px>] [--seconds 16] [--speed 170]
-//        [--hide ".tgme_channel_info_counters"] [--w 432] [--h 768] [--dpr 2.5] [--wait 1500]
+//        [--hide ".tgme_channel_info_counters"] [--w 432] [--h 768] [--dpr 2.5] [--wait 1500] [--end]
 //
 // Кадр 432×768 CSS px при плотности 2.5 = 1080×1920 (весь экран Stories). Каждый кадр — свой скриншот после прокрутки
 // на нужную высоту (не запись экрана): прокрутка ровная, с плавным разгоном и торможением, 30 кадров в секунду.
 // --from — откуда начать (селектор блока, например "#about", или пиксели), --hide — что спрятать (счётчик подписчиков и т.п.).
+// --end — прокрутка заканчивается внизу страницы (канал Telegram: свежие посты внизу), начало — на нужную длину выше.
 import {createRequire} from "node:module";
 import {execSync, spawn} from "node:child_process";
 import {existsSync} from "node:fs";
@@ -36,7 +37,18 @@ const browser = await pw.chromium.launch({
   proxy: process.env.HTTPS_PROXY ? {server: process.env.HTTPS_PROXY} : undefined,
 });
 const page = await (await browser.newContext({viewport: {width: W, height: H}, deviceScaleFactor: DPR, isMobile: true, hasTouch: true, locale: "ru-RU"})).newPage();
-await page.goto(url, {waitUntil: "networkidle", timeout: 90000});
+// страница могла не загрузиться (ошибка прокси «upstream request failed», пустой ответ) — до 4 попыток, иначе ошибка
+for (let i = 1; ; i++) {
+  const res = await page.goto(url, {waitUntil: "networkidle", timeout: 90000}).catch((e) => ({ok: () => false, status: () => String(e).slice(0, 80)}));
+  const text = await page.evaluate(() => document.body?.innerText ?? "").catch(() => "");
+  if (res.ok() && text.length > 200 && !/upstream request failed/i.test(text)) break;
+  if (i >= 4) {
+    console.error(`Страница не загрузилась: ${url} (${res.status()}, «${text.slice(0, 60)}»)`);
+    process.exit(2);
+  }
+  console.error(`попытка ${i}: страница не загрузилась (${res.status()}), жду ${i * 10} с`);
+  await page.waitForTimeout(i * 10000);
+}
 const hide = opt("hide", "");
 if (hide) await page.addStyleTag({content: `${hide} { display: none !important; }`});
 // прогреть ленивые картинки и анимации появления: пройти страницу и вернуться
@@ -46,7 +58,13 @@ for (let y = 0; y < Math.min(total, 40000); y += 500) {
   await page.waitForTimeout(120);
 }
 const from = opt("from", "0");
-const startY = /^\d+$/.test(from)
+const END = args.includes("--end");
+const frames = Math.round(SECONDS * FPS);
+const hold = 0.6, ramp = 0.8, move = Math.max(0.1, SECONDS - 2 * hold);
+const total2 = await page.evaluate(() => document.documentElement.scrollHeight);
+let startY = END
+  ? Math.max(0, total2 - H - SPEED * (move - ramp))
+  : /^\d+$/.test(from)
   ? Number(from)
   : await page.evaluate((sel) => {
       const el = document.querySelector(sel);
@@ -54,11 +72,10 @@ const startY = /^\d+$/.test(from)
     }, from);
 await page.evaluate((yy) => window.scrollTo(0, yy), startY);
 await page.waitForTimeout(Number(opt("wait", 1500)));
+await page.screenshot({type: "jpeg", quality: 50}); // первый снимок бывает пустым (страница ещё не перерисована) — пропускаем
 
-const frames = Math.round(SECONDS * FPS);
-const maxY = Math.max(startY, total - H);
+const maxY = Math.max(startY, total2 - H);
 // путь прокрутки: 0,6 с стоим, разгон 0,8 с, ровно, торможение 0,8 с, в конце стоим
-const hold = 0.6, ramp = 0.8, move = Math.max(0.1, SECONDS - 2 * hold);
 const dist = Math.min(maxY - startY, SPEED * (move - ramp));
 const posAt = (t) => {
   const u = Math.min(Math.max((t - hold) / move, 0), 1);
@@ -81,4 +98,4 @@ for (let i = 0; i < frames; i++) {
 ff.stdin.end();
 await new Promise((r) => ff.on("close", r));
 await browser.close();
-console.log(`${out}: ${frames} кадров, прокрутка ${Math.round(startY)} → ${Math.round(startY + dist)} px (страница ${total} px)`);
+console.log(`${out}: ${frames} кадров, прокрутка ${Math.round(startY)} → ${Math.round(startY + dist)} px (страница ${total2} px)`);
