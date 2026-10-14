@@ -695,11 +695,18 @@
    "2026-10-12-foto-xhand1"
   ]
  },
- "330": {
-  "id": "424d2bb7-59d1-45ec-a56d-dcffbee3f6b6",
-  "prompt": "Photorealistic plastic packaging factory production line with cups and containers, no text, no logos",
+ "261": {
+  "id": "f682b419-894d-4e0b-ac70-c14e42b1ad17",
+  "prompt": "Photorealistic wide shot of a sleek white humanoid robot standing on the Bund waterfront promenade in Shanghai, Huangpu river and the Pudong skyline with modern skyscrapers visible in daylight behind it, bright clear sky, soft natural daylight, documentary business-travel photography style, no text overlays",
   "videos": [
    "2026-10-14-od-1"
+  ]
+ },
+ "259": {
+  "id": "f3bb0d0d-105d-404b-9d22-341d2a4c15e7",
+  "prompt": "Photorealistic photo inside a bright modern robotics assembly workshop, a small group of Asian and European businesspeople in smart-casual clothing standing together having a conversation and negotiation near a robot assembly line, humanoid robot parts and machinery visible in the background, bright even daylight from large factory windows, documentary business photography style, no text overlays",
+  "videos": [
+   "2026-10-14-od-2"
   ]
  }
 }

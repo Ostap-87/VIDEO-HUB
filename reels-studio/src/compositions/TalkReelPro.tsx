@@ -23,6 +23,7 @@ import {AuraBadge} from "../components/AuraBadge";
 import {AuraMascot, type GestureKind, type MascotPlan, type MascotStay} from "../components/AuraMascot";
 import {GttIntro} from "./GttIntro";
 import {OdBadge} from "../components/OdBadge";
+import {LinkArrow, SocialCard} from "../components/SocialCard";
 
 // «Говорящая голова» в стиле референса пользователя (07.10.2026):
 // видео на весь экран, сверху плашка ▲ GLOBAL TECH TOUR, крупные белые субтитры по центру
@@ -86,6 +87,26 @@ export const talkReelProSchema = z.object({
   clips: z
     .array(z.object({at: z.number(), until: z.number(), src: z.string(), from: z.number().optional(), kicker: z.string().optional(), title: z.string().optional()}))
     .optional(),
+  // карточка канала в соцсети (Stories «про мои каналы», 14.10.2026): сверху слева, кнопка «Подписаться» нажимается в pressAt
+  socials: z
+    .array(
+      z.object({
+        at: z.number(),
+        until: z.number(),
+        network: z.enum(["telegram", "youtube", "vk", "instagram", "site"]),
+        name: z.string(),
+        handle: z.string().optional(),
+        note: z.string().optional(),
+        logo: z.string().optional(),
+        button: z.string().optional(),
+        pressAt: z.number().optional(), // секунды ролика
+      }),
+    )
+    .optional(),
+  // где стоят субтитры (верх строки, px); по умолчанию 1250. Крупное селфи (лицо на весь кадр) — ниже подбородка, ~1310
+  captionTop: z.number().optional(),
+  // большая стрелка вверх с подписью («Ссылка выше») — справа сверху, на словах «ссылочка будет выше»
+  arrows: z.array(z.object({at: z.number(), until: z.number(), text: z.string()})).optional(),
   // второй ракурс (вторая камера, scripts/angle_b.py): в отрезках shots кадр переключается на боковой план
   angleB: z.object({src: z.string(), shots: z.array(z.object({at: z.number(), until: z.number()}))}).optional(),
   // Зумы на ключевых словах: punch — резкий наезд за 3 кадра (со звуком whip), push — плавный медленный наезд.
@@ -178,7 +199,8 @@ const BigCaptions: React.FC<{
   lists: TalkReelProProps["checklists"];
   broll?: TalkReelProProps["broll"];
   clips?: TalkReelProProps["clips"];
-}> = ({words, accent, until, lowFrom, cities, lists, broll = [], clips}) => {
+  top?: number;
+}> = ({words, accent, until, lowFrom, cities, lists, broll = [], clips, top = 1250}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -198,7 +220,7 @@ const BigCaptions: React.FC<{
         position: "absolute",
         left: 90 - 40 * pipAmount(broll, t),
         right: 90 + 300 * pipAmount(broll, t), // при карточке спикера в углу субтитры сдвигаются влево
-        top: low ? 1420 : Math.max(cityAmount(cities, t), listAmount(lists, t), clipAmount(clips ?? [], t)) > 0.5 ? 780 : 1250,
+        top: low ? 1420 : Math.max(cityAmount(cities, t), listAmount(lists, t), clipAmount(clips ?? [], t)) > 0.5 ? 780 : top,
         textAlign: "center",
         fontFamily: B.captionFont,
         fontWeight: B.captionWeight,
@@ -1450,6 +1472,8 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
     ...p.cities.map((c) => ({at: c.at, src: p.sfx.pop})),
     ...p.checklists.flatMap((l) => l.items.map((it) => ({at: it.at, src: p.sfx.pop}))),
     {at: p.site.at, src: p.sfx.whoosh},
+    ...(p.socials ?? []).flatMap((c) => [{at: c.at, src: p.sfx.whoosh}, ...(c.pressAt !== undefined ? [{at: c.pressAt, src: p.sfx.pop}] : [])]),
+    ...(p.arrows ?? []).map((a) => ({at: a.at, src: p.sfx.pop})),
   ];
 
   const brand = BRANDS[p.brand ?? "gtt"];
@@ -1520,6 +1544,20 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
           <BigNumber n={n} />
         </Sequence>
       ))}
+      {(p.socials ?? []).map((c, i) => (
+        <Sequence key={`social-${i}`} from={f(c.at)} durationInFrames={f(c.until - c.at)} premountFor={fps}>
+          <div style={{position: "absolute", left: 56, top: (p.format === "stories" ? 130 : 0) + 300}}>
+            <SocialCard {...c} until={c.until - c.at} pressAt={c.pressAt === undefined ? undefined : c.pressAt - c.at} />
+          </div>
+        </Sequence>
+      ))}
+      {(p.arrows ?? []).map((a, i) => (
+        <Sequence key={`arrow-${i}`} from={f(a.at)} durationInFrames={f(a.until - a.at)} premountFor={fps}>
+          <div style={{position: "absolute", right: 64, top: (p.format === "stories" ? 130 : 0) + 330}}>
+            <LinkArrow text={a.text} until={a.until - a.at} />
+          </div>
+        </Sequence>
+      ))}
       </TopShift.Provider>
 
       <Sequence from={siteFrom}>
@@ -1538,7 +1576,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
           <FlagArc items={fl.items} at={fl.at} until={fl.until} center={p.focus} />
         </Sequence>
       ))}
-      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} broll={p.broll} clips={p.clips} />
+      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} broll={p.broll} clips={p.clips} top={p.captionTop} />
       {brand.id === "aura" ? (
         // Aura: круглая печать крутится над головой спикера, по центру; в Stories — ниже полосок и аватара
         <AuraBadgeSlot {...p} />

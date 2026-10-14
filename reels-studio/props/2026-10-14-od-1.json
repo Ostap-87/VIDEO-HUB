@@ -144,10 +144,11 @@
   }
  ],
  "accentWords": [
-  "лично",
-  "никаких",
-  "прозрачные",
-  "сайт"
+  "телеграмканал",
+  "робототехнике",
+  "aura",
+  "robots",
+  "выше"
  ],
  "cuts": [
   0.13,
@@ -156,20 +157,65 @@
   12.57,
   14.57
  ],
- "chips": [],
+ "chips": [
+  {
+   "until": 2.85,
+   "wrap": false,
+   "items": [
+    {
+     "text": "Мои соцсети",
+     "at": 1.06
+    }
+   ]
+  },
+  {
+   "until": 7.45,
+   "wrap": false,
+   "items": [
+    {
+     "text": "Telegram-канал",
+     "at": 2.91
+    },
+    {
+     "text": "Новости индустрии",
+     "at": 6.19
+    }
+   ]
+  }
+ ],
  "logos": [],
  "numbers": [],
  "broll": [
   {
-   "src": "source-videos/2026-10-14-od-1/broll/hf-330.png",
-   "at": 0.0,
-   "until": 2.48,
-   "transition": "circle"
+   "src": "source-videos/2026-10-14-od-1/broll/hf-261.png",
+   "at": 7.55,
+   "until": 9.25,
+   "transition": "slide",
+   "mode": "pip"
   }
  ],
  "cities": [],
  "checklists": [],
- "zooms": [],
+ "zooms": [
+  {
+   "at": 0.25,
+   "kind": "push",
+   "amount": 0.06,
+   "hold": 1.4
+  },
+  {
+   "at": 7.91,
+   "kind": "punch",
+   "amount": 0.12,
+   "hold": 1.0
+  },
+  {
+   "at": 10.81,
+   "kind": "push",
+   "amount": 0.07,
+   "hold": 1.6
+  }
+ ],
  "sfx": {
   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
@@ -182,18 +228,37 @@
  },
  "speechSeconds": 14.7,
  "site": {
-  "at": 8.36,
+  "at": 44.7,
   "home": "source-videos/ostapdotcenko/site/home-mobile-full.png",
   "catalog": "source-videos/ostapdotcenko/site/results-mobile.png",
   "route": []
  },
  "cta": "Подробнее на сайте",
- "ctaSeconds": 3,
+ "ctaSeconds": 0.5,
  "showSafeZone": false,
- "format": "reels",
+ "format": "stories",
  "focus": {
   "x": 518,
   "y": 884
  },
- "brand": "od"
+ "brand": "od",
+ "socials": [
+  {
+   "at": 10.7,
+   "until": 15.2,
+   "network": "telegram",
+   "name": "Aura Robots",
+   "handle": "@aura_robots",
+   "logo": "source-videos/aura-robotics/логотип/оригиналы/aura-robotics-круг.jpg",
+   "pressAt": 12.2
+  }
+ ],
+ "arrows": [
+  {
+   "at": 12.7,
+   "until": 15.2,
+   "text": "Ссылка выше"
+  }
+ ],
+ "captionTop": 1320
 }
