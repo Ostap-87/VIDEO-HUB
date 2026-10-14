@@ -11,8 +11,14 @@
 1. Звук «как в студии»: нейросетевой шумодав DeepFilterNet3 (scripts/denoise.py, шум и гулкость),
    эквалайзер (убрать «коробочный» гул 250–450 Гц, разборчивость 3 кГц, воздух 8 кГц), де-эссер,
    мягкая компрессия, громкость −14 LUFS (норма Instagram). Решение пользователя 08.10.2026: «как из трубы» — недопустимо.
-2. Находит паузы длиннее --min-pause секунд (тише --threshold дБ) и вырезает их,
-   оставляя по --keep секунд тишины по краям, чтобы речь не обрывалась.
+2. Находит паузы длиннее --min-pause секунд и вырезает их, оставляя по --keep секунд тишины по краям, чтобы речь
+   не обрывалась. Паузы ищутся по звуку **после шумодава** (решение 14.10.2026: на уличной записи шум города прятал
+   паузы — сырой звук не опускался ниже порога): кадры по 10 мс, порог — на 30 дБ тише громкой речи (90-й процентиль);
+   короткие всплески внутри паузы (до 60 мс — цыканья, щелчки языком, вдохи) паузу не прерывают. `--vad raw` — по-старому
+   (ffmpeg silencedetect по сырому звуку, порог --threshold дБ).
+   «Эканья» (решение пользователя 14.10.2026: «убери паузы и ненужные слова, эканья и цыканья»): кусок звука между
+   паузами короче 1,2 с, на который не приходится ни одно слово Whisper, распознаётся отдельно; если в нём «э», «эм»,
+   «мм», «а-а» или ничего — кусок вырезается вместе с паузами вокруг (`--no-fillers` — не искать).
    Каждый кусок ровно в целое число кадров (30 fps), звук режется по тем же границам до сэмпла —
    звук и видео не расходятся ни на кадр (раньше куски округлялись по-разному и рассинхрон копился до 0,7 с).
 3. Пишет в папку исходника `_work/`:
@@ -50,6 +56,90 @@ def duration(path):
         ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)]
     )
     return float(out)
+
+
+FILLER_RE = re.compile(r"^(?:э+м*|е+|м+|мм+|хм+|а+|ам+|ым+|у+м*|ну+)$")
+WHISPER = pathlib.Path(__file__).resolve().parent.parent / "whisper.cpp"
+
+
+def clean_audio(src, work, no_denoise=False):
+    """Весь звук исходника → шумодав DeepFilterNet (кэш _work/<имя>.clean.wav: шумодав считается один раз)."""
+    full = work / f"{src.stem}.full.wav"
+    clean = work / f"{src.stem}.clean.wav"
+    if clean.exists() and clean.stat().st_mtime >= src.stat().st_mtime:
+        return clean
+    run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(src), "-vn", "-ac", "1", "-ar", str(SR), str(full)])
+    if DFN.exists() and not no_denoise:
+        run([str(DFN), str(pathlib.Path(__file__).with_name("denoise.py")), str(full), str(clean)])
+        full.unlink()
+    else:
+        print("! шумодав DeepFilterNet не установлен (bash scripts/setup.sh) — звук без него")
+        full.rename(clean)
+    return clean
+
+
+def read_wav(path):
+    import numpy as np
+    import wave
+    with wave.open(str(path)) as w:
+        return np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float32), w.getframerate()
+
+
+def speech_runs(path, gap=0.12, blip=0.06):
+    """Куски речи по чистому звуку: [(начало, конец)], паузы короче gap склеены, всплески короче blip — не речь."""
+    import numpy as np
+    x, sr = read_wav(path)
+    hop = sr // 100
+    n = len(x) // hop
+    db = 20 * np.log10(np.sqrt((x[: n * hop].reshape(n, hop) ** 2).mean(1)) / 32768 + 1e-9)
+    voiced = db > np.percentile(db, 90) - 30
+
+    def runs(a):
+        out, st = [], 0
+        for i in range(1, len(a) + 1):
+            if i == len(a) or a[i] != a[st]:
+                out.append((bool(a[st]), st, i))
+                st = i
+        return out
+
+    for val, st, en in runs(voiced):  # щелчки, цыканья, вдохи внутри паузы
+        if val and en - st < round(blip * 100):
+            voiced[st:en] = False
+    for val, st, en in runs(voiced):  # смычки внутри слов («к», «т», «п») паузой не считаем
+        if not val and en - st < round(gap * 100) and st > 0 and en < len(voiced):
+            voiced[st:en] = True
+    return [(st / 100, en / 100) for val, st, en in runs(voiced) if val], n / 100
+
+
+def whisper_text(path, a0, a1):
+    """Что Whisper слышит в куске [a0, a1] чистого звука, если распознать его отдельно."""
+    import tempfile
+    bin_, model = WHISPER / "build" / "bin" / "whisper-cli", WHISPER / "ggml-large-v3-turbo-q5_0.bin"
+    if not bin_.exists() or not model.exists():
+        return None
+    with tempfile.TemporaryDirectory() as tmp:
+        wav = pathlib.Path(tmp) / "c.wav"
+        run(["ffmpeg", "-loglevel", "error", "-y", "-ss", f"{max(0, a0 - 0.05):.3f}", "-t", f"{a1 - a0 + 0.1:.3f}", "-i", str(path),
+             "-ac", "1", "-ar", "16000", "-af", "apad=pad_dur=0.6", str(wav)])
+        out = subprocess.run([str(bin_), "-m", str(model), "-f", str(wav), "-l", "ru", "-np", "-nt"], capture_output=True, text=True).stdout
+    return " ".join(out.split())
+
+
+def find_fillers(clean, chunks, words):
+    """Куски речи без слов Whisper, которые отдельно распознаются как «э», «мм» или пустота."""
+    found = []
+    for c0, c1 in chunks:
+        if c1 - c0 > 1.2 or any(c0 - 0.15 <= w["start"] < c1 - 0.05 for w in words):
+            continue
+        text = whisper_text(clean, c0, c1)
+        if text is None:
+            break
+        norm = re.sub(r"[^а-яёa-z ]", "", text.lower()).replace("ё", "е").split()
+        if not norm or all(FILLER_RE.match(t) for t in norm):
+            found.append((c0, c1, text or "—"))
+        else:
+            print(f"  кусок {c0:.2f}–{c1:.2f} без слов, но слышно «{text}» — оставляю")
+    return found
 
 
 def find_silences(path, threshold, min_pause):
@@ -112,6 +202,8 @@ def main():
     ap.add_argument("--words-only", action="store_true", help="не перекодировать видео, только пересчитать слова")
     ap.add_argument("--segments", help="взять куски из готового _work/имя.cut.json (пересборка после правок)")
     ap.add_argument("--no-denoise", action="store_true", help="без нейросетевого шумодава")
+    ap.add_argument("--vad", choices=["clean", "raw"], default="clean", help="где искать паузы: clean — после шумодава (по умолчанию), raw — по сырому звуку")
+    ap.add_argument("--no-fillers", action="store_true", help="не искать «эканья» (куски без слов)")
     a = ap.parse_args()
 
     src = pathlib.Path(a.media).resolve()
@@ -121,11 +213,23 @@ def main():
 
     total = duration(src)
     drops = [tuple(map(float, r.split("-"))) for r in a.drop.split(",") if r]
+    clean_src = clean_audio(src, work, a.no_denoise) if not a.words_only or not a.segments else None
     if a.segments:
         # пересборка по уже выбранным кускам: правки (оговорки, вырезки) не теряются
         segs = [(x["src_start"], x["src_end"]) for x in json.loads(pathlib.Path(a.segments).read_text())]
-    else:
+    elif a.vad == "raw":
         segs = keep_segments(total, find_silences(src, a.threshold, a.min_pause), a.keep)
+    else:
+        chunks, _ = speech_runs(clean_src)
+        if a.words and not a.no_fillers:
+            fillers = find_fillers(clean_src, chunks, json.loads(pathlib.Path(a.words).read_text()))
+            for f0, f1, text in fillers:
+                print(f"  «эканье» {f0:.2f}–{f1:.2f}: «{text}» — вырезаю")
+            chunks = [c for c in chunks if not any(abs(c[0] - f0) < 1e-6 for f0, _, _ in fillers)]
+        silences = [(chunks[i][1], chunks[i + 1][0]) for i in range(len(chunks) - 1) if chunks[i + 1][0] - chunks[i][1] >= a.min_pause]
+        if chunks:
+            silences = [(0.0, chunks[0][0])] * (chunks[0][0] >= a.min_pause) + silences + [(chunks[-1][1], None)] * (total - chunks[-1][1] >= a.min_pause)
+        segs = keep_segments(total, silences, a.keep)
     segs = subtract(segs, drops)
 
     # каждый кусок — целое число кадров; звук режется по тем же границам (1 кадр = 1600 сэмплов)
@@ -153,18 +257,11 @@ def main():
         (tmp / "list.txt").write_text("\n".join(lines))
         run(["ffmpeg", "-loglevel", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(tmp / "list.txt"),
              "-c:v", "copy", str(tmp / "video.mkv")])
-        # 2) звук: весь исходник → шумодав (вся запись целиком — модели нужен контекст) → куски по сэмплам
-        run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(src), "-vn", "-ac", "1", "-ar", str(SR), str(tmp / "full.wav")])
-        clean = tmp / "full.clean.wav"
-        if DFN.exists() and not a.no_denoise:
-            run([str(DFN), str(pathlib.Path(__file__).with_name("denoise.py")), str(tmp / "full.wav"), str(clean)])
-        else:
-            print("! шумодав DeepFilterNet не установлен (bash scripts/setup.sh) — звук без него")
-            clean = tmp / "full.wav"
+        # 2) звук: весь исходник → шумодав (вся запись целиком — модели нужен контекст; кэш _work/<имя>.clean.wav) → куски по сэмплам
+        clean = clean_src or clean_audio(src, work, a.no_denoise)
         import numpy as np
         import wave
-        with wave.open(str(clean)) as w:
-            raw = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float32)
+        raw, _ = read_wav(clean)
         pieces = []
         fade = 192  # 4 мс — без щелчков на стыках
         ramp = np.linspace(0, 1, fade, dtype=np.float32)

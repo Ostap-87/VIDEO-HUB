@@ -74,6 +74,7 @@ python3 scripts/auto.py <ссылка или файл> --theme ostapdotcenko --n
 python3 scripts/auto.py --name 2026-10-14-od-тема --render --stories-only
 ```
 
+Паузы, цыканья и «э-э» вырезаются по звуку после шумодава (`npm run cut`, `--vad raw` — по-старому, `--no-fillers` — без поиска «эканий»).
 Кость, чернила, жёлтый маркер, красная печать «ОД» (`src/components/OdBadge.tsx`), квадратные углы, жёсткие тени.
 Подробно — `CLAUDE.md`, раздел «Третий бренд».
 
