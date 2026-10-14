@@ -847,9 +847,11 @@ const ChecklistPanel: React.FC<{lists: TalkReelProProps["checklists"]}> = ({list
           translate: `0px ${slide}px`,
           rotate: `${-1.5 * amount}deg`,
           background: B.paper,
-          borderRadius: 34,
+          borderRadius: B.square ? 0 : 34,
           padding: "70px 44px 34px",
-          boxShadow: "0 30px 80px rgba(0,0,0,0.55)",
+          // od: рамка и жёсткая тень чернилами, без скруглений — как карточки сайта
+          border: B.square ? `3px solid ${B.frameBorder}` : undefined,
+          boxShadow: B.square ? `12px 12px 0 ${B.frameBorder}` : "0 30px 80px rgba(0,0,0,0.55)",
         }}
       >
         {/* зажим планшета */}
@@ -861,7 +863,7 @@ const ChecklistPanel: React.FC<{lists: TalkReelProProps["checklists"]}> = ({list
             translate: "-50% 0",
             width: 240,
             height: 64,
-            borderRadius: 18,
+            borderRadius: B.square ? 0 : 18,
             background: B.clip,
             boxShadow: "0 8px 18px rgba(0,0,0,0.35)",
           }}
