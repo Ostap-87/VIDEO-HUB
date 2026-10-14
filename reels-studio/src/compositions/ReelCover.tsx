@@ -31,10 +31,32 @@ export const reelCoverSchema = z.object({
       shadow: z.boolean().optional(), // тень-эллипс под ногами
     })
     .optional(),
-  layout: z.enum(["robot", "speaker"]).default("speaker"),
+  layout: z.enum(["robot", "speaker", "card"]).default("speaker"),
+  theme: z.enum(["brand", "light"]).optional(), // light — светлый фон GTT (ядро стиля «светлый framed»), тёмный текст, синие акценты
+  photo: z
+    .object({
+      src: z.string(), // кадр ролика целиком (не вырезка), путь от корня репозитория
+      top: z.number(), // верх карточки, px
+      height: z.number(), // высота карточки, px
+      focus: z.string().optional(), // object-position: что оставить в кадре
+      zoom: z.number().optional(),
+    })
+    .optional(), // layout "card": фото в карточке со скруглением, логотипы — на белой плашке поверх низа фото
   guides: z.boolean().optional(), // зоны: сетка 3:4 и подпись Reels
 });
 export type ReelCoverProps = z.infer<typeof reelCoverSchema>;
+
+// Светлая тема GTT — цвета ядра стиля (src/theme.ts): фон #EEEEF2, акцент #2563EB, текст #17171D, подписи #6B6B76.
+const LIGHT: Style = {
+  ...STYLES.gtt,
+  bg: {background: "radial-gradient(ellipse 70% 40% at 85% 6%, rgba(37,99,235,0.10), rgba(37,99,235,0) 70%), linear-gradient(180deg, #F6F7FB 0%, #EEEEF2 100%)"},
+  pattern: {backgroundImage: "radial-gradient(rgba(37,99,235,0.10) 2px, transparent 2px)", backgroundSize: "40px 40px"},
+  ink: "#17171D",
+  muted: "#6B6B76",
+  accent: "#2563EB",
+  bodyInk: "#3A3A44",
+  pyramid: ["#93C5FD", "#2563EB", "#60A5FA"],
+};
 
 export const COVER = {w: 1080, h: 1920, side: 64, top: 250, gridTop: 240, gridBottom: 1680, caption: 1540};
 
@@ -79,8 +101,10 @@ const Fact: React.FC<{text: string; s: Style}> = ({text, s}) => (
   </div>
 );
 
-export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, titleSize, subtitle, subtitleSize, logos, logosTitle, logoColumns, facts, hero, layout, guides}) => {
-  const s = STYLES[brand];
+export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, titleSize, subtitle, subtitleSize, logos, logosTitle, logoColumns, facts, hero, layout, theme, photo, guides}) => {
+  const light = theme === "light" && brand === "gtt";
+  const s = light ? LIGHT : STYLES[brand];
+  const card = layout === "card";
   const logoSrc = (logos ?? []).map(resolveLogo).filter((x): x is string => Boolean(x));
   const robot = layout === "robot";
   return (
@@ -108,10 +132,65 @@ export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, title
           />
         </>
       ) : null}
+      {/* фото в карточке: кадр ролика целиком, без вырезки (решение пользователя 14.10.2026 — вырезка выглядела «странно») */}
+      {card && photo ? (
+        <div
+          style={{
+            position: "absolute",
+            left: COVER.side,
+            right: COVER.side,
+            top: photo.top,
+            height: photo.height,
+            borderRadius: 48,
+            overflow: "hidden",
+            border: light ? "8px solid #FFFFFF" : "6px solid rgba(255,255,255,0.9)",
+            boxShadow: light ? "0 30px 70px rgba(23,23,29,0.18), 0 0 0 2px #D5D5DD" : "0 30px 70px rgba(10,25,80,0.45)",
+            background: "#D5D5DD",
+          }}
+        >
+          <Img
+            src={staticFile(photo.src)}
+            style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: photo.focus ?? "50% 40%", scale: String(photo.zoom ?? 1), transformOrigin: photo.focus ?? "50% 40%"}}
+          />
+        </div>
+      ) : null}
+      {card && photo && logoSrc.length ? (
+        <div
+          style={{
+            position: "absolute",
+            left: COVER.side + 28,
+            right: COVER.side + 28,
+            top: photo.top + photo.height - 36,
+            translate: "0 -100%",
+            padding: 20,
+            borderRadius: 32,
+            background: "rgba(255,255,255,0.94)",
+            backdropFilter: "blur(16px)",
+            boxShadow: "0 18px 40px rgba(23,23,29,0.18)",
+            display: "grid",
+            gridTemplateColumns: `repeat(${logoColumns ?? 3}, 1fr)`,
+            gap: 12,
+          }}
+        >
+          {logoSrc.map((src) => (
+            <div key={src} style={{height: 78, borderRadius: 18, background: "#F4F6FA", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 18px"}}>
+              <Img src={staticFile(src)} style={{width: "100%", height: 52, objectFit: "contain"}} />
+            </div>
+          ))}
+        </div>
+      ) : null}
       {/* шапка */}
       <div style={{position: "absolute", top: COVER.top + 16, left: COVER.side, right: COVER.side, display: "flex", alignItems: "center", justifyContent: "space-between"}}>
         <BrandMark brand={brand} s={s} />
-        {kicker ? <Badge text={kicker} s={s} /> : null}
+        {kicker ? (
+          light ? (
+            <div style={{height: 64, padding: "0 28px", display: "flex", alignItems: "center", borderRadius: 32, background: "#2563EB", color: "#FFFFFF", fontFamily: MONO, fontWeight: 500, fontSize: 30, letterSpacing: "0.12em", textTransform: "uppercase"}}>
+              {kicker}
+            </div>
+          ) : (
+            <Badge text={kicker} s={s} />
+          )
+        ) : null}
       </div>
       {/* заголовок и подзаголовок */}
       <div style={{position: "absolute", top: COVER.top + 120, left: COVER.side, right: COVER.side}}>
@@ -124,7 +203,7 @@ export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, title
             lineHeight: robot ? 1.0 : 1.08,
             color: s.ink,
             whiteSpace: "pre-line",
-            textShadow: s.marker ? undefined : "0 4px 30px rgba(5,20,80,0.35)",
+            textShadow: s.marker || light ? undefined : "0 4px 30px rgba(5,20,80,0.35)",
           }}
         >
           <Rich text={title} s={s} />
@@ -134,7 +213,7 @@ export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, title
             <Rich text={subtitle} s={s} />
           </div>
         ) : null}
-        {logoSrc.length && !robot ? (
+        {logoSrc.length && !robot && !card ? (
           <div style={{marginTop: 34}}>
             {logosTitle ? (
               <div style={{fontFamily: MONO, fontWeight: 500, fontSize: 30, letterSpacing: "0.12em", textTransform: "uppercase", color: s.marker ? s.muted : s.accent, marginBottom: 18}}>
