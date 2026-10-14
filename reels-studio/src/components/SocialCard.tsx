@@ -170,3 +170,66 @@ export const LinkArrow: React.FC<{text: string; until: number}> = ({text, until}
     </div>
   );
 };
+
+// Строка значков соцсетей («присутствие везде — подписывайтесь везде»): плашка-заголовок на маркере и значки, которые
+// выскакивают по очереди слева направо (стиль бренда: у od — бумажные квадраты с рамкой и жёсткой тенью).
+export const SocialGrid: React.FC<{title: string; items: string[]; until: number; size?: number}> = ({title, items, until, size = 96}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const B = useBrand();
+  const od = B.id === "od";
+  const ink = od ? "#191922" : "#17171D";
+  const head = spring({frame, fps, config: {damping: 13, stiffness: 160}});
+  const out = interpolate(frame, [until * fps - 8, until * fps], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
+  const mark = interpolate(frame, [6, 18], [0, 100], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.bezier(0.22, 1, 0.36, 1)});
+  return (
+    <div style={{display: "flex", flexDirection: "column", gap: 22, opacity: out}}>
+      <div
+        style={{
+          alignSelf: "flex-start",
+          fontFamily: B.captionFont,
+          fontWeight: 700,
+          fontSize: 40,
+          color: ink,
+          background: od ? "#F7F4EC" : "#FFFFFF",
+          padding: "12px 22px",
+          border: od ? `3px solid ${ink}` : undefined,
+          borderRadius: od ? 0 : 16,
+          boxShadow: od ? `8px 8px 0 ${ink}` : "0 10px 26px rgba(0,0,0,0.3)",
+          opacity: head,
+          translate: `${(1 - head) * -120}px 0px`,
+        }}
+      >
+        <span style={{backgroundImage: `linear-gradient(${B.accent}, ${B.accent})`, backgroundRepeat: "no-repeat", backgroundSize: `${mark}% 44%`, backgroundPosition: "0% 88%"}}>
+          {title}
+        </span>
+      </div>
+      <div style={{display: "flex", gap: 10}}>
+        {items.map((src, i) => {
+          const s = spring({frame: frame - 8 - i * 4, fps, config: {damping: 9, stiffness: 200, mass: 0.6}});
+          return (
+            <div
+              key={src}
+              style={{
+                width: size,
+                height: size,
+                flexShrink: 0,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "#FFFFFF",
+                border: od ? `3px solid ${ink}` : undefined,
+                borderRadius: od ? 0 : 24,
+                boxShadow: od ? `6px 6px 0 ${ink}` : "0 8px 20px rgba(0,0,0,0.25)",
+                scale: String(s),
+                rotate: `${(1 - s) * (i % 2 ? 14 : -14)}deg`,
+              }}
+            >
+              <Img src={staticFile(src)} style={{width: size * 0.62, height: size * 0.62, objectFit: "contain"}} />
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};

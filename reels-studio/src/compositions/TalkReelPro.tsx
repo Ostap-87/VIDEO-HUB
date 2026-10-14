@@ -23,7 +23,7 @@ import {AuraBadge} from "../components/AuraBadge";
 import {AuraMascot, type GestureKind, type MascotPlan, type MascotStay} from "../components/AuraMascot";
 import {GttIntro} from "./GttIntro";
 import {OdBadge} from "../components/OdBadge";
-import {LinkArrow, SocialCard} from "../components/SocialCard";
+import {LinkArrow, SocialCard, SocialGrid} from "../components/SocialCard";
 
 // «Говорящая голова» в стиле референса пользователя (07.10.2026):
 // видео на весь экран, сверху плашка ▲ GLOBAL TECH TOUR, крупные белые субтитры по центру
@@ -105,6 +105,8 @@ export const talkReelProSchema = z.object({
     .optional(),
   // где стоят субтитры (верх строки, px); по умолчанию 1250. Крупное селфи (лицо на весь кадр) — ниже подбородка, ~1310
   captionTop: z.number().optional(),
+  // строка значков соцсетей с заголовком («Подписывайтесь везде»): значки выскакивают по очереди, сверху слева
+  socialGrid: z.array(z.object({at: z.number(), until: z.number(), title: z.string(), items: z.array(z.string())})).optional(),
   // большая стрелка вверх с подписью («Ссылка выше») — справа сверху, на словах «ссылочка будет выше»
   arrows: z.array(z.object({at: z.number(), until: z.number(), text: z.string()})).optional(),
   // второй ракурс (вторая камера, scripts/angle_b.py): в отрезках shots кадр переключается на боковой план
@@ -214,6 +216,7 @@ const BigCaptions: React.FC<{
   const B = useBrand();
   const dark = false;
   const low = frame >= lowFrom + 10; // в финале субтитры ниже карточки спикера
+  const onLight = low && B.id === "od"; // od: финал на «кости» — субтитры чернилами, акцентные слова красным штампом
   return (
     <div
       style={{
@@ -226,8 +229,8 @@ const BigCaptions: React.FC<{
         fontWeight: B.captionWeight,
         fontSize: 66,
         lineHeight: 1.18,
-        color: dark ? theme.colors.text : "#FFFFFF",
-        textShadow: dark ? "none" : B.captionShadow ?? shadow,
+        color: dark ? theme.colors.text : onLight ? B.accentInk : "#FFFFFF",
+        textShadow: dark || onLight ? "none" : B.captionShadow ?? shadow,
         // тёмная обводка, чтобы белые субтитры читались и на светлых картинках-перебивках (od — без обводки, жёсткая тень)
         WebkitTextStroke: dark || B.captionShadow ? undefined : `10px ${B.captionStroke}`,
         paintOrder: "stroke fill",
@@ -253,7 +256,7 @@ const BigCaptions: React.FC<{
             <span key={i}>
               <span
                 style={{
-                  color: inked ? B.accentInk : "#FFFFFF",
+                  color: inked || onLight ? B.accentInk : "#FFFFFF",
                   WebkitTextStroke: inked ? "0px" : undefined,
                   textShadow: inked ? "none" : undefined,
                   backgroundImage: `linear-gradient(${B.accent}, ${B.accent})`,
@@ -272,7 +275,7 @@ const BigCaptions: React.FC<{
           );
         }
         return (
-          <span key={i} style={{color: hot ? (dark ? BLUE : B.accent) : dark ? theme.colors.text : "#FFFFFF"}}>
+          <span key={i} style={{color: hot ? (dark ? BLUE : onLight ? "#FF4A1F" : B.accent) : dark ? theme.colors.text : onLight ? B.accentInk : "#FFFFFF"}}>
             {w.text}{" "}
           </span>
         );
@@ -1474,6 +1477,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
     {at: p.site.at, src: p.sfx.whoosh},
     ...(p.socials ?? []).flatMap((c) => [{at: c.at, src: p.sfx.whoosh}, ...(c.pressAt !== undefined ? [{at: c.pressAt, src: p.sfx.pop}] : [])]),
     ...(p.arrows ?? []).map((a) => ({at: a.at, src: p.sfx.pop})),
+    ...(p.socialGrid ?? []).flatMap((g) => g.items.map((_, i) => ({at: g.at + (8 + i * 4) / 30, src: p.sfx.pop, volume: 0.25}))),
   ];
 
   const brand = BRANDS[p.brand ?? "gtt"];
@@ -1548,6 +1552,13 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
         <Sequence key={`social-${i}`} from={f(c.at)} durationInFrames={f(c.until - c.at)} premountFor={fps}>
           <div style={{position: "absolute", left: 56, top: (p.format === "stories" ? 130 : 0) + 300}}>
             <SocialCard {...c} until={c.until - c.at} pressAt={c.pressAt === undefined ? undefined : c.pressAt - c.at} />
+          </div>
+        </Sequence>
+      ))}
+      {(p.socialGrid ?? []).map((g, i) => (
+        <Sequence key={`sgrid-${i}`} from={f(g.at)} durationInFrames={f(g.until - g.at)} premountFor={fps}>
+          <div style={{position: "absolute", left: 64, top: (p.format === "stories" ? 130 : 0) + 300}}>
+            <SocialGrid title={g.title} items={g.items} until={g.until - g.at} />
           </div>
         </Sequence>
       ))}
