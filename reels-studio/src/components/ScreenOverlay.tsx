@@ -19,6 +19,19 @@ export type ScreenItem = {
   title?: string; // полное название: «|AURA Robotics| Робототехника», «ostapdotcenko.ru — блог»
   url?: string; // t.me/aura_robots, ostapdotcenko.ru/blog
   network?: "telegram" | "site" | "linkedin" | "youtube" | "instagram";
+  joinIn?: boolean; // ставит chainScreens: экран сразу сменяет предыдущий той же подачи (без отъезда и въезда)
+  joinOut?: boolean;
+};
+
+// Экраны подряд (главная сайта → блог, канал → канал) одной подачи и встык (зазор до 0,25 с) — один въезд в начале,
+// один отъезд в конце, между ними только смена страницы наплывом.
+export const chainScreens = (screens: ScreenItem[] | undefined): ScreenItem[] => {
+  const list = [...(screens ?? [])].sort((a, b) => a.at - b.at);
+  return list.map((s, i) => ({
+    ...s,
+    joinIn: i > 0 && list[i - 1].layout === s.layout && Math.abs(s.at - list[i - 1].until) <= 0.25,
+    joinOut: i < list.length - 1 && list[i + 1].layout === s.layout && Math.abs(list[i + 1].at - s.until) <= 0.25,
+  }));
 };
 
 const ICON: Record<string, string> = {
@@ -37,8 +50,8 @@ export const BOTTOM_SHIFT = 440; // насколько спикер подним
 // 0…1: насколько экран на месте (въезд 0,5 с, выезд 0,4 с)
 export const screenAmount = (s: ScreenItem, t: number) => {
   const ease = Easing.bezier(0.22, 1, 0.36, 1);
-  const a = interpolate(t, [s.at - 0.1, s.at + 0.45], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease});
-  const b = interpolate(t, [s.until - 0.4, s.until], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease});
+  const a = s.joinIn ? (t >= s.at - 0.1 ? 1 : 0) : interpolate(t, [s.at - 0.1, s.at + 0.45], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease});
+  const b = s.joinOut ? (t <= s.until + 0.5 ? 1 : 0) : interpolate(t, [s.until - 0.4, s.until], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease});
   return Math.min(a, b);
 };
 export const activeScreen = (screens: ScreenItem[] | undefined, t: number) => {
@@ -66,10 +79,13 @@ export const captionTopFor = (screens: ScreenItem[] | undefined, t: number, norm
 
 const Media: React.FC<{s: ScreenItem; style: React.CSSProperties}> = ({s, style}) => {
   const {fps} = useVideoConfig();
+  const frame = useCurrentFrame();
+  // экран сменяет предыдущий встык — новая страница проявляется поверх старой за 0,35 с
+  const fade = s.joinIn ? interpolate(frame, [0, 0.35 * fps], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}) : 1;
   return /\.(png|jpe?g|webp)$/i.test(s.src) ? (
-    <Img src={staticFile(s.src)} style={{...style, objectFit: "cover", objectPosition: "50% 0%"}} />
+    <Img src={staticFile(s.src)} style={{...style, objectFit: "cover", objectPosition: "50% 0%", opacity: fade}} />
   ) : (
-    <OffthreadVideo src={staticFile(s.src)} muted trimBefore={Math.round((s.from ?? 0) * fps)} style={{...style, objectFit: "cover", objectPosition: "50% 0%"}} />
+    <OffthreadVideo src={staticFile(s.src)} muted trimBefore={Math.round((s.from ?? 0) * fps)} style={{...style, objectFit: "cover", objectPosition: "50% 0%", opacity: fade}} />
   );
 };
 
@@ -118,7 +134,7 @@ export const ScreenPanel: React.FC<{s: ScreenItem; cutoutSrc: string}> = ({s, cu
   if (s.layout === "drop") {
     return (
       <div style={{position: "absolute", left: 0, right: 0, top: 0, height: DROP_H, translate: `0px ${(k - 1) * (DROP_H + 40)}px`}}>
-        <div style={{position: "absolute", inset: 0, overflow: "hidden", background: "#FFFFFF", borderBottom: `5px solid ${ink}`, boxShadow: od ? "0 16px 0 #FFD92E" : "0 20px 60px rgba(0,0,0,0.45)"}}>
+        <div style={{position: "absolute", inset: 0, overflow: "hidden", background: s.joinIn ? undefined : "#FFFFFF", borderBottom: `5px solid ${ink}`, boxShadow: od ? "0 16px 0 #FFD92E" : "0 20px 60px rgba(0,0,0,0.45)"}}>
           <Media s={s} style={{position: "absolute", inset: 0, width: "100%", height: "100%"}} />
           <div style={{position: "absolute", left: 0, right: 0, bottom: 0}}>
             <Label s={s} k={k} />
@@ -130,7 +146,7 @@ export const ScreenPanel: React.FC<{s: ScreenItem; cutoutSrc: string}> = ({s, cu
   if (s.layout === "bottom") {
     return (
       <div style={{position: "absolute", left: 0, right: 0, top: BOTTOM_TOP, bottom: 0, translate: `0px ${(1 - k) * (1940 - BOTTOM_TOP)}px`}}>
-        <div style={{position: "absolute", inset: 0, overflow: "hidden", background: "#FFFFFF", borderTop: `5px solid ${ink}`, boxShadow: od ? "0 -16px 0 #FFD92E" : "0 -20px 60px rgba(0,0,0,0.45)"}}>
+        <div style={{position: "absolute", inset: 0, overflow: "hidden", background: s.joinIn ? undefined : "#FFFFFF", borderTop: `5px solid ${ink}`, boxShadow: od ? "0 -16px 0 #FFD92E" : "0 -20px 60px rgba(0,0,0,0.45)"}}>
           <Media s={s} style={{position: "absolute", left: 0, right: 0, top: 110, width: "100%", height: 1920 - BOTTOM_TOP - 110}} />
           <div style={{position: "absolute", left: 0, right: 0, top: 0}}>
             <Label s={s} k={k} />
@@ -144,7 +160,7 @@ export const ScreenPanel: React.FC<{s: ScreenItem; cutoutSrc: string}> = ({s, cu
   const small = interpolate(k, [0, 1], [1, 0.56]);
   return (
     <AbsoluteFill>
-      <AbsoluteFill style={{clipPath: `circle(${r}% at 72% 82%)`, background: "#FFFFFF"}}>
+      <AbsoluteFill style={{clipPath: `circle(${r}% at 72% 82%)`, background: s.joinIn ? undefined : "#FFFFFF"}}>
         <Media s={s} style={{position: "absolute", inset: 0, width: "100%", height: "100%"}} />
         <div style={{position: "absolute", left: 0, right: 0, top: FULL_LABEL_TOP}}>
           <Label s={s} k={k} />

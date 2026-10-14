@@ -24,7 +24,7 @@ import {AuraMascot, type GestureKind, type MascotPlan, type MascotStay} from "..
 import {GttIntro} from "./GttIntro";
 import {OdBadge} from "../components/OdBadge";
 import {LinkArrow, SocialCard, SocialGrid} from "../components/SocialCard";
-import {activeScreen, captionTopFor, ScreenPanel, speakerShift} from "../components/ScreenOverlay";
+import {activeScreen, captionTopFor, chainScreens, ScreenPanel, speakerShift} from "../components/ScreenOverlay";
 
 // «Говорящая голова» в стиле референса пользователя (07.10.2026):
 // видео на весь экран, сверху плашка ▲ GLOBAL TECH TOUR, крупные белые субтитры по центру
@@ -1498,6 +1498,7 @@ export const TalkReelPro: React.FC<TalkReelProProps> = (p) => {
 const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
   const {fps, durationInFrames} = useVideoConfig();
   const frame = useCurrentFrame();
+  const screens = chainScreens(p.screens);
   const f = (s: number) => Math.round(s * fps);
   const siteFrom = f(p.site.at);
   const sfxAt: {at: number; src: string; volume?: number}[] = [
@@ -1542,7 +1543,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
         </Sequence>
       ))}
 
-      <AbsoluteFill style={{translate: `0px ${speakerShift(p.screens, frame / fps)}px`}}>
+      <AbsoluteFill style={{translate: `0px ${speakerShift(screens, frame / fps)}px`}}>
       <ZoomedVideo
         src={p.mediaSrc}
         cutoutSrc={p.cutoutSrc}
@@ -1608,8 +1609,9 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
       ))}
       </TopShift.Provider>
 
-      {(p.screens ?? []).map((sc, i) => (
-        <Sequence key={`screen-${i}`} from={f(sc.at - 0.1)} durationInFrames={f(sc.until - sc.at + 0.1)} premountFor={fps}>
+      {screens.map((sc, i) => (
+        // экран, который сменяется следующим встык, держится ещё 0,45 с — пока новая страница проявляется поверх
+        <Sequence key={`screen-${i}`} from={f(sc.at - 0.1)} durationInFrames={f(sc.until - sc.at + 0.1 + (sc.joinOut ? 0.45 : 0))} premountFor={fps}>
           <ScreenPanel s={{...sc, at: sc.at - 0.1}} cutoutSrc={p.cutoutSrc} />
         </Sequence>
       ))}
@@ -1629,14 +1631,14 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
           <FlagArc items={fl.items} at={fl.at} until={fl.until} center={p.focus} />
         </Sequence>
       ))}
-      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} broll={p.broll} clips={p.clips} top={p.captionTop} size={p.captionSize} screens={p.screens} />
+      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} broll={p.broll} clips={p.clips} top={p.captionTop} size={p.captionSize} screens={screens} />
       {brand.id === "aura" ? (
         // Aura: круглая печать крутится над головой спикера, по центру; в Stories — ниже полосок и аватара
         <AuraBadgeSlot {...p} />
       ) : brand.id === "od" ? (
         // od: красная печать «ОД» и бумажная плашка «Остап Доценко.» слева сверху (как шапка сайта); пока на экране сайт — прячется
         p.badge === false ? null :
-        <div style={{position: "absolute", top: p.format === "stories" ? 196 : 76, left: 48, opacity: 1 - (activeScreen(p.screens, frame / fps)?.k ?? 0)}}>
+        <div style={{position: "absolute", top: p.format === "stories" ? 196 : 76, left: 48, opacity: 1 - (activeScreen(screens, frame / fps)?.k ?? 0)}}>
           <OdBadge scale={0.9} />
         </div>
       ) : (
