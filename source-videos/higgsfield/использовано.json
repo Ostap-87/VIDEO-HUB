@@ -715,5 +715,33 @@
   "videos": [
    "2026-10-14-od-3"
   ]
+ },
+ "330": {
+  "id": "424d2bb7-59d1-45ec-a56d-dcffbee3f6b6",
+  "prompt": "Photorealistic plastic packaging factory production line with cups and containers, no text, no logos",
+  "videos": [
+   "2026-10-14-od-5"
+  ]
+ },
+ "376": {
+  "id": "dcae058e-8a03-4fc2-a485-9cc10499764a",
+  "prompt": "Photorealistic image of a garment factory production line with down jackets on hangers, quality control station, no text, no logos",
+  "videos": [
+   "2026-10-14-od-5"
+  ]
+ },
+ "86": {
+  "id": "1cb91ce7-67df-4ad2-ad8b-919d929046e5",
+  "prompt": "Photorealistic wide shot of a business negotiation meeting room in a Chinese film and entertainment company headquarters. Large conference table, business delegation of 4-5 Russian business people in business suits sitting across from 3-4 Chinese executives in suits, interpreter standing beside the table gesturing, laptops and documents on the table, city skyline visible through floor-to-ceiling windows behind them, professional atmosphere, discussion moment. Ultra realistic photography, natural window lighting, 16:9 wide composition, documentary business photography style, no visible text or logos.",
+  "videos": [
+   "2026-10-14-od-5"
+  ]
+ },
+ "5": {
+  "id": "c28156c7-4ee6-446b-bb26-be4dbf9914b9",
+  "prompt": "Minimal stylized map outline of China only, thin blue accent line connecting a few major city dots, light grey background, strictly monochrome blue and grey corporate palette only, no rainbow colors, no multicolor gradient, clean minimal flat graphic design. No text, no logos, 4:5 vertical",
+  "videos": [
+   "2026-10-14-od-5"
+  ]
  }
 }
