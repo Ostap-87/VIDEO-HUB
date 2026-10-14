@@ -399,10 +399,14 @@
   }
  ],
  "accentWords": [
-  "лично",
-  "никаких",
-  "прозрачные",
-  "сайт"
+  "везде",
+  "подписывайтесь",
+  "пишите",
+  "производство",
+  "информацию",
+  "контактами",
+  "видео",
+  "хорошего"
  ],
  "cuts": [
   0.13,
@@ -421,49 +425,118 @@
   38.9,
   40.63
  ],
- "chips": [],
+ "chips": [
+  {
+   "until": 2.95,
+   "wrap": false,
+   "items": [
+    {
+     "text": "Мои соцсети",
+     "at": 1.07
+    }
+   ]
+  },
+  {
+   "until": 13.95,
+   "wrap": false,
+   "items": [
+    {
+     "text": "Контент везде разный",
+     "at": 9.95
+    },
+    {
+     "text": "Свой формат для каждой сети",
+     "at": 11.3
+    }
+   ]
+  },
+  {
+   "until": 38.6,
+   "wrap": false,
+   "items": [
+    {
+     "text": "Информация",
+     "at": 33.41
+    },
+    {
+     "text": "Контакты",
+     "at": 35.07
+    },
+    {
+     "text": "Видео на вашу тему",
+     "at": 37.3
+    }
+   ]
+  }
+ ],
  "logos": [],
  "numbers": [],
  "broll": [
   {
-   "src": "source-videos/2026-10-14-od-5/broll/hf-330.png",
-   "at": 0.0,
-   "until": 2.42,
-   "transition": "circle"
-  },
-  {
-   "src": "source-videos/2026-10-14-od-5/broll/hf-376.png",
-   "at": 7.25,
-   "until": 9.95,
-   "transition": "slide"
-  },
-  {
-   "src": "source-videos/2026-10-14-od-5/broll/hf-86.png",
-   "at": 17.45,
-   "until": 19.49,
-   "transition": "zoom"
-  },
-  {
    "src": "source-videos/2026-10-14-od-5/broll/hf-5.png",
    "at": 26.2,
-   "until": 29.09,
-   "transition": "wipe"
+   "until": 29.0,
+   "transition": "zoom",
+   "mode": "screen"
   }
  ],
  "cities": [],
- "checklists": [],
+ "checklists": [
+  {
+   "title": "Могу для вас",
+   "until": 25.95,
+   "items": [
+    {
+     "text": "Написать или рассказать",
+     "at": 20.08
+    },
+    {
+     "text": "Съездить на производство",
+     "at": 21.85
+    },
+    {
+     "text": "Снять видео",
+     "at": 22.63
+    }
+   ]
+  }
+ ],
  "zooms": [
   {
-   "at": 17.45,
+   "at": 0.0,
    "kind": "push",
    "amount": 0.06,
+   "hold": 1.2
+  },
+  {
+   "at": 3.98,
+   "kind": "punch",
+   "amount": 0.12,
+   "hold": 1.0
+  },
+  {
+   "at": 9.95,
+   "kind": "push",
+   "amount": 0.07,
+   "hold": 1.4
+  },
+  {
+   "at": 14.57,
+   "kind": "punch",
+   "amount": 0.12,
+   "hold": 0.9
+  },
+  {
+   "at": 29.09,
+   "kind": "push",
+   "amount": 0.07,
    "hold": 1.6
   },
   {
-   "at": 26.2,
-   "kind": "push",
-   "amount": 0.06,
-   "hold": 1.6
+   "at": 32.15,
+   "kind": "punch",
+   "amount": 0.12,
+   "hold": 1.0
   }
  ],
  "sfx": {
@@ -478,18 +551,53 @@
  },
  "speechSeconds": 40.766,
  "site": {
-  "at": 34.43,
+  "at": 38.7,
   "home": "source-videos/ostapdotcenko/site/home-mobile-full.png",
   "catalog": "source-videos/ostapdotcenko/site/career-mobile.png",
   "route": []
  },
- "cta": "Подробнее на сайте",
- "ctaSeconds": 3,
+ "cta": "Хорошего дня!",
+ "ctaSeconds": 2.5,
  "showSafeZone": false,
- "format": "reels",
+ "format": "stories",
  "focus": {
   "x": 549,
   "y": 909
  },
- "brand": "od"
+ "brand": "od",
+ "socialGrid": [
+  {
+   "at": 3.0,
+   "until": 9.7,
+   "title": "Я есть везде",
+   "items": [
+    "source-videos/логотипы/общие/telegram.svg",
+    "source-videos/логотипы/техгиганты/instagram.svg",
+    "source-videos/логотипы/общие/youtube.svg",
+    "source-videos/логотипы/общие/linkedin.svg",
+    "source-videos/логотипы/общие/facebook.svg",
+    "source-videos/логотипы/общие/threads.svg",
+    "source-videos/логотипы/общие/x.svg",
+    "source-videos/логотипы/техгиганты/wechat.png",
+    "source-videos/логотипы/техгиганты/xiaohongshu.svg"
+   ]
+  },
+  {
+   "at": 14.05,
+   "until": 17.3,
+   "title": "Подписывайтесь везде",
+   "items": [
+    "source-videos/логотипы/общие/telegram.svg",
+    "source-videos/логотипы/техгиганты/instagram.svg",
+    "source-videos/логотипы/общие/youtube.svg",
+    "source-videos/логотипы/общие/linkedin.svg",
+    "source-videos/логотипы/общие/facebook.svg",
+    "source-videos/логотипы/общие/threads.svg",
+    "source-videos/логотипы/общие/x.svg",
+    "source-videos/логотипы/техгиганты/wechat.png",
+    "source-videos/логотипы/техгиганты/xiaohongshu.svg"
+   ]
+  }
+ ],
+ "captionTop": 1320
 }
