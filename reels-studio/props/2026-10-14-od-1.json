@@ -1,0 +1,199 @@
+{
+ "mediaSrc": "source-videos/2026-10-14-od-1/_work/od1.cut.mp4",
+ "cutoutSrc": "source-videos/2026-10-14-od-1/_work/od1.cut.alpha.webm",
+ "words": [
+  {
+   "text": "Если",
+   "start": 0.0,
+   "end": 0.25
+  },
+  {
+   "text": "говорить",
+   "start": 0.25,
+   "end": 0.68
+  },
+  {
+   "text": "про",
+   "start": 0.68,
+   "end": 1.06
+  },
+  {
+   "text": "социальные",
+   "start": 1.06,
+   "end": 1.94
+  },
+  {
+   "text": "сети,",
+   "start": 1.94,
+   "end": 2.48
+  },
+  {
+   "text": "есть",
+   "start": 2.48,
+   "end": 2.91
+  },
+  {
+   "text": "телеграм-канал,",
+   "start": 2.91,
+   "end": 4.5
+  },
+  {
+   "text": "в",
+   "start": 4.5,
+   "end": 4.64
+  },
+  {
+   "text": "который",
+   "start": 4.64,
+   "end": 4.94
+  },
+  {
+   "text": "я",
+   "start": 4.94,
+   "end": 5.02
+  },
+  {
+   "text": "выкладываю",
+   "start": 5.02,
+   "end": 5.58
+  },
+  {
+   "text": "различные",
+   "start": 5.58,
+   "end": 6.19
+  },
+  {
+   "text": "новости",
+   "start": 6.19,
+   "end": 6.66
+  },
+  {
+   "text": "индустрии,",
+   "start": 6.66,
+   "end": 7.547
+  },
+  {
+   "text": "как",
+   "start": 7.547,
+   "end": 7.627
+  },
+  {
+   "text": "по",
+   "start": 7.627,
+   "end": 7.907
+  },
+  {
+   "text": "робототехнике,",
+   "start": 7.907,
+   "end": 9.227
+  },
+  {
+   "text": "как",
+   "start": 9.227,
+   "end": 9.547
+  },
+  {
+   "text": "раз",
+   "start": 9.547,
+   "end": 9.627
+  },
+  {
+   "text": "таки",
+   "start": 9.627,
+   "end": 9.94
+  },
+  {
+   "text": "этот",
+   "start": 9.94,
+   "end": 10.26
+  },
+  {
+   "text": "канал",
+   "start": 10.26,
+   "end": 10.81
+  },
+  {
+   "text": "называется",
+   "start": 10.81,
+   "end": 11.89
+  },
+  {
+   "text": "Aura",
+   "start": 11.89,
+   "end": 12.09
+  },
+  {
+   "text": "Robots,",
+   "start": 12.09,
+   "end": 12.7
+  },
+  {
+   "text": "ссылочка",
+   "start": 12.7,
+   "end": 13.22
+  },
+  {
+   "text": "будет",
+   "start": 13.22,
+   "end": 13.73
+  },
+  {
+   "text": "выше.",
+   "start": 13.73,
+   "end": 14.36
+  }
+ ],
+ "accentWords": [
+  "лично",
+  "никаких",
+  "прозрачные",
+  "сайт"
+ ],
+ "cuts": [
+  0.13,
+  7.43,
+  9.37,
+  12.57,
+  14.57
+ ],
+ "chips": [],
+ "logos": [],
+ "numbers": [],
+ "broll": [
+  {
+   "src": "source-videos/2026-10-14-od-1/broll/hf-330.png",
+   "at": 0.0,
+   "until": 2.48,
+   "transition": "circle"
+  }
+ ],
+ "cities": [],
+ "checklists": [],
+ "zooms": [],
+ "sfx": {
+  "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+  "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav"
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+  "volume": 0.078,
+  "outroVolume": 0.18
+ },
+ "speechSeconds": 14.7,
+ "site": {
+  "at": 8.36,
+  "home": "source-videos/ostapdotcenko/site/home-mobile-full.png",
+  "catalog": "source-videos/ostapdotcenko/site/results-mobile.png",
+  "route": []
+ },
+ "cta": "Подробнее на сайте",
+ "ctaSeconds": 3,
+ "showSafeZone": false,
+ "format": "reels",
+ "focus": {
+  "x": 518,
+  "y": 884
+ },
+ "brand": "od"
+}
