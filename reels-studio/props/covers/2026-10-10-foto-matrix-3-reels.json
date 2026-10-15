@@ -1,0 +1,22 @@
+{
+  "brand": "aura",
+  "layout": "card",
+  "kicker": "Модель дня",
+  "title": "**MATRIX-3**",
+  "titleSize": 150,
+  "subtitle": "Гуманоид, который чувствует кожей: кофейни, отели, производство",
+  "subtitleSize": 40,
+  "facts": [
+    "**0,1 Н** чувствуют пальцы",
+    "Рост **170 см**",
+    "До **15 кг** двумя руками"
+  ],
+  "factsTop": 696,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-10-foto-matrix-3-reels/matrix-3.jpg",
+    "top": 920,
+    "height": 700,
+    "focus": "50% 35%",
+    "zoom": 1.0
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "brand": "aura",
+  "layout": "card",
+  "kicker": "Модель дня",
+  "title": "**XHAND1**",
+  "titleSize": 150,
+  "subtitle": "Кисть для гуманоидов: её покупают MIT, Беркли и ByteDance",
+  "subtitleSize": 40,
+  "facts": [
+    "**12** степеней свободы",
+    "Поднимает **25 кг**",
+    "**10** касаний в секунду"
+  ],
+  "factsTop": 696,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-12-foto-xhand1-reels/xhand1.jpg",
+    "top": 920,
+    "height": 700,
+    "focus": "50% 35%",
+    "zoom": 1.0
+  }
+}

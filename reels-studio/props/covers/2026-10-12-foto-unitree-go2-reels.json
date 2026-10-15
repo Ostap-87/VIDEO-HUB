@@ -1,0 +1,22 @@
+{
+  "brand": "aura",
+  "layout": "card",
+  "kicker": "Модель дня",
+  "title": "**Unitree Go2**",
+  "titleSize": 128,
+  "subtitle": "Робособака на каждый день",
+  "subtitleSize": 40,
+  "facts": [
+    "**3,7 м/с** у версий X и EDU",
+    "Несёт **≈8 кг**",
+    "Работа **2–4 ч** у EDU"
+  ],
+  "factsTop": 696,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-12-foto-unitree-go2-reels/unitree-go2.jpg",
+    "top": 920,
+    "height": 700,
+    "focus": "50% 35%",
+    "zoom": 1.0
+  }
+}

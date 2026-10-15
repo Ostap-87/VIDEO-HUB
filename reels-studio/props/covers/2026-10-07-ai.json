@@ -1,0 +1,32 @@
+{
+  "brand": "gtt",
+  "theme": "light",
+  "layout": "card",
+  "kicker": "Бизнес-экспедиция",
+  "titleSize": 84,
+  "subtitleSize": 38,
+  "titlePlate": true,
+  "photoFull": true,
+  "headerTop": 236,
+  "title": "**10 ИИ-компаний**\nКитая за 5 дней",
+  "subtitle": "Пекин → Шанхай → Ханчжоу → Шэньчжэнь",
+  "logos": [
+    "deepseek",
+    "baidu",
+    "alibaba",
+    "tencent",
+    "bytedance",
+    "kuaishou",
+    "zhipu",
+    "moonshot-ai",
+    "sensetime"
+  ],
+  "logoColumns": 3,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-07-ai/ostap-kadr.jpg",
+    "top": 0,
+    "height": 1700,
+    "focus": "50% 0%",
+    "zoom": 1.09
+  }
+}

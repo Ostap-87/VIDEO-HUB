@@ -1,0 +1,22 @@
+{
+  "brand": "aura",
+  "layout": "card",
+  "kicker": "Модель дня",
+  "title": "**Robotera STAR1**",
+  "titleSize": 108,
+  "subtitle": "Гуманоид, который бегал по пустыне Гоби",
+  "subtitleSize": 40,
+  "facts": [
+    "Бег **3,6 м/с**",
+    "**55** степеней свободы",
+    "Рост **171 см**"
+  ],
+  "factsTop": 696,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-12-foto-robotera-star1-reels/robotera-star1.jpg",
+    "top": 920,
+    "height": 700,
+    "focus": "50% 35%",
+    "zoom": 1.0
+  }
+}

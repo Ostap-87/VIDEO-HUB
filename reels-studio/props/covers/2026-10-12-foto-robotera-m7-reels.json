@@ -1,0 +1,22 @@
+{
+  "brand": "aura",
+  "layout": "card",
+  "kicker": "Модель дня",
+  "title": "**Robotera M7**",
+  "titleSize": 128,
+  "subtitle": "Верх флагмана L7 на стойке: руки есть, бегать некуда",
+  "subtitleSize": 40,
+  "facts": [
+    "**43** степени свободы",
+    "Зона рук **2,1 м**",
+    "Обучение через **VR**"
+  ],
+  "factsTop": 696,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-12-foto-robotera-m7-reels/robotera-m7.jpg",
+    "top": 920,
+    "height": 700,
+    "focus": "50% 35%",
+    "zoom": 1.0
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "brand": "gtt",
+  "theme": "light",
+  "layout": "card",
+  "kicker": "Бизнес-экспедиция",
+  "titleSize": 84,
+  "subtitleSize": 38,
+  "titlePlate": true,
+  "photoFull": true,
+  "headerTop": 236,
+  "title": "**Кондитерка**\nКитая за 5 дней",
+  "subtitle": "8 компаний · Пекин → Шанхай → Шэньчжэнь → Цзянмэнь → Гуанчжоу",
+  "logos": [
+    "holiland",
+    "wedome",
+    "21cake",
+    "ganso",
+    "85c",
+    "xingfu-xibing",
+    "maxims"
+  ],
+  "logoColumns": 4,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-07-konditerka/ostap-kadr.jpg",
+    "top": 0,
+    "height": 1700,
+    "focus": "50% 0%",
+    "zoom": 1.09
+  }
+}

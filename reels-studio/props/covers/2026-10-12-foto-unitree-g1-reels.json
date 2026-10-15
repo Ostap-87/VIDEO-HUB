@@ -1,0 +1,22 @@
+{
+  "brand": "aura",
+  "layout": "card",
+  "kicker": "Модель дня",
+  "title": "**Unitree G1**",
+  "titleSize": 128,
+  "subtitle": "Самый ходовой двуногий для вузов и R&D",
+  "subtitleSize": 40,
+  "facts": [
+    "Рост **132 см**",
+    "**23** степени свободы",
+    "Влезает в **багажник**"
+  ],
+  "factsTop": 696,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-12-foto-unitree-g1-reels/unitree-g1.jpg",
+    "top": 920,
+    "height": 700,
+    "focus": "50% 35%",
+    "zoom": 1.0
+  }
+}

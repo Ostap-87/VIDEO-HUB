@@ -1,0 +1,22 @@
+{
+  "brand": "aura",
+  "layout": "card",
+  "kicker": "Модель дня",
+  "title": "**AgiBot X2**",
+  "titleSize": 150,
+  "subtitle": "Компактный гуманоид для магазинов и мероприятий",
+  "subtitleSize": 40,
+  "facts": [
+    "Рост **1,31 м**",
+    "До **1,8 м/с** на ходу",
+    "Работа **≈2 ч**"
+  ],
+  "factsTop": 696,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-10-foto-agibot-x2-reels/agibot-x2.jpg",
+    "top": 920,
+    "height": 700,
+    "focus": "50% 35%",
+    "zoom": 1.0
+  }
+}

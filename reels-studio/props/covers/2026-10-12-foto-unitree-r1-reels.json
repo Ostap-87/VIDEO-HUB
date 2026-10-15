@@ -1,0 +1,22 @@
+{
+  "brand": "aura",
+  "layout": "card",
+  "kicker": "Модель дня",
+  "title": "**Unitree R1**",
+  "titleSize": 128,
+  "subtitle": "Самый доступный гуманоид в линейке Unitree",
+  "subtitleSize": 40,
+  "facts": [
+    "Рост **123 см**",
+    "**26** степеней свободы",
+    "Вес **≈29 кг**"
+  ],
+  "factsTop": 696,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-12-foto-unitree-r1-reels/unitree-r1.jpg",
+    "top": 920,
+    "height": 700,
+    "focus": "50% 35%",
+    "zoom": 1.0
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "brand": "aura",
+  "layout": "card",
+  "kicker": "Модель дня",
+  "title": "**AgiBot A2**",
+  "titleSize": 150,
+  "subtitle": "Гуманоид-рекордсмен для встреч, выставок и сцены",
+  "subtitleSize": 40,
+  "facts": [
+    "**106 км** пешком",
+    "Рост **169 см**",
+    "**3 ч** работы стоя"
+  ],
+  "factsTop": 696,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-10-foto-agibot-a2-reels/agibot-a2.jpg",
+    "top": 920,
+    "height": 700,
+    "focus": "50% 35%",
+    "zoom": 1.0
+  }
+}

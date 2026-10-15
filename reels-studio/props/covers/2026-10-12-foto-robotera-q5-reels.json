@@ -1,0 +1,22 @@
+{
+  "brand": "aura",
+  "layout": "card",
+  "kicker": "Модель дня",
+  "title": "**Robotera Q5**",
+  "titleSize": 128,
+  "subtitle": "Колёсный гуманоид для сервиса и ритейла",
+  "subtitleSize": 40,
+  "facts": [
+    "**44** степени свободы",
+    "**10 кг** одной рукой",
+    "Работа **больше 4 ч**"
+  ],
+  "factsTop": 696,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-12-foto-robotera-q5-reels/robotera-q5.jpg",
+    "top": 920,
+    "height": 700,
+    "focus": "50% 35%",
+    "zoom": 1.0
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "brand": "aura",
+  "layout": "card",
+  "kicker": "Модель дня",
+  "title": "**Unitree B2**",
+  "titleSize": 128,
+  "subtitle": "Промышленный пёс для инспекции и тяжёлых условий",
+  "subtitleSize": 40,
+  "facts": [
+    "Несёт **40 кг**",
+    "Защита **IP67**",
+    "Работа **4–6 ч**"
+  ],
+  "factsTop": 696,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-12-foto-unitree-b2-reels/unitree-b2.jpg",
+    "top": 920,
+    "height": 700,
+    "focus": "50% 35%",
+    "zoom": 1.0
+  }
+}

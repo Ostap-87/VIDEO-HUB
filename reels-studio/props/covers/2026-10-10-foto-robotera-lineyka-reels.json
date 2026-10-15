@@ -1,0 +1,22 @@
+{
+  "brand": "aura",
+  "layout": "card",
+  "kicker": "Модели дня",
+  "title": "**Robotera**",
+  "titleSize": 150,
+  "subtitle": "L7, STAR1, M7, Q5 и кисть XHAND1: кого выбрать",
+  "subtitleSize": 40,
+  "facts": [
+    "**4 м/с** у L7",
+    "**3,6 м/с** по Гоби",
+    "**10** касаний в секунду"
+  ],
+  "factsTop": 696,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-10-foto-robotera-lineyka-reels/robotera-lineyka.jpg",
+    "top": 920,
+    "height": 700,
+    "focus": "50% 35%",
+    "zoom": 1.0
+  }
+}

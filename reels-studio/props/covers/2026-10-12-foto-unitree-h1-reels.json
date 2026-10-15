@@ -1,0 +1,22 @@
+{
+  "brand": "aura",
+  "layout": "card",
+  "kicker": "Модель дня",
+  "title": "**Unitree H1**",
+  "titleSize": 128,
+  "subtitle": "Полноразмерный гуманоид с рекордом скорости",
+  "subtitleSize": 40,
+  "facts": [
+    "Бег **3,3 м/с**",
+    "Рост **≈180 см**",
+    "Вес **≈47 кг**"
+  ],
+  "factsTop": 696,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-12-foto-unitree-h1-reels/unitree-h1.jpg",
+    "top": 920,
+    "height": 700,
+    "focus": "50% 35%",
+    "zoom": 1.0
+  }
+}
