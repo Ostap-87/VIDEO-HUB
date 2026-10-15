@@ -1,0 +1,22 @@
+{
+  "brand": "aura",
+  "layout": "card",
+  "kicker": "Модель дня",
+  "title": "**Robotera L7**",
+  "titleSize": 150,
+  "subtitle": "Быстрый и рукастый флагман из лаборатории Цинхуа",
+  "subtitleSize": 42,
+  "facts": [
+    "Бег **4 м/с**",
+    "**20 кг** двумя руками",
+    "Прыжок **95,6 см** с места"
+  ],
+  "photo": {
+    "src": "source-videos/обложки/2026-10-10-foto-robotera-l7-reels/l7-krupno.png",
+    "top": 920,
+    "height": 700,
+    "focus": "42% 22%",
+    "zoom": 1.3
+  },
+  "factsTop": 696
+}

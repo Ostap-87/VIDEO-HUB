@@ -1,0 +1,30 @@
+{
+  "brand": "gtt",
+  "theme": "light",
+  "layout": "card",
+  "kicker": "Бизнес-экспедиция",
+  "title": "**Чай и кофе**\nКитая за 5 дней",
+  "titleSize": 92,
+  "subtitle": "Шанхай → Сямынь → Шэньчжэнь → Гуанчжоу",
+  "subtitleSize": 38,
+  "logos": [
+    "chagee",
+    "heytea",
+    "luckin-coffee",
+    "manner-coffee",
+    "m-stand",
+    "alittle-tea",
+    "wang-lao-ji"
+  ],
+  "logoColumns": 4,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-07-chai-kofe/ostap-kadr.jpg",
+    "top": 0,
+    "height": 1700,
+    "focus": "50% 0%",
+    "zoom": 1.09
+  },
+  "titlePlate": true,
+  "photoFull": true,
+  "headerTop": 236
+}

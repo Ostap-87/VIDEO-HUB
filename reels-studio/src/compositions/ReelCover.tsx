@@ -22,6 +22,7 @@ export const reelCoverSchema = z.object({
   logosTitle: z.string().optional(), // подпись над логотипами
   logoColumns: z.number().optional(), // логотипы ровной сеткой: столько колонок, плашки одного размера
   facts: z.array(z.string()).optional(), // короткие плашки-факты (**акцент**)
+  factsTop: z.number().optional(), // факты строкой с переносом под заголовком (верх, px), а не столбиком внизу поверх фото
   hero: z
     .object({
       src: z.string(), // PNG без фона, путь от корня репозитория
@@ -109,7 +110,7 @@ const Fact: React.FC<{text: string; s: Style}> = ({text, s}) => (
   </div>
 );
 
-export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, titleSize, subtitle, subtitleSize, logos, logosTitle, logoColumns, facts, hero, layout, theme, photo, background, titlePlate, photoFull, avatar, logosTop, headerTop, guides}) => {
+export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, titleSize, subtitle, subtitleSize, logos, logosTitle, logoColumns, facts, factsTop, hero, layout, theme, photo, background, titlePlate, photoFull, avatar, logosTop, headerTop, guides}) => {
   const top = headerTop ?? COVER.top;
   const light = theme === "light" && brand === "gtt";
   const s = light ? LIGHT : STYLES[brand];
@@ -155,8 +156,9 @@ export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, title
             height: photoFull ? COVER.h : photo.height,
             borderRadius: photoFull ? 0 : 48,
             overflow: "hidden",
-            border: photoFull ? undefined : light ? "8px solid #FFFFFF" : "6px solid rgba(255,255,255,0.9)",
-            boxShadow: photoFull ? undefined : light ? "0 30px 70px rgba(23,23,29,0.18), 0 0 0 2px #D5D5DD" : "0 30px 70px rgba(10,25,80,0.45)",
+            // у Aura — графитовая рамка и мягкая тень, как карточки на aura-robotics.ru
+            border: photoFull ? undefined : light ? "8px solid #FFFFFF" : s.marker ? "4px solid #262626" : "6px solid rgba(255,255,255,0.9)",
+            boxShadow: photoFull ? undefined : light ? "0 30px 70px rgba(23,23,29,0.18), 0 0 0 2px #D5D5DD" : s.marker ? "0 30px 60px rgba(38,38,38,0.22)" : "0 30px 70px rgba(10,25,80,0.45)",
             background: "#D5D5DD",
           }}
         >
@@ -201,9 +203,10 @@ export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, title
             height:
               18 + 120 + title.split("\n").length * (titleSize ?? 88) * 1.08 + (subtitle ? 26 + (subtitleSize ?? 44) * 1.2 * Math.ceil(subtitle.length / 40) : 0) + 36,
             borderRadius: 40,
-            background: light ? "rgba(255,255,255,0.93)" : "rgba(20,49,140,0.84)",
+            background: light ? "rgba(255,255,255,0.93)" : s.marker ? "rgba(248,246,243,0.95)" : "rgba(20,49,140,0.84)",
+            border: s.marker ? "3px solid #262626" : undefined,
             backdropFilter: "blur(18px)",
-            boxShadow: light ? "0 24px 60px rgba(23,23,29,0.20)" : "0 24px 60px rgba(5,20,80,0.40)",
+            boxShadow: light ? "0 24px 60px rgba(23,23,29,0.20)" : s.marker ? "0 24px 60px rgba(38,38,38,0.20)" : "0 24px 60px rgba(5,20,80,0.40)",
           }}
         />
       ) : null}
@@ -284,7 +287,13 @@ export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, title
         </div>
       ) : null}
       {!robot && facts?.length ? (
-        <div style={{position: "absolute", left: COVER.side, bottom: COVER.h - COVER.caption + 20, display: "flex", flexDirection: "column", gap: 14}}>
+        <div
+          style={
+            factsTop !== undefined
+              ? {position: "absolute", left: COVER.side, right: COVER.side, top: factsTop, display: "flex", flexWrap: "wrap", gap: 14}
+              : {position: "absolute", left: COVER.side, bottom: COVER.h - COVER.caption + 20, display: "flex", flexDirection: "column", gap: 14}
+          }
+        >
           {facts.map((f) => (
             <Fact key={f} text={f} s={s} />
           ))}

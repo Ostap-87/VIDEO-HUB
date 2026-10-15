@@ -332,3 +332,7 @@ npm run frames -- ../finished-videos/my-reel.mp4 --at 1,3.5  # нужные мо
 В `broll[]` поле `mode`: без поля / `cutout` — спикер вырезан и стоит на фоне картинки; `pip` — карточка в правом нижнем
 углу; `screen` — спикер в большом «экране» с рамкой по центру (как в финале). Для `pip` и `screen` вырезка (`matte`) не нужна.
 Aura: печать над головой сама уменьшается и поднимается на наездах (`faceTop` — верх лица, по умолчанию `focus.y − 230`).
+
+Бледный спикер из iPhone (HDR): новые склейки `npm run cut` переводит в обычный цвет сам; уже готовые —
+`python3 scripts/hdr_grade.py ../source-videos/<папка>/_work/<клип>.cut.mp4`.
+Герой обложки без фона: `python3 scripts/cutout.py <кадр.png> <герой.png> --crop x,y,w,h --keep-largest --upscale 2`.

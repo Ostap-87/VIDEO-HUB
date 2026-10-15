@@ -47,6 +47,28 @@ AUDIO_CHAIN = (
 )  # громкость −14 LUFS — отдельным шагом: замер + усиление + лимитер с компенсацией задержки (звук не сдвигается)
 
 
+# iPhone снимает в HDR (HLG / Dolby Vision, bt2020). Без пересчёта склейка выходит 8-битной с пометкой HDR, и в рендере
+# спикер бледный и холодный (жалоба пользователя 15.10.2026: «я какого-то бледного цвета… сделай с естественным цветом»).
+# HDR → обычный цвет bt709: тональная кривая hable (небо не пересвечено) + тёплая естественная коррекция
+# (насыщенность 1,25, контраст 1,08, тёплые полутона). Для обычного (SDR) исходника ничего не меняется.
+HDR_TO_SDR = (
+    "zscale=tin={tin}:min=bt2020nc:pin=bt2020:rin=tv:t=linear:npl=150,format=gbrpf32le,zscale=p=bt709,"
+    "tonemap=tonemap=hable:desat=0:peak=4,zscale=t=bt709:m=bt709:r=pc,format=rgb24,"
+    "eq=saturation=1.25:contrast=1.08:brightness=0.03,colorbalance=rm=0.05:bm=-0.05:rs=0.02:bs=-0.03,"
+    "scale=out_color_matrix=bt709:out_range=tv,format=yuv420p"
+)
+SDR_TAGS = ["-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709", "-color_range", "tv"]
+
+
+def hdr_filter(path):
+    """Фильтр HDR → SDR для исходника в HLG или PQ, иначе None."""
+    trc = subprocess.run(
+        ["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=color_transfer", "-of", "csv=p=0", str(path)],
+        capture_output=True, text=True,
+    ).stdout.strip()
+    return HDR_TO_SDR.format(tin=trc) if trc in ("arib-std-b67", "smpte2084") else None
+
+
 def run(cmd, **kw):
     return subprocess.run(cmd, check=True, **kw)
 
@@ -248,11 +270,14 @@ def main():
         tmp.mkdir(exist_ok=True)
         # 1) видео кусками, ровно n кадров (fps=30 выравнивает и плавающую частоту исходника — iPhone, 120 fps)
         lines = []
+        hdr = hdr_filter(src)
+        if hdr:
+            print("  исходник в HDR — перевожу в обычный цвет (bt709) с тёплой коррекцией")
         for i, (f0, n) in enumerate(frames_plan):
             part = tmp / f"{i:03d}.mkv"
             run(["ffmpeg", "-loglevel", "error", "-y", "-ss", f"{f0 / FPS:.4f}", "-i", str(src), "-an",
-                 "-vf", f"fps={FPS}", "-frames:v", str(n), "-c:v", "libx264", "-preset", "medium", "-crf", "18",
-                 "-pix_fmt", "yuv420p", str(part)])
+                 "-vf", f"fps={FPS}" + (f",{hdr}" if hdr else ""), "-frames:v", str(n), "-c:v", "libx264", "-preset", "medium", "-crf", "18",
+                 "-pix_fmt", "yuv420p", *(SDR_TAGS if hdr else []), str(part)])
             lines.append(f"file '{part.as_posix()}'")
         (tmp / "list.txt").write_text("\n".join(lines))
         run(["ffmpeg", "-loglevel", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(tmp / "list.txt"),
