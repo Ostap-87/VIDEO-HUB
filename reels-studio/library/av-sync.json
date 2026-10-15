@@ -109,5 +109,34 @@
   "delay_ms": 101,
   "date": "2026-10-15",
   "mtime": 1792051968.8628755
+ },
+ "finished-videos/2026-10-07-intro-stories-1.mp4": {
+  "delay_ms": 99,
+  "date": "2026-10-15"
+ },
+ "finished-videos/2026-10-07-intro-stories-2.mp4": {
+  "delay_ms": 99,
+  "date": "2026-10-15"
+ },
+ "finished-videos/2026-10-07-intro.mp4": {
+  "delay_ms": 99,
+  "date": "2026-10-15"
+ },
+ "finished-videos/для-телефона/2026-10-07-intro-stories-1.mp4": {
+  "delay_ms": 99,
+  "date": "2026-10-15"
+ },
+ "finished-videos/для-телефона/2026-10-07-intro-stories-2.mp4": {
+  "delay_ms": 99,
+  "date": "2026-10-15"
+ },
+ "finished-videos/для-телефона/2026-10-07-intro.mp4": {
+  "delay_ms": 99,
+  "date": "2026-10-15"
+ },
+ "source-videos/2026-10-07-intro/_work/intro.cut.mp4": {
+  "delay_ms": 99,
+  "date": "2026-10-15",
+  "mtime": 1792052040.5988739
  }
 }
