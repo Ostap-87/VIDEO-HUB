@@ -30,6 +30,7 @@ GW, GH = 2000, 1125        # сетка разметки
 FONTS = (ROOT / "шаблон" / "fonts" / "fonts.css").as_uri()
 MONT = "https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=block"
 
+SKIP = {11}            # «Стоимость программ» — убрана по решению пользователя 15.10.2026 («так будет честнее»)
 BLUE = "#0a36e6"       # синий заголовков и акцентов (снят со слайдов)
 INK = "#14161c"        # основной тёмный текст
 GREY = "#53585d"       # подписи на карточке контактов
@@ -197,15 +198,18 @@ def main():
     PREV.mkdir(parents=True, exist_ok=True)
     pages = []
     for i, s in enumerate(srcs, 1):
+        if i in SKIP:
+            continue
         p = WORK / f"new-{i:02d}.png" if i in EDITS else s
         im = Image.open(p).convert("RGB")
         assert im.size == (W, H), (p, im.size)
         pages.append(im)
-        im.save(PREV / f"{i:02d}.jpg", quality=90)
+        im.save(PREV / f"{len(pages):02d}.jpg", quality=90)
     OUT_PDF.parent.mkdir(parents=True, exist_ok=True)
     pages[0].save(OUT_PDF, save_all=True, append_images=pages[1:], resolution=W * 72 / 1440, quality=92)
     # лист-обзор и сравнение было / стало
     thumbs = [p.resize((500, 281)) for p in pages]
+    num = [i for i in range(1, 13) if i not in SKIP]          # номер исходного слайда → место в PDF
     sheet = Image.new("RGB", (4 * 500 + 5 * 12, 3 * 281 + 4 * 12), "white")
     for k, t in enumerate(thumbs):
         sheet.paste(t, (12 + (k % 4) * 512, 12 + (k // 4) * 293))
@@ -214,7 +218,7 @@ def main():
     cmp_ = Image.new("RGB", (2 * 800 + 36, len(rows) * 462 + 12), "white")
     for r, n in enumerate(rows):
         cmp_.paste(Image.open(srcs[n - 1]).convert("RGB").resize((800, 450)), (12, 12 + r * 462))
-        cmp_.paste(pages[n - 1].resize((800, 450)), (824, 12 + r * 462))
+        cmp_.paste(pages[num.index(n)].resize((800, 450)), (824, 12 + r * 462))
     cmp_.save(PREV.parent / "2026-10-15-main-gtt-сравнение.jpg", quality=88)
     print("PDF", OUT_PDF, f"{OUT_PDF.stat().st_size / 1e6:.1f} МБ; правок на слайдах: {sorted(EDITS)}")
 
