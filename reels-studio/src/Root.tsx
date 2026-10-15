@@ -21,10 +21,23 @@ import carouselReelSample from "../props/carousel-reels/пример-aura.json";
 import {Aura3DShowcase, showcaseSeconds} from "./compositions/Aura3DShowcase";
 import {GttIntro, gttIntroSchema, gttIntroSeconds, type GttIntroProps} from "./compositions/GttIntro";
 import {ReelCover, reelCoverSchema, type ReelCoverProps} from "./compositions/ReelCover";
+import {HookTitleDemo, hookTitleDemoSchema, type HookTitleDemoProps} from "./compositions/HookTitleDemo";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* пробник эффектов-хуков по референсам 15.10.2026: стена в 3D, заголовок за головой, смешение шрифтов */}
+      <Composition
+        id="HookTitleDemo"
+        component={HookTitleDemo}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={100}
+        schema={hookTitleDemoSchema}
+        defaultProps={{src: "source-videos/2026-10-14-od-1/_work/od1.cut.mp4", from: 0, seconds: 3.3, variant: "behind", lines: [{text: "Мои", at: 0.1}, {text: "соцсети", at: 0.4}]} as HookTitleDemoProps}
+        calculateMetadata={({props}: {props: HookTitleDemoProps}) => ({durationInFrames: Math.round(props.seconds * 30)})}
+      />
       <Composition
         id="Reel"
         component={Reel}

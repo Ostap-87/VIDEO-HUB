@@ -7,7 +7,7 @@
 Что делает с props/<имя>.json (прежний вариант сохраняется один раз в _work/<клип>.props.v1.json):
 - ставит `screens` с выбранной подачей; плашки, логотипы, цифры, перебивки, карточки каналов, стрелки, чек-листы,
   города и графики убирает (лицо ничем не закрывается — экраны вместо них);
-- Stories, субтитры 52 px (`captionSize`), `captionTop` 1320, без финала с сайтом (экраны его заменяют);
+- Stories, субтитры 52 px (`captionSize`), `captionTop` 1490, без финала с сайтом (экраны его заменяют);
 - зумы оставляет только вне экранов.
 Для `full` нужна вырезка спикера на отрезки экранов: скрипт печатает команду `npm run matte -- … --ranges …`.
 """
@@ -59,7 +59,7 @@ def main():
         p["zooms"] = [z for z in p.get("zooms", []) if not any(s["at"] - 0.6 < z["at"] < s["until"] + 0.3 for s in screens)]
         p["format"] = "stories"
         p["captionSize"] = 52
-        p.setdefault("captionTop", 1320)
+        p["captionTop"] = 1490  # ниже подбородка: титры не налезают на лицо (решение пользователя 15.10.2026)
         p["site"]["at"] = round(p["speechSeconds"] + 30, 3)  # финал с сайтом не нужен — экраны его заменяют
         pp.write_text(json.dumps(p, ensure_ascii=False, indent=1))
         ranges = ",".join(f"{s['at'] - 0.2:.1f}-{s['until'] + 0.1:.1f}" for s in screens)

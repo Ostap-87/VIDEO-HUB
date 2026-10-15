@@ -1,0 +1,21 @@
+{
+ "src": "source-videos/2026-10-14-od-1/_work/od1.cut.mp4",
+ "cutoutSrc": "source-videos/2026-10-14-od-1/_work/od1.cut.alpha.webm",
+ "from": 0,
+ "seconds": 3.3,
+ "variant": "wall",
+ "lines": [
+  {
+   "text": "Про",
+   "at": 0.6
+  },
+  {
+   "text": "соц",
+   "at": 1.1
+  },
+  {
+   "text": "сети",
+   "at": 1.6
+  }
+ ]
+}

@@ -336,3 +336,7 @@ Aura: печать над головой сама уменьшается и по
 Бледный спикер из iPhone (HDR): новые склейки `npm run cut` переводит в обычный цвет сам; уже готовые —
 `python3 scripts/hdr_grade.py ../source-videos/<папка>/_work/<клип>.cut.mp4`.
 Герой обложки без фона: `python3 scripts/cutout.py <кадр.png> <герой.png> --crop x,y,w,h --keep-largest --upscale 2`.
+
+Эффекты-хуки по референсам (стена в 3D, заголовок за головой, смешение шрифтов): пробник
+`npx remotion render src/index.ts HookTitleDemo ../finished-videos/эффекты/hook-B-за-головой.mp4 --props=./props/эффекты/hook-B-за-головой.json`
+(нужна вырезка спикера на эти секунды: `npm run matte -- <клип>.cut.mp4 --ranges 0-3.4`).
