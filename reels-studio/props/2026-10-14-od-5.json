@@ -425,100 +425,18 @@
   38.9,
   40.63
  ],
- "chips": [
-  {
-   "until": 2.95,
-   "wrap": false,
-   "items": [
-    {
-     "text": "Мои соцсети",
-     "at": 1.07
-    }
-   ]
-  },
-  {
-   "until": 13.95,
-   "wrap": false,
-   "items": [
-    {
-     "text": "Контент везде разный",
-     "at": 9.95
-    },
-    {
-     "text": "Свой формат для каждой сети",
-     "at": 11.3
-    }
-   ]
-  },
-  {
-   "until": 38.6,
-   "wrap": false,
-   "items": [
-    {
-     "text": "Информация",
-     "at": 33.41
-    },
-    {
-     "text": "Контакты",
-     "at": 35.07
-    },
-    {
-     "text": "Видео на вашу тему",
-     "at": 37.3
-    }
-   ]
-  }
- ],
+ "chips": [],
  "logos": [],
  "numbers": [],
- "broll": [
-  {
-   "src": "source-videos/2026-10-14-od-5/broll/hf-5.png",
-   "at": 26.2,
-   "until": 29.0,
-   "transition": "zoom",
-   "mode": "screen"
-  }
- ],
+ "broll": [],
  "cities": [],
- "checklists": [
-  {
-   "title": "Могу для вас",
-   "until": 25.95,
-   "items": [
-    {
-     "text": "Написать или рассказать",
-     "at": 20.08
-    },
-    {
-     "text": "Съездить на производство",
-     "at": 21.85
-    },
-    {
-     "text": "Снять видео",
-     "at": 22.63
-    }
-   ]
-  }
- ],
+ "checklists": [],
  "zooms": [
   {
    "at": 0.0,
    "kind": "push",
    "amount": 0.06,
    "hold": 1.2
-  },
-  {
-   "at": 3.98,
-   "kind": "punch",
-   "amount": 0.12,
-   "hold": 1.0
-  },
-  {
-   "at": 9.95,
-   "kind": "push",
-   "amount": 0.07,
-   "hold": 1.4
   },
   {
    "at": 14.57,
@@ -551,13 +469,13 @@
  },
  "speechSeconds": 40.766,
  "site": {
-  "at": 38.7,
+  "at": 70.766,
   "home": "source-videos/ostapdotcenko/site/home-mobile-full.png",
   "catalog": "source-videos/ostapdotcenko/site/career-mobile.png",
   "route": []
  },
  "cta": "Хорошего дня!",
- "ctaSeconds": 2.5,
+ "ctaSeconds": 0.5,
  "showSafeZone": false,
  "format": "stories",
  "focus": {
@@ -565,39 +483,37 @@
   "y": 909
  },
  "brand": "od",
- "socialGrid": [
+ "socialGrid": [],
+ "captionTop": 1320,
+ "screens": [
   {
    "at": 3.0,
-   "until": 9.7,
-   "title": "Я есть везде",
-   "items": [
-    "source-videos/логотипы/общие/telegram.svg",
-    "source-videos/логотипы/техгиганты/instagram.svg",
-    "source-videos/логотипы/общие/youtube.svg",
-    "source-videos/логотипы/общие/linkedin.svg",
-    "source-videos/логотипы/общие/facebook.svg",
-    "source-videos/логотипы/общие/threads.svg",
-    "source-videos/логотипы/общие/x.svg",
-    "source-videos/логотипы/техгиганты/wechat.png",
-    "source-videos/логотипы/техгиганты/xiaohongshu.svg"
-   ]
+   "until": 6.4,
+   "src": "source-videos/сайты-прокрутка/tg-aura_robots.mp4",
+   "title": "|AURA Robotics| Робототехника",
+   "url": "t.me/aura_robots",
+   "network": "telegram",
+   "layout": "drop"
   },
   {
-   "at": 14.05,
-   "until": 17.3,
-   "title": "Подписывайтесь везде",
-   "items": [
-    "source-videos/логотипы/общие/telegram.svg",
-    "source-videos/логотипы/техгиганты/instagram.svg",
-    "source-videos/логотипы/общие/youtube.svg",
-    "source-videos/логотипы/общие/linkedin.svg",
-    "source-videos/логотипы/общие/facebook.svg",
-    "source-videos/логотипы/общие/threads.svg",
-    "source-videos/логотипы/общие/x.svg",
-    "source-videos/логотипы/техгиганты/wechat.png",
-    "source-videos/логотипы/техгиганты/xiaohongshu.svg"
-   ]
+   "at": 6.4,
+   "until": 9.9,
+   "src": "source-videos/сайты-прокрутка/tg-GlobalTechTour.mp4",
+   "title": "GlobalTechTour",
+   "url": "t.me/GlobalTechTour",
+   "network": "telegram",
+   "layout": "drop"
+  },
+  {
+   "at": 9.9,
+   "until": 13.5,
+   "src": "source-videos/сайты-прокрутка/ostapdotcenko-blog.mp4",
+   "title": "Блог Остапа Доценко",
+   "url": "ostapdotcenko.ru/blog",
+   "network": "site",
+   "layout": "drop",
+   "from": 2
   }
  ],
- "captionTop": 1320
+ "captionSize": 52
 }

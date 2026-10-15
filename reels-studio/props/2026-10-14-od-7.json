@@ -571,16 +571,6 @@
    "text": "производство,",
    "start": 55.227,
    "end": 56.743
-  },
-  {
-   "text": "да",
-   "start": 56.743,
-   "end": 57.013
-  },
-  {
-   "text": "ёпта.",
-   "start": 57.013,
-   "end": 57.327
   }
  ],
  "accentWords": [
@@ -621,14 +611,7 @@
  "broll": [],
  "cities": [],
  "checklists": [],
- "zooms": [
-  {
-   "at": 48.29,
-   "kind": "push",
-   "amount": 0.06,
-   "hold": 1.6
-  }
- ],
+ "zooms": [],
  "sfx": {
   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
@@ -639,20 +622,53 @@
   "volume": 0.078,
   "outroVolume": 0.18
  },
- "speechSeconds": 57.333,
+ "speechSeconds": 56.74,
  "site": {
-  "at": 51.33,
+  "at": 86.74,
   "home": "source-videos/ostapdotcenko/site/home-mobile-full.png",
   "catalog": "source-videos/ostapdotcenko/site/career-mobile.png",
   "route": []
  },
  "cta": "Подробнее на сайте",
- "ctaSeconds": 3,
+ "ctaSeconds": 0.3,
  "showSafeZone": false,
- "format": "reels",
+ "format": "stories",
  "focus": {
   "x": 558,
   "y": 1037
  },
- "brand": "od"
+ "brand": "od",
+ "screens": [
+  {
+   "at": 3.0,
+   "until": 9.0,
+   "src": "source-videos/сайты-прокрутка/globaltechtour-home.mp4",
+   "title": "Global Tech Tour",
+   "url": "globaltechtour.ru",
+   "network": "site",
+   "icon": "source-videos/логотипы/общие/globaltechtour.png",
+   "layout": "drop"
+  },
+  {
+   "at": 34.3,
+   "until": 47.8,
+   "src": "source-videos/сайты-прокрутка/globaltechtour-expeditions.mp4",
+   "title": "Экспедиции Global Tech Tour",
+   "url": "globaltechtour.ru/expeditions",
+   "network": "site",
+   "icon": "source-videos/логотипы/общие/globaltechtour.png",
+   "layout": "drop"
+  },
+  {
+   "at": 48.3,
+   "until": 56.75,
+   "src": "source-videos/сайты-прокрутка/tg-GlobalTechTour.mp4",
+   "title": "GlobalTechTour",
+   "url": "t.me/GlobalTechTour",
+   "network": "telegram",
+   "layout": "drop"
+  }
+ ],
+ "captionSize": 52,
+ "captionTop": 1320
 }

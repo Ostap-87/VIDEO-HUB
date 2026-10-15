@@ -157,43 +157,10 @@
   12.57,
   14.57
  ],
- "chips": [
-  {
-   "until": 2.85,
-   "wrap": false,
-   "items": [
-    {
-     "text": "Мои соцсети",
-     "at": 1.06
-    }
-   ]
-  },
-  {
-   "until": 7.45,
-   "wrap": false,
-   "items": [
-    {
-     "text": "Telegram-канал",
-     "at": 2.91
-    },
-    {
-     "text": "Новости индустрии",
-     "at": 6.19
-    }
-   ]
-  }
- ],
+ "chips": [],
  "logos": [],
  "numbers": [],
- "broll": [
-  {
-   "src": "source-videos/2026-10-14-od-1/broll/hf-261.png",
-   "at": 7.55,
-   "until": 9.25,
-   "transition": "slide",
-   "mode": "pip"
-  }
- ],
+ "broll": [],
  "cities": [],
  "checklists": [],
  "zooms": [
@@ -202,18 +169,6 @@
    "kind": "push",
    "amount": 0.06,
    "hold": 1.4
-  },
-  {
-   "at": 7.91,
-   "kind": "punch",
-   "amount": 0.12,
-   "hold": 1.0
-  },
-  {
-   "at": 10.81,
-   "kind": "push",
-   "amount": 0.07,
-   "hold": 1.6
   }
  ],
  "sfx": {
@@ -242,23 +197,19 @@
   "y": 884
  },
  "brand": "od",
- "socials": [
+ "socials": [],
+ "arrows": [],
+ "captionTop": 1320,
+ "screens": [
   {
-   "at": 10.7,
-   "until": 15.2,
+   "at": 2.85,
+   "until": 15.15,
+   "src": "source-videos/сайты-прокрутка/tg-aura_robots.mp4",
+   "title": "|AURA Robotics| Робототехника",
+   "url": "t.me/aura_robots",
    "network": "telegram",
-   "name": "Aura Robots",
-   "handle": "@aura_robots",
-   "logo": "source-videos/aura-robotics/логотип/оригиналы/aura-robotics-круг.jpg",
-   "pressAt": 12.2
+   "layout": "drop"
   }
  ],
- "arrows": [
-  {
-   "at": 12.7,
-   "until": 15.2,
-   "text": "Ссылка выше"
-  }
- ],
- "captionTop": 1320
+ "captionSize": 52
 }

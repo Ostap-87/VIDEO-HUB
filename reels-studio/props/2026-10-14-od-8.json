@@ -521,31 +521,6 @@
    "text": "страны,",
    "start": 51.963,
    "end": 53.013
-  },
-  {
-   "text": "вы",
-   "start": 53.013,
-   "end": 53.093
-  },
-  {
-   "text": "можете",
-   "start": 53.093,
-   "end": 54.127
-  },
-  {
-   "text": "на",
-   "start": 54.127,
-   "end": 54.207
-  },
-  {
-   "text": "сайте",
-   "start": 54.207,
-   "end": 54.907
-  },
-  {
-   "text": "это",
-   "start": 54.907,
-   "end": 55.327
   }
  ],
  "accentWords": [
@@ -575,18 +550,7 @@
   53.07,
   54.97
  ],
- "chips": [
-  {
-   "wrap": false,
-   "items": [
-    {
-     "text": "Знаком лично",
-     "at": 44.25
-    }
-   ],
-   "until": 46.22
-  }
- ],
+ "chips": [],
  "logos": [],
  "numbers": [],
  "broll": [],
@@ -622,20 +586,44 @@
   "volume": 0.078,
   "outroVolume": 0.18
  },
- "speechSeconds": 55.1,
+ "speechSeconds": 53.0,
  "site": {
-  "at": 49.33,
+  "at": 83.0,
   "home": "source-videos/ostapdotcenko/site/home-mobile-full.png",
   "catalog": "source-videos/ostapdotcenko/site/career-mobile.png",
   "route": []
  },
  "cta": "Подробнее на сайте",
- "ctaSeconds": 3,
+ "ctaSeconds": 0.3,
  "showSafeZone": false,
- "format": "reels",
+ "format": "stories",
  "focus": {
   "x": 546,
   "y": 1089
  },
- "brand": "od"
+ "brand": "od",
+ "screens": [
+  {
+   "at": 2.1,
+   "until": 6.3,
+   "src": "source-videos/сайты-прокрутка/globaltechtour-home.mp4",
+   "title": "Global Tech Tour",
+   "url": "globaltechtour.ru",
+   "network": "site",
+   "icon": "source-videos/логотипы/общие/globaltechtour.png",
+   "layout": "drop"
+  },
+  {
+   "at": 45.3,
+   "until": 53.0,
+   "src": "source-videos/сайты-прокрутка/globaltechtour-expeditions.mp4",
+   "title": "Экспедиции Global Tech Tour",
+   "url": "globaltechtour.ru/expeditions",
+   "network": "site",
+   "icon": "source-videos/логотипы/общие/globaltechtour.png",
+   "layout": "drop"
+  }
+ ],
+ "captionSize": 52,
+ "captionTop": 1320
 }

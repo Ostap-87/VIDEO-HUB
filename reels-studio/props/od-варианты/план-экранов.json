@@ -66,6 +66,12 @@
    "url": "globaltechtour.ru/corporate-training",
    "network": "site",
    "icon": "source-videos/логотипы/общие/globaltechtour.png"
+  },
+  "LIN": {
+   "src": "source-videos/сайты-прокрутка/linkedin-ostap.mp4",
+   "title": "LinkedIn · 10 966 отслеживающих",
+   "url": "Ostap Dotcenko",
+   "network": "linkedin"
   }
  },
  "videos": {
@@ -88,8 +94,13 @@
    ]
   },
   "2026-10-14-od-3": {
-   "screens": [],
-   "todo": "LinkedIn 8.3–26.8 («новости в LinkedIn, в моём профиле… Юго-Восточной Азии») — нужна запись профиля от пользователя"
+   "screens": [
+    [
+     "LIN",
+     8.2,
+     26.8
+    ]
+   ]
   },
   "2026-10-14-od-4": {
    "screens": [

@@ -966,18 +966,43 @@
  },
  "speechSeconds": 82.333,
  "site": {
-  "at": 76.03,
+  "at": 112.333,
   "home": "source-videos/ostapdotcenko/site/home-mobile-full.png",
   "catalog": "source-videos/ostapdotcenko/site/career-mobile.png",
   "route": []
  },
  "cta": "Подробнее на сайте",
- "ctaSeconds": 3,
+ "ctaSeconds": 0.5,
  "showSafeZone": false,
- "format": "reels",
+ "format": "stories",
  "focus": {
   "x": 558,
   "y": 1057
  },
- "brand": "od"
+ "brand": "od",
+ "screens": [
+  {
+   "at": 35.8,
+   "until": 41.2,
+   "src": "source-videos/сайты-прокрутка/aura-robotics-home.mp4",
+   "title": "Aura Robotics",
+   "url": "aura-robotics.ru",
+   "network": "site",
+   "icon": "source-videos/aura-robotics/логотип/оригиналы/aura-robotics-круг.jpg",
+   "layout": "drop"
+  },
+  {
+   "at": 76.4,
+   "until": 82.65,
+   "src": "source-videos/сайты-прокрутка/aura-robotics-home.mp4",
+   "title": "Aura Robotics",
+   "url": "aura-robotics.ru",
+   "network": "site",
+   "icon": "source-videos/aura-robotics/логотип/оригиналы/aura-robotics-круг.jpg",
+   "layout": "drop",
+   "from": 5
+  }
+ ],
+ "captionSize": 52,
+ "captionTop": 1320
 }

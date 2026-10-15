@@ -357,44 +357,13 @@
  "numbers": [],
  "broll": [],
  "cities": [],
- "checklists": [
-  {
-   "title": "Какие статьи",
-   "until": 20.3,
-   "items": [
-    {
-     "text": "Аналитика",
-     "at": 10.31
-    },
-    {
-     "text": "Юмор",
-     "at": 12.1
-    },
-    {
-     "text": "Рефлексия о жизни в Азии и Китае",
-     "at": 14.59
-    }
-   ]
-  }
- ],
+ "checklists": [],
  "zooms": [
   {
    "at": 0.0,
    "kind": "push",
    "amount": 0.06,
    "hold": 1.2
-  },
-  {
-   "at": 1.81,
-   "kind": "punch",
-   "amount": 0.12,
-   "hold": 1.0
-  },
-  {
-   "at": 5.79,
-   "kind": "push",
-   "amount": 0.07,
-   "hold": 1.4
   }
  ],
  "sfx": {
@@ -409,13 +378,13 @@
  },
  "speechSeconds": 38.166,
  "site": {
-  "at": 20.65,
+  "at": 68.166,
   "home": "source-videos/ostapdotcenko/site/home-mobile-full.png",
   "catalog": "source-videos/ostapdotcenko/site/career-mobile.png",
   "route": []
  },
  "cta": "Заходите, читайте",
- "ctaSeconds": 1.5,
+ "ctaSeconds": 0.5,
  "showSafeZone": false,
  "format": "stories",
  "focus": {
@@ -423,16 +392,27 @@
   "y": 972
  },
  "brand": "od",
- "socials": [
+ "socials": [],
+ "captionTop": 1320,
+ "screens": [
   {
-   "at": 1.7,
-   "until": 8.2,
+   "at": 0.9,
+   "until": 6.45,
+   "src": "source-videos/сайты-прокрутка/ostapdotcenko-home-photo.mp4",
+   "title": "Остап Доценко",
+   "url": "ostapdotcenko.ru",
    "network": "site",
-   "name": "ostapdotcenko.ru",
-   "note": "Статьи каждый день",
-   "logo": "source-videos/ostapdotcenko/logo/site-icon-512.png",
-   "button": "Читать"
+   "layout": "drop"
+  },
+  {
+   "at": 6.45,
+   "until": 22.3,
+   "src": "source-videos/сайты-прокрутка/ostapdotcenko-blog.mp4",
+   "title": "Блог Остапа Доценко",
+   "url": "ostapdotcenko.ru/blog",
+   "network": "site",
+   "layout": "drop"
   }
  ],
- "captionTop": 1320
+ "captionSize": 52
 }

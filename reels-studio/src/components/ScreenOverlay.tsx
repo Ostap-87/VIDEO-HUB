@@ -22,17 +22,21 @@ export type ScreenItem = {
   icon?: string; // свой значок в подписи (логотип сайта Aura / GTT); без поля — значок сети
   joinIn?: boolean; // ставит chainScreens: экран сразу сменяет предыдущий той же подачи (без отъезда и въезда)
   joinOut?: boolean;
+  groupAt?: number; // начало цепочки экранов встык (для печати ссылок на фоне)
 };
 
 // Экраны подряд (главная сайта → блог, канал → канал) одной подачи и встык (зазор до 0,25 с) — один въезд в начале,
 // один отъезд в конце, между ними только смена страницы наплывом.
 export const chainScreens = (screens: ScreenItem[] | undefined): ScreenItem[] => {
   const list = [...(screens ?? [])].sort((a, b) => a.at - b.at);
-  return list.map((s, i) => ({
+  const out = list.map((s, i) => ({
     ...s,
     joinIn: i > 0 && list[i - 1].layout === s.layout && Math.abs(s.at - list[i - 1].until) <= 0.25,
     joinOut: i < list.length - 1 && list[i + 1].layout === s.layout && Math.abs(list[i + 1].at - s.until) <= 0.25,
+    groupAt: s.at,
   }));
+  for (let i = 1; i < out.length; i++) if (out[i].joinIn) out[i].groupAt = out[i - 1].groupAt; // начало цепочки экранов
+  return out;
 };
 
 const ICON: Record<string, string> = {
@@ -67,7 +71,7 @@ export const activeScreen = (screens: ScreenItem[] | undefined, t: number) => {
 export const speakerShift = (screens: ScreenItem[] | undefined, t: number) => {
   const a = activeScreen(screens, t);
   if (!a) return 0;
-  return a.s.layout === "drop" ? DROP_SHIFT * a.k : a.s.layout === "bottom" ? -BOTTOM_SHIFT * a.k : 0;
+  return a.s.layout === "bottom" ? -BOTTOM_SHIFT * a.k : 0; // drop — спикер уходит в карточку (speakerCardStyle)
 };
 export const FULL_LABEL_TOP = 250; // подпись экрана в режиме full — ниже полосок и аватара Stories
 // где ставить субтитры, пока экран на месте: на бумажной плашке поверх самого экрана, лица не касаются
@@ -173,4 +177,111 @@ export const ScreenPanel: React.FC<{s: ScreenItem; cutoutSrc: string}> = ({s, cu
       </AbsoluteFill>
     </AbsoluteFill>
   );
+};
+
+// ── Подача drop, версия 2 (решение пользователя 15.10.2026: «вариант А, только я бледного цвета… обвести какой-то рамкой,
+// и на фоне должны показываться ссылки напечатанные с моими каналами и сайтами — это важно»).
+// Пока сверху шторка с каналом или сайтом, спикер — в карточке в чернильной рамке с жёсткой тенью внизу справа, фон — «кость»
+// сайта с точечной сеткой, слева столбиком печатаются ссылки на каналы и сайты; ссылка текущего экрана — на жёлтом маркере.
+export type LinkItem = {url: string; icon?: string};
+export const OD_LINKS: LinkItem[] = [
+  {url: "t.me/aura_robots", icon: "source-videos/логотипы/общие/telegram.svg"},
+  {url: "t.me/GlobalTechTour", icon: "source-videos/логотипы/общие/telegram.svg"},
+  {url: "ostapdotcenko.ru", icon: "source-videos/ostapdotcenko/logo/site-icon-512.png"},
+  {url: "aura-robotics.ru", icon: "source-videos/aura-robotics/логотип/оригиналы/aura-robotics-круг.jpg"},
+  {url: "globaltechtour.ru", icon: "source-videos/логотипы/общие/globaltechtour-icon.svg"},
+  {url: "Ostap Dotcenko", icon: "source-videos/логотипы/общие/linkedin.svg"}, // профиль LinkedIn (адреса профиля пока нет)
+];
+export const CARD = {x: 486, y: 1078, w: 546, h: 668, scale: 0.62, eyeAt: 0.4}; // карточка спикера (px кадра)
+
+const dropAmount = (screens: ScreenItem[] | undefined, t: number) => {
+  const a = activeScreen(screens, t);
+  return a && a.s.layout === "drop" ? a : null;
+};
+
+// спикер в карточке: масштаб + сдвиг (глаза — на 40 % высоты карточки) + обрезка по карточке; k — насколько экран на месте
+export const speakerCardStyle = (screens: ScreenItem[] | undefined, t: number, focus: {x: number; y: number}): React.CSSProperties => {
+  const a = dropAmount(screens, t);
+  if (!a) return {};
+  const k = a.k;
+  const s = CARD.scale;
+  const tx = CARD.x + CARD.w / 2 - focus.x * s;
+  const ty = CARD.y + CARD.h * CARD.eyeAt - focus.y * s;
+  const top = (CARD.y - ty) / s, left = (CARD.x - tx) / s;
+  const right = 1080 - (CARD.x + CARD.w - tx) / s, bottom = 1920 - (CARD.y + CARD.h - ty) / s;
+  return {
+    transformOrigin: "0px 0px",
+    scale: String(1 + (s - 1) * k),
+    translate: `${tx * k}px ${ty * k}px`,
+    clipPath: `inset(${top * k}px ${right * k}px ${bottom * k}px ${left * k}px)`,
+  };
+};
+
+// фон под карточкой: кость, точечная сетка, жёлтая жёсткая тень карточки, столбик ссылок
+export const DropBackdrop: React.FC<{screens: ScreenItem[]; links?: LinkItem[]}> = ({screens, links = OD_LINKS}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const B = useBrand();
+  const t = frame / fps;
+  const a = dropAmount(screens, t);
+  if (!a) return null;
+  const k = a.k;
+  const od = B.id === "od";
+  const ink = od ? "#191922" : "#17171D";
+  const t0 = (a.s.groupAt ?? a.s.at) + 0.35; // печатать начинаем, когда шторка почти опустилась
+  const cur = (a.s.url ?? "").toLowerCase();
+  return (
+    <AbsoluteFill style={{opacity: k, background: od ? "#EDEAE2" : "#EEEEF2"}}>
+      <AbsoluteFill style={{backgroundImage: `radial-gradient(${od ? "rgba(25,25,34,0.16)" : "rgba(23,23,29,0.12)"} 2px, transparent 2.5px)`, backgroundSize: "34px 34px"}} />
+      {/* жёсткая тень карточки спикера (сама карточка — видео поверх) */}
+      <div style={{position: "absolute", left: CARD.x + 14, top: CARD.y + 14, width: CARD.w, height: CARD.h, background: od ? B.accent : "rgba(0,0,0,0.25)"}} />
+      <div style={{position: "absolute", left: 48, top: CARD.y + 4, width: CARD.x - 48 - 28, display: "flex", flexDirection: "column", gap: 24}}>
+        <div style={{fontFamily: B.monoFont, fontSize: 26, letterSpacing: "0.14em", textTransform: "uppercase", color: od ? "#FF4A1F" : B.accent, opacity: interpolate(t, [t0, t0 + 0.2], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"})}}>
+          Мои каналы и сайты
+        </div>
+        {links.map((l, i) => {
+          const start = t0 + 0.15 + i * 0.32;
+          const n = Math.round(interpolate(t, [start, start + 0.03 * l.url.length], [0, l.url.length], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}));
+          const on = cur.startsWith(l.url.toLowerCase());
+          const shown = t >= start;
+          const typing = n < l.url.length && shown;
+          return (
+            <div key={l.url} style={{display: "flex", alignItems: "center", gap: 14, opacity: shown ? 1 : 0}}>
+              {l.icon ? (
+                <div style={{width: 52, height: 52, flexShrink: 0, background: "#FFFFFF", border: `3px solid ${ink}`, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden"}}>
+                  <Img src={staticFile(l.icon)} style={{width: 40, height: 40, objectFit: "contain"}} />
+                </div>
+              ) : null}
+              <div
+                style={{
+                  fontFamily: B.monoFont,
+                  fontWeight: 500,
+                  fontSize: l.url.length > 18 ? 27 : 31,
+                  color: ink,
+                  whiteSpace: "nowrap",
+                  padding: "2px 6px",
+                  backgroundImage: on ? `linear-gradient(${B.accent}, ${B.accent})` : undefined,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: `${on ? interpolate(t, [start + 0.03 * l.url.length, start + 0.03 * l.url.length + 0.2], [0, 100], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}) : 0}% 100%`,
+                }}
+              >
+                {l.url.slice(0, n)}
+                <span style={{opacity: typing || (on && Math.floor(t * 2) % 2 === 0) ? 1 : 0}}>▍</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// рамка карточки спикера — поверх видео
+export const DropFrame: React.FC<{screens: ScreenItem[]}> = ({screens}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const B = useBrand();
+  const a = dropAmount(screens, frame / fps);
+  if (!a || a.k < 0.98) return null;
+  return <div style={{position: "absolute", left: CARD.x - 5, top: CARD.y - 5, width: CARD.w + 10, height: CARD.h + 10, border: `5px solid ${B.id === "od" ? "#191922" : "#FFFFFF"}`, boxSizing: "border-box"}} />;
 };

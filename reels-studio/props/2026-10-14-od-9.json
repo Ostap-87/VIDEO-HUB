@@ -370,44 +370,13 @@
   34.2,
   36.63
  ],
- "chips": [
-  {
-   "wrap": false,
-   "items": [
-    {
-     "text": "18 индустрий",
-     "at": 6.24
-    }
-   ],
-   "until": 8.84
-  }
- ],
- "logos": [
-  {
-   "items": [
-    {
-     "src": "source-videos/логотипы/общие/alibaba.svg",
-     "at": 18.62
-    },
-    {
-     "src": "source-videos/логотипы/общие/huawei.svg",
-     "at": 19.95
-    }
-   ],
-   "until": 21.55
-  }
- ],
+ "chips": [],
+ "logos": [],
  "numbers": [],
  "broll": [],
  "cities": [],
  "checklists": [],
  "zooms": [
-  {
-   "at": 20.55,
-   "kind": "push",
-   "amount": 0.06,
-   "hold": 1.6
-  },
   {
    "at": 26.72,
    "kind": "push",
@@ -427,18 +396,42 @@
  },
  "speechSeconds": 36.766,
  "site": {
-  "at": 30.54,
+  "at": 66.766,
   "home": "source-videos/ostapdotcenko/site/home-mobile-full.png",
   "catalog": "source-videos/ostapdotcenko/site/career-mobile.png",
   "route": []
  },
  "cta": "Подробнее на сайте",
- "ctaSeconds": 3,
+ "ctaSeconds": 0.5,
  "showSafeZone": false,
- "format": "reels",
+ "format": "stories",
  "focus": {
   "x": 610,
   "y": 1031
  },
- "brand": "od"
+ "brand": "od",
+ "screens": [
+  {
+   "at": 3.1,
+   "until": 11.0,
+   "src": "source-videos/сайты-прокрутка/globaltechtour-industries.mp4",
+   "title": "Индустрии — Global Tech Tour",
+   "url": "globaltechtour.ru/industries",
+   "network": "site",
+   "icon": "source-videos/логотипы/общие/globaltechtour.png",
+   "layout": "drop"
+  },
+  {
+   "at": 12.6,
+   "until": 26.4,
+   "src": "source-videos/сайты-прокрутка/globaltechtour-corporate-training.mp4",
+   "title": "Корпоративное обучение",
+   "url": "globaltechtour.ru/corporate-training",
+   "network": "site",
+   "icon": "source-videos/логотипы/общие/globaltechtour.png",
+   "layout": "drop"
+  }
+ ],
+ "captionSize": 52,
+ "captionTop": 1320
 }

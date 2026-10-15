@@ -1,0 +1,31 @@
+{
+  "brand": "gtt",
+  "theme": "light",
+  "layout": "card",
+  "kicker": "Бизнес-экспедиция",
+  "titleSize": 92,
+  "subtitleSize": 38,
+  "titlePlate": true,
+  "photoFull": true,
+  "headerTop": 236,
+  "title": "**Косметика**\nКитая за 5 дней",
+  "subtitle": "10 лидеров · Шанхай → Ханчжоу → Гуанчжоу",
+  "logos": [
+    "pechoin",
+    "kans",
+    "proya",
+    "source-videos/логотипы/косметика/florasis-wide.png",
+    "maogeping",
+    "kylin-way",
+    "perfect-diary",
+    "carslan"
+  ],
+  "logoColumns": 4,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-07-kosmetika/ostap-kadr.jpg",
+    "top": 0,
+    "height": 1700,
+    "focus": "50% 0%",
+    "zoom": 1.09
+  }
+}

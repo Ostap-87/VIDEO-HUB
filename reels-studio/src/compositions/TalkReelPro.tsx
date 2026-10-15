@@ -24,7 +24,7 @@ import {AuraMascot, type GestureKind, type MascotPlan, type MascotStay} from "..
 import {GttIntro} from "./GttIntro";
 import {OdBadge} from "../components/OdBadge";
 import {LinkArrow, SocialCard, SocialGrid} from "../components/SocialCard";
-import {activeScreen, captionTopFor, chainScreens, ScreenPanel, speakerShift} from "../components/ScreenOverlay";
+import {activeScreen, captionTopFor, chainScreens, DropBackdrop, DropFrame, ScreenPanel, speakerCardStyle, speakerShift} from "../components/ScreenOverlay";
 
 // «Говорящая голова» в стиле референса пользователя (07.10.2026):
 // видео на весь экран, сверху плашка ▲ GLOBAL TECH TOUR, крупные белые субтитры по центру
@@ -126,6 +126,8 @@ export const talkReelProSchema = z.object({
       }),
     )
     .optional(),
+  // ссылки, которые печатаются на фоне под карточкой спикера в подаче drop (по умолчанию — каналы и сайты Остапа)
+  links: z.array(z.object({url: z.string(), icon: z.string().optional()})).optional(),
   // размер субтитров (px, по умолчанию 66; Stories ostapdotcenko — 52, решение пользователя 14.10.2026 «уменьшить субтитры»)
   captionSize: z.number().optional(),
   // знак бренда сверху (печать / логотип): false — не показывать
@@ -1546,7 +1548,9 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
         </Sequence>
       ))}
 
-      <AbsoluteFill style={{translate: `0px ${speakerShift(screens, frame / fps)}px`}}>
+      {/* подача drop: под карточкой спикера — фон «кость» со ссылками на каналы и сайты */}
+      <DropBackdrop screens={screens} links={p.links} />
+      <AbsoluteFill style={{translate: `0px ${speakerShift(screens, frame / fps)}px`, ...speakerCardStyle(screens, frame / fps, p.focus)}}>
       <ZoomedVideo
         src={p.mediaSrc}
         cutoutSrc={p.cutoutSrc}
@@ -1562,6 +1566,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
         clips={p.clips}
       />
       </AbsoluteFill>
+      <DropFrame screens={screens} />
       <CityPanel cities={p.cities} />
       {p.clips ? <ClipPanel clips={p.clips} /> : null}
       <ChecklistPanel lists={p.checklists} />

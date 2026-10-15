@@ -644,14 +644,7 @@
  ],
  "chips": [],
  "logos": [],
- "numbers": [
-  {
-   "text": "10+",
-   "sub": "лет работы с Китаем",
-   "at": 8.11,
-   "until": 9.61
-  }
- ],
+ "numbers": [],
  "broll": [],
  "cities": [],
  "checklists": [],
@@ -661,12 +654,6 @@
    "kind": "punch",
    "amount": 0.18,
    "hold": 0.6
-  },
-  {
-   "at": 18.63,
-   "kind": "push",
-   "amount": 0.06,
-   "hold": 1.6
   }
  ],
  "sfx": {
@@ -681,18 +668,51 @@
  },
  "speechSeconds": 56.5,
  "site": {
-  "at": 50.33,
+  "at": 86.5,
   "home": "source-videos/ostapdotcenko/site/home-mobile-full.png",
   "catalog": "source-videos/ostapdotcenko/site/career-mobile.png",
   "route": []
  },
  "cta": "Подробнее на сайте",
- "ctaSeconds": 3,
+ "ctaSeconds": 0.5,
  "showSafeZone": false,
- "format": "reels",
+ "format": "stories",
  "focus": {
   "x": 546,
   "y": 876
  },
- "brand": "od"
+ "brand": "od",
+ "screens": [
+  {
+   "at": 2.2,
+   "until": 6.0,
+   "src": "source-videos/сайты-прокрутка/globaltechtour-home.mp4",
+   "title": "Global Tech Tour",
+   "url": "globaltechtour.ru",
+   "network": "site",
+   "icon": "source-videos/логотипы/общие/globaltechtour.png",
+   "layout": "drop"
+  },
+  {
+   "at": 18.6,
+   "until": 30.0,
+   "src": "source-videos/сайты-прокрутка/globaltechtour-companies.mp4",
+   "title": "Компании — Global Tech Tour",
+   "url": "globaltechtour.ru/companies",
+   "network": "site",
+   "icon": "source-videos/логотипы/общие/globaltechtour.png",
+   "layout": "drop"
+  },
+  {
+   "at": 47.9,
+   "until": 56.8,
+   "src": "source-videos/сайты-прокрутка/tg-GlobalTechTour.mp4",
+   "title": "GlobalTechTour",
+   "url": "t.me/GlobalTechTour",
+   "network": "telegram",
+   "layout": "drop"
+  }
+ ],
+ "captionSize": 52,
+ "captionTop": 1320
 }

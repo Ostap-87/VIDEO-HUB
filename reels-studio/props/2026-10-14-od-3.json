@@ -348,57 +348,10 @@
   24.27,
   30.13
  ],
- "chips": [
-  {
-   "until": 5.75,
-   "wrap": false,
-   "items": [
-    {
-     "text": "English",
-     "at": 0.55
-    },
-    {
-     "text": "Практика английского",
-     "at": 3.75
-    }
-   ]
-  },
-  {
-   "until": 19.9,
-   "wrap": false,
-   "items": [
-    {
-     "text": "Central Kitchen",
-     "at": 14.92
-    },
-    {
-     "text": "Формат готовой еды",
-     "at": 18.29
-    }
-   ]
-  },
-  {
-   "until": 30.766,
-   "wrap": false,
-   "items": [
-    {
-     "text": "Есть чему поучиться",
-     "at": 27.75
-    }
-   ]
-  }
- ],
+ "chips": [],
  "logos": [],
  "numbers": [],
- "broll": [
-  {
-   "src": "source-videos/2026-10-14-od-3/broll/hf-669.png",
-   "at": 14.51,
-   "until": 17.95,
-   "transition": "slide",
-   "mode": "pip"
-  }
- ],
+ "broll": [],
  "cities": [],
  "checklists": [],
  "zooms": [
@@ -413,18 +366,6 @@
    "kind": "punch",
    "amount": 0.12,
    "hold": 0.9
-  },
-  {
-   "at": 10.48,
-   "kind": "push",
-   "amount": 0.07,
-   "hold": 1.6
-  },
-  {
-   "at": 19.96,
-   "kind": "push",
-   "amount": 0.07,
-   "hold": 1.4
   },
   {
    "at": 27.83,
@@ -459,30 +400,19 @@
   "y": 941
  },
  "brand": "od",
- "socials": [
+ "socials": [],
+ "flags": [],
+ "captionTop": 1320,
+ "screens": [
   {
-   "at": 8.1,
-   "until": 14.3,
+   "at": 8.2,
+   "until": 26.8,
+   "src": "source-videos/сайты-прокрутка/linkedin-ostap.mp4",
+   "title": "LinkedIn · 10 966 отслеживающих",
+   "url": "Ostap Dotcenko",
    "network": "linkedin",
-   "name": "Остап Доценко",
-   "note": "Новости каждый день · на английском",
-   "button": "Читать"
+   "layout": "drop"
   }
  ],
- "flags": [
-  {
-   "at": 23.3,
-   "until": 27.0,
-   "items": [
-    "интернет-материалы/флаги/cn.png",
-    "интернет-материалы/флаги/vn.png",
-    "интернет-материалы/флаги/th.png",
-    "интернет-материалы/флаги/my.png",
-    "интернет-материалы/флаги/sg.png",
-    "интернет-материалы/флаги/id.png",
-    "интернет-материалы/флаги/ph.png"
-   ]
-  }
- ],
- "captionTop": 1320
+ "captionSize": 52
 }
