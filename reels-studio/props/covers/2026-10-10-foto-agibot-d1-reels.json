@@ -1,0 +1,22 @@
+{
+  "brand": "aura",
+  "layout": "card",
+  "kicker": "Модель дня",
+  "title": "**AgiBot D1**",
+  "titleSize": 150,
+  "subtitle": "Робопёс с сальто: четвероногий робот для разработки и демонстраций",
+  "subtitleSize": 40,
+  "facts": [
+    "Бег **3,5 м/с**",
+    "**1–2 ч** работы",
+    "Запас хода **~6 км**"
+  ],
+  "factsTop": 696,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-10-foto-agibot-d1-reels/d1-salto.jpg",
+    "top": 920,
+    "height": 700,
+    "focus": "50% 30%",
+    "zoom": 1.0
+  }
+}
