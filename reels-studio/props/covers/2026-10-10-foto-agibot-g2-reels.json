@@ -1,0 +1,22 @@
+{
+  "brand": "aura",
+  "layout": "card",
+  "kicker": "Модель дня",
+  "title": "**AgiBot G2**",
+  "titleSize": 150,
+  "subtitle": "Гуманоид на колёсах: логистика, сборка, ресепшен и шоурум",
+  "subtitleSize": 40,
+  "facts": [
+    "**10 кг** двумя руками",
+    "**1,5 м/с** на колёсах",
+    "Работа **≈4 ч**"
+  ],
+  "factsTop": 696,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-10-foto-agibot-g2-reels/g2.jpg",
+    "top": 920,
+    "height": 700,
+    "focus": "35% 40%",
+    "zoom": 1.0
+  }
+}

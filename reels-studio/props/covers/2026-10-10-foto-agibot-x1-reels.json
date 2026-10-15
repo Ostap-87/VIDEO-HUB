@@ -1,0 +1,22 @@
+{
+  "brand": "aura",
+  "layout": "card",
+  "kicker": "Модель дня",
+  "title": "**AgiBot X1**",
+  "titleSize": 150,
+  "subtitle": "Гуманоид с открытым кодом для вузов и R&D‑команд",
+  "subtitleSize": 40,
+  "facts": [
+    "Рост **130 см**",
+    "**34** степени свободы",
+    "Вес **33 кг**"
+  ],
+  "factsTop": 696,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-10-foto-agibot-x1-reels/x1.jpg",
+    "top": 920,
+    "height": 700,
+    "focus": "50% 40%",
+    "zoom": 1.0
+  }
+}

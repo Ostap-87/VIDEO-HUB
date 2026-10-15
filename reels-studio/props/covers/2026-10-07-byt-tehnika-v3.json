@@ -1,0 +1,32 @@
+{
+  "brand": "gtt",
+  "theme": "light",
+  "layout": "card",
+  "kicker": "Бизнес-экспедиция",
+  "titleSize": 84,
+  "subtitleSize": 38,
+  "titlePlate": true,
+  "photoFull": true,
+  "headerTop": 236,
+  "title": "**Бытовая техника**\nКитая за 5 дней",
+  "subtitle": "9 заводов · Пекин → Циндао → Ханчжоу → Фошань → Чжухай",
+  "logos": [
+    "xiaomi",
+    "haier",
+    "hisense",
+    "robam",
+    "supor",
+    "midea",
+    "galanz",
+    "gree",
+    "skyworth"
+  ],
+  "logoColumns": 3,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-07-byt-tehnika-v3/ostap-kadr.jpg",
+    "top": 0,
+    "height": 1700,
+    "focus": "50% 0%",
+    "zoom": 1.09
+  }
+}

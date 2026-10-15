@@ -697,6 +697,9 @@ POST-HUB ставится `story_mentions: ["ostap.dotsenko"]` — публик�
 Важное — в полосе сетки профиля 3:4 (y 240–1680) и выше подписи Reels в ленте (y 1540); справа внизу — кнопки Instagram.
 Обложки 15.10.2026: Aura Robotera L7 (`props/covers/2026-10-10-foto-robotera-l7-reels.json`, кадр из `robotera-rd-video.mp4`)
 и GTT «Чай и кофе Китая за 5 дней» (`props/covers/2026-10-07-chai-kofe.json`, кадр 87,4 с — улыбка, 7 логотипов, `logoColumns: 4`).
+Обложки на 16.10.2026 (заранее, по просьбе пользователя): GTT «Бытовая техника Китая за 5 дней» (`props/covers/2026-10-07-byt-tehnika-v3.json`,
+кадр 0,2 с, 9 логотипов тура 3×3), Aura AgiBot G2 и AgiBot X1 (`props/covers/2026-10-10-foto-agibot-{g2,x1}-reels.json` — как у D1:
+живого видео этих моделей нет, в карточке — первое фото их карусели, факты — со слайдов карусели); «6 автозаводов» — готова с 15.10.
 `npm run cover -- <имя>` (`scripts/cover.py`, props `props/covers/<имя>.json`): кадр → `finished-videos/обложки/<имя>.jpg`,
 ролик `finished-videos/<имя>-cover.mp4` = обложка 1 с (звук — 1 с тишины) + исходный ролик без изменений (CRF 17),
 лист стыка `finished-videos/frames/_cover-<имя>.jpg`. Лёгкая копия — `finished-videos/для-телефона/<имя>-cover.mp4`.
