@@ -195,7 +195,7 @@ const Mix: React.FC<HookTitleProps> = ({lines, until, ink = "#191922", accent = 
                 fontFamily: bold ? unbounded.fontFamily : playfair.fontFamily,
                 fontStyle: bold ? "normal" : "italic",
                 fontWeight: bold ? 800 : 700,
-                fontSize: l.size ?? (bold ? fit(l.text, 128, 940, 0.86) : fit(l.text, 84, 940, 0.48)),
+                fontSize: l.size ?? (bold ? fit(l.text, 128, 900, 1.0) : fit(l.text, 84, 940, 0.48)),
                 lineHeight: 1.05,
                 letterSpacing: bold ? "-0.03em" : "0em",
                 textTransform: bold ? "uppercase" : "none",
