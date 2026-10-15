@@ -1,0 +1,26 @@
+{
+ "src": "source-videos/2026-10-14-od-1/_work/od1.cut.mp4",
+ "cutoutSrc": "source-videos/2026-10-14-od-1/_work/od1.cut.alpha.webm",
+ "from": 0,
+ "seconds": 3.3,
+ "variant": "behind",
+ "lines": [
+  {
+   "text": "Мои",
+   "at": 0.15
+  }
+ ],
+ "columns": [
+  {
+   "text": "Соц",
+   "at": 1.1,
+   "side": "left"
+  },
+  {
+   "text": "сети",
+   "at": 1.9,
+   "side": "right"
+  }
+ ],
+ "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+}

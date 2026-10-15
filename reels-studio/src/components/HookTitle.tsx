@@ -17,8 +17,17 @@ const oswald = loadOswald("normal", {weights: ["700"], subsets: ["cyrillic", "la
 const playfair = loadPlayfair("italic", {weights: ["700"], subsets: ["cyrillic", "latin"]});
 const unbounded = loadUnbounded("normal", {weights: ["800"], subsets: ["cyrillic", "latin"]});
 
-export type HookLine = {text: string; at: number; kind?: "bold" | "italic"};
-export type HookTitleProps = {variant: "wall" | "behind" | "mix"; lines: HookLine[]; until: number; ink?: string; accent?: string; stamp?: string};
+export type HookLine = {text: string; at: number; kind?: "bold" | "italic"; size?: number; color?: string};
+// столбик букв сверху вниз сбоку от спикера (решение пользователя 15.10.2026: «СОЦ» слева, «СЕТИ» справа, вертикально,
+// по букве со щелчком, как будто за мной)
+export type HookColumn = {text: string; at: number; side: "left" | "right"; step?: number; x?: number};
+// x — от края кадра до середины столбика: 215 — столбик заходит за ухо и плечо, буквы частично прячутся за спикером
+export type HookTitleProps = {variant: "wall" | "behind" | "mix"; lines: HookLine[]; until: number; ink?: string; accent?: string; stamp?: string; top?: number; columns?: HookColumn[]};
+
+export const LETTER_STEP = 0.14; // с между буквами столбика
+// моменты щелчков: по одному на каждую букву столбиков (звук ставит композиция)
+export const hookClicks = (columns: HookColumn[] | undefined) =>
+  (columns ?? []).flatMap((c) => [...c.text.replace(/\s/g, "")].map((_, i) => c.at + i * (c.step ?? LETTER_STEP)));
 
 const ease = Easing.bezier(0.16, 1, 0.3, 1);
 
@@ -71,38 +80,39 @@ const Wall: React.FC<HookTitleProps> = ({lines, until}) => {
   );
 };
 
-// заголовок за головой: жирный гротеск на маркере + курсив, «штамп» с пружиной
-const Behind: React.FC<HookTitleProps> = ({lines, until, ink = "#191922", accent = "#FFD92E"}) => {
+// заголовок за головой (вариант, выбранный пользователем 15.10.2026: «слово МОИ за мной крупными буквами, а соцсети тоже
+// за мной, только горизонтально»): первая строка — огромный жирный гротеск жёлтым с чернильной жёсткой тенью, вторая —
+// тот же гротеск белым, прямо (без курсива); обе строки за спикером — голова перекрывает низ букв. top — верх первой строки.
+const Behind: React.FC<HookTitleProps> = ({lines, until, ink = "#191922", accent = "#FFD92E", top = 226, columns}) => {
+  const colTop = top + 420; // столбики начинаются под «МОИ»
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
   const out = interpolate(t, [until - 0.35, until], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
   return (
     <AbsoluteFill style={{opacity: out}}>
-      <div style={{position: "absolute", left: 0, right: 0, top: 250, display: "flex", flexDirection: "column", alignItems: "center"}}>
+      <div style={{position: "absolute", left: -20, right: -20, top, display: "flex", flexDirection: "column", alignItems: "center"}}>
         {lines.map((l, i) => {
-          const s = spring({frame: frame - Math.round(l.at * fps), fps, config: {damping: 12, stiffness: 160, mass: 0.8}});
-          const bold = (l.kind ?? (i === 0 ? "bold" : "italic")) === "bold";
+          const s = spring({frame: frame - Math.round(l.at * fps), fps, config: {damping: 12, stiffness: 150, mass: 0.9}});
+          const big = i === 0;
+          const size = l.size ?? (big ? 400 : 170);
           return (
             <div
               key={i}
               style={{
-                marginTop: i === 0 ? 0 : -46,
-                fontFamily: bold ? unbounded.fontFamily : playfair.fontFamily,
-                fontStyle: bold ? "normal" : "italic",
-                fontWeight: bold ? 800 : 700,
-                fontSize: bold ? 190 : 230,
-                lineHeight: 1,
-                letterSpacing: bold ? "-0.03em" : "-0.02em",
-                textTransform: bold ? "uppercase" : "none",
-                color: bold ? ink : "#FFFFFF",
-                background: bold ? accent : undefined,
-                padding: bold ? "4px 26px 10px" : undefined,
-                boxShadow: bold ? `12px 12px 0 ${ink}` : undefined,
-                textShadow: bold ? undefined : `6px 6px 0 ${ink}`,
+                // вторая строка ложится на низ первой — так голова закрывает только низ средних букв, слово читается
+                marginTop: i === 0 ? 0 : -Math.round(size * 1.12),
+                fontFamily: unbounded.fontFamily,
+                fontWeight: 800,
+                fontSize: size,
+                lineHeight: 0.92,
+                letterSpacing: "-0.04em",
+                textTransform: "uppercase",
+                color: l.color ?? (big ? accent : "#FFFFFF"),
+                textShadow: `${big ? 14 : 9}px ${big ? 14 : 9}px 0 ${ink}`,
                 opacity: Math.min(1, s * 1.4),
-                scale: String(1.25 - 0.25 * s),
-                rotate: `${(1 - s) * (i % 2 ? 4 : -4)}deg`,
+                scale: String(1.3 - 0.3 * s),
+                translate: `0px ${(1 - s) * -40}px`,
                 whiteSpace: "nowrap",
               }}
             >
@@ -111,6 +121,47 @@ const Behind: React.FC<HookTitleProps> = ({lines, until, ink = "#191922", accent
           );
         })}
       </div>
+      {(columns ?? []).map((c, ci) => {
+        const letters = [...c.text.replace(/\s/g, "")];
+        return (
+          <div
+            key={ci}
+            style={{
+              position: "absolute",
+              top: colTop,
+              [c.side]: (c.x ?? 215) - 115,
+              width: 230,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            {letters.map((ch, i) => {
+              const at = c.at + i * (c.step ?? LETTER_STEP);
+              const k = spring({frame: frame - Math.round(at * fps), fps, config: {damping: 11, stiffness: 260, mass: 0.6}});
+              return (
+                <div
+                  key={i}
+                  style={{
+                    fontFamily: unbounded.fontFamily,
+                    fontWeight: 800,
+                    fontSize: 190,
+                    lineHeight: 0.9,
+                    textTransform: "uppercase",
+                    color: "#FFFFFF",
+                    textShadow: `9px 9px 0 ${ink}`,
+                    opacity: frame >= Math.round(at * fps) ? 1 : 0,
+                    translate: `0px ${(1 - k) * -90}px`,
+                    scale: String(0.6 + 0.4 * k),
+                  }}
+                >
+                  {ch}
+                </div>
+              );
+            })}
+          </div>
+        );
+      })}
     </AbsoluteFill>
   );
 };
