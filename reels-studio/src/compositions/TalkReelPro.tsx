@@ -1554,6 +1554,12 @@ const AuraBadgeSlot: React.FC<TalkReelProProps> = (p) => {
 const hookAmount = (hooks: TalkReelProProps["hooks"], t: number) =>
   Math.max(0, ...(hooks ?? []).map((h) => Math.min(interpolate(t, [h.at - 0.2, h.at], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}), interpolate(t, [h.until, h.until + 0.25], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}))));
 
+// плашки и крупные цифры встают в левый верхний угол — на это время печать ОД и плашка серии прячутся
+const topAmount = (p: TalkReelProProps, t: number) => {
+  const spans = [...p.chips.map((g) => [g.items[0].at, g.until]), ...p.numbers.map((n) => [n.at, n.until])];
+  return Math.max(0, ...spans.map(([a, b]) => Math.min(interpolate(t, [a - 0.25, a], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}), interpolate(t, [b, b + 0.25], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}))));
+};
+
 // ---------- фирменная заставка GTT в начале и конце (GttIntro) ----------
 // Интро 1,8 с (54 кадра): последние 10 кадров — треугольное окно раскрывается на начало ролика, поэтому ролик стартует
 // на 44-м кадре. Аутро 1,5 с (45 кадров): первые 10 кадров окно закрывается на конце ролика, потом 35 кадров логотипа.
@@ -1751,7 +1757,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
       ) : brand.id === "od" ? (
         // od: красная печать «ОД» и бумажная плашка «Остап Доценко.» слева сверху (как шапка сайта); пока на экране сайт — прячется
         p.badge === false ? null :
-        <div style={{position: "absolute", top: p.format === "stories" ? 196 : 76, left: 48, opacity: (1 - (activeScreen(screens, frame / fps)?.k ?? 0)) * (1 - hookAmount(p.hooks, frame / fps))}}>
+        <div style={{position: "absolute", top: p.format === "stories" ? 196 : 76, left: 48, opacity: (1 - (activeScreen(screens, frame / fps)?.k ?? 0)) * (1 - hookAmount(p.hooks, frame / fps)) * (1 - topAmount(p, frame / fps))}}>
           <OdBadge scale={0.9} />
           {p.episode ? (
             <div style={{marginTop: 14}}>
