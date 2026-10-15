@@ -24,7 +24,7 @@ import {AuraMascot, type GestureKind, type MascotPlan, type MascotStay} from "..
 import {GttIntro} from "./GttIntro";
 import {OdBadge} from "../components/OdBadge";
 import {LinkArrow, SocialCard, SocialGrid} from "../components/SocialCard";
-import {activeScreen, captionTopFor, chainScreens, DropBackdrop, DropFrame, ScreenPanel, speakerCardStyle, speakerShift} from "../components/ScreenOverlay";
+import {activeScreen, captionTopFor, chainScreens, DropBackdrop, DropFrame, OD_LINKS, ScreenPanel, speakerCardStyle, speakerShift} from "../components/ScreenOverlay";
 import {HookTitle, hookSounds, type HookItem} from "../components/HookTitle";
 import {bwFilter, ColorWipes, EpisodeOutro, EpisodeTag} from "../components/SeriesFx";
 import {loadFont as loadOswald} from "@remotion/google-fonts/Oswald";
@@ -1772,7 +1772,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
         </div>
       )}
       <ColorWipes fx={p.fx} />
-      {p.episode ? <EpisodeOutro ep={p.episode} start={p.speechSeconds - 0.05} links={p.links} /> : null}
+      {p.episode ? <EpisodeOutro ep={p.episode} start={p.speechSeconds - 0.05} links={p.links ?? OD_LINKS} /> : null}
       {p.showSafeZone ? <SafeZone /> : null}
     </AbsoluteFill>
     </BrandCtx.Provider>
