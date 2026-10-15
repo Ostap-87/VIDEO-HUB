@@ -233,5 +233,34 @@
   "delay_ms": 107,
   "date": "2026-10-15",
   "mtime": 1792052276.1068685
+ },
+ "finished-videos/2026-10-07-konditerka-stories-1.mp4": {
+  "delay_ms": 103,
+  "date": "2026-10-15"
+ },
+ "finished-videos/2026-10-07-konditerka-stories-2.mp4": {
+  "delay_ms": 103,
+  "date": "2026-10-15"
+ },
+ "finished-videos/2026-10-07-konditerka.mp4": {
+  "delay_ms": 103,
+  "date": "2026-10-15"
+ },
+ "finished-videos/для-телефона/2026-10-07-konditerka-stories-1.mp4": {
+  "delay_ms": 103,
+  "date": "2026-10-15"
+ },
+ "finished-videos/для-телефона/2026-10-07-konditerka-stories-2.mp4": {
+  "delay_ms": 103,
+  "date": "2026-10-15"
+ },
+ "finished-videos/для-телефона/2026-10-07-konditerka.mp4": {
+  "delay_ms": 103,
+  "date": "2026-10-15"
+ },
+ "source-videos/2026-10-07-konditerka/_work/konditerka.cut.mp4": {
+  "delay_ms": 103,
+  "date": "2026-10-15",
+  "mtime": 1792052355.7868667
  }
 }
