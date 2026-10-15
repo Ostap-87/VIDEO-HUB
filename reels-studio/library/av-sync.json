@@ -35,5 +35,42 @@
   "delay_ms": 105,
   "date": "2026-10-15",
   "mtime": 1792051714.3028815
+ },
+ "finished-videos/2026-10-07-chai-kofe-cover.mp4": {
+  "delay_ms": 65,
+  "date": "2026-10-15"
+ },
+ "finished-videos/2026-10-07-chai-kofe-stories-1.mp4": {
+  "delay_ms": 65,
+  "date": "2026-10-15"
+ },
+ "finished-videos/2026-10-07-chai-kofe-stories-2.mp4": {
+  "delay_ms": 65,
+  "date": "2026-10-15"
+ },
+ "finished-videos/2026-10-07-chai-kofe.mp4": {
+  "delay_ms": 65,
+  "date": "2026-10-15"
+ },
+ "finished-videos/для-телефона/2026-10-07-chai-kofe-cover.mp4": {
+  "delay_ms": 65,
+  "date": "2026-10-15"
+ },
+ "finished-videos/для-телефона/2026-10-07-chai-kofe-stories-1.mp4": {
+  "delay_ms": 65,
+  "date": "2026-10-15"
+ },
+ "finished-videos/для-телефона/2026-10-07-chai-kofe-stories-2.mp4": {
+  "delay_ms": 65,
+  "date": "2026-10-15"
+ },
+ "finished-videos/для-телефона/2026-10-07-chai-kofe.mp4": {
+  "delay_ms": 65,
+  "date": "2026-10-15"
+ },
+ "source-videos/2026-10-07-chai-kofe/_work/chai-kofe.cut.mp4": {
+  "delay_ms": 65,
+  "date": "2026-10-15",
+  "mtime": 1792051869.1988778
  }
 }
