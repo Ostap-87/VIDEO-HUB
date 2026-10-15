@@ -4032,5 +4032,23 @@
    "линкедин-профиль"
   ],
   "logo": "source-videos/логотипы/общие/linkedin.svg"
+ },
+ "byd": {
+  "names": [
+   "BYD",
+   "БИД",
+   "Би-Уай-Ди",
+   "Биуайди"
+  ],
+  "logo": "source-videos/логотипы/авто/byd.svg"
+ },
+ "li-ning": {
+  "names": [
+   "Li-Ning",
+   "Li Ning",
+   "Лининг",
+   "Ли Нин"
+  ],
+  "logo": "source-videos/логотипы/ритейл/li-ning.png"
  }
 }

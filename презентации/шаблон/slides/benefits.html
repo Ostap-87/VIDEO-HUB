@@ -22,7 +22,7 @@
   <div class="deco" style="left:1543px;top:290px">{{ m.icon('train') }}</div>
   <div class="deco" style="left:112px;top:842px">{{ m.icon('plane') }}</div>
   {{ m.tag(s.tag or 'Выгоды') }}
-  <div class="title">{{ s.title or 'Выгоды' }}</div>
+  <div class="title" data-fit="{{ s.title_width or 690 }}">{{ s.title or 'Выгоды' }}</div>
   {% for it in s['items'][:6] %}{% set p = POS[loop.index0] %}
   <div class="card {{ 'pale' if p.pale else 'grad' }} bc" style="left:{{ p.l }}px;top:{{ p.t }}px;{{ m.rot(p.r) }}">
     <div class="knob"></div>

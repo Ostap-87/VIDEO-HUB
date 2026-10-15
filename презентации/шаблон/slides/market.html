@@ -14,8 +14,8 @@
   <div class="dots white" style="left:40px;top:469px;width:560px;height:262px"></div>
   {% if s.ghost %}<div class="ghost">{{ s.ghost }}</div>{% endif %}
   {{ m.tag(s.tag or 'Рынок', 'white') }}
-  <div class="title">{{ s.title or 'О рынке' }}</div>
-  {% if s.lead %}<div class="lead">{{ s.lead|br }}</div>{% endif %}
+  <div class="title" data-fit="{{ s.title_width or 1820 }}">{{ s.title or 'О рынке' }}</div>
+  {% if s.lead %}<div class="lead" style="{% if s.lead_width %}width:{{ s.lead_width }}px;{% endif %}{% if s.lead_top %}top:{{ s.lead_top }}px;{% endif %}">{{ s.lead|br }}</div>{% endif %}
   {% for st in s.stats[:3] %}{% set p = POS[loop.index0] %}
   <div class="card grad stat" style="left:{{ p.l }}px;top:{{ p.t }}px;{{ m.rot(p.r) }}">
     {{ gauge(st.frac or 0.6)|safe }}

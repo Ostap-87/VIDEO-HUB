@@ -5,7 +5,7 @@
 {% set cw = 330 if n == 5 else step - 30 %}
 <section class="slide s-steps">
   {{ m.tag(s.tag or 'Как проходит') }}
-  <div class="title">{{ s.title or 'Как проходит' }}</div>
+  <div class="title" data-fit="1820">{{ s.title or 'Как проходит' }}</div>
   <svg class="path" width="1920" height="1080"><path d="{{ [[58,560],[174,540],[540,560],[888,560],[1254,498],[1602,517],[1862,560]]|spline }}" fill="none" stroke="#1a73e8" stroke-width="5" stroke-dasharray="0.1 13" stroke-linecap="round"/></svg>
   {% for st in s.steps %}{% set x = 66 + loop.index0 * step %}
   <div class="abs" style="left:{{ x + 88 }}px;top:{{ [517, 542, 534, 510, 522][loop.index0 % 5] }}px;width:44px;height:52px">{{ m.icon('flag' if loop.last else 'pin') }}</div>
