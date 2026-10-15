@@ -642,24 +642,37 @@
   50.57,
   56.37
  ],
- "chips": [],
+ "chips": [
+  {
+   "until": 47.7,
+   "wrap": false,
+   "items": [
+    {
+     "text": "Инженеры",
+     "at": 41.8
+    },
+    {
+     "text": "Руководство",
+     "at": 43.2
+    },
+    {
+     "text": "Мастер-майнды",
+     "at": 46.74
+    }
+   ]
+  }
+ ],
  "logos": [],
  "numbers": [],
  "broll": [],
  "cities": [],
  "checklists": [],
- "zooms": [
-  {
-   "at": 8.11,
-   "kind": "punch",
-   "amount": 0.18,
-   "hold": 0.6
-  }
- ],
+ "zooms": [],
  "sfx": {
   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
-  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav"
+  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+  "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
  },
  "music": {
   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
@@ -674,7 +687,7 @@
   "route": []
  },
  "cta": "Подробнее на сайте",
- "ctaSeconds": 0.5,
+ "ctaSeconds": 2.4,
  "showSafeZone": false,
  "format": "stories",
  "focus": {
@@ -714,5 +727,98 @@
   }
  ],
  "captionSize": 52,
- "captionTop": 1490
+ "captionTop": 1490,
+ "episode": {
+  "n": 4,
+  "total": 10,
+  "title": "Моё детище",
+  "next": "Китай: 20+ программ, кампусы Alibaba, ByteDance, Huawei",
+  "nextN": 5
+ },
+ "hooks": [
+  {
+   "variant": "behind",
+   "at": 0.0,
+   "until": 2.15,
+   "lines": [
+    {
+     "text": "GTT",
+     "at": 0.5
+    }
+   ]
+  },
+  {
+   "variant": "behind",
+   "at": 6.1,
+   "until": 10.9,
+   "lines": [
+    {
+     "text": "10+",
+     "at": 8.11
+    },
+    {
+     "text": "лет с Азией",
+     "at": 8.71
+    }
+   ]
+  },
+  {
+   "variant": "wall",
+   "at": 31.8,
+   "until": 37.75,
+   "lines": [
+    {
+     "text": "Своя",
+     "at": 32.32
+    },
+    {
+     "text": "методология",
+     "at": 33.11
+    }
+   ]
+  },
+  {
+   "variant": "words",
+   "at": 37.9,
+   "until": 40.8,
+   "lines": [
+    {
+     "text": "не просто",
+     "at": 38.21
+    },
+    {
+     "text": "приехать",
+     "at": 38.87
+    },
+    {
+     "text": "в музей",
+     "at": 40.1
+    }
+   ]
+  }
+ ],
+ "fx": [
+  {
+   "type": "wipe",
+   "at": 31.15,
+   "corner": "tl"
+  },
+  {
+   "type": "bw",
+   "at": 37.9,
+   "until": 40.8
+  }
+ ],
+ "flags": [
+  {
+   "at": 13.3,
+   "until": 17.9,
+   "items": [
+    "интернет-материалы/флаги/cn.png",
+    "интернет-материалы/флаги/my.png",
+    "интернет-материалы/флаги/kr.png"
+   ]
+  }
+ ],
+ "captionStyle": "3d"
 }

@@ -17,19 +17,28 @@ const oswald = loadOswald("normal", {weights: ["700"], subsets: ["cyrillic", "la
 const playfair = loadPlayfair("italic", {weights: ["700"], subsets: ["cyrillic", "latin"]});
 const unbounded = loadUnbounded("normal", {weights: ["800"], subsets: ["cyrillic", "latin"]});
 
-export type HookLine = {text: string; at: number; kind?: "bold" | "italic"; size?: number; color?: string};
+export type HookLine = {text: string; at: number; kind?: "bold" | "italic"; size?: number; color?: string; x?: number; y?: number};
 // столбик букв сверху вниз сбоку от спикера (решение пользователя 15.10.2026: «СОЦ» слева, «СЕТИ» справа, вертикально,
 // по букве со щелчком, как будто за мной)
 export type HookColumn = {text: string; at: number; side: "left" | "right"; step?: number; x?: number};
 // x — от края кадра до середины столбика: 215 — столбик заходит за ухо и плечо, буквы частично прячутся за спикером
-export type HookTitleProps = {variant: "wall" | "behind" | "mix"; lines: HookLine[]; until: number; ink?: string; accent?: string; stamp?: string; top?: number; columns?: HookColumn[]};
+export type HookTitleProps = {variant: "wall" | "behind" | "mix" | "words"; lines: HookLine[]; until: number; ink?: string; accent?: string; stamp?: string; top?: number; columns?: HookColumn[]};
+// хук внутри ролика TalkReelPro: тот же набор + время начала (at) — с этого момента спикер вырезается и стоит перед текстом
+export type HookItem = HookTitleProps & {at: number};
 
 export const LETTER_STEP = 0.14; // с между буквами столбика
 // моменты щелчков: по одному на каждую букву столбиков (звук ставит композиция)
 export const hookClicks = (columns: HookColumn[] | undefined) =>
   (columns ?? []).flatMap((c) => [...c.text.replace(/\s/g, "")].map((_, i) => c.at + i * (c.step ?? LETTER_STEP)));
+// звуки хука в ролике: строки — «вжух» (wall, mix, behind) или щелчок (words), буквы столбиков — щелчки
+export const hookSounds = (h: HookItem) => ({
+  whoosh: h.variant === "words" ? [] : h.lines.map((l) => l.at),
+  click: [...(h.variant === "words" ? h.lines.map((l) => l.at) : []), ...hookClicks(h.columns)],
+});
 
 const ease = Easing.bezier(0.16, 1, 0.3, 1);
+// размер по длине строки, чтобы длинные слова влезали в кадр 1080: k — средняя ширина буквы в долях кегля
+const fit = (text: string, max: number, width: number, k: number) => Math.round(Math.min(max, width / Math.max(1, text.length * k)));
 
 // 3D-стена: строки въезжают снизу из глубины, весь столбик медленно едет вверх
 const Wall: React.FC<HookTitleProps> = ({lines, until}) => {
@@ -58,7 +67,7 @@ const Wall: React.FC<HookTitleProps> = ({lines, until}) => {
               style={{
                 fontFamily: oswald.fontFamily,
                 fontWeight: 700,
-                fontSize: 330,
+                fontSize: l.size ?? fit(l.text, 330, 980, 0.5),
                 lineHeight: 0.86,
                 letterSpacing: "-0.01em",
                 textTransform: "uppercase",
@@ -95,7 +104,7 @@ const Behind: React.FC<HookTitleProps> = ({lines, until, ink = "#191922", accent
         {lines.map((l, i) => {
           const s = spring({frame: frame - Math.round(l.at * fps), fps, config: {damping: 12, stiffness: 150, mass: 0.9}});
           const big = i === 0;
-          const size = l.size ?? (big ? 400 : 170);
+          const size = l.size ?? (big ? fit(l.text, 400, 1000, 0.82) : fit(l.text, 170, 1000, 0.82));
           return (
             <div
               key={i}
@@ -186,7 +195,7 @@ const Mix: React.FC<HookTitleProps> = ({lines, until, ink = "#191922", accent = 
                 fontFamily: bold ? unbounded.fontFamily : playfair.fontFamily,
                 fontStyle: bold ? "normal" : "italic",
                 fontWeight: bold ? 800 : 700,
-                fontSize: bold ? 128 : 84,
+                fontSize: l.size ?? (bold ? fit(l.text, 128, 940, 0.86) : fit(l.text, 84, 940, 0.48)),
                 lineHeight: 1.05,
                 letterSpacing: bold ? "-0.03em" : "0em",
                 textTransform: bold ? "uppercase" : "none",
@@ -215,5 +224,54 @@ const Mix: React.FC<HookTitleProps> = ({lines, until, ink = "#191922", accent = 
   );
 };
 
+// слова по одному «за жестом» (референс 2: this / a / hook): каждое слово выскакивает в своём месте вокруг головы и
+// сменяет предыдущее; последнее — жёлтое и держится до конца. x, y — центр слова (по умолчанию точки по кругу у головы).
+const WORD_SPOTS = [
+  {x: 300, y: 520},
+  {x: 790, y: 430},
+  {x: 250, y: 330},
+  {x: 800, y: 640},
+  {x: 540, y: 300},
+];
+const Words: React.FC<HookTitleProps> = ({lines, until, ink = "#191922", accent = "#FFD92E"}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const t = frame / fps;
+  const i = lines.reduce((k, l, j) => (l.at <= t ? j : k), -1);
+  if (i < 0) return null;
+  const l = lines[i];
+  const size = l.size ?? fit(l.text, 150, 960, 0.8);
+  const wide = l.text.length * 0.8 * size > 560; // длинное слово — по центру, чтобы не уйти за край
+  const spot = {x: l.x ?? (wide ? 540 : WORD_SPOTS[i % WORD_SPOTS.length].x), y: l.y ?? WORD_SPOTS[i % WORD_SPOTS.length].y};
+  const s = spring({frame: frame - Math.round(l.at * fps), fps, config: {damping: 10, stiffness: 220, mass: 0.6}});
+  const last = i === lines.length - 1;
+  const out = interpolate(t, [until - 0.3, until], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
+  return (
+    <AbsoluteFill style={{opacity: out}}>
+      <div
+        style={{
+          position: "absolute",
+          left: spot.x,
+          top: spot.y,
+          translate: "-50% -50%",
+          fontFamily: unbounded.fontFamily,
+          fontWeight: 800,
+          fontSize: size,
+          letterSpacing: "-0.03em",
+          textTransform: "uppercase",
+          whiteSpace: "nowrap",
+          color: l.color ?? (last ? accent : "#FFFFFF"),
+          textShadow: `8px 8px 0 ${ink}`,
+          scale: String(0.4 + 0.6 * s),
+          rotate: `${(i % 2 ? 4 : -4) * (1 - s)}deg`,
+          opacity: Math.min(1, s * 2),
+        }}
+      >
+        {l.text}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 export const HookTitle: React.FC<HookTitleProps> = (p) =>
-  p.variant === "wall" ? <Wall {...p} /> : p.variant === "behind" ? <Behind {...p} /> : <Mix {...p} />;
+  p.variant === "wall" ? <Wall {...p} /> : p.variant === "behind" ? <Behind {...p} /> : p.variant === "words" ? <Words {...p} /> : <Mix {...p} />;

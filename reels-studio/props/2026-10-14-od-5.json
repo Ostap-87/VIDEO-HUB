@@ -425,25 +425,32 @@
   38.9,
   40.63
  ],
- "chips": [],
+ "chips": [
+  {
+   "until": 38.6,
+   "wrap": false,
+   "items": [
+    {
+     "text": "Информация",
+     "at": 33.41
+    },
+    {
+     "text": "Контакты",
+     "at": 35.07
+    },
+    {
+     "text": "Видео на вашу тему",
+     "at": 37.3
+    }
+   ]
+  }
+ ],
  "logos": [],
  "numbers": [],
  "broll": [],
  "cities": [],
  "checklists": [],
  "zooms": [
-  {
-   "at": 0.0,
-   "kind": "push",
-   "amount": 0.06,
-   "hold": 1.2
-  },
-  {
-   "at": 14.57,
-   "kind": "punch",
-   "amount": 0.12,
-   "hold": 0.9
-  },
   {
    "at": 29.09,
    "kind": "push",
@@ -460,7 +467,8 @@
  "sfx": {
   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
-  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav"
+  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+  "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
  },
  "music": {
   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
@@ -475,7 +483,7 @@
   "route": []
  },
  "cta": "Хорошего дня!",
- "ctaSeconds": 0.5,
+ "ctaSeconds": 2.4,
  "showSafeZone": false,
  "format": "stories",
  "focus": {
@@ -515,5 +523,93 @@
    "from": 2
   }
  ],
- "captionSize": 52
+ "captionSize": 52,
+ "episode": {
+  "n": 10,
+  "total": 10,
+  "title": "Везде"
+ },
+ "hooks": [
+  {
+   "variant": "behind",
+   "at": 0.0,
+   "until": 2.95,
+   "lines": [
+    {
+     "text": "Все",
+     "at": 0.56
+    }
+   ],
+   "columns": [
+    {
+     "text": "Соц",
+     "at": 1.07,
+     "side": "left"
+    },
+    {
+     "text": "сети",
+     "at": 1.91,
+     "side": "right"
+    }
+   ]
+  },
+  {
+   "variant": "mix",
+   "at": 13.9,
+   "until": 17.4,
+   "lines": [
+    {
+     "text": "поэтому",
+     "at": 14.05,
+     "kind": "italic"
+    },
+    {
+     "text": "подписывайтесь",
+     "at": 14.57,
+     "kind": "bold"
+    },
+    {
+     "text": "везде",
+     "at": 15.65,
+     "kind": "italic"
+    }
+   ]
+  },
+  {
+   "variant": "words",
+   "at": 19.9,
+   "until": 26.0,
+   "lines": [
+    {
+     "text": "написать",
+     "at": 20.08
+    },
+    {
+     "text": "рассказать",
+     "at": 20.41
+    },
+    {
+     "text": "съездить",
+     "at": 21.85
+    },
+    {
+     "text": "снять",
+     "at": 22.63
+    },
+    {
+     "text": "пишите!",
+     "at": 25.22
+    }
+   ]
+  }
+ ],
+ "fx": [
+  {
+   "type": "wipe",
+   "at": 26.1,
+   "corner": "tr"
+  }
+ ],
+ "flags": [],
+ "captionStyle": "3d"
 }

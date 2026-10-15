@@ -163,18 +163,12 @@
  "broll": [],
  "cities": [],
  "checklists": [],
- "zooms": [
-  {
-   "at": 0.25,
-   "kind": "push",
-   "amount": 0.06,
-   "hold": 1.4
-  }
- ],
+ "zooms": [],
  "sfx": {
   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
-  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav"
+  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+  "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
  },
  "music": {
   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
@@ -189,7 +183,7 @@
   "route": []
  },
  "cta": "Подробнее на сайте",
- "ctaSeconds": 0.5,
+ "ctaSeconds": 2.4,
  "showSafeZone": false,
  "format": "stories",
  "focus": {
@@ -211,5 +205,40 @@
    "layout": "drop"
   }
  ],
- "captionSize": 52
+ "captionSize": 52,
+ "episode": {
+  "n": 6,
+  "total": 10,
+  "title": "Мои соцсети",
+  "next": "Telegram Global Tech Tour",
+  "nextN": 7
+ },
+ "hooks": [
+  {
+   "variant": "behind",
+   "at": 0.0,
+   "until": 2.85,
+   "lines": [
+    {
+     "text": "Мои",
+     "at": 0.15
+    }
+   ],
+   "columns": [
+    {
+     "text": "Соц",
+     "at": 1.06,
+     "side": "left"
+    },
+    {
+     "text": "сети",
+     "at": 1.94,
+     "side": "right"
+    }
+   ]
+  }
+ ],
+ "fx": [],
+ "flags": [],
+ "captionStyle": "3d"
 }

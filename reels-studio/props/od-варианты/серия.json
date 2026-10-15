@@ -1,0 +1,107 @@
+{
+ "note": "Серия Stories ostapdotcenko «Проекты и каналы Остапа» (решение пользователя 15.10.2026: «распространим на все ролики этой серии… каждый ролик креативно… все эффекты, которые я сегодня подгрузил… все ролики по очереди, чтобы был цельный образ и контекст… с 3D-субтитрами и вставками правильными по контексту»). Порядок: сначала два проекта (Aura Robotics, Global Tech Tour), потом каналы и сайт. Времена — секунды по словам речи (props words). Применяет scripts/series.py.",
+ "total": 10,
+ "flagsDir": "интернет-материалы/флаги",
+ "episodes": [
+  {
+   "name": "2026-10-14-od-6", "title": "Два проекта", "next": "Проект №2: Global Tech Tour",
+   "hooks": [
+    {"variant": "mix", "at": 0.05, "until": 4.3, "lines": [{"text": "наступило время", "at": 0.16, "kind": "italic"}, {"text": "2 новых", "at": 2.82, "kind": "bold"}, {"text": "проекта", "at": 3.57, "kind": "bold"}]},
+    {"variant": "wall", "at": 20.6, "until": 27.9, "lines": [{"text": "Опыт", "at": 20.77}, {"text": "10 лет", "at": 25.05}, {"text": "не даром", "at": 26.69}]},
+    {"variant": "behind", "at": 34.55, "until": 35.75, "lines": [{"text": "№1", "at": 34.71}]},
+    {"variant": "words", "at": 54.95, "until": 59.9, "lines": [{"text": "не через", "at": 55.06}, {"text": "переводчиков", "at": 55.69}, {"text": "лично", "at": 58.5}]},
+    {"variant": "mix", "at": 68.0, "until": 73.7, "lines": [{"text": "выходы на", "at": 70.21, "kind": "italic"}, {"text": "R&D-центры", "at": 71.09, "kind": "bold"}, {"text": "куда мало кого пускают", "at": 71.98, "kind": "italic"}]}
+   ],
+   "fx": [{"type": "bw", "at": 0, "until": 0.9}, {"type": "wipe", "at": 32.45, "corner": "br"}, {"type": "bw", "at": 63.2, "until": 68.0}],
+   "numbers": [{"text": "200", "sub": "компаний — знаю лично", "at": 51.85, "until": 54.8}],
+   "chips": [{"until": 63.1, "wrap": false, "items": [{"text": "Вице-президенты", "at": 60.03}, {"text": "Инженеры", "at": 61.76}]}]
+  },
+  {
+   "name": "2026-10-14-od-7", "title": "Global Tech Tour", "next": "Без шаблонов: что нужно рынку",
+   "hooks": [
+    {"variant": "behind", "at": 0.0, "until": 2.9, "lines": [{"text": "№2", "at": 0.27}, {"text": "проект", "at": 0.96}]},
+    {"variant": "wall", "at": 11.9, "until": 18.5, "lines": [{"text": "Я сам", "at": 12.21}, {"text": "все туры", "at": 15.06}, {"text": "всю программу", "at": 17.15}]},
+    {"variant": "words", "at": 29.7, "until": 33.1, "lines": [{"text": "не просто", "at": 29.84}, {"text": "приехать", "at": 30.64}, {"text": "посмотреть", "at": 31.38}, {"text": "уехать", "at": 32.29}]}
+   ],
+   "fx": [{"type": "bw", "at": 29.7, "until": 33.1}],
+   "chips": [{"until": 26.0, "wrap": false, "items": [{"text": "Лично знаю компании", "at": 23.03}]}, {"until": 29.6, "wrap": false, "items": [{"text": "Своя методология", "at": 27.87}]}]
+  },
+  {
+   "name": "2026-10-14-od-8", "title": "Без шаблонов", "next": "Моё детище: 10 лет с Азией",
+   "screens": [["GTT", 2.1, 4.55], ["GTE", 45.3, 53.0]],
+   "hooks": [
+    {"variant": "mix", "at": 4.6, "until": 6.95, "lines": [{"text": "это мой", "at": 4.99, "kind": "italic"}, {"text": "любимчик", "at": 5.31, "kind": "bold"}]},
+    {"variant": "wall", "at": 10.9, "until": 14.0, "lines": [{"text": "Нет", "at": 11.25}, {"text": "шаблонов", "at": 11.89}]},
+    {"variant": "mix", "at": 23.4, "until": 29.6, "lines": [{"text": "с гигантами,", "at": 23.64, "kind": "italic"}, {"text": "научить", "at": 25.47, "kind": "bold"}, {"text": "и показать", "at": 27.81, "kind": "bold"}]}
+   ],
+   "fx": [{"type": "bw", "at": 0, "until": 0.84}],
+   "chips": [{"until": 18.1, "wrap": false, "items": [{"text": "Что нужно рынку", "at": 14.07}, {"text": "Что ищут люди", "at": 15.99}]}, {"until": 45.2, "wrap": false, "items": [{"text": "Знаком лично", "at": 44.25}]}],
+   "flags": [{"at": 36.6, "until": 42.5, "items": ["cn", "in", "my", "jp", "kr"]}]
+  },
+  {
+   "name": "2026-10-14-od-10", "title": "Моё детище", "next": "Китай: 20+ программ, кампусы Alibaba, ByteDance, Huawei",
+   "hooks": [
+    {"variant": "behind", "at": 0.0, "until": 2.15, "lines": [{"text": "GTT", "at": 0.5}]},
+    {"variant": "behind", "at": 6.1, "until": 10.9, "lines": [{"text": "10+", "at": 8.11}, {"text": "лет с Азией", "at": 8.71}]},
+    {"variant": "wall", "at": 31.8, "until": 37.75, "lines": [{"text": "Своя", "at": 32.32}, {"text": "методология", "at": 33.11}]},
+    {"variant": "words", "at": 37.9, "until": 40.8, "lines": [{"text": "не просто", "at": 38.21}, {"text": "приехать", "at": 38.87}, {"text": "в музей", "at": 40.1}]}
+   ],
+   "fx": [{"type": "wipe", "at": 31.15, "corner": "tl"}, {"type": "bw", "at": 37.9, "until": 40.8}],
+   "chips": [{"until": 47.7, "wrap": false, "items": [{"text": "Инженеры", "at": 41.8}, {"text": "Руководство", "at": 43.2}, {"text": "Мастер-майнды", "at": 46.74}]}],
+   "flags": [{"at": 13.3, "until": 17.9, "items": ["cn", "my", "kr"]}]
+  },
+  {
+   "name": "2026-10-14-od-9", "title": "Китай", "next": "Мои соцсети: Telegram Aura Robots",
+   "hooks": [
+    {"variant": "behind", "at": 0.0, "until": 3.0, "lines": [{"text": "Китай", "at": 1.34}]},
+    {"variant": "wall", "at": 26.7, "until": 31.5, "lines": [{"text": "Организую", "at": 27.17}, {"text": "за 1–2", "at": 28.64}, {"text": "недели", "at": 29.18}]}
+   ],
+   "fx": [{"type": "bw", "at": 30.8, "until": 35.5}]
+  },
+  {
+   "name": "2026-10-14-od-1", "title": "Мои соцсети", "next": "Telegram Global Tech Tour",
+   "hooks": [
+    {"variant": "behind", "at": 0.0, "until": 2.85, "lines": [{"text": "Мои", "at": 0.15}], "columns": [{"text": "Соц", "at": 1.06, "side": "left"}, {"text": "сети", "at": 1.94, "side": "right"}]}
+   ]
+  },
+  {
+   "name": "2026-10-14-od-2", "title": "Telegram GTT", "next": "LinkedIn: новости на английском",
+   "screens": [["TGG", 2.4, 15.0]],
+   "hooks": [
+    {"variant": "mix", "at": 0.0, "until": 2.35, "lines": [{"text": "канал", "at": 0.97, "kind": "italic"}, {"text": "Global Tech", "at": 1.35, "kind": "bold"}, {"text": "Tour", "at": 2.04, "kind": "bold"}]},
+    {"variant": "wall", "at": 20.4, "until": 24.4, "lines": [{"text": "Ролики", "at": 20.62}, {"text": "по 3–5", "at": 21.41}, {"text": "минут", "at": 21.62}]}
+   ],
+   "fx": [{"type": "wipe", "at": 14.85, "corner": "bl"}],
+   "chips": [{"until": 20.3, "wrap": false, "items": [{"text": "Подробно о компаниях", "at": 16.2}]}, {"until": 27.1, "wrap": false, "items": [{"text": "Компания целиком", "at": 24.55}, {"text": "или индустрия", "at": 25.17}]}]
+  },
+  {
+   "name": "2026-10-14-od-3", "title": "LinkedIn", "next": "Мой сайт ostapdotcenko.ru",
+   "hooks": [
+    {"variant": "mix", "at": 0.0, "until": 3.6, "lines": [{"text": "для любителей", "at": 0.32, "kind": "italic"}, {"text": "English", "at": 0.55, "kind": "bold"}]},
+    {"variant": "wall", "at": 3.65, "until": 8.1, "lines": [{"text": "Практика", "at": 3.75}, {"text": "каждый", "at": 6.11}, {"text": "день", "at": 6.71}]},
+    {"variant": "words", "at": 26.85, "until": 30.27, "lines": [{"text": "есть чему", "at": 27.75}, {"text": "поучиться", "at": 28.38}, {"text": "поверьте", "at": 29.25}]}
+   ]
+  },
+  {
+   "name": "2026-10-14-od-4", "title": "Мой сайт", "next": "Подписывайтесь везде",
+   "screens": [["ODH", 2.4, 6.45], ["ODB", 6.45, 22.3]],
+   "hooks": [
+    {"variant": "mix", "at": 0.0, "until": 2.35, "lines": [{"text": "личный", "at": 0.89, "kind": "italic"}, {"text": "сайт", "at": 1.81, "kind": "bold"}]},
+    {"variant": "wall", "at": 25.8, "until": 30.3, "lines": [{"text": "Рассказать", "at": 25.96}, {"text": "описать", "at": 27.15}, {"text": "осветить", "at": 28.17}]},
+    {"variant": "mix", "at": 31.5, "until": 38.1, "lines": [{"text": "с юмором, с иронией", "at": 32.66, "kind": "italic"}, {"text": "без надувания", "at": 35.99, "kind": "bold"}, {"text": "щёк", "at": 36.95, "kind": "bold"}]}
+   ],
+   "fx": [{"type": "bw", "at": 34.4, "until": 35.95}],
+   "chips": [{"until": 25.4, "wrap": false, "items": [{"text": "Готов к предложениям", "at": 24.03}]}]
+  },
+  {
+   "name": "2026-10-14-od-5", "title": "Везде",
+   "hooks": [
+    {"variant": "behind", "at": 0.0, "until": 2.95, "lines": [{"text": "Все", "at": 0.56}], "columns": [{"text": "Соц", "at": 1.07, "side": "left"}, {"text": "сети", "at": 1.91, "side": "right"}]},
+    {"variant": "mix", "at": 13.9, "until": 17.4, "lines": [{"text": "поэтому", "at": 14.05, "kind": "italic"}, {"text": "подписывайтесь", "at": 14.57, "kind": "bold"}, {"text": "везде", "at": 15.65, "kind": "italic"}]},
+    {"variant": "words", "at": 19.9, "until": 26.0, "lines": [{"text": "написать", "at": 20.08}, {"text": "рассказать", "at": 20.41}, {"text": "съездить", "at": 21.85}, {"text": "снять", "at": 22.63}, {"text": "пишите!", "at": 25.22}]}
+   ],
+   "fx": [{"type": "wipe", "at": 26.1, "corner": "tr"}],
+   "chips": [{"until": 38.6, "wrap": false, "items": [{"text": "Информация", "at": 33.41}, {"text": "Контакты", "at": 35.07}, {"text": "Видео на вашу тему", "at": 37.3}]}]
+  }
+ ]
+}

@@ -352,24 +352,29 @@
   34.07,
   38.03
  ],
- "chips": [],
+ "chips": [
+  {
+   "until": 25.4,
+   "wrap": false,
+   "items": [
+    {
+     "text": "Готов к предложениям",
+     "at": 24.03
+    }
+   ]
+  }
+ ],
  "logos": [],
  "numbers": [],
  "broll": [],
  "cities": [],
  "checklists": [],
- "zooms": [
-  {
-   "at": 0.0,
-   "kind": "push",
-   "amount": 0.06,
-   "hold": 1.2
-  }
- ],
+ "zooms": [],
  "sfx": {
   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
-  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav"
+  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+  "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
  },
  "music": {
   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
@@ -384,7 +389,7 @@
   "route": []
  },
  "cta": "Заходите, читайте",
- "ctaSeconds": 0.5,
+ "ctaSeconds": 2.4,
  "showSafeZone": false,
  "format": "stories",
  "focus": {
@@ -396,7 +401,7 @@
  "captionTop": 1490,
  "screens": [
   {
-   "at": 0.9,
+   "at": 2.4,
    "until": 6.45,
    "src": "source-videos/сайты-прокрутка/ostapdotcenko-home-photo.mp4",
    "title": "Остап Доценко",
@@ -414,5 +419,81 @@
    "layout": "drop"
   }
  ],
- "captionSize": 52
+ "captionSize": 52,
+ "episode": {
+  "n": 9,
+  "total": 10,
+  "title": "Мой сайт",
+  "next": "Подписывайтесь везде",
+  "nextN": 10
+ },
+ "hooks": [
+  {
+   "variant": "mix",
+   "at": 0.0,
+   "until": 2.35,
+   "lines": [
+    {
+     "text": "личный",
+     "at": 0.89,
+     "kind": "italic"
+    },
+    {
+     "text": "сайт",
+     "at": 1.81,
+     "kind": "bold"
+    }
+   ]
+  },
+  {
+   "variant": "wall",
+   "at": 25.8,
+   "until": 30.3,
+   "lines": [
+    {
+     "text": "Рассказать",
+     "at": 25.96
+    },
+    {
+     "text": "описать",
+     "at": 27.15
+    },
+    {
+     "text": "осветить",
+     "at": 28.17
+    }
+   ]
+  },
+  {
+   "variant": "mix",
+   "at": 31.5,
+   "until": 38.1,
+   "lines": [
+    {
+     "text": "с юмором, с иронией",
+     "at": 32.66,
+     "kind": "italic"
+    },
+    {
+     "text": "без надувания",
+     "at": 35.99,
+     "kind": "bold"
+    },
+    {
+     "text": "щёк",
+     "at": 36.95,
+     "kind": "bold"
+    }
+   ]
+  }
+ ],
+ "fx": [
+  {
+   "type": "bw",
+   "at": 34.4,
+   "until": 35.95
+  }
+ ],
+ "flags": [],
+ "captionStyle": "3d"
 }

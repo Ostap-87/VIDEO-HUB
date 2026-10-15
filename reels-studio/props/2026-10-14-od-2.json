@@ -300,7 +300,32 @@
   24.93,
   26.57
  ],
- "chips": [],
+ "chips": [
+  {
+   "until": 20.3,
+   "wrap": false,
+   "items": [
+    {
+     "text": "Подробно о компаниях",
+     "at": 16.2
+    }
+   ]
+  },
+  {
+   "until": 27.1,
+   "wrap": false,
+   "items": [
+    {
+     "text": "Компания целиком",
+     "at": 24.55
+    },
+    {
+     "text": "или индустрия",
+     "at": 25.17
+    }
+   ]
+  }
+ ],
  "logos": [],
  "numbers": [],
  "broll": [],
@@ -308,28 +333,17 @@
  "checklists": [],
  "zooms": [
   {
-   "at": 0.0,
-   "kind": "push",
-   "amount": 0.06,
-   "hold": 1.2
-  },
-  {
    "at": 19.09,
    "kind": "push",
    "amount": 0.07,
    "hold": 1.6
-  },
-  {
-   "at": 21.41,
-   "kind": "punch",
-   "amount": 0.14,
-   "hold": 1.0
   }
  ],
  "sfx": {
   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
-  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav"
+  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+  "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
  },
  "music": {
   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
@@ -344,7 +358,7 @@
   "route": []
  },
  "cta": "Подробнее на сайте",
- "ctaSeconds": 0.5,
+ "ctaSeconds": 2.4,
  "showSafeZone": false,
  "format": "stories",
  "focus": {
@@ -357,7 +371,7 @@
  "captionTop": 1490,
  "screens": [
   {
-   "at": 1.0,
+   "at": 2.4,
    "until": 15.0,
    "src": "source-videos/сайты-прокрутка/tg-GlobalTechTour.mp4",
    "title": "GlobalTechTour",
@@ -366,5 +380,64 @@
    "layout": "drop"
   }
  ],
- "captionSize": 52
+ "captionSize": 52,
+ "episode": {
+  "n": 7,
+  "total": 10,
+  "title": "Telegram GTT",
+  "next": "LinkedIn: новости на английском",
+  "nextN": 8
+ },
+ "hooks": [
+  {
+   "variant": "mix",
+   "at": 0.0,
+   "until": 2.35,
+   "lines": [
+    {
+     "text": "канал",
+     "at": 0.97,
+     "kind": "italic"
+    },
+    {
+     "text": "Global Tech",
+     "at": 1.35,
+     "kind": "bold"
+    },
+    {
+     "text": "Tour",
+     "at": 2.04,
+     "kind": "bold"
+    }
+   ]
+  },
+  {
+   "variant": "wall",
+   "at": 20.4,
+   "until": 24.4,
+   "lines": [
+    {
+     "text": "Ролики",
+     "at": 20.62
+    },
+    {
+     "text": "по 3–5",
+     "at": 21.41
+    },
+    {
+     "text": "минут",
+     "at": 21.62
+    }
+   ]
+  }
+ ],
+ "fx": [
+  {
+   "type": "wipe",
+   "at": 14.85,
+   "corner": "bl"
+  }
+ ],
+ "flags": [],
+ "captionStyle": "3d"
 }

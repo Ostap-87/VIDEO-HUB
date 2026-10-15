@@ -605,7 +605,28 @@
   55.23,
   56.77
  ],
- "chips": [],
+ "chips": [
+  {
+   "until": 26.0,
+   "wrap": false,
+   "items": [
+    {
+     "text": "Лично знаю компании",
+     "at": 23.03
+    }
+   ]
+  },
+  {
+   "until": 29.6,
+   "wrap": false,
+   "items": [
+    {
+     "text": "Своя методология",
+     "at": 27.87
+    }
+   ]
+  }
+ ],
  "logos": [],
  "numbers": [],
  "broll": [],
@@ -615,7 +636,8 @@
  "sfx": {
   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
-  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav"
+  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+  "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
  },
  "music": {
   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
@@ -630,7 +652,7 @@
   "route": []
  },
  "cta": "Подробнее на сайте",
- "ctaSeconds": 0.3,
+ "ctaSeconds": 2.4,
  "showSafeZone": false,
  "format": "stories",
  "focus": {
@@ -670,5 +692,80 @@
   }
  ],
  "captionSize": 52,
- "captionTop": 1490
+ "captionTop": 1490,
+ "episode": {
+  "n": 2,
+  "total": 10,
+  "title": "Global Tech Tour",
+  "next": "Без шаблонов: что нужно рынку",
+  "nextN": 3
+ },
+ "hooks": [
+  {
+   "variant": "behind",
+   "at": 0.0,
+   "until": 2.9,
+   "lines": [
+    {
+     "text": "№2",
+     "at": 0.27
+    },
+    {
+     "text": "проект",
+     "at": 0.96
+    }
+   ]
+  },
+  {
+   "variant": "wall",
+   "at": 11.9,
+   "until": 18.5,
+   "lines": [
+    {
+     "text": "Я сам",
+     "at": 12.21
+    },
+    {
+     "text": "все туры",
+     "at": 15.06
+    },
+    {
+     "text": "всю программу",
+     "at": 17.15
+    }
+   ]
+  },
+  {
+   "variant": "words",
+   "at": 29.7,
+   "until": 33.1,
+   "lines": [
+    {
+     "text": "не просто",
+     "at": 29.84
+    },
+    {
+     "text": "приехать",
+     "at": 30.64
+    },
+    {
+     "text": "посмотреть",
+     "at": 31.38
+    },
+    {
+     "text": "уехать",
+     "at": 32.29
+    }
+   ]
+  }
+ ],
+ "fx": [
+  {
+   "type": "bw",
+   "at": 29.7,
+   "until": 33.1
+  }
+ ],
+ "flags": [],
+ "captionStyle": "3d"
 }

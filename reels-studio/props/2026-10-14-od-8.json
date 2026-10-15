@@ -550,19 +550,38 @@
   53.07,
   54.97
  ],
- "chips": [],
+ "chips": [
+  {
+   "until": 18.1,
+   "wrap": false,
+   "items": [
+    {
+     "text": "Что нужно рынку",
+     "at": 14.07
+    },
+    {
+     "text": "Что ищут люди",
+     "at": 15.99
+    }
+   ]
+  },
+  {
+   "until": 45.2,
+   "wrap": false,
+   "items": [
+    {
+     "text": "Знаком лично",
+     "at": 44.25
+    }
+   ]
+  }
+ ],
  "logos": [],
  "numbers": [],
  "broll": [],
  "cities": [],
  "checklists": [],
  "zooms": [
-  {
-   "at": 12.54,
-   "kind": "push",
-   "amount": 0.06,
-   "hold": 1.6
-  },
   {
    "at": 32.81,
    "kind": "push",
@@ -579,7 +598,8 @@
  "sfx": {
   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
-  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav"
+  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+  "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
  },
  "music": {
   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
@@ -594,7 +614,7 @@
   "route": []
  },
  "cta": "Подробнее на сайте",
- "ctaSeconds": 0.3,
+ "ctaSeconds": 2.4,
  "showSafeZone": false,
  "format": "stories",
  "focus": {
@@ -605,7 +625,7 @@
  "screens": [
   {
    "at": 2.1,
-   "until": 6.3,
+   "until": 4.55,
    "src": "source-videos/сайты-прокрутка/globaltechtour-home.mp4",
    "title": "Global Tech Tour",
    "url": "globaltechtour.ru",
@@ -625,5 +645,89 @@
   }
  ],
  "captionSize": 52,
- "captionTop": 1490
+ "captionTop": 1490,
+ "episode": {
+  "n": 3,
+  "total": 10,
+  "title": "Без шаблонов",
+  "next": "Моё детище: 10 лет с Азией",
+  "nextN": 4
+ },
+ "hooks": [
+  {
+   "variant": "mix",
+   "at": 4.6,
+   "until": 6.95,
+   "lines": [
+    {
+     "text": "это мой",
+     "at": 4.99,
+     "kind": "italic"
+    },
+    {
+     "text": "любимчик",
+     "at": 5.31,
+     "kind": "bold"
+    }
+   ]
+  },
+  {
+   "variant": "wall",
+   "at": 10.9,
+   "until": 14.0,
+   "lines": [
+    {
+     "text": "Нет",
+     "at": 11.25
+    },
+    {
+     "text": "шаблонов",
+     "at": 11.89
+    }
+   ]
+  },
+  {
+   "variant": "mix",
+   "at": 23.4,
+   "until": 29.6,
+   "lines": [
+    {
+     "text": "с гигантами,",
+     "at": 23.64,
+     "kind": "italic"
+    },
+    {
+     "text": "научить",
+     "at": 25.47,
+     "kind": "bold"
+    },
+    {
+     "text": "и показать",
+     "at": 27.81,
+     "kind": "bold"
+    }
+   ]
+  }
+ ],
+ "fx": [
+  {
+   "type": "bw",
+   "at": 0,
+   "until": 0.84
+  }
+ ],
+ "flags": [
+  {
+   "at": 36.6,
+   "until": 42.5,
+   "items": [
+    "интернет-материалы/флаги/cn.png",
+    "интернет-материалы/флаги/in.png",
+    "интернет-материалы/флаги/my.png",
+    "интернет-материалы/флаги/jp.png",
+    "интернет-материалы/флаги/kr.png"
+   ]
+  }
+ ],
+ "captionStyle": "3d"
 }

@@ -354,30 +354,12 @@
  "broll": [],
  "cities": [],
  "checklists": [],
- "zooms": [
-  {
-   "at": 0.0,
-   "kind": "push",
-   "amount": 0.06,
-   "hold": 1.4
-  },
-  {
-   "at": 3.75,
-   "kind": "punch",
-   "amount": 0.12,
-   "hold": 0.9
-  },
-  {
-   "at": 27.83,
-   "kind": "punch",
-   "amount": 0.14,
-   "hold": 1.2
-  }
- ],
+ "zooms": [],
  "sfx": {
   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
-  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav"
+  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+  "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
  },
  "music": {
   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
@@ -392,7 +374,7 @@
   "route": []
  },
  "cta": "Подробнее на сайте",
- "ctaSeconds": 0.5,
+ "ctaSeconds": 2.4,
  "showSafeZone": false,
  "format": "stories",
  "focus": {
@@ -414,5 +396,71 @@
    "layout": "drop"
   }
  ],
- "captionSize": 52
+ "captionSize": 52,
+ "episode": {
+  "n": 8,
+  "total": 10,
+  "title": "LinkedIn",
+  "next": "Мой сайт ostapdotcenko.ru",
+  "nextN": 9
+ },
+ "hooks": [
+  {
+   "variant": "mix",
+   "at": 0.0,
+   "until": 3.6,
+   "lines": [
+    {
+     "text": "для любителей",
+     "at": 0.32,
+     "kind": "italic"
+    },
+    {
+     "text": "English",
+     "at": 0.55,
+     "kind": "bold"
+    }
+   ]
+  },
+  {
+   "variant": "wall",
+   "at": 3.65,
+   "until": 8.1,
+   "lines": [
+    {
+     "text": "Практика",
+     "at": 3.75
+    },
+    {
+     "text": "каждый",
+     "at": 6.11
+    },
+    {
+     "text": "день",
+     "at": 6.71
+    }
+   ]
+  },
+  {
+   "variant": "words",
+   "at": 26.85,
+   "until": 30.27,
+   "lines": [
+    {
+     "text": "есть чему",
+     "at": 27.75
+    },
+    {
+     "text": "поучиться",
+     "at": 28.38
+    },
+    {
+     "text": "поверьте",
+     "at": 29.25
+    }
+   ]
+  }
+ ],
+ "fx": [],
+ "captionStyle": "3d"
 }

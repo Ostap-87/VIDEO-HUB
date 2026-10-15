@@ -376,18 +376,12 @@
  "broll": [],
  "cities": [],
  "checklists": [],
- "zooms": [
-  {
-   "at": 26.72,
-   "kind": "push",
-   "amount": 0.06,
-   "hold": 1.6
-  }
- ],
+ "zooms": [],
  "sfx": {
   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
-  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav"
+  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+  "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
  },
  "music": {
   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
@@ -402,7 +396,7 @@
   "route": []
  },
  "cta": "Подробнее на сайте",
- "ctaSeconds": 0.5,
+ "ctaSeconds": 2.4,
  "showSafeZone": false,
  "format": "stories",
  "focus": {
@@ -433,5 +427,53 @@
   }
  ],
  "captionSize": 52,
- "captionTop": 1490
+ "captionTop": 1490,
+ "episode": {
+  "n": 5,
+  "total": 10,
+  "title": "Китай",
+  "next": "Мои соцсети: Telegram Aura Robots",
+  "nextN": 6
+ },
+ "hooks": [
+  {
+   "variant": "behind",
+   "at": 0.0,
+   "until": 3.0,
+   "lines": [
+    {
+     "text": "Китай",
+     "at": 1.34
+    }
+   ]
+  },
+  {
+   "variant": "wall",
+   "at": 26.7,
+   "until": 31.5,
+   "lines": [
+    {
+     "text": "Организую",
+     "at": 27.17
+    },
+    {
+     "text": "за 1–2",
+     "at": 28.64
+    },
+    {
+     "text": "недели",
+     "at": 29.18
+    }
+   ]
+  }
+ ],
+ "fx": [
+  {
+   "type": "bw",
+   "at": 30.8,
+   "until": 35.5
+  }
+ ],
+ "flags": [],
+ "captionStyle": "3d"
 }

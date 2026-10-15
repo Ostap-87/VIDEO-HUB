@@ -341,3 +341,8 @@ Aura: печать над головой сама уменьшается и по
 `npx remotion render src/index.ts HookTitleDemo ../finished-videos/эффекты/hook-B-за-головой.mp4 --props=./props/эффекты/hook-B-за-головой.json`
 (вариант «МОИ / СОЦ | СЕТИ» со щелчками — `props/эффекты/hook-B3-мои-соц-сети.json`)
 (нужна вырезка спикера на эти секунды: `npm run matte -- <клип>.cut.mp4 --ranges 0-3.4`).
+
+Серия Stories ostapdotcenko (хуки, 3D-субтитры, переходы, «часть N/10» и карточка «Дальше»): план
+`props/od-варианты/серия.json` → `python3 scripts/series.py` (пишет props всех частей и печатает команды вырезки
+`python3 scripts/matte.py … --ranges …`; с `--matte` запускает их сам) → рендер как обычно
+`python3 scripts/auto.py --name 2026-10-14-od-N --render --stories-only`.

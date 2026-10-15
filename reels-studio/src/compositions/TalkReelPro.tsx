@@ -25,6 +25,11 @@ import {GttIntro} from "./GttIntro";
 import {OdBadge} from "../components/OdBadge";
 import {LinkArrow, SocialCard, SocialGrid} from "../components/SocialCard";
 import {activeScreen, captionTopFor, chainScreens, DropBackdrop, DropFrame, ScreenPanel, speakerCardStyle, speakerShift} from "../components/ScreenOverlay";
+import {HookTitle, hookSounds, type HookItem} from "../components/HookTitle";
+import {bwFilter, ColorWipes, EpisodeOutro, EpisodeTag} from "../components/SeriesFx";
+import {loadFont as loadOswald} from "@remotion/google-fonts/Oswald";
+
+const oswald = loadOswald("normal", {weights: ["700"], subsets: ["cyrillic", "latin"]});
 
 // «Говорящая голова» в стиле референса пользователя (07.10.2026):
 // видео на весь экран, сверху плашка ▲ GLOBAL TECH TOUR, крупные белые субтитры по центру
@@ -141,7 +146,7 @@ export const talkReelProSchema = z.object({
   zooms: z
     .array(z.object({at: z.number(), kind: z.enum(["punch", "push"]), amount: z.number(), hold: z.number()}))
     .default([]),
-  sfx: z.object({pop: z.string(), whoosh: z.string(), whip: z.string().optional()}),
+  sfx: z.object({pop: z.string(), whoosh: z.string(), whip: z.string().optional(), click: z.string().optional()}),
   // Фоновая музыка (только треки с коммерческой лицензией); volume ~0.1 под голосом, громче в финале
   music: z.object({src: z.string(), volume: z.number(), outroVolume: z.number()}).optional(),
   speechSeconds: z.number(),
@@ -172,6 +177,32 @@ export const talkReelProSchema = z.object({
   // поэтому при наездах глаза остаются на своей линии и не «прыгают»
   focus: z.object({x: z.number(), y: z.number()}).default({x: 540, y: 614}),
   faceTop: z.number().optional(), // верх лица (линия роста волос), y в кадре; без поля — focus.y − 230
+  // Эффекты-хуки из референсов 15.10.2026 (components/HookTitle.tsx): текст за спикером — стена в 3D (wall), заголовок за
+  // головой (behind, со столбиками букв columns), смешение гротеска и курсива (mix), слова по одному (words).
+  // На отрезок [at, until] спикер вырезается (cutoutSrc) и стоит перед текстом — отрезок нужен в --ranges npm run matte.
+  hooks: z
+    .array(
+      z.object({
+        variant: z.enum(["wall", "behind", "mix", "words"]),
+        at: z.number(),
+        until: z.number(),
+        lines: z.array(
+          z.object({text: z.string(), at: z.number(), kind: z.enum(["bold", "italic"]).optional(), size: z.number().optional(), color: z.string().optional(), x: z.number().optional(), y: z.number().optional()}),
+        ),
+        columns: z.array(z.object({text: z.string(), at: z.number(), side: z.enum(["left", "right"]), step: z.number().optional(), x: z.number().optional()})).optional(),
+        top: z.number().optional(),
+        accent: z.string().optional(),
+      }),
+    )
+    .optional(),
+  // Переходы серии (components/SeriesFx.tsx): wipe — заливка цветом из угла в момент at; bw — ч/б с at до until, потом цвет
+  fx: z
+    .array(z.object({type: z.enum(["wipe", "bw"]), at: z.number(), until: z.number().optional(), color: z.string().optional(), corner: z.enum(["tl", "tr", "bl", "br"]).optional()}))
+    .optional(),
+  // Серия роликов: «часть N/total · title» под печатью и финальная карточка «Дальше → часть N+1: next» (без next — все ссылки)
+  episode: z.object({n: z.number(), total: z.number(), title: z.string(), next: z.string().optional(), nextN: z.number().optional()}).optional(),
+  // 3d — субтитры объёмными буквами в перспективе (как 3D scroller из референса); flat — обычные
+  captionStyle: z.enum(["flat", "3d"]).optional(),
 });
 export type TalkReelProProps = z.infer<typeof talkReelProSchema>;
 
@@ -229,7 +260,8 @@ const BigCaptions: React.FC<{
   top?: number;
   size?: number;
   screens?: TalkReelProProps["screens"];
-}> = ({words, accent, until, lowFrom, cities, lists, broll = [], clips, top = 1250, size = 66, screens}) => {
+  style3d?: boolean;
+}> = ({words, accent, until, lowFrom, cities, lists, broll = [], clips, top = 1250, size = 66, screens, style3d}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -249,6 +281,7 @@ const BigCaptions: React.FC<{
   const onLight = (low && B.id === "od") || boxed; // od: финал на «кости» — субтитры чернилами, акцентные слова красным штампом
   const hotOnLight = B.id === "od" ? "#FF4A1F" : B.id === "gtt" ? B.accent : B.accentInk;
   const od = B.id === "od";
+  if (style3d && !boxed && !low) return <Captions3D page={page} pageIndex={pages.indexOf(page)} accent={accent} top={top} t={t} />;
   const box: React.CSSProperties = boxed
     ? {display: "inline-block", background: od ? "#F7F4EC" : "#FFFFFF", border: od ? `3px solid ${B.accentInk}` : undefined, borderRadius: B.square ? 0 : 24, boxShadow: od ? `8px 8px 0 ${B.accentInk}` : "0 14px 34px rgba(0,0,0,0.3)", padding: "12px 22px 14px"}
     : {};
@@ -317,6 +350,55 @@ const BigCaptions: React.FC<{
         );
       })}
       </span>
+    </div>
+  );
+};
+
+// 3D-субтитры (решение пользователя 15.10.2026: «с 3Д субтитрами»): узкий гротеск Oswald капсом, объёмные буквы
+// (слои жёсткой тени — «выдавленный» текст), строка развёрнута в перспективе, страницы чередуют наклон влево/вправо;
+// каждое слово прилетает из глубины. Текущее и акцентные слова — жёлтым маркером ОД.
+const EXTRUDE = [1, 2, 3, 4, 5, 6, 7, 8].map((d) => `${d}px ${d}px 0 #191922`).join(", ") + ", 12px 18px 24px rgba(0,0,0,0.45)";
+const Captions3D: React.FC<{page: TalkReelProProps["words"]; pageIndex: number; accent: string[]; top: number; t: number}> = ({page, pageIndex, accent, top, t}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const B = useBrand();
+  const clean = (x: string) => x.toLowerCase().replace(/[^\p{L}\p{N}+]/gu, "");
+  const side = pageIndex % 2 ? 1 : -1;
+  const curIdx = page.reduce((k, x, j) => (x.start <= t ? j : k), -1);
+  // кегль по длине страницы: строка в перспективе не должна выходить за кадр (узкий гротеск ≈ 0,58 кегля на букву)
+  const chars = page.reduce((n, w) => n + w.text.length, 0) + page.length * 0.6;
+  const fontSize = Math.round(Math.min(92, 820 / (chars * 0.58)));
+  return (
+    <div style={{position: "absolute", left: 60, right: 60, top: top - 20, perspective: 900, perspectiveOrigin: "50% 40%", textAlign: "center"}}>
+      <div style={{display: "inline-block", maxWidth: 900, rotate: `y ${side * 14}deg`, transformStyle: "preserve-3d"}}>
+        <div style={{rotate: "x 12deg", transformStyle: "preserve-3d"}}>
+          {page.map((w, i) => {
+            const k = spring({frame: frame - Math.round(w.start * fps), fps, config: {damping: 13, stiffness: 210, mass: 0.6}, durationInFrames: 10});
+            const hot = (i === curIdx && t < w.end + 0.35) || accent.includes(clean(w.text));
+            return (
+              <span
+                key={i}
+                style={{
+                  display: "inline-block",
+                  margin: "0 10px",
+                  fontFamily: oswald.fontFamily,
+                  fontWeight: 700,
+                  fontSize,
+                  lineHeight: 1,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.01em",
+                  color: hot ? (B.id === "od" ? "#FFD92E" : B.accent) : "#FFFFFF",
+                  textShadow: EXTRUDE,
+                  opacity: w.start <= t ? Math.min(1, k * 1.6) : 0,
+                  translate: `0px ${(1 - k) * 30}px ${(1 - k) * -420}px`,
+                }}
+              >
+                {w.text}
+              </span>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };
@@ -706,7 +788,8 @@ const ZoomedVideo: React.FC<{
   bgFlags?: TalkReelProProps["bgFlags"];
   angleB?: TalkReelProProps["angleB"];
   clips?: TalkReelProProps["clips"];
-}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists, bgFlags, angleB, clips}) => {
+  hooks?: HookItem[];
+}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists, bgFlags, angleB, clips, hooks}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -766,6 +849,15 @@ const ZoomedVideo: React.FC<{
             <WavingFlag3D src={fl.src} at={fl.at} until={fl.until} />
             <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={{...videoStyle, filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.4))"}} />
           </Sequence>
+        ) : null,
+      )}
+      {/* хуки: текст между видео и вырезкой спикера — голова и плечи закрывают буквы */}
+      {(hooks ?? []).map((h, i) =>
+        !b && t >= h.at - 0.05 && t <= h.until + 0.05 ? (
+          <React.Fragment key={`hook-${i}`}>
+            <HookTitle {...h} />
+            <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} />
+          </React.Fragment>
         ) : null,
       )}
       {stockDrop && !b && t >= stockDrop.at - 0.1 && t <= stockDrop.until + 0.1 ? (
@@ -1458,6 +1550,10 @@ const AuraBadgeSlot: React.FC<TalkReelProProps> = (p) => {
   );
 };
 
+// сколько хука на экране (0…1) — печать ОД и плашка серии прячутся, пока текст хука стоит за спикером
+const hookAmount = (hooks: TalkReelProProps["hooks"], t: number) =>
+  Math.max(0, ...(hooks ?? []).map((h) => Math.min(interpolate(t, [h.at - 0.2, h.at], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}), interpolate(t, [h.until, h.until + 0.25], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"}))));
+
 // ---------- фирменная заставка GTT в начале и конце (GttIntro) ----------
 // Интро 1,8 с (54 кадра): последние 10 кадров — треугольное окно раскрывается на начало ролика, поэтому ролик стартует
 // на 44-м кадре. Аутро 1,5 с (45 кадров): первые 10 кадров окно закрывается на конце ролика, потом 35 кадров логотипа.
@@ -1519,6 +1615,14 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
     // экран въезжает — «вжух»; смена страницы встык — тихий щелчок
     ...screens.map((sc) => (sc.joinIn ? {at: sc.at, src: p.sfx.pop, volume: 0.25} : {at: sc.at - 0.1, src: p.sfx.whoosh, volume: 0.35})),
     ...(p.socialGrid ?? []).flatMap((g) => g.items.map((_, i) => ({at: g.at + (8 + i * 4) / 30, src: p.sfx.pop, volume: 0.25}))),
+    // хуки: строки — «вжух», буквы столбиков и слова по одному — щелчок
+    ...(p.hooks ?? []).flatMap((h) => {
+      const snd = hookSounds(h);
+      return [...snd.whoosh.map((at) => ({at, src: p.sfx.whoosh, volume: 0.3})), ...snd.click.map((at) => ({at, src: p.sfx.click ?? p.sfx.pop, volume: 0.5}))];
+    }),
+    // заливка из угла — «вжух»; ч/б → цвет — хлопок в момент вспышки цвета
+    ...(p.fx ?? []).map((x) => (x.type === "wipe" ? {at: x.at, src: p.sfx.whip ?? p.sfx.whoosh, volume: 0.35} : {at: x.until ?? x.at + 1, src: p.sfx.pop, volume: 0.35})),
+    ...(p.episode ? [{at: p.speechSeconds, src: p.sfx.whoosh, volume: 0.3}] : []),
   ];
 
   const brand = BRANDS[p.brand ?? "gtt"];
@@ -1550,7 +1654,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
 
       {/* подача drop: под карточкой спикера — фон «кость» со ссылками на каналы и сайты */}
       <DropBackdrop screens={screens} links={p.links} />
-      <AbsoluteFill style={{translate: `0px ${speakerShift(screens, frame / fps)}px`, ...speakerCardStyle(screens, frame / fps, p.focus)}}>
+      <AbsoluteFill style={{translate: `0px ${speakerShift(screens, frame / fps)}px`, ...speakerCardStyle(screens, frame / fps, p.focus), filter: bwFilter(p.fx, frame / fps)}}>
       <ZoomedVideo
         src={p.mediaSrc}
         cutoutSrc={p.cutoutSrc}
@@ -1564,6 +1668,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
         bgFlags={p.bgFlags}
         angleB={p.angleB}
         clips={p.clips}
+        hooks={p.hooks}
       />
       </AbsoluteFill>
       <DropFrame screens={screens} />
@@ -1639,15 +1744,20 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
           <FlagArc items={fl.items} at={fl.at} until={fl.until} center={p.focus} />
         </Sequence>
       ))}
-      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} broll={p.broll} clips={p.clips} top={p.captionTop} size={p.captionSize} screens={screens} />
+      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} broll={p.broll} clips={p.clips} top={p.captionTop} size={p.captionSize} screens={screens} style3d={p.captionStyle === "3d"} />
       {brand.id === "aura" ? (
         // Aura: круглая печать крутится над головой спикера, по центру; в Stories — ниже полосок и аватара
         <AuraBadgeSlot {...p} />
       ) : brand.id === "od" ? (
         // od: красная печать «ОД» и бумажная плашка «Остап Доценко.» слева сверху (как шапка сайта); пока на экране сайт — прячется
         p.badge === false ? null :
-        <div style={{position: "absolute", top: p.format === "stories" ? 196 : 76, left: 48, opacity: 1 - (activeScreen(screens, frame / fps)?.k ?? 0)}}>
+        <div style={{position: "absolute", top: p.format === "stories" ? 196 : 76, left: 48, opacity: (1 - (activeScreen(screens, frame / fps)?.k ?? 0)) * (1 - hookAmount(p.hooks, frame / fps))}}>
           <OdBadge scale={0.9} />
+          {p.episode ? (
+            <div style={{marginTop: 14}}>
+              <EpisodeTag ep={p.episode} />
+            </div>
+          ) : null}
         </div>
       ) : (
         // логотип: стеклянная пирамида + крупная белая надпись с бликом (как в референсе)
@@ -1655,6 +1765,8 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
           <SiteLogo variant="title" scale={1} />
         </div>
       )}
+      <ColorWipes fx={p.fx} />
+      {p.episode ? <EpisodeOutro ep={p.episode} start={p.speechSeconds - 0.05} links={p.links} /> : null}
       {p.showSafeZone ? <SafeZone /> : null}
     </AbsoluteFill>
     </BrandCtx.Provider>
