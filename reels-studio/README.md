@@ -262,6 +262,7 @@ npm run transcribe -- ../source-videos/папка/clip.mp4    # → clip.words.j
 ```bash
 npm run transcribe -- ../source-videos/папка/clip.MOV                                  # слова с таймингами
 npm run cut -- ../source-videos/папка/clip.MOV --words ../source-videos/папка/clip.words.json  # чистый звук, без пауз
+python3 scripts/sync_check.py ../source-videos/папка/clip.MOV                      # синхрон склейки: нужен SYNC_OK
 npm run site -- https://globaltechtour.ru ../source-videos/папка/site/site.png          # скриншот сайта для финала
 npm run grid -- ../source-videos/папка/_work/clip.cut.mp4                            # сетка, линия глаз → layout.json (focus для зумов)
 npm run matte -- ../source-videos/папка/_work/clip.cut.mp4 --ranges 0.8-4,18-24      # вырезать спикера из фона (нужен pip install onnxruntime)
@@ -335,6 +336,8 @@ Aura: печать над головой сама уменьшается и по
 
 Бледный спикер из iPhone (HDR): новые склейки `npm run cut` переводит в обычный цвет сам; уже готовые —
 `python3 scripts/hdr_grade.py ../source-videos/<папка>/_work/<клип>.cut.mp4`.
+Голос опережает губы в готовом ролике (звук в исходнике начинается позже картинки, сдвиг до 0,12 с):
+`python3 scripts/av_delay.py <props-имя>` — задержка звука во всех готовых файлах ролика; больше 0,12 с — новая нарезка.
 Герой обложки без фона: `python3 scripts/cutout.py <кадр.png> <герой.png> --crop x,y,w,h --keep-largest --upscale 2`.
 
 Эффекты-хуки по референсам (стена в 3D, заголовок за головой, смешение шрифтов): пробник
