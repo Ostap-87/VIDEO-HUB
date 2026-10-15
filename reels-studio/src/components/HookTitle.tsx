@@ -40,40 +40,53 @@ const ease = Easing.bezier(0.16, 1, 0.3, 1);
 // размер по длине строки, чтобы длинные слова влезали в кадр 1080: k — средняя ширина буквы в долях кегля
 const fit = (text: string, max: number, width: number, k: number) => Math.round(Math.min(max, width / Math.max(1, text.length * k)));
 
-// 3D-стена: строки въезжают снизу из глубины, весь столбик медленно едет вверх
-const Wall: React.FC<HookTitleProps> = ({lines, until}) => {
+// 3D-стена («3D scroller» из референса 1): строки въезжают снизу из глубины на стену в перспективе; на виду не больше двух
+// строк над головой — с новой строкой столбик прокручивается вверх, старая уходит (иначе широкие строки целиком прячутся
+// за головой, как было в первой версии серии 15.10.2026). top — верх окна стены.
+const WALL_LH = 0.9;
+const Wall: React.FC<HookTitleProps> = ({lines, until, top = 210}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
   const out = interpolate(t, [until - 0.35, until], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
+  const sizes = lines.map((l) => l.size ?? fit(l.text, 270, 960, 0.5));
+  const offs = sizes.map((_, j) => sizes.slice(0, j).reduce((a, x) => a + x * WALL_LH, 0));
+  const cur = lines.reduce((k, l, j) => (l.at <= t ? j : k), -1);
+  const shiftOf = (j: number) => offs[Math.max(0, j - 1)];
+  const step = (j: number) => interpolate(t, [lines[j].at, lines[j].at + 0.45], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease});
+  const last = lines.length - 1;
+  // через 0,8 с после последней строки столбик делает ещё шаг: последняя строка встаёт наверх и видна целиком
+  const fin = lines.length > 1 ? interpolate(t, [lines[last].at + 0.8, lines[last].at + 1.2], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease}) : 0;
+  const shift = (cur <= 0 ? 0 : shiftOf(cur - 1) + (shiftOf(cur) - shiftOf(cur - 1)) * step(cur)) + (offs[last] - shiftOf(last)) * fin;
   return (
-    <AbsoluteFill style={{perspective: 900, perspectiveOrigin: "0% 45%", opacity: out}}>
+    <AbsoluteFill style={{perspective: 900, perspectiveOrigin: "0% 35%", opacity: out}}>
       <div
         style={{
           position: "absolute",
-          left: 40,
-          top: 300,
+          left: 48,
+          top,
           width: 1000,
           transformOrigin: "0% 50%",
-          rotate: "y 24deg",
-          translate: `0px ${interpolate(t, [0, until], [40, -90])}px`,
+          rotate: "y 18deg",
+          translate: `0px ${-shift}px`,
         }}
       >
         {lines.map((l, i) => {
           const k = interpolate(t, [l.at, l.at + 0.45], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease});
+          const leave = i + 2 < lines.length ? step(i + 2) : i === last - 1 ? fin : 0; // строку на две выше новой убираем
           return (
             <div
               key={i}
               style={{
                 fontFamily: oswald.fontFamily,
                 fontWeight: 700,
-                fontSize: l.size ?? fit(l.text, 330, 980, 0.5),
-                lineHeight: 0.86,
+                fontSize: sizes[i],
+                lineHeight: WALL_LH,
                 letterSpacing: "-0.01em",
                 textTransform: "uppercase",
                 color: "#FFFFFF",
-                textShadow: "0 6px 30px rgba(0,0,0,0.35)",
-                opacity: k,
+                textShadow: "5px 5px 0 rgba(25,25,34,0.55), 0 8px 30px rgba(0,0,0,0.35)",
+                opacity: k * (1 - leave),
                 translate: `0px ${(1 - k) * 160}px`,
                 scale: String(0.85 + 0.15 * k),
                 transformOrigin: "0% 100%",
