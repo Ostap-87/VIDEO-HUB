@@ -26,7 +26,7 @@ import {OdBadge} from "../components/OdBadge";
 import {LinkArrow, SocialCard, SocialGrid} from "../components/SocialCard";
 import {activeScreen, captionTopFor, chainScreens, DropBackdrop, DropFrame, OD_LINKS, ScreenPanel, speakerCardStyle, speakerShift} from "../components/ScreenOverlay";
 import {HookTitle, hookSounds, type HookItem} from "../components/HookTitle";
-import {bwFilter, ColorWipes, EpisodeOutro, EpisodeTag} from "../components/SeriesFx";
+import {bwFilter, ColorWipes, EpisodeOutro} from "../components/SeriesFx";
 import {loadFont as loadOswald} from "@remotion/google-fonts/Oswald";
 
 const oswald = loadOswald("normal", {weights: ["700"], subsets: ["cyrillic", "latin"]});
@@ -1759,11 +1759,6 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
         p.badge === false ? null :
         <div style={{position: "absolute", top: p.format === "stories" ? 196 : 76, left: 48, opacity: (1 - (activeScreen(screens, frame / fps)?.k ?? 0)) * (1 - hookAmount(p.hooks, frame / fps)) * (1 - topAmount(p, frame / fps))}}>
           <OdBadge scale={0.9} />
-          {p.episode ? (
-            <div style={{marginTop: 14}}>
-              <EpisodeTag ep={p.episode} />
-            </div>
-          ) : null}
         </div>
       ) : (
         // логотип: стеклянная пирамида + крупная белая надпись с бликом (как в референсе)

@@ -5,7 +5,8 @@
 //   bw   — ч/б → цвет: кадр спикера серый, в конце отрезка цвет «вспыхивает»;
 //   финальная карточка (как Instagram-карточка в конце обоих референсов) — у нас «Дальше: часть N+1» для связки серии,
 //   в последней части — все каналы и сайты.
-// Плюс «часть N/10» под печатью ОД, чтобы зритель видел, что это серия.
+// «Часть N/10» под печатью ОД (EpisodeTag) и номера частей в карточке убраны по решению пользователя 15.10.2026:
+// «убрать плашки 1/10… оставь только надпись Остап Доценко» — порядок выкладки задают номера в именах файлов.
 import React from "react";
 import {AbsoluteFill, Easing, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
 import {display, mono} from "../fonts";
@@ -127,7 +128,7 @@ export const EpisodeOutro: React.FC<{ep: Episode; start: number; links?: LinkRow
           <OdStamp size={150} />
         </div>
         <div style={{fontFamily: mono.fontFamily, fontWeight: 500, fontSize: 26, letterSpacing: "0.12em", textTransform: "uppercase", color: RED}}>
-          Остап Доценко · часть {ep.n} из {ep.total}
+          Остап Доценко
         </div>
         <div style={{marginTop: 26, fontFamily: display.fontFamily, fontWeight: 700, fontSize: last ? 86 : 104, lineHeight: 1, color: INK, textTransform: "uppercase"}}>
           <span
@@ -159,10 +160,7 @@ export const EpisodeOutro: React.FC<{ep: Episode; start: number; links?: LinkRow
           </>
         ) : (
           <>
-            <div style={{marginTop: 30, fontFamily: mono.fontFamily, fontWeight: 500, fontSize: 30, letterSpacing: "0.08em", textTransform: "uppercase", color: INK}}>
-              Часть {ep.nextN ?? ep.n + 1}/{ep.total}
-            </div>
-            <div style={{marginTop: 10, fontFamily: display.fontFamily, fontWeight: 700, fontSize: 56, lineHeight: 1.12, color: INK}}>{ep.next}</div>
+            <div style={{marginTop: 30, fontFamily: display.fontFamily, fontWeight: 700, fontSize: 56, lineHeight: 1.12, color: INK}}>{ep.next}</div>
           </>
         )}
       </div>
