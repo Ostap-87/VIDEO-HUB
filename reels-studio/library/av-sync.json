@@ -72,5 +72,42 @@
   "delay_ms": 65,
   "date": "2026-10-15",
   "mtime": 1792051869.1988778
+ },
+ "finished-videos/2026-10-07-tech-giganty-cover.mp4": {
+  "delay_ms": 101,
+  "date": "2026-10-15"
+ },
+ "finished-videos/2026-10-07-tech-giganty-stories-1.mp4": {
+  "delay_ms": 101,
+  "date": "2026-10-15"
+ },
+ "finished-videos/2026-10-07-tech-giganty-stories-2.mp4": {
+  "delay_ms": 101,
+  "date": "2026-10-15"
+ },
+ "finished-videos/2026-10-07-tech-giganty.mp4": {
+  "delay_ms": 101,
+  "date": "2026-10-15"
+ },
+ "finished-videos/для-телефона/2026-10-07-tech-giganty-cover.mp4": {
+  "delay_ms": 101,
+  "date": "2026-10-15"
+ },
+ "finished-videos/для-телефона/2026-10-07-tech-giganty-stories-1.mp4": {
+  "delay_ms": 101,
+  "date": "2026-10-15"
+ },
+ "finished-videos/для-телефона/2026-10-07-tech-giganty-stories-2.mp4": {
+  "delay_ms": 101,
+  "date": "2026-10-15"
+ },
+ "finished-videos/для-телефона/2026-10-07-tech-giganty.mp4": {
+  "delay_ms": 101,
+  "date": "2026-10-15"
+ },
+ "source-videos/2026-10-07-tech-giganty/_work/tech-giganty.cut.mp4": {
+  "delay_ms": 101,
+  "date": "2026-10-15",
+  "mtime": 1792051968.8628755
  }
 }
