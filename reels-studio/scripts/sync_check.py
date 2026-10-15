@@ -62,12 +62,19 @@ def main():
     full = pcm(src, extract_args(src))       # исходник: звук в шкале картинки
     out = pcm(cut, ["-vn"])                  # склейка
     max_lag = int(a.max * SR / HOP)
-    lags = []
+    # громкость речи склейки: кусок без речи (после шумодава там тишина, в исходнике — шум улицы) сравнивать не с чем
+    n = len(out) // HOP
+    level = np.sqrt((out[: n * HOP].reshape(n, HOP) ** 2).mean(axis=1))
+    speech = np.percentile(level, 90)
+    lags, quiet = [], 0
     for i, p in enumerate(plan):
         ln = min(3.0, p["src_end"] - p["src_start"])
         if ln < 0.8:
             continue
         s0, o0 = int(p["src_start"] * SR), int(p["out_start"] * SR)
+        if np.percentile(level[o0 // HOP: (o0 + int(ln * SR)) // HOP], 90) < 0.15 * speech:
+            quiet += 1
+            continue
         pad = int(a.max * SR)
         ref = envelope(full[max(0, s0 - pad): s0 + int(ln * SR) + pad])
         seg = envelope(out[o0: o0 + int(ln * SR)])
@@ -81,7 +88,7 @@ def main():
         flag = " ←" if abs(ms) > 40 and c > 0.5 else ""
         print(f"  кусок {i:2d}: сдвиг {ms:+5d} мс (сходство {c:.2f}){flag}")
     med = int(np.median([x[1] for x in lags if x[2] > 0.5])) if lags else 0
-    print(f"{'SYNC_BAD' if bad else 'SYNC_OK'} {cut.name}: кусков {len(lags)}, со сдвигом >40 мс {len(bad)}, медиана {med:+d} мс "
+    print(f"{'SYNC_BAD' if bad else 'SYNC_OK'} {cut.name}: кусков {len(lags)} (+{quiet} без речи), со сдвигом >40 мс {len(bad)}, медиана {med:+d} мс "
           f"(+ — голос раньше губ)")
     sys.exit(1 if bad else 0)
 
