@@ -203,6 +203,9 @@ export const talkReelProSchema = z.object({
   episode: z.object({n: z.number(), total: z.number(), title: z.string(), next: z.string().optional(), nextN: z.number().optional()}).optional(),
   // 3d — субтитры объёмными буквами в перспективе (как 3D scroller из референса); flat — обычные
   captionStyle: z.enum(["flat", "3d"]).optional(),
+  // спокойные субтитры (решение пользователя 15.10.2026 по «Автозаводам»: «текст скачет»): всегда на одной высоте
+  // captionTop (не переезжают при панелях городов, чек-листах, клипах), страница проявляется без «прыжка» масштаба
+  captionFixed: z.boolean().optional(),
 });
 export type TalkReelProProps = z.infer<typeof talkReelProSchema>;
 
@@ -261,7 +264,8 @@ const BigCaptions: React.FC<{
   size?: number;
   screens?: TalkReelProProps["screens"];
   style3d?: boolean;
-}> = ({words, accent, until, lowFrom, cities, lists, broll = [], clips, top = 1250, size = 66, screens, style3d}) => {
+  fixed?: boolean;
+}> = ({words, accent, until, lowFrom, cities, lists, broll = [], clips, top = 1250, size = 66, screens, style3d, fixed}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -291,7 +295,7 @@ const BigCaptions: React.FC<{
         position: "absolute",
         left: 90 - 40 * pipAmount(broll, t),
         right: 90 + 300 * pipAmount(broll, t), // при карточке спикера в углу субтитры сдвигаются влево
-        top: low ? 1420 : Math.max(cityAmount(cities, t), listAmount(lists, t), clipAmount(clips ?? [], t)) > 0.5 ? 780 : captionTopFor(screens, t, top),
+        top: low ? 1420 : fixed ? top : Math.max(cityAmount(cities, t), listAmount(lists, t), clipAmount(clips ?? [], t)) > 0.5 ? 780 : captionTopFor(screens, t, top),
         textAlign: "center",
         fontFamily: B.captionFont,
         fontWeight: B.captionWeight,
@@ -307,8 +311,8 @@ const BigCaptions: React.FC<{
         borderRadius: dark ? 28 : undefined,
         padding: dark ? "18px 24px" : undefined,
         boxShadow: dark ? "0 16px 40px rgba(23,23,29,0.18)" : undefined,
-        scale: String(0.85 + 0.15 * pop),
-        opacity: pop,
+        scale: fixed ? "1" : String(0.85 + 0.15 * pop),
+        opacity: fixed ? Math.min(1, pop * 1.6) : pop,
       }}
     >
       <span style={box}>
@@ -1750,7 +1754,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
           <FlagArc items={fl.items} at={fl.at} until={fl.until} center={p.focus} />
         </Sequence>
       ))}
-      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} broll={p.broll} clips={p.clips} top={p.captionTop} size={p.captionSize} screens={screens} style3d={p.captionStyle === "3d"} />
+      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} broll={p.broll} clips={p.clips} top={p.captionTop} size={p.captionSize} screens={screens} style3d={p.captionStyle === "3d"} fixed={p.captionFixed} />
       {brand.id === "aura" ? (
         // Aura: круглая печать крутится над головой спикера, по центру; в Stories — ниже полосок и аватара
         <AuraBadgeSlot {...p} />

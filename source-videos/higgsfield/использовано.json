@@ -722,5 +722,54 @@
   "videos": [
    "2026-10-14-od-5"
   ]
+ },
+ "772": {
+  "id": "259a3cbb-90fb-4dcc-8e7d-aa9f6326d622",
+  "prompt": "Editorial photo-illustration for a business article: a modern Chinese SUV parked at a sleek EV fast-charging station at dusk, charging cable connected, soft ambient lighting on the charging pillars, clean minimalist automotive photography style, no visible logos or text",
+  "videos": [
+   "2026-10-15-avto"
+  ]
+ },
+ "394": {
+  "id": "29dfefa4-eec7-4184-8c04-a8f943e60a53",
+  "prompt": "Photorealistic image of a nickel smelting plant with molten metal glow transitioning to EV battery cells, industrial night scene, no text, no logos",
+  "videos": [
+   "2026-10-15-avto"
+  ]
+ },
+ "406": {
+  "id": "44736b5e-006a-42aa-b5cd-cce80ec9fdd8",
+  "prompt": "Photorealistic macro cutaway image of a solid-state battery cell showing internal solid electrolyte layers, advanced battery technology, dark background with glow, no text, no logos",
+  "videos": [
+   "2026-10-15-avto"
+  ]
+ },
+ "478": {
+  "id": "a455be03-7c69-4926-a0bd-22c49ea82ae6",
+  "prompt": "Photorealistic macro close-up of sodium-ion battery cells with visible internal layers, cutaway technical photography, dark background with blue accent lighting, no text, no logos",
+  "videos": [
+   "2026-10-15-avto"
+  ]
+ },
+ "365": {
+  "id": "d334872b-9e71-4ef2-a5f2-658e10a09fc4",
+  "prompt": "Photorealistic humanoid robot connecting battery components on a factory assembly line, industrial lighting, no text, no logos",
+  "videos": [
+   "2026-10-15-avto"
+  ]
+ },
+ "86": {
+  "id": "1cb91ce7-67df-4ad2-ad8b-919d929046e5",
+  "prompt": "Photorealistic wide shot of a business negotiation meeting room in a Chinese film and entertainment company headquarters. Large conference table, business delegation of 4-5 Russian business people in business suits sitting across from 3-4 Chinese executives in suits, interpreter standing beside the table gesturing, laptops and documents on the table, city skyline visible through floor-to-ceiling windows behind them, professional atmosphere, discussion moment. Ultra realistic photography, natural window lighting, 16:9 wide composition, documentary business photography style, no visible text or logos.",
+  "videos": [
+   "2026-10-15-avto"
+  ]
+ },
+ "72": {
+  "id": "4bec97b4-2389-4eb3-87a7-b856e95af425",
+  "prompt": "Photorealistic wide shot of a closed-door session meeting room in Hong Kong with family-owned hotel conglomerate representatives. Elegant private meeting room, business delegation of 4-5 Russian business people in business suits sitting with 3-4 Hong Kong hotel executives in suits, interpreter standing beside the table gesturing, laptops and documents on the table, Hong Kong harbor skyline visible through floor-to-ceiling windows behind them, exclusive private discussion atmosphere. Ultra realistic photography, natural window lighting, 16:9 wide composition, documentary business photography style, no visible text or logos.",
+  "videos": [
+   "2026-10-15-avto"
+  ]
  }
 }
