@@ -1,0 +1,32 @@
+{
+  "brand": "gtt",
+  "theme": "light",
+  "layout": "card",
+  "kicker": "Бизнес-экспедиция",
+  "titleSize": 84,
+  "subtitleSize": 38,
+  "titlePlate": true,
+  "photoFull": true,
+  "headerTop": 236,
+  "title": "**Новый ритейл**\nКитая за 6 дней",
+  "subtitle": "9 компаний · Пекин → Шанхай → Ханчжоу → Шэньчжэнь",
+  "logos": [
+    "jd",
+    "meituan",
+    "hema",
+    "pinduoduo",
+    "alibaba",
+    "rt-mart",
+    "eleme",
+    "sams-club",
+    "yonghui"
+  ],
+  "logoColumns": 3,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-07-novyi-riteil/ostap-kadr.jpg",
+    "top": 0,
+    "height": 1700,
+    "focus": "50% 0%",
+    "zoom": 1.09
+  }
+}

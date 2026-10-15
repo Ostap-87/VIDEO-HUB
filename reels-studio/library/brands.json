@@ -4050,5 +4050,22 @@
    "Ли Нин"
   ],
   "logo": "source-videos/логотипы/ритейл/li-ning.png"
+ },
+ "rt-mart": {
+  "names": [
+   "RT-Mart",
+   "Sun Art",
+   "大润发"
+  ],
+  "logo": "source-videos/логотипы/ритейл/rt-mart.png"
+ },
+ "eleme": {
+  "names": [
+   "Ele.me",
+   "Элеме",
+   "饿了么",
+   "Taobao Instant"
+  ],
+  "logo": "source-videos/логотипы/ритейл/eleme.png"
  }
 }
