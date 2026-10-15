@@ -74,6 +74,15 @@ def main():
         p["ctaSeconds"] = OUTRO
         p["sfx"]["click"] = CLICK
         pp.write_text(json.dumps(p, ensure_ascii=False, indent=1))
+        # точка разреза Stories из прежнего auto.json могла попасть на финальную карточку: часть до 59,5 с не режем
+        auto = REPO / Path(p["mediaSrc"]).parent / f"{Path(p['mediaSrc']).name.split('.')[0]}.auto.json"
+        if auto.exists():
+            rep = json.loads(auto.read_text())
+            total = p["speechSeconds"] + p["ctaSeconds"]
+            cuts = [c for c in rep.get("storiesAt", []) if 20 < c < total - OUTRO - 3] if total > 59.5 else []
+            if cuts != rep.get("storiesAt"):
+                rep["storiesAt"] = cuts
+                auto.write_text(json.dumps(rep, ensure_ascii=False, indent=1))
         ranges = merge([(max(0, h["at"] - 0.15), min(p["speechSeconds"], h["until"] + 0.15)) for h in p["hooks"]])
         rs = ",".join(f"{x:.2f}-{y:.2f}" for x, y in ranges)
         print(f"{i + 1}/{total} {ep['name']}: «{ep['title']}», хуков {len(p['hooks'])}, эффектов {len(p['fx'])}, вырезка {rs}")
