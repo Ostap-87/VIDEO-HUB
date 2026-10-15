@@ -138,5 +138,34 @@
   "delay_ms": 99,
   "date": "2026-10-15",
   "mtime": 1792052040.5988739
+ },
+ "finished-videos/2026-10-08-roboty-stories-1.mp4": {
+  "delay_ms": 106,
+  "date": "2026-10-15"
+ },
+ "finished-videos/2026-10-08-roboty-stories-2.mp4": {
+  "delay_ms": 106,
+  "date": "2026-10-15"
+ },
+ "finished-videos/2026-10-08-roboty.mp4": {
+  "delay_ms": 106,
+  "date": "2026-10-15"
+ },
+ "finished-videos/для-телефона/2026-10-08-roboty-stories-1.mp4": {
+  "delay_ms": 106,
+  "date": "2026-10-15"
+ },
+ "finished-videos/для-телефона/2026-10-08-roboty-stories-2.mp4": {
+  "delay_ms": 106,
+  "date": "2026-10-15"
+ },
+ "finished-videos/для-телефона/2026-10-08-roboty.mp4": {
+  "delay_ms": 106,
+  "date": "2026-10-15"
+ },
+ "source-videos/2026-10-08-roboty/_work/roboty.cut.mp4": {
+  "delay_ms": 106,
+  "date": "2026-10-15",
+  "mtime": 1792052100.6108725
  }
 }
