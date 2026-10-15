@@ -33,6 +33,8 @@ import pathlib
 import re
 import subprocess
 
+from avsync import av_offset, extract_args  # звук — в шкале картинки (сдвиг start_time у iPhone)
+
 FPS = 30
 SR = 48000
 SPF = SR // FPS  # сэмплов на кадр (1600)
@@ -88,15 +90,22 @@ def clean_audio(src, work, no_denoise=False):
     """Весь звук исходника → шумодав DeepFilterNet (кэш _work/<имя>.clean.wav: шумодав считается один раз)."""
     full = work / f"{src.stem}.full.wav"
     clean = work / f"{src.stem}.clean.wav"
-    if clean.exists() and clean.stat().st_mtime >= src.stat().st_mtime:
+    # звук выравнивается по картинке (avsync.py): кэш, снятый до 15.10.2026 без сдвига, у такого исходника пересчитывается
+    off = av_offset(src)
+    mark = work / f"{src.stem}.clean.json"
+    synced = mark.exists() and abs(json.loads(mark.read_text()).get("offset", 0) - off) < 0.0005
+    if clean.exists() and clean.stat().st_mtime >= src.stat().st_mtime and (synced or abs(off) < 0.0005):
         return clean
-    run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(src), "-vn", "-ac", "1", "-ar", str(SR), str(full)])
+    if abs(off) >= 0.0005:
+        print(f"  звук в исходнике начинается на {off:+.3f} с относительно картинки — выравниваю")
+    run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(src), *extract_args(src), "-ac", "1", "-ar", str(SR), str(full)])
     if DFN.exists() and not no_denoise:
         run([str(DFN), str(pathlib.Path(__file__).with_name("denoise.py")), str(full), str(clean)])
         full.unlink()
     else:
         print("! шумодав DeepFilterNet не установлен (bash scripts/setup.sh) — звук без него")
         full.rename(clean)
+    mark.write_text(json.dumps({"offset": off}))
     return clean
 
 

@@ -13,6 +13,8 @@ import pathlib
 import subprocess
 import tempfile
 
+from avsync import extract_args  # слова — в шкале картинки, даже если звук в файле начинается позже
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 WHISPER = ROOT / "whisper.cpp"
 BIN = WHISPER / "build" / "bin" / "whisper-cli"
@@ -32,7 +34,7 @@ def main():
     with tempfile.TemporaryDirectory() as tmp:
         wav = pathlib.Path(tmp) / "audio.wav"
         subprocess.run(
-            ["ffmpeg", "-loglevel", "error", "-y", "-i", str(media), "-vn", "-ac", "1", "-ar", "16000", str(wav)],
+            ["ffmpeg", "-loglevel", "error", "-y", "-i", str(media), *extract_args(media), "-ac", "1", "-ar", "16000", str(wav)],
             check=True,
         )
         out = pathlib.Path(tmp) / "out"
