@@ -8,9 +8,10 @@
         # пересобрать по уже выбранным кускам (после правок), не ища паузы заново
 
 Что делает:
-1. Звук «как в студии»: нейросетевой шумодав DeepFilterNet3 (scripts/denoise.py, шум и гулкость),
-   эквалайзер (убрать «коробочный» гул 250–450 Гц, разборчивость 3 кГц, воздух 8 кГц), де-эссер,
-   мягкая компрессия, громкость −14 LUFS (норма Instagram). Решение пользователя 08.10.2026: «как из трубы» — недопустимо.
+1. Звук «как в студии»: нейросетевой шумодав DeepFilterNet3 (scripts/denoise.py, шум и гулкость; давит не глубже
+   18 дБ — так голос не глухой), эквалайзер (−1 дБ «бубнение» 300 Гц, +3 дБ верх от 5 кГц — возвращает согласные, которые
+   съедает шумодав), де-эссер, очень мягкая компрессия, громкость −14 LUFS (норма Instagram). Решения пользователя
+   08.10.2026 и 22.10.2026: «как из трубы», «глухой и с каким-то эхо» — недопустимо (замеры — в AUDIO_CHAIN).
 2. Находит паузы длиннее --min-pause секунд и вырезает их, оставляя по --keep секунд тишины по краям, чтобы речь
    не обрывалась. Паузы ищутся по звуку **после шумодава** (решение 14.10.2026: на уличной записи шум города прятал
    паузы — сырой звук не опускался ниже порога): кадры по 10 мс, порог — на 30 дБ тише громкой речи (90-й процентиль);
@@ -39,13 +40,17 @@ FPS = 30
 SR = 48000
 SPF = SR // FPS  # сэмплов на кадр (1600)
 DFN = pathlib.Path("/opt/dfn/bin/python")
-# после шумодава: эквалайзер «студийного» голоса, де-эссер, компрессия, громкость −14 LUFS
+DFN_LIMIT = 18  # дБ: глубже шумодав не давит (без предела голос глухой, 22.10.2026)
+# после шумодава: эквалайзер, де-эссер, очень мягкая компрессия, громкость −14 LUFS.
+# 22.10.2026 («голос глухой, как из трубы, и с каким-то эхо»), замер на уличном od-6: прежняя цепочка (−2 дБ 250 Гц,
+# −3 дБ 420 Гц, +2,5 дБ 3 кГц, компрессор −22 дБ 2,5:1 с подъёмом +3) давала «телефонную» середину и поднимала хвосты
+# слов — отражения улицы — на 3,2 дБ (эхо). Эта цепочка: хвосты как в исходнике (−9,2 дБ против −8,8), тембр речи
+# в пределах ±1 дБ от исходника, верх от 5 кГц возвращает то, что съел шумодав (−2,5 дБ на согласных).
 AUDIO_CHAIN = (
-    "highpass=f=75,"
-    "equalizer=f=250:t=q:w=1.0:g=-2,equalizer=f=420:t=q:w=1.2:g=-3,"
-    "equalizer=f=3000:t=q:w=1.0:g=2.5,highshelf=f=8000:g=2,"
-    "deesser=i=0.35,"
-    "acompressor=threshold=-22dB:ratio=2.5:attack=8:release=160:makeup=3"
+    "highpass=f=70,"
+    "equalizer=f=300:t=q:w=1.0:g=-1,highshelf=f=5000:g=3,"
+    "deesser=i=0.3,"
+    "acompressor=threshold=-14dB:ratio=1.8:attack=20:release=300:makeup=1"
 )  # громкость −14 LUFS — отдельным шагом: замер + усиление + лимитер с компенсацией задержки (звук не сдвигается)
 
 
@@ -93,19 +98,22 @@ def clean_audio(src, work, no_denoise=False):
     # звук выравнивается по картинке (avsync.py): кэш, снятый до 15.10.2026 без сдвига, у такого исходника пересчитывается
     off = av_offset(src)
     mark = work / f"{src.stem}.clean.json"
-    synced = mark.exists() and abs(json.loads(mark.read_text()).get("offset", 0) - off) < 0.0005
-    if clean.exists() and clean.stat().st_mtime >= src.stat().st_mtime and (synced or abs(off) < 0.0005):
+    info = json.loads(mark.read_text()) if mark.exists() else {}
+    synced = mark.exists() and abs(info.get("offset", 0) - off) < 0.0005
+    # кэш до 22.10.2026 — шумодав без предела (глухой голос): пересчитывается
+    same = info.get("limit") == DFN_LIMIT or no_denoise or not DFN.exists()
+    if clean.exists() and clean.stat().st_mtime >= src.stat().st_mtime and (synced or abs(off) < 0.0005) and same:
         return clean
     if abs(off) >= 0.0005:
         print(f"  звук в исходнике начинается на {off:+.3f} с относительно картинки — выравниваю")
     run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(src), *extract_args(src), "-ac", "1", "-ar", str(SR), str(full)])
     if DFN.exists() and not no_denoise:
-        run([str(DFN), str(pathlib.Path(__file__).with_name("denoise.py")), str(full), str(clean)])
+        run([str(DFN), str(pathlib.Path(__file__).with_name("denoise.py")), str(full), str(clean), "--limit", str(DFN_LIMIT)])
         full.unlink()
     else:
         print("! шумодав DeepFilterNet не установлен (bash scripts/setup.sh) — звук без него")
         full.rename(clean)
-    mark.write_text(json.dumps({"offset": off}))
+    mark.write_text(json.dumps({"offset": off, "limit": DFN_LIMIT}))
     return clean
 
 
