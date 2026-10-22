@@ -148,6 +148,9 @@ def matte_ranges(props, total: float) -> str:
     for s in props.get("speaker", []) or []:
         if s.get("style") == "contour":
             rs.append((s["at"], s["until"]))
+    for x in props.get("texts", []) or []:
+        if (x.get("plane") or "behind") == "behind":
+            rs.append((x["at"], x["until"]))
     rs = sorted((max(0, a - 0.4), min(total, b + 0.4)) for a, b in rs if b > a)
     merged = []
     for a, b in rs:
