@@ -67,6 +67,8 @@ fi
 echo "[3/4] Приложение «$NAME» в ~/Applications"
 APP="$HOME/Applications/$NAME.app"
 pkill -f "$APP/Contents/Resources/montazh_window.py" 2>/dev/null || true
+# старое окно Монтажной (Chrome с её профилем) тоже закрываем: без сервера оно показывает «не удаётся получить доступ»
+pkill -f "user-data-dir=$SUPPORT/browser" 2>/dev/null || true
 rm -rf "$APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources" "$HOME/Library/Logs"
 cp -R "$PACK/." "$APP/Contents/Resources/"

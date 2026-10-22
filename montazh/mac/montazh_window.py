@@ -37,6 +37,11 @@ def chromium() -> str | None:
     return None
 
 
+def window_alive(profile: str) -> bool:
+    """Открыто ли ещё окно Монтажной (Chrome с нашим профилем)."""
+    return subprocess.run(["pgrep", "-f", f"user-data-dir={profile}"], capture_output=True).returncode == 0
+
+
 def main():
     url = montazh_server.serve(os.path.join(HERE, "web"), PORT)
     exe = chromium()
@@ -47,6 +52,12 @@ def main():
         os.makedirs(profile, exist_ok=True)
         subprocess.run([exe, f"--app={url}", f"--user-data-dir={profile}", "--no-first-run", "--no-default-browser-check",
                         "--window-size=1480,940", "--autoplay-policy=no-user-gesture-required"])
+        # если окно Монтажной уже было открыто, Chrome передаёт ему адрес и сразу выходит — сервер при этом
+        # должен жить дальше (иначе в окне ERR_CONNECTION_REFUSED): ждём, пока закроются все окна с нашим профилем
+        time.sleep(2)
+        while window_alive(profile):
+            time.sleep(2)
+        log("окно закрыто — выхожу")
         os._exit(0)
     try:
         import webview
