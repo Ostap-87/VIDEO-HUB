@@ -56,6 +56,13 @@ npm run auto -- --name 2026-10-09-avto --render                   # Reels + Stor
 Скриншоты маршрута экспедиции: `npm run route -- /expeditions/<slug> ../source-videos/сайт/маршруты/<slug> day`.
 Установка всего нужного: `npm run setup` (в облаке Claude запускается сама при старте сессии).
 
+## Монтажная: монтаж в окне с мгновенным предпросмотром
+
+Приложение `../montazh/` (Mac и браузер): сырое видео → текст и субтитры → чистый звук → цвет → эффекты по
+секундам и заметки → задание для движка. Предпросмотр — этот же шаблон `TalkReelPro` в Remotion Player.
+Как установить и как устроено — `../montazh/README.md`. Поля шаблона для него: `grade` (цветокоррекция, CSS filter),
+`audioSrc` (отдельный звук), `cutoutSrc: ""` (вырезки ещё нет).
+
 ## Второй бренд: Aura Robotics
 
 Тот же шаблон `TalkReelPro`, стиль сайта aura-robotics.ru: в props `"brand": "aura"` (или `npm run auto -- <ссылка> --theme aura`).

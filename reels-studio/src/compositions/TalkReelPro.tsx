@@ -203,6 +203,11 @@ export const talkReelProSchema = z.object({
   episode: z.object({n: z.number(), total: z.number(), title: z.string(), next: z.string().optional(), nextN: z.number().optional()}).optional(),
   // 3d — субтитры объёмными буквами в перспективе (как 3D scroller из референса); flat — обычные
   captionStyle: z.enum(["flat", "3d"]).optional(),
+  // цветокоррекция кадра спикера и перебивок: CSS filter («brightness(1.05) saturate(1.2)…»); её выбирают в Монтажной
+  // (montazh/) по кадрам ролика — предпросмотр и рендер одинаковые
+  grade: z.string().optional(),
+  // отдельный звук вместо звука mediaSrc (Монтажная: «чистый голос» для предпросмотра, итог движка)
+  audioSrc: z.string().optional(),
   // спокойные субтитры (решение пользователя 15.10.2026 по «Автозаводам»: «текст скачет»): всегда на одной высоте
   // captionTop (не переезжают при панелях городов, чек-листах, клипах), страница проявляется без «прыжка» масштаба
   captionFixed: z.boolean().optional(),
@@ -851,7 +856,7 @@ const ZoomedVideo: React.FC<{
         t >= fl.at - 0.05 && t <= fl.until + 0.05 ? (
           <Sequence key={`bgf-${i}`} from={Math.round(fl.at * fps)} durationInFrames={Math.round((fl.until - fl.at) * fps) + 2} layout="none">
             <WavingFlag3D src={fl.src} at={fl.at} until={fl.until} />
-            <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={{...videoStyle, filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.4))"}} />
+            {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={{...videoStyle, filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.4))"}} /> : null}
           </Sequence>
         ) : null,
       )}
@@ -860,17 +865,17 @@ const ZoomedVideo: React.FC<{
         !b && t >= h.at - 0.05 && t <= h.until + 0.05 ? (
           <React.Fragment key={`hook-${i}`}>
             <HookTitle {...h} />
-            <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} />
+            {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
           </React.Fragment>
         ) : null,
       )}
       {stockDrop && !b && t >= stockDrop.at - 0.1 && t <= stockDrop.until + 0.1 ? (
         <>
           <StockChart drop={stockDrop} t={t} />
-          <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} />
+          {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
         </>
       ) : null}
-      {b && (b.mode === "pip" || b.mode === "screen") ? (
+      {b && (b.mode === "pip" || b.mode === "screen" || !cutoutSrc) ? (
         // pip — спикер уезжает карточкой в правый нижний угол; screen — в большой экран по центру; картинка — на весь кадр
         <>
           <AbsoluteFill style={imgStyle}>
@@ -1640,7 +1645,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
   return (
     <BrandCtx.Provider value={brand}>
     <AbsoluteFill style={{backgroundColor: "#0B0D14"}}>
-      <Audio src={staticFile(p.mediaSrc)} />
+      <Audio src={staticFile(p.audioSrc || p.mediaSrc)} />
       {p.music ? (
         <Audio
           src={staticFile(p.music.src)}
@@ -1664,7 +1669,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
 
       {/* подача drop: под карточкой спикера — фон «кость» со ссылками на каналы и сайты */}
       <DropBackdrop screens={screens} links={p.links} />
-      <AbsoluteFill style={{translate: `0px ${speakerShift(screens, frame / fps)}px`, ...speakerCardStyle(screens, frame / fps, p.focus), filter: bwFilter(p.fx, frame / fps)}}>
+      <AbsoluteFill style={{translate: `0px ${speakerShift(screens, frame / fps)}px`, ...speakerCardStyle(screens, frame / fps, p.focus), filter: [p.grade, bwFilter(p.fx, frame / fps)].filter(Boolean).join(" ") || undefined}}>
       <ZoomedVideo
         src={p.mediaSrc}
         cutoutSrc={p.cutoutSrc}

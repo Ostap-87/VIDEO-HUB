@@ -1,0 +1,77 @@
+name: Монтажная — сборка
+
+# Веб-сборка Монтажной (montazh/): ветка montazh-dist для Mac (перезаписывается каждой сборкой: web/, установщик,
+# окно и сервер) и та же сборка на GitHub Pages для работы в браузере. На Mac её скачивают архивом с
+# codeload.github.com (raw.githubusercontent.com в части сетей России закрыт).
+on:
+  push:
+    branches: [main]
+    paths: ['montazh/**', 'reels-studio/src/**', '.github/workflows/montazh.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: montazh
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Звуки шаблона из LFS (только они — трафик LFS почти не тратится)
+        run: git lfs pull --include="source-videos/2026-10-07-byt-tehnika/sfx/*"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: reels-studio/package-lock.json
+
+      - name: Зависимости reels-studio
+        working-directory: reels-studio
+        run: npm ci --ignore-scripts
+
+      - name: Сборка
+        run: node montazh/build.mjs --out pack/web
+
+      - name: Ветка montazh-dist
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp montazh/mac/install_mac.command montazh/mac/montazh_window.py montazh/mac/montazh_server.py montazh/mac/AppIcon.icns pack/
+          cd pack
+          git init -q -b montazh-dist
+          git add -A
+          git -c user.name="github-actions" -c user.email="github-actions@users.noreply.github.com" \
+            commit -q -m "Монтажная из ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" montazh-dist
+          {
+            echo "### Монтажная собрана (ветка montazh-dist)"
+            echo "Установить или обновить на Mac — в Терминале:"
+            echo '```'
+            echo "D=\$(mktemp -d) && curl -fL https://codeload.github.com/${{ github.repository }}/tar.gz/refs/heads/montazh-dist | tar -xzf - -C \"\$D\" --strip-components=1 && bash \"\$D/install_mac.command\""
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: pack/web
+
+  pages:
+    # браузерная версия; если GitHub Pages в репозитории не включён (Settings → Pages → Source: GitHub Actions),
+    # шаг падает, а сборка для Mac всё равно готова
+    needs: build
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

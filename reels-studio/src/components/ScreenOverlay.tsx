@@ -173,7 +173,7 @@ export const ScreenPanel: React.FC<{s: ScreenItem; cutoutSrc: string}> = ({s, cu
       </AbsoluteFill>
       {/* спикер: вырезанный, уменьшается к правому нижнему углу (ступни — низ кадра) */}
       <AbsoluteFill style={{scale: String(small), transformOrigin: "86% 100%", filter: od ? "drop-shadow(10px 10px 0 rgba(25,25,34,0.9))" : "drop-shadow(0 20px 40px rgba(0,0,0,0.45))", opacity: k > 0.02 ? 1 : 0}}>
-        <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted trimBefore={Math.round(s.at * fps)} style={{width: "100%", height: "100%", objectFit: "cover"}} />
+        {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted trimBefore={Math.round(s.at * fps)} style={{width: "100%", height: "100%", objectFit: "cover"}} /> : null}
       </AbsoluteFill>
     </AbsoluteFill>
   );
