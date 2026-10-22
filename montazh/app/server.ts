@@ -65,3 +65,12 @@ export type JobState = {
   seconds?: number;
 };
 export const jobState = (jid: string): Promise<JobState> => fetch(`api/job/${jid}`).then((r) => r.json());
+
+// ссылка наружу: на Mac — в обычном браузере (у окна Монтажной свой профиль Chrome без входа в GitHub)
+export async function openOutside(url: string) {
+  if (await hasServer()) {
+    const r = await fetch("api/open", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({url})}).catch(() => null);
+    if (r?.ok) return;
+  }
+  window.open(url, "_blank", "noopener");
+}

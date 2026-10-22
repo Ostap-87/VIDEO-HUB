@@ -55,9 +55,10 @@
 
 ### Ключ GitHub для «Сделать ролик» (один раз)
 
-github.com → Settings → Developer settings → **Fine-grained token**: имя «Монтажная», срок 1 год, Repository access →
-Only select → `Ostap-87/VIDEO-HUB`, Permissions → Contents → **Read and write** → Generate → вставить в окне на шаге
-«Готово». Ключ хранится только на Mac (`~/Library/Application Support/Montazh/github.json`, доступ 600), в окно не
+Ссылка с уже заполненными полями (имя, срок 366 дней, владелец Ostap-87, Contents: Read and write):
+https://github.com/settings/personal-access-tokens/new?name=%D0%9C%D0%BE%D0%BD%D1%82%D0%B0%D0%B6%D0%BD%D0%B0%D1%8F&target_name=Ostap-87&expires_in=366&contents=write
+— в форме остаётся выбрать Repository access → Only select repositories → `VIDEO-HUB`, нажать Generate token и вставить
+ключ в окне на шаге «Готово» (та же ссылка — в самом окне). Ключ хранится только на Mac (`~/Library/Application Support/Montazh/github.json`, доступ 600), в окно не
 возвращается; в чат его не присылать.
 
 Проекты хранятся в окне приложения (IndexedDB), никуда не уходят, пока их не отправить в работу.

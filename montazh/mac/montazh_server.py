@@ -418,6 +418,24 @@ class Handler(SimpleHTTPRequestHandler):
 
     def do_POST(self):
         n = int(self.headers.get("Content-Length") or 0)
+        # только JSON: чужая страница в браузере не может прислать его без предзапроса, а предзапросы сервер не принимает —
+        # так сайты из интернета не управляют Монтажной на этом Mac
+        if not (self.headers.get("Content-Type") or "").startswith("application/json"):
+            return self.json(415, {"detail": "нужен JSON"})
+        if self.path == "/api/open":
+            # ссылка из окна — в обычном браузере пользователя (там он уже вошёл в GitHub), а не в профиле окна
+            try:
+                url = (json.loads(self.rfile.read(n) or b"{}").get("url") or "").strip()
+            except ValueError:
+                url = ""
+            if not re.match(r"^https://[A-Za-z0-9.-]+\.[a-z]{2,}(/|$)", url):
+                return self.json(400, {"detail": "нужна ссылка https://"})
+            opener = ["open", url] if sys.platform == "darwin" else ["xdg-open", url]
+            try:
+                subprocess.Popen(opener, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            except OSError:
+                return self.json(500, {"detail": "не открылось"})
+            return self.json(200, {"ok": True})
         if self.path == "/api/github":
             try:
                 tok = (json.loads(self.rfile.read(n) or b"{}").get("token") or "").strip()

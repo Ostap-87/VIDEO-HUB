@@ -11,7 +11,7 @@ import {advise, PALETTES, SWATCHES} from "./palettes";
 import {decodeAudio, fmtTime, frames, peaks, probe} from "./media";
 import {buildProps, durationFrames, leadFrames, LOCAL} from "./props";
 import {autoPlace, hfName, loadModel, phrases, search, thumb, usedInProject, type Found} from "./images";
-import {fetchLink, forgetToken, githubState, hasServer, jobState, saveToken, sendFile, submitJob, type GithubState, type JobState} from "./server";
+import {fetchLink, forgetToken, githubState, hasServer, jobState, openOutside, saveToken, sendFile, submitJob, type GithubState, type JobState} from "./server";
 import {deleteProject, getFile, listProjects, putFile, putProject} from "./store";
 import {parseWordsFile, transcribe, type AsrModel} from "./transcribe";
 import {newId, nowIso, type Brand, type EffectItem, type Project} from "./types";
@@ -1529,7 +1529,15 @@ const References: React.FC = () => {
           ) : null}
           {r.note ? <span className="muted">{r.note}</span> : null}
           {r.video ? (
-            <a href={r.video} target="_blank" rel="noreferrer">
+            <a
+              href={r.video}
+              target="_blank"
+              rel="noreferrer"
+              onClick={(e) => {
+                e.preventDefault();
+                openOutside(r.video!);
+              }}
+            >
               смотреть
             </a>
           ) : null}
@@ -1545,7 +1553,12 @@ const References: React.FC = () => {
 
 // ---------------------------------------------------------------- 7. Готово
 // ---------------------------------------------------------------- «Сделать ролик» в облаке
-const TOKEN_URL = "https://github.com/settings/personal-access-tokens/new";
+// форма ключа на GitHub с заполненными полями (имя, срок 366 дней, владелец Ostap-87, Contents: Read and write) —
+// параметры адреса из документации GitHub «Pre-filling fine-grained personal access token details using URL parameters»;
+// сам репозиторий ссылкой выбрать нельзя — это один клик в форме
+const TOKEN_URL =
+  "https://github.com/settings/personal-access-tokens/new?" +
+  new URLSearchParams({name: "Монтажная", description: "Монтажная: видео и задания рендера в VIDEO-HUB", target_name: "Ostap-87", expires_in: "366", contents: "write"}).toString();
 const Cloud: React.FC<{p: Project; up: StepCtx["up"]; props: Record<string, any>}> = ({p, up, props}) => {
   const [server, setServer] = useState<boolean | null>(null);
   const [gh, setGh] = useState<GithubState | null>(null);
@@ -1632,15 +1645,25 @@ const Cloud: React.FC<{p: Project; up: StepCtx["up"]; props: Record<string, any>
           <ol className="steps-ol">
             <li>
               Откройте{" "}
-              <a href={TOKEN_URL} target="_blank" rel="noreferrer">
-                github.com → Fine-grained token
+              <a
+                href={TOKEN_URL}
+                target="_blank"
+                rel="noreferrer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  openOutside(TOKEN_URL);
+                }}
+              >
+                эту ссылку на GitHub
               </a>{" "}
-              (вход в ваш аккаунт GitHub).
+              — имя, срок и права уже заполнены (если попросит — войдите в аккаунт).
             </li>
-            <li>Token name — «Монтажная», Expiration — 1 год.</li>
-            <li>Repository access → Only select repositories → {gh.repo}.</li>
-            <li>Permissions → Repository permissions → Contents → Read and write.</li>
-            <li>Generate token → скопируйте и вставьте сюда.</li>
+            <li>
+              В «Repository access» выберите <b>Only select repositories</b> → <b>{gh.repo.split("/")[1]}</b>.
+            </li>
+            <li>
+              Внизу нажмите <b>Generate token</b>, скопируйте ключ (начинается с github_pat_) и вставьте сюда.
+            </li>
           </ol>
           <p className="muted">Ключ хранится только на этом Mac и в окно больше не показывается. В чат его не присылайте.</p>
           <div className="row">
