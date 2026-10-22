@@ -331,7 +331,7 @@ const TextOne: React.FC<{it: TextItem}> = ({it}) => {
   const widthK = {grotesk: 0.48, display: 0.78, serif: 0.52, hand: 0.42, mono: 0.62, body: 0.56}[it.font ?? "grotesk"];
   const longest = Math.max(...text.split("\n").map((l) => l.length), 1);
   // поворот в перспективе раздувает ближний край — запас тем больше, чем сильнее поворот
-  const room = 2 * Math.min(it.x ?? 540, 1080 - (it.x ?? 540)) + 80 - 5 * Math.abs(it.ry ?? 0);
+  const room = 2 * Math.min(it.x ?? 540, 1080 - (it.x ?? 540)) + 80 - 8 * Math.abs(it.ry ?? 0);
   const size = Math.min(it.size ?? 160, room / (longest * widthK));
   if (anim === "type") text = text.slice(0, Math.ceil(interpolate(t, [0, Math.min(dur * 0.6, 0.06 * text.length + 0.2)], [0, text.length], clamp)));
   const ry = (it.ry ?? 0) + (anim === "swing" ? (1 - k) * 80 : 0);

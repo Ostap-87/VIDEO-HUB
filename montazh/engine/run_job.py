@@ -266,6 +266,17 @@ def main():
             site["at"] = round(max(0, total - 3.2), 3)
         props["site"] = site
 
+        # линия глаз: пользователь не отметил глаза в окне (стоит значение по умолчанию) — находим сами (npm run grid)
+        fc = props.get("focus") or {}
+        if opts.get("autoFocus") or (fc.get("x") == 540 and fc.get("y") in (700, 900)):
+            try:
+                run(["python3", "scripts/grid.py", cut_mp4])
+                lay = json.loads(cut_mp4.with_suffix(".layout.json").read_text())
+                if lay.get("eyeX") and lay.get("eyeY"):
+                    props["focus"] = {"x": lay["eyeX"], "y": lay["eyeY"]}
+            except (subprocess.CalledProcessError, OSError, ValueError):
+                print("  ! линия глаз не нашлась — оставляю как в окне", flush=True)
+
         # 4. вырезка спикера
         ranges = matte_ranges(props, total)
         if ranges:
