@@ -22,6 +22,8 @@ import {BRANDS, BrandCtx, useBrand} from "../brand";
 import {AuraBadge} from "../components/AuraBadge";
 import {AuraMascot, type GestureKind, type MascotPlan, type MascotStay} from "../components/AuraMascot";
 import {GttIntro} from "./GttIntro";
+import {Emojis} from "../components/Emojis";
+import {brandWithPalette, LIFT_LISTS, Lists, panelPush, Panels, SpeakerStage, speakerActive, textBehindActive, Texts3D} from "../components/MontazhFx";
 import {OdBadge} from "../components/OdBadge";
 import {LinkArrow, SocialCard, SocialGrid} from "../components/SocialCard";
 import {activeScreen, captionTopFor, chainScreens, DropBackdrop, DropFrame, OD_LINKS, ScreenPanel, speakerCardStyle, speakerShift} from "../components/ScreenOverlay";
@@ -139,12 +141,97 @@ export const talkReelProSchema = z.object({
   badge: z.boolean().optional(),
   // большая стрелка вверх с подписью («Ссылка выше») — справа сверху, на словах «ссылочка будет выше»
   arrows: z.array(z.object({at: z.number(), until: z.number(), text: z.string()})).optional(),
+  // живые эмодзи (components/Emojis.tsx): src — интернет-материалы/эмодзи/<название>.webp, anim — pop / float / shake / burst
+  emojis: z
+    .array(
+      z.object({
+        at: z.number(),
+        until: z.number(),
+        src: z.string(),
+        x: z.number().optional(),
+        y: z.number().optional(),
+        size: z.number().optional(),
+        anim: z.enum(["pop", "float", "shake", "burst"]).optional(),
+      }),
+    )
+    .optional(),
+  // Приёмы Монтажной (решение пользователя 22.10.2026, components/MontazhFx.tsx):
+  // speaker — спикер уменьшается в угол: рамка, круг или вырезка по контуру (нужен cutoutSrc), фон — размытие/бренд/картинка;
+  speaker: z
+    .array(
+      z.object({
+        at: z.number(),
+        until: z.number(),
+        corner: z.enum(["tl", "tr", "bl", "br", "top", "bottom", "center", "left", "right"]).optional(),
+        scale: z.number().optional(),
+        style: z.enum(["frame", "round", "contour"]).optional(),
+        bg: z.enum(["blur", "brand", "dark", "image"]).optional(),
+        image: z.string().optional(),
+        tilt: z.number().optional(),
+      }),
+    )
+    .optional(),
+  // panels — выдвижные экраны с видео или фото: сверху, снизу, с боков или из углов; спикер отодвигается (push)
+  panels: z
+    .array(
+      z.object({
+        at: z.number(),
+        until: z.number(),
+        src: z.string(),
+        from: z.enum(["top", "bottom", "left", "right", "tl", "tr", "bl", "br"]).optional(),
+        size: z.number().optional(),
+        title: z.string().optional(),
+        push: z.boolean().optional(),
+        fit: z.enum(["cover", "contain"]).optional(),
+        from_s: z.number().optional(),
+      }),
+    )
+    .optional(),
+  // texts — тексты в 3D: положение, размер, повороты по трём осям, шрифт, цвета; plane behind — за спикером (нужен cutoutSrc)
+  texts: z
+    .array(
+      z.object({
+        at: z.number(),
+        until: z.number(),
+        text: z.string(),
+        x: z.number().optional(),
+        y: z.number().optional(),
+        size: z.number().optional(),
+        rx: z.number().optional(),
+        ry: z.number().optional(),
+        rz: z.number().optional(),
+        color: z.string().optional(),
+        color2: z.string().optional(),
+        font: z.enum(["grotesk", "display", "serif", "hand", "mono", "body"]).optional(),
+        plane: z.enum(["behind", "front"]).optional(),
+        anim: z.enum(["rise", "fly", "type", "swing", "fade"]).optional(),
+        depth: z.number().optional(),
+      }),
+    )
+    .optional(),
+  // lists — перечисления в разных подачах: флипчарт, карточки, стикеры, крупные номера, «пилюли», печатная машинка
+  lists: z
+    .array(
+      z.object({
+        at: z.number(),
+        until: z.number(),
+        style: z.enum(["flip", "cards", "stickers", "numbers", "bubbles", "typewriter"]),
+        title: z.string().optional(),
+        items: z.array(z.object({text: z.string(), at: z.number()})),
+      }),
+    )
+    .optional(),
+  // palette — цвета текста на весь ролик (субтитры, акцент, текст на акценте); paletteAt — смена цветов на отрезке
+  palette: z.object({text: z.string().optional(), accent: z.string().optional(), ink: z.string().optional()}).optional(),
+  paletteAt: z
+    .array(z.object({at: z.number(), until: z.number(), text: z.string().optional(), accent: z.string().optional(), ink: z.string().optional()}))
+    .optional(),
   // второй ракурс (вторая камера, scripts/angle_b.py): в отрезках shots кадр переключается на боковой план
   angleB: z.object({src: z.string(), shots: z.array(z.object({at: z.number(), until: z.number()}))}).optional(),
   // Зумы на ключевых словах: punch — резкий наезд за 3 кадра (со звуком whip), push — плавный медленный наезд.
   // Держится hold секунд, потом плавно уходит. Между склейками уровни зума тоже чередуются (часть — плавно).
   zooms: z
-    .array(z.object({at: z.number(), kind: z.enum(["punch", "push"]), amount: z.number(), hold: z.number()}))
+    .array(z.object({at: z.number(), kind: z.enum(["punch", "push", "pull"]), amount: z.number(), hold: z.number()}))
     .default([]),
   sfx: z.object({pop: z.string(), whoosh: z.string(), whip: z.string().optional(), click: z.string().optional()}),
   // Фоновая музыка (только треки с коммерческой лицензией); volume ~0.1 под голосом, громче в финале
@@ -306,7 +393,7 @@ const BigCaptions: React.FC<{
         fontWeight: B.captionWeight,
         fontSize: size,
         lineHeight: 1.18,
-        color: dark ? theme.colors.text : onLight ? B.accentInk : "#FFFFFF",
+        color: dark ? theme.colors.text : onLight ? B.accentInk : (B.captionText ?? "#FFFFFF"),
         textShadow: dark || onLight ? "none" : B.captionShadow ?? shadow,
         // тёмная обводка, чтобы белые субтитры читались и на светлых картинках-перебивках (od — без обводки, жёсткая тень)
         WebkitTextStroke: dark || boxed || B.captionShadow ? undefined : `10px ${B.captionStroke}`,
@@ -334,7 +421,7 @@ const BigCaptions: React.FC<{
             <span key={i}>
               <span
                 style={{
-                  color: inked || onLight ? B.accentInk : "#FFFFFF",
+                  color: inked || onLight ? B.accentInk : (B.captionText ?? "#FFFFFF"),
                   WebkitTextStroke: inked || boxed ? "0px" : undefined,
                   textShadow: inked ? "none" : undefined,
                   backgroundImage: `linear-gradient(${B.accent}, ${B.accent})`,
@@ -353,7 +440,7 @@ const BigCaptions: React.FC<{
           );
         }
         return (
-          <span key={i} style={{color: hot ? (dark ? BLUE : onLight ? hotOnLight : B.accent) : dark ? theme.colors.text : onLight ? B.accentInk : "#FFFFFF"}}>
+          <span key={i} style={{color: hot ? (dark ? BLUE : onLight ? hotOnLight : B.accent) : dark ? theme.colors.text : onLight ? B.accentInk : (B.captionText ?? "#FFFFFF")}}>
             {w.text}{i < page.length - 1 ? " " : ""}
           </span>
         );
@@ -765,6 +852,13 @@ const zoomAt = (allCuts: number[], zooms: TalkReelProProps["zooms"], t: number, 
   const drift = interpolate(t - segStart, [0, 6], [0, 0.03], {extrapolateRight: "clamp"});
   let extra = 0;
   for (const z of zooms) {
+    if (z.kind === "pull") {
+      // отдаление (решение пользователя 22.10.2026): кадр сразу крупно, потом плавно отъезжает к общему плану за hold
+      if (t < z.at || t > z.at + z.hold) continue;
+      const k = interpolate(t, [z.at, z.at + z.hold], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.bezier(0.33, 0, 0.2, 1)});
+      extra = Math.max(extra, z.amount * k);
+      continue;
+    }
     if (t < z.at || t > z.at + z.hold + 0.6) continue;
     const attack = z.kind === "punch" ? 0.1 : 1.4;
     const inP = interpolate(t, [z.at, z.at + attack], [0, 1], {
@@ -798,11 +892,15 @@ const ZoomedVideo: React.FC<{
   angleB?: TalkReelProProps["angleB"];
   clips?: TalkReelProProps["clips"];
   hooks?: HookItem[];
-}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists, bgFlags, angleB, clips, hooks}) => {
+  speaker?: TalkReelProProps["speaker"];
+  texts?: TalkReelProProps["texts"];
+  stories?: boolean;
+}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists, bgFlags, angleB, clips, hooks, speaker, texts, stories = false}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
   const lift = Math.max(cityAmount(cities, t), listAmount(checklists, t), clipAmount(clips ?? [], t)) * 330; // лицо поднимается в верхнюю половину
+  const sp = speakerActive(speaker, t);
   const B = useBrand();
   const zoom = zoomAt(cuts, zooms, t, B.id === "aura" ? 4 : 0.7);
   const b = broll.find((x) => t >= x.at && t <= x.until) ?? broll.find((x) => t >= x.at - 0.5 && t <= x.until + 0.5);
@@ -869,6 +967,13 @@ const ZoomedVideo: React.FC<{
           </React.Fragment>
         ) : null,
       )}
+      {/* тексты в 3D за спикером: между видео и вырезкой (без вырезки — поверх спикера) */}
+      {!b && textBehindActive(texts, t) ? (
+        <>
+          <Texts3D items={texts} plane="behind" />
+          {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
+        </>
+      ) : null}
       {stockDrop && !b && t >= stockDrop.at - 0.1 && t <= stockDrop.until + 0.1 ? (
         <>
           <StockChart drop={stockDrop} t={t} />
@@ -930,6 +1035,8 @@ const ZoomedVideo: React.FC<{
           />
         </>
       ) : null}
+      {/* спикер в угол: рамка, круг или вырезка по контуру, фон — размытие, бренд или картинка */}
+      {sp ? <SpeakerStage s={sp.s} p={sp.p} video={src} cutout={cutoutSrc} focus={focus} zoom={zoom} stories={stories} /> : null}
       {/* затемнение сверху и снизу для читаемости логотипа и субтитров */}
       <AbsoluteFill
         style={{
@@ -1627,6 +1734,12 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
     {at: p.site.at, src: p.sfx.whoosh},
     ...(p.socials ?? []).flatMap((c) => [{at: c.at, src: p.sfx.whoosh}, ...(c.pressAt !== undefined ? [{at: c.pressAt, src: p.sfx.pop}] : [])]),
     ...(p.arrows ?? []).map((a) => ({at: a.at, src: p.sfx.pop})),
+    ...(p.emojis ?? []).map((e) => ({at: e.at, src: p.sfx.pop, volume: 0.3})),
+    ...(p.speaker ?? []).flatMap((x) => [{at: x.at, src: p.sfx.whoosh, volume: 0.28}, {at: x.until - 0.4, src: p.sfx.whoosh, volume: 0.2}]),
+    ...(p.panels ?? []).map((x) => ({at: x.at, src: p.sfx.whoosh, volume: 0.32})),
+    ...(p.texts ?? []).map((x) => ({at: x.at, src: p.sfx.whoosh, volume: 0.25})),
+    ...(p.lists ?? []).flatMap((l) => l.items.map((it) => ({at: it.at, src: p.sfx.click ?? p.sfx.pop, volume: 0.45}))),
+    ...p.zooms.filter((z) => z.kind === "pull").map((z) => ({at: z.at, src: p.sfx.whoosh, volume: 0.25})),
     // экран въезжает — «вжух»; смена страницы встык — тихий щелчок
     ...screens.map((sc) => (sc.joinIn ? {at: sc.at, src: p.sfx.pop, volume: 0.25} : {at: sc.at - 0.1, src: p.sfx.whoosh, volume: 0.35})),
     ...(p.socialGrid ?? []).flatMap((g) => g.items.map((_, i) => ({at: g.at + (8 + i * 4) / 30, src: p.sfx.pop, volume: 0.25}))),
@@ -1640,7 +1753,13 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
     ...(p.episode ? [{at: p.speechSeconds, src: p.sfx.whoosh, volume: 0.3}] : []),
   ];
 
-  const brand = BRANDS[p.brand ?? "gtt"];
+  const tNow = frame / fps;
+  const palNow = (p.paletteAt ?? []).find((x) => tNow >= x.at && tNow <= x.until);
+  const brand = brandWithPalette(brandWithPalette(BRANDS[p.brand ?? "gtt"], p.palette), palNow);
+  const stories = p.format === "stories";
+  const push = panelPush(p.panels, tNow, stories);
+  // флипчарт и «печатная машинка» поднимают спикера, как планшет с галочками
+  const liftLists = [...p.checklists, ...((p.lists ?? []).filter((l) => LIFT_LISTS.has(l.style)) as unknown as TalkReelProProps["checklists"])];
   const plan = React.useMemo(() => (brand.id === "aura" ? auraPlan(p, durationInFrames / fps) : null), [brand.id, p, durationInFrames, fps]);
   return (
     <BrandCtx.Provider value={brand}>
@@ -1669,7 +1788,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
 
       {/* подача drop: под карточкой спикера — фон «кость» со ссылками на каналы и сайты */}
       <DropBackdrop screens={screens} links={p.links} />
-      <AbsoluteFill style={{translate: `0px ${speakerShift(screens, frame / fps)}px`, ...speakerCardStyle(screens, frame / fps, p.focus), filter: [p.grade, bwFilter(p.fx, frame / fps)].filter(Boolean).join(" ") || undefined}}>
+      <AbsoluteFill style={{translate: `${push.x}px ${speakerShift(screens, frame / fps) + push.y}px`, ...speakerCardStyle(screens, frame / fps, p.focus), filter: [p.grade, bwFilter(p.fx, frame / fps)].filter(Boolean).join(" ") || undefined}}>
       <ZoomedVideo
         src={p.mediaSrc}
         cutoutSrc={p.cutoutSrc}
@@ -1679,17 +1798,23 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
         zooms={p.zooms}
         stockDrop={p.stockDrop}
         focus={p.focus}
-        checklists={p.checklists}
+        checklists={liftLists}
         bgFlags={p.bgFlags}
         angleB={p.angleB}
         clips={p.clips}
         hooks={p.hooks}
+        speaker={p.speaker}
+        texts={p.texts}
+        stories={stories}
       />
       </AbsoluteFill>
       <DropFrame screens={screens} />
       <CityPanel cities={p.cities} />
       {p.clips ? <ClipPanel clips={p.clips} /> : null}
       <ChecklistPanel lists={p.checklists} />
+      <Lists items={p.lists} stories={stories} />
+      <Panels items={p.panels} stories={stories} />
+      <Texts3D items={p.texts} plane="front" />
 
       {/* в Stories верх занят полосками и аватаром: верхняя полоса плашек опускается (TopShift) */}
       <TopShift.Provider value={p.format === "stories" ? 130 : 0}>
@@ -1735,6 +1860,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
           </div>
         </Sequence>
       ))}
+      <Emojis items={(p.emojis ?? []).map((e) => ({...e, y: (e.y ?? 470) + (p.format === "stories" ? 130 : 0)}))} />
       </TopShift.Provider>
 
       {screens.map((sc, i) => (
@@ -1759,7 +1885,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
           <FlagArc items={fl.items} at={fl.at} until={fl.until} center={p.focus} />
         </Sequence>
       ))}
-      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={p.checklists} broll={p.broll} clips={p.clips} top={p.captionTop} size={p.captionSize} screens={screens} style3d={p.captionStyle === "3d"} fixed={p.captionFixed} />
+      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={liftLists} broll={p.broll} clips={[...(p.clips ?? []), ...((p.panels ?? []).filter((x) => (x.from ?? "bottom") === "bottom") as unknown as NonNullable<TalkReelProProps["clips"]>)]} top={p.captionTop} size={p.captionSize} screens={screens} style3d={p.captionStyle === "3d"} fixed={p.captionFixed} />
       {brand.id === "aura" ? (
         // Aura: круглая печать крутится над головой спикера, по центру; в Stories — ниже полосок и аватара
         <AuraBadgeSlot {...p} />

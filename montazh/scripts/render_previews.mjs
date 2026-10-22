@@ -39,8 +39,31 @@ const PARAMS = {
   "stock-up": {label: "CHAGEE"},
   "stock-down": {label: "STARBUCKS"},
   arrow: {text: "Ссылка выше"},
+  "zoom-pull": {amount: "0.26"},
+  "emoji-pop": {emoji: "огонь"},
+  "emoji-float": {emoji: "сердце"},
+  "emoji-shake": {emoji: "взрыв-мозга"},
+  "emoji-burst": {emoji: "смех", spot: "top"},
+  "speaker-frame": {bg: "blur"},
+  "speaker-round": {bg: "blur"},
+  "speaker-contour": {bg: "brand"},
+  "panel-bottom": {title: "Чайная фабрика"},
+  "panel-top": {},
+  "panel-side": {from: "right"},
+  "panel-corner": {from: "tr"},
+  "text3d-wall": {text: "Китай"},
+  "text3d-floor": {text: "5 дней"},
+  "text3d-tilt": {text: "Чай / и кофе"},
+  "text3d-hand": {text: "вкусно!"},
+  "list-flip": {title: "Поездка", items: "Заводы / Встречи / Дегустации"},
+  "list-cards": {items: "Заводы / Встречи / Дегустации"},
+  "list-stickers": {items: "Заводы / Встречи / Дегустации"},
+  "list-numbers": {title: "Поездка", items: "Заводы / Встречи / Дегустации"},
+  "list-bubbles": {items: "Заводы / Встречи / Дегустации"},
+  "list-typewriter": {title: "Поездка", items: "Заводы / Встречи / Дегустации"},
+  "palette-at": {text: "#FFD92E", accent: "#FF4A1F", ink: "#FFFFFF"},
 };
-const LEN = {checklist: 2.4, "stock-up": 2.4, "stock-down": 2.4, "hook-wall": 2.2, "hook-mix": 2.2, "hook-words": 2.2, chip: 2.2};
+const LEN = {"list-flip": 2.4, "list-cards": 2.4, "list-stickers": 2.4, "list-numbers": 2.4, "list-bubbles": 2.4, "list-typewriter": 2.4, checklist: 2.4, "stock-up": 2.4, "stock-down": 2.4, "hook-wall": 2.2, "hook-mix": 2.2, "hook-words": 2.2, chip: 2.2};
 const SLOT = 3.6;
 const PRE = 0.25; // превью начинается чуть раньше эффекта
 const DUR = 2.0;
@@ -56,7 +79,7 @@ const props = {
   words,
   focus: {x: layout.eyeX ?? base.focus.x, y: layout.eyeY ?? base.focus.y},
   chips: [], logos: [], numbers: [], broll: [], checklists: [], cities: [], zooms: [], cuts: [],
-  stockDrop: undefined, hooks: [], fx: [], arrows: [],
+  stockDrop: undefined, hooks: [], fx: [], arrows: [], emojis: [], speaker: [], panels: [], texts: [], lists: [], paletteAt: [],
   bumper: false,
   music: undefined,
   site: {...base.site, at: 999},
@@ -68,7 +91,7 @@ let t = 1.0;
 let img = 0;
 for (const e of list) {
   const item = {id: e.id, effect: e.id, at: +t.toFixed(2), until: +(t + (LEN[e.id] ?? Math.min(e.len, 2.0))).toFixed(2), params: {...(PARAMS[e.id] ?? {})}};
-  if (e.fields.some((f) => f.kind === "image")) item.params.image = IMG[img++ % IMG.length];
+  if (e.fields.some((f) => f.kind === "image" || f.kind === "media")) item.params.image = IMG[img++ % IMG.length];
   e.apply(props, item, {words, image: (n) => n});
   slots.push({id: e.id, at: item.at, cutout: !!e.after});
   t += SLOT;

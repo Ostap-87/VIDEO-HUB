@@ -94,9 +94,18 @@ Stories-анонсы каруселей — `npm run announce` (`finished-videos
 (эффекты из библиотеки по секундам + заметки) → Библиотека (превью 1–2 с) → Готово (задание `.job.json`).
 Устройство и команды — `montazh/README.md`. Установка на Mac — ветка `montazh-dist` (Actions «Монтажная — сборка»):
 `D=$(mktemp -d) && curl -fL https://codeload.github.com/Ostap-87/VIDEO-HUB/tar.gz/refs/heads/montazh-dist | tar -xzf - -C "$D" --strip-components=1 && bash "$D/install_mac.command"`.
-Новый приём монтажа = эффект в `montazh/app/effects.ts` + превью (`node montazh/scripts/render_previews.mjs --only <id>`).
-Пришло задание (`.job.json`) или заметки из Монтажной — props из задания рендерятся `reels-studio` как обычно
-(после `npm run cut` / `grid` / `matte` по исходнику), заметки выполняются по секундам.
+Новый приём монтажа = эффект в `montazh/app/effects.ts` + превью (`node montazh/scripts/render_previews.mjs --only <id>`)
++ слова для строки команд (`montazh/app/commands.ts`).
+Решения пользователя 22.10.2026 («писать в моменте, какие эффекты нужны… смайлы, хуки, приближение и отдаление по команде…
+картинки на фоне по смыслу… скачивать готовое на компьютер… спикер в угол, в рамку или по контуру… экраны с разных сторон…
+тексты в разных плоскостях… разные перечисления… цвета шрифта с рекомендуемой палитрой»): строка команд и голос (🎤),
+картинки по смыслу (каталог Higgsfield, `montazh/library/images*`), эффекты «Спикер», «Экраны», «Текст в 3D», «Списки»,
+«Цвета текста», кнопка **«Сделать ролик»**: сервер Mac кладёт файлы в релиз `montazh-<id>` и коммитит
+`montazh/jobs/<id>.json` → GitHub Actions «Монтажная — рендер» (`montazh/engine/run_job.py`) → готовый ролик, копия для
+телефона и раскадровка в том же релизе, окно показывает и скачивает. Ключ GitHub пользователь вводит в окне (fine-grained,
+только VIDEO-HUB, Contents: Read and write), в чат — никогда. Рабочие файлы движка — `source-videos/montazh/` (вне git).
+Задание с заметками («Монтажная, задание <id>») — props и заметки в `montazh/jobs/<id>.json`, файлы — релиз `montazh-<id>`;
+заметки выполняю я, результат — в тот же релиз (или `finished-videos/`, если ролик идёт в публикацию).
 
 ## Сценарии роликов
 

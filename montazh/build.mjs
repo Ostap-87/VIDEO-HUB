@@ -1,6 +1,7 @@
 // Сборка Монтажной: node montazh/build.mjs [--out <папка>] [--watch]
 // Пакеты берутся из reels-studio/node_modules (React, @remotion/player, mediabunny) — свой npm install не нужен.
-// В dist/: index.html, app.js, app.css, vendor/ (шумодав RNNoise), library/previews/ (превью эффектов) и
+// В dist/: index.html, app.js, app.css, vendor/ (шумодав RNNoise), library/previews/ (превью эффектов),
+// library/images* (картинки по смыслу) и
 // assets/ — файлы, которые шаблону TalkReelPro нужны в предпросмотре (звуки, музыка, страницы сайта для финала).
 import {createRequire} from "node:module";
 import fs from "node:fs";
@@ -56,6 +57,9 @@ fs.mkdirSync(OUT, {recursive: true});
 for (const f of ["index.html", "app.css"]) copy(path.join(HERE, "app", f), path.join(OUT, f));
 copyDir(path.join(HERE, "app", "vendor"), path.join(OUT, "vendor"));
 const previews = copyDir(path.join(HERE, "library", "previews"), path.join(OUT, "library", "previews"));
+// картинки по смыслу: каталог, векторы описаний и миниатюры (scripts/build_images.py)
+for (const f of ["images.json", "images.emb"]) if (fs.existsSync(path.join(HERE, "library", f))) copy(path.join(HERE, "library", f), path.join(OUT, "library", f));
+const thumbs = copyDir(path.join(HERE, "library", "images"), path.join(OUT, "library", "images"));
 let missing = [];
 for (const a of await assetsList()) {
   const src = path.join(ROOT, a);
@@ -66,7 +70,7 @@ for (const a of await assetsList()) {
   copy(src, path.join(OUT, "assets", a));
 }
 if (missing.length) console.warn("! нет файлов шаблона (git lfs pull?):\n  " + missing.join("\n  "));
-console.log(`превью эффектов: ${previews}`);
+console.log(`превью эффектов: ${previews}, миниатюр картинок: ${thumbs}`);
 
 if (args.includes("--watch")) {
   const ctx = await esbuild.context(options);

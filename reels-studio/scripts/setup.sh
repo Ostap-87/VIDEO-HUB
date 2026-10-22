@@ -18,8 +18,8 @@ import cv2, onnxruntime, numpy, PIL, cairosvg
 assert int(cv2.__version__.split(".")[0]) < 5 and hasattr(cv2, "CascadeClassifier")
 PY
 
-# 3. Whisper (сборка ~3 мин + модель ~550 МБ)
-bash scripts/setup-whisper.sh
+# 3. Whisper (сборка ~3 мин + модель ~550 МБ); SKIP_WHISPER=1 — пропустить (движок Монтажной ставит его сам, если нужен)
+[ "${SKIP_WHISPER:-}" = 1 ] || bash scripts/setup-whisper.sh
 
 # 4. Модель вырезки спикера (Robust Video Matting, ~15 МБ)
 mkdir -p models

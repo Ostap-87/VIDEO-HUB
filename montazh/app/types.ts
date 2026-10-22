@@ -38,10 +38,12 @@ export type Project = {
   captions: {style: "flat" | "3d"; size: number; top: number};
   audio: {clean: boolean; music: string | null; musicVolume: number};
   grade: {preset: string; amount: number};
+  palette?: {preset: string; text?: string; accent?: string; ink?: string}; // цвета текста (palettes.ts)
   finale: boolean; // финал с сайтом бренда
   effects: EffectItem[];
   notes: Note[];
   sentAt?: string;
+  jobs?: {id: string; sentAt: string; cutPauses: boolean}[]; // отправленные в облако задания (новые сверху)
 };
 
 export const newId = (p = "") => p + Math.random().toString(36).slice(2, 9);

@@ -3,11 +3,15 @@ import React, {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import {TalkReelPro} from "../../reels-studio/src/compositions/TalkReelPro";
 import {cleanVoice} from "./audio";
 import {BRANDS, MUSIC} from "./brands";
+import {EXAMPLES, parseCommand} from "./commands";
 import {CATS, EFFECTS, effectById, spoken} from "./effects";
+import {EMOJI, emojiSrc} from "./emoji";
 import {GRADES, gradeCss} from "./grades";
+import {advise, PALETTES, SWATCHES} from "./palettes";
 import {decodeAudio, fmtTime, frames, peaks, probe} from "./media";
 import {buildProps, durationFrames, leadFrames, LOCAL} from "./props";
-import {fetchLink, hasServer} from "./server";
+import {autoPlace, hfName, loadModel, phrases, search, thumb, usedInProject, type Found} from "./images";
+import {fetchLink, forgetToken, githubState, hasServer, jobState, saveToken, sendFile, submitJob, type GithubState, type JobState} from "./server";
 import {deleteProject, getFile, listProjects, putFile, putProject} from "./store";
 import {parseWordsFile, transcribe, type AsrModel} from "./transcribe";
 import {newId, nowIso, type Brand, type EffectItem, type Project} from "./types";
@@ -337,10 +341,11 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
       m.video ? {name: LOCAL.video, src: m.video} : null,
       m.clean ? {name: LOCAL.clean, src: m.clean} : null,
       ...Object.entries(m.images).map(([n, src]) => ({name: LOCAL.image(p.id, n), src})),
+      ...p.effects.filter((e) => e.params.hf && e.params.hfUrl).map((e) => ({name: hfName(e.params.hf), src: e.params.hfUrl})),
     ].filter(Boolean) as {name: string; src: string}[];
     (window as any).remotion_staticFiles = files;
     return files.map((f) => f.src).join("|");
-  }, [m.video, m.clean, m.images, p.id]);
+  }, [m.video, m.clean, m.images, p.id, p.effects]);
 
   const props = useMemo(() => buildProps(p, {cleanReady: !!m.clean}), [p, m.clean]);
   const frames_ = useMemo(() => durationFrames(props), [props]);
@@ -348,6 +353,13 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
   const sec = Math.max(0, (frame - lead) / FPS);
   const seek = useCallback((s: number) => player.current?.seekTo(Math.round(lead + s * FPS)), [lead]);
 
+  // плеер пересоздаётся при новых файлах (картинка, чистый звук) — возвращаем его на ту же секунду
+  const frameRef = useRef(0);
+  frameRef.current = frame;
+  useEffect(() => {
+    const k = window.setTimeout(() => frameRef.current && player.current?.seekTo(frameRef.current), 60);
+    return () => clearTimeout(k);
+  }, [filesKey]);
   useEffect(() => {
     const pl = player.current;
     if (!pl) return;
@@ -765,12 +777,79 @@ const ColorStep: React.FC<StepCtx> = ({p, up, m, setStep}) => {
         </label>
       </div>
       <p className="muted">Видео с iPhone в HDR движок сначала переводит в естественный цвет (bt709), потом накладывает выбранный вариант.</p>
+      <TextColors p={p} up={up} />
       <Next to="edit" setStep={setStep}>
         Дальше: монтаж
       </Next>
     </div>
   );
 };
+
+// цвета текста: готовые сочетания + свои цвета с проверкой; меняются сразу в предпросмотре
+const TextColors: React.FC<{p: Project; up: StepCtx["up"]}> = ({p, up}) => {
+  const pal = p.palette ?? {preset: "brand"};
+  const set = (patch: Partial<NonNullable<Project["palette"]>>) => up((q) => ({...q, palette: {...(q.palette ?? {preset: "brand"}), ...patch}}));
+  const cur = {text: pal.text || "#FFFFFF", accent: pal.accent || BRANDS[p.brand].accent, ink: pal.ink || "#191922"};
+  const tip = pal.preset === "custom" ? advise(cur.text, cur.accent, cur.ink) : null;
+  return (
+    <>
+      <h3>Цвета текста</h3>
+      <p className="muted">Субтитры, выделенные слова и надписи. Готовые сочетания проверены на читаемость; на отдельном отрезке цвет меняет эффект «Цвета текста на отрезке» (Монтаж → Цвет).</p>
+      <div className="pals">
+        {PALETTES.map((x) => {
+          const t = x.text || "#FFFFFF";
+          const a = x.accent || BRANDS[p.brand].accent;
+          const k = x.ink || "#191922";
+          return (
+            <button key={x.id} className={`pal ${pal.preset === x.id ? "on" : ""}`} onClick={() => set({preset: x.id, text: x.text || undefined, accent: x.accent || undefined, ink: x.ink || undefined})}>
+              <div className="palprev">
+                <span style={{color: t}}>Пять</span> <span style={{color: a}}>дней</span> <mark style={{background: a, color: k}}>Китай</mark>
+              </div>
+              <b>
+                {x.title}
+                {x.brands?.includes(p.brand) ? " · фирменный" : ""}
+              </b>
+              <span>{x.note}</span>
+            </button>
+          );
+        })}
+        <button className={`pal ${pal.preset === "custom" ? "on" : ""}`} onClick={() => set({preset: "custom", ...cur})}>
+          <div className="palprev">
+            <span style={{color: cur.text}}>Свои</span> <span style={{color: cur.accent}}>цвета</span>
+          </div>
+          <b>Свои цвета</b>
+          <span>выбрать и проверить сочетание</span>
+        </button>
+      </div>
+      {pal.preset === "custom" ? (
+        <div className="editor">
+          <ColorField label="Субтитры" value={cur.text} onChange={(v) => set({text: v})} />
+          <ColorField label="Акцент (текущее и важные слова)" value={cur.accent} onChange={(v) => set({accent: v})} />
+          <ColorField label="Текст на акценте" value={cur.ink} onChange={(v) => set({ink: v})} />
+          {tip ? (
+            <ul className={`advice ${tip.ok ? "ok" : "warn"}`}>
+              {tip.lines.map((l, i) => (
+                <li key={i}>{l}</li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      ) : null}
+    </>
+  );
+};
+
+const ColorField: React.FC<{label: string; value: string; onChange: (v: string) => void}> = ({label, value, onChange}) => (
+  <div className="colorf">
+    <span>{label}</span>
+    <div className="row wrap">
+      {SWATCHES.map((c) => (
+        <button key={c} className={`sw ${value.toLowerCase() === c.toLowerCase() ? "on" : ""}`} style={{background: c}} title={c} onClick={() => onChange(c)} />
+      ))}
+      <input type="color" value={/^#[0-9a-f]{6}$/i.test(value) ? value : "#ffffff"} onChange={(e) => onChange(e.target.value.toUpperCase())} />
+    </div>
+  </div>
+);
 
 // ---------------------------------------------------------------- 5. Монтаж: эффекты и заметки
 const EditStep: React.FC<StepCtx> = ({p, up, setM, sec, seek, setStep}) => {
@@ -787,8 +866,10 @@ const EditStep: React.FC<StepCtx> = ({p, up, setM, sec, seek, setStep}) => {
   return (
     <div className="step">
       <h2>Монтаж</h2>
+      <CommandBar p={p} up={up} sec={sec} seek={seek} />
       <p className="lead">
-        Поставьте курсор на нужную секунду (в ролике или на дорожках внизу) и добавьте эффект — он сразу появится в предпросмотре.
+        Или выберите сами: поставьте курсор на нужную секунду (в ролике или на дорожках внизу) и нажмите эффект — он сразу появится в
+        предпросмотре.
       </p>
       <div className="tabs">
         {CATS.map((c) => (
@@ -806,6 +887,7 @@ const EditStep: React.FC<StepCtx> = ({p, up, setM, sec, seek, setStep}) => {
           </button>
         ))}
       </div>
+      {cat === "Перебивки" || withImage(item) ? <ImagePicker p={p} up={up} sec={sec} target={withImage(item) ? item : undefined} onAdded={setSel} /> : null}
       {item ? <EffectEditor item={item} p={p} up={up} setM={setM} seek={seek} onClose={() => setSel(null)} /> : null}
       <div className="effects-on">
         <h3>В ролике</h3>
@@ -865,6 +947,8 @@ const EditStep: React.FC<StepCtx> = ({p, up, setM, sec, seek, setStep}) => {
   );
 };
 
+const withImage = (it?: EffectItem) => !!it && !!effectById(it.effect)?.fields.some((f) => f.kind === "image" || f.kind === "media");
+
 const EffectEditor: React.FC<{item: EffectItem; p: Project; up: StepCtx["up"]; setM: StepCtx["setM"]; seek: (s: number) => void; onClose: () => void}> = ({item, p, up, setM, seek, onClose}) => {
   const ef = effectById(item.effect)!;
   const set = (patch: Partial<EffectItem>) => up((q) => ({...q, effects: q.effects.map((e) => (e.id === item.id ? {...e, ...patch} : e))}));
@@ -892,12 +976,55 @@ const EffectEditor: React.FC<{item: EffectItem; p: Project; up: StepCtx["up"]; s
         </button>
       </div>
       {ef.fields.map((f) =>
-        f.kind === "image" ? (
+        f.key === "emoji" ? (
+          <div key={f.key} className="emogrid">
+            {EMOJI.map((x) => (
+              <button
+                key={x.file}
+                className={(item.params.emoji || "огонь") === x.file ? "on" : ""}
+                title={x.file}
+                onClick={() => setParam("emoji", x.file)}
+              >
+                <img src={`assets/${emojiSrc(x.file)}`} alt={x.char} loading="lazy" />
+              </button>
+            ))}
+          </div>
+        ) : (f.kind === "image" || f.kind === "media") && item.params.hf ? (
+          <div key={f.key} className="row">
+            <img className="hfthumb" src={thumb(+item.params.hf)} />
+            <span className="muted">Картинка №{item.params.hf} из каталога — другую выберите выше или загрузите свою:</span>
+            <label className="btn ghost sm">
+              Своя
+              <input
+                type="file"
+                accept="image/*"
+                hidden
+                onChange={async (e) => {
+                  const file = e.target.files?.[0];
+                  if (!file) return;
+                  const name = newId("i") + "." + (file.name.split(".").pop() || "jpg");
+                  await putFile(p.id, `img/${name}`, file);
+                  setM((x) => ({...x, images: {...x.images, [name]: URL.createObjectURL(file)}}));
+                  set({params: {...item.params, image: name, hf: "", hfUrl: ""}});
+                }}
+              />
+            </label>
+          </div>
+        ) : f.kind === "range" ? (
+          <label key={f.key} className="rangef">
+            <span>
+              {f.label} <b>{item.params[f.key] ?? f.def}</b>
+            </span>
+            <input type="range" min={f.min} max={f.max} step={f.step} value={item.params[f.key] ?? f.def ?? f.min} onChange={(e) => setParam(f.key, e.target.value)} />
+          </label>
+        ) : f.kind === "color" ? (
+          <ColorField key={f.key} label={f.label} value={item.params[f.key] || f.def || "#FFFFFF"} onChange={(v) => setParam(f.key, v)} />
+        ) : f.kind === "image" || f.kind === "media" ? (
           <label key={f.key} className="btn ghost">
-            {item.params[f.key] ? "Заменить картинку" : "Выбрать картинку"}
+            {item.params[f.key] ? `Заменить: ${f.label.toLowerCase()}` : `${f.label}: свой файл`}
             <input
               type="file"
-              accept="image/*"
+              accept={f.kind === "media" ? "image/*,video/*" : "image/*"}
               hidden
               onChange={async (e) => {
                 const file = e.target.files?.[0];
@@ -913,7 +1040,7 @@ const EffectEditor: React.FC<{item: EffectItem; p: Project; up: StepCtx["up"]; s
         ) : f.kind === "select" ? (
           <label key={f.key} className="inline">
             {f.label}
-            <select value={item.params[f.key] ?? f.options?.[0][0]} onChange={(e) => setParam(f.key, e.target.value)}>
+            <select value={item.params[f.key] ?? f.def ?? f.options?.[0][0]} onChange={(e) => setParam(f.key, e.target.value)}>
               {f.options?.map(([v, t]) => (
                 <option key={v} value={v}>
                   {t}
@@ -939,6 +1066,223 @@ const EffectEditor: React.FC<{item: EffectItem; p: Project; up: StepCtx["up"]; s
       <button className="btn danger" onClick={() => (up((q) => ({...q, effects: q.effects.filter((e) => e.id !== item.id)})), onClose())}>
         Убрать эффект
       </button>
+    </div>
+  );
+};
+
+// ---------------------------------------------------------------- команды словами
+// «на 12 секунде приблизь», «смайл огонь», «хук «МОИ» за головой» — эффект сразу в предпросмотре; голосом — 🎤.
+// Что не понято — заметка для Claude (жёлтая на монтажном столе), выполняется при рендере.
+type Done = {text: string; lines: string[]; before: {effects: EffectItem[]; notes: Project["notes"]}};
+const SR: any = typeof window !== "undefined" ? (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition : null;
+
+const CommandBar: React.FC<{p: Project; up: StepCtx["up"]; sec: number; seek: (s: number) => void}> = ({p, up, sec, seek}) => {
+  const [cmd, setCmd] = useState("");
+  const [busy, setBusy] = useState("");
+  const [log, setLog] = useState<Done[]>([]);
+  const [rec, setRec] = useState<any>(null);
+  const pRef = useRef(p);
+  pRef.current = p;
+
+  const run = async (raw: string) => {
+    const text = raw.trim();
+    if (!text) return;
+    const q0 = pRef.current;
+    const r = parseCommand(text, sec, q0.words);
+    const before = {effects: q0.effects, notes: q0.notes};
+    const kept = q0.effects.filter((e) => !r.remove.some((x) => e.at <= x.until && (e.until ?? e.at + 1) >= x.at));
+    const notes = r.note
+      ? [...q0.notes, {id: newId("n"), at: +sec.toFixed(2), text: r.note, created: nowIso()}].sort((a, b) => a.at - b.at)
+      : q0.notes;
+    up((q) => ({...q, effects: [...kept, ...r.items], notes}));
+    const lines = [...r.done];
+    if (r.note) lines.push(`Не понял: «${r.note}» — записал заметкой для Claude, сделаю при рендере`);
+    setLog((l) => [{text, lines, before}, ...l].slice(0, 5));
+    setCmd("");
+    if (r.items[0]) seek(Math.max(0, r.items[0].at - 0.6));
+    if (!r.images.length) return;
+    try {
+      await loadModel((k) => setBusy(`Загружаю модель смысла (один раз, ~120 МБ): ${Math.round(k * 100)}%`));
+      setBusy("Подбираю картинку по смыслу…");
+      const skip = usedInProject(pRef.current.effects);
+      const found = await search(
+        r.images.map((a) => a.query || spoken(q0.words, a.at, a.until, 14) || "завод"),
+        skip,
+        6,
+      );
+      const add: EffectItem[] = [];
+      r.images.forEach((a, i) => {
+        const f = found[i].find((x) => !skip.has(x.n));
+        if (!f) return;
+        skip.add(f.n);
+        add.push({id: newId("e"), effect: a.effect, at: a.at, until: a.until, params: {...(a.params ?? {}), hf: String(f.n), hfUrl: f.url}});
+      });
+      up((q) => ({...q, effects: [...q.effects, ...add]}));
+      if (add[0]) seek(Math.max(0, add[0].at - 0.6));
+      setBusy("");
+    } catch (e) {
+      setBusy("Картинку не подобрал: " + String((e as Error).message || e) + ". Проверьте интернет или выберите во вкладке «Перебивки».");
+    }
+  };
+
+  const listen = () => {
+    if (rec) return rec.stop();
+    const r = new SR();
+    r.lang = "ru-RU";
+    r.interimResults = true;
+    r.onresult = (e: any) => {
+      const t = Array.from(e.results as ArrayLike<any>)
+        .map((x) => x[0].transcript)
+        .join("");
+      setCmd(t);
+      if (e.results[e.results.length - 1].isFinal) run(t);
+    };
+    r.onerror = (e: any) => setBusy(e.error === "not-allowed" ? "Нет доступа к микрофону — разрешите его в браузере." : "Голос не распознан: " + e.error);
+    r.onend = () => setRec(null);
+    r.start();
+    setRec(r);
+  };
+
+  return (
+    <div className="cmdbar">
+      <div className="row">
+        <input
+          className="cmdinput"
+          value={cmd}
+          onChange={(e) => setCmd(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && run(cmd)}
+          placeholder="Напишите, что сделать: «на 12 секунде приблизь», «смайл огонь», «хук «МОИ» за головой»…"
+        />
+        {SR ? (
+          <button className={`btn ${rec ? "danger" : "ghost"}`} title="Сказать голосом" onClick={listen}>
+            {rec ? "■" : "🎤"}
+          </button>
+        ) : null}
+        <button className="btn primary" disabled={!cmd.trim()} onClick={() => run(cmd)}>
+          Сделать
+        </button>
+      </div>
+      <div className="muted">
+        Без времени — на курсор ({fmtTime(sec)}). Время: «на 12 секунде», «в 1:05», «с 20 по 24 секунду», «на словах «пять дней»».
+      </div>
+      <div className="row wrap examples">
+        {EXAMPLES.map((x) => (
+          <button key={x} className="chip" onClick={() => setCmd(x)}>
+            {x}
+          </button>
+        ))}
+      </div>
+      {busy ? <div className="busy">{busy}</div> : null}
+      {log.length ? (
+        <ul className="cmdlog">
+          {log.map((d, i) => (
+            <li key={i}>
+              <span className="q">{d.text}</span>
+              {d.lines.map((l, k) => (
+                <span key={k} className={l.startsWith("Не понял") ? "warn" : "ok"}>
+                  {l}
+                </span>
+              ))}
+              {i === 0 ? (
+                <button
+                  className="btn ghost sm"
+                  onClick={() => {
+                    up((q) => ({...q, effects: d.before.effects, notes: d.before.notes}));
+                    setLog((l) => l.slice(1));
+                  }}
+                >
+                  Отменить
+                </button>
+              ) : null}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  );
+};
+
+// ---------------------------------------------------------------- картинки по смыслу
+const ImagePicker: React.FC<{p: Project; up: StepCtx["up"]; sec: number; target?: EffectItem; onAdded: (id: string) => void}> = ({p, up, sec, target, onAdded}) => {
+  const [q, setQ] = useState("");
+  const [res, setRes] = useState<Found[] | null>(null);
+  const [busy, setBusy] = useState("");
+  const at = target ? target.at : sec;
+  const phrase = useMemo(() => {
+    const ph = phrases(p.words);
+    return ph.find((x) => x.at <= at + 0.05 && x.until >= at - 0.05) ?? ph.find((x) => x.at >= at);
+  }, [p.words, at]);
+  const wrap = async (f: () => Promise<void>) => {
+    try {
+      await loadModel((k) => setBusy(`Загружаю модель смысла (один раз, ~120 МБ): ${Math.round(k * 100)}%`));
+      setBusy("Ищу…");
+      await f();
+      setBusy("");
+    } catch (e) {
+      setBusy("Не получилось: " + String((e as Error).message || e));
+    }
+  };
+  const find = (query: string) =>
+    wrap(async () => {
+      const [r] = await search([query], usedInProject(p.effects), 9);
+      setRes(r);
+    });
+  const pick = (f: Found) => {
+    const params = {hf: String(f.n), hfUrl: f.url};
+    if (target) {
+      up((x) => ({...x, effects: x.effects.map((e) => (e.id === target.id ? {...e, params: {...e.params, ...params, image: ""}} : e))}));
+      return;
+    }
+    const it: EffectItem = {id: newId("e"), effect: "broll-circle", at: +sec.toFixed(2), until: +(sec + 2.8).toFixed(2), params};
+    up((x) => ({...x, effects: [...x.effects, it]}));
+    onAdded(it.id);
+  };
+  const auto = () =>
+    wrap(async () => {
+      const add = await autoPlace(p.words, p.source?.duration || 10, p.effects);
+      up((x) => ({...x, effects: [...x.effects, ...add]}));
+      setRes(null);
+      setTimeout(() => setBusy(add.length ? `Расставил ${add.length} перебивок по смыслу фраз — проверьте в ролике.` : "Свободных фраз под перебивки не нашлось."), 0);
+    });
+  return (
+    <div className="imgpick">
+      <h3>
+        Картинки по смыслу <span className="muted">— ваш каталог Higgsfield, без уже использованных</span>
+      </h3>
+      <div className="row">
+        <input value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => e.key === "Enter" && q.trim() && find(q)} placeholder="завод роботов, переговоры, Шанхай ночью…" />
+        <button className="btn" disabled={!q.trim()} onClick={() => find(q)}>
+          Найти
+        </button>
+      </div>
+      <div className="row wrap">
+        {phrase ? (
+          <button className="btn ghost sm" onClick={() => find(phrase.text)} title={phrase.text}>
+            Под фразу: «{phrase.text.length > 42 ? phrase.text.slice(0, 42) + "…" : phrase.text}»
+          </button>
+        ) : null}
+        <button className="btn sm" onClick={auto} disabled={!p.words.length}>
+          Расставить сам по всему ролику
+        </button>
+      </div>
+      {busy ? <div className="busy">{busy}</div> : null}
+      {res ? (
+        <>
+          <div className="hfgrid">
+            {res.map((f) => (
+              <button key={f.n} onClick={() => pick(f)} title={f.prompt}>
+                <img src={thumb(f.n)} loading="lazy" />
+                <span>
+                  №{f.n} · {Math.round(f.score * 100)}%
+                </span>
+              </button>
+            ))}
+          </div>
+          <p className="muted">
+            {target ? `Нажмите картинку — она встанет в эффект «${effectById(target.effect)?.title}».` : `Нажмите картинку — перебивка встанет на ${fmtTime(sec)}.`}
+          </p>
+        </>
+      ) : null}
     </div>
   );
 };
@@ -1045,7 +1389,10 @@ const LibraryStep: React.FC<StepCtx> = ({sec, up, setStep}) => {
           <article key={e.id} className="libcard">
             <Preview id={e.id} />
             <div>
-              <span className="cat">{e.cat}</span>
+              <span className="cat">
+                {e.cat}
+                {e.ref ? " · из референса" : ""}
+              </span>
               <b>{e.title}</b>
               <p>{e.desc}</p>
               <button
@@ -1061,16 +1408,361 @@ const LibraryStep: React.FC<StepCtx> = ({sec, up, setStep}) => {
           </article>
         ))}
       </div>
-      <h3>Референсы</h3>
-      <p className="muted">
-        Пришлите ролик, который нравится: я разберу его приёмы (переходы, титры, цвет, движение), соберу их в шаблоне и добавлю сюда
-        карточками с превью.
-      </p>
+      <References />
     </div>
   );
 };
 
+// референсы: ссылка или файл + «что забрать» → библиотека референсов на GitHub → Claude разбирает приёмы,
+// собирает их в шаблоне и добавляет эффектами с превью (у эффекта — кусок референса рядом)
+type Ref = {id: string; url?: string; name?: string; what?: string; created?: string; status?: string; effects?: string[]; video?: string; note?: string};
+const References: React.FC = () => {
+  const [server, setServer] = useState<boolean | null>(null);
+  const [refs, setRefs] = useState<Ref[]>([]);
+  const [pending, setPending] = useState<{id: string; name?: string; text?: string; error?: string}[]>([]);
+  const [token, setToken] = useState(true);
+  const [url, setUrl] = useState("");
+  const [what, setWhat] = useState("");
+  const [file, setFile] = useState<File | null>(null);
+  const [busy, setBusy] = useState("");
+  const load = useCallback(async () => {
+    const r = await fetch("api/refs").then((x) => x.json());
+    setRefs(r.refs ?? []);
+    setPending(r.pending ?? []);
+    setToken(r.token !== false);
+    return (r.pending ?? []).some((x: {error?: string}) => !x.error);
+  }, []);
+  useEffect(() => {
+    let alive = true;
+    let timer = 0;
+    hasServer().then(async (ok) => {
+      setServer(ok);
+      if (!ok) return;
+      const tick = async () => {
+        const more = await load().catch(() => false);
+        if (alive && more) timer = window.setTimeout(tick, 4000);
+      };
+      tick();
+    });
+    return () => {
+      alive = false;
+      clearTimeout(timer);
+    };
+  }, [load]);
+  const add = async () => {
+    const rid = newId("");
+    try {
+      if (file) {
+        setBusy("Передаю файл…");
+        const ext = (file.name.split(".").pop() || "mp4").toLowerCase().replace(/[^a-z0-9]/g, "") || "mp4";
+        await sendFile(rid, `ref.${ext}`, file, (k) => setBusy(`Передаю файл: ${Math.round(k * 100)}%`)).catch(() => {
+          throw new Error("сервер не принял файл");
+        });
+      }
+      const r = await fetch(`api/ref/${rid}/submit`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({url: file ? "" : url.trim(), what: what.trim(), name: file?.name || url.trim().replace(/^https?:\/\/(www\.)?/, "").slice(0, 60), created: nowIso()}),
+      });
+      if (!r.ok) throw new Error((await r.json()).detail || "не добавилось");
+      setUrl("");
+      setWhat("");
+      setFile(null);
+      setBusy("");
+      const tick = async () => {
+        if (await load().catch(() => false)) setTimeout(tick, 4000);
+      };
+      tick();
+    } catch (e) {
+      setBusy("Не получилось: " + String((e as Error).message || e));
+    }
+  };
+  return (
+    <>
+      <h3>Референсы</h3>
+      <p className="muted">
+        Ролик, который нравится, — ссылкой (Instagram, TikTok, YouTube, VK, Google Диск, Яндекс Диск) или файлом. Напишите, что забрать.
+        Claude посмотрит его, соберёт приёмы в шаблоне и добавит сюда эффектами с превью — рядом будет кусок референса.
+      </p>
+      {server === false ? (
+        <p className="muted">В браузере без приложения на Mac: пришлите ссылку Claude в чат с пометкой «референс» — результат тот же.</p>
+      ) : !token ? (
+        <p className="muted">Нужен ключ GitHub — он вводится один раз на шаге «Готово».</p>
+      ) : (
+        <div className="editor">
+          <div className="row">
+            <input value={url} disabled={!!file} onChange={(e) => setUrl(e.target.value)} placeholder="Ссылка на ролик: instagram.com/reel/…, tiktok.com/…, youtube.com/shorts/…" />
+            <label className="btn ghost">
+              {file ? file.name.slice(0, 24) : "или файл"}
+              <input type="file" accept="video/*" hidden onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
+            </label>
+          </div>
+          <textarea className="what" value={what} onChange={(e) => setWhat(e.target.value)} placeholder="Что забрать: «переход на 0:03», «как появляются титры», «цвет», «всё интересное»…" />
+          <div className="row">
+            <button className="btn primary" disabled={!url.trim() && !file} onClick={add}>
+              Добавить в библиотеку
+            </button>
+            {busy ? <span className="muted">{busy}</span> : null}
+          </div>
+        </div>
+      )}
+      {pending.map((x) => (
+        <div key={x.id} className={`refrow ${x.error ? "bad" : ""}`}>
+          <b>{x.name || "Референс"}</b>
+          <span className={x.error ? "err" : "muted"}>{x.error || x.text}</span>
+        </div>
+      ))}
+      {refs.map((r) => (
+        <div key={r.id} className="refrow">
+          <b>{r.name || r.url || r.id}</b>
+          <span className="muted">
+            {r.created} · {r.status}
+            {r.what ? ` · «${r.what}»` : ""}
+          </span>
+          {r.effects?.length ? (
+            <span>
+              Эффекты:{" "}
+              {r.effects
+                .map((id) => effectById(id)?.title ?? id)
+                .join(", ")}
+            </span>
+          ) : null}
+          {r.note ? <span className="muted">{r.note}</span> : null}
+          {r.video ? (
+            <a href={r.video} target="_blank" rel="noreferrer">
+              смотреть
+            </a>
+          ) : null}
+        </div>
+      ))}
+      {server && token && !refs.length && !pending.length ? <p className="muted">Пока пусто.</p> : null}
+      {refs.some((r) => r.status === "ждёт разбора") ? (
+        <p className="muted">Чтобы разбор начался сразу, напишите Claude в чат: «разбери референсы из Монтажной».</p>
+      ) : null}
+    </>
+  );
+};
+
 // ---------------------------------------------------------------- 7. Готово
+// ---------------------------------------------------------------- «Сделать ролик» в облаке
+const TOKEN_URL = "https://github.com/settings/personal-access-tokens/new";
+const Cloud: React.FC<{p: Project; up: StepCtx["up"]; props: Record<string, any>}> = ({p, up, props}) => {
+  const [server, setServer] = useState<boolean | null>(null);
+  const [gh, setGh] = useState<GithubState | null>(null);
+  const [token, setToken] = useState("");
+  const [err, setErr] = useState("");
+  const [cut, setCut] = useState(true);
+  const [sending, setSending] = useState("");
+  useEffect(() => {
+    hasServer().then((ok) => {
+      setServer(ok);
+      if (ok) githubState().then(setGh, () => setGh(null));
+    });
+  }, []);
+
+  const send = async () => {
+    setErr("");
+    const jid = newId("");
+    try {
+      const src = await getFile(p.id, "source");
+      const link = !src && p.source?.url ? p.source.url : undefined; // ролик по ссылке — движок скачает сам
+      if (!src && !link) throw new Error("Нет видео — добавьте файл или ссылку на шаге «Исходник»");
+      const ext = link ? "mp4" : (p.source?.name.split(".").pop() || "mp4").toLowerCase().replace(/[^a-z0-9]/g, "") || "mp4";
+      const files: {name: string; blob: Blob}[] = src ? [{name: `source.${ext}`, blob: src}] : [];
+      const images: Record<string, string> = {};
+      for (const e of p.effects) {
+        const n = e.params.image;
+        if (n && !e.params.hf && !images[LOCAL.image(p.id, n)]) {
+          const b = await getFile(p.id, `img/${n}`);
+          if (b) {
+            images[LOCAL.image(p.id, n)] = `img-${n}`;
+            files.push({name: `img-${n}`, blob: b});
+          }
+        }
+      }
+      const total = files.reduce((a, f) => a + f.blob.size, 0) || 1;
+      let done = 0;
+      for (const f of files) {
+        await sendFile(jid, f.name, f.blob, (k) => setSending(`Передаю ${f.name}: ${Math.round(((done + k * f.blob.size) / total) * 100)}%`));
+        done += f.blob.size;
+      }
+      const hf: Record<string, string> = {};
+      for (const e of p.effects) if (e.params.hf && e.params.hfUrl) hf[hfName(e.params.hf)] = e.params.hfUrl;
+      const job = {
+        version: 2,
+        id: jid,
+        name: p.name,
+        created: nowIso(),
+        brand: p.brand,
+        format: p.format,
+        options: {cutPauses: cut},
+        files: {source: `source.${ext}`, sourceUrl: link, images},
+        local: {video: LOCAL.video},
+        hf,
+        props: {...props, audioSrc: undefined},
+        effects: p.effects,
+        notes: p.notes,
+      };
+      setSending("Отправляю на GitHub…");
+      await submitJob(jid, job);
+      up((q) => ({...q, sentAt: nowIso(), jobs: [{id: jid, sentAt: nowIso(), cutPauses: cut}, ...(q.jobs ?? [])]}));
+      setSending("");
+    } catch (e) {
+      setSending("");
+      setErr(String((e as Error).message || e));
+    }
+  };
+
+  if (server === null) return null;
+  if (!server)
+    return (
+      <>
+        <h3>Сделать ролик</h3>
+        <p className="muted">
+          Кнопка «Сделать ролик» работает в приложении Монтажной на Mac (оно отправляет видео в облако). Здесь — скачайте задание ниже.
+        </p>
+      </>
+    );
+  return (
+    <>
+      <h3>Сделать ролик в облаке</h3>
+      {gh && !gh.configured ? (
+        <div className="editor">
+          <b>Один раз: ключ доступа к GitHub</b>
+          <ol className="steps-ol">
+            <li>
+              Откройте{" "}
+              <a href={TOKEN_URL} target="_blank" rel="noreferrer">
+                github.com → Fine-grained token
+              </a>{" "}
+              (вход в ваш аккаунт GitHub).
+            </li>
+            <li>Token name — «Монтажная», Expiration — 1 год.</li>
+            <li>Repository access → Only select repositories → {gh.repo}.</li>
+            <li>Permissions → Repository permissions → Contents → Read and write.</li>
+            <li>Generate token → скопируйте и вставьте сюда.</li>
+          </ol>
+          <p className="muted">Ключ хранится только на этом Mac и в окно больше не показывается. В чат его не присылайте.</p>
+          <div className="row">
+            <input type="password" value={token} onChange={(e) => setToken(e.target.value)} placeholder="github_pat_…" />
+            <button
+              className="btn primary"
+              disabled={!token.trim()}
+              onClick={() =>
+                saveToken(token).then(
+                  (g) => (setGh(g), setToken(""), setErr("")),
+                  (e) => setErr(String(e.message || e)),
+                )
+              }
+            >
+              Сохранить
+            </button>
+          </div>
+        </div>
+      ) : null}
+      {gh?.configured ? (
+        <>
+          <label className="chk">
+            <input type="checkbox" checked={cut} onChange={(e) => setCut(e.target.checked)} /> Вырезать паузы и «эканья» (эффекты сдвинутся вместе со
+            словами)
+          </label>
+          <p className="muted">
+            В облаке: студийный звук (DeepFilterNet), {cut ? "склейка без пауз, " : ""}вырезка спикера для эффектов «за головой» и рендер{" "}
+            {p.format === "stories" ? "Stories (части до 60 с)" : "Reels"}. Обычно 10–25 минут; окно можно закрыть — результат останется здесь.
+          </p>
+          <div className="row wrap">
+            <button className="btn primary big" disabled={!!sending || !p.source} onClick={send}>
+              Сделать ролик
+            </button>
+            <button
+              className="btn ghost sm"
+              onClick={() => {
+                forgetToken();
+                setGh((g) => (g ? {...g, configured: false} : g));
+              }}
+            >
+              Сменить ключ GitHub
+            </button>
+          </div>
+        </>
+      ) : null}
+      {sending ? <div className="busy">{sending}</div> : null}
+      {err ? <div className="err">{err}</div> : null}
+      {(p.jobs ?? []).map((j, i) => (
+        <JobCard key={j.id} id={j.id} sentAt={j.sentAt} open={i === 0} />
+      ))}
+    </>
+  );
+};
+
+const JobCard: React.FC<{id: string; sentAt: string; open: boolean}> = ({id, sentAt, open}) => {
+  const [st, setSt] = useState<JobState | null>(null);
+  const [show, setShow] = useState(open);
+  useEffect(() => {
+    let alive = true;
+    let timer = 0;
+    const tick = async () => {
+      try {
+        const s = await jobState(id);
+        if (!alive) return;
+        setSt(s);
+        if (!s.done && !s.error) timer = window.setTimeout(tick, s.stage === "send" ? 1500 : 8000);
+      } catch {
+        if (alive) timer = window.setTimeout(tick, 15000);
+      }
+    };
+    tick();
+    return () => {
+      alive = false;
+      clearTimeout(timer);
+    };
+  }, [id]);
+  const files = st?.files ?? [];
+  const video = files.find((f) => f.kind === "phone" && f.url) ?? files.find((f) => f.kind === "video" && f.url);
+  const sheet = files.find((f) => f.kind === "frames" && f.url);
+  return (
+    <div className={`jobcard ${st?.done ? "done" : st?.error ? "bad" : ""}`}>
+      <div className="row" onClick={() => setShow(!show)}>
+        <b>{st?.done ? "Готово" : st?.error ? "Ошибка" : "В работе"}</b>
+        <span className="muted">
+          задание {id} · {sentAt}
+        </span>
+        <span className="sp" />
+        <span className="muted">{show ? "▾" : "▸"}</span>
+      </div>
+      {show ? (
+        <>
+          {!st?.done ? (
+            <div className="prog">
+              <i style={{width: `${Math.round((st?.progress ?? 0) * 100)}%`}} />
+              <span>{st?.text ?? "Узнаю…"}</span>
+            </div>
+          ) : null}
+          {st?.error ? <div className="err">{st.error}</div> : null}
+          {video ? <video className="result" src={video.url} controls playsInline /> : null}
+          {files.length ? (
+            <div className="row wrap">
+              {files
+                .filter((f) => f.url && f.kind !== "frames")
+                .map((f) => (
+                  <a key={f.name} className={`btn ${f.kind === "video" ? "primary" : ""}`} href={f.url} download>
+                    ⬇ {f.title} · {(f.size / 1048576).toFixed(0)} МБ
+                  </a>
+                ))}
+            </div>
+          ) : null}
+          {sheet ? <img className="sheet" src={sheet.url} /> : null}
+          {st?.done && st.notes?.length ? (
+            <p className="muted">
+              Заметок для Claude: {st.notes.length}. Напишите Claude в чат «Монтажная, задание {id}» — он выполнит их и пришлёт ролик.
+            </p>
+          ) : null}
+        </>
+      ) : null}
+    </div>
+  );
+};
+
 const DoneStep: React.FC<StepCtx & {props: Record<string, any>}> = ({p, props, up}) => {
   const job = useMemo(
     () => ({
@@ -1115,10 +1807,10 @@ const DoneStep: React.FC<StepCtx & {props: Record<string, any>}> = ({p, props, u
       <label className="chk">
         <input type="checkbox" checked={p.finale} onChange={(e) => up((q) => ({...q, finale: e.target.checked}))} /> Финал с сайтом {BRANDS[p.brand].site}
       </label>
-      <h3>Отправить в работу</h3>
+      <Cloud p={p} up={up} props={props} />
+      <h3>Задание файлом</h3>
       <p className="muted">
-        Задание — всё, что выбрано здесь: стиль, звук, цвет, эффекты по секундам и заметки. Движок делает чистый звук, вырезает паузы и
-        «эканья», вырезает спикера из фона для эффектов «за головой» и рендерит Reels и Stories.
+        Если окно открыто не на Mac (без сервера Монтажной) — скачайте задание и пришлите Claude в чат вместе с видео: сделаю тот же ролик.
       </p>
       <div className="row wrap">
         <button
@@ -1145,7 +1837,6 @@ const DoneStep: React.FC<StepCtx & {props: Record<string, any>}> = ({p, props, u
           {copied ? "Скопировано ✓" : "Скопировать задание"}
         </button>
       </div>
-      <p className="muted">Кнопка «Отправить в GitHub» появится на следующем шаге: тогда задание и видео уходят в работу одной кнопкой.</p>
       <details>
         <summary>Задание целиком</summary>
         <pre>{text}</pre>

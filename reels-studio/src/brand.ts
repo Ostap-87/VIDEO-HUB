@@ -21,6 +21,7 @@ export type Brand = {
   accent: string; // текущее слово субтитров, акцентные слова, крупные цифры
   accentGlow: string; // свечение крупных цифр
   accentInk: string; // цвет текста поверх акцента
+  captionText?: string; // цвет субтитров (по умолчанию белый); палитра Монтажной меняет его в моменте
   captionFont: string;
   captionWeight: number;
   captionStroke: string; // тёмная обводка белых субтитров

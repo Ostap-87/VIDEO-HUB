@@ -1,0 +1,78 @@
+# Монтажная — рендер в облаке. Окно Монтажной (сервер на Mac) кладёт файлы задания в релиз montazh-<id> и коммитит
+# montazh/jobs/<id>.json — этот workflow сразу запускается: montazh/engine/run_job.py делает склейку, звук, вырезку
+# спикера и рендер TalkReelPro, готовый ролик, копию для телефона, раскадровку и status.json кладёт в тот же релиз
+# (окно показывает ход работы и даёт скачать). Репозиторий публичный — минуты Actions бесплатные.
+# Повторить задание: Actions → «Монтажная — рендер» → Run workflow → id задания.
+name: Монтажная — рендер
+
+on:
+  push:
+    branches: [main]
+    paths: ["montazh/jobs/*.json"]
+  workflow_dispatch:
+    inputs:
+      job:
+        description: "id задания (montazh/jobs/<id>.json)"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: montazh-render-${{ github.sha }}-${{ inputs.job }}
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          lfs: false
+          fetch-depth: 2
+      - name: Какие задания
+        id: jobs
+        run: |
+          if [ -n "${{ inputs.job }}" ]; then L="${{ inputs.job }}"
+          else L=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'montazh/jobs/*.json' | sed 's#.*/##; s#\.json$##' | tr '\n' ' '); fi
+          echo "list=$L" >> "$GITHUB_OUTPUT"; echo "Задания: $L"
+      - uses: actions/setup-node@v4
+        if: steps.jobs.outputs.list != ''
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: reels-studio/package-lock.json
+      - name: ffmpeg
+        if: steps.jobs.outputs.list != ''
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg > /dev/null
+      - name: Место под шумодав
+        if: steps.jobs.outputs.list != ''
+        run: sudo mkdir -p /opt/dfn && sudo chown -R "$USER" /opt/dfn
+      - name: Шумодав и модель вырезки из кэша
+        if: steps.jobs.outputs.list != ''
+        uses: actions/cache@v4
+        with:
+          path: |
+            /opt/dfn
+            reels-studio/models
+          key: montazh-tools-${{ hashFiles('reels-studio/scripts/setup.sh') }}
+      - name: Инструменты (npm, OpenCV, ONNX, DeepFilterNet; Whisper — только если в задании нет текста)
+        if: steps.jobs.outputs.list != ''
+        run: SKIP_WHISPER=1 bash reels-studio/scripts/setup.sh
+      - name: Рендер
+        if: steps.jobs.outputs.list != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for j in ${{ steps.jobs.outputs.list }}; do python3 montazh/engine/run_job.py "$j"; done
+      - name: Реестр картинок Higgsfield
+        if: steps.jobs.outputs.list != ''
+        run: |
+          git add source-videos/higgsfield/использовано.json
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -m "Монтажная: картинки заданий ${{ steps.jobs.outputs.list }} — в реестр использованных"
+          for i in 1 2 3 4; do git pull --rebase -q && git push -q && exit 0; sleep 8; done
+          exit 1

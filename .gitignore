@@ -12,3 +12,6 @@ __pycache__/
 reels-studio/props/_test*.json
 finished-videos/*/_*
 презентации/main-gtt/_work/
+
+# Монтажная: рабочие папки движка (задания, склейки, вырезки) — результат лежит в релизе montazh-<id>
+source-videos/montazh/

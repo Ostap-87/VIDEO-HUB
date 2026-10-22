@@ -43,6 +43,7 @@ export function buildProps(p: Project, opts: {cleanReady?: boolean; source?: str
     captionTop: p.captions.top,
     captionStyle: p.captions.style,
     grade: gradeCss(p.grade.preset, p.grade.amount) || undefined,
+    palette: p.palette && p.palette.preset !== "brand" ? {text: p.palette.text, accent: p.palette.accent, ink: p.palette.ink} : undefined,
   };
   const ctx = {words: p.words, image: (name: string) => LOCAL.image(p.id, name)};
   for (const e of [...p.effects].sort((a, b) => a.at - b.at)) effectById(e.effect)?.apply(props, e, ctx);

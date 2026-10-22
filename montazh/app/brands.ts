@@ -1,5 +1,6 @@
 // Три бренда шаблона TalkReelPro (reels-studio/src/brand.ts) и что им нужно для предпросмотра:
 // звуки, музыка, страницы сайта для финала. Файлы кладёт в сборку build.mjs (ASSETS) — пути от корня VIDEO-HUB.
+import {EMOJI, emojiSrc} from "./emoji";
 import type {Brand} from "./types";
 
 const SFX_DIR = "source-videos/2026-10-07-byt-tehnika/sfx/";
@@ -11,7 +12,7 @@ export const MUSIC: {id: string; title: string; src: string; volume: number}[] =
   {id: "inspiring-ambient-motivation-soundrider", title: "Inspiring Ambient Motivation", src: "интернет-материалы/музыка/inspiring-ambient-motivation-soundrider.mp3", volume: 0.08},
 ];
 
-export const BRANDS: Record<Brand, {title: string; site: string; cta: string; finale: {home: string; catalog: string; route: string[]}; captionTop: number; captionSize: number}> = {
+export const BRANDS: Record<Brand, {title: string; site: string; cta: string; finale: {home: string; catalog: string; route: string[]}; captionTop: number; captionSize: number; accent: string}> = {
   gtt: {
     title: "GlobalTechTour",
     site: "globaltechtour.ru",
@@ -19,6 +20,7 @@ export const BRANDS: Record<Brand, {title: string; site: string; cta: string; fi
     finale: {home: "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png", catalog: "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png", route: []},
     captionTop: 1250,
     captionSize: 66,
+    accent: "#3D7BFF",
   },
   aura: {
     title: "Aura Robotics",
@@ -27,6 +29,7 @@ export const BRANDS: Record<Brand, {title: string; site: string; cta: string; fi
     finale: {home: "source-videos/aura-robotics/site/home-mobile-full.png", catalog: "source-videos/aura-robotics/site/catalog-humanoid.png", route: []},
     captionTop: 1250,
     captionSize: 66,
+    accent: "#FFF65D",
   },
   od: {
     title: "ostapdotcenko.ru",
@@ -35,11 +38,13 @@ export const BRANDS: Record<Brand, {title: string; site: string; cta: string; fi
     finale: {home: "source-videos/ostapdotcenko/site/home-mobile-full.png", catalog: "source-videos/ostapdotcenko/site/career-mobile.png", route: []},
     captionTop: 1320,
     captionSize: 52,
+    accent: "#FFD92E",
   },
 };
 
 // всё, что шаблону нужно из репозитория (копируется в сборку: dist/assets/<путь>)
 export const ASSETS = [
+  ...EMOJI.map((e) => emojiSrc(e.file)),
   ...Object.values(SFX),
   ...MUSIC.map((m) => m.src),
   ...Object.values(BRANDS).flatMap((b) => [b.finale.home, b.finale.catalog, ...b.finale.route]),

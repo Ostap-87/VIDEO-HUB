@@ -46,15 +46,19 @@ if [ -z "$PY" ]; then
     exit 1
 fi
 mkdir -p "$SUPPORT"
+# своё окружение Python: yt-dlp (референсы по ссылкам Instagram, TikTok, YouTube, VK — со входом из вашего браузера)
+# и pywebview (окно без Chrome)
+[ -x "$VENV/bin/python" ] || "$PY" -m venv "$VENV"
+if [ -z "$PIP_INDEX_URL" ] && ! curl -s -m 8 -o /dev/null https://pypi.org/simple/pip/; then
+    for m in https://pypi.tuna.tsinghua.edu.cn/simple https://mirrors.aliyun.com/pypi/simple/; do
+        if curl -s -m 8 -o /dev/null "$m/pip/"; then export PIP_INDEX_URL="$m"; break; fi
+    done
+fi
+"$VENV/bin/python" -m pip install -q -U --timeout 60 --retries 10 yt-dlp \
+    || echo "      yt-dlp не установился — референсы по ссылкам Instagram/TikTok не скачаются (файлом — можно)."
 if ! ls /Applications/"Google Chrome.app" /Applications/Yandex.app /Applications/"Microsoft Edge.app" >/dev/null 2>&1; then
     # без Chrome окно — pywebview (движок Safari)
-    [ -x "$VENV/bin/python" ] || "$PY" -m venv "$VENV"
     if ! "$VENV/bin/python" -c "import webview" 2>/dev/null; then
-        if [ -z "$PIP_INDEX_URL" ] && ! curl -s -m 8 -o /dev/null https://pypi.org/simple/pip/; then
-            for m in https://pypi.tuna.tsinghua.edu.cn/simple https://mirrors.aliyun.com/pypi/simple/; do
-                if curl -s -m 8 -o /dev/null "$m/pip/"; then export PIP_INDEX_URL="$m"; break; fi
-            done
-        fi
         "$VENV/bin/python" -m pip install -q --timeout 60 --retries 10 pywebview \
             || echo "      pywebview не установился — Монтажная откроется в браузере."
     fi
