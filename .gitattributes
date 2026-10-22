@@ -21,3 +21,4 @@
 # Превью эффектов Монтажной (1–2 с, ~100 КБ) — в обычном git: их отдаёт GitHub Pages и сборка для Mac
 montazh/library/previews/*.mp4 -filter -diff -merge binary
 montazh/library/previews/*.webm -filter -diff -merge binary
+montazh/engine/sample.mp4 -filter -diff -merge binary

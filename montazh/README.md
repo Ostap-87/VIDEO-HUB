@@ -101,6 +101,8 @@ D=$(mktemp -d) && curl -fL https://codeload.github.com/Ostap-87/VIDEO-HUB/tar.gz
   запускается сам на каждое новое `montazh/jobs/*.json`; повтор — Run workflow с id): файлы релиза → `npm run cut`
   (звук, HDR → bt709, паузы) → props на шкалу склейки → `npm run matte` на нужные отрезки → рендер → копия для
   телефона, раскадровка, части Stories → в тот же релиз. Локально: `python3 montazh/engine/run_job.py <id> --local <папка>`.
+  Образец для проверки движка — `montazh/engine/sample.mp4` (12 с, iPhone HLG), задание `montazh/jobs/proverka1.json`
+  (`files.sourceRepo` — исходник из репозитория вместо релиза); повторить — Actions → «Монтажная — рендер» → id `proverka1`.
 - `.github/workflows/montazh.yml` — сборка на каждый пуш в `montazh/` и `reels-studio/src/`: ветка `montazh-dist`
   для Mac и GitHub Pages.
 

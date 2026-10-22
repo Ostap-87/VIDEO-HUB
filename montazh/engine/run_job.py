@@ -194,6 +194,8 @@ def main():
             run(["gh", "release", "create", job.tag, "-R", REPO, "--prerelease", "--target", "main",
                  "--title", f"Монтажная: {spec.get('name', a.id)}", "--notes", f"Готовый ролик задания montazh/jobs/{a.id}.json"], cwd=ROOT)
         src = job.dir / spec["files"]["source"]
+        if spec["files"].get("sourceRepo") and not src.exists():  # файл из репозитория (образец montazh/engine/sample.mp4)
+            shutil.copy(ROOT / spec["files"]["sourceRepo"], src)
         if spec["files"].get("sourceUrl") and not src.exists():
             job.say("fetch", "Скачиваю исходник по ссылке", 0.05)
             run(["python3", "scripts/fetch.py", spec["files"]["sourceUrl"], job.dir, src.stem])
