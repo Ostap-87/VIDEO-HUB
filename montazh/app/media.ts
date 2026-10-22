@@ -61,14 +61,38 @@ export async function frameCanvas(url: string, t: number, w = 360): Promise<HTML
   return c;
 }
 
-// звук исходника → моно Float32 с частотой rate (16000 — для Whisper, 48000 — для шумодава)
+// звук исходника → моно Float32 с частотой rate (16000 — для Whisper, 48000 — для шумодава).
+// Звук — в шкале картинки: у части роликов iPhone звук в файле начинается позже кадра 0 (0,1–0,76 с), а декодер
+// отдаёт его с нуля — тогда в начало добавляется тишина (как scripts/avsync.py у движка), иначе слова и чистый голос
+// опережают губы.
 export async function decodeAudio(file: Blob, rate: number): Promise<Float32Array> {
+  let x: Float32Array;
   try {
     const ctx = new OfflineAudioContext(1, 1, rate);
     const buf = await ctx.decodeAudioData(await file.arrayBuffer());
-    return toMono(buf, rate);
+    x = toMono(buf, rate);
   } catch {
-    return decodeWithMediabunny(file, rate); // MOV и редкие кодеки, которые decodeAudioData не берёт
+    x = await decodeWithMediabunny(file, rate); // MOV и редкие кодеки, которые decodeAudioData не берёт
+  }
+  const off = await avOffset(file);
+  if (Math.abs(off) < 0.0005) return x;
+  const n = Math.round(Math.abs(off) * rate);
+  if (off < 0) return x.slice(Math.min(n, x.length));
+  const out = new Float32Array(x.length + n);
+  out.set(x, n);
+  return out;
+}
+
+// на сколько секунд звук начинается позже картинки (у файлов без видео — 0)
+export async function avOffset(file: Blob): Promise<number> {
+  try {
+    const input = new Input({source: new BlobSource(file), formats: ALL_FORMATS});
+    const [v, a] = await Promise.all([input.getPrimaryVideoTrack(), input.getPrimaryAudioTrack()]);
+    if (!v || !a) return 0;
+    const [tv, ta] = await Promise.all([v.getFirstTimestamp(), a.getFirstTimestamp()]);
+    return Number.isFinite(ta - tv) ? ta - tv : 0;
+  } catch {
+    return 0;
   }
 }
 

@@ -1,0 +1,252 @@
+{
+ "version": 2,
+ "brand": "od",
+ "format": "stories",
+ "hf": {},
+ "effects": [],
+ "notes": [],
+ "id": "skleika1",
+ "name": "Проверка склейки двух роликов",
+ "options": {
+  "cutPauses": false,
+  "edl": true
+ },
+ "files": {
+  "source": "clip-a.mp4",
+  "clips": {
+   "a": "clip-a.mp4",
+   "b": "clip-b.mp4"
+  },
+  "clipsRepo": {
+   "a": "montazh/engine/sample.mp4",
+   "b": "montazh/engine/sample.mp4"
+  },
+  "images": {}
+ },
+ "local": {
+  "video": "montazh-local/edl",
+  "clips": {
+   "montazh-local/clip/a": "a",
+   "montazh-local/clip/b": "b"
+  }
+ },
+ "props": {
+  "mediaSrc": "montazh-local/edl",
+  "cutoutSrc": "",
+  "words": [
+   {
+    "text": "время",
+    "start": 0.42,
+    "end": 0.79
+   },
+   {
+    "text": "рассказать",
+    "start": 0.79,
+    "end": 1.73
+   },
+   {
+    "text": "про",
+    "start": 1.73,
+    "end": 2.01
+   },
+   {
+    "text": "мои",
+    "start": 2.01,
+    "end": 2.29
+   },
+   {
+    "text": "два",
+    "start": 2.29,
+    "end": 2.57
+   },
+   {
+    "text": "новых",
+    "start": 2.57,
+    "end": 3.04
+   },
+   {
+    "text": "проекта,",
+    "start": 3.04,
+    "end": 3.83
+   },
+   {
+    "text": "потому",
+    "start": 3.83,
+    "end": 4.45
+   },
+   {
+    "text": "что",
+    "start": 4.45,
+    "end": 4.52
+   },
+   {
+    "text": "поступило",
+    "start": 4.52,
+    "end": 5.26
+   },
+   {
+    "text": "много",
+    "start": 5.26,
+    "end": 5.45
+   },
+   {
+    "text": "рассказать",
+    "start": 5.03,
+    "end": 5.97
+   },
+   {
+    "text": "про",
+    "start": 5.97,
+    "end": 6.25
+   },
+   {
+    "text": "мои",
+    "start": 6.25,
+    "end": 6.53
+   },
+   {
+    "text": "два",
+    "start": 6.53,
+    "end": 6.81
+   },
+   {
+    "text": "новых",
+    "start": 6.81,
+    "end": 7.28
+   },
+   {
+    "text": "проекта,",
+    "start": 7.28,
+    "end": 8.07
+   },
+   {
+    "text": "потому",
+    "start": 8.07,
+    "end": 8.47
+   },
+   {
+    "text": "ты",
+    "start": 8.53,
+    "end": 8.7
+   },
+   {
+    "text": "же",
+    "start": 8.7,
+    "end": 8.92
+   },
+   {
+    "text": "занимался",
+    "start": 8.92,
+    "end": 9.47
+   },
+   {
+    "text": "другими",
+    "start": 9.47,
+    "end": 9.96
+   },
+   {
+    "text": "делами.",
+    "start": 9.96,
+    "end": 10.43
+   },
+   {
+    "text": "Я",
+    "start": 10.43,
+    "end": 11.06
+   },
+   {
+    "text": "всегда",
+    "start": 11.06,
+    "end": 11.08
+   },
+   {
+    "text": "делал",
+    "start": 11.08,
+    "end": 11.64
+   },
+   {
+    "text": "несколько",
+    "start": 11.64,
+    "end": 12.38
+   },
+   {
+    "text": "проектов,",
+    "start": 12.38,
+    "end": 13.21
+   }
+  ],
+  "accentWords": [],
+  "cuts": [
+   5.45,
+   8.47
+  ],
+  "chips": [],
+  "logos": [],
+  "numbers": [],
+  "broll": [],
+  "checklists": [],
+  "cities": [],
+  "zooms": [],
+  "sfx": {
+   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+   "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+  },
+  "music": {
+   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+   "volume": 0.078,
+   "outroVolume": 0.179
+  },
+  "speechSeconds": 13.31,
+  "site": {
+   "home": "source-videos/ostapdotcenko/site/home-mobile-full.png",
+   "catalog": "source-videos/ostapdotcenko/site/career-mobile.png",
+   "route": [],
+   "at": 1012.31
+  },
+  "cta": "Подробнее на сайте",
+  "ctaSeconds": 0.3,
+  "showSafeZone": false,
+  "format": "stories",
+  "brand": "od",
+  "bumper": false,
+  "focus": {
+   "x": 540,
+   "y": 720
+  },
+  "captionSize": 56,
+  "captionTop": 1250,
+  "captionStyle": "flat",
+  "grade": "brightness(1.018) contrast(1.030) saturate(1.060) sepia(0.120) hue-rotate(-3.6deg)",
+  "hooks": [],
+  "emojis": [
+   {
+    "at": 1.0,
+    "until": 2.6,
+    "src": "интернет-материалы/эмодзи/огонь.webp",
+    "anim": "pop"
+   }
+  ],
+  "speaker": [],
+  "texts": [],
+  "lists": [],
+  "edl": [
+   {
+    "src": "montazh-local/clip/a",
+    "from": 0.0,
+    "to": 5.45
+   },
+   {
+    "src": "montazh-local/clip/b",
+    "from": 1.21,
+    "to": 4.23
+   },
+   {
+    "src": "montazh-local/clip/a",
+    "from": 7.26,
+    "to": 12.1
+   }
+  ]
+ }
+}

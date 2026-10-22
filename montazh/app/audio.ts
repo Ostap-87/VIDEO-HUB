@@ -37,7 +37,8 @@ function loadRnn(): Promise<RnnModule> {
   return rnn;
 }
 
-export async function denoise(x: Float32Array, onProgress?: (k: number) => void): Promise<Float32Array> {
+// wet — только обработанный звук, без подмеса исходника (для поиска пауз в «Склейке»: шум улицы паузы не прячет)
+export async function denoise(x: Float32Array, onProgress?: (k: number) => void, wetOnly = false): Promise<Float32Array> {
   const m = await loadRnn();
   const st = m._rnnoise_create();
   const pin = m._malloc(FRAME * 4);
@@ -75,7 +76,7 @@ export async function denoise(x: Float32Array, onProgress?: (k: number) => void)
     dry[k] = DRY_PAUSE + (DRY_SPEECH - DRY_PAUSE) * (v / n);
   }
   const out = new Float32Array(x.length);
-  for (let i = 0; i < x.length; i++) out[i] = wet[i + DELAY] + x[i] * dry[Math.floor(i / FRAME)];
+  for (let i = 0; i < x.length; i++) out[i] = wet[i + DELAY] + (wetOnly ? 0 : x[i] * dry[Math.floor(i / FRAME)]);
   return out;
 }
 

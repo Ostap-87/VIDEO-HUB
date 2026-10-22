@@ -9,7 +9,9 @@ import {EMOJI, emojiSrc} from "./emoji";
 import {GRADES, gradeCss} from "./grades";
 import {advise, PALETTES, SWATCHES} from "./palettes";
 import {decodeAudio, fmtTime, frames, peaks, probe} from "./media";
-import {buildProps, durationFrames, leadFrames, LOCAL} from "./props";
+import {buildProps, cleanKey, clipKey, durationFrames, leadFrames, LOCAL, projSeconds} from "./props";
+import {AssembleStep, cleanClips, clipsOf, transcribeClips} from "./AssembleStep";
+import {edlLocate, edlSeconds, edlWords} from "./assemble";
 import {autoPlace, hfName, loadModel, phrases, search, thumb, usedInProject, type Found} from "./images";
 import {fetchLink, forgetToken, githubState, hasServer, jobState, openOutside, saveToken, sendFile, submitJob, type GithubState, type JobState} from "./server";
 import {deleteProject, getFile, listProjects, putFile, putProject} from "./store";
@@ -18,6 +20,7 @@ import {newId, nowIso, type Brand, type EffectItem, type Project} from "./types"
 
 const STEPS = [
   ["source", "Исходник"],
+  ["assemble", "Склейка"],
   ["text", "Текст"],
   ["sound", "Звук"],
   ["color", "Цвет"],
@@ -264,12 +267,24 @@ const NewVideo: React.FC<{onCancel: () => void; onCreated: (p: Project) => void}
 };
 
 // ---------------------------------------------------------------- рабочее место ролика
-type Media = {video?: string; clean?: string; images: Record<string, string>; strip: string[]; times: number[]; wave: number[]; waveClean: number[]};
+// clips / cleanClips — ролики склейки и их чистый голос (id ролика → ссылка в браузере)
+type Media = {
+  video?: string;
+  clean?: string;
+  images: Record<string, string>;
+  clips: Record<string, string>;
+  cleanClips: Record<string, string>;
+  strip: string[];
+  times: number[];
+  wave: number[];
+  waveClean: number[];
+};
 
 const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, onClose}) => {
   const [p, setP] = useState<Project>(initial);
   const [step, setStep] = useState<Step>(initial.words.length ? "edit" : "source");
-  const [m, setM] = useState<Media>({images: {}, strip: [], times: [], wave: [], waveClean: []});
+  const [m, setM] = useState<Media>({images: {}, clips: {}, cleanClips: {}, strip: [], times: [], wave: [], waveClean: []});
+  const pcmCache = useRef<Record<string, Float32Array>>({});
   const [frame, setFrame] = useState(0);
   const [status, setStatus] = useState("");
   const player = useRef<PlayerRef>(null);
@@ -297,14 +312,18 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
     const urls: string[] = [];
     (async () => {
       const src = await getFile(p.id, "source");
-      if (!src || !alive) return;
-      fileRef.current = src;
-      const video = URL.createObjectURL(src);
-      urls.push(video);
-      const cleanBlob = await getFile(p.id, "clean.wav");
-      const clean = cleanBlob ? URL.createObjectURL(cleanBlob) : undefined;
-      if (clean) urls.push(clean);
+      if (!alive) return;
+      let video: string | undefined;
+      let clean: string | undefined;
+      const cleanBlob = src ? await getFile(p.id, "clean.wav") : undefined;
+      if (src) {
+        fileRef.current = src;
+        urls.push((video = URL.createObjectURL(src)));
+        if (cleanBlob) urls.push((clean = URL.createObjectURL(cleanBlob)));
+      }
       const images: Record<string, string> = {};
+      const clips: Record<string, string> = video ? {source: video} : {};
+      const cleanClips: Record<string, string> = clean ? {source: clean} : {};
       for (const e of p.effects) {
         const n = e.params.image;
         if (n && !images[n]) {
@@ -312,10 +331,24 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
           if (b) urls.push((images[n] = URL.createObjectURL(b)));
         }
       }
-      setM((x) => ({...x, video, clean, images}));
+      // ролики и фото склейки
+      for (const c of p.clips ?? []) {
+        if (c.kind === "video" && !clips[c.id]) {
+          const b = await getFile(p.id, clipKey(c.id));
+          if (b) urls.push((clips[c.id] = URL.createObjectURL(b)));
+          const cb = await getFile(p.id, cleanKey(c.id));
+          if (cb) urls.push((cleanClips[c.id] = URL.createObjectURL(cb)));
+        } else if (c.kind === "photo" && !images[c.name]) {
+          const b = await getFile(p.id, `img/${c.name}`);
+          if (b) urls.push((images[c.name] = URL.createObjectURL(b)));
+        }
+      }
+      if (!alive) return;
+      setM((x) => ({...x, video, clean, images, clips, cleanClips}));
+      if (!src || p.edl?.length) return; // кадры и волну склейки считает отдельный шаг ниже
       const d = p.source?.duration || 10;
       const times = Array.from({length: 16}, (_, i) => (d * (i + 0.5)) / 16);
-      const strip = await frames(video, times, 160);
+      const strip = await frames(video!, times, 160);
       if (alive) setM((x) => ({...x, strip, times}));
       try {
         const pcm = await decodeAudio(src, 8000);
@@ -334,20 +367,75 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
     };
   }, [p.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // кадры и волна склеенного ролика: пересчитываются, когда меняется монтажный лист
+  const edlSig = JSON.stringify(p.edl ?? null);
+  const clipsSig = Object.keys(m.clips).join(",");
+  useEffect(() => {
+    const edl = p.edl;
+    if (!edl?.length) return;
+    let alive = true;
+    const t = window.setTimeout(async () => {
+      const total = edlSeconds(edl);
+      const times = Array.from({length: 16}, (_, i) => (total * (i + 0.5)) / 16);
+      const strip: string[] = new Array(times.length).fill("");
+      const byClip: Record<string, {k: number; t: number}[]> = {};
+      times.forEach((tt, k) => {
+        const loc = edlLocate(edl, tt);
+        if (loc) (byClip[loc.clip] ??= []).push({k, t: loc.t});
+      });
+      for (const [clip, list] of Object.entries(byClip)) {
+        const url = m.clips[clip];
+        if (!url) continue;
+        try {
+          const shots = await frames(url, list.map((x) => x.t), 160);
+          list.forEach((x, i) => (strip[x.k] = shots[i]));
+        } catch {
+          /* кадр не прочитался — пустая клетка */
+        }
+      }
+      if (!alive) return;
+      setM((x) => ({...x, strip, times}));
+      const parts: Float32Array[] = [];
+      for (const s of edl) {
+        let pcm = pcmCache.current[s.clip];
+        if (!pcm) {
+          const f = await getFile(p.id, clipKey(s.clip));
+          if (!f) continue;
+          try {
+            pcm = pcmCache.current[s.clip] = await decodeAudio(f, 8000);
+          } catch {
+            continue;
+          }
+        }
+        parts.push(pcm.subarray(Math.round(s.from * 8000), Math.round(s.to * 8000)));
+      }
+      const all = new Float32Array(parts.reduce((n, x) => n + x.length, 0));
+      let o = 0;
+      for (const x of parts) (all.set(x, o), (o += x.length));
+      if (alive) setM((x) => ({...x, wave: peaks(all, 400), waveClean: []}));
+    }, 700);
+    return () => {
+      alive = false;
+      clearTimeout(t);
+    };
+  }, [edlSig, clipsSig]); // eslint-disable-line react-hooks/exhaustive-deps
+
   // подмена файлов для шаблона: имена из props → файлы из браузера. Ставится до отрисовки плеера; когда файлы
   // меняются (загрузилось видео, посчитан чистый звук, добавлена картинка), плеер пересоздаётся (key)
   const filesKey = useMemo(() => {
     const files = [
       m.video ? {name: LOCAL.video, src: m.video} : null,
       m.clean ? {name: LOCAL.clean, src: m.clean} : null,
+      ...Object.entries(m.clips).map(([id, src]) => ({name: LOCAL.clip(id), src})),
+      ...Object.entries(m.cleanClips).map(([id, src]) => ({name: LOCAL.cleanClip(id), src})),
       ...Object.entries(m.images).map(([n, src]) => ({name: LOCAL.image(p.id, n), src})),
       ...p.effects.filter((e) => e.params.hf && e.params.hfUrl).map((e) => ({name: hfName(e.params.hf), src: e.params.hfUrl})),
     ].filter(Boolean) as {name: string; src: string}[];
     (window as any).remotion_staticFiles = files;
     return files.map((f) => f.src).join("|");
-  }, [m.video, m.clean, m.images, p.id, p.effects]);
+  }, [m.video, m.clean, m.clips, m.cleanClips, m.images, p.id, p.effects]);
 
-  const props = useMemo(() => buildProps(p, {cleanReady: !!m.clean}), [p, m.clean]);
+  const props = useMemo(() => buildProps(p, {cleanReady: !!m.clean, cleanClips: m.cleanClips}), [p, m.clean, m.cleanClips]);
   const frames_ = useMemo(() => durationFrames(props), [props]);
   const lead = useMemo(() => leadFrames(props), [props]);
   const sec = Math.max(0, (frame - lead) / FPS);
@@ -368,7 +456,7 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
     return () => pl.removeEventListener("frameupdate", on);
   });
 
-  const ready = !!m.video;
+  const ready = p.edl?.length ? p.edl.every((s) => m.clips[s.clip]) : !!m.video;
   const ctx: StepCtx = {p, up, m, setM, sec, seek, file: fileRef, setStatus, player, step, setStep};
   return (
     <div className="ws">
@@ -397,6 +485,7 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
       <div className={`body s-${step}`}>
         <section className="panel" ref={panel}>
           {step === "source" ? <SourceStep {...ctx} /> : null}
+          {step === "assemble" ? <AssembleStep {...ctx} /> : null}
           {step === "text" ? <TextStep {...ctx} /> : null}
           {step === "sound" ? <SoundStep {...ctx} /> : null}
           {step === "color" ? <ColorStep {...ctx} /> : null}
@@ -437,7 +526,7 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
   );
 };
 
-type StepCtx = {
+export type StepCtx = {
   p: Project;
   up: (f: (q: Project) => Project) => void;
   m: Media;
@@ -475,6 +564,12 @@ const SourceStep: React.FC<StepCtx> = ({p, up, m, seek, setStep}) => (
         ) : null}
       </p>
     ) : null}
+    {p.edl?.length ? (
+      <p className="lead">
+        Склейка из {new Set(p.edl.map((x) => x.clip)).size} роликов · {fmtTime(projSeconds(p))} · {p.edl.length} кусков{" "}
+        <a onClick={() => setStep("assemble")}>изменить</a>
+      </p>
+    ) : null}
     <h3>Кадры</h3>
     <div className="strip">
       {m.strip.map((s, i) => (
@@ -483,7 +578,7 @@ const SourceStep: React.FC<StepCtx> = ({p, up, m, seek, setStep}) => (
       {!m.strip.length ? <div className="muted">Нарезаю на кадры…</div> : null}
     </div>
     <h3>Звук</h3>
-    <Wave peaks={m.wave} onSeek={(k) => seek(k * (p.source?.duration ?? 0))} />
+    <Wave peaks={m.wave} onSeek={(k) => seek(k * projSeconds(p))} />
     <h3>Проект и формат</h3>
     <div className="seg3">
       {(Object.keys(BRANDS) as Brand[]).map((b) => (
@@ -531,8 +626,8 @@ const SourceStep: React.FC<StepCtx> = ({p, up, m, seek, setStep}) => (
         />
       </div>
     ) : null}
-    <Next to="text" setStep={setStep}>
-      Дальше: текст и субтитры
+    <Next to="assemble" setStep={setStep}>
+      Дальше: склейка и чистка
     </Next>
   </div>
 );
@@ -564,12 +659,16 @@ const TextStep: React.FC<StepCtx> = ({p, up, file, seek, sec, setStep}) => {
   const [model, setModel] = useState<AsrModel>("small");
   const [err, setErr] = useState("");
   const [edit, setEdit] = useState<number | null>(null);
+  const multi = !!p.edl?.length;
   const run = async () => {
-    if (!file.current) return;
+    if (!file.current && !multi) return;
     setErr("");
     try {
-      const words = await transcribe(file.current, model, (k, t) => setBusy({k, t}));
-      up((q) => ({...q, words, wordsFrom: "browser"}));
+      if (multi) await transcribeClips(p, up, model, (k, t) => setBusy({k, t}), true);
+      else {
+        const words = await transcribe(file.current!, model, (k, t) => setBusy({k, t}));
+        up((q) => ({...q, words, wordsFrom: "browser"}));
+      }
     } catch (e) {
       setErr("Не получилось распознать: " + String((e as Error).message || e) + ". Можно загрузить готовые субтитры файлом или отдать ролик движку.");
     }
@@ -588,7 +687,7 @@ const TextStep: React.FC<StepCtx> = ({p, up, file, seek, sec, setStep}) => {
     <div className="step">
       <h2>Текст и субтитры</h2>
       <div className="row wrap">
-        <button className="btn primary" disabled={!file.current || !!busy} onClick={run}>
+        <button className="btn primary" disabled={(!file.current && !multi) || !!busy} onClick={run}>
           {p.words.length ? "Распознать заново" : "Распознать речь"}
         </button>
         <select value={model} onChange={(e) => setModel(e.target.value as AsrModel)} title="Модель Whisper">
@@ -660,7 +759,17 @@ const TextStep: React.FC<StepCtx> = ({p, up, file, seek, sec, setStep}) => {
                   defaultValue={w.text}
                   onBlur={(e) => {
                     const v = e.target.value.trim();
-                    up((q) => ({...q, words: v ? q.words.map((x, j) => (j === i ? {...x, text: v} : x)) : q.words.filter((_, j) => j !== i), wordsFrom: "manual"}));
+                    up((q) => {
+                      const ow = q.words[i];
+                      if (ow?.c !== undefined && ow.ci !== undefined && q.edl?.length) {
+                        // склейка: правка попадает в слова ролика, чтобы не пропасть при пересклейке
+                        const cl = clipsOf(q).map((c) =>
+                          c.id === ow.c ? {...c, words: (c.words ?? []).flatMap((x, j) => (j === ow.ci ? (v ? [{...x, text: v}] : []) : [x]))} : c,
+                        );
+                        return {...q, clips: cl, words: edlWords(q.edl, cl), wordsFrom: "manual"};
+                      }
+                      return {...q, words: v ? q.words.map((x, j) => (j === i ? {...x, text: v} : x)) : q.words.filter((_, j) => j !== i), wordsFrom: "manual"};
+                    });
                     setEdit(null);
                   }}
                   onKeyDown={(e) => (e.key === "Enter" || e.key === "Escape") && (e.target as HTMLInputElement).blur()}
@@ -685,7 +794,17 @@ const TextStep: React.FC<StepCtx> = ({p, up, file, seek, sec, setStep}) => {
 // ---------------------------------------------------------------- 3. Звук
 const SoundStep: React.FC<StepCtx> = ({p, up, m, setM, file, seek, sec, setStep}) => {
   const [busy, setBusy] = useState<{k: number; t: string} | null>(null);
+  const multi = !!p.edl?.length;
   const make = async () => {
+    if (multi) {
+      const got = await cleanClips(p, cleanVoice, (k, t) => setBusy({k, t}));
+      const urls: Record<string, string> = {};
+      for (const [id, b] of Object.entries(got)) urls[id] = URL.createObjectURL(b);
+      setM((x) => ({...x, cleanClips: {...x.cleanClips, ...urls}, clean: urls.source ?? x.clean}));
+      up((q) => ({...q, audio: {...q.audio, clean: true}}));
+      setBusy(null);
+      return;
+    }
     if (!file.current) return;
     const blob = await cleanVoice(file.current, (k, t) => setBusy({k, t}));
     await putFile(p.id, "clean.wav", blob);
@@ -695,7 +814,7 @@ const SoundStep: React.FC<StepCtx> = ({p, up, m, setM, file, seek, sec, setStep}
     up((q) => ({...q, audio: {...q.audio, clean: true}}));
     setBusy(null);
   };
-  const d = p.source?.duration || 1;
+  const d = projSeconds(p) || 1;
   return (
     <div className="step">
       <h2>Звук</h2>
@@ -708,10 +827,12 @@ const SoundStep: React.FC<StepCtx> = ({p, up, m, setM, file, seek, sec, setStep}
         <button
           className={`opt ${p.audio.clean ? "on" : ""}`}
           disabled={!!busy}
-          onClick={() => (m.clean ? up((q) => ({...q, audio: {...q.audio, clean: true}})) : make())}
+          onClick={() =>
+            (multi ? p.edl!.every((x) => m.cleanClips[x.clip]) : m.clean) ? up((q) => ({...q, audio: {...q.audio, clean: true}})) : make()
+          }
         >
           <b>Чистый голос</b>
-          <span>{m.clean ? "шумодав + эквалайзер + компрессор" : "посчитать (несколько секунд)"}</span>
+          <span>{(multi ? p.edl!.every((x) => m.cleanClips[x.clip]) : m.clean) ? "шумодав + эквалайзер + компрессор" : "посчитать (несколько секунд)"}</span>
         </button>
       </div>
       {busy ? (
@@ -852,7 +973,7 @@ const ColorField: React.FC<{label: string; value: string; onChange: (v: string) 
 );
 
 // ---------------------------------------------------------------- 5. Монтаж: эффекты и заметки
-const EditStep: React.FC<StepCtx> = ({p, up, setM, sec, seek, setStep}) => {
+const EditStep: React.FC<StepCtx> = ({p, up, m, setM, sec, seek, setStep}) => {
   const [cat, setCat] = useState(CATS[0]);
   const [sel, setSel] = useState<string | null>(null);
   const [note, setNote] = useState("");
@@ -888,7 +1009,7 @@ const EditStep: React.FC<StepCtx> = ({p, up, setM, sec, seek, setStep}) => {
         ))}
       </div>
       {cat === "Перебивки" || withImage(item) ? <ImagePicker p={p} up={up} sec={sec} target={withImage(item) ? item : undefined} onAdded={setSel} /> : null}
-      {item ? <EffectEditor item={item} p={p} up={up} setM={setM} seek={seek} onClose={() => setSel(null)} /> : null}
+      {item ? <EffectEditor item={item} p={p} up={up} setM={setM} mImages={m.images} seek={seek} onClose={() => setSel(null)} /> : null}
       <div className="effects-on">
         <h3>В ролике</h3>
         {p.effects.length ? null : <div className="muted">Эффектов пока нет.</div>}
@@ -949,7 +1070,15 @@ const EditStep: React.FC<StepCtx> = ({p, up, setM, sec, seek, setStep}) => {
 
 const withImage = (it?: EffectItem) => !!it && !!effectById(it.effect)?.fields.some((f) => f.kind === "image" || f.kind === "media");
 
-const EffectEditor: React.FC<{item: EffectItem; p: Project; up: StepCtx["up"]; setM: StepCtx["setM"]; seek: (s: number) => void; onClose: () => void}> = ({item, p, up, setM, seek, onClose}) => {
+const EffectEditor: React.FC<{item: EffectItem; p: Project; up: StepCtx["up"]; setM: StepCtx["setM"]; mImages: Record<string, string>; seek: (s: number) => void; onClose: () => void}> = ({
+  item,
+  p,
+  up,
+  setM,
+  mImages,
+  seek,
+  onClose,
+}) => {
   const ef = effectById(item.effect)!;
   const set = (patch: Partial<EffectItem>) => up((q) => ({...q, effects: q.effects.map((e) => (e.id === item.id ? {...e, ...patch} : e))}));
   const setParam = (k: string, v: string) => set({params: {...item.params, [k]: v}});
@@ -1020,7 +1149,19 @@ const EffectEditor: React.FC<{item: EffectItem; p: Project; up: StepCtx["up"]; s
         ) : f.kind === "color" ? (
           <ColorField key={f.key} label={f.label} value={item.params[f.key] || f.def || "#FFFFFF"} onChange={(v) => setParam(f.key, v)} />
         ) : f.kind === "image" || f.kind === "media" ? (
-          <label key={f.key} className="btn ghost">
+          <div key={f.key} className="mediaf">
+          {clipsOf(p).some((c) => c.kind === "photo") ? (
+            <div className="libphotos" title="Фото из медиатеки проекта (шаг «Склейка»)">
+              {clipsOf(p)
+                .filter((c) => c.kind === "photo")
+                .map((c) => (
+                  <button key={c.id} className={item.params[f.key] === c.name ? "on" : ""} onClick={() => set({params: {...item.params, [f.key]: c.name, hf: "", hfUrl: ""}})}>
+                    <img src={mImages[c.name]} />
+                  </button>
+                ))}
+            </div>
+          ) : null}
+          <label className="btn ghost">
             {item.params[f.key] ? `Заменить: ${f.label.toLowerCase()}` : `${f.label}: свой файл`}
             <input
               type="file"
@@ -1037,6 +1178,7 @@ const EffectEditor: React.FC<{item: EffectItem; p: Project; up: StepCtx["up"]; s
               }}
             />
           </label>
+          </div>
         ) : f.kind === "select" ? (
           <label key={f.key} className="inline">
             {f.label}
@@ -1239,7 +1381,7 @@ const ImagePicker: React.FC<{p: Project; up: StepCtx["up"]; sec: number; target?
   };
   const auto = () =>
     wrap(async () => {
-      const add = await autoPlace(p.words, p.source?.duration || 10, p.effects);
+      const add = await autoPlace(p.words, projSeconds(p) || 10, p.effects);
       up((x) => ({...x, effects: [...x.effects, ...add]}));
       setRes(null);
       setTimeout(() => setBusy(add.length ? `Расставил ${add.length} перебивок по смыслу фраз — проверьте в ролике.` : "Свободных фраз под перебивки не нашлось."), 0);
@@ -1289,7 +1431,7 @@ const ImagePicker: React.FC<{p: Project; up: StepCtx["up"]; sec: number; target?
 
 // ---------------------------------------------------------------- монтажный стол
 const Timeline: React.FC<StepCtx & {props: Record<string, any>}> = ({p, m, sec, seek}) => {
-  const d = p.source?.duration || 10;
+  const d = projSeconds(p) || 10;
   const [zoom, setZoom] = useState(1);
   const pct = (t: number) => `${(t / d) * 100}%`;
   const ref = useRef<HTMLDivElement>(null);
@@ -1577,11 +1719,24 @@ const Cloud: React.FC<{p: Project; up: StepCtx["up"]; props: Record<string, any>
     setErr("");
     const jid = newId("");
     try {
-      const src = await getFile(p.id, "source");
-      const link = !src && p.source?.url ? p.source.url : undefined; // ролик по ссылке — движок скачает сам
-      if (!src && !link) throw new Error("Нет видео — добавьте файл или ссылку на шаге «Исходник»");
-      const ext = link ? "mp4" : (p.source?.name.split(".").pop() || "mp4").toLowerCase().replace(/[^a-z0-9]/g, "") || "mp4";
-      const files: {name: string; blob: Blob}[] = src ? [{name: `source.${ext}`, blob: src}] : [];
+      const multi = !!p.edl?.length;
+      const extOf = (n?: string) => (n?.split(".").pop() || "mp4").toLowerCase().replace(/[^a-z0-9]/g, "") || "mp4";
+      const files: {name: string; blob: Blob}[] = [];
+      // склейка: все ролики монтажного листа, движок склеит их кадр в кадр (montazh/engine/edl.py)
+      const clipFiles: Record<string, string> = {};
+      if (multi) {
+        for (const id of [...new Set(p.edl!.map((x) => x.clip))]) {
+          const b = await getFile(p.id, clipKey(id));
+          if (!b) throw new Error("Нет файла одного из роликов склейки — добавьте его заново на шаге «Склейка»");
+          clipFiles[id] = `clip-${id}.${extOf(clipsOf(p).find((c) => c.id === id)?.name)}`;
+          files.push({name: clipFiles[id], blob: b});
+        }
+      }
+      const src = multi ? undefined : await getFile(p.id, "source");
+      const link = !multi && !src && p.source?.url ? p.source.url : undefined; // ролик по ссылке — движок скачает сам
+      if (!multi && !src && !link) throw new Error("Нет видео — добавьте файл или ссылку на шаге «Исходник»");
+      const ext = link ? "mp4" : extOf(p.source?.name);
+      if (src) files.push({name: `source.${ext}`, blob: src});
       const images: Record<string, string> = {};
       for (const e of p.effects) {
         const n = e.params.image;
@@ -1608,11 +1763,13 @@ const Cloud: React.FC<{p: Project; up: StepCtx["up"]; props: Record<string, any>
         created: nowIso(),
         brand: p.brand,
         format: p.format,
-        options: {cutPauses: cut},
-        files: {source: `source.${ext}`, sourceUrl: link, images},
-        local: {video: LOCAL.video},
+        options: {cutPauses: multi ? false : cut, edl: multi},
+        files: multi
+          ? {source: Object.values(clipFiles)[0], clips: clipFiles, images}
+          : {source: `source.${ext}`, sourceUrl: link, images},
+        local: multi ? {video: LOCAL.edl, clips: Object.fromEntries(Object.keys(clipFiles).map((id) => [LOCAL.clip(id), id]))} : {video: LOCAL.video},
         hf,
-        props: {...props, audioSrc: undefined},
+        props: {...props, audioSrc: undefined, edl: props.edl?.map((x: Record<string, unknown>) => ({...x, audio: undefined}))},
         effects: p.effects,
         notes: p.notes,
       };
@@ -1685,12 +1842,16 @@ const Cloud: React.FC<{p: Project; up: StepCtx["up"]; props: Record<string, any>
       ) : null}
       {gh?.configured ? (
         <>
-          <label className="chk">
-            <input type="checkbox" checked={cut} onChange={(e) => setCut(e.target.checked)} /> Вырезать паузы и «эканья» (эффекты сдвинутся вместе со
-            словами)
-          </label>
+          {p.edl?.length ? (
+            <p className="muted">Склейка из шага «Склейка»: облако соберёт ролик ровно по ней — как в предпросмотре.</p>
+          ) : (
+            <label className="chk">
+              <input type="checkbox" checked={cut} onChange={(e) => setCut(e.target.checked)} /> Вырезать паузы и «эканья» (эффекты сдвинутся вместе со
+              словами)
+            </label>
+          )}
           <p className="muted">
-            В облаке: студийный звук (DeepFilterNet), {cut ? "склейка без пауз, " : ""}вырезка спикера для эффектов «за головой» и рендер{" "}
+            В облаке: студийный звук (DeepFilterNet), {p.edl?.length ? "склейка роликов, " : cut ? "склейка без пауз, " : ""}вырезка спикера для эффектов «за головой» и рендер{" "}
             {p.format === "stories" ? "Stories (части до 60 с)" : "Reels"}. Обычно 10–25 минут; окно можно закрыть — результат останется здесь.
           </p>
           <div className="row wrap">

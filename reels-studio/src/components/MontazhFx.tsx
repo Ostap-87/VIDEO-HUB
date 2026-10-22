@@ -4,6 +4,7 @@
 // Всё — поля TalkReelPro (speaker, panels, texts, lists, palette / paletteAt), стиль берётся от бренда (useBrand).
 import React from "react";
 import {AbsoluteFill, Easing, Img, interpolate, OffthreadVideo, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
+import {SpeakerVideo} from "./EdlVideo";
 import {loadFont as loadOswald} from "@remotion/google-fonts/Oswald";
 import {loadFont as loadPlayfair} from "@remotion/google-fonts/PlayfairDisplay";
 import {loadFont as loadUnbounded} from "@remotion/google-fonts/Unbounded";
@@ -58,7 +59,7 @@ const Backdrop: React.FC<{s: SpeakerItem; video: string; p: number}> = ({s, vide
   return (
     <AbsoluteFill style={{opacity: p}}>
       {bg === "blur" ? (
-        <OffthreadVideo src={staticFile(video)} muted style={{width: "100%", height: "100%", objectFit: "cover", scale: "1.25", filter: "blur(42px) brightness(0.62) saturate(1.15)"}} />
+        <SpeakerVideo src={video} style={{width: "100%", height: "100%", objectFit: "cover", scale: "1.25", filter: "blur(42px) brightness(0.62) saturate(1.15)"}} />
       ) : bg === "image" && s.image ? (
         <Img src={src(s.image)} style={{width: "100%", height: "100%", objectFit: "cover"}} />
       ) : bg === "brand" ? (
@@ -145,9 +146,8 @@ export const SpeakerStage: React.FC<{s: SpeakerItem; p: number; video: string; c
           transform: s.tilt ? `perspective(1800px) rotateY(${s.tilt * p}deg)` : undefined,
         }}
       >
-        <OffthreadVideo
-          src={staticFile(video)}
-          muted
+        <SpeakerVideo
+          src={video}
           style={{
             position: "absolute",
             width: 1080,

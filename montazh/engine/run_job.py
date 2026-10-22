@@ -9,7 +9,10 @@
 сервер Монтажной на Mac. Шаги (как в быстром пайплайне reels-studio):
 1. скачать файлы релиза, картинки каталога Higgsfield по ссылкам;
 2. npm run cut: чистый звук DeepFilterNet, HDR iPhone → обычный цвет, 30 к/с; паузы и «эканья» — если включено;
-3. props из окна (шкала исходника) → шкала склейки: все времена (at, until, start, end, strike…), зумы, финал;
+   склейка нескольких роликов (options.edl) — сначала ролики встык по монтажному листу окна (edl.py), потом npm run cut
+   по кускам листа: готовый ролик — ровно то, что было в предпросмотре;
+3. props из окна (шкала исходника или склейки окна) → шкала склейки движка: все времена (at, until, start, end, strike…),
+   зумы, финал;
 4. вырезка спикера (npm run matte) на отрезках, где она нужна: перебивки «вырезкой», хуки, графики за спиной, спикер по контуру;
 5. рендер TalkReelPro, части Stories до 59,5 с, лёгкая копия до 29 МБ, раскадровка;
 6. всё — в тот же релиз (окно показывает и скачивает), статус по шагам — status.json там же.
@@ -29,6 +32,7 @@ import urllib.request
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 STUDIO = ROOT / "reels-studio"
 sys.path.insert(0, str(STUDIO / "scripts"))
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 REPO = os.environ.get("GITHUB_REPOSITORY", "Ostap-87/VIDEO-HUB")
 TIME_KEYS = {"at", "until", "start", "end", "strike", "pressAt"}
 
@@ -196,6 +200,7 @@ def main():
         else:  # задание без файлов (исходник по ссылке) — релиз под результат создаём сами
             run(["gh", "release", "create", job.tag, "-R", REPO, "--prerelease", "--target", "main",
                  "--title", f"Монтажная: {spec.get('name', a.id)}", "--notes", f"Готовый ролик задания montazh/jobs/{a.id}.json"], cwd=ROOT)
+        multi = bool(opts.get("edl")) and bool(spec["props"].get("edl"))
         src = job.dir / spec["files"]["source"]
         if spec["files"].get("sourceRepo") and not src.exists():  # файл из репозитория (образец montazh/engine/sample.mp4)
             shutil.copy(ROOT / spec["files"]["sourceRepo"], src)
@@ -205,7 +210,7 @@ def main():
             got = sorted(job.dir.glob(src.stem + ".*"), key=lambda x: -x.stat().st_size)
             if got and got[0] != src:
                 got[0].rename(src)
-        if not src.exists():
+        if not multi and not src.exists():
             raise SystemExit(f"нет исходника {src.name} в релизе {job.tag}")
         props = spec["props"]
         table = {spec["local"]["video"]: None}
@@ -224,27 +229,55 @@ def main():
         # 2. склейка, звук, цвет
         words = props.get("words") or []
         wf = job.dir / "source.words.json"
-        if not words:
+        if multi:
+            # несколько роликов: встык по монтажному листу окна, затем куски листа — через npm run cut --segments
+            from edl import build_joined, edl_to_cut  # noqa: E402
+            job.say("cut", f"Склеиваю ролики ({len(spec['files']['clips'])}) по монтажному листу", 0.1)
+            ids = spec["local"]["clips"]  # имя в props → id ролика
+            files = {cid: job.dir / name for cid, name in spec["files"]["clips"].items()}
+            for cid, sample in (spec["files"].get("clipsRepo") or {}).items():  # образцы из репозитория (проверка движка)
+                if not files[cid].exists():
+                    shutil.copy(ROOT / sample, files[cid])
+            missing = [n.name for n in files.values() if not n.exists()]
+            if missing:
+                raise SystemExit(f"нет роликов склейки в релизе {job.tag}: {', '.join(missing)}")
+            edl = [{"clip": ids[x["src"]], "from": x["from"], "to": x["to"]} for x in props["edl"]]
+            joined, segs, edl = build_joined(files, edl, job.dir / "_edl")
+            src = joined
+            (job.dir / "edl.segments.json").write_text(json.dumps(segs))
+            run(["python3", "scripts/cut_pauses.py", src, "--segments", job.dir / "edl.segments.json", "--no-fillers"])
+            work = job.dir / "_edl" / "_work"
+            cut_mp4 = work / f"{src.stem}.cut.mp4"
+            plan = json.loads((work / f"{src.stem}.cut.json").read_text())
+            total = duration(cut_mp4)
+            f, raw_total = edl_to_cut(edl, plan)
+            finale_on = props.get("site", {}).get("at", 0) < raw_total + 1
+            words = walk(words, lambda k, v: round(f(v), 3))
+            app_cuts = [round(f(c), 3) for c in props.get("cuts", [])]
+        if multi:
+            pass
+        elif not words:
             job.say("words", "Распознаю речь (Whisper)", 0.08)
             run(["bash", "scripts/setup-whisper.sh"])
             run(["python3", "scripts/transcribe.py", src])
             words = json.loads(wf.read_text())
         else:
             wf.write_text(json.dumps(words, ensure_ascii=False))
-        cut_args = ["python3", "scripts/cut_pauses.py", src, "--words", wf]
-        if not opts.get("cutPauses", True):
-            cut_args += ["--min-pause", "999", "--no-fillers"]
         if not pathlib.Path("/opt/dfn/bin/python").exists():
             print("  ! DeepFilterNet не установлен — звук без нейросетевого шумодава", flush=True)
-        job.say("cut", "Чищу звук и " + ("вырезаю паузы и «эканья»" if opts.get("cutPauses", True) else "выравниваю видео"), 0.12)
-        run(cut_args)
-        work = job.dir / "_work"
-        cut_mp4 = work / f"{src.stem}.cut.mp4"
-        plan = json.loads((work / f"{src.stem}.cut.json").read_text())
-        total = duration(cut_mp4)
-        raw_total = props.get("speechSeconds") or total
-        f = to_cut(plan)
-        finale_on = props.get("site", {}).get("at", 0) < raw_total + 1
+        if not multi:
+            cut_args = ["python3", "scripts/cut_pauses.py", src, "--words", wf]
+            if not opts.get("cutPauses", True):
+                cut_args += ["--min-pause", "999", "--no-fillers"]
+            job.say("cut", "Чищу звук и " + ("вырезаю паузы и «эканья»" if opts.get("cutPauses", True) else "выравниваю видео"), 0.12)
+            run(cut_args)
+            work = job.dir / "_work"
+            cut_mp4 = work / f"{src.stem}.cut.mp4"
+            plan = json.loads((work / f"{src.stem}.cut.json").read_text())
+            total = duration(cut_mp4)
+            raw_total = props.get("speechSeconds") or total
+            f = to_cut(plan)
+            finale_on = props.get("site", {}).get("at", 0) < raw_total + 1
 
         # 3. props → шкала склейки
         props = replace_strings(props, {k: v for k, v in table.items() if v})
@@ -254,8 +287,13 @@ def main():
             zooms.append({**z, "at": round(a0, 3), "hold": round(max(0.2, f(z["at"] + z["hold"]) - a0), 3)})
         props = walk(props, lambda k, v: round(f(v), 3) if v <= raw_total + 0.5 else round(total + v - raw_total, 3))
         props["zooms"] = zooms
-        props["words"] = json.loads((work / f"{src.stem}.cut.words.json").read_text()) if opts.get("engineWords") else walk(words, lambda k, v: round(f(v), 3))
-        props["cuts"] = [round(s["out_start"], 3) for s in plan[1:]]
+        if multi:
+            props["words"] = words  # уже в шкале склейки движка
+            props["cuts"] = app_cuts
+            props.pop("edl", None)
+        else:
+            props["words"] = json.loads((work / f"{src.stem}.cut.words.json").read_text()) if opts.get("engineWords") else walk(words, lambda k, v: round(f(v), 3))
+            props["cuts"] = [round(s["out_start"], 3) for s in plan[1:]]
         props["speechSeconds"] = round(total, 3)
         props["mediaSrc"] = str(cut_mp4.relative_to(ROOT))
         props.pop("audioSrc", None)

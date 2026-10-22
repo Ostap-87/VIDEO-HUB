@@ -29,6 +29,7 @@ import {LinkArrow, SocialCard, SocialGrid} from "../components/SocialCard";
 import {activeScreen, captionTopFor, chainScreens, DropBackdrop, DropFrame, OD_LINKS, ScreenPanel, speakerCardStyle, speakerShift} from "../components/ScreenOverlay";
 import {HookTitle, hookSounds, type HookItem} from "../components/HookTitle";
 import {bwFilter, ColorWipes, EpisodeOutro} from "../components/SeriesFx";
+import {EdlAudio, EdlCtx, placeEdl, SpeakerVideo} from "../components/EdlVideo";
 import {loadFont as loadOswald} from "@remotion/google-fonts/Oswald";
 
 const oswald = loadOswald("normal", {weights: ["700"], subsets: ["cyrillic", "latin"]});
@@ -298,6 +299,9 @@ export const talkReelProSchema = z.object({
   // спокойные субтитры (решение пользователя 15.10.2026 по «Автозаводам»: «текст скачет»): всегда на одной высоте
   // captionTop (не переезжают при панелях городов, чек-листах, клипах), страница проявляется без «прыжка» масштаба
   captionFixed: z.boolean().optional(),
+  // монтажный лист Монтажной: ролик из кусков нескольких исходников встык (components/EdlVideo.tsx) — только предпросмотр,
+  // движок склеивает куски заранее; audio — свой звук куска (чистый голос)
+  edl: z.array(z.object({src: z.string(), from: z.number(), to: z.number(), audio: z.string().optional()})).optional(),
 });
 export type TalkReelProProps = z.infer<typeof talkReelProSchema>;
 
@@ -937,7 +941,7 @@ const ZoomedVideo: React.FC<{
   };
   return (
     <AbsoluteFill style={{background: "#0B0D14"}}>
-      <OffthreadVideo src={staticFile(src)} muted style={{...videoStyle, opacity: kind === "fade" ? 1 - p : 1}} />
+      <SpeakerVideo src={src} style={{...videoStyle, opacity: kind === "fade" ? 1 - p : 1}} />
       {angleB
         ? angleB.shots.map((sh, i) => (
             <Sequence key={`b-${i}`} from={Math.round(sh.at * fps)} durationInFrames={Math.round((sh.until - sh.at) * fps)} layout="none">
@@ -1000,9 +1004,8 @@ const ZoomedVideo: React.FC<{
               transform: b.mode === "screen" ? `perspective(1800px) rotateY(${-6 * p}deg)` : undefined,
             }}
           >
-            <OffthreadVideo
-              src={staticFile(src)}
-              muted
+            <SpeakerVideo
+              src={src}
               style={{
                 width: "100%",
                 height: "100%",
@@ -1584,12 +1587,7 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
           boxShadow: B.square ? `${14 * card}px ${14 * card}px 0 rgba(25,25,34,${card})` : `0 30px 70px rgba(0,0,0,${0.5 * card})`,
         }}
       >
-        <OffthreadVideo
-          src={staticFile(src)}
-          muted
-          trimBefore={fromFrame}
-          style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 40%"}}
-        />
+        <SpeakerVideo src={src} trimBefore={fromFrame} style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 40%"}} />
       </div>
     </AbsoluteFill>
   );
@@ -1761,10 +1759,12 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
   // флипчарт и «печатная машинка» поднимают спикера, как планшет с галочками
   const liftLists = [...p.checklists, ...((p.lists ?? []).filter((l) => LIFT_LISTS.has(l.style)) as unknown as TalkReelProProps["checklists"])];
   const plan = React.useMemo(() => (brand.id === "aura" ? auraPlan(p, durationInFrames / fps) : null), [brand.id, p, durationInFrames, fps]);
+  const edl = React.useMemo(() => (p.edl?.length ? {media: p.mediaSrc, segs: placeEdl(p.edl)} : null), [p.edl, p.mediaSrc]);
   return (
     <BrandCtx.Provider value={brand}>
+    <EdlCtx.Provider value={edl}>
     <AbsoluteFill style={{backgroundColor: "#0B0D14"}}>
-      <Audio src={staticFile(p.audioSrc || p.mediaSrc)} />
+      {edl ? <EdlAudio /> : <Audio src={staticFile(p.audioSrc || p.mediaSrc)} />}
       {p.music ? (
         <Audio
           src={staticFile(p.music.src)}
@@ -1905,6 +1905,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
       {p.episode ? <EpisodeOutro ep={p.episode} start={p.speechSeconds - 0.05} links={p.links ?? OD_LINKS} /> : null}
       {p.showSafeZone ? <SafeZone /> : null}
     </AbsoluteFill>
+    </EdlCtx.Provider>
     </BrandCtx.Provider>
   );
 };

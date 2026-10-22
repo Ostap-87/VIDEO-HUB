@@ -90,7 +90,9 @@ Stories-анонсы каруселей — `npm run announce` (`finished-videos
 видеть, как это будет выглядеть… монтажный стол, писать на какой секунде что исправить… референсы в библиотеку,
 где сразу видно эффект». Папка `montazh/` (решение: внутри VIDEO-HUB, Mac + браузер, ролики — файлом, через GitHub и
 по ссылкам Google Диск / Яндекс Диск / файлообменники). Предпросмотр — настоящий `TalkReelPro` в Remotion Player.
-Шаги: Исходник → Текст (Whisper в окне или файл) → Звук (RNNoise A/B) → Цвет (пресеты = поле `grade`) → Монтаж
+Шаги: Исходник → Склейка (несколько роликов и фото, лучшие дубли, чистка пауз, эканий, мусорных слов и цыканий —
+решение пользователя 22.10.2026; `montazh/app/assemble.ts`, движок — `montazh/engine/edl.py`) → Текст (Whisper в окне
+или файл) → Звук (RNNoise A/B) → Цвет (пресеты = поле `grade`) → Монтаж
 (эффекты из библиотеки по секундам + заметки) → Библиотека (превью 1–2 с) → Готово (задание `.job.json`).
 Устройство и команды — `montazh/README.md`. Установка на Mac — ветка `montazh-dist` (Actions «Монтажная — сборка»):
 `D=$(mktemp -d) && curl -fL https://codeload.github.com/Ostap-87/VIDEO-HUB/tar.gz/refs/heads/montazh-dist | tar -xzf - -C "$D" --strip-components=1 && bash "$D/install_mac.command"`.
