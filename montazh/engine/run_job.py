@@ -44,8 +44,9 @@ STATUS_MARK = "montazh-status:"
 
 
 def status_body(jid: str, status: dict) -> str:
-    """Описание релиза: строка для людей + статус в base64 (его читает сервер Монтажной на Mac из ответа api.github.com)."""
-    raw = base64.b64encode(json.dumps(status, ensure_ascii=False, separators=(",", ":")).encode()).decode()
+    """Описание релиза: строка для людей + статус в base64 (его читает сервер Монтажной на Mac из ответа api.github.com).
+    ts — статус пишет этот движок по ходу работы; без ts неготовый статус сервер считает устаревшим."""
+    raw = base64.b64encode(json.dumps({**status, "ts": int(time.time())}, ensure_ascii=False, separators=(",", ":")).encode()).decode()
     return f"Монтажная, задание montazh/jobs/{jid}.json: {status.get('text', '')}\n\n<!-- {STATUS_MARK}{raw} -->\n"
 
 
@@ -55,12 +56,22 @@ def set_body(tag: str, body: str) -> None:
     subprocess.run(["gh", "release", "edit", tag, "--notes-file", str(f), "-R", REPO], check=False, capture_output=True)
 
 
+def body_status(body: str):
+    m = re.search(STATUS_MARK + r"([A-Za-z0-9+/=]+)", body or "")
+    try:
+        return json.loads(base64.b64decode(m.group(1))) if m else None
+    except ValueError:
+        return None
+
+
 def status_body_all() -> None:
-    """Готовые до 23.10.2026 задания: status.json → описание релиза (тогда статус был только файлом)."""
+    """Задания движка до 23.10.2026: готовый status.json → описание релиза (тогда статус был только файлом).
+    Неготовые не пишутся (тот движок описание не обновляет — статус бы застыл), застывшие исправляются."""
     rels = json.loads(subprocess.check_output(["gh", "api", "--paginate", "--slurp", f"repos/{REPO}/releases?per_page=100"]))
     for rel in (r for page in rels for r in page):
         tag = rel["tag_name"]
-        if not tag.startswith("montazh-") or STATUS_MARK in (rel.get("body") or ""):
+        have = body_status(rel.get("body"))
+        if not tag.startswith("montazh-") or (have and (have.get("ts") or have.get("done") or have.get("error"))):
             continue
         if not any(x["name"] == "status.json" for x in rel.get("assets", [])):
             continue
@@ -70,7 +81,12 @@ def status_body_all() -> None:
         except ValueError:
             print(f"  {tag}: status.json не прочитался")
             continue
-        set_body(tag, status_body(tag.removeprefix("montazh-"), st))
+        if not (st.get("done") or st.get("error")):
+            print(f"  {tag}: ещё в работе ({st.get('text')}) — описание не трогаю")
+            continue
+        raw = base64.b64encode(json.dumps(st, ensure_ascii=False, separators=(",", ":")).encode()).decode()
+        set_body(tag, f"Монтажная, задание montazh/jobs/{tag.removeprefix('montazh-')}.json: {st.get('text', '')}\n\n"
+                      f"<!-- {STATUS_MARK}{raw} -->\n")
         print(f"  {tag}: {st.get('stage')} · {st.get('text')}")
 
 

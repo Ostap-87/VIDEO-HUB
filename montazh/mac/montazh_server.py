@@ -291,6 +291,8 @@ def job_state(jid: str) -> dict:
             st = json.loads(base64.b64decode(m.group(1)).decode("utf-8"))
         except ValueError:
             st = None
+        if st and not (st.get("ts") or st.get("done") or st.get("error")):
+            st = None          # неготовый статус без ts записан не движком по ходу работы — мог застыть, верим status.json
     if st is None and "status.json" in assets:
         with tempfile.TemporaryDirectory() as tmp:
             dst = pathlib.Path(tmp) / "status.json"
