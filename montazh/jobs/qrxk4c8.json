@@ -1,0 +1,356 @@
+{
+ "version": 2,
+ "id": "qrxk4c8",
+ "name": "IMG_5402",
+ "created": "2026-10-23 01:34:17",
+ "brand": "gtt",
+ "format": "reels",
+ "options": {
+  "cutPauses": true
+ },
+ "files": {
+  "source": "source.mov",
+  "images": {}
+ },
+ "local": {
+  "video": "montazh-local/source"
+ },
+ "hf": {},
+ "props": {
+  "mediaSrc": "montazh-local/source",
+  "cutoutSrc": "",
+  "words": [
+   {
+    "text": "Вот",
+    "start": 0,
+    "end": 0.68
+   },
+   {
+    "text": "так",
+    "start": 0.68,
+    "end": 0.8
+   },
+   {
+    "text": "начинается",
+    "start": 0.8,
+    "end": 1.28
+   },
+   {
+    "text": "новый",
+    "start": 1.28,
+    "end": 1.5
+   },
+   {
+    "text": "день.",
+    "start": 1.5,
+    "end": 1.76
+   },
+   {
+    "text": "7",
+    "start": 2.52,
+    "end": 2.62
+   },
+   {
+    "text": "утра",
+    "start": 2.62,
+    "end": 3
+   },
+   {
+    "text": "и",
+    "start": 3,
+    "end": 3.56
+   },
+   {
+    "text": "сегодня",
+    "start": 3.56,
+    "end": 3.88
+   },
+   {
+    "text": "путешествие",
+    "start": 3.88,
+    "end": 4.64
+   },
+   {
+    "text": "в",
+    "start": 4.64,
+    "end": 5.06
+   },
+   {
+    "text": "Чаншу.",
+    "start": 5.06,
+    "end": 5.74
+   },
+   {
+    "text": "Для",
+    "start": 5.88,
+    "end": 6.22
+   },
+   {
+    "text": "того,",
+    "start": 6.22,
+    "end": 6.42
+   },
+   {
+    "text": "чтобы",
+    "start": 6.44,
+    "end": 6.6
+   },
+   {
+    "text": "договариваться",
+    "start": 6.6,
+    "end": 7.32
+   },
+   {
+    "text": "о",
+    "start": 7.32,
+    "end": 7.82
+   },
+   {
+    "text": "посещении",
+    "start": 7.82,
+    "end": 8.32
+   },
+   {
+    "text": "новых",
+    "start": 8.32,
+    "end": 8.68
+   },
+   {
+    "text": "заводов",
+    "start": 8.68,
+    "end": 9.68
+   },
+   {
+    "text": "и",
+    "start": 9.68,
+    "end": 10.34
+   },
+   {
+    "text": "новых...",
+    "start": 10.34,
+    "end": 10.78
+   }
+  ],
+  "accentWords": [
+   "7"
+  ],
+  "cuts": [],
+  "chips": [],
+  "logos": [],
+  "numbers": [],
+  "broll": [],
+  "checklists": [],
+  "cities": [],
+  "zooms": [
+   {
+    "at": 0.17,
+    "kind": "push",
+    "amount": 0.08,
+    "hold": 2
+   },
+   {
+    "at": 0.17,
+    "kind": "pull",
+    "amount": 0.2,
+    "hold": 1.6
+   }
+  ],
+  "sfx": {
+   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+   "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+  },
+  "speechSeconds": 12,
+  "site": {
+   "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
+   "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
+   "route": [],
+   "at": 1011
+  },
+  "cta": "Экспедиции",
+  "ctaSeconds": 0.3,
+  "showSafeZone": false,
+  "format": "reels",
+  "brand": "gtt",
+  "focus": {
+   "x": 540,
+   "y": 866
+  },
+  "captionSize": 90,
+  "captionTop": 1500,
+  "captionStyle": "3d",
+  "grade": "brightness(1.000) contrast(1.154) saturate(1.126)",
+  "palette": {
+   "text": "#FFFFFF",
+   "accent": "#3D7BFF",
+   "ink": "#FFFFFF"
+  },
+  "speaker": [
+   {
+    "at": 0.17,
+    "until": 3.17,
+    "corner": "bl",
+    "scale": 0.55,
+    "style": "contour",
+    "bg": "blur"
+   }
+  ],
+  "texts": [
+   {
+    "at": 1.9,
+    "until": 4.9,
+    "text": "7 утра и",
+    "x": 380,
+    "y": 560,
+    "size": 230,
+    "rx": 0,
+    "ry": 32,
+    "rz": 0,
+    "color": "#FFFFFF",
+    "font": "grotesk",
+    "plane": "behind",
+    "anim": "swing",
+    "depth": 6
+   },
+   {
+    "at": 4.37,
+    "until": 7.37,
+    "text": "в Чаншу Для",
+    "x": 540,
+    "y": 420,
+    "size": 140,
+    "rx": 0,
+    "ry": -12,
+    "rz": -9,
+    "color": "#FFFFFF",
+    "font": "display",
+    "plane": "front",
+    "anim": "rise",
+    "depth": 6
+   }
+  ],
+  "hooks": [
+   {
+    "variant": "words",
+    "at": 4.37,
+    "until": 7.37,
+    "lines": [
+     {
+      "text": "в Чаншу Для того",
+      "at": 4.47
+     }
+    ]
+   },
+   {
+    "variant": "wall",
+    "at": 4.37,
+    "until": 7.37,
+    "lines": [
+     {
+      "text": "в Чаншу Для того",
+      "at": 4.47
+     }
+    ]
+   }
+  ],
+  "emojis": [
+   {
+    "at": 4.37,
+    "until": 6.17,
+    "src": "интернет-материалы/эмодзи/огонь.webp",
+    "x": 820,
+    "y": 460,
+    "anim": "float",
+    "size": 240
+   }
+  ],
+  "arrows": [
+   {
+    "at": 7.9,
+    "until": 10.9,
+    "text": "Ссылка выше"
+   }
+  ]
+ },
+ "effects": [
+  {
+   "id": "etvx4fff",
+   "effect": "zoom-push",
+   "at": 0.17,
+   "until": 2.17,
+   "params": {}
+  },
+  {
+   "id": "ex0uz563",
+   "effect": "zoom-pull",
+   "at": 0.17,
+   "until": 1.77,
+   "params": {}
+  },
+  {
+   "id": "eowig60k",
+   "effect": "speaker-contour",
+   "at": 0.17,
+   "until": 3.17,
+   "params": {}
+  },
+  {
+   "id": "epye4f6d",
+   "effect": "panel-corner",
+   "at": 0.17,
+   "until": 3.67,
+   "params": {}
+  },
+  {
+   "id": "exg0na4s",
+   "effect": "text3d-wall",
+   "at": 1.9,
+   "until": 4.9,
+   "params": {}
+  },
+  {
+   "id": "enndcaar",
+   "effect": "text3d-tilt",
+   "at": 4.37,
+   "until": 7.37,
+   "params": {}
+  },
+  {
+   "id": "eqh0r8bh",
+   "effect": "hook-words",
+   "at": 4.37,
+   "until": 7.37,
+   "params": {}
+  },
+  {
+   "id": "epbz1kwy",
+   "effect": "hook-wall",
+   "at": 4.37,
+   "until": 7.37,
+   "params": {}
+  },
+  {
+   "id": "ed0n8sm8",
+   "effect": "emoji-float",
+   "at": 4.37,
+   "until": 6.17,
+   "params": {}
+  },
+  {
+   "id": "er0frkqi",
+   "effect": "arrow",
+   "at": 7.9,
+   "until": 10.9,
+   "params": {}
+  },
+  {
+   "id": "er6emus9",
+   "effect": "broll-zoom",
+   "at": 9.4,
+   "until": 12.2,
+   "params": {}
+  }
+ ],
+ "notes": []
+}
