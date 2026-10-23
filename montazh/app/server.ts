@@ -54,7 +54,8 @@ export async function submitJob(jid: string, job: unknown) {
   if (!r.ok) throw new Error((await r.json()).detail || "Не отправилось");
 }
 
-export type JobFile = {name: string; kind: "video" | "stories" | "phone" | "frames" | "part"; title: string; size: number; url?: string; asset?: number};
+// local — файл уже на этом Mac (скачан кнопкой или для просмотра): окно берёт его у сервера, api/job/<id>/file/<имя>
+export type JobFile = {name: string; kind: "video" | "stories" | "phone" | "frames" | "part"; title: string; size: number; url?: string; asset?: number; local?: boolean};
 export type SaveState = {done?: boolean; error?: string; path?: string; progress?: number};
 
 // готовый файл задания → «Загрузки/Монтажная» на Mac (сервер качает через API GitHub и показывает файл в Finder);
@@ -66,6 +67,15 @@ export async function saveJobFile(jid: string, name: string, tag = ""): Promise<
   return d;
 }
 export const saveState = (jid: string, name: string): Promise<SaveState> => fetch(`api/job/${jid}/save/${name}`).then((r) => r.json());
+// посмотреть готовый ролик в окне: сервер скачивает его на Mac (сама страница до файлов GitHub из Китая не достаёт)
+export async function previewJobFile(jid: string, name: string): Promise<SaveState> {
+  const r = await fetch(`api/job/${jid}/preview`, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({name})});
+  const d = await r.json();
+  if (!r.ok) throw new Error(d.detail || "Не скачалось");
+  return d;
+}
+export const previewState = (jid: string, name: string): Promise<SaveState> => fetch(`api/job/${jid}/preview/${name}`).then((r) => r.json());
+export const jobFileUrl = (jid: string, name: string) => `api/job/${jid}/file/${name}`;
 export type JobState = {
   stage: string;
   text: string;
@@ -75,6 +85,7 @@ export type JobState = {
   error?: string;
   done?: boolean;
   seconds?: number;
+  page?: string; // страница релиза на GitHub — запасной путь скачать в обычном браузере
 };
 export const jobState = (jid: string): Promise<JobState> => fetch(`api/job/${jid}`).then((r) => r.json());
 

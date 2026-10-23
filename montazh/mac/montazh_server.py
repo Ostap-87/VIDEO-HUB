@@ -13,7 +13,9 @@
   python3 montazh_server.py [--port 8740] [--dist <папка со сборкой>] [--no-open]
 """
 import argparse
+import base64
 import json
+import shutil
 import os
 import pathlib
 import re
@@ -37,6 +39,14 @@ HOME = pathlib.Path.home() / ("Library/Application Support/Montazh" if sys.platf
 SENDS: dict = {}  # id задания → ход отправки в облако
 SAVES: dict = {}  # «задание/файл» → ход скачивания готового ролика в «Загрузки»
 DOWNLOADS = pathlib.Path.home() / "Downloads" / "Монтажная"
+PREVIEWS: dict = {}  # «задание/файл» → ход скачивания для просмотра в окне
+DONE: dict = {}  # id → статус готового задания (больше не меняется — не перечитывать status.json)
+PREVIEW = HOME / "preview"  # готовые ролики для просмотра в окне (чистятся через 14 дней)
+# Файлы релизов GitHub отдаёт с release-assets.githubusercontent.com — из Китая он часто закрыт. Тогда — зеркала
+# github.com (отдают те же публичные файлы, размер сверяется с GitHub).
+GH_MIRRORS = ("https://ghfast.top/", "https://gh-proxy.com/", "https://ghproxy.net/")
+NET_FAIL = {5, 6, 7, 28, 35, 52, 55, 56, 97}  # curl: нет адреса, нет соединения, таймаут, TLS, обрыв, прокси
+STATUS_RE = re.compile(r"montazh-status:([A-Za-z0-9+/=]+)")  # статус в описании релиза (пишет движок)
 
 
 def gh_token() -> str:
@@ -48,13 +58,22 @@ def gh_token() -> str:
 
 
 def gh(method: str, url: str, data_file=None, ctype="application/json", timeout=120):
-    """Запрос к GitHub через curl. Токен — в конфиге на stdin (-K -), в списке процессов его не видно."""
+    """Запрос к GitHub через curl. Токен — в конфиге на stdin (-K -), в списке процессов его не видно.
+    Если в macOS включён системный прокси (VPN), сначала через него — как ходит окно (Chrome); не ответил — напрямую."""
     cfg = (f'header = "Authorization: Bearer {gh_token()}"\n'
            'header = "Accept: application/vnd.github+json"\nheader = "X-GitHub-Api-Version: 2022-11-28"\n')
-    args = ["curl", "-sS", "-L", "-X", method, "-K", "-", "-w", "\n%{http_code}", "-A", "Montazh"]
+    args = ["curl", "-sS", "-L", "-X", method, "-K", "-", "-w", "\n%{http_code}", "-A", "Montazh", "--connect-timeout", "15"]
     if data_file is not None:
         args += ["-H", f"Content-Type: {ctype}", "--data-binary", f"@{data_file}"]
-    out = subprocess.run(args + [url], input=cfg.encode(), capture_output=True, timeout=timeout)
+    proxy = sys_proxy()
+    for p in [proxy, None] if proxy else [None]:
+        out = subprocess.run(args + (["-x", p] if p else []) + [url], input=cfg.encode(), capture_output=True, timeout=timeout)
+        if out.returncode in NET_FAIL and p:
+            nlog(f"GitHub через прокси {p} не ответил (curl {out.returncode}) — пробую напрямую")
+            continue
+        if out.returncode in NET_FAIL:
+            nlog(f"GitHub не ответил (curl {out.returncode}): {out.stderr.decode('utf-8', 'replace').strip()[:160]}")
+        break
     text, _, code = out.stdout.decode("utf-8", "replace").rpartition("\n")
     try:
         data = json.loads(text) if text.strip() else {}
@@ -126,7 +145,6 @@ def send_job(jid: str, job: dict) -> None:
         st.update(text="Отправляю задание…", progress=0.93)
         path = f"montazh/jobs/{jid}.json"
         code, cur = gh("GET", f"https://api.github.com/repos/{REPO}/contents/{path}?ref=main")
-        import base64
         payload = {"message": f"Монтажная: задание «{job.get('name', jid)}»", "branch": "main",
                    "content": base64.b64encode(json.dumps(job, ensure_ascii=False, indent=1).encode()).decode()}
         if code == 200 and cur.get("sha"):
@@ -135,7 +153,6 @@ def send_job(jid: str, job: dict) -> None:
         if code not in (200, 201):
             raise LinkError(f"Задание не записалось ({code}): {d.get('message', '')}")
         st.update(text="Отправлено — рендер начнётся через минуту", progress=1.0, sent=True)
-        import shutil
         shutil.rmtree(folder, ignore_errors=True)   # файлы уже в релизе
     except (LinkError, subprocess.SubprocessError, OSError, KeyError) as exc:
         st["error"] = str(exc) or "Не удалось отправить"
@@ -222,7 +239,6 @@ def list_refs() -> list:
     code, items = gh("GET", f"https://api.github.com/repos/{REPO}/contents/montazh/references?ref=main")
     if code != 200 or not isinstance(items, list):
         return []
-    import base64
     out = []
     for it in sorted(items, key=lambda x: x.get("name", ""), reverse=True)[:40]:
         if not it.get("name", "").endswith(".json"):
@@ -238,19 +254,57 @@ def list_refs() -> list:
     return sorted(out, key=lambda r: r.get("created", ""), reverse=True)
 
 
+# готовые файлы по именам в релизе — если статус не прочитался (порядок как у движка)
+GUESS = ((".mp4", "video", "Reels, полное качество"), ("-phone.mp4", "phone", "Reels: копия для телефона"),
+         ("-frames.jpg", "frames", "Раскадровка"), ("-stories.mp4", "stories", "Stories, полное качество"),
+         ("-stories-phone.mp4", "phone", "Stories: копия для телефона"))
+
+
+def guess_status(jid: str, assets: dict) -> dict:
+    slug = f"montazh-{jid}"
+    files = [{"name": slug + suf, "kind": kind, "title": title, "size": assets[slug + suf]["size"]}
+             for suf, kind, title in GUESS if slug + suf in assets]
+    for name in sorted(assets):
+        m = re.fullmatch(re.escape(slug) + r"(-stories)?-(\d+)\.mp4", name)
+        if m:
+            files.append({"name": name, "kind": "part", "title": f"Stories, часть {m.group(2)}", "size": assets[name]["size"]})
+    if not any(f["kind"] == "frames" for f in files):   # раскадровка — сразу после первого рендера
+        return {"stage": "queued", "text": "В работе (подробный ход не прочитался — файлы появятся сами)", "progress": 0.1}
+    return {"stage": "done", "text": "Готово", "progress": 1, "files": files, "done": True}
+
+
 def job_state(jid: str) -> dict:
-    """Ход работы в облаке: status.json и готовые файлы из релиза."""
+    """Ход работы в облаке — только через api.github.com: статус из описания релиза (его пишет движок), для старых
+    заданий — status.json (API, прокси, зеркала) или готовые файлы по именам."""
     code, rel = gh("GET", f"https://api.github.com/repos/{REPO}/releases/tags/montazh-{jid}")
+    if code == 0:
+        return {"stage": "net", "text": "Нет связи с GitHub — проверьте интернет или VPN; Монтажная попробует ещё раз", "progress": 0}
+    if code == 401:
+        return {"stage": "token", "text": "Ключ GitHub не подходит — нажмите «Сменить ключ GitHub» и введите новый"}
     if code != 200:
         return {"stage": "wait", "text": "Ждёт отправки"}
     assets = {a["name"]: a for a in rel.get("assets", [])}
-    st = {"stage": "queued", "text": "В очереди: рендер скоро начнётся", "progress": 0}
-    if "status.json" in assets:
+    st = json.loads(json.dumps(DONE[jid])) if jid in DONE else None
+    m = None if st else STATUS_RE.search(rel.get("body") or "")
+    if m:
         try:
-            raw = subprocess.check_output(["curl", "-sSL", "--fail", assets["status.json"]["browser_download_url"]], timeout=30)
-            st = json.loads(raw)
-        except (subprocess.SubprocessError, ValueError):
-            pass
+            st = json.loads(base64.b64decode(m.group(1)).decode("utf-8"))
+        except ValueError:
+            st = None
+    if st is None and "status.json" in assets:
+        with tempfile.TemporaryDirectory() as tmp:
+            dst = pathlib.Path(tmp) / "status.json"
+            try:
+                a = assets["status.json"]
+                asset_get(a["id"], a["browser_download_url"], dst, small=True)
+                st = json.loads(dst.read_text("utf-8"))
+            except (LinkError, OSError, ValueError):
+                st = None
+    if st is None:
+        st = guess_status(jid, assets)
+    if st.get("done") and jid not in DONE:
+        DONE[jid] = json.loads(json.dumps(st))
+    st["page"] = rel.get("html_url") or f"https://github.com/{REPO}/releases/tag/montazh-{jid}"
     for f in st.get("files", []):
         a = assets.get(f["name"])
         if a:
@@ -259,7 +313,124 @@ def job_state(jid: str) -> dict:
             got = SAVES.get(f"{jid}/{f['name']}")
             if got:
                 f["saved"] = {k: got.get(k) for k in ("done", "error", "path", "progress")}
+            if (PREVIEW / jid / f["name"]).is_file() or (got and got.get("done")):
+                f["local"] = True
     return st
+
+
+def asset_get(asset_id: int, url: str, dst: pathlib.Path, size=None, prog=None, small=False) -> str:
+    """Файл релиза → dst. Источники по очереди: API GitHub с ключом (через прокси macOS, потом напрямую) — он
+    перенаправляет на release-assets.githubusercontent.com; не вышло — зеркала github.com. Докачка с места обрыва,
+    размер сверяется с GitHub. Возвращает адрес, с которого скачалось."""
+    tok = gh_token()
+    cfg = ((f'header = "Authorization: Bearer {tok}"\n' if tok else "") +
+           'header = "Accept: application/octet-stream"\nheader = "X-GitHub-Api-Version: 2022-11-28"\n')
+    proxy = sys_proxy()
+    api = f"https://api.github.com/repos/{REPO}/releases/assets/{asset_id}"
+    tries = [(api, p, cfg) for p in ([proxy, None] if proxy else [None])] + [(m + url, None, "") for m in GH_MIRRORS]
+    part = dst.with_name(dst.name + ".part")
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    if small or (size and part.exists() and part.stat().st_size >= size):
+        part.unlink(missing_ok=True)
+    for u, p, c in tries if small else tries * 2:
+        host = urllib.parse.urlparse(u).netloc
+        args = ["curl", "-sS", "-L", "--fail", "-A", "Montazh", "--connect-timeout", "15", "-K", "-", "-o", str(part),
+                *(["-x", p] if p else []),
+                *(["-m", "20"] if small else ["--speed-limit", "4096", "--speed-time", "45", "-C", "-"]), u]
+        proc = subprocess.Popen(args, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
+        proc.stdin.write(c.encode())
+        proc.stdin.close()
+        while proc.poll() is None:
+            if prog is not None and size:
+                prog["progress"] = min(0.99, (part.stat().st_size if part.exists() else 0) / size)
+            threading.Event().wait(0.5)
+        got = part.stat().st_size if part.exists() else 0
+        if proc.returncode == 0 and got and (not size or got == size):
+            part.replace(dst)
+            if host != "api.github.com":
+                nlog(f"{dst.name}: скачано через {host}")
+            return u
+        err = proc.stderr.read().decode("utf-8", "replace").strip()[:160]
+        nlog(f"{dst.name}: не скачалось с {host}{' через прокси ' + p if p else ''} (curl {proc.returncode}, {got} байт) {err}")
+        if proc.returncode in (0, 33) or (size and got > size):   # не тот файл или сервер не умеет докачку — заново
+            part.unlink(missing_ok=True)
+    if small:
+        part.unlink(missing_ok=True)
+    raise LinkError("Не скачалось ни с GitHub, ни с зеркал — проверьте интернет или VPN и нажмите ещё раз "
+                    "(или откройте страницу ролика на GitHub)")
+
+
+def job_file(jid: str, name: str) -> dict:
+    st = job_state(jid)
+    f = next((x for x in st.get("files", []) if x["name"] == name and x.get("asset")), None)
+    if not f:
+        raise LinkError("Файла ещё нет в облаке — подождите, пока ролик доделается")
+    return {**f, "job": st.get("name") or jid}
+
+
+def local_copy(jid: str, name: str):
+    """Уже скачанный файл: в «Загрузках» (кнопкой «Скачать») или для просмотра в окне."""
+    got = SAVES.get(f"{jid}/{name}")
+    if got and got.get("done") and pathlib.Path(got["path"]).is_file():
+        return pathlib.Path(got["path"])
+    p = PREVIEW / jid / name
+    return p if p.is_file() else None
+
+
+def send_local(handler, path: pathlib.Path):
+    """Файл с диска окну — с поддержкой Range (перемотка в <video>)."""
+    size = path.stat().st_size
+    m = re.fullmatch(r"bytes=(\d*)-(\d*)", handler.headers.get("Range") or "")
+    start, end = 0, size - 1
+    if m and (m.group(1) or m.group(2)):
+        if m.group(1):
+            start, end = int(m.group(1)), min(int(m.group(2) or size - 1), size - 1)
+        else:
+            start = max(0, size - int(m.group(2)))
+        if start > end:
+            handler.send_response(416)
+            handler.send_header("Content-Range", f"bytes */{size}")
+            handler.end_headers()
+            return None
+        handler.send_response(206)
+        handler.send_header("Content-Range", f"bytes {start}-{end}/{size}")
+    else:
+        handler.send_response(200)
+    handler.send_header("Content-Type", "image/jpeg" if path.suffix == ".jpg" else "video/mp4")
+    handler.send_header("Content-Length", str(end - start + 1))
+    handler.send_header("Accept-Ranges", "bytes")
+    handler.end_headers()
+    left = end - start + 1
+    try:
+        with path.open("rb") as fh:
+            fh.seek(start)
+            while left > 0 and (chunk := fh.read(min(left, 1 << 20))):
+                handler.wfile.write(chunk)
+                left -= len(chunk)
+    except OSError:
+        pass                                                   # окно перемотало или закрыло ролик
+    return None
+
+
+def clean_previews(days: int = 14) -> None:
+    old = time.time() - days * 86400
+    for f in PREVIEW.glob("*/*") if PREVIEW.exists() else []:
+        try:
+            if f.stat().st_mtime < old:
+                f.unlink()
+        except OSError:
+            pass
+
+
+def preview_file(jid: str, name: str) -> None:
+    """Готовый ролик → кэш для просмотра в окне (окно само до GitHub не достаёт: те же закрытые адреса)."""
+    job = PREVIEWS[f"{jid}/{name}"]
+    try:
+        f = job_file(jid, name)
+        asset_get(f["asset"], f["url"], PREVIEW / jid / name, size=f.get("size"), prog=job)
+        job.update(done=True, progress=1)
+    except (LinkError, subprocess.SubprocessError, OSError) as exc:
+        job["error"] = str(exc) or "Не скачалось"
 
 
 def save_name(title: str, f: dict, tag: str = "") -> str:
@@ -284,33 +455,19 @@ def save_name(title: str, f: dict, tag: str = "") -> str:
 
 
 def save_file(jid: str, name: str, tag: str = ""):
-    """Готовый файл задания → ~/Downloads/Монтажная (через API GitHub с ключом: так скачивается и там, где прямые
-    ссылки GitHub медленные или закрыты), потом показывает его в Finder."""
+    """Готовый файл задания → ~/Downloads/Монтажная (API GitHub, прокси macOS или зеркала — см. asset_get),
+    потом показывает его в Finder."""
     key = f"{jid}/{name}"
     job = SAVES[key]
     try:
-        st = job_state(jid)
-        f = next((x for x in st.get("files", []) if x["name"] == name and x.get("asset")), None)
-        if not f:
-            raise LinkError("Файла ещё нет в облаке — подождите, пока ролик доделается")
+        f = job_file(jid, name)
         DOWNLOADS.mkdir(parents=True, exist_ok=True)
-        dst = DOWNLOADS / save_name(st.get("name") or jid, f, tag)
-        tmp = dst.with_name(dst.name + ".part")
-        tok = gh_token()
-        cfg = ((f'header = "Authorization: Bearer {tok}"\n' if tok else "") +
-               'header = "Accept: application/octet-stream"\nheader = "X-GitHub-Api-Version: 2022-11-28"\n')
-        proc = subprocess.Popen(["curl", "-sS", "-L", "--fail", "--retry", "3", "-K", "-", "-A", "Montazh", "-o", str(tmp),
-                                 f"https://api.github.com/repos/{REPO}/releases/assets/{f['asset']}"],
-                                stdin=subprocess.PIPE, stderr=subprocess.PIPE)
-        proc.stdin.write(cfg.encode())
-        proc.stdin.close()
-        size = max(1, int(f.get("size") or 1))
-        while proc.poll() is None:
-            job["progress"] = min(0.99, (tmp.stat().st_size if tmp.exists() else 0) / size)
-            threading.Event().wait(0.5)
-        if proc.returncode != 0:
-            raise LinkError("Не скачалось: " + (proc.stderr.read().decode("utf-8", "replace").strip()[:200] or "ошибка сети"))
-        tmp.replace(dst)
+        dst = DOWNLOADS / save_name(f["job"], f, tag)
+        seen = PREVIEW / jid / name
+        if seen.is_file() and seen.stat().st_size == f.get("size"):
+            shutil.copy2(seen, dst)                           # уже смотрели в окне — второй раз не качаем
+        else:
+            asset_get(f["asset"], f["url"], dst, size=f.get("size"), prog=job)
         job.update(done=True, progress=1, path=str(dst))
         if sys.platform == "darwin":
             subprocess.Popen(["open", "-R", str(dst)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -434,20 +591,28 @@ def net_sources(kind: str, rest: str) -> list:
             f"https://unpkg.com/{pkg}@{ver}/{path}", f"https://registry.npmmirror.com/{pkg}/{ver}/files/{path}"]
 
 
+PROXY_SEEN = {"t": 0.0, "v": None}
+
+
 def sys_proxy():
-    """Прокси из настроек macOS (VPN-программы часто включают «системный прокси» — его видит Chrome, но не curl)."""
-    if os.environ.get("https_proxy") or os.environ.get("HTTPS_PROXY"):
+    """Прокси из настроек macOS (VPN-программы часто включают «системный прокси» — его видит Chrome, но не curl).
+    Запоминается на 30 с: состояние роликов опрашивается часто."""
+    if os.environ.get("https_proxy") or os.environ.get("HTTPS_PROXY") or sys.platform != "darwin":
         return None                                          # curl возьмёт его сам
+    if time.time() - PROXY_SEEN["t"] < 30:
+        return PROXY_SEEN["v"]
+    v = None
     try:
         out = subprocess.run(["scutil", "--proxy"], capture_output=True, text=True, timeout=3).stdout
+        d = dict(re.findall(r"(\w+)\s*:\s*(\S+)", out))
+        if d.get("HTTPSEnable") == "1" and d.get("HTTPSProxy"):
+            v = f"http://{d['HTTPSProxy']}:{d.get('HTTPSPort', '443')}"
+        elif d.get("SOCKSEnable") == "1" and d.get("SOCKSProxy"):
+            v = f"socks5h://{d['SOCKSProxy']}:{d.get('SOCKSPort', '1080')}"
     except (OSError, subprocess.SubprocessError):
-        return None
-    d = dict(re.findall(r"(\w+)\s*:\s*(\S+)", out))
-    if d.get("HTTPSEnable") == "1" and d.get("HTTPSProxy"):
-        return f"http://{d['HTTPSProxy']}:{d.get('HTTPSPort', '443')}"
-    if d.get("SOCKSEnable") == "1" and d.get("SOCKSProxy"):
-        return f"socks5h://{d['SOCKSProxy']}:{d.get('SOCKSPort', '1080')}"
-    return None
+        v = None
+    PROXY_SEEN.update(t=time.time(), v=v)
+    return v
 
 
 def net_curl(url: str, proxy, extra: list) -> list:
@@ -586,6 +751,28 @@ class Handler(SimpleHTTPRequestHandler):
         m = re.fullmatch(r"/api/job/([0-9a-z]{4,24})/save/([A-Za-z0-9._-]{1,80})", self.path)
         if m:
             return self.json(200, SAVES.get(f"{m.group(1)}/{m.group(2)}") or {})
+        m = re.fullmatch(r"/api/job/([0-9a-z]{4,24})/preview/([A-Za-z0-9._-]{1,80})", self.path)
+        if m:
+            if local_copy(m.group(1), m.group(2)):
+                return self.json(200, {"done": True, "progress": 1})
+            got = PREVIEWS.get(f"{m.group(1)}/{m.group(2)}") or {}
+            return self.json(200, {} if got.get("done") else got)    # готов, но файла уже нет — качать заново
+        m = re.fullmatch(r"/api/job/([0-9a-z]{4,24})/file/([A-Za-z0-9._-]{1,80})", self.path.split("?")[0])
+        if m:
+            # готовый файл для окна: скачанный ранее; маленький (раскадровка) — скачивается сразу
+            jid, name = m.groups()
+            path = local_copy(jid, name)
+            if not path and name.endswith(".jpg") and gh_token():
+                try:
+                    f = job_file(jid, name)
+                    if (f.get("size") or 0) < 8 << 20:
+                        asset_get(f["asset"], f["url"], PREVIEW / jid / name, size=f.get("size"))
+                        path = local_copy(jid, name)
+                except (LinkError, subprocess.SubprocessError, OSError):
+                    path = None
+            if not path:
+                return self.json(404, {"detail": "файл ещё не скачан"})
+            return send_local(self, path)
         m = re.fullmatch(r"/api/job/([0-9a-z]{4,24})", self.path)
         if m:
             jid = m.group(1)
@@ -682,6 +869,25 @@ class Handler(SimpleHTTPRequestHandler):
                 SAVES[key] = {"done": False, "progress": 0}
                 threading.Thread(target=save_file, args=(m.group(1), name, tag), daemon=True).start()
             return self.json(200, SAVES[key])
+        m = re.fullmatch(r"/api/job/([0-9a-z]{4,24})/preview", self.path)
+        if m:
+            # посмотреть готовый ролик в окне: сервер скачивает его в кэш (API, прокси macOS или зеркала)
+            try:
+                name = (json.loads(self.rfile.read(n) or b"{}").get("name") or "").strip()
+            except ValueError:
+                name = ""
+            if not re.fullmatch(r"[A-Za-z0-9._-]{1,80}", name):
+                return self.json(400, {"detail": "нет такого файла"})
+            if not gh_token():
+                return self.json(400, {"detail": "Сначала ключ GitHub"})
+            if local_copy(m.group(1), name):
+                return self.json(200, {"done": True, "progress": 1})
+            key = f"{m.group(1)}/{name}"
+            got = PREVIEWS.get(key)
+            if not got or got.get("error") or got.get("done"):     # done без файла на диске — файл удалили
+                PREVIEWS[key] = {"done": False, "progress": 0}
+                threading.Thread(target=preview_file, args=(m.group(1), name), daemon=True).start()
+            return self.json(200, PREVIEWS[key])
         if self.path == "/api/github":
             try:
                 tok = (json.loads(self.rfile.read(n) or b"{}").get("token") or "").strip()
@@ -751,6 +957,7 @@ def serve(dist: str, port: int, background: bool = True) -> str:
             return url
         raise
     url = f"http://127.0.0.1:{port}/"
+    threading.Thread(target=clean_previews, daemon=True).start()
     if background:
         threading.Thread(target=srv.serve_forever, daemon=True).start()
     else:

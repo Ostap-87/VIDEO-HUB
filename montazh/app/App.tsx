@@ -15,7 +15,25 @@ import {PhoneFrame} from "./Phone";
 import {AutoMontage, RhythmPanel} from "./AutoTools";
 import {edlLocate, edlSeconds, edlWords} from "./assemble";
 import {autoPlace, hfName, loadModel, phrases, search, thumb, usedInProject, type Found} from "./images";
-import {fetchLink, forgetToken, githubState, hasServer, jobState, openOutside, saveJobFile, saveState, saveToken, sendFile, submitJob, type GithubState, type JobState, type SaveState} from "./server";
+import {
+  fetchLink,
+  forgetToken,
+  githubState,
+  hasServer,
+  jobFileUrl,
+  jobState,
+  openOutside,
+  previewJobFile,
+  previewState,
+  saveJobFile,
+  saveState,
+  saveToken,
+  sendFile,
+  submitJob,
+  type GithubState,
+  type JobState,
+  type SaveState,
+} from "./server";
 import {deleteProject, getFile, listProjects, putFile, putProject} from "./store";
 import {parseWordsFile, transcribe, type AsrModel} from "./transcribe";
 import {newId, nowIso, type Brand, type EffectItem, type Project} from "./types";
@@ -2267,6 +2285,7 @@ const JobBadge: React.FC<{id: string}> = ({id}) => {
     };
   }, [id]);
   if (!st || st.stage === "token") return <div className="meta jobbadge">☁ Отправлен в облако</div>;
+  if (st.stage === "net") return <div className="meta jobbadge bad">⚠ Нет связи с GitHub — проверьте интернет или VPN</div>;
   if (st.error) return <div className="meta jobbadge bad">⚠ Ошибка в облаке — откройте ролик</div>;
   if (st.done) return <div className="meta jobbadge ok">✓ Готов — откройте и скачайте</div>;
   return (
@@ -2303,7 +2322,7 @@ const JobCard: React.FC<{id: string; n: number; sentAt: string; newest: boolean;
         const s = await jobState(id);
         if (!alive) return;
         setSt(s);
-        if (!s.done && !s.error) timer = window.setTimeout(tick, s.stage === "send" ? 1500 : 8000);
+        if (!s.done && !s.error) timer = window.setTimeout(tick, s.stage === "send" ? 1500 : s.stage === "net" ? 20000 : 8000);
       } catch {
         if (alive) timer = window.setTimeout(tick, 15000);
       }
@@ -2350,7 +2369,7 @@ const JobCard: React.FC<{id: string; n: number; sentAt: string; newest: boolean;
             </div>
           ) : null}
           {st?.error ? <div className="err">{st.error}</div> : null}
-          {video ? <video className="result" src={video.url} controls playsInline /> : null}
+          {video ? <JobPreview jid={id} file={video} /> : null}
           {files.some((f) => f.url) ? (
             <>
               <div className="row wrap">
@@ -2362,11 +2381,11 @@ const JobCard: React.FC<{id: string; n: number; sentAt: string; newest: boolean;
               </div>
               <p className="muted">
                 Файлы сохраняются в папку «Загрузки» → «Монтажная» на этом Mac и сразу показываются в Finder. Не скачивается —{" "}
-                <a onClick={() => openOutside(files.find((f) => f.kind === "video")?.url ?? "")}>ссылка на ролик в браузере</a>.
+                <a onClick={() => openOutside(st?.page ?? "")}>страница ролика на GitHub</a> (откроется в обычном браузере).
               </p>
             </>
           ) : null}
-          {sheet ? <img className="sheet" src={sheet.url} /> : null}
+          {sheet ? <img className="sheet" src={jobFileUrl(id, sheet.name)} alt="Раскадровка" /> : null}
           {st?.done && st.notes?.length ? (
             <p className="muted">
               Заметок для Claude: {st.notes.length}. Напишите Claude в чат «Монтажная, задание {id}» — он выполнит их и пришлёт ролик.
@@ -2374,6 +2393,40 @@ const JobCard: React.FC<{id: string; n: number; sentAt: string; newest: boolean;
           ) : null}
         </>
       ) : null}
+    </div>
+  );
+};
+
+// готовый ролик в окне: сначала сервер скачивает его на Mac (с прогрессом), потом он играет с диска
+const JobPreview: React.FC<{jid: string; file: NonNullable<JobState["files"]>[number]}> = ({jid, file}) => {
+  const [st, setSt] = useState<SaveState | null>(file.local ? {done: true} : null);
+  const timer = useRef(0);
+  useEffect(() => () => clearTimeout(timer.current), []);
+  useEffect(() => {
+    if (file.local) setSt({done: true});
+  }, [file.local]);
+  const poll = async () => {
+    const s = await previewState(jid, file.name).catch(() => null);
+    if (s) setSt(s);
+    if (!s?.done && !s?.error) timer.current = window.setTimeout(poll, 700);
+  };
+  const go = async () => {
+    try {
+      const s = await previewJobFile(jid, file.name);
+      setSt(s);
+      if (!s.done) timer.current = window.setTimeout(poll, 700);
+    } catch (e) {
+      setSt({error: String((e as Error).message || e)});
+    }
+  };
+  if (st?.done) return <video className="result" src={jobFileUrl(jid, file.name)} controls playsInline />;
+  const busy = st && !st.done && !st.error;
+  return (
+    <div className="result wait">
+      <button className="btn primary" disabled={!!busy} onClick={go}>
+        {busy ? `⬇ Загружаю для просмотра · ${Math.round((st?.progress ?? 0) * 100)}%` : `▶ Посмотреть здесь · ${(file.size / 1048576).toFixed(0)} МБ`}
+      </button>
+      {st?.error ? <em className="err">{st.error}</em> : null}
     </div>
   );
 };

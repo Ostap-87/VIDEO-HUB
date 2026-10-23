@@ -349,6 +349,8 @@ details pre { background: var(--panel); border: 1px solid var(--line); border-ra
 .jobcard.bad { border-left-color: var(--bad); }
 .jobcard .result { width: 100%; max-width: 320px; aspect-ratio: 9 / 16; background: #000; border-radius: 10px; }
 .jobcard .sheet { width: 100%; border-radius: 8px; }
+.jobcard .result.wait { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 16px; text-align: center; }
+.jobcard .result.wait .err { font-size: 12px; font-style: normal; }
 .rangef { display: flex; flex-direction: column; gap: 2px; font-size: 13px; color: var(--muted); }
 .rangef b { color: var(--ink); font-weight: 600; }
 .dials { display: grid; gap: 10px; margin: 6px 0 12px; padding: 10px 12px; border-radius: 12px; background: var(--soft, rgba(127,127,127,0.08)); }

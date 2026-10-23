@@ -15,10 +15,15 @@
    зумы, финал;
 4. вырезка спикера (npm run matte) на отрезках, где она нужна: перебивки «вырезкой», хуки, графики за спиной, спикер по контуру;
 5. рендер TalkReelPro — Reels, Stories или оба (options.formats), части Stories до 59,5 с, лёгкие копии до 29 МБ, раскадровка;
-6. всё — в тот же релиз (окно показывает и скачивает), статус по шагам — status.json там же.
+6. всё — в тот же релиз (окно показывает и скачивает), статус по шагам — status.json там же и в описании релиза
+   (окно читает его оттуда: файлы релиза GitHub отдаёт с release-assets.githubusercontent.com, а он из Китая закрыт).
+
+  python3 montazh/engine/run_job.py --status-body   — статус в описание всех готовых релизов, где его ещё нет
+
 Заметки, которые движок сделать не может (свободный текст), остаются в статусе — их выполняет Claude.
 """
 import argparse
+import base64
 import json
 import os
 import pathlib
@@ -35,6 +40,38 @@ sys.path.insert(0, str(STUDIO / "scripts"))
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 REPO = os.environ.get("GITHUB_REPOSITORY", "Ostap-87/VIDEO-HUB")
 TIME_KEYS = {"at", "until", "start", "end", "strike", "pressAt"}
+STATUS_MARK = "montazh-status:"
+
+
+def status_body(jid: str, status: dict) -> str:
+    """Описание релиза: строка для людей + статус в base64 (его читает сервер Монтажной на Mac из ответа api.github.com)."""
+    raw = base64.b64encode(json.dumps(status, ensure_ascii=False, separators=(",", ":")).encode()).decode()
+    return f"Монтажная, задание montazh/jobs/{jid}.json: {status.get('text', '')}\n\n<!-- {STATUS_MARK}{raw} -->\n"
+
+
+def set_body(tag: str, body: str) -> None:
+    f = pathlib.Path(os.environ.get("RUNNER_TEMP", "/tmp")) / f"{tag}-body.md"
+    f.write_text(body, encoding="utf-8")
+    subprocess.run(["gh", "release", "edit", tag, "--notes-file", str(f), "-R", REPO], check=False, capture_output=True)
+
+
+def status_body_all() -> None:
+    """Готовые до 23.10.2026 задания: status.json → описание релиза (тогда статус был только файлом)."""
+    rels = json.loads(subprocess.check_output(["gh", "api", "--paginate", "--slurp", f"repos/{REPO}/releases?per_page=100"]))
+    for rel in (r for page in rels for r in page):
+        tag = rel["tag_name"]
+        if not tag.startswith("montazh-") or STATUS_MARK in (rel.get("body") or ""):
+            continue
+        if not any(x["name"] == "status.json" for x in rel.get("assets", [])):
+            continue
+        out = subprocess.run(["gh", "release", "download", tag, "-p", "status.json", "-O", "-", "-R", REPO], capture_output=True)
+        try:
+            st = json.loads(out.stdout)
+        except ValueError:
+            print(f"  {tag}: status.json не прочитался")
+            continue
+        set_body(tag, status_body(tag.removeprefix("montazh-"), st))
+        print(f"  {tag}: {st.get('stage')} · {st.get('text')}")
 
 
 class Job:
@@ -59,6 +96,7 @@ class Job:
         f.write_text(json.dumps(self.status, ensure_ascii=False, indent=1))
         if self.upload:
             subprocess.run(["gh", "release", "upload", self.tag, str(f), "--clobber", "-R", REPO], check=False, capture_output=True)
+            set_body(self.tag, status_body(self.id, self.status))
 
     def put(self, path: pathlib.Path, kind: str, title: str):
         if self.upload:
@@ -196,6 +234,8 @@ def stories_points(words, total: float, limit=59.5):
 
 
 def main():
+    if sys.argv[1:] == ["--status-body"]:
+        return status_body_all()
     ap = argparse.ArgumentParser()
     ap.add_argument("id")
     ap.add_argument("--local", help="папка с файлами задания (вместо релиза GitHub)")

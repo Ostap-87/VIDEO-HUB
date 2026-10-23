@@ -99,7 +99,10 @@ Stories-анонсы каруселей — `npm run announce` (`finished-videos
 или файл) → Звук (RNNoise A/B) → Цвет (пресеты = поле `grade`) → Монтаж
 (эффекты из библиотеки по секундам + заметки) → Библиотека (превью 1–2 с) → Готово (задание `.job.json`).
 Устройство и команды — `montazh/README.md`. Модели распознавания и картинок окно качает через сервер Mac
-(зеркала, прокси macOS, докачка, кэш на диске — `mac/montazh_server.py`, `app/netload.ts`). Установка на Mac — ветка `montazh-dist` (Actions «Монтажная — сборка»):
+(зеркала, прокси macOS, докачка, кэш на диске — `mac/montazh_server.py`, `app/netload.ts`). Готовые ролики окно узнаёт
+и скачивает только через api.github.com (23.10.2026: release-assets.githubusercontent.com из Китая закрыт, ролики «висели»
+в работе): статус — в описании релиза (пишет движок), файлы — API, прокси macOS или зеркала github.com, «▶ Посмотреть
+здесь» — с диска Mac; старые релизы подписывает workflow «Монтажная — статусы в релизы». Установка на Mac — ветка `montazh-dist` (Actions «Монтажная — сборка»):
 `D=$(mktemp -d) && curl -fL https://codeload.github.com/Ostap-87/VIDEO-HUB/tar.gz/refs/heads/montazh-dist | tar -xzf - -C "$D" --strip-components=1 && bash "$D/install_mac.command"`.
 Новый приём монтажа = эффект в `montazh/app/effects.ts` + превью (`node montazh/scripts/render_previews.mjs --only <id>`)
 + слова для строки команд (`montazh/app/commands.ts`); если его можно ставить «по смыслу» — правило в `montazh/app/auto.ts`.

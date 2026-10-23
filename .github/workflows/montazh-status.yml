@@ -1,0 +1,23 @@
+# Монтажная — статус готовых заданий в описание релиза montazh-<id>. Сервер Монтажной на Mac читает статус из ответа
+# api.github.com: файлы релиза (status.json) GitHub отдаёт с release-assets.githubusercontent.com, а он из Китая закрыт.
+# Новые задания движок подписывает сам (run_job.py); этот workflow — для заданий, готовых до 23.10.2026.
+name: Монтажная — статусы в релизы
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  body:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          lfs: false
+          sparse-checkout: montazh/engine
+      - name: status.json → описание релиза
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 montazh/engine/run_job.py --status-body
