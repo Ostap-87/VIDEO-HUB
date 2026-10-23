@@ -433,17 +433,22 @@ export const RefCaptions: React.FC<{words: W[]; items?: CapStyleItem[]; until: n
   const accentColor = B.id === "od" ? "#FFD92E" : B.id === "aura" ? "#FFF65D" : "#7FB2FF";
   if (item.style === "ladder") {
     // «лестница» сбоку от лица (prompt-motion №22): слово на строку со сдвигом, акцентное — крупнее и цветом
-    const side = focus.x < 540 ? 1 : -1; // лицо слева — лестница справа и наоборот
-    const x0 = side > 0 ? Math.min(700, focus.x + 230) : Math.max(60, focus.x - 230 - 380);
+    // лицо слева — лестница справа (от лица вправо), лицо справа — слева (от лица влево); длинное слово уменьшается,
+    // чтобы не уйти за край кадра (поле 48 px)
+    const side = focus.x < 540 ? 1 : -1;
+    const edge = side > 0 ? Math.min(640, focus.x + 200) : Math.max(440, focus.x - 200);
+    const avail = side > 0 ? 1032 - edge : edge - 48;
     return (
-      <div style={{position: "absolute", left: x0, top: (item.y ?? focus.y - 120)}}>
+      <div style={{position: "absolute", top: item.y ?? focus.y - 120, display: "flex", flexDirection: "column", alignItems: side > 0 ? "flex-start" : "flex-end", ...(side > 0 ? {left: edge} : {right: 1080 - edge})}}>
         {page.map((w, i) => {
           if (w.start > t) return null;
           const hot = accent.includes(cleanW(w.text)) || /\d/.test(w.text);
+          const txt = bare(w.text).replace(/[.,!?;:…]+$/, "");
+          const size = Math.min(hot ? 100 : 66, Math.floor((avail - i * 34) / (Math.max(2, txt.length) * 0.5)));
           const k = spring({frame: frame - Math.round(w.start * fps), fps, config: {damping: 14, stiffness: 220}});
           return (
-            <div key={i} style={{marginLeft: side * i * 34, fontFamily: oswald.fontFamily, fontWeight: 700, fontSize: hot ? 100 : 66, lineHeight: 1, color: hot ? accentColor : "#FFFFFF", textTransform: "uppercase", textShadow: "0 5px 18px rgba(0,0,0,0.55)", opacity: Math.min(1, k * 1.6), translate: `${(1 - k) * side * -40}px 0px`, whiteSpace: "nowrap"}}>
-              {bare(w.text).replace(/[.,!?;:…]+$/, "")}
+            <div key={i} style={{[side > 0 ? "paddingLeft" : "paddingRight"]: i * 34, fontFamily: oswald.fontFamily, fontWeight: 700, fontSize: size, lineHeight: 1, color: hot ? accentColor : "#FFFFFF", textTransform: "uppercase", textShadow: "0 5px 18px rgba(0,0,0,0.55)", opacity: Math.min(1, k * 1.6), translate: `${(1 - k) * side * -40}px 0px`, whiteSpace: "nowrap"}}>
+              {txt}
             </div>
           );
         })}
