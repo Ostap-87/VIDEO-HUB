@@ -320,3 +320,6 @@ details pre { background: var(--panel); border: 1px solid var(--line); border-ra
 .libphotos button { border: 2px solid transparent; padding: 0; border-radius: 6px; overflow: hidden; cursor: pointer; background: none; }
 .libphotos button.on { border-color: var(--accent); }
 .libphotos img { width: 44px; height: 58px; object-fit: cover; display: block; }
+
+.savebtn { display: inline-flex; flex-direction: column; gap: 2px; }
+.savebtn .err { font-size: 12px; font-style: normal; }

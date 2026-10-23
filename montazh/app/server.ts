@@ -53,7 +53,18 @@ export async function submitJob(jid: string, job: unknown) {
   if (!r.ok) throw new Error((await r.json()).detail || "Не отправилось");
 }
 
-export type JobFile = {name: string; kind: "video" | "phone" | "frames" | "part"; title: string; size: number; url?: string};
+export type JobFile = {name: string; kind: "video" | "phone" | "frames" | "part"; title: string; size: number; url?: string; asset?: number};
+export type SaveState = {done?: boolean; error?: string; path?: string; progress?: number};
+
+// готовый файл задания → «Загрузки/Монтажная» на Mac (сервер качает через API GitHub и показывает файл в Finder);
+// повторный вызов для уже сохранённого — снова показать в Finder
+export async function saveJobFile(jid: string, name: string): Promise<SaveState> {
+  const r = await fetch(`api/job/${jid}/save`, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({name})});
+  const d = await r.json();
+  if (!r.ok) throw new Error(d.detail || "Не скачалось");
+  return d;
+}
+export const saveState = (jid: string, name: string): Promise<SaveState> => fetch(`api/job/${jid}/save/${name}`).then((r) => r.json());
 export type JobState = {
   stage: string;
   text: string;

@@ -34,6 +34,8 @@ JOBS: dict = {}
 REPO = os.environ.get("MONTAZH_REPO", "Ostap-87/VIDEO-HUB")
 HOME = pathlib.Path.home() / ("Library/Application Support/Montazh" if sys.platform == "darwin" else ".config/montazh")
 SENDS: dict = {}  # id задания → ход отправки в облако
+SAVES: dict = {}  # «задание/файл» → ход скачивания готового ролика в «Загрузки»
+DOWNLOADS = pathlib.Path.home() / "Downloads" / "Монтажная"
 
 
 def gh_token() -> str:
@@ -248,7 +250,60 @@ def job_state(jid: str) -> dict:
         a = assets.get(f["name"])
         if a:
             f["url"] = a["browser_download_url"]
+            f["asset"] = a["id"]
+            got = SAVES.get(f"{jid}/{f['name']}")
+            if got:
+                f["saved"] = {k: got.get(k) for k in ("done", "error", "path", "progress")}
     return st
+
+
+def save_name(title: str, f: dict) -> str:
+    """Понятное имя файла в «Загрузках»: «IMG_5402.mp4», «IMG_5402 (телефон).mp4», «IMG_5402 — часть 2.mp4»."""
+    base = re.sub(r'[\\/:*?"<>|]+', " ", title or "ролик").strip()[:60] or "ролик"
+    ext = pathlib.Path(f["name"]).suffix or ".mp4"
+    kind = f.get("kind")
+    if kind == "phone":
+        return f"{base} (телефон){ext}"
+    if kind == "part":
+        return f"{base} — часть {f['name'].rsplit('-', 1)[-1].split('.')[0]}{ext}"
+    if kind == "frames":
+        return f"{base} — раскадровка{ext}"
+    return f"{base}{ext}"
+
+
+def save_file(jid: str, name: str):
+    """Готовый файл задания → ~/Downloads/Монтажная (через API GitHub с ключом: так скачивается и там, где прямые
+    ссылки GitHub медленные или закрыты), потом показывает его в Finder."""
+    key = f"{jid}/{name}"
+    job = SAVES[key]
+    try:
+        st = job_state(jid)
+        f = next((x for x in st.get("files", []) if x["name"] == name and x.get("asset")), None)
+        if not f:
+            raise LinkError("Файла ещё нет в облаке — подождите, пока ролик доделается")
+        DOWNLOADS.mkdir(parents=True, exist_ok=True)
+        dst = DOWNLOADS / save_name(st.get("name") or jid, f)
+        tmp = dst.with_name(dst.name + ".part")
+        tok = gh_token()
+        cfg = ((f'header = "Authorization: Bearer {tok}"\n' if tok else "") +
+               'header = "Accept: application/octet-stream"\nheader = "X-GitHub-Api-Version: 2022-11-28"\n')
+        proc = subprocess.Popen(["curl", "-sS", "-L", "--fail", "--retry", "3", "-K", "-", "-A", "Montazh", "-o", str(tmp),
+                                 f"https://api.github.com/repos/{REPO}/releases/assets/{f['asset']}"],
+                                stdin=subprocess.PIPE, stderr=subprocess.PIPE)
+        proc.stdin.write(cfg.encode())
+        proc.stdin.close()
+        size = max(1, int(f.get("size") or 1))
+        while proc.poll() is None:
+            job["progress"] = min(0.99, (tmp.stat().st_size if tmp.exists() else 0) / size)
+            threading.Event().wait(0.5)
+        if proc.returncode != 0:
+            raise LinkError("Не скачалось: " + (proc.stderr.read().decode("utf-8", "replace").strip()[:200] or "ошибка сети"))
+        tmp.replace(dst)
+        job.update(done=True, progress=1, path=str(dst))
+        if sys.platform == "darwin":
+            subprocess.Popen(["open", "-R", str(dst)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except (LinkError, subprocess.SubprocessError, OSError, StopIteration) as exc:
+        job["error"] = str(exc) or "Не удалось скачать"
 
 
 class LinkError(Exception):
@@ -363,6 +418,9 @@ class Handler(SimpleHTTPRequestHandler):
                 return self.json(200, {"refs": [], "token": False})
             pending = [{"id": k, **v} for k, v in SENDS.items() if v.get("ref") and not v.get("sent")]
             return self.json(200, {"refs": list_refs(), "pending": pending, "token": True})
+        m = re.fullmatch(r"/api/job/([0-9a-z]{4,24})/save/([A-Za-z0-9._-]{1,80})", self.path)
+        if m:
+            return self.json(200, SAVES.get(f"{m.group(1)}/{m.group(2)}") or {})
         m = re.fullmatch(r"/api/job/([0-9a-z]{4,24})", self.path)
         if m:
             jid = m.group(1)
@@ -436,6 +494,27 @@ class Handler(SimpleHTTPRequestHandler):
             except OSError:
                 return self.json(500, {"detail": "не открылось"})
             return self.json(200, {"ok": True})
+        m = re.fullmatch(r"/api/job/([0-9a-z]{4,24})/save", self.path)
+        if m:
+            # готовый ролик → «Загрузки/Монтажная» на этом Mac; повторное нажатие на сохранённый — показать в Finder
+            try:
+                name = (json.loads(self.rfile.read(n) or b"{}").get("name") or "").strip()
+            except ValueError:
+                name = ""
+            if not re.fullmatch(r"[A-Za-z0-9._-]{1,80}", name):
+                return self.json(400, {"detail": "нет такого файла"})
+            if not gh_token():
+                return self.json(400, {"detail": "Сначала ключ GitHub"})
+            key = f"{m.group(1)}/{name}"
+            got = SAVES.get(key)
+            if got and got.get("done") and pathlib.Path(got["path"]).exists():
+                if sys.platform == "darwin":
+                    subprocess.Popen(["open", "-R", got["path"]], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                return self.json(200, got)
+            if not got or got.get("error") or got.get("done"):
+                SAVES[key] = {"done": False, "progress": 0}
+                threading.Thread(target=save_file, args=(m.group(1), name), daemon=True).start()
+            return self.json(200, SAVES[key])
         if self.path == "/api/github":
             try:
                 tok = (json.loads(self.rfile.read(n) or b"{}").get("token") or "").strip()

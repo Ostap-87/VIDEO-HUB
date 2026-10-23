@@ -13,7 +13,7 @@ import {buildProps, cleanKey, clipKey, durationFrames, leadFrames, LOCAL, projSe
 import {AssembleStep, cleanClips, clipsOf, transcribeClips} from "./AssembleStep";
 import {edlLocate, edlSeconds, edlWords} from "./assemble";
 import {autoPlace, hfName, loadModel, phrases, search, thumb, usedInProject, type Found} from "./images";
-import {fetchLink, forgetToken, githubState, hasServer, jobState, openOutside, saveToken, sendFile, submitJob, type GithubState, type JobState} from "./server";
+import {fetchLink, forgetToken, githubState, hasServer, jobState, openOutside, saveJobFile, saveState, saveToken, sendFile, submitJob, type GithubState, type JobState, type SaveState} from "./server";
 import {deleteProject, getFile, listProjects, putFile, putProject} from "./store";
 import {parseWordsFile, transcribe, type AsrModel} from "./transcribe";
 import {newId, nowIso, type Brand, type EffectItem, type Project} from "./types";
@@ -1924,16 +1924,20 @@ const JobCard: React.FC<{id: string; sentAt: string; open: boolean}> = ({id, sen
           ) : null}
           {st?.error ? <div className="err">{st.error}</div> : null}
           {video ? <video className="result" src={video.url} controls playsInline /> : null}
-          {files.length ? (
-            <div className="row wrap">
-              {files
-                .filter((f) => f.url && f.kind !== "frames")
-                .map((f) => (
-                  <a key={f.name} className={`btn ${f.kind === "video" ? "primary" : ""}`} href={f.url} download>
-                    ⬇ {f.title} · {(f.size / 1048576).toFixed(0)} МБ
-                  </a>
-                ))}
-            </div>
+          {files.some((f) => f.url) ? (
+            <>
+              <div className="row wrap">
+                {files
+                  .filter((f) => f.url)
+                  .map((f) => (
+                    <SaveButton key={f.name} jid={id} file={f} />
+                  ))}
+              </div>
+              <p className="muted">
+                Файлы сохраняются в папку «Загрузки» → «Монтажная» на этом Mac и сразу показываются в Finder. Не скачивается —{" "}
+                <a onClick={() => openOutside(files.find((f) => f.kind === "video")?.url ?? "")}>ссылка на ролик в браузере</a>.
+              </p>
+            </>
           ) : null}
           {sheet ? <img className="sheet" src={sheet.url} /> : null}
           {st?.done && st.notes?.length ? (
@@ -1944,6 +1948,40 @@ const JobCard: React.FC<{id: string; sentAt: string; open: boolean}> = ({id, sen
         </>
       ) : null}
     </div>
+  );
+};
+
+// кнопка «Скачать на Mac»: прогресс скачивания, потом «Показать в Finder»
+const SaveButton: React.FC<{jid: string; file: NonNullable<JobState["files"]>[number]}> = ({jid, file}) => {
+  const [st, setSt] = useState<SaveState | null>(null);
+  const [err, setErr] = useState("");
+  const timer = useRef(0);
+  useEffect(() => () => clearTimeout(timer.current), []);
+  const poll = async () => {
+    const s = await saveState(jid, file.name).catch(() => null);
+    if (s) setSt(s);
+    if (s?.error) setErr(s.error);
+    else if (!s?.done) timer.current = window.setTimeout(poll, 700);
+  };
+  const go = async () => {
+    setErr("");
+    try {
+      const s = await saveJobFile(jid, file.name);
+      setSt(s);
+      if (!s.done) timer.current = window.setTimeout(poll, 700);
+    } catch (e) {
+      setErr(String((e as Error).message || e));
+    }
+  };
+  const busy = st && !st.done && !st.error;
+  return (
+    <span className="savebtn">
+      <button className={`btn ${file.kind === "video" ? "primary" : ""}`} disabled={!!busy} onClick={go}>
+        {st?.done ? "📂 Показать в Finder: " : busy ? `⬇ ${Math.round((st?.progress ?? 0) * 100)}% · ` : "⬇ Скачать: "}
+        {file.title} · {file.size >= 1048576 ? `${(file.size / 1048576).toFixed(0)} МБ` : `${Math.max(1, Math.round(file.size / 1024))} КБ`}
+      </button>
+      {err ? <em className="err">{err}</em> : null}
+    </span>
   );
 };
 
