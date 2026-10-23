@@ -80,6 +80,9 @@ export type Project = {
   sentAt?: string;
   jobs?: {id: string; sentAt: string; cutPauses: boolean}[]; // отправленные в облако задания (новые сверху)
   clips?: Clip[]; // медиатека: ролики и фото (без неё — один исходник source)
+  // что монтируем (решение пользователя 23.10.2026: «в самом начале выбор — один ролик или склейка роликов, чтобы
+  // я не путался»): single — шаг 2 «Чистка» одного ролика, multi — «Склейка» нескольких; без поля — по числу роликов
+  mode?: "single" | "multi";
   edl?: Seg[]; // монтажный лист; без него ролик = весь исходник
   assemble?: AssembleOpts;
   rhythm?: {every: number; set: string; effect?: string}; // «Ритм»: эффект каждые every секунд (auto.ts)

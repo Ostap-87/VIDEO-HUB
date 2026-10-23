@@ -1,14 +1,13 @@
 // Картинки по смыслу: каталог генераций Higgsfield пользователя (library/images.json, 777 шт.) и смысловые векторы
 // их описаний (library/images.emb, scripts/build_images.py). Фраза речи или запрос по-русски считается той же моделью
-// прямо в окне (transformers.js, ~120 МБ один раз, дальше из кэша браузера) — ближайшие по смыслу картинки сверху.
+// прямо в окне (transformers.js, ~120 МБ один раз, дальше из кэша; откуда качать — netload.ts) — ближайшие по смыслу картинки сверху.
 // Уже стоявшие в роликах («одна картинка — один раз») и запрещённые (чужой бренд, кривая надпись) в подбор не идут.
+import {loadTransformers} from "./netload";
 import type {EffectItem, Word} from "./types";
 
 export type Img = {n: number; id: string; prompt: string; url: string; aspect: string; used: boolean; blocked: boolean};
 
-const CDN = "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.5";
 const MODEL = "Xenova/paraphrase-multilingual-MiniLM-L12-v2";
-const dynImport = new Function("u", "return import(u)") as (u: string) => Promise<any>;
 
 export const thumb = (n: number) => `library/images/${n}.jpg`;
 // имя файла картинки в props: предпросмотр подменяет его ссылкой (remotion_staticFiles), движок скачивает файл
@@ -29,14 +28,7 @@ export function loadCatalog() {
 let extractor: Promise<any> | null = null;
 export function loadModel(onProgress?: (k: number) => void) {
   extractor ??= (async () => {
-    const T = await dynImport(CDN);
-    T.env.allowLocalModels = false;
-    try {
-      const r = await fetch(`https://huggingface.co/${MODEL}/resolve/main/config.json`, {method: "HEAD"});
-      if (!r.ok) throw new Error();
-    } catch {
-      T.env.remoteHost = "https://hf-mirror.com/";
-    }
+    const T = await loadTransformers();
     const files: Record<string, {loaded: number; total: number}> = {};
     return T.pipeline("feature-extraction", MODEL, {
       dtype: "q8",

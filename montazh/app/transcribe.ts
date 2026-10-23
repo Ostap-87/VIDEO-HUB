@@ -1,23 +1,9 @@
-// Распознавание речи прямо в браузере: Whisper (transformers.js, модель скачивается один раз и хранится в кэше
-// браузера). Если huggingface.co закрыт — зеркало hf-mirror.com. Слова с таймингами → субтитры сразу в предпросмотре.
+// Распознавание речи прямо в окне: Whisper (transformers.js, модель скачивается один раз и хранится в кэше).
+// Откуда качать (сервер Mac с зеркалами или напрямую) — netload.ts. Слова с таймингами → субтитры сразу в предпросмотре.
 // Точнее и быстрее делает движок (whisper.cpp в reels-studio) — его результат подставляется сам, когда ролик обработан.
 import {decodeAudio} from "./media";
+import {loadTransformers, netError} from "./netload";
 import type {Word} from "./types";
-
-const CDN = "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.5";
-const dynImport = new Function("u", "return import(u)") as (u: string) => Promise<any>;
-
-async function reachable(url: string) {
-  try {
-    const c = new AbortController();
-    const t = setTimeout(() => c.abort(), 6000);
-    const r = await fetch(url, {method: "HEAD", signal: c.signal});
-    clearTimeout(t);
-    return r.ok;
-  } catch {
-    return false;
-  }
-}
 
 export type AsrModel = "base" | "small";
 
@@ -27,10 +13,8 @@ export async function transcribe(
   onProgress: (k: number, what: string) => void,
 ): Promise<Word[]> {
   onProgress(0, "Загружаю распознавание речи");
-  const T = await dynImport(CDN);
-  T.env.allowLocalModels = false;
+  const T = await loadTransformers();
   const repo = `Xenova/whisper-${model}`;
-  if (!(await reachable(`https://huggingface.co/${repo}/resolve/main/config.json`))) T.env.remoteHost = "https://hf-mirror.com/";
   const files: Record<string, {loaded: number; total: number}> = {};
   const asr = await T.pipeline("automatic-speech-recognition", repo, {
     dtype: "q8",
@@ -42,6 +26,8 @@ export async function transcribe(
         onProgress(0.05 + 0.35 * k, `Скачиваю модель Whisper ${model} (один раз): ${Math.round(k * 100)}%`);
       }
     },
+  }).catch((e: unknown) => {
+    throw new Error(netError(e));
   });
   onProgress(0.42, "Читаю звук");
   const pcm = await decodeAudio(file, 16000);

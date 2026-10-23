@@ -82,6 +82,16 @@ h3 .muted { text-transform: none; letter-spacing: 0; font-weight: 400; }
 .seg3 { display: flex; gap: 6px; margin: 4px 0; flex-wrap: wrap; }
 .seg3 button { flex: 1; border: 1px solid var(--line); background: var(--panel2); border-radius: 8px; padding: 8px; cursor: pointer; }
 .seg3 button.on { border-color: var(--accent); background: rgba(76,141,255,.14); }
+/* «Что монтируем» (решение пользователя 23.10.2026): один ролик или склейка — первым вопросом */
+.modes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 4px 0 6px; }
+.modes button { display: flex; flex-direction: column; gap: 6px; text-align: left; border: 1.5px solid var(--line); background: var(--panel2); border-radius: 12px; padding: 14px; cursor: pointer; }
+.modes button b { font-size: 15px; }
+.modes button span { color: var(--muted); font-size: 13px; line-height: 1.35; }
+.modes button:hover { border-color: #3b4350; }
+.modes button.on { border-color: var(--accent); background: rgba(76,141,255,.14); }
+@media (max-width: 520px) { .modes { grid-template-columns: 1fr; } }
+.modeseg { max-width: 420px; }
+.modeswitch { margin: 6px 0 0; }
 .drop { border: 1.5px dashed #3b4350; border-radius: 12px; padding: 26px; text-align: center; display: flex; flex-direction: column; gap: 4px; cursor: pointer; margin-top: 10px; }
 .drop:hover { border-color: var(--accent); }
 .drop span { color: var(--muted); font-size: 13px; }

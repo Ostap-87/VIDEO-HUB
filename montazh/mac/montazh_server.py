@@ -21,6 +21,7 @@ import subprocess
 import sys
 import tempfile
 import threading
+import time
 import urllib.parse
 import uuid
 import webbrowser
@@ -399,12 +400,159 @@ def fetch_job(jid: str, url: str) -> None:
         job["error"] = str(exc) or "Не удалось скачать"
 
 
+# ---------------------------------------------------------------- модели и библиотеки для окна (распознавание речи,
+# картинки по смыслу). Окно качает их не само, а через этот сервер: huggingface.co или jsdelivr бывают закрыты или
+# обрываются (Россия, Китай, VPN «системным прокси»), а сервер пробует зеркала, ходит через прокси macOS, докачивает
+# оборванный файл с другого зеркала (Range) и хранит скачанное на диске — второй раз всё мгновенно и без интернета.
+NET = HOME / "net-cache"
+NET_LOCKS: dict = {}
+NET_LOCK = threading.Lock()
+NET_TYPES = {".json": "application/json", ".onnx": "application/octet-stream", ".wasm": "application/wasm",
+             ".mjs": "text/javascript", ".js": "text/javascript", ".txt": "text/plain"}
+HF_RE = re.compile(r"[\w.-]+/[\w.-]+/resolve/[\w.-]+/[\w./-]+")
+NPM_RE = re.compile(r"npm/(@[\w.-]+/[\w.-]+|[\w.-]+)@([\w.+-]+)/([\w./+-]+)")
+
+
+def nlog(*parts) -> None:
+    print(time.strftime("%Y-%m-%d %H:%M:%S"), "сеть:", *parts, flush=True)
+
+
+def net_sources(kind: str, rest: str) -> list:
+    if ".." in rest or rest.startswith("/"):
+        return []
+    if kind == "hf" and HF_RE.fullmatch(rest):
+        return [f"https://huggingface.co/{rest}", f"https://hf-mirror.com/{rest}"]
+    m = NPM_RE.fullmatch(rest) if kind == "cdn" else None
+    if not m:
+        return []
+    pkg, ver, path = m.groups()
+    return [f"https://cdn.jsdelivr.net/{rest}", f"https://fastly.jsdelivr.net/{rest}",
+            f"https://unpkg.com/{pkg}@{ver}/{path}", f"https://registry.npmmirror.com/{pkg}/{ver}/files/{path}"]
+
+
+def sys_proxy():
+    """Прокси из настроек macOS (VPN-программы часто включают «системный прокси» — его видит Chrome, но не curl)."""
+    if os.environ.get("https_proxy") or os.environ.get("HTTPS_PROXY"):
+        return None                                          # curl возьмёт его сам
+    try:
+        out = subprocess.run(["scutil", "--proxy"], capture_output=True, text=True, timeout=3).stdout
+    except (OSError, subprocess.SubprocessError):
+        return None
+    d = dict(re.findall(r"(\w+)\s*:\s*(\S+)", out))
+    if d.get("HTTPSEnable") == "1" and d.get("HTTPSProxy"):
+        return f"http://{d['HTTPSProxy']}:{d.get('HTTPSPort', '443')}"
+    if d.get("SOCKSEnable") == "1" and d.get("SOCKSProxy"):
+        return f"socks5h://{d['SOCKSProxy']}:{d.get('SOCKSPort', '1080')}"
+    return None
+
+
+def net_curl(url: str, proxy, extra: list) -> list:
+    return ["curl", "-sS", "-L", "--fail", "-A", UA, "--connect-timeout", "10", *(["-x", proxy] if proxy else []), *extra, url]
+
+
+def net_head(url: str, proxy):
+    """Есть ли файл и какого он размера: (True, байты | None) или (False, None)."""
+    try:
+        r = subprocess.run(net_curl(url, proxy, ["-I", "-m", "25"]), capture_output=True, timeout=30)
+    except (OSError, subprocess.SubprocessError):
+        return False, None
+    if r.returncode:
+        return False, None
+    last = [b for b in r.stdout.decode("latin-1").replace("\r", "").split("\n\n") if b.strip().startswith("HTTP")][-1:]
+    m = re.search(r"(?im)^content-length:\s*(\d+)", last[0]) if last else None
+    return True, (int(m.group(1)) if m else None)
+
+
+def net_get(handler, kind: str, rest: str):
+    sources = net_sources(kind, rest)
+    if not sources:
+        return handler.json(404, {"detail": "такой файл сервер не скачивает"})
+    path = NET / kind / rest
+    with NET_LOCK:
+        lock = NET_LOCKS.setdefault(str(path), threading.Lock())
+    with lock:                                                # один файл качается один раз
+        if path.is_file():
+            return net_send_file(handler, path)
+        proxy = sys_proxy()
+        tries = [(u, p) for u in sources for p in ([proxy, None] if proxy else [None])]
+        start, size = None, None
+        for i, (u, p) in enumerate(tries):
+            ok, size = net_head(u, p)
+            if ok:
+                start = i
+                break
+            nlog(f"нет ответа: {u}{' через прокси ' + p if p else ''}")
+        if start is None:
+            nlog(f"не скачать {rest}: все зеркала недоступны")
+            return handler.json(502, {"detail": f"Не скачать {rest.rsplit('/', 1)[-1]}: huggingface.co, jsdelivr и зеркала недоступны. "
+                                                "Проверьте интернет или VPN и нажмите ещё раз."})
+        handler.send_response(200)
+        handler.send_header("Content-Type", NET_TYPES.get(path.suffix, "application/octet-stream"))
+        if size:
+            handler.send_header("Content-Length", str(size))
+        handler.end_headers()
+        path.parent.mkdir(parents=True, exist_ok=True)
+        part = path.with_name(path.name + ".part")
+        written, client = 0, True
+        with part.open("wb") as fh:
+            for u, p in (tries[start:] + tries[:start]) * 2:  # каждое зеркало — до двух раз, докачка с места обрыва
+                hdr = part.with_name(path.name + ".hdr")
+                args = net_curl(u, p, ["--speed-limit", "2048", "--speed-time", "30", "-D", str(hdr),
+                                       *(["-r", f"{written}-"] if written else [])])
+                try:
+                    proc = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                except OSError as exc:
+                    nlog(f"curl не запустился: {exc}")
+                    break
+                skip = -1
+                while chunk := proc.stdout.read(1 << 16):
+                    if skip < 0:                              # зеркало не умеет докачку — отдаёт с начала
+                        codes = re.findall(r"(?m)^HTTP/\S+\s+(\d+)", hdr.read_text("latin-1")) if hdr.exists() else []
+                        skip = written if written and codes and codes[-1] == "200" else 0
+                    if skip:
+                        cut = min(skip, len(chunk))
+                        chunk, skip = chunk[cut:], skip - cut
+                        if not chunk:
+                            continue
+                    fh.write(chunk)
+                    written += len(chunk)
+                    if client:
+                        try:
+                            handler.wfile.write(chunk)
+                        except OSError:
+                            client = False                    # окно закрыли — докачиваем в кэш всё равно
+                proc.wait()
+                hdr.unlink(missing_ok=True)
+                if proc.returncode == 0 and (size is None or written >= size):
+                    break
+                nlog(f"обрыв на {written} из {size or '?'} байт: {u} ({proc.stderr.read().decode('utf-8', 'replace').strip()[:160]})")
+        if size is None or written >= size:
+            part.rename(path)
+            nlog(f"скачано {rest} ({written / 1048576:.1f} МБ)")
+        else:
+            part.unlink(missing_ok=True)
+            nlog(f"не докачано {rest}: {written} из {size} байт")
+        return None
+
+
+def net_send_file(handler, path: pathlib.Path):
+    handler.send_response(200)
+    handler.send_header("Content-Type", NET_TYPES.get(path.suffix, "application/octet-stream"))
+    handler.send_header("Content-Length", str(path.stat().st_size))
+    handler.end_headers()
+    with path.open("rb") as fh:
+        while chunk := fh.read(1 << 20):
+            handler.wfile.write(chunk)
+    return None
+
+
 class Handler(SimpleHTTPRequestHandler):
     def log_message(self, fmt, *args):  # тихо, без журнала каждого файла
         pass
 
     def end_headers(self):
-        self.send_header("Cache-Control", "no-store" if self.path.startswith("/api/") or self.path.endswith(".js") else "max-age=600")
+        if not self.path.startswith("/net/"):                 # модели и библиотеки кэшируются окном (transformers.js)
+            self.send_header("Cache-Control", "no-store" if self.path.startswith("/api/") or self.path.endswith(".js") else "max-age=600")
         super().end_headers()
 
     def json(self, code: int, data: dict):
@@ -416,6 +564,12 @@ class Handler(SimpleHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_GET(self):
+        m = re.fullmatch(r"/net/(hf|cdn)/(.+)", self.path.split("?")[0])
+        if m:
+            try:
+                return net_get(self, m.group(1), urllib.parse.unquote(m.group(2)))
+            except OSError:
+                return None
         if self.path == "/api/ping":
             return self.json(200, {"ok": True, "app": "montazh"})
         if self.path == "/api/github":

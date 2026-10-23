@@ -12,6 +12,11 @@ import {transcribe, type AsrModel} from "./transcribe";
 import {newId, nowIso, type AssembleOpts, type Clip, type Project, type Seg} from "./types";
 
 // медиатека проекта; старый проект с одним исходником — один ролик «source»
+// один ролик или склейка (Project.mode; старые проекты — по числу роликов)
+export const modeOf = (p: Project): "single" | "multi" => p.mode ?? (clipsOf(p).filter((c) => c.kind === "video").length > 1 ? "multi" : "single");
+// файлы, выбранные в «Новом ролике» для склейки сверх первого: шаг «Склейка» добавляет их сам при открытии
+export const PENDING: Record<string, File[]> = {};
+
 export function clipsOf(p: Project): Clip[] {
   if (p.clips) return p.clips;
   if (!p.source?.local) return [];
@@ -103,6 +108,7 @@ export const AssembleStep: React.FC<StepCtx> = ({p, up, m, setM, sec, seek, setS
   const videos = clips.filter((c) => c.kind === "video");
   const photos = clips.filter((c) => c.kind === "photo");
   const opts: AssembleOpts = {...DEFAULT_OPTS, ...p.assemble};
+  const single = modeOf(p) === "single";
   const [env, setEnv] = useState<Record<string, Float32Array | undefined>>({});
   const [busy, setBusy] = useState<{k: number; t: string} | null>(null);
   const [model, setModel] = useState<AsrModel>("small");
@@ -189,6 +195,24 @@ export const AssembleStep: React.FC<StepCtx> = ({p, up, m, setM, sec, seek, setS
     setBusy(null);
   };
 
+  // ролики и фото из «Нового ролика» (склейка) — добавляются здесь один раз
+  useEffect(() => {
+    const files = PENDING[p.id];
+    if (files?.length) {
+      delete PENDING[p.id];
+      add(files);
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // «Один ролик»: сюда добавляются только фото для вставок, ещё ролик — через переключение на склейку
+  const addHere = (files: FileList | File[]) => {
+    const all = Array.from(files);
+    const vids = all.filter((f) => !(f.type.startsWith("image/") || /\.(jpe?g|png|webp|heic|gif)$/i.test(f.name)));
+    if (single && vids.length) setErr("Сейчас режим «Один ролик» — сюда добавляются только фото. Чтобы склеить несколько роликов, нажмите «Переключить на склейку».");
+    add(single ? all.filter((f) => !vids.includes(f)) : all);
+  };
+  const setMode = (mode: "single" | "multi") => (setErr(""), up((q) => ({...q, mode})));
+
   const recognize = async (again = false) => {
     setErr("");
     try {
@@ -251,15 +275,20 @@ export const AssembleStep: React.FC<StepCtx> = ({p, up, m, setM, sec, seek, setS
 
   return (
     <div className="step">
-      <h2>Склейка</h2>
-      <p className="lead">
-        Добавьте все ролики и дубли — Монтажная распознает речь, оставит лучший дубль каждой фразы и вырежет паузы, эканья,
-        мусорные слова и цыканья. Фото можно вставить в любой момент ролика. Предпросмотр справа сразу показывает склеенный ролик.
-      </p>
+      <h2>{single ? "Чистка" : "Склейка"}</h2>
+      {single ? (
+        <p className="lead">
+          Монтажная распознает речь и вырежет паузы, эканья, мусорные слова, цыканья и оговорки. Фото можно вставить в любой
+          момент ролика. Предпросмотр справа сразу показывает почищенный ролик.
+        </p>
+      ) : (
+        <p className="lead">
+          Добавьте все ролики и дубли — Монтажная распознает речь, оставит лучший дубль каждой фразы и вырежет паузы, эканья,
+          мусорные слова и цыканья. Фото можно вставить в любой момент ролика. Предпросмотр справа сразу показывает склеенный ролик.
+        </p>
+      )}
 
-      <h3>
-        Ролики <span className="muted">— в ролике идут в этом порядке</span>
-      </h3>
+      <h3>{single ? "Ролик" : <>Ролики <span className="muted">— в ролике идут в этом порядке</span></>}</h3>
       <div className="clips">
         {videos.map((c, i) => (
           <div key={c.id} className={`clip ${c.off ? "off" : ""}`}>
@@ -273,17 +302,19 @@ export const AssembleStep: React.FC<StepCtx> = ({p, up, m, setM, sec, seek, setS
                 {c.off ? " · не в ролике" : ""}
               </span>
             </div>
-            <div className="ca">
-              <button className="btn ghost sm" title="Раньше" disabled={i === 0} onClick={() => move(c.id, -1)}>
-                ↑
-              </button>
-              <button className="btn ghost sm" title="Позже" disabled={i === videos.length - 1} onClick={() => move(c.id, 1)}>
-                ↓
-              </button>
-              <button className="btn ghost sm" onClick={() => setClips((cl) => cl.map((x) => (x.id === c.id ? {...x, off: !x.off} : x)))}>
-                {c.off ? "В ролик" : "Убрать"}
-              </button>
-            </div>
+            {single ? null : (
+              <div className="ca">
+                <button className="btn ghost sm" title="Раньше" disabled={i === 0} onClick={() => move(c.id, -1)}>
+                  ↑
+                </button>
+                <button className="btn ghost sm" title="Позже" disabled={i === videos.length - 1} onClick={() => move(c.id, 1)}>
+                  ↓
+                </button>
+                <button className="btn ghost sm" onClick={() => setClips((cl) => cl.map((x) => (x.id === c.id ? {...x, off: !x.off} : x)))}>
+                  {c.off ? "В ролик" : "Убрать"}
+                </button>
+              </div>
+            )}
           </div>
         ))}
         {!videos.length ? <div className="muted">Роликов пока нет — добавьте ниже.</div> : null}
@@ -293,13 +324,30 @@ export const AssembleStep: React.FC<StepCtx> = ({p, up, m, setM, sec, seek, setS
         onDragOver={(e) => e.preventDefault()}
         onDrop={(e) => {
           e.preventDefault();
-          add(e.dataTransfer.files);
+          addHere(e.dataTransfer.files);
         }}
       >
-        <b>+ Добавить ролики и фото</b>
-        <span>можно сразу несколько: все дубли, куски, фото для вставок</span>
-        <input type="file" multiple accept="video/*,image/*,.mov,.mp4,.m4v,.jpg,.jpeg,.png,.webp" hidden onChange={(e) => e.target.files && add(e.target.files)} />
+        <b>{single ? "+ Добавить фото для вставок" : "+ Добавить ролики и фото"}</b>
+        <span>{single ? "можно сразу несколько" : "можно сразу несколько: все дубли, куски, фото для вставок"}</span>
+        <input
+          type="file"
+          multiple
+          accept={single ? "image/*,.jpg,.jpeg,.png,.webp" : "video/*,image/*,.mov,.mp4,.m4v,.jpg,.jpeg,.png,.webp"}
+          hidden
+          onChange={(e) => e.target.files && addHere(e.target.files)}
+        />
       </label>
+      <p className="muted modeswitch">
+        {single ? (
+          <>
+            Нужно склеить несколько роликов или дублей? <a onClick={() => setMode("multi")}>Переключить на склейку</a>
+          </>
+        ) : videos.length <= 1 ? (
+          <>
+            Монтируете один ролик? <a onClick={() => setMode("single")}>Переключить на «Один ролик»</a>
+          </>
+        ) : null}
+      </p>
 
       {photos.length ? (
         <>
@@ -327,10 +375,10 @@ export const AssembleStep: React.FC<StepCtx> = ({p, up, m, setM, sec, seek, setS
         </>
       ) : null}
 
-      <h3>Речь в роликах</h3>
+      <h3>{single ? "Речь" : "Речь в роликах"}</h3>
       <div className="row wrap">
         <button className="btn primary" disabled={!videos.length || !!busy} onClick={() => recognize(false)}>
-          {videos.every((c) => c.words?.length) ? "Речь распознана ✓" : "Распознать речь во всех роликах"}
+          {videos.every((c) => c.words?.length) ? "Речь распознана ✓" : single ? "Распознать речь" : "Распознать речь во всех роликах"}
         </button>
         <select value={model} onChange={(e) => setModel(e.target.value as AsrModel)} title="Модель Whisper">
           <option value="small">точно (Whisper small)</option>
@@ -403,7 +451,7 @@ export const AssembleStep: React.FC<StepCtx> = ({p, up, m, setM, sec, seek, setS
         {!glued ? (
           <>
             <button className="btn primary" disabled={!res} onClick={glue}>
-              Склеить и почистить
+              {single ? "Почистить" : "Склеить и почистить"}
             </button>
             {videos.length > 1 ? (
               <button className="btn ghost" onClick={unglue}>
@@ -413,7 +461,7 @@ export const AssembleStep: React.FC<StepCtx> = ({p, up, m, setM, sec, seek, setS
           </>
         ) : (
           <button className="btn ghost" onClick={unglue}>
-            Без чистки (ролики целиком)
+            {single ? "Без чистки (ролик целиком)" : "Без чистки (ролики целиком)"}
           </button>
         )}
         {!res && videos.length ? <span className="muted">Сначала распознайте речь — по ней ищутся паузы, дубли и лишние слова.</span> : null}
@@ -427,7 +475,7 @@ export const AssembleStep: React.FC<StepCtx> = ({p, up, m, setM, sec, seek, setS
             вырезано {fmtTime(res.before - res.after)}
             {(Object.keys(byWhy) as CutWhy[]).map((w) => ` · ${WHY[w].toLowerCase()}: ${byWhy[w]!.n}`).join("")}
           </span>
-          {!glued ? <em>Нажмите «Склеить и почистить», чтобы увидеть в предпросмотре.</em> : null}
+          {!glued ? <em>Нажмите «{single ? "Почистить" : "Склеить и почистить"}», чтобы увидеть в предпросмотре.</em> : null}
         </div>
       ) : null}
 

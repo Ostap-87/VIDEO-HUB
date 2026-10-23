@@ -10,7 +10,7 @@ import {GRADES, gradeCss} from "./grades";
 import {advise, PALETTES, SWATCHES} from "./palettes";
 import {decodeAudio, fmtTime, frames, peaks, probe} from "./media";
 import {buildProps, cleanKey, clipKey, durationFrames, leadFrames, LOCAL, projSeconds} from "./props";
-import {AssembleStep, cleanClips, clipsOf, transcribeClips} from "./AssembleStep";
+import {AssembleStep, cleanClips, clipsOf, modeOf, PENDING, transcribeClips} from "./AssembleStep";
 import {AutoMontage, RhythmPanel} from "./AutoTools";
 import {edlLocate, edlSeconds, edlWords} from "./assemble";
 import {autoPlace, hfName, loadModel, phrases, search, thumb, usedInProject, type Found} from "./images";
@@ -169,7 +169,10 @@ const Home: React.FC<{list: Project[] | null; onOpen: (p: Project) => void; onCh
   );
 };
 
+const isImage = (f: File) => f.type.startsWith("image/") || /\.(jpe?g|png|webp|heic|gif)$/i.test(f.name);
+
 const NewVideo: React.FC<{onCancel: () => void; onCreated: (p: Project) => void}> = ({onCancel, onCreated}) => {
+  const [mode, setMode] = useState<"single" | "multi" | null>(null);
   const [name, setName] = useState("");
   const [brand, setBrand] = useState<Brand>("gtt");
   const [link, setLink] = useState("");
@@ -179,10 +182,11 @@ const NewVideo: React.FC<{onCancel: () => void; onCreated: (p: Project) => void}
   useEffect(() => {
     hasServer().then(setServer);
   }, []);
-  const create = async (file: Blob | null, fname: string, url?: string) => {
+  const create = async (file: Blob | null, fname: string, url?: string, rest: File[] = []) => {
     setErr("");
     try {
       const p = newProject(name.trim() || fname.replace(/\.[^.]+$/, "") || "Новый ролик", brand);
+      p.mode = mode ?? "single";
       if (file) {
         setBusy("Сохраняю видео в Монтажной…");
         const u = URL.createObjectURL(file);
@@ -195,16 +199,37 @@ const NewVideo: React.FC<{onCancel: () => void; onCreated: (p: Project) => void}
         p.source = {name: fname, size: 0, duration: 0, width: 0, height: 0, url, local: false};
       }
       await putProject(p);
+      if (rest.length) PENDING[p.id] = rest; // остальные ролики и фото склейки добавит шаг «Склейка»
       onCreated(p);
     } catch (e) {
       setErr(String((e as Error).message || e));
       setBusy("");
     }
   };
+  // выбранные файлы: один ролик — первый видеофайл; склейка — первый ролик сразу, остальное добавит шаг «Склейка»
+  const pick = (list: FileList) => {
+    const files = Array.from(list);
+    const first = files.find((f) => !isImage(f));
+    if (!first) return setErr(mode === "multi" ? "Нужен хотя бы один ролик — фото добавятся к нему." : "Это не видео — выберите ролик (MOV, MP4).");
+    create(first, first.name, undefined, mode === "multi" ? files.filter((f) => f !== first) : []);
+  };
   return (
     <div className="modal" onClick={onCancel}>
       <div className="box" onClick={(e) => e.stopPropagation()}>
         <h2>Новый ролик</h2>
+        <label className="lbl">Что монтируем</label>
+        <div className="modes">
+          <button className={mode === "single" ? "on" : ""} onClick={() => setMode("single")}>
+            <b>🎬 Один ролик</b>
+            <span>Одно видео: субтитры, звук, цвет, эффекты. Паузы и эканья вырежу сам.</span>
+          </button>
+          <button className={mode === "multi" ? "on" : ""} onClick={() => setMode("multi")}>
+            <b>🧩 Склейка роликов</b>
+            <span>Несколько роликов и дублей, фото для вставок — склею лучшие куски по порядку.</span>
+          </button>
+        </div>
+        {mode ? (
+          <>
         <label className="lbl">Название</label>
         <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Например: «Заводы Шэньчжэня»" />
         <label className="lbl">Для какого проекта</label>
@@ -220,13 +245,22 @@ const NewVideo: React.FC<{onCancel: () => void; onCreated: (p: Project) => void}
           onDragOver={(e) => e.preventDefault()}
           onDrop={(e) => {
             e.preventDefault();
-            const f = e.dataTransfer.files[0];
-            if (f) create(f, f.name);
+            pick(e.dataTransfer.files);
           }}
         >
-          <b>Перетащите видео сюда</b>
-          <span>или нажмите, чтобы выбрать файл (MOV, MP4 с телефона)</span>
-          <input type="file" accept="video/*,.mov,.mp4,.m4v" hidden onChange={(e) => e.target.files?.[0] && create(e.target.files[0], e.target.files[0].name)} />
+          <b>{mode === "multi" ? "Перетащите ролики и фото сюда" : "Перетащите видео сюда"}</b>
+          <span>
+            {mode === "multi"
+              ? "или нажмите и выберите сразу несколько файлов: все ролики, дубли, фото для вставок"
+              : "или нажмите, чтобы выбрать файл (MOV, MP4 с телефона)"}
+          </span>
+          <input
+            type="file"
+            multiple={mode === "multi"}
+            accept={mode === "multi" ? "video/*,image/*,.mov,.mp4,.m4v,.jpg,.jpeg,.png,.webp" : "video/*,.mov,.mp4,.m4v"}
+            hidden
+            onChange={(e) => e.target.files && pick(e.target.files)}
+          />
         </label>
         <label className="lbl">Или ссылка</label>
         <div className="row">
@@ -255,6 +289,11 @@ const NewVideo: React.FC<{onCancel: () => void; onCreated: (p: Project) => void}
             ? "Ссылка должна быть открыта «для всех, у кого есть ссылка». Видео скачается на этот Mac и сразу откроется."
             : "В браузере видео по ссылке скачает движок при обработке; чтобы смотреть эффекты сразу, добавьте файл с диска или откройте Монтажную на Mac."}
         </p>
+        {mode === "multi" ? <p className="hint">По ссылке добавляется первый ролик, остальные — на шаге «Склейка».</p> : null}
+          </>
+        ) : (
+          <p className="hint">Выберите вариант — его можно поменять потом на шаге «Исходник».</p>
+        )}
         {busy ? <div className="busy">{busy}</div> : null}
         {err ? <div className="err">{err}</div> : null}
         <div className="acts">
@@ -283,7 +322,7 @@ type Media = {
 
 const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, onClose}) => {
   const [p, setP] = useState<Project>(initial);
-  const [step, setStep] = useState<Step>(initial.words.length ? "edit" : "source");
+  const [step, setStep] = useState<Step>(initial.words.length ? "edit" : PENDING[initial.id]?.length ? "assemble" : "source");
   const [m, setM] = useState<Media>({images: {}, clips: {}, cleanClips: {}, strip: [], times: [], wave: [], waveClean: []});
   const pcmCache = useRef<Record<string, Float32Array>>({});
   const [frame, setFrame] = useState(0);
@@ -476,7 +515,7 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
           {STEPS.map(([id, t], i) => (
             <button key={id} className={step === id ? "on" : ""} onClick={() => setStep(id)}>
               <b>{i + 1}</b>
-              {t}
+              {id === "assemble" && modeOf(p) === "single" ? "Чистка" : t}
             </button>
           ))}
         </nav>
@@ -568,9 +607,23 @@ const Next: React.FC<{to: Step; setStep: (s: Step) => void; children: React.Reac
 // ---------------------------------------------------------------- 1. Исходник
 const SourceStep: React.FC<StepCtx> = (ctx) => {
   const {p, up, m, seek, setStep} = ctx;
+  const single = modeOf(p) === "single";
   return (
   <div className="step">
     <h2>Исходник</h2>
+    <div className="seg3 modeseg">
+      <button className={single ? "on" : ""} onClick={() => up((q) => ({...q, mode: "single"}))}>
+        🎬 Один ролик
+      </button>
+      <button className={!single ? "on" : ""} onClick={() => up((q) => ({...q, mode: "multi"}))}>
+        🧩 Склейка роликов
+      </button>
+    </div>
+    <p className="muted">
+      {single
+        ? "Шаг 2 — «Чистка»: паузы, эканья и мусорные слова вырезаются из этого ролика."
+        : "Шаг 2 — «Склейка»: добавьте остальные ролики и дубли, Монтажная склеит лучшие куски по порядку."}
+    </p>
     <div className="autobox">
       <AutoMontage {...ctx} big />
       <span>
@@ -660,7 +713,7 @@ const SourceStep: React.FC<StepCtx> = (ctx) => {
       </div>
     ) : null}
     <Next to="assemble" setStep={setStep}>
-      Дальше: склейка и чистка
+      {single ? "Дальше: чистка пауз и эканий" : "Дальше: склейка роликов"}
     </Next>
   </div>
   );
