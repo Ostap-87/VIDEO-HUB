@@ -10,7 +10,7 @@ export type Field = {
   key: string;
   label: string;
   hint?: string;
-  kind?: "text" | "lines" | "image" | "select" | "range" | "color" | "media";
+  kind?: "text" | "lines" | "image" | "select" | "range" | "color" | "media" | "quad";
   options?: [string, string][];
   min?: number;
   max?: number;
@@ -248,7 +248,7 @@ const titleFx = (id: string, title: string, desc: string, ref: string, d: {font:
     });
   },
 });
-const captionsFx = (style: "plate" | "corner" | "quiet", title: string, desc: string, ref: string, y: string): Effect => ({
+const captionsFx = (style: "plate" | "corner" | "quiet" | "mini", title: string, desc: string, ref: string, y: string): Effect => ({
   id: `captions-${style}`,
   title,
   cat: "Титры",
@@ -415,6 +415,76 @@ const REF_EFFECTS: Effect[] = [
       (p.outros ??= []).push({at: e.at, until: end(e, 2.6), handle: e.params.handle || h, network: e.params.network || (e.params.handle ? "instagram" : net), text: e.params.text || undefined});
     },
   },
+];
+
+// ------------------------------------------------------------------ «Экран в кадре» (референс dfcdojr 23.10.2026)
+// графика в настоящем экране кадра (ноутбук, телефон, ТВ) по четырём углам; шаблон — reels-studio/src/components/ScreenInsert.tsx
+export const DEFAULT_QUAD = "170,1150 910,1150 960,1600 120,1600";
+export const parseQuad = (s?: string): [number, number][] | undefined => {
+  const pts = (s || "").trim().split(/\s+/).map((p) => p.split(",").map(Number));
+  return pts.length === 4 && pts.every((p) => p.length === 2 && p.every(Number.isFinite)) ? (pts as [number, number][]) : undefined;
+};
+const QUAD_FIELD: Field = {key: "quad", label: "Углы экрана", hint: "нажмите на кадре 4 угла экрана: слева сверху, справа сверху, справа снизу, слева снизу", kind: "quad"};
+const SCREEN_PLANE: Field = {key: "plane", label: "Руки спикера", kind: "select", options: [["behind", "поверх экрана"], ["front", "под экраном"]]};
+const inScreenFx = (id: string, title: string, desc: string, kind: string, fields: Field[], fill: (p: Props, e: EffectItem, ctx: Ctx, u: number) => Props, len = 4): Effect => ({
+  id,
+  title,
+  cat: "Экраны",
+  desc,
+  len,
+  ref: "dfcdojr",
+  fields: [QUAD_FIELD, ...fields, SCREEN_PLANE],
+  after: "руки поверх экрана — после вырезки спикера (в окне графика поверх рук)",
+  apply: (p, e, ctx) => {
+    const u = end(e, len);
+    (p.inscreens ??= []).push({at: e.at, until: u, quad: parseQuad(e.params.quad) ?? parseQuad(DEFAULT_QUAD), kind, plane: e.params.plane || "behind", ...fill(p, e, ctx, u)});
+  },
+});
+const SCREEN_EFFECTS: Effect[] = [
+  inScreenFx("inscreen-text", "Экран в кадре: текст", "Крупный текст в две краски прямо в экране ноутбука или телефона в кадре («НЕ ТА / АРКА»)", "text", [
+    {key: "text", label: "Текст", hint: "строки через /; пусто — слова речи", kind: "lines"},
+    {key: "sub", label: "Подпись мелко"},
+  ], (p, e, ctx, u) => ({text: e.params.text || spoken(ctx.words, e.at, u, 3) || "Не та / арка", sub: e.params.sub || undefined}), 3),
+  inScreenFx("inscreen-chart", "Экран в кадре: кривая с подписями", "Кривая рисуется в экране, подписи точек появляются по очереди: арка истории, спад, пики, рост", "chart", [
+    {key: "curve", label: "Кривая", kind: "select", options: [["arc", "арка (завязка → кульминация → развязка)"], ["drop", "спад"], ["wave", "пики волнами"], ["rise", "рост"]]},
+    {key: "items", label: "Подписи точек", hint: "через / ; пусто — по виду кривой", kind: "lines"},
+  ], (p, e) => ({curve: e.params.curve || "arc", items: e.params.items ? lines(e.params.items) : undefined}), 5),
+  inScreenFx("inscreen-cards", "Экран в кадре: карточки роликов", "До четырёх вертикальных карточек (ролики, фото) въезжают в экран по очереди", "cards", [
+    {key: "image", label: "Карточка 1", kind: "media"},
+    {key: "image2", label: "Карточка 2", kind: "media"},
+    {key: "image3", label: "Карточка 3", kind: "media"},
+    {key: "image4", label: "Карточка 4", kind: "media"},
+    {key: "text", label: "Подпись под карточками"},
+  ], (p, e, ctx) => ({images: [mediaOf(e, ctx), ...["image2", "image3", "image4"].map((k) => (e.params[k] ? ctx.image(e.params[k]) : ""))].filter(Boolean), text: e.params.text || undefined})),
+  inScreenFx("inscreen-list", "Экран в кадре: список-плашки", "Пункты в голубых рамках появляются в экране один за другим", "list", [
+    {key: "items", label: "Пункты", hint: "через / или с новой строки", kind: "lines"},
+  ], (p, e) => ({items: e.params.items ? lines(e.params.items) : undefined})),
+  inScreenFx("inscreen-steps", "Экран в кадре: шаги", "Блоки со стрелками: «Выбрал → Заполнил → Текст», последний — цветом", "steps", [
+    {key: "items", label: "Шаги", hint: "через / ; подпись мелко — после |: «Выбрал|структуру»", kind: "lines"},
+  ], (p, e) => ({items: e.params.items ? lines(e.params.items) : undefined})),
+  inScreenFx("inscreen-icon", "Экран в кадре: иконка и подпись", "Картинка со свечением и крупная подпись («+ ДОФАМИН»)", "icon", [
+    {key: "image", label: "Картинка", kind: "image", hint: "лучше PNG без фона; пусто — эмодзи"},
+    {key: "emoji", label: "Эмодзи", kind: "select", options: EMOJI.map((x) => [x.file, `${x.char} ${x.file}`] as [string, string])},
+    {key: "text", label: "Подпись"},
+  ], (p, e, ctx, u) => ({src: mediaOf(e, ctx) || emojiSrc(e.params.emoji || "взрыв-мозга"), text: e.params.text || spoken(ctx.words, e.at, u, 2) || undefined}), 3),
+  inScreenFx("inscreen-media", "Экран в кадре: фото или видео", "Своё фото или видео встаёт в экран в кадре в перспективе", "media", [{key: "image", label: "Фото или видео", kind: "media"}], (p, e, ctx) => ({src: mediaOf(e, ctx) || undefined})),
+  {
+    id: "title-box",
+    title: "Заголовок на белых плашках",
+    cat: "Титры",
+    desc: "Тема ролика чёрным жирным текстом на белых плашках, как текст TikTok («Дофаминовые пики: / как строить историю»)",
+    len: 3,
+    ref: "dfcdojr",
+    fields: [
+      {key: "text", label: "Текст", hint: "строки через /", kind: "lines"},
+      {key: "y", label: "По вертикали", hint: "по умолчанию — над головой", kind: "range", min: 300, max: 1500, step: 5, def: "420"},
+    ],
+    apply: (p, e, ctx) => {
+      const u = end(e, 3);
+      (p.titles ??= []).push({at: e.at, until: u, font: "box", text: e.params.text || spoken(ctx.words, e.at, u, 6) || "Тема ролика", y: num(e, "y", Math.max(380, Math.round((p.focus?.y ?? 700) - 330)))});
+    },
+  },
+  captionsFx("mini", "Субтитры: мелкие над экраном", "По 1–2 слова, жирные белые с тёмной обводкой — стоят над ноутбуком или телефоном в кадре", "dfcdojr", "1110"),
 ];
 
 export const EFFECTS: Effect[] = [
@@ -620,6 +690,7 @@ export const EFFECTS: Effect[] = [
     apply: (p, e) => (p.paletteAt ??= []).push({at: e.at, until: end(e, 4), text: e.params.text || "#FFFFFF", accent: e.params.accent || "#FFD92E", ink: e.params.ink || undefined}),
   },
   ...REF_EFFECTS,
+  ...SCREEN_EFFECTS,
 ];
 
 export const effectById = (id: string) => EFFECTS.find((e) => e.id === id);

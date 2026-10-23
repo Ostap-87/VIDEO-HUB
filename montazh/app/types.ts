@@ -71,7 +71,7 @@ export type Project = {
   words: Word[];
   wordsFrom?: "browser" | "engine" | "file" | "manual";
   captions: {style: "flat" | "3d"; size: number; top: number};
-  audio: {clean: boolean; music: string | null; musicVolume: number};
+  audio: {clean: boolean; music: string | null; musicVolume: number; duck?: boolean};
   grade: {preset: string; amount: number};
   palette?: {preset: string; text?: string; accent?: string; ink?: string}; // цвета текста (palettes.ts)
   finale: boolean; // финал с сайтом бренда

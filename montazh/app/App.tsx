@@ -4,7 +4,7 @@ import {TalkReelPro} from "../../reels-studio/src/compositions/TalkReelPro";
 import {cleanVoice} from "./audio";
 import {BRANDS, MUSIC} from "./brands";
 import {EXAMPLES, parseCommand} from "./commands";
-import {CATS, EFFECTS, effectById, spoken} from "./effects";
+import {CATS, DEFAULT_QUAD, EFFECTS, effectById, parseQuad, spoken} from "./effects";
 import {EMOJI, emojiSrc} from "./emoji";
 import {GRADES, gradeCss} from "./grades";
 import {advise, PALETTES, SWATCHES} from "./palettes";
@@ -326,7 +326,7 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
       const clips: Record<string, string> = video ? {source: video} : {};
       const cleanClips: Record<string, string> = clean ? {source: clean} : {};
       for (const e of p.effects) {
-        for (const n of [e.params.image, e.params.image2, e.params.image3]) {
+        for (const n of [e.params.image, e.params.image2, e.params.image3, e.params.image4]) {
           if (n && !images[n]) {
             const b = await getFile(p.id, `img/${n}`);
             if (b) urls.push((images[n] = URL.createObjectURL(b)));
@@ -897,6 +897,10 @@ const SoundStep: React.FC<StepCtx> = ({p, up, m, setM, file, seek, sec, setStep}
           Громкость
           <input type="range" min={0.3} max={2} step={0.05} value={p.audio.musicVolume} onChange={(e) => up((q) => ({...q, audio: {...q.audio, musicVolume: +e.target.value}}))} />
         </label>
+        <label className="inline" title="Пока вы говорите, музыка тише; в паузах — громче">
+          <input type="checkbox" checked={p.audio.duck !== false} onChange={(e) => up((q) => ({...q, audio: {...q.audio, duck: e.target.checked}}))} />
+          Тише под голос
+        </label>
       </div>
       <Next to="color" setStep={setStep}>
         Дальше: цвет
@@ -1053,7 +1057,7 @@ const EditStep: React.FC<StepCtx> = (ctx) => {
         ))}
       </div>
       {cat === "Перебивки" || withImage(item) ? <ImagePicker p={p} up={up} sec={sec} target={withImage(item) ? item : undefined} onAdded={setSel} /> : null}
-      {item ? <EffectEditor item={item} p={p} up={up} setM={setM} mImages={m.images} seek={seek} onClose={() => setSel(null)} /> : null}
+      {item ? <EffectEditor item={item} p={p} up={up} setM={setM} mImages={m.images} media={{video: m.video, clips: m.clips}} seek={seek} onClose={() => setSel(null)} /> : null}
       <div className="effects-on">
         <h3>В ролике</h3>
         {p.effects.length ? null : <div className="muted">Эффектов пока нет.</div>}
@@ -1114,12 +1118,84 @@ const EditStep: React.FC<StepCtx> = (ctx) => {
 
 const withImage = (it?: EffectItem) => !!it && !!effectById(it.effect)?.fields.some((f) => f.kind === "image" || f.kind === "media");
 
-const EffectEditor: React.FC<{item: EffectItem; p: Project; up: StepCtx["up"]; setM: StepCtx["setM"]; mImages: Record<string, string>; seek: (s: number) => void; onClose: () => void}> = ({
+// углы экрана в кадре («Экран в кадре»): кадр ролика на секунде эффекта, 4 щелчка — TL, TR, BR, BL (точки кадра 1080×1920)
+const QuadField: React.FC<{label: string; hint?: string; value: string; onChange: (v: string) => void; p: Project; at: number; media: {video?: string; clips: Record<string, string>}}> = ({label, hint, value, onChange, p, at, media}) => {
+  const [shot, setShot] = useState("");
+  const [pts, setPts] = useState<[number, number][]>([]);
+  // размер кадра того ролика, который идёт на этой секунде (в склейке — у каждого свой)
+  const loc = p.edl?.length ? edlLocate(p.edl, at) : null;
+  const clip = loc ? clipsOf(p).find((c) => c.id === loc.clip) : undefined;
+  const sw = (clip?.width || p.source?.width || 1080) as number;
+  const sh = (clip?.height || p.source?.height || 1920) as number;
+  const k = Math.max(1080 / sw, 1920 / sh);
+  const ox = (1080 - sw * k) / 2;
+  const oy = (1920 - sh * k) / 2;
+  useEffect(() => {
+    let alive = true;
+    const url = loc ? media.clips[loc.clip] : media.video;
+    const t = loc ? loc.t : at;
+    if (!url) return;
+    frames(url, [t], 360).then(([img]) => alive && setShot(img), () => {});
+    return () => {
+      alive = false;
+    };
+  }, [at, media.video, loc?.clip, loc?.t]);
+  const cur = pts.length ? pts : parseQuad(value) ?? parseQuad(DEFAULT_QUAD)!;
+  const toPct = ([x, y]: [number, number]) => [((x - ox) / (sw * k)) * 100, ((y - oy) / (sh * k)) * 100];
+  const NAMES = ["слева сверху", "справа сверху", "справа снизу", "слева снизу"];
+  return (
+    <div className="quadf">
+      <span>
+        {label} <b>{pts.length ? `щёлкните: ${NAMES[pts.length]}` : value ? "отмечены" : "по умолчанию — ноутбук перед собой"}</b>
+      </span>
+      {hint ? <span className="muted">{hint}</span> : null}
+      <div
+        className="quadpick"
+        onClick={(e) => {
+          const r = e.currentTarget.getBoundingClientRect();
+          const x = Math.round(((e.clientX - r.left) / r.width) * sw * k + ox);
+          const y = Math.round(((e.clientY - r.top) / r.height) * sh * k + oy);
+          const next = [...pts, [x, y] as [number, number]];
+          if (next.length === 4) {
+            onChange(next.map((q) => q.join(",")).join(" "));
+            setPts([]);
+          } else setPts(next);
+        }}
+      >
+        {shot ? <img src={shot} /> : <div className="muted">Кадр загружается…</div>}
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+          <polygon points={cur.map((q) => toPct(q).join(",")).join(" ")} />
+        </svg>
+        {cur.map((q, i) => {
+          const [l, t] = toPct(q);
+          return (
+            <i key={i} style={{left: `${l}%`, top: `${t}%`}}>
+              {i + 1}
+            </i>
+          );
+        })}
+      </div>
+      <div className="row">
+        <button className="btn ghost sm" onClick={() => setPts([])}>
+          Отметить заново
+        </button>
+        {value ? (
+          <button className="btn ghost sm" onClick={() => onChange("")}>
+            Сбросить
+          </button>
+        ) : null}
+      </div>
+    </div>
+  );
+};
+
+const EffectEditor: React.FC<{item: EffectItem; p: Project; up: StepCtx["up"]; setM: StepCtx["setM"]; mImages: Record<string, string>; media: {video?: string; clips: Record<string, string>}; seek: (s: number) => void; onClose: () => void}> = ({
   item,
   p,
   up,
   setM,
   mImages,
+  media,
   seek,
   onClose,
 }) => {
@@ -1183,6 +1259,8 @@ const EffectEditor: React.FC<{item: EffectItem; p: Project; up: StepCtx["up"]; s
               />
             </label>
           </div>
+        ) : f.kind === "quad" ? (
+          <QuadField key={f.key} label={f.label} hint={f.hint} value={item.params[f.key] || ""} onChange={(v) => setParam(f.key, v)} p={p} at={item.at} media={media} />
         ) : f.kind === "range" ? (
           <label key={f.key} className="rangef">
             <span>

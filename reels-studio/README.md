@@ -77,6 +77,9 @@ npm run auto -- --name 2026-10-09-avto --render                   # Reels + Stor
   (`plate` бежевая плашка, `corner` угол в 2 строки, `quiet` тихие слева); `chats` — окно чата с печатью; `floats` —
   картинки вокруг головы; `cards` — карточка у груди; `outros` — финал с иконкой соцсети и @ником; ещё `zooms` kind
   `macro` (`target: "eyes" | "lips"`), `fx` type `leak` (вспышка света), `speaker` bg `app` (окно приложения, `windows: 2`).
+- «экран в кадре» (`src/components/ScreenInsert.tsx`): `inscreens` — графика в экране ноутбука/телефона в кадре по 4 углам
+  `quad` (текст, кривая с подписями, карточки, список, шаги, иконка, фото/видео), руки спикера поверх; `titles` font `box` —
+  заголовок на белых плашках; `captionsAt` style `mini` — мелкие субтитры над экраном.
 
 Облачный рендер задания Монтажной: `python3 ../montazh/engine/run_job.py <id>` (обычно сам, в GitHub Actions
 «Монтажная — рендер»; локально с файлами — `--local <папка>`).

@@ -162,6 +162,10 @@ def matte_ranges(props, total: float) -> str:
     for x in props.get("floats", []) or []:
         if (x.get("plane") or "behind") == "behind":
             rs.append((x["at"], x["until"]))
+    # «экран в кадре»: руки спикера поверх экрана
+    for x in props.get("inscreens", []) or []:
+        if (x.get("plane") or "behind") == "behind":
+            rs.append((x["at"], x["until"]))
     rs = sorted((max(0, a - 0.4), min(total, b + 0.4)) for a, b in rs if b > a)
     merged = []
     for a, b in rs:

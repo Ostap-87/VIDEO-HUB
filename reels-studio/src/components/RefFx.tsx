@@ -174,12 +174,60 @@ export type TitleItem = {
   until: number;
   text: string;
   script?: string; // рукописная строка поверх; «через / нейросети» — две части: слева снизу и справа снизу
-  font?: "serif" | "grotesk";
+  font?: "serif" | "grotesk" | "box"; // box — строки на белых плашках, как текст TikTok (референс dfcdojr)
   y?: number; // центр строки
   color?: string;
   scriptColor?: string;
   band?: boolean; // тёмная полоса через весь кадр (призыв «ПИШИ»)
   plane?: "behind" | "front";
+  // приёмы из каталога skillry (23.10.2026, своим кодом): bg — заголовок на чистом фоне (кадр спикера скрыт), sub — строка
+  // под ним, still — без появления (продолжение того же заголовка), strikeAt — с какой секунды от начала слово зачёркивается,
+  // echo — эхо-вспышка (две затухающие копии крупнее)
+  bg?: string;
+  sub?: string;
+  still?: boolean;
+  strikeAt?: number;
+  echo?: boolean;
+};
+
+// заголовок на белых плашках: каждая строка — своя плашка, чёрный жирный текст (строки через /)
+const BoxTitle: React.FC<{it: TitleItem}> = ({it}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const B = useBrand();
+  const t = frame / fps;
+  const dur = it.until - it.at;
+  const out = interpolate(t, [dur - 0.25, dur], [1, 0], clamp);
+  const lines = it.text.split(/\s*\/\s*/).filter(Boolean);
+  const longest = Math.max(...lines.map((l) => l.length), 6);
+  const size = Math.min(58, 900 / (longest * 0.56));
+  return (
+    <div style={{position: "absolute", left: 40, right: 40, top: (it.y ?? 1000) - (lines.length * size * 1.25) / 2, display: "flex", flexDirection: "column", alignItems: "center", gap: 0, opacity: out}}>
+      {lines.map((l, i) => {
+        const k = spring({frame: frame - i * 3, fps, config: {damping: 16, stiffness: 200}});
+        return (
+          <span
+            key={i}
+            style={{
+              background: it.color ?? "#FFFFFF",
+              color: "#111114",
+              fontFamily: B.bodyFont,
+              fontWeight: 800,
+              fontSize: size,
+              lineHeight: 1.18,
+              padding: "2px 16px 4px",
+              borderRadius: B.square ? 0 : i === 0 ? "14px 14px 0 0" : i === lines.length - 1 ? "0 0 14px 14px" : 0,
+              marginTop: i ? -1 : 0,
+              scale: String(0.85 + 0.15 * k),
+              opacity: Math.min(1, k * 1.6),
+            }}
+          >
+            {l}
+          </span>
+        );
+      })}
+    </div>
+  );
 };
 
 const TitleOne: React.FC<{it: TitleItem}> = ({it}) => {
@@ -187,6 +235,7 @@ const TitleOne: React.FC<{it: TitleItem}> = ({it}) => {
   const {fps} = useVideoConfig();
   const t = frame / fps;
   const dur = it.until - it.at;
+  if (it.font === "box") return <BoxTitle it={it} />;
   const serif = (it.font ?? "serif") === "serif";
   const text = it.text.toUpperCase();
   // кегль по длине: слово целиком в кадре (ширина буквы в долях кегля)
@@ -198,6 +247,8 @@ const TitleOne: React.FC<{it: TitleItem}> = ({it}) => {
   const sSize = Math.max(90, size * (serif ? 0.78 : 0.52));
   const write = (delay: number) => interpolate(t, [delay, delay + 0.6], [0, 100], {...clamp, easing: Easing.bezier(0.45, 0, 0.3, 1)});
   const band = it.band ? spring({frame, fps, config: {damping: 20, stiffness: 140}}) : 0;
+  const strike = it.strikeAt !== undefined ? interpolate(t, [it.strikeAt, it.strikeAt + 0.22], [0, 1], {...clamp, easing: Easing.out(Easing.cubic)}) : 0;
+  const echo = it.echo ? interpolate(t, [0.05, 0.9], [1, 0], clamp) : 0;
   const sColor = it.scriptColor ?? "#FFFFFF";
   const script = (txt: string, i: number, pos: React.CSSProperties) => (
     <div
@@ -220,6 +271,7 @@ const TitleOne: React.FC<{it: TitleItem}> = ({it}) => {
   );
   return (
     <AbsoluteFill style={{opacity: out, translate: `0px ${lift}px`}}>
+      {it.bg ? <AbsoluteFill style={{background: it.bg, opacity: it.still ? 1 : interpolate(t, [0, 0.15], [0, 1], clamp)}} /> : null}
       {it.band ? (
         <div style={{position: "absolute", left: 0, right: 0, top: (it.y ?? 400) - size * 0.85, height: size * 1.7, background: "rgba(14,14,20,0.55)", scale: `${band} 1`}} />
       ) : null}
@@ -227,7 +279,7 @@ const TitleOne: React.FC<{it: TitleItem}> = ({it}) => {
         <div style={{position: "relative"}}>
           <div style={{display: "flex", overflow: "hidden", paddingTop: size * 0.08, paddingBottom: size * 0.04}}>
             {[...text].map((ch, i) => {
-              const k = spring({frame: frame - i * 1.3, fps, config: {damping: 18, stiffness: 170}});
+              const k = it.still ? 1 : spring({frame: frame - i * 1.3, fps, config: {damping: 18, stiffness: 170}});
               return (
                 <span
                   key={i}
@@ -250,6 +302,21 @@ const TitleOne: React.FC<{it: TitleItem}> = ({it}) => {
               );
             })}
           </div>
+          {echo > 0
+            ? [1.14, 1.3].map((sc, j) => (
+                <div key={`echo-${j}`} style={{position: "absolute", inset: 0, display: "flex", justifyContent: "center", alignItems: "center", scale: String(1 + (sc - 1) * (1 - echo * 0.4)), opacity: echo * (j ? 0.18 : 0.34), pointerEvents: "none"}}>
+                  <span style={{whiteSpace: "pre", fontFamily: serif ? prata.fontFamily : oswald.fontFamily, fontWeight: serif ? 400 : 700, fontSize: size, lineHeight: 0.95, color: it.color ?? "#FFFFFF"}}>{text}</span>
+                </div>
+              ))
+            : null}
+          {strike > 0 ? (
+            <div style={{position: "absolute", left: "-3%", top: "50%", height: Math.max(10, size * 0.09), width: `${106 * strike}%`, background: "#FF3B30", borderRadius: 6, rotate: "-4deg", boxShadow: "0 4px 14px rgba(0,0,0,0.35)"}} />
+          ) : null}
+          {it.sub ? (
+            <div style={{position: "absolute", left: 0, right: 0, top: "100%", marginTop: size * 0.12, textAlign: "center", whiteSpace: "nowrap", fontFamily: oswald.fontFamily, fontWeight: 600, fontSize: Math.max(40, size * 0.24), letterSpacing: "0.06em", textTransform: "uppercase", color: it.color ?? "#FFFFFF", opacity: interpolate(t, [0.25, 0.5], [0, 0.9], clamp)}}>
+              {it.sub}
+            </div>
+          ) : null}
           {parts.length >= 2
             ? [script(parts[0], 0, {left: -size * 0.12, top: size * (serif ? 0.5 : 0.58)}), script(parts[1], 1, {right: -size * 0.1, top: size * (serif ? 0.5 : 0.58)})]
             : parts.length === 1
@@ -278,7 +345,7 @@ export const Titles: React.FC<{items?: TitleItem[]; plane: "behind" | "front"}> 
 export const titleBehindActive = (items: TitleItem[] | undefined, t: number) => (items ?? []).some((it) => it.plane === "behind" && t >= it.at - 0.05 && t <= it.until + 0.05);
 
 // ------------------------------------------------------------------ субтитры в стиле референсов
-export type CapStyleItem = {at: number; until: number; style: "plate" | "corner" | "quiet"; y?: number};
+export type CapStyleItem = {at: number; until: number; style: "plate" | "corner" | "quiet" | "mini" | "duo" | "ladder" | "marker" | "pill"; y?: number};
 type W = {text: string; start: number; end: number};
 export const capStyleAt = (items: CapStyleItem[] | undefined, t: number) => (items ?? []).find((x) => t >= x.at && t < x.until);
 
@@ -299,13 +366,13 @@ function pagesOf(words: W[], max: number) {
 }
 const bare = (s: string) => s.replace(/[«»"“”]/g, "");
 
-export const RefCaptions: React.FC<{words: W[]; items?: CapStyleItem[]; until: number}> = ({words, items, until}) => {
+export const RefCaptions: React.FC<{words: W[]; items?: CapStyleItem[]; until: number; accent?: string[]; focus?: Focus}> = ({words, items, until, accent = [], focus = {x: 540, y: 700}}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const B = useBrand();
   const t = frame / fps;
   const item = capStyleAt(items, t);
-  const max = item?.style === "quiet" ? 5 : 4;
+  const max = item?.style === "quiet" ? 5 : item?.style === "mini" ? 2 : item?.style === "duo" ? 5 : item?.style === "ladder" ? 4 : 4;
   const pages = React.useMemo(() => pagesOf(words, max), [words, max]);
   if (!item || t >= until) return null;
   const page = [...pages].reverse().find((pg) => pg[0].start <= t);
@@ -361,6 +428,76 @@ export const RefCaptions: React.FC<{words: W[]; items?: CapStyleItem[]; until: n
       </div>
     );
   }
+  const cleanW = (x: string) => x.toLowerCase().replace(/[^\p{L}\p{N}+%]/gu, "");
+  const curIdx = page.reduce((kk, x, j) => (x.start <= t ? j : kk), -1);
+  const accentColor = B.id === "od" ? "#FFD92E" : B.id === "aura" ? "#FFF65D" : "#7FB2FF";
+  if (item.style === "ladder") {
+    // «лестница» сбоку от лица (prompt-motion №22): слово на строку со сдвигом, акцентное — крупнее и цветом
+    const side = focus.x < 540 ? 1 : -1; // лицо слева — лестница справа и наоборот
+    const x0 = side > 0 ? Math.min(700, focus.x + 230) : Math.max(60, focus.x - 230 - 380);
+    return (
+      <div style={{position: "absolute", left: x0, top: (item.y ?? focus.y - 120)}}>
+        {page.map((w, i) => {
+          if (w.start > t) return null;
+          const hot = accent.includes(cleanW(w.text)) || /\d/.test(w.text);
+          const k = spring({frame: frame - Math.round(w.start * fps), fps, config: {damping: 14, stiffness: 220}});
+          return (
+            <div key={i} style={{marginLeft: side * i * 34, fontFamily: oswald.fontFamily, fontWeight: 700, fontSize: hot ? 100 : 66, lineHeight: 1, color: hot ? accentColor : "#FFFFFF", textTransform: "uppercase", textShadow: "0 5px 18px rgba(0,0,0,0.55)", opacity: Math.min(1, k * 1.6), translate: `${(1 - k) * side * -40}px 0px`, whiteSpace: "nowrap"}}>
+              {bare(w.text).replace(/[.,!?;:…]+$/, "")}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+  if (item.style === "marker" || item.style === "pill") {
+    // marker — текущее слово выделяется маркером слева направо; pill — текущее слово на плашке, прошлая страница тускнеет сверху
+    const prev = item.style === "pill" ? pages[pages.indexOf(page) - 1] : undefined;
+    const showPrev = prev && page[0].start - prev[prev.length - 1].end < 0.6;
+    return (
+      <div style={{position: "absolute", left: 70, right: 70, top: item.y ?? 1230, textAlign: "center", fontFamily: B.bodyFont, fontWeight: 800, fontSize: 60, lineHeight: 1.25}}>
+        {showPrev ? <div style={{fontSize: 44, color: "rgba(255,255,255,0.45)", textShadow: "0 2px 10px rgba(0,0,0,0.5)", marginBottom: 6}}>{prev!.map((w) => bare(w.text)).join(" ")}</div> : null}
+        <div>
+          {page.map((w, i) => {
+            const cur = i === curIdx && t < w.end + 0.3;
+            const swipe = interpolate(t, [w.start, w.start + 0.12], [0, 100], clamp);
+            const st: React.CSSProperties =
+              item.style === "marker"
+                ? cur || (accent.includes(cleanW(w.text)) && w.start <= t)
+                  ? {backgroundImage: `linear-gradient(${accentColor}, ${accentColor})`, backgroundRepeat: "no-repeat", backgroundSize: `${swipe}% 70%`, backgroundPosition: "0% 70%", color: swipe > 50 ? "#15151B" : "#FFFFFF", padding: "0 8px", borderRadius: B.square ? 0 : 6}
+                  : {}
+                : cur
+                  ? {background: accentColor, color: B.id === "gtt" ? "#FFFFFF" : "#15151B", padding: "0 14px", borderRadius: B.square ? 0 : 14, boxShadow: "0 6px 18px rgba(0,0,0,0.35)"}
+                  : {};
+            return (
+              <span key={i} style={{color: w.start <= t ? "#FFFFFF" : "rgba(255,255,255,0.55)", textShadow: st.background || st.backgroundImage ? "none" : "0 3px 12px rgba(0,0,0,0.6)", ...st}}>
+                {bare(w.text)}
+                {i < page.length - 1 ? " " : ""}
+              </span>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+  if (item.style === "duo") {
+    // двухуровневые: вся фраза мелко сверху, ключевое слово гигантом за головой рисует DuoWord (между видео и вырезкой)
+    const k = interpolate(since, [0, 0.12], [0, 1], clamp);
+    return (
+      <div style={{position: "absolute", left: 80, right: 80, top: item.y ?? 300, textAlign: "center", fontFamily: B.bodyFont, fontWeight: 600, fontSize: 40, lineHeight: 1.2, color: "#FFFFFF", textShadow: "0 2px 10px rgba(0,0,0,0.6)", opacity: k}}>
+        {page.map((w) => bare(w.text)).join(" ")}
+      </div>
+    );
+  }
+  if (item.style === "mini") {
+    // мелкие: по 1–2 слова, жирные белые строчные с тёмной обводкой, над экраном в кадре (референс dfcdojr)
+    const k = interpolate(since, [0, 0.08], [0, 1], clamp);
+    return (
+      <div style={{position: "absolute", left: 60, right: 60, top: (item.y ?? 1110) - 30, textAlign: "center", fontFamily: B.bodyFont, fontWeight: 800, fontSize: 50, lineHeight: 1.1, color: "#FFFFFF", WebkitTextStroke: "8px rgba(10,10,14,0.85)", paintOrder: "stroke fill", opacity: k}}>
+        {page.map((w) => bare(w.text).toLowerCase()).join(" ")}
+      </div>
+    );
+  }
   // тихие: небольшие строчные слева, страница целиком, без выделений (как «загрузи в … своё видео»)
   const k = interpolate(since, [0, 0.15], [0, 1], clamp);
   return (
@@ -384,6 +521,174 @@ export const RefCaptions: React.FC<{words: W[]; items?: CapStyleItem[]; until: n
     </div>
   );
 };
+
+// ключевое слово страницы (акцентное или самое длинное) — гигантом за головой спикера (каталог skillry, T4)
+export const DuoWord: React.FC<{words: W[]; items?: CapStyleItem[]; accent: string[]; focus: Focus; faceTop?: number}> = ({words, items, accent, focus, faceTop}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const t = frame / fps;
+  const item = capStyleAt(items, t);
+  const pages = React.useMemo(() => pagesOf(words, 5), [words]);
+  if (!item || item.style !== "duo") return null;
+  const page = [...pages].reverse().find((pg) => pg[0].start <= t);
+  if (!page || t > page[page.length - 1].end + 0.45) return null;
+  const clean = (x: string) => x.toLowerCase().replace(/[^\p{L}\p{N}+%]/gu, "");
+  const key = page.find((w) => accent.includes(clean(w.text))) ?? [...page].sort((a, b) => clean(b.text).length - clean(a.text).length)[0];
+  const word = bare(key.text).replace(/[.,!?;:…]+$/, "").toUpperCase();
+  const k = spring({frame: frame - Math.round(Math.max(page[0].start, key.start - 0.05) * fps), fps, config: {damping: 13, stiffness: 160}});
+  const size = Math.min(340, 1000 / (Math.max(3, word.length) * 0.5));
+  const top = (faceTop ?? focus.y - 230) - size * 0.55;
+  return (
+    <div style={{position: "absolute", left: 0, right: 0, top, textAlign: "center", fontFamily: oswald.fontFamily, fontWeight: 700, fontSize: size, lineHeight: 1, color: "rgba(255,255,255,0.94)", textShadow: "0 10px 40px rgba(0,0,0,0.35)", opacity: Math.min(1, k * 1.5), scale: String(0.8 + 0.2 * k)}}>
+      {word}
+    </div>
+  );
+};
+
+// ------------------------------------------------------------------ обвести, подчеркнуть, галочка, крестик, стрелка — «от руки»
+export type MarkItem = {at: number; until: number; kind: "circle" | "underline" | "check" | "cross" | "arrow"; x: number; y: number; w?: number; h?: number; color?: string};
+
+function markPaths(m: MarkItem): string[] {
+  const w = m.w ?? 420;
+  const h = m.h ?? 170;
+  const {x, y} = m;
+  if (m.kind === "circle") {
+    // овал «от руки»: чуть больше оборота, начало и конец не сходятся
+    const pts: string[] = [];
+    for (let i = 0; i <= 64; i++) {
+      const a = -Math.PI * 0.62 + (i / 64) * Math.PI * 2.18;
+      const r = 1 + 0.05 * Math.sin(i * 0.9) + 0.03 * Math.cos(i * 2.3);
+      pts.push(`${i ? "L" : "M"}${(x + (w / 2) * r * Math.cos(a)).toFixed(1)},${(y + (h / 2) * r * Math.sin(a) + (i / 64) * h * 0.06).toFixed(1)}`);
+    }
+    return [pts.join(" ")];
+  }
+  if (m.kind === "underline") return [`M${x - w / 2},${y + 6} Q${x},${y - 10} ${x + w / 2},${y + 2} L${x + w / 2 - 24},${y + 18}`];
+  if (m.kind === "check") return [`M${x - h * 0.45},${y} L${x - h * 0.1},${y + h * 0.38} L${x + h * 0.55},${y - h * 0.45}`];
+  if (m.kind === "cross") return [`M${x - h * 0.4},${y - h * 0.4} L${x + h * 0.42},${y + h * 0.38}`, `M${x + h * 0.4},${y - h * 0.42} L${x - h * 0.38},${y + h * 0.4}`];
+  // стрелка: дуга к точке (x, y) снизу справа и наконечник
+  return [`M${x + w * 0.45},${y + h * 0.9} Q${x + w * 0.42},${y + h * 0.15} ${x + 18},${y + 14}`, `M${x + 58},${y + 4} L${x + 16},${y + 12} L${x + 34},${y + 52}`];
+}
+
+export const Marks: React.FC<{items?: MarkItem[]}> = ({items}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const B = useBrand();
+  const t = frame / fps;
+  return (
+    <svg width={1080} height={1920} style={{position: "absolute", inset: 0, pointerEvents: "none"}}>
+      {(items ?? [])
+        .filter((m) => t >= m.at && t <= m.until)
+        .map((m, i) => {
+          const paths = markPaths(m);
+          const out = interpolate(t, [m.until - 0.25, m.until], [1, 0], clamp);
+          const color = m.color ?? (B.id === "od" ? "#FF4A1F" : B.id === "aura" ? "#FFF65D" : "#FF3B30");
+          return (
+            <g key={i} opacity={out} style={{filter: "drop-shadow(0 3px 6px rgba(0,0,0,0.45))"}}>
+              {paths.map((d, j) => {
+                const p0 = m.at + j * 0.22;
+                const draw = interpolate(t, [p0, p0 + (m.kind === "circle" ? 0.45 : 0.25)], [0, 1], {...clamp, easing: Easing.bezier(0.45, 0, 0.25, 1)});
+                return <path key={j} d={d} fill="none" stroke={color} strokeWidth={13} strokeLinecap="round" strokeLinejoin="round" pathLength={1} strokeDasharray={1} strokeDashoffset={1 - draw} />;
+              })}
+            </g>
+          );
+        })}
+    </svg>
+  );
+};
+
+// ------------------------------------------------------------------ вопрос зрителю: пузырь от головы с эмодзи
+export type AskItem = {at: number; until: number; text: string; emoji?: string; sub?: string; side?: "left" | "right"};
+
+const AskOne: React.FC<{it: AskItem; focus: Focus}> = ({it, focus}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const B = useBrand();
+  const t = frame / fps;
+  const dur = it.until - it.at;
+  const k = spring({frame, fps, config: {damping: 10, stiffness: 150}});
+  const out = interpolate(t, [dur - 0.25, dur], [1, 0], clamp);
+  const right = (it.side ?? "right") === "right";
+  const wob = Math.sin(t * 3.2) * 1.5;
+  const sq = B.square;
+  return (
+    <div style={{position: "absolute", [right ? "right" : "left"]: 60, top: Math.max(300, focus.y - 470), maxWidth: 600, transformOrigin: right ? "15% 100%" : "85% 100%", scale: String(k), rotate: `${(right ? 3 : -3) + wob}deg`, opacity: out}}>
+      <div style={{background: "#FFFFFF", borderRadius: sq ? 0 : 38, border: sq ? "4px solid #191922" : undefined, boxShadow: sq ? "10px 10px 0 #191922" : "0 18px 44px rgba(0,0,0,0.35)", padding: "22px 30px", display: "flex", alignItems: "center", gap: 18}}>
+        {it.emoji ? <Img src={url(it.emoji)} style={{width: 84, height: 84}} /> : null}
+        <div>
+          <div style={{fontFamily: B.bodyFont, fontWeight: 800, fontSize: 46, lineHeight: 1.1, color: "#15151B"}}>{it.text}</div>
+          {it.sub ? <div style={{marginTop: 6, fontFamily: B.bodyFont, fontWeight: 600, fontSize: 28, color: "#6B6B76"}}>{it.sub}</div> : null}
+        </div>
+      </div>
+      {/* хвостик к голове */}
+      <div style={{position: "absolute", [right ? "left" : "right"]: 70, bottom: -26, width: 0, height: 0, borderLeft: "22px solid transparent", borderRight: "22px solid transparent", borderTop: `30px solid ${sq ? "#191922" : "#FFFFFF"}`, rotate: right ? "18deg" : "-18deg"}} />
+    </div>
+  );
+};
+
+export const Asks: React.FC<{items?: AskItem[]; focus: Focus}> = ({items, focus}) => {
+  const {fps} = useVideoConfig();
+  return (
+    <>
+      {(items ?? []).map((it, i) => (
+        <Sequence key={`ask-${i}`} from={Math.round(it.at * fps)} durationInFrames={sec(fps, it.until - it.at)} premountFor={fps} name="Вопрос зрителю">
+          <AskOne it={it} focus={focus} />
+        </Sequence>
+      ))}
+    </>
+  );
+};
+
+// ------------------------------------------------------------------ свой фон за спикером (нужна вырезка)
+export type BgItem = {at: number; until: number; kind: "grid" | "paper" | "gradient" | "image"; src?: string; outline?: boolean};
+export const bgActive = (items: BgItem[] | undefined, t: number) => (items ?? []).find((x) => t >= x.at - 0.05 && t <= x.until + 0.05);
+export const SpeakerBg: React.FC<{it: BgItem; t: number}> = ({it, t}) => {
+  const B = useBrand();
+  const p = Math.min(interpolate(t, [it.at, it.at + 0.3], [0, 1], clamp), interpolate(t, [it.until - 0.3, it.until], [1, 0], clamp));
+  const bg =
+    it.kind === "paper"
+      ? {background: B.id === "od" ? "#EDEAE2" : B.id === "aura" ? "#F8F6F3" : "#EEEEF2", backgroundImage: "radial-gradient(rgba(25,25,34,0.18) 2px, transparent 2.5px)", backgroundSize: "44px 44px"}
+      : it.kind === "gradient"
+        ? {background: B.id === "od" ? "linear-gradient(160deg, #FFD92E, #FF4A1F)" : B.id === "aura" ? "linear-gradient(160deg, #F8F6F3, #D9D7D5)" : "linear-gradient(160deg, #215BE2, #0B1530)"}
+        : {background: "#0B1020", backgroundImage: "linear-gradient(rgba(91,157,255,0.16) 1px, transparent 1px), linear-gradient(90deg, rgba(91,157,255,0.16) 1px, transparent 1px)", backgroundSize: "60px 60px"};
+  return (
+    <AbsoluteFill style={{opacity: p, ...(it.kind === "image" ? {} : bg)}}>
+      {it.kind === "image" && it.src ? <Media src={it.src} /> : null}
+      {it.kind === "grid" ? <AbsoluteFill style={{background: "radial-gradient(ellipse at 50% 35%, rgba(91,157,255,0.28), rgba(0,0,0,0) 60%)"}} /> : null}
+    </AbsoluteFill>
+  );
+};
+
+// ------------------------------------------------------------------ резкий смаз (whip) и расфокус: фильтр кадра спикера
+type FxLike = {type: string; at: number; until?: number; corner?: string};
+export const whipAt = (fx: FxLike[] | undefined, t: number) => {
+  for (const f of fx ?? []) {
+    if (f.type !== "whip") continue;
+    const len = f.until ? f.until - f.at : 0.4;
+    if (t < f.at || t > f.at + len) continue;
+    const q = (t - f.at) / len;
+    const k = Math.sin(Math.PI * q);
+    const dir = f.corner === "tl" || f.corner === "bl" ? -1 : 1;
+    return {x: dir * (q < 0.5 ? k : -k) * 220, blur: k * 46};
+  }
+  return null;
+};
+export const defocusAt = (fx: FxLike[] | undefined, t: number) => {
+  let b = 0;
+  for (const f of fx ?? []) {
+    if (f.type !== "defocus") continue;
+    const until = f.until ?? f.at + 2;
+    b = Math.max(b, Math.min(interpolate(t, [f.at, f.at + 0.35], [0, 1], clamp), interpolate(t, [until - 0.35, until], [1, 0], clamp)));
+  }
+  return b;
+};
+// направленное размытие для смаза (CSS blur одинаков во все стороны)
+export const WhipFilter: React.FC<{blur: number}> = ({blur}) => (
+  <svg width={0} height={0} style={{position: "absolute"}}>
+    <filter id="whipblur" x="-20%" y="0%" width="140%" height="100%">
+      <feGaussianBlur stdDeviation={`${blur} 0`} />
+    </filter>
+  </svg>
+);
 
 // ------------------------------------------------------------------ окно чата: печатается запрос, кнопка «отправить»
 export type ChatItem = {at: number; until: number; text: string; image?: string; label?: string; y?: number};

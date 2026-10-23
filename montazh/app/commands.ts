@@ -173,8 +173,26 @@ function one(text: string, sec: number, words: Word[], out: Parsed) {
     add(id, {...(qs[0] ? {text: qs[0]} : {}), ...(qs[1] ? {script: qs[1]} : {}), ...(/(за\s+голов|за\s+спин|за\s+мной)/.test(t) ? {plane: "behind"} : /(перед|поверх)/.test(t) ? {plane: "front"} : {})});
     return;
   }
-  if (/субтитр/.test(t) && /(плашк|в\s+углу|углов|угол|тих|слева|мелк|курсив|золот)/.test(t)) {
-    add(/(плашк)/.test(t) ? "captions-plate" : /(тих|слева|мелк)/.test(t) ? "captions-quiet" : "captions-corner");
+  // «экран в кадре» (референс dfcdojr): графика в ноутбуке, телефоне, телевизоре в кадре
+  if (/(в\s+экран\S*\s+(ноутбук|телефон|планшет|телевизор|монитор)|на\s+(ноутбук|экран\S*\s+ноутбук|мониторе|телевизоре|планшете)|в\s+ноутбук|в\s+телефон\S*\s+в\s+кадре|экран\S*\s+в\s+кадре)/.test(t)) {
+    const items = qs.length > 1 ? qs.join(" / ") : (text.split(":").slice(1).join(":") || "").split(/,\s*/).map((x) => x.trim()).filter(Boolean).join(" / ");
+    const tk = norm(text.replace(/[«"“„'][^»"”']*[»"”']/g, " ")); // вид — по словам команды, не по тексту в кавычках
+    if (/(арк|кривн|кривая|график|спад|пик|волн|рост)/.test(tk)) {
+      add("inscreen-chart", {curve: /спад|падени/.test(tk) ? "drop" : /(пик|волн)/.test(tk) ? "wave" : /рост/.test(tk) ? "rise" : "arc", ...(items ? {items} : {})});
+    } else if (/(шаг|этап)/.test(tk)) add("inscreen-steps", items ? {items} : {});
+    else if (/(список|пункт|плашк)/.test(tk)) add("inscreen-list", items ? {items} : {});
+    else if (/(карточк|ролик\S*\s+рядом)/.test(tk)) add("inscreen-cards", qs[0] ? {text: qs[0]} : {});
+    else if (/(иконк|значок|эмодзи|смайл)/.test(tk)) add("inscreen-icon", {...(qs[0] ? {text: qs[0]} : {}), ...(findEmoji(text) ? {emoji: findEmoji(text)!.file} : {})});
+    else if (/(фото|видео|картинк)/.test(tk)) add("inscreen-media");
+    else add("inscreen-text", qs[0] ? {text: qs.join(" / ")} : {});
+    return;
+  }
+  if (/(заголов|тем[аук]|титр)/.test(t) && /(бел\S*\s+плашк|плашк\S*\s+бел|как\s+в\s+тикток|tiktok)/.test(t)) {
+    add("title-box", qs[0] ? {text: qs.join(" / ")} : {});
+    return;
+  }
+  if (/субтитр/.test(t) && /(плашк|в\s+углу|углов|угол|тих|слева|мелк|курсив|золот|над\s+экран|над\s+ноутбук)/.test(t)) {
+    add(/(плашк)/.test(t) ? "captions-plate" : /(над\s+экран|над\s+ноутбук|по\s+(одному|два)\s+слов)/.test(t) ? "captions-mini" : /(тих|слева|мелк)/.test(t) ? "captions-quiet" : "captions-corner");
     return;
   }
 
@@ -401,4 +419,7 @@ export const EXAMPLES = [
   "окно чата «смонтируй ролик»",
   "картинки вокруг головы «роботы на заводе»",
   "финал @ostap.dotsenko подписывайся",
+  "в экран ноутбука арка: завязка, развитие, кульминация, развязка",
+  "в экран ноутбука текст «НЕ ТА / АРКА»",
+  "заголовок на белых плашках «Дофаминовые пики: / как строить историю»",
 ];

@@ -24,6 +24,7 @@ const words = JSON.parse(fs.readFileSync(path.join(ROOT, "source-videos/2026-10-
 const layout = JSON.parse(fs.readFileSync(path.join(ROOT, "source-videos/2026-10-07-chai-kofe/_work/chai-kofe.cut.layout.json"), "utf8"));
 const base = JSON.parse(fs.readFileSync(path.join(RS, "props/2026-10-07-chai-kofe.json"), "utf8"));
 const IMG = base.broll.map((b) => b.src);
+const SCREEN = "250,1190 830,1190 870,1560 210,1560";
 
 // тексты превью (на образце говорят про чай и кофе Китая)
 const PARAMS = {
@@ -73,8 +74,17 @@ const PARAMS = {
   "card-chest": {title: "Чайные плантации Китая", sub: "5 дней · 7 фабрик"},
   "speaker-app": {title: "смонтируй ролик", image: ""},
   "outro-handle": {handle: "ostap.dotsenko", network: "instagram", text: "подписывайся"},
+  // «экран в кадре» (референс dfcdojr): на образце нет ноутбука — экран «держит» спикер у груди
+  "inscreen-text": {quad: SCREEN, plane: "front", text: "Чай / и кофе", sub: "рынок Китая"},
+  "inscreen-chart": {quad: SCREEN, plane: "front", curve: "arc", items: "Завязка / Развитие / Кульминация / Развязка"},
+  "inscreen-cards": {quad: SCREEN, plane: "front", image2: IMG[5 % IMG.length], image3: IMG[6 % IMG.length], image4: IMG[7 % IMG.length]},
+  "inscreen-list": {quad: SCREEN, plane: "front", items: "Заводы / Встречи / Дегустации"},
+  "inscreen-steps": {quad: SCREEN, plane: "front", items: "Выбрал|программу / Прилетел|в Китай / Встречи|на заводах"},
+  "inscreen-icon": {quad: SCREEN, plane: "front", image: "", emoji: "огонь", text: "+ 7 фабрик"},
+  "inscreen-media": {quad: SCREEN, plane: "front"},
+  "title-box": {text: "Чай и кофе Китая: / как открыть сеть"},
 };
-const LEN = {"split-ba": 2.4, "captions-plate": 2.4, "captions-corner": 2.4, "captions-quiet": 2.4, "speaker-app": 2.4, "list-flip": 2.4, "list-cards": 2.4, "list-stickers": 2.4, "list-numbers": 2.4, "list-bubbles": 2.4, "list-typewriter": 2.4, checklist: 2.4, "stock-up": 2.4, "stock-down": 2.4, "hook-wall": 2.2, "hook-mix": 2.2, "hook-words": 2.2, chip: 2.2};
+const LEN = {"inscreen-chart": 2.4, "inscreen-list": 2.4, "inscreen-steps": 2.4, "inscreen-cards": 2.2, "captions-mini": 2.4, "split-ba": 2.4, "captions-plate": 2.4, "captions-corner": 2.4, "captions-quiet": 2.4, "speaker-app": 2.4, "list-flip": 2.4, "list-cards": 2.4, "list-stickers": 2.4, "list-numbers": 2.4, "list-bubbles": 2.4, "list-typewriter": 2.4, checklist: 2.4, "stock-up": 2.4, "stock-down": 2.4, "hook-wall": 2.2, "hook-mix": 2.2, "hook-words": 2.2, chip: 2.2};
 const SLOT = 3.6;
 const PRE = 0.25; // превью начинается чуть раньше эффекта
 const DUR = 2.0;
@@ -91,7 +101,7 @@ const props = {
   focus: {x: layout.eyeX ?? base.focus.x, y: layout.eyeY ?? base.focus.y},
   chips: [], logos: [], numbers: [], broll: [], checklists: [], cities: [], zooms: [], cuts: [],
   stockDrop: undefined, hooks: [], fx: [], arrows: [], emojis: [], speaker: [], panels: [], texts: [], lists: [], paletteAt: [],
-  splits: [], titles: [], captionsAt: [], chats: [], floats: [], cards: [], outros: [],
+  splits: [], titles: [], captionsAt: [], chats: [], floats: [], cards: [], outros: [], inscreens: [],
   bumper: false,
   music: undefined,
   site: {...base.site, at: 999},

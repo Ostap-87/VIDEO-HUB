@@ -49,7 +49,8 @@ export function buildProps(p: Project, opts: {cleanReady?: boolean; cleanClips?:
     cities: [],
     zooms: [],
     sfx: SFX,
-    music: music ? {src: music.src, volume: +(music.volume * p.audio.musicVolume).toFixed(3), outroVolume: +(music.volume * p.audio.musicVolume * 2.3).toFixed(3)} : undefined,
+    // музыка тише, пока говорите (приём «дакинг» из каталога skillry, 23.10.2026): в паузах возвращается
+    music: music ? {src: music.src, volume: +(music.volume * p.audio.musicVolume).toFixed(3), outroVolume: +(music.volume * p.audio.musicVolume * 2.3).toFixed(3), duck: p.audio.duck === false ? undefined : 0.55} : undefined,
     speechSeconds: +dur.toFixed(3),
     site: {...b.finale, at: p.finale ? Math.max(0, dur - 3.2) : dur + 999},
     cta: b.cta,

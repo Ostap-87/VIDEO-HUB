@@ -29,7 +29,9 @@ import {LinkArrow, SocialCard, SocialGrid} from "../components/SocialCard";
 import {activeScreen, captionTopFor, chainScreens, DropBackdrop, DropFrame, OD_LINKS, ScreenPanel, speakerCardStyle, speakerShift} from "../components/ScreenOverlay";
 import {HookTitle, hookSounds, type HookItem} from "../components/HookTitle";
 import {bwFilter, ColorWipes, EpisodeOutro} from "../components/SeriesFx";
-import {capStyleAt, Cards, Chats, floatBehindActive, Floats, LightLeaks, lowCaptions, outroActive, Outros, RefCaptions, Splits, titleBehindActive, Titles} from "../components/RefFx";
+import {InScreens, inScreenActive} from "../components/ScreenInsert";
+import {Asks, bgActive, capStyleAt, Cards, Chats, defocusAt, DuoWord, floatBehindActive, Floats, LightLeaks, lowCaptions, Marks, outroActive, Outros, RefCaptions, SpeakerBg, Splits, titleBehindActive, Titles, whipAt, WhipFilter} from "../components/RefFx";
+import {Chapters, DotsGrid, Drums, ringActive, Rings, Searches, Stamps, Votes, voteActive, WordCounters} from "../components/TrendFx";
 import {EdlAudio, EdlCtx, placeEdl, SpeakerVideo} from "../components/EdlVideo";
 import {loadFont as loadOswald} from "@remotion/google-fonts/Oswald";
 
@@ -60,7 +62,7 @@ export const talkReelProSchema = z.object({
   ),
   // tone: "down" — красная цифра (падение), по умолчанию синяя
   numbers: z.array(
-    z.object({text: z.string(), sub: z.string(), at: z.number(), until: z.number(), tone: z.enum(["up", "down"]).optional()}),
+    z.object({text: z.string(), sub: z.string(), at: z.number(), until: z.number(), tone: z.enum(["up", "down"]).optional(), count: z.boolean().optional()}),
   ),
   // Падающий биржевой график ЗА спикером (спикер вырезан и стоит перед линией); label — тикер
   // direction: "up" — зелёный растущий график (рост рынка, продаж); по умолчанию "down" — красный падающий
@@ -239,7 +241,8 @@ export const talkReelProSchema = z.object({
     .default([]),
   sfx: z.object({pop: z.string(), whoosh: z.string(), whip: z.string().optional(), click: z.string().optional()}),
   // Фоновая музыка (только треки с коммерческой лицензией); volume ~0.1 под голосом, громче в финале
-  music: z.object({src: z.string(), volume: z.number(), outroVolume: z.number()}).optional(),
+  // duck — во сколько раз тише музыка, пока говорит спикер (0.5 ≈ −6 дБ); в паузах от 0,35 с возвращается за 0,25 с
+  music: z.object({src: z.string(), volume: z.number(), outroVolume: z.number(), duck: z.number().optional()}).optional(),
   speechSeconds: z.number(),
   // Финал: на экране телефона главная страница (прокрутка) → каталог экспедиций (прокрутка) → маршрут по дням
   site: z.object({at: z.number(), home: z.string(), catalog: z.string(), route: z.array(z.string())}),
@@ -288,7 +291,7 @@ export const talkReelProSchema = z.object({
     .optional(),
   // Переходы серии (components/SeriesFx.tsx): wipe — заливка цветом из угла в момент at; bw — ч/б с at до until, потом цвет
   fx: z
-    .array(z.object({type: z.enum(["wipe", "bw", "leak"]), at: z.number(), until: z.number().optional(), color: z.string().optional(), corner: z.enum(["tl", "tr", "bl", "br"]).optional()}))
+    .array(z.object({type: z.enum(["wipe", "bw", "leak", "whip", "defocus"]), at: z.number(), until: z.number().optional(), color: z.string().optional(), corner: z.enum(["tl", "tr", "bl", "br"]).optional()}))
     .optional(),
   // Приёмы из референсов Монтажной 23.10.2026 (components/RefFx.tsx): splits — «до / после» двумя экранами; titles —
   // заголовок «засечки или гротеск + рукопись» (plane behind — за спикером, нужен cutoutSrc); captionsAt — субтитры
@@ -305,21 +308,63 @@ export const talkReelProSchema = z.object({
         until: z.number(),
         text: z.string(),
         script: z.string().optional(),
-        font: z.enum(["serif", "grotesk"]).optional(),
+        font: z.enum(["serif", "grotesk", "box"]).optional(),
         y: z.number().optional(),
         color: z.string().optional(),
         scriptColor: z.string().optional(),
         band: z.boolean().optional(),
         plane: z.enum(["behind", "front"]).optional(),
+        bg: z.string().optional(),
+        sub: z.string().optional(),
+        still: z.boolean().optional(),
+        strikeAt: z.number().optional(),
+        echo: z.boolean().optional(),
       }),
     )
     .optional(),
-  captionsAt: z.array(z.object({at: z.number(), until: z.number(), style: z.enum(["plate", "corner", "quiet"]), y: z.number().optional()})).optional(),
+  captionsAt: z.array(z.object({at: z.number(), until: z.number(), style: z.enum(["plate", "corner", "quiet", "mini", "duo", "ladder", "marker", "pill"]), y: z.number().optional()})).optional(),
   chats: z.array(z.object({at: z.number(), until: z.number(), text: z.string(), image: z.string().optional(), label: z.string().optional(), y: z.number().optional()})).optional(),
   floats: z.array(z.object({at: z.number(), until: z.number(), items: z.array(z.string()), plane: z.enum(["behind", "front"]).optional()})).optional(),
   cards: z.array(z.object({at: z.number(), until: z.number(), src: z.string().optional(), title: z.string(), sub: z.string().optional(), y: z.number().optional()})).optional(),
   outros: z
     .array(z.object({at: z.number(), until: z.number(), handle: z.string(), network: z.enum(["instagram", "telegram", "site"]).optional(), text: z.string().optional()}))
+    .optional(),
+  // Приёмы из каталогов skillry и prompt-motion.com (23.10.2026, свой код): marks — обвести/подчеркнуть/галочка/крестик/
+  // стрелка «от руки»; asks — пузырь-вопрос зрителю; bgs — свой фон за вырезанным спикером (outline — белая обводка-стикер);
+  // counters — сквозной счётчик слова; searches — строка поиска; stamps — штамп; dots — точки «N из M»; chapters — главы и
+  // полоса прогресса; votes — сетка-голосование; drums — барабан слов; rings — кольцо слов вокруг головы
+  marks: z
+    .array(z.object({at: z.number(), until: z.number(), kind: z.enum(["circle", "underline", "check", "cross", "arrow"]), x: z.number(), y: z.number(), w: z.number().optional(), h: z.number().optional(), color: z.string().optional()}))
+    .optional(),
+  asks: z.array(z.object({at: z.number(), until: z.number(), text: z.string(), emoji: z.string().optional(), sub: z.string().optional(), side: z.enum(["left", "right"]).optional()})).optional(),
+  bgs: z.array(z.object({at: z.number(), until: z.number(), kind: z.enum(["grid", "paper", "gradient", "image"]), src: z.string().optional(), outline: z.boolean().optional()})).optional(),
+  counters: z.array(z.object({word: z.string(), label: z.string().optional(), from: z.number().optional(), until: z.number().optional()})).optional(),
+  searches: z.array(z.object({at: z.number(), until: z.number(), text: z.string(), items: z.array(z.string()).optional(), y: z.number().optional()})).optional(),
+  stamps: z.array(z.object({at: z.number(), until: z.number(), text: z.string(), color: z.string().optional(), x: z.number().optional(), y: z.number().optional(), rot: z.number().optional()})).optional(),
+  dots: z.array(z.object({at: z.number(), until: z.number(), value: z.number(), total: z.number().optional(), label: z.string().optional(), y: z.number().optional()})).optional(),
+  chapters: z.array(z.object({at: z.number(), title: z.string()})).optional(),
+  chapterBar: z.boolean().optional(),
+  votes: z.array(z.object({at: z.number(), until: z.number(), title: z.string().optional(), items: z.array(z.string()), images: z.array(z.string()).optional()})).optional(),
+  drums: z.array(z.object({at: z.number(), until: z.number(), items: z.array(z.string()), prefix: z.string().optional(), y: z.number().optional()})).optional(),
+  rings: z.array(z.object({at: z.number(), until: z.number(), items: z.array(z.string())})).optional(),
+  // «Экран в кадре» (референс dfcdojr, components/ScreenInsert.tsx): графика в настоящем экране кадра по 4 углам quad
+  // (TL, TR, BR, BL, px кадра), идёт вместе с наездами; plane behind — руки спикера поверх (нужна вырезка)
+  inscreens: z
+    .array(
+      z.object({
+        at: z.number(),
+        until: z.number(),
+        quad: z.array(z.tuple([z.number(), z.number()])).optional(),
+        kind: z.enum(["text", "chart", "cards", "list", "steps", "icon", "media"]),
+        curve: z.enum(["arc", "drop", "wave", "rise"]).optional(),
+        text: z.string().optional(),
+        sub: z.string().optional(),
+        items: z.array(z.string()).optional(),
+        src: z.string().optional(),
+        images: z.array(z.string()).optional(),
+        plane: z.enum(["behind", "front"]).optional(),
+      }),
+    )
     .optional(),
   // Серия роликов: «часть N/total · title» под печатью и финальная карточка «Дальше → часть N+1: next» (без next — все ссылки)
   episode: z.object({n: z.number(), total: z.number(), title: z.string(), next: z.string().optional(), nextN: z.number().optional()}).optional(),
@@ -753,6 +798,19 @@ const LogoGroup: React.FC<{group: TalkReelProProps["logos"][number]; start: numb
 };
 
 // Крупная цифра с «попом» и синим свечением
+// счётчик (каталог skillry, T19/T44): число в тексте набегает от нуля за 1,2 с с замедлением, приставки и хвост остаются
+const countText = (text: string, k: number) => {
+  const m = text.match(/^(\D*?)(\d[\d\s.,]*\d|\d)(.*)$/);
+  if (!m) return text;
+  const raw = m[2].replace(/\s/g, "");
+  const dec = raw.match(/[.,](\d+)$/)?.[1]?.length ?? 0;
+  const v = parseFloat(raw.replace(",", "."));
+  if (!Number.isFinite(v)) return text;
+  const cur = v * k;
+  const body = dec ? cur.toFixed(dec).replace(".", raw.includes(",") ? "," : ".") : Math.round(cur).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0");
+  return m[1] + body + m[3];
+};
+
 const BigNumber: React.FC<{n: TalkReelProProps["numbers"][number]}> = ({n}) => {
   const shift = React.useContext(TopShift);
   const B = useBrand();
@@ -781,7 +839,7 @@ const BigNumber: React.FC<{n: TalkReelProProps["numbers"][number]}> = ({n}) => {
               : B.number?.shadow ?? `0 0 40px ${B.accentGlow}, 0 6px 20px rgba(0,0,0,0.45)`,
         }}
       >
-        {n.text}
+        {n.count ? countText(n.text, interpolate(frame, [4, 4 + 1.2 * fps], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic)})) : n.text}
       </div>
       {n.sub ? (
         <div style={{fontFamily: B.bodyFont, fontWeight: 700, fontSize: 40, color: "#FFFFFF", textShadow: B.captionShadow ?? shadow, marginTop: 6}}>
@@ -945,9 +1003,15 @@ const ZoomedVideo: React.FC<{
   texts?: TalkReelProProps["texts"];
   titles?: TalkReelProProps["titles"];
   floats?: TalkReelProProps["floats"];
+  inscreens?: TalkReelProProps["inscreens"];
+  bgs?: TalkReelProProps["bgs"];
+  rings?: TalkReelProProps["rings"];
+  words?: TalkReelProProps["words"];
+  captionsAt?: TalkReelProProps["captionsAt"];
+  accentWords?: string[];
   faceTop?: number;
   stories?: boolean;
-}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists, bgFlags, angleB, clips, hooks, speaker, texts, titles, floats, faceTop, stories = false}) => {
+}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists, bgFlags, angleB, clips, hooks, speaker, texts, titles, floats, inscreens, bgs, rings, words, captionsAt, accentWords, faceTop, stories = false}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -1028,6 +1092,40 @@ const ZoomedVideo: React.FC<{
           <Texts3D items={texts} plane="behind" />
           {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
         </>
+      ) : null}
+      {/* свой фон за вырезанным спикером (без вырезки — не рисуется: спикер бы пропал) */}
+      {!b && cutoutSrc && bgActive(bgs, t) ? (
+        <>
+          <SpeakerBg it={bgActive(bgs, t)!} t={t} />
+          <OffthreadVideo
+            src={staticFile(cutoutSrc)}
+            transparent
+            muted
+            style={{...videoStyle, filter: bgActive(bgs, t)!.outline ? "drop-shadow(6px 0 0 #fff) drop-shadow(-6px 0 0 #fff) drop-shadow(0 6px 0 #fff) drop-shadow(0 -6px 0 #fff) drop-shadow(0 24px 40px rgba(0,0,0,0.4))" : "drop-shadow(0 20px 40px rgba(0,0,0,0.35))"}}
+          />
+        </>
+      ) : null}
+      {/* двухуровневые субтитры: ключевое слово гигантом за головой; кольцо слов — задняя половина за спикером */}
+      {!b && (capStyleAt(captionsAt, t)?.style === "duo" || ringActive(rings, t)) ? (
+        <>
+          <DuoWord words={words ?? []} items={captionsAt} accent={accentWords ?? []} focus={focus} faceTop={faceTop} />
+          <Rings items={rings} focus={focus} faceTop={faceTop} half="back" />
+          {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
+        </>
+      ) : null}
+      {/* экран в кадре: слой идёт вместе с наездами кадра, руки спикера (вырезка) — поверх */}
+      {!b && inScreenActive(inscreens, "behind", t) ? (
+        <>
+          <AbsoluteFill style={{scale: String(zoom), transformOrigin: `${focus.x}px ${originY}px`, translate: `0px ${-lift}px`}}>
+            <InScreens items={inscreens} plane="behind" />
+          </AbsoluteFill>
+          {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
+        </>
+      ) : null}
+      {!b && inScreenActive(inscreens, "front", t) ? (
+        <AbsoluteFill style={{scale: String(zoom), transformOrigin: `${focus.x}px ${originY}px`, translate: `0px ${-lift}px`}}>
+          <InScreens items={inscreens} plane="front" />
+        </AbsoluteFill>
       ) : null}
       {/* заголовок «шрифт + рукопись» и картинки вокруг головы — за спикером (между видео и вырезкой) */}
       {!b && (titleBehindActive(titles, t) || floatBehindActive(floats, t)) ? (
@@ -1817,6 +1915,17 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
     ...(p.floats ?? []).flatMap((x) => x.items.slice(0, 4).map((_, i) => ({at: x.at + i * 0.18, src: p.sfx.pop, volume: 0.28}))),
     ...(p.cards ?? []).map((x) => ({at: x.at, src: p.sfx.whoosh, volume: 0.3})),
     ...(p.outros ?? []).map((x) => ({at: x.at + 0.2, src: p.sfx.pop, volume: 0.35})),
+    ...(p.inscreens ?? []).map((x) => ({at: x.at, src: p.sfx.click ?? p.sfx.pop, volume: 0.3})),
+    ...(p.fx ?? []).filter((x) => x.type === "whip").map((x) => ({at: x.at, src: p.sfx.whip ?? p.sfx.whoosh, volume: 0.4})),
+    ...(p.marks ?? []).map((x) => ({at: x.at, src: p.sfx.click ?? p.sfx.pop, volume: 0.3})),
+    ...(p.asks ?? []).map((x) => ({at: x.at, src: p.sfx.pop, volume: 0.35})),
+    ...(p.stamps ?? []).map((x) => ({at: x.at + 0.15, src: p.sfx.whip ?? p.sfx.pop, volume: 0.5})),
+    ...(p.searches ?? []).map((x) => ({at: x.at, src: p.sfx.click ?? p.sfx.pop, volume: 0.3})),
+    ...(p.dots ?? []).map((x) => ({at: x.at, src: p.sfx.whoosh, volume: 0.25})),
+    ...(p.votes ?? []).map((x) => ({at: x.at, src: p.sfx.whoosh, volume: 0.35})),
+    ...(p.drums ?? []).flatMap((x) => x.items.map((_, i) => ({at: x.at + 0.3 + (i * (x.until - x.at - 0.6)) / Math.max(1, x.items.length), src: p.sfx.click ?? p.sfx.pop, volume: 0.35}))),
+    ...(p.rings ?? []).map((x) => ({at: x.at, src: p.sfx.whoosh, volume: 0.25})),
+    ...(p.chapters ?? []).map((x) => ({at: x.at, src: p.sfx.whoosh, volume: 0.2})),
   ];
 
   const tNow = frame / fps;
@@ -1824,10 +1933,22 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
   const brand = brandWithPalette(brandWithPalette(BRANDS[p.brand ?? "gtt"], p.palette), palNow);
   const stories = p.format === "stories";
   const push = panelPush(p.panels, tNow, stories);
+  const whip = whipAt(p.fx, tNow);
+  const defocus = defocusAt(p.fx, tNow);
   // флипчарт и «печатная машинка» поднимают спикера, как планшет с галочками
   const liftLists = [...p.checklists, ...((p.lists ?? []).filter((l) => LIFT_LISTS.has(l.style)) as unknown as TalkReelProProps["checklists"])];
   const plan = React.useMemo(() => (brand.id === "aura" ? auraPlan(p, durationInFrames / fps) : null), [brand.id, p, durationInFrames, fps]);
   const edl = React.useMemo(() => (p.edl?.length ? {media: p.mediaSrc, segs: placeEdl(p.edl)} : null), [p.edl, p.mediaSrc]);
+  // отрезки речи для приглушения музыки: слова с паузами меньше 0,35 с — один отрезок
+  const speech = React.useMemo(() => {
+    const out: [number, number][] = [];
+    for (const w of p.words) {
+      const last = out[out.length - 1];
+      if (last && w.start - last[1] < 0.35) last[1] = Math.max(last[1], w.end);
+      else out.push([w.start, w.end]);
+    }
+    return out;
+  }, [p.words]);
   return (
     <BrandCtx.Provider value={brand}>
     <EdlCtx.Provider value={edl}>
@@ -1842,9 +1963,20 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
             const a = Math.min(p.speechSeconds - 0.5, end - 2.4);
             const b = Math.min(p.speechSeconds + 0.6, end - 1.3);
             const c = Math.max(b + 0.05, end - 1.2);
-            return interpolate(fr / fps, [0, 1.2, Math.max(1.25, a), Math.max(1.3, b), c, Math.max(c + 0.05, end)], [
+            const v = interpolate(fr / fps, [0, 1.2, Math.max(1.25, a), Math.max(1.3, b), c, Math.max(c + 0.05, end)], [
               0, p.music!.volume, p.music!.volume, p.music!.outroVolume, p.music!.outroVolume, 0,
             ], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
+            const duck = p.music!.duck;
+            if (!duck || duck >= 1) return v;
+            // расстояние до ближайшей речи: внутри — duck, дальше 0,25 с — полная громкость
+            const t = fr / fps;
+            let d = Infinity;
+            for (const [s0, s1] of speech) {
+              if (s0 - 0.25 > t) break;
+              d = t >= s0 && t <= s1 ? 0 : Math.min(d, Math.abs(t < s0 ? s0 - t : t - s1));
+              if (!d) break;
+            }
+            return v * (duck + (1 - duck) * Math.min(1, d / 0.25));
           }}
         />
       ) : null}
@@ -1856,7 +1988,8 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
 
       {/* подача drop: под карточкой спикера — фон «кость» со ссылками на каналы и сайты */}
       <DropBackdrop screens={screens} links={p.links} />
-      <AbsoluteFill style={{translate: `${push.x}px ${speakerShift(screens, frame / fps) + push.y}px`, ...speakerCardStyle(screens, frame / fps, p.focus), filter: [p.grade, bwFilter(p.fx, frame / fps)].filter(Boolean).join(" ") || undefined}}>
+      {whip ? <WhipFilter blur={whip.blur} /> : null}
+      <AbsoluteFill style={{translate: `${push.x + (whip?.x ?? 0)}px ${speakerShift(screens, frame / fps) + push.y}px`, ...speakerCardStyle(screens, frame / fps, p.focus), filter: [p.grade, bwFilter(p.fx, frame / fps), defocus > 0.001 ? `blur(${(18 * defocus).toFixed(1)}px) brightness(${(1 - 0.12 * defocus).toFixed(3)})` : "", whip && whip.blur > 0.5 ? "url(#whipblur)" : ""].filter(Boolean).join(" ") || undefined}}>
       <ZoomedVideo
         src={p.mediaSrc}
         cutoutSrc={p.cutoutSrc}
@@ -1875,6 +2008,12 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
         texts={p.texts}
         titles={p.titles}
         floats={p.floats}
+        inscreens={p.inscreens}
+        bgs={p.bgs}
+        rings={p.rings}
+        words={p.words}
+        captionsAt={p.captionsAt}
+        accentWords={p.accentWords}
         faceTop={p.faceTop}
         stories={stories}
       />
@@ -1891,6 +2030,13 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
       <Floats items={p.floats} plane="front" focus={p.focus} />
       <Cards items={p.cards} />
       <Chats items={p.chats} video={p.mediaSrc} focus={p.focus} />
+      <Rings items={p.rings} focus={p.focus} faceTop={p.faceTop} half="front" />
+      <Searches items={p.searches} />
+      <DotsGrid items={p.dots} />
+      <Drums items={p.drums} />
+      <Asks items={p.asks} focus={p.focus} />
+      <Stamps items={p.stamps} />
+      <WordCounters items={p.counters} words={p.words} stories={stories} />
 
       {/* в Stories верх занят полосками и аватаром: верхняя полоса плашек опускается (TopShift) */}
       <TopShift.Provider value={p.format === "stories" ? 130 : 0}>
@@ -1961,10 +2107,13 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
           <FlagArc items={fl.items} at={fl.at} until={fl.until} center={p.focus} />
         </Sequence>
       ))}
-      {capStyleAt(p.captionsAt, tNow) || outroActive(p.outros, tNow) ? null : (
+      {capStyleAt(p.captionsAt, tNow) || outroActive(p.outros, tNow) || voteActive(p.votes, tNow) ? null : (
       <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={liftLists} broll={p.broll} clips={[...(p.clips ?? []), ...((p.panels ?? []).filter((x) => (x.from ?? "bottom") === "bottom") as unknown as NonNullable<TalkReelProProps["clips"]>)]} top={lowCaptions(p.chats, p.cards, tNow) ? 1450 : p.captionTop} size={p.captionSize} screens={screens} style3d={p.captionStyle === "3d"} fixed={p.captionFixed} />
       )}
-      <RefCaptions words={p.words} items={p.captionsAt} until={p.speechSeconds} />
+      <RefCaptions words={p.words} items={p.captionsAt} until={p.speechSeconds} accent={p.accentWords} focus={p.focus} />
+      <Marks items={p.marks} />
+      <Chapters items={p.chapters} until={p.speechSeconds} stories={stories} progress={p.chapterBar} />
+      <Votes items={p.votes} />
       {brand.id === "aura" ? (
         // Aura: круглая печать крутится над головой спикера, по центру; в Stories — ниже полосок и аватара
         <AuraBadgeSlot {...p} />
