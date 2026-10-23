@@ -1,0 +1,334 @@
+{
+ "version": 2,
+ "id": "a3bawa5",
+ "name": "IMG_5513",
+ "created": "2026-10-23 14:06:20",
+ "brand": "gtt",
+ "format": "both",
+ "options": {
+  "cutPauses": true,
+  "edl": false,
+  "formats": [
+   "reels",
+   "stories"
+  ]
+ },
+ "files": {
+  "source": "source.mov",
+  "images": {}
+ },
+ "local": {
+  "video": "montazh-local/source"
+ },
+ "hf": {},
+ "props": {
+  "mediaSrc": "montazh-local/source",
+  "cutoutSrc": "",
+  "words": [
+   {
+    "text": "Вчера",
+    "start": 0,
+    "end": 0.7
+   },
+   {
+    "text": "вечером",
+    "start": 0.7,
+    "end": 1.24
+   },
+   {
+    "text": "у",
+    "start": 1.24,
+    "end": 1.74
+   },
+   {
+    "text": "меня",
+    "start": 1.74,
+    "end": 1.88
+   },
+   {
+    "text": "была",
+    "start": 1.88,
+    "end": 2.56
+   },
+   {
+    "text": "аудиенция",
+    "start": 2.56,
+    "end": 3.28
+   },
+   {
+    "text": "с",
+    "start": 3.28,
+    "end": 4.04
+   },
+   {
+    "text": "первым",
+    "start": 4.04,
+    "end": 4.64
+   },
+   {
+    "text": "секретарем",
+    "start": 4.64,
+    "end": 5.4
+   },
+   {
+    "text": "в",
+    "start": 5.4,
+    "end": 5.58
+   },
+   {
+    "text": "Комунистической",
+    "start": 5.58,
+    "end": 6.22
+   },
+   {
+    "text": "партии,",
+    "start": 6.22,
+    "end": 7.18
+   },
+   {
+    "text": "провинции",
+    "start": 7.18,
+    "end": 8.54
+   },
+   {
+    "text": "Хунань,",
+    "start": 8.54,
+    "end": 9.06
+   },
+   {
+    "text": "плюс",
+    "start": 9.54,
+    "end": 9.82
+   },
+   {
+    "text": "с",
+    "start": 9.82,
+    "end": 10.48
+   },
+   {
+    "text": "рядом",
+    "start": 10.48,
+    "end": 10.66
+   },
+   {
+    "text": "организаций,",
+    "start": 10.66,
+    "end": 11.5
+   },
+   {
+    "text": "которые",
+    "start": 11.52,
+    "end": 11.76
+   },
+   {
+    "text": "касаются",
+    "start": 11.76,
+    "end": 13.6
+   },
+   {
+    "text": "именно",
+    "start": 13.6,
+    "end": 14.08
+   },
+   {
+    "text": "развития",
+    "start": 14.08,
+    "end": 14.94
+   },
+   {
+    "text": "данной",
+    "start": 14.94,
+    "end": 15.24
+   },
+   {
+    "text": "провинции,",
+    "start": 15.24,
+    "end": 15.86
+   },
+   {
+    "text": "и",
+    "start": 16.14,
+    "end": 16.22
+   },
+   {
+    "text": "мы",
+    "start": 16.22,
+    "end": 16.46
+   },
+   {
+    "text": "пришли",
+    "start": 16.46,
+    "end": 16.88
+   },
+   {
+    "text": "к",
+    "start": 16.88,
+    "end": 17
+   },
+   {
+    "text": "договоренности,",
+    "start": 17,
+    "end": 17.72
+   },
+   {
+    "text": "что",
+    "start": 18.32,
+    "end": 18.92
+   },
+   {
+    "text": "компании,",
+    "start": 18.92,
+    "end": 20.8
+   },
+   {
+    "text": "которым",
+    "start": 21.02,
+    "end": 21.42
+   },
+   {
+    "text": "интересен",
+    "start": 21.42,
+    "end": 22.14
+   },
+   {
+    "text": "данный",
+    "start": 22.14,
+    "end": 22.48
+   },
+   {
+    "text": "регион,",
+    "start": 22.48,
+    "end": 22.88
+   },
+   {
+    "text": "имеют",
+    "start": 23.38,
+    "end": 23.86
+   },
+   {
+    "text": "возможность",
+    "start": 23.86,
+    "end": 24.82
+   },
+   {
+    "text": "приехать",
+    "start": 24.74,
+    "end": 25.54
+   },
+   {
+    "text": "и",
+    "start": 25.54,
+    "end": 25.68
+   },
+   {
+    "text": "посетить",
+    "start": 25.68,
+    "end": 26.24
+   },
+   {
+    "text": "определенные",
+    "start": 26.24,
+    "end": 27.24
+   },
+   {
+    "text": "производства.",
+    "start": 27.24,
+    "end": 27.94
+   },
+   {
+    "text": "Я",
+    "start": 28.56,
+    "end": 29.02
+   },
+   {
+    "text": "буду",
+    "start": 29.02,
+    "end": 29.4
+   },
+   {
+    "text": "организовывать",
+    "start": 29.4,
+    "end": 31.02
+   },
+   {
+    "text": "это",
+    "start": 31.02,
+    "end": 31.34
+   },
+   {
+    "text": "под",
+    "start": 31.34,
+    "end": 31.8
+   },
+   {
+    "text": "эгидой",
+    "start": 31.8,
+    "end": 32.36
+   },
+   {
+    "text": "вот",
+    "start": 32.36,
+    "end": 32.64
+   },
+   {
+    "text": "таких",
+    "start": 32.64,
+    "end": 33.16
+   },
+   {
+    "text": "вот",
+    "start": 33.16,
+    "end": 33.32
+   },
+   {
+    "text": "организаций.",
+    "start": 33.32,
+    "end": 34.22
+   }
+  ],
+  "accentWords": [],
+  "cuts": [],
+  "chips": [],
+  "logos": [],
+  "numbers": [],
+  "broll": [],
+  "checklists": [],
+  "cities": [],
+  "zooms": [],
+  "sfx": {
+   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+   "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+  },
+  "music": {
+   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+   "volume": 0.078,
+   "outroVolume": 0.179,
+   "duck": 0.55
+  },
+  "speechSeconds": 35.902,
+  "site": {
+   "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
+   "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
+   "route": [],
+   "at": 1034.901667
+  },
+  "cta": "Экспедиции",
+  "ctaSeconds": 0.3,
+  "showSafeZone": false,
+  "format": "reels",
+  "brand": "gtt",
+  "bumper": false,
+  "focus": {
+   "x": 653,
+   "y": 931
+  },
+  "captionSize": 66,
+  "captionTop": 1500,
+  "captionStyle": "3d",
+  "grade": "brightness(1.000) contrast(1.154) saturate(1.126)"
+ },
+ "effects": [],
+ "notes": []
+}
