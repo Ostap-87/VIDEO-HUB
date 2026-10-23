@@ -270,7 +270,7 @@ def guess_status(jid: str, assets: dict) -> dict:
             files.append({"name": name, "kind": "part", "title": f"Stories, часть {m.group(2)}", "size": assets[name]["size"]})
     if not any(f["kind"] == "frames" for f in files):   # раскадровка — сразу после первого рендера
         return {"stage": "queued", "text": "В работе (подробный ход не прочитался — файлы появятся сами)", "progress": 0.1}
-    return {"stage": "done", "text": "Готово", "progress": 1, "files": files, "done": True}
+    return {"stage": "done", "text": "Готово", "progress": 1, "files": files, "done": True, "guess": True}
 
 
 def job_state(jid: str) -> dict:
@@ -302,7 +302,7 @@ def job_state(jid: str) -> dict:
                 st = None
     if st is None:
         st = guess_status(jid, assets)
-    if st.get("done") and jid not in DONE:
+    if st.get("done") and not st.get("guess") and jid not in DONE:   # догадку по файлам не запоминаем
         DONE[jid] = json.loads(json.dumps(st))
     st["page"] = rel.get("html_url") or f"https://github.com/{REPO}/releases/tag/montazh-{jid}"
     for f in st.get("files", []):
