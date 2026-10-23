@@ -58,6 +58,7 @@ function newProject(name: string, brand: Brand): Project {
 export const App: React.FC = () => {
   const [list, setList] = useState<Project[] | null>(null);
   const [open, setOpen] = useState<Project | null>(null);
+  const [startNew, setStartNew] = useState(false); // «+ Новый ролик» прямо из отправленного ролика
   const reload = useCallback(() => listProjects().then(setList), []);
   useEffect(() => {
     reload();
@@ -73,8 +74,9 @@ export const App: React.FC = () => {
     return (
       <Workspace
         initial={open}
-        onClose={() => {
+        onClose={(next) => {
           setOpen(null);
+          setStartNew(next === "new");
           history.replaceState(null, "", "#");
           reload();
         }}
@@ -83,6 +85,7 @@ export const App: React.FC = () => {
   return (
     <Home
       list={list}
+      startNew={startNew}
       onOpen={(p) => {
         location.hash = `p=${p.id}`;
         setOpen(p);
@@ -93,8 +96,8 @@ export const App: React.FC = () => {
 };
 
 // ---------------------------------------------------------------- главный экран: ролики
-const Home: React.FC<{list: Project[] | null; onOpen: (p: Project) => void; onChanged: () => void}> = ({list, onOpen, onChanged}) => {
-  const [adding, setAdding] = useState(false);
+const Home: React.FC<{list: Project[] | null; startNew?: boolean; onOpen: (p: Project) => void; onChanged: () => void}> = ({list, startNew, onOpen, onChanged}) => {
+  const [adding, setAdding] = useState(!!startNew);
   return (
     <div className="home">
       <header className="top">
@@ -129,7 +132,7 @@ const Home: React.FC<{list: Project[] | null; onOpen: (p: Project) => void; onCh
                   {p.effects.length ? ` · эффектов: ${p.effects.length}` : ""}
                   {p.notes.length ? ` · заметок: ${p.notes.filter((n) => !n.done).length}` : ""}
                 </div>
-                <div className="meta">{p.sentAt ? `Отправлен в работу ${p.sentAt}` : `Изменён ${p.updated}`}</div>
+                {p.jobs?.length ? <JobBadge id={p.jobs[0].id} /> : <div className="meta">Изменён {p.updated}</div>}
                 <button
                   className="del"
                   title="Удалить ролик из Монтажной"
@@ -321,7 +324,7 @@ type Media = {
   waveClean: number[];
 };
 
-const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, onClose}) => {
+const Workspace: React.FC<{initial: Project; onClose: (next?: "new") => void}> = ({initial, onClose}) => {
   const [p, setP] = useState<Project>(initial);
   const [step, setStep] = useState<Step>(initial.words.length ? "edit" : PENDING[initial.id]?.length ? "assemble" : "source");
   const [m, setM] = useState<Media>({images: {}, clips: {}, cleanClips: {}, strip: [], times: [], wave: [], waveClean: []});
@@ -543,14 +546,13 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
   const pRef = useRef(p);
   pRef.current = p;
   const getP = useCallback(() => pRef.current, []);
-  const ctx: StepCtx = {p, up, m, setM, sec, seek, file: fileRef, setStatus, player, step, setStep, getP};
+  const ctx: StepCtx = {p, up, m, setM, sec, seek, file: fileRef, setStatus, player, step, setStep, getP, goHome: onClose};
   return (
     <div className="ws">
       <header className="top">
-        <div className="logo link" onClick={onClose} title="Все ролики">
-          <span className="dot" />
-          Монтажная
-        </div>
+        <button className="btn ghost sm homebtn" onClick={() => onClose()} title="На главную: все ролики и их готовность">
+          ← Все ролики
+        </button>
         <input className="pname" value={p.name} onChange={(e) => up((q) => ({...q, name: e.target.value}))} />
         <nav className="steps">
           {STEPS.map(([id, t], i) => (
@@ -561,7 +563,9 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
           ))}
         </nav>
         <span className="sp" />
-        <span className={`badge b-${p.brand}`}>{BRANDS[p.brand].title}</span>
+        <button className={`btn sm makebtn ${step === "done" ? "ghost" : "primary"}`} onClick={() => setStep("done")} title="Шаг «Готово»: отправить ролик в облако и скачать готовый">
+          🎬 Сделать ролик
+        </button>
       </header>
       {status ? (
         <div className="status" onClick={() => setStatus("")}>
@@ -668,6 +672,7 @@ export type StepCtx = {
   step: Step;
   setStep: (s: Step) => void;
   getP: () => Project; // проект после последних правок (для долгих операций: автомонтаж)
+  goHome?: (next?: "new") => void; // на главную; "new" — сразу открыть «Новый ролик»
 };
 
 // фирменная заставка GTT отдельно в начале и в конце (решение пользователя 23.10.2026: «кнопки под каждую»)
@@ -1984,13 +1989,31 @@ const References: React.FC = () => {
 const TOKEN_URL =
   "https://github.com/settings/personal-access-tokens/new?" +
   new URLSearchParams({name: "Монтажная", description: "Монтажная: видео и задания рендера в VIDEO-HUB", target_name: "Ostap-87", expires_in: "366", contents: "write"}).toString();
-const Cloud: React.FC<{p: Project; up: StepCtx["up"]; props: Record<string, any>}> = ({p, up, props}) => {
+// отпечаток проекта: всё, что влияет на ролик (без служебных полей) — отправка без правок не создаёт копию ролика
+function projSig(p: Project): string {
+  const {updated, sentAt, jobs, name, created, ...rest} = p;
+  void updated, void sentAt, void jobs, void name, void created;
+  const s = JSON.stringify(rest);
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619);
+  return (h >>> 0).toString(36) + "-" + s.length;
+}
+
+const Cloud: React.FC<{p: Project; up: StepCtx["up"]; props: Record<string, any>; goHome?: StepCtx["goHome"]}> = ({p, up, props, goHome}) => {
   const [server, setServer] = useState<boolean | null>(null);
   const [gh, setGh] = useState<GithubState | null>(null);
   const [token, setToken] = useState("");
   const [err, setErr] = useState("");
   const [cut, setCut] = useState(true);
   const [sending, setSending] = useState("");
+  const [again, setAgain] = useState(false); // «всё равно отправить ещё раз» — второе нажатие подтверждает
+  const [tab, setTab] = useState<"ready" | "archive">("ready");
+  const allJobs = (p.jobs ?? []).map((j, i, a) => ({...j, n: a.length - i})); // №1 — самая первая отправка
+  const shown = allJobs.filter((j) => (tab === "archive" ? j.archived : !j.archived));
+  const setArchived = (id: string, archived: boolean) => up((q) => ({...q, jobs: (q.jobs ?? []).map((j) => (j.id === id ? {...j, archived} : j))}));
+  const sig = projSig(p);
+  const last = p.jobs?.[0];
+  const same = !!last && last.sig === sig; // уже отправлен ровно такой ролик
   useEffect(() => {
     hasServer().then((ok) => {
       setServer(ok);
@@ -2066,8 +2089,9 @@ const Cloud: React.FC<{p: Project; up: StepCtx["up"]; props: Record<string, any>
       };
       setSending("Отправляю на GitHub…");
       await submitJob(jid, job);
-      up((q) => ({...q, sentAt: nowIso(), jobs: [{id: jid, sentAt: nowIso(), cutPauses: cut}, ...(q.jobs ?? [])]}));
+      up((q) => ({...q, sentAt: nowIso(), jobs: [{id: jid, sentAt: nowIso(), cutPauses: cut, sig: projSig(q)}, ...(q.jobs ?? [])]}));
       setSending("");
+      setAgain(false);
     } catch (e) {
       setSending("");
       setErr(String((e as Error).message || e));
@@ -2146,10 +2170,37 @@ const Cloud: React.FC<{p: Project; up: StepCtx["up"]; props: Record<string, any>
             {p.format === "both" ? "Reels и Stories (части до 60 с)" : p.format === "stories" ? "Stories (части до 60 с)" : "Reels"}. Обычно 7–25 минут
             (оба формата — примерно вдвое дольше); окно можно закрыть — результат останется здесь.
           </p>
+          {same && !sending ? (
+            <div className="sentbox">
+              <b>✓ Ролик отправлен в облако</b>
+              <span>
+                Ролик №{allJobs.length} · {shortTime(last!.sentAt)} · обычно готов через 7–25 минут. Готовность видна в карточке ниже и на главной у этого ролика. Окно
+                можно закрыть или монтировать следующий ролик — облако доделает само.
+              </span>
+              <div className="row wrap">
+                {goHome ? (
+                  <>
+                    <button className="btn primary" onClick={() => goHome()}>
+                      ← На главную
+                    </button>
+                    <button className="btn" onClick={() => goHome("new")}>
+                      + Новый ролик
+                    </button>
+                  </>
+                ) : null}
+              </div>
+            </div>
+          ) : null}
           <div className="row wrap">
-            <button className="btn primary big" disabled={!!sending || !p.source} onClick={send}>
-              Сделать ролик
-            </button>
+            {same ? (
+              <button className={`btn ${again ? "danger" : "ghost"} sm`} disabled={!!sending} onClick={() => (again ? send() : setAgain(true))}>
+                {again ? "Да, отправить копию ещё раз" : "Отправить ещё раз (без правок — будет копия)"}
+              </button>
+            ) : (
+              <button className="btn primary big" disabled={!!sending || !p.source} onClick={send}>
+                {last?.sig ? "Сделать ролик заново (с правками)" : last ? "Сделать ролик ещё раз" : "Сделать ролик"}
+              </button>
+            )}
             <button
               className="btn ghost sm"
               onClick={() => {
@@ -2164,14 +2215,84 @@ const Cloud: React.FC<{p: Project; up: StepCtx["up"]; props: Record<string, any>
       ) : null}
       {sending ? <div className="busy">{sending}</div> : null}
       {err ? <div className="err">{err}</div> : null}
-      {(p.jobs ?? []).map((j, i) => (
-        <JobCard key={j.id} id={j.id} sentAt={j.sentAt} open={i === 0} />
-      ))}
+      {allJobs.length ? (
+        <>
+          <div className="jobtabs">
+            <button className={tab === "ready" ? "on" : ""} onClick={() => setTab("ready")}>
+              Готовые ролики ({allJobs.filter((j) => !j.archived).length})
+            </button>
+            <button className={tab === "archive" ? "on" : ""} onClick={() => setTab("archive")}>
+              Архив ({allJobs.filter((j) => j.archived).length})
+            </button>
+          </div>
+          {!shown.length ? (
+            <p className="muted">
+              {tab === "archive" ? "В архиве пусто. Кнопка «В архив» у готового ролика убирает его сюда." : "Все ролики в архиве — откройте вкладку «Архив»."}
+            </p>
+          ) : null}
+          {shown.map((j, i) => (
+            <JobCard
+              key={j.id}
+              id={j.id}
+              n={j.n}
+              sentAt={j.sentAt}
+              newest={j.n === allJobs.length}
+              open={tab === "ready" && i === 0}
+              archived={!!j.archived}
+              onArchive={(v) => setArchived(j.id, v)}
+            />
+          ))}
+        </>
+      ) : null}
     </>
   );
 };
 
-const JobCard: React.FC<{id: string; sentAt: string; open: boolean}> = ({id, sentAt, open}) => {
+// готовность последнего задания на карточке ролика на главной: «собирается» / «готов» / «ошибка»
+const JobBadge: React.FC<{id: string}> = ({id}) => {
+  const [st, setSt] = useState<JobState | null>(null);
+  useEffect(() => {
+    let alive = true;
+    let timer = 0;
+    const tick = async () => {
+      const s = await jobState(id).catch(() => null);
+      if (!alive) return;
+      if (s) setSt(s);
+      if (!s?.done && !s?.error) timer = window.setTimeout(tick, s ? 10000 : 20000);
+    };
+    tick();
+    return () => {
+      alive = false;
+      clearTimeout(timer);
+    };
+  }, [id]);
+  if (!st || st.stage === "token") return <div className="meta jobbadge">☁ Отправлен в облако</div>;
+  if (st.error) return <div className="meta jobbadge bad">⚠ Ошибка в облаке — откройте ролик</div>;
+  if (st.done) return <div className="meta jobbadge ok">✓ Готов — откройте и скачайте</div>;
+  return (
+    <div className="meta jobbadge run">
+      ☁ {st.stage === "send" ? "Отправляется" : "Собирается"} · {Math.round((st.progress ?? 0) * 100)}%
+    </div>
+  );
+};
+
+// «23.10 15:30» из «2026-10-23 07:30:12» (время отправки по Mac)
+const shortTime = (iso: string) => {
+  const d = new Date(iso.replace(" ", "T") + "Z");
+  if (Number.isNaN(+d)) return iso;
+  const z = (x: number) => String(x).padStart(2, "0");
+  return `${z(d.getDate())}.${z(d.getMonth() + 1)} ${z(d.getHours())}:${z(d.getMinutes())}`;
+};
+
+const JobCard: React.FC<{id: string; n: number; sentAt: string; newest: boolean; open: boolean; archived: boolean; onArchive: (v: boolean) => void}> = ({
+  id,
+  n,
+  sentAt,
+  newest,
+  open,
+  archived,
+  onArchive,
+}) => {
   const [st, setSt] = useState<JobState | null>(null);
   const [show, setShow] = useState(open);
   useEffect(() => {
@@ -2199,11 +2320,25 @@ const JobCard: React.FC<{id: string; sentAt: string; open: boolean}> = ({id, sen
   return (
     <div className={`jobcard ${st?.done ? "done" : st?.error ? "bad" : ""}`}>
       <div className="row" onClick={() => setShow(!show)}>
-        <b>{st?.done ? "Готово" : st?.error ? "Ошибка" : "В работе"}</b>
+        <b className="jobno">Ролик №{n}</b>
+        <span className={`jobst ${st?.done ? "ok" : st?.error ? "bad" : ""}`}>{st?.done ? "готов" : st?.error ? "ошибка" : "в работе"}</span>
+        {newest ? <span className="jobnew">последний</span> : null}
         <span className="muted">
-          задание {id} · {sentAt}
+          отправлен {shortTime(sentAt)} · {id}
         </span>
         <span className="sp" />
+        {st?.done || st?.error || archived ? (
+          <button
+            className="btn ghost sm"
+            title={archived ? "Вернуть в «Готовые ролики»" : "Убрать из списка во вкладку «Архив» (ролик не удаляется)"}
+            onClick={(e) => {
+              e.stopPropagation();
+              onArchive(!archived);
+            }}
+          >
+            {archived ? "↩ Вернуть" : "В архив"}
+          </button>
+        ) : null}
         <span className="muted">{show ? "▾" : "▸"}</span>
       </div>
       {show ? (
@@ -2222,7 +2357,7 @@ const JobCard: React.FC<{id: string; sentAt: string; open: boolean}> = ({id, sen
                 {files
                   .filter((f) => f.url)
                   .map((f) => (
-                    <SaveButton key={f.name} jid={id} file={f} />
+                    <SaveButton key={f.name} jid={id} file={f} tag={`№${n} ${shortTime(sentAt)}`} />
                   ))}
               </div>
               <p className="muted">
@@ -2244,7 +2379,7 @@ const JobCard: React.FC<{id: string; sentAt: string; open: boolean}> = ({id, sen
 };
 
 // кнопка «Скачать на Mac»: прогресс скачивания, потом «Показать в Finder»
-const SaveButton: React.FC<{jid: string; file: NonNullable<JobState["files"]>[number]}> = ({jid, file}) => {
+const SaveButton: React.FC<{jid: string; file: NonNullable<JobState["files"]>[number]; tag?: string}> = ({jid, file, tag}) => {
   const [st, setSt] = useState<SaveState | null>(null);
   const [err, setErr] = useState("");
   const timer = useRef(0);
@@ -2258,7 +2393,7 @@ const SaveButton: React.FC<{jid: string; file: NonNullable<JobState["files"]>[nu
   const go = async () => {
     setErr("");
     try {
-      const s = await saveJobFile(jid, file.name);
+      const s = await saveJobFile(jid, file.name, tag);
       setSt(s);
       if (!s.done) timer.current = window.setTimeout(poll, 700);
     } catch (e) {
@@ -2277,7 +2412,7 @@ const SaveButton: React.FC<{jid: string; file: NonNullable<JobState["files"]>[nu
   );
 };
 
-const DoneStep: React.FC<StepCtx & {props: Record<string, any>}> = ({p, props, up}) => {
+const DoneStep: React.FC<StepCtx & {props: Record<string, any>}> = ({p, props, up, goHome}) => {
   const job = useMemo(
     () => ({
       version: 1,
@@ -2321,7 +2456,7 @@ const DoneStep: React.FC<StepCtx & {props: Record<string, any>}> = ({p, props, u
       <label className="chk">
         <input type="checkbox" checked={p.finale} onChange={(e) => up((q) => ({...q, finale: e.target.checked}))} /> Финал с сайтом {BRANDS[p.brand].site}
       </label>
-      <Cloud p={p} up={up} props={props} />
+      <Cloud p={p} up={up} props={props} goHome={goHome} />
       <h3>Задание файлом</h3>
       <p className="muted">
         Если окно открыто не на Mac (без сервера Монтажной) — скачайте задание и пришлите Claude в чат вместе с видео: сделаю тот же ролик.

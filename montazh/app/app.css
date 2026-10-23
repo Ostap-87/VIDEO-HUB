@@ -51,7 +51,7 @@ h3 .muted { text-transform: none; letter-spacing: 0; font-weight: 400; }
 .logo.link { cursor: pointer; }
 .logo .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--bad); box-shadow: 0 0 0 3px rgba(255,107,94,.25); }
 .top .sub { color: var(--muted); }
-.pname { background: transparent; border-color: transparent; font-weight: 600; width: 220px; }
+.pname { background: transparent; border-color: transparent; font-weight: 600; width: 180px; flex: none; }
 .pname:hover { border-color: var(--line); }
 .steps { display: flex; gap: 2px; background: var(--bg); padding: 3px; border-radius: 10px; overflow-x: auto; }
 .steps button { border: 0; background: transparent; padding: 6px 10px; border-radius: 7px; cursor: pointer; color: var(--muted); white-space: nowrap; display: flex; gap: 6px; align-items: center; }
@@ -324,6 +324,25 @@ details pre { background: var(--panel); border: 1px solid var(--line); border-ra
 .hfthumb { width: 54px; height: 72px; object-fit: cover; border-radius: 6px; }
 .tfx span.c-Эмодзи { background: rgba(167,139,250,.2); border-color: #7c5fd6; color: #e4dcff; }
 .steps-ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 3px; font-size: 13.5px; }
+/* после «Сделать ролик»: понятное «отправлен» и куда дальше (решение пользователя 23.10.2026: «чтобы не было путаницы») */
+.sentbox { display: flex; flex-direction: column; gap: 8px; margin: 6px 0 12px; padding: 14px 16px; border-radius: 12px; border: 1px solid rgba(60,207,142,.45); background: rgba(60,207,142,.1); }
+.sentbox b { color: var(--ok); font-size: 15px; }
+.sentbox span { color: var(--muted); font-size: 13px; }
+.jobbadge { font-weight: 600; }
+.jobbadge.run { color: var(--accent); }
+.jobbadge.ok { color: var(--ok); }
+.jobbadge.bad { color: var(--bad); }
+.homebtn { flex: none; }
+.makebtn { flex: none; }
+/* готовые ролики и архив (решение пользователя 23.10.2026: «чтобы не скачать не тот ролик») */
+.jobtabs { display: flex; gap: 6px; margin: 16px 0 4px; }
+.jobtabs button { border: 1px solid var(--line); background: var(--panel2); border-radius: 99px; padding: 6px 14px; cursor: pointer; color: var(--muted); }
+.jobtabs button.on { color: var(--ink); border-color: var(--accent); background: rgba(76,141,255,.14); }
+.jobno { font-size: 15px; }
+.jobst { font-size: 12px; font-weight: 600; color: var(--accent); }
+.jobst.ok { color: var(--ok); }
+.jobst.bad { color: var(--bad); }
+.jobnew { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 99px; background: rgba(76,141,255,.18); color: #8db1ff; }
 .jobcard { margin-top: 10px; background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; gap: 10px; }
 .jobcard > .row { cursor: pointer; }
 .jobcard.done { border-left-color: var(--ok); }

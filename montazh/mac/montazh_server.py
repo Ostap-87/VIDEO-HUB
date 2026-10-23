@@ -262,9 +262,13 @@ def job_state(jid: str) -> dict:
     return st
 
 
-def save_name(title: str, f: dict) -> str:
-    """Понятное имя файла в «Загрузках»: «IMG_5402.mp4», «IMG_5402 (телефон).mp4», «IMG_5402 — часть 2.mp4»."""
+def save_name(title: str, f: dict, tag: str = "") -> str:
+    """Понятное имя файла в «Загрузках»: «IMG_5402 · №3 23.10 15-30.mp4», «… (телефон).mp4», «… — часть 2.mp4».
+    tag — номер и время отправки задания: у разных отправок одного ролика разные файлы, не перепутать и не затереть."""
     base = re.sub(r'[\\/:*?"<>|]+', " ", title or "ролик").strip()[:60] or "ролик"
+    tag = re.sub(r'[\\/:*?"<>|]+', "-", tag or "").strip()[:30]
+    if tag:
+        base = f"{base} · {tag}"
     ext = pathlib.Path(f["name"]).suffix or ".mp4"
     kind = f.get("kind")
     st = "Stories, " if "-stories" in f["name"] else ""
@@ -279,7 +283,7 @@ def save_name(title: str, f: dict) -> str:
     return f"{base}{ext}"
 
 
-def save_file(jid: str, name: str):
+def save_file(jid: str, name: str, tag: str = ""):
     """Готовый файл задания → ~/Downloads/Монтажная (через API GitHub с ключом: так скачивается и там, где прямые
     ссылки GitHub медленные или закрыты), потом показывает его в Finder."""
     key = f"{jid}/{name}"
@@ -290,7 +294,7 @@ def save_file(jid: str, name: str):
         if not f:
             raise LinkError("Файла ещё нет в облаке — подождите, пока ролик доделается")
         DOWNLOADS.mkdir(parents=True, exist_ok=True)
-        dst = DOWNLOADS / save_name(st.get("name") or jid, f)
+        dst = DOWNLOADS / save_name(st.get("name") or jid, f, tag)
         tmp = dst.with_name(dst.name + ".part")
         tok = gh_token()
         cfg = ((f'header = "Authorization: Bearer {tok}"\n' if tok else "") +
@@ -659,9 +663,11 @@ class Handler(SimpleHTTPRequestHandler):
         if m:
             # готовый ролик → «Загрузки/Монтажная» на этом Mac; повторное нажатие на сохранённый — показать в Finder
             try:
-                name = (json.loads(self.rfile.read(n) or b"{}").get("name") or "").strip()
+                body = json.loads(self.rfile.read(n) or b"{}")
             except ValueError:
-                name = ""
+                body = {}
+            name = (body.get("name") or "").strip()
+            tag = str(body.get("tag") or "").strip()
             if not re.fullmatch(r"[A-Za-z0-9._-]{1,80}", name):
                 return self.json(400, {"detail": "нет такого файла"})
             if not gh_token():
@@ -674,7 +680,7 @@ class Handler(SimpleHTTPRequestHandler):
                 return self.json(200, got)
             if not got or got.get("error") or got.get("done"):
                 SAVES[key] = {"done": False, "progress": 0}
-                threading.Thread(target=save_file, args=(m.group(1), name), daemon=True).start()
+                threading.Thread(target=save_file, args=(m.group(1), name, tag), daemon=True).start()
             return self.json(200, SAVES[key])
         if self.path == "/api/github":
             try:
