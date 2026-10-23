@@ -18,7 +18,7 @@ const PAPER = "#F7F4EC";
 const MARKER = "#FFD92E";
 const ease = Easing.bezier(0.65, 0, 0.35, 1);
 
-export type FxItem = {type: "wipe" | "bw"; at: number; until?: number; color?: string; corner?: "tl" | "tr" | "bl" | "br"};
+export type FxItem = {type: "wipe" | "bw" | "leak"; at: number; until?: number; color?: string; corner?: "tl" | "tr" | "bl" | "br"};
 export type Episode = {n: number; total: number; title: string; next?: string; nextN?: number};
 
 // ч/б → цвет: 1 — полностью серый; после until цвет возвращается за 0,2 с со вспышкой яркости

@@ -31,9 +31,11 @@ export type SpeakerItem = {
   corner?: "tl" | "tr" | "bl" | "br" | "top" | "bottom" | "center" | "left" | "right";
   scale?: number; // доля ширины кадра (0.3–0.8)
   style?: "frame" | "round" | "contour";
-  bg?: "blur" | "brand" | "dark" | "image";
+  bg?: "blur" | "brand" | "dark" | "image" | "app";
   image?: string;
   tilt?: number; // поворот «экрана» в 3D, градусы
+  title?: string; // bg app: подпись задания в окне приложения
+  windows?: number; // bg app: окон результата — 1 или 2 (второе грузится позже, рядом)
 };
 export const speakerActive = (items: SpeakerItem[] | undefined, t: number) => {
   const s = (items ?? []).find((x) => t >= x.at - 0.05 && t <= x.until + 0.05);
@@ -53,12 +55,69 @@ function targetRect(s: SpeakerItem, stories: boolean) {
   return {x, y, w, h};
 }
 
+// фон «окно приложения» (референс d4ws46x, 23.10.2026): светлый интерфейс, сверху прикреплённый файл и задание,
+// в середине окно результата — сначала размыто с кружком загрузки, на 45 % отрезка результат проявляется
+const AppBackdrop: React.FC<{s: SpeakerItem; video: string}> = ({s, video}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const B = useBrand();
+  const t = frame / fps;
+  const two = (s.windows ?? 1) >= 2;
+  const ready = s.at + (s.until - s.at) * (two ? 0.3 : 0.45);
+  const ready2 = s.at + (s.until - s.at) * 0.62;
+  const sharp = interpolate(t, [two ? ready2 : ready, (two ? ready2 : ready) + 0.5], [0, 1], {...clamp, easing: ease});
+  const spin = (t * 300) % 360;
+  const sq = B.square;
+  const font = B.bodyFont;
+  return (
+    <AbsoluteFill style={{background: "#F5F5F7"}}>
+      <div style={{position: "absolute", right: 80, top: 280, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 12}}>
+        <div style={{width: 120, height: 150, background: "#FFF", border: "2px solid #E2E2E8", borderRadius: sq ? 0 : 14, display: "flex", alignItems: "flex-end", justifyContent: "center", paddingBottom: 14, fontFamily: font, fontSize: 20, color: "#8A8A94"}}>MOV</div>
+        <div style={{background: "#ECECF1", borderRadius: sq ? 0 : 12, padding: "8px 16px", fontFamily: font, fontSize: 24, color: "#3A3A44"}}>{s.title || "смонтируй ролик"}</div>
+      </div>
+      <div style={{position: "absolute", left: 120, top: 520, display: "flex", alignItems: "center", gap: 14, fontFamily: font, fontSize: 26, color: "#8A8A94"}}>
+        <span style={{display: "inline-block", width: 22, height: 22, borderRadius: "50%", border: "3px solid #C9C9D2", borderTopColor: sharp > 0.5 ? "#3CCF8E" : "#5A5A66", rotate: `${sharp > 0.5 ? 0 : spin}deg`}} />
+        {sharp > 0.5 ? "Готово" : "Монтирую…"}
+      </div>
+      {(two ? [0, 1] : [0]).map((k) => {
+        const r = k === 0 ? ready : ready2;
+        const sh = interpolate(t, [r, r + 0.5], [0, 1], {...clamp, easing: ease});
+        const appear = k === 0 ? 1 : interpolate(t, [s.at + (s.until - s.at) * 0.3, s.at + (s.until - s.at) * 0.3 + 0.35], [0, 1], {...clamp, easing: ease});
+        const box = two ? {left: 90 + k * 380, top: 640, width: 350, height: 620} : {left: 120, top: 575, width: 640, height: 900};
+        const media = k === 1 && s.image ? undefined : s.image;
+        return (
+          <div key={k} style={{position: "absolute", ...box, borderRadius: sq ? 0 : 28, overflow: "hidden", background: "#FFF", boxShadow: sq ? "10px 10px 0 #191922" : "0 20px 60px rgba(20,20,40,0.16)", border: sq ? "3px solid #191922" : undefined, opacity: appear, scale: String(0.9 + 0.1 * appear)}}>
+            {media ? (
+              isVideo(media) ? (
+                <OffthreadVideo src={src(media)} muted style={{width: "100%", height: "100%", objectFit: "cover", filter: `blur(${(1 - sh) * 30}px)`}} />
+              ) : (
+                <Img src={src(media)} style={{width: "100%", height: "100%", objectFit: "cover", filter: `blur(${(1 - sh) * 30}px)`}} />
+              )
+            ) : (
+              <SpeakerVideo src={video} style={{width: "100%", height: "100%", objectFit: "cover", filter: `blur(${(1 - sh) * 30}px) saturate(1.1)${k === 1 ? " hue-rotate(-12deg) brightness(1.06)" : ""}`}} />
+            )}
+            <AbsoluteFill style={{background: `linear-gradient(to bottom, rgba(255,255,255,${0.95 * (1 - sh)}) 0%, rgba(255,255,255,${0.95 * (1 - sh)}) 38%, rgba(255,255,255,${0.15 * (1 - sh)}) 60%)`}} />
+            {sh < 0.99 ? (
+              <div style={{position: "absolute", left: box.width / 2 - 30, top: box.height * 0.58, width: 60, height: 60, borderRadius: "50%", border: "5px solid rgba(255,255,255,0.5)", borderTopColor: "#FFF", rotate: `${spin}deg`, opacity: 1 - sh}} />
+            ) : null}
+          </div>
+        );
+      })}
+      <div style={{position: "absolute", left: 100, right: 100, top: 1520, height: 76, borderRadius: sq ? 0 : 38, background: "#FFF", border: "2px solid #E2E2E8", display: "flex", alignItems: "center", gap: 18, padding: "0 28px", fontFamily: font, fontSize: 26, color: "#A0A0AA"}}>
+        <span style={{fontSize: 36}}>+</span> Напишите сообщение…
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 const Backdrop: React.FC<{s: SpeakerItem; video: string; p: number}> = ({s, video, p}) => {
   const B = useBrand();
   const bg = s.bg ?? "blur";
   return (
     <AbsoluteFill style={{opacity: p}}>
-      {bg === "blur" ? (
+      {bg === "app" ? (
+        <AppBackdrop s={s} video={video} />
+      ) : bg === "blur" ? (
         <SpeakerVideo src={video} style={{width: "100%", height: "100%", objectFit: "cover", scale: "1.25", filter: "blur(42px) brightness(0.62) saturate(1.15)"}} />
       ) : bg === "image" && s.image ? (
         <Img src={src(s.image)} style={{width: "100%", height: "100%", objectFit: "cover"}} />

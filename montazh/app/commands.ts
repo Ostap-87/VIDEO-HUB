@@ -132,6 +132,52 @@ function one(text: string, sec: number, words: Word[], out: Parsed) {
   const down = /(снизу|низ(?![а-я]*к)|вниз|нижн)/.test(t);
   const corner = (def: string) => (up ? (left ? "tl" : right ? "tr" : "top") : down ? (left ? "bl" : right ? "br" : "bottom") : left ? "left" : right ? "right" : /(центр|середин)/.test(t) ? "center" : def);
 
+  // приёмы из референсов 23.10.2026: «до / после», спикер на фоне приложения, окно чата, картинки вокруг головы,
+  // карточка у груди, финал с @ником, заголовок с рукописью, стили субтитров
+  if (/(до\s+и\s+после|до\/после|было\s*[-—и/]?\s*стало|два\s+экрана|оригинал)/.test(t)) {
+    const params: Record<string, string> = {};
+    if (qs[0]) params.top = qs[0];
+    if (qs[1]) params.bottom = qs[1];
+    const h = text.match(/@([\w.]+)/);
+    if (h) params.handle = h[1];
+    add("split-ba", params);
+    return;
+  }
+  if (/(приложени|интерфейс|программ\S*\s+на\s+фоне)/.test(t) && /(спикер|меня|себя|на\s+фоне|фон)/.test(t)) {
+    add("speaker-app", qs[0] ? {title: qs[0]} : {});
+    return;
+  }
+  if (/(окно\s+чата|(?:^|[^а-я])чат(?:а|е|ом)?(?![а-я])|запрос|промпт|строк\S*\s+ввода)/.test(t)) {
+    add("chat-card", qs[0] ? {text: qs[0]} : {});
+    return;
+  }
+  if (/(вокруг\s+голов|парят|парящ|из-за\s+голов)/.test(t) && /(картинк|фото|изображен)/.test(t)) {
+    const q = qs[0] || after(text, /(?:картинк|фото|изображени)\S*(?:\s+(?:с|про|где))?/i).replace(/\s*(?:вокруг|из-за)\s+голов\S*.*$/i, "").trim();
+    const ef = effectById("floats")!;
+    out.images.push({query: q, at: +w.at.toFixed(2), until: w.until ?? +(w.at + (w.dur ?? ef.len)).toFixed(2), effect: "floats"});
+    out.done.push(`${w.said} — ${ef.title}: ${q ? `«${q}»` : "по словам речи"}, ещё две — в карточке эффекта`);
+    return;
+  }
+  if (/карточк\S*\s+(?:у|на)\s+груд|карточк\S*\s+(?:товар|книг|тур|продукт)/.test(t)) {
+    add("card-chest", {...(qs[0] ? {title: qs[0]} : {}), ...(qs[1] ? {sub: qs[1]} : {})});
+    return;
+  }
+  if (/(@\w|ник\S*\s+в\s+финал|финал\S*\s+с\s+(?:ник|иконк)|иконк\S*\s+(?:инст|телег|соцсет))/.test(t) || (/подписыва/.test(t) && /финал/.test(t))) {
+    const h = text.match(/@([\w.]+)/);
+    const network = /(телег|tg)/.test(t) ? "telegram" : /(сайт)/.test(t) ? "site" : "instagram";
+    add("outro-handle", {...(h ? {handle: h[1], network} : {}), ...(/(подписыва)/.test(t) ? {text: "подписывайся"} : {})});
+    return;
+  }
+  if (/(заголов|призыв|крупн\S*\s+слово)/.test(t) && /(рукопис|от\s+руки|прописью|засечк|на\s+полос)/.test(t)) {
+    const id = /(призыв|на\s+полос)/.test(t) ? "title-band" : /(засечк|тонк|элегант)/.test(t) ? "title-serif" : "title-grotesk";
+    add(id, {...(qs[0] ? {text: qs[0]} : {}), ...(qs[1] ? {script: qs[1]} : {}), ...(/(за\s+голов|за\s+спин|за\s+мной)/.test(t) ? {plane: "behind"} : /(перед|поверх)/.test(t) ? {plane: "front"} : {})});
+    return;
+  }
+  if (/субтитр/.test(t) && /(плашк|в\s+углу|углов|угол|тих|слева|мелк|курсив|золот)/.test(t)) {
+    add(/(плашк)/.test(t) ? "captions-plate" : /(тих|слева|мелк)/.test(t) ? "captions-quiet" : "captions-corner");
+    return;
+  }
+
   // спикер: в угол, рамку, круг, по контуру
   if (/(спикер|себя|меня|говорящ|лицо|ведущ)/.test(t) && /(угол|угл|уменьш|рамк|круг|контур|выреж|вырез|окошк|маленьк|сбоку|в\s+сторону)/.test(t)) {
     const style = /(круг|окошк|кружок)/.test(t) ? "round" : /(контур|выреж|вырез|стикер)/.test(t) ? "contour" : "frame";
@@ -213,7 +259,9 @@ function one(text: string, sec: number, words: Word[], out: Parsed) {
   }
 
   // движение кадра
-  if (/(отдал|отъезд|отъех|отодвин|zoom\s*out|шире|общий\s+план|уменьш)/.test(t)) {
+  if (/(макро|вплотную|на\s+глаза|на\s+губы|глаза\s+крупно|губы\s+крупно)/.test(t)) {
+    add("zoom-macro", {target: /губ/.test(t) ? "lips" : "eyes", amount: strong ? "1.6" : weak ? "0.7" : "1.1"});
+  } else if (/(отдал|отъезд|отъех|отодвин|zoom\s*out|шире|общий\s+план|уменьш)/.test(t)) {
     add("zoom-pull", {amount: strong ? "0.32" : weak ? "0.12" : "0.2"});
   } else if (/(приблиз|наезд|наед|зум|zoom|крупн|ближе|увелич|punch)/.test(t)) {
     if (/(плавн|медлен|мягк|потихоньку|постепенн)/.test(t)) add("zoom-push", {amount: strong ? "0.14" : weak ? "0.05" : "0.08"});
@@ -286,7 +334,9 @@ function one(text: string, sec: number, words: Word[], out: Parsed) {
 
   // переходы
   if (/(ч\/б|чб|черно-?бел|бесцвет|серым)/.test(t)) add("fx-bw");
-  if (/(залив|переход|вспышк|смена\s+темы)/.test(t)) {
+  if (/(засвет|вспышк\S*\s+свет|лайт\s*лик|light\s*leak|блик)/.test(t)) {
+    add("fx-leak", /(розов)/.test(t) ? {color: "255,110,150"} : /(бел)/.test(t) ? {color: "255,235,200"} : {});
+  } else if (/(залив|переход|вспышк|смена\s+темы)/.test(t)) {
     const corner = /слева/.test(t) ? (/сверху/.test(t) ? "tl" : "bl") : /сверху/.test(t) ? "tr" : "br";
     add("fx-wipe", {corner});
   }
@@ -343,4 +393,12 @@ export const EXAMPLES = [
   "текст «КИТАЙ» на стене под углом 30 градусов",
   "стикерами: Дорога, Отель, Заводы",
   "субтитры жёлтые, акцент красный",
+  "до и после «Монтаж» «Оригинал»",
+  "заголовок с засечками «МОНТАЖ» рукописью «через нейросети»",
+  "субтитры бежевой плашкой",
+  "макро на губы",
+  "вспышка света",
+  "окно чата «смонтируй ролик»",
+  "картинки вокруг головы «роботы на заводе»",
+  "финал @ostap.dotsenko подписывайся",
 ];

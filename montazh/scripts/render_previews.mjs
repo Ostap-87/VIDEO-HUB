@@ -62,8 +62,19 @@ const PARAMS = {
   "list-bubbles": {items: "Заводы / Встречи / Дегустации"},
   "list-typewriter": {title: "Поездка", items: "Заводы / Встречи / Дегустации"},
   "palette-at": {text: "#FFD92E", accent: "#FF4A1F", ink: "#FFFFFF"},
+  // приёмы из референсов 23.10.2026 (image: "" — оставить кадр самого ролика)
+  "split-ba": {top: "Монтаж", bottom: "Оригинал", image: ""},
+  "title-serif": {text: "Китай", script: "чай / и кофе"},
+  "title-grotesk": {text: "Чай", script: "из / Китая"},
+  "title-band": {text: "Пиши", script: "летим"},
+  "zoom-macro": {target: "eyes"},
+  "chat-card": {text: "смонтируй ролик", image: ""},
+  floats: {image2: IMG[3 % IMG.length], image3: IMG[4 % IMG.length]},
+  "card-chest": {title: "Чайные плантации Китая", sub: "5 дней · 7 фабрик"},
+  "speaker-app": {title: "смонтируй ролик", image: ""},
+  "outro-handle": {handle: "ostap.dotsenko", network: "instagram", text: "подписывайся"},
 };
-const LEN = {"list-flip": 2.4, "list-cards": 2.4, "list-stickers": 2.4, "list-numbers": 2.4, "list-bubbles": 2.4, "list-typewriter": 2.4, checklist: 2.4, "stock-up": 2.4, "stock-down": 2.4, "hook-wall": 2.2, "hook-mix": 2.2, "hook-words": 2.2, chip: 2.2};
+const LEN = {"split-ba": 2.4, "captions-plate": 2.4, "captions-corner": 2.4, "captions-quiet": 2.4, "speaker-app": 2.4, "list-flip": 2.4, "list-cards": 2.4, "list-stickers": 2.4, "list-numbers": 2.4, "list-bubbles": 2.4, "list-typewriter": 2.4, checklist: 2.4, "stock-up": 2.4, "stock-down": 2.4, "hook-wall": 2.2, "hook-mix": 2.2, "hook-words": 2.2, chip: 2.2};
 const SLOT = 3.6;
 const PRE = 0.25; // превью начинается чуть раньше эффекта
 const DUR = 2.0;
@@ -80,6 +91,7 @@ const props = {
   focus: {x: layout.eyeX ?? base.focus.x, y: layout.eyeY ?? base.focus.y},
   chips: [], logos: [], numbers: [], broll: [], checklists: [], cities: [], zooms: [], cuts: [],
   stockDrop: undefined, hooks: [], fx: [], arrows: [], emojis: [], speaker: [], panels: [], texts: [], lists: [], paletteAt: [],
+  splits: [], titles: [], captionsAt: [], chats: [], floats: [], cards: [], outros: [],
   bumper: false,
   music: undefined,
   site: {...base.site, at: 999},
@@ -91,7 +103,7 @@ let t = 1.0;
 let img = 0;
 for (const e of list) {
   const item = {id: e.id, effect: e.id, at: +t.toFixed(2), until: +(t + (LEN[e.id] ?? Math.min(e.len, 2.0))).toFixed(2), params: {...(PARAMS[e.id] ?? {})}};
-  if (e.fields.some((f) => f.kind === "image" || f.kind === "media")) item.params.image = IMG[img++ % IMG.length];
+  if (e.fields.some((f) => f.kind === "image" || f.kind === "media") && !("image" in item.params)) item.params.image = IMG[img++ % IMG.length];
   e.apply(props, item, {words, image: (n) => n});
   slots.push({id: e.id, at: item.at, cutout: !!e.after});
   t += SLOT;

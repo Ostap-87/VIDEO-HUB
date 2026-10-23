@@ -98,6 +98,10 @@ Stories-анонсы каруселей — `npm run announce` (`finished-videos
 `D=$(mktemp -d) && curl -fL https://codeload.github.com/Ostap-87/VIDEO-HUB/tar.gz/refs/heads/montazh-dist | tar -xzf - -C "$D" --strip-components=1 && bash "$D/install_mac.command"`.
 Новый приём монтажа = эффект в `montazh/app/effects.ts` + превью (`node montazh/scripts/render_previews.mjs --only <id>`)
 + слова для строки команд (`montazh/app/commands.ts`); если его можно ставить «по смыслу» — правило в `montazh/app/auto.ts`.
+Референсы из Монтажной разбираю так: `source-videos/референсы-эффекты/<дата>-ref-<id>/разбор.md` (что на какой секунде →
+каким эффектом), `montazh/references/<id>.json` — статус «разобран» и список эффектов. 23.10.2026 разобраны xkzv9pa и
+d4ws46x: 15 эффектов (до / после, заголовок + рукопись, стили субтитров, макро-наезд, вспышка света, окно чата, картинки
+вокруг головы, карточка у груди, спикер на фоне приложения, наклейка, финал с @ником; шаблон — `reels-studio/src/components/RefFx.tsx`).
 Решения пользователя 23.10.2026: формат «Оба сразу» (Reels + Stories одним заданием, по умолчанию), кнопки **«⏱ Ритм»**
 (эффект каждые 4 с) и **«⚡ Автомонтаж»** (всё сразу одной кнопкой), готовый ролик — кнопкой «Скачать» в
 «Загрузки → Монтажная» на Mac.

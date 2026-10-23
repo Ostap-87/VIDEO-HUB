@@ -155,6 +155,13 @@ def matte_ranges(props, total: float) -> str:
     for x in props.get("texts", []) or []:
         if (x.get("plane") or "behind") == "behind":
             rs.append((x["at"], x["until"]))
+    # приёмы из референсов 23.10.2026: заголовок за спикером, картинки из-за головы (по умолчанию за спикером)
+    for x in props.get("titles", []) or []:
+        if x.get("plane") == "behind":
+            rs.append((x["at"], x["until"]))
+    for x in props.get("floats", []) or []:
+        if (x.get("plane") or "behind") == "behind":
+            rs.append((x["at"], x["until"]))
     rs = sorted((max(0, a - 0.4), min(total, b + 0.4)) for a, b in rs if b > a)
     merged = []
     for a, b in rs:

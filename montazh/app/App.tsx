@@ -326,10 +326,11 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
       const clips: Record<string, string> = video ? {source: video} : {};
       const cleanClips: Record<string, string> = clean ? {source: clean} : {};
       for (const e of p.effects) {
-        const n = e.params.image;
-        if (n && !images[n]) {
-          const b = await getFile(p.id, `img/${n}`);
-          if (b) urls.push((images[n] = URL.createObjectURL(b)));
+        for (const n of [e.params.image, e.params.image2, e.params.image3]) {
+          if (n && !images[n]) {
+            const b = await getFile(p.id, `img/${n}`);
+            if (b) urls.push((images[n] = URL.createObjectURL(b)));
+          }
         }
       }
       // ролики и фото склейки
@@ -1161,7 +1162,7 @@ const EffectEditor: React.FC<{item: EffectItem; p: Project; up: StepCtx["up"]; s
               </button>
             ))}
           </div>
-        ) : (f.kind === "image" || f.kind === "media") && item.params.hf ? (
+        ) : (f.kind === "image" || f.kind === "media") && f.key === "image" && item.params.hf ? (
           <div key={f.key} className="row">
             <img className="hfthumb" src={thumb(+item.params.hf)} />
             <span className="muted">Картинка №{item.params.hf} из каталога — другую выберите выше или загрузите свою:</span>
@@ -1782,8 +1783,11 @@ const Cloud: React.FC<{p: Project; up: StepCtx["up"]; props: Record<string, any>
       if (src) files.push({name: `source.${ext}`, blob: src});
       const images: Record<string, string> = {};
       for (const e of p.effects) {
-        const n = e.params.image;
-        if (n && !e.params.hf && !images[LOCAL.image(p.id, n)]) {
+        // все поля-картинки эффекта (у «картинок вокруг головы» их три); картинка из каталога (hf) — только в image
+        const keys = effectById(e.effect)?.fields.filter((f) => f.kind === "image" || f.kind === "media").map((f) => f.key) ?? ["image"];
+        for (const key of keys) {
+          const n = e.params[key];
+          if (!n || (key === "image" && e.params.hf) || images[LOCAL.image(p.id, n)]) continue;
           const b = await getFile(p.id, `img/${n}`);
           if (b) {
             images[LOCAL.image(p.id, n)] = `img-${n}`;

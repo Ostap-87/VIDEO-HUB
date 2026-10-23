@@ -208,6 +208,215 @@ const broll = (id: string, title: string, desc: string, transition: string, mode
   },
 });
 
+// ------------------------------------------------------------------ приёмы из референсов 23.10.2026
+// xkzv9pa «Монтаж через нейросети» (пользователь: «Забери все эффекты, которые есть в ролике») и d4ws46x «Монтируй через …»;
+// шаблон — reels-studio/src/components/RefFx.tsx
+const PLANE: [string, string][] = [["front", "перед спикером"], ["behind", "за спикером"]];
+const titleFx = (id: string, title: string, desc: string, ref: string, d: {font: "serif" | "grotesk"; y: string; plane: string; band?: boolean; text: string; script: string}): Effect => ({
+  id,
+  title,
+  cat: "Титры",
+  desc,
+  len: 2.6,
+  ref,
+  fields: [
+    {key: "text", label: "Крупное слово", hint: "пусто — слово речи"},
+    {key: "script", label: "Рукописью", hint: "две части через / — слева и справа снизу"},
+    {key: "y", label: "По вертикали", hint: d.plane === "behind" ? "по умолчанию — у макушки" : id === "title-band" ? "по умолчанию — между экранами «до / после» или над головой" : undefined, kind: "range", min: 250, max: 1500, step: 5, def: d.y},
+    {key: "plane", label: "Где", kind: "select", options: PLANE, def: d.plane},
+    {key: "band", label: "Подложка", kind: "select", options: [["0", "без полосы"], ["1", "тёмная полоса"]], def: d.band ? "1" : "0"},
+    {key: "color", label: "Цвет слова", kind: "color", def: "#FFFFFF"},
+    {key: "scriptColor", label: "Цвет рукописи", kind: "color", def: "#FFFFFF"},
+  ],
+  after: d.plane === "behind" ? "«за спикером» — после вырезки спикера (в окне слово поверх)" : undefined,
+  apply: (p, e, ctx) => {
+    const u = end(e, 2.6);
+    const said = spoken(ctx.words, e.at, u, 3).split(" ").filter(Boolean);
+    (p.titles ??= []).push({
+      at: e.at,
+      until: u,
+      text: e.params.text || said[0] || d.text,
+      script: e.params.script ?? (e.params.text ? "" : said.slice(1).join(" ") || d.script),
+      font: d.font,
+      // без своего положения: «гротеск за головой» — у макушки (голова закрывает низ букв); призыв — между экранами
+      // «до / после», если они идут в это время, иначе над головой
+      y: num(e, "y", d.plane === "behind" && p.focus?.y ? Math.round(p.focus.y - 270) : id === "title-band" ? ((p.splits ?? []).some((x: Props) => e.at >= x.at && e.at < x.until) ? SPLIT_PLATE_Y : Math.max(420, Math.round((p.focus?.y ?? 700) - 330))) : +d.y),
+      plane: e.params.plane || d.plane,
+      color: e.params.color || undefined,
+      scriptColor: e.params.scriptColor || undefined,
+      band: (e.params.band ?? (d.band ? "1" : "0")) === "1" || undefined,
+    });
+  },
+});
+const captionsFx = (style: "plate" | "corner" | "quiet", title: string, desc: string, ref: string, y: string): Effect => ({
+  id: `captions-${style}`,
+  title,
+  cat: "Титры",
+  desc,
+  len: 4,
+  ref,
+  fields: [{key: "y", label: "По вертикали", kind: "range", min: 700, max: 1500, step: 5, def: y}],
+  apply: (p, e) => (p.captionsAt ??= []).push({at: e.at, until: end(e, 4), style, y: num(e, "y", +y)}),
+});
+// у плашки «до / после» субтитры встают бежевой плашкой между экранами
+const SPLIT_PLATE_Y = 915;
+const HANDLE: Record<string, [string, string]> = {od: ["ostap.dotsenko", "instagram"], aura: ["aura-robotics.ru", "site"], gtt: ["globaltechtour.ru", "site"]};
+
+const REF_EFFECTS: Effect[] = [
+  {
+    id: "split-ba",
+    title: "До / после: два экрана",
+    cat: "Экраны",
+    desc: "Сверху смонтированный кадр, снизу оригинал, фон — размытая сцена; подписи-пилюли, субтитры плашкой между экранами",
+    len: 4,
+    ref: "xkzv9pa",
+    fields: [
+      {key: "top", label: "Подпись сверху", hint: "«Монтаж»"},
+      {key: "bottom", label: "Подпись снизу", hint: "«Оригинал»"},
+      {key: "image", label: "Нижний экран", kind: "media", hint: "пусто — тот же кадр без цвета и наездов"},
+      {key: "handle", label: "@ник в углу", hint: "необязательно"},
+      {key: "plate", label: "Субтитры", kind: "select", options: [["1", "плашкой между экранами"], ["0", "как обычно"]]},
+    ],
+    apply: (p, e, ctx) => {
+      const u = end(e, 4);
+      (p.splits ??= []).push({at: e.at, until: u, top: e.params.top || "Монтаж", bottom: e.params.bottom || "Оригинал", src: mediaOf(e, ctx) || undefined, handle: e.params.handle || undefined});
+      if (e.params.plate !== "0") (p.captionsAt ??= []).push({at: e.at, until: u, style: "plate", y: SPLIT_PLATE_Y});
+    },
+  },
+  titleFx("title-serif", "Заголовок: засечки + рукопись", "Слово тонкими буквами с засечками, поверх — строка от руки («МОНТАЖ через нейросети»)", "xkzv9pa", {font: "serif", y: "300", plane: "front", text: "Монтаж", script: "через / нейросети"}),
+  titleFx("title-grotesk", "Заголовок: гротеск + рукопись", "Огромное узкое слово за головой и рукописная строка поверх («МОНТИРУЙ через…»)", "d4ws46x", {font: "grotesk", y: "430", plane: "behind", text: "Монтируй", script: "через / нейросеть"}),
+  titleFx("title-band", "Призыв: слово + рукопись", "Крупное жирное слово и рукопись под ним между экранами или по центру («ПИШИ летим»), можно на тёмной полосе", "xkzv9pa", {font: "grotesk", y: "925", plane: "front", text: "Пиши", script: "летим"}),
+  captionsFx("plate", "Субтитры: бежевая плашка", "Фраза строчными тонкими буквами с засечками на бежевой плашке", "xkzv9pa", "1240"),
+  captionsFx("corner", "Субтитры: угол, 2 строки", "Жирный узкий курсив капсом справа, слова выскакивают по одному, вторая строка — золотом", "xkzv9pa", "1330"),
+  captionsFx("quiet", "Субтитры: тихие слева", "Небольшие белые строчные в две строки слева, без выделений", "d4ws46x", "1160"),
+  {
+    id: "zoom-macro",
+    title: "Макро-наезд",
+    cat: "Движение",
+    desc: "Резкий наезд вплотную — на глаза или губы, со звуком «вжух»",
+    len: 1.2,
+    ref: "xkzv9pa",
+    fields: [
+      {key: "target", label: "Куда", kind: "select", options: [["eyes", "на глаза"], ["lips", "на губы"]]},
+      {key: "amount", label: "Сила", kind: "select", options: [["1.1", "обычно"], ["0.7", "чуть"], ["1.6", "вплотную"]]},
+    ],
+    apply: (p, e) => p.zooms.push({at: e.at, kind: "macro", amount: strength(e, 1.1), hold: end(e, 1.2) - e.at, target: e.params.target || "eyes"}),
+  },
+  {
+    id: "sticker",
+    title: "Наклейка: логотип или картинка",
+    cat: "Эмодзи",
+    desc: "Своя картинка — логотип, значок — выскакивает наклейкой рядом с головой и покачивается",
+    len: 1.8,
+    ref: "xkzv9pa",
+    fields: [
+      {key: "image", label: "Картинка", kind: "image", hint: "лучше PNG без фона"},
+      {key: "spot", label: "Где", kind: "select", options: [["tr", "справа сверху"], ["tl", "слева сверху"], ["top", "над головой"], ["br", "справа снизу"], ["bl", "слева снизу"]]},
+      {key: "anim", label: "Движение", kind: "select", options: [["pop", "выскакивает"], ["shake", "трясётся"], ["float", "всплывает"]]},
+    ],
+    apply: (p, e, ctx) => {
+      const src = mediaOf(e, ctx);
+      if (!src) return;
+      const spot = EMOJI_SPOTS[e.params.spot || "tr"] ?? EMOJI_SPOTS.tr;
+      (p.emojis ??= []).push({at: e.at, until: end(e, 1.8), src, x: spot.x, y: spot.y, anim: e.params.anim || "pop", size: 220});
+    },
+  },
+  {
+    id: "fx-leak",
+    title: "Вспышка света",
+    cat: "Переходы",
+    desc: "Тёплый засвет проходит по кадру — мягкий переход на склейке",
+    len: 0.8,
+    ref: "xkzv9pa",
+    fields: [{key: "color", label: "Свет", kind: "select", options: [["255,150,70", "тёплый"], ["255,110,150", "розовый"], ["255,235,200", "белый"]]}],
+    apply: (p, e) => (p.fx ??= []).push({type: "leak", at: e.at, until: end(e, 0.8), color: e.params.color || undefined}),
+  },
+  {
+    id: "chat-card",
+    title: "Окно чата",
+    cat: "Графика",
+    desc: "Выскакивает окно ввода: кадр ролика прикреплён, текст печатается, кнопка «отправить» нажимается",
+    len: 3.5,
+    ref: "d4ws46x",
+    fields: [
+      {key: "text", label: "Текст запроса", hint: "«смонтируй ролик»"},
+      {key: "image", label: "Прикреплённый кадр", kind: "image", hint: "пусто — кадр ролика"},
+      {key: "label", label: "Подпись справа", hint: "«Монтажная»"},
+      {key: "y", label: "По вертикали", kind: "range", min: 350, max: 1300, step: 5, def: "1100"},
+    ],
+    apply: (p, e, ctx) => (p.chats ??= []).push({at: e.at, until: end(e, 3.5), text: e.params.text || "смонтируй ролик", image: mediaOf(e, ctx) || undefined, label: e.params.label || undefined, y: num(e, "y", 1100)}),
+  },
+  {
+    id: "floats",
+    title: "Картинки вокруг головы",
+    cat: "Графика",
+    desc: "2–3 картинки вылетают из-за головы и парят вокруг неё",
+    len: 3.5,
+    ref: "d4ws46x",
+    fields: [
+      {key: "image", label: "Картинка 1", kind: "media"},
+      {key: "image2", label: "Картинка 2", kind: "media"},
+      {key: "image3", label: "Картинка 3", kind: "media"},
+      {key: "plane", label: "Где", kind: "select", options: [["behind", "из-за спикера"], ["front", "перед спикером"]]},
+    ],
+    after: "«из-за спикера» — после вырезки спикера (в окне картинки поверх)",
+    apply: (p, e, ctx) => {
+      const items = [mediaOf(e, ctx), e.params.image2 ? ctx.image(e.params.image2) : "", e.params.image3 ? ctx.image(e.params.image3) : ""].filter(Boolean);
+      if (items.length) (p.floats ??= []).push({at: e.at, until: end(e, 3.5), items, plane: e.params.plane || "behind"});
+    },
+  },
+  {
+    id: "card-chest",
+    title: "Карточка у груди",
+    cat: "Графика",
+    desc: "Карточка с картинкой и подписью поднимается снизу и парит у груди — книга, тур, продукт",
+    len: 3.5,
+    ref: "d4ws46x",
+    fields: [
+      {key: "title", label: "Заголовок", hint: "пусто — слова речи"},
+      {key: "sub", label: "Подпись"},
+      {key: "image", label: "Картинка", kind: "media"},
+      {key: "y", label: "По вертикали", kind: "range", min: 900, max: 1300, step: 5, def: "1050"},
+    ],
+    apply: (p, e, ctx) => (p.cards ??= []).push({at: e.at, until: end(e, 3.5), title: e.params.title || spoken(ctx.words, e.at, end(e, 3.5), 4) || "Карточка", sub: e.params.sub || undefined, src: mediaOf(e, ctx) || undefined, y: num(e, "y", 1050)}),
+  },
+  {
+    id: "speaker-app",
+    title: "Спикер на фоне приложения",
+    cat: "Спикер",
+    desc: "Спикер вырезан в углу перед окном приложения: результат сначала грузится размытым, потом проявляется",
+    len: 4,
+    ref: "d4ws46x",
+    fields: [
+      {key: "title", label: "Задание в окне", hint: "«смонтируй ролик»"},
+      {key: "image", label: "Результат в окне", kind: "media", hint: "пусто — сам ролик"},
+      {key: "corner", label: "Куда", kind: "select", options: CORNERS, def: "br"},
+      {key: "scale", label: "Размер", kind: "range", min: 0.35, max: 0.75, step: 0.01, def: "0.62"},
+      {key: "windows", label: "Окна результата", kind: "select", options: [["1", "одно"], ["2", "два рядом, второе позже"]]},
+    ],
+    after: "контур — после вырезки спикера (в окне пока видна рамка)",
+    apply: (p, e, ctx) =>
+      (p.speaker ??= []).push({at: e.at, until: end(e, 4), corner: e.params.corner || "br", scale: num(e, "scale", 0.62), style: "contour", bg: "app", image: mediaOf(e, ctx) || undefined, title: e.params.title || undefined, windows: e.params.windows === "2" ? 2 : undefined}),
+  },
+  {
+    id: "outro-handle",
+    title: "Финал: иконка и @ник",
+    cat: "Графика",
+    desc: "Кадр темнеет, иконка соцсети выскакивает и становится цветной, под ней @ник",
+    len: 2.6,
+    ref: "xkzv9pa",
+    fields: [
+      {key: "handle", label: "@ник или адрес", hint: "пусто — канал бренда"},
+      {key: "network", label: "Соцсеть", kind: "select", options: [["instagram", "Instagram"], ["telegram", "Telegram"], ["site", "сайт"]]},
+      {key: "text", label: "Надпись от руки", hint: "«подписывайся», необязательно"},
+    ],
+    apply: (p, e) => {
+      const [h, net] = HANDLE[p.brand ?? "gtt"] ?? HANDLE.gtt;
+      (p.outros ??= []).push({at: e.at, until: end(e, 2.6), handle: e.params.handle || h, network: e.params.network || (e.params.handle ? "instagram" : net), text: e.params.text || undefined});
+    },
+  },
+];
+
 export const EFFECTS: Effect[] = [
   {
     id: "zoom-punch",
@@ -410,6 +619,7 @@ export const EFFECTS: Effect[] = [
     ],
     apply: (p, e) => (p.paletteAt ??= []).push({at: e.at, until: end(e, 4), text: e.params.text || "#FFFFFF", accent: e.params.accent || "#FFD92E", ink: e.params.ink || undefined}),
   },
+  ...REF_EFFECTS,
 ];
 
 export const effectById = (id: string) => EFFECTS.find((e) => e.id === id);

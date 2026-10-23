@@ -29,6 +29,7 @@ import {LinkArrow, SocialCard, SocialGrid} from "../components/SocialCard";
 import {activeScreen, captionTopFor, chainScreens, DropBackdrop, DropFrame, OD_LINKS, ScreenPanel, speakerCardStyle, speakerShift} from "../components/ScreenOverlay";
 import {HookTitle, hookSounds, type HookItem} from "../components/HookTitle";
 import {bwFilter, ColorWipes, EpisodeOutro} from "../components/SeriesFx";
+import {capStyleAt, Cards, Chats, floatBehindActive, Floats, LightLeaks, lowCaptions, outroActive, Outros, RefCaptions, Splits, titleBehindActive, Titles} from "../components/RefFx";
 import {EdlAudio, EdlCtx, placeEdl, SpeakerVideo} from "../components/EdlVideo";
 import {loadFont as loadOswald} from "@remotion/google-fonts/Oswald";
 
@@ -166,9 +167,11 @@ export const talkReelProSchema = z.object({
         corner: z.enum(["tl", "tr", "bl", "br", "top", "bottom", "center", "left", "right"]).optional(),
         scale: z.number().optional(),
         style: z.enum(["frame", "round", "contour"]).optional(),
-        bg: z.enum(["blur", "brand", "dark", "image"]).optional(),
+        bg: z.enum(["blur", "brand", "dark", "image", "app"]).optional(),
         image: z.string().optional(),
         tilt: z.number().optional(),
+        title: z.string().optional(),
+        windows: z.number().optional(),
       }),
     )
     .optional(),
@@ -232,7 +235,7 @@ export const talkReelProSchema = z.object({
   // Зумы на ключевых словах: punch — резкий наезд за 3 кадра (со звуком whip), push — плавный медленный наезд.
   // Держится hold секунд, потом плавно уходит. Между склейками уровни зума тоже чередуются (часть — плавно).
   zooms: z
-    .array(z.object({at: z.number(), kind: z.enum(["punch", "push", "pull"]), amount: z.number(), hold: z.number()}))
+    .array(z.object({at: z.number(), kind: z.enum(["punch", "push", "pull", "macro"]), amount: z.number(), hold: z.number(), target: z.enum(["eyes", "lips"]).optional()}))
     .default([]),
   sfx: z.object({pop: z.string(), whoosh: z.string(), whip: z.string().optional(), click: z.string().optional()}),
   // Фоновая музыка (только треки с коммерческой лицензией); volume ~0.1 под голосом, громче в финале
@@ -285,7 +288,38 @@ export const talkReelProSchema = z.object({
     .optional(),
   // Переходы серии (components/SeriesFx.tsx): wipe — заливка цветом из угла в момент at; bw — ч/б с at до until, потом цвет
   fx: z
-    .array(z.object({type: z.enum(["wipe", "bw"]), at: z.number(), until: z.number().optional(), color: z.string().optional(), corner: z.enum(["tl", "tr", "bl", "br"]).optional()}))
+    .array(z.object({type: z.enum(["wipe", "bw", "leak"]), at: z.number(), until: z.number().optional(), color: z.string().optional(), corner: z.enum(["tl", "tr", "bl", "br"]).optional()}))
+    .optional(),
+  // Приёмы из референсов Монтажной 23.10.2026 (components/RefFx.tsx): splits — «до / после» двумя экранами; titles —
+  // заголовок «засечки или гротеск + рукопись» (plane behind — за спикером, нужен cutoutSrc); captionsAt — субтитры
+  // на отрезке: plate (бежевая плашка), corner (угол, 2 строки, вторая золотом), quiet (тихие слева); chats — окно чата
+  // с печатью; floats — картинки вылетают из-за головы; cards — карточка у груди; outros — финал с иконкой и @ником.
+  // Ещё: zooms kind «macro» (target eyes / lips), fx type «leak» (вспышка света), speaker bg «app» (окно приложения).
+  splits: z
+    .array(z.object({at: z.number(), until: z.number(), top: z.string().optional(), bottom: z.string().optional(), src: z.string().optional(), handle: z.string().optional()}))
+    .optional(),
+  titles: z
+    .array(
+      z.object({
+        at: z.number(),
+        until: z.number(),
+        text: z.string(),
+        script: z.string().optional(),
+        font: z.enum(["serif", "grotesk"]).optional(),
+        y: z.number().optional(),
+        color: z.string().optional(),
+        scriptColor: z.string().optional(),
+        band: z.boolean().optional(),
+        plane: z.enum(["behind", "front"]).optional(),
+      }),
+    )
+    .optional(),
+  captionsAt: z.array(z.object({at: z.number(), until: z.number(), style: z.enum(["plate", "corner", "quiet"]), y: z.number().optional()})).optional(),
+  chats: z.array(z.object({at: z.number(), until: z.number(), text: z.string(), image: z.string().optional(), label: z.string().optional(), y: z.number().optional()})).optional(),
+  floats: z.array(z.object({at: z.number(), until: z.number(), items: z.array(z.string()), plane: z.enum(["behind", "front"]).optional()})).optional(),
+  cards: z.array(z.object({at: z.number(), until: z.number(), src: z.string().optional(), title: z.string(), sub: z.string().optional(), y: z.number().optional()})).optional(),
+  outros: z
+    .array(z.object({at: z.number(), until: z.number(), handle: z.string(), network: z.enum(["instagram", "telegram", "site"]).optional(), text: z.string().optional()}))
     .optional(),
   // Серия роликов: «часть N/total · title» под печатью и финальная карточка «Дальше → часть N+1: next» (без next — все ссылки)
   episode: z.object({n: z.number(), total: z.number(), title: z.string(), next: z.string().optional(), nextN: z.number().optional()}).optional(),
@@ -864,10 +898,10 @@ const zoomAt = (allCuts: number[], zooms: TalkReelProProps["zooms"], t: number, 
       continue;
     }
     if (t < z.at || t > z.at + z.hold + 0.6) continue;
-    const attack = z.kind === "punch" ? 0.1 : 1.4;
+    const attack = z.kind === "punch" ? 0.1 : z.kind === "macro" ? 0.14 : 1.4;
     const inP = interpolate(t, [z.at, z.at + attack], [0, 1], {
       extrapolateRight: "clamp",
-      easing: z.kind === "punch" ? Easing.out(Easing.cubic) : Easing.bezier(0.33, 0, 0.2, 1),
+      easing: z.kind === "punch" || z.kind === "macro" ? Easing.out(Easing.cubic) : Easing.bezier(0.33, 0, 0.2, 1),
     });
     const outP = interpolate(t, [z.at + z.hold, z.at + z.hold + 0.5], [1, 0], {
       extrapolateLeft: "clamp",
@@ -877,6 +911,17 @@ const zoomAt = (allCuts: number[], zooms: TalkReelProProps["zooms"], t: number, 
     extra = Math.max(extra, z.amount * Math.min(inP, outP));
   }
   return base + drift + extra;
+};
+
+// макро-наезд (референс xkzv9pa, 23.10.2026): вклад наезда «на глаза / на губы» сейчас — центр зума смещается к губам
+const macroNow = (zooms: TalkReelProProps["zooms"], t: number) => {
+  for (const z of zooms) {
+    if (z.kind !== "macro" || t < z.at || t > z.at + z.hold + 0.6) continue;
+    const inP = interpolate(t, [z.at, z.at + 0.14], [0, 1], {extrapolateRight: "clamp", easing: Easing.out(Easing.cubic)});
+    const outP = interpolate(t, [z.at + z.hold, z.at + z.hold + 0.5], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.bezier(0.45, 0, 0.2, 1)});
+    return {part: z.amount * Math.min(inP, outP), lips: z.target === "lips"};
+  }
+  return null;
 };
 
 // Зум на склейках: куски чередуют общий план и наезд, плюс лёгкий «дых» внутри куска.
@@ -898,8 +943,11 @@ const ZoomedVideo: React.FC<{
   hooks?: HookItem[];
   speaker?: TalkReelProProps["speaker"];
   texts?: TalkReelProProps["texts"];
+  titles?: TalkReelProProps["titles"];
+  floats?: TalkReelProProps["floats"];
+  faceTop?: number;
   stories?: boolean;
-}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists, bgFlags, angleB, clips, hooks, speaker, texts, stories = false}) => {
+}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists, bgFlags, angleB, clips, hooks, speaker, texts, titles, floats, faceTop, stories = false}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -929,6 +977,9 @@ const ZoomedVideo: React.FC<{
           : kind === "wipe"
             ? {clipPath: `polygon(0 0, ${p * 230}% 0, ${p * 230 - 130}% 100%, 0 100%)`}
             : {opacity: p};
+  // макро на губы: центр зума уходит от линии глаз к губам (≈ 0,78 расстояния от глаз до линии роста волос)
+  const mac = macroNow(zooms, t);
+  const originY = focus.y + (mac?.lips ? 0.78 * (focus.y - (faceTop ?? focus.y - 230)) * Math.min(1, mac.part / Math.max(0.001, zoom - 1)) : 0);
   const videoStyle: React.CSSProperties = {
     position: "absolute",
     inset: 0,
@@ -936,7 +987,7 @@ const ZoomedVideo: React.FC<{
     height: "100%",
     objectFit: "cover",
     scale: String(zoom),
-    transformOrigin: `${focus.x}px ${focus.y}px`,
+    transformOrigin: `${focus.x}px ${originY}px`,
     translate: `0px ${-lift}px`,
   };
   return (
@@ -975,6 +1026,14 @@ const ZoomedVideo: React.FC<{
       {!b && textBehindActive(texts, t) ? (
         <>
           <Texts3D items={texts} plane="behind" />
+          {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
+        </>
+      ) : null}
+      {/* заголовок «шрифт + рукопись» и картинки вокруг головы — за спикером (между видео и вырезкой) */}
+      {!b && (titleBehindActive(titles, t) || floatBehindActive(floats, t)) ? (
+        <>
+          <Titles items={titles} plane="behind" />
+          <Floats items={floats} plane="behind" focus={focus} />
           {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
         </>
       ) : null}
@@ -1749,6 +1808,15 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
     // заливка из угла — «вжух»; ч/б → цвет — хлопок в момент вспышки цвета
     ...(p.fx ?? []).map((x) => (x.type === "wipe" ? {at: x.at, src: p.sfx.whip ?? p.sfx.whoosh, volume: 0.35} : {at: x.until ?? x.at + 1, src: p.sfx.pop, volume: 0.35})),
     ...(p.episode ? [{at: p.speechSeconds, src: p.sfx.whoosh, volume: 0.3}] : []),
+    // приёмы из референсов 23.10.2026
+    ...p.zooms.filter((z) => z.kind === "macro").map((z) => ({at: z.at, src: p.sfx.whip ?? p.sfx.whoosh, volume: 0.22})),
+    ...(p.fx ?? []).filter((x) => x.type === "leak").map((x) => ({at: x.at, src: p.sfx.whoosh, volume: 0.3})),
+    ...(p.splits ?? []).map((x) => ({at: x.at, src: p.sfx.whoosh, volume: 0.32})),
+    ...(p.titles ?? []).map((x) => ({at: x.at, src: p.sfx.whoosh, volume: 0.28})),
+    ...(p.chats ?? []).flatMap((x) => [{at: x.at, src: p.sfx.pop, volume: 0.3}, {at: Math.min(x.until - 0.5, x.at + 0.65 + 0.055 * x.text.length), src: p.sfx.click ?? p.sfx.pop, volume: 0.45}]),
+    ...(p.floats ?? []).flatMap((x) => x.items.slice(0, 4).map((_, i) => ({at: x.at + i * 0.18, src: p.sfx.pop, volume: 0.28}))),
+    ...(p.cards ?? []).map((x) => ({at: x.at, src: p.sfx.whoosh, volume: 0.3})),
+    ...(p.outros ?? []).map((x) => ({at: x.at + 0.2, src: p.sfx.pop, volume: 0.35})),
   ];
 
   const tNow = frame / fps;
@@ -1805,9 +1873,13 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
         hooks={p.hooks}
         speaker={p.speaker}
         texts={p.texts}
+        titles={p.titles}
+        floats={p.floats}
+        faceTop={p.faceTop}
         stories={stories}
       />
       </AbsoluteFill>
+      <Splits items={p.splits} video={p.mediaSrc} focus={p.focus} grade={p.grade} />
       <DropFrame screens={screens} />
       <CityPanel cities={p.cities} />
       {p.clips ? <ClipPanel clips={p.clips} /> : null}
@@ -1815,6 +1887,10 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
       <Lists items={p.lists} stories={stories} />
       <Panels items={p.panels} stories={stories} />
       <Texts3D items={p.texts} plane="front" />
+      <Titles items={p.titles} plane="front" />
+      <Floats items={p.floats} plane="front" focus={p.focus} />
+      <Cards items={p.cards} />
+      <Chats items={p.chats} video={p.mediaSrc} focus={p.focus} />
 
       {/* в Stories верх занят полосками и аватаром: верхняя полоса плашек опускается (TopShift) */}
       <TopShift.Provider value={p.format === "stories" ? 130 : 0}>
@@ -1885,7 +1961,10 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
           <FlagArc items={fl.items} at={fl.at} until={fl.until} center={p.focus} />
         </Sequence>
       ))}
-      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={liftLists} broll={p.broll} clips={[...(p.clips ?? []), ...((p.panels ?? []).filter((x) => (x.from ?? "bottom") === "bottom") as unknown as NonNullable<TalkReelProProps["clips"]>)]} top={p.captionTop} size={p.captionSize} screens={screens} style3d={p.captionStyle === "3d"} fixed={p.captionFixed} />
+      {capStyleAt(p.captionsAt, tNow) || outroActive(p.outros, tNow) ? null : (
+      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={liftLists} broll={p.broll} clips={[...(p.clips ?? []), ...((p.panels ?? []).filter((x) => (x.from ?? "bottom") === "bottom") as unknown as NonNullable<TalkReelProProps["clips"]>)]} top={lowCaptions(p.chats, p.cards, tNow) ? 1450 : p.captionTop} size={p.captionSize} screens={screens} style3d={p.captionStyle === "3d"} fixed={p.captionFixed} />
+      )}
+      <RefCaptions words={p.words} items={p.captionsAt} until={p.speechSeconds} />
       {brand.id === "aura" ? (
         // Aura: круглая печать крутится над головой спикера, по центру; в Stories — ниже полосок и аватара
         <AuraBadgeSlot {...p} />
@@ -1901,7 +1980,9 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
           <SiteLogo variant="title" scale={1} />
         </div>
       )}
+      <Outros items={p.outros} />
       <ColorWipes fx={p.fx} />
+      <LightLeaks fx={p.fx} />
       {p.episode ? <EpisodeOutro ep={p.episode} start={p.speechSeconds - 0.05} links={p.links ?? OD_LINKS} /> : null}
       {p.showSafeZone ? <SafeZone /> : null}
     </AbsoluteFill>

@@ -1,0 +1,49 @@
+{
+ "created": "2026-10-23",
+ "source": "файл",
+ "duration": 48.77,
+ "width": 720,
+ "height": 1280,
+ "fps": 30.0,
+ "what": "все эффекты",
+ "video": "ролик.mp4",
+ "cuts": [
+  19.6,
+  28.93,
+  37.4,
+  44.73
+ ],
+ "hits": [
+  3.62,
+  4.09,
+  7.71,
+  23.78,
+  25.91,
+  28.79,
+  31.21,
+  35.29,
+  37.34,
+  39.84,
+  43.19,
+  45.05
+ ],
+ "sheets": [
+  "кадры-01.jpg",
+  "кадры-02.jpg",
+  "кадры-03.jpg",
+  "кадры-04.jpg",
+  "кадры-05.jpg",
+  "планы.jpg"
+ ],
+ "effects": [
+  "split-ba",
+  "title-serif",
+  "title-band",
+  "captions-plate",
+  "captions-corner",
+  "zoom-macro",
+  "fx-leak",
+  "sticker",
+  "outro-handle"
+ ]
+}

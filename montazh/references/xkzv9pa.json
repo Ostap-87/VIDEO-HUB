@@ -5,6 +5,17 @@
  "created": "2026-10-23 02:49:10",
  "id": "xkzv9pa",
  "asset": "ref-xkzv9pa.mp4",
- "status": "ждёт разбора",
- "effects": []
+ "status": "разобран",
+ "effects": [
+  "split-ba",
+  "title-serif",
+  "title-band",
+  "captions-plate",
+  "captions-corner",
+  "zoom-macro",
+  "fx-leak",
+  "sticker",
+  "outro-handle"
+ ],
+ "note": "«Монтаж через нейросети»: два экрана «до / после», заголовок с засечками и рукописью, бежевая плашка и угловые титры, макро на глаза и губы, засвет, наклейка, финал с @ником. Разбор — source-videos/референсы-эффекты/2026-10-23-ref-xkzv9pa/разбор.md"
 }
