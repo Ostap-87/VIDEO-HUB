@@ -1,0 +1,449 @@
+{
+ "version": 2,
+ "id": "av3mx7f",
+ "name": "IMG_5516",
+ "created": "2026-10-23 14:17:22",
+ "brand": "gtt",
+ "format": "both",
+ "options": {
+  "cutPauses": true,
+  "edl": false,
+  "formats": [
+   "reels",
+   "stories"
+  ]
+ },
+ "files": {
+  "source": "source.mov",
+  "images": {}
+ },
+ "local": {
+  "video": "montazh-local/source"
+ },
+ "hf": {},
+ "props": {
+  "mediaSrc": "montazh-local/source",
+  "cutoutSrc": "",
+  "words": [
+   {
+    "text": "Как",
+    "start": 0,
+    "end": 0.62
+   },
+   {
+    "text": "я",
+    "start": 0.62,
+    "end": 0.76
+   },
+   {
+    "text": "ранее",
+    "start": 0.76,
+    "end": 1.02
+   },
+   {
+    "text": "говорил,",
+    "start": 1.02,
+    "end": 1.52
+   },
+   {
+    "text": "здесь",
+    "start": 2.22,
+    "end": 2.36
+   },
+   {
+    "text": "два",
+    "start": 2.36,
+    "end": 2.94
+   },
+   {
+    "text": "знаковых",
+    "start": 2.94,
+    "end": 4.32
+   },
+   {
+    "text": "и",
+    "start": 4.32,
+    "end": 4.54
+   },
+   {
+    "text": "талонных",
+    "start": 4.54,
+    "end": 5.02
+   },
+   {
+    "text": "производства.",
+    "start": 5.02,
+    "end": 5.86
+   },
+   {
+    "text": "Это",
+    "start": 6,
+    "end": 6.42
+   },
+   {
+    "text": "компания",
+    "start": 6.42,
+    "end": 7
+   },
+   {
+    "text": "SANY",
+    "start": 7,
+    "end": 7.42
+   },
+   {
+    "text": "которая",
+    "start": 7.42,
+    "end": 7.66
+   },
+   {
+    "text": "занимается",
+    "start": 7.66,
+    "end": 8.28
+   },
+   {
+    "text": "строительной",
+    "start": 8.28,
+    "end": 9.58
+   },
+   {
+    "text": "техникой",
+    "start": 9.58,
+    "end": 10.22
+   },
+   {
+    "text": "и",
+    "start": 10.22,
+    "end": 10.58
+   },
+   {
+    "text": "производством",
+    "start": 10.58,
+    "end": 11.16
+   },
+   {
+    "text": "различных",
+    "start": 11.16,
+    "end": 11.78
+   },
+   {
+    "text": "систем",
+    "start": 11.78,
+    "end": 13.4
+   },
+   {
+    "text": "и",
+    "start": 13.4,
+    "end": 13.64
+   },
+   {
+    "text": "оборудования",
+    "start": 13.64,
+    "end": 14.32
+   },
+   {
+    "text": "для",
+    "start": 14.32,
+    "end": 14.58
+   },
+   {
+    "text": "строительства,",
+    "start": 14.58,
+    "end": 15.38
+   },
+   {
+    "text": "и",
+    "start": 15.42,
+    "end": 15.52
+   },
+   {
+    "text": "компанию",
+    "start": 15.52,
+    "end": 15.94
+   },
+   {
+    "text": "ZOOMLION",
+    "start": 15.94,
+    "end": 16.5
+   },
+   {
+    "text": "Кроме",
+    "start": 16.92,
+    "end": 17.34
+   },
+   {
+    "text": "того,",
+    "start": 17.34,
+    "end": 17.62
+   },
+   {
+    "text": "здесь",
+    "start": 17.9,
+    "end": 18
+   },
+   {
+    "text": "очень",
+    "start": 18,
+    "end": 18.42
+   },
+   {
+    "text": "много",
+    "start": 18.42,
+    "end": 18.86
+   },
+   {
+    "text": "производств,",
+    "start": 18.86,
+    "end": 20.2
+   },
+   {
+    "text": "которые",
+    "start": 20.3,
+    "end": 20.52
+   },
+   {
+    "text": "заточены",
+    "start": 20.52,
+    "end": 21.14
+   },
+   {
+    "text": "на",
+    "start": 21.14,
+    "end": 21.36
+   },
+   {
+    "text": "зеленую",
+    "start": 21.36,
+    "end": 21.9
+   },
+   {
+    "text": "энергетику,",
+    "start": 21.9,
+    "end": 22.58
+   },
+   {
+    "text": "и",
+    "start": 22.96,
+    "end": 23.2
+   },
+   {
+    "text": "мы",
+    "start": 23.2,
+    "end": 23.3
+   },
+   {
+    "text": "как",
+    "start": 23.3,
+    "end": 23.5
+   },
+   {
+    "text": "раз",
+    "start": 23.5,
+    "end": 23.8
+   },
+   {
+    "text": "-таки",
+    "start": 23.78,
+    "end": 23.94
+   },
+   {
+    "text": "сегодня",
+    "start": 23.94,
+    "end": 24.42
+   },
+   {
+    "text": "встречались",
+    "start": 24.42,
+    "end": 25.14
+   },
+   {
+    "text": "с",
+    "start": 25.14,
+    "end": 26.26
+   },
+   {
+    "text": "несколькими",
+    "start": 26.26,
+    "end": 26.82
+   },
+   {
+    "text": "компаниями.",
+    "start": 26.82,
+    "end": 28.24
+   },
+   {
+    "text": "Это",
+    "start": 28.58,
+    "end": 28.74
+   },
+   {
+    "text": "тоже",
+    "start": 28.74,
+    "end": 29.24
+   },
+   {
+    "text": "один",
+    "start": 29.24,
+    "end": 30.56
+   },
+   {
+    "text": "из",
+    "start": 30.56,
+    "end": 30.74
+   },
+   {
+    "text": "таких",
+    "start": 30.74,
+    "end": 30.9
+   },
+   {
+    "text": "факторов.",
+    "start": 30.9,
+    "end": 31.46
+   },
+   {
+    "text": "И",
+    "start": 31.94,
+    "end": 32.38
+   },
+   {
+    "text": "будет",
+    "start": 32.38,
+    "end": 32.62
+   },
+   {
+    "text": "интересно,",
+    "start": 32.62,
+    "end": 33.32
+   },
+   {
+    "text": "я",
+    "start": 33.48,
+    "end": 33.7
+   },
+   {
+    "text": "думаю,",
+    "start": 33.7,
+    "end": 33.9
+   },
+   {
+    "text": "в",
+    "start": 34.32,
+    "end": 34.4
+   },
+   {
+    "text": "дальнейшем",
+    "start": 34.4,
+    "end": 34.88
+   },
+   {
+    "text": "посетить",
+    "start": 34.88,
+    "end": 35.36
+   },
+   {
+    "text": "эти",
+    "start": 35.36,
+    "end": 35.54
+   },
+   {
+    "text": "производства",
+    "start": 35.54,
+    "end": 36.22
+   },
+   {
+    "text": "и",
+    "start": 36.22,
+    "end": 36.76
+   },
+   {
+    "text": "получиться",
+    "start": 36.76,
+    "end": 37.34
+   },
+   {
+    "text": "у",
+    "start": 37.34,
+    "end": 37.54
+   },
+   {
+    "text": "них,",
+    "start": 37.54,
+    "end": 37.78
+   },
+   {
+    "text": "как",
+    "start": 37.9,
+    "end": 38.38
+   },
+   {
+    "text": "они",
+    "start": 38.38,
+    "end": 38.66
+   },
+   {
+    "text": "вышли",
+    "start": 38.66,
+    "end": 39.02
+   },
+   {
+    "text": "на",
+    "start": 39.02,
+    "end": 39.14
+   },
+   {
+    "text": "определенный",
+    "start": 39.14,
+    "end": 39.78
+   },
+   {
+    "text": "уровень.",
+    "start": 39.78,
+    "end": 40.3
+   }
+  ],
+  "accentWords": [],
+  "cuts": [],
+  "chips": [],
+  "logos": [],
+  "numbers": [],
+  "broll": [],
+  "checklists": [],
+  "cities": [],
+  "zooms": [],
+  "sfx": {
+   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+   "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+  },
+  "music": {
+   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+   "volume": 0.078,
+   "outroVolume": 0.179,
+   "duck": 0.55
+  },
+  "speechSeconds": 42.068,
+  "site": {
+   "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
+   "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
+   "route": [],
+   "at": 1041.068333
+  },
+  "cta": "Экспедиции",
+  "ctaSeconds": 0.3,
+  "showSafeZone": false,
+  "format": "reels",
+  "brand": "gtt",
+  "bumper": false,
+  "focus": {
+   "x": 540,
+   "y": 700
+  },
+  "captionSize": 66,
+  "captionTop": 1500,
+  "captionStyle": "3d",
+  "grade": "brightness(1.000) contrast(1.220) saturate(1.180)"
+ },
+ "effects": [],
+ "notes": []
+}
