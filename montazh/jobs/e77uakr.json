@@ -1,0 +1,73 @@
+{
+ "version": 2,
+ "id": "e77uakr",
+ "name": "IMG_5461",
+ "created": "2026-10-23 12:56:55",
+ "brand": "gtt",
+ "format": "both",
+ "options": {
+  "cutPauses": true,
+  "edl": false,
+  "formats": [
+   "reels",
+   "stories"
+  ]
+ },
+ "files": {
+  "source": "source.mov",
+  "images": {}
+ },
+ "local": {
+  "video": "montazh-local/source"
+ },
+ "hf": {},
+ "props": {
+  "mediaSrc": "montazh-local/source",
+  "cutoutSrc": "",
+  "words": [],
+  "accentWords": [],
+  "cuts": [],
+  "chips": [],
+  "logos": [],
+  "numbers": [],
+  "broll": [],
+  "checklists": [],
+  "cities": [],
+  "zooms": [],
+  "sfx": {
+   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+   "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+  },
+  "music": {
+   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+   "volume": 0.078,
+   "outroVolume": 0.179,
+   "duck": 0.55
+  },
+  "speechSeconds": 23.64,
+  "site": {
+   "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
+   "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
+   "route": [],
+   "at": 1022.64
+  },
+  "cta": "Экспедиции",
+  "ctaSeconds": 0.3,
+  "showSafeZone": false,
+  "format": "reels",
+  "brand": "gtt",
+  "bumper": false,
+  "focus": {
+   "x": 540,
+   "y": 700
+  },
+  "captionSize": 66,
+  "captionTop": 1250,
+  "captionStyle": "flat",
+  "grade": "brightness(1.000) contrast(1.154) saturate(1.126)"
+ },
+ "effects": [],
+ "notes": []
+}
