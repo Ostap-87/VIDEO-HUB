@@ -1,0 +1,306 @@
+{
+ "version": 2,
+ "id": "7k1wm9w",
+ "name": "IMG_5449",
+ "created": "2026-10-23 12:15:14",
+ "brand": "gtt",
+ "format": "both",
+ "options": {
+  "cutPauses": true,
+  "edl": false,
+  "formats": [
+   "reels",
+   "stories"
+  ]
+ },
+ "files": {
+  "source": "source.mov",
+  "images": {}
+ },
+ "local": {
+  "video": "montazh-local/source"
+ },
+ "hf": {},
+ "props": {
+  "mediaSrc": "montazh-local/source",
+  "cutoutSrc": "",
+  "words": [
+   {
+    "text": "Ну",
+    "start": 0,
+    "end": 0.52
+   },
+   {
+    "text": "вот,",
+    "start": 0.52,
+    "end": 0.86
+   },
+   {
+    "text": "я",
+    "start": 1.02,
+    "end": 1.18
+   },
+   {
+    "text": "уже",
+    "start": 1.18,
+    "end": 1.44
+   },
+   {
+    "text": "в",
+    "start": 1.44,
+    "end": 1.62
+   },
+   {
+    "text": "гостинице,",
+    "start": 1.62,
+    "end": 2.3
+   },
+   {
+    "text": "меня",
+    "start": 2.36,
+    "end": 2.54
+   },
+   {
+    "text": "встретили,",
+    "start": 2.54,
+    "end": 3.26
+   },
+   {
+    "text": "эээ,",
+    "start": 3.42,
+    "end": 3.8
+   },
+   {
+    "text": "你好",
+    "start": 3.84,
+    "end": 4.16
+   },
+   {
+    "text": "，你好",
+    "start": 4.16,
+    "end": 4.74
+   },
+   {
+    "text": "，我",
+    "start": 4.96,
+    "end": 5.18
+   },
+   {
+    "text": "拍视频,",
+    "start": 5.18,
+    "end": 6.02
+   },
+   {
+    "text": "为",
+    "start": 7.04,
+    "end": 7.34
+   },
+   {
+    "text": "我的粉丝",
+    "start": 7.4,
+    "end": 8.42
+   },
+   {
+    "text": "Меня",
+    "start": 8.42,
+    "end": 9.74
+   },
+   {
+    "text": "уже",
+    "start": 9.74,
+    "end": 9.98
+   },
+   {
+    "text": "встретили,",
+    "start": 9.98,
+    "end": 10.6
+   },
+   {
+    "text": "сейчас",
+    "start": 10.78,
+    "end": 11
+   },
+   {
+    "text": "размещаюсь",
+    "start": 11,
+    "end": 11.94
+   },
+   {
+    "text": "и",
+    "start": 11.94,
+    "end": 12.54
+   },
+   {
+    "text": "вечером",
+    "start": 12.54,
+    "end": 13.48
+   },
+   {
+    "text": "в",
+    "start": 13.48,
+    "end": 13.62
+   },
+   {
+    "text": "6",
+    "start": 13.62,
+    "end": 13.72
+   },
+   {
+    "text": "часов",
+    "start": 13.72,
+    "end": 14.04
+   },
+   {
+    "text": "у",
+    "start": 14.04,
+    "end": 14.26
+   },
+   {
+    "text": "нас",
+    "start": 14.26,
+    "end": 14.4
+   },
+   {
+    "text": "банкет,",
+    "start": 14.4,
+    "end": 15.14
+   },
+   {
+    "text": "приветственная",
+    "start": 15.42,
+    "end": 16.16
+   },
+   {
+    "text": "речь,",
+    "start": 16.16,
+    "end": 16.6
+   },
+   {
+    "text": "администрации",
+    "start": 17.08,
+    "end": 18.22
+   },
+   {
+    "text": "города,",
+    "start": 18.22,
+    "end": 18.64
+   },
+   {
+    "text": "а",
+    "start": 19.42,
+    "end": 19.58
+   },
+   {
+    "text": "далее",
+    "start": 19.58,
+    "end": 19.84
+   },
+   {
+    "text": "уже",
+    "start": 19.84,
+    "end": 20.3
+   },
+   {
+    "text": "завтра",
+    "start": 20.3,
+    "end": 21.26
+   },
+   {
+    "text": "и",
+    "start": 21.26,
+    "end": 21.38
+   },
+   {
+    "text": "повезавтра",
+    "start": 21.38,
+    "end": 21.98
+   },
+   {
+    "text": "основные",
+    "start": 21.98,
+    "end": 22.44
+   },
+   {
+    "text": "мероприятия,",
+    "start": 22.44,
+    "end": 23.32
+   },
+   {
+    "text": "встречи",
+    "start": 23.58,
+    "end": 24.18
+   },
+   {
+    "text": "и",
+    "start": 24.18,
+    "end": 24.42
+   },
+   {
+    "text": "переговоры",
+    "start": 24.42,
+    "end": 25.48
+   },
+   {
+    "text": "с",
+    "start": 25.48,
+    "end": 25.76
+   },
+   {
+    "text": "крупными",
+    "start": 25.76,
+    "end": 26.1
+   },
+   {
+    "text": "компаниями.",
+    "start": 26.1,
+    "end": 26.9
+   }
+  ],
+  "accentWords": [
+   "6"
+  ],
+  "cuts": [],
+  "chips": [],
+  "logos": [],
+  "numbers": [],
+  "broll": [],
+  "checklists": [],
+  "cities": [],
+  "zooms": [],
+  "sfx": {
+   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+   "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+  },
+  "music": {
+   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+   "volume": 0.078,
+   "outroVolume": 0.179,
+   "duck": 0.55
+  },
+  "speechSeconds": 28.267,
+  "site": {
+   "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
+   "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
+   "route": [],
+   "at": 1027.2667
+  },
+  "cta": "Экспедиции",
+  "ctaSeconds": 0.3,
+  "showSafeZone": false,
+  "format": "reels",
+  "brand": "gtt",
+  "bumper": false,
+  "focus": {
+   "x": 443,
+   "y": 969
+  },
+  "captionSize": 66,
+  "captionTop": 1500,
+  "captionStyle": "3d",
+  "grade": "brightness(1.000) contrast(1.220) saturate(1.180)"
+ },
+ "effects": [],
+ "notes": []
+}
