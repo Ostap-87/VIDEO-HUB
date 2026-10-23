@@ -1,0 +1,420 @@
+{
+ "version": 2,
+ "id": "t3izwa4",
+ "name": "IMG_5403",
+ "created": "2026-10-23 08:46:01",
+ "brand": "gtt",
+ "format": "both",
+ "options": {
+  "cutPauses": false,
+  "edl": true,
+  "formats": [
+   "reels",
+   "stories"
+  ]
+ },
+ "files": {
+  "source": "clip-source.mov",
+  "clips": {
+   "source": "clip-source.mov"
+  },
+  "images": {}
+ },
+ "local": {
+  "video": "montazh-local/edl",
+  "clips": {
+   "montazh-local/clip/source": "source"
+  }
+ },
+ "hf": {},
+ "props": {
+  "mediaSrc": "montazh-local/edl",
+  "cutoutSrc": "",
+  "edl": [
+   {
+    "src": "montazh-local/clip/source",
+    "from": 0.62,
+    "to": 3.1
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 3.24,
+    "to": 4.43
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 4.83,
+    "to": 6.43
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 6.6,
+    "to": 8.91
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 9.07,
+    "to": 10.04
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 10.33,
+    "to": 12.96
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 13.34,
+    "to": 15.47
+   }
+  ],
+  "words": [
+   {
+    "text": "Так",
+    "start": 0,
+    "end": 0.22,
+    "c": "source",
+    "ci": 0
+   },
+   {
+    "text": "начинается",
+    "start": 0.22,
+    "end": 0.78,
+    "c": "source",
+    "ci": 1
+   },
+   {
+    "text": "новый",
+    "start": 0.78,
+    "end": 1,
+    "c": "source",
+    "ci": 2
+   },
+   {
+    "text": "день.",
+    "start": 1,
+    "end": 1.32,
+    "c": "source",
+    "ci": 3
+   },
+   {
+    "text": "Сегодня",
+    "start": 1.88,
+    "end": 2.2,
+    "c": "source",
+    "ci": 4
+   },
+   {
+    "text": "поездка",
+    "start": 2.48,
+    "end": 2.94,
+    "c": "source",
+    "ci": 5
+   },
+   {
+    "text": "в",
+    "start": 2.94,
+    "end": 3.02,
+    "c": "source",
+    "ci": 6
+   },
+   {
+    "text": "Чанша",
+    "start": 3.02,
+    "end": 3.5,
+    "c": "source",
+    "ci": 7
+   },
+   {
+    "text": "Четыре",
+    "start": 3.8,
+    "end": 4.06,
+    "c": "source",
+    "ci": 8
+   },
+   {
+    "text": "часа",
+    "start": 4.06,
+    "end": 4.34,
+    "c": "source",
+    "ci": 9
+   },
+   {
+    "text": "на",
+    "start": 4.34,
+    "end": 4.48,
+    "c": "source",
+    "ci": 10
+   },
+   {
+    "text": "поезде.",
+    "start": 4.48,
+    "end": 4.96,
+    "c": "source",
+    "ci": 11
+   },
+   {
+    "text": "Для",
+    "start": 5.27,
+    "end": 5.49,
+    "c": "source",
+    "ci": 12
+   },
+   {
+    "text": "того,",
+    "start": 5.49,
+    "end": 5.65,
+    "c": "source",
+    "ci": 13
+   },
+   {
+    "text": "чтобы",
+    "start": 5.67,
+    "end": 5.81,
+    "c": "source",
+    "ci": 14
+   },
+   {
+    "text": "договориться",
+    "start": 5.81,
+    "end": 6.37,
+    "c": "source",
+    "ci": 15
+   },
+   {
+    "text": "на",
+    "start": 6.37,
+    "end": 6.51,
+    "c": "source",
+    "ci": 16
+   },
+   {
+    "text": "посещение",
+    "start": 6.51,
+    "end": 7.01,
+    "c": "source",
+    "ci": 17
+   },
+   {
+    "text": "новых",
+    "start": 7.01,
+    "end": 7.31,
+    "c": "source",
+    "ci": 18
+   },
+   {
+    "text": "предприятий.",
+    "start": 7.58,
+    "end": 8.55,
+    "c": "source",
+    "ci": 19
+   },
+   {
+    "text": "И",
+    "start": 8.55,
+    "end": 8.74,
+    "c": "source",
+    "ci": 20
+   },
+   {
+    "text": "организовывать",
+    "start": 8.74,
+    "end": 9.36,
+    "c": "source",
+    "ci": 21
+   },
+   {
+    "text": "новые",
+    "start": 9.36,
+    "end": 9.88,
+    "c": "source",
+    "ci": 22
+   },
+   {
+    "text": "корпоративные",
+    "start": 9.88,
+    "end": 10.72,
+    "c": "source",
+    "ci": 23
+   },
+   {
+    "text": "туры.",
+    "start": 10.72,
+    "end": 11.18,
+    "c": "source",
+    "ci": 24
+   },
+   {
+    "text": "И",
+    "start": 11.42,
+    "end": 11.46,
+    "c": "source",
+    "ci": 25
+   },
+   {
+    "text": "технологические",
+    "start": 11.46,
+    "end": 12.46,
+    "c": "source",
+    "ci": 26
+   },
+   {
+    "text": "экспедиции.",
+    "start": 12.46,
+    "end": 13.04,
+    "c": "source",
+    "ci": 27
+   }
+  ],
+  "accentWords": [],
+  "cuts": [
+   2.48,
+   3.67,
+   5.27,
+   7.58,
+   8.55,
+   11.18
+  ],
+  "chips": [],
+  "logos": [],
+  "numbers": [],
+  "broll": [],
+  "checklists": [],
+  "cities": [],
+  "zooms": [
+   {
+    "at": 7.6,
+    "kind": "macro",
+    "amount": 1.1,
+    "hold": 1.8000000000000007,
+    "target": "eyes"
+   }
+  ],
+  "sfx": {
+   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+   "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+  },
+  "music": {
+   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+   "volume": 0.078,
+   "outroVolume": 0.179,
+   "duck": 0.55
+  },
+  "speechSeconds": 13.31,
+  "site": {
+   "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
+   "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
+   "route": [],
+   "at": 1012.31
+  },
+  "cta": "Экспедиции",
+  "ctaSeconds": 0.3,
+  "showSafeZone": false,
+  "format": "reels",
+  "brand": "gtt",
+  "bumper": false,
+  "focus": {
+   "x": 508,
+   "y": 927
+  },
+  "captionSize": 65,
+  "captionTop": 1500,
+  "captionStyle": "3d",
+  "grade": "brightness(1.000) contrast(1.176) saturate(1.144)",
+  "fx": [
+   {
+    "type": "whip",
+    "at": -0.03,
+    "until": 0.97
+   }
+  ],
+  "titles": [
+   {
+    "at": 3,
+    "until": 4.8,
+    "text": "Чанша",
+    "font": "grotesk",
+    "y": 380,
+    "plane": "front",
+    "echo": true
+   }
+  ],
+  "texts": [
+   {
+    "at": 9.67,
+    "until": 12.67,
+    "text": "корпоративные туры И",
+    "x": 540,
+    "y": 420,
+    "size": 140,
+    "rx": 0,
+    "ry": -12,
+    "rz": -9,
+    "color": "#FFFFFF",
+    "font": "display",
+    "plane": "front",
+    "anim": "rise",
+    "depth": 6
+   }
+  ],
+  "hooks": [
+   {
+    "variant": "wall",
+    "at": 9.97,
+    "until": 12.97,
+    "lines": [
+     {
+      "text": "туры И технологические экспедиции",
+      "at": 10.07
+     }
+    ]
+   }
+  ]
+ },
+ "effects": [
+  {
+   "id": "erueikq9",
+   "effect": "title-echo",
+   "at": 3,
+   "until": 4.8,
+   "params": {}
+  },
+  {
+   "id": "ei9k6vqy",
+   "effect": "fx-whip",
+   "at": -0.03,
+   "until": 0.97,
+   "params": {}
+  },
+  {
+   "id": "ett211yu",
+   "effect": "panel-top",
+   "at": 7.6,
+   "until": 11.1,
+   "params": {}
+  },
+  {
+   "id": "e5iiy6r4",
+   "effect": "zoom-macro",
+   "at": 7.6,
+   "until": 9.4,
+   "params": {}
+  },
+  {
+   "id": "e4l2kch5",
+   "effect": "text3d-tilt",
+   "at": 9.67,
+   "until": 12.67,
+   "params": {}
+  },
+  {
+   "id": "erptzcre",
+   "effect": "hook-wall",
+   "at": 9.97,
+   "until": 12.97,
+   "params": {}
+  }
+ ],
+ "notes": []
+}
