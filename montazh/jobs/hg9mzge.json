@@ -1,0 +1,970 @@
+{
+ "version": 2,
+ "id": "hg9mzge",
+ "name": "IMG_5412",
+ "created": "2026-10-23 09:55:56",
+ "brand": "gtt",
+ "format": "both",
+ "options": {
+  "cutPauses": false,
+  "edl": true,
+  "formats": [
+   "reels",
+   "stories"
+  ]
+ },
+ "files": {
+  "source": "clip-source.mov",
+  "clips": {
+   "source": "clip-source.mov"
+  },
+  "images": {}
+ },
+ "local": {
+  "video": "montazh-local/edl",
+  "clips": {
+   "montazh-local/clip/source": "source"
+  }
+ },
+ "hf": {},
+ "props": {
+  "mediaSrc": "montazh-local/edl",
+  "cutoutSrc": "",
+  "edl": [
+   {
+    "src": "montazh-local/clip/source",
+    "from": 0.25,
+    "to": 2.69
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 3.09,
+    "to": 7.79
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 8.38,
+    "to": 11.52
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 11.78,
+    "to": 12.71
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 13.19,
+    "to": 15.06
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 15.59,
+    "to": 18.68
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 19.27,
+    "to": 23.49
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 23.78,
+    "to": 26
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 26.46,
+    "to": 28.69
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 29.44,
+    "to": 32.57
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 33.5,
+    "to": 37.56
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 37.86,
+    "to": 39.27
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 39.54,
+    "to": 40.36
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 40.63,
+    "to": 41.45
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 41.9,
+    "to": 43.07
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 43.53,
+    "to": 47.1
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 47.67,
+    "to": 48.87
+   }
+  ],
+  "words": [
+   {
+    "text": "еще",
+    "start": 0,
+    "end": 0.29,
+    "c": "source",
+    "ci": 0
+   },
+   {
+    "text": "очень",
+    "start": 0.29,
+    "end": 0.83,
+    "c": "source",
+    "ci": 1
+   },
+   {
+    "text": "распространенный",
+    "start": 0.83,
+    "end": 1.81,
+    "c": "source",
+    "ci": 2
+   },
+   {
+    "text": "момент",
+    "start": 1.81,
+    "end": 2.31,
+    "c": "source",
+    "ci": 3
+   },
+   {
+    "text": "мы",
+    "start": 2.44,
+    "end": 2.79,
+    "c": "source",
+    "ci": 4
+   },
+   {
+    "text": "сейчас",
+    "start": 2.79,
+    "end": 3.07,
+    "c": "source",
+    "ci": 5
+   },
+   {
+    "text": "приедем",
+    "start": 3.07,
+    "end": 3.75,
+    "c": "source",
+    "ci": 6
+   },
+   {
+    "text": "в",
+    "start": 3.75,
+    "end": 3.87,
+    "c": "source",
+    "ci": 7
+   },
+   {
+    "text": "Китае",
+    "start": 3.87,
+    "end": 4.41,
+    "c": "source",
+    "ci": 8
+   },
+   {
+    "text": "и",
+    "start": 4.41,
+    "end": 4.45,
+    "c": "source",
+    "ci": 9
+   },
+   {
+    "text": "все",
+    "start": 4.45,
+    "end": 4.73,
+    "c": "source",
+    "ci": 10
+   },
+   {
+    "text": "мы",
+    "start": 4.73,
+    "end": 4.97,
+    "c": "source",
+    "ci": 11
+   },
+   {
+    "text": "там",
+    "start": 4.97,
+    "end": 5.17,
+    "c": "source",
+    "ci": 12
+   },
+   {
+    "text": "на",
+    "start": 5.17,
+    "end": 5.33,
+    "c": "source",
+    "ci": 13
+   },
+   {
+    "text": "Кантонской",
+    "start": 5.33,
+    "end": 5.85,
+    "c": "source",
+    "ci": 14
+   },
+   {
+    "text": "ярмарке",
+    "start": 5.85,
+    "end": 6.31,
+    "c": "source",
+    "ci": 15
+   },
+   {
+    "text": "все",
+    "start": 6.31,
+    "end": 6.51,
+    "c": "source",
+    "ci": 16
+   },
+   {
+    "text": "найдем",
+    "start": 6.51,
+    "end": 7.01,
+    "c": "source",
+    "ci": 17
+   },
+   {
+    "text": "ну",
+    "start": 7.14,
+    "end": 7.42,
+    "c": "source",
+    "ci": 18
+   },
+   {
+    "text": "давайте",
+    "start": 7.42,
+    "end": 7.96,
+    "c": "source",
+    "ci": 19
+   },
+   {
+    "text": "не",
+    "start": 7.96,
+    "end": 8.2,
+    "c": "source",
+    "ci": 20
+   },
+   {
+    "text": "будем",
+    "start": 8.2,
+    "end": 8.52,
+    "c": "source",
+    "ci": 21
+   },
+   {
+    "text": "бабушку",
+    "start": 8.52,
+    "end": 9.62,
+    "c": "source",
+    "ci": 22
+   },
+   {
+    "text": "лохматить",
+    "start": 9.62,
+    "end": 10.22,
+    "c": "source",
+    "ci": 23
+   },
+   {
+    "text": "в",
+    "start": 10.28,
+    "end": 10.4,
+    "c": "source",
+    "ci": 24
+   },
+   {
+    "text": "конце",
+    "start": 10.4,
+    "end": 10.6,
+    "c": "source",
+    "ci": 25
+   },
+   {
+    "text": "концов",
+    "start": 10.6,
+    "end": 11.21,
+    "c": "source",
+    "ci": 26
+   },
+   {
+    "text": "ну",
+    "start": 11.21,
+    "end": 11.46,
+    "c": "source",
+    "ci": 27
+   },
+   {
+    "text": "да",
+    "start": 11.46,
+    "end": 11.66,
+    "c": "source",
+    "ci": 28
+   },
+   {
+    "text": "вы",
+    "start": 11.66,
+    "end": 11.84,
+    "c": "source",
+    "ci": 29
+   },
+   {
+    "text": "найдете",
+    "start": 11.84,
+    "end": 12.22,
+    "c": "source",
+    "ci": 30
+   },
+   {
+    "text": "перекупщиков",
+    "start": 12.22,
+    "end": 12.96,
+    "c": "source",
+    "ci": 31
+   },
+   {
+    "text": "на",
+    "start": 13.08,
+    "end": 13.39,
+    "c": "source",
+    "ci": 32
+   },
+   {
+    "text": "прямые",
+    "start": 13.39,
+    "end": 13.91,
+    "c": "source",
+    "ci": 33
+   },
+   {
+    "text": "контакты",
+    "start": 13.91,
+    "end": 14.49,
+    "c": "source",
+    "ci": 34
+   },
+   {
+    "text": "вы",
+    "start": 14.49,
+    "end": 14.71,
+    "c": "source",
+    "ci": 35
+   },
+   {
+    "text": "очень",
+    "start": 14.71,
+    "end": 15.05,
+    "c": "source",
+    "ci": 36
+   },
+   {
+    "text": "редко",
+    "start": 15.05,
+    "end": 15.53,
+    "c": "source",
+    "ci": 37
+   },
+   {
+    "text": "попадете",
+    "start": 15.53,
+    "end": 16.09,
+    "c": "source",
+    "ci": 38
+   },
+   {
+    "text": "прямые",
+    "start": 16.17,
+    "end": 16.8,
+    "c": "source",
+    "ci": 39
+   },
+   {
+    "text": "контакты",
+    "start": 16.8,
+    "end": 18,
+    "c": "source",
+    "ci": 40
+   },
+   {
+    "text": "сами",
+    "start": 18,
+    "end": 19.08,
+    "c": "source",
+    "ci": 41
+   },
+   {
+    "text": "фабрики",
+    "start": 19.08,
+    "end": 19.8,
+    "c": "source",
+    "ci": 42
+   },
+   {
+    "text": "ну",
+    "start": 19.8,
+    "end": 20.18,
+    "c": "source",
+    "ci": 43
+   },
+   {
+    "text": "в",
+    "start": 20.18,
+    "end": 20.39,
+    "c": "source",
+    "ci": 44
+   },
+   {
+    "text": "30",
+    "start": 20.57,
+    "end": 21.01,
+    "c": "source",
+    "ci": 45
+   },
+   {
+    "text": "процентах",
+    "start": 21.01,
+    "end": 21.65,
+    "c": "source",
+    "ci": 46
+   },
+   {
+    "text": "случаев",
+    "start": 21.65,
+    "end": 22.05,
+    "c": "source",
+    "ci": 47
+   },
+   {
+    "text": "бывают",
+    "start": 22.05,
+    "end": 22.49,
+    "c": "source",
+    "ci": 48
+   },
+   {
+    "text": "это",
+    "start": 22.61,
+    "end": 22.93,
+    "c": "source",
+    "ci": 49
+   },
+   {
+    "text": "максимум,",
+    "start": 22.93,
+    "end": 23.79,
+    "c": "source",
+    "ci": 50
+   },
+   {
+    "text": "что",
+    "start": 23.79,
+    "end": 23.97,
+    "c": "source",
+    "ci": 51
+   },
+   {
+    "text": "вы",
+    "start": 23.97,
+    "end": 24.11,
+    "c": "source",
+    "ci": 52
+   },
+   {
+    "text": "получите.",
+    "start": 24.11,
+    "end": 24.77,
+    "c": "source",
+    "ci": 53
+   },
+   {
+    "text": "Если",
+    "start": 25,
+    "end": 25.42,
+    "c": "source",
+    "ci": 54
+   },
+   {
+    "text": "вы",
+    "start": 25.42,
+    "end": 25.56,
+    "c": "source",
+    "ci": 55
+   },
+   {
+    "text": "хотите",
+    "start": 25.56,
+    "end": 25.8,
+    "c": "source",
+    "ci": 56
+   },
+   {
+    "text": "качественно",
+    "start": 25.8,
+    "end": 26.66,
+    "c": "source",
+    "ci": 57
+   },
+   {
+    "text": "провести,",
+    "start": 26.66,
+    "end": 27.64,
+    "c": "source",
+    "ci": 58
+   },
+   {
+    "text": "свою",
+    "start": 28.01,
+    "end": 28.13,
+    "c": "source",
+    "ci": 61
+   },
+   {
+    "text": "поездку",
+    "start": 28.13,
+    "end": 28.95,
+    "c": "source",
+    "ci": 62
+   },
+   {
+    "text": "в",
+    "start": 28.95,
+    "end": 29.21,
+    "c": "source",
+    "ci": 63
+   },
+   {
+    "text": "Китай",
+    "start": 29.21,
+    "end": 29.59,
+    "c": "source",
+    "ci": 64
+   },
+   {
+    "text": "для",
+    "start": 29.59,
+    "end": 29.87,
+    "c": "source",
+    "ci": 65
+   },
+   {
+    "text": "того,",
+    "start": 29.87,
+    "end": 30.05,
+    "c": "source",
+    "ci": 66
+   },
+   {
+    "text": "чтобы",
+    "start": 30.13,
+    "end": 30.25,
+    "c": "source",
+    "ci": 67
+   },
+   {
+    "text": "качественные",
+    "start": 30.25,
+    "end": 30.95,
+    "c": "source",
+    "ci": 68
+   },
+   {
+    "text": "контакты",
+    "start": 30.95,
+    "end": 31.49,
+    "c": "source",
+    "ci": 69
+   },
+   {
+    "text": "подобрать,",
+    "start": 31.49,
+    "end": 32.03,
+    "c": "source",
+    "ci": 70
+   },
+   {
+    "text": "вам",
+    "start": 32.03,
+    "end": 32.23,
+    "c": "source",
+    "ci": 71
+   },
+   {
+    "text": "необходимо",
+    "start": 32.23,
+    "end": 33.01,
+    "c": "source",
+    "ci": 72
+   },
+   {
+    "text": "действовать",
+    "start": 33.44,
+    "end": 34.02,
+    "c": "source",
+    "ci": 73
+   },
+   {
+    "text": "по",
+    "start": 34.02,
+    "end": 34.26,
+    "c": "source",
+    "ci": 74
+   },
+   {
+    "text": "другой",
+    "start": 34.47,
+    "end": 34.81,
+    "c": "source",
+    "ci": 75
+   },
+   {
+    "text": "стратегии.",
+    "start": 35.08,
+    "end": 36.1,
+    "c": "source",
+    "ci": 76
+   },
+   {
+    "text": "Это",
+    "start": 36.25,
+    "end": 36.54,
+    "c": "source",
+    "ci": 77
+   },
+   {
+    "text": "нужно",
+    "start": 36.54,
+    "end": 36.78,
+    "c": "source",
+    "ci": 78
+   },
+   {
+    "text": "точно",
+    "start": 36.78,
+    "end": 37.24,
+    "c": "source",
+    "ci": 79
+   },
+   {
+    "text": "подбирать",
+    "start": 37.24,
+    "end": 37.88,
+    "c": "source",
+    "ci": 80
+   },
+   {
+    "text": "производство",
+    "start": 37.88,
+    "end": 38.52,
+    "c": "source",
+    "ci": 81
+   },
+   {
+    "text": "и",
+    "start": 38.52,
+    "end": 38.62,
+    "c": "source",
+    "ci": 82
+   },
+   {
+    "text": "точно",
+    "start": 38.62,
+    "end": 38.96,
+    "c": "source",
+    "ci": 83
+   },
+   {
+    "text": "на",
+    "start": 38.96,
+    "end": 39.26,
+    "c": "source",
+    "ci": 84
+   },
+   {
+    "text": "них",
+    "start": 39.26,
+    "end": 39.44,
+    "c": "source",
+    "ci": 85
+   },
+   {
+    "text": "ехать.",
+    "start": 39.44,
+    "end": 39.82,
+    "c": "source",
+    "ci": 86
+   },
+   {
+    "text": "Тогда",
+    "start": 39.82,
+    "end": 40.13,
+    "c": "source",
+    "ci": 87
+   },
+   {
+    "text": "будет",
+    "start": 40.13,
+    "end": 40.53,
+    "c": "source",
+    "ci": 88
+   },
+   {
+    "text": "толк.",
+    "start": 40.53,
+    "end": 41.02,
+    "c": "source",
+    "ci": 89
+   }
+  ],
+  "accentWords": [
+   "30"
+  ],
+  "cuts": [
+   2.44,
+   7.14,
+   10.28,
+   11.21,
+   13.08,
+   16.17,
+   20.39,
+   22.61,
+   24.84,
+   27.97,
+   32.03,
+   33.44,
+   34.26,
+   35.08,
+   36.25,
+   39.82
+  ],
+  "chips": [],
+  "logos": [],
+  "numbers": [],
+  "broll": [],
+  "checklists": [],
+  "cities": [],
+  "zooms": [
+   {
+    "at": 0,
+    "kind": "macro",
+    "amount": 1.6,
+    "hold": 2.3,
+    "target": "lips"
+   },
+   {
+    "at": 12.22,
+    "kind": "punch",
+    "amount": 0.14,
+    "hold": 0.8999999999999986
+   },
+   {
+    "at": 16.17,
+    "kind": "push",
+    "amount": 0.08,
+    "hold": 2
+   },
+   {
+    "at": 20.57,
+    "kind": "punch",
+    "amount": 0.14,
+    "hold": 0.8999999999999986
+   },
+   {
+    "at": 24.11,
+    "kind": "pull",
+    "amount": 0.16,
+    "hold": 1.6000000000000014
+   },
+   {
+    "at": 28.13,
+    "kind": "punch",
+    "amount": 0.14,
+    "hold": 0.9000000000000021
+   },
+   {
+    "at": 32.23,
+    "kind": "push",
+    "amount": 0.08,
+    "hold": 2
+   },
+   {
+    "at": 36.54,
+    "kind": "punch",
+    "amount": 0.14,
+    "hold": 0.8999999999999986
+   }
+  ],
+  "sfx": {
+   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+   "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+  },
+  "music": {
+   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+   "volume": 0.047,
+   "outroVolume": 0.108,
+   "duck": 0.55
+  },
+  "speechSeconds": 41.02,
+  "site": {
+   "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
+   "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
+   "route": [],
+   "at": 1040.02
+  },
+  "cta": "Экспедиции",
+  "ctaSeconds": 0.3,
+  "showSafeZone": false,
+  "format": "reels",
+  "brand": "gtt",
+  "bumper": false,
+  "focus": {
+   "x": 680,
+   "y": 1006
+  },
+  "captionSize": 66,
+  "captionTop": 1500,
+  "captionStyle": "flat",
+  "grade": "brightness(1.000) contrast(1.220) saturate(1.180)",
+  "fx": [
+   {
+    "type": "bw",
+    "at": 2.47,
+    "until": 4.47
+   }
+  ],
+  "texts": [
+   {
+    "at": 8.27,
+    "until": 10.77,
+    "text": "бабушку лохматить в",
+    "x": 540,
+    "y": 420,
+    "size": 140,
+    "rx": 0,
+    "ry": -12,
+    "rz": -9,
+    "color": "#FFFFFF",
+    "font": "display",
+    "plane": "front",
+    "anim": "rise",
+    "depth": 6
+   }
+  ]
+ },
+ "effects": [
+  {
+   "id": "e4rta9w9",
+   "effect": "zoom-macro",
+   "at": 0,
+   "until": 2.3,
+   "params": {
+    "target": "lips",
+    "amount": "1.6"
+   }
+  },
+  {
+   "id": "ehs7p2cu",
+   "effect": "fx-bw",
+   "at": 2.47,
+   "until": 4.47,
+   "params": {}
+  },
+  {
+   "id": "eepjl1vt",
+   "effect": "text3d-tilt",
+   "at": 8.27,
+   "until": 10.77,
+   "params": {}
+  },
+  {
+   "id": "euoh94tz",
+   "at": 12.22,
+   "params": {
+    "rhythm": "1",
+    "amount": "0.14"
+   },
+   "effect": "zoom-punch",
+   "until": 13.12
+  },
+  {
+   "id": "e8uyrm01",
+   "at": 16.17,
+   "params": {
+    "rhythm": "1"
+   },
+   "effect": "zoom-push",
+   "until": 18.17
+  },
+  {
+   "id": "eh2ieccq",
+   "at": 20.57,
+   "params": {
+    "rhythm": "1",
+    "amount": "0.14"
+   },
+   "effect": "zoom-punch",
+   "until": 21.47
+  },
+  {
+   "id": "ebf78of6",
+   "at": 24.11,
+   "params": {
+    "rhythm": "1",
+    "amount": "0.16"
+   },
+   "effect": "zoom-pull",
+   "until": 25.71
+  },
+  {
+   "id": "edp7doiw",
+   "at": 28.13,
+   "params": {
+    "rhythm": "1",
+    "amount": "0.14"
+   },
+   "effect": "zoom-punch",
+   "until": 29.03
+  },
+  {
+   "id": "e0aml8od",
+   "at": 32.23,
+   "params": {
+    "rhythm": "1"
+   },
+   "effect": "zoom-push",
+   "until": 34.23
+  },
+  {
+   "id": "ev5mf0vn",
+   "at": 36.54,
+   "params": {
+    "rhythm": "1",
+    "amount": "0.14"
+   },
+   "effect": "zoom-punch",
+   "until": 37.44
+  }
+ ],
+ "notes": []
+}
