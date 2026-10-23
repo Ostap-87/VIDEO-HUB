@@ -248,6 +248,8 @@ details pre { background: var(--panel); border: 1px solid var(--line); border-ra
 .jobcard .sheet { width: 100%; border-radius: 8px; }
 .rangef { display: flex; flex-direction: column; gap: 2px; font-size: 13px; color: var(--muted); }
 .rangef b { color: var(--ink); font-weight: 600; }
+.dials { display: grid; gap: 10px; margin: 6px 0 12px; padding: 10px 12px; border-radius: 12px; background: var(--soft, rgba(127,127,127,0.08)); }
+.dial i { font-style: normal; font-size: 12px; }
 .colorf { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
 .colorf .sw { width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--line); cursor: pointer; padding: 0; }
 .colorf .sw.on { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }

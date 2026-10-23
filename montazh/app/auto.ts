@@ -7,7 +7,7 @@ import {findEmoji, type Emoji} from "./emoji";
 import {newId, type Brand, type EffectItem, type Word} from "./types";
 
 // эффекты-«слои»: два одновременно не ставим (накладываются друг на друга); зумы с ними сочетаются
-const OVERLAY = /^(hook|number|chip|checklist|list|stock|arrow|broll|speaker|panel|text3d|emoji|fx-bw)/;
+const OVERLAY = /^(hook|number|chip|checklist|list|stock|arrow|broll|speaker|panel|text3d|emoji|fx-bw|title|stamp|dots|ask|search|vote|drum|ring|outro|card|chat|floats|inscreen|split|mark|counter)/;
 const isZoom = (id: string) => id.startsWith("zoom");
 const endOf = (e: EffectItem, len = 2) => e.until ?? e.at + len;
 
@@ -102,11 +102,28 @@ const NUM_WORDS: Record<string, string> = {
   двадцать: "20", тридцать: "30", сорок: "40", пятьдесят: "50", сто: "100", двести: "200", триста: "300", пятьсот: "500",
   тысяча: "1000", тысячи: "1000", тысяч: "1000", миллион: "1 млн", миллиона: "1 млн", миллионов: "1 млн", миллиард: "1 млрд",
 };
+// «из десяти», «из пяти» — родительный падеж
+const OF_WORDS: Record<string, string> = {двух: "2", трех: "3", четырех: "4", пяти: "5", шести: "6", семи: "7", восьми: "8", девяти: "9", десяти: "10", двадцати: "20", ста: "100"};
 const UNIT = /^(дн|лет|год|час|минут|секунд|компани|завод|город|стран|человек|раз|процент|%|тысяч|миллион|миллиард|доллар|рубл|юан|километр|метр|шаг|экспедиц|туров|программ|отрасл|партнер|клиент)/;
 const STRONG = /^(никогда|всегда|главное|важно|самый|самая|самое|самые|лучший|лучшие|невероятн|огромн|впервые|секрет|никто|все|бесплатно|реально|честно)$/;
 const LIST_START = /^(во-первых|первое|первый|первая|1\.)$/;
 
-export type AutoOpts = {brand: Brand; duration: number; finale: boolean; format: string};
+// ---------------------------------------------------------------- ручки «Смелость» и «Темп» (5 положений)
+// по образцу prompt-motion.com/customize (там Creativity / Pace / Polish): смелость — сколько ярких приёмов, темп — как
+// часто что-то происходит и насколько плотно режутся паузы. Потолки против «монтажа нейросетью»: не больше N резких
+// наездов в минуту, эмодзи не чаще раза в M секунд (из правил открытого набора yh-chatcut-skills, MIT)
+export const DIAL_LABELS = {
+  bold: ["спокойно", "сдержанно", "обычно", "ярко", "на максимум"],
+  pace: ["медленно", "спокойно", "обычно", "быстро", "очень быстро"],
+};
+const lvl = (v: number | undefined) => Math.min(5, Math.max(1, Math.round(v ?? 3))) - 1;
+export const paceEvery = (pace?: number) => [6, 5, 4, 3, 2.5][lvl(pace)]; // ритм, с
+export const pacePause = (pace?: number) => [0.6, 0.45, 0.35, 0.28, 0.22][lvl(pace)]; // какие паузы вырезать, с
+export const brollGap = (pace?: number) => [13, 11, 9, 7, 6][lvl(pace)]; // картинки по смыслу — раз в столько секунд
+const PUNCH_PER_MIN = [2, 3, 4, 6, 8];
+const EMOJI_GAP = [14, 10, 7, 5, 4];
+
+export type AutoOpts = {brand: Brand; duration: number; finale: boolean; format: string; bold?: number; pace?: number};
 export type AutoPlan = {effects: EffectItem[]; report: string[]; brollSlots: {at: number; until: number; text: string}[]};
 
 export function autoEffects(words: Word[], existing: EffectItem[], o: AutoOpts): AutoPlan {
@@ -115,10 +132,15 @@ export function autoEffects(words: Word[], existing: EffectItem[], o: AutoOpts):
   const all = () => [...existing, ...out];
   const end = o.finale ? o.duration - 3.4 : o.duration - 0.6;
   const report: string[] = [];
+  const bold = lvl(o.bold);
+  const punchGap = (60 / PUNCH_PER_MIN[bold]) * 0.6;
+  const punches: number[] = existing.filter((e) => e.effect === "zoom-punch").map((e) => e.at);
   const add = (e: Omit<EffectItem, "id">) => {
     if (e.at < 0 || (e.until ?? e.at) > end + 0.5) return false;
+    if (e.effect === "zoom-punch" && punches.some((x) => Math.abs(x - e.at) < punchGap)) return false;
     if (!freeAt(all(), e.at, e.until ?? e.at + 2, isZoom(e.effect))) return false;
     out.push({...e, id: newId("e"), params: {...e.params, [tag]: "1"}});
+    if (e.effect === "zoom-punch") punches.push(e.at);
     return true;
   };
   const toks = words.map((w) => clean(w.text));
@@ -173,12 +195,72 @@ export function autoEffects(words: Word[], existing: EffectItem[], o: AutoOpts):
     if (add({effect: "chip-strike", at, until: at + 2.6, params: {text: text(i, 2)}})) report.push(`зачёркивание «${text(i, 2)}»`);
   });
 
-  // 5. ударные слова — резкий наезд; эмодзи по смыслу — не чаще раза в 7 с
+  // 5. приёмы по смыслу (каталоги prompt-motion.com и skillry.dev): «7 из 10» — точки, вопрос зрителю — пузырь, «миф» /
+  // «это факт» — штамп, поворот мысли («но», «однако») — плавный наезд, вывод («итак», «поэтому») — резкий наезд,
+  // «подписывайтесь» в конце — финал с @ником; на «ярко» и выше — главное слово с эхом
+  const isNum = (t: string) => /^\d+$/.test(t) || !!NUM_WORDS[t] || !!OF_WORDS[t];
+  const numOf = (t: string) => (/^\d+$/.test(t) ? t : NUM_WORDS[t] ?? OF_WORDS[t]);
+  const startsPhrase = (i: number) => i === 0 || words[i].start - words[i - 1].end > 0.3 || /[.,!?;:…]$/.test(words[i - 1].text);
+  let lastDots = -99;
+  let asks = 0;
+  let stamps = 0;
+  let lastTurn = -99;
+  let echoDone = bold < 3;
+  toks.forEach((t, i) => {
+    const at = words[i].start;
+    if (isNum(t) && toks[i + 1] === "из" && isNum(toks[i + 2] ?? "") && at - lastDots > 8) {
+      const value = numOf(t);
+      const total = numOf(toks[i + 2]);
+      if (+value <= +total && +total <= 100 && add({effect: "dots", at, until: at + 2.6, params: {value, total, label: text(i + 3, 3)}})) {
+        lastDots = at;
+        report.push(`точки «${value} из ${total}»`);
+      }
+    }
+    if (bold >= 1 && stamps < 2) {
+      const stamp = t === "миф" ? "МИФ" : (t === "факт" || t === "правда") && toks[i - 1] === "это" ? (t === "факт" ? "ФАКТ" : "ПРАВДА") : "";
+      if (stamp && add({effect: "stamp", at, until: at + 1.8, params: {text: stamp, color: stamp === "МИФ" ? "#E5322D" : "#1FA35B"}})) {
+        stamps++;
+        report.push(`штамп «${stamp}»`);
+      }
+    }
+    if (o.pace !== 1 && startsPhrase(i) && /^(но|однако|зато|хотя)$/.test(t) && at - lastTurn > paceEvery(o.pace) * 1.5) {
+      if (add({effect: "zoom-push", at, until: at + 2, params: {amount: "0.06"}})) lastTurn = at;
+    }
+    if (startsPhrase(i) && /^(итак|поэтому|итог|вывод|короче)$/.test(t)) add({effect: "zoom-punch", at, until: at + 0.9, params: {amount: "0.14"}});
+    if (!echoDone && /^(секрет|впервые|никогда|никто)$/.test(t)) {
+      if (add({effect: "title-echo", at, until: at + 1.8, params: {text: words[i].text.replace(/[.,!?;:«»"]/g, "").toUpperCase()}})) {
+        echoDone = true;
+        report.push(`слово с эхом «${words[i].text}»`);
+      }
+    }
+    if (/^подпис/.test(t) && at > o.duration - 15) {
+      if (add({effect: "outro-handle", at, until: Math.min(at + 2.6, end), params: {}})) report.push("финал с @ником на «подписывайтесь»");
+    }
+  });
+  // вопрос зрителю: фраза с «вы / вам / ваш», которая кончается «?»
+  if (bold >= 1) {
+    let st = 0;
+    words.forEach((w, i) => {
+      if (!/[.!?…]$/.test(w.text)) return;
+      const ph = words.slice(st, i + 1);
+      st = i + 1;
+      if (!/\?$/.test(w.text)) return;
+      if (asks >= 2 || ph.length < 2 || ph.length > 9 || !ph.some((x) => /^(вы|вам|вас|ваш|ваша|ваше|ваши|вашей)$/.test(clean(x.text)))) return;
+      const at = ph[0].start;
+      const q = ph.map((x) => x.text).join(" ");
+      if (add({effect: "ask", at, until: Math.max(at + 2.4, w.end + 0.8), params: {text: q}})) {
+        asks++;
+        report.push(`вопрос зрителю «${q}»`);
+      }
+    });
+  }
+
+  // 6. ударные слова — резкий наезд; эмодзи по смыслу — не чаще раза в 7 с
   let lastEmoji = -99;
   toks.forEach((t, i) => {
     const at = words[i].start;
     if (STRONG.test(t)) add({effect: "zoom-punch", at, until: at + 0.9, params: {amount: "0.14"}});
-    if (at - lastEmoji < 7 || EMOJI_SKIP.has(t)) return;
+    if (at - lastEmoji < EMOJI_GAP[bold] || EMOJI_SKIP.has(t)) return;
     const e = t ? findEmoji(t) : undefined;
     if (e && add({effect: "emoji-pop", at, until: at + 1.8, params: {emoji: e.file, spot: "tr"}})) {
       lastEmoji = at;
@@ -186,7 +268,7 @@ export function autoEffects(words: Word[], existing: EffectItem[], o: AutoOpts):
     }
   });
 
-  // 6. «ссылка выше» в Stories — стрелка под стикер-ссылку
+  // 7. «ссылка выше» в Stories — стрелка под стикер-ссылку
   toks.forEach((t, i) => {
     if (/^ссылк/.test(t) && /^(выше|наверху|сверху|закрепл)/.test(toks[i + 1] ?? toks[i + 2] ?? "")) {
       const at = words[i].start;
@@ -194,15 +276,16 @@ export function autoEffects(words: Word[], existing: EffectItem[], o: AutoOpts):
     }
   });
 
-  // 7. места под картинки по смыслу: фразы 2,5–4 с примерно раз в 9 с (картинку подберёт поиск по каталогу)
+  // 8. места под картинки по смыслу: фразы 2,5–4 с примерно раз в 9 с (картинку подберёт поиск по каталогу; темп меняет шаг)
   const brollSlots: AutoPlan["brollSlots"] = [];
-  let lastB = -5; // первая картинка — уже с 4-й секунды, дальше примерно раз в 9 с
+  const gapB = brollGap(o.pace);
+  let lastB = 4 - gapB; // первая картинка — уже с 4-й секунды, дальше по шагу темпа
   let cur: Word[] = [];
   const flush = () => {
     if (cur.length >= 3) {
       const at = cur[0].start;
       const until = Math.min(at + 3.5, Math.max(at + 2.6, cur[cur.length - 1].end), end);
-      if (at - lastB >= 9 && until - at >= 2.4 && freeAt([...all(), ...brollSlots.map((b) => ({id: "", effect: "broll", at: b.at, until: b.until, params: {}}))], at, until, false)) {
+      if (at - lastB >= gapB && until - at >= 2.4 && freeAt([...all(), ...brollSlots.map((b) => ({id: "", effect: "broll", at: b.at, until: b.until, params: {}}))], at, until, false)) {
         brollSlots.push({at, until, text: cur.map((w) => w.text).join(" ")});
         lastB = at;
       }

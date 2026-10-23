@@ -32,8 +32,8 @@ const PARAMS = {
   "hook-wall": {text: "Чай / и кофе"},
   "hook-mix": {text: "это / важно"},
   "hook-words": {text: "не / через / переводчиков"},
-  number: {text: "5 дней", sub: "на фабриках"},
-  "number-down": {text: "−30%", sub: "продажи"},
+  number: {text: "1000+", sub: "кофеен", count: "1"},
+  "number-down": {text: "−30%", sub: "продажи", count: "1"},
   chip: {text: "Без переводчиков"},
   "chip-strike": {text: "Переписки"},
   checklist: {title: "Как устроена поездка", items: "Заводы / Встречи / Дегустации"},
@@ -83,8 +83,22 @@ const PARAMS = {
   "inscreen-icon": {quad: SCREEN, plane: "front", image: "", emoji: "огонь", text: "+ 7 фабрик"},
   "inscreen-media": {quad: SCREEN, plane: "front"},
   "title-box": {text: "Чай и кофе Китая: / как открыть сеть"},
+  // приёмы prompt-motion.com и skillry.dev
+  mark: {kind: "circle", y: "1300", w: "520"},
+  "title-takeover": {text: "Чай", sub: "рынок Китая", bg: "#1A73E8"},
+  "title-strike": {text: "Дорого", script: "выгодно"},
+  "title-echo": {text: "Кофе"},
+  "bg-replace": {kind: "grid", outline: "1", image: ""},
+  ask: {text: "А вы пьёте чай или кофе?", sub: "пишите в комментариях", emoji: "вау"},
+  search: {text: "чай и кофе в Китае", items: "кофейни Китая / чайные бренды / рынок чая"},
+  stamp: {text: "Факт", color: "#1FA35B"},
+  dots: {value: "7", total: "10", label: "пример подписи"},
+  chapter: {title: "Чай", bar: "1"},
+  vote: {title: "Что выбираете?", items: "Чай / Кофе / Оба / Воду", image: ""},
+  drum: {prefix: "Китай — это", items: "чай / кофе / заводы / будущее"},
+  ring: {items: "Чай / Кофе / Китай / Рынок"},
 };
-const LEN = {"inscreen-chart": 2.4, "inscreen-list": 2.4, "inscreen-steps": 2.4, "inscreen-cards": 2.2, "captions-mini": 2.4, "split-ba": 2.4, "captions-plate": 2.4, "captions-corner": 2.4, "captions-quiet": 2.4, "speaker-app": 2.4, "list-flip": 2.4, "list-cards": 2.4, "list-stickers": 2.4, "list-numbers": 2.4, "list-bubbles": 2.4, "list-typewriter": 2.4, checklist: 2.4, "stock-up": 2.4, "stock-down": 2.4, "hook-wall": 2.2, "hook-mix": 2.2, "hook-words": 2.2, chip: 2.2};
+const LEN = {"counter-word": 3.2, vote: 2.4, drum: 2.4, ring: 2.4, search: 2.4, "title-takeover": 2.4, "inscreen-chart": 2.4, "inscreen-list": 2.4, "inscreen-steps": 2.4, "inscreen-cards": 2.2, "captions-mini": 2.4, "split-ba": 2.4, "captions-plate": 2.4, "captions-corner": 2.4, "captions-quiet": 2.4, "speaker-app": 2.4, "list-flip": 2.4, "list-cards": 2.4, "list-stickers": 2.4, "list-numbers": 2.4, "list-bubbles": 2.4, "list-typewriter": 2.4, checklist: 2.4, "stock-up": 2.4, "stock-down": 2.4, "hook-wall": 2.2, "hook-mix": 2.2, "hook-words": 2.2, chip: 2.2};
 const SLOT = 3.6;
 const PRE = 0.25; // превью начинается чуть раньше эффекта
 const DUR = 2.0;
@@ -102,6 +116,7 @@ const props = {
   chips: [], logos: [], numbers: [], broll: [], checklists: [], cities: [], zooms: [], cuts: [],
   stockDrop: undefined, hooks: [], fx: [], arrows: [], emojis: [], speaker: [], panels: [], texts: [], lists: [], paletteAt: [],
   splits: [], titles: [], captionsAt: [], chats: [], floats: [], cards: [], outros: [], inscreens: [],
+  marks: [], asks: [], bgs: [], counters: [], searches: [], stamps: [], dots: [], chapters: [], chapterBar: undefined, votes: [], drums: [], rings: [],
   bumper: false,
   music: undefined,
   site: {...base.site, at: 999},
@@ -114,6 +129,16 @@ let img = 0;
 for (const e of list) {
   const item = {id: e.id, effect: e.id, at: +t.toFixed(2), until: +(t + (LEN[e.id] ?? Math.min(e.len, 2.0))).toFixed(2), params: {...(PARAMS[e.id] ?? {})}};
   if (e.fields.some((f) => f.kind === "image" || f.kind === "media") && !("image" in item.params)) item.params.image = IMG[img++ % IMG.length];
+  // счётчик слова: самое частое слово образца в окне превью — чтобы счёт успел вырасти
+  if (e.id === "counter-word") {
+    const n = {};
+    for (const w of words.filter((x) => x.start >= t - 1 && x.start < t + DUR)) {
+      const k = w.text.toLowerCase().replace(/[^а-яё]/g, "");
+      if (k.length > 1) n[k] = (n[k] ?? 0) + 1;
+    }
+    item.params.word = Object.entries(n).sort((a, b) => b[1] - a[1])[0]?.[0] ?? "чай";
+    item.at = +(t - 1).toFixed(2);
+  }
   e.apply(props, item, {words, image: (n) => n});
   slots.push({id: e.id, at: item.at, cutout: !!e.after});
   t += SLOT;

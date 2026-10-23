@@ -248,14 +248,15 @@ const titleFx = (id: string, title: string, desc: string, ref: string, d: {font:
     });
   },
 });
-const captionsFx = (style: "plate" | "corner" | "quiet" | "mini", title: string, desc: string, ref: string, y: string): Effect => ({
+const captionsFx = (style: "plate" | "corner" | "quiet" | "mini" | "duo" | "ladder" | "marker" | "pill", title: string, desc: string, ref: string, y: string, after?: string): Effect => ({
   id: `captions-${style}`,
   title,
   cat: "Титры",
   desc,
   len: 4,
-  ref,
+  ref: ref || undefined,
   fields: [{key: "y", label: "По вертикали", kind: "range", min: 700, max: 1500, step: 5, def: y}],
+  after,
   apply: (p, e) => (p.captionsAt ??= []).push({at: e.at, until: end(e, 4), style, y: num(e, "y", +y)}),
 });
 // у плашки «до / после» субтитры встают бежевой плашкой между экранами
@@ -487,6 +488,253 @@ const SCREEN_EFFECTS: Effect[] = [
   captionsFx("mini", "Субтитры: мелкие над экраном", "По 1–2 слова, жирные белые с тёмной обводкой — стоят над ноутбуком или телефоном в кадре", "dfcdojr", "1110"),
 ];
 
+// ------------------------------------------------------------------ приёмы из каталогов prompt-motion.com и skillry.dev (23.10.2026)
+// пользователь: «забери всё, что там есть, для нашей монтажки». Промпты и пакеты сайтов не копируем (у skillry это запрещено
+// условиями) — только сами приёмы, своим кодом: reels-studio/src/components/TrendFx.tsx и RefFx.tsx
+const COUNT_FIELD: Field = {key: "count", label: "Счёт", kind: "select", options: [["0", "сразу целиком"], ["1", "отсчётом от нуля"]]};
+const MARKS: [string, string][] = [["circle", "обвести"], ["underline", "подчеркнуть"], ["check", "галочка"], ["cross", "крестик"], ["arrow", "стрелка"]];
+const STAMP_COLORS: [string, string][] = [["#E5322D", "красный"], ["#1FA35B", "зелёный"], ["#1A73E8", "синий"], ["#191922", "чёрный"]];
+const TREND_EFFECTS: Effect[] = [
+  {
+    id: "mark",
+    title: "Пометка от руки",
+    cat: "Графика",
+    desc: "Маркер рисует на кадре: обводит слово или предмет, подчёркивает, ставит галочку, крестик или стрелку",
+    len: 1.6,
+    fields: [
+      {key: "kind", label: "Что", kind: "select", options: MARKS},
+      {key: "x", label: "По горизонтали", kind: "range", min: 80, max: 1000, step: 5, def: "540"},
+      {key: "y", label: "По вертикали", hint: "по умолчанию — субтитры", kind: "range", min: 250, max: 1700, step: 5, def: "1300"},
+      {key: "w", label: "Ширина", kind: "range", min: 120, max: 900, step: 10, def: "420"},
+      {key: "color", label: "Цвет", kind: "color", def: "#E5322D"},
+    ],
+    apply: (p, e) =>
+      (p.marks ??= []).push({at: e.at, until: end(e, 1.6), kind: e.params.kind || "circle", x: num(e, "x", 540), y: num(e, "y", 1300), w: num(e, "w", 420), h: Math.round(num(e, "w", 420) * 0.4), color: e.params.color || undefined}),
+  },
+  {
+    id: "title-takeover",
+    title: "Слово на весь кадр",
+    cat: "Титры",
+    desc: "Огромное слово сначала за головой, потом кадр заливается цветом — остаётся только слово и строка под ним",
+    len: 2.4,
+    fields: [
+      {key: "text", label: "Слово", hint: "пусто — слово речи"},
+      {key: "sub", label: "Строка под ним"},
+      {key: "bg", label: "Заливка", kind: "color", def: "#1A73E8"},
+      {key: "mode", label: "Как", kind: "select", options: [["takeover", "из-за головы → заливка"], ["flat", "сразу на заливке"]]},
+    ],
+    after: "часть «за головой» — после вырезки спикера",
+    apply: (p, e, ctx) => {
+      const u = end(e, 2.4);
+      const text = e.params.text || spoken(ctx.words, e.at, u, 1) || "Стоп";
+      const y = Math.round((p.focus?.y ?? 700) - 270);
+      const bg = e.params.bg || "#1A73E8";
+      const sub = e.params.sub || undefined;
+      if (e.params.mode === "flat") return void (p.titles ??= []).push({at: e.at, until: u, text, font: "grotesk", y: 960, plane: "front", bg, sub});
+      const mid = +(e.at + (u - e.at) * 0.45).toFixed(2);
+      (p.titles ??= []).push({at: e.at, until: mid, text, font: "grotesk", y, plane: "behind"}, {at: mid, until: u, text, font: "grotesk", y, plane: "front", bg, sub, still: true});
+    },
+  },
+  {
+    id: "title-strike",
+    title: "Слово зачёркивается",
+    cat: "Титры",
+    desc: "Крупное слово перечёркивается линией, рядом рукописью — правильное («дорого → выгодно»)",
+    len: 2.6,
+    fields: [
+      {key: "text", label: "Слово", hint: "пусто — слово речи"},
+      {key: "script", label: "Правильное рукописью"},
+      {key: "strike", label: "Зачеркнуть через, с", kind: "range", min: 0.2, max: 2, step: 0.1, def: "0.8"},
+      {key: "y", label: "По вертикали", kind: "range", min: 250, max: 1500, step: 5, def: "380"},
+    ],
+    apply: (p, e, ctx) =>
+      (p.titles ??= []).push({at: e.at, until: end(e, 2.6), text: e.params.text || spoken(ctx.words, e.at, end(e, 2.6), 1) || "Дорого", script: e.params.script || undefined, font: "grotesk", y: num(e, "y", 380), plane: "front", strikeAt: num(e, "strike", 0.8)}),
+  },
+  {
+    id: "title-echo",
+    title: "Слово с эхом",
+    cat: "Титры",
+    desc: "Слово ударом появляется, за ним расходятся две затухающие копии — на главном слове фразы",
+    len: 1.8,
+    fields: [
+      {key: "text", label: "Слово", hint: "пусто — слово речи"},
+      {key: "y", label: "По вертикали", kind: "range", min: 250, max: 1500, step: 5, def: "380"},
+      {key: "color", label: "Цвет", kind: "color", def: "#FFFFFF"},
+    ],
+    apply: (p, e, ctx) =>
+      (p.titles ??= []).push({at: e.at, until: end(e, 1.8), text: e.params.text || spoken(ctx.words, e.at, end(e, 1.8), 1) || "Бум", font: "grotesk", y: num(e, "y", 380), plane: "front", echo: true, color: e.params.color || undefined}),
+  },
+  captionsFx("duo", "Субтитры: слово за головой", "Ключевое слово фразы огромным за головой, вся фраза мелко внизу", "", "1300", "огромное слово за головой — после вырезки спикера (в окне поверх)"),
+  captionsFx("ladder", "Субтитры: лесенка", "Строки разного размера лесенкой, главное слово — крупнее и цветом", "", "1180"),
+  captionsFx("marker", "Субтитры: маркер", "Звучащее слово выделяется полосой маркера слева направо", "", "1250"),
+  captionsFx("pill", "Субтитры: пилюля", "Звучащее слово на цветной плашке, прошлая строка тускнеет сверху", "", "1250"),
+  {
+    id: "bg-replace",
+    title: "Свой фон за спикером",
+    cat: "Спикер",
+    desc: "Фон за вырезанным спикером меняется: сетка, бумага, градиент или своя картинка; можно белую обводку-стикер",
+    len: 4,
+    fields: [
+      {key: "kind", label: "Фон", kind: "select", options: [["grid", "сетка"], ["paper", "бумага"], ["gradient", "градиент бренда"], ["image", "картинка"]]},
+      {key: "image", label: "Картинка", kind: "media", hint: "для фона «картинка»"},
+      {key: "outline", label: "Обводка", kind: "select", options: [["0", "без обводки"], ["1", "белая обводка-стикер"]]},
+    ],
+    after: "фон меняется после вырезки спикера (в окне виден исходный кадр)",
+    apply: (p, e, ctx) => {
+      const src = mediaOf(e, ctx);
+      (p.bgs ??= []).push({at: e.at, until: end(e, 4), kind: src ? "image" : e.params.kind === "image" ? "grid" : e.params.kind || "grid", src: src || undefined, outline: e.params.outline === "1" || undefined});
+    },
+  },
+  {
+    id: "fx-whip",
+    title: "Хлёсткий переход",
+    cat: "Переходы",
+    desc: "Кадр смазывается рывком вбок со звуком «вжух» — смена мысли, склейка",
+    len: 0.4,
+    fields: [],
+    apply: (p, e) => (p.fx ??= []).push({type: "whip", at: e.at, until: end(e, 0.4)}),
+  },
+  {
+    id: "fx-defocus",
+    title: "Расфокус",
+    cat: "Переходы",
+    desc: "Кадр уходит в размытие и возвращается в фокус — пауза, «представьте»",
+    len: 0.9,
+    fields: [],
+    apply: (p, e) => (p.fx ??= []).push({type: "defocus", at: e.at, until: end(e, 0.9)}),
+  },
+  {
+    id: "ask",
+    title: "Вопрос зрителю",
+    cat: "Графика",
+    desc: "Пузырь-вопрос у головы («А вы бы поехали?») — зовёт в комментарии",
+    len: 2.6,
+    fields: [
+      {key: "text", label: "Вопрос", hint: "пусто — слова речи"},
+      {key: "sub", label: "Подпись", hint: "«пишите в комментариях»"},
+      {key: "emoji", label: "Эмодзи", kind: "select", options: EMOJI.map((x) => [x.file, `${x.char} ${x.file}`] as [string, string])},
+      {key: "side", label: "Сторона", kind: "select", options: [["right", "справа"], ["left", "слева"]]},
+    ],
+    apply: (p, e, ctx) =>
+      (p.asks ??= []).push({at: e.at, until: end(e, 2.6), text: e.params.text || spoken(ctx.words, e.at, end(e, 2.6), 5) || "А вы бы поехали?", sub: e.params.sub || undefined, emoji: e.params.emoji ? emojiSrc(e.params.emoji) : undefined, side: e.params.side || undefined}),
+  },
+  {
+    id: "counter-word",
+    title: "Счётчик слова",
+    cat: "Графика",
+    desc: "Значок в углу считает, сколько раз прозвучало слово («короче ×13») — с этой секунды до конца отрезка",
+    len: 20,
+    fields: [
+      {key: "word", label: "Слово", hint: "«Китай», «короче»"},
+      {key: "label", label: "Подпись", hint: "необязательно"},
+    ],
+    apply: (p, e, ctx) => {
+      const w = (e.params.word || spoken(ctx.words, e.at, e.at + 1, 1) || "").trim();
+      if (w) (p.counters ??= []).push({word: w, label: e.params.label || undefined, from: e.at, until: end(e, 20)});
+    },
+  },
+  {
+    id: "search",
+    title: "Строка поиска",
+    cat: "Графика",
+    desc: "Запрос печатается в строке поиска, выпадают подсказки",
+    len: 3,
+    fields: [
+      {key: "text", label: "Запрос", hint: "пусто — слова речи"},
+      {key: "items", label: "Подсказки", hint: "через /", kind: "lines"},
+      {key: "y", label: "По вертикали", kind: "range", min: 300, max: 1400, step: 5, def: "420"},
+    ],
+    apply: (p, e, ctx) => (p.searches ??= []).push({at: e.at, until: end(e, 3), text: e.params.text || spoken(ctx.words, e.at, end(e, 3), 4) || "как поехать в Китай", items: e.params.items ? lines(e.params.items) : undefined, y: num(e, "y", 420)}),
+  },
+  {
+    id: "stamp",
+    title: "Штамп",
+    cat: "Графика",
+    desc: "Штамп падает с поворотом и оставляет отпечаток: «МИФ», «ПРОВЕРЕНО», «ФАКТ»",
+    len: 1.8,
+    fields: [
+      {key: "text", label: "Надпись", hint: "«МИФ», «ФАКТ»"},
+      {key: "color", label: "Цвет", kind: "select", options: STAMP_COLORS},
+      {key: "y", label: "По вертикали", kind: "range", min: 300, max: 1500, step: 5, def: "480"},
+    ],
+    apply: (p, e) => (p.stamps ??= []).push({at: e.at, until: end(e, 1.8), text: (e.params.text || "Факт").toUpperCase(), color: e.params.color || undefined, y: num(e, "y", 480)}),
+  },
+  {
+    id: "dots",
+    title: "Точки «N из M»",
+    cat: "Графика",
+    desc: "Сетка точек закрашивается до нужного числа: «7 из 10», «73%»",
+    len: 2.6,
+    fields: [
+      {key: "value", label: "Сколько", hint: "7"},
+      {key: "total", label: "Из скольких", hint: "10 (для % — 100)"},
+      {key: "label", label: "Подпись"},
+    ],
+    apply: (p, e) => (p.dots ??= []).push({at: e.at, until: end(e, 2.6), value: num(e, "value", 7), total: num(e, "total", 10), label: e.params.label || undefined}),
+  },
+  {
+    id: "chapter",
+    title: "Глава",
+    cat: "Титры",
+    desc: "Метка «Глава 2 · Заводы» и полоса прогресса по главам сверху — для длинных роликов",
+    len: 2,
+    fields: [
+      {key: "title", label: "Название главы", hint: "пусто — слова речи"},
+      {key: "bar", label: "Полоса глав сверху", kind: "select", options: [["1", "показывать"], ["0", "без полосы"]]},
+    ],
+    apply: (p, e, ctx) => {
+      (p.chapters ??= []).push({at: e.at, title: e.params.title || spoken(ctx.words, e.at, e.at + 2, 3) || "Глава"});
+      if (e.params.bar !== "0") p.chapterBar = true;
+    },
+  },
+  {
+    id: "vote",
+    title: "Голосование: сетка вариантов",
+    cat: "Графика",
+    desc: "Кадр темнеет, варианты под номерами — «какой выбираете? пишите номер»",
+    len: 3.5,
+    fields: [
+      {key: "title", label: "Вопрос", hint: "«Какой город?»"},
+      {key: "items", label: "Варианты", hint: "через /", kind: "lines"},
+      {key: "image", label: "Картинка 1", kind: "media"},
+      {key: "image2", label: "Картинка 2", kind: "media"},
+      {key: "image3", label: "Картинка 3", kind: "media"},
+      {key: "image4", label: "Картинка 4", kind: "media"},
+    ],
+    apply: (p, e, ctx) => {
+      const images = [mediaOf(e, ctx), ...["image2", "image3", "image4"].map((k) => (e.params[k] ? ctx.image(e.params[k]) : ""))].filter(Boolean);
+      (p.votes ??= []).push({at: e.at, until: end(e, 3.5), title: e.params.title || undefined, items: lines(e.params.items || "Шэньчжэнь / Шанхай / Пекин / Гуанчжоу"), images: images.length ? images : undefined});
+    },
+  },
+  {
+    id: "drum",
+    title: "Барабан слов",
+    cat: "Титры",
+    desc: "Слова прокручиваются, как барабан игрового автомата, и останавливаются на последнем",
+    len: 2.4,
+    fields: [
+      {key: "prefix", label: "Начало фразы", hint: "«Китай — это»"},
+      {key: "items", label: "Слова", hint: "через /; последнее — итог", kind: "lines"},
+      {key: "y", label: "По вертикали", kind: "range", min: 300, max: 1500, step: 5, def: "420"},
+    ],
+    apply: (p, e) => (p.drums ??= []).push({at: e.at, until: end(e, 2.4), prefix: e.params.prefix || undefined, items: lines(e.params.items || "заводы / роботы / скорость / будущее"), y: num(e, "y", 420)}),
+  },
+  {
+    id: "ring",
+    title: "Кольцо слов вокруг головы",
+    cat: "Графика",
+    desc: "Слова летят по кругу вокруг головы: задняя половина кольца уходит за спикера",
+    len: 3.5,
+    fields: [{key: "items", label: "Слова", hint: "через /; пусто — слова речи", kind: "lines"}],
+    after: "задняя половина за головой — после вырезки спикера",
+    apply: (p, e, ctx) => {
+      const u = end(e, 3.5);
+      const said = spoken(ctx.words, e.at, u, 8).split(" ").filter((w) => w.length > 2).slice(0, 5);
+      (p.rings ??= []).push({at: e.at, until: u, items: e.params.items ? lines(e.params.items) : said.length >= 3 ? said : ["Китай", "заводы", "роботы", "будущее"]});
+    },
+  },
+];
+
 export const EFFECTS: Effect[] = [
   {
     id: "zoom-punch",
@@ -568,8 +816,9 @@ export const EFFECTS: Effect[] = [
     fields: [
       {key: "text", label: "Цифра", hint: "«5 дней», «1000+»"},
       {key: "sub", label: "Подпись"},
+      COUNT_FIELD,
     ],
-    apply: (p, e, ctx) => p.numbers.push({text: e.params.text || spoken(ctx.words, e.at, e.at + 1.2, 2) || "100%", sub: e.params.sub || "", at: e.at, until: end(e, 2.6)}),
+    apply: (p, e, ctx) => p.numbers.push({text: e.params.text || spoken(ctx.words, e.at, e.at + 1.2, 2) || "100%", sub: e.params.sub || "", at: e.at, until: end(e, 2.6), count: e.params.count === "1" || undefined}),
   },
   {
     id: "number-down",
@@ -580,8 +829,9 @@ export const EFFECTS: Effect[] = [
     fields: [
       {key: "text", label: "Цифра"},
       {key: "sub", label: "Подпись"},
+      COUNT_FIELD,
     ],
-    apply: (p, e, ctx) => p.numbers.push({text: e.params.text || spoken(ctx.words, e.at, e.at + 1.2, 2) || "−30%", sub: e.params.sub || "", at: e.at, until: end(e, 2.6), tone: "down"}),
+    apply: (p, e, ctx) => p.numbers.push({text: e.params.text || spoken(ctx.words, e.at, e.at + 1.2, 2) || "−30%", sub: e.params.sub || "", at: e.at, until: end(e, 2.6), tone: "down", count: e.params.count === "1" || undefined}),
   },
   {
     id: "chip",
@@ -691,6 +941,7 @@ export const EFFECTS: Effect[] = [
   },
   ...REF_EFFECTS,
   ...SCREEN_EFFECTS,
+  ...TREND_EFFECTS,
 ];
 
 export const effectById = (id: string) => EFFECTS.find((e) => e.id === id);

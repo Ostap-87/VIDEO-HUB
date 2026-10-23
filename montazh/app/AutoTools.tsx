@@ -4,7 +4,7 @@ import type {StepCtx} from "./App";
 import {applyEdl, cleanClips, clipsOf, loadEnv, transcribeClips} from "./AssembleStep";
 import {assemble, DEFAULT_OPTS} from "./assemble";
 import {cleanVoice} from "./audio";
-import {autoEffects, RHYTHM_SETS, rhythmSlots, slotToEffect, type Slot} from "./auto";
+import {autoEffects, brollGap, DIAL_LABELS, paceEvery, pacePause, RHYTHM_SETS, rhythmSlots, slotToEffect, type Slot} from "./auto";
 import {BRANDS, MUSIC} from "./brands";
 import {CATS, EFFECTS, effectById, spoken} from "./effects";
 import {search, usedInProject} from "./images";
@@ -156,11 +156,37 @@ const AUTO_STEPS = [
   ["words", "Распознаю речь"],
   ["clean", "Чищу паузы, эканья, мусорные слова, дубли"],
   ["voice", "Чистый голос"],
-  ["fx", "Эффекты по смыслу: хук, цифры, эмодзи, списки, наезды"],
+  ["fx", "Эффекты по смыслу: хук, цифры, точки, штампы, вопросы, эмодзи, наезды"],
   ["pics", "Картинки по смыслу"],
   ["rhythm", "Ритм: что-то происходит каждые 4 с"],
 ] as const;
 type AutoStep = (typeof AUTO_STEPS)[number][0];
+
+// положение ручек запоминается в этом браузере (удобство, не данные проекта)
+const DIALS_KEY = "montazh:dials";
+const loadDials = (): {bold: number; pace: number} => {
+  try {
+    const d = JSON.parse(localStorage.getItem(DIALS_KEY) || "{}");
+    return {bold: +d.bold || 3, pace: +d.pace || 3};
+  } catch {
+    return {bold: 3, pace: 3};
+  }
+};
+const saveDials = (d: {bold: number; pace: number}) => {
+  try {
+    localStorage.setItem(DIALS_KEY, JSON.stringify(d));
+  } catch {
+    /* хранилище недоступно — ручки просто не запомнятся */
+  }
+};
+const Dial: React.FC<{title: string; hint: string; value: number; labels: string[]; onChange: (v: number) => void}> = ({title, hint, value, labels, onChange}) => (
+  <label className="rangef dial">
+    <span>
+      {title}: <b>{labels[value - 1]}</b> <i className="muted">{hint}</i>
+    </span>
+    <input type="range" min={1} max={5} step={1} value={value} onChange={(e) => onChange(+e.target.value)} />
+  </label>
+);
 
 export const AutoMontage: React.FC<StepCtx & {big?: boolean}> = (ctx) => {
   const {p, up, setM, setStatus, setStep, getP} = ctx;
@@ -171,6 +197,8 @@ export const AutoMontage: React.FC<StepCtx & {big?: boolean}> = (ctx) => {
   const [report, setReport] = useState<string[]>([]);
   const [undo, setUndo] = useState<Project | null>(null);
   const [opts, setOpts] = useState({clean: true, voice: true, pics: true, rhythm: true});
+  const [dials, setDialsState] = useState(loadDials);
+  const setDials = (d: {bold: number; pace: number}) => (setDialsState(d), saveDials(d));
   const hasVideo = clipsOf(p).some((c) => c.kind === "video");
 
   const run = async () => {
@@ -195,7 +223,8 @@ export const AutoMontage: React.FC<StepCtx & {big?: boolean}> = (ctx) => {
         const clips = clipsOf(q);
         const env: Record<string, Float32Array | undefined> = {};
         for (const c of clips.filter((x) => x.kind === "video")) env[c.id] = (await loadEnv(q.id, c)) ?? undefined;
-        const o = {...DEFAULT_OPTS, ...q.assemble};
+        // темп «обычно» не трогает настройку «Склейки»; быстрее — режет короткие паузы, медленнее — оставляет
+        const o = {...DEFAULT_OPTS, ...q.assemble, ...(dials.pace !== 3 ? {minPause: pacePause(dials.pace)} : {})};
         const res = assemble(clips, env, o);
         up((x) => applyEdl({...x, assemble: o}, clipsOf(x), res.edl, res.dropped));
         await settle();
@@ -232,7 +261,7 @@ export const AutoMontage: React.FC<StepCtx & {big?: boolean}> = (ctx) => {
       const dur = projSeconds(q);
       const finale = q.brand !== "od";
       const kept = q.effects.filter((e) => !isAuto(e));
-      const plan = autoEffects(q.words, kept, {brand: q.brand, duration: dur, finale, format: q.format});
+      const plan = autoEffects(q.words, kept, {brand: q.brand, duration: dur, finale, format: q.format, bold: dials.bold, pace: dials.pace});
       let effects = [...kept, ...plan.effects];
       done("fx", plan.report.length ? `${plan.effects.length} эффектов` : "в тексте не нашлось цифр и списков — только движение");
       lines.push(...plan.report);
@@ -250,9 +279,9 @@ export const AutoMontage: React.FC<StepCtx & {big?: boolean}> = (ctx) => {
         }
       } else done("pics", opts.pics ? "нет подходящих фраз" : "пропущено");
 
-      // 6. ритм каждые 4 с — заполняет «пустые» места
+      // 6. ритм — заполняет «пустые» места; шаг задаёт ручка «Темп»
       if (opts.rhythm) {
-        const r = q.rhythm ?? {every: 4, set: "mix"};
+        const r: NonNullable<Project["rhythm"]> = {...(q.rhythm ?? {set: "mix"}), every: paceEvery(dials.pace)};
         const kinds = r.effect ? [r.effect] : (RHYTHM_SETS.find((x) => x.id === r.set)?.kinds ?? RHYTHM_SETS[0].kinds);
         const slots = rhythmSlots(q.words, effects, {every: r.every, kinds, from: 0, to: finale ? dur - 3.4 : dur, skipBusy: true});
         const add = await rhythmEffects(q, slots, effects);
@@ -261,7 +290,7 @@ export const AutoMontage: React.FC<StepCtx & {big?: boolean}> = (ctx) => {
         lines.push(`ритм: +${add.length} (каждые ${r.every} с)`);
       } else done("rhythm", "пропущено");
 
-      up((x) => ({...x, effects, finale, rhythm: x.rhythm ?? {every: 4, set: "mix"}}));
+      up((x) => ({...x, effects, finale, rhythm: {...(x.rhythm ?? {set: "mix"}), every: paceEvery(dials.pace)}}));
       setNow(null);
       setReport(lines);
       setUndo(before);
@@ -285,6 +314,10 @@ export const AutoMontage: React.FC<StepCtx & {big?: boolean}> = (ctx) => {
               Монтажная сама соберёт ролик: речь → чистка → чистый голос и музыка → эффекты по смыслу ({BRANDS[p.brand].title}) →
               картинки → ритм. Ваши эффекты остаются, прежний автомонтаж заменяется. Потом всё можно поправить руками.
             </p>
+            <div className="dials">
+              <Dial title="Смелость" hint="сколько ярких приёмов: эхо, штампы, вопросы, эмодзи" value={dials.bold} labels={DIAL_LABELS.bold} onChange={(v) => setDials({...dials, bold: v})} />
+              <Dial title="Темп" hint="как часто что-то происходит и какие паузы режутся" value={dials.pace} labels={DIAL_LABELS.pace} onChange={(v) => setDials({...dials, pace: v})} />
+            </div>
             <div className="checks">
               <label>
                 <input type="checkbox" checked={opts.clean} onChange={(e) => setOpts({...opts, clean: e.target.checked})} />
@@ -296,11 +329,11 @@ export const AutoMontage: React.FC<StepCtx & {big?: boolean}> = (ctx) => {
               </label>
               <label>
                 <input type="checkbox" checked={opts.pics} onChange={(e) => setOpts({...opts, pics: e.target.checked})} />
-                Картинки по смыслу за спиной (примерно раз в 9 с)
+                Картинки по смыслу за спиной (примерно раз в {brollGap(dials.pace)} с)
               </label>
               <label>
                 <input type="checkbox" checked={opts.rhythm} onChange={(e) => setOpts({...opts, rhythm: e.target.checked})} />
-                Ритм: эффект каждые {p.rhythm?.every ?? 4} с
+                Ритм: эффект каждые {String(paceEvery(dials.pace)).replace(".", ",")} с
               </label>
             </div>
             <ol className="autosteps">

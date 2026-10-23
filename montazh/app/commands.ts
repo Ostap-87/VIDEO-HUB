@@ -191,8 +191,108 @@ function one(text: string, sec: number, words: Word[], out: Parsed) {
     add("title-box", qs[0] ? {text: qs.join(" / ")} : {});
     return;
   }
-  if (/субтитр/.test(t) && /(плашк|в\s+углу|углов|угол|тих|слева|мелк|курсив|золот|над\s+экран|над\s+ноутбук)/.test(t)) {
-    add(/(плашк)/.test(t) ? "captions-plate" : /(над\s+экран|над\s+ноутбук|по\s+(одному|два)\s+слов)/.test(t) ? "captions-mini" : /(тих|слева|мелк)/.test(t) ? "captions-quiet" : "captions-corner");
+  if (/субтитр/.test(t) && /(плашк|в\s+углу|углов|угол|тих|слева|мелк|курсив|золот|над\s+экран|над\s+ноутбук|лесенк|маркер|пилюл|за\s+голов|за\s+спин|за\s+мной)/.test(t)) {
+    add(
+      /(лесенк)/.test(t)
+        ? "captions-ladder"
+        : /(маркер)/.test(t)
+          ? "captions-marker"
+          : /(пилюл|цветн\S*\s+плашк)/.test(t)
+            ? "captions-pill"
+            : /(за\s+голов|за\s+спин|за\s+мной)/.test(t)
+              ? "captions-duo"
+              : /(плашк)/.test(t)
+                ? "captions-plate"
+                : /(над\s+экран|над\s+ноутбук|по\s+(одному|два)\s+слов)/.test(t)
+                  ? "captions-mini"
+                  : /(тих|слева|мелк)/.test(t)
+                    ? "captions-quiet"
+                    : "captions-corner",
+    );
+    return;
+  }
+
+  // приёмы из каталогов prompt-motion.com и skillry.dev (23.10.2026): пометки от руки, слово на весь кадр, зачёркивание,
+  // эхо, свой фон, хлёсткий переход, расфокус, вопрос зрителю, счётчик слова, поиск, штамп, точки, главы, голосование,
+  // барабан, кольцо слов
+  const listed = qs.length > 1 ? qs.join(" / ") : (text.split(":").slice(1).join(":") || "").split(/,\s*/).map((x) => x.trim()).filter(Boolean).join(" / ");
+  if (/(обвед|обвест|кружочк|подчеркн|галочк|крестик)/.test(t)) {
+    const c = colorIn(t);
+    add("mark", {kind: /подчеркн/.test(t) ? "underline" : /галочк/.test(t) ? "check" : /крестик/.test(t) ? "cross" : "circle", ...(right ? {x: "800"} : left ? {x: "280"} : {}), ...(up ? {y: "520"} : /(лиц|голов)/.test(t) ? {y: "760"} : {}), ...(c ? {color: c} : {})});
+    return;
+  }
+  if (/(слово|текст|заголов|надпис)/.test(t) && /(на\s+весь\s+(кадр|экран)|во\s+весь\s+(кадр|экран)|на\s+заливк|на\s+цветн\S*\s+фон)/.test(t)) {
+    const c = colorIn(t);
+    add("title-takeover", {...(qs[0] ? {text: qs[0]} : {}), ...(qs[1] ? {sub: qs[1]} : {}), ...(c ? {bg: c} : {}), ...(/сразу/.test(t) ? {mode: "flat"} : {})});
+    return;
+  }
+  if (/(слово|заголов|надпис)/.test(t) && /(зачерк|перечерк)/.test(t) && !/плашк/.test(t)) {
+    add("title-strike", {...(qs[0] ? {text: qs[0]} : {}), ...(qs[1] ? {script: qs[1]} : {})});
+    return;
+  }
+  if (/(?:^|[^а-я])эхо(?:м)?(?![а-я])/.test(t)) {
+    add("title-echo", qs[0] ? {text: qs[0]} : {});
+    return;
+  }
+  if (/фон/.test(t) && /(сетк|бумаг|тетрад|градиент|замени|поменя|смени)/.test(t) && !/(приложени|экран)/.test(t)) {
+    const kind = /(бумаг|тетрад)/.test(t) ? "paper" : /градиент/.test(t) ? "gradient" : /сетк/.test(t) ? "grid" : "image";
+    const params: Record<string, string> = {kind, ...(/(обводк|стикер)/.test(t) ? {outline: "1"} : {})};
+    if (kind === "image") {
+      const q = qs[0] || after(text, /фон\S*(?:\s+(?:на|с|из))?/i).replace(/\s*(?:с\s+)?(?:бел\S*\s+)?обводк\S*/i, "").trim();
+      const ef = effectById("bg-replace")!;
+      out.images.push({query: q, at: +w.at.toFixed(2), until: w.until ?? +(w.at + (w.dur ?? ef.len)).toFixed(2), effect: "bg-replace", params});
+      out.done.push(`${w.said} — ${ef.title}: картинка ${q ? `«${q}»` : "по словам речи"}`);
+      return;
+    }
+    add("bg-replace", params);
+    return;
+  }
+  if (/(хлест|смаз|рывком|whip)/.test(t)) {
+    add("fx-whip");
+    return;
+  }
+  if (/(расфокус|в\s+размыти|размой\s+кадр|из\s+фокуса)/.test(t)) {
+    add("fx-defocus");
+    return;
+  }
+  if (/(вопрос\S*\s+(зрител|подписчик|аудитори)|спроси\s+(зрител|подписчик)|пузыр\S*\s+с\s+вопрос)/.test(t)) {
+    add("ask", qs[0] ? {text: qs[0]} : {});
+    return;
+  }
+  if (/(счетчик|сколько\s+раз)/.test(t)) {
+    add("counter-word", qs[0] ? {word: qs[0]} : {});
+    return;
+  }
+  if (/(строк\S*\s+поиск|поиск\S*\s+(в\s+)?(гугл|яндекс)|загугл|гуглит)/.test(t)) {
+    add("search", {...(qs[0] ? {text: qs[0]} : {}), ...(qs.length > 1 ? {items: qs.slice(1).join(" / ")} : {})});
+    return;
+  }
+  if (/(штамп|печать\s+[«"])/.test(t)) {
+    const c = /(зелен)/.test(t) ? "#1FA35B" : /син/.test(t) ? "#1A73E8" : /черн/.test(t) ? "#191922" : "";
+    add("stamp", {...(qs[0] ? {text: qs[0]} : {}), ...(c ? {color: c} : {})});
+    return;
+  }
+  const nm = t.match(/(\d+)\s+из\s+(\d+)/);
+  const pc = t.match(/(\d+)\s*(?:%|процент)/);
+  if ((nm && !/цифр/.test(t)) || (pc && /точк/.test(t))) {
+    add("dots", nm ? {value: nm[1], total: nm[2], ...(qs[0] ? {label: qs[0]} : {})} : {value: pc![1], total: "100", ...(qs[0] ? {label: qs[0]} : {})});
+    return;
+  }
+  if (/(?:^|[^а-я])глав[аыуе](?![а-я])/.test(t)) {
+    const title = qs[0] || after(text, /глав\S*(?:\s+\d+)?/i);
+    add("chapter", {...(title ? {title} : {}), ...(/(без\s+полос)/.test(t) ? {bar: "0"} : {})});
+    return;
+  }
+  if (/(голосован|опрос|пишите\s+номер|какой\s+вариант)/.test(t)) {
+    add("vote", {...(listed ? {items: listed} : {}), ...(qs.length === 1 ? {title: qs[0]} : {})});
+    return;
+  }
+  if (/(барабан|слот|игров\S*\s+автомат|прокрут\S*\s+слов)/.test(t)) {
+    add("drum", listed ? {items: listed} : {});
+    return;
+  }
+  if (/(кольц|по\s+кругу|орбит|вокруг\s+голов)/.test(t) && /(слов|текст|надпис)/.test(t)) {
+    add("ring", listed ? {items: listed} : {});
     return;
   }
 
@@ -324,7 +424,7 @@ function one(text: string, sec: number, words: Word[], out: Parsed) {
   // графика
   if (/(цифр|число)/.test(t)) {
     const txt = qs[0] || after(text, /(?:цифр|число)\S*/i).replace(/\s*(?:красн|паден|минус|упал|рух|крупн)\S*/gi, "").trim();
-    add(/(красн|паден|минус|упал|рух|снизил)/.test(t) || /^[−-]\d/.test(txt) ? "number-down" : "number", txt ? {text: txt} : {});
+    add(/(красн|паден|минус|упал|рух|снизил)/.test(t) || /^[−-]\d/.test(txt) ? "number-down" : "number", {...(txt ? {text: txt.replace(/\s*(?:с\s+)?(?:отсч[её]т|сч[её]т)\S*/i, "").trim()} : {}), ...(/(отсчет|счетом|считается|бежит)/.test(t) ? {count: "1"} : {})});
   }
   if (/(плашк|бирк)/.test(t)) {
     const txt = qs.join(" / ") || after(text, /(?:плашк|бирк)\S*/i).replace(/\s*(?:с\s+)?зачерк\S*/i, "");
@@ -422,4 +522,18 @@ export const EXAMPLES = [
   "в экран ноутбука арка: завязка, развитие, кульминация, развязка",
   "в экран ноутбука текст «НЕ ТА / АРКА»",
   "заголовок на белых плашках «Дофаминовые пики: / как строить историю»",
+  "обведи субтитр красным",
+  "слово «СТОП» на весь кадр синим",
+  "слово «дорого» зачеркнуть «выгодно»",
+  "штамп «МИФ»",
+  "7 из 10 «заводов работают круглосуточно»",
+  "строка поиска «как поехать в Китай»",
+  "глава «Заводы»",
+  "голосование «Какой город?»: Шэньчжэнь, Шанхай, Пекин",
+  "барабан: заводы, роботы, скорость, будущее",
+  "кольцо слов вокруг головы: Китай, заводы, роботы",
+  "замени фон на сетку с белой обводкой",
+  "хлёсткий переход",
+  "вопрос зрителю «А вы бы поехали?»",
+  "цифра «1000+» отсчётом",
 ];

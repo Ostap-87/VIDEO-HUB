@@ -166,6 +166,13 @@ def matte_ranges(props, total: float) -> str:
     for x in props.get("inscreens", []) or []:
         if (x.get("plane") or "behind") == "behind":
             rs.append((x["at"], x["until"]))
+    # приёмы prompt-motion / skillry: свой фон за спикером, огромное слово субтитров за головой, задняя половина кольца слов
+    for key in ("bgs", "rings"):
+        for x in props.get(key, []) or []:
+            rs.append((x["at"], x["until"]))
+    for x in props.get("captionsAt", []) or []:
+        if x.get("style") == "duo":
+            rs.append((x["at"], x["until"]))
     rs = sorted((max(0, a - 0.4), min(total, b + 0.4)) for a, b in rs if b > a)
     merged = []
     for a, b in rs:
@@ -298,6 +305,10 @@ def main():
             zooms.append({**z, "at": round(a0, 3), "hold": round(max(0.2, f(z["at"] + z["hold"]) - a0), 3)})
         props = walk(props, lambda k, v: round(f(v), 3) if v <= raw_total + 0.5 else round(total + v - raw_total, 3))
         props["zooms"] = zooms
+        # счётчик слова: from — секунда ролика (у других полей from — секунда исходника, их не трогаем)
+        for c in props.get("counters", []) or []:
+            if isinstance(c.get("from"), (int, float)):
+                c["from"] = round(f(c["from"]), 3)
         if multi:
             props["words"] = words  # уже в шкале склейки движка
             props["cuts"] = app_cuts
