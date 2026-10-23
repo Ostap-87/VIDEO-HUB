@@ -1,0 +1,314 @@
+{
+ "version": 2,
+ "id": "wfooz4q",
+ "name": "IMG_5424",
+ "created": "2026-10-23 10:56:31",
+ "brand": "gtt",
+ "format": "both",
+ "options": {
+  "cutPauses": true,
+  "edl": false,
+  "formats": [
+   "reels",
+   "stories"
+  ]
+ },
+ "files": {
+  "source": "source.mov",
+  "images": {}
+ },
+ "local": {
+  "video": "montazh-local/source"
+ },
+ "hf": {},
+ "props": {
+  "mediaSrc": "montazh-local/source",
+  "cutoutSrc": "",
+  "words": [
+   {
+    "text": "На",
+    "start": 0,
+    "end": 0.62
+   },
+   {
+    "text": "самом",
+    "start": 0.62,
+    "end": 0.94
+   },
+   {
+    "text": "деле,",
+    "start": 0.94,
+    "end": 1.54
+   },
+   {
+    "text": "хаос",
+    "start": 1.64,
+    "end": 2.36
+   },
+   {
+    "text": "вполне",
+    "start": 2.36,
+    "end": 2.96
+   },
+   {
+    "text": "себе",
+    "start": 2.96,
+    "end": 3.28
+   },
+   {
+    "text": "управляемый.",
+    "start": 3.28,
+    "end": 4.32
+   },
+   {
+    "text": "Да,",
+    "start": 4.86,
+    "end": 5.16
+   },
+   {
+    "text": "можно",
+    "start": 5.22,
+    "end": 5.5
+   },
+   {
+    "text": "с",
+    "start": 5.5,
+    "end": 5.84
+   },
+   {
+    "text": "кем",
+    "start": 5.84,
+    "end": 6
+   },
+   {
+    "text": "-то",
+    "start": 6,
+    "end": 6.14
+   },
+   {
+    "text": "столкнуться",
+    "start": 6.14,
+    "end": 6.72
+   },
+   {
+    "text": "слегка,",
+    "start": 6.72,
+    "end": 7.36
+   },
+   {
+    "text": "но",
+    "start": 7.4,
+    "end": 7.66
+   },
+   {
+    "text": "в",
+    "start": 7.66,
+    "end": 7.9
+   },
+   {
+    "text": "общем",
+    "start": 7.9,
+    "end": 8.14
+   },
+   {
+    "text": "и",
+    "start": 8.14,
+    "end": 8.28
+   },
+   {
+    "text": "целом",
+    "start": 8.28,
+    "end": 8.72
+   },
+   {
+    "text": "все",
+    "start": 8.72,
+    "end": 9.22
+   },
+   {
+    "text": "упорядочено,",
+    "start": 9.22,
+    "end": 10.08
+   },
+   {
+    "text": "все",
+    "start": 10.8,
+    "end": 10.98
+   },
+   {
+    "text": "понятно,",
+    "start": 10.98,
+    "end": 11.42
+   },
+   {
+    "text": "все",
+    "start": 12.74,
+    "end": 12.92
+   },
+   {
+    "text": "пронумировано,",
+    "start": 12.92,
+    "end": 13.78
+   },
+   {
+    "text": "понятно",
+    "start": 13.88,
+    "end": 14.14
+   },
+   {
+    "text": "и",
+    "start": 14.14,
+    "end": 14.38
+   },
+   {
+    "text": "ципры",
+    "start": 14.38,
+    "end": 14.82
+   },
+   {
+    "text": "нам,",
+    "start": 14.82,
+    "end": 15.22
+   },
+   {
+    "text": "так",
+    "start": 15.68,
+    "end": 15.92
+   },
+   {
+    "text": "сказать,",
+    "start": 15.92,
+    "end": 16.18
+   },
+   {
+    "text": "арабские.",
+    "start": 16.34,
+    "end": 17
+   },
+   {
+    "text": "Поэтому",
+    "start": 17.54,
+    "end": 17.98
+   },
+   {
+    "text": "проблем",
+    "start": 17.98,
+    "end": 18.68
+   },
+   {
+    "text": "никаких",
+    "start": 18.68,
+    "end": 19.04
+   },
+   {
+    "text": "нету.",
+    "start": 19.04,
+    "end": 19.98
+   },
+   {
+    "text": "Советую",
+    "start": 20.32,
+    "end": 20.98
+   },
+   {
+    "text": "всем",
+    "start": 20.98,
+    "end": 21.16
+   },
+   {
+    "text": "передвигаться",
+    "start": 21.16,
+    "end": 21.86
+   },
+   {
+    "text": "по",
+    "start": 21.86,
+    "end": 22.1
+   },
+   {
+    "text": "Китаю",
+    "start": 22.1,
+    "end": 22.4
+   },
+   {
+    "text": "на",
+    "start": 22.4,
+    "end": 22.56
+   },
+   {
+    "text": "поездах.",
+    "start": 22.56,
+    "end": 23.68
+   },
+   {
+    "text": "Это",
+    "start": 23.68,
+    "end": 23.88
+   },
+   {
+    "text": "удобно,",
+    "start": 23.88,
+    "end": 24.38
+   },
+   {
+    "text": "комфортно",
+    "start": 24.44,
+    "end": 25
+   },
+   {
+    "text": "и",
+    "start": 25,
+    "end": 25.08
+   },
+   {
+    "text": "быстро.",
+    "start": 25.08,
+    "end": 25.4
+   }
+  ],
+  "accentWords": [],
+  "cuts": [],
+  "chips": [],
+  "logos": [],
+  "numbers": [],
+  "broll": [],
+  "checklists": [],
+  "cities": [],
+  "zooms": [],
+  "sfx": {
+   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+   "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+  },
+  "music": {
+   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+   "volume": 0.078,
+   "outroVolume": 0.179,
+   "duck": 0.55
+  },
+  "speechSeconds": 26.733,
+  "site": {
+   "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
+   "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
+   "route": [],
+   "at": 1025.733333
+  },
+  "cta": "Экспедиции",
+  "ctaSeconds": 0.3,
+  "showSafeZone": false,
+  "format": "reels",
+  "brand": "gtt",
+  "bumper": false,
+  "focus": {
+   "x": 594,
+   "y": 931
+  },
+  "captionSize": 66,
+  "captionTop": 1500,
+  "captionStyle": "3d",
+  "grade": "brightness(1.000) contrast(1.220) saturate(1.180)"
+ },
+ "effects": [],
+ "notes": []
+}
