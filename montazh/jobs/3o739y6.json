@@ -1,0 +1,498 @@
+{
+ "version": 2,
+ "id": "3o739y6",
+ "name": "IMG_5447",
+ "created": "2026-10-23 11:17:15",
+ "brand": "gtt",
+ "format": "both",
+ "options": {
+  "cutPauses": true,
+  "edl": false,
+  "formats": [
+   "reels",
+   "stories"
+  ]
+ },
+ "files": {
+  "source": "source.mov",
+  "images": {}
+ },
+ "local": {
+  "video": "montazh-local/source"
+ },
+ "hf": {},
+ "props": {
+  "mediaSrc": "montazh-local/source",
+  "cutoutSrc": "",
+  "words": [
+   {
+    "text": "Итак,",
+    "start": 0,
+    "end": 0.6
+   },
+   {
+    "text": "я",
+    "start": 0.94,
+    "end": 1.04
+   },
+   {
+    "text": "прибыл",
+    "start": 1.04,
+    "end": 1.36
+   },
+   {
+    "text": "в",
+    "start": 1.36,
+    "end": 1.46
+   },
+   {
+    "text": "Чаншу",
+    "start": 1.46,
+    "end": 1.86
+   },
+   {
+    "text": "в",
+    "start": 1.86,
+    "end": 2.38
+   },
+   {
+    "text": "пустя",
+    "start": 2.38,
+    "end": 2.62
+   },
+   {
+    "text": "4",
+    "start": 2.62,
+    "end": 2.94
+   },
+   {
+    "text": "часа.",
+    "start": 2.94,
+    "end": 3.66
+   },
+   {
+    "text": "Средняя",
+    "start": 3.86,
+    "end": 4.2
+   },
+   {
+    "text": "скорость",
+    "start": 4.2,
+    "end": 4.64
+   },
+   {
+    "text": "на",
+    "start": 4.64,
+    "end": 4.8
+   },
+   {
+    "text": "поезде",
+    "start": 4.8,
+    "end": 5.18
+   },
+   {
+    "text": "250",
+    "start": 5.18,
+    "end": 5.72
+   },
+   {
+    "text": "-260",
+    "start": 5.72,
+    "end": 7.1
+   },
+   {
+    "text": "километров,",
+    "start": 7.1,
+    "end": 7.76
+   },
+   {
+    "text": "поэтому",
+    "start": 8.02,
+    "end": 8.62
+   },
+   {
+    "text": "вполне",
+    "start": 8.62,
+    "end": 9.12
+   },
+   {
+    "text": "себе",
+    "start": 9.12,
+    "end": 9.4
+   },
+   {
+    "text": "комфортно.",
+    "start": 9.4,
+    "end": 10.06
+   },
+   {
+    "text": "Можно",
+    "start": 10.66,
+    "end": 11.34
+   },
+   {
+    "text": "доехать",
+    "start": 11.34,
+    "end": 11.92
+   },
+   {
+    "text": "из",
+    "start": 11.92,
+    "end": 12.32
+   },
+   {
+    "text": "Шанхая.",
+    "start": 12.32,
+    "end": 12.78
+   },
+   {
+    "text": "Далее",
+    "start": 13.66,
+    "end": 14.54
+   },
+   {
+    "text": "сегодня",
+    "start": 14.54,
+    "end": 16.72
+   },
+   {
+    "text": "вечером",
+    "start": 16.72,
+    "end": 17.28
+   },
+   {
+    "text": "банкет,",
+    "start": 17.28,
+    "end": 18.2
+   },
+   {
+    "text": "который",
+    "start": 18.44,
+    "end": 18.82
+   },
+   {
+    "text": "организует",
+    "start": 18.82,
+    "end": 20.2
+   },
+   {
+    "text": "канцелярия",
+    "start": 20.2,
+    "end": 21.48
+   },
+   {
+    "text": "коммунистической",
+    "start": 21.48,
+    "end": 22.16
+   },
+   {
+    "text": "партии",
+    "start": 22.16,
+    "end": 22.66
+   },
+   {
+    "text": "Китая,",
+    "start": 22.66,
+    "end": 23.16
+   },
+   {
+    "text": "которая",
+    "start": 23.62,
+    "end": 24.22
+   },
+   {
+    "text": "пригласила",
+    "start": 24.22,
+    "end": 24.84
+   },
+   {
+    "text": "меня",
+    "start": 24.84,
+    "end": 25.74
+   },
+   {
+    "text": "в",
+    "start": 25.74,
+    "end": 26.62
+   },
+   {
+    "text": "Чаншу",
+    "start": 26.62,
+    "end": 26.92
+   },
+   {
+    "text": "для",
+    "start": 26.92,
+    "end": 27.2
+   },
+   {
+    "text": "того,",
+    "start": 27.2,
+    "end": 27.4
+   },
+   {
+    "text": "чтобы",
+    "start": 27.5,
+    "end": 27.76
+   },
+   {
+    "text": "обсудить",
+    "start": 27.76,
+    "end": 29.06
+   },
+   {
+    "text": "дальнейшее",
+    "start": 29.06,
+    "end": 30.06
+   },
+   {
+    "text": "сотрудничество",
+    "start": 30.06,
+    "end": 30.9
+   },
+   {
+    "text": "по",
+    "start": 30.9,
+    "end": 31.26
+   },
+   {
+    "text": "развитию",
+    "start": 31.26,
+    "end": 31.96
+   },
+   {
+    "text": "в",
+    "start": 31.96,
+    "end": 33.12
+   },
+   {
+    "text": "области",
+    "start": 33.12,
+    "end": 33.44
+   },
+   {
+    "text": "технологического",
+    "start": 33.44,
+    "end": 34.26
+   },
+   {
+    "text": "туризма",
+    "start": 34.26,
+    "end": 34.9
+   },
+   {
+    "text": "и",
+    "start": 34.9,
+    "end": 35.32
+   },
+   {
+    "text": "технопарков,",
+    "start": 35.32,
+    "end": 36.2
+   },
+   {
+    "text": "которые",
+    "start": 36.5,
+    "end": 36.82
+   },
+   {
+    "text": "представлены",
+    "start": 36.82,
+    "end": 37.8
+   },
+   {
+    "text": "в",
+    "start": 37.8,
+    "end": 38.72
+   },
+   {
+    "text": "провинции",
+    "start": 38.72,
+    "end": 39.16
+   },
+   {
+    "text": "Хунан",
+    "start": 39.16,
+    "end": 39.64
+   },
+   {
+    "text": "и",
+    "start": 39.64,
+    "end": 41.22
+   },
+   {
+    "text": "пообщаться",
+    "start": 41.22,
+    "end": 42.38
+   },
+   {
+    "text": "на",
+    "start": 42.38,
+    "end": 43.58
+   },
+   {
+    "text": "тему",
+    "start": 43.58,
+    "end": 44.3
+   },
+   {
+    "text": "того,",
+    "start": 44.3,
+    "end": 44.64
+   },
+   {
+    "text": "как",
+    "start": 44.8,
+    "end": 44.98
+   },
+   {
+    "text": "мы",
+    "start": 44.98,
+    "end": 45.14
+   },
+   {
+    "text": "можем",
+    "start": 45.14,
+    "end": 45.44
+   },
+   {
+    "text": "совместно",
+    "start": 45.44,
+    "end": 45.84
+   },
+   {
+    "text": "работать.",
+    "start": 45.84,
+    "end": 46.3
+   },
+   {
+    "text": "У",
+    "start": 47.02,
+    "end": 47.4
+   },
+   {
+    "text": "меня",
+    "start": 47.4,
+    "end": 47.64
+   },
+   {
+    "text": "также",
+    "start": 47.64,
+    "end": 48.76
+   },
+   {
+    "text": "идет",
+    "start": 48.76,
+    "end": 49
+   },
+   {
+    "text": "работа",
+    "start": 49,
+    "end": 49.48
+   },
+   {
+    "text": "по",
+    "start": 49.48,
+    "end": 49.64
+   },
+   {
+    "text": "треку",
+    "start": 49.64,
+    "end": 50.14
+   },
+   {
+    "text": "GR",
+    "start": 50.14,
+    "end": 51.04
+   },
+   {
+    "text": "- это",
+    "start": 51.64,
+    "end": 51.9
+   },
+   {
+    "text": "не",
+    "start": 51.9,
+    "end": 52.2
+   },
+   {
+    "text": "только",
+    "start": 52.2,
+    "end": 52.4
+   },
+   {
+    "text": "коммерция,",
+    "start": 52.4,
+    "end": 53
+   },
+   {
+    "text": "но",
+    "start": 53.16,
+    "end": 53.26
+   },
+   {
+    "text": "и",
+    "start": 53.26,
+    "end": 53.66
+   },
+   {
+    "text": "\"government",
+    "start": 53.66,
+    "end": 54.62
+   },
+   {
+    "text": "relationship\".",
+    "start": 54.62,
+    "end": 55.28
+   }
+  ],
+  "accentWords": [
+   "4",
+   "250",
+   "-260"
+  ],
+  "cuts": [],
+  "chips": [],
+  "logos": [],
+  "numbers": [],
+  "broll": [],
+  "checklists": [],
+  "cities": [],
+  "zooms": [],
+  "sfx": {
+   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+   "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+  },
+  "music": {
+   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+   "volume": 0.078,
+   "outroVolume": 0.179,
+   "duck": 0.55
+  },
+  "speechSeconds": 56.602,
+  "site": {
+   "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
+   "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
+   "route": [],
+   "at": 1055.6017
+  },
+  "cta": "Экспедиции",
+  "ctaSeconds": 0.3,
+  "showSafeZone": false,
+  "format": "reels",
+  "brand": "gtt",
+  "bumper": false,
+  "focus": {
+   "x": 713,
+   "y": 868
+  },
+  "captionSize": 66,
+  "captionTop": 1500,
+  "captionStyle": "3d",
+  "grade": "brightness(1.000) contrast(1.220) saturate(1.180)"
+ },
+ "effects": [],
+ "notes": []
+}
