@@ -1,0 +1,483 @@
+{
+ "version": 2,
+ "id": "y0ypflj",
+ "name": "IMG_5421",
+ "created": "2026-10-23 10:31:29",
+ "brand": "gtt",
+ "format": "both",
+ "options": {
+  "cutPauses": true,
+  "edl": false,
+  "formats": [
+   "reels",
+   "stories"
+  ]
+ },
+ "files": {
+  "source": "source.mov",
+  "images": {}
+ },
+ "local": {
+  "video": "montazh-local/source"
+ },
+ "hf": {},
+ "props": {
+  "mediaSrc": "montazh-local/source",
+  "cutoutSrc": "",
+  "words": [
+   {
+    "text": "Многие,",
+    "start": 0,
+    "end": 3.28
+   },
+   {
+    "text": "кто",
+    "start": 3.32,
+    "end": 4.32
+   },
+   {
+    "text": "приезжает",
+    "start": 4.32,
+    "end": 4.8
+   },
+   {
+    "text": "в",
+    "start": 4.8,
+    "end": 4.96
+   },
+   {
+    "text": "Китай",
+    "start": 4.96,
+    "end": 5.2
+   },
+   {
+    "text": "в",
+    "start": 5.2,
+    "end": 5.52
+   },
+   {
+    "text": "первый",
+    "start": 5.52,
+    "end": 5.72
+   },
+   {
+    "text": "раз,",
+    "start": 5.72,
+    "end": 6.16
+   },
+   {
+    "text": "всегда",
+    "start": 6.26,
+    "end": 7.22
+   },
+   {
+    "text": "такие,",
+    "start": 7.22,
+    "end": 7.6
+   },
+   {
+    "text": "ой,",
+    "start": 8.38,
+    "end": 8.68
+   },
+   {
+    "text": "да",
+    "start": 8.72,
+    "end": 8.74
+   },
+   {
+    "text": "не,",
+    "start": 8.74,
+    "end": 8.98
+   },
+   {
+    "text": "давайте",
+    "start": 9.1,
+    "end": 9.34
+   },
+   {
+    "text": "на",
+    "start": 9.34,
+    "end": 9.54
+   },
+   {
+    "text": "поездах",
+    "start": 9.54,
+    "end": 10.02
+   },
+   {
+    "text": "не",
+    "start": 10.02,
+    "end": 10.1
+   },
+   {
+    "text": "будем",
+    "start": 10.1,
+    "end": 10.32
+   },
+   {
+    "text": "двигаться.",
+    "start": 10.32,
+    "end": 10.72
+   },
+   {
+    "text": "На",
+    "start": 10.76,
+    "end": 10.84
+   },
+   {
+    "text": "самом",
+    "start": 10.84,
+    "end": 11.04
+   },
+   {
+    "text": "деле",
+    "start": 11.04,
+    "end": 11.32
+   },
+   {
+    "text": "это",
+    "start": 11.32,
+    "end": 11.56
+   },
+   {
+    "text": "очень",
+    "start": 11.56,
+    "end": 12.18
+   },
+   {
+    "text": "удобно,",
+    "start": 12.18,
+    "end": 12.78
+   },
+   {
+    "text": "это",
+    "start": 13.24,
+    "end": 13.5
+   },
+   {
+    "text": "очень",
+    "start": 13.5,
+    "end": 13.82
+   },
+   {
+    "text": "быстро.",
+    "start": 13.82,
+    "end": 14.2
+   },
+   {
+    "text": "Расстояние",
+    "start": 15,
+    "end": 15.98
+   },
+   {
+    "text": "в",
+    "start": 15.98,
+    "end": 16.36
+   },
+   {
+    "text": "900",
+    "start": 16.36,
+    "end": 17.18
+   },
+   {
+    "text": "километров",
+    "start": 17.18,
+    "end": 17.8
+   },
+   {
+    "text": "за",
+    "start": 17.8,
+    "end": 18
+   },
+   {
+    "text": "4",
+    "start": 18,
+    "end": 18.28
+   },
+   {
+    "text": "часа,",
+    "start": 18.28,
+    "end": 18.72
+   },
+   {
+    "text": "я",
+    "start": 18.82,
+    "end": 19
+   },
+   {
+    "text": "считаю",
+    "start": 19,
+    "end": 19.46
+   },
+   {
+    "text": "это",
+    "start": 19.46,
+    "end": 19.74
+   },
+   {
+    "text": "очень",
+    "start": 19.74,
+    "end": 20
+   },
+   {
+    "text": "даже,",
+    "start": 20,
+    "end": 45.02
+   },
+   {
+    "text": "куча",
+    "start": 45.04,
+    "end": 45.3
+   },
+   {
+    "text": "ограничений.",
+    "start": 45.3,
+    "end": 46.02
+   },
+   {
+    "text": "А",
+    "start": 46.26,
+    "end": 46.88
+   },
+   {
+    "text": "здесь",
+    "start": 46.88,
+    "end": 47.18
+   },
+   {
+    "text": "быстренько",
+    "start": 47.18,
+    "end": 47.86
+   },
+   {
+    "text": "приехал",
+    "start": 47.86,
+    "end": 48.44
+   },
+   {
+    "text": "за",
+    "start": 48.44,
+    "end": 48.88
+   },
+   {
+    "text": "15",
+    "start": 48.88,
+    "end": 49.32
+   },
+   {
+    "text": "минут,",
+    "start": 49.32,
+    "end": 49.64
+   },
+   {
+    "text": "все,",
+    "start": 49.74,
+    "end": 49.88
+   },
+   {
+    "text": "проходит,",
+    "start": 49.98,
+    "end": 49.98
+   },
+   {
+    "text": "и",
+    "start": 49.98,
+    "end": 49.98
+   },
+   {
+    "text": "выезде.",
+    "start": 49.98,
+    "end": 51.86
+   },
+   {
+    "text": "Конфортабельные",
+    "start": 52.54,
+    "end": 53.46
+   },
+   {
+    "text": "вагоны",
+    "start": 53.46,
+    "end": 54.08
+   },
+   {
+    "text": "с",
+    "start": 54.08,
+    "end": 54.86
+   },
+   {
+    "text": "комфортными",
+    "start": 54.86,
+    "end": 55.54
+   },
+   {
+    "text": "креслами",
+    "start": 55.54,
+    "end": 56.18
+   },
+   {
+    "text": "и",
+    "start": 56.18,
+    "end": 56.86
+   },
+   {
+    "text": "вперед",
+    "start": 56.86,
+    "end": 57.18
+   },
+   {
+    "text": "из",
+    "start": 57.18,
+    "end": 57.34
+   },
+   {
+    "text": "песни.",
+    "start": 57.34,
+    "end": 57.68
+   }
+  ],
+  "accentWords": [
+   "900",
+   "4",
+   "15"
+  ],
+  "cuts": [],
+  "chips": [],
+  "logos": [],
+  "numbers": [],
+  "broll": [],
+  "checklists": [],
+  "cities": [],
+  "zooms": [
+   {
+    "at": 0.03,
+    "kind": "macro",
+    "amount": 1.1,
+    "hold": 1.9,
+    "target": "eyes"
+   }
+  ],
+  "sfx": {
+   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+   "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+  },
+  "music": {
+   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+   "volume": 0.062,
+   "outroVolume": 0.144,
+   "duck": 0.55
+  },
+  "speechSeconds": 59.037,
+  "site": {
+   "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
+   "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
+   "route": [],
+   "at": 1058.036667
+  },
+  "cta": "Экспедиции",
+  "ctaSeconds": 0.3,
+  "showSafeZone": false,
+  "format": "reels",
+  "brand": "gtt",
+  "bumper": false,
+  "focus": {
+   "x": 540,
+   "y": 700
+  },
+  "captionSize": 90,
+  "captionTop": 1500,
+  "captionStyle": "3d",
+  "grade": "brightness(1.000) contrast(1.220) saturate(1.180)",
+  "fx": [
+   {
+    "type": "bw",
+    "at": 7.47,
+    "until": 10.57
+   }
+  ],
+  "hooks": [
+   {
+    "variant": "wall",
+    "at": 12.2,
+    "until": 15.2,
+    "lines": [
+     {
+      "text": "Удобно и быстро",
+      "at": 12.3
+     }
+    ]
+   },
+   {
+    "variant": "wall",
+    "at": 16.37,
+    "until": 19.37,
+    "lines": [
+     {
+      "text": "900 км= 4 часа",
+      "at": 16.47
+     }
+    ]
+   }
+  ],
+  "titles": [
+   {
+    "at": 28.47,
+    "until": 30.27,
+    "text": "за 15 минут ",
+    "font": "grotesk",
+    "y": 1305,
+    "plane": "front",
+    "echo": true,
+    "color": "#3D7BFF"
+   }
+  ]
+ },
+ "effects": [
+  {
+   "id": "ezp48ed1",
+   "effect": "zoom-macro",
+   "at": 0.03,
+   "until": 1.93,
+   "params": {}
+  },
+  {
+   "id": "eejeqp9q",
+   "effect": "fx-bw",
+   "at": 7.47,
+   "until": 10.57,
+   "params": {}
+  },
+  {
+   "id": "enl28e4b",
+   "effect": "hook-wall",
+   "at": 12.2,
+   "until": 15.2,
+   "params": {
+    "text": "Удобно и быстро"
+   }
+  },
+  {
+   "id": "etqshe5f",
+   "effect": "hook-wall",
+   "at": 16.37,
+   "until": 19.37,
+   "params": {
+    "text": "900 км= 4 часа"
+   }
+  },
+  {
+   "id": "erbl324b",
+   "effect": "title-echo",
+   "at": 28.47,
+   "until": 30.27,
+   "params": {
+    "text": "за 15 минут ",
+    "y": "1305",
+    "color": "#3D7BFF"
+   }
+  }
+ ],
+ "notes": []
+}
