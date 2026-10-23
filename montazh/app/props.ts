@@ -24,7 +24,8 @@ export const cleanKey = (id: string) => (id === "source" ? "clean.wav" : `clean/
 // длина ролика: склейка — по монтажному листу, иначе весь исходник
 export const projSeconds = (p: Project) => (p.edl?.length ? edlSeconds(p.edl) : (p.source?.duration ?? 0));
 
-export function buildProps(p: Project, opts: {cleanReady?: boolean; cleanClips?: Record<string, unknown>; source?: string} = {}): Props {
+// view — какой формат показывать в предпросмотре, когда ролик делается сразу в двух (format: "both")
+export function buildProps(p: Project, opts: {cleanReady?: boolean; cleanClips?: Record<string, unknown>; source?: string; view?: "reels" | "stories"} = {}): Props {
   const multi = !!p.edl?.length;
   const dur = projSeconds(p) || 10;
   const b = BRANDS[p.brand];
@@ -54,7 +55,7 @@ export function buildProps(p: Project, opts: {cleanReady?: boolean; cleanClips?:
     cta: b.cta,
     ctaSeconds: p.finale ? 2.4 : 0.3,
     showSafeZone: false,
-    format: p.format,
+    format: p.format === "both" ? (opts.view ?? "reels") : p.format,
     brand: p.brand,
     bumper: p.brand === "gtt" ? undefined : false,
     focus: p.focus,

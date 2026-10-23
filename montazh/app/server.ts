@@ -37,10 +37,11 @@ export async function saveToken(token: string): Promise<GithubState> {
 export const forgetToken = () => fetch("api/github", {method: "DELETE"});
 
 // файл задания → сервер (с ходом загрузки)
-export function sendFile(jid: string, name: string, blob: Blob, onProgress: (k: number) => void): Promise<void> {
+// файл задания (job) или референса (ref) → сервер Mac; папки у них разные — референс ищется в своей
+export function sendFile(jid: string, name: string, blob: Blob, onProgress: (k: number) => void, kind: "job" | "ref" = "job"): Promise<void> {
   return new Promise((resolve, reject) => {
     const x = new XMLHttpRequest();
-    x.open("PUT", `api/job/${jid}/file/${name}`);
+    x.open("PUT", `api/${kind}/${jid}/file/${name}`);
     x.upload.onprogress = (e) => e.lengthComputable && onProgress(e.loaded / e.total);
     x.onload = () => (x.status === 200 ? resolve() : reject(new Error(`сервер ответил ${x.status}`)));
     x.onerror = () => reject(new Error("сервер Монтажной не отвечает"));
@@ -53,7 +54,7 @@ export async function submitJob(jid: string, job: unknown) {
   if (!r.ok) throw new Error((await r.json()).detail || "Не отправилось");
 }
 
-export type JobFile = {name: string; kind: "video" | "phone" | "frames" | "part"; title: string; size: number; url?: string; asset?: number};
+export type JobFile = {name: string; kind: "video" | "stories" | "phone" | "frames" | "part"; title: string; size: number; url?: string; asset?: number};
 export type SaveState = {done?: boolean; error?: string; path?: string; progress?: number};
 
 // готовый файл задания → «Загрузки/Монтажная» на Mac (сервер качает через API GitHub и показывает файл в Finder);

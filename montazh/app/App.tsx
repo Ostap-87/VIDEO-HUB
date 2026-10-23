@@ -11,6 +11,7 @@ import {advise, PALETTES, SWATCHES} from "./palettes";
 import {decodeAudio, fmtTime, frames, peaks, probe} from "./media";
 import {buildProps, cleanKey, clipKey, durationFrames, leadFrames, LOCAL, projSeconds} from "./props";
 import {AssembleStep, cleanClips, clipsOf, transcribeClips} from "./AssembleStep";
+import {AutoMontage, RhythmPanel} from "./AutoTools";
 import {edlLocate, edlSeconds, edlWords} from "./assemble";
 import {autoPlace, hfName, loadModel, phrases, search, thumb, usedInProject, type Found} from "./images";
 import {fetchLink, forgetToken, githubState, hasServer, jobState, openOutside, saveJobFile, saveState, saveToken, sendFile, submitJob, type GithubState, type JobState, type SaveState} from "./server";
@@ -38,7 +39,7 @@ function newProject(name: string, brand: Brand): Project {
     id: newId("v"),
     name,
     brand,
-    format: "reels",
+    format: "both",
     created: nowIso(),
     updated: nowIso(),
     focus: {x: 540, y: 700},
@@ -435,7 +436,8 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
     return files.map((f) => f.src).join("|");
   }, [m.video, m.clean, m.clips, m.cleanClips, m.images, p.id, p.effects]);
 
-  const props = useMemo(() => buildProps(p, {cleanReady: !!m.clean, cleanClips: m.cleanClips}), [p, m.clean, m.cleanClips]);
+  const [view, setView] = useState<"reels" | "stories">("reels");
+  const props = useMemo(() => buildProps(p, {cleanReady: !!m.clean, cleanClips: m.cleanClips, view}), [p, m.clean, m.cleanClips, view]);
   const frames_ = useMemo(() => durationFrames(props), [props]);
   const lead = useMemo(() => leadFrames(props), [props]);
   const sec = Math.max(0, (frame - lead) / FPS);
@@ -457,7 +459,10 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
   });
 
   const ready = p.edl?.length ? p.edl.every((s) => m.clips[s.clip]) : !!m.video;
-  const ctx: StepCtx = {p, up, m, setM, sec, seek, file: fileRef, setStatus, player, step, setStep};
+  const pRef = useRef(p);
+  pRef.current = p;
+  const getP = useCallback(() => pRef.current, []);
+  const ctx: StepCtx = {p, up, m, setM, sec, seek, file: fileRef, setStatus, player, step, setStep, getP};
   return (
     <div className="ws">
       <header className="top">
@@ -516,8 +521,18 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
                 : "Здесь будет ролик с субтитрами и эффектами — сразу, без ожидания."}
             </div>
           )}
+          {p.format === "both" ? (
+            <div className="seg3 viewseg">
+              <button className={view === "reels" ? "on" : ""} onClick={() => setView("reels")}>
+                Смотреть как Reels
+              </button>
+              <button className={view === "stories" ? "on" : ""} onClick={() => setView("stories")}>
+                как Stories
+              </button>
+            </div>
+          ) : null}
           <div className="pinfo">
-            {fmtTime(sec)} · {p.format === "reels" ? "Reels" : "Stories"} 1080×1920
+            {fmtTime(sec)} · {p.format === "both" ? `Reels + Stories (сейчас: ${view === "reels" ? "Reels" : "Stories"})` : p.format === "reels" ? "Reels" : "Stories"} 1080×1920
           </div>
         </aside>
       </div>
@@ -538,6 +553,7 @@ export type StepCtx = {
   player: React.RefObject<PlayerRef | null>;
   step: Step;
   setStep: (s: Step) => void;
+  getP: () => Project; // проект после последних правок (для долгих операций: автомонтаж)
 };
 
 const Next: React.FC<{to: Step; setStep: (s: Step) => void; children: React.ReactNode}> = ({to, setStep, children}) => (
@@ -549,9 +565,18 @@ const Next: React.FC<{to: Step; setStep: (s: Step) => void; children: React.Reac
 );
 
 // ---------------------------------------------------------------- 1. Исходник
-const SourceStep: React.FC<StepCtx> = ({p, up, m, seek, setStep}) => (
+const SourceStep: React.FC<StepCtx> = (ctx) => {
+  const {p, up, m, seek, setStep} = ctx;
+  return (
   <div className="step">
     <h2>Исходник</h2>
+    <div className="autobox">
+      <AutoMontage {...ctx} big />
+      <span>
+        Одна кнопка: распознать речь, вырезать паузы и эканья, чистый голос, музыка, эффекты по смыслу, картинки и ритм.
+        Или пройдите шаги сами.
+      </span>
+    </div>
     {p.source ? (
       <p className="lead">
         {p.source.name} · {fmtTime(p.source.duration)} · {p.source.width}×{p.source.height}
@@ -598,7 +623,14 @@ const SourceStep: React.FC<StepCtx> = ({p, up, m, seek, setStep}) => (
       <button className={p.format === "stories" ? "on" : ""} onClick={() => up((q) => ({...q, format: "stories"}))}>
         Stories
       </button>
+      <button className={p.format === "both" ? "on" : ""} onClick={() => up((q) => ({...q, format: "both"}))}>
+        Оба сразу
+      </button>
     </div>
+    <p className="muted">
+      «Оба сразу» — облако делает два файла: Reels и Stories (Stories — частями до 60 с). Предпросмотр переключается под
+      роликом.
+    </p>
     <h3>Линия глаз</h3>
     <p className="muted">Нажмите на глаза в кадре: вокруг этой точки делаются наезды, а плашки не закрывают лицо.</p>
     {m.strip[2] ? (
@@ -630,7 +662,8 @@ const SourceStep: React.FC<StepCtx> = ({p, up, m, seek, setStep}) => (
       Дальше: склейка и чистка
     </Next>
   </div>
-);
+  );
+};
 
 const Wave: React.FC<{peaks: number[]; second?: number[]; onSeek?: (k: number) => void; pos?: number}> = ({peaks: pk, second, onSeek, pos}) => (
   <div
@@ -973,7 +1006,9 @@ const ColorField: React.FC<{label: string; value: string; onChange: (v: string) 
 );
 
 // ---------------------------------------------------------------- 5. Монтаж: эффекты и заметки
-const EditStep: React.FC<StepCtx> = ({p, up, m, setM, sec, seek, setStep}) => {
+const EditStep: React.FC<StepCtx> = (ctx) => {
+  const {p, up, m, setM, sec, seek, setStep} = ctx;
+  const [rhythm, setRhythm] = useState(false);
   const [cat, setCat] = useState(CATS[0]);
   const [sel, setSel] = useState<string | null>(null);
   const [note, setNote] = useState("");
@@ -987,6 +1022,14 @@ const EditStep: React.FC<StepCtx> = ({p, up, m, setM, sec, seek, setStep}) => {
   return (
     <div className="step">
       <h2>Монтаж</h2>
+      <div className="row wrap toolsrow">
+        <AutoMontage {...ctx} />
+        <button className={`btn ${rhythm ? "primary" : ""}`} onClick={() => setRhythm(!rhythm)} title="Эффект каждые N секунд по всему ролику">
+          ⏱ Ритм{p.effects.some((e) => e.params.rhythm) ? ` · каждые ${p.rhythm?.every ?? 4} с` : ""}
+        </button>
+        <span className="muted">Автомонтаж собирает всё сам; Ритм ставит эффект каждые 4 с (или как настроите).</span>
+      </div>
+      {rhythm ? <RhythmPanel {...ctx} onClose={() => setRhythm(false)} /> : null}
       <CommandBar p={p} up={up} sec={sec} seek={seek} />
       <p className="lead">
         Или выберите сами: поставьте курсор на нужную секунду (в ролике или на дорожках внизу) и нажмите эффект — он сразу появится в
@@ -1597,7 +1640,7 @@ const References: React.FC = () => {
       if (file) {
         setBusy("Передаю файл…");
         const ext = (file.name.split(".").pop() || "mp4").toLowerCase().replace(/[^a-z0-9]/g, "") || "mp4";
-        await sendFile(rid, `ref.${ext}`, file, (k) => setBusy(`Передаю файл: ${Math.round(k * 100)}%`)).catch(() => {
+        await sendFile(rid, `ref.${ext}`, file, (k) => setBusy(`Передаю файл: ${Math.round(k * 100)}%`), "ref").catch(() => {
           throw new Error("сервер не принял файл");
         });
       }
@@ -1763,13 +1806,18 @@ const Cloud: React.FC<{p: Project; up: StepCtx["up"]; props: Record<string, any>
         created: nowIso(),
         brand: p.brand,
         format: p.format,
-        options: {cutPauses: multi ? false : cut, edl: multi},
+        options: {cutPauses: multi ? false : cut, edl: multi, formats: p.format === "both" ? ["reels", "stories"] : [p.format]},
         files: multi
           ? {source: Object.values(clipFiles)[0], clips: clipFiles, images}
           : {source: `source.${ext}`, sourceUrl: link, images},
         local: multi ? {video: LOCAL.edl, clips: Object.fromEntries(Object.keys(clipFiles).map((id) => [LOCAL.clip(id), id]))} : {video: LOCAL.video},
         hf,
-        props: {...props, audioSrc: undefined, edl: props.edl?.map((x: Record<string, unknown>) => ({...x, audio: undefined}))},
+        props: {
+          ...props,
+          format: p.format === "both" ? "reels" : props.format, // Stories движок делает из тех же props, меняя формат
+          audioSrc: undefined,
+          edl: props.edl?.map((x: Record<string, unknown>) => ({...x, audio: undefined})),
+        },
         effects: p.effects,
         notes: p.notes,
       };
@@ -1852,7 +1900,8 @@ const Cloud: React.FC<{p: Project; up: StepCtx["up"]; props: Record<string, any>
           )}
           <p className="muted">
             В облаке: студийный звук (DeepFilterNet), {p.edl?.length ? "склейка роликов, " : cut ? "склейка без пауз, " : ""}вырезка спикера для эффектов «за головой» и рендер{" "}
-            {p.format === "stories" ? "Stories (части до 60 с)" : "Reels"}. Обычно 10–25 минут; окно можно закрыть — результат останется здесь.
+            {p.format === "both" ? "Reels и Stories (части до 60 с)" : p.format === "stories" ? "Stories (части до 60 с)" : "Reels"}. Обычно 7–25 минут
+            (оба формата — примерно вдвое дольше); окно можно закрыть — результат останется здесь.
           </p>
           <div className="row wrap">
             <button className="btn primary big" disabled={!!sending || !p.source} onClick={send}>

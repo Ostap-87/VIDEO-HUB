@@ -14,7 +14,7 @@
 3. props из окна (шкала исходника или склейки окна) → шкала склейки движка: все времена (at, until, start, end, strike…),
    зумы, финал;
 4. вырезка спикера (npm run matte) на отрезках, где она нужна: перебивки «вырезкой», хуки, графики за спиной, спикер по контуру;
-5. рендер TalkReelPro, части Stories до 59,5 с, лёгкая копия до 29 МБ, раскадровка;
+5. рендер TalkReelPro — Reels, Stories или оба (options.formats), части Stories до 59,5 с, лёгкие копии до 29 МБ, раскадровка;
 6. всё — в тот же релиз (окно показывает и скачивает), статус по шагам — status.json там же.
 Заметки, которые движок сделать не может (свободный текст), остаются в статусе — их выполняет Claude.
 """
@@ -327,31 +327,38 @@ def main():
         # 5. рендер
         lfs_pull(static_paths(props) + [f"source-videos/2026-10-07-byt-tehnika/sfx/{n}.wav" for n in ("whoosh", "switch", "whip")])
         job.out.mkdir(parents=True, exist_ok=True)
-        pf = job.dir / "props.render.json"
-        pf.write_text(json.dumps(props, ensure_ascii=False))
         slug = f"montazh-{a.id}"
-        video = job.out / f"{slug}.mp4"
-        fmt = "Stories" if props.get("format") == "stories" else "Reels"
-        job.say("render", f"Рендерю {fmt} ({total:.0f} с) — это самый долгий шаг", 0.45)
         conc = str(max(2, (os.cpu_count() or 4)))
-        run(["./node_modules/.bin/remotion", "render", "src/index.ts", "TalkReelPro", video, f"--props={pf}", f"--concurrency={conc}", "--log=error"])
         from auto import light_copy  # noqa: E402 — тот же рецепт, что у быстрого пайплайна
 
-        job.say("finish", "Готовлю копию для телефона и раскадровку", 0.9)
-        job.put(video, "video", f"{fmt}, полное качество")
-        if video.stat().st_size > 29 * 1024 * 1024:
-            phone = job.out / f"{slug}-phone.mp4"
-            light_copy(video, phone)
-            job.put(phone, "phone", "Копия для телефона (до 29 МБ)")
-        sheet = job.out / f"{slug}-frames.jpg"
-        run(["python3", "scripts/frames.py", video, "--every", "3", "--out", sheet])
-        job.put(sheet, "frames", "Раскадровка")
-        if fmt == "Stories" and duration(video) > 59.9:
-            lead = 44 / 30 if props.get("brand", "gtt") == "gtt" and props.get("bumper") is not False else 0  # заставка GTT
-            pts = [round(p + lead, 2) for p in stories_points(props["words"], total)]
-            run(["python3", "scripts/stories.py", video, "--at", ",".join(map(str, pts))])
-            for part in sorted(job.out.glob(f"{slug}-[0-9]*.mp4")):
-                job.put(part, "part", f"Stories, часть {part.stem.rsplit('-', 1)[-1]}")
+        # форматы: «Оба сразу» (решение пользователя 23.10.2026) — Reels и Stories из одних props, меняется только format
+        formats = [f for f in (opts.get("formats") or [props.get("format") or "reels"]) if f in ("reels", "stories")] or ["reels"]
+        for k, fmt_id in enumerate(formats):
+            stories = fmt_id == "stories"
+            fmt = "Stories" if stories else "Reels"
+            name = slug + ("-stories" if stories and len(formats) > 1 else "")
+            pf = job.dir / f"props.{fmt_id}.json"
+            pf.write_text(json.dumps({**props, "format": fmt_id}, ensure_ascii=False))
+            video = job.out / f"{name}.mp4"
+            step = f" ({k + 1} из {len(formats)})" if len(formats) > 1 else ""
+            job.say("render", f"Рендерю {fmt}{step}, {total:.0f} с — это самый долгий шаг", 0.45 + 0.42 * k / len(formats))
+            run(["./node_modules/.bin/remotion", "render", "src/index.ts", "TalkReelPro", video, f"--props={pf}", f"--concurrency={conc}", "--log=error"])
+            job.say("finish", f"{fmt}: копия для телефона" + (" и раскадровка" if k == 0 else ""), 0.45 + 0.42 * (k + 0.9) / len(formats))
+            job.put(video, "stories" if stories and len(formats) > 1 else "video", f"{fmt}, полное качество")
+            if video.stat().st_size > 29 * 1024 * 1024:
+                phone = job.out / f"{name}-phone.mp4"
+                light_copy(video, phone)
+                job.put(phone, "phone", f"{fmt}: копия для телефона (до 29 МБ)")
+            if k == 0:
+                sheet = job.out / f"{slug}-frames.jpg"
+                run(["python3", "scripts/frames.py", video, "--every", "3", "--out", sheet])
+                job.put(sheet, "frames", "Раскадровка")
+            if stories and duration(video) > 59.9:
+                lead = 44 / 30 if props.get("brand", "gtt") == "gtt" and props.get("bumper") is not False else 0  # заставка GTT
+                pts = [round(p + lead, 2) for p in stories_points(props["words"], total)]
+                run(["python3", "scripts/stories.py", video, "--at", ",".join(map(str, pts))])
+                for part in sorted(job.out.glob(f"{name}-[0-9]*.mp4")):
+                    job.put(part, "part", f"Stories, часть {part.stem.rsplit('-', 1)[-1]}")
 
         # реестр картинок Higgsfield: «одна картинка — один раз»
         if hf and job.upload:

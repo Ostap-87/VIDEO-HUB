@@ -183,6 +183,9 @@ def send_ref(rid: str, ref: dict) -> None:
     try:
         folder.mkdir(parents=True, exist_ok=True)
         files = sorted(p for p in folder.iterdir() if p.is_file())
+        if not files:  # окно до 23.10.2026 клало файл референса в папку заданий
+            old = HOME / "jobs" / rid
+            files = sorted(p for p in old.iterdir() if p.is_file()) if old.is_dir() else []
         video = files[0] if files else (fetch_ref(ref["url"], folder, st) if ref.get("url") else None)
         if not video:
             raise LinkError("Нет ни файла, ни ссылки")
@@ -209,6 +212,7 @@ def send_ref(rid: str, ref: dict) -> None:
         st.update(text="В библиотеке — ждёт разбора", progress=1.0, sent=True)
         import shutil
         shutil.rmtree(folder, ignore_errors=True)
+        shutil.rmtree(HOME / "jobs" / rid, ignore_errors=True)
     except (LinkError, subprocess.SubprocessError, OSError, KeyError) as exc:
         st["error"] = str(exc) or "Не удалось добавить"
 
@@ -262,10 +266,13 @@ def save_name(title: str, f: dict) -> str:
     base = re.sub(r'[\\/:*?"<>|]+', " ", title or "ролик").strip()[:60] or "ролик"
     ext = pathlib.Path(f["name"]).suffix or ".mp4"
     kind = f.get("kind")
+    st = "Stories, " if "-stories" in f["name"] else ""
     if kind == "phone":
-        return f"{base} (телефон){ext}"
+        return f"{base} ({st}телефон){ext}"
     if kind == "part":
-        return f"{base} — часть {f['name'].rsplit('-', 1)[-1].split('.')[0]}{ext}"
+        return f"{base} — {st}часть {f['name'].rsplit('-', 1)[-1].split('.')[0]}{ext}"
+    if kind == "stories":
+        return f"{base} (Stories){ext}"
     if kind == "frames":
         return f"{base} — раскадровка{ext}"
     return f"{base}{ext}"

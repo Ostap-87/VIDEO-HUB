@@ -63,7 +63,7 @@ export type Project = {
   id: string;
   name: string;
   brand: Brand;
-  format: "reels" | "stories";
+  format: "reels" | "stories" | "both"; // both — облако делает сразу Reels и Stories (решение пользователя 23.10.2026)
   created: string;
   updated: string;
   source?: SourceInfo;
@@ -82,6 +82,7 @@ export type Project = {
   clips?: Clip[]; // медиатека: ролики и фото (без неё — один исходник source)
   edl?: Seg[]; // монтажный лист; без него ролик = весь исходник
   assemble?: AssembleOpts;
+  rhythm?: {every: number; set: string; effect?: string}; // «Ритм»: эффект каждые every секунд (auto.ts)
 };
 
 export const newId = (p = "") => p + Math.random().toString(36).slice(2, 9);

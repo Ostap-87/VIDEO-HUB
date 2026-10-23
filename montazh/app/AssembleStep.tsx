@@ -56,7 +56,7 @@ export function applyEdl(q: Project, clips0: Clip[], edl: Seg[], dropped?: Recor
 
 // громкость голоса по 10 мс — для чистки: по звуку после шумодава RNNoise (на улице шум города прячет паузы, как у
 // npm run cut); считается один раз и хранится рядом с роликом
-async function loadEnv(pid: string, c: Clip): Promise<Float32Array | null> {
+export async function loadEnv(pid: string, c: Clip): Promise<Float32Array | null> {
   const saved = await getFile(pid, `env/${c.id}`);
   if (saved) return new Float32Array(await saved.arrayBuffer());
   const file = await getFile(pid, clipKey(c.id));

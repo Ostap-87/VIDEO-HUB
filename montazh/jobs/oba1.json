@@ -1,0 +1,326 @@
+{
+ "version": 2,
+ "id": "oba1",
+ "name": "Проверка: Reels и Stories одним заданием",
+ "brand": "od",
+ "format": "both",
+ "options": {
+  "cutPauses": true,
+  "formats": [
+   "reels",
+   "stories"
+  ]
+ },
+ "files": {
+  "source": "source.mp4",
+  "sourceRepo": "montazh/engine/sample.mp4",
+  "images": {}
+ },
+ "local": {
+  "video": "montazh-local/source"
+ },
+ "hf": {},
+ "props": {
+  "mediaSrc": "montazh-local/source",
+  "cutoutSrc": "",
+  "words": [
+   {
+    "text": "время",
+    "start": 0.42,
+    "end": 0.79
+   },
+   {
+    "text": "рассказать",
+    "start": 0.79,
+    "end": 1.73
+   },
+   {
+    "text": "про",
+    "start": 1.73,
+    "end": 2.01
+   },
+   {
+    "text": "мои",
+    "start": 2.01,
+    "end": 2.29
+   },
+   {
+    "text": "два",
+    "start": 2.29,
+    "end": 2.57
+   },
+   {
+    "text": "новых",
+    "start": 2.57,
+    "end": 3.04
+   },
+   {
+    "text": "проекта,",
+    "start": 3.04,
+    "end": 3.83
+   },
+   {
+    "text": "потому",
+    "start": 3.83,
+    "end": 4.45
+   },
+   {
+    "text": "что",
+    "start": 4.45,
+    "end": 4.52
+   },
+   {
+    "text": "поступило",
+    "start": 4.52,
+    "end": 5.26
+   },
+   {
+    "text": "много",
+    "start": 5.26,
+    "end": 5.59
+   },
+   {
+    "text": "сообщений",
+    "start": 5.59,
+    "end": 6.28
+   },
+   {
+    "text": "о",
+    "start": 6.28,
+    "end": 6.35
+   },
+   {
+    "text": "том,",
+    "start": 6.35,
+    "end": 6.72
+   },
+   {
+    "text": "что",
+    "start": 6.72,
+    "end": 6.93
+   },
+   {
+    "text": "Остап,",
+    "start": 6.93,
+    "end": 7.32
+   },
+   {
+    "text": "ты",
+    "start": 7.32,
+    "end": 7.49
+   },
+   {
+    "text": "же",
+    "start": 7.49,
+    "end": 7.71
+   },
+   {
+    "text": "занимался",
+    "start": 7.71,
+    "end": 8.26
+   },
+   {
+    "text": "другими",
+    "start": 8.26,
+    "end": 8.75
+   },
+   {
+    "text": "делами.",
+    "start": 8.75,
+    "end": 9.22
+   },
+   {
+    "text": "Я",
+    "start": 9.22,
+    "end": 9.85
+   },
+   {
+    "text": "всегда",
+    "start": 9.85,
+    "end": 9.87
+   },
+   {
+    "text": "делал",
+    "start": 9.87,
+    "end": 10.43
+   },
+   {
+    "text": "несколько",
+    "start": 10.43,
+    "end": 11.17
+   },
+   {
+    "text": "проектов,",
+    "start": 11.17,
+    "end": 12
+   }
+  ],
+  "accentWords": [],
+  "cuts": [],
+  "chips": [],
+  "logos": [],
+  "numbers": [],
+  "broll": [],
+  "checklists": [],
+  "cities": [],
+  "zooms": [],
+  "sfx": {
+   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+   "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+  },
+  "music": {
+   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+   "volume": 0.078,
+   "outroVolume": 0.179
+  },
+  "speechSeconds": 12,
+  "site": {
+   "home": "source-videos/ostapdotcenko/site/home-mobile-full.png",
+   "catalog": "source-videos/ostapdotcenko/site/career-mobile.png",
+   "route": [],
+   "at": 1011
+  },
+  "cta": "Подробнее на сайте",
+  "ctaSeconds": 0.3,
+  "showSafeZone": false,
+  "format": "reels",
+  "brand": "od",
+  "bumper": false,
+  "focus": {
+   "x": 540,
+   "y": 720
+  },
+  "captionSize": 56,
+  "captionTop": 1250,
+  "captionStyle": "flat",
+  "grade": "brightness(1.018) contrast(1.030) saturate(1.060) sepia(0.120) hue-rotate(-3.6deg)",
+  "hooks": [
+   {
+    "variant": "behind",
+    "at": 0.5,
+    "until": 2.1,
+    "lines": [
+     {
+      "text": "ДВА",
+      "at": 0.6
+     }
+    ]
+   }
+  ],
+  "emojis": [
+   {
+    "at": 2.5,
+    "until": 4.3,
+    "src": "интернет-материалы/эмодзи/огонь.webp",
+    "x": 820,
+    "y": 460,
+    "anim": "pop",
+    "size": 240
+   }
+  ],
+  "speaker": [
+   {
+    "at": 3,
+    "until": 5.5,
+    "corner": "tr",
+    "scale": 0.38,
+    "style": "round",
+    "bg": "blur"
+   }
+  ],
+  "texts": [
+   {
+    "at": 6,
+    "until": 8.5,
+    "text": "ПРОЕКТЫ",
+    "x": 380,
+    "y": 560,
+    "size": 230,
+    "rx": 0,
+    "ry": 30,
+    "rz": 0,
+    "color": "#FFFFFF",
+    "font": "grotesk",
+    "plane": "behind",
+    "anim": "swing",
+    "depth": 6
+   }
+  ],
+  "lists": [
+   {
+    "at": 8.6,
+    "until": 11,
+    "style": "stickers",
+    "items": [
+     {
+      "text": "Aura Robotics",
+      "at": 9.1
+     },
+     {
+      "text": "Global Tech Tour",
+      "at": 9.6
+     }
+    ]
+   }
+  ]
+ },
+ "effects": [
+  {
+   "id": "e7q8dndm",
+   "effect": "hook-behind",
+   "at": 0.5,
+   "until": 2.1,
+   "params": {
+    "text": "ДВА"
+   }
+  },
+  {
+   "id": "e6q7hxrc",
+   "effect": "emoji-pop",
+   "at": 2.5,
+   "until": 4.3,
+   "params": {
+    "emoji": "огонь"
+   }
+  },
+  {
+   "id": "e9uij2tt",
+   "effect": "speaker-round",
+   "at": 3,
+   "until": 5.5,
+   "params": {
+    "corner": "tr",
+    "style": "round"
+   }
+  },
+  {
+   "id": "e3hxprue",
+   "effect": "text3d-wall",
+   "at": 6,
+   "until": 8.5,
+   "params": {
+    "text": "ПРОЕКТЫ",
+    "ry": "30"
+   }
+  },
+  {
+   "id": "ek3gxvoj",
+   "effect": "list-stickers",
+   "at": 8.6,
+   "until": 11,
+   "params": {
+    "items": "Aura Robotics / Global Tech Tour"
+   }
+  }
+ ],
+ "notes": [
+  {
+   "id": "n",
+   "at": 7,
+   "text": "на 9 секунде вставь логотип Aura",
+   "created": ""
+  }
+ ]
+}

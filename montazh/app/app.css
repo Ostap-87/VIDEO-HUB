@@ -323,3 +323,22 @@ details pre { background: var(--panel); border: 1px solid var(--line); border-ra
 
 .savebtn { display: inline-flex; flex-direction: column; gap: 2px; }
 .savebtn .err { font-size: 12px; font-style: normal; }
+.viewseg { margin-top: 8px; }
+.viewseg button { padding: 6px; font-size: 12.5px; }
+
+/* ---------- «Автомонтаж» и «Ритм» (AutoTools.tsx) ---------- */
+.autobox { display: flex; gap: 12px; align-items: center; padding: 12px; border-radius: var(--r); background: rgba(76,141,255,.08); border: 1px solid rgba(76,141,255,.35); margin: 6px 0 12px; }
+.autobox span { color: var(--muted); font-size: 13px; }
+.toolsrow { align-items: center; margin: 0 0 10px; gap: 8px; }
+.toolsrow .muted { font-size: 12.5px; }
+.rhythm { margin-bottom: 12px; }
+.rhythm select { max-width: 260px; }
+.autosteps { list-style: none; padding: 0; margin: 12px 0; display: flex; flex-direction: column; gap: 6px; }
+.autosteps li { padding: 8px 10px; border-radius: 8px; background: var(--panel2); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 2px; }
+.autosteps li span { color: var(--muted); font-size: 12.5px; }
+.autosteps li.done { border-color: rgba(60,207,142,.45); }
+.autosteps li.done b::before { content: "✓ "; color: var(--ok); }
+.autosteps li.now { border-color: var(--accent); }
+.autosteps .prog { margin: 4px 0 0; }
+.modal .checks label { flex-wrap: nowrap; align-items: flex-start; }
+.modal .checks label input { flex: none; margin-top: 3px; }
