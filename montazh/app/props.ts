@@ -58,7 +58,7 @@ export function buildProps(p: Project, opts: {cleanReady?: boolean; cleanClips?:
     showSafeZone: false,
     format: p.format === "both" ? (opts.view ?? "reels") : p.format,
     brand: p.brand,
-    bumper: p.brand === "gtt" ? undefined : false,
+    bumper: p.brand !== "gtt" || (p.bumper && !p.bumper.intro && !p.bumper.outro) ? false : {intro: p.bumper?.intro ?? true, outro: p.bumper?.outro ?? true},
     focus: p.focus,
     captionSize: p.captions.size,
     captionTop: p.captions.top,

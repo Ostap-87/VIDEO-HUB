@@ -11,6 +11,7 @@ import {advise, PALETTES, SWATCHES} from "./palettes";
 import {decodeAudio, fmtTime, frames, peaks, probe} from "./media";
 import {buildProps, cleanKey, clipKey, durationFrames, leadFrames, LOCAL, projSeconds} from "./props";
 import {AssembleStep, cleanClips, clipsOf, modeOf, PENDING, transcribeClips} from "./AssembleStep";
+import {PhoneFrame} from "./Phone";
 import {AutoMontage, RhythmPanel} from "./AutoTools";
 import {edlLocate, edlSeconds, edlWords} from "./assemble";
 import {autoPlace, hfName, loadModel, phrases, search, thumb, usedInProject, type Found} from "./images";
@@ -477,6 +478,25 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
   }, [m.video, m.clean, m.clips, m.cleanClips, m.images, p.id, p.effects]);
 
   const [view, setView] = useState<"reels" | "stories">("reels");
+  const [playing, setPlaying] = useState(false);
+  const [muted, setMuted] = useState(false);
+  // интерфейс соцсети поверх ролика в телефоне — запоминается в этом окне
+  const [igui, setIgui] = useState(() => {
+    try {
+      return localStorage.getItem("montazh:igui") !== "0";
+    } catch {
+      return true;
+    }
+  });
+  const toggleIgui = () =>
+    setIgui((v) => {
+      try {
+        localStorage.setItem("montazh:igui", v ? "0" : "1");
+      } catch {
+        /* хранилище недоступно — просто не запомнится */
+      }
+      return !v;
+    });
   const props = useMemo(() => buildProps(p, {cleanReady: !!m.clean, cleanClips: m.cleanClips, view}), [p, m.clean, m.cleanClips, view]);
   const frames_ = useMemo(() => durationFrames(props), [props]);
   const lead = useMemo(() => leadFrames(props), [props]);
@@ -494,9 +514,30 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
     const pl = player.current;
     if (!pl) return;
     const on = (e: {detail: {frame: number}}) => setFrame(e.detail.frame);
+    const play = () => setPlaying(true);
+    const pause = () => setPlaying(false);
     pl.addEventListener("frameupdate", on);
-    return () => pl.removeEventListener("frameupdate", on);
+    pl.addEventListener("play", play);
+    pl.addEventListener("pause", pause);
+    pl.addEventListener("ended", pause);
+    return () => {
+      pl.removeEventListener("frameupdate", on);
+      pl.removeEventListener("play", play);
+      pl.removeEventListener("pause", pause);
+      pl.removeEventListener("ended", pause);
+    };
   });
+  // пробел — пуск и пауза (кроме полей ввода)
+  useEffect(() => {
+    const key = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement;
+      if (e.code !== "Space" || /^(INPUT|TEXTAREA|SELECT|BUTTON)$/.test(t.tagName) || t.isContentEditable) return;
+      e.preventDefault();
+      player.current?.toggle();
+    };
+    window.addEventListener("keydown", key);
+    return () => window.removeEventListener("keydown", key);
+  }, []);
 
   const ready = p.edl?.length ? p.edl.every((s) => m.clips[s.clip]) : !!m.video;
   const pRef = useRef(p);
@@ -539,44 +580,77 @@ const Workspace: React.FC<{initial: Project; onClose: () => void}> = ({initial, 
           {step === "done" ? <DoneStep {...ctx} props={props} /> : null}
         </section>
         <aside className="preview">
-          {ready ? (
-            <Player
-              key={filesKey}
-              ref={player}
-              component={TalkReelPro as never}
-              inputProps={props}
-              durationInFrames={frames_}
-              compositionWidth={1080}
-              compositionHeight={1920}
-              fps={FPS}
-              controls
-              clickToPlay
-              acknowledgeRemotionLicense
-              style={{width: "100%", aspectRatio: "9 / 16", borderRadius: 14, overflow: "hidden", background: "#000"}}
+          <PhoneFrame brand={p.brand} view={p.format === "stories" ? "stories" : p.format === "both" ? view : "reels"} ui={igui} progress={frames_ > 1 ? frame / (frames_ - 1) : 0}>
+            {ready ? (
+              <Player
+                key={filesKey}
+                ref={player}
+                component={TalkReelPro as never}
+                inputProps={props}
+                durationInFrames={frames_}
+                compositionWidth={1080}
+                compositionHeight={1920}
+                fps={FPS}
+                clickToPlay
+                acknowledgeRemotionLicense
+                style={{width: "100%", height: "100%", background: "#000"}}
+              />
+            ) : (
+              <div className="noprev">
+                {p.source && !p.source.local
+                  ? "Ролик по ссылке: предпросмотр появится, когда движок его скачает. Или добавьте файл с диска."
+                  : "Здесь будет ролик с субтитрами и эффектами — сразу, без ожидания."}
+              </div>
+            )}
+          </PhoneFrame>
+          <div className="pctl">
+            <button className="btn primary sm round" disabled={!ready} title="Пуск / пауза (пробел)" onClick={() => player.current?.toggle()}>
+              {playing ? "❚❚" : "▶"}
+            </button>
+            <span className="ptime">
+              {fmtTime(sec)} / {fmtTime(Math.max(0, (frames_ - lead) / FPS))}
+            </span>
+            <input
+              type="range"
+              min={0}
+              max={Math.max(1, frames_ - 1)}
+              value={frame}
+              disabled={!ready}
+              onChange={(e) => player.current?.seekTo(+e.target.value)}
+              title="Перемотка"
             />
-          ) : (
-            <div className="noprev">
-              {p.source && !p.source.local
-                ? "Ролик по ссылке: предпросмотр появится, когда движок его скачает. Или добавьте файл с диска."
-                : "Здесь будет ролик с субтитрами и эффектами — сразу, без ожидания."}
-            </div>
-          )}
+            <button
+              className="btn ghost sm round"
+              disabled={!ready}
+              title={muted ? "Включить звук" : "Выключить звук"}
+              onClick={() => {
+                if (muted) player.current?.unmute();
+                else player.current?.mute();
+                setMuted(!muted);
+              }}
+            >
+              {muted ? "🔇" : "🔊"}
+            </button>
+          </div>
           {p.format === "both" ? (
             <div className="seg3 viewseg">
               <button className={view === "reels" ? "on" : ""} onClick={() => setView("reels")}>
-                Смотреть как Reels
+                Как Reels
               </button>
               <button className={view === "stories" ? "on" : ""} onClick={() => setView("stories")}>
-                как Stories
+                Как Stories
               </button>
             </div>
           ) : null}
-          <div className="pinfo">
-            {fmtTime(sec)} · {p.format === "both" ? `Reels + Stories (сейчас: ${view === "reels" ? "Reels" : "Stories"})` : p.format === "reels" ? "Reels" : "Stories"} 1080×1920
+          <div className="ptoggles">
+            <button className={igui ? "on" : ""} onClick={toggleIgui} title="Кнопки и подписи Instagram поверх ролика: видно, что они закроют">
+              Интерфейс Instagram
+            </button>
+            {p.brand === "gtt" ? <BumperToggles p={p} up={up} /> : null}
           </div>
         </aside>
+        {step === "edit" ? <Timeline {...ctx} props={props} /> : null}
       </div>
-      {step === "edit" ? <Timeline {...ctx} props={props} /> : null}
     </div>
   );
 };
@@ -594,6 +668,23 @@ export type StepCtx = {
   step: Step;
   setStep: (s: Step) => void;
   getP: () => Project; // проект после последних правок (для долгих операций: автомонтаж)
+};
+
+// фирменная заставка GTT отдельно в начале и в конце (решение пользователя 23.10.2026: «кнопки под каждую»)
+const BumperToggles: React.FC<{p: Project; up: StepCtx["up"]}> = ({p, up}) => {
+  const b = p.bumper ?? {intro: true, outro: true};
+  const flip = (k: "intro" | "outro") => up((q) => ({...q, bumper: {...(q.bumper ?? {intro: true, outro: true}), [k]: !b[k]}}));
+  return (
+    <span className="bumpers">
+      <em>Заставка:</em>
+      <button className={b.intro ? "on" : ""} onClick={() => flip("intro")} title="Заставка GLOBAL TECH TOUR в начале ролика (~1,5 с)">
+        в начале
+      </button>
+      <button className={b.outro ? "on" : ""} onClick={() => flip("outro")} title="Заставка GLOBAL TECH TOUR в конце ролика (~1,2 с)">
+        в конце
+      </button>
+    </span>
+  );
 };
 
 const Next: React.FC<{to: Step; setStep: (s: Step) => void; children: React.ReactNode}> = ({to, setStep, children}) => (
@@ -685,6 +776,15 @@ const SourceStep: React.FC<StepCtx> = (ctx) => {
       «Оба сразу» — облако делает два файла: Reels и Stories (Stories — частями до 60 с). Предпросмотр переключается под
       роликом.
     </p>
+    {p.brand === "gtt" ? (
+      <>
+        <h3>Заставка GLOBAL TECH TOUR</h3>
+        <div className="ptoggles left">
+          <BumperToggles p={p} up={up} />
+        </div>
+        <p className="muted">Включается отдельно в начале и в конце; те же кнопки — под телефоном на любом шаге.</p>
+      </>
+    ) : null}
     <h3>Линия глаз</h3>
     <p className="muted">Нажмите на глаза в кадре: вокруг этой точки делаются наезды, а плашки не закрывают лицо.</p>
     {m.strip[2] ? (
@@ -1395,6 +1495,7 @@ const SR: any = typeof window !== "undefined" ? (window as any).SpeechRecognitio
 
 const CommandBar: React.FC<{p: Project; up: StepCtx["up"]; sec: number; seek: (s: number) => void}> = ({p, up, sec, seek}) => {
   const [cmd, setCmd] = useState("");
+  const [allEx, setAllEx] = useState(false);
   const [busy, setBusy] = useState("");
   const [log, setLog] = useState<Done[]>([]);
   const [rec, setRec] = useState<any>(null);
@@ -1483,11 +1584,14 @@ const CommandBar: React.FC<{p: Project; up: StepCtx["up"]; sec: number; seek: (s
         Без времени — на курсор ({fmtTime(sec)}). Время: «на 12 секунде», «в 1:05», «с 20 по 24 секунду», «на словах «пять дней»».
       </div>
       <div className="row wrap examples">
-        {EXAMPLES.map((x) => (
+        {(allEx ? EXAMPLES : EXAMPLES.slice(0, 8)).map((x) => (
           <button key={x} className="chip" onClick={() => setCmd(x)}>
             {x}
           </button>
         ))}
+        <button className="chip more" onClick={() => setAllEx(!allEx)}>
+          {allEx ? "свернуть примеры" : `ещё примеры (${EXAMPLES.length - 8})`}
+        </button>
       </div>
       {busy ? <div className="busy">{busy}</div> : null}
       {log.length ? (
@@ -1608,6 +1712,7 @@ const ImagePicker: React.FC<{p: Project; up: StepCtx["up"]; sec: number; target?
 const Timeline: React.FC<StepCtx & {props: Record<string, any>}> = ({p, m, sec, seek}) => {
   const d = projSeconds(p) || 10;
   const [zoom, setZoom] = useState(1);
+  const [small, setSmall] = useState(false); // свёрнутый стол — больше места настройкам эффектов
   const pct = (t: number) => `${(t / d) * 100}%`;
   const ref = useRef<HTMLDivElement>(null);
   const pick = (e: React.MouseEvent) => {
@@ -1616,7 +1721,7 @@ const Timeline: React.FC<StepCtx & {props: Record<string, any>}> = ({p, m, sec, 
   };
   const ticks = Array.from({length: Math.floor(d / (d > 60 ? 10 : 5)) + 1}, (_, i) => i * (d > 60 ? 10 : 5));
   return (
-    <div className="tl">
+    <div className={`tl ${small ? "small" : ""}`}>
       <div className="tlbar">
         <b>Монтажный стол</b>
         <span className="muted">нажмите на дорожку — перейти к секунде</span>
@@ -1625,6 +1730,9 @@ const Timeline: React.FC<StepCtx & {props: Record<string, any>}> = ({p, m, sec, 
           Масштаб
           <input type="range" min={1} max={6} step={0.5} value={zoom} onChange={(e) => setZoom(+e.target.value)} />
         </label>
+        <button className="btn ghost sm" onClick={() => setSmall(!small)} title={small ? "Развернуть дорожки" : "Свернуть дорожки"}>
+          {small ? "▴ Развернуть" : "▾ Свернуть"}
+        </button>
       </div>
       <div className="tlscroll">
         <div className="tlin" style={{width: `${zoom * 100}%`}} ref={ref} onClick={pick}>

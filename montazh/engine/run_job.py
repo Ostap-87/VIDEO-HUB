@@ -376,7 +376,9 @@ def main():
                 run(["python3", "scripts/frames.py", video, "--every", "3", "--out", sheet])
                 job.put(sheet, "frames", "Раскадровка")
             if stories and duration(video) > 59.9:
-                lead = 44 / 30 if props.get("brand", "gtt") == "gtt" and props.get("bumper") is not False else 0  # заставка GTT
+                bmp = props.get("bumper")
+                intro = props.get("brand", "gtt") == "gtt" and bmp is not False and (bmp or {}).get("intro", True) is not False
+                lead = 44 / 30 if intro else 0  # заставка GTT в начале (можно выключить кнопкой в Монтажной)
                 pts = [round(p + lead, 2) for p in stories_points(props["words"], total)]
                 run(["python3", "scripts/stories.py", video, "--at", ",".join(map(str, pts))])
                 for part in sorted(job.out.glob(f"{name}-[0-9]*.mp4")):
