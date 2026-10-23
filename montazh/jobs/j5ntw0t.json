@@ -1,0 +1,868 @@
+{
+ "version": 2,
+ "id": "j5ntw0t",
+ "name": "IMG_5411",
+ "created": "2026-10-23 09:28:34",
+ "brand": "gtt",
+ "format": "both",
+ "options": {
+  "cutPauses": true,
+  "edl": false,
+  "formats": [
+   "reels",
+   "stories"
+  ]
+ },
+ "files": {
+  "source": "source.mov",
+  "images": {}
+ },
+ "local": {
+  "video": "montazh-local/source"
+ },
+ "hf": {},
+ "props": {
+  "mediaSrc": "montazh-local/source",
+  "cutoutSrc": "",
+  "words": [
+   {
+    "text": "Ну",
+    "start": 0,
+    "end": 0.44
+   },
+   {
+    "text": "и",
+    "start": 0.44,
+    "end": 0.52
+   },
+   {
+    "text": "пока",
+    "start": 0.52,
+    "end": 0.7
+   },
+   {
+    "text": "я",
+    "start": 0.7,
+    "end": 0.86
+   },
+   {
+    "text": "жду",
+    "start": 0.86,
+    "end": 1.14
+   },
+   {
+    "text": "машину,",
+    "start": 1.14,
+    "end": 1.8
+   },
+   {
+    "text": "хотела",
+    "start": 1.92,
+    "end": 2.18
+   },
+   {
+    "text": "бы",
+    "start": 2.18,
+    "end": 2.38
+   },
+   {
+    "text": "порассуждать,",
+    "start": 2.38,
+    "end": 3.3
+   },
+   {
+    "text": "я",
+    "start": 3.36,
+    "end": 3.42
+   },
+   {
+    "text": "вот",
+    "start": 3.42,
+    "end": 3.52
+   },
+   {
+    "text": "смотрю",
+    "start": 3.52,
+    "end": 3.88
+   },
+   {
+    "text": "сейчас",
+    "start": 3.88,
+    "end": 4.08
+   },
+   {
+    "text": "очень",
+    "start": 4.08,
+    "end": 4.38
+   },
+   {
+    "text": "много",
+    "start": 4.38,
+    "end": 4.76
+   },
+   {
+    "text": "тех,",
+    "start": 4.76,
+    "end": 5.42
+   },
+   {
+    "text": "кто",
+    "start": 5.6,
+    "end": 5.86
+   },
+   {
+    "text": "организовывает",
+    "start": 5.86,
+    "end": 7.72
+   },
+   {
+    "text": "туры",
+    "start": 7.72,
+    "end": 8.26
+   },
+   {
+    "text": "в",
+    "start": 8.26,
+    "end": 8.4
+   },
+   {
+    "text": "Китай.",
+    "start": 8.4,
+    "end": 8.76
+   },
+   {
+    "text": "Ребят,",
+    "start": 9.58,
+    "end": 9.88
+   },
+   {
+    "text": "скажу",
+    "start": 10.6,
+    "end": 10.98
+   },
+   {
+    "text": "вам",
+    "start": 10.98,
+    "end": 11.12
+   },
+   {
+    "text": "честно,",
+    "start": 11.12,
+    "end": 11.56
+   },
+   {
+    "text": "многие",
+    "start": 11.76,
+    "end": 11.96
+   },
+   {
+    "text": "люди",
+    "start": 11.96,
+    "end": 12.32
+   },
+   {
+    "text": "здесь",
+    "start": 12.32,
+    "end": 12.52
+   },
+   {
+    "text": "даже",
+    "start": 12.52,
+    "end": 12.86
+   },
+   {
+    "text": "не",
+    "start": 12.86,
+    "end": 13.04
+   },
+   {
+    "text": "живут.",
+    "start": 13.04,
+    "end": 13.62
+   },
+   {
+    "text": "Они",
+    "start": 14.04,
+    "end": 14.28
+   },
+   {
+    "text": "сюда",
+    "start": 14.28,
+    "end": 14.5
+   },
+   {
+    "text": "приезжают",
+    "start": 14.5,
+    "end": 15.02
+   },
+   {
+    "text": "налетами,",
+    "start": 15.02,
+    "end": 15.74
+   },
+   {
+    "text": "но",
+    "start": 15.86,
+    "end": 15.92
+   },
+   {
+    "text": "они",
+    "start": 15.92,
+    "end": 16.1
+   },
+   {
+    "text": "приехали,",
+    "start": 16.1,
+    "end": 16.7
+   },
+   {
+    "text": "организовали",
+    "start": 16.78,
+    "end": 17.24
+   },
+   {
+    "text": "и",
+    "start": 17.24,
+    "end": 17.4
+   },
+   {
+    "text": "уехали.",
+    "start": 17.4,
+    "end": 17.94
+   },
+   {
+    "text": "Это",
+    "start": 18.46,
+    "end": 18.68
+   },
+   {
+    "text": "так",
+    "start": 18.68,
+    "end": 18.88
+   },
+   {
+    "text": "не",
+    "start": 18.88,
+    "end": 19.02
+   },
+   {
+    "text": "работает",
+    "start": 19.02,
+    "end": 19.36
+   },
+   {
+    "text": "в",
+    "start": 19.36,
+    "end": 19.6
+   },
+   {
+    "text": "Китае.",
+    "start": 19.6,
+    "end": 20.34
+   },
+   {
+    "text": "За",
+    "start": 20.38,
+    "end": 20.6
+   },
+   {
+    "text": "Китая",
+    "start": 20.6,
+    "end": 20.8
+   },
+   {
+    "text": "работает",
+    "start": 20.8,
+    "end": 21.18
+   },
+   {
+    "text": "все",
+    "start": 21.18,
+    "end": 21.4
+   },
+   {
+    "text": "иначе.",
+    "start": 21.4,
+    "end": 21.9
+   },
+   {
+    "text": "Все",
+    "start": 22.1,
+    "end": 22.24
+   },
+   {
+    "text": "строится",
+    "start": 22.24,
+    "end": 23.1
+   },
+   {
+    "text": "на",
+    "start": 23.1,
+    "end": 23.4
+   },
+   {
+    "text": "взаимоотношениях,",
+    "start": 23.4,
+    "end": 24.56
+   },
+   {
+    "text": "на",
+    "start": 24.56,
+    "end": 24.62
+   },
+   {
+    "text": "личных.",
+    "start": 24.62,
+    "end": 25.1
+   },
+   {
+    "text": "Это",
+    "start": 25.48,
+    "end": 25.92
+   },
+   {
+    "text": "многие",
+    "start": 25.92,
+    "end": 26.7
+   },
+   {
+    "text": "знают",
+    "start": 26.7,
+    "end": 28.18
+   },
+   {
+    "text": "и",
+    "start": 28.18,
+    "end": 28.6
+   },
+   {
+    "text": "понимают.",
+    "start": 28.6,
+    "end": 29.28
+   },
+   {
+    "text": "И",
+    "start": 29.72,
+    "end": 29.78
+   },
+   {
+    "text": "в",
+    "start": 29.78,
+    "end": 29.88
+   },
+   {
+    "text": "принципе",
+    "start": 29.88,
+    "end": 30.22
+   },
+   {
+    "text": "это",
+    "start": 30.22,
+    "end": 30.64
+   },
+   {
+    "text": "не",
+    "start": 30.64,
+    "end": 31.08
+   },
+   {
+    "text": "только",
+    "start": 31.08,
+    "end": 31.34
+   },
+   {
+    "text": "в",
+    "start": 31.34,
+    "end": 31.54
+   },
+   {
+    "text": "Китае,",
+    "start": 31.54,
+    "end": 32
+   },
+   {
+    "text": "так.",
+    "start": 32.14,
+    "end": 32.18
+   },
+   {
+    "text": "В",
+    "start": 32.8,
+    "end": 32.9
+   },
+   {
+    "text": "принципе",
+    "start": 32.9,
+    "end": 33.08
+   },
+   {
+    "text": "по",
+    "start": 33.08,
+    "end": 33.38
+   },
+   {
+    "text": "всему",
+    "start": 33.38,
+    "end": 33.64
+   },
+   {
+    "text": "миру.",
+    "start": 33.64,
+    "end": 34
+   },
+   {
+    "text": "Если",
+    "start": 34.58,
+    "end": 34.82
+   },
+   {
+    "text": "вы",
+    "start": 34.82,
+    "end": 35.04
+   },
+   {
+    "text": "будете",
+    "start": 35.04,
+    "end": 35.5
+   },
+   {
+    "text": "делать",
+    "start": 35.5,
+    "end": 35.96
+   },
+   {
+    "text": "это",
+    "start": 35.96,
+    "end": 36.2
+   },
+   {
+    "text": "всё,",
+    "start": 36.2,
+    "end": 36.44
+   },
+   {
+    "text": "так",
+    "start": 36.6,
+    "end": 37.62
+   },
+   {
+    "text": "сказать,",
+    "start": 37.62,
+    "end": 37.98
+   },
+   {
+    "text": "в",
+    "start": 38.16,
+    "end": 38.16
+   },
+   {
+    "text": "полфедора",
+    "start": 38.16,
+    "end": 38.7
+   },
+   {
+    "text": "и",
+    "start": 38.7,
+    "end": 38.84
+   },
+   {
+    "text": "на",
+    "start": 38.84,
+    "end": 38.94
+   },
+   {
+    "text": "лётами,",
+    "start": 38.94,
+    "end": 39.42
+   },
+   {
+    "text": "то",
+    "start": 39.56,
+    "end": 39.72
+   },
+   {
+    "text": "от",
+    "start": 39.72,
+    "end": 39.98
+   },
+   {
+    "text": "этого",
+    "start": 39.98,
+    "end": 40.2
+   },
+   {
+    "text": "не",
+    "start": 40.2,
+    "end": 40.4
+   },
+   {
+    "text": "будет.",
+    "start": 40.4,
+    "end": 40.68
+   },
+   {
+    "text": "Для",
+    "start": 40.82,
+    "end": 40.9
+   },
+   {
+    "text": "того,",
+    "start": 40.9,
+    "end": 41.08
+   },
+   {
+    "text": "чтобы",
+    "start": 41.14,
+    "end": 41.24
+   },
+   {
+    "text": "вас",
+    "start": 41.24,
+    "end": 41.5
+   },
+   {
+    "text": "допускали",
+    "start": 41.5,
+    "end": 42.14
+   },
+   {
+    "text": "хорошие",
+    "start": 42.14,
+    "end": 43.38
+   },
+   {
+    "text": "организации,",
+    "start": 43.38,
+    "end": 44.12
+   },
+   {
+    "text": "для",
+    "start": 44.26,
+    "end": 44.3
+   },
+   {
+    "text": "того,",
+    "start": 44.3,
+    "end": 44.52
+   },
+   {
+    "text": "чтобы",
+    "start": 44.58,
+    "end": 44.68
+   },
+   {
+    "text": "вас",
+    "start": 44.68,
+    "end": 44.92
+   },
+   {
+    "text": "допускали",
+    "start": 44.92,
+    "end": 45.52
+   },
+   {
+    "text": "в",
+    "start": 45.52,
+    "end": 46.08
+   },
+   {
+    "text": "крупной",
+    "start": 46.08,
+    "end": 46.5
+   },
+   {
+    "text": "организации.",
+    "start": 46.5,
+    "end": 47.34
+   },
+   {
+    "text": "Для",
+    "start": 47.8,
+    "end": 48.34
+   },
+   {
+    "text": "этого",
+    "start": 48.34,
+    "end": 48.54
+   },
+   {
+    "text": "нужно",
+    "start": 48.54,
+    "end": 48.82
+   },
+   {
+    "text": "очень",
+    "start": 48.82,
+    "end": 49.06
+   },
+   {
+    "text": "много",
+    "start": 49.06,
+    "end": 49.3
+   },
+   {
+    "text": "работать.",
+    "start": 49.3,
+    "end": 49.8
+   },
+   {
+    "text": "Это",
+    "start": 50.2,
+    "end": 50.2
+   },
+   {
+    "text": "личная",
+    "start": 50.2,
+    "end": 50.62
+   },
+   {
+    "text": "работа,",
+    "start": 50.62,
+    "end": 51.1
+   },
+   {
+    "text": "это",
+    "start": 51.14,
+    "end": 51.22
+   },
+   {
+    "text": "работа",
+    "start": 51.22,
+    "end": 51.62
+   },
+   {
+    "text": "с",
+    "start": 51.62,
+    "end": 51.68
+   },
+   {
+    "text": "людьми.",
+    "start": 51.68,
+    "end": 52.06
+   },
+   {
+    "text": "Как",
+    "start": 52.86,
+    "end": 53.06
+   },
+   {
+    "text": "раз",
+    "start": 53.06,
+    "end": 53.26
+   },
+   {
+    "text": "таки",
+    "start": 53.26,
+    "end": 53.5
+   },
+   {
+    "text": "этой",
+    "start": 53.5,
+    "end": 53.66
+   },
+   {
+    "text": "работой",
+    "start": 53.66,
+    "end": 54.12
+   },
+   {
+    "text": "я",
+    "start": 54.12,
+    "end": 54.3
+   },
+   {
+    "text": "и",
+    "start": 54.3,
+    "end": 54.4
+   },
+   {
+    "text": "занимаюсь.",
+    "start": 54.4,
+    "end": 54.94
+   }
+  ],
+  "accentWords": [],
+  "cuts": [],
+  "chips": [],
+  "logos": [],
+  "numbers": [],
+  "broll": [],
+  "checklists": [],
+  "cities": [],
+  "zooms": [
+   {
+    "at": 1.3,
+    "kind": "macro",
+    "amount": 1.1,
+    "hold": 1.9000000000000001,
+    "target": "eyes"
+   },
+   {
+    "at": 7.7,
+    "kind": "macro",
+    "amount": 1.1,
+    "hold": 1.2000000000000002,
+    "target": "eyes"
+   },
+   {
+    "at": 37.5,
+    "kind": "macro",
+    "amount": 1.1,
+    "hold": 1.7999999999999972,
+    "target": "eyes"
+   }
+  ],
+  "sfx": {
+   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+   "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+  },
+  "music": {
+   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+   "volume": 0.055,
+   "outroVolume": 0.126
+  },
+  "speechSeconds": 55.87,
+  "site": {
+   "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
+   "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
+   "route": [],
+   "at": 1054.87
+  },
+  "cta": "Экспедиции",
+  "ctaSeconds": 0.3,
+  "showSafeZone": false,
+  "format": "reels",
+  "brand": "gtt",
+  "bumper": false,
+  "focus": {
+   "x": 572,
+   "y": 850
+  },
+  "captionSize": 66,
+  "captionTop": 1500,
+  "captionStyle": "3d",
+  "grade": "brightness(1.000) contrast(1.264) saturate(1.216)",
+  "palette": {
+   "text": "#E0F2FE",
+   "accent": "#38BDF8",
+   "ink": "#04263A"
+  },
+  "fx": [
+   {
+    "type": "bw",
+    "at": 7.7,
+    "until": 9.7
+   },
+   {
+    "type": "bw",
+    "at": 48.5,
+    "until": 50.5
+   }
+  ],
+  "captionsAt": [
+   {
+    "at": 15.03,
+    "until": 19.03,
+    "style": "duo",
+    "y": 1300
+   },
+   {
+    "at": 38.07,
+    "until": 39.77,
+    "style": "duo",
+    "y": 1500
+   }
+  ],
+  "texts": [
+   {
+    "at": 23.2,
+    "until": 26.2,
+    "text": "взаимоотношениях на личных",
+    "x": 450,
+    "y": 400,
+    "size": 150,
+    "rx": -16,
+    "ry": -22,
+    "rz": -12,
+    "color": "#FFFFFF",
+    "font": "grotesk",
+    "plane": "behind",
+    "anim": "swing",
+    "depth": 6
+   }
+  ]
+ },
+ "effects": [
+  {
+   "id": "e16fben7",
+   "effect": "zoom-macro",
+   "at": 1.3,
+   "until": 3.2,
+   "params": {}
+  },
+  {
+   "id": "e8n8aybw",
+   "effect": "zoom-macro",
+   "at": 7.7,
+   "until": 8.9,
+   "params": {}
+  },
+  {
+   "id": "e30mjo21",
+   "effect": "fx-bw",
+   "at": 7.7,
+   "until": 9.7,
+   "params": {}
+  },
+  {
+   "id": "efifuuk0",
+   "effect": "captions-duo",
+   "at": 15.03,
+   "until": 19.03,
+   "params": {}
+  },
+  {
+   "id": "eftg5d6k",
+   "effect": "text3d-wall",
+   "at": 23.2,
+   "until": 26.2,
+   "params": {
+    "size": "150",
+    "x": "450",
+    "y": "400",
+    "rx": "-16",
+    "ry": "-22",
+    "rz": "-12",
+    "color": "#FFFFFF",
+    "depth": "6",
+    "anim": "swing"
+   }
+  },
+  {
+   "id": "eg8d7nmr",
+   "effect": "captions-duo",
+   "at": 38.07,
+   "until": 39.77,
+   "params": {
+    "y": "1500"
+   }
+  },
+  {
+   "id": "erh1zzci",
+   "effect": "zoom-macro",
+   "at": 37.5,
+   "until": 39.3,
+   "params": {}
+  },
+  {
+   "id": "et6o9ki6",
+   "effect": "fx-bw",
+   "at": 48.5,
+   "until": 50.5,
+   "params": {}
+  }
+ ],
+ "notes": []
+}
