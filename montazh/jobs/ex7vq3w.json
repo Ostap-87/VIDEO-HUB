@@ -1,0 +1,858 @@
+{
+ "version": 2,
+ "id": "ex7vq3w",
+ "name": "IMG_5423",
+ "created": "2026-10-23 10:52:29",
+ "brand": "gtt",
+ "format": "both",
+ "options": {
+  "cutPauses": true,
+  "edl": false,
+  "formats": [
+   "reels",
+   "stories"
+  ]
+ },
+ "files": {
+  "source": "source.mov",
+  "images": {}
+ },
+ "local": {
+  "video": "montazh-local/source"
+ },
+ "hf": {},
+ "props": {
+  "mediaSrc": "montazh-local/source",
+  "cutoutSrc": "",
+  "words": [
+   {
+    "text": "Конечно,",
+    "start": 0,
+    "end": 0.94
+   },
+   {
+    "text": "для",
+    "start": 1.12,
+    "end": 1.24
+   },
+   {
+    "text": "многих",
+    "start": 1.24,
+    "end": 1.7
+   },
+   {
+    "text": "будет",
+    "start": 1.7,
+    "end": 2.48
+   },
+   {
+    "text": "непривычно",
+    "start": 2.48,
+    "end": 3.14
+   },
+   {
+    "text": "находиться",
+    "start": 3.14,
+    "end": 3.72
+   },
+   {
+    "text": "на",
+    "start": 3.72,
+    "end": 3.92
+   },
+   {
+    "text": "таком",
+    "start": 3.92,
+    "end": 4.18
+   },
+   {
+    "text": "вокзале",
+    "start": 4.18,
+    "end": 4.66
+   },
+   {
+    "text": "с",
+    "start": 4.66,
+    "end": 4.78
+   },
+   {
+    "text": "таким",
+    "start": 4.78,
+    "end": 5
+   },
+   {
+    "text": "количеством",
+    "start": 5,
+    "end": 5.58
+   },
+   {
+    "text": "народа.",
+    "start": 5.58,
+    "end": 6.68
+   },
+   {
+    "text": "Но",
+    "start": 6.72,
+    "end": 6.9
+   },
+   {
+    "text": "на",
+    "start": 6.9,
+    "end": 7.12
+   },
+   {
+    "text": "самом",
+    "start": 7.12,
+    "end": 7.34
+   },
+   {
+    "text": "деле",
+    "start": 7.34,
+    "end": 7.62
+   },
+   {
+    "text": "всё",
+    "start": 7.62,
+    "end": 7.86
+   },
+   {
+    "text": "максимально",
+    "start": 7.86,
+    "end": 9.2
+   },
+   {
+    "text": "понятно",
+    "start": 9.2,
+    "end": 9.6
+   },
+   {
+    "text": "и",
+    "start": 9.6,
+    "end": 9.84
+   },
+   {
+    "text": "удобно.",
+    "start": 9.84,
+    "end": 10.4
+   },
+   {
+    "text": "Наименование,",
+    "start": 10.62,
+    "end": 11.66
+   },
+   {
+    "text": "естественно,",
+    "start": 11.7,
+    "end": 12.3
+   },
+   {
+    "text": "поездов",
+    "start": 13.04,
+    "end": 13.56
+   },
+   {
+    "text": "и",
+    "start": 13.56,
+    "end": 13.66
+   },
+   {
+    "text": "вагонов",
+    "start": 13.66,
+    "end": 14.08
+   },
+   {
+    "text": "на",
+    "start": 14.08,
+    "end": 14.3
+   },
+   {
+    "text": "английском",
+    "start": 14.3,
+    "end": 14.76
+   },
+   {
+    "text": "языке.",
+    "start": 14.76,
+    "end": 15.26
+   },
+   {
+    "text": "Всё",
+    "start": 15.42,
+    "end": 15.9
+   },
+   {
+    "text": "это",
+    "start": 15.9,
+    "end": 16.04
+   },
+   {
+    "text": "можно",
+    "start": 16.04,
+    "end": 16.26
+   },
+   {
+    "text": "увидеть.",
+    "start": 16.26,
+    "end": 16.88
+   },
+   {
+    "text": "Очень",
+    "start": 17.46,
+    "end": 18.2
+   },
+   {
+    "text": "удобно.",
+    "start": 18.2,
+    "end": 18.82
+   },
+   {
+    "text": "Приехал",
+    "start": 19.22,
+    "end": 19.94
+   },
+   {
+    "text": "за",
+    "start": 19.94,
+    "end": 20.7
+   },
+   {
+    "text": "15",
+    "start": 20.7,
+    "end": 21.16
+   },
+   {
+    "text": "минут,",
+    "start": 21.16,
+    "end": 21.52
+   },
+   {
+    "text": "за",
+    "start": 21.58,
+    "end": 21.7
+   },
+   {
+    "text": "10",
+    "start": 21.7,
+    "end": 22
+   },
+   {
+    "text": "минут",
+    "start": 22,
+    "end": 22.36
+   },
+   {
+    "text": "до",
+    "start": 22.36,
+    "end": 22.52
+   },
+   {
+    "text": "отправления,",
+    "start": 22.52,
+    "end": 23
+   },
+   {
+    "text": "да",
+    "start": 23.04,
+    "end": 23.1
+   },
+   {
+    "text": "даже",
+    "start": 23.1,
+    "end": 23.36
+   },
+   {
+    "text": "за",
+    "start": 23.36,
+    "end": 23.52
+   },
+   {
+    "text": "5",
+    "start": 23.52,
+    "end": 23.74
+   },
+   {
+    "text": "минут",
+    "start": 23.74,
+    "end": 24.02
+   },
+   {
+    "text": "до",
+    "start": 24.02,
+    "end": 24.18
+   },
+   {
+    "text": "отправления.",
+    "start": 24.18,
+    "end": 24.8
+   },
+   {
+    "text": "Спокойной",
+    "start": 25.28,
+    "end": 25.78
+   },
+   {
+    "text": "и",
+    "start": 26,
+    "end": 26.12
+   },
+   {
+    "text": "поехал",
+    "start": 26.12,
+    "end": 26.54
+   },
+   {
+    "text": "из",
+    "start": 26.54,
+    "end": 27.58
+   },
+   {
+    "text": "Шанхая",
+    "start": 27.58,
+    "end": 27.92
+   },
+   {
+    "text": "очень",
+    "start": 27.92,
+    "end": 28.18
+   },
+   {
+    "text": "удобно",
+    "start": 28.18,
+    "end": 28.56
+   },
+   {
+    "text": "передвигаться",
+    "start": 28.56,
+    "end": 29.2
+   },
+   {
+    "text": "в",
+    "start": 29.2,
+    "end": 29.36
+   },
+   {
+    "text": "сторону",
+    "start": 29.36,
+    "end": 29.62
+   },
+   {
+    "text": "Пекина,",
+    "start": 29.62,
+    "end": 30.28
+   },
+   {
+    "text": "в",
+    "start": 30.54,
+    "end": 31.22
+   },
+   {
+    "text": "сторону",
+    "start": 31.22,
+    "end": 31.6
+   },
+   {
+    "text": "ближайших",
+    "start": 31.6,
+    "end": 33.48
+   },
+   {
+    "text": "городов",
+    "start": 33.48,
+    "end": 34.52
+   },
+   {
+    "text": "до",
+    "start": 34.52,
+    "end": 34.8
+   },
+   {
+    "text": "которых",
+    "start": 34.8,
+    "end": 35.12
+   },
+   {
+    "text": "час,",
+    "start": 35.12,
+    "end": 35.58
+   },
+   {
+    "text": "два",
+    "start": 35.8,
+    "end": 36.08
+   },
+   {
+    "text": "времени",
+    "start": 36.08,
+    "end": 36.66
+   },
+   {
+    "text": "и",
+    "start": 36.66,
+    "end": 36.88
+   },
+   {
+    "text": "40",
+    "start": 36.88,
+    "end": 37.1
+   },
+   {
+    "text": "минут,",
+    "start": 37.1,
+    "end": 37.66
+   },
+   {
+    "text": "но",
+    "start": 37.92,
+    "end": 38.88
+   },
+   {
+    "text": "можно",
+    "start": 38.88,
+    "end": 40.22
+   },
+   {
+    "text": "и",
+    "start": 40.22,
+    "end": 40.34
+   },
+   {
+    "text": "на",
+    "start": 40.34,
+    "end": 40.44
+   },
+   {
+    "text": "дальние",
+    "start": 40.44,
+    "end": 40.76
+   },
+   {
+    "text": "расстояния,",
+    "start": 40.76,
+    "end": 41.46
+   },
+   {
+    "text": "например",
+    "start": 41.56,
+    "end": 42.12
+   },
+   {
+    "text": "до",
+    "start": 42.12,
+    "end": 42.32
+   },
+   {
+    "text": "Гуанжо",
+    "start": 42.32,
+    "end": 42.7
+   },
+   {
+    "text": "можно",
+    "start": 42.7,
+    "end": 42.98
+   },
+   {
+    "text": "доехать",
+    "start": 42.98,
+    "end": 44
+   },
+   {
+    "text": "где",
+    "start": 44,
+    "end": 44.16
+   },
+   {
+    "text": "-то",
+    "start": 44.16,
+    "end": 44.34
+   },
+   {
+    "text": "за",
+    "start": 44.34,
+    "end": 44.62
+   },
+   {
+    "text": "6",
+    "start": 44.62,
+    "end": 44.96
+   },
+   {
+    "text": "-7",
+    "start": 44.96,
+    "end": 45.26
+   },
+   {
+    "text": "часов.",
+    "start": 45.26,
+    "end": 45.64
+   },
+   {
+    "text": "До",
+    "start": 46.02,
+    "end": 46.22
+   },
+   {
+    "text": "Пекина",
+    "start": 46.22,
+    "end": 46.56
+   },
+   {
+    "text": "за",
+    "start": 46.56,
+    "end": 46.76
+   },
+   {
+    "text": "5.",
+    "start": 46.76,
+    "end": 47.08
+   },
+   {
+    "text": "До,",
+    "start": 47.74,
+    "end": 48.3
+   },
+   {
+    "text": "например,",
+    "start": 48.3,
+    "end": 48.76
+   },
+   {
+    "text": "у",
+    "start": 48.88,
+    "end": 48.94
+   },
+   {
+    "text": "Чанши,",
+    "start": 48.94,
+    "end": 49.4
+   },
+   {
+    "text": "куда",
+    "start": 49.44,
+    "end": 49.58
+   },
+   {
+    "text": "я",
+    "start": 49.58,
+    "end": 49.76
+   },
+   {
+    "text": "еду.",
+    "start": 49.76,
+    "end": 50.14
+   },
+   {
+    "text": "За",
+    "start": 50.58,
+    "end": 50.74
+   },
+   {
+    "text": "4",
+    "start": 50.74,
+    "end": 51.06
+   },
+   {
+    "text": "часа",
+    "start": 51.06,
+    "end": 51.56
+   },
+   {
+    "text": "на",
+    "start": 51.56,
+    "end": 51.8
+   },
+   {
+    "text": "скоростном",
+    "start": 51.8,
+    "end": 52.26
+   },
+   {
+    "text": "поезде,",
+    "start": 52.26,
+    "end": 52.64
+   },
+   {
+    "text": "который",
+    "start": 52.68,
+    "end": 52.9
+   },
+   {
+    "text": "в",
+    "start": 52.9,
+    "end": 53.04
+   },
+   {
+    "text": "среднем",
+    "start": 53.04,
+    "end": 53.42
+   },
+   {
+    "text": "развивает",
+    "start": 53.42,
+    "end": 54.14
+   },
+   {
+    "text": "скорость",
+    "start": 54.14,
+    "end": 54.54
+   },
+   {
+    "text": "250",
+    "start": 54.54,
+    "end": 54.82
+   },
+   {
+    "text": "-300",
+    "start": 54.82,
+    "end": 55.54
+   },
+   {
+    "text": "километров,",
+    "start": 55.54,
+    "end": 56.2
+   },
+   {
+    "text": "это",
+    "start": 56.64,
+    "end": 56.82
+   },
+   {
+    "text": "очень",
+    "start": 56.82,
+    "end": 57.16
+   },
+   {
+    "text": "удобно",
+    "start": 57.16,
+    "end": 57.66
+   },
+   {
+    "text": "и",
+    "start": 57.66,
+    "end": 58.34
+   },
+   {
+    "text": "быстро,",
+    "start": 58.34,
+    "end": 58.8
+   },
+   {
+    "text": "и",
+    "start": 59.32,
+    "end": 59.52
+   },
+   {
+    "text": "дешевле,",
+    "start": 59.52,
+    "end": 59.8
+   },
+   {
+    "text": "чем",
+    "start": 59.8,
+    "end": 60
+   },
+   {
+    "text": "на",
+    "start": 60,
+    "end": 60.14
+   },
+   {
+    "text": "самолете.",
+    "start": 60.14,
+    "end": 60.58
+   }
+  ],
+  "accentWords": [
+   "15",
+   "10",
+   "5",
+   "40",
+   "6",
+   "-7",
+   "5.",
+   "4",
+   "250",
+   "-300"
+  ],
+  "cuts": [],
+  "chips": [],
+  "logos": [],
+  "numbers": [],
+  "broll": [],
+  "checklists": [],
+  "cities": [],
+  "zooms": [
+   {
+    "at": 0.13,
+    "kind": "macro",
+    "amount": 1.1,
+    "hold": 2.3000000000000003,
+    "target": "eyes"
+   },
+   {
+    "at": 13.7,
+    "kind": "macro",
+    "amount": 0.7,
+    "hold": 1.200000000000001,
+    "target": "eyes"
+   }
+  ],
+  "sfx": {
+   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+   "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+  },
+  "music": {
+   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+   "volume": 0.078,
+   "outroVolume": 0.179,
+   "duck": 0.55
+  },
+  "speechSeconds": 61.902,
+  "site": {
+   "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
+   "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
+   "route": [],
+   "at": 1060.9017
+  },
+  "cta": "Экспедиции",
+  "ctaSeconds": 0.3,
+  "showSafeZone": false,
+  "format": "reels",
+  "brand": "gtt",
+  "bumper": false,
+  "focus": {
+   "x": 529,
+   "y": 1104
+  },
+  "captionSize": 90,
+  "captionTop": 1500,
+  "captionStyle": "3d",
+  "grade": "brightness(1.000) contrast(1.231) saturate(1.189)",
+  "fx": [
+   {
+    "type": "leak",
+    "at": 42.53,
+    "until": 43.33
+   }
+  ],
+  "texts": [
+   {
+    "at": 42.53,
+    "until": 45.53,
+    "text": "Гуанчжоу- 7 часов",
+    "x": 540,
+    "y": 445,
+    "size": 400,
+    "rx": 0,
+    "ry": 32,
+    "rz": -6,
+    "color": "#38BDF8",
+    "color2": "#3D7BFF",
+    "font": "display",
+    "plane": "behind",
+    "anim": "swing",
+    "depth": 6
+   },
+   {
+    "at": 46.73,
+    "until": 49.73,
+    "text": "До Пекина 5 часов",
+    "x": 540,
+    "y": 445,
+    "size": 420,
+    "rx": 0,
+    "ry": 32,
+    "rz": 0,
+    "color": "#38BDF8",
+    "font": "grotesk",
+    "plane": "behind",
+    "anim": "swing",
+    "depth": 6
+   }
+  ],
+  "hooks": [
+   {
+    "variant": "wall",
+    "at": 51.87,
+    "until": 54.87,
+    "lines": [
+     {
+      "text": "250-300 км",
+      "at": 51.97
+     },
+     {
+      "text": "час",
+      "at": 53.22
+     }
+    ]
+   }
+  ]
+ },
+ "effects": [
+  {
+   "id": "emt7xx6v",
+   "effect": "zoom-macro",
+   "at": 0.13,
+   "until": 2.43,
+   "params": {}
+  },
+  {
+   "id": "el3r3y3w",
+   "effect": "zoom-macro",
+   "at": 13.7,
+   "until": 14.9,
+   "params": {
+    "amount": "0.7"
+   }
+  },
+  {
+   "id": "ew5k7e6g",
+   "effect": "fx-leak",
+   "at": 42.53,
+   "until": 43.33,
+   "params": {}
+  },
+  {
+   "id": "euq4zx2o",
+   "effect": "text3d-wall",
+   "at": 42.53,
+   "until": 45.53,
+   "params": {
+    "text": "Гуанчжоу- 7 часов",
+    "font": "display",
+    "size": "400",
+    "x": "540",
+    "y": "445",
+    "rx": "0",
+    "ry": "32",
+    "rz": "-6",
+    "color": "#38BDF8",
+    "color2": "#3D7BFF"
+   }
+  },
+  {
+   "id": "eiwmxgog",
+   "effect": "text3d-wall",
+   "at": 46.73,
+   "until": 49.73,
+   "params": {
+    "text": "До Пекина 5 часов",
+    "size": "420",
+    "x": "540",
+    "y": "445",
+    "color": "#38BDF8"
+   }
+  },
+  {
+   "id": "eeevwt29",
+   "effect": "hook-wall",
+   "at": 51.87,
+   "until": 54.87,
+   "params": {
+    "text": "250-300 км/час"
+   }
+  }
+ ],
+ "notes": []
+}
