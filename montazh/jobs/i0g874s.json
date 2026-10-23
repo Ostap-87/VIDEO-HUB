@@ -1,0 +1,306 @@
+{
+ "version": 2,
+ "id": "i0g874s",
+ "name": "IMG_5459",
+ "created": "2026-10-23 12:53:01",
+ "brand": "gtt",
+ "format": "both",
+ "options": {
+  "cutPauses": true,
+  "edl": false,
+  "formats": [
+   "reels",
+   "stories"
+  ]
+ },
+ "files": {
+  "source": "source.mov",
+  "images": {}
+ },
+ "local": {
+  "video": "montazh-local/source"
+ },
+ "hf": {},
+ "props": {
+  "mediaSrc": "montazh-local/source",
+  "cutoutSrc": "",
+  "words": [
+   {
+    "text": "Сторон",
+    "start": 0,
+    "end": 1.62
+   },
+   {
+    "text": "начинается",
+    "start": 1.62,
+    "end": 2.18
+   },
+   {
+    "text": "отчужальная",
+    "start": 2.18,
+    "end": 2.74
+   },
+   {
+    "text": "вечерняя",
+    "start": 2.74,
+    "end": 4.18
+   },
+   {
+    "text": "часть",
+    "start": 4.18,
+    "end": 4.5
+   },
+   {
+    "text": "Ужин.",
+    "start": 4.5,
+    "end": 7.4
+   },
+   {
+    "text": "Будем",
+    "start": 7.78,
+    "end": 8.68
+   },
+   {
+    "text": "узнать,",
+    "start": 8.68,
+    "end": 9.04
+   },
+   {
+    "text": "знакомиться,",
+    "start": 9.04,
+    "end": 9.78
+   },
+   {
+    "text": "общаться",
+    "start": 10.52,
+    "end": 10.94
+   },
+   {
+    "text": "с",
+    "start": 10.94,
+    "end": 12.1
+   },
+   {
+    "text": "представителями",
+    "start": 12.1,
+    "end": 12.88
+   },
+   {
+    "text": "компании,",
+    "start": 12.88,
+    "end": 13.38
+   },
+   {
+    "text": "с",
+    "start": 13.86,
+    "end": 14
+   },
+   {
+    "text": "Zoomlion",
+    "start": 14,
+    "end": 14.72
+   },
+   {
+    "text": "с",
+    "start": 14.86,
+    "end": 14.98
+   },
+   {
+    "text": "SANY",
+    "start": 14.98,
+    "end": 15.28
+   },
+   {
+    "text": "плюс",
+    "start": 16.44,
+    "end": 16.66
+   },
+   {
+    "text": "ко",
+    "start": 16.66,
+    "end": 16.82
+   },
+   {
+    "text": "всему",
+    "start": 16.82,
+    "end": 17.22
+   },
+   {
+    "text": "представители",
+    "start": 17.22,
+    "end": 19.18
+   },
+   {
+    "text": "декломатических",
+    "start": 19.18,
+    "end": 20.2
+   },
+   {
+    "text": "корпусов",
+    "start": 20.2,
+    "end": 21.08
+   },
+   {
+    "text": "страны",
+    "start": 21.08,
+    "end": 22.52
+   },
+   {
+    "text": "СНГ",
+    "start": 22.52,
+    "end": 22.92
+   },
+   {
+    "text": "и",
+    "start": 22.92,
+    "end": 23.12
+   },
+   {
+    "text": "России.",
+    "start": 23.12,
+    "end": 23.44
+   },
+   {
+    "text": "Поэтому",
+    "start": 23.98,
+    "end": 24.76
+   },
+   {
+    "text": "будет",
+    "start": 24.76,
+    "end": 25.76
+   },
+   {
+    "text": "интересное",
+    "start": 25.76,
+    "end": 26.62
+   },
+   {
+    "text": "мероприятие",
+    "start": 26.62,
+    "end": 27.5
+   },
+   {
+    "text": "с",
+    "start": 27.5,
+    "end": 27.8
+   },
+   {
+    "text": "множеством",
+    "start": 27.8,
+    "end": 28.34
+   },
+   {
+    "text": "новых",
+    "start": 28.34,
+    "end": 29
+   },
+   {
+    "text": "полезных",
+    "start": 29.28,
+    "end": 29.6
+   },
+   {
+    "text": "знакомств.",
+    "start": 29.6,
+    "end": 30.24
+   }
+  ],
+  "accentWords": [],
+  "cuts": [],
+  "chips": [],
+  "logos": [],
+  "numbers": [],
+  "broll": [],
+  "checklists": [],
+  "cities": [],
+  "zooms": [],
+  "sfx": {
+   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+   "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+  },
+  "music": {
+   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+   "volume": 0.051,
+   "outroVolume": 0.117,
+   "duck": 0.55
+  },
+  "speechSeconds": 31.735,
+  "site": {
+   "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
+   "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
+   "route": [],
+   "at": 1030.735
+  },
+  "cta": "Экспедиции",
+  "ctaSeconds": 0.3,
+  "showSafeZone": false,
+  "format": "reels",
+  "brand": "gtt",
+  "bumper": false,
+  "focus": {
+   "x": 540,
+   "y": 700
+  },
+  "captionSize": 66,
+  "captionTop": 1250,
+  "captionStyle": "3d",
+  "grade": "brightness(1.000) contrast(1.220) saturate(1.180)",
+  "texts": [
+   {
+    "at": 13.83,
+    "until": 14.73,
+    "text": "с Zoomlion",
+    "x": 380,
+    "y": 560,
+    "size": 230,
+    "rx": 0,
+    "ry": 32,
+    "rz": 0,
+    "color": "#FFFFFF",
+    "font": "grotesk",
+    "plane": "behind",
+    "anim": "swing",
+    "depth": 6
+   },
+   {
+    "at": 15,
+    "until": 18,
+    "text": "ZOOMLION",
+    "x": 380,
+    "y": 560,
+    "size": 420,
+    "rx": 0,
+    "ry": 32,
+    "rz": 0,
+    "color": "#FFFFFF",
+    "font": "grotesk",
+    "plane": "behind",
+    "anim": "swing",
+    "depth": 6
+   }
+  ]
+ },
+ "effects": [
+  {
+   "id": "eg4lxtmc",
+   "effect": "text3d-wall",
+   "at": 13.83,
+   "until": 14.73,
+   "params": {}
+  },
+  {
+   "id": "epmpej7m",
+   "effect": "text3d-wall",
+   "at": 15,
+   "until": 18,
+   "params": {
+    "text": "ZOOMLION",
+    "size": "420"
+   }
+  }
+ ],
+ "notes": []
+}
