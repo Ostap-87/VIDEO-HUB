@@ -541,7 +541,7 @@ export const DuoWord: React.FC<{words: W[]; items?: CapStyleItem[]; accent: stri
   const key = page.find((w) => accent.includes(clean(w.text))) ?? [...page].sort((a, b) => clean(b.text).length - clean(a.text).length)[0];
   const word = bare(key.text).replace(/[.,!?;:…]+$/, "").toUpperCase();
   const k = spring({frame: frame - Math.round(Math.max(page[0].start, key.start - 0.05) * fps), fps, config: {damping: 13, stiffness: 160}});
-  const size = Math.min(340, 1000 / (Math.max(3, word.length) * 0.5));
+  const size = Math.min(340, 960 / (Math.max(3, word.length) * 0.62)); // буква Oswald капсом ≈ 0,6 кегля: слово во всю ширину без обрезки
   const top = (faceTop ?? focus.y - 230) - size * 0.55;
   return (
     <div style={{position: "absolute", left: 0, right: 0, top, textAlign: "center", fontFamily: oswald.fontFamily, fontWeight: 700, fontSize: size, lineHeight: 1, color: "rgba(255,255,255,0.94)", textShadow: "0 10px 40px rgba(0,0,0,0.35)", opacity: Math.min(1, k * 1.5), scale: String(0.8 + 0.2 * k)}}>

@@ -248,7 +248,7 @@ export const Chapters: React.FC<{items?: ChapterItem[]; until: number; stories: 
         </div>
       ) : null}
       {cur && show > 0 ? (
-        <div style={{position: "absolute", left: 56, top: top + 34, display: "flex", alignItems: "center", gap: 14, opacity: show, translate: `${(1 - show) * -40}px 0px`}}>
+        <div style={{position: "absolute", left: 56, top: top + 130, display: "flex", alignItems: "center", gap: 14, opacity: show, translate: `${(1 - show) * -40}px 0px`}}>
           <div style={{background: accent, color: B.id === "gtt" ? "#FFFFFF" : "#191922", fontFamily: oswald.fontFamily, fontWeight: 700, fontSize: 30, padding: "6px 14px", borderRadius: B.square ? 0 : 10, letterSpacing: "0.06em"}}>ГЛАВА {idx + 1}</div>
           <div style={{fontFamily: B.bodyFont, fontWeight: 800, fontSize: 36, color: "#FFFFFF", textShadow: "0 3px 12px rgba(0,0,0,0.6)"}}>{cur.title}</div>
         </div>
