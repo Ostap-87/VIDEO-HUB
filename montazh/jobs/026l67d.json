@@ -1,0 +1,476 @@
+{
+ "version": 2,
+ "id": "026l67d",
+ "name": "IMG_5451",
+ "created": "2026-10-23 12:22:30",
+ "brand": "gtt",
+ "format": "both",
+ "options": {
+  "cutPauses": true,
+  "edl": false,
+  "formats": [
+   "reels",
+   "stories"
+  ]
+ },
+ "files": {
+  "source": "source.mov",
+  "images": {}
+ },
+ "local": {
+  "video": "montazh-local/source"
+ },
+ "hf": {},
+ "props": {
+  "mediaSrc": "montazh-local/source",
+  "cutoutSrc": "",
+  "words": [
+   {
+    "text": "Итак,",
+    "start": 0,
+    "end": 0.6
+   },
+   {
+    "text": "у",
+    "start": 0.7,
+    "end": 1.04
+   },
+   {
+    "text": "меня",
+    "start": 1.04,
+    "end": 1.2
+   },
+   {
+    "text": "заселили.",
+    "start": 1.2,
+    "end": 1.86
+   },
+   {
+    "text": "Буквально",
+    "start": 2.5,
+    "end": 3.08
+   },
+   {
+    "text": "приехал",
+    "start": 3.08,
+    "end": 3.72
+   },
+   {
+    "text": "я",
+    "start": 3.72,
+    "end": 3.98
+   },
+   {
+    "text": "в",
+    "start": 3.98,
+    "end": 4.32
+   },
+   {
+    "text": "Чаншу",
+    "start": 4.32,
+    "end": 4.86
+   },
+   {
+    "text": "40",
+    "start": 4.86,
+    "end": 5.9
+   },
+   {
+    "text": "минут",
+    "start": 5.9,
+    "end": 6.12
+   },
+   {
+    "text": "назад,",
+    "start": 6.12,
+    "end": 6.56
+   },
+   {
+    "text": "я",
+    "start": 6.68,
+    "end": 7.02
+   },
+   {
+    "text": "уже",
+    "start": 7.02,
+    "end": 7.2
+   },
+   {
+    "text": "в",
+    "start": 7.2,
+    "end": 7.32
+   },
+   {
+    "text": "гостинице.",
+    "start": 7.32,
+    "end": 7.88
+   },
+   {
+    "text": "Небольший",
+    "start": 8.62,
+    "end": 9.1
+   },
+   {
+    "text": "шоу",
+    "start": 9.1,
+    "end": 9.44
+   },
+   {
+    "text": "-рум.",
+    "start": 9.44,
+    "end": 10.04
+   },
+   {
+    "text": "Ванная",
+    "start": 10.96,
+    "end": 12.34
+   },
+   {
+    "text": "душевая",
+    "start": 12.34,
+    "end": 13.58
+   },
+   {
+    "text": "кабина,",
+    "start": 13.58,
+    "end": 14.28
+   },
+   {
+    "text": "туалет.",
+    "start": 14.5,
+    "end": 15.5
+   },
+   {
+    "text": "Что",
+    "start": 16.86,
+    "end": 17.16
+   },
+   {
+    "text": "-то",
+    "start": 17.16,
+    "end": 17.46
+   },
+   {
+    "text": "тут?",
+    "start": 17.46,
+    "end": 17.52
+   },
+   {
+    "text": "Косметика",
+    "start": 18.26,
+    "end": 18.86
+   },
+   {
+    "text": "какая",
+    "start": 18.86,
+    "end": 19.12
+   },
+   {
+    "text": "-то?",
+    "start": 19.12,
+    "end": 19.24
+   },
+   {
+    "text": "Ну,",
+    "start": 19.34,
+    "end": 19.44
+   },
+   {
+    "text": "тут",
+    "start": 19.52,
+    "end": 19.62
+   },
+   {
+    "text": "стандартный",
+    "start": 19.62,
+    "end": 20.38
+   },
+   {
+    "text": "набор.",
+    "start": 20.38,
+    "end": 20.74
+   },
+   {
+    "text": "Здесь",
+    "start": 22.04,
+    "end": 23.34
+   },
+   {
+    "text": "шифоньер",
+    "start": 23.34,
+    "end": 25.36
+   },
+   {
+    "text": "Так,",
+    "start": 26.86,
+    "end": 27.86
+   },
+   {
+    "text": "что",
+    "start": 28.02,
+    "end": 28.14
+   },
+   {
+    "text": "еще",
+    "start": 28.14,
+    "end": 28.36
+   },
+   {
+    "text": "у",
+    "start": 28.36,
+    "end": 28.54
+   },
+   {
+    "text": "нас?",
+    "start": 28.54,
+    "end": 28.68
+   },
+   {
+    "text": "Номер",
+    "start": 20,
+    "end": 40.26
+   },
+   {
+    "text": "большой,",
+    "start": 40.26,
+    "end": 40.64
+   },
+   {
+    "text": "комфортный,",
+    "start": 40.82,
+    "end": 41.44
+   },
+   {
+    "text": "диван,",
+    "start": 41.48,
+    "end": 42.02
+   },
+   {
+    "text": "рабочее",
+    "start": 42.16,
+    "end": 42.6
+   },
+   {
+    "text": "место,",
+    "start": 42.6,
+    "end": 42.92
+   },
+   {
+    "text": "можно",
+    "start": 43.14,
+    "end": 43.66
+   },
+   {
+    "text": "вечером",
+    "start": 43.66,
+    "end": 44.36
+   },
+   {
+    "text": "поработать,",
+    "start": 44.36,
+    "end": 45.3
+   },
+   {
+    "text": "вид",
+    "start": 45.88,
+    "end": 46.28
+   },
+   {
+    "text": "на",
+    "start": 46.28,
+    "end": 47.28
+   },
+   {
+    "text": "город,",
+    "start": 47.28,
+    "end": 47.68
+   },
+   {
+    "text": "частный",
+    "start": 47.96,
+    "end": 48.52
+   },
+   {
+    "text": "сектор.",
+    "start": 48.52,
+    "end": 48.96
+   },
+   {
+    "text": "Наслаждаться",
+    "start": 49.68,
+    "end": 51.14
+   },
+   {
+    "text": "видом",
+    "start": 51.14,
+    "end": 52.08
+   },
+   {
+    "text": "из",
+    "start": 52.08,
+    "end": 52.2
+   },
+   {
+    "text": "окна",
+    "start": 52.2,
+    "end": 52.44
+   },
+   {
+    "text": "не",
+    "start": 52.44,
+    "end": 52.62
+   },
+   {
+    "text": "когда",
+    "start": 52.62,
+    "end": 52.84
+   },
+   {
+    "text": "постоянно",
+    "start": 52.84,
+    "end": 53.26
+   },
+   {
+    "text": "все",
+    "start": 53.26,
+    "end": 53.48
+   },
+   {
+    "text": "проходит",
+    "start": 53.48,
+    "end": 53.9
+   },
+   {
+    "text": "в",
+    "start": 53.9,
+    "end": 54.04
+   },
+   {
+    "text": "переговорах,",
+    "start": 54.04,
+    "end": 54.64
+   },
+   {
+    "text": "во",
+    "start": 54.72,
+    "end": 54.76
+   },
+   {
+    "text": "встречах.",
+    "start": 54.76,
+    "end": 55.46
+   },
+   {
+    "text": "В",
+    "start": 55.88,
+    "end": 56.24
+   },
+   {
+    "text": "общем,",
+    "start": 56.24,
+    "end": 56.54
+   },
+   {
+    "text": "очень",
+    "start": 56.66,
+    "end": 57.18
+   },
+   {
+    "text": "круто,",
+    "start": 57.18,
+    "end": 58.24
+   },
+   {
+    "text": "можно",
+    "start": 58.3,
+    "end": 59.18
+   },
+   {
+    "text": "начинать",
+    "start": 59.18,
+    "end": 60.24
+   },
+   {
+    "text": "готовиться",
+    "start": 60.24,
+    "end": 61.62
+   },
+   {
+    "text": "к",
+    "start": 61.62,
+    "end": 61.8
+   },
+   {
+    "text": "вечерному",
+    "start": 61.8,
+    "end": 62.52
+   },
+   {
+    "text": "банкету",
+    "start": 62.52,
+    "end": 63.44
+   },
+   {
+    "text": "и",
+    "start": 63.44,
+    "end": 64.42
+   },
+   {
+    "text": "к",
+    "start": 64.42,
+    "end": 64.5
+   },
+   {
+    "text": "переговорам.",
+    "start": 64.5,
+    "end": 65.2
+   }
+  ],
+  "accentWords": [
+   "40"
+  ],
+  "cuts": [],
+  "chips": [],
+  "logos": [],
+  "numbers": [],
+  "broll": [],
+  "checklists": [],
+  "cities": [],
+  "zooms": [],
+  "sfx": {
+   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+   "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+  },
+  "music": {
+   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+   "volume": 0.078,
+   "outroVolume": 0.179,
+   "duck": 0.55
+  },
+  "speechSeconds": 67.312,
+  "site": {
+   "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
+   "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
+   "route": [],
+   "at": 1066.311667
+  },
+  "cta": "Экспедиции",
+  "ctaSeconds": 0.3,
+  "showSafeZone": false,
+  "format": "reels",
+  "brand": "gtt",
+  "bumper": false,
+  "focus": {
+   "x": 540,
+   "y": 700
+  },
+  "captionSize": 66,
+  "captionTop": 1250,
+  "captionStyle": "3d",
+  "grade": "brightness(1.000) contrast(1.220) saturate(1.180)"
+ },
+ "effects": [],
+ "notes": []
+}
