@@ -63,7 +63,9 @@ def gh(method: str, url: str, data_file=None, ctype="application/json", timeout=
     cfg = (f'header = "Authorization: Bearer {gh_token()}"\n'
            'header = "Accept: application/vnd.github+json"\nheader = "X-GitHub-Api-Version: 2022-11-28"\n')
     args = ["curl", "-sS", "-L", "-X", method, "-K", "-", "-w", "\n%{http_code}", "-A", "Montazh", "--connect-timeout", "15"]
-    if data_file is not None:
+    if data_file is not None and ctype == "application/octet-stream":   # ролик — потоком, не целиком в память
+        args += ["-H", f"Content-Type: {ctype}", "-T", str(data_file), "--speed-limit", "1024", "--speed-time", "120"]
+    elif data_file is not None:
         args += ["-H", f"Content-Type: {ctype}", "--data-binary", f"@{data_file}"]
     proxy = sys_proxy()
     for p in [proxy, None] if proxy else [None]:
@@ -111,9 +113,61 @@ def check_token(tok: str) -> dict:
     return {"configured": True, "repo": REPO}
 
 
+def pending_file(jid: str) -> pathlib.Path:
+    """Задание, которое ещё не дошло до GitHub: лежит на Mac, пока отправка не закончится (её продолжат и после перезапуска)."""
+    return HOME / "jobs" / f"{jid}.job.json"
+
+
+SEND_WAITS = (30, 120, 300, 600)  # повторы отправки при обрыве, с
+
+
 def send_job(jid: str, job: dict) -> None:
+    """Отправка с повторами. Из Китая ролик идёт на GitHub 20+ минут — обрыв сети, сон Mac или закрытое окно её рвут;
+    задание и файлы остаются на Mac (pending_file), отправка продолжается сама: повторы здесь, потом resume_sends()."""
+    st = SENDS.setdefault(jid, {"text": "Начинаю отправку…", "progress": 0})
+    if st.get("running"):
+        return
+    st["running"] = True
+    try:
+        for i, wait in enumerate((0,) + SEND_WAITS):
+            if wait:
+                st.update(text=f"Нет связи с GitHub — повторю через {wait // 60 or wait} {'мин' if wait >= 60 else 'с'} "
+                               f"(попытка {i + 1} из {len(SEND_WAITS) + 1}). Окно можно не трогать.")
+                time.sleep(wait)
+            st.pop("error", None)
+            send_once(jid, job, st)
+            if st.get("sent") or not st.get("error"):
+                break
+            nlog(f"отправка {jid}: {st.get('error')}")
+    finally:
+        st["running"] = False
+
+
+def resume_sends() -> None:
+    """Недоотправленные задания (окно закрывали, Mac засыпал, обновление) — продолжить; при запуске и раз в 10 минут."""
+    while True:
+        for f in sorted((HOME / "jobs").glob("*.job.json")) if (HOME / "jobs").exists() else []:
+            jid = f.name.split(".")[0]
+            if SENDS.get(jid, {}).get("running") or SENDS.get(jid, {}).get("sent"):
+                continue
+            try:
+                job = json.loads(f.read_text("utf-8"))
+            except (OSError, ValueError):
+                continue
+            nlog(f"продолжаю отправку {jid} «{job.get('name', '')}»")
+            threading.Thread(target=send_job, args=(jid, job), daemon=True).start()
+        old = time.time() - 2 * 86400                         # файлы отправок без задания (оборвались до этой версии)
+        for d in (HOME / "jobs").iterdir() if (HOME / "jobs").exists() else []:
+            try:
+                if d.is_dir() and not pending_file(d.name).exists() and d.stat().st_mtime < old:
+                    shutil.rmtree(d, ignore_errors=True)
+            except OSError:
+                pass
+        time.sleep(600)
+
+
+def send_once(jid: str, job: dict, st: dict) -> None:
     """Файлы задания → релиз montazh-<id>, задание → montazh/jobs/<id>.json (запускает рендер)."""
-    st = SENDS[jid]
     folder = HOME / "jobs" / jid
     try:
         tag = f"montazh-{jid}"
@@ -138,7 +192,7 @@ def send_job(jid: str, job: dict) -> None:
                 gh("DELETE", f"https://api.github.com/repos/{REPO}/releases/assets/{have[p.name]['id']}")
             st.update(text=f"Загружаю {p.name} ({size / 1048576:.0f} МБ)…", progress=0.05 + 0.85 * sent / total)
             code, d = gh("POST", f"https://uploads.github.com/repos/{REPO}/releases/{rel['id']}/assets?name={urllib.parse.quote(p.name)}",
-                         data_file=str(p), ctype="application/octet-stream", timeout=3600)
+                         data_file=str(p), ctype="application/octet-stream", timeout=6 * 3600)
             if code not in (200, 201):
                 raise LinkError(f"Файл {p.name} не загрузился ({code}): {d.get('message', '')}")
             sent += size
@@ -154,6 +208,7 @@ def send_job(jid: str, job: dict) -> None:
             raise LinkError(f"Задание не записалось ({code}): {d.get('message', '')}")
         st.update(text="Отправлено — рендер начнётся через минуту", progress=1.0, sent=True)
         shutil.rmtree(folder, ignore_errors=True)   # файлы уже в релизе
+        pending_file(jid).unlink(missing_ok=True)
     except (LinkError, subprocess.SubprocessError, OSError, KeyError) as exc:
         st["error"] = str(exc) or "Не удалось отправить"
 
@@ -273,6 +328,14 @@ def guess_status(jid: str, assets: dict) -> dict:
     return {"stage": "done", "text": "Готово", "progress": 1, "files": files, "done": True, "guess": True}
 
 
+def job_committed(jid: str, rel: dict) -> bool:
+    """Дошло ли задание до репозитория: статус в релизе есть — да; нет — спросить montazh/jobs/<id>.json."""
+    if STATUS_RE.search(rel.get("body") or "") or any(a["name"] == "status.json" for a in rel.get("assets", [])) or jid in DONE:
+        return True
+    code, _ = gh("GET", f"https://api.github.com/repos/{REPO}/contents/montazh/jobs/{jid}.json?ref=main")
+    return code != 404
+
+
 def job_state(jid: str) -> dict:
     """Ход работы в облаке — только через api.github.com: статус из описания релиза (его пишет движок), для старых
     заданий — status.json (API, прокси, зеркала) или готовые файлы по именам."""
@@ -281,8 +344,11 @@ def job_state(jid: str) -> dict:
         return {"stage": "net", "text": "Нет связи с GitHub — проверьте интернет или VPN; Монтажная попробует ещё раз", "progress": 0}
     if code == 401:
         return {"stage": "token", "text": "Ключ GitHub не подходит — нажмите «Сменить ключ GitHub» и введите новый"}
-    if code != 200:
-        return {"stage": "wait", "text": "Ждёт отправки"}
+    if code != 200 or not job_committed(jid, rel):
+        if pending_file(jid).exists():
+            return {"stage": "send", "text": "Отправка оборвалась — Монтажная продолжит её сама", "progress": 0}
+        return {"stage": "lost", "text": "Ролик не дошёл до облака: отправку оборвали (закрыли окно, Mac уснул или пропала "
+                                         "сеть). Нажмите «Отправить заново».", "progress": 0}
     assets = {a["name"]: a for a in rel.get("assets", [])}
     st = json.loads(json.dumps(DONE[jid])) if jid in DONE else None
     m = None if st else STATUS_RE.search(rel.get("body") or "")
@@ -918,6 +984,8 @@ class Handler(SimpleHTTPRequestHandler):
                 job = json.loads(self.rfile.read(n) or b"{}")
             except ValueError:
                 return self.json(400, {"detail": "задание не прочиталось"})
+            pending_file(m.group(1)).parent.mkdir(parents=True, exist_ok=True)
+            pending_file(m.group(1)).write_text(json.dumps(job, ensure_ascii=False), "utf-8")
             SENDS[m.group(1)] = {"text": "Начинаю отправку…", "progress": 0}
             threading.Thread(target=send_job, args=(m.group(1), job), daemon=True).start()
             return self.json(200, {"ok": True})
@@ -960,6 +1028,7 @@ def serve(dist: str, port: int, background: bool = True) -> str:
         raise
     url = f"http://127.0.0.1:{port}/"
     threading.Thread(target=clean_previews, daemon=True).start()
+    threading.Thread(target=resume_sends, daemon=True).start()
     if background:
         threading.Thread(target=srv.serve_forever, daemon=True).start()
     else:

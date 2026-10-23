@@ -150,7 +150,7 @@ const Home: React.FC<{list: Project[] | null; startNew?: boolean; onOpen: (p: Pr
                   {p.effects.length ? ` · эффектов: ${p.effects.length}` : ""}
                   {p.notes.length ? ` · заметок: ${p.notes.filter((n) => !n.done).length}` : ""}
                 </div>
-                {p.jobs?.length ? <JobBadge id={p.jobs[0].id} /> : <div className="meta">Изменён {p.updated}</div>}
+                {p.jobs?.length ? <JobBadge id={p.jobs[0].id} /> : <div className="meta jobbadge">Ещё не отправлен в облако · изменён {p.updated}</div>}
                 <button
                   className="del"
                   title="Удалить ролик из Монтажной"
@@ -2186,14 +2186,16 @@ const Cloud: React.FC<{p: Project; up: StepCtx["up"]; props: Record<string, any>
           <p className="muted">
             В облаке: студийный звук (DeepFilterNet), {p.edl?.length ? "склейка роликов, " : cut ? "склейка без пауз, " : ""}вырезка спикера для эффектов «за головой» и рендер{" "}
             {p.format === "both" ? "Reels и Stories (части до 60 с)" : p.format === "stories" ? "Stories (части до 60 с)" : "Reels"}. Обычно 7–25 минут
-            (оба формата — примерно вдвое дольше); окно можно закрыть — результат останется здесь.
+            (оба формата — примерно вдвое дольше). Сначала файлы уходят на GitHub (из Китая — 10–30 минут, ход виден в карточке
+            ролика): в это время Монтажную лучше не закрывать; если закрыть, отправка продолжится при следующем запуске.
           </p>
           {same && !sending ? (
             <div className="sentbox">
               <b>✓ Ролик отправлен в облако</b>
               <span>
-                Ролик №{allJobs.length} · {shortTime(last!.sentAt)} · обычно готов через 7–25 минут. Готовность видна в карточке ниже и на главной у этого ролика. Окно
-                можно закрыть или монтировать следующий ролик — облако доделает само.
+                Ролик №{allJobs.length} · {shortTime(last!.sentAt)}. Сначала файлы уходят на GitHub (карточка ниже: «отправляется»), потом рендер
+                7–25 минут. Можно монтировать следующий ролик; Монтажную до конца отправки лучше не закрывать — если закрыть, отправка
+                продолжится при следующем запуске.
               </span>
               <div className="row wrap">
                 {goHome ? (
@@ -2258,6 +2260,10 @@ const Cloud: React.FC<{p: Project; up: StepCtx["up"]; props: Record<string, any>
               open={tab === "ready" && i === 0}
               archived={!!j.archived}
               onArchive={(v) => setArchived(j.id, v)}
+              onResend={() => {
+                up((q) => ({...q, jobs: (q.jobs ?? []).filter((x) => x.id !== j.id)}));
+                send();
+              }}
             />
           ))}
         </>
@@ -2276,7 +2282,7 @@ const JobBadge: React.FC<{id: string}> = ({id}) => {
       const s = await jobState(id).catch(() => null);
       if (!alive) return;
       if (s) setSt(s);
-      if (!s?.done && !s?.error) timer = window.setTimeout(tick, s ? 10000 : 20000);
+      if (!s?.done && !s?.error) timer = window.setTimeout(tick, s?.stage === "lost" ? 60000 : s ? 10000 : 20000);
     };
     tick();
     return () => {
@@ -2286,6 +2292,7 @@ const JobBadge: React.FC<{id: string}> = ({id}) => {
   }, [id]);
   if (!st || st.stage === "token") return <div className="meta jobbadge">☁ Отправлен в облако</div>;
   if (st.stage === "net") return <div className="meta jobbadge bad">⚠ Нет связи с GitHub — проверьте интернет или VPN</div>;
+  if (st.stage === "lost") return <div className="meta jobbadge bad">⚠ Не дошёл до облака — откройте и нажмите «Отправить заново»</div>;
   if (st.error) return <div className="meta jobbadge bad">⚠ Ошибка в облаке — откройте ролик</div>;
   if (st.done) return <div className="meta jobbadge ok">✓ Готов — откройте и скачайте</div>;
   return (
@@ -2303,15 +2310,16 @@ const shortTime = (iso: string) => {
   return `${z(d.getDate())}.${z(d.getMonth() + 1)} ${z(d.getHours())}:${z(d.getMinutes())}`;
 };
 
-const JobCard: React.FC<{id: string; n: number; sentAt: string; newest: boolean; open: boolean; archived: boolean; onArchive: (v: boolean) => void}> = ({
-  id,
-  n,
-  sentAt,
-  newest,
-  open,
-  archived,
-  onArchive,
-}) => {
+const JobCard: React.FC<{
+  id: string;
+  n: number;
+  sentAt: string;
+  newest: boolean;
+  open: boolean;
+  archived: boolean;
+  onArchive: (v: boolean) => void;
+  onResend: () => void;
+}> = ({id, n, sentAt, newest, open, archived, onArchive, onResend}) => {
   const [st, setSt] = useState<JobState | null>(null);
   const [show, setShow] = useState(open);
   useEffect(() => {
@@ -2322,7 +2330,7 @@ const JobCard: React.FC<{id: string; n: number; sentAt: string; newest: boolean;
         const s = await jobState(id);
         if (!alive) return;
         setSt(s);
-        if (!s.done && !s.error) timer = window.setTimeout(tick, s.stage === "send" ? 1500 : s.stage === "net" ? 20000 : 8000);
+        if (!s.done && !s.error) timer = window.setTimeout(tick, s.stage === "send" ? 1500 : s.stage === "net" || s.stage === "lost" ? 20000 : 8000);
       } catch {
         if (alive) timer = window.setTimeout(tick, 15000);
       }
@@ -2340,13 +2348,15 @@ const JobCard: React.FC<{id: string; n: number; sentAt: string; newest: boolean;
     <div className={`jobcard ${st?.done ? "done" : st?.error ? "bad" : ""}`}>
       <div className="row" onClick={() => setShow(!show)}>
         <b className="jobno">Ролик №{n}</b>
-        <span className={`jobst ${st?.done ? "ok" : st?.error ? "bad" : ""}`}>{st?.done ? "готов" : st?.error ? "ошибка" : "в работе"}</span>
+        <span className={`jobst ${st?.done ? "ok" : st?.error || st?.stage === "lost" ? "bad" : ""}`}>
+          {st?.done ? "готов" : st?.stage === "lost" ? "не дошёл до облака" : st?.error ? "ошибка" : st?.stage === "send" ? "отправляется" : "в работе"}
+        </span>
         {newest ? <span className="jobnew">последний</span> : null}
         <span className="muted">
           отправлен {shortTime(sentAt)} · {id}
         </span>
         <span className="sp" />
-        {st?.done || st?.error || archived ? (
+        {st?.done || st?.error || st?.stage === "lost" || archived ? (
           <button
             className="btn ghost sm"
             title={archived ? "Вернуть в «Готовые ролики»" : "Убрать из списка во вкладку «Архив» (ролик не удаляется)"}
@@ -2369,6 +2379,14 @@ const JobCard: React.FC<{id: string; n: number; sentAt: string; newest: boolean;
             </div>
           ) : null}
           {st?.error ? <div className="err">{st.error}</div> : null}
+          {st?.stage === "lost" ? (
+            <div className="row wrap">
+              <button className="btn primary" onClick={onResend}>
+                ↻ Отправить заново
+              </button>
+              <span className="muted">Ролик уйдёт в облако с текущими правками. Окно не закрывайте, пока не появится «✓ Ролик отправлен».</span>
+            </div>
+          ) : null}
           {video ? <JobPreview jid={id} file={video} /> : null}
           {files.some((f) => f.url) ? (
             <>
