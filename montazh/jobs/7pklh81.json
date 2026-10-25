@@ -1,0 +1,1746 @@
+{
+ "version": 2,
+ "id": "7pklh81",
+ "name": "IMG_5624",
+ "created": "2026-10-25 02:35:08",
+ "brand": "gtt",
+ "format": "both",
+ "options": {
+  "cutPauses": false,
+  "edl": true,
+  "formats": [
+   "reels",
+   "stories"
+  ]
+ },
+ "files": {
+  "source": "clip-source.mov",
+  "clips": {
+   "source": "clip-source.mov",
+   "c7gjfmz7": "clip-c7gjfmz7.mov",
+   "cbhj68tg": "clip-cbhj68tg.mov",
+   "cclfaafp": "clip-cclfaafp.mov",
+   "c2k17sdv": "clip-c2k17sdv.mov",
+   "copba6fu": "clip-copba6fu.mov",
+   "cm89habo": "clip-cm89habo.mov",
+   "cegzmtee": "clip-cegzmtee.mov",
+   "chw2ykgq": "clip-chw2ykgq.mov",
+   "cdqz3twr": "clip-cdqz3twr.mov",
+   "c76xh4yo": "clip-c76xh4yo.mov",
+   "cvq1u78l": "clip-cvq1u78l.mov",
+   "cwyocbr5": "clip-cwyocbr5.mov"
+  },
+  "images": {}
+ },
+ "local": {
+  "video": "montazh-local/edl",
+  "clips": {
+   "montazh-local/clip/source": "source",
+   "montazh-local/clip/c7gjfmz7": "c7gjfmz7",
+   "montazh-local/clip/cbhj68tg": "cbhj68tg",
+   "montazh-local/clip/cclfaafp": "cclfaafp",
+   "montazh-local/clip/c2k17sdv": "c2k17sdv",
+   "montazh-local/clip/copba6fu": "copba6fu",
+   "montazh-local/clip/cm89habo": "cm89habo",
+   "montazh-local/clip/cegzmtee": "cegzmtee",
+   "montazh-local/clip/chw2ykgq": "chw2ykgq",
+   "montazh-local/clip/cdqz3twr": "cdqz3twr",
+   "montazh-local/clip/c76xh4yo": "c76xh4yo",
+   "montazh-local/clip/cvq1u78l": "cvq1u78l",
+   "montazh-local/clip/cwyocbr5": "cwyocbr5"
+  }
+ },
+ "hf": {},
+ "props": {
+  "mediaSrc": "montazh-local/edl",
+  "cutoutSrc": "",
+  "edl": [
+   {
+    "src": "montazh-local/clip/source",
+    "from": 0,
+    "to": 6.79
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 6.99,
+    "to": 10.44
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 11.11,
+    "to": 11.68
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 12.14,
+    "to": 13.06
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 13.34,
+    "to": 16.75
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 16.94,
+    "to": 21.98
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 22.18,
+    "to": 23.74
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 23.86,
+    "to": 27.38
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 27.62,
+    "to": 28.78
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 29.05,
+    "to": 30.57
+   },
+   {
+    "src": "montazh-local/clip/source",
+    "from": 30.93,
+    "to": 33.05
+   },
+   {
+    "src": "montazh-local/clip/c7gjfmz7",
+    "from": 0,
+    "to": 6.26
+   },
+   {
+    "src": "montazh-local/clip/c7gjfmz7",
+    "from": 6.54,
+    "to": 7.3
+   },
+   {
+    "src": "montazh-local/clip/c7gjfmz7",
+    "from": 7.86,
+    "to": 13.25
+   },
+   {
+    "src": "montazh-local/clip/c7gjfmz7",
+    "from": 13.38,
+    "to": 19.04
+   },
+   {
+    "src": "montazh-local/clip/c7gjfmz7",
+    "from": 19.21,
+    "to": 22.21
+   },
+   {
+    "src": "montazh-local/clip/c7gjfmz7",
+    "from": 22.34,
+    "to": 26.24
+   },
+   {
+    "src": "montazh-local/clip/c7gjfmz7",
+    "from": 26.42,
+    "to": 28.37
+   },
+   {
+    "src": "montazh-local/clip/c7gjfmz7",
+    "from": 28.53,
+    "to": 30.47
+   },
+   {
+    "src": "montazh-local/clip/c7gjfmz7",
+    "from": 30.67,
+    "to": 33.98
+   },
+   {
+    "src": "montazh-local/clip/c7gjfmz7",
+    "from": 34.2,
+    "to": 39.68
+   },
+   {
+    "src": "montazh-local/clip/c7gjfmz7",
+    "from": 39.82,
+    "to": 45.53
+   },
+   {
+    "src": "montazh-local/clip/c7gjfmz7",
+    "from": 45.79,
+    "to": 49.1
+   },
+   {
+    "src": "montazh-local/clip/c7gjfmz7",
+    "from": 49.53,
+    "to": 53
+   },
+   {
+    "src": "montazh-local/clip/c7gjfmz7",
+    "from": 53.37,
+    "to": 53.93
+   },
+   {
+    "src": "montazh-local/clip/c7gjfmz7",
+    "from": 54.26,
+    "to": 55.8
+   },
+   {
+    "src": "montazh-local/clip/cbhj68tg",
+    "from": 0.2,
+    "to": 2.4
+   },
+   {
+    "src": "montazh-local/clip/cbhj68tg",
+    "from": 2.76,
+    "to": 5.42
+   },
+   {
+    "src": "montazh-local/clip/cbhj68tg",
+    "from": 10.32,
+    "to": 12.69
+   },
+   {
+    "src": "montazh-local/clip/cbhj68tg",
+    "from": 13.59,
+    "to": 16.79
+   },
+   {
+    "src": "montazh-local/clip/cbhj68tg",
+    "from": 17.83,
+    "to": 19.7
+   },
+   {
+    "src": "montazh-local/clip/cbhj68tg",
+    "from": 19.99,
+    "to": 21.34
+   },
+   {
+    "src": "montazh-local/clip/cbhj68tg",
+    "from": 21.58,
+    "to": 23.78
+   },
+   {
+    "src": "montazh-local/clip/cbhj68tg",
+    "from": 24.04,
+    "to": 27.22
+   },
+   {
+    "src": "montazh-local/clip/cbhj68tg",
+    "from": 28.24,
+    "to": 29.66
+   },
+   {
+    "src": "montazh-local/clip/cclfaafp",
+    "from": 2.33,
+    "to": 5.67
+   },
+   {
+    "src": "montazh-local/clip/cclfaafp",
+    "from": 8.14,
+    "to": 9.8
+   },
+   {
+    "src": "montazh-local/clip/c2k17sdv",
+    "from": 0,
+    "to": 2.74
+   },
+   {
+    "src": "montazh-local/clip/c2k17sdv",
+    "from": 3.21,
+    "to": 5.6
+   },
+   {
+    "src": "montazh-local/clip/c2k17sdv",
+    "from": 5.8,
+    "to": 10.07
+   },
+   {
+    "src": "montazh-local/clip/c2k17sdv",
+    "from": 11.06,
+    "to": 12.92
+   },
+   {
+    "src": "montazh-local/clip/c2k17sdv",
+    "from": 13.62,
+    "to": 13.98
+   },
+   {
+    "src": "montazh-local/clip/c2k17sdv",
+    "from": 14.14,
+    "to": 14.6
+   },
+   {
+    "src": "montazh-local/clip/copba6fu",
+    "from": 0.94,
+    "to": 1.3
+   },
+   {
+    "src": "montazh-local/clip/copba6fu",
+    "from": 2.58,
+    "to": 6.55
+   },
+   {
+    "src": "montazh-local/clip/copba6fu",
+    "from": 7.15,
+    "to": 7.49
+   },
+   {
+    "src": "montazh-local/clip/copba6fu",
+    "from": 7.84,
+    "to": 13.233
+   },
+   {
+    "src": "montazh-local/clip/cm89habo",
+    "from": 0,
+    "to": 0.22
+   },
+   {
+    "src": "montazh-local/clip/cm89habo",
+    "from": 3.97,
+    "to": 4.62
+   },
+   {
+    "src": "montazh-local/clip/cm89habo",
+    "from": 26.76,
+    "to": 28.89
+   },
+   {
+    "src": "montazh-local/clip/cm89habo",
+    "from": 32.71,
+    "to": 35.42
+   },
+   {
+    "src": "montazh-local/clip/cm89habo",
+    "from": 37.19,
+    "to": 39.83
+   },
+   {
+    "src": "montazh-local/clip/cm89habo",
+    "from": 43.39,
+    "to": 47.26
+   },
+   {
+    "src": "montazh-local/clip/cm89habo",
+    "from": 47.57,
+    "to": 49.487
+   },
+   {
+    "src": "montazh-local/clip/cegzmtee",
+    "from": 9.63,
+    "to": 10.42
+   },
+   {
+    "src": "montazh-local/clip/cegzmtee",
+    "from": 10.65,
+    "to": 11.91
+   },
+   {
+    "src": "montazh-local/clip/cegzmtee",
+    "from": 13.19,
+    "to": 21.53
+   },
+   {
+    "src": "montazh-local/clip/cegzmtee",
+    "from": 21.84,
+    "to": 26.31
+   },
+   {
+    "src": "montazh-local/clip/chw2ykgq",
+    "from": 0.04,
+    "to": 1.47
+   },
+   {
+    "src": "montazh-local/clip/chw2ykgq",
+    "from": 1.68,
+    "to": 4.73
+   },
+   {
+    "src": "montazh-local/clip/chw2ykgq",
+    "from": 5.07,
+    "to": 5.46
+   },
+   {
+    "src": "montazh-local/clip/chw2ykgq",
+    "from": 6.5,
+    "to": 7.1
+   },
+   {
+    "src": "montazh-local/clip/chw2ykgq",
+    "from": 7.21,
+    "to": 8.35
+   },
+   {
+    "src": "montazh-local/clip/cdqz3twr",
+    "from": 0.13,
+    "to": 6.19
+   },
+   {
+    "src": "montazh-local/clip/cdqz3twr",
+    "from": 7.1,
+    "to": 9.43
+   },
+   {
+    "src": "montazh-local/clip/cdqz3twr",
+    "from": 9.57,
+    "to": 13.205
+   },
+   {
+    "src": "montazh-local/clip/c76xh4yo",
+    "from": 0.81,
+    "to": 2.92
+   },
+   {
+    "src": "montazh-local/clip/c76xh4yo",
+    "from": 3.5,
+    "to": 4.78
+   },
+   {
+    "src": "montazh-local/clip/c76xh4yo",
+    "from": 5.3,
+    "to": 6.8
+   },
+   {
+    "src": "montazh-local/clip/cvq1u78l",
+    "from": 0,
+    "to": 0.23
+   },
+   {
+    "src": "montazh-local/clip/cvq1u78l",
+    "from": 3.16,
+    "to": 3.73
+   },
+   {
+    "src": "montazh-local/clip/cvq1u78l",
+    "from": 4.94,
+    "to": 5.29
+   },
+   {
+    "src": "montazh-local/clip/cvq1u78l",
+    "from": 6.3,
+    "to": 9.61
+   },
+   {
+    "src": "montazh-local/clip/cvq1u78l",
+    "from": 9.75,
+    "to": 10.1
+   },
+   {
+    "src": "montazh-local/clip/cvq1u78l",
+    "from": 12.15,
+    "to": 12.7
+   },
+   {
+    "src": "montazh-local/clip/cvq1u78l",
+    "from": 16.09,
+    "to": 17
+   },
+   {
+    "src": "montazh-local/clip/cwyocbr5",
+    "from": 6.99,
+    "to": 8.5
+   },
+   {
+    "src": "montazh-local/clip/cwyocbr5",
+    "from": 11.52,
+    "to": 13.08
+   },
+   {
+    "src": "montazh-local/clip/cwyocbr5",
+    "from": 16.47,
+    "to": 17.067
+   }
+  ],
+  "words": [
+   {
+    "text": "Итак,",
+    "start": 0,
+    "end": 0.76,
+    "c": "source",
+    "ci": 0
+   },
+   {
+    "text": "утро",
+    "start": 1.52,
+    "end": 1.66,
+    "c": "source",
+    "ci": 1
+   },
+   {
+    "text": "начинает",
+    "start": 1.66,
+    "end": 2.12,
+    "c": "source",
+    "ci": 2
+   },
+   {
+    "text": "с",
+    "start": 2.12,
+    "end": 2.32,
+    "c": "source",
+    "ci": 3
+   },
+   {
+    "text": "посещения",
+    "start": 2.32,
+    "end": 2.76,
+    "c": "source",
+    "ci": 4
+   },
+   {
+    "text": "компании",
+    "start": 2.76,
+    "end": 3.14,
+    "c": "source",
+    "ci": 5
+   },
+   {
+    "text": "Sanya,",
+    "start": 3.14,
+    "end": 3.72,
+    "c": "source",
+    "ci": 6
+   },
+   {
+    "text": "это",
+    "start": 3.96,
+    "end": 4,
+    "c": "source",
+    "ci": 7
+   },
+   {
+    "text": "крупнейший",
+    "start": 4,
+    "end": 4.42,
+    "c": "source",
+    "ci": 8
+   },
+   {
+    "text": "производитель",
+    "start": 4.42,
+    "end": 5.02,
+    "c": "source",
+    "ci": 9
+   },
+   {
+    "text": "строительной",
+    "start": 5.02,
+    "end": 5.74,
+    "c": "source",
+    "ci": 10
+   },
+   {
+    "text": "техники,",
+    "start": 5.74,
+    "end": 6.24,
+    "c": "source",
+    "ci": 11
+   },
+   {
+    "text": "у",
+    "start": 6.79,
+    "end": 7.4,
+    "c": "source",
+    "ci": 12
+   },
+   {
+    "text": "которого",
+    "start": 7.4,
+    "end": 7.66,
+    "c": "source",
+    "ci": 13
+   },
+   {
+    "text": "очень",
+    "start": 7.66,
+    "end": 8,
+    "c": "source",
+    "ci": 14
+   },
+   {
+    "text": "много",
+    "start": 8,
+    "end": 8.3,
+    "c": "source",
+    "ci": 15
+   },
+   {
+    "text": "представителей",
+    "start": 8.3,
+    "end": 8.84,
+    "c": "source",
+    "ci": 16
+   },
+   {
+    "text": "во",
+    "start": 8.84,
+    "end": 9.2,
+    "c": "source",
+    "ci": 17
+   },
+   {
+    "text": "всех",
+    "start": 9.2,
+    "end": 9.44,
+    "c": "source",
+    "ci": 18
+   },
+   {
+    "text": "странах",
+    "start": 9.44,
+    "end": 10.24,
+    "c": "source",
+    "ci": 19
+   },
+   {
+    "text": "мира.",
+    "start": 10.24,
+    "end": 10.59,
+    "c": "source",
+    "ci": 20
+   },
+   {
+    "text": "Сегодня",
+    "start": 10.87,
+    "end": 11.39,
+    "c": "source",
+    "ci": 21
+   },
+   {
+    "text": "встречу",
+    "start": 11.73,
+    "end": 12.21,
+    "c": "source",
+    "ci": 22
+   },
+   {
+    "text": "с",
+    "start": 12.21,
+    "end": 12.35,
+    "c": "source",
+    "ci": 23
+   },
+   {
+    "text": "менеджером,",
+    "start": 12.35,
+    "end": 12.75,
+    "c": "source",
+    "ci": 24
+   },
+   {
+    "text": "вчера",
+    "start": 12.85,
+    "end": 13.45,
+    "c": "source",
+    "ci": 25
+   },
+   {
+    "text": "переговорили,",
+    "start": 13.45,
+    "end": 14.07,
+    "c": "source",
+    "ci": 26
+   },
+   {
+    "text": "предварительно.",
+    "start": 14.17,
+    "end": 14.73,
+    "c": "source",
+    "ci": 27
+   },
+   {
+    "text": "Приехал",
+    "start": 15.2,
+    "end": 16.14,
+    "c": "source",
+    "ci": 28
+   },
+   {
+    "text": "лично",
+    "start": 16.14,
+    "end": 16.56,
+    "c": "source",
+    "ci": 29
+   },
+   {
+    "text": "проинспектировать,",
+    "start": 16.56,
+    "end": 17.4,
+    "c": "source",
+    "ci": 30
+   },
+   {
+    "text": "смотреть,",
+    "start": 17.48,
+    "end": 17.74,
+    "c": "source",
+    "ci": 31
+   },
+   {
+    "text": "что",
+    "start": 17.86,
+    "end": 18,
+    "c": "source",
+    "ci": 32
+   },
+   {
+    "text": "они",
+    "start": 18,
+    "end": 18.14,
+    "c": "source",
+    "ci": 33
+   },
+   {
+    "text": "показывают,",
+    "start": 18.14,
+    "end": 18.78,
+    "c": "source",
+    "ci": 34
+   },
+   {
+    "text": "и",
+    "start": 18.82,
+    "end": 18.94,
+    "c": "source",
+    "ci": 35
+   },
+   {
+    "text": "того,",
+    "start": 18.94,
+    "end": 19.02,
+    "c": "source",
+    "ci": 36
+   },
+   {
+    "text": "что",
+    "start": 19.08,
+    "end": 19.16,
+    "c": "source",
+    "ci": 37
+   },
+   {
+    "text": "было",
+    "start": 19.16,
+    "end": 19.32,
+    "c": "source",
+    "ci": 38
+   },
+   {
+    "text": "в",
+    "start": 19.32,
+    "end": 19.4,
+    "c": "source",
+    "ci": 39
+   },
+   {
+    "text": "дальнейшем,",
+    "start": 19.4,
+    "end": 20.02,
+    "c": "source",
+    "ci": 40
+   },
+   {
+    "text": "показывать",
+    "start": 20.28,
+    "end": 20.98,
+    "c": "source",
+    "ci": 41
+   },
+   {
+    "text": "это",
+    "start": 20.98,
+    "end": 21.26,
+    "c": "source",
+    "ci": 42
+   },
+   {
+    "text": "вам,",
+    "start": 21.26,
+    "end": 21.54,
+    "c": "source",
+    "ci": 43
+   },
+   {
+    "text": "помогать",
+    "start": 21.74,
+    "end": 22.38,
+    "c": "source",
+    "ci": 44
+   },
+   {
+    "text": "со",
+    "start": 22.38,
+    "end": 22.56,
+    "c": "source",
+    "ci": 45
+   },
+   {
+    "text": "встречами",
+    "start": 22.56,
+    "end": 23.16,
+    "c": "source",
+    "ci": 46
+   },
+   {
+    "text": "с",
+    "start": 23.16,
+    "end": 23.44,
+    "c": "source",
+    "ci": 47
+   },
+   {
+    "text": "руководителями,",
+    "start": 23.44,
+    "end": 24.28,
+    "c": "source",
+    "ci": 48
+   },
+   {
+    "text": "с",
+    "start": 24.36,
+    "end": 24.44,
+    "c": "source",
+    "ci": 49
+   },
+   {
+    "text": "инженерами",
+    "start": 24.44,
+    "end": 25.08,
+    "c": "source",
+    "ci": 50
+   },
+   {
+    "text": "и",
+    "start": 25.26,
+    "end": 25.5,
+    "c": "source",
+    "ci": 51
+   },
+   {
+    "text": "с",
+    "start": 25.5,
+    "end": 25.58,
+    "c": "source",
+    "ci": 52
+   },
+   {
+    "text": "теми,",
+    "start": 25.58,
+    "end": 25.86,
+    "c": "source",
+    "ci": 53
+   },
+   {
+    "text": "кто",
+    "start": 25.94,
+    "end": 26.2,
+    "c": "source",
+    "ci": 54
+   },
+   {
+    "text": "действительно",
+    "start": 26.42,
+    "end": 26.89,
+    "c": "source",
+    "ci": 55
+   },
+   {
+    "text": "решает",
+    "start": 26.89,
+    "end": 27.81,
+    "c": "source",
+    "ci": 56
+   },
+   {
+    "text": "вопросы",
+    "start": 27.94,
+    "end": 28.83,
+    "c": "source",
+    "ci": 57
+   },
+   {
+    "text": "в",
+    "start": 28.83,
+    "end": 29.11,
+    "c": "source",
+    "ci": 58
+   },
+   {
+    "text": "этой",
+    "start": 29.11,
+    "end": 29.17,
+    "c": "source",
+    "ci": 59
+   },
+   {
+    "text": "компании.",
+    "start": 29.17,
+    "end": 29.75,
+    "c": "source",
+    "ci": 60
+   },
+   {
+    "text": "Вчера",
+    "start": 30.06,
+    "end": 30.86,
+    "c": "c7gjfmz7",
+    "ci": 0
+   },
+   {
+    "text": "я",
+    "start": 30.86,
+    "end": 30.98,
+    "c": "c7gjfmz7",
+    "ci": 1
+   },
+   {
+    "text": "переговорил",
+    "start": 30.98,
+    "end": 31.74,
+    "c": "c7gjfmz7",
+    "ci": 2
+   },
+   {
+    "text": "со",
+    "start": 31.74,
+    "end": 32.66,
+    "c": "c7gjfmz7",
+    "ci": 3
+   },
+   {
+    "text": "вторым",
+    "start": 32.66,
+    "end": 32.96,
+    "c": "c7gjfmz7",
+    "ci": 4
+   },
+   {
+    "text": "секретарем",
+    "start": 32.96,
+    "end": 33.66,
+    "c": "c7gjfmz7",
+    "ci": 5
+   },
+   {
+    "text": "коммунистической",
+    "start": 33.66,
+    "end": 34.76,
+    "c": "c7gjfmz7",
+    "ci": 6
+   },
+   {
+    "text": "партии",
+    "start": 34.76,
+    "end": 35.62,
+    "c": "c7gjfmz7",
+    "ci": 7
+   },
+   {
+    "text": "Чанша",
+    "start": 35.62,
+    "end": 36.32,
+    "c": "c7gjfmz7",
+    "ci": 8
+   },
+   {
+    "text": "и",
+    "start": 37.18,
+    "end": 37.44,
+    "c": "c7gjfmz7",
+    "ci": 9
+   },
+   {
+    "text": "обсудили",
+    "start": 37.44,
+    "end": 38.34,
+    "c": "c7gjfmz7",
+    "ci": 10
+   },
+   {
+    "text": "момент",
+    "start": 38.34,
+    "end": 38.96,
+    "c": "c7gjfmz7",
+    "ci": 11
+   },
+   {
+    "text": "того,",
+    "start": 38.96,
+    "end": 39.26,
+    "c": "c7gjfmz7",
+    "ci": 12
+   },
+   {
+    "text": "чтобы",
+    "start": 39.36,
+    "end": 39.5,
+    "c": "c7gjfmz7",
+    "ci": 13
+   },
+   {
+    "text": "можно",
+    "start": 39.5,
+    "end": 40,
+    "c": "c7gjfmz7",
+    "ci": 14
+   },
+   {
+    "text": "было",
+    "start": 40,
+    "end": 40.3,
+    "c": "c7gjfmz7",
+    "ci": 15
+   },
+   {
+    "text": "настроить",
+    "start": 40.3,
+    "end": 41.34,
+    "c": "c7gjfmz7",
+    "ci": 16
+   },
+   {
+    "text": "посещение",
+    "start": 41.34,
+    "end": 42.24,
+    "c": "c7gjfmz7",
+    "ci": 17
+   },
+   {
+    "text": "и",
+    "start": 42.24,
+    "end": 42.47,
+    "c": "c7gjfmz7",
+    "ci": 18
+   },
+   {
+    "text": "переговорный",
+    "start": 42.65,
+    "end": 43.27,
+    "c": "c7gjfmz7",
+    "ci": 19
+   },
+   {
+    "text": "процесс",
+    "start": 43.27,
+    "end": 43.61,
+    "c": "c7gjfmz7",
+    "ci": 20
+   },
+   {
+    "text": "с",
+    "start": 43.61,
+    "end": 43.91,
+    "c": "c7gjfmz7",
+    "ci": 21
+   },
+   {
+    "text": "компаниями",
+    "start": 43.91,
+    "end": 44.77,
+    "c": "c7gjfmz7",
+    "ci": 22
+   },
+   {
+    "text": "ZOOMLION",
+    "start": 44.77,
+    "end": 46.07,
+    "c": "c7gjfmz7",
+    "ci": 23
+   },
+   {
+    "text": "SANY",
+    "start": 46.21,
+    "end": 46.69,
+    "c": "c7gjfmz7",
+    "ci": 24
+   },
+   {
+    "text": "XUGONG",
+    "start": 47.01,
+    "end": 47.91,
+    "c": "c7gjfmz7",
+    "ci": 25
+   },
+   {
+    "text": "- это",
+    "start": 48.24,
+    "end": 48.4,
+    "c": "c7gjfmz7",
+    "ci": 26
+   },
+   {
+    "text": "крупнейшие",
+    "start": 48.4,
+    "end": 48.96,
+    "c": "c7gjfmz7",
+    "ci": 27
+   },
+   {
+    "text": "производители",
+    "start": 48.96,
+    "end": 49.6,
+    "c": "c7gjfmz7",
+    "ci": 28
+   },
+   {
+    "text": "строительной",
+    "start": 49.6,
+    "end": 50.18,
+    "c": "c7gjfmz7",
+    "ci": 29
+   },
+   {
+    "text": "техники.",
+    "start": 50.18,
+    "end": 50.54,
+    "c": "c7gjfmz7",
+    "ci": 30
+   },
+   {
+    "text": "Поэтому",
+    "start": 50.7,
+    "end": 50.88,
+    "c": "c7gjfmz7",
+    "ci": 31
+   },
+   {
+    "text": "в",
+    "start": 50.88,
+    "end": 51.13,
+    "c": "c7gjfmz7",
+    "ci": 32
+   },
+   {
+    "text": "скором",
+    "start": 51.29,
+    "end": 51.63,
+    "c": "c7gjfmz7",
+    "ci": 33
+   },
+   {
+    "text": "времени",
+    "start": 51.63,
+    "end": 52.19,
+    "c": "c7gjfmz7",
+    "ci": 34
+   },
+   {
+    "text": "у",
+    "start": 52.19,
+    "end": 52.39,
+    "c": "c7gjfmz7",
+    "ci": 35
+   },
+   {
+    "text": "меня",
+    "start": 52.39,
+    "end": 52.53,
+    "c": "c7gjfmz7",
+    "ci": 36
+   },
+   {
+    "text": "дополнительная",
+    "start": 52.53,
+    "end": 53.37,
+    "c": "c7gjfmz7",
+    "ci": 37
+   },
+   {
+    "text": "появится",
+    "start": 53.37,
+    "end": 53.81,
+    "c": "c7gjfmz7",
+    "ci": 38
+   },
+   {
+    "text": "программа",
+    "start": 53.81,
+    "end": 54.49,
+    "c": "c7gjfmz7",
+    "ci": 39
+   },
+   {
+    "text": "по",
+    "start": 54.49,
+    "end": 54.79,
+    "c": "c7gjfmz7",
+    "ci": 40
+   },
+   {
+    "text": "крупным",
+    "start": 55.03,
+    "end": 55.93,
+    "c": "c7gjfmz7",
+    "ci": 41
+   },
+   {
+    "text": "заводам,",
+    "start": 55.93,
+    "end": 56.89,
+    "c": "c7gjfmz7",
+    "ci": 42
+   },
+   {
+    "text": "кто",
+    "start": 56.98,
+    "end": 57.59,
+    "c": "c7gjfmz7",
+    "ci": 43
+   },
+   {
+    "text": "производит",
+    "start": 57.59,
+    "end": 58.15,
+    "c": "c7gjfmz7",
+    "ci": 44
+   },
+   {
+    "text": "технику.",
+    "start": 58.15,
+    "end": 58.73,
+    "c": "c7gjfmz7",
+    "ci": 45
+   },
+   {
+    "text": "И",
+    "start": 59.13,
+    "end": 59.57,
+    "c": "c7gjfmz7",
+    "ci": 46
+   },
+   {
+    "text": "причем",
+    "start": 59.57,
+    "end": 60.03,
+    "c": "c7gjfmz7",
+    "ci": 47
+   },
+   {
+    "text": "я",
+    "start": 60.03,
+    "end": 60.35,
+    "c": "c7gjfmz7",
+    "ci": 48
+   },
+   {
+    "text": "хотел",
+    "start": 60.35,
+    "end": 60.63,
+    "c": "c7gjfmz7",
+    "ci": 49
+   },
+   {
+    "text": "бы",
+    "start": 60.63,
+    "end": 60.81,
+    "c": "c7gjfmz7",
+    "ci": 50
+   },
+   {
+    "text": "это",
+    "start": 60.81,
+    "end": 60.97,
+    "c": "c7gjfmz7",
+    "ci": 51
+   },
+   {
+    "text": "сделать",
+    "start": 60.97,
+    "end": 61.29,
+    "c": "c7gjfmz7",
+    "ci": 52
+   },
+   {
+    "text": "в",
+    "start": 61.29,
+    "end": 61.47,
+    "c": "c7gjfmz7",
+    "ci": 53
+   },
+   {
+    "text": "формате",
+    "start": 61.47,
+    "end": 61.97,
+    "c": "c7gjfmz7",
+    "ci": 54
+   },
+   {
+    "text": "не",
+    "start": 61.97,
+    "end": 62.23,
+    "c": "c7gjfmz7",
+    "ci": 55
+   },
+   {
+    "text": "просто",
+    "start": 62.43,
+    "end": 62.73,
+    "c": "c7gjfmz7",
+    "ci": 56
+   },
+   {
+    "text": "посещения,",
+    "start": 62.73,
+    "end": 63.55,
+    "c": "c7gjfmz7",
+    "ci": 57
+   },
+   {
+    "text": "но",
+    "start": 63.97,
+    "end": 64.15,
+    "c": "c7gjfmz7",
+    "ci": 58
+   },
+   {
+    "text": "еще",
+    "start": 64.15,
+    "end": 64.61,
+    "c": "c7gjfmz7",
+    "ci": 59
+   },
+   {
+    "text": "и",
+    "start": 64.61,
+    "end": 64.91,
+    "c": "c7gjfmz7",
+    "ci": 60
+   },
+   {
+    "text": "обучающий",
+    "start": 64.91,
+    "end": 65.55,
+    "c": "c7gjfmz7",
+    "ci": 61
+   },
+   {
+    "text": "формат,",
+    "start": 65.55,
+    "end": 66.13,
+    "c": "c7gjfmz7",
+    "ci": 62
+   },
+   {
+    "text": "чтобы",
+    "start": 66.19,
+    "end": 66.39,
+    "c": "c7gjfmz7",
+    "ci": 63
+   },
+   {
+    "text": "мы",
+    "start": 66.39,
+    "end": 66.59,
+    "c": "c7gjfmz7",
+    "ci": 64
+   },
+   {
+    "text": "могли",
+    "start": 66.59,
+    "end": 66.83,
+    "c": "c7gjfmz7",
+    "ci": 65
+   },
+   {
+    "text": "договориться,",
+    "start": 66.83,
+    "end": 67.71,
+    "c": "c7gjfmz7",
+    "ci": 66
+   },
+   {
+    "text": "для",
+    "start": 67.73,
+    "end": 67.93,
+    "c": "c7gjfmz7",
+    "ci": 67
+   },
+   {
+    "text": "того",
+    "start": 67.93,
+    "end": 68.13,
+    "c": "c7gjfmz7",
+    "ci": 68
+   },
+   {
+    "text": "чтобы",
+    "start": 68.13,
+    "end": 68.51,
+    "c": "c7gjfmz7",
+    "ci": 69
+   },
+   {
+    "text": "менеджеров",
+    "start": 68.51,
+    "end": 69.51,
+    "c": "c7gjfmz7",
+    "ci": 70
+   },
+   {
+    "text": "других",
+    "start": 69.51,
+    "end": 69.93,
+    "c": "c7gjfmz7",
+    "ci": 71
+   },
+   {
+    "text": "компаний",
+    "start": 69.93,
+    "end": 70.57,
+    "c": "c7gjfmz7",
+    "ci": 72
+   },
+   {
+    "text": "или",
+    "start": 70.57,
+    "end": 70.73,
+    "c": "c7gjfmz7",
+    "ci": 73
+   },
+   {
+    "text": "дилеров",
+    "start": 70.73,
+    "end": 71.13,
+    "c": "c7gjfmz7",
+    "ci": 74
+   },
+   {
+    "text": "можно",
+    "start": 71.13,
+    "end": 71.93,
+    "c": "c7gjfmz7",
+    "ci": 75
+   },
+   {
+    "text": "было",
+    "start": 71.93,
+    "end": 72.23,
+    "c": "c7gjfmz7",
+    "ci": 76
+   },
+   {
+    "text": "здесь",
+    "start": 72.25,
+    "end": 72.49,
+    "c": "c7gjfmz7",
+    "ci": 77
+   },
+   {
+    "text": "обучать.",
+    "start": 72.49,
+    "end": 73.23,
+    "c": "c7gjfmz7",
+    "ci": 78
+   },
+   {
+    "text": "Так",
+    "start": 73.53,
+    "end": 73.85,
+    "c": "c7gjfmz7",
+    "ci": 79
+   },
+   {
+    "text": "что",
+    "start": 73.85,
+    "end": 74.27,
+    "c": "c7gjfmz7",
+    "ci": 80
+   },
+   {
+    "text": "в",
+    "start": 74.27,
+    "end": 74.67,
+    "c": "c7gjfmz7",
+    "ci": 81
+   },
+   {
+    "text": "скором",
+    "start": 74.67,
+    "end": 74.89,
+    "c": "c7gjfmz7",
+    "ci": 82
+   },
+   {
+    "text": "времени",
+    "start": 74.89,
+    "end": 75.19,
+    "c": "c7gjfmz7",
+    "ci": 83
+   },
+   {
+    "text": "предоставлю",
+    "start": 75.19,
+    "end": 75.81,
+    "c": "c7gjfmz7",
+    "ci": 84
+   },
+   {
+    "text": "информацию.",
+    "start": 75.81,
+    "end": 76.51,
+    "c": "c7gjfmz7",
+    "ci": 85
+   },
+   {
+    "text": "Сегодня",
+    "start": 76.9,
+    "end": 77.36,
+    "c": "c7gjfmz7",
+    "ci": 86
+   },
+   {
+    "text": "здесь",
+    "start": 77.36,
+    "end": 77.76,
+    "c": "c7gjfmz7",
+    "ci": 87
+   },
+   {
+    "text": "в",
+    "start": 77.76,
+    "end": 77.9,
+    "c": "c7gjfmz7",
+    "ci": 88
+   },
+   {
+    "text": "SANY",
+    "start": 77.9,
+    "end": 78.32,
+    "c": "c7gjfmz7",
+    "ci": 89
+   },
+   {
+    "text": "и",
+    "start": 78.32,
+    "end": 78.62,
+    "c": "c7gjfmz7",
+    "ci": 90
+   },
+   {
+    "text": "далее",
+    "start": 78.62,
+    "end": 78.9,
+    "c": "c7gjfmz7",
+    "ci": 91
+   },
+   {
+    "text": "еще",
+    "start": 78.9,
+    "end": 79.18,
+    "c": "c7gjfmz7",
+    "ci": 92
+   },
+   {
+    "text": "одна",
+    "start": 79.18,
+    "end": 79.4,
+    "c": "c7gjfmz7",
+    "ci": 93
+   },
+   {
+    "text": "компания.",
+    "start": 79.4,
+    "end": 79.96,
+    "c": "c7gjfmz7",
+    "ci": 94
+   },
+   {
+    "text": "Покажу,",
+    "start": 80.23,
+    "end": 80.53,
+    "c": "c7gjfmz7",
+    "ci": 95
+   },
+   {
+    "text": "что",
+    "start": 80.76,
+    "end": 81.04,
+    "c": "c7gjfmz7",
+    "ci": 96
+   },
+   {
+    "text": "мы",
+    "start": 81.04,
+    "end": 81.14,
+    "c": "c7gjfmz7",
+    "ci": 97
+   },
+   {
+    "text": "там",
+    "start": 81.14,
+    "end": 81.34,
+    "c": "c7gjfmz7",
+    "ci": 98
+   },
+   {
+    "text": "будем",
+    "start": 81.34,
+    "end": 81.56,
+    "c": "c7gjfmz7",
+    "ci": 99
+   },
+   {
+    "text": "смотреть.",
+    "start": 81.56,
+    "end": 82,
+    "c": "c7gjfmz7",
+    "ci": 100
+   }
+  ],
+  "accentWords": [],
+  "cuts": [
+   6.79,
+   10.24,
+   10.81,
+   11.73,
+   15.14,
+   20.18,
+   21.74,
+   25.26,
+   26.42,
+   27.94,
+   30.06,
+   36.32,
+   37.08,
+   42.47,
+   48.13,
+   51.13,
+   55.03,
+   56.98,
+   58.92,
+   62.23,
+   67.71,
+   73.42,
+   76.73,
+   80.2,
+   80.76,
+   82.3,
+   84.5,
+   87.16,
+   89.53,
+   92.73,
+   94.6,
+   95.95,
+   98.15,
+   101.33,
+   102.75,
+   106.09,
+   107.75,
+   110.49,
+   112.88,
+   117.15,
+   119.01,
+   119.37,
+   119.83,
+   120.19,
+   124.16,
+   124.5,
+   129.893,
+   130.113,
+   130.763,
+   132.893,
+   135.603,
+   138.243,
+   142.113,
+   144.03,
+   144.82,
+   146.08,
+   154.42,
+   158.89,
+   160.32,
+   163.37,
+   163.76,
+   164.36,
+   165.5,
+   171.56,
+   173.89,
+   177.525,
+   179.635,
+   180.915,
+   182.415,
+   182.645,
+   183.215,
+   183.565,
+   186.875,
+   187.225,
+   187.775,
+   188.685,
+   190.195,
+   191.755
+  ],
+  "chips": [],
+  "logos": [],
+  "numbers": [],
+  "broll": [],
+  "checklists": [],
+  "cities": [],
+  "zooms": [
+   {
+    "at": 2.8,
+    "kind": "macro",
+    "amount": 1.1,
+    "hold": 1.2000000000000002,
+    "target": "eyes"
+   },
+   {
+    "at": 11.43,
+    "kind": "pull",
+    "amount": 0.2,
+    "hold": 1.5999999999999996
+   }
+  ],
+  "sfx": {
+   "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+   "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+   "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav",
+   "click": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav"
+  },
+  "music": {
+   "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+   "volume": 0.156,
+   "outroVolume": 0.359,
+   "duck": 0.55
+  },
+  "speechSeconds": 192.352,
+  "site": {
+   "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
+   "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
+   "route": [],
+   "at": 1191.3519999999999
+  },
+  "cta": "Экспедиции",
+  "ctaSeconds": 0.3,
+  "showSafeZone": false,
+  "format": "reels",
+  "brand": "gtt",
+  "bumper": {
+   "intro": true,
+   "outro": false
+  },
+  "focus": {
+   "x": 686,
+   "y": 985
+  },
+  "captionSize": 70,
+  "captionTop": 1500,
+  "captionStyle": "3d",
+  "grade": "brightness(1.000) contrast(1.264) saturate(1.216)"
+ },
+ "effects": [
+  {
+   "id": "ew9zuqa0",
+   "effect": "zoom-macro",
+   "at": 2.8,
+   "until": 4,
+   "params": {}
+  },
+  {
+   "id": "enp9bjmc",
+   "effect": "zoom-pull",
+   "at": 11.43,
+   "until": 13.03,
+   "params": {}
+  }
+ ],
+ "notes": []
+}
