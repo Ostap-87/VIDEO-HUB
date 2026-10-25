@@ -946,8 +946,9 @@ HDR iPhone: `hdr_filter` берёт первое поле ответа ffprobe �
 - `speaker: [{at, until, corner, scale, style, bg, image, tilt}]` — **спикер уменьшается** в угол (`tl/tr/bl/br/top/bottom/left/right/center`),
   `style`: `frame` — кадр в рамке бренда, `round` — лицо в круге, `contour` — вырезка по контуру с обводкой (нужен `cutoutSrc`,
   без него — рамка); фон: `blur` (размытый кадр), `brand`, `dark`, `image`; въезд и возврат 0,5 с со «вжухом»;
-- `panels: [{at, until, src, from, size, title, push, fit}]` — **выдвижной экран** с видео или фото: `top`, `bottom`, `left`, `right`
-  или из угла `tl/tr/bl/br` (с поворотом и пружиной); спикер отодвигается от экрана (`push: false` — стоит);
+- `panels: [{at, until, src, from, size, title, push, fit, h}]` — **выдвижной экран** с видео или фото: `top`, `bottom`, `left`, `right`
+  или из угла `tl/tr/bl/br` (с поворотом и пружиной); спикер отодвигается от экрана (`push: false` — стоит); `h` — высота
+  экрана сбоку (по умолчанию 1100 px, низ на y=1520): при `captionTop` ниже 1500 ставь `h` так, чтобы подпись не легла на субтитры;
 - `texts: [{at, until, text, x, y, size, rx, ry, rz, color, color2, font, plane, anim, depth}]` — **текст в 3D**: положение, размер,
   повороты по трём осям, шрифт (`grotesk` Oswald, `display` Unbounded, `serif` Playfair курсив, `hand` Caveat, `mono`, `body`),
   объём букв `depth` цветом `color2`, `plane: behind` — за спикером (нужен `cutoutSrc`, как у хуков), `front` — перед;

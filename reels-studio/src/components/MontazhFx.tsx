@@ -235,6 +235,7 @@ export type PanelItem = {
   push?: boolean; // спикер отодвигается от экрана (по умолчанию да)
   fit?: "cover" | "contain";
   from_s?: number; // с какой секунды видео
+  h?: number; // высота экрана сбоку, px (по умолчанию 1100 — до y=1520; ниже субтитров captionTop ставь меньше)
 };
 function panelRect(pn: PanelItem, stories: boolean) {
   const f = pn.from ?? "bottom";
@@ -246,7 +247,7 @@ function panelRect(pn: PanelItem, stories: boolean) {
   }
   if (f === "left" || f === "right") {
     const w = Math.round(1080 * s);
-    return {x: f === "left" ? 32 : 1080 - 32 - w, y: 420, w, h: 1100, dx: f === "left" ? -1 : 1, dy: 0};
+    return {x: f === "left" ? 32 : 1080 - 32 - w, y: 420, w, h: pn.h ?? 1100, dx: f === "left" ? -1 : 1, dy: 0};
   }
   const w = Math.round(1080 * s);
   const h = Math.round(w * 1.25);

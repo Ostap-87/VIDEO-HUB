@@ -190,6 +190,7 @@ export const talkReelProSchema = z.object({
         push: z.boolean().optional(),
         fit: z.enum(["cover", "contain"]).optional(),
         from_s: z.number().optional(),
+        h: z.number().optional(),
       }),
     )
     .optional(),
