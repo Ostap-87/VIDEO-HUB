@@ -7,16 +7,23 @@ import type {Word} from "./types";
 
 export type AsrModel = "base" | "small";
 
-export async function transcribe(
-  file: Blob,
-  model: AsrModel,
-  onProgress: (k: number, what: string) => void,
-): Promise<Word[]> {
-  onProgress(0, "Загружаю распознавание речи");
+// Модель загружается в память окна один раз на все ролики (раньше — заново на каждый ролик, и после 5–6 роликов память
+// окна кончалась: «Can't create a session. failed to allocate a buffer», 25.10.2026). Другая модель — старая выгружается.
+let cache: {model: AsrModel; asr: Promise<any>} | null = null;
+const NO_MEMORY = /allocate|out of memory|can't create a session|memory access out of bounds|aborted\(/i;
+
+async function drop() {
+  const c = cache;
+  cache = null;
+  if (c) await c.asr.then((a) => a.dispose?.()).catch(() => undefined);
+}
+
+async function getAsr(model: AsrModel, onProgress: (k: number, what: string) => void) {
+  if (cache?.model === model) return cache.asr;
+  await drop();
   const T = await loadTransformers();
-  const repo = `Xenova/whisper-${model}`;
   const files: Record<string, {loaded: number; total: number}> = {};
-  const asr = await T.pipeline("automatic-speech-recognition", repo, {
+  const asr = T.pipeline("automatic-speech-recognition", `Xenova/whisper-${model}`, {
     dtype: "q8",
     progress_callback: (e: {status: string; file?: string; loaded?: number; total?: number}) => {
       if (e.status === "progress" && e.file) {
@@ -26,21 +33,44 @@ export async function transcribe(
         onProgress(0.05 + 0.35 * k, `Скачиваю модель Whisper ${model} (один раз): ${Math.round(k * 100)}%`);
       }
     },
-  }).catch((e: unknown) => {
-    throw new Error(netError(e));
   });
-  onProgress(0.42, "Читаю звук");
-  const pcm = await decodeAudio(file, 16000);
-  onProgress(0.48, `Распознаю речь (${Math.round(pcm.length / 16000)} с звука — это может занять пару минут)`);
-  const out = await asr(pcm, {
-    language: "russian",
-    task: "transcribe",
-    return_timestamps: "word",
-    chunk_length_s: 30,
-    stride_length_s: 5,
-  });
+  cache = {model, asr};
+  asr.catch(() => cache?.asr === asr && (cache = null));
+  return asr;
+}
+
+export async function transcribe(
+  file: Blob,
+  model: AsrModel,
+  onProgress: (k: number, what: string) => void,
+): Promise<Word[]> {
+  onProgress(0, "Загружаю распознавание речи");
+  let out: {chunks?: {text: string; timestamp: [number, number | null]}[]};
+  try {
+    const asr = await getAsr(model, onProgress);
+    onProgress(0.42, "Читаю звук");
+    const pcm = await decodeAudio(file, 16000);
+    onProgress(0.48, `Распознаю речь (${Math.round(pcm.length / 16000)} с звука — это может занять пару минут)`);
+    out = await asr(pcm, {
+      language: "russian",
+      task: "transcribe",
+      return_timestamps: "word",
+      chunk_length_s: 30,
+      stride_length_s: 5,
+    });
+  } catch (e) {
+    const msg = String((e as Error)?.message ?? e);
+    if (!NO_MEMORY.test(msg)) throw new Error(netError(e));
+    await drop();
+    if (model === "small") {
+      onProgress(0.02, "Для точной модели не хватило памяти окна — распознаю быстрой (Whisper base)");
+      return transcribe(file, "base", onProgress);
+    }
+    throw new Error("не хватило памяти окна. Закройте и снова откройте Монтажную и нажмите «Распознать» ещё раз — " +
+      "уже распознанные ролики останутся");
+  }
   onProgress(1, "Готово");
-  const chunks: {text: string; timestamp: [number, number | null]}[] = out.chunks ?? [];
+  const chunks = out.chunks ?? [];
   return chunks
     .map((c) => ({text: c.text.trim(), start: c.timestamp[0] ?? 0, end: c.timestamp[1] ?? (c.timestamp[0] ?? 0) + 0.3}))
     .filter((w) => w.text);
