@@ -4067,5 +4067,28 @@
    "Taobao Instant"
   ],
   "logo": "source-videos/логотипы/ритейл/eleme.png"
+ },
+ "sany": {
+  "names": [
+   "SANY",
+   "Sany",
+   "Сани",
+   "САНИ",
+   "Сани́",
+   "三一",
+   "三一重工"
+  ],
+  "logo": "source-videos/логотипы/спецтехника/sany.png"
+ },
+ "xcmg": {
+  "names": [
+   "XCMG",
+   "Сюгонг",
+   "Сюйгун",
+   "Сюгун",
+   "徐工",
+   "Xugong"
+  ],
+  "logo": "source-videos/логотипы/спецтехника/xcmg.png"
  }
 }

@@ -322,7 +322,7 @@ export const talkReelProSchema = z.object({
       }),
     )
     .optional(),
-  captionsAt: z.array(z.object({at: z.number(), until: z.number(), style: z.enum(["plate", "corner", "quiet", "mini", "duo", "ladder", "marker", "pill"]), y: z.number().optional()})).optional(),
+  captionsAt: z.array(z.object({at: z.number(), until: z.number(), style: z.enum(["plate", "corner", "quiet", "mini", "duo", "ladder", "marker", "pill", "none"]), y: z.number().optional()})).optional(),
   chats: z.array(z.object({at: z.number(), until: z.number(), text: z.string(), image: z.string().optional(), label: z.string().optional(), y: z.number().optional()})).optional(),
   floats: z.array(z.object({at: z.number(), until: z.number(), items: z.array(z.string()), plane: z.enum(["behind", "front"]).optional()})).optional(),
   cards: z.array(z.object({at: z.number(), until: z.number(), src: z.string().optional(), title: z.string(), sub: z.string().optional(), y: z.number().optional()})).optional(),
@@ -445,8 +445,14 @@ const BigCaptions: React.FC<{
   const {fps} = useVideoConfig();
   const t = frame / fps;
   if (t >= until) return null;
+  // по 3 слова, но группа рвётся на паузе дольше 0,7 с: иначе конец фразы и начало следующей висят вместе через всю
+  // паузу — и поверх перебивки без речи (ролик SANY 25.10.2026: «компании. Вчера я» на кадрах цеха)
   const pages: TalkReelProProps["words"][] = [];
-  for (let i = 0; i < words.length; i += 3) pages.push(words.slice(i, i + 3));
+  for (const w of words) {
+    const cur = pages[pages.length - 1];
+    if (cur && cur.length < 3 && w.start - cur[cur.length - 1].end <= 0.7) cur.push(w);
+    else pages.push([w]);
+  }
   const page = [...pages].reverse().find((p) => p[0].start <= t);
   if (!page || t > page[page.length - 1].end + 0.5) return null;
   const pop = spring({frame: frame - Math.round(page[0].start * fps), fps, config: theme.motion.snappy, durationInFrames: 8});

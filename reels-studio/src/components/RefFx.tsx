@@ -345,7 +345,7 @@ export const Titles: React.FC<{items?: TitleItem[]; plane: "behind" | "front"}> 
 export const titleBehindActive = (items: TitleItem[] | undefined, t: number) => (items ?? []).some((it) => it.plane === "behind" && t >= it.at - 0.05 && t <= it.until + 0.05);
 
 // ------------------------------------------------------------------ субтитры в стиле референсов
-export type CapStyleItem = {at: number; until: number; style: "plate" | "corner" | "quiet" | "mini" | "duo" | "ladder" | "marker" | "pill"; y?: number};
+export type CapStyleItem = {at: number; until: number; style: "plate" | "corner" | "quiet" | "mini" | "duo" | "ladder" | "marker" | "pill" | "none"; y?: number};
 type W = {text: string; start: number; end: number};
 export const capStyleAt = (items: CapStyleItem[] | undefined, t: number) => (items ?? []).find((x) => t >= x.at && t < x.until);
 
@@ -374,7 +374,7 @@ export const RefCaptions: React.FC<{words: W[]; items?: CapStyleItem[]; until: n
   const item = capStyleAt(items, t);
   const max = item?.style === "quiet" ? 5 : item?.style === "mini" ? 2 : item?.style === "duo" ? 5 : item?.style === "ladder" ? 4 : 4;
   const pages = React.useMemo(() => pagesOf(words, max), [words, max]);
-  if (!item || t >= until) return null;
+  if (!item || t >= until || item.style === "none") return null; // none — субтитров на отрезке нет (планшет повторяет речь)
   const page = [...pages].reverse().find((pg) => pg[0].start <= t);
   if (!page || t > page[page.length - 1].end + 0.45) return null;
   const since = t - page[0].start;

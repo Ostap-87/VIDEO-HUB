@@ -73,6 +73,9 @@ def hdr_filter(path):
         ["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=color_transfer", "-of", "csv=p=0", str(path)],
         capture_output=True, text=True,
     ).stdout.strip()
+    # у роликов iPhone с поворотом ffprobe печатает «arib-std-b67,» (пустое поле side data) — берём первое поле;
+    # без этого перевод HDR → SDR молча пропускался и ролик уходил в рендер бледным (25.10.2026)
+    trc = trc.splitlines()[0].split(",")[0].strip() if trc else ""
     return HDR_TO_SDR.format(tin=trc) if trc in ("arib-std-b67", "smpte2084") else None
 
 
