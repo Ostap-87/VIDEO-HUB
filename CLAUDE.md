@@ -31,7 +31,9 @@
 - **Бюджет Git LFS** (25.10.2026): GitHub отклонил загрузку новых видео — «This repository exceeded its LFS budget».
   Скачивание при этом работает. Пока владелец не поднимет бюджет (GitHub → Settings → Billing and licensing →
   Budgets and alerts, строка Git LFS), видео не коммить: остальное (props, фото, код) коммить и пушить как обычно, видео
-  держать в папках и отправлять пользователю в чат.
+  держать в папках и отправлять пользователю в чат. Видео в публикацию — сжатая копия до 100 МБ (лучше ≤ 60 МБ, H.264
+  ~4,3 Мбит/с) обычным git в `finished-videos/publish/<проект>-instagram/<имя поста>/` (`.gitattributes`: `-filter binary`),
+  в посте POST-HUB — поле `media_urls` со ссылкой raw.githubusercontent.com вместо `video_hub` (так вышел Reels SANY 26.10.2026).
 
 ## Презентации
 
