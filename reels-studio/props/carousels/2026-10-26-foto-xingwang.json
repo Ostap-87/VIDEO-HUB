@@ -3,12 +3,13 @@
  "slides": [
   {
    "kind": "photoCover",
-   "image": "source-videos/2026-10-26-xingwang/фото/kvartal.jpg",
-   "focus": "38% 45%",
+   "layout": "full",
+   "image": "source-videos/2026-10-26-xingwang/фото/koni.jpg",
+   "focus": "50% 95%",
    "kicker": "Технопарк · Чанша",
    "title": "**兴旺** (Xingwang)",
-   "titleSize": 130,
-   "text": "7 биржевых компаний, лаборатория AMD и свой отель в одном комплексе. Мы были в гостях"
+   "titleSize": 88,
+   "text": "В гостях у руководителя группы. Внутри — 7 биржевых компаний, лаборатория AMD и свой отель"
   },
   {
    "kind": "photoFull",
@@ -88,8 +89,8 @@
   },
   {
    "kind": "photoCard",
-   "image": "source-videos/2026-10-26-xingwang/фото/koni.jpg",
-   "focus": "50% 45%",
+   "image": "source-videos/2026-10-26-xingwang/фото/kvartal.jpg",
+   "focus": "55% 50%",
    "kicker": "Не только технологии",
    "title": "Отель, стройка, **Пакистан**",
    "items": [
@@ -109,12 +110,12 @@
      "focus": "45% 45%"
     },
     {
-     "src": "source-videos/2026-10-26-xingwang/фото/IMG_5720.jpg",
-     "focus": "50% 30%"
+     "src": "source-videos/2026-10-26-xingwang/фото/koni.jpg",
+     "focus": "50% 40%"
     },
     {
-     "src": "source-videos/2026-10-26-xingwang/фото/kvartal.jpg",
-     "focus": "48% 40%"
+     "src": "source-videos/2026-10-26-xingwang/фото/IMG_5720.jpg",
+     "focus": "50% 30%"
     }
    ]
   }
