@@ -37,6 +37,7 @@ export const slideSchema = z.object({
   ]),
   kicker: z.string().optional(), // надпись над заголовком (капсом, моно)
   title: z.string().optional(), // **слова** — акцент
+  titleSize: z.number().optional(), // фото-слайды: кегль заголовка вместо стандартного (обложка 84) — для короткого крупного заголовка
   text: z.string().optional(),
   image: z.string().optional(), // путь от корня репозитория
   focus: z.string().optional(), // для image: "50% 30%" — что оставить в кадре при обрезке

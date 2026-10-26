@@ -4090,5 +4090,29 @@
    "Xugong"
   ],
   "logo": "source-videos/логотипы/спецтехника/xcmg.png"
+ },
+ "china-mobile": {
+  "names": [
+   "China Mobile",
+   "Чайна Мобайл",
+   "中国移动"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/china-mobile.png"
+ },
+ "crrc": {
+  "names": [
+   "CRRC",
+   "ЦРРЦ",
+   "中国中车"
+  ],
+  "logo": "source-videos/логотипы/общие/crrc.png"
+ },
+ "comac": {
+  "names": [
+   "COMAC",
+   "Комак",
+   "中国商飞"
+  ],
+  "logo": "source-videos/логотипы/авиация/comac.png"
  }
 }

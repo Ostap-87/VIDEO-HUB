@@ -162,7 +162,7 @@ const Overlay: React.FC<P & {titleSize: number; top: number; framed?: boolean; s
     <Plate s={s} style={{padding: framed ? "30px 36px" : "34px 40px 26px", flexShrink: 0, display: "flex", flexDirection: "column"}}>
       <Kicker text={sl.kicker} s={s} style={stat ? {marginBottom: 10} : undefined} />
       {stat ? <Value text={sl.value} s={s} /> : null}
-      <Title text={sl.title} s={s} size={stat ? 46 : titleSize} lh={stat ? 1.14 : 1.06} isKey={sl.kind === "photoCover"} style={stat ? {marginTop: 14} : undefined} />
+      <Title text={sl.title} s={s} size={stat ? 46 : (sl.titleSize ?? titleSize)} lh={stat ? 1.14 : 1.06} isKey={sl.kind === "photoCover"} style={stat ? {marginTop: 14} : undefined} />
       <Body text={sl.text} s={s} size={stat ? 34 : 36} style={{marginTop: stat ? 12 : 16}} />
       <Items items={sl.items} numbered={sl.numbered} s={s} size={34} style={{marginTop: 22}} />
       <LogoRow logos={sl.logos} s={s} style={{marginTop: 24}} />
@@ -214,7 +214,7 @@ const PhotoCover: React.FC<P> = (p) => {
       <Caption text={sl.caption} s={s} style={{marginTop: 16}} />
       <div style={{marginTop: 36, paddingRight: mascot ? MASCOT_SPOT.room : 0}}>
         <Kicker text={sl.kicker} s={s} />
-        <Title text={sl.title} s={s} size={84} lh={1.04} isKey />
+        <Title text={sl.title} s={s} size={sl.titleSize ?? 84} lh={1.04} isKey />
         <Body text={sl.text} s={s} size={38} style={{marginTop: 18}} />
       </div>
     </FitBox>
@@ -237,7 +237,7 @@ const PhotoCard: React.FC<P> = (p) => {
       <Caption text={sl.caption} s={s} style={{marginTop: 16}} />
       <div style={{marginTop: 34, paddingRight: mascot ? MASCOT_SPOT.room : 0}}>
         <Kicker text={sl.kicker} s={s} />
-        <Title text={sl.title} s={s} size={62} />
+        <Title text={sl.title} s={s} size={sl.titleSize ?? 62} />
         <Body text={sl.text} s={s} size={36} style={{marginTop: 16}} />
         <Items items={sl.items} numbered={sl.numbered} s={s} size={34} style={{marginTop: 22}} />
         <LogoRow logos={sl.logos} s={s} style={{marginTop: 24}} />

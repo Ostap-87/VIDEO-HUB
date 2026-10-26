@@ -10,7 +10,7 @@ import {AbsoluteFill, Freeze, Img, staticFile, useCurrentFrame} from "remotion";
 import {AuraBadge} from "../components/AuraBadge";
 import {AuraMascot, GESTURE_DUR, type GestureKind} from "../components/AuraMascot";
 import {carouselSchema, type CarouselProps, type Slide} from "./carousel/schema";
-import {BrandMark, Body, CtaButton, H, Kicker, MONO, MIN_FONT, Pill, ROW, Rich, SAFE, Site, STYLES, Swipe, Title, W, type BrandId, type Style} from "./carousel/kit";
+import {BrandMark, Body, CtaButton, H, Kicker, loadCjk, MONO, MIN_FONT, Pill, ROW, Rich, SAFE, Site, STYLES, Swipe, Title, W, type BrandId, type Style} from "./carousel/kit";
 import {isFullBleed, isPhotoKind, MASCOT_SPOT, PhotoSlide} from "./carousel/photo";
 import {Guides} from "./carousel/guides";
 
@@ -247,6 +247,7 @@ const Footer: React.FC<{s: Style; last: boolean}> = ({s, last}) => (
 
 export const Carousel: React.FC<CarouselProps> = ({brand, slides, guides, video}) => {
   const i = useCurrentFrame();
+  loadCjk(JSON.stringify(slides)); // иероглифы в текстах — Noto Sans SC нужных кусков (один раз на набор знаков)
   const sl = slides[Math.min(i, slides.length - 1)];
   const s = STYLES[brand];
   const last = i === slides.length - 1 || Boolean(video); // в видео-версии стрелки «листай» нет ни на одном слайде

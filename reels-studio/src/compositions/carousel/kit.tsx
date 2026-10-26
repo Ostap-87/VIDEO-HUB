@@ -3,12 +3,32 @@
 import React, {useContext, useEffect, useLayoutEffect, useRef, useState} from "react";
 import {continueRender, delayRender, Img, staticFile} from "remotion";
 import {loadFont as loadInter} from "@remotion/google-fonts/Inter";
+import {getInfo as notoScInfo, loadFont as loadNotoSc} from "@remotion/google-fonts/NotoSansSC";
 import {display, mono} from "../../fonts";
 import {ArMonogram} from "../../components/AuraBadge";
 import brandsLib from "../../../library/brands.json";
 import type {Pic} from "./schema";
 
 export const inter = loadInter("normal", {weights: ["400", "500", "600", "700", "800"], subsets: ["cyrillic", "latin"]});
+
+// Иероглифы (盈科 и т. п.): в Unbounded и Inter их нет, а системный запасной шрифт тонкий. Грузим Noto Sans SC
+// (500 — для текста, 900 — под заголовки Unbounded 700) только кусками с нужными знаками: весь шрифт — 101 файл на вес.
+const CJK = /[\u3400-\u9fff\uf900-\ufaff]/;
+const cjkLoaded = new Set<string>();
+export const loadCjk = (text: string) => {
+  const cps = [...new Set([...text].filter((ch) => CJK.test(ch)).map((ch) => ch.codePointAt(0) ?? 0))];
+  if (!cps.length) return;
+  const ranges = notoScInfo().unicodeRanges as Record<string, string>;
+  const inRange = (r: string, cp: number) => {
+    const [a, b] = r.trim().replace("U+", "").split("-").map((x) => parseInt(x, 16));
+    return cp >= a && cp <= (b ?? a);
+  };
+  const subsets = Object.keys(ranges).filter((k) => !cjkLoaded.has(k) && cps.some((cp) => ranges[k].split(",").some((r) => inRange(r, cp))));
+  if (!subsets.length) return;
+  subsets.forEach((k) => cjkLoaded.add(k));
+  loadNotoSc("normal", {weights: ["500", "900"], subsets: subsets as never});
+};
+const withCjk = (family: string) => `${family}, "Noto Sans SC"`;
 export const MONO = "JetBrains Mono, monospace";
 
 // 1080×1350 (4:5). Поля безопасности (правила Instagram, решение пользователя 10.10.2026):
@@ -67,10 +87,10 @@ export const STYLES: Record<BrandId, Style> = {
     muted: "#E3EAFB",
     accent: "#7DD3FC",
     glow: "0 0 50px rgba(125,211,252,0.55)",
-    head: display.fontFamily,
+    head: withCjk(display.fontFamily),
     headWeight: 700,
     headTrack: "0",
-    body: inter.fontFamily,
+    body: withCjk(inter.fontFamily),
     bodyInk: "#EEF2FC",
     card: "rgba(255,255,255,0.10)",
     cardInk: "#FFFFFF",
@@ -97,10 +117,10 @@ export const STYLES: Record<BrandId, Style> = {
     muted: "#727272",
     accent: "#FFF65D",
     glow: "none",
-    head: inter.fontFamily,
+    head: withCjk(inter.fontFamily),
     headWeight: 600,
     headTrack: "-0.03em",
-    body: inter.fontFamily,
+    body: withCjk(inter.fontFamily),
     bodyInk: "#3D3D3D",
     card: "#FFFFFF",
     cardInk: "#262626",
