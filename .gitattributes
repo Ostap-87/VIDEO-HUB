@@ -22,3 +22,6 @@
 montazh/library/previews/*.mp4 -filter -diff -merge binary
 montazh/library/previews/*.webm -filter -diff -merge binary
 montazh/engine/sample.mp4 -filter -diff -merge binary
+# Бюджет Git LFS исчерпан (25.10.2026): видео для автопубликации кладём в папку публикаций обычным git (до 100 МБ,
+# сжатая копия) — Instagram и Facebook берут его по ссылке raw.githubusercontent.com (поле media_urls поста POST-HUB).
+finished-videos/publish/**/*.mp4 -filter binary
