@@ -44,8 +44,8 @@
     }
   ],
   "music": {
-    "src": "интернет-материалы/музыка/upbeat-corporate-soundrider.mp3",
-    "volume": 0.77,
+    "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+    "volume": 0.55,
     "fadeOut": 1.6
   },
   "swipeSfx": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav"
