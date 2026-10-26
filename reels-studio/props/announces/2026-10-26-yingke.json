@@ -3,9 +3,12 @@
   "stories": [
     {
       "cover": "finished-videos/карусели/2026-10-26-foto-yingke/01.png",
-      "back": ["finished-videos/карусели/2026-10-26-foto-yingke/03.png", "finished-videos/карусели/2026-10-26-foto-yingke/02.png"],
-      "title": "Листай карусель **в профиле**",
-      "note": "Сохрани, чтобы не потерять"
+      "back": [
+        "finished-videos/карусели/2026-10-26-foto-yingke/03.png",
+        "finished-videos/карусели/2026-10-26-foto-yingke/02.png"
+      ],
+      "title": "Сегодня — карусель **в профиле**",
+      "note": "Крупнейшая юрфирма мира — изнутри"
     }
   ]
 }
