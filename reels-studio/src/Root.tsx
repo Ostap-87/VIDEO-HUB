@@ -24,6 +24,8 @@ import {ReelCover, reelCoverSchema, type ReelCoverProps} from "./compositions/Re
 import {HookTitleDemo, hookTitleDemoSchema, type HookTitleDemoProps} from "./compositions/HookTitleDemo";
 import {AppPromo, appPromoFrames, appPromoSchema, type AppPromoProps} from "./compositions/AppPromo";
 import appPromoSample from "../props/2026-10-27-gtt-app-promo.json";
+import {DeskPromo, deskPromoFrames, deskPromoSchema, type DeskPromoProps} from "./compositions/DeskPromo";
+import deskPromoSample from "../props/2026-10-27-sibdoc-promo.json";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -173,6 +175,22 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={appPromoSample as unknown as AppPromoProps}
         calculateMetadata={({props}: {props: AppPromoProps}) => ({
           durationInFrames: appPromoFrames(props),
+          width: props.format === "h" ? 1920 : 1080,
+          height: props.format === "h" ? 1080 : 1920,
+        })}
+      />
+      {/* рекламный ролик о программе для компьютера (SibDoc): монитор с браузером и MacBook, курсор, наезды */}
+      <Composition
+        id="DeskPromo"
+        component={DeskPromo}
+        width={1920}
+        height={1080}
+        fps={30}
+        durationInFrames={300}
+        schema={deskPromoSchema}
+        defaultProps={deskPromoSample as unknown as DeskPromoProps}
+        calculateMetadata={({props}: {props: DeskPromoProps}) => ({
+          durationInFrames: deskPromoFrames(props),
           width: props.format === "h" ? 1920 : 1080,
           height: props.format === "h" ? 1080 : 1920,
         })}

@@ -90,7 +90,7 @@ def main():
         t = tb[b["id"]]
         beat = {"id": b["id"], "part": b["part"], "visual": b.get("visual", "phone"), "start": t["start"], "end": t["end"],
                 "w0": round(W0[i], 3), "w1": round(W1[i], 3)}
-        for k in ("title", "cta", "fx", "still", "threeOrder"):
+        for k in ("title", "cta", "fx", "still", "threeOrder", "device"):
             if b.get(k):
                 beat[k] = b[k]
         if b.get("kicker"):
@@ -100,8 +100,9 @@ def main():
             beat["chips"] = [{"text": c["text"], "at": round(word_time(t, c["on"]), 3)} for c in b["chips"]]
         if b.get("words"):
             beat["bigWords"] = [{"text": c["text"], "at": round(word_time(t, c["on"]), 3)} for c in b["words"]]
-        if b.get("orbit"):
-            beat["orbit"] = [{**o, "at": round(word_time(t, o["on"]), 3)} for o in b["orbit"]]
+        for key in ("orbit", "checks"):  # элементы, которые появляются каждый на своём слове
+            if b.get(key):
+                beat[key] = [{**o, "at": round(word_time(t, o["on"]), 3)} for o in b[key]]
         for key in ("report", "mind"):
             if b.get(key):
                 beat[key] = {("at" if k == "on" else k[:-2]): round(word_time(t, v), 3) for k, v in b[key].items() if k == "on" or k.endswith("On")}
@@ -157,7 +158,10 @@ def main():
             print(f"{b['id']}: {W0[i]:.2f}–{W1[i]:.2f}  ({beat['visual']})")
         out_beats.append(beat)
 
-    captions = [{"text": w["text"], "start": w["start"], "end": w["end"]} for bt in timing["beats"] for w in bt["words"]]
+    # в субтитрах — как пишется, а не как произносится («Сапа» → SAP), пустое — слово не показывается
+    cmap = spec.get("captionMap", {})
+    captions = [{"text": cmap.get(w["text"], w["text"]), "start": w["start"], "end": w["end"]}
+                for bt in timing["beats"] for w in bt["words"] if cmap.get(w["text"], w["text"])]
     props = {
         "format": a.format,
         "voice": f"{rel}/{spec.get('voiceDir', 'voice')}/voice.wav",

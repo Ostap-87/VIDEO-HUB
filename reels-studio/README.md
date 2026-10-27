@@ -299,6 +299,16 @@ npx remotion render src/index.ts AppPromo ../finished-videos/2026-10-27-gtt-app-
 ```
 Сценарий v2 для чтения — `promo/2026-10-27-gtt-app-v2.md`.
 
+Ролик о программе для компьютера — композиция `DeskPromo` (пример — SibDoc, монитор с браузером и MacBook):
+```bash
+# программа запущена локально (SibDoc: python3 -m uvicorn app.server:app --port 8000)
+python3 scripts/promo_voice.py promo/2026-10-27-sibdoc.json --beats-dir ../source-videos/2026-10-27-sibdoc-promo/voice/beats
+node scripts/app_record.mjs promo/2026-10-27-sibdoc.clips.mjs        # экраны 1440×900, демо-данные через API программы
+python3 scripts/promo_build.py promo/2026-10-27-sibdoc.json --format h
+npx remotion render src/index.ts DeskPromo ../finished-videos/2026-10-27-sibdoc-promo.mp4 --props=./props/2026-10-27-sibdoc-promo.json
+```
+Сценарий для чтения — `promo/2026-10-27-sibdoc.md`.
+
 ## Как сделать ролик
 
 1. Положите видео, фото или музыку в папку репозитория `source-videos/`, например `source-videos/clip.mp4`.

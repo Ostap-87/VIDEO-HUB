@@ -1,4 +1,5 @@
-// Запись экранов приложения для рекламного ролика: Playwright открывает веб-сборку (телефон 390×844, ретина ×2),
+// Запись экранов приложения для рекламного ролика: Playwright открывает веб-сборку (телефон 390×844, ретина ×2;
+// другой размер — export const viewport = {w, h, dsf} в файле клипов, например компьютер 1440×900 ×1.5),
 // выполняет сценарий клипа (нажатия, прокрутка, ввод) и пишет экран через CDP screencast с метками времени каждого действия.
 //
 //   node scripts/app_record.mjs promo/2026-10-27-gtt-app.clips.mjs --base http://localhost:8790 [--only start,plan]
@@ -20,12 +21,11 @@ try { pw = require('playwright'); } catch { pw = require('/opt/node-tools/node_m
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const STUDIO = path.resolve(HERE, '..');
 const REPO = path.resolve(STUDIO, '..');
-const W = 390, H = 844, DSF = 2;
-
 const argv = process.argv.slice(2);
 const opt = (k, d) => { const i = argv.indexOf(`--${k}`); return i >= 0 ? argv[i + 1] : d; };
 const spec = await import(pathToFileURL(path.resolve(STUDIO, argv[0])).href);
-const base = opt('base', 'http://localhost:8790');
+const { w: W, h: H, dsf: DSF } = spec.viewport || { w: 390, h: 844, dsf: 2 };
+const base = opt('base', spec.base || 'http://localhost:8790');
 const only = opt('only', '') ? opt('only').split(',') : null;
 const outDir = path.join(REPO, 'source-videos', spec.name, 'clips');
 fs.mkdirSync(outDir, { recursive: true });
@@ -35,17 +35,22 @@ const browser = await pw.chromium.launch({ args: [`--force-device-scale-factor=$
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function record(id, clip) {
-  const ctx = await browser.newContext({ viewport: { width: W, height: H }, locale: 'ru-RU', timezoneId: 'Asia/Shanghai' });
+  // подготовка состояния до записи (например, загрузить демо-данные через API программы)
+  if (clip.before) await clip.before({ base });
+  const ctx = await browser.newContext({ viewport: { width: W, height: H }, locale: 'ru-RU', timezoneId: spec.timezone || 'Asia/Shanghai', acceptDownloads: true });
   const state = Object.assign({}, ...(clip.seed || []).map((k) => spec.seeds[k]));
-  await ctx.addInitScript((st) => {
+  await ctx.addInitScript(({ st, prefix }) => {
     if (sessionStorage.getItem('__seeded')) return;
     localStorage.clear();
-    for (const [k, v] of Object.entries(st)) localStorage.setItem('gtt:v1:' + k, JSON.stringify(v));
+    for (const [k, v] of Object.entries(st)) localStorage.setItem(prefix + k, typeof v === 'string' ? v : JSON.stringify(v));
     sessionStorage.setItem('__seeded', '1');
-  }, state);
+  }, { st: state, prefix: spec.storagePrefix ?? 'gtt:v1:' });
+  if (spec.initScript) await ctx.addInitScript(spec.initScript);
   const page = await ctx.newPage();
   page.on('pageerror', (e) => console.log('  ! ошибка страницы', id, e.message.slice(0, 160)));
   await page.goto(base + clip.path, { waitUntil: 'networkidle' });
+  if (spec.css) await page.addStyleTag({ content: spec.css });
+  if (clip.setup) await clip.setup(page);
   await sleep(clip.settle ?? 2200);
 
   const cdp = await ctx.newCDPSession(page);
@@ -102,17 +107,36 @@ async function record(id, clip) {
       await page.mouse.up();
     },
     type: async (text, delay = 55) => { await page.keyboard.type(text, { delay }); },
+    // выбрать файлы в поле <input type=file> (имена латиницей: с кириллицей и иероглифами тестовый Chromium отменяет выбор)
+    upload: async (css, files) => { await page.setInputFiles(css, files); },
+    select: async (name, css, value) => {
+      const b = await boxOf({ css });
+      marks[name] = { t: now(), x: (b.x + b.width / 2) / W, y: (b.y + b.height / 2) / H, box: norm(b) };
+      await page.selectOption(css, value);
+    },
+    // дождаться ответа сервера (например, распознавания или проверки) и поставить метку
+    waitFor: async (name, urlPart, timeout = 240000) => {
+      await page.waitForResponse((r) => r.url().includes(urlPart), { timeout });
+      if (name) marks[name] = { t: now() };
+    },
     // плавная прокрутка главного списка экрана на dy точек (или до элемента: его верх встаёт на y = to)
-    scroll: async (name, { dy, toText, to = 150, ms = 900 } = {}) => {
+    scroll: async (name, { dy, toText, to = 150, ms = 900, page: whole = false } = {}) => {
       if (name) marks[name] = { t: now(), swipe: true };
-      await page.evaluate(async ({ dy, toText, to, ms }) => {
+      await page.evaluate(async ({ dy, toText, to, ms, page }) => {
         const els = [...document.querySelectorAll('div')].filter((d) => d.scrollHeight > d.clientHeight + 40 && /(auto|scroll)/.test(getComputedStyle(d).overflowY) && d.getBoundingClientRect().height > 300);
-        const el = els.sort((a, b) => b.clientHeight - a.clientHeight)[0];
-        if (!el) return;
+        // главный список экрана (телефон); page — прокручивается сама страница (сайт, программа на компьютере)
+        let el = page ? document.scrollingElement : els.sort((a, b) => b.clientHeight - a.clientHeight)[0] || document.scrollingElement;
         let delta = dy || 0;
         if (toText) {
-          const t = [...document.querySelectorAll('div,span')].find((n) => n.childElementCount === 0 && n.textContent.includes(toText) && n.getBoundingClientRect().height > 0);
-          if (t) delta = t.getBoundingClientRect().top - to;
+          const t = toText.startsWith('#') || toText.startsWith('.') ? document.querySelector(toText)
+            : [...document.querySelectorAll('div,span')].find((n) => n.childElementCount === 0 && n.textContent.includes(toText) && n.getBoundingClientRect().height > 0);
+          if (t) {
+            delta = t.getBoundingClientRect().top - to;
+            // прокручивается ближайший к цели прокручиваемый блок, а не самый большой на странице
+            let a = t.parentElement;
+            while (a && !(a.scrollHeight > a.clientHeight + 4 && /(auto|scroll)/.test(getComputedStyle(a).overflowY))) a = a.parentElement;
+            el = a || document.scrollingElement;
+          }
         }
         const from = el.scrollTop, target = Math.max(0, Math.min(el.scrollHeight - el.clientHeight, from + delta));
         const t0 = performance.now();
@@ -125,7 +149,7 @@ async function record(id, clip) {
           };
           requestAnimationFrame(step);
         });
-      }, { dy, toText, to, ms });
+      }, { dy, toText, to, ms, page: whole });
     },
   };
 
