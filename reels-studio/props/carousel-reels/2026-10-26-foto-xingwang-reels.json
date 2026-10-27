@@ -1,0 +1,52 @@
+{
+  "_": "Reels из карусели props/carousels/2026-10-26-foto-xingwang.json (scripts/carousel_reel.py). Секунды слайдов можно править здесь.",
+  "brand": "gtt",
+  "slides": [
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-26-foto-xingwang/01.png",
+      "seconds": 4.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-26-foto-xingwang/02.png",
+      "seconds": 4.5
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-26-foto-xingwang/03.png",
+      "seconds": 5.5
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-26-foto-xingwang/04.png",
+      "seconds": 5.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-26-foto-xingwang/05.png",
+      "seconds": 5.0
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-26-foto-xingwang/06.png",
+      "seconds": 4.5
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-26-foto-xingwang/07.png",
+      "seconds": 5.5
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-26-foto-xingwang/08.png",
+      "seconds": 5.5
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-26-foto-xingwang/09.png",
+      "seconds": 5.5
+    },
+    {
+      "src": "finished-videos/frames/_carousel-reel-2026-10-26-foto-xingwang/10.png",
+      "seconds": 5.5
+    }
+  ],
+  "music": {
+    "src": "интернет-материалы/музыка/inspiring-technology-soundrider.mp3",
+    "volume": 0.45,
+    "fadeOut": 1.6
+  },
+  "swipeSfx": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav"
+}
