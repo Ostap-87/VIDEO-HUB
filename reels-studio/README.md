@@ -275,6 +275,21 @@ npm run carousel-reel -- <имя> --guides                 # кадр с без�
 (`--no-host` — без него, робот остаётся картинкой на слайдах). Вступление ~3 с: большой робот машет, рядом робособака
 (`AuraDog`), за ними крутится печать Aura Robotics; потом печать исчезает, робот с собакой уменьшаются и уходят под слайд.
 
+## Рекламный ролик о приложении (AppPromo)
+
+```bash
+# 1) голос (черновик Piper или готовая озвучка одним файлом) → voice.wav + timing.json
+python3 scripts/promo_voice.py promo/2026-10-27-gtt-app.json --piper ~/pipervoices/ru_RU-dmitri-medium.onnx
+python3 scripts/promo_voice.py promo/2026-10-27-gtt-app.json --audio ../source-videos/2026-10-27-gtt-app-promo/voice/final.mp3
+# 2) экраны приложения (веб-сборка GTT-APP на http://localhost:8790)
+node scripts/app_record.mjs promo/2026-10-27-gtt-app.clips.mjs [--only start,plan]
+# 3) сведение под голос → props/2026-10-27-gtt-app-promo.json
+python3 scripts/promo_build.py promo/2026-10-27-gtt-app.json
+# 4) рендер 9:16 (для 16:9 — props с "format": "h")
+npx remotion render src/index.ts AppPromo ../finished-videos/2026-10-27-gtt-app-promo.mp4 --props=./props/2026-10-27-gtt-app-promo.json
+```
+Сценарий для чтения — `promo/2026-10-27-gtt-app.md`. Подробности — `CLAUDE.md`, «Рекламный ролик о приложении».
+
 ## Как сделать ролик
 
 1. Положите видео, фото или музыку в папку репозитория `source-videos/`, например `source-videos/clip.mp4`.

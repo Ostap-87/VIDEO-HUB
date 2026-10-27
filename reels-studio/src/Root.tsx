@@ -22,6 +22,8 @@ import {Aura3DShowcase, showcaseSeconds} from "./compositions/Aura3DShowcase";
 import {GttIntro, gttIntroSchema, gttIntroSeconds, type GttIntroProps} from "./compositions/GttIntro";
 import {ReelCover, reelCoverSchema, type ReelCoverProps} from "./compositions/ReelCover";
 import {HookTitleDemo, hookTitleDemoSchema, type HookTitleDemoProps} from "./compositions/HookTitleDemo";
+import {AppPromo, appPromoFrames, appPromoSchema, type AppPromoProps} from "./compositions/AppPromo";
+import appPromoSample from "../props/2026-10-27-gtt-app-promo.json";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -159,6 +161,21 @@ export const RemotionRoot: React.FC = () => {
           const b = bumperFrames(props);
           return {durationInFrames: Math.round((props.speechSeconds + props.ctaSeconds) * VIDEO.fps) + b.lead + b.tail};
         }}
+      />
+      <Composition
+        id="AppPromo"
+        component={AppPromo}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={300}
+        schema={appPromoSchema}
+        defaultProps={appPromoSample as unknown as AppPromoProps}
+        calculateMetadata={({props}: {props: AppPromoProps}) => ({
+          durationInFrames: appPromoFrames(props),
+          width: props.format === "h" ? 1920 : 1080,
+          height: props.format === "h" ? 1080 : 1920,
+        })}
       />
       <Composition
         id="GTTLogo"
