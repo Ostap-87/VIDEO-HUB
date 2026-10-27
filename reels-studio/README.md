@@ -290,6 +290,15 @@ npx remotion render src/index.ts AppPromo ../finished-videos/2026-10-27-gtt-app-
 ```
 Сценарий для чтения — `promo/2026-10-27-gtt-app.md`. Подробности — `CLAUDE.md`, «Рекламный ролик о приложении».
 
+Версия 2 (голос Остапа, сцены «хаос чатов», переворот делегат → координатор, орбита интеграций, чеки → отчёт, майндмэп):
+```bash
+# голос по сценам: c01.wav … c14.wav (Higgsfield по образцу голоса) → voice-v2/voice.wav + timing.json
+python3 scripts/promo_voice.py promo/2026-10-27-gtt-app-v2.json --beats-dir ../source-videos/2026-10-27-gtt-app-promo/voice-v2/beats
+python3 scripts/promo_build.py promo/2026-10-27-gtt-app-v2.json        # экраны → screens-v2/, props …-v2.json
+npx remotion render src/index.ts AppPromo ../finished-videos/2026-10-27-gtt-app-promo-v2.mp4 --props=./props/2026-10-27-gtt-app-promo-v2.json
+```
+Сценарий v2 для чтения — `promo/2026-10-27-gtt-app-v2.md`.
+
 ## Как сделать ролик
 
 1. Положите видео, фото или музыку в папку репозитория `source-videos/`, например `source-videos/clip.mp4`.

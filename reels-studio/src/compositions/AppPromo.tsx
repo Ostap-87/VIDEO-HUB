@@ -41,7 +41,10 @@ type Beat = {
   title?: string; kicker?: string; cta?: string; fx?: string; still?: string; launch?: number;
   chips?: {text: string; at: number}[]; bigWords?: {text: string; at: number}[];
   counter?: {value: number; label: string; at: number; sub: string; subAt: number};
-  screen?: string; screenDur?: number;
+  screen?: string; screenDur?: number; flip?: number; threeOrder?: string[];
+  orbit?: {text: string; icon: string; at: number}[];
+  report?: {at?: number; excel?: number; pdf?: number; rub?: number; done?: number};
+  mind?: {report?: number; map?: number; companies?: number; deals?: number; contacts?: number; next?: number; auto?: number};
 };
 
 const INTRO = 54, OUTRO = 45, OVERLAP = 10;
@@ -109,7 +112,9 @@ const poseOf = (b: Beat | undefined, i: number, L: Layout): Pose => {
   if (!b) return base;
   if (b.visual === "chaos") return {...base, y: L.phoneY + L.H * 0.9, s: 0.8, ry: 0, rz: 8, o: 0};
   if (b.visual === "reveal") return {...base, ry: 0, rz: 0};
-  if (b.visual === "three") return {...base, s: 0.7, o: 0, ry: 0, rz: 0};
+  if (b.visual === "three" || b.visual === "mindgrow" || b.visual === "chats") return {...base, s: 0.7, o: 0, ry: 0, rz: 0, y: b.visual === "chats" ? L.phoneY + L.H * 0.9 : base.y};
+  if (b.visual === "orbit") return L.W > L.H ? {...base, x: 1360, y: 250, s: 0.74, ry: -6, rz: 0} : {...base, y: 760, s: 0.66, ry: 0, rz: 0};
+  if (b.visual === "receipts") return L.W > L.H ? {...base, x: 1480, ry: -12, rz: 1.5} : {...base, x: 870, y: 1130, s: 0.5, ry: -12, rz: 2};
   if (b.visual === "counter") return L.W > L.H ? {...base, x: L.phoneX + 20, ry: -14, rz: 2} : {...base, s: 0.82, y: L.phoneY + 210, ry: 10, rz: -2};
   if (b.visual === "final") return L.W > L.H ? {...base, x: L.phoneX - 40, ry: -6, rz: 0} : {...base, s: 0.86, y: L.phoneY + 170, ry: 0, rz: 0};
   return base;
@@ -188,11 +193,11 @@ const ScreenStack: React.FC<{p: AppPromoProps; beats: Beat[]; k: number}> = ({p,
       {beats.map((b, i) => {
         const from = f(b.w0);
         const dur = f(b.w1 + HANDLE) - from;
-        if (b.visual === "chaos" || b.visual === "three") return null;
+        if (["chaos", "three", "mindgrow", "chats"].includes(b.visual)) return null;
         const prevVisual = beats[i - 1]?.visual;
         return (
           <Sequence key={b.id} from={from} durationInFrames={dur} premountFor={fps} name={`Экран ${b.id}`}>
-            <ScreenBeat b={b} p={p} k={k} enter={i > 0 && prevVisual !== "chaos" && b.visual !== "reveal" && b.launch === undefined} />
+            <ScreenBeat b={b} p={p} k={k} enter={i > 0 && !["chaos", "chats", "mindgrow", "three"].includes(prevVisual) && b.visual !== "reveal" && b.launch === undefined} />
           </Sequence>
         );
       })}
@@ -214,7 +219,7 @@ const ScreenBeat: React.FC<{b: Beat; p: AppPromoProps; k: number; enter: boolean
     const y = interpolate(frame, [fps * 0.4, fps * 2.6], [0, -(2116 - 1688) / 2], {...clamp, easing: ease});
     content = <Img src={staticFile(`${p.stills}/1-visit.png`)} style={{width: "100%", position: "absolute", top: y * (k * SCREEN_W / 390) / 2}} />;
   } else if (b.visual === "counter") {
-    content = <Img src={staticFile(`${p.stills}/start-globe.png`)} style={{width: "100%", height: "100%", objectFit: "cover"}} />;
+    content = <Img src={staticFile(`${p.stills}/${b.still || "start-globe.png"}`)} style={{width: "100%", height: "100%", objectFit: "cover"}} />;
   } else if (b.visual === "final") {
     content = <Img src={staticFile(`${p.stills}/today.png`)} style={{width: "100%", height: "100%", objectFit: "cover"}} />;
   }
@@ -412,7 +417,7 @@ const Three: React.FC<{b: Beat; L: Layout; p: AppPromoProps}> = ({b, L, p}) => {
   const {fps} = useVideoConfig();
   const isH = L.W > L.H;
   const w = isH ? 300 : 262;
-  const srcs = ["today.png", "coord.png", "1-visit.png"];
+  const srcs = b.threeOrder || ["today.png", "coord.png", "1-visit.png"];
   const gap = isH ? 120 : 22;
   const total = w * 3 + gap * 2 + w * 0.07 * 6;
   const y0 = isH ? 290 : 600;
@@ -429,7 +434,7 @@ const Three: React.FC<{b: Beat; L: Layout; p: AppPromoProps}> = ({b, L, p}) => {
         return (
           <div key={i} style={{position: "absolute", left: x, top: y0 + (i === 1 ? -30 : 20) - 40 * lift * on, opacity: s, translate: `0 ${(1 - s) * 120}px`, rotate: `${(i - 1) * 4 * (1 - s * 0.6)}deg`, scale: String(1 + 0.05 * lift * on)}}>
             <Phone w={w} shadow={0.7}>
-              <Img src={staticFile(`${p.stills}/${srcs[i]}`)} style={{width: "100%", height: i === 2 ? "auto" : "100%", objectFit: "cover"}} />
+              <Img src={staticFile(`${p.stills}/${srcs[i]}`)} style={{width: "100%", height: srcs[i].includes("visit") ? "auto" : "100%", objectFit: "cover"}} />
             </Phone>
             <div style={{marginTop: 26, textAlign: "center", fontFamily: body.fontFamily, fontWeight: 700, fontSize: isH ? 32 : 30, color: on === 1 ? C.accent : C.text, opacity: frame >= said ? 1 : 0.5}}>{bw.text}</div>
           </div>
@@ -476,6 +481,296 @@ const Cta: React.FC<{b: Beat; L: Layout}> = ({b, L}) => {
   );
 };
 
+
+// ---------- хаос чатов: уведомления мессенджеров сыплются на экран ----------
+const NETS = {
+  tg: {color: "#2AABEE", name: "Telegram", icon: "M3 11.5l17-7-3 15-5.5-4-3 3v-4.5l8.5-7.5-10.5 6z"},
+  wx: {color: "#07C160", name: "WeChat", icon: "M9 5C5 5 2 7.6 2 10.8c0 1.8 1 3.4 2.6 4.5L4 18l3-1.6c.6.2 1.3.3 2 .3M14.5 9c3.3 0 6 2.2 6 5s-2.7 5-6 5c-.6 0-1.2-.1-1.8-.2L10 20l.6-2.3c-1.3-.9-2.1-2.3-2.1-3.7 0-2.8 2.7-5 6-5z"},
+  wa: {color: "#25D366", name: "WhatsApp", icon: "M12 3a9 9 0 00-7.8 13.5L3 21l4.6-1.2A9 9 0 1012 3zm-3 5c.3 0 .6 0 .8.6l.8 1.9c.1.3 0 .6-.2.8l-.6.7c.6 1.2 1.6 2.2 2.8 2.8l.7-.6c.2-.2.5-.3.8-.2l1.9.8c.5.2.6.5.6.8 0 1.2-1 2.1-2.2 2.1-3.6 0-7.4-3.8-7.4-7.4C7 9 7.8 8 9 8z"},
+} as const;
+const CHATS: {net: keyof typeof NETS; who: string; text: string}[] = [
+  {net: "tg", who: "GTT Пекин · делегация", text: "Где встречаемся утром?"},
+  {net: "wx", who: "接待 · JD.com", text: "明天几点到？"},
+  {net: "tg", who: "GTT Пекин · организаторы", text: "Скиньте адрес отеля по-китайски"},
+  {net: "wa", who: "Трансфер", text: "Водитель у выхода B"},
+  {net: "tg", who: "Ужин в среду", text: "Кто идёт на хого? 🙋"},
+  {net: "wx", who: "盒马 · Hema", text: "请发参观名单"},
+  {net: "tg", who: "GTT Пекин · делегация", text: "Во сколько автобус???"},
+  {net: "wa", who: "Гид Ли Мэй", text: "Я в лобби"},
+  {net: "tg", who: "Чеки для бухгалтерии", text: "Пришлите фото чеков до пятницы"},
+  {net: "tg", who: "GTT Пекин · делегация", text: "А где презентация JD?"},
+  {net: "wx", who: "司机 · Водитель", text: "到了，在门口"},
+  {net: "tg", who: "GTT Пекин · делегация", text: "Кто-нибудь видел программу на завтра?"},
+  {net: "wa", who: "Отель Ванфуцзин", text: "Check-out until 12:00"},
+  {net: "tg", who: "GTT Пекин · делегация", text: "Я потерялся 😅"},
+  {net: "wx", who: "美团 · Meituan", text: "会议改到15:30"},
+  {net: "tg", who: "GTT Пекин · делегация", text: "Перешлите ещё раз адрес"},
+];
+export const chatTimes = (b0: number, dur: number) => CHATS.map((_, i) => b0 + 0.15 + Math.pow(i / CHATS.length, 0.8) * (dur - 0.9));
+const Chats: React.FC<{beats: Beat[]; L: Layout; dur: number; collapseAt: number}> = ({beats, L, dur, collapseAt}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const t = frame / fps;
+  const isH = L.W > L.H;
+  const b0 = beats[0].w0;
+  const times = chatTimes(0, collapseAt);
+  const col = interpolate(t, [collapseAt, collapseAt + 0.5], [0, 1], {...clamp, easing: Easing.in(Easing.cubic)});
+  const W = isH ? 620 : 860, H = isH ? 104 : 128;
+  const cx = L.W / 2, top = isH ? 300 : 560;
+  const big = beats.flatMap((b) => b.bigWords || []);
+  return (
+    <AbsoluteFill>
+      {CHATS.map((c, i) => {
+        const at = Math.round(times[i] * fps);
+        if (frame < at) return null;
+        const s = spring({frame: frame - at, fps, config: {damping: 15, stiffness: 200, mass: 0.7}});
+        const newer = times.filter((x, j) => j > i && x <= t).length; // сколько пришло после — столько раз сдвинулось вниз
+        const lane = isH ? (i % 2 ? 1 : -1) * (180 + (i % 3) * 40) : ((i * 37) % 5 - 2) * 26;
+        const y = top + newer * (H * 0.62) + (1 - s) * -140;
+        const x = cx - W / 2 + lane * (1 - col);
+        const fade = interpolate(newer, [5, 9], [1, 0.25], clamp);
+        const rot = ((i * 53) % 9 - 4) * 0.8;
+        const n = NETS[c.net];
+        const sx = cx - (x + W / 2), sy = (isH ? 540 : 1100) - (y + H / 2);
+        return (
+          <div key={i} style={{position: "absolute", left: x + sx * col, top: y + sy * col, width: W, height: H, borderRadius: H * 0.28, background: "rgba(255,255,255,0.94)",
+            boxShadow: "0 16px 40px rgba(20,30,60,0.18)", display: "flex", alignItems: "center", gap: 18, padding: "0 22px", boxSizing: "border-box",
+            opacity: s * fade * (1 - col), scale: String((0.85 + 0.15 * s) * (1 - 0.6 * col)), rotate: `${rot}deg`, zIndex: i}}>
+            <div style={{width: H * 0.56, height: H * 0.56, borderRadius: H * 0.16, background: n.color, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0}}>
+              <svg width={H * 0.36} height={H * 0.36} viewBox="0 0 24 24"><path d={n.icon} fill="white" stroke="white" strokeWidth={0.6} strokeLinejoin="round" /></svg>
+            </div>
+            <div style={{display: "flex", flexDirection: "column", gap: 4, minWidth: 0, flex: 1}}>
+              <div style={{display: "flex", justifyContent: "space-between", fontFamily: body.fontFamily, fontSize: isH ? 20 : 24, color: C.muted}}>
+                <span style={{fontWeight: 700, color: C.text, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>{c.who}</span>
+                <span style={{marginLeft: 12, whiteSpace: "nowrap"}}>{n.name} · сейчас</span>
+              </div>
+              <div style={{fontFamily: body.fontFamily, fontSize: isH ? 25 : 31, color: C.text, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>{c.text}</div>
+            </div>
+            <div style={{position: "absolute", right: -10, top: -10, minWidth: 40, height: 40, borderRadius: 20, background: "#E5484D", color: "white", fontFamily: body.fontFamily,
+              fontWeight: 700, fontSize: 20, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 8px"}}>{Math.min(99, 3 + i * 7)}{i > 11 ? "+" : ""}</div>
+          </div>
+        );
+      })}
+      {big.map((w, i) => {
+        const at = Math.round((w.at - b0) * fps);
+        const next = big[i + 1] ? Math.round((big[i + 1].at - b0) * fps) : Math.round(collapseAt * fps);
+        if (frame < at - 1 || frame > next + 8) return null;
+        const s = spring({frame: frame - at, fps, config: {damping: 12, stiffness: 170, mass: 0.8}});
+        const o = interpolate(frame, [next - 2, next + 6], [1, 0], clamp);
+        return (
+          <div key={`b${i}`} style={{position: "absolute", left: 0, width: L.W, top: isH ? 120 : 270, textAlign: "center", fontFamily: display.fontFamily, fontWeight: 700,
+            fontSize: isH ? 96 : 92, lineHeight: 1.05, color: C.text, opacity: s * o, translate: `0 ${(1 - s) * 50}px`, scale: String(0.85 + 0.15 * s), padding: "0 48px", boxSizing: "border-box", zIndex: 50}}>
+            {w.text.split(" ").map((x, j) => <span key={j} style={{color: j === 0 ? C.accent : C.text}}>{x}{" "}</span>)}
+          </div>
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
+// ---------- орбита интеграций вокруг телефона ----------
+const ORB_ICONS: Record<string, string> = {
+  cal: "M4 6h16v14H4zM4 10h16M8 3v5M16 3v5", pin: "M12 21s-6-6.2-6-11a6 6 0 0112 0c0 4.8-6 11-6 11zm0-8a3 3 0 100-6 3 3 0 000 6z",
+  star: "M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z", bag: "M5 8h14l-1 12H6zM9 8V6a3 3 0 016 0v2",
+  table: "M4 5h16v14H4zM4 10h16M4 15h16M10 5v14", users: "M9 11a3 3 0 100-6 3 3 0 000 6zM3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M17 11a2.5 2.5 0 100-5M21 19c0-2.6-1.6-4.6-4-5.3",
+  chat: "M4 5h16v11H9l-5 4z",
+};
+const Orbit: React.FC<{b: Beat; L: Layout; center: {x: number; y: number}; rx: number; ry: number}> = ({b, L, center, rx, ry}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const t = frame / fps;
+  const items = b.orbit || [];
+  const isH = L.W > L.H;
+  return (
+    <AbsoluteFill>
+      <svg width={L.W} height={L.H} style={{position: "absolute", inset: 0}}>
+        <ellipse cx={center.x} cy={center.y} rx={rx} ry={ry} fill="none" stroke="rgba(37,99,235,0.25)" strokeWidth={3} strokeDasharray="10 14"
+          opacity={interpolate(frame, [0, 12], [0, 1], clamp)} />
+      </svg>
+      {items.map((o, i) => {
+        const at = Math.round((o.at - b.w0) * fps) - 2;
+        if (frame < at) return null;
+        const s = spring({frame: frame - at, fps, config: {damping: 12, stiffness: 180, mass: 0.7}});
+        const ang = (-90 + i * (360 / items.length)) * Math.PI / 180 + t * 0.12;
+        const x = center.x + Math.cos(ang) * rx * (0.6 + 0.4 * s), y = center.y + Math.sin(ang) * ry * (0.6 + 0.4 * s);
+        return (
+          <React.Fragment key={i}>
+            <svg width={L.W} height={L.H} style={{position: "absolute", inset: 0, pointerEvents: "none"}}>
+              <line x1={center.x} y1={center.y} x2={x} y2={y} stroke="rgba(37,99,235,0.35)" strokeWidth={2.5} strokeDasharray="6 8" opacity={s} />
+            </svg>
+            <div style={{position: "absolute", left: x, top: y, translate: "-50% -50%", display: "flex", alignItems: "center", gap: 12, padding: isH ? "12px 22px 12px 14px" : "14px 26px 14px 16px",
+              borderRadius: 999, background: "rgba(255,255,255,0.95)", boxShadow: "0 14px 34px rgba(20,30,60,0.18)", opacity: s, scale: String(0.6 + 0.4 * s)}}>
+              <div style={{width: isH ? 40 : 48, height: isH ? 40 : 48, borderRadius: 14, background: C.accent, display: "flex", alignItems: "center", justifyContent: "center"}}>
+                <svg width={isH ? 24 : 28} height={isH ? 24 : 28} viewBox="0 0 24 24"><path d={ORB_ICONS[o.icon] || ORB_ICONS.chat} fill="none" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </div>
+              <span style={{fontFamily: body.fontFamily, fontWeight: 700, fontSize: isH ? 30 : 36, color: C.text, whiteSpace: "nowrap"}}>{o.text}</span>
+            </div>
+          </React.Fragment>
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
+// ---------- чеки слетаются в единый отчёт ----------
+const RECEIPTS = [
+  {img: "chek-taksi.jpg", note: "Такси DiDi: отель → JD.com", cny: 86, rub: "1 038"},
+  {img: "chek-obed.jpg", note: "Обед с партнёрами", cny: 268, rub: "3 235"},
+  {img: "chek-svyaz.jpg", note: "Связь, пакет на 7 дней", cny: 120, rub: "1 448"},
+];
+const Receipts: React.FC<{b: Beat; L: Layout; from: {x: number; y: number}; imgDir: string}> = ({b, L, from, imgDir}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const isH = L.W > L.H;
+  const r = b.report || {};
+  const f = (s?: number, d = 0) => (s === undefined ? 1e9 : Math.round((s - b.w0 + d) * fps));
+  const card = isH ? {x: 150, y: 500, w: 700, h: 420} : {x: 64, y: 560, w: 650, h: 580};
+  const rowH = isH ? 80 : 104;
+  const cardIn = spring({frame: frame - f(r.at, -0.3), fps, config: theme.motion.snappy});
+  const pop = (at: number) => spring({frame: frame - at, fps, config: {damping: 11, stiffness: 190, mass: 0.7}});
+  const done = pop(f(r.done, -0.05));
+  return (
+    <AbsoluteFill>
+      {/* отчёт */}
+      <div style={{position: "absolute", left: card.x, top: card.y, width: card.w, height: card.h, borderRadius: 28, background: C.surface, boxShadow: "0 24px 60px rgba(20,30,60,0.18)",
+        opacity: cardIn, translate: `0 ${(1 - cardIn) * 60}px`, padding: "26px 30px", boxSizing: "border-box"}}>
+        <div style={{fontFamily: mono.fontFamily, fontSize: isH ? 20 : 22, letterSpacing: "0.12em", color: C.accent}}>ОТЧЁТ О РАСХОДАХ</div>
+        <div style={{fontFamily: body.fontFamily, fontWeight: 700, fontSize: isH ? 28 : 32, color: C.text, marginTop: 6}}>Новый ритейл Китая · 9–14 ноября</div>
+        <div style={{position: "absolute", left: 30, right: 30, top: isH ? 108 : 122, borderTop: `2px solid ${C.line}`}} />
+        {RECEIPTS.map((rc, i) => {
+          const land = f(r.at, 0.55 + i * 0.4);
+          const sIn = pop(land);
+          return (
+            <div key={i} style={{position: "absolute", left: 30, right: 30, top: (isH ? 124 : 140) + i * rowH, height: rowH - 12, display: "flex", alignItems: "center", gap: 16, opacity: sIn, translate: `${(1 - sIn) * 30}px 0`}}>
+              <Img src={staticFile(`${imgDir}/${rc.img}`)} style={{width: rowH * 0.62, height: rowH * 0.8, objectFit: "cover", borderRadius: 6, border: `1px solid ${C.line}`}} />
+              <div style={{flex: 1, fontFamily: body.fontFamily, fontSize: isH ? 24 : 27, color: C.text}}>{rc.note}</div>
+              <div style={{textAlign: "right", fontFamily: body.fontFamily}}>
+                <div style={{fontWeight: 700, fontSize: isH ? 26 : 29, color: C.text}}>¥{rc.cny}</div>
+                <div style={{fontSize: isH ? 21 : 23, color: frame >= f(r.rub) ? C.accent : C.muted, opacity: frame >= f(r.rub, -0.1) ? 1 : 0}}>≈ {rc.rub} ₽</div>
+              </div>
+            </div>
+          );
+        })}
+        <div style={{position: "absolute", left: 30, right: 30, bottom: 24, display: "flex", justifyContent: "space-between", alignItems: "baseline", fontFamily: body.fontFamily,
+          opacity: frame >= f(r.rub, -0.1) ? 1 : 0}}>
+          <span style={{fontSize: isH ? 22 : 24, color: C.muted}}>по курсу ЦБ РФ на дату чека</span>
+          <span style={{fontWeight: 700, fontSize: isH ? 32 : 36, color: C.text}}>Итого 5 721 ₽</span>
+        </div>
+        {/* форматы */}
+        {[{t: "XLSX", c: "#1D7A45", at: f(r.excel, -0.05)}, {t: "PDF", c: "#D93636", at: f(r.pdf, -0.05)}].map((x, i) => {
+          const s = pop(x.at);
+          return frame >= x.at ? (
+            <div key={x.t} style={{position: "absolute", right: 24 + i * 106, top: -34, width: 96, height: 72, borderRadius: 16, background: x.c, color: "white", display: "flex", alignItems: "center",
+              justifyContent: "center", fontFamily: body.fontFamily, fontWeight: 700, fontSize: 26, boxShadow: "0 12px 26px rgba(20,30,60,0.25)", scale: String(0.5 + 0.5 * s), rotate: `${(1 - s) * -12}deg`}}>{x.t}</div>
+          ) : null;
+        })}
+        {/* штамп */}
+        {frame >= f(r.done, -0.05) ? (
+          <div style={{position: "absolute", left: "50%", top: "52%", translate: "-50% -50%", rotate: `${-8 + (1 - done) * 20}deg`, scale: String(1.6 - 0.6 * done), opacity: Math.min(1, done * 1.4),
+            border: `5px solid ${C.accent}`, borderRadius: 18, padding: "14px 26px", background: "rgba(255,255,255,0.88)", color: C.accent, fontFamily: display.fontFamily, fontWeight: 700,
+            fontSize: isH ? 34 : 38, textAlign: "center", lineHeight: 1.15, whiteSpace: "nowrap"}}>
+            Бухгалтерии ✓<br /><span style={{fontFamily: body.fontFamily, fontSize: isH ? 24 : 27}}>одним файлом</span>
+          </div>
+        ) : null}
+      </div>
+      {/* летящие чеки */}
+      {RECEIPTS.map((rc, i) => {
+        const st = f(r.at, i * 0.4), en = st + Math.round(0.55 * fps);
+        if (frame < st || frame > en + 2) return null;
+        const k = interpolate(frame, [st, en], [0, 1], {...clamp, easing: Easing.inOut(Easing.cubic)});
+        const tx = card.x + 30 + rowH * 0.31, ty = card.y + (isH ? 124 : 140) + i * rowH + rowH * 0.4;
+        const x = from.x + (tx - from.x) * k, y = from.y + (ty - from.y) * k - Math.sin(k * Math.PI) * 160;
+        return (
+          <Img key={i} src={staticFile(`${imgDir}/${rc.img}`)} style={{position: "absolute", left: x, top: y, width: 150 - 100 * k, translate: "-50% -50%", rotate: `${(1 - k) * (i - 1) * 14}deg`,
+            borderRadius: 8, boxShadow: "0 14px 30px rgba(20,30,60,0.28)"}} />
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
+// ---------- майндмэп поездки растёт сам + PDF-отчёт ----------
+const MIND = [
+  {name: "JD.com", leaf: "Договорились: презентация до конца ноября", kind: "deals"},
+  {name: "Meituan", leaf: "Курьеров распределяет алгоритм", kind: "companies"},
+  {name: "Hema", leaf: "Повторная встреча с закупками — декабрь", kind: "next"},
+  {name: "Alibaba", leaf: "Следующий шаг: пилот на площадке", kind: "next"},
+  {name: "Pinduoduo", leaf: "Визитки: 3 контакта", kind: "contacts"},
+  {name: "Yonghui", leaf: "Пришлём образцы отделу закупок", kind: "deals"},
+] as const;
+const MindGrow: React.FC<{b: Beat; L: Layout}> = ({b, L}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const isH = L.W > L.H;
+  const m = b.mind || {};
+  const f = (s?: number, d = 0) => (s === undefined ? 1e9 : Math.round((s - b.w0 + d) * fps));
+  const cx = isH ? 1290 : 540, cy = isH ? 620 : 1060;
+  const rx = isH ? 400 : 330, ry = isH ? 360 : 480;
+  const ANG = [-150, 180, 150, -30, 0, 30];
+  const pop = (at: number) => spring({frame: frame - at, fps, config: {damping: 12, stiffness: 170, mass: 0.7}});
+  const center = pop(f(m.map, -0.2));
+  const glow = interpolate(frame, [f(m.auto, -0.1), f(m.auto, 0.4)], [0, 1], clamp);
+  const pdf = pop(f(m.report, -0.1));
+  return (
+    <AbsoluteFill>
+      <svg width={L.W} height={L.H} style={{position: "absolute", inset: 0}}>
+        {MIND.map((n, i) => {
+          const ang = ANG[i] * Math.PI / 180;
+          const x = cx + Math.cos(ang) * rx, y = cy + Math.sin(ang) * ry;
+          const at = f(m.companies, -0.1 + i * 0.12);
+          const k = interpolate(frame, [at, at + 10], [0, 1], {...clamp, easing: ease});
+          const len = Math.hypot(x - cx, y - cy);
+          return (
+            <path key={i} d={`M${cx},${cy} Q${(cx + x) / 2},${cy + (y - cy) * 0.2} ${x},${y}`} fill="none" stroke={C.accent} strokeOpacity={0.55 + 0.45 * glow}
+              strokeWidth={isH ? 4 : 5} strokeDasharray={len * 1.2} strokeDashoffset={len * 1.2 * (1 - k)} strokeLinecap="round" />
+          );
+        })}
+      </svg>
+      {MIND.map((n, i) => {
+        const ang = ANG[i] * Math.PI / 180;
+        const x = cx + Math.cos(ang) * rx, y = cy + Math.sin(ang) * ry;
+        const s = pop(f(m.companies, 0.15 + i * 0.12));
+        const leafAt = f((m as Record<string, number | undefined>)[n.kind], 0.05 + (i % 2) * 0.15);
+        const ls = pop(leafAt);
+        const below = Math.sin(ang) > -0.2;
+        return (
+          <React.Fragment key={i}>
+            <div style={{position: "absolute", left: x, top: y, translate: "-50% -50%", padding: isH ? "12px 24px" : "14px 26px", borderRadius: 999, background: C.surface,
+              border: `3px solid ${C.accent}`, fontFamily: body.fontFamily, fontWeight: 700, fontSize: isH ? 30 : 34, color: C.text, opacity: s, scale: String(0.6 + 0.4 * s),
+              boxShadow: `0 12px 30px rgba(37,99,235,${0.15 + 0.25 * glow})`, whiteSpace: "nowrap"}}>{n.name}</div>
+            {frame >= leafAt ? (
+              <div style={{position: "absolute", left: x, top: y + (below ? 1 : -1) * (isH ? 62 : 72), translate: "-50% -50%", maxWidth: isH ? 330 : 300, padding: "10px 16px", borderRadius: 14,
+                background: "rgba(255,255,255,0.92)", boxShadow: "0 8px 20px rgba(20,30,60,0.12)", fontFamily: body.fontFamily, fontSize: isH ? 21 : 24, lineHeight: 1.25, color: C.text,
+                textAlign: "center", opacity: ls, scale: String(0.7 + 0.3 * ls)}}>{n.leaf}</div>
+            ) : null}
+          </React.Fragment>
+        );
+      })}
+      <div style={{position: "absolute", left: cx, top: cy, translate: "-50% -50%", padding: isH ? "20px 32px" : "24px 34px", borderRadius: 28, background: C.accent, color: "white",
+        fontFamily: display.fontFamily, fontWeight: 700, fontSize: isH ? 34 : 38, textAlign: "center", lineHeight: 1.15, opacity: center, scale: String(0.6 + 0.4 * center),
+        boxShadow: `0 18px 44px rgba(37,99,235,${0.35 + 0.3 * glow})`}}>
+        Новый ритейл<br />Китая
+        <div style={{fontFamily: body.fontFamily, fontWeight: 400, fontSize: isH ? 22 : 24, opacity: 0.9, marginTop: 6}}>{glow > 0.5 ? "собирается автоматически ✓" : "6 дней · 9 компаний"}</div>
+      </div>
+      {/* PDF-отчёт */}
+      <div style={{position: "absolute", left: isH ? 150 : 72, top: isH ? 640 : 560, opacity: pdf, translate: `${(1 - pdf) * -60}px 0`, display: "flex", alignItems: "center", gap: 18}}>
+        <div style={{position: "relative", width: isH ? 120 : 110, height: isH ? 150 : 140}}>
+          {[2, 1, 0].map((j) => (
+            <div key={j} style={{position: "absolute", inset: 0, borderRadius: 10, background: C.surface, border: `2px solid ${C.line}`, boxShadow: "0 10px 24px rgba(20,30,60,0.15)",
+              rotate: `${(j - 1) * 7 * pdf}deg`, translate: `${j * 8 * pdf}px ${-j * 4 * pdf}px`}}>
+              {j === 0 ? <div style={{position: "absolute", left: 10, bottom: 12, padding: "4px 10px", borderRadius: 6, background: "#D93636", color: "white", fontFamily: body.fontFamily, fontWeight: 700, fontSize: 20}}>PDF</div> : null}
+            </div>
+          ))}
+        </div>
+        <div style={{fontFamily: body.fontFamily, color: C.text}}>
+          <div style={{fontWeight: 700, fontSize: isH ? 30 : 32}}>Итоги поездки.pdf</div>
+          <div style={{fontSize: isH ? 23 : 25, color: C.muted}}>компании · заметки · контакты · карта</div>
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 // ---------- ролик ----------
 export const AppPromo: React.FC<AppPromoProps> = (p) => {
   const frame = useCurrentFrame();
@@ -493,6 +788,13 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
   const prev = poseOf(beats[bi - 1], bi - 1, L), curp = poseOf(beats[bi], bi, L);
   const kk = bi === 0 ? 1 : interpolate(t, [beats[bi].w0, beats[bi].w0 + 0.7], [0, 1], {...clamp, easing: ease});
   const pose = mixPose(prev, curp, kk);
+  // переворот телефона на смене роли (делегат → координатор): 0→90° старый экран, −90→0° новый
+  const flipAt = beats[bi].flip;
+  let flipRy = 0;
+  if (flipAt !== undefined) {
+    if (t >= flipAt - 0.24 && t < flipAt) flipRy = interpolate(t, [flipAt - 0.24, flipAt], [0, 90], {...clamp, easing: Easing.in(Easing.quad)});
+    else if (t >= flipAt && t < flipAt + 0.26) flipRy = interpolate(t, [flipAt, flipAt + 0.26], [-90, 0], {...clamp, easing: Easing.out(Easing.quad)});
+  }
   const float = Math.sin(t * 1.1) * 8;
 
   // наезд на элемент экрана
@@ -530,21 +832,32 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
 
       {/* особые сцены под телефоном */}
       {beats.map((b) => {
-        if (!["chaos", "three", "counter"].includes(b.visual)) return null;
+        if (!["chaos", "three", "counter", "chats", "orbit", "receipts", "mindgrow"].includes(b.visual)) return null;
+        const bi2 = beats.indexOf(b);
+        if (b.visual === "chats" && beats[bi2 - 1]?.visual === "chats") return null; // чаты рисуются одной сценой
+        let last = b;
+        if (b.visual === "chats") for (let j = bi2 + 1; beats[j]?.visual === "chats"; j++) last = beats[j];
         const from = f(b.w0);
-        const dur = f(b.w1) - from + (b.visual === "chaos" ? f(0.7) : f(0.3));
+        const dur = f(last.w1) - from + (b.visual === "chaos" || b.visual === "chats" ? f(0.7) : f(0.3));
+        const pz = poseOf(b, bi2, L);
+        const phoneH = (SCREEN_H * k + L.phoneW * 0.07) * pz.s;
+        const pc = {x: pz.x, y: pz.y + phoneH / 2};
         return (
           <Sequence key={`u-${b.id}`} from={from} durationInFrames={dur} premountFor={fps} name={`Сцена ${b.id} · ${b.part}`}>
             {b.visual === "chaos" ? <Chaos b={b} L={L} dur={dur} collapseAt={b.w1 - b.w0 + 0.15} /> : null}
             {b.visual === "three" ? <Three b={b} L={L} p={p} /> : null}
             {b.visual === "counter" ? <Counter b={b} L={L} /> : null}
+            {b.visual === "chats" ? <Chats beats={beats.slice(bi2, beats.indexOf(last) + 1)} L={L} dur={dur} collapseAt={last.w1 - b.w0 + 0.1} /> : null}
+            {b.visual === "orbit" ? <Orbit b={b} L={L} center={pc} rx={isH ? 470 : 400} ry={isH ? 420 : 520} /> : null}
+            {b.visual === "receipts" ? <Receipts b={b} L={L} from={pc} imgDir={p.stills.replace(/stills$/, "img")} /> : null}
+            {b.visual === "mindgrow" ? <MindGrow b={b} L={L} /> : null}
           </Sequence>
         );
       })}
 
       {/* телефон */}
       <div style={{position: "absolute", left: pose.x - phoneOuterW / 2, top: pose.y + float, width: phoneOuterW, height: phoneOuterH, opacity: pose.o,
-        transform: `perspective(2400px) rotateY(${pose.ry}deg) rotateZ(${pose.rz}deg) scale(${pose.s})`, transformOrigin: "50% 0%"}}>
+        transform: `perspective(2400px) rotateY(${pose.ry + flipRy}deg) rotateZ(${pose.rz}deg) scale(${pose.s})`, transformOrigin: "50% 0%"}}>
         <div style={{translate: `${zx}px ${zy}px`, scale: String(zoom), transformOrigin: "50% 50%"}}>
           <Phone w={L.phoneW}>
             <ScreenStack p={p} beats={beats} k={k} />

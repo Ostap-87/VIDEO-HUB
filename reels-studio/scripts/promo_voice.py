@@ -2,6 +2,7 @@
 
   python3 scripts/promo_voice.py promo/2026-10-27-gtt-app.json --piper <модель.onnx>   # черновой голос (локально, бесплатно)
   python3 scripts/promo_voice.py promo/2026-10-27-gtt-app.json --audio voice-final.mp3  # готовая озвучка одним файлом
+  python3 scripts/promo_voice.py promo/2026-10-27-gtt-app-v2.json --beats-dir <папка>   # озвучка по сценам: <id сцены>.wav
 
 Сцена (beat) — одна фраза диктора. Черновик: каждая сцена синтезируется отдельно (Piper). Готовая озвучка (Higgsfield / диктор)
 режется на сцены по словам Whisper. Дальше одинаково: тишина по краям срезается, между сценами — пауза `voice.gapAfter`
@@ -150,20 +151,23 @@ def main():
     ap.add_argument("--piper", help="модель Piper .onnx — черновой голос")
     ap.add_argument("--length", type=float, default=0.95, help="темп Piper (меньше — быстрее)")
     ap.add_argument("--audio", help="готовая озвучка одним файлом")
+    ap.add_argument("--beats-dir", help="папка с озвучкой по сценам: <id>.wav (например, голос-клон Higgsfield)")
     ap.add_argument("--offset", type=float, default=1.5, help="с какой секунды ролика начинается голос")
     a = ap.parse_args()
 
     spec = json.loads((ROOT / a.script).read_text() if not pathlib.Path(a.script).is_absolute() else pathlib.Path(a.script).read_text())
     beats = spec["beats"]
     gap = spec.get("voice", {}).get("gapAfter", 0.35)
-    out_dir = REPO / "source-videos" / spec["name"] / "voice"
+    out_dir = REPO / "source-videos" / spec.get("sourceDir", spec["name"]) / spec.get("voiceDir", "voice")
 
-    if a.audio:
+    if a.beats_dir:
+        parts = [load(pathlib.Path(a.beats_dir) / f"{b['id']}.wav") for b in beats]
+    elif a.audio:
         parts = split_final(load(pathlib.Path(a.audio)), beats)
     elif a.piper:
         parts = [piper(a.piper, b["say"], b.get("length", a.length)) for b in beats]
     else:
-        raise SystemExit("нужен --piper или --audio")
+        raise SystemExit("нужен --piper, --audio или --beats-dir")
 
     track, t, out = [], a.offset, []
     track.append(np.zeros(int(a.offset * SR), dtype=np.float32))
@@ -180,7 +184,8 @@ def main():
         t += dur + pause
         print(f"{b['id']}: {out[-1]['start']:.2f}–{out[-1]['end']:.2f}  " + " ".join(w["text"] for w in words))
     save(out_dir / "voice.wav", np.concatenate(track))
-    timing = {"start": a.offset, "total": round(t, 3), "source": "piper" if a.piper else pathlib.Path(a.audio).name, "beats": out}
+    src = "piper" if a.piper else (pathlib.Path(a.beats_dir).name if a.beats_dir else pathlib.Path(a.audio).name)
+    timing = {"start": a.offset, "total": round(t, 3), "source": src, "beats": out}
     (out_dir / "timing.json").write_text(json.dumps(timing, ensure_ascii=False, indent=1))
     print(f"голос {t:.1f} с → {out_dir}/voice.wav, timing.json")
 

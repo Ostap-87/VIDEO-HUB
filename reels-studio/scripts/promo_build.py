@@ -72,11 +72,12 @@ def main():
 
     spec = json.loads((ROOT / a.script).read_text())
     name = spec["name"]
-    src = REPO / "source-videos" / name
-    timing = json.loads((src / "voice" / "timing.json").read_text())
+    src = REPO / "source-videos" / spec.get("sourceDir", name)
+    rel = f"source-videos/{spec.get('sourceDir', name)}"
+    timing = json.loads((src / spec.get("voiceDir", "voice") / "timing.json").read_text())
     tb = {b["id"]: b for b in timing["beats"]}
     clips_dir = src / "clips"
-    screens = src / "screens"
+    screens = src / spec.get("screensDir", "screens")
     screens.mkdir(exist_ok=True)
 
     beats_spec = spec["beats"]
@@ -89,7 +90,7 @@ def main():
         t = tb[b["id"]]
         beat = {"id": b["id"], "part": b["part"], "visual": b.get("visual", "phone"), "start": t["start"], "end": t["end"],
                 "w0": round(W0[i], 3), "w1": round(W1[i], 3)}
-        for k in ("title", "cta", "fx", "still"):
+        for k in ("title", "cta", "fx", "still", "threeOrder"):
             if b.get(k):
                 beat[k] = b[k]
         if b.get("kicker"):
@@ -99,6 +100,11 @@ def main():
             beat["chips"] = [{"text": c["text"], "at": round(word_time(t, c["on"]), 3)} for c in b["chips"]]
         if b.get("words"):
             beat["bigWords"] = [{"text": c["text"], "at": round(word_time(t, c["on"]), 3)} for c in b["words"]]
+        if b.get("orbit"):
+            beat["orbit"] = [{**o, "at": round(word_time(t, o["on"]), 3)} for o in b["orbit"]]
+        for key in ("report", "mind"):
+            if b.get(key):
+                beat[key] = {("at" if k == "on" else k[:-2]): round(word_time(t, v), 3) for k, v in b[key].items() if k == "on" or k.endswith("On")}
         if b.get("counter"):
             c = b["counter"]
             beat["counter"] = {**c, "at": round(word_time(t, c["on"]), 3), "subAt": round(word_time(t, c["subOn"]), 3)}
@@ -140,7 +146,9 @@ def main():
                         focus.append({"at": round(r["T"], 3), "until": round(min(b0 + 0.2, r["T"] + 2.2), 3), "box": fm["box"], "beat": b["id"]})
                 if r.get("launch"):
                     beat["launch"] = round(r["T"] - 0.55, 3)
-            beat["screen"] = f"source-videos/{name}/screens/{b['id']}.mp4"
+                if r.get("flip"):
+                    beat["flip"] = round(r["T"] - r["lead"], 3)
+            beat["screen"] = f"{rel}/{screens.name}/{b['id']}.mp4"
             beat["screenDur"] = round(W1[i] + HANDLE - W0[i], 3)
             if not a.no_video:
                 render_beat(screens / f"{b['id']}.mp4", segs, clips_dir)
@@ -152,7 +160,7 @@ def main():
     captions = [{"text": w["text"], "start": w["start"], "end": w["end"]} for bt in timing["beats"] for w in bt["words"]]
     props = {
         "format": a.format,
-        "voice": f"source-videos/{name}/voice/voice.wav",
+        "voice": f"{rel}/{spec.get('voiceDir', 'voice')}/voice.wav",
         "voiceSource": timing.get("source", ""),
         "music": spec.get("music", ""),
         "total": round(total, 3),
@@ -160,8 +168,8 @@ def main():
         "taps": sorted(taps, key=lambda x: x["at"]),
         "focus": focus,
         "captions": captions,
-        "sfxDir": f"source-videos/{name}/sfx",
-        "stills": f"source-videos/{name}/stills",
+        "sfxDir": f"{rel}/sfx",
+        "stills": f"{rel}/stills",
     }
     dst = ROOT / "props" / f"{name}.json"
     dst.write_text(json.dumps(props, ensure_ascii=False, indent=1))
