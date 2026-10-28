@@ -175,9 +175,18 @@ def main():
         lead, tail = (0.0, 0.0) if sp.get("brand", "gtt") != "gtt" or sp.get("bumper") is False else (44 / 30, 35 / 30)
         cuts = [round(c + lead, 2) for c in rep["storiesAt"]]
         total = sp["speechSeconds"] + sp["ctaSeconds"] + lead + tail
-        for x0, x1 in zip([0.0] + cuts, cuts + [total]):
-            if x1 - x0 > 59.5 and not a.split:
-                print(f"AUTO_WARN часть Stories {x0:.1f}–{x1:.1f} с длиннее 59,5 с (заставка) — поставь --split", flush=True)
+        if not a.split and any(x1 - x0 > 59.5 for x0, x1 in zip([0.0] + cuts, cuts + [total])):
+            # с заставкой часть вышла длиннее 60 с — режу по концам фраз: самая поздняя точка, при которой часть ≤ 59,5 с
+            ends = [round(w["end"] + lead + 0.05, 2) for w in sp["words"] if w["text"][-1:] in ".?!"]
+            cuts, x0 = [], 0.0
+            while total - x0 > 59.5:
+                fit = [e for e in ends if x0 + 15 < e <= x0 + 59.5]
+                if not fit:
+                    print(f"AUTO_WARN часть Stories от {x0:.1f} с длиннее 59,5 с и нет конца фразы — поставь --split", flush=True)
+                    break
+                x0 = max(fit)
+                cuts.append(x0)
+            print(f"Stories: точки разреза по концам фраз {cuts}", flush=True)
         split = a.split or ",".join(map(str, cuts))
         for old in FIN.glob(f"{a.name}-stories-*.mp4"):
             old.unlink()
