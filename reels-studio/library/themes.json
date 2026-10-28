@@ -488,6 +488,32 @@
   ],
   "audienceTitle": "Для кого поездка"
  },
+ "moloko": {
+  "title": "Умные молочные заводы Китая",
+  "expedition": "/expeditions/china-dairy-smart-factories-expedition",
+  "music": "inspiring-corporate-soundrider",
+  "logos": [
+   "еда",
+   "общие"
+  ],
+  "broll": {
+   "include": "dairy|milk|yogurt|cow|cattle|farm|bottling|cold chain|cheese|livestock",
+   "tags": {
+    "молок": "dairy|milk",
+    "йогурт": "yogurt|dairy",
+    "коров": "cow|cattle|dairy farm",
+    "ферм": "farm|cattle",
+    "холодн": "cold chain"
+   }
+  },
+  "accent": [
+   "молочных",
+   "5G",
+   "роботы",
+   "йогуртов"
+  ],
+  "audienceTitle": "Для кого поездка"
+ },
  "obshchee": {
   "title": "Общая тема (визитка, анонс, новая отрасль)",
   "expedition": "/expeditions",

@@ -43,7 +43,7 @@ npm run auto -- --name 2026-10-09-avto --render                   # Reels + Stor
 ```
 
 Понимает ссылки WeTransfer, Google Drive (публичные) и обычные. Темы: `avto`, `ai`, `byt-tehnika`, `chai-kofe`,
-`konditerka`, `kosmetika`, `novyi-riteil`, `tech-giganty`, `fintech`, `tehnoparki`, `legprom`, `othody`, `glp1`, `neftehim`, `obshchee` — описаны в
+`konditerka`, `kosmetika`, `novyi-riteil`, `tech-giganty`, `fintech`, `tehnoparki`, `legprom`, `othody`, `glp1`, `neftehim`, `moloko`, `obshchee` — описаны в
 `library/themes.json`. Ролик кончается на сайте в телефоне (вернуть спикера в полный кадр в конце — `"finaleBack": true` в props);
 эмодзи сами не ставятся — только по просьбе.
 Черновик собирается сам по словам речи: логотипы брендов, города, плашки «кто я / как устроена поездка / условия»,

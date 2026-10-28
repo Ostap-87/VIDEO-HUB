@@ -4387,5 +4387,33 @@
    "shell"
   ],
   "logo": "source-videos/логотипы/энергетика/shell.png"
+ },
+ "yili": {
+  "names": [
+   "Yili",
+   "Или",
+   "Илли",
+   "伊利"
+  ],
+  "logo": "source-videos/логотипы/еда/yili.png"
+ },
+ "mengniu": {
+  "names": [
+   "Mengniu",
+   "Мэнню",
+   "Мангнио",
+   "Менгню",
+   "蒙牛"
+  ],
+  "logo": "source-videos/логотипы/еда/mengniu.svg"
+ },
+ "bright-dairy": {
+  "names": [
+   "Bright Dairy",
+   "Брат Дэйри",
+   "Брайт Дэйри",
+   "光明乳业"
+  ],
+  "logo": "source-videos/логотипы/еда/bright-dairy.png"
  }
 }
