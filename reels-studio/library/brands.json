@@ -4227,7 +4227,9 @@
   "names": [
    "GEM",
    "ГЕМ",
-   "Green Eco-Manufacture"
+   "Green Eco-Manufacture",
+   "Джем",
+   "Джема"
   ],
   "logo": "source-videos/логотипы/энергетика/gem.png"
  },
@@ -4235,7 +4237,9 @@
   "names": [
    "Shenzhen Energy",
    "Shenzhen Energy Environmental",
-   "Шэньчжэнь Энерджи"
+   "Шэньчжэнь Энерджи",
+   "Шенчжэнь Энерджи",
+   "Энерджи"
   ],
   "logo": "source-videos/логотипы/энергетика/shenzhen-energy-environmental.png"
  },
@@ -4243,7 +4247,9 @@
   "names": [
    "Grandblue",
    "Grandblue Environment",
-   "Гранд Блю"
+   "Гранд Блю",
+   "Грандблю",
+   "Гранблю"
   ],
   "logo": "source-videos/логотипы/энергетика/grandblue.png"
  },
@@ -4252,14 +4258,18 @@
    "Everbright",
    "China Everbright",
    "Everbright Environment",
-   "Эвербрайт"
+   "Эвербрайт",
+   "Чайна Эвербрайт"
   ],
   "logo": "source-videos/логотипы/энергетика/everbright-environment.png"
  },
  "shanghai-environment": {
   "names": [
    "Shanghai Environment",
-   "Shanghai Environment Group"
+   "Shanghai Environment Group",
+   "Лауган",
+   "Лаоган",
+   "Laogang"
   ],
   "logo": "source-videos/логотипы/энергетика/shanghai-environment.png"
  },
@@ -4268,7 +4278,11 @@
    "Tianying",
    "China Tianying",
    "Тяньин",
-   "Тянь Ин"
+   "Тянь Ин",
+   "Тен Йин",
+   "Тенйин",
+   "Чайна Тен Йин",
+   "Тянъин"
   ],
   "logo": "source-videos/логотипы/энергетика/tianying.png"
  }
