@@ -22,10 +22,10 @@
    "Shanghai"
   ],
   "photos": [
-   "интернет-материалы/города/варианты/shanhai-bund-b.jpg",
    "source-videos/2026-10-07-byt-tehnika/cities/shanhai-bund-vecher.jpg",
-   "интернет-материалы/города/варианты/shanhai-bund-a.jpg",
-   "source-videos/2026-10-07-byt-tehnika/cities/shanhai-bund-noch.jpg"
+   "source-videos/2026-10-07-byt-tehnika/cities/shanhai-bund-noch.jpg",
+   "интернет-материалы/города/варианты/shanhai-bund-b.jpg",
+   "интернет-материалы/города/варианты/shanhai-bund-a.jpg"
   ]
  },
  "Шэньчжэнь": {
@@ -57,9 +57,9 @@
    "Guangzhou"
   ],
   "photos": [
-   "интернет-материалы/города/варианты/guanchzhou-bashnya-a.jpg",
    "source-videos/2026-10-07-byt-tehnika/cities/guanchzhou-bashnya-noch.jpg",
-   "source-videos/2026-10-07-byt-tehnika/cities/guanchzhou-kantonskaya-bashnya.jpg"
+   "source-videos/2026-10-07-byt-tehnika/cities/guanchzhou-kantonskaya-bashnya.jpg",
+   "интернет-материалы/города/варианты/guanchzhou-bashnya-a.jpg"
   ]
  },
  "Ханчжоу": {
@@ -68,8 +68,8 @@
    "Hangzhou"
   ],
   "photos": [
-   "интернет-материалы/города/khanchzhou.jpg",
-   "source-videos/2026-10-07-byt-tehnika/cities/khanchzhou-zapadnoe-ozero.jpg"
+   "source-videos/2026-10-07-byt-tehnika/cities/khanchzhou-zapadnoe-ozero.jpg",
+   "интернет-материалы/города/khanchzhou.jpg"
   ]
  },
  "Хэфэй": {
@@ -115,8 +115,8 @@
    "Фошэня"
   ],
   "photos": [
-   "интернет-материалы/города/foshan.jpg",
-   "source-videos/2026-10-07-byt-tehnika/cities/foshan-noch-pagoda.jpg"
+   "source-videos/2026-10-07-byt-tehnika/cities/foshan-noch-pagoda.jpg",
+   "интернет-материалы/города/foshan.jpg"
   ]
  },
  "Шунде": {
@@ -137,26 +137,6 @@
   ],
   "photos": [
    "source-videos/2026-10-07-byt-tehnika/cities/syamen-bashni.jpg"
-  ]
- },
- "Чаншу": {
-  "forms": [
-   "Чаншу",
-   "Чаншэ",
-   "Changshu"
-  ],
-  "photos": [
-   "интернет-материалы/города/changshu.jpg"
-  ]
- },
- "Нинбо": {
-  "forms": [
-   "Нинбо",
-   "Нимбо",
-   "Ningbo"
-  ],
-  "photos": [
-   "интернет-материалы/города/ningbo.jpg"
   ]
  }
 }

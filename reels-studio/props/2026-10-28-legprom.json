@@ -1247,33 +1247,21 @@
  ],
  "cities": [
   {
-   "src": "интернет-материалы/города/варианты/pekin-hram-neba-v.jpg",
+   "src": "интернет-материалы/города/pekin.jpg",
    "name": "Пекин",
    "at": 12.933,
    "until": 13.373
   },
   {
-   "src": "интернет-материалы/города/варианты/shanhai-bund-a.jpg",
+   "src": "source-videos/2026-10-07-byt-tehnika/cities/shanhai-bund-noch.jpg",
    "name": "Шанхай",
    "at": 13.373,
-   "until": 14.023
-  },
-  {
-   "src": "интернет-материалы/города/changshu.jpg",
-   "name": "Чаншу",
-   "at": 14.023,
    "until": 14.473
   },
   {
-   "src": "интернет-материалы/города/khanchzhou.jpg",
+   "src": "source-videos/2026-10-07-byt-tehnika/cities/khanchzhou-zapadnoe-ozero.jpg",
    "name": "Ханчжоу",
    "at": 14.473,
-   "until": 15.033
-  },
-  {
-   "src": "интернет-материалы/города/ningbo.jpg",
-   "name": "Нинбо",
-   "at": 15.033,
    "until": 15.513
   },
   {

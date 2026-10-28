@@ -753,6 +753,9 @@ const ChipGroup: React.FC<{group: TalkReelProProps["chips"][number]; start: numb
 const FlipCard: React.FC<{group: TalkReelProProps["logos"][number]; start: number}> = ({group, start}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
+  const B = useBrand();
+  const shift = React.useContext(TopShift);
+  const sc = group.scale ?? logoScale(B.id);
   const local = (s: number) => Math.round((s - start) * fps);
   const enter = spring({frame, fps, config: {damping: 14, stiffness: 150}});
   const out = interpolate(frame, [local(group.until) - 8, local(group.until)], [1, 0], {
@@ -781,21 +784,22 @@ const FlipCard: React.FC<{group: TalkReelProProps["logos"][number]; start: numbe
         rotate: back ? "y 180deg" : undefined,
       }}
     >
-      <Img src={staticFile(src)} style={{maxHeight: 64 * (group.scale ?? 1), maxWidth: "100%", objectFit: "contain"}} />
+      <Img src={staticFile(src)} style={{maxHeight: 64 * sc, maxWidth: "100%", objectFit: "contain"}} />
     </div>
   );
   // на лицевой стороне — чётные логотипы, на обороте — нечётные
   const front = group.items[shown % 2 === 0 ? shown : Math.max(0, shown - 1)].src;
   const back = group.items[shown % 2 === 1 ? shown : Math.min(group.items.length - 1, shown + 1)].src;
-  const sc = group.scale ?? 1;
+  // крупная карточка (GTT, ×2) — справа сверху у головы, а не над субтитрами
+  const big = sc >= 1.6;
   return (
     <div
       style={{
         position: "absolute",
         right: 40,
-        top: 1405 - (sc - 1) * 90,
-        width: 330 * sc,
-        height: 124 * sc,
+        top: big ? 300 + shift * 0.6 : 1405 - (sc - 1) * 90,
+        width: big ? 560 : 330 * sc,
+        height: big ? 112 * sc : 124 * sc,
         perspective: 1200,
         opacity: out * enter,
         translate: `${(1 - enter) * 420}px 0px`,
@@ -808,6 +812,10 @@ const FlipCard: React.FC<{group: TalkReelProProps["logos"][number]; start: numbe
     </div>
   );
 };
+
+// Плашки брендов у GTT вдвое крупнее (решение пользователя 28.10.2026: «плашки брендов крупнее в 2 раза, когда
+// перечисляешь и показываешь логотипы»); у Aura и od — как были. Своё значение — logos[].scale / items[].scale.
+const logoScale = (brand: string) => (brand === "gtt" ? 2 : 1);
 
 // Карточки логотипов вылетают по бокам от головы с лёгким поворотом
 const LogoGroup: React.FC<{group: TalkReelProProps["logos"][number]; start: number}> = ({group, start}) => {
@@ -840,7 +848,8 @@ const LogoGroup: React.FC<{group: TalkReelProProps["logos"][number]; start: numb
         const s = spring({frame: frame - Math.round((l.at - start) * fps), fps, config: {damping: 12, stiffness: 140}});
         const slot = slots[i % slots.length];
         const fromLeft = "left" in slot;
-        const sc = l.scale ?? group.scale ?? 1;
+        const sc = l.scale ?? group.scale ?? logoScale(B.id);
+        const big = sc >= 1.6;
         return (
           <div
             key={i}
@@ -848,7 +857,7 @@ const LogoGroup: React.FC<{group: TalkReelProProps["logos"][number]; start: numb
               position: "absolute",
               left: fromLeft ? slot.left : undefined,
               right: fromLeft ? undefined : slot.right,
-              top: slot.top,
+              top: big && slot.top > 1000 ? 1440 : slot.top,
               background: "#FFFFFF",
               borderRadius: 28 * Math.sqrt(sc),
               padding: `${22 * Math.sqrt(sc)}px ${30 * Math.sqrt(sc)}px`,
@@ -859,7 +868,7 @@ const LogoGroup: React.FC<{group: TalkReelProProps["logos"][number]; start: numb
               scale: String(0.6 + 0.4 * s),
             }}
           >
-            <Img src={staticFile(l.src)} style={{height: 72 * sc, maxWidth: Math.min(470, 360 * sc), objectFit: "contain", display: "block"}} />
+            <Img src={staticFile(l.src)} style={{height: 72 * sc, maxWidth: big ? 380 : Math.min(470, 360 * sc), objectFit: "contain", display: "block"}} />
           </div>
         );
       })}
