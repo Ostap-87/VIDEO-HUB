@@ -147,7 +147,8 @@ def main():
             print(f"PREP_DONE {a.name}", flush=True)
             return
 
-        R = ["./node_modules/.bin/remotion", "render", "src/index.ts", "TalkReelPro"]
+        # --timeout: на загруженной машине (параллельно идут нарезка и вырезка других роликов) кадр финала не успевал за 30 с
+        R = ["./node_modules/.bin/remotion", "render", "src/index.ts", "TalkReelPro", "--timeout=120000"]
         if not a.stories_only:
             stage = "render-reels"
             reels = FIN / f"{a.name}.mp4"
