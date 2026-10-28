@@ -238,8 +238,9 @@ const TitleOne: React.FC<{it: TitleItem}> = ({it}) => {
   if (it.font === "box") return <BoxTitle it={it} />;
   const serif = (it.font ?? "serif") === "serif";
   const text = it.text.toUpperCase();
-  // кегль по длине: слово целиком в кадре (ширина буквы в долях кегля)
-  const wk = serif ? 0.74 : 0.5;
+  // кегль по длине: слово целиком в кадре (ширина буквы в долях кегля); кириллица в гротеске шире латиницы —
+  // «НАЛИЧНЫЕ» при 0,5 вылезал за края кадра («Финтех» 28.10.2026)
+  const wk = serif ? 0.74 : /[А-ЯЁ]/.test(text) ? 0.64 : 0.5;
   const size = Math.min(serif ? 160 : 300, 960 / (Math.max(3, text.length) * wk));
   const out = interpolate(t, [dur - 0.3, dur], [1, 0], clamp);
   const lift = interpolate(t, [dur - 0.3, dur], [0, -24], clamp);
