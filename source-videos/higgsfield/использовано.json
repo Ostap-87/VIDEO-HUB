@@ -772,74 +772,11 @@
    "2026-10-15-avto"
   ]
  },
- "341": {
-  "id": "36574410-c28f-4998-a46f-a04ae36cb1f0",
-  "prompt": "Photorealistic modern tech park campus with walkways connecting labs and factories, no text, no logos",
-  "videos": [
-   "2026-10-28-tehnoparki"
-  ]
- },
  "335": {
   "id": "50d6f3ab-0710-4408-9928-0210f7a5a5d2",
   "prompt": "Photorealistic small robotics startup office with a humanoid robot prototype, engineers working, no text, no logos",
   "videos": [
    "2026-10-28-tehnoparki"
-  ]
- },
- "629": {
-  "id": "54f38d5a-d32f-4209-b1ac-b5b58fb5ea7b",
-  "prompt": "Photorealistic editorial photo of a modern pharmaceutical research laboratory with scientists in white coats examining molecular structure models on a large screen, clean bright lighting, shallow depth of field, cinematic color grading, high detail. No text, no logos, no brand names, no watermarks anywhere in the image.",
-  "videos": [
-   "2026-10-28-tehnoparki"
-  ]
- },
- "14": {
-  "id": "d28c47f6-21b6-4ed3-b9cf-0ce1b10c9aa4",
-  "prompt": "Modern office interior in a Shanghai business tower, city skyline view through floor-to-ceiling window. Photorealistic, corporate documentary style, bright natural light, cool neutral palette (light grey, white, blue accents), clean uncluttered composition, calm lower third for a text overlay, no dark vignette or gradient, no text, no logos, 4:5 vertical",
-  "videos": [
-   "2026-10-28-tehnoparki"
-  ]
- },
- "39": {
-  "id": "ed4881c5-7a1c-4d8f-a049-1e2e5b3e9e5c",
-  "prompt": "Minimal light grey slide with large bold price figure space, thin blue accent line, subtle Shanghai skyline silhouette in light grey. Photorealistic, corporate documentary style, bright natural light, cool neutral palette (light grey, white, blue accents), clean uncluttered composition, calm lower third for a text overlay, no dark vignette or gradient, no text, no logos, 4:5 vertical",
-  "videos": [
-   "2026-10-28-tehnoparki"
-  ]
- },
- "226": {
-  "id": "38085050-12b7-46bd-97b3-258206116a38",
-  "prompt": "Keep the exact same woman (same face, same hairstyle, same black evening dress, same pose looking back over her shoulder with her hand raised near her shoulder) standing on the Shanghai Bund waterfront promenade, but change the time of day to dusk just before sunset: warm orange and pink sunset sky, the Pudong skyline lights just turning on, Oriental Pearl Tower and skyscrapers glowing softly against a still-bright sky, not fully dark, glamorous golden-hour atmosphere, commercial photography style, no text overlays",
-  "videos": [
-   "2026-10-28-tehnoparki"
-  ]
- },
- "93": {
-  "id": "e734f44f-2eef-4d85-9d35-9360fc12373a",
-  "prompt": "Photorealistic wide shot of a business negotiation meeting room in a Chinese environmental/waste management company headquarters. Large conference table, business delegation of 4-5 Russian business people in business suits sitting across from 3-4 Chinese executives in suits, interpreter standing beside the table gesturing, laptops and documents on the table, city skyline visible through floor-to-ceiling windows behind them, professional atmosphere, discussion moment. Ultra realistic photography, natural window lighting, 16:9 wide composition, documentary business photography style, no visible text or logos.",
-  "videos": [
-   "2026-10-28-tehnoparki"
-  ]
- },
- "257": {
-  "id": "7ee3c35d-0f08-4d65-9e07-d5baaca25933",
-  "prompt": "Photorealistic close-up of a handshake between a sleek white robotic hand and a human hand, set against a clean bright light gray studio background, soft even studio lighting, high detail on robotic joints and human skin, minimalist commercial photography style, no text overlays",
-  "videos": [
-   "2026-10-28-tehnoparki"
-  ]
- },
- "28": {
-  "id": "43d0c4a7-a6ca-4453-8bbc-e1a9fd643661",
-  "prompt": "Futuristic financial skyscraper in Shenzhen, view from below, blue sky. Photorealistic, corporate documentary style, bright natural light, cool neutral palette (light grey, white, blue accents), clean uncluttered composition, calm lower third for a text overlay, no dark vignette or gradient, no text, no logos, 4:5 vertical",
-  "videos": [
-   "2026-10-28-fintech"
-  ]
- },
- "585": {
-  "id": "3dbf4b38-1904-45e0-834c-81b733a725fa",
-  "prompt": "Photorealistic editorial photo of a street food vendor in Southeast Asia accepting a mobile QR code payment from a customer's smartphone, warm evening market lighting, cinematic color grading, high detail. No text, no logos, no brand names, no watermarks anywhere in the image.",
-  "videos": [
-   "2026-10-28-fintech"
   ]
  },
  "583": {
@@ -856,23 +793,79 @@
    "2026-10-28-fintech"
   ]
  },
- "229": {
-  "id": "adad45a1-3bbd-4f80-b368-052b8e2bc0d4",
-  "prompt": "Photorealistic photo of a stylish young Asian woman in an elegant black evening dress, standing at a three-quarter angle with her back partly turned to the camera on the Shanghai Bund waterfront promenade at dusk just before sunset, looking back over her shoulder, winking playfully, her beckoning hand raised clearly visible near her shoulder, warm orange and pink sunset sky with the Pudong skyline lights just turning on, Oriental Pearl Tower and skyscrapers glowing softly against the still-bright sky, not too dark, glamorous golden-hour atmosphere, commercial photography style, no text overlays",
-  "videos": [
-   "2026-10-28-fintech"
-  ]
- },
- "104": {
-  "id": "21202524-90a1-4ce2-9151-14c7584b2db9",
-  "prompt": "Photorealistic wide shot of a business negotiation meeting room in a Chinese petrochemical company headquarters. Large conference table, business delegation of 4-5 Russian business people in business suits sitting across from 3-4 Chinese executives in suits, interpreter standing beside the table gesturing, laptops and documents on the table, city skyline visible through floor-to-ceiling windows behind them, professional atmosphere, discussion moment. Ultra realistic photography, natural window lighting, 16:9 wide composition, documentary business photography style, no visible text or logos.",
-  "videos": [
-   "2026-10-28-fintech"
-  ]
- },
  "231": {
   "id": "89074179-c227-4819-b48c-5e1c4665d499",
   "prompt": "Photorealistic bright aerial daytime view of a large modern Chinese tech business district skyline with many glass skyscrapers along a river, clear blue sky, clean wide composition, no logos, no text, professional architecture photography",
+  "videos": [
+   "2026-10-28-fintech"
+  ]
+ },
+ "170": {
+  "id": "26353295-9600-444c-adeb-e6b4de590598",
+  "prompt": "Photorealistic wide shot of a bustling technology park campus street in China, modern glass buildings on both sides, digital billboard displays, business delegation of 4-5 people (mixed gender, Russian and Chinese, business casual attire) walking and observing, Chinese guide gesturing toward the buildings. Bright daylight, clean modern architecture, 16:9 wide composition, documentary business photography style, no readable text or logos.",
+  "videos": [
+   "2026-10-28-tehnoparki"
+  ]
+ },
+ "172": {
+  "id": "e0c83b87-2ac7-43be-8ac3-9073dd4e275b",
+  "prompt": "Photorealistic wide shot at Zhangjiang Hi-Tech Park biotech research campus in Shanghai, China, day 3 of a business expedition. Modern laboratory research building exterior with clean glass facade, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) touring the campus grounds, Chinese researcher in lab coat greeting them near the entrance. ZHANGJIANG HI-TECH PARK signage clearly visible on the building in the upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright daylight, 16:9 wide composition, documentary business photography style.",
+  "videos": [
+   "2026-10-28-tehnoparki"
+  ]
+ },
+ "169": {
+  "id": "f513ba48-ac09-4722-874d-1ce3cf8722ad",
+  "prompt": "Photorealistic wide shot at Shenzhen Hi-Tech Park in Shenzhen, China, day 5 of a business expedition. Modern tech campus with sleek skyscrapers, a DJI drone on display near the entrance, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) touring the campus, Chinese host in business suit gesturing. SHENZHEN HI-TECH PARK signage clearly visible in the upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright daylight, 16:9 wide composition, documentary business photography style.",
+  "videos": [
+   "2026-10-28-tehnoparki"
+  ]
+ },
+ "167": {
+  "id": "1442d04c-eeea-4d8e-9667-d6fb5f6239a0",
+  "prompt": "Photorealistic wide shot of a business negotiation meeting room in a Chinese tech park management office. Large conference table, business delegation of 4-5 Russian business people in business suits sitting across from 3-4 Chinese executives in suits, interpreter standing beside the table gesturing, laptops and documents on the table, city skyline visible through floor-to-ceiling windows behind them, professional atmosphere, discussion moment. Ultra realistic photography, natural window lighting, 16:9 wide composition, documentary business photography style, no visible text or logos.",
+  "videos": [
+   "2026-10-28-tehnoparki"
+  ]
+ },
+ "166": {
+  "id": "cc964a9d-7de6-485f-998a-e2bca686021f",
+  "prompt": "Photorealistic wide shot at Lingang New Area innovation zone in Shanghai, China, day 4 of a business expedition. Futuristic industrial park with a modern Tesla Gigafactory-style building visible in the background, wide clean roads, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) touring the area, Chinese host gesturing toward the facility. LINGANG signage clearly visible in the upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright daylight, 16:9 wide composition, documentary business photography style.",
+  "videos": [
+   "2026-10-28-tehnoparki"
+  ]
+ },
+ "171": {
+  "id": "348dffc3-7a3f-42e1-8985-19ae3f731487",
+  "prompt": "Photorealistic wide cover shot of a business expedition to Chinese tech parks and innovation zones. Dynamic low-angle view of a futuristic tech park campus with sleek glass office towers, landscaped walkways, greenery between buildings. A confident business delegation of 3-4 people (mixed gender, Russian and Chinese, business casual attire) walking through the campus. Bright daylight, upper third of frame kept relatively open for text overlay, no readable text or logos anywhere in the image. Ultra realistic photography, 16:9 wide composition, editorial travel/business photography style.",
+  "videos": [
+   "2026-10-28-tehnoparki"
+  ]
+ },
+ "138": {
+  "id": "81225088-48f8-4a0c-92ae-5a5a90cbd921",
+  "prompt": "Photorealistic wide shot inside a modern Chinese fintech company innovation lab, large digital dashboard walls showing payment transaction data and charts, sleek glass meeting pods, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) observing a presentation, Chinese engineer explaining the technology. Ultra realistic photography, 16:9 wide composition, documentary business photography style, no readable text or logos.",
+  "videos": [
+   "2026-10-28-fintech"
+  ]
+ },
+ "131": {
+  "id": "6166e422-3378-42ed-8da3-7f58cf5c6121",
+  "prompt": "Photorealistic wide shot at OneConnect fintech platform office in Shenzhen's Nanshan district, China, day 3 of a business expedition. Modern open-plan office with large screens showing banking technology dashboards, LexinFintech branding visible on a nearby meeting room glass wall, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) touring the office, Chinese host gesturing. ONECONNECT logo clearly visible on wall signage in upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright lighting, 16:9 wide composition, documentary business photography style.",
+  "videos": [
+   "2026-10-28-fintech"
+  ]
+ },
+ "132": {
+  "id": "0ad35af3-0762-4a27-bd29-c6ed7434e194",
+  "prompt": "Photorealistic wide shot at Ant Group headquarters campus (\"Ant Z-Space\") in Hangzhou's Xihu district, China, day 4 of a business expedition. Futuristic modern corporate campus with sleek architecture, Alipay-style digital payment interface visible on a large lobby display, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) touring the campus, Chinese host gesturing. ANT GROUP logo clearly visible on wall signage in upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright daylight, 16:9 wide composition, documentary business photography style.",
+  "videos": [
+   "2026-10-28-fintech"
+  ]
+ },
+ "137": {
+  "id": "a32f9c2f-097d-49f0-95b1-3f339d7ed6e6",
+  "prompt": "Photorealistic wide cover shot of a business expedition to China's fintech industry. Dynamic scene inside a modern fintech company office with large screens showing digital payment interfaces and financial data visualizations, sleek open-plan workspace, blue and green accent lighting. A confident business delegation of 3-4 people (mixed gender, Russian and Chinese, business casual attire) observing the technology. Upper third of frame kept relatively open for text overlay, no readable text or logos anywhere in the image. Ultra realistic photography, 16:9 wide composition, editorial travel/business photography style.",
   "videos": [
    "2026-10-28-fintech"
   ]

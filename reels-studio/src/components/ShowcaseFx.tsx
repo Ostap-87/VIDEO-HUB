@@ -521,7 +521,7 @@ const ChartBody: React.FC<{it: ChartItem; t: number; height: number}> = ({it, t,
         const isHi = b.hi ?? i === 0;
         return (
           <div key={i} style={{position: "absolute", left: X0 + bw * i + bw * 0.16, width: bw * 0.68, top: 0, height: H + 50}}>
-            <div style={{position: "absolute", left: 0, right: 0, top: H - h - 48, textAlign: "center", fontFamily: B.bodyFont, fontWeight: 800, fontSize: 38, color: "#FFF", opacity: k}}>{Math.round(b.value * k)}</div>
+            <div style={{position: "absolute", left: 0, right: 0, top: H - h - 48, textAlign: "center", fontFamily: B.bodyFont, fontWeight: 800, fontSize: 38, color: "#FFF", opacity: k}}>{Math.round(b.value * Math.min(1, k))}</div>
             <div style={{position: "absolute", left: 0, right: 0, top: H - h, height: h, background: isHi ? hi : B.id === "aura" ? "#8A8A8A" : B.accent, borderRadius: B.square ? 0 : "6px 6px 0 0", boxShadow: isHi ? `0 0 30px ${hi}88` : undefined}} />
             <div style={{position: "absolute", left: -20, right: -20, top: H + 12, textAlign: "center", fontFamily: B.bodyFont, fontWeight: 600, fontSize: 25, color: "rgba(255,255,255,0.85)", whiteSpace: "nowrap"}}>{b.label}</div>
           </div>

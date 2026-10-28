@@ -1,0 +1,1421 @@
+{
+ "mediaSrc": "source-videos/2026-10-28-fintech/_work/fintech.cut.mp4",
+ "cutoutSrc": "source-videos/2026-10-28-fintech/_work/fintech.cut.alpha.webm",
+ "words": [
+  {
+   "text": "Для",
+   "start": -0.1,
+   "end": 0.1
+  },
+  {
+   "text": "многих",
+   "start": 0.1,
+   "end": 0.3
+  },
+  {
+   "text": "не",
+   "start": 0.3,
+   "end": 0.43
+  },
+  {
+   "text": "секрет,",
+   "start": 0.43,
+   "end": 0.93
+  },
+  {
+   "text": "что",
+   "start": 0.93,
+   "end": 1.09
+  },
+  {
+   "text": "в",
+   "start": 1.09,
+   "end": 1.17
+  },
+  {
+   "text": "Китае",
+   "start": 1.17,
+   "end": 1.54
+  },
+  {
+   "text": "можно",
+   "start": 1.54,
+   "end": 1.81
+  },
+  {
+   "text": "прожить",
+   "start": 1.81,
+   "end": 2.27
+  },
+  {
+   "text": "месяц",
+   "start": 2.27,
+   "end": 2.6
+  },
+  {
+   "text": "без",
+   "start": 2.6,
+   "end": 2.8
+  },
+  {
+   "text": "наличных",
+   "start": 2.8,
+   "end": 3.33
+  },
+  {
+   "text": "и",
+   "start": 3.33,
+   "end": 3.41
+  },
+  {
+   "text": "без",
+   "start": 3.41,
+   "end": 3.6
+  },
+  {
+   "text": "банковской",
+   "start": 3.6,
+   "end": 4.32
+  },
+  {
+   "text": "карты.",
+   "start": 4.32,
+   "end": 4.76
+  },
+  {
+   "text": "Нужен",
+   "start": 4.76,
+   "end": 5.087
+  },
+  {
+   "text": "только",
+   "start": 5.087,
+   "end": 5.347
+  },
+  {
+   "text": "телефон.",
+   "start": 5.347,
+   "end": 6.007
+  },
+  {
+   "text": "Больше",
+   "start": 6.007,
+   "end": 6.397
+  },
+  {
+   "text": "миллиарда",
+   "start": 6.397,
+   "end": 6.987
+  },
+  {
+   "text": "человек",
+   "start": 6.987,
+   "end": 7.457
+  },
+  {
+   "text": "платят",
+   "start": 7.457,
+   "end": 7.847
+  },
+  {
+   "text": "через",
+   "start": 7.847,
+   "end": 8.167
+  },
+  {
+   "text": "Alipay.",
+   "start": 8.167,
+   "end": 8.527
+  },
+  {
+   "text": "Давайте",
+   "start": 8.527,
+   "end": 8.92
+  },
+  {
+   "text": "посмотрим,",
+   "start": 8.92,
+   "end": 9.62
+  },
+  {
+   "text": "как",
+   "start": 9.62,
+   "end": 9.84
+  },
+  {
+   "text": "это",
+   "start": 9.84,
+   "end": 10.06
+  },
+  {
+   "text": "устроено",
+   "start": 10.06,
+   "end": 10.63
+  },
+  {
+   "text": "изнутри.",
+   "start": 10.63,
+   "end": 11.32
+  },
+  {
+   "text": "Все",
+   "start": 11.32,
+   "end": 11.63
+  },
+  {
+   "text": "пять",
+   "start": 11.63,
+   "end": 11.71
+  },
+  {
+   "text": "финтех-гигантов",
+   "start": 11.71,
+   "end": 12.66
+  },
+  {
+   "text": "Китая",
+   "start": 12.66,
+   "end": 13.05
+  },
+  {
+   "text": "плюс",
+   "start": 13.05,
+   "end": 13.37
+  },
+  {
+   "text": "три",
+   "start": 13.37,
+   "end": 13.61
+  },
+  {
+   "text": "сильные",
+   "start": 13.61,
+   "end": 14.16
+  },
+  {
+   "text": "платформы.",
+   "start": 14.16,
+   "end": 15.1
+  },
+  {
+   "text": "Восемь",
+   "start": 15.1,
+   "end": 15.46
+  },
+  {
+   "text": "компаний",
+   "start": 15.46,
+   "end": 15.96
+  },
+  {
+   "text": "за",
+   "start": 15.96,
+   "end": 16.13
+  },
+  {
+   "text": "пять",
+   "start": 16.13,
+   "end": 16.39
+  },
+  {
+   "text": "дней.",
+   "start": 16.39,
+   "end": 16.86
+  },
+  {
+   "text": "Пекин,",
+   "start": 16.86,
+   "end": 17.233
+  },
+  {
+   "text": "Шэньчжэнь,",
+   "start": 17.233,
+   "end": 18.043
+  },
+  {
+   "text": "Ханчжоу",
+   "start": 18.043,
+   "end": 18.673
+  },
+  {
+   "text": "и",
+   "start": 18.673,
+   "end": 18.763
+  },
+  {
+   "text": "Шанхай.",
+   "start": 18.763,
+   "end": 19.473
+  },
+  {
+   "text": "Ant",
+   "start": 19.473,
+   "end": 19.653
+  },
+  {
+   "text": "Group",
+   "start": 19.653,
+   "end": 19.833
+  },
+  {
+   "text": "в",
+   "start": 19.833,
+   "end": 19.913
+  },
+  {
+   "text": "Ханчжоу,",
+   "start": 19.913,
+   "end": 20.667
+  },
+  {
+   "text": "создатель",
+   "start": 20.667,
+   "end": 21.757
+  },
+  {
+   "text": "Alipay.",
+   "start": 21.757,
+   "end": 22.347
+  },
+  {
+   "text": "Tencent,",
+   "start": 22.347,
+   "end": 22.65
+  },
+  {
+   "text": "WeChat",
+   "start": 22.65,
+   "end": 23.51
+  },
+  {
+   "text": "Pay.",
+   "start": 23.51,
+   "end": 23.92
+  },
+  {
+   "text": "JD",
+   "start": 23.92,
+   "end": 24.07
+  },
+  {
+   "text": "Digits,",
+   "start": 24.07,
+   "end": 24.38
+  },
+  {
+   "text": "финтех,",
+   "start": 24.38,
+   "end": 25.46
+  },
+  {
+   "text": "JD.com.",
+   "start": 25.46,
+   "end": 26.4
+  },
+  {
+   "text": "Du",
+   "start": 26.4,
+   "end": 26.48
+  },
+  {
+   "text": "Xiaoman,",
+   "start": 26.48,
+   "end": 26.827
+  },
+  {
+   "text": "бывший",
+   "start": 26.827,
+   "end": 27.127
+  },
+  {
+   "text": "финансовый",
+   "start": 27.127,
+   "end": 27.887
+  },
+  {
+   "text": "блок",
+   "start": 27.887,
+   "end": 28.227
+  },
+  {
+   "text": "Baidu.",
+   "start": 28.227,
+   "end": 28.787
+  },
+  {
+   "text": "И",
+   "start": 28.787,
+   "end": 28.937
+  },
+  {
+   "text": "Lufax",
+   "start": 28.937,
+   "end": 29.347
+  },
+  {
+   "text": "из",
+   "start": 29.347,
+   "end": 29.427
+  },
+  {
+   "text": "группы",
+   "start": 29.427,
+   "end": 30.147
+  },
+  {
+   "text": "Ping An.",
+   "start": 30.147,
+   "end": 30.707
+  },
+  {
+   "text": "А",
+   "start": 30.707,
+   "end": 30.857
+  },
+  {
+   "text": "еще",
+   "start": 30.857,
+   "end": 31.047
+  },
+  {
+   "text": "OneConnect,",
+   "start": 31.047,
+   "end": 31.557
+  },
+  {
+   "text": "облако",
+   "start": 31.557,
+   "end": 32.067
+  },
+  {
+   "text": "для",
+   "start": 32.067,
+   "end": 32.317
+  },
+  {
+   "text": "крупных",
+   "start": 32.317,
+   "end": 32.927
+  },
+  {
+   "text": "банков",
+   "start": 32.927,
+   "end": 33.487
+  },
+  {
+   "text": "Китая.",
+   "start": 33.487,
+   "end": 34.107
+  },
+  {
+   "text": "Lexin",
+   "start": 34.107,
+   "end": 34.357
+  },
+  {
+   "text": "Fintech,",
+   "start": 34.357,
+   "end": 34.673
+  },
+  {
+   "text": "рассрочка",
+   "start": 34.673,
+   "end": 35.593
+  },
+  {
+   "text": "для",
+   "start": 35.593,
+   "end": 35.933
+  },
+  {
+   "text": "молодежи.",
+   "start": 35.933,
+   "end": 36.953
+  },
+  {
+   "text": "И",
+   "start": 36.953,
+   "end": 37.103
+  },
+  {
+   "text": "East Money,",
+   "start": 37.103,
+   "end": 37.513
+  },
+  {
+   "text": "крупнейший",
+   "start": 37.513,
+   "end": 38.203
+  },
+  {
+   "text": "финансовый",
+   "start": 38.203,
+   "end": 39.003
+  },
+  {
+   "text": "портал",
+   "start": 39.003,
+   "end": 39.483
+  },
+  {
+   "text": "страны.",
+   "start": 39.483,
+   "end": 40.193
+  },
+  {
+   "text": "Вы",
+   "start": 40.193,
+   "end": 40.753
+  },
+  {
+   "text": "увидите",
+   "start": 40.753,
+   "end": 40.833
+  },
+  {
+   "text": "платежи",
+   "start": 40.833,
+   "end": 40.913
+  },
+  {
+   "text": "цифровой",
+   "start": 40.913,
+   "end": 41.407
+  },
+  {
+   "text": "банкинг",
+   "start": 41.407,
+   "end": 42.187
+  },
+  {
+   "text": "и",
+   "start": 42.187,
+   "end": 42.297
+  },
+  {
+   "text": "кредитования",
+   "start": 42.297,
+   "end": 43.697
+  },
+  {
+   "text": "изнутри.",
+   "start": 43.697,
+   "end": 44.687
+  },
+  {
+   "text": "Вы",
+   "start": 44.687,
+   "end": 44.847
+  },
+  {
+   "text": "поймете,",
+   "start": 44.847,
+   "end": 45.507
+  },
+  {
+   "text": "какие",
+   "start": 45.507,
+   "end": 45.937
+  },
+  {
+   "text": "решения",
+   "start": 45.937,
+   "end": 46.527
+  },
+  {
+   "text": "уже",
+   "start": 46.527,
+   "end": 46.757
+  },
+  {
+   "text": "работают",
+   "start": 46.757,
+   "end": 47.467
+  },
+  {
+   "text": "на",
+   "start": 47.467,
+   "end": 47.587
+  },
+  {
+   "text": "сотни",
+   "start": 47.587,
+   "end": 47.997
+  },
+  {
+   "text": "миллионов",
+   "start": 47.997,
+   "end": 48.747
+  },
+  {
+   "text": "людей.",
+   "start": 48.747,
+   "end": 49.247
+  },
+  {
+   "text": "И",
+   "start": 49.247,
+   "end": 49.397
+  },
+  {
+   "text": "что",
+   "start": 49.397,
+   "end": 49.787
+  },
+  {
+   "text": "из",
+   "start": 49.787,
+   "end": 49.867
+  },
+  {
+   "text": "них",
+   "start": 49.867,
+   "end": 50.057
+  },
+  {
+   "text": "можно",
+   "start": 50.057,
+   "end": 50.507
+  },
+  {
+   "text": "адаптировать",
+   "start": 50.507,
+   "end": 51.607
+  },
+  {
+   "text": "у",
+   "start": 51.607,
+   "end": 51.697
+  },
+  {
+   "text": "себя.",
+   "start": 51.697,
+   "end": 52.247
+  },
+  {
+   "text": "Меня",
+   "start": 52.383,
+   "end": 52.793
+  },
+  {
+   "text": "зовут",
+   "start": 52.793,
+   "end": 53.073
+  },
+  {
+   "text": "Остап",
+   "start": 53.073,
+   "end": 53.427
+  },
+  {
+   "text": "Доценко.",
+   "start": 53.427,
+   "end": 54.187
+  },
+  {
+   "text": "Я",
+   "start": 54.187,
+   "end": 54.747
+  },
+  {
+   "text": "работал",
+   "start": 54.747,
+   "end": 55.077
+  },
+  {
+   "text": "в",
+   "start": 55.077,
+   "end": 55.247
+  },
+  {
+   "text": "Alibaba",
+   "start": 55.247,
+   "end": 55.567
+  },
+  {
+   "text": "и",
+   "start": 55.567,
+   "end": 56.057
+  },
+  {
+   "text": "Сбере.",
+   "start": 56.057,
+   "end": 56.547
+  },
+  {
+   "text": "Так",
+   "start": 56.547,
+   "end": 56.777
+  },
+  {
+   "text": "что",
+   "start": 56.777,
+   "end": 57.107
+  },
+  {
+   "text": "эту",
+   "start": 57.107,
+   "end": 57.237
+  },
+  {
+   "text": "тему",
+   "start": 57.237,
+   "end": 57.527
+  },
+  {
+   "text": "знаю",
+   "start": 57.527,
+   "end": 57.907
+  },
+  {
+   "text": "с",
+   "start": 57.907,
+   "end": 57.987
+  },
+  {
+   "text": "обеих",
+   "start": 57.987,
+   "end": 58.387
+  },
+  {
+   "text": "сторон.",
+   "start": 58.387,
+   "end": 58.967
+  },
+  {
+   "text": "С",
+   "start": 58.967,
+   "end": 59.117
+  },
+  {
+   "text": "Китаем",
+   "start": 59.117,
+   "end": 59.4
+  },
+  {
+   "text": "я",
+   "start": 59.4,
+   "end": 59.5
+  },
+  {
+   "text": "более",
+   "start": 59.5,
+   "end": 60.06
+  },
+  {
+   "text": "10",
+   "start": 60.06,
+   "end": 60.3
+  },
+  {
+   "text": "лет",
+   "start": 60.3,
+   "end": 60.66
+  },
+  {
+   "text": "и",
+   "start": 60.66,
+   "end": 60.74
+  },
+  {
+   "text": "свободно",
+   "start": 60.74,
+   "end": 61.5
+  },
+  {
+   "text": "говорю",
+   "start": 61.5,
+   "end": 62.1
+  },
+  {
+   "text": "по-китайски.",
+   "start": 62.1,
+   "end": 63.36
+  },
+  {
+   "text": "Перелеты",
+   "start": 63.36,
+   "end": 64.03
+  },
+  {
+   "text": "и",
+   "start": 64.03,
+   "end": 64.11
+  },
+  {
+   "text": "скоростной",
+   "start": 64.11,
+   "end": 64.25
+  },
+  {
+   "text": "поезд",
+   "start": 64.25,
+   "end": 64.67
+  },
+  {
+   "text": "включены.",
+   "start": 64.67,
+   "end": 65.56
+  },
+  {
+   "text": "На",
+   "start": 65.56,
+   "end": 65.753
+  },
+  {
+   "text": "каждой",
+   "start": 65.753,
+   "end": 66.003
+  },
+  {
+   "text": "встрече",
+   "start": 66.003,
+   "end": 66.723
+  },
+  {
+   "text": "я",
+   "start": 66.723,
+   "end": 66.823
+  },
+  {
+   "text": "рядом.",
+   "start": 66.823,
+   "end": 67.533
+  },
+  {
+   "text": "Цены",
+   "start": 67.533,
+   "end": 67.73
+  },
+  {
+   "text": "прозрачные.",
+   "start": 67.73,
+   "end": 68.72
+  },
+  {
+   "text": "Все",
+   "start": 68.72,
+   "end": 68.853
+  },
+  {
+   "text": "на",
+   "start": 68.853,
+   "end": 69.123
+  },
+  {
+   "text": "русском",
+   "start": 69.123,
+   "end": 69.783
+  },
+  {
+   "text": "языке.",
+   "start": 69.783,
+   "end": 70.413
+  },
+  {
+   "text": "Единственное,",
+   "start": 70.797,
+   "end": 71.457
+  },
+  {
+   "text": "что",
+   "start": 71.457,
+   "end": 71.627
+  },
+  {
+   "text": "в",
+   "start": 71.627,
+   "end": 71.707
+  },
+  {
+   "text": "этой",
+   "start": 71.707,
+   "end": 71.897
+  },
+  {
+   "text": "поездке",
+   "start": 71.897,
+   "end": 72.297
+  },
+  {
+   "text": "оплачивается",
+   "start": 72.297,
+   "end": 72.957
+  },
+  {
+   "text": "наличными,",
+   "start": 72.957,
+   "end": 73.607
+  },
+  {
+   "text": "это",
+   "start": 73.607,
+   "end": 73.857
+  },
+  {
+   "text": "ваше",
+   "start": 73.857,
+   "end": 74.01
+  },
+  {
+   "text": "удивление.",
+   "start": 74.01,
+   "end": 74.9
+  },
+  {
+   "text": "И",
+   "start": 74.9,
+   "end": 75.05
+  },
+  {
+   "text": "поверьте,",
+   "start": 75.05,
+   "end": 75.65
+  },
+  {
+   "text": "его",
+   "start": 75.65,
+   "end": 75.95
+  },
+  {
+   "text": "будет",
+   "start": 75.95,
+   "end": 76.42
+  },
+  {
+   "text": "много.",
+   "start": 76.42,
+   "end": 77.08
+  },
+  {
+   "text": "Банки,",
+   "start": 77.08,
+   "end": 77.8
+  },
+  {
+   "text": "финтех-стартапы,",
+   "start": 77.8,
+   "end": 77.88
+  },
+  {
+   "text": "платежные",
+   "start": 77.88,
+   "end": 78.947
+  },
+  {
+   "text": "сервисы",
+   "start": 78.947,
+   "end": 79.667
+  },
+  {
+   "text": "и",
+   "start": 79.667,
+   "end": 79.747
+  },
+  {
+   "text": "инвесторы.",
+   "start": 79.747,
+   "end": 80.987
+  },
+  {
+   "text": "Заходите",
+   "start": 80.987,
+   "end": 81.787
+  },
+  {
+   "text": "на",
+   "start": 81.787,
+   "end": 82.047
+  },
+  {
+   "text": "сайт",
+   "start": 82.047,
+   "end": 82.387
+  },
+  {
+   "text": "Global",
+   "start": 82.387,
+   "end": 82.687
+  },
+  {
+   "text": "Tech",
+   "start": 82.687,
+   "end": 82.947
+  },
+  {
+   "text": "Tour",
+   "start": 82.947,
+   "end": 83.127
+  },
+  {
+   "text": "или",
+   "start": 83.127,
+   "end": 83.347
+  },
+  {
+   "text": "пишите",
+   "start": 83.347,
+   "end": 83.787
+  },
+  {
+   "text": "мне",
+   "start": 83.787,
+   "end": 84.007
+  },
+  {
+   "text": "в",
+   "start": 84.007,
+   "end": 84.087
+  },
+  {
+   "text": "личные",
+   "start": 84.087,
+   "end": 84.517
+  },
+  {
+   "text": "сообщения.",
+   "start": 84.517,
+   "end": 85.367
+  },
+  {
+   "text": "Пришлю",
+   "start": 85.367,
+   "end": 85.937
+  },
+  {
+   "text": "полную",
+   "start": 85.937,
+   "end": 86.427
+  },
+  {
+   "text": "информацию.",
+   "start": 86.427,
+   "end": 87.407
+  }
+ ],
+ "accentWords": [
+  "10",
+  "alibaba",
+  "ant",
+  "baidu",
+  "digits",
+  "du",
+  "fintech",
+  "group",
+  "istmany",
+  "jd",
+  "jdcom",
+  "lexin",
+  "lufox",
+  "oneconnect",
+  "pingan",
+  "tencent",
+  "xiaoman",
+  "банки",
+  "восемь",
+  "лично",
+  "никаких",
+  "пекин",
+  "платежи",
+  "прозрачные",
+  "пять",
+  "сайт",
+  "сбере",
+  "три",
+  "финтех",
+  "ханчжоу",
+  "шанхай"
+ ],
+ "cuts": [
+  0.13,
+  4.7,
+  8.67,
+  11.43,
+  15.13,
+  17.0,
+  19.57,
+  20.6,
+  22.47,
+  24.03,
+  26.37,
+  34.23,
+  40.23,
+  52.43,
+  53.23,
+  59.1,
+  63.37,
+  65.73,
+  67.67,
+  68.83,
+  70.57,
+  73.8,
+  75.03,
+  77.3,
+  87.53,
+  87.83
+ ],
+ "chips": [
+  {
+   "wrap": false,
+   "items": [
+    {
+     "text": "Остап Доценко",
+     "at": 53.07
+    }
+   ],
+   "until": 55.19
+  },
+  {
+   "wrap": false,
+   "items": [
+    {
+     "text": "Свободный китайский",
+     "at": 60.74
+    }
+   ],
+   "until": 64.76
+  }
+ ],
+ "logos": [
+  {
+   "items": [
+    {
+     "src": "source-videos/логотипы/финансы/ant-group.svg",
+     "at": 19.47
+    }
+   ],
+   "until": 20.83
+  },
+  {
+   "items": [
+    {
+     "src": "source-videos/логотипы/общие/tencent.svg",
+     "at": 22.35
+    },
+    {
+     "src": "source-videos/логотипы/общие/wechat.png",
+     "at": 22.65
+    },
+    {
+     "src": "source-videos/логотипы/ритейл/jd.svg",
+     "at": 23.92
+    },
+    {
+     "src": "source-videos/логотипы/финансы/du-xiaoman.png",
+     "at": 26.4
+    }
+   ],
+   "until": 27.83
+  },
+  {
+   "items": [
+    {
+     "src": "source-videos/логотипы/общие/baidu.png",
+     "at": 28.23
+    },
+    {
+     "src": "source-videos/логотипы/финансы/lufax.png",
+     "at": 28.94
+    },
+    {
+     "src": "source-videos/логотипы/финансы/ping-an.svg",
+     "at": 30.15
+    },
+    {
+     "src": "source-videos/логотипы/финансы/oneconnect.png",
+     "at": 31.05
+    }
+   ],
+   "until": 32.56
+  },
+  {
+   "items": [
+    {
+     "src": "source-videos/логотипы/финансы/lexin.png",
+     "at": 34.11
+    }
+   ],
+   "until": 35.67
+  },
+  {
+   "items": [
+    {
+     "src": "source-videos/логотипы/финансы/eastmoney.png",
+     "at": 37.1
+    }
+   ],
+   "until": 38.51
+  },
+  {
+   "items": [
+    {
+     "src": "source-videos/логотипы/общие/alibaba.svg",
+     "at": 55.25
+    },
+    {
+     "src": "source-videos/логотипы/общие/sber.png",
+     "at": 56.06
+    }
+   ],
+   "until": 57.35,
+   "flip": true
+  }
+ ],
+ "numbers": [
+  {
+   "text": "1 млрд+",
+   "sub": "человек платят через Alipay",
+   "at": 6.11,
+   "until": 9.03,
+   "count": true
+  },
+  {
+   "text": "10+",
+   "sub": "лет работы с Китаем",
+   "at": 60.06,
+   "until": 60.69
+  }
+ ],
+ "broll": [
+  {
+   "src": "source-videos/2026-10-28-fintech/broll/hf-137.png",
+   "at": -0.1,
+   "until": 2.6,
+   "transition": "circle"
+  },
+  {
+   "src": "source-videos/2026-10-28-fintech/broll/hf-138.png",
+   "at": 8.53,
+   "until": 11.32,
+   "transition": "slide"
+  },
+  {
+   "src": "source-videos/2026-10-28-fintech/broll/hf-132.png",
+   "at": 19.47,
+   "until": 21.97,
+   "transition": "zoom"
+  },
+  {
+   "src": "source-videos/2026-10-28-fintech/broll/hf-583.png",
+   "at": 23.92,
+   "until": 26.4,
+   "transition": "wipe"
+  },
+  {
+   "src": "source-videos/2026-10-28-fintech/broll/hf-683.png",
+   "at": 34.11,
+   "until": 36.95,
+   "transition": "fade"
+  },
+  {
+   "src": "source-videos/2026-10-28-fintech/broll/hf-131.png",
+   "at": 44.69,
+   "until": 49.19,
+   "transition": "circle"
+  },
+  {
+   "src": "source-videos/2026-10-28-fintech/broll/hf-231.png",
+   "at": 63.36,
+   "until": 65.56,
+   "transition": "slide"
+  }
+ ],
+ "cities": [
+  {
+   "src": "интернет-материалы/города/pekin.jpg",
+   "name": "Пекин",
+   "at": 16.86,
+   "until": 17.233
+  },
+  {
+   "src": "интернет-материалы/города/shenzhen.jpg",
+   "name": "Шэньчжэнь",
+   "at": 17.233,
+   "until": 18.043
+  },
+  {
+   "src": "интернет-материалы/города/khanchzhou.jpg",
+   "name": "Ханчжоу",
+   "at": 18.043,
+   "until": 18.763
+  },
+  {
+   "src": "source-videos/2026-10-07-byt-tehnika/cities/shanhai-bund-noch.jpg",
+   "name": "Шанхай",
+   "at": 18.763,
+   "until": 19.82
+  }
+ ],
+ "checklists": [
+  {
+   "title": "Условия",
+   "items": [
+    {
+     "text": "Прозрачные цены",
+     "at": 67.73
+    },
+    {
+     "text": "Всё на русском языке",
+     "at": 69.12
+    }
+   ],
+   "until": 71.51
+  },
+  {
+   "title": "Для кого поездка",
+   "items": [
+    {
+     "text": "Банки",
+     "at": 77.08
+    },
+    {
+     "text": "Финтех-стартапы",
+     "at": 77.8
+    },
+    {
+     "text": "Платежные сервисы",
+     "at": 77.88
+    },
+    {
+     "text": "Инвесторы",
+     "at": 79.75
+    }
+   ],
+   "until": 81.59
+  }
+ ],
+ "zooms": [
+  {
+   "at": 4.76,
+   "kind": "push",
+   "amount": 0.06,
+   "hold": 1.6
+  },
+  {
+   "at": 11.32,
+   "kind": "push",
+   "amount": 0.06,
+   "hold": 1.6
+  },
+  {
+   "at": 22.35,
+   "kind": "push",
+   "amount": 0.06,
+   "hold": 1.6
+  },
+  {
+   "at": 28.79,
+   "kind": "push",
+   "amount": 0.06,
+   "hold": 1.6
+  },
+  {
+   "at": 34.11,
+   "kind": "push",
+   "amount": 0.06,
+   "hold": 1.6
+  },
+  {
+   "at": 40.19,
+   "kind": "push",
+   "amount": 0.06,
+   "hold": 1.6
+  },
+  {
+   "at": 49.25,
+   "kind": "push",
+   "amount": 0.06,
+   "hold": 1.6
+  },
+  {
+   "at": 60.06,
+   "kind": "punch",
+   "amount": 0.16,
+   "hold": 0.6
+  },
+  {
+   "at": 65.56,
+   "kind": "push",
+   "amount": 0.06,
+   "hold": 1.6
+  },
+  {
+   "at": 74.9,
+   "kind": "push",
+   "amount": 0.06,
+   "hold": 1.6
+  }
+ ],
+ "sfx": {
+  "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+  "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav"
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+  "volume": 0.078,
+  "outroVolume": 0.18
+ },
+ "speechSeconds": 87.557,
+ "site": {
+  "at": 80.99,
+  "home": "source-videos/2026-10-07-byt-tehnika/site/home-mobile-full.png",
+  "catalog": "source-videos/2026-10-07-byt-tehnika/site/expeditions-top.png",
+  "route": [
+   "source-videos/сайт/маршруты/china-fintech-giants-expedition/day-day1.png"
+  ]
+ },
+ "cta": "Экспедиции",
+ "ctaSeconds": 3,
+ "showSafeZone": false,
+ "format": "reels",
+ "focus": {
+  "x": 487,
+  "y": 820
+ },
+ "titles": [
+  {
+   "at": 2.75,
+   "until": 5.95,
+   "text": "Наличные",
+   "script": "только телефон",
+   "font": "grotesk",
+   "y": 380,
+   "plane": "front",
+   "strikeAt": 0.8
+  }
+ ],
+ "widgets": [
+  {
+   "at": 11.27,
+   "until": 16.76,
+   "items": [
+    {
+     "kind": "stat",
+     "value": "8",
+     "label": "компаний: 5 гигантов + 3 платформы",
+     "sub": "Программа"
+    },
+    {
+     "kind": "ring",
+     "value": "5",
+     "label": "дней"
+    },
+    {
+     "kind": "badge",
+     "value": "4",
+     "label": "города"
+    }
+   ]
+  }
+ ],
+ "emojis": [
+  {
+   "at": 74.01,
+   "until": 75.81,
+   "src": "интернет-материалы/эмодзи/вау.webp",
+   "anim": "pop"
+  }
+ ],
+ "grade": "brightness(1.03) contrast(1.06) saturate(1.12) sepia(0.05)"
+}
