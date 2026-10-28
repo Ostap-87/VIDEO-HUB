@@ -3946,7 +3946,11 @@
    "Innovent",
    "Innovent Biologics",
    "Иновент",
-   "信达生物"
+   "信达生物",
+   "Инновент",
+   "и новинты",
+   "новинты",
+   "Новинт"
   ],
   "logo": "source-videos/логотипы/медицина/innovent.png"
  },
@@ -3955,7 +3959,9 @@
    "Huadong Medicine",
    "Huadong",
    "Хуадун",
-   "华东医药"
+   "华东医药",
+   "Хуа Донг",
+   "Хуадонг"
   ],
   "logo": "source-videos/логотипы/медицина/huadong-medicine.png"
  },
@@ -3964,7 +3970,9 @@
    "Jiuyuan Gene",
    "Jiuyuan",
    "Цзююань",
-   "九源基因"
+   "九源基因",
+   "Чью Юэн",
+   "Джиуюань"
   ],
   "logo": "source-videos/логотипы/медицина/jiuyuan-gene.png"
  },
@@ -3973,7 +3981,8 @@
    "Langhua",
    "Langhua Pharma",
    "Ланхуа",
-   "朗华制药"
+   "朗华制药",
+   "Ланг Хуа"
   ],
   "logo": "source-videos/логотипы/медицина/langhua.png"
  },
@@ -3981,7 +3990,9 @@
   "names": [
    "Sciwind",
    "Sciwind Biosciences",
-   "先为达生物"
+   "先为达生物",
+   "Скай Винд",
+   "Сайвинд"
   ],
   "logo": "source-videos/логотипы/медицина/sciwind.png"
  },
@@ -3990,7 +4001,10 @@
    "WuXi AppTec",
    "WuXi TIDES",
    "WuXi",
-   "药明康德"
+   "药明康德",
+   "Вуси Тайц",
+   "Уси Тайдс",
+   "Вуси"
   ],
   "logo": "source-videos/логотипы/медицина/wuxi-apptec.png"
  },
@@ -4330,5 +4344,13 @@
    "Урбан Ревиво"
   ],
   "logo": "source-videos/логотипы/ритейл/urban-revivo.png"
+ },
+ "pfizer": {
+  "names": [
+   "Pfizer",
+   "Пфайзер",
+   "Пфайзером"
+  ],
+  "logo": "source-videos/логотипы/медицина/pfizer.png"
  }
 }

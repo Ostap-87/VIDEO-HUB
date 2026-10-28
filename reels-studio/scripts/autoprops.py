@@ -159,7 +159,24 @@ def brand_mentions(words, brands):
     return found
 
 
+# Whisper в тишине конца ролика «дописывает» титры с YouTube-субтитров: «Субтитры создавал DimaTorzok»,
+# «Продолжение следует…» (GLP-1, 28.10.2026) — такие хвосты выбрасываем
+HALLUCINATION = re.compile(r"(субтитр|dimatorzok|торжок|продолжение следует)", re.I)
+
+
+def drop_hallucinations(words):
+    for start in range(max(0, len(words) - 8), len(words)):
+        tail = " ".join(w["text"] for w in words[start:])
+        if HALLUCINATION.search(words[start]["text"]) and HALLUCINATION.search(tail):
+            return words[:start]
+    return words
+
+
 def least_used(photos):
+    # фото пользователя (source-videos/…) всегда раньше скачанных из интернета (решение пользователя 28.10.2026:
+    # «фото городов используй наши, они качественнее»); среди своих — реже других стоявшее в роликах
+    mine = [p for p in photos if p.startswith("source-videos/")]
+    photos = mine or photos
     cnt = {p: 0 for p in photos}
     for f in glob.glob(str(STUDIO / "props" / "*.json")):
         t = pathlib.Path(f).read_text()
@@ -201,6 +218,7 @@ def main():
     speech_sec = duration(work / f"{a.clip}.cut.mp4")
 
     words = apply_fixes(words, ph["fixes"])
+    words = drop_hallucinations(words)
     mentions = brand_mentions(words, brands)
     S = Speech(words)
     sents = S.sentences()

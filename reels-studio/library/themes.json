@@ -435,6 +435,33 @@
   ],
   "audienceTitle": "Для кого поездка"
  },
+ "glp1": {
+  "title": "Китайский Ozempic: GLP-1 и пептидная фарма Китая",
+  "expedition": "/expeditions/china-glp1-peptides-expedition",
+  "music": "inspiring-corporate-soundrider",
+  "logos": [
+   "медицина",
+   "общие"
+  ],
+  "broll": {
+   "include": "pharma|pharmaceutical|peptide|injection pen|biotech|laborator|cleanroom|drug|medicine|GLP|clinical|bioreactor",
+   "tags": {
+    "препарат": "pharma|drug|medicine",
+    "пептид": "peptide|biotech",
+    "шприц": "injection pen",
+    "фабрик": "pharmaceutical|cleanroom",
+    "производств": "pharmaceutical|cleanroom|bioreactor",
+    "лаборатор": "laborator"
+   }
+  },
+  "accent": [
+   "GLP-1",
+   "семаглутид",
+   "Ozempic",
+   "пептидов"
+  ],
+  "audienceTitle": "Для кого поездка"
+ },
  "obshchee": {
   "title": "Общая тема (визитка, анонс, новая отрасль)",
   "expedition": "/expeditions",

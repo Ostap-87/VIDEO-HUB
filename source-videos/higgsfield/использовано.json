@@ -960,5 +960,40 @@
   "videos": [
    "2026-10-28-legprom"
   ]
+ },
+ "587": {
+  "id": "ea014a67-df8e-420e-9684-f392daf58c59",
+  "prompt": "Photorealistic editorial photo of a modern pharmaceutical manufacturing cleanroom with bioreactor tanks and technicians in protective gear, bright clinical lighting, cinematic color grading, high detail. No text, no logos, no brand names, no watermarks anywhere in the image.",
+  "videos": [
+   "2026-10-28-glp1"
+  ]
+ },
+ "684": {
+  "id": "91d2e6bd-f45d-4d06-b7f8-4dd02b4d7cca",
+  "prompt": "Photorealistic editorial photo of a sterile biopharmaceutical manufacturing cleanroom with stainless steel bioreactor tanks and technicians in full protective suits monitoring control panels, bright clinical white lighting, shallow depth of field, high detail. No text, no logos, no brand names, no watermarks anywhere in the image.",
+  "videos": [
+   "2026-10-28-glp1"
+  ]
+ },
+ "592": {
+  "id": "6caf5805-b465-4cf4-a1b0-6901de133306",
+  "prompt": "Photorealistic editorial photo of scientists in a modern pharmaceutical research lab examining molecular structure models on a large screen, bright clean lighting, cinematic color grading, high detail. No text, no logos, no brand names, no watermarks anywhere in the image.",
+  "videos": [
+   "2026-10-28-glp1"
+  ]
+ },
+ "629": {
+  "id": "54f38d5a-d32f-4209-b1ac-b5b58fb5ea7b",
+  "prompt": "Photorealistic editorial photo of a modern pharmaceutical research laboratory with scientists in white coats examining molecular structure models on a large screen, clean bright lighting, shallow depth of field, cinematic color grading, high detail. No text, no logos, no brand names, no watermarks anywhere in the image.",
+  "videos": [
+   "2026-10-28-glp1"
+  ]
+ },
+ "641": {
+  "id": "09acd1f5-8fc2-4136-b669-2164b2523de5",
+  "prompt": "Photorealistic editorial photo of scientists in a sterile cell and gene therapy manufacturing cleanroom working with bioreactor equipment, bright clinical lighting, cinematic color grading, high detail. No text, no logos, no brand names, no watermarks anywhere in the image.",
+  "videos": [
+   "2026-10-28-glp1"
+  ]
  }
 }
