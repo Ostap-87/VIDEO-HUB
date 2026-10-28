@@ -320,6 +320,117 @@
   "accent": [],
   "audienceTitle": "Для кого"
  },
+ "fintech": {
+  "title": "Финтех-гиганты Китая",
+  "expedition": "/expeditions/china-fintech-giants-expedition",
+  "music": "inspiring-corporate-soundrider",
+  "logos": [
+   "финансы",
+   "техгиганты",
+   "общие",
+   "ии"
+  ],
+  "broll": {
+   "include": "fintech|payment|qr code|bank|financ|wallet|cashless|digital yuan|skyscraper|headquarters|smartphone|super app",
+   "tags": {
+    "плат": "payment|qr code|wallet",
+    "банк": "bank|financ",
+    "кредит": "credit|bank",
+    "юан": "yuan|payment",
+    "телефон": "smartphone|app",
+    "приложен": "app|smartphone",
+    "офис": "office|headquarters"
+   }
+  },
+  "accent": [
+   "финтех",
+   "платежи",
+   "банки"
+  ],
+  "audienceTitle": "Для кого поездка"
+ },
+ "tehnoparki": {
+  "title": "Технопарки и зоны инноваций Китая",
+  "expedition": "/expeditions/china-tech-parks-expedition",
+  "music": "inspiring-corporate-soundrider",
+  "logos": [
+   "общие",
+   "техгиганты",
+   "ии",
+   "роботы"
+  ],
+  "broll": {
+   "include": "tech park|science park|innovation|incubator|startup|campus|business park|skyline|smart city|research|laborator",
+   "tags": {
+    "технопарк": "tech park|science park|campus",
+    "стартап": "startup|incubator",
+    "инновац": "innovation|research",
+    "лаборатор": "laborator|research",
+    "город": "skyline|smart city",
+    "робот": "robot"
+   }
+  },
+  "accent": [
+   "технопарки",
+   "инноваций",
+   "стартапы"
+  ],
+  "audienceTitle": "Для кого поездка"
+ },
+ "legprom": {
+  "title": "Лёгкая промышленность Китая",
+  "expedition": "/expeditions",
+  "music": "inspiring-corporate-soundrider",
+  "logos": [
+   "ритейл",
+   "общие"
+  ],
+  "broll": {
+   "include": "textile|garment|sewing|fabric|clothing|apparel|fashion|knit|weav|loom|shoe|factory|production line",
+   "tags": {
+    "ткан": "textile|fabric|weav|loom",
+    "одежд": "clothing|apparel|garment",
+    "швей": "sewing|garment",
+    "обув": "shoe",
+    "мод": "fashion",
+    "фабрик": "factory|production",
+    "завод": "factory|production"
+   }
+  },
+  "accent": [
+   "лёгкая",
+   "текстиль",
+   "фабрики"
+  ],
+  "audienceTitle": "Для кого поездка"
+ },
+ "othody": {
+  "title": "Обращение с отходами Китая",
+  "expedition": "/expeditions/china-waste-management-expedition",
+  "music": "inspiring-corporate-soundrider",
+  "logos": [
+   "энергетика",
+   "общие"
+  ],
+  "broll": {
+   "include": "waste|recycl|garbage|trash|sorting|incinerat|landfill|plastic|scrap|compost|environment|power plant",
+   "tags": {
+    "мусор": "waste|garbage|trash",
+    "отход": "waste|recycl",
+    "переработ": "recycl|sorting",
+    "сортир": "sorting|recycl",
+    "пластик": "plastic",
+    "сжига": "incinerat|power plant",
+    "энерги": "power plant|energy"
+   }
+  },
+  "accent": [
+   "отходов",
+   "переработка",
+   "мусора"
+  ],
+  "audienceTitle": "Для кого поездка"
+ },
  "obshchee": {
   "title": "Общая тема (визитка, анонс, новая отрасль)",
   "expedition": "/expeditions",
