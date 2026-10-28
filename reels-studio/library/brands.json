@@ -4047,7 +4047,8 @@
    "Li-Ning",
    "Li Ning",
    "Лининг",
-   "Ли Нин"
+   "Ли Нин",
+   "Ли Нинг"
   ],
   "logo": "source-videos/логотипы/ритейл/li-ning.png"
  },
@@ -4285,5 +4286,49 @@
    "Тянъин"
   ],
   "logo": "source-videos/логотипы/энергетика/tianying.png"
+ },
+ "anta": {
+  "names": [
+   "Anta",
+   "ANTA",
+   "Анта",
+   "Анты",
+   "Анте"
+  ],
+  "logo": "source-videos/логотипы/ритейл/anta.svg"
+ },
+ "bosideng": {
+  "names": [
+   "Bosideng",
+   "Бо Судэнг",
+   "Босиденг",
+   "Бо Сыдэн",
+   "Босыдэн"
+  ],
+  "logo": "source-videos/логотипы/ритейл/bosideng.png"
+ },
+ "jnby": {
+  "names": [
+   "JNBY",
+   "GNBI",
+   "Джей Эн Би Уай"
+  ],
+  "logo": "source-videos/логотипы/ритейл/jnby.png"
+ },
+ "peacebird": {
+  "names": [
+   "Peacebird",
+   "Писберд",
+   "Пис Берд"
+  ],
+  "logo": "source-videos/логотипы/ритейл/peacebird.png"
+ },
+ "urban-revivo": {
+  "names": [
+   "Urban Revivo",
+   "Urban Revive",
+   "Урбан Ревиво"
+  ],
+  "logo": "source-videos/логотипы/ритейл/urban-revivo.png"
  }
 }

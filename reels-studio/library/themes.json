@@ -378,15 +378,15 @@
   "audienceTitle": "Для кого поездка"
  },
  "legprom": {
-  "title": "Лёгкая промышленность Китая",
-  "expedition": "/expeditions",
+  "title": "Китайские бренды, покорившие мир",
+  "expedition": "/expeditions/china-global-brands-expedition",
   "music": "inspiring-corporate-soundrider",
   "logos": [
    "ритейл",
    "общие"
   ],
   "broll": {
-   "include": "textile|garment|sewing|fabric|clothing|apparel|fashion|knit|weav|loom|shoe|factory|production line",
+   "include": "textile|garment|sewing|fabric|clothing|apparel|fashion|showroom|flagship|store|sportswear|down jacket|brand",
    "tags": {
     "ткан": "textile|fabric|weav|loom",
     "одежд": "clothing|apparel|garment",
@@ -394,13 +394,17 @@
     "обув": "shoe",
     "мод": "fashion",
     "фабрик": "factory|production",
-    "завод": "factory|production"
+    "завод": "factory|production",
+    "бренд": "brand|showroom|flagship",
+    "магазин": "store|flagship|showroom",
+    "пуховик": "down jacket",
+    "спорт": "sportswear|athletic"
    }
   },
   "accent": [
-   "лёгкая",
-   "текстиль",
-   "фабрики"
+   "бренды",
+   "китайские",
+   "модно"
   ],
   "audienceTitle": "Для кого поездка"
  },
