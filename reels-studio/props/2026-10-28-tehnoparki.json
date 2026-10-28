@@ -1525,13 +1525,6 @@
    ]
   }
  ],
- "emojis": [
-  {
-   "at": 79.01,
-   "until": 80.71,
-   "src": "интернет-материалы/эмодзи/смех.webp",
-   "anim": "pop"
-  }
- ],
+ "emojis": [],
  "grade": "brightness(1.03) contrast(1.06) saturate(1.12) sepia(0.05)"
 }

@@ -250,6 +250,9 @@ export const talkReelProSchema = z.object({
   site: z.object({at: z.number(), home: z.string(), catalog: z.string(), route: z.array(z.string())}),
   cta: z.string(),
   ctaSeconds: z.number(),
+  // true — за последние ~1,6 с спикер возвращается из карточки в полный кадр; по умолчанию ролик заканчивается на сайте
+  // в телефоне (решение пользователя 28.10.2026: «ролик должен заканчиваться там, где показывается наш сайт»)
+  finaleBack: z.boolean().default(false),
   showSafeZone: z.boolean(),
   // reels — как есть; stories — логотип ниже верхней панели Stories (полоски прогресса и аватар занимают ~200 px)
   format: z.enum(["reels", "stories"]).default("reels"),
@@ -496,7 +499,8 @@ const BigCaptions: React.FC<{
   screens?: TalkReelProProps["screens"];
   style3d?: boolean;
   fixed?: boolean;
-}> = ({words, accent, until, lowFrom, cities, lists, broll = [], clips, top = 1250, size = 66, screens, style3d, fixed}) => {
+  boards?: TalkReelProProps["checklists"];
+}> = ({words, accent, until, lowFrom, cities, lists, broll = [], clips, top = 1250, size = 66, screens, style3d, fixed, boards = []}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -522,7 +526,10 @@ const BigCaptions: React.FC<{
   const onLight = (low && B.id === "od") || boxed; // od: финал на «кости» — субтитры чернилами, акцентные слова красным штампом
   const hotOnLight = B.id === "od" ? "#FF4A1F" : B.id === "gtt" ? B.accent : B.accentInk;
   const od = B.id === "od";
-  if (style3d && !boxed && !low) return <Captions3D page={page} pageIndex={pages.indexOf(page)} accent={accent} top={top} t={t} />;
+  // планшет-чек-лист (кроме флипчарта Aura): субтитры снизу прижаты к зажиму планшета и чуть мельче — растут вверх,
+  // но не доходят до лица
+  const board = !low && !fixed && !boxed && B.id !== "aura" && listAmount(boards, t) > 0.5;
+  if (style3d && !boxed && !low && !board) return <Captions3D page={page} pageIndex={pages.indexOf(page)} accent={accent} top={top} t={t} />;
   const box: React.CSSProperties = boxed
     ? {display: "inline-block", background: od ? "#F7F4EC" : "#FFFFFF", border: od ? `3px solid ${B.accentInk}` : undefined, borderRadius: B.square ? 0 : 24, boxShadow: od ? `8px 8px 0 ${B.accentInk}` : "0 14px 34px rgba(0,0,0,0.3)", padding: "12px 22px 14px"}
     : {};
@@ -532,11 +539,12 @@ const BigCaptions: React.FC<{
         position: "absolute",
         left: 90 - 40 * pipAmount(broll, t),
         right: 90 + 300 * pipAmount(broll, t), // при карточке спикера в углу субтитры сдвигаются влево
-        top: low ? 1420 : fixed ? top : Math.max(cityAmount(cities, t), listAmount(lists, t), clipAmount(clips ?? [], t)) > 0.5 ? 780 : captionTopFor(screens, t, top),
+        top: board ? undefined : low ? 1420 : fixed ? top : Math.max(cityAmount(cities, t), listAmount(lists, t), clipAmount(clips ?? [], t)) > 0.5 ? 780 : captionTopFor(screens, t, top),
+        bottom: board ? 1920 - BOARD_TOP + 56 : undefined,
         textAlign: "center",
         fontFamily: B.captionFont,
         fontWeight: B.captionWeight,
-        fontSize: size,
+        fontSize: board ? Math.round(size * 0.86) : size,
         lineHeight: 1.18,
         color: dark ? theme.colors.text : onLight ? B.accentInk : (B.captionText ?? "#FFFFFF"),
         textShadow: dark || onLight ? "none" : B.captionShadow ?? shadow,
@@ -1334,7 +1342,7 @@ const ChecklistPanel: React.FC<{lists: TalkReelProProps["checklists"]}> = ({list
           position: "absolute",
           left: 0,
           right: 0,
-          top: PANEL_TOP - 60,
+          top: PANEL_TOP - 60 + LIST_DROP,
           bottom: 0,
           translate: `0px ${slide}px`,
           background: `linear-gradient(to bottom, rgba(${B.veil},0) 0px, rgba(${B.veil},0.92) 220px, ${B.veilSolid} 100%)`,
@@ -1349,7 +1357,7 @@ const ChecklistPanel: React.FC<{lists: TalkReelProProps["checklists"]}> = ({list
           position: "absolute",
           left: 70,
           right: 70,
-          top: PANEL_TOP + 40,
+          top: BOARD_TOP,
           translate: `0px ${slide}px`,
           rotate: `${-1.5 * amount}deg`,
           background: B.paper,
@@ -1500,6 +1508,10 @@ const cityAmount = (cities: TalkReelProProps["cities"], t: number) => {
 
 // Фото городов в нижней половине: каждый город въезжает справа поверх предыдущего, медленный наезд, подпись
 const PANEL_TOP = 1070; // фото городов опущено на ~1 см ниже середины кадра
+// планшет-чек-лист GTT/od ниже панели городов (решение пользователя 28.10.2026: «флипчарт сместить чуть вниз, чтобы
+// титры не налезали на лицо»); субтитры на это время стоят прямо над зажимом планшета, ниже подбородка
+const LIST_DROP = 120;
+const BOARD_TOP = PANEL_TOP + 40 + LIST_DROP;
 const PANEL_H = 1920 - PANEL_TOP;
 const FEATHER = 200; // высота растворения верхнего края фото
 
@@ -1687,13 +1699,15 @@ const PhoneScreen: React.FC<{home: string; catalog: string; route: string[]; w: 
 // со страницей каталога, которая прокручивается; справа заголовок и светящаяся кнопка с адресом сайта;
 // спикер уменьшается из полного кадра в карточку с белой рамкой справа снизу.
 // fromFrame — с какого кадра ролика начинается финал: видео в карточке идёт синхронно с голосом.
-// За последние ~1,6 с спикер возвращается из карточки в полный кадр на естественном фоне (решение пользователя).
-const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: string; seconds: number; fromFrame: number}> = ({
+// returnBack — за последние ~1,6 с спикер возвращается из карточки в полный кадр (так было до 28.10.2026;
+// теперь по умолчанию ролик заканчивается на сайте в телефоне — finaleBack).
+const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: string; seconds: number; fromFrame: number; returnBack?: boolean}> = ({
   src,
   site,
   title,
   seconds,
   fromFrame,
+  returnBack = false,
 }) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -1701,7 +1715,7 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
   const ease = Easing.bezier(0.22, 1, 0.36, 1);
   const k = (a: number, b: number) =>
     interpolate(frame, [a * fps, b * fps], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease});
-  const back = k(seconds - 1.7, seconds - 1.0); // возврат в полный кадр
+  const back = returnBack ? k(seconds - 1.7, seconds - 1.0) : 0; // возврат в полный кадр
   const card = k(0, 0.7) * (1 - back); // 0 — полный кадр, 1 — карточка
   const phone = k(0.35, 1.1) * (1 - back);
   const head = k(0.8, 1.3) * (1 - back);
@@ -2196,6 +2210,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
           title={p.cta}
           seconds={(durationInFrames - siteFrom) / fps}
           fromFrame={siteFrom}
+          returnBack={p.finaleBack}
         />
       </Sequence>
 
@@ -2206,7 +2221,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
         </Sequence>
       ))}
       {capStyleAt(p.captionsAt, tNow) || outroActive(p.outros, tNow) || voteActive(p.votes, tNow) || promptActive(p.prompts, tNow) ? null : (
-      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={liftLists} broll={p.broll} clips={[...(p.clips ?? []), ...((p.panels ?? []).filter((x) => (x.from ?? "bottom") === "bottom") as unknown as NonNullable<TalkReelProProps["clips"]>)]} top={lowCaptions(p.chats, p.cards, tNow) || panelSplitActive(p.charts, p.timelines, tNow) ? 1450 : p.captionTop} size={p.captionSize} screens={screens} style3d={p.captionStyle === "3d"} fixed={p.captionFixed} />
+      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={liftLists} boards={p.checklists} broll={p.broll} clips={[...(p.clips ?? []), ...((p.panels ?? []).filter((x) => (x.from ?? "bottom") === "bottom") as unknown as NonNullable<TalkReelProProps["clips"]>)]} top={lowCaptions(p.chats, p.cards, tNow) || panelSplitActive(p.charts, p.timelines, tNow) ? 1450 : p.captionTop} size={p.captionSize} screens={screens} style3d={p.captionStyle === "3d"} fixed={p.captionFixed} />
       )}
       <RefCaptions words={p.words} items={p.captionsAt} until={p.speechSeconds} accent={p.accentWords} focus={p.focus} />
       <Marks items={p.marks} />

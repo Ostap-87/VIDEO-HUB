@@ -1409,13 +1409,6 @@
    ]
   }
  ],
- "emojis": [
-  {
-   "at": 74.01,
-   "until": 75.81,
-   "src": "интернет-материалы/эмодзи/вау.webp",
-   "anim": "pop"
-  }
- ],
+ "emojis": [],
  "grade": "brightness(1.03) contrast(1.06) saturate(1.12) sepia(0.05)"
 }
