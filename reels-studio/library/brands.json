@@ -4114,5 +4114,162 @@
    "中国商飞"
   ],
   "logo": "source-videos/логотипы/авиация/comac.png"
+ },
+ "ant-group": {
+  "names": [
+   "Ant Group",
+   "Ant Financial",
+   "Ант Груп",
+   "Эн Груп"
+  ],
+  "logo": "source-videos/логотипы/финансы/ant-group.svg"
+ },
+ "lufax": {
+  "names": [
+   "Lufax",
+   "Lufox",
+   "Луфакс"
+  ],
+  "logo": "source-videos/логотипы/финансы/lufax.png"
+ },
+ "ping-an": {
+  "names": [
+   "Ping An",
+   "Ping'an",
+   "PingAn",
+   "Пинань",
+   "Пин Ань"
+  ],
+  "logo": "source-videos/логотипы/финансы/ping-an.svg"
+ },
+ "oneconnect": {
+  "names": [
+   "OneConnect",
+   "One Connect",
+   "Ван Коннект"
+  ],
+  "logo": "source-videos/логотипы/финансы/oneconnect.png"
+ },
+ "lexin": {
+  "names": [
+   "Lexin",
+   "Lexin Fintech",
+   "LexinFintech",
+   "Лексин"
+  ],
+  "logo": "source-videos/логотипы/финансы/lexin.png"
+ },
+ "eastmoney": {
+  "names": [
+   "East Money",
+   "Eastmoney",
+   "Istmany",
+   "Ист Мани"
+  ],
+  "logo": "source-videos/логотипы/финансы/eastmoney.png"
+ },
+ "du-xiaoman": {
+  "names": [
+   "Du Xiaoman",
+   "Ду Сяомань",
+   "Ду Сяоман"
+  ],
+  "logo": "source-videos/логотипы/финансы/du-xiaoman.png"
+ },
+ "jd-digits": {
+  "names": [
+   "JD Digits",
+   "JD Technology",
+   "Джей Ди Дигитс"
+  ],
+  "logo": "source-videos/логотипы/ритейл/jd.svg"
+ },
+ "wechat-pay": {
+  "names": [
+   "WeChat Pay",
+   "WeChat",
+   "ВиЧат",
+   "Вичат"
+  ],
+  "logo": "source-videos/логотипы/общие/wechat.png"
+ },
+ "dji": {
+  "names": [
+   "DJI",
+   "ДиДжиАй",
+   "Диджиай"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/dji.svg"
+ },
+ "zte": {
+  "names": [
+   "ZTE",
+   "ЗТЕ"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/zte.svg"
+ },
+ "smic": {
+  "names": [
+   "SMIC",
+   "СМИК"
+  ],
+  "logo": "source-videos/логотипы/техгиганты/smic.png"
+ },
+ "tesla": {
+  "names": [
+   "Tesla",
+   "Тесла",
+   "Теслы"
+  ],
+  "logo": "source-videos/логотипы/авто/tesla.png"
+ },
+ "gem": {
+  "names": [
+   "GEM",
+   "ГЕМ",
+   "Green Eco-Manufacture"
+  ],
+  "logo": "source-videos/логотипы/энергетика/gem.png"
+ },
+ "shenzhen-energy-environmental": {
+  "names": [
+   "Shenzhen Energy",
+   "Shenzhen Energy Environmental",
+   "Шэньчжэнь Энерджи"
+  ],
+  "logo": "source-videos/логотипы/энергетика/shenzhen-energy-environmental.png"
+ },
+ "grandblue": {
+  "names": [
+   "Grandblue",
+   "Grandblue Environment",
+   "Гранд Блю"
+  ],
+  "logo": "source-videos/логотипы/энергетика/grandblue.png"
+ },
+ "everbright-environment": {
+  "names": [
+   "Everbright",
+   "China Everbright",
+   "Everbright Environment",
+   "Эвербрайт"
+  ],
+  "logo": "source-videos/логотипы/энергетика/everbright-environment.png"
+ },
+ "shanghai-environment": {
+  "names": [
+   "Shanghai Environment",
+   "Shanghai Environment Group"
+  ],
+  "logo": "source-videos/логотипы/энергетика/shanghai-environment.png"
+ },
+ "tianying": {
+  "names": [
+   "Tianying",
+   "China Tianying",
+   "Тяньин",
+   "Тянь Ин"
+  ],
+  "logo": "source-videos/логотипы/энергетика/tianying.png"
  }
 }
