@@ -100,7 +100,7 @@ const WidgetBody: React.FC<{w: Widget; t: number; video: string; focus: Focus; t
     return (
       <div style={{padding: "0 22px 0 26px", height: "100%", display: "flex", alignItems: "center", gap: 14}}>
         <div style={{flex: 1, minWidth: 0}}>
-          <div style={{fontFamily: B.bodyFont, fontWeight: 700, fontSize: 30, lineHeight: 1.05, overflow: "hidden", maxHeight: 64, overflowWrap: "anywhere"}}>{w.label}</div>
+          <div style={{fontFamily: B.bodyFont, fontWeight: 700, fontSize: 26, lineHeight: 1.05, overflow: "hidden", maxHeight: 56, overflowWrap: "anywhere"}}>{w.label}</div>
           <div style={{fontFamily: B.bodyFont, fontSize: 20, opacity: 0.75, marginTop: 4, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>{w.sub}</div>
         </div>
         <div style={{width: 80, height: 80, borderRadius: 40, overflow: "hidden", position: "relative", border: "3px solid rgba(255,255,255,0.6)", flexShrink: 0}}>
