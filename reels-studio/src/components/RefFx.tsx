@@ -8,7 +8,7 @@
 // outros — финал: кадр темнеет, иконка соцсети становится цветной, @ник; fx «leak» — тёплая вспышка света.
 // Макро-наезд (zooms kind «macro») — в TalkReelPro, спикер на фоне приложения (speaker bg «app») — в MontazhFx.
 import React from "react";
-import {AbsoluteFill, Easing, Img, interpolate, OffthreadVideo, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
+import {AbsoluteFill, Easing, Freeze, Img, interpolate, OffthreadVideo, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
 import {loadFont as loadPrata} from "@remotion/google-fonts/Prata";
 import {loadFont as loadVibes} from "@remotion/google-fonts/GreatVibes";
 import {loadFont as loadCormorant} from "@remotion/google-fonts/CormorantGaramond";
@@ -925,7 +925,14 @@ const OutroGrid: React.FC<{it: OutroItem; video?: string; total?: number; focus?
         const src = it.grid?.[i];
         return (
           <div key={i} style={{position: "absolute", left: x0 + (i % cols) * (cw + gap), top: y0 + Math.floor(i / cols) * (chh + gap), width: cw, height: chh, borderRadius: B.square ? 0 : 14, overflow: "hidden", background: "#222", scale: String(0.7 + 0.3 * pop), opacity: pop}}>
-            {src ? <Media src={src} /> : video ? <FaceCrop video={video} trim={Math.round(((i + 0.5) * total * fps) / n)} focus={focus} w={cw} h={chh} k={1.15} eye={0.34} /> : null}
+            {/* кадры ролика — неподвижные (Freeze): каждый извлекается один раз, иначе 16 мест исходника сразу не успевают */}
+            {src ? (
+              <Media src={src} />
+            ) : video ? (
+              <Freeze frame={0}>
+                <FaceCrop video={video} trim={Math.round(((i + 0.5) * total * fps) / n)} focus={focus} w={cw} h={chh} k={1.15} eye={0.34} />
+              </Freeze>
+            ) : null}
             {it.labels?.[i] ? <div style={{position: "absolute", left: 0, right: 0, bottom: 0, padding: "18px 8px 8px", background: "linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.75))", color: "#FFF", fontFamily: B.bodyFont, fontWeight: 600, fontSize: 19, textAlign: "center"}}>{it.labels[i]}</div> : null}
           </div>
         );
