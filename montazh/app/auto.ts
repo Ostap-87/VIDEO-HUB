@@ -7,7 +7,7 @@ import {findEmoji, type Emoji} from "./emoji";
 import {newId, type Brand, type EffectItem, type Word} from "./types";
 
 // эффекты-«слои»: два одновременно не ставим (накладываются друг на друга); зумы с ними сочетаются
-const OVERLAY = /^(hook|number|chip|checklist|list|stock|arrow|broll|speaker|panel|text3d|emoji|fx-bw|title|stamp|dots|ask|search|vote|drum|ring|outro|card|chat|floats|inscreen|split|mark|counter)/;
+const OVERLAY = /^(hook|number|chip|checklist|list|stock|arrow|broll|speaker|panel|text3d|emoji|fx-bw|title|stamp|dots|ask|search|vote|drum|ring|outro|card|chat|floats|inscreen|split|mark|counter|widgets|docu|orbit|chart|neon|timeline|prompt)/;
 const isZoom = (id: string) => id.startsWith("zoom");
 const endOf = (e: EffectItem, len = 2) => e.until ?? e.at + len;
 
@@ -198,6 +198,19 @@ export function autoEffects(words: Word[], existing: EffectItem[], o: AutoOpts):
   // 5. приёмы по смыслу (каталоги prompt-motion.com и skillry.dev): «7 из 10» — точки, вопрос зрителю — пузырь, «миф» /
   // «это факт» — штамп, поворот мысли («но», «однако») — плавный наезд, вывод («итак», «поэтому») — резкий наезд,
   // «подписывайтесь» в конце — финал с @ником; на «ярко» и выше — главное слово с эхом
+  // «напишите в комментариях слово «тур»» в конце (референс 28.10.2026) — финал с сеткой кадров и этим словом
+  toks.forEach((t, i) => {
+    if (!/^(напиши|напишите|пишите|пиши)$/.test(t) || words[i].start < o.duration - 25) return;
+    const win = toks.slice(i + 1, i + 8);
+    const ci = win.findIndex((x) => /^коммент/.test(x));
+    if (ci < 0) return;
+    const si = win.indexOf("слово");
+    const kw = si >= 0 && win[si + 1] && !/^(в|и|а)$/.test(win[si + 1]) ? words[i + 2 + si] : ci === 2 && win[0] === "в" ? words[i + 1 + ci + 1] : ci === 1 ? undefined : words[i + 1];
+    const word = kw?.text.replace(/[.,!?;:«»"“”]/g, "");
+    if (!word || /^(в|комментари)/i.test(word)) return;
+    const at = words[i].start;
+    if (add({effect: "outro-grid", at, until: Math.min(Math.max(at + 3.4, words[Math.min(words.length - 1, i + 8)].end + 1), end + 0.4), params: {title: `Напиши «${word.toLowerCase()}»`}})) report.push(`финал с сеткой кадров: «Напиши «${word.toLowerCase()}»»`);
+  });
   const isNum = (t: string) => /^\d+$/.test(t) || !!NUM_WORDS[t] || !!OF_WORDS[t];
   const numOf = (t: string) => (/^\d+$/.test(t) ? t : NUM_WORDS[t] ?? OF_WORDS[t]);
   const startsPhrase = (i: number) => i === 0 || words[i].start - words[i - 1].end > 0.3 || /[.,!?;:…]$/.test(words[i - 1].text);

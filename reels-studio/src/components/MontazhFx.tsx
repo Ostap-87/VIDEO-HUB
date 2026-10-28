@@ -454,12 +454,12 @@ export const textBehindActive = (items: TextItem[] | undefined, t: number) => (i
 export type ListItem = {
   at: number;
   until: number;
-  style: "flip" | "cards" | "stickers" | "numbers" | "bubbles" | "typewriter";
+  style: "flip" | "cards" | "stickers" | "numbers" | "bubbles" | "typewriter" | "progress";
   title?: string;
   items: {text: string; at: number}[];
 };
 // флипчарт и «печатная машинка» поднимают спикера вверх (как планшет с галочками), остальные — вокруг головы
-export const LIFT_LISTS = new Set(["flip", "typewriter"]);
+export const LIFT_LISTS = new Set(["flip", "typewriter", "progress"]);
 
 const STICKY = ["#FFE066", "#FF9FB2", "#9BE7C4", "#A5C8FF", "#FFC48C"];
 
@@ -535,6 +535,60 @@ const ListOne: React.FC<{l: ListItem; stories: boolean}> = ({l, stories}) => {
                 <span style={{color: B.accent}}>{String(i + 1).padStart(2, "0")} </span>
                 {x.text.slice(0, n)}
                 {last && Math.floor(t * 3) % 2 === 0 ? <span style={{background: "#E8F0FF", marginLeft: 4}}>&nbsp;</span> : null}
+              </div>
+            );
+          })}
+        </div>
+      </AbsoluteFill>
+    );
+  }
+
+  if (l.style === "progress") {
+    // тёмная стеклянная карточка «✳ Заголовок · N из M» (референс 28.10.2026): пункты отмечаются зелёными галочками
+    // по одному, справа — моноширинная метка («Нашёл лицо | каждый кадр»)
+    const done = shown.length;
+    const green = "#34D27B";
+    return (
+      <AbsoluteFill style={{opacity: p}}>
+        <AbsoluteFill style={{background: `linear-gradient(to bottom, rgba(${B.veil},0) 50%, rgba(${B.veil},0.7) 64%)`}} />
+        <div
+          style={{
+            position: "absolute",
+            left: 56,
+            right: 56,
+            top: 1040 + (1 - p) * 500,
+            padding: "30px 36px 26px",
+            borderRadius: B.square ? 0 : 30,
+            background: "rgba(22,22,26,0.84)",
+            backdropFilter: "blur(18px)",
+            border: B.square ? "3px solid #191922" : "1.5px solid rgba(255,255,255,0.12)",
+            boxShadow: B.square ? "10px 10px 0 #191922" : "0 30px 80px rgba(0,0,0,0.5)",
+            color: "#FFF",
+          }}
+        >
+          <div style={{display: "flex", alignItems: "center", gap: 14, marginBottom: 18}}>
+            <svg width={34} height={34} viewBox="0 0 100 100" style={{rotate: `${t * 40}deg`}}>
+              <path d="M50 4 C54 34 66 46 96 50 C66 54 54 66 50 96 C46 66 34 54 4 50 C34 46 46 34 50 4 Z" fill={B.id === "aura" ? "#FFE74A" : B.accent} />
+            </svg>
+            <div style={{fontFamily: B.bodyFont, fontWeight: 700, fontSize: 40}}>{l.title ?? "Монтирую ролик"}</div>
+            <div style={{marginLeft: "auto", fontFamily: B.bodyFont, fontSize: 28, opacity: 0.6}}>{`${done} из ${l.items.length}`}</div>
+          </div>
+          {l.items.map((x, i) => {
+            const [text, tag] = x.text.split(/\s*\|\s*/);
+            const on = x.at <= t;
+            const k = on ? sp(x, {damping: 12, stiffness: 220}) : 0;
+            return (
+              <div key={i} style={{display: "flex", alignItems: "center", gap: 18, padding: "11px 0"}}>
+                <div style={{position: "relative", width: 40, height: 40, flexShrink: 0}}>
+                  <div style={{position: "absolute", inset: 0, borderRadius: "50%", border: "3px solid rgba(255,255,255,0.35)"}} />
+                  <div style={{position: "absolute", inset: 0, borderRadius: "50%", background: green, scale: String(k), display: "flex", alignItems: "center", justifyContent: "center"}}>
+                    <svg width={24} height={24} viewBox="0 0 24 24">
+                      <path d="M5 12.5 L10 17 L19 7" fill="none" stroke="#0E1A12" strokeWidth={3.4} strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                </div>
+                <div style={{fontFamily: B.bodyFont, fontWeight: 700, fontSize: 38, opacity: on ? 1 : 0.45}}>{text}</div>
+                {tag ? <div style={{marginLeft: "auto", fontFamily: B.monoFont, fontSize: 24, color: on ? green : "rgba(255,255,255,0.4)", whiteSpace: "nowrap"}}>{tag}</div> : null}
               </div>
             );
           })}

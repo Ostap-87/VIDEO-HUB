@@ -735,6 +735,212 @@ const TREND_EFFECTS: Effect[] = [
   },
 ];
 
+// ------------------------------------------------------------------ референс 28.10.2026 «монтаж через Claude» (WeTransfer)
+// шаблон — reels-studio/src/components/ShowcaseFx.tsx; разбор — source-videos/референсы-эффекты/2026-10-28-ref-wetransfer/разбор.md
+// «7 | эффектов один клип» → значение и подпись
+const pair = (s?: string): [string, string] => {
+  const [a, ...b] = (s || "").split("|");
+  return [a.trim(), b.join("|").trim()];
+};
+const WIDGET_FIELDS: [string, string, string][] = [
+  ["stat", "Цифра", "«7 | эффектов в ролике»"],
+  ["progress", "Прогресс", "«Рендер | 97»"],
+  ["profile", "Профиль", "«Остап | @ostap.dotsenko»"],
+  ["chart", "Мини-график", "«Монтаж ролика | 3 мин»"],
+  ["player", "Плеер", "«мягкие щелчки | sfx · 25 с»"],
+  ["ring", "Кольцо", "«4K | рендер»"],
+  ["badge", "Бейдж", "«26 | Выложить 2 ролика»"],
+];
+const SHOWCASE_EFFECTS: Effect[] = [
+  {
+    id: "widgets-glass",
+    title: "Стеклянные виджеты",
+    cat: "Графика",
+    desc: "Вокруг головы всплывают стеклянные виджеты в стиле iPhone: цифра, прогресс рендера, профиль, мини-график, плеер, кольцо, бейдж; снизу плашка «Смонтировано в …»",
+    len: 3,
+    ref: "wt2810",
+    fields: [
+      ...WIDGET_FIELDS.map(([key, label, hint]) => ({key, label, hint: `${hint}; пусто — без него`})),
+      {key: "caption", label: "Плашка снизу", hint: "«Смонтировано в **Монтажной**», ** — цвет бренда"},
+    ],
+    apply: (p, e) => {
+      const set = WIDGET_FIELDS.filter(([k]) => e.params[k]);
+      const items = (set.length ? set.map(([k]) => k) : ["stat", "progress", "profile", "ring", "badge"]).map((kind) => {
+        const [value, label] = pair(e.params[kind] || {stat: "7 | эффектов в одном ролике", progress: "Рендер | 97", profile: p.brand === "od" ? "Остап | @ostap.dotsenko" : p.brand === "aura" ? "Aura Robotics | aura-robotics.ru" : "GlobalTechTour | globaltechtour.ru", ring: "4K | рендер", badge: "2 | ролика в день"}[kind]);
+        if (kind === "progress") return {kind, label: value || "Рендер", value: label || "97", sub: "4K"};
+        if (kind === "profile") return {kind, label: value, sub: label};
+        if (kind === "chart") return {kind, label: value, value: label, sub: "stats"};
+        if (kind === "player") return {kind, label: value, sub: label};
+        return {kind, value, label};
+      });
+      (p.widgets ??= []).push({at: e.at, until: end(e, 3), items, caption: e.params.caption ?? (set.length ? undefined : "Смонтировано в **Монтажной**")});
+    },
+  },
+  {
+    id: "docu",
+    title: "Документальный стиль",
+    cat: "Спикер",
+    desc: "Спикер ч/б на тёмном фоне со свечением за головой, узкий заголовок капсом, плашка с именем и кнопка «Подписаться», которую нажимает курсор",
+    len: 3,
+    ref: "wt2810",
+    fields: [
+      {key: "title", label: "Заголовок", hint: "строки через /, ** — цвет: «Один **ролик** / 7 эффектов»"},
+      {key: "kicker", label: "Строка сверху", hint: "«ИИ простыми словами · ежедневно»"},
+      {key: "name", label: "Имя на плашке"},
+      {key: "handle", label: "@ник под именем"},
+      {key: "button", label: "Кнопка", hint: "пусто — «Подписаться», «-» — без кнопки"},
+      {key: "color", label: "Цвет свечения", hint: "пусто — цвет бренда", kind: "color", def: "#2F6BFF"},
+    ],
+    after: "тёмный фон и свечение — после вырезки спикера (в окне — ч/б кадр с виньеткой)",
+    apply: (p, e, ctx) => {
+      const u = end(e, 3);
+      const [h] = HANDLE[p.brand ?? "gtt"] ?? HANDLE.gtt;
+      (p.docus ??= []).push({
+        at: e.at,
+        until: u,
+        title: e.params.title || spoken(ctx.words, e.at, u, 4) || "Один ролик",
+        kicker: e.params.kicker || undefined,
+        name: e.params.name || (p.brand === "od" ? "Остап Доценко" : undefined),
+        handle: e.params.handle || (p.brand === "od" ? h : undefined),
+        button: e.params.button === "-" ? "" : e.params.button || undefined,
+        color: e.params.color || undefined,
+      });
+    },
+  },
+  {
+    id: "orbit-cards",
+    title: "Карточки по орбите",
+    cat: "Графика",
+    desc: "Скриншоты и кадры летают по орбите вокруг головы в 3D: спереди крупнее, сзади уходят за спикера",
+    len: 3,
+    ref: "wt2810",
+    fields: [
+      {key: "image", label: "Картинка 1", kind: "media"},
+      {key: "image2", label: "Картинка 2", kind: "media"},
+      {key: "image3", label: "Картинка 3", kind: "media"},
+      {key: "image4", label: "Картинка 4", kind: "media"},
+      {key: "image5", label: "Картинка 5", kind: "media"},
+    ],
+    after: "задняя половина орбиты за спикером — после вырезки (в окне все карточки поверх)",
+    apply: (p, e, ctx) => {
+      const items = [mediaOf(e, ctx), ...["image2", "image3", "image4", "image5"].map((k) => (e.params[k] ? ctx.image(e.params[k]) : ""))].filter(Boolean);
+      if (items.length) (p.orbits ??= []).push({at: e.at, until: end(e, 3), items});
+    },
+  },
+  {
+    id: "chart-split",
+    title: "График сверху, спикер снизу",
+    cat: "Экраны",
+    desc: "Сверху тёмная панель со столбиками: свой столбик подсвечен, пунктир «в среднем»; снизу спикер карточкой",
+    len: 3.5,
+    ref: "wt2810",
+    fields: [
+      {key: "title", label: "Заголовок", hint: "«Сколько роликов / в **неделю**»"},
+      {key: "items", label: "Столбики", hint: "«Мы 14 / Агентство 5 / Сами 1» — подпись и число; первый подсвечен, или поставьте * у нужного", kind: "lines"},
+      {key: "avg", label: "Линия «в среднем»", hint: "число, пусто — без линии"},
+      {key: "color", label: "Цвет своего столбика", kind: "color", def: "#FFD23F"},
+    ],
+    apply: (p, e) => {
+      const rows = lines(e.params.items || "Мы 14 / Агентство 5 / Сами 3 / Фриланс 2");
+      const bars = rows.map((r) => {
+        const m = r.match(/^(.*?)[\s:—-]*(-?\d+(?:[.,]\d+)?)\s*(\*)?$/);
+        return m ? {label: m[1].replace(/\*/g, "").trim(), value: +m[2].replace(",", "."), hi: m[3] ? true : r.includes("*") || undefined} : {label: r.replace(/\*/g, ""), value: 0, hi: r.includes("*") || undefined};
+      });
+      const anyHi = bars.some((b) => b.hi);
+      const fixed = bars.map((b, i) => ({...b, hi: anyHi ? !!b.hi : i === 0}));
+      (p.charts ??= []).push({at: e.at, until: end(e, 3.5), title: e.params.title || "Сколько роликов / в **неделю**", bars: fixed, avg: e.params.avg !== undefined && e.params.avg !== "" && Number.isFinite(+e.params.avg) ? +e.params.avg : undefined, color: e.params.color || undefined});
+    },
+  },
+  {
+    id: "neon-sign",
+    title: "Неоновая вывеска",
+    cat: "Титры",
+    desc: "Над головой загорается неоновая надпись с миганием, кадр темнеет — спикер в луче прожектора",
+    len: 3,
+    ref: "wt2810",
+    fields: [
+      {key: "text", label: "Надпись", hint: "пусто — слово речи"},
+      {key: "color", label: "Цвет неона", hint: "пусто — цвет бренда", kind: "color", def: "#3D7BFF"},
+      {key: "spot", label: "Прожектор", kind: "select", options: [["1", "фон темнеет"], ["0", "без прожектора"]]},
+    ],
+    after: "прожектор и вывеска за спикером — после вырезки",
+    apply: (p, e, ctx) =>
+      (p.neons ??= []).push({at: e.at, until: end(e, 3), text: e.params.text || spoken(ctx.words, e.at, end(e, 3), 1) || "Монтаж", color: e.params.color || undefined, spot: e.params.spot === "0" ? false : undefined}),
+  },
+  {
+    id: "timeline-editor",
+    title: "Монтажный стол сверху",
+    cat: "Экраны",
+    desc: "Сверху окно монтажки: строки отмечаются галочками, дорожки кадров, субтитров, цвета и звука, бежит бегунок и проценты рендера; снизу спикер",
+    len: 3.5,
+    ref: "wt2810",
+    fields: [
+      {key: "title", label: "Заголовок", hint: "«Ролик **рендерится**»"},
+      {key: "items", label: "Строки", hint: "«склейки | паузы убраны / субтитры | слова в синхрон / цвет | тёплый»", kind: "lines"},
+      {key: "progress", label: "Проценты", kind: "range", min: 10, max: 100, step: 1, def: "97"},
+    ],
+    apply: (p, e, ctx) => {
+      const u = end(e, 3.5);
+      const rows = lines(e.params.items || "склейки | паузы убраны / субтитры | слова в синхрон / цвет | тёплый · лицо / эффекты | 7 загружено / звук | мягкие щелчки").map((r) => {
+        const [label, value] = pair(r);
+        return {label, value: value || "готово"};
+      });
+      const ws = spoken(ctx.words, e.at - 2, u + 2, 6).split(" ").filter(Boolean);
+      const clips = [ws.slice(0, 2).join(" "), ws.slice(2, 4).join(" "), ws.slice(4, 6).join(" ")].filter(Boolean);
+      (p.timelines ??= []).push({at: e.at, until: u, title: e.params.title || "Ролик **рендерится**", rows, clips: clips.length ? clips : undefined, progress: num(e, "progress", 97)});
+    },
+  },
+  {
+    id: "prompt-chat",
+    title: "Команда в чате → ролик",
+    cat: "Переходы",
+    desc: "Кадр становится чатом: команда печатается на клавиатуре телефона, приходит ответ, карточка с роликом раскрывается на весь кадр",
+    len: 2.6,
+    ref: "wt2810",
+    fields: [
+      {key: "text", label: "Команда", hint: "«/наезд на слове Китай»"},
+      {key: "reply", label: "Ответ", hint: "пусто — «Монтирую…»"},
+      {key: "hint", label: "Подсказка к команде", hint: "серой строкой под командой, необязательно"},
+    ],
+    apply: (p, e) => (p.prompts ??= []).push({at: e.at, until: end(e, 2.6), text: e.params.text || "/монтаж", reply: e.params.reply || undefined, hint: e.params.hint || undefined}),
+  },
+  {
+    id: "outro-grid",
+    title: "Финал: сетка кадров и слово",
+    cat: "Графика",
+    desc: "В конце — сетка превью из кадров ролика, сверху «Напиши «слово»» и пилюля; потом сетка гаснет, выскакивают иконка и @ник",
+    len: 3.4,
+    ref: "wt2810",
+    fields: [
+      {key: "title", label: "Заголовок", hint: "«Напиши «тур»»"},
+      {key: "pill", label: "Пилюля", hint: "«и получи программу поездки»"},
+      {key: "frames", label: "Кадров в сетке", kind: "range", min: 4, max: 16, step: 4, def: "12"},
+      {key: "handle", label: "@ник или адрес", hint: "пусто — канал бренда"},
+      {key: "network", label: "Соцсеть", kind: "select", options: [["instagram", "Instagram"], ["telegram", "Telegram"], ["site", "сайт"]]},
+    ],
+    apply: (p, e) => {
+      const [h, net] = HANDLE[p.brand ?? "gtt"] ?? HANDLE.gtt;
+      (p.outros ??= []).push({at: e.at, until: end(e, 3.4), handle: e.params.handle || h, network: e.params.network || (e.params.handle ? "instagram" : net), title: e.params.title || "Напиши «тур»", pill: e.params.pill || undefined, gridFrames: num(e, "frames", 12)});
+    },
+  },
+  {
+    id: "watermark",
+    title: "@ник в углу",
+    cat: "Графика",
+    desc: "Иконка соцсети и @ник в правом верхнем углу на весь отрезок — защита от перезаливов",
+    len: 30,
+    ref: "wt2810",
+    fields: [
+      {key: "handle", label: "@ник", hint: "пусто — канал бренда"},
+      {key: "network", label: "Соцсеть", kind: "select", options: [["instagram", "Instagram"], ["telegram", "Telegram"], ["site", "сайт"]]},
+    ],
+    apply: (p, e) => {
+      const [h, net] = HANDLE[p.brand ?? "gtt"] ?? HANDLE.gtt;
+      p.watermark = {handle: e.params.handle || h, network: e.params.network || (e.params.handle ? "instagram" : net), from: e.at, until: end(e, 30)};
+    },
+  },
+];
+
 export const EFFECTS: Effect[] = [
   {
     id: "zoom-punch",
@@ -926,6 +1132,7 @@ export const EFFECTS: Effect[] = [
   listFx("numbers", "Крупные номера", "Огромная цифра и пункт, следующий выталкивает предыдущий", 5),
   listFx("bubbles", "Пилюли вокруг головы", "Пункты всплывают пилюлями дугой над головой", 5),
   listFx("typewriter", "Печатная машинка", "Тёмная панель, пункты печатаются по буквам", 5.5),
+  {...listFx("progress", "Прогресс «N из M»", "Тёмная стеклянная карточка «Монтирую ролик · 3 из 5»: пункты отмечаются зелёными галочками, справа метка («Нашёл лицо | каждый кадр»)", 4), ref: "wt2810"},
   {
     id: "palette-at",
     title: "Цвета текста на отрезке",
@@ -942,6 +1149,7 @@ export const EFFECTS: Effect[] = [
   ...REF_EFFECTS,
   ...SCREEN_EFFECTS,
   ...TREND_EFFECTS,
+  ...SHOWCASE_EFFECTS,
 ];
 
 export const effectById = (id: string) => EFFECTS.find((e) => e.id === id);

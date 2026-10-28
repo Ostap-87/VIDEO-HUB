@@ -32,6 +32,7 @@ import {bwFilter, ColorWipes, EpisodeOutro} from "../components/SeriesFx";
 import {InScreens, inScreenActive} from "../components/ScreenInsert";
 import {Asks, bgActive, capStyleAt, Cards, Chats, defocusAt, DuoWord, floatBehindActive, Floats, LightLeaks, lowCaptions, Marks, outroActive, Outros, RefCaptions, SpeakerBg, Splits, titleBehindActive, Titles, whipAt, WhipFilter} from "../components/RefFx";
 import {Chapters, DotsGrid, Drums, ringActive, Rings, Searches, Stamps, Votes, voteActive, WordCounters} from "../components/TrendFx";
+import {Charts, DocuBack, docuActive, Docus, neonActive, Neons, orbitActive, Orbits, panelSplitActive, promptActive, Prompts, Timelines, WatermarkCorner, Widgets} from "../components/ShowcaseFx";
 import {EdlAudio, EdlCtx, placeEdl, SpeakerVideo} from "../components/EdlVideo";
 import {loadFont as loadOswald} from "@remotion/google-fonts/Oswald";
 
@@ -222,7 +223,7 @@ export const talkReelProSchema = z.object({
       z.object({
         at: z.number(),
         until: z.number(),
-        style: z.enum(["flip", "cards", "stickers", "numbers", "bubbles", "typewriter"]),
+        style: z.enum(["flip", "cards", "stickers", "numbers", "bubbles", "typewriter", "progress"]),
         title: z.string().optional(),
         items: z.array(z.object({text: z.string(), at: z.number()})),
       }),
@@ -328,7 +329,21 @@ export const talkReelProSchema = z.object({
   floats: z.array(z.object({at: z.number(), until: z.number(), items: z.array(z.string()), plane: z.enum(["behind", "front"]).optional()})).optional(),
   cards: z.array(z.object({at: z.number(), until: z.number(), src: z.string().optional(), title: z.string(), sub: z.string().optional(), y: z.number().optional()})).optional(),
   outros: z
-    .array(z.object({at: z.number(), until: z.number(), handle: z.string(), network: z.enum(["instagram", "telegram", "site"]).optional(), text: z.string().optional()}))
+    .array(
+      z.object({
+        at: z.number(),
+        until: z.number(),
+        handle: z.string(),
+        network: z.enum(["instagram", "telegram", "site"]).optional(),
+        text: z.string().optional(),
+        // финал с сеткой превью (референс 28.10.2026): заголовок-слово, пилюля, картинки или N кадров самого ролика
+        title: z.string().optional(),
+        pill: z.string().optional(),
+        grid: z.array(z.string()).optional(),
+        gridFrames: z.number().optional(),
+        labels: z.array(z.string()).optional(),
+      }),
+    )
     .optional(),
   // Приёмы из каталогов skillry и prompt-motion.com (23.10.2026, свой код): marks — обвести/подчеркнуть/галочка/крестик/
   // стрелка «от руки»; asks — пузырь-вопрос зрителю; bgs — свой фон за вырезанным спикером (outline — белая обводка-стикер);
@@ -348,6 +363,46 @@ export const talkReelProSchema = z.object({
   votes: z.array(z.object({at: z.number(), until: z.number(), title: z.string().optional(), items: z.array(z.string()), images: z.array(z.string()).optional()})).optional(),
   drums: z.array(z.object({at: z.number(), until: z.number(), items: z.array(z.string()), prefix: z.string().optional(), y: z.number().optional()})).optional(),
   rings: z.array(z.object({at: z.number(), until: z.number(), items: z.array(z.string())})).optional(),
+  // Приёмы референса 28.10.2026 «монтаж через Claude» (components/ShowcaseFx.tsx; акцент — **слово**, строки — « / »):
+  // widgets — стеклянные виджеты вокруг головы; docus — «документалка» (ч/б спикер, свечение за головой — нужна вырезка,
+  // узкий заголовок, плашка с именем, кнопка «Подписаться» с курсором); orbits — карточки по орбите вокруг головы (задняя
+  // половина за спикером); charts — столбики сверху, спикер карточкой снизу; timelines — «монтажный стол» сверху;
+  // neons — неоновая вывеска над головой + прожектор; prompts — команда в чате на клавиатуре → ролик раскрывается на весь кадр;
+  // watermark — @ник с иконкой в углу весь ролик. Ещё: lists style «progress», outros grid / title / pill.
+  widgets: z
+    .array(
+      z.object({
+        at: z.number(),
+        until: z.number(),
+        items: z.array(z.object({kind: z.enum(["stat", "progress", "profile", "chart", "player", "ring", "badge"]), value: z.string().optional(), label: z.string().optional(), sub: z.string().optional(), image: z.string().optional()})),
+        caption: z.string().optional(),
+      }),
+    )
+    .optional(),
+  docus: z
+    .array(z.object({at: z.number(), until: z.number(), title: z.string(), kicker: z.string().optional(), name: z.string().optional(), handle: z.string().optional(), button: z.string().optional(), color: z.string().optional()}))
+    .optional(),
+  orbits: z.array(z.object({at: z.number(), until: z.number(), items: z.array(z.string())})).optional(),
+  charts: z
+    .array(z.object({at: z.number(), until: z.number(), title: z.string(), bars: z.array(z.object({label: z.string(), value: z.number(), hi: z.boolean().optional()})), avg: z.number().optional(), color: z.string().optional()}))
+    .optional(),
+  timelines: z
+    .array(
+      z.object({
+        at: z.number(),
+        until: z.number(),
+        title: z.string(),
+        rows: z.array(z.object({label: z.string(), value: z.string()})).optional(),
+        clips: z.array(z.string()).optional(),
+        grades: z.array(z.string()).optional(),
+        progress: z.number().optional(),
+        label: z.string().optional(),
+      }),
+    )
+    .optional(),
+  neons: z.array(z.object({at: z.number(), until: z.number(), text: z.string(), color: z.string().optional(), spot: z.boolean().optional()})).optional(),
+  prompts: z.array(z.object({at: z.number(), until: z.number(), text: z.string(), reply: z.string().optional(), hint: z.string().optional()})).optional(),
+  watermark: z.object({handle: z.string(), network: z.enum(["instagram", "telegram", "site"]).optional(), from: z.number().optional(), until: z.number().optional()}).optional(),
   // «Экран в кадре» (референс dfcdojr, components/ScreenInsert.tsx): графика в настоящем экране кадра по 4 углам quad
   // (TL, TR, BR, BL, px кадра), идёт вместе с наездами; plane behind — руки спикера поверх (нужна вырезка)
   inscreens: z
@@ -1013,12 +1068,15 @@ const ZoomedVideo: React.FC<{
   inscreens?: TalkReelProProps["inscreens"];
   bgs?: TalkReelProProps["bgs"];
   rings?: TalkReelProProps["rings"];
+  docus?: TalkReelProProps["docus"];
+  orbits?: TalkReelProProps["orbits"];
+  neons?: TalkReelProProps["neons"];
   words?: TalkReelProProps["words"];
   captionsAt?: TalkReelProProps["captionsAt"];
   accentWords?: string[];
   faceTop?: number;
   stories?: boolean;
-}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists, bgFlags, angleB, clips, hooks, speaker, texts, titles, floats, inscreens, bgs, rings, words, captionsAt, accentWords, faceTop, stories = false}) => {
+}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists, bgFlags, angleB, clips, hooks, speaker, texts, titles, floats, inscreens, bgs, rings, docus, orbits, neons, words, captionsAt, accentWords, faceTop, stories = false}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -1110,6 +1168,17 @@ const ZoomedVideo: React.FC<{
             muted
             style={{...videoStyle, filter: bgActive(bgs, t)!.outline ? "drop-shadow(6px 0 0 #fff) drop-shadow(-6px 0 0 #fff) drop-shadow(0 6px 0 #fff) drop-shadow(0 -6px 0 #fff) drop-shadow(0 24px 40px rgba(0,0,0,0.4))" : "drop-shadow(0 20px 40px rgba(0,0,0,0.35))"}}
           />
+        </>
+      ) : null}
+      {/* «документалка»: тёмный фон со свечением за головой, спикер ч/б (вырезка; без неё — ч/б кадр с виньеткой) */}
+      {!b && docuActive(docus, t) ? <DocuBack items={docus} focus={focus} video={src} cutout={cutoutSrc} videoStyle={videoStyle} /> : null}
+      {/* прожектор и неоновая вывеска за спикером; карточки орбиты — задняя половина за спикером */}
+      {!b && (neonActive(neons, t) || orbitActive(orbits, t)) ? (
+        <>
+          <Neons items={neons} focus={focus} faceTop={faceTop} part="spot" />
+          {cutoutSrc ? <Neons items={neons} focus={focus} faceTop={faceTop} part="sign" stories={stories} /> : null}
+          <Orbits items={orbits} focus={focus} half="back" />
+          {cutoutSrc && !docuActive(docus, t) ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
         </>
       ) : null}
       {/* двухуровневые субтитры: ключевое слово гигантом за головой; кольцо слов — задняя половина за спикером */}
@@ -1933,6 +2002,19 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
     ...(p.drums ?? []).flatMap((x) => x.items.map((_, i) => ({at: x.at + 0.3 + (i * (x.until - x.at - 0.6)) / Math.max(1, x.items.length), src: p.sfx.click ?? p.sfx.pop, volume: 0.35}))),
     ...(p.rings ?? []).map((x) => ({at: x.at, src: p.sfx.whoosh, volume: 0.25})),
     ...(p.chapters ?? []).map((x) => ({at: x.at, src: p.sfx.whoosh, volume: 0.2})),
+    // приёмы референса 28.10.2026: мягкие UI-щелчки на каждом появлении
+    ...(p.widgets ?? []).flatMap((x) => x.items.slice(0, 7).map((_, i) => ({at: x.at + i * 0.07, src: p.sfx.click ?? p.sfx.pop, volume: 0.22}))),
+    ...(p.docus ?? []).flatMap((x) => [{at: x.at, src: p.sfx.whoosh, volume: 0.3}, ...(x.button !== "" ? [{at: x.at + Math.min(1.55, x.until - x.at - 0.6), src: p.sfx.click ?? p.sfx.pop, volume: 0.45}] : [])]),
+    ...(p.orbits ?? []).map((x) => ({at: x.at, src: p.sfx.whoosh, volume: 0.3})),
+    ...(p.charts ?? []).flatMap((x) => [{at: x.at, src: p.sfx.whoosh, volume: 0.3}, ...x.bars.slice(0, 8).map((_, i) => ({at: x.at + 0.3 + i * 0.08, src: p.sfx.click ?? p.sfx.pop, volume: 0.16}))]),
+    ...(p.timelines ?? []).flatMap((x) => [{at: x.at, src: p.sfx.whoosh, volume: 0.3}, ...(x.rows ?? []).slice(0, 5).map((_, i) => ({at: x.at + 0.45 + i * 0.22, src: p.sfx.click ?? p.sfx.pop, volume: 0.2}))]),
+    ...(p.neons ?? []).map((x) => ({at: x.at + 0.07, src: p.sfx.pop, volume: 0.35})),
+    ...(p.prompts ?? []).flatMap((x) => {
+      const typeEnd = Math.min((x.until - x.at) * 0.42, 0.3 + 0.06 * x.text.length);
+      const keys = Array.from({length: Math.ceil(x.text.length / 2)}, (_, i) => ({at: x.at + 0.3 + ((typeEnd - 0.3) * i * 2) / Math.max(1, x.text.length), src: p.sfx.click ?? p.sfx.pop, volume: 0.14}));
+      return [...keys, {at: x.at + typeEnd + 0.15, src: p.sfx.pop, volume: 0.35}, {at: x.until - 0.55, src: p.sfx.whoosh, volume: 0.35}];
+    }),
+    ...(p.outros ?? []).filter((x) => x.grid?.length || x.gridFrames).map((x) => ({at: x.at + 0.2, src: p.sfx.whoosh, volume: 0.3})),
   ];
 
   const tNow = frame / fps;
@@ -2018,6 +2100,9 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
         inscreens={p.inscreens}
         bgs={p.bgs}
         rings={p.rings}
+        docus={p.docus}
+        orbits={p.orbits}
+        neons={p.neons}
         words={p.words}
         captionsAt={p.captionsAt}
         accentWords={p.accentWords}
@@ -2026,6 +2111,8 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
       />
       </AbsoluteFill>
       <Splits items={p.splits} video={p.mediaSrc} focus={p.focus} grade={p.grade} />
+      <Charts items={p.charts} video={p.mediaSrc} focus={p.focus} grade={p.grade} stories={stories} />
+      <Timelines items={p.timelines} video={p.mediaSrc} focus={p.focus} grade={p.grade} stories={stories} />
       <DropFrame screens={screens} />
       <CityPanel cities={p.cities} />
       {p.clips ? <ClipPanel clips={p.clips} /> : null}
@@ -2038,6 +2125,10 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
       <Cards items={p.cards} />
       <Chats items={p.chats} video={p.mediaSrc} focus={p.focus} />
       <Rings items={p.rings} focus={p.focus} faceTop={p.faceTop} half="front" />
+      <Orbits items={p.orbits} focus={p.focus} half="front" />
+      {p.cutoutSrc ? null : <Neons items={p.neons} focus={p.focus} faceTop={p.faceTop} part="sign" stories={stories} />}
+      <Widgets items={p.widgets} video={p.mediaSrc} focus={p.focus} stories={stories} />
+      <Docus items={p.docus} stories={stories} />
       <Searches items={p.searches} />
       <DotsGrid items={p.dots} />
       <Drums items={p.drums} />
@@ -2114,8 +2205,8 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
           <FlagArc items={fl.items} at={fl.at} until={fl.until} center={p.focus} />
         </Sequence>
       ))}
-      {capStyleAt(p.captionsAt, tNow) || outroActive(p.outros, tNow) || voteActive(p.votes, tNow) ? null : (
-      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={liftLists} broll={p.broll} clips={[...(p.clips ?? []), ...((p.panels ?? []).filter((x) => (x.from ?? "bottom") === "bottom") as unknown as NonNullable<TalkReelProProps["clips"]>)]} top={lowCaptions(p.chats, p.cards, tNow) ? 1450 : p.captionTop} size={p.captionSize} screens={screens} style3d={p.captionStyle === "3d"} fixed={p.captionFixed} />
+      {capStyleAt(p.captionsAt, tNow) || outroActive(p.outros, tNow) || voteActive(p.votes, tNow) || promptActive(p.prompts, tNow) ? null : (
+      <BigCaptions words={p.words} accent={p.accentWords} until={p.speechSeconds} lowFrom={siteFrom} cities={p.cities} lists={liftLists} broll={p.broll} clips={[...(p.clips ?? []), ...((p.panels ?? []).filter((x) => (x.from ?? "bottom") === "bottom") as unknown as NonNullable<TalkReelProProps["clips"]>)]} top={lowCaptions(p.chats, p.cards, tNow) || panelSplitActive(p.charts, p.timelines, tNow) ? 1450 : p.captionTop} size={p.captionSize} screens={screens} style3d={p.captionStyle === "3d"} fixed={p.captionFixed} />
       )}
       <RefCaptions words={p.words} items={p.captionsAt} until={p.speechSeconds} accent={p.accentWords} focus={p.focus} />
       <Marks items={p.marks} />
@@ -2136,7 +2227,9 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
           <SiteLogo variant="title" scale={1} />
         </div>
       )}
-      <Outros items={p.outros} />
+      <WatermarkCorner wm={p.watermark} stories={stories} hidden={outroActive(p.outros, tNow)} />
+      <Prompts items={p.prompts} video={p.mediaSrc} focus={p.focus} grade={p.grade} />
+      <Outros items={p.outros} video={p.mediaSrc} total={p.speechSeconds} focus={p.focus} />
       <ColorWipes fx={p.fx} />
       <LightLeaks fx={p.fx} />
       {p.episode ? <EpisodeOutro ep={p.episode} start={p.speechSeconds - 0.05} links={p.links ?? OD_LINKS} /> : null}

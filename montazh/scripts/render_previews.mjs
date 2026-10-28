@@ -97,10 +97,22 @@ const PARAMS = {
   vote: {title: "Что выбираете?", items: "Чай / Кофе / Оба / Воду", image: ""},
   drum: {prefix: "Китай — это", items: "чай / кофе / заводы / будущее"},
   ring: {items: "Чай / Кофе / Китай / Рынок"},
+  // приёмы референса 28.10.2026 «монтаж через Claude»
+  "widgets-glass": {stat: "5 | дней в Китае", progress: "Монтаж | 97", profile: "GlobalTechTour | globaltechtour.ru", ring: "4K | рендер", badge: "7 | фабрик", caption: "Смонтировано в **Монтажной**"},
+  docu: {title: "Чай **и кофе** / Китая", kicker: "Рынок Китая · изнутри", name: "Остап Доценко", handle: "ostap.dotsenko"},
+  "orbit-cards": {image2: IMG[1 % IMG.length], image3: IMG[2 % IMG.length], image4: IMG[5 % IMG.length], image5: IMG[6 % IMG.length]},
+  "chart-split": {},
+  "neon-sign": {text: "Китай"},
+  "timeline-editor": {},
+  "prompt-chat": {text: "/наезд на слове чай", reply: "Монтирую: наезд на слове «чай»"},
+  "outro-grid": {title: "Напиши «чай»", pill: "и получи программу поездки", frames: "12"},
+  watermark: {handle: "ostap.dotsenko", network: "instagram"},
+  "list-progress": {title: "Монтирую ролик", items: "Нашёл лицо | каждый кадр / Вырезал фон | маска / Текст за спиной | глубина / Цвет | тёплый / Рендер 4K | 2160p"},
 };
-const LEN = {"counter-word": 3.2, vote: 2.4, drum: 2.4, ring: 2.4, search: 2.4, "title-takeover": 2.4, "inscreen-chart": 2.4, "inscreen-list": 2.4, "inscreen-steps": 2.4, "inscreen-cards": 2.2, "captions-mini": 2.4, "split-ba": 2.4, "captions-plate": 2.4, "captions-corner": 2.4, "captions-quiet": 2.4, "speaker-app": 2.4, "list-flip": 2.4, "list-cards": 2.4, "list-stickers": 2.4, "list-numbers": 2.4, "list-bubbles": 2.4, "list-typewriter": 2.4, checklist: 2.4, "stock-up": 2.4, "stock-down": 2.4, "hook-wall": 2.2, "hook-mix": 2.2, "hook-words": 2.2, chip: 2.2};
+const LEN = {"widgets-glass": 2.4, docu: 2.4, "orbit-cards": 2.4, "chart-split": 2.4, "neon-sign": 2.4, "timeline-editor": 2.4, "prompt-chat": 2.0, "outro-grid": 2.4, watermark: 2.0, "list-progress": 2.4, "counter-word": 3.2, vote: 2.4, drum: 2.4, ring: 2.4, search: 2.4, "title-takeover": 2.4, "inscreen-chart": 2.4, "inscreen-list": 2.4, "inscreen-steps": 2.4, "inscreen-cards": 2.2, "captions-mini": 2.4, "split-ba": 2.4, "captions-plate": 2.4, "captions-corner": 2.4, "captions-quiet": 2.4, "speaker-app": 2.4, "list-flip": 2.4, "list-cards": 2.4, "list-stickers": 2.4, "list-numbers": 2.4, "list-bubbles": 2.4, "list-typewriter": 2.4, checklist: 2.4, "stock-up": 2.4, "stock-down": 2.4, "hook-wall": 2.2, "hook-mix": 2.2, "hook-words": 2.2, chip: 2.2};
 const SLOT = 3.6;
 const PRE = 0.25; // превью начинается чуть раньше эффекта
+const PRE_ID = {"prompt-chat": 0}; // чат раскрывается в самом конце — превью с начала эффекта
 const DUR = 2.0;
 
 const r = await esbuild.build({entryPoints: [path.join(MZ, "app", "effects.ts")], bundle: true, write: false, format: "esm", platform: "node"});
@@ -117,6 +129,7 @@ const props = {
   stockDrop: undefined, hooks: [], fx: [], arrows: [], emojis: [], speaker: [], panels: [], texts: [], lists: [], paletteAt: [],
   splits: [], titles: [], captionsAt: [], chats: [], floats: [], cards: [], outros: [], inscreens: [],
   marks: [], asks: [], bgs: [], counters: [], searches: [], stamps: [], dots: [], chapters: [], chapterBar: undefined, votes: [], drums: [], rings: [],
+  widgets: [], docus: [], orbits: [], charts: [], timelines: [], neons: [], prompts: [], watermark: undefined,
   bumper: false,
   music: undefined,
   site: {...base.site, at: 999},
@@ -140,7 +153,7 @@ for (const e of list) {
     item.at = +(t - 1).toFixed(2);
   }
   e.apply(props, item, {words, image: (n) => n});
-  slots.push({id: e.id, at: item.at, cutout: !!e.after});
+  slots.push({id: e.id, at: item.at, cutout: !!e.after, pre: PRE_ID[e.id] ?? PRE});
   t += SLOT;
 }
 props.speechSeconds = Math.min(base.speechSeconds, +(t + 0.5).toFixed(2));
@@ -166,7 +179,7 @@ const outDir = path.join(MZ, "library", "previews");
 fs.mkdirSync(outDir, {recursive: true});
 for (const s of slots) {
   const out = path.join(outDir, `${s.id}.mp4`);
-  execFileSync("ffmpeg", ["-v", "error", "-y", "-ss", String(Math.max(0, s.at - PRE)), "-t", String(DUR), "-i", all, "-an", "-vf", "scale=360:-2", "-c:v", "libx264", "-crf", "30", "-preset", "slow", "-pix_fmt", "yuv420p", "-movflags", "+faststart", out]);
+  execFileSync("ffmpeg", ["-v", "error", "-y", "-ss", String(Math.max(0, s.at - s.pre)), "-t", String(DUR), "-i", all, "-an", "-vf", "scale=360:-2", "-c:v", "libx264", "-crf", "30", "-preset", "slow", "-pix_fmt", "yuv420p", "-movflags", "+faststart", out]);
   // WebM рядом: его играет любой Chromium и Safari 15+, mp4 (H.264) — запасной
   execFileSync("ffmpeg", ["-v", "error", "-y", "-i", out, "-c:v", "libvpx-vp9", "-b:v", "0", "-crf", "38", "-row-mt", "1", "-an", out.replace(/\.mp4$/, ".webm")]);
   console.log(`превью ${s.id}: ${(fs.statSync(out).size / 1024).toFixed(0)} КБ`);

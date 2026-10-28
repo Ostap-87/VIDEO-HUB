@@ -132,6 +132,59 @@ function one(text: string, sec: number, words: Word[], out: Parsed) {
   const down = /(снизу|низ(?![а-я]*к)|вниз|нижн)/.test(t);
   const corner = (def: string) => (up ? (left ? "tl" : right ? "tr" : "top") : down ? (left ? "bl" : right ? "br" : "bottom") : left ? "left" : right ? "right" : /(центр|середин)/.test(t) ? "center" : def);
 
+  // приёмы референса 28.10.2026 «монтаж через Claude»: команда в чате → ролик, стеклянные виджеты, документалка,
+  // карточки по орбите, столбики сверху, неон, монтажный стол, финал с сеткой кадров, @ник в углу
+  if (/(команд\S*\s+в\s+чат|клавиатур|чат\S*\s+(?:на|во)\s+весь|печата\S*\s+команд)/.test(t)) {
+    add("prompt-chat", {...(qs[0] ? {text: qs[0]} : {}), ...(qs[1] ? {reply: qs[1]} : {})});
+    return;
+  }
+  if (/(прогресс-?спис|список\s+(?:с\s+)?прогресс|прогресс\s+(?:из|по\s+пункт))/.test(t)) {
+    const body = qs.length > 1 ? qs.join(" / ") : (text.split(":").slice(1).join(":") || "").split(/,\s*|\s*\/\s*/).map((x) => x.trim()).filter(Boolean).join(" / ");
+    add("list-progress", {...(body ? {items: body} : {}), ...(qs.length === 1 ? {title: qs[0]} : {})});
+    return;
+  }
+  if (/виджет/.test(t)) {
+    add("widgets-glass", qs[0] ? {caption: qs[0]} : {});
+    return;
+  }
+  if (/(документальн|документалк|как\s+в\s+документ)/.test(t)) {
+    const c = colorIn(t);
+    add("docu", {...(qs[0] ? {title: qs[0]} : {}), ...(qs[1] ? {name: qs[1]} : {}), ...(/без\s+кнопк/.test(t) ? {button: "-"} : {}), ...(c ? {color: c} : {})});
+    return;
+  }
+  if (/(орбит|по\s+кругу|вращают|кружат)/.test(t) && /(карточк|скрин|картинк|фото|кадр)/.test(t)) {
+    const q = qs[0] || after(text, /(?:карточк|скрин\S*|картинк|фото|кадр)\S*(?:\s+(?:с|про|где))?/i).replace(/\s*(?:по\s+орбит|по\s+кругу|вокруг)\S*.*$/i, "").trim();
+    const ef = effectById("orbit-cards")!;
+    out.images.push({query: q, at: +w.at.toFixed(2), until: w.until ?? +(w.at + (w.dur ?? ef.len)).toFixed(2), effect: "orbit-cards"});
+    out.done.push(`${w.said} — ${ef.title}: ${q ? `«${q}»` : "по словам речи"}, ещё четыре — в карточке эффекта`);
+    return;
+  }
+  if (/(столбик|гистограм|диаграм)/.test(t)) {
+    const body = (text.split(":").slice(1).join(":") || "").split(/,\s*|\s*\/\s*/).map((x) => x.trim()).filter(Boolean).join(" / ");
+    const avg = t.match(/(?:в\s+среднем|средн\S*)\s+(\d+(?:[.,]\d+)?)/);
+    add("chart-split", {...(qs[0] ? {title: qs[0]} : {}), ...(body ? {items: body} : {}), ...(avg ? {avg: avg[1].replace(",", ".")} : {})});
+    return;
+  }
+  if (/(неон|вывеск)/.test(t)) {
+    const c = colorIn(t);
+    add("neon-sign", {...(qs[0] ? {text: qs[0]} : {}), ...(c ? {color: c} : {}), ...(/без\s+прожектор/.test(t) ? {spot: "0"} : {})});
+    return;
+  }
+  if (/(монтажн\S*\s+стол|таймлайн|timeline|дорожк\S*\s+монтаж|окно\s+монтаж)/.test(t)) {
+    add("timeline-editor", qs[0] ? {title: qs[0]} : {});
+    return;
+  }
+  if (/(сетк\S*\s+(?:кадр|превью|роликов)|финал\S*\s+(?:с\s+)?сетк|слово\s+в\s+коммент|напиш\S*\s+в\s+коммент)/.test(t)) {
+    const h = text.match(/@([\w.]+)/);
+    add("outro-grid", {...(qs[0] ? {title: /^напиши/i.test(qs[0]) ? qs[0] : `Напиши «${qs[0]}»`} : {}), ...(qs[1] ? {pill: qs[1]} : {}), ...(h ? {handle: h[1]} : {})});
+    return;
+  }
+  if (/(ник\S*\s+в\s+углу|водян\S*\s+знак|вотермарк|watermark|подпис\S*\s+в\s+углу)/.test(t)) {
+    const h = text.match(/@([\w.]+)/);
+    add("watermark", h ? {handle: h[1], network: /(телег|tg)/.test(t) ? "telegram" : "instagram"} : {});
+    return;
+  }
+
   // приёмы из референсов 23.10.2026: «до / после», спикер на фоне приложения, окно чата, картинки вокруг головы,
   // карточка у груди, финал с @ником, заголовок с рукописью, стили субтитров
   if (/(до\s+и\s+после|до\/после|было\s*[-—и/]?\s*стало|два\s+экрана|оригинал)/.test(t)) {
@@ -444,7 +497,9 @@ function one(text: string, sec: number, words: Word[], out: Parsed) {
               ? "list-bubbles"
               : /(машинк|печата|терминал)/.test(t)
                 ? "list-typewriter"
-                : "checklist";
+                : /(прогресс|зелен\S*\s+галоч|из\s+пяти|по\s+одному\s+с\s+галоч)/.test(t)
+                  ? "list-progress"
+                  : "checklist";
     add(id, {...(body ? {items: body} : {}), ...(qs.length === 1 ? {title: qs[0]} : {})});
   }
   if (/график/.test(t)) add(/(паден|вниз|упал|рух|красн)/.test(t) ? "stock-down" : "stock-up", qs[0] ? {label: qs[0]} : {});
@@ -536,4 +591,14 @@ export const EXAMPLES = [
   "хлёсткий переход",
   "вопрос зрителю «А вы бы поехали?»",
   "цифра «1000+» отсчётом",
+  "команда в чате «/наезд на слове Китай»",
+  "стеклянные виджеты «Смонтировано в **Монтажной**»",
+  "документальный стиль «Один **тур** / 7 заводов» «Остап Доценко»",
+  "карточки по орбите «заводы роботов»",
+  "столбики «Сколько заводов / за **день**»: Мы 7, Обычный тур 2, Сами 1",
+  "неоновая вывеска «КИТАЙ»",
+  "монтажный стол «Ролик **рендерится**»",
+  "прогресс-список: Нашёл лицо | каждый кадр, Вырезал фон | маска, Цвет | тёплый",
+  "финал с сеткой кадров «тур» «и получи программу»",
+  "ник в углу @ostap.dotsenko",
 ];

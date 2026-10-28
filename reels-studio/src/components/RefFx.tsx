@@ -30,11 +30,11 @@ const sec = (fps: number, s: number) => Math.max(1, Math.round(s * fps));
 type Focus = {x: number; y: number};
 
 // фото или видео (видео — без звука, с начала отрезка)
-const Media: React.FC<{src: string; style?: React.CSSProperties}> = ({src, style}) =>
+export const Media: React.FC<{src: string; style?: React.CSSProperties}> = ({src, style}) =>
   isVideo(src) ? <OffthreadVideo src={url(src)} muted style={{width: "100%", height: "100%", objectFit: "cover", ...style}} /> : <Img src={url(src)} style={{width: "100%", height: "100%", objectFit: "cover", ...style}} />;
 
 // кадр спикера в окне w×h: глаза на доле eye высоты окна, k — во сколько раз крупнее «весь кадр по ширине»
-const FaceCrop: React.FC<{video: string; trim: number; focus: Focus; w: number; h: number; k: number; eye: number; filter?: string}> = ({video, trim, focus, w, h, k, eye, filter}) => {
+export const FaceCrop: React.FC<{video: string; trim: number; focus: Focus; w: number; h: number; k: number; eye: number; filter?: string}> = ({video, trim, focus, w, h, k, eye, filter}) => {
   const vw = w * k;
   const vh = (vw * 1920) / 1080;
   const left = Math.min(0, Math.max(w - vw, w / 2 - focus.x * (vw / 1080)));
@@ -892,23 +892,72 @@ export const Cards: React.FC<{items?: CardItem[]}> = ({items}) => {
 };
 
 // ------------------------------------------------------------------ финал: иконка соцсети и @ник
-export type OutroItem = {at: number; until: number; handle: string; network?: "instagram" | "telegram" | "site"; text?: string};
+// grid / gridFrames (референс 28.10.2026) — сначала сетка превью (картинки или кадры самого ролика) с заголовком-словом
+// («Напиши «тур»») и пилюлей, потом сетка гаснет и выскакивают иконка и @ник
+export type OutroItem = {at: number; until: number; handle: string; network?: "instagram" | "telegram" | "site"; text?: string; title?: string; pill?: string; grid?: string[]; gridFrames?: number; labels?: string[]};
 
-const OutroOne: React.FC<{it: OutroItem}> = ({it}) => {
+const OutroGrid: React.FC<{it: OutroItem; video?: string; total?: number; focus?: Focus; t: number; dim: number}> = ({it, video, total = 30, focus = {x: 540, y: 700}, t, dim}) => {
+  const {fps} = useVideoConfig();
+  const B = useBrand();
+  const n = Math.min(16, it.grid?.length || it.gridFrames || 0);
+  const cols = 4;
+  const rows = Math.ceil(n / cols);
+  const cw = 196;
+  const chh = rows > 3 ? 248 : 262;
+  const gap = 14;
+  const x0 = (1080 - (cols * cw + (cols - 1) * gap)) / 2;
+  const y0 = 470;
+  const accent = B.id === "aura" ? "#FFE74A" : B.id === "od" ? "#FF4A1F" : "#E5484D";
+  const k = interpolate(t, [0.1, 0.45], [0, 1], {...clamp, easing: ease});
+  return (
+    <AbsoluteFill style={{opacity: dim}}>
+      <AbsoluteFill style={{background: "#0E0E12"}} />
+      {it.title ? (
+        <div style={{position: "absolute", left: 40, right: 40, top: 280, textAlign: "center", fontFamily: B.bodyFont, fontWeight: 800, fontSize: 70, lineHeight: 1.05, color: "#FFF", opacity: k, translate: `0px ${(1 - k) * 24}px`}}>{it.title}</div>
+      ) : null}
+      {it.pill ? (
+        <div style={{position: "absolute", left: 0, right: 0, top: 380, display: "flex", justifyContent: "center", opacity: interpolate(t, [0.3, 0.55], [0, 1], clamp)}}>
+          <div style={{padding: "8px 26px 10px", borderRadius: B.square ? 0 : 12, background: accent, color: B.id === "aura" ? "#262626" : "#FFF", fontFamily: B.bodyFont, fontWeight: 700, fontSize: 38}}>{it.pill}</div>
+        </div>
+      ) : null}
+      {Array.from({length: n}, (_, i) => {
+        const pop = spring({frame: Math.round((t - 0.2 - i * 0.035) * fps), fps, config: {damping: 14, stiffness: 170}});
+        const src = it.grid?.[i];
+        return (
+          <div key={i} style={{position: "absolute", left: x0 + (i % cols) * (cw + gap), top: y0 + Math.floor(i / cols) * (chh + gap), width: cw, height: chh, borderRadius: B.square ? 0 : 14, overflow: "hidden", background: "#222", scale: String(0.7 + 0.3 * pop), opacity: pop}}>
+            {src ? <Media src={src} /> : video ? <FaceCrop video={video} trim={Math.round(((i + 0.5) * total * fps) / n)} focus={focus} w={cw} h={chh} k={1.15} eye={0.34} /> : null}
+            {it.labels?.[i] ? <div style={{position: "absolute", left: 0, right: 0, bottom: 0, padding: "18px 8px 8px", background: "linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.75))", color: "#FFF", fontFamily: B.bodyFont, fontWeight: 600, fontSize: 19, textAlign: "center"}}>{it.labels[i]}</div> : null}
+          </div>
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
+const OutroOne: React.FC<{it: OutroItem; video?: string; total?: number; focus?: Focus}> = ({it, video, total, focus}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
   const dur = it.until - it.at;
+  const hasGrid = !!(it.grid?.length || it.gridFrames);
+  // с сеткой иконка и @ник появляются позже — когда сетка погасла
+  const g = hasGrid || it.title ? Math.min(1.5, Math.max(0, dur - 1.3)) : 0;
   const dim = Math.min(interpolate(t, [0, 0.45], [0, 1], clamp), interpolate(t, [dur - 0.3, dur], [1, 0], clamp));
-  const k = spring({frame: frame - 6, fps, config: {damping: 12, stiffness: 140}});
-  const color = interpolate(t, [0.75, 1.05], [0, 1], clamp);
-  const h = spring({frame: frame - 14, fps, config: {damping: 18, stiffness: 140}});
+  const k = spring({frame: frame - 6 - Math.round(g * fps), fps, config: {damping: 12, stiffness: 140}});
+  const color = interpolate(t - g, [0.75, 1.05], [0, 1], clamp);
+  const h = spring({frame: frame - 14 - Math.round(g * fps), fps, config: {damping: 18, stiffness: 140}});
   const handle = it.network === "site" || it.handle.startsWith("@") ? it.handle : `@${it.handle}`;
+  const icon = g ? interpolate(t, [g - 0.1, g + 0.2], [0, 1], clamp) : 1;
   return (
     <AbsoluteFill>
       <AbsoluteFill style={{background: `rgba(8,8,12,${0.78 * dim})`}} />
-      <div style={{position: "absolute", left: 0, right: 0, top: 640, display: "flex", flexDirection: "column", alignItems: "center", gap: 34, opacity: dim}}>
-        {it.text ? <div style={{fontFamily: vibes.fontFamily, fontSize: 104, color: "#FFF", lineHeight: 1, clipPath: `inset(-20% ${100 - interpolate(t, [0.2, 0.8], [0, 100], clamp)}% -20% -5%)`}}>{it.text}</div> : null}
+      {hasGrid || it.title ? (
+        <AbsoluteFill style={{opacity: 1 - 0.72 * icon}}>
+          <OutroGrid it={it} video={video} total={total} focus={focus} t={t} dim={dim} />
+        </AbsoluteFill>
+      ) : null}
+      <div style={{position: "absolute", left: 0, right: 0, top: 640, display: "flex", flexDirection: "column", alignItems: "center", gap: 34, opacity: dim * icon}}>
+        {it.text ? <div style={{fontFamily: vibes.fontFamily, fontSize: 104, color: "#FFF", lineHeight: 1, clipPath: `inset(-20% ${100 - interpolate(t - g, [0.2, 0.8], [0, 100], clamp)}% -20% -5%)`}}>{it.text}</div> : null}
         <div style={{scale: String(k), rotate: `${(1 - k) * -14}deg`}}>
           <NetIcon net={it.network} size={230} color={color} />
         </div>
@@ -918,13 +967,13 @@ const OutroOne: React.FC<{it: OutroItem}> = ({it}) => {
   );
 };
 
-export const Outros: React.FC<{items?: OutroItem[]}> = ({items}) => {
+export const Outros: React.FC<{items?: OutroItem[]; video?: string; total?: number; focus?: Focus}> = ({items, video, total, focus}) => {
   const {fps} = useVideoConfig();
   return (
     <>
       {(items ?? []).map((it, i) => (
         <Sequence key={`outro-${i}`} from={Math.round(it.at * fps)} durationInFrames={sec(fps, it.until - it.at)} premountFor={fps} name="Финал с @ником">
-          <OutroOne it={it} />
+          <OutroOne it={it} video={video} total={total} focus={focus} />
         </Sequence>
       ))}
     </>
