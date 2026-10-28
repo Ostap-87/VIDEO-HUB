@@ -98,7 +98,7 @@ const PARAMS = {
   drum: {prefix: "Китай — это", items: "чай / кофе / заводы / будущее"},
   ring: {items: "Чай / Кофе / Китай / Рынок"},
   // приёмы референса 28.10.2026 «монтаж через Claude»
-  "widgets-glass": {stat: "5 | дней в Китае", progress: "Монтаж | 97", profile: "GlobalTechTour | globaltechtour.ru", ring: "4K | рендер", badge: "7 | фабрик", caption: "Смонтировано в **Монтажной**"},
+  "widgets-glass": {stat: "5 | дней в Китае", progress: "Монтаж | 97", profile: "Global Tech Tour | globaltechtour.ru", ring: "4K | рендер", badge: "7 | фабрик", caption: "Смонтировано в **Монтажной**"},
   docu: {title: "Чай **и кофе** / Китая", kicker: "Рынок Китая · изнутри", name: "Остап Доценко", handle: "ostap.dotsenko"},
   "orbit-cards": {image2: IMG[1 % IMG.length], image3: IMG[2 % IMG.length], image4: IMG[5 % IMG.length], image5: IMG[6 % IMG.length]},
   "chart-split": {},

@@ -100,11 +100,11 @@ const WidgetBody: React.FC<{w: Widget; t: number; video: string; focus: Focus; t
     return (
       <div style={{padding: "0 22px 0 26px", height: "100%", display: "flex", alignItems: "center", gap: 14}}>
         <div style={{flex: 1, minWidth: 0}}>
-          <div style={{fontFamily: B.bodyFont, fontWeight: 700, fontSize: 36, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>{w.label}</div>
-          <div style={{fontFamily: B.bodyFont, fontSize: 22, opacity: 0.75, marginTop: 4}}>{w.sub}</div>
+          <div style={{fontFamily: B.bodyFont, fontWeight: 700, fontSize: 30, lineHeight: 1.05, overflow: "hidden", maxHeight: 64, overflowWrap: "anywhere"}}>{w.label}</div>
+          <div style={{fontFamily: B.bodyFont, fontSize: 20, opacity: 0.75, marginTop: 4, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}}>{w.sub}</div>
         </div>
-        <div style={{width: 96, height: 96, borderRadius: 48, overflow: "hidden", position: "relative", border: "3px solid rgba(255,255,255,0.6)", flexShrink: 0}}>
-          {w.image ? <Media src={w.image} /> : <FaceCrop video={video} trim={trim} focus={focus} w={96} h={96} k={2.6} eye={0.42} />}
+        <div style={{width: 80, height: 80, borderRadius: 40, overflow: "hidden", position: "relative", border: "3px solid rgba(255,255,255,0.6)", flexShrink: 0}}>
+          {w.image ? <Media src={w.image} /> : <FaceCrop video={video} trim={trim} focus={focus} w={80} h={80} k={2.6} eye={0.42} />}
         </div>
       </div>
     );
@@ -391,7 +391,7 @@ export const Orbits: React.FC<{items?: OrbitItem[]; focus: Focus; half: "back" |
   const shrink = interpolate(local, [dur - 0.45, dur], [1, 0], {...clamp, easing: ease});
   const r = grow * shrink;
   const cx = focus.x;
-  const cy = focus.y + 110;
+  const cy = focus.y + 200;
   const cards = it.items.slice(0, n).map((src, i) => {
     const th = (2 * Math.PI * i) / n + local * 0.85 - Math.PI / 2;
     const depth = Math.sin(th);
@@ -404,7 +404,7 @@ export const Orbits: React.FC<{items?: OrbitItem[]; focus: Focus; half: "back" |
         .sort((a, b) => a.depth - b.depth)
         .map((c) => {
           const x = cx + 470 * r * Math.cos(c.th);
-          const y = cy + 150 * r * c.depth - 40 * Math.cos(c.th);
+          const y = cy + 140 * r * c.depth - 40 * Math.cos(c.th);
           const s = (0.72 + 0.3 * c.depth) * (0.4 + 0.6 * r);
           return (
             <div key={c.i} style={{position: "absolute", left: x - 115, top: y - 205, width: 230, height: 410, perspective: 900, opacity: Math.min(1, r * 2) * (half === "back" ? 0.92 : 1)}}>
@@ -521,9 +521,9 @@ const ChartBody: React.FC<{it: ChartItem; t: number; height: number}> = ({it, t,
         const isHi = b.hi ?? i === 0;
         return (
           <div key={i} style={{position: "absolute", left: X0 + bw * i + bw * 0.16, width: bw * 0.68, top: 0, height: H + 50}}>
-            <div style={{position: "absolute", left: 0, right: 0, top: H - h - 44, textAlign: "center", fontFamily: B.bodyFont, fontWeight: 800, fontSize: 32, color: "#FFF", opacity: k}}>{Math.round(b.value * k)}</div>
+            <div style={{position: "absolute", left: 0, right: 0, top: H - h - 48, textAlign: "center", fontFamily: B.bodyFont, fontWeight: 800, fontSize: 38, color: "#FFF", opacity: k}}>{Math.round(b.value * k)}</div>
             <div style={{position: "absolute", left: 0, right: 0, top: H - h, height: h, background: isHi ? hi : B.id === "aura" ? "#8A8A8A" : B.accent, borderRadius: B.square ? 0 : "6px 6px 0 0", boxShadow: isHi ? `0 0 30px ${hi}88` : undefined}} />
-            <div style={{position: "absolute", left: -20, right: -20, top: H + 12, textAlign: "center", fontFamily: B.bodyFont, fontWeight: 600, fontSize: 21, color: "rgba(255,255,255,0.85)", whiteSpace: "nowrap"}}>{b.label}</div>
+            <div style={{position: "absolute", left: -20, right: -20, top: H + 12, textAlign: "center", fontFamily: B.bodyFont, fontWeight: 600, fontSize: 25, color: "rgba(255,255,255,0.85)", whiteSpace: "nowrap"}}>{b.label}</div>
           </div>
         );
       })}
@@ -828,9 +828,9 @@ const PromptOne: React.FC<{it: PromptItem; video: string; focus: Focus; grade?: 
           <div style={{position: "absolute", left: 30, bottom: 20, color: "#9A9A96", fontSize: 40}}>+</div>
           <div style={{position: "absolute", right: 24, bottom: 18, width: 70, height: 70, borderRadius: B.square ? 0 : 18, background: accent, color: "#FFF", fontSize: 40, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", scale: String(interpolate(t, [sentAt - 0.08, sentAt, sentAt + 0.12], [1, 0.82, 1], clamp))}}>↑</div>
         </div>
-        <div style={{translate: `0px ${kbDown}px`}}>
+        <AbsoluteFill style={{translate: `0px ${kbDown}px`}}>
           <Keyboard active={ch === " " ? " " : ch} ru={ru} />
-        </div>
+        </AbsoluteFill>
       </div>
       {/* карточка с роликом: появляется в ответе и раскрывается на весь кадр */}
       {t >= replyAt + 0.2 ? (
@@ -854,12 +854,12 @@ export const WatermarkCorner: React.FC<{wm?: Watermark; stories: boolean; hidden
   const {fps} = useVideoConfig();
   const t = frame / fps;
   if (!wm || hidden || t < (wm.from ?? 0) || t > (wm.until ?? Infinity)) return null;
-  const a = interpolate(t, [wm.from ?? 0, (wm.from ?? 0) + 0.4], [0, 0.9], clamp);
+  const a = interpolate(t, [wm.from ?? 0, (wm.from ?? 0) + 0.4], [0, 0.95], clamp);
   const handle = wm.network === "site" || wm.handle.startsWith("@") ? wm.handle : `@${wm.handle}`;
   return (
     <div style={{position: "absolute", right: 44, top: 290 + (stories ? 130 : 0), display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 8, opacity: a, filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.55))"}}>
-      <NetIcon net={wm.network} size={60} color={0} />
-      <div style={{fontFamily: oswald.fontFamily, fontWeight: 500, fontSize: 25, letterSpacing: "0.03em", color: "#FFF", textTransform: "uppercase"}}>{handle}</div>
+      <NetIcon net={wm.network} size={72} color={0} />
+      <div style={{fontFamily: oswald.fontFamily, fontWeight: 500, fontSize: 30, letterSpacing: "0.03em", color: "#FFF", textTransform: "uppercase"}}>{handle}</div>
     </div>
   );
 };

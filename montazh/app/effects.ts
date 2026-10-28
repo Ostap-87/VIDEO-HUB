@@ -766,7 +766,7 @@ const SHOWCASE_EFFECTS: Effect[] = [
     apply: (p, e) => {
       const set = WIDGET_FIELDS.filter(([k]) => e.params[k]);
       const items = (set.length ? set.map(([k]) => k) : ["stat", "progress", "profile", "ring", "badge"]).map((kind) => {
-        const [value, label] = pair(e.params[kind] || {stat: "7 | эффектов в одном ролике", progress: "Рендер | 97", profile: p.brand === "od" ? "Остап | @ostap.dotsenko" : p.brand === "aura" ? "Aura Robotics | aura-robotics.ru" : "GlobalTechTour | globaltechtour.ru", ring: "4K | рендер", badge: "2 | ролика в день"}[kind]);
+        const [value, label] = pair(e.params[kind] || {stat: "7 | эффектов в одном ролике", progress: "Рендер | 97", profile: p.brand === "od" ? "Остап | @ostap.dotsenko" : p.brand === "aura" ? "Aura Robotics | aura-robotics.ru" : "Global Tech Tour | globaltechtour.ru", ring: "4K | рендер", badge: "2 | ролика в день"}[kind]);
         if (kind === "progress") return {kind, label: value || "Рендер", value: label || "97", sub: "4K"};
         if (kind === "profile") return {kind, label: value, sub: label};
         if (kind === "chart") return {kind, label: value, value: label, sub: "stats"};
