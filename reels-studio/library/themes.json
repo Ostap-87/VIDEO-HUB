@@ -462,6 +462,32 @@
   ],
   "audienceTitle": "Для кого поездка"
  },
+ "neftehim": {
+  "title": "Нефтехимия Китая: 6 крупнейших комплексов Гуандуна",
+  "expedition": "/expeditions/china-petrochemicals-guangdong-expedition",
+  "music": "inspiring-corporate-soundrider",
+  "logos": [
+   "энергетика",
+   "общие"
+  ],
+  "broll": {
+   "include": "petrochem|refiner|refinery|chemical plant|cracker|polymer|pipeline|oil|industrial complex|port",
+   "tags": {
+    "нефт": "oil|refiner|petrochem",
+    "химич": "chemical plant|petrochem",
+    "полимер": "polymer",
+    "крекинг": "cracker|petrochem",
+    "комплекс": "industrial complex|petrochem"
+   }
+  },
+  "accent": [
+   "нефтехимических",
+   "Sinopec",
+   "BASF",
+   "полимеров"
+  ],
+  "audienceTitle": "Для кого поездка"
+ },
  "obshchee": {
   "title": "Общая тема (визитка, анонс, новая отрасль)",
   "expedition": "/expeditions",

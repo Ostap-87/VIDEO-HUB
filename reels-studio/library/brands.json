@@ -4352,5 +4352,40 @@
    "Пфайзером"
   ],
   "logo": "source-videos/логотипы/медицина/pfizer.png"
+ },
+ "sinopec": {
+  "names": [
+   "Sinopec",
+   "Синопек",
+   "синапек",
+   "Синапек"
+  ],
+  "logo": "source-videos/логотипы/энергетика/sinopec.png"
+ },
+ "basf": {
+  "names": [
+   "BASF",
+   "БАСФ",
+   "баз",
+   "Баз"
+  ],
+  "logo": "source-videos/логотипы/энергетика/basf.png"
+ },
+ "exxonmobil": {
+  "names": [
+   "ExxonMobil",
+   "Exxon Mobil",
+   "Эксон Мобил",
+   "exxon"
+  ],
+  "logo": "source-videos/логотипы/энергетика/exxonmobil.png"
+ },
+ "shell": {
+  "names": [
+   "Shell",
+   "Шелл",
+   "shell"
+  ],
+  "logo": "source-videos/логотипы/энергетика/shell.png"
  }
 }
