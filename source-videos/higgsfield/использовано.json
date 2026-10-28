@@ -1044,5 +1044,40 @@
   "videos": [
    "2026-10-28-neftehim"
   ]
+ },
+ "520": {
+  "id": "0fb06f4d-2c4b-4b22-b6d0-403840dc4df7",
+  "prompt": "Photorealistic editorial photo of a modern dairy farm with milking equipment and stainless steel tanks, bright daylight, cinematic wide shot, high detail. No text, no logos, no brand names, no watermarks anywhere in the image.",
+  "videos": [
+   "2026-10-28-moloko"
+  ]
+ },
+ "328": {
+  "id": "901a3579-da27-4227-a4c5-00cdd8d3430f",
+  "prompt": "Photorealistic large dairy factory with milk processing tanks and automated bottling line, no text, no logos",
+  "videos": [
+   "2026-10-28-moloko"
+  ]
+ },
+ "331": {
+  "id": "5ed75e32-4e66-46bb-804d-753ca1d8206c",
+  "prompt": "Photorealistic modern dairy processing plant with automated milk production lines, no text, no logos",
+  "videos": [
+   "2026-10-28-moloko"
+  ]
+ },
+ "662": {
+  "id": "2cdcea4d-eef5-4fea-b690-0c5f34a3c79e",
+  "prompt": "Photorealistic editorial photo of a modern dairy processing facility exterior in a lush green New Zealand countryside setting with grazing cattle in the distance, bright natural daylight, wide angle, cinematic color grading, high detail. No text, no logos, no brand names, no watermarks anywhere in the image.",
+  "videos": [
+   "2026-10-28-moloko"
+  ]
+ },
+ "572": {
+  "id": "df317e7e-4007-4783-a887-670a7c7b3dc8",
+  "prompt": "Photorealistic editorial photo of a modern beverage bottling production line with glass bottles moving along a conveyor belt, bright clean industrial lighting, cinematic color grading, high detail. No text, no logos, no brand names, no watermarks anywhere in the image.",
+  "videos": [
+   "2026-10-28-moloko"
+  ]
  }
 }
