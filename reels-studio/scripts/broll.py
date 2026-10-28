@@ -52,7 +52,7 @@ def main():
         for i, c in enumerate(cat):
             if c["id"] in used or str(i) in blk or not rx.search(c["prompt"]):
                 continue
-            print(f"{i:4d}  {c.get('aspect', ''):5s}  {c['prompt'][:150]}")
+            print(f"{i:4d}  {c.get('aspect') or '':5s}  {c['prompt'][:150]}")
             n += 1
         print(f"— найдено {n}")
     if a.set or a.drop is not None:

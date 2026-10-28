@@ -877,48 +877,6 @@
    "2026-10-28-othody"
   ]
  },
- "739": {
-  "id": "b1d1e267-0bb7-4adc-9170-154fe2640eea",
-  "prompt": "Modern unbranded sportswear retail store interior in China, athletic shoes and apparel displayed on minimalist shelving, customers browsing, no visible logos or text, bright retail lighting, editorial photography, photorealistic, wide shot",
-  "videos": [
-   "2026-10-28-legprom"
-  ]
- },
- "523": {
-  "id": "d87eb3ca-dd8a-42bd-8eec-5e6cf66842c5",
-  "prompt": "Photorealistic editorial photo of a garment factory production floor with rows of sewing machines and colorful fabric rolls, bright industrial lighting, cinematic color grading, high detail. No text, no logos, no brand names, no watermarks anywhere in the image, no visible faces.",
-  "videos": [
-   "2026-10-28-legprom"
-  ]
- },
- "376": {
-  "id": "dcae058e-8a03-4fc2-a485-9cc10499764a",
-  "prompt": "Photorealistic image of a garment factory production line with down jackets on hangers, quality control station, no text, no logos",
-  "videos": [
-   "2026-10-28-legprom"
-  ]
- },
- "613": {
-  "id": "254c9c2e-8d25-4557-9c98-b791c1904eff",
-  "prompt": "Photorealistic editorial photo of a semiconductor cleanroom with technicians in full protective suits working near wafer fabrication equipment, sterile bright lighting, cinematic color grading, high detail. No text, no logos, no brand names, no watermarks anywhere in the image.",
-  "videos": [
-   "2026-10-28-legprom"
-  ]
- },
- "143": {
-  "id": "91a78cee-4ccb-4bb4-8c6f-522f6c0f5f94",
-  "prompt": "Photorealistic wide cover shot of a business expedition to Chinese global fashion brands. Dynamic scene inside a sleek fashion brand flagship store/showroom with modern sportswear and apparel displays, mannequins in stylish outfits, bright runway-style lighting. A confident business delegation of 3-4 people (mixed gender, Russian and Chinese, business casual attire) walking through observing the collection. Upper third of frame kept relatively open for text overlay, no readable text or logos anywhere in the image. Ultra realistic photography, 16:9 wide composition, editorial travel/business photography style.",
-  "videos": [
-   "2026-10-28-legprom"
-  ]
- },
- "104": {
-  "id": "21202524-90a1-4ce2-9151-14c7584b2db9",
-  "prompt": "Photorealistic wide shot of a business negotiation meeting room in a Chinese petrochemical company headquarters. Large conference table, business delegation of 4-5 Russian business people in business suits sitting across from 3-4 Chinese executives in suits, interpreter standing beside the table gesturing, laptops and documents on the table, city skyline visible through floor-to-ceiling windows behind them, professional atmosphere, discussion moment. Ultra realistic photography, natural window lighting, 16:9 wide composition, documentary business photography style, no visible text or logos.",
-  "videos": [
-   "2026-10-28-legprom"
-  ]
- },
  "97": {
   "id": "c7b85684-6356-4e5a-ab68-9463499ba5f1",
   "prompt": "Photorealistic wide shot at China Tianying waste management facility in Nantong, Jiangsu province, China, day 5 of a business expedition. Modern international-standard waste processing facility, business delegation of 4-5 people in business casual attire with safety vests (mixed gender, Russian and Chinese) touring the facility, Chinese plant manager gesturing. CHINA TIANYING logo clearly visible on facility signage in upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright industrial lighting, 16:9 wide composition, documentary business photography style.",
@@ -952,6 +910,55 @@
   "prompt": "Photorealistic wide shot at GEM Co., Ltd. battery recycling facility in Shenzhen, China, day 1 of a business expedition. Modern clean industrial facility processing electric vehicle batteries, automated machinery, business delegation of 4-5 people in business casual attire with safety vests (mixed gender, Russian and Chinese) touring the facility, Chinese plant manager gesturing. GEM logo clearly visible on facility signage in upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright industrial lighting, 16:9 wide composition, documentary business photography style.",
   "videos": [
    "2026-10-28-othody"
+  ]
+ },
+ "143": {
+  "id": "91a78cee-4ccb-4bb4-8c6f-522f6c0f5f94",
+  "prompt": "Photorealistic wide cover shot of a business expedition to Chinese global fashion brands. Dynamic scene inside a sleek fashion brand flagship store/showroom with modern sportswear and apparel displays, mannequins in stylish outfits, bright runway-style lighting. A confident business delegation of 3-4 people (mixed gender, Russian and Chinese, business casual attire) walking through observing the collection. Upper third of frame kept relatively open for text overlay, no readable text or logos anywhere in the image. Ultra realistic photography, 16:9 wide composition, editorial travel/business photography style.",
+  "videos": [
+   "2026-10-28-legprom"
+  ]
+ },
+ "144": {
+  "id": "e2739cab-b326-4423-ae02-d237365cd56b",
+  "prompt": "Photorealistic wide shot at Anta Sports global retail headquarters in Shanghai, China, day 2 of a business expedition. Modern corporate showroom with sportswear and outdoor gear displays, Salomon and Wilson branded products visible on nearby shelves, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) touring the showroom, Chinese host gesturing. ANTA logo clearly visible on wall signage in upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright lighting, 16:9 wide composition, documentary business photography style.",
+  "videos": [
+   "2026-10-28-legprom"
+  ]
+ },
+ "146": {
+  "id": "3851d343-bbb0-4563-be8b-434d3ebc4ec2",
+  "prompt": "Photorealistic wide shot at Li-Ning sportswear headquarters showroom in Beijing, China, day 1 of a business expedition. Modern showroom with athletic shoes and sportswear on display, Olympic-style athletic imagery on walls, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) touring the showroom, Chinese host in business suit gesturing. LI-NING logo clearly visible on wall signage in upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright lighting, 16:9 wide composition, documentary business photography style.",
+  "videos": [
+   "2026-10-28-legprom"
+  ]
+ },
+ "139": {
+  "id": "2b947202-5559-4366-bf32-28dd94632e31",
+  "prompt": "Photorealistic wide shot at Bosideng down jacket factory and showroom in Changshu, China, day 3 of a business expedition. Modern showroom with high-tech down jackets on display, fashion-forward outerwear collection with runway-style mannequins, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) touring the showroom, Chinese host gesturing. BOSIDENG logo clearly visible on wall signage in upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright lighting, 16:9 wide composition, documentary business photography style.",
+  "videos": [
+   "2026-10-28-legprom"
+  ]
+ },
+ "140": {
+  "id": "25bc321e-d9ae-4dfc-89eb-a3935016d30c",
+  "prompt": "Photorealistic wide shot at a JNBY designer fashion brand showroom in Hangzhou, China, day 4 of a business expedition. Modern minimalist showroom with artistic contemporary clothing displays, Peacebird branded apparel visible on a nearby rack, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) touring the showroom, Chinese host gesturing. JNBY logo clearly visible on wall signage in upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright lighting, 16:9 wide composition, documentary business photography style.",
+  "videos": [
+   "2026-10-28-legprom"
+  ]
+ },
+ "141": {
+  "id": "e44938b4-ca50-41a3-b992-78726c278950",
+  "prompt": "Photorealistic wide shot at Urban Revivo flagship fashion store headquarters in Guangzhou, China, day 5 of a business expedition. Modern trendy fast-fashion retail store with stylish clothing racks, digital screens displaying fashion content, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) touring the store, Chinese host gesturing. URBAN REVIVO logo clearly visible on wall signage in upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright lighting, 16:9 wide composition, documentary business photography style.",
+  "videos": [
+   "2026-10-28-legprom"
+  ]
+ },
+ "624": {
+  "id": "84d243cd-d2d6-4b56-a9ff-c056a4567085",
+  "prompt": "Photorealistic editorial photo of a spacious upscale airport retail shopping mall interior with glossy floors, elegant storefronts, and travelers with rolling suitcases browsing, bright modern lighting, cinematic wide shot, high detail. No text, no logos, no brand names, no watermarks anywhere in the image.",
+  "videos": [
+   "2026-10-28-legprom"
   ]
  }
 }

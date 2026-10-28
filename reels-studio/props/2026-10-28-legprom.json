@@ -63,7 +63,7 @@
    "end": 3.613
   },
   {
-   "text": "Nykaa",
+   "text": "Nike",
    "start": 3.613,
    "end": 4.003
   },
@@ -73,7 +73,7 @@
    "end": 4.133
   },
   {
-   "text": "Адидас?",
+   "text": "Adidas?",
    "start": 4.133,
    "end": 4.613
   },
@@ -113,7 +113,7 @@
    "end": 7.233
   },
   {
-   "text": "Саламон",
+   "text": "Salomon",
    "start": 7.233,
    "end": 7.783
   },
@@ -123,7 +123,7 @@
    "end": 7.863
   },
   {
-   "text": "Уилс.",
+   "text": "Wilson.",
    "start": 7.863,
    "end": 8.453
   },
@@ -153,7 +153,7 @@
    "end": 10.943
   },
   {
-   "text": "мир",
+   "text": "мир,",
    "start": 10.943,
    "end": 11.273
   },
@@ -163,13 +163,8 @@
    "end": 11.353
   },
   {
-   "text": "дней",
+   "text": "дней,",
    "start": 11.353,
-   "end": 11.603
-  },
-  {
-   "text": "с",
-   "start": 11.603,
    "end": 11.683
   },
   {
@@ -198,7 +193,7 @@
    "end": 14.023
   },
   {
-   "text": "Чанша,",
+   "text": "Чаншу,",
    "start": 14.023,
    "end": 14.473
   },
@@ -208,7 +203,7 @@
    "end": 15.033
   },
   {
-   "text": "Нимбо",
+   "text": "Нинбо",
    "start": 15.033,
    "end": 15.383
   },
@@ -223,13 +218,8 @@
    "end": 16.133
   },
   {
-   "text": "Ли",
+   "text": "Li-Ning",
    "start": 16.133,
-   "end": 16.333
-  },
-  {
-   "text": "Нинг",
-   "start": 16.333,
    "end": 16.743
   },
   {
@@ -248,13 +238,8 @@
    "end": 19.087
   },
   {
-   "text": "Бо",
+   "text": "Bosideng",
    "start": 19.087,
-   "end": 19.307
-  },
-  {
-   "text": "Судэнг",
-   "start": 19.307,
    "end": 19.767
   },
   {
@@ -353,7 +338,7 @@
    "end": 28.227
   },
   {
-   "text": "GNBI",
+   "text": "JNBY",
    "start": 28.227,
    "end": 28.457
   },
@@ -378,7 +363,7 @@
    "end": 29.93
   },
   {
-   "text": "Нимбо.",
+   "text": "Нинбо.",
    "start": 29.93,
    "end": 30.72
   },
@@ -438,7 +423,7 @@
    "end": 35.427
   },
   {
-   "text": "Revive",
+   "text": "Revivo",
    "start": 35.427,
    "end": 35.917
   },
@@ -613,12 +598,12 @@
    "end": 48.94
   },
   {
-   "text": "Астап",
+   "text": "Остап",
    "start": 48.94,
    "end": 49.48
   },
   {
-   "text": "Досенко,",
+   "text": "Доценко,",
    "start": 49.48,
    "end": 50.12
   },
@@ -648,12 +633,12 @@
    "end": 51.163
   },
   {
-   "text": "из",
+   "text": "и",
    "start": 51.163,
    "end": 51.343
   },
   {
-   "text": "Берии,",
+   "text": "Сбере,",
    "start": 51.343,
    "end": 51.933
   },
@@ -1014,31 +999,35 @@
   }
  ],
  "accentWords": [
+  "10",
   "18",
   "1976",
   "400",
+  "adidas",
   "alibaba",
   "anta",
-  "gnbi",
-  "nykaa",
+  "bosideng",
+  "jnby",
+  "li-ning",
+  "lining",
+  "nike",
   "peacebird",
-  "revive",
+  "revivo",
+  "salomon",
   "urban",
-  "бо",
-  "бренды",
+  "wilson",
+  "zara",
   "гуанчжоу",
-  "китайские",
-  "ли",
-  "лично",
+  "китае",
   "модно",
-  "никаких",
-  "нинг",
+  "нинбо",
   "пекин",
-  "прозрачные",
+  "пуховиков",
   "пять",
   "сайт",
-  "судэнг",
   "ханчжоу",
+  "чаншу",
+  "чемодан",
   "шанхай",
   "шесть"
  ],
@@ -1073,182 +1062,263 @@
    "wrap": false,
    "items": [
     {
-     "text": "Свободный китайский",
-     "at": 54.12
+     "text": "Salomon",
+     "at": 7.233
+    },
+    {
+     "text": "Wilson",
+     "at": 7.863
     }
    ],
-   "until": 57.15
+   "until": 8.4
+  },
+  {
+   "wrap": false,
+   "items": [
+    {
+     "text": "Остап Доценко",
+     "at": 48.94
+    }
+   ],
+   "until": 50.7
+  },
+  {
+   "wrap": false,
+   "items": [
+    {
+     "text": "Свободный китайский",
+     "at": 54.117
+    }
+   ],
+   "until": 55.7
+  },
+  {
+   "wrap": false,
+   "items": [
+    {
+     "text": "Всё на русском языке",
+     "at": 65.427
+    }
+   ],
+   "until": 67.3
   }
  ],
  "logos": [
   {
    "items": [
     {
-     "src": "source-videos/логотипы/косметика/nykaa.svg",
-     "at": 3.61
-    }
-   ],
-   "until": 5.0
-  },
-  {
-   "items": [
-    {
      "src": "source-videos/логотипы/ритейл/anta.svg",
-     "at": 5.56
+     "at": 5.563
     }
    ],
-   "until": 7.08
+   "until": 6.15
   },
   {
    "items": [
     {
      "src": "source-videos/логотипы/ритейл/li-ning.png",
-     "at": 16.13
+     "at": 16.133
     }
    ],
-   "until": 17.74
+   "until": 16.7
   },
   {
    "items": [
     {
      "src": "source-videos/логотипы/ритейл/bosideng.png",
-     "at": 19.09
+     "at": 19.087
     }
    ],
-   "until": 20.77
+   "until": 19.75
   },
   {
    "items": [
     {
      "src": "source-videos/логотипы/ритейл/jnby.png",
-     "at": 28.1
+     "at": 28.227
     },
     {
      "src": "source-videos/логотипы/ритейл/peacebird.png",
-     "at": 29.35
+     "at": 29.347
     }
    ],
-   "until": 30.72
+   "until": 30.7
   },
   {
    "items": [
     {
      "src": "source-videos/логотипы/ритейл/urban-revivo.png",
-     "at": 35.19
+     "at": 35.187
     }
    ],
-   "until": 37.11
+   "until": 36.05
   },
   {
    "items": [
     {
      "src": "source-videos/логотипы/общие/alibaba.svg",
-     "at": 50.85
+     "at": 50.853
+    },
+    {
+     "src": "source-videos/логотипы/общие/sber.png",
+     "at": 51.343
     }
    ],
-   "until": 52.16
+   "until": 51.95,
+   "flip": true
   }
  ],
  "numbers": [
   {
+   "text": "№3",
+   "sub": "спортивный бренд мира — после Nike и Adidas",
+   "at": 3.35,
+   "until": 5.5
+  },
+  {
+   "text": "№1",
+   "sub": "бренд пуховиков в мире",
+   "at": 25.197,
+   "until": 27.1
+  },
+  {
+   "text": "400 м",
+   "sub": "LED-стена суперфлагмана Peacebird",
+   "at": 33.887,
+   "until": 35.1
+  },
+  {
    "text": "10+",
    "sub": "лет работы с Китаем",
-   "at": 52.72,
-   "until": 54.07
+   "at": 52.717,
+   "until": 53.65
   },
   {
    "text": "1000+",
-   "sub": "компаний в базе",
-   "at": 62.34,
-   "until": 65.47
+   "sub": "компаний в базе из 18 отраслей",
+   "at": 62.337,
+   "until": 65.2,
+   "count": true
   }
  ],
  "broll": [
   {
-   "src": "source-videos/2026-10-28-legprom/broll/hf-739.png",
-   "at": 0.08,
-   "until": 4.58,
+   "src": "source-videos/2026-10-28-legprom/broll/hf-143.png",
+   "at": -0.25,
+   "until": 3.3,
    "transition": "circle"
   },
   {
-   "src": "source-videos/2026-10-28-legprom/broll/hf-523.png",
-   "at": 19.09,
-   "until": 23.59,
+   "src": "source-videos/2026-10-28-legprom/broll/hf-144.png",
+   "at": 6.2,
+   "until": 8.4,
    "transition": "slide"
   },
   {
-   "src": "source-videos/2026-10-28-legprom/broll/hf-376.png",
-   "at": 30.72,
-   "until": 35.22,
+   "src": "source-videos/2026-10-28-legprom/broll/hf-146.png",
+   "at": 16.75,
+   "until": 19.0,
    "transition": "zoom"
   },
   {
-   "src": "source-videos/2026-10-28-legprom/broll/hf-613.png",
-   "at": 39.83,
-   "until": 43.08,
+   "src": "source-videos/2026-10-28-legprom/broll/hf-139.png",
+   "at": 19.8,
+   "until": 24.3,
    "transition": "wipe"
   },
   {
-   "src": "source-videos/2026-10-28-legprom/broll/hf-143.png",
-   "at": 48.49,
-   "until": 51.93,
+   "src": "source-videos/2026-10-28-legprom/broll/hf-140.png",
+   "at": 27.9,
+   "until": 30.6,
    "transition": "fade"
   },
   {
-   "src": "source-videos/2026-10-28-legprom/broll/hf-104.png",
-   "at": 58.17,
-   "until": 61.46,
+   "src": "source-videos/2026-10-28-legprom/broll/hf-141.png",
+   "at": 36.1,
+   "until": 39.8,
    "transition": "circle"
+  },
+  {
+   "src": "source-videos/2026-10-28-legprom/broll/hf-624.png",
+   "at": 68.9,
+   "until": 72.7,
+   "transition": "slide"
   }
  ],
  "cities": [
   {
    "src": "интернет-материалы/города/варианты/pekin-hram-neba-v.jpg",
    "name": "Пекин",
-   "at": 12.93,
-   "until": 13.37
+   "at": 12.933,
+   "until": 13.373
   },
   {
    "src": "интернет-материалы/города/варианты/shanhai-bund-a.jpg",
    "name": "Шанхай",
-   "at": 13.37,
-   "until": 14.47
+   "at": 13.373,
+   "until": 14.023
+  },
+  {
+   "src": "интернет-материалы/города/changshu.jpg",
+   "name": "Чаншу",
+   "at": 14.023,
+   "until": 14.473
   },
   {
    "src": "интернет-материалы/города/khanchzhou.jpg",
    "name": "Ханчжоу",
-   "at": 14.47,
-   "until": 15.51
+   "at": 14.473,
+   "until": 15.033
+  },
+  {
+   "src": "интернет-материалы/города/ningbo.jpg",
+   "name": "Нинбо",
+   "at": 15.033,
+   "until": 15.513
   },
   {
    "src": "source-videos/2026-10-07-byt-tehnika/cities/guanchzhou-bashnya-noch.jpg",
    "name": "Гуанчжоу",
-   "at": 15.51,
-   "until": 16.93
+   "at": 15.513,
+   "until": 16.1
   }
  ],
  "checklists": [
   {
+   "title": "Условия",
+   "items": [
+    {
+     "text": "Перелёты и скоростные поезда включены",
+     "at": 55.747
+    },
+    {
+     "text": "Маршрут по реальным адресам компаний",
+     "at": 58.173
+    }
+   ],
+   "until": 61.35
+  },
+  {
    "title": "Для кого поездка",
    "items": [
     {
-     "text": "И да",
-     "at": 67.56
+     "text": "Владельцы брендов одежды",
+     "at": 72.76
     },
     {
-     "text": "Рекомендую брать с собой пустой чемодан",
-     "at": 67.98
+     "text": "Байеры",
+     "at": 73.707
     },
     {
-     "text": "Обратно он пустым",
-     "at": 70.31
+     "text": "Ритейлеры",
+     "at": 74.327
     },
     {
-     "text": "Точно не полетит",
-     "at": 71.53
+     "text": "Производители",
+     "at": 76.057
     }
    ],
-   "until": 73.36
+   "until": 76.7
   }
  ],
  "zooms": [
@@ -1315,5 +1385,42 @@
  "focus": {
   "x": 488,
   "y": 953
- }
+ },
+ "widgets": [
+  {
+   "at": 8.45,
+   "until": 12.85,
+   "items": [
+    {
+     "kind": "stat",
+     "value": "6",
+     "label": "брендов",
+     "sub": "Программа"
+    },
+    {
+     "kind": "ring",
+     "value": "5",
+     "label": "дней"
+    },
+    {
+     "kind": "badge",
+     "value": "6",
+     "label": "городов"
+    }
+   ]
+  }
+ ],
+ "titles": [
+  {
+   "at": 45.45,
+   "until": 48.45,
+   "text": "Made in China",
+   "script": "модно",
+   "font": "grotesk",
+   "y": 380,
+   "plane": "front"
+  }
+ ],
+ "emojis": [],
+ "grade": "brightness(1.03) contrast(1.06) saturate(1.12) sepia(0.05)"
 }

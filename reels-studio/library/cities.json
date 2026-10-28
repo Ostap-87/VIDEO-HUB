@@ -138,5 +138,25 @@
   "photos": [
    "source-videos/2026-10-07-byt-tehnika/cities/syamen-bashni.jpg"
   ]
+ },
+ "Чаншу": {
+  "forms": [
+   "Чаншу",
+   "Чаншэ",
+   "Changshu"
+  ],
+  "photos": [
+   "интернет-материалы/города/changshu.jpg"
+  ]
+ },
+ "Нинбо": {
+  "forms": [
+   "Нинбо",
+   "Нимбо",
+   "Ningbo"
+  ],
+  "photos": [
+   "интернет-материалы/города/ningbo.jpg"
+  ]
  }
 }
