@@ -4457,7 +4457,8 @@
    "Джейди Логистикс",
    "京东物流"
   ],
-  "logo": "source-videos/логотипы/логистика/jd-logistics.png"
+  "logo": "source-videos/логотипы/ритейл/jd.svg",
+  "note": "у SINOTECH файл «JD Logistics.png» на деле знак JD 数科 (финтех) — ставим общий знак JD.com"
  },
  "china-railway-express": {
   "names": [
