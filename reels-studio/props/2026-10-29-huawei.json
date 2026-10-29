@@ -1045,7 +1045,8 @@
    "src": "интернет-материалы/техника/telefonnyi-kommutator-highsmith.jpg",
    "at": 12.49,
    "until": 15.7,
-   "transition": "circle"
+   "transition": "circle",
+   "mode": "full"
   }
  ],
  "cities": [
