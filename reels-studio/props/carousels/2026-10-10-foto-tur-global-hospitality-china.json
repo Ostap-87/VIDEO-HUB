@@ -43,10 +43,30 @@
    "kicker": "Компании маршрута",
    "title": "**6 сетей** и 2 знаковых отеля",
    "items": [
-    "Marriott · Hilton · IHG",
-    "Accor · Hyatt · Wyndham",
-    "Waldorf Astoria Shanghai on the Bund",
-    "Tomorrow Square Shanghai"
+    "Tomorrow Square Shanghai — смена люксовых брендов в одной башне"
+   ],
+   "logos": [
+    {
+     "src": "marriott"
+    },
+    {
+     "src": "hilton"
+    },
+    {
+     "src": "ihg"
+    },
+    {
+     "src": "accor"
+    },
+    {
+     "src": "hyatt"
+    },
+    {
+     "src": "wyndham"
+    },
+    {
+     "src": "waldorf-astoria"
+    }
    ]
   },
   {

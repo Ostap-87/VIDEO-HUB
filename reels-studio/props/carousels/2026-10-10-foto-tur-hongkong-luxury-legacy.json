@@ -17,7 +17,8 @@
    "kicker": "The Peninsula",
    "title": "год открытия The Peninsula",
    "text": "Один из легендарных люксовых отелей Гонконга",
-   "value": "1928"
+   "value": "1928",
+   "logo": "peninsula"
   },
   {
    "kind": "photoCard",
@@ -42,10 +43,28 @@
    "kicker": "Компании маршрута",
    "title": "**6 семейных** групп",
    "items": [
-    "The Peninsula (семья Kadoorie)",
-    "Mandarin Oriental (семья Keswick)",
-    "Rosewood (Cheng) · Shangri-La (Kuok)",
-    "Langham (Lo) · Wharf Hotels (Woo)"
+    "The Peninsula — семья Kadoorie",
+    "Rosewood — семья Cheng, Shangri-La — Kuok"
+   ],
+   "logos": [
+    {
+     "src": "peninsula"
+    },
+    {
+     "src": "mandarin-oriental"
+    },
+    {
+     "src": "rosewood"
+    },
+    {
+     "src": "shangri-la"
+    },
+    {
+     "src": "langham"
+    },
+    {
+     "src": "wharf-hotels"
+    }
    ]
   },
   {

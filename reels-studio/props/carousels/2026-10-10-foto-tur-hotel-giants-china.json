@@ -42,11 +42,28 @@
    "focus": "50% 30%",
    "kicker": "Компании маршрута",
    "title": "**7 гостиничных** групп",
-   "items": [
-    "Jin Jiang International · H World",
-    "GreenTree · Atour (Yaduo)",
-    "Kaiyuan Hotel Group · Dossen",
-    "BTG Hotels Group"
+   "logos": [
+    {
+     "src": "jin-jiang"
+    },
+    {
+     "src": "h-world"
+    },
+    {
+     "src": "greentree"
+    },
+    {
+     "src": "atour"
+    },
+    {
+     "src": "kaiyuan"
+    },
+    {
+     "src": "dossen"
+    },
+    {
+     "src": "btg-hotels"
+    }
    ]
   },
   {

@@ -1,0 +1,31 @@
+{
+  "brand": "gtt",
+  "theme": "light",
+  "layout": "card",
+  "kicker": "Бизнес-экспедиция",
+  "titleSize": 84,
+  "subtitleSize": 38,
+  "titlePlate": true,
+  "photoFull": true,
+  "headerTop": 236,
+  "title": "**Отельные**\nгиганты Китая",
+  "subtitle": "7 компаний · Шанхай → Ханчжоу → Гуанчжоу → Пекин",
+  "logos": [
+    "jin-jiang",
+    "h-world",
+    "greentree",
+    "atour",
+    "kaiyuan",
+    "dossen",
+    "btg-hotels"
+  ],
+  "logoColumns": 4,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-29-kit-gostinicy/ostap-kadr.jpg",
+    "top": 0,
+    "height": 1700,
+    "focus": "50% 0%",
+    "zoom": 1.09
+  },
+  "logoSize": 1.3
+}
