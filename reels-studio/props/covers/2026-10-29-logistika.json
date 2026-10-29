@@ -1,0 +1,34 @@
+{
+  "brand": "gtt",
+  "theme": "light",
+  "layout": "card",
+  "kicker": "Бизнес-экспедиция",
+  "titleSize": 84,
+  "subtitleSize": 38,
+  "titlePlate": true,
+  "photoFull": true,
+  "headerTop": 236,
+  "title": "**Логистика**\nКитая за 5 дней",
+  "subtitle": "10 компаний · Пекин → Шанхай → Ханчжоу → Шэньчжэнь",
+  "logos": [
+    "sinotrans",
+    "jd-logistics",
+    "china-railway-express",
+    "cosco",
+    "cainiao",
+    "sf-express",
+    "zto",
+    "yto",
+    "sto",
+    "deppon"
+  ],
+  "logoColumns": 5,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-29-logistika/ostap-kadr.jpg",
+    "top": 0,
+    "height": 1700,
+    "focus": "50% 0%",
+    "zoom": 1.09
+  },
+  "logoSize": 1.25
+}
