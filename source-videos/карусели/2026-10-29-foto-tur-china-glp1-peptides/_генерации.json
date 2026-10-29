@@ -1,0 +1,110 @@
+{
+ "01.jpg": {
+  "job": "8f054d8c-efb7-49fe-af84-62061dc9ae0e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261029_044415_8f054d8c-efb7-49fe-af84-62061dc9ae0e.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "biotech campus atrium Suzhou, scientist + delegation"
+ },
+ "02.jpg": {
+  "job": "76cc843a-0819-4a59-843c-4d8da212c2a2",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261029_044416_76cc843a-0819-4a59-843c-4d8da212c2a2.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "QC lab, unlabeled injection pen"
+ },
+ "03.jpg": {
+  "job": "78df0089-aee6-4d05-a12b-f4b997d19121",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261029_044536_78df0089-aee6-4d05-a12b-f4b997d19121.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "high-speed rail platform, delegation"
+ },
+ "04.jpg": {
+  "job": "fb584c33-a566-45f4-b56b-d1a0e9a84375",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261029_044536_fb584c33-a566-45f4-b56b-d1a0e9a84375.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "peptide cleanroom reactors"
+ },
+ "05.jpg": {
+  "job": "6568f7ea-486a-4488-b605-4edcfc6eb62c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261029_044416_6568f7ea-486a-4488-b605-4edcfc6eb62c.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "meeting room, BD director presents"
+ },
+ "06a.jpg": {
+  "job": "b8452da5-c688-4073-9391-baa602ff49d6",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261029_044535_b8452da5-c688-4073-9391-baa602ff49d6.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "executive waiting alone in biotech lobby"
+ },
+ "06b.jpg": {
+  "job": "948284d3-86a8-4361-90c8-66570fbcc90d",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261029_044416_948284d3-86a8-4361-90c8-66570fbcc90d.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "9:16",
+  "cost": 0.5,
+  "size": [
+   752,
+   1344
+  ],
+  "prompt": "reception hands badges"
+ },
+ "07.jpg": {
+  "job": "15f7041a-2dec-4995-83c9-62a4becff3f4",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261029_044634_15f7041a-2dec-4995-83c9-62a4becff3f4.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:3",
+  "cost": 0.5,
+  "size": [
+   1168,
+   880
+  ],
+  "prompt": "first-class train cabin, tea"
+ },
+ "08.jpg": {
+  "job": "7642cf59-b6c5-4c79-8b32-bc587df15356",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261029_044633_7642cf59-b6c5-4c79-8b32-bc587df15356.png",
+  "model": "gpt_image_2_5 medium 1k",
+  "aspect": "4:5",
+  "cost": 0.5,
+  "size": [
+   896,
+   1120
+  ],
+  "prompt": "woman executive + scientist with vial"
+ }
+}

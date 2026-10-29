@@ -17,7 +17,8 @@
    "kicker": "Anta Sports",
    "title": "в мире после Nike и Adidas",
    "text": "Владелец Amer Sports: Salomon, Wilson",
-   "value": "№3"
+   "value": "№3",
+   "logo": "anta"
   },
   {
    "kind": "photoCard",
@@ -43,10 +44,28 @@
    "kicker": "Компании маршрута",
    "title": "**6 брендов** за поездку",
    "items": [
-    "Anta Sports · Li-Ning",
     "Bosideng — крупнейший бренд пуховиков",
-    "JNBY · Peacebird",
     "Urban Revivo — «азиатский ответ Zara»"
+   ],
+   "logos": [
+    {
+     "src": "li-ning"
+    },
+    {
+     "src": "anta"
+    },
+    {
+     "src": "bosideng"
+    },
+    {
+     "src": "jnby"
+    },
+    {
+     "src": "peacebird"
+    },
+    {
+     "src": "urban-revivo"
+    }
    ]
   },
   {

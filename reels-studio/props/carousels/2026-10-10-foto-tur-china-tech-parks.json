@@ -17,7 +17,8 @@
    "kicker": "Tesla, Шанхай",
    "title": "машин в год — **Tesla** в Lingang",
    "text": "Около половины глобального выпуска Tesla",
-   "value": "950 000+"
+   "value": "950 000+",
+   "logo": "tesla"
   },
   {
    "kind": "photoCard",
@@ -41,16 +42,34 @@
    "image": "source-videos/карусели/2026-10-10-foto-tur-china-tech-parks/04.jpg",
    "focus": "50% 30%",
    "kicker": "Компании маршрута",
-   "title": "Резиденты **на маршруте**",
+   "title": "**9 компаний** на маршруте",
    "logos": [
     {
-     "src": "source-videos/логотипы/общие/baidu.png"
+     "src": "baidu"
     },
     {
-     "src": "source-videos/логотипы/общие/xiaomi.svg"
+     "src": "xiaomi"
     },
     {
-     "src": "source-videos/логотипы/общие/tencent.svg"
+     "src": "smic"
+    },
+    {
+     "src": "wuxi-apptec"
+    },
+    {
+     "src": "tesla"
+    },
+    {
+     "src": "deepblue-technology"
+    },
+    {
+     "src": "tencent"
+    },
+    {
+     "src": "dji"
+    },
+    {
+     "src": "zte"
     }
    ]
   },
