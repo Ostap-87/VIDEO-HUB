@@ -41,12 +41,27 @@
    "image": "source-videos/карусели/2026-10-29-foto-tur-china-glp1-peptides/04.jpg",
    "kicker": "Компании маршрута",
    "title": "**6 игроков** рынка GLP-1",
-   "items": [
-    "Innovent · Sciwind",
-    "Huadong Medicine · Jiuyuan Gene",
-    "WuXi TIDES · Langhua"
-   ],
-   "focus": "50% 30%"
+   "focus": "50% 30%",
+   "logos": [
+    {
+     "src": "innovent"
+    },
+    {
+     "src": "sciwind"
+    },
+    {
+     "src": "huadong-medicine"
+    },
+    {
+     "src": "jiuyuan-gene"
+    },
+    {
+     "src": "wuxi-apptec"
+    },
+    {
+     "src": "langhua"
+    }
+   ]
   },
   {
    "kind": "photoCard",
