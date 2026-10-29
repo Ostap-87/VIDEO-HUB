@@ -22,6 +22,8 @@ export type InScreenItem = {
   src?: string; // icon, media
   images?: string[]; // cards
   plane?: "behind" | "front";
+  // light — светлый экран: белый фон, тёмный текст, синие рамки (решение пользователя 29.10.2026: «на светлом экране стрелкой»)
+  tone?: "dark" | "light";
 };
 // ноутбук перед спикером, как в референсе
 export const DEFAULT_QUAD: Quad = [
@@ -63,9 +65,13 @@ export function quadMatrix(q: Quad, w = W, h = H) {
 }
 
 // ------------------------------------------------------------------ содержимое экрана
-const BLUE = "#5B9DFF";
-const LIME = "#C8F560";
-const LABEL = "#CFE3FF";
+let BLUE = "#5B9DFF";
+let LIME = "#C8F560";
+let LABEL = "#CFE3FF";
+const TONES = {
+  dark: {blue: "#5B9DFF", lime: "#C8F560", label: "#CFE3FF", ink: "#FFFFFF", fill: "rgba(30,70,170,0.3)", sub: "#8FB4F0", bg: "radial-gradient(ellipse at 50% 40%, #0E1A3A 0%, #05070D 70%)"},
+  light: {blue: "#1A73E8", lime: "#0F9D58", label: "#14315E", ink: "#0E1A33", fill: "rgba(26,115,232,0.08)", sub: "#3C5A8A", bg: "linear-gradient(160deg, #FFFFFF 0%, #EEF4FF 100%)"},
+} as const;
 const CURVE = {arc: "#FF4F7A", drop: "#C062FF", wave: "#7FC8FF", rise: "#5BE38A"} as const;
 const DEF_LABELS = {arc: ["Завязка", "Развитие", "Кульминация", "Спад", "Развязка"], drop: ["1318", "427", "132", "100"], wave: ["20", "90", "100"], rise: ["Старт", "Рост", "Результат"]} as const;
 
@@ -109,6 +115,10 @@ const Content: React.FC<{it: InScreenItem}> = ({it}) => {
   const sp = (delay: number, cfg = {damping: 15, stiffness: 170}) => spring({frame: frame - Math.round(delay * fps), fps, config: cfg});
   const body = B.bodyFont;
   const head = B.captionFont;
+  const T = TONES[it.tone ?? "dark"];
+  BLUE = T.blue;
+  LIME = T.lime;
+  LABEL = T.label;
   if (it.kind === "media" && it.src) {
     return isVideo(it.src) ? <OffthreadVideo src={url(it.src)} muted style={{width: W, height: H, objectFit: "cover"}} /> : <Img src={url(it.src)} style={{width: W, height: H, objectFit: "cover"}} />;
   }
@@ -208,10 +218,12 @@ const Content: React.FC<{it: InScreenItem}> = ({it}) => {
   if (it.kind === "steps") {
     const items = (it.items?.length ? it.items : ["Выбрал|структуру", "Заполнил|шаги", "Текст|для съёмки"]).slice(0, 4);
     const n = items.length;
-    const bw = Math.min(260, (W - 120 - (n - 1) * 50) / n);
+    const bw = Math.min(n <= 3 ? 280 : 260, (W - 120 - (n - 1) * 50) / n);
+    const top = it.text ? 250 : 220; // text — заголовок над шагами
     const x0 = (W - (n * bw + (n - 1) * 50)) / 2;
     return (
       <AbsoluteFill>
+        {it.text ? <div style={{position: "absolute", left: 0, right: 0, top: 96, textAlign: "center", fontFamily: head, fontWeight: 800, fontSize: 64, color: T.ink, textTransform: "uppercase", opacity: sp(0.05)}}>{it.text}</div> : null}
         {items.map((s, i) => {
           const [title, sub] = s.split("|");
           const at = 0.2 + ((dur * 0.6) * i) / Math.max(1, n);
@@ -219,11 +231,11 @@ const Content: React.FC<{it: InScreenItem}> = ({it}) => {
           const last = i === n - 1;
           return (
             <React.Fragment key={i}>
-              <div style={{position: "absolute", left: x0 + i * (bw + 50), top: 220, width: bw, height: 170, border: `3px solid ${last ? LIME : BLUE}`, borderRadius: 14, background: last ? "rgba(200,245,96,0.12)" : "rgba(30,70,170,0.3)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 6, opacity: Math.min(1, k * 1.5), scale: String(0.7 + 0.3 * k)}}>
-                <div style={{fontFamily: head, fontWeight: 800, fontSize: Math.min(40, bw / 6.2), color: "#FFFFFF", textTransform: "uppercase"}}>{title}</div>
-                {sub ? <div style={{fontFamily: body, fontWeight: 700, fontSize: 24, color: last ? LIME : "#8FB4F0", textTransform: "uppercase", letterSpacing: "0.06em"}}>{sub}</div> : null}
+              <div style={{position: "absolute", left: x0 + i * (bw + 50), top, width: bw, height: 210, border: `3px solid ${last ? LIME : BLUE}`, borderRadius: 14, background: last ? (it.tone === "light" ? "rgba(15,157,88,0.08)" : "rgba(200,245,96,0.12)") : T.fill, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 6, opacity: Math.min(1, k * 1.5), scale: String(0.7 + 0.3 * k)}}>
+                <div style={{fontFamily: head, fontWeight: 800, fontSize: Math.min(46, bw / 6, (bw - 28) / (Math.max(4, title.length) * 0.95)), color: T.ink, textTransform: "uppercase", textAlign: "center"}}>{title}</div>
+                {sub ? <div style={{fontFamily: body, fontWeight: 700, fontSize: 27, color: last ? LIME : T.sub, textTransform: "uppercase", letterSpacing: "0.06em", textAlign: "center"}}>{sub}</div> : null}
               </div>
-              {i < n - 1 ? <div style={{position: "absolute", left: x0 + i * (bw + 50) + bw + 8, top: 282, fontSize: 40, color: BLUE, fontFamily: body, fontWeight: 800, opacity: sp(at + 0.2)}}>→</div> : null}
+              {i < n - 1 ? <div style={{position: "absolute", left: x0 + i * (bw + 50) + bw + 6, top: top + 72, fontSize: 46, color: BLUE, fontFamily: body, fontWeight: 800, opacity: sp(at + 0.2)}}>→</div> : null}
             </React.Fragment>
           );
         })}
@@ -255,7 +267,7 @@ const InScreenOne: React.FC<{it: InScreenItem}> = ({it}) => {
   const flash = interpolate(t, [0, 0.12, 0.35], [0, 0.35, 0], clamp);
   const q = it.quad && it.quad.length === 4 ? it.quad : DEFAULT_QUAD;
   return (
-    <div style={{position: "absolute", left: 0, top: 0, width: W, height: H, transformOrigin: "0 0", transform: quadMatrix(q), opacity: on, overflow: "hidden", background: it.kind === "media" ? "#000" : "radial-gradient(ellipse at 50% 40%, #0E1A3A 0%, #05070D 70%)"}}>
+    <div style={{position: "absolute", left: 0, top: 0, width: W, height: H, transformOrigin: "0 0", transform: quadMatrix(q), opacity: on, overflow: "hidden", background: it.kind === "media" ? "#000" : TONES[it.tone ?? "dark"].bg}}>
       <Content it={it} />
       {/* блик стекла и вспышка включения */}
       <AbsoluteFill style={{background: "linear-gradient(125deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 38%)"}} />

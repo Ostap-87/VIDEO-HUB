@@ -50,7 +50,8 @@ export const talkReelProSchema = z.object({
   words: z.array(z.object({text: z.string(), start: z.number(), end: z.number()})),
   accentWords: z.array(z.string()), // слова, которые всегда синие (бренды, цифры)
   cuts: z.array(z.number()), // моменты склеек (секунды) — на них чередуется зум
-  chips: z.array(z.object({until: z.number(), wrap: z.boolean(), items: z.array(chip)})),
+  // scale — плашки крупнее (1.4 — когда спикер уехал в угол и сверху свободно, решение пользователя 29.10.2026)
+  chips: z.array(z.object({until: z.number(), wrap: z.boolean(), items: z.array(chip), scale: z.number().optional()})),
   logos: z.array(
     z.object({
       until: z.number(),
@@ -210,10 +211,11 @@ export const talkReelProSchema = z.object({
         rz: z.number().optional(),
         color: z.string().optional(),
         color2: z.string().optional(),
-        font: z.enum(["grotesk", "display", "serif", "hand", "mono", "body"]).optional(),
+        font: z.enum(["grotesk", "display", "serif", "hand", "mono", "body", "brush", "script"]).optional(),
         plane: z.enum(["behind", "front"]).optional(),
-        anim: z.enum(["rise", "fly", "type", "swing", "fade"]).optional(),
+        anim: z.enum(["rise", "fly", "type", "swing", "fade", "write"]).optional(),
         depth: z.number().optional(),
+        shine: z.boolean().optional(),
       }),
     )
     .optional(),
@@ -242,6 +244,8 @@ export const talkReelProSchema = z.object({
     .array(z.object({at: z.number(), kind: z.enum(["punch", "push", "pull", "macro"]), amount: z.number(), hold: z.number(), target: z.enum(["eyes", "lips"]).optional()}))
     .default([]),
   sfx: z.object({pop: z.string(), whoosh: z.string(), whip: z.string().optional(), click: z.string().optional()}),
+  // отдельный звук в нужную секунду (решение пользователя 29.10.2026: «звук щелчка и сверху надпись крупно»): kind — какой из sfx
+  sounds: z.array(z.object({at: z.number(), kind: z.enum(["pop", "whoosh", "whip", "click"]), volume: z.number().optional()})).optional(),
   // Фоновая музыка (только треки с коммерческой лицензией); volume ~0.1 под голосом, громче в финале
   // duck — во сколько раз тише музыка, пока говорит спикер (0.5 ≈ −6 дБ); в паузах от 0,35 с возвращается за 0,25 с
   music: z.object({src: z.string(), volume: z.number(), outroVolume: z.number(), duck: z.number().optional()}).optional(),
@@ -422,6 +426,7 @@ export const talkReelProSchema = z.object({
         src: z.string().optional(),
         images: z.array(z.string()).optional(),
         plane: z.enum(["behind", "front"]).optional(),
+        tone: z.enum(["dark", "light"]).optional(),
       }),
     )
     .optional(),
@@ -734,6 +739,8 @@ const ChipGroup: React.FC<{group: TalkReelProProps["chips"][number]; start: numb
         flexWrap: group.wrap ? "wrap" : "nowrap",
         gap: 16,
         opacity: out,
+        scale: group.scale ? String(group.scale) : undefined,
+        transformOrigin: "0 0",
       }}
     >
       {group.items.map((c, i) => (
@@ -1169,7 +1176,7 @@ const ZoomedVideo: React.FC<{
         ) : null,
       )}
       {/* тексты в 3D за спикером: между видео и вырезкой (без вырезки — поверх спикера) */}
-      {!b && textBehindActive(texts, t) ? (
+      {!broll.some((x) => t >= x.at && t <= x.until) && textBehindActive(texts, t) ? (
         <>
           <Texts3D items={texts} plane="behind" />
           {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
@@ -1214,11 +1221,6 @@ const ZoomedVideo: React.FC<{
           </AbsoluteFill>
           {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
         </>
-      ) : null}
-      {!b && inScreenActive(inscreens, "front", t) ? (
-        <AbsoluteFill style={{scale: String(zoom), transformOrigin: `${focus.x}px ${originY}px`, translate: `0px ${-lift}px`}}>
-          <InScreens items={inscreens} plane="front" />
-        </AbsoluteFill>
       ) : null}
       {/* заголовок «шрифт + рукопись» и картинки вокруг головы — за спикером (между видео и вырезкой) */}
       {!b && (titleBehindActive(titles, t) || floatBehindActive(floats, t)) ? (
@@ -1290,6 +1292,13 @@ const ZoomedVideo: React.FC<{
       ) : null}
       {/* спикер в угол: рамка, круг или вырезка по контуру, фон — размытие, бренд или картинка */}
       {sp ? <SpeakerStage s={sp.s} p={sp.p} video={src} cutout={cutoutSrc} focus={focus} zoom={zoom} stories={stories} /> : null}
+      {/* экран спереди — после спикера в углу: так экран виден и над уменьшенным спикером на своём фоне
+          (решение пользователя 29.10.2026: «на светлом экране стрелкой… вырезав меня и сместив вниз») */}
+      {!b && inScreenActive(inscreens, "front", t) ? (
+        <AbsoluteFill style={{scale: String(zoom), transformOrigin: `${focus.x}px ${originY}px`, translate: `0px ${-lift}px`}}>
+          <InScreens items={inscreens} plane="front" />
+        </AbsoluteFill>
+      ) : null}
       {/* затемнение сверху и снизу для читаемости логотипа и субтитров */}
       <AbsoluteFill
         style={{
@@ -1977,6 +1986,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
   const f = (s: number) => Math.round(s * fps);
   const siteFrom = f(p.site.at);
   const sfxAt: {at: number; src: string; volume?: number}[] = [
+    ...(p.sounds ?? []).map((x) => ({at: x.at, src: p.sfx[x.kind] ?? p.sfx.pop, volume: x.volume ?? 0.45})),
     ...p.chips.flatMap((g) => g.items.map((c) => ({at: c.at, src: p.sfx.pop}))),
     ...p.chips.flatMap((g) => g.items.filter((c) => c.strike !== undefined).map((c) => ({at: c.strike as number, src: p.sfx.whoosh}))),
     ...p.zooms.filter((z) => z.kind === "punch" && p.sfx.whip).map((z) => ({at: z.at, src: p.sfx.whip as string, volume: 0.16})),

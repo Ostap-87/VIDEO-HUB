@@ -395,6 +395,14 @@ npm run stories -- ../finished-videos/имя-stories.mp4 --at 58.3   # част�
 python3 scripts/rebumper.py 2026-10-07-intro 2026-10-08-roboty   # Reels + Stories + лёгкие копии + раскадровка
 ```
 
+## Монтажный лист (эффекты по секундам)
+
+Страница «Монтажный лист» (артефакт claude.ai): видео ролика и все фразы по секундам с кадром и полем для пожеланий.
+Пользователь пишет, что наложить на каждую фразу, Claude читает пометки и собирает props. Поля, появившиеся под этот способ:
+`texts[].font` `brush` (иероглифы кистью) и `script` (прописные буквы), `texts[].shine` (серебристый перелив),
+`texts[].anim` `write` (надпись пишется), `inscreens[].tone` `light` + `text` у `steps` (заголовок), `chips[].scale`,
+`sounds: [{at, kind: "click", volume}]` (звук в нужную секунду). Пример — `props/2026-10-29-alibaba.json`.
+
 ## Раскадровка
 
 ```bash

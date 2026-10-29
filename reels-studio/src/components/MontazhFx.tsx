@@ -3,18 +3,20 @@
 // в разных плоскостях; выдвижные экраны снизу, сверху, с боков и из углов с видео или фото; цвета шрифтов в моменте».
 // Всё — поля TalkReelPro (speaker, panels, texts, lists, palette / paletteAt), стиль берётся от бренда (useBrand).
 import React from "react";
-import {AbsoluteFill, Easing, Img, interpolate, OffthreadVideo, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
+import {AbsoluteFill, continueRender, delayRender, Easing, Img, interpolate, OffthreadVideo, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
 import {SpeakerVideo} from "./EdlVideo";
 import {loadFont as loadOswald} from "@remotion/google-fonts/Oswald";
 import {loadFont as loadPlayfair} from "@remotion/google-fonts/PlayfairDisplay";
 import {loadFont as loadUnbounded} from "@remotion/google-fonts/Unbounded";
 import {loadFont as loadCaveat} from "@remotion/google-fonts/Caveat";
+import {loadFont as loadVibes} from "@remotion/google-fonts/GreatVibes";
 import {useBrand, type Brand} from "../brand";
 
 const oswald = loadOswald("normal", {weights: ["700"], subsets: ["cyrillic", "latin"]});
 const playfair = loadPlayfair("italic", {weights: ["700"], subsets: ["cyrillic", "latin"]});
 const unbounded = loadUnbounded("normal", {weights: ["800"], subsets: ["cyrillic", "latin"]});
 const caveat = loadCaveat("normal", {weights: ["700"], subsets: ["cyrillic", "latin"]});
+const vibes = loadVibes("normal", {weights: ["400"], subsets: ["cyrillic", "latin"]});
 
 const ease = Easing.bezier(0.22, 1, 0.36, 1);
 const clamp = {extrapolateLeft: "clamp", extrapolateRight: "clamp"} as const;
@@ -358,10 +360,29 @@ export type TextItem = {
   rz?: number; // наклон в плоскости кадра
   color?: string;
   color2?: string; // второй цвет: обводка / объём
-  font?: "grotesk" | "display" | "serif" | "hand" | "mono" | "body";
+  font?: "grotesk" | "display" | "serif" | "hand" | "mono" | "body" | "brush" | "script";
   plane?: "behind" | "front";
-  anim?: "rise" | "fly" | "type" | "swing" | "fade";
+  anim?: "rise" | "fly" | "type" | "swing" | "fade" | "write";
   depth?: number; // объём букв, px
+  shine?: boolean; // серебристый перелив по буквам (решение пользователя 29.10.2026: «цифра… переливалась серебристым»)
+};
+// brush — китайская каллиграфия Ma Shan Zheng (OFL, интернет-материалы/шрифты/) для иероглифов: файл ~3 МБ, грузится
+// только когда в ролике есть такой текст (решение пользователя 29.10.2026: «иероглифы крупно за моей спиной на стене»)
+const BRUSH = "Ma Shan Zheng Local";
+let brushLoading = false;
+const useBrush = (on: boolean) => {
+  React.useState(() => {
+    if (!on || brushLoading || typeof document === "undefined") return null;
+    brushLoading = true;
+    const h = delayRender("шрифт Ma Shan Zheng");
+    const face = new FontFace(BRUSH, `url("${staticFile("интернет-материалы/шрифты/ma-shan-zheng.woff2")}") format("woff2")`);
+    face
+      .load()
+      .then((f) => (document.fonts as unknown as {add: (x: FontFace) => void}).add(f))
+      .catch(() => undefined)
+      .finally(() => continueRender(h));
+    return null;
+  });
 };
 const FONTS = (B: Brand): Record<NonNullable<TextItem["font"]>, {f: string; w: number; caps?: boolean; italic?: boolean}> => ({
   grotesk: {f: oswald.fontFamily, w: 700, caps: true},
@@ -370,6 +391,9 @@ const FONTS = (B: Brand): Record<NonNullable<TextItem["font"]>, {f: string; w: n
   hand: {f: caveat.fontFamily, w: 700},
   mono: {f: B.monoFont, w: 600, caps: true},
   body: {f: B.bodyFont, w: 700},
+  brush: {f: `"${BRUSH}", "Noto Serif SC", serif`, w: 400},
+  // прописные буквы Great Vibes (решение пользователя 29.10.2026: «за мной логотип Алибаба красивыми прописными буквами»)
+  script: {f: vibes.fontFamily, w: 400},
 });
 
 const TextOne: React.FC<{it: TextItem}> = ({it}) => {
@@ -379,6 +403,7 @@ const TextOne: React.FC<{it: TextItem}> = ({it}) => {
   const t = frame / fps;
   const dur = it.until - it.at;
   const F = FONTS(B)[it.font ?? "grotesk"];
+  useBrush(it.font === "brush");
   const anim = it.anim ?? "rise";
   const k = spring({frame, fps, config: {damping: 16, stiffness: 120}});
   const out = interpolate(t, [dur - 0.35, dur], [1, 0], clamp);
@@ -388,7 +413,7 @@ const TextOne: React.FC<{it: TextItem}> = ({it}) => {
   const shadow = depth > 0 ? Array.from({length: depth}, (_, d) => `${d + 1}px ${d + 1}px 0 ${ink}`).join(", ") + ", 10px 18px 30px rgba(0,0,0,0.4)" : "0 10px 30px rgba(0,0,0,0.45)";
   let text = F.caps ? it.text.toUpperCase() : it.text;
   // кегль по длине строки: слово не вылезает за край кадра (ширина буквы в долях кегля — по шрифту)
-  const widthK = {grotesk: 0.48, display: 0.78, serif: 0.52, hand: 0.42, mono: 0.62, body: 0.56}[it.font ?? "grotesk"];
+  const widthK = {grotesk: 0.48, display: 0.78, serif: 0.52, hand: 0.42, mono: 0.62, body: 0.56, brush: 1.02, script: 0.42}[it.font ?? "grotesk"];
   const longest = Math.max(...text.split("\n").map((l) => l.length), 1);
   // поворот в перспективе раздувает ближний край — запас тем больше, чем сильнее поворот
   const room = 2 * Math.min(it.x ?? 540, 1080 - (it.x ?? 540)) + 80 - 8 * Math.abs(it.ry ?? 0);
@@ -397,6 +422,7 @@ const TextOne: React.FC<{it: TextItem}> = ({it}) => {
   const ry = (it.ry ?? 0) + (anim === "swing" ? (1 - k) * 80 : 0);
   const z = anim === "fly" ? (1 - k) * -1400 : 0;
   const dy = anim === "rise" ? (1 - k) * 160 : 0;
+  const wrote = anim === "write" ? interpolate(t, [0.05, Math.min(dur * 0.6, 0.9)], [0, 100], {...clamp, easing: Easing.bezier(0.45, 0, 0.3, 1)}) : 100;
   return (
     <div
       style={{
@@ -409,7 +435,7 @@ const TextOne: React.FC<{it: TextItem}> = ({it}) => {
         alignItems: "center",
         justifyContent: "center",
         perspective: 1400,
-        opacity: (anim === "fade" ? k : Math.min(1, k * 2)) * out,
+        opacity: (anim === "fade" ? k : anim === "write" ? 1 : Math.min(1, k * 2)) * out,
       }}
     >
       <div
@@ -420,10 +446,22 @@ const TextOne: React.FC<{it: TextItem}> = ({it}) => {
           fontSize: size,
           lineHeight: 0.95,
           letterSpacing: F.caps ? "0.01em" : undefined,
-          color,
-          textShadow: shadow,
+          color: it.shine ? "transparent" : color,
+          textShadow: it.shine ? undefined : shadow,
+          // перелив: светлая полоса бежит по металлу слева направо, объём — тенью под буквами
+          ...(it.shine
+            ? {
+                backgroundImage: "linear-gradient(105deg, #7d838c 0%, #c9ced5 18%, #f7f9fb 30%, #9aa1aa 42%, #e6e9ee 56%, #ffffff 64%, #8a9099 78%, #d7dbe0 100%)",
+                backgroundSize: "260% 100%",
+                backgroundPosition: `${100 - ((t * 38) % 160)}% 0%`,
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                filter: `drop-shadow(${Math.max(2, depth)}px ${Math.max(2, depth)}px 0 ${ink}) drop-shadow(0 14px 28px rgba(0,0,0,0.45))`,
+              }
+            : {}),
           whiteSpace: "pre",
           textAlign: "center",
+          clipPath: wrote < 100 ? `inset(-30% ${100 - wrote}% -30% -10%)` : undefined,
           transform: `translate3d(0, ${dy}px, ${z}px) rotateX(${it.rx ?? 0}deg) rotateY(${ry}deg) rotateZ(${it.rz ?? 0}deg)`,
           transformStyle: "preserve-3d",
         }}
