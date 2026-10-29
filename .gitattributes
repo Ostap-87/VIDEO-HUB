@@ -25,3 +25,5 @@ montazh/engine/sample.mp4 -filter -diff -merge binary
 # Бюджет Git LFS исчерпан (25.10.2026): видео для автопубликации кладём в папку публикаций обычным git (до 100 МБ,
 # сжатая копия) — Instagram и Facebook берут его по ссылке raw.githubusercontent.com (поле media_urls поста POST-HUB).
 finished-videos/publish/**/*.mp4 -filter binary
+# Звук удара для Haier (~0,2 МБ, vine-boom из @remotion/sfx) — в обычном git: бюджет LFS исчерпан (29.10.2026)
+source-videos/2026-10-29-haier/sfx/boom.wav -filter -diff -merge binary
