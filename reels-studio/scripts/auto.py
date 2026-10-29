@@ -17,6 +17,7 @@
 import argparse
 import datetime
 import json
+import os
 import pathlib
 import shutil
 import subprocess
@@ -36,6 +37,19 @@ def step(msg):
 def run(cmd, **kw):
     print("  $ " + " ".join(map(str, cmd)), flush=True)
     subprocess.run([str(c) for c in cmd], check=True, cwd=STUDIO, **kw)
+
+
+def render_env():
+    """Временные файлы рендера — в память (/dev/shm), если там есть место: Chrome рендера держит общую память файлами
+    во временной папке (~700 МБ) плюс копии исходников Remotion (~300 МБ) — на диске сессии их не хватало, рендер падал
+    с «disk space is low» (Alibaba v2, 29.10.2026)."""
+    env = dict(os.environ)
+    shm = pathlib.Path("/dev/shm")
+    if shm.is_dir() and shutil.disk_usage(shm).free > 4 * 2**30:
+        tmp = shm / "remotion-tmp"
+        tmp.mkdir(exist_ok=True)
+        env["TMPDIR"] = str(tmp)
+    return env
 
 
 def light_copy(src, dst):
@@ -149,11 +163,14 @@ def main():
 
         # --timeout: на загруженной машине (параллельно идут нарезка и вырезка других роликов) кадр финала не успевал за 30 с
         R = ["./node_modules/.bin/remotion", "render", "src/index.ts", "TalkReelPro", "--timeout=120000"]
+        # мало места (< 3 ГБ): без кэша webpack (~250 МБ) — Chrome рендера падает с «disk space is low» (Alibaba v2, 29.10.2026)
+        if shutil.disk_usage(ROOT).free < 3 * 2**30:
+            R.append("--bundle-cache=false")
         if not a.stories_only:
             stage = "render-reels"
             reels = FIN / f"{a.name}.mp4"
             step("Рендер Reels")
-            run(R + [reels, f"--props=./props/{a.name}.json", f"--concurrency={CONCURRENCY}", "--log=error"])
+            run(R + [reels, f"--props=./props/{a.name}.json", f"--concurrency={CONCURRENCY}", "--log=error"], env=render_env())
             print(f"REELS {a.name}", flush=True)
 
             stage = "storyboard"
@@ -170,7 +187,7 @@ def main():
         st_props.write_text(json.dumps(sp, ensure_ascii=False))
         stories = FIN / f"{a.name}-stories.mp4"
         step("Рендер Stories")
-        run(R + [stories, f"--props={st_props}", f"--concurrency={CONCURRENCY}", "--log=error"])
+        run(R + [stories, f"--props={st_props}", f"--concurrency={CONCURRENCY}", "--log=error"], env=render_env())
         # фирменная заставка GTT (интро 1,47 с в начале, аутро 1,17 с в конце) сдвигает точки разреза; у Aura её нет
         lead, tail = (0.0, 0.0) if sp.get("brand", "gtt") != "gtt" or sp.get("bumper") is False else (44 / 30, 35 / 30)
         cuts = [round(c + lead, 2) for c in rep["storiesAt"]]

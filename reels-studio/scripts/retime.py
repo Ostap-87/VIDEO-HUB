@@ -42,6 +42,12 @@ def make_map(old, new):
     return f
 
 
+GENERIC = ("texts", "inscreens", "speaker", "widgets", "lists", "sounds", "captionsAt", "hooks", "titles", "panels", "emojis",
+           "marks", "stamps", "floats", "cards", "chats", "asks", "bgs", "splits", "outros", "searches", "dots", "votes", "drums",
+           "rings", "docus", "orbits", "charts", "timelines", "neons", "prompts", "screens", "socials", "arrows", "clips", "fx",
+           "bgFlags", "paths", "charts3d", "merges", "paletteAt")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("props")
@@ -99,6 +105,17 @@ def main():
         x["at"] = T(x["at"], "флаги")
         x["until"] = T(x["until"], "конец флагов")
     p["site"]["at"] = T(p["site"]["at"], "финал")
+    # остальные слои шаблона (тексты, экраны, спикер в углу, списки, звуки, хуки и т.д.): at / until / pressAt у самого
+    # слоя и at у вложенных пунктов (items, lines, columns); strikeAt у titles — от начала слоя, его не трогаем
+    for key in GENERIC:
+        for x in p.get(key, []) or []:
+            for f in ("at", "until", "pressAt"):
+                if isinstance(x.get(f), (int, float)):
+                    x[f] = T(x[f], f"{key} {f}")
+            for sub in ("items", "lines", "columns"):
+                for it in x.get(sub, []) or []:
+                    if isinstance(it, dict) and isinstance(it.get("at"), (int, float)):
+                        it["at"] = T(it["at"], f"{key} пункт")
     if a.video:
         p["speechSeconds"] = round(float(subprocess.check_output(
             ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", a.video])), 3)

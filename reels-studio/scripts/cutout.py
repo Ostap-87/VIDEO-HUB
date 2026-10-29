@@ -14,8 +14,24 @@ from PIL import Image
 MODEL = pathlib.Path.home() / ".cache" / "birefnet" / "model.onnx"
 
 
+MODEL_URL = "https://huggingface.co/onnx-community/BiRefNet_lite-ONNX/resolve/main/onnx/model.onnx"
+
+
+def ensure_model():
+    """Модели нет (новая сессия) — качаю curl'ом (~224 МБ): Node и Python к Hugging Face в облаке ходят не всегда."""
+    if MODEL.exists():
+        return
+    import subprocess
+
+    MODEL.parent.mkdir(parents=True, exist_ok=True)
+    subprocess.run(["curl", "-sSL", "--fail", "-o", str(MODEL) + ".part", MODEL_URL], check=True)
+    pathlib.Path(str(MODEL) + ".part").rename(MODEL)
+
+
 def mask_of(img: Image.Image) -> np.ndarray:
     import onnxruntime as ort
+
+    ensure_model()
 
     sess = ort.InferenceSession(str(MODEL), providers=["CPUExecutionProvider"])
     inp = sess.get_inputs()[0]

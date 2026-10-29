@@ -365,12 +365,15 @@ export type TextItem = {
   anim?: "rise" | "fly" | "type" | "swing" | "fade" | "write";
   depth?: number; // объём букв, px
   shine?: boolean; // серебристый перелив по буквам (решение пользователя 29.10.2026: «цифра… переливалась серебристым»)
+  // картинка вместо текста (логотип за спиной; Ping An 29.10.2026: «на заднем фоне крупно логотип PingAn за мной»):
+  // size — ширина картинки, px; повороты, плоскость и появление — как у текста
+  src?: string;
 };
 // brush — китайская каллиграфия Ma Shan Zheng (OFL, интернет-материалы/шрифты/) для иероглифов: файл ~3 МБ, грузится
 // только когда в ролике есть такой текст (решение пользователя 29.10.2026: «иероглифы крупно за моей спиной на стене»)
-const BRUSH = "Ma Shan Zheng Local";
+export const BRUSH = "Ma Shan Zheng Local";
 let brushLoading = false;
-const useBrush = (on: boolean) => {
+export const useBrush = (on: boolean) => {
   React.useState(() => {
     if (!on || brushLoading || typeof document === "undefined") return null;
     brushLoading = true;
@@ -466,7 +469,18 @@ const TextOne: React.FC<{it: TextItem}> = ({it}) => {
           transformStyle: "preserve-3d",
         }}
       >
-        {text}
+        {it.src ? (
+          <Img
+            src={staticFile(it.src)}
+            style={{
+              display: "block",
+              width: it.size ?? 700,
+              filter: `drop-shadow(0 0 26px rgba(255,255,255,0.85)) drop-shadow(${Math.max(2, depth)}px ${Math.max(2, depth)}px 0 ${ink}) drop-shadow(0 14px 28px rgba(0,0,0,0.35))`,
+            }}
+          />
+        ) : (
+          text
+        )}
       </div>
     </div>
   );

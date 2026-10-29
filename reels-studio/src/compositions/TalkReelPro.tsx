@@ -34,6 +34,9 @@ import {Asks, bgActive, capStyleAt, Cards, Chats, defocusAt, DuoWord, floatBehin
 import {Chapters, DotsGrid, Drums, ringActive, Rings, Searches, Stamps, Votes, voteActive, WordCounters} from "../components/TrendFx";
 import {Charts, DocuBack, docuActive, Docus, neonActive, Neons, orbitActive, Orbits, panelSplitActive, promptActive, Prompts, Timelines, WatermarkCorner, Widgets} from "../components/ShowcaseFx";
 import {EdlAudio, EdlCtx, placeEdl, SpeakerVideo} from "../components/EdlVideo";
+import {MotionPaths, pathSounds} from "../components/MotionPath";
+import {Merges, mergeSounds} from "../components/MergeFx";
+import {chart3dActive, Charts3D} from "../components/Chart3D";
 import {loadFont as loadOswald} from "@remotion/google-fonts/Oswald";
 
 const oswald = loadOswald("normal", {weights: ["700"], subsets: ["cyrillic", "latin"]});
@@ -69,8 +72,10 @@ export const talkReelProSchema = z.object({
   // Падающий биржевой график ЗА спикером (спикер вырезан и стоит перед линией); label — тикер
   // direction: "up" — зелёный растущий график (рост рынка, продаж); по умолчанию "down" — красный падающий
   stockDrop: z
-    .object({at: z.number(), until: z.number(), label: z.string(), direction: z.enum(["down", "up"]).optional()})
+    .object({at: z.number(), until: z.number(), label: z.string(), direction: z.enum(["down", "up"]).optional(), swarm: z.number().optional()})
     .optional(),
+  // swarm — сколько ещё стрелок котировок летит вверх (вниз у «down») по всему фону за спиной (Ping An 29.10.2026:
+  // «множество стрелок котировок зелёные вверх за моей спиной»); без поля — только линия графика
   // Перебивки: картинка на весь экран, спикер уменьшается в окошко по центру (звук не прерывается)
   // transition: как картинка появляется за спиной — circle (круг из центра), slide (въезд сбоку с размытием),
   // zoom (наезд из размытия), wipe (диагональная шторка), fade. Без поля — чередуются по порядку.
@@ -83,7 +88,9 @@ export const talkReelProSchema = z.object({
       // mode: cutout (по умолчанию) — спикер вырезан и стоит перед картинкой;
       // pip — спикер уезжает карточкой в правый нижний угол, картинка на весь экран (решение пользователя 08.10.2026)
       // screen — как в финале: спикер в большом «экране» с рамкой по центру, картинка на весь кадр за ним
-      mode: z.enum(["cutout", "pip", "screen"]).optional(),
+      // full — только картинка на весь кадр, спикера нет (решение пользователя 29.10.2026: «меня убери из кадра…
+      // показывается это фото на эти несколько секунд, а потом я вновь появляюсь»)
+      mode: z.enum(["cutout", "pip", "screen", "full"]).optional(),
     }),
   ),
   // Чек-лист «планшет с зелёными галочками» для перечислений: спикер уходит наверх, внизу планшет, пункты
@@ -216,6 +223,7 @@ export const talkReelProSchema = z.object({
         anim: z.enum(["rise", "fly", "type", "swing", "fade", "write"]).optional(),
         depth: z.number().optional(),
         shine: z.boolean().optional(),
+        src: z.string().optional(),
       }),
     )
     .optional(),
@@ -243,9 +251,10 @@ export const talkReelProSchema = z.object({
   zooms: z
     .array(z.object({at: z.number(), kind: z.enum(["punch", "push", "pull", "macro"]), amount: z.number(), hold: z.number(), target: z.enum(["eyes", "lips"]).optional()}))
     .default([]),
-  sfx: z.object({pop: z.string(), whoosh: z.string(), whip: z.string().optional(), click: z.string().optional()}),
+  sfx: z.object({pop: z.string(), whoosh: z.string(), whip: z.string().optional(), click: z.string().optional(), boom: z.string().optional()}),
   // отдельный звук в нужную секунду (решение пользователя 29.10.2026: «звук щелчка и сверху надпись крупно»): kind — какой из sfx
-  sounds: z.array(z.object({at: z.number(), kind: z.enum(["pop", "whoosh", "whip", "click"]), volume: z.number().optional()})).optional(),
+  sounds: z.array(z.object({at: z.number(), kind: z.enum(["pop", "whoosh", "whip", "click", "boom"]), volume: z.number().optional()})).optional(),
+  // boom — тяжёлый удар (Haier 29.10.2026: «разбил кувалдой… звук удара»), файл — sfx.boom (vine-boom из @remotion/sfx)
   // Фоновая музыка (только треки с коммерческой лицензией); volume ~0.1 под голосом, громче в финале
   // duck — во сколько раз тише музыка, пока говорит спикер (0.5 ≈ −6 дБ); в паузах от 0,35 с возвращается за 0,25 с
   music: z.object({src: z.string(), volume: z.number(), outroVolume: z.number(), duck: z.number().optional()}).optional(),
@@ -389,7 +398,7 @@ export const talkReelProSchema = z.object({
   docus: z
     .array(z.object({at: z.number(), until: z.number(), title: z.string(), kicker: z.string().optional(), name: z.string().optional(), handle: z.string().optional(), button: z.string().optional(), color: z.string().optional()}))
     .optional(),
-  orbits: z.array(z.object({at: z.number(), until: z.number(), items: z.array(z.string())})).optional(),
+  orbits: z.array(z.object({at: z.number(), until: z.number(), items: z.array(z.string()), bare: z.boolean().optional()})).optional(),
   charts: z
     .array(z.object({at: z.number(), until: z.number(), title: z.string(), bars: z.array(z.object({label: z.string(), value: z.number(), hi: z.boolean().optional()})), avg: z.number().optional(), color: z.string().optional()}))
     .optional(),
@@ -429,6 +438,38 @@ export const talkReelProSchema = z.object({
         tone: z.enum(["dark", "light"]).optional(),
       }),
     )
+    .optional(),
+  // «Путь» — моушн-схема шагов на светлой карточке (components/MotionPath.tsx): узлы на словах, дорога рисуется, бежит точка
+  paths: z
+    .array(
+      z.object({
+        at: z.number(),
+        until: z.number(),
+        title: z.string().optional(),
+        kicker: z.string().optional(),
+        top: z.number().optional(),
+        arrow: z.boolean().optional(),
+        items: z.array(z.object({text: z.string(), sub: z.string().optional(), at: z.number(), icon: z.enum(["model", "channels", "platform", "tech", "people", "star"]).optional()})),
+      }),
+    )
+    .optional(),
+  // «собрать воедино» — три понятия (иероглиф + подпись) сходятся в один круг-итог (components/MergeFx.tsx, Haier 29.10.2026)
+  merges: z
+    .array(
+      z.object({
+        at: z.number(),
+        until: z.number(),
+        top: z.number().optional(),
+        kicker: z.string().optional(),
+        title: z.string().optional(),
+        items: z.array(z.object({glyph: z.string(), text: z.string(), at: z.number()})),
+        result: z.object({glyph: z.string(), text: z.string(), at: z.number()}),
+      }),
+    )
+    .optional(),
+  // объёмный 3D-график (столбики растут) и кольцо за спиной спикера (components/Chart3D.tsx); нужна вырезка на отрезок
+  charts3d: z
+    .array(z.object({at: z.number(), until: z.number(), barsAt: z.number().optional(), ringAt: z.number().optional(), label: z.string().optional(), ringLabel: z.string().optional(), ring: z.number().optional()}))
     .optional(),
   // Серия роликов: «часть N/total · title» под печатью и финальная карточка «Дальше → часть N+1: next» (без next — все ссылки)
   episode: z.object({n: z.number(), total: z.number(), title: z.string(), next: z.string().optional(), nextN: z.number().optional()}).optional(),
@@ -1005,6 +1046,23 @@ const StockChart: React.FC<{drop: NonNullable<TalkReelProProps["stockDrop"]>; t:
           <polygon points="34,0 -18,-30 -18,30" fill={C} />
         </g>
         <circle cx={hx} cy={hy} r={26 + 14 * pulse} fill="none" stroke={C} strokeOpacity={0.5 * (1 - pulse) + 0.2} strokeWidth={4} />
+        {Array.from({length: drop.swarm ?? 0}, (_, i) => {
+          // стрелки летят по кругу: у каждой своя колонка, размер, скорость и сдвиг по времени (без случайности — кадр повторяем)
+          const x = 60 + ((i * 397) % 960);
+          const sz = 26 + ((i * 53) % 40);
+          const period = 1.5 + ((i * 29) % 10) / 10;
+          const local = t - drop.at - (i % 7) * 0.11;
+          if (local < 0) return null;
+          const ph = (local / period + i * 0.37) % 1;
+          const y = up ? 1700 - ph * 1450 : 250 + ph * 1450;
+          const op = Math.min(1, ph * 5, (1 - ph) * 4) * (0.55 + ((i * 13) % 5) / 10);
+          return (
+            <g key={`sw${i}`} transform={`translate(${x} ${y}) rotate(${up ? -90 : 90})`} opacity={op} filter="url(#dropGlow)">
+              <line x1={-sz * 2.6} y1={0} x2={-sz * 0.4} y2={0} stroke={C} strokeWidth={sz * 0.22} strokeLinecap="round" strokeOpacity={0.55} />
+              <polygon points={`${sz},0 ${-sz * 0.55},${-sz * 0.8} ${-sz * 0.2},0 ${-sz * 0.55},${sz * 0.8}`} fill={C} />
+            </g>
+          );
+        })}
         <text x={60} y={up ? 470 : 660} fill="#FFFFFF" fontFamily="Inter, Arial, sans-serif" fontWeight={700} fontSize={44} opacity={0.9}>
           {drop.label} {up ? "▲" : "▼"}
         </text>
@@ -1095,12 +1153,13 @@ const ZoomedVideo: React.FC<{
   docus?: TalkReelProProps["docus"];
   orbits?: TalkReelProProps["orbits"];
   neons?: TalkReelProProps["neons"];
+  charts3d?: TalkReelProProps["charts3d"];
   words?: TalkReelProProps["words"];
   captionsAt?: TalkReelProProps["captionsAt"];
   accentWords?: string[];
   faceTop?: number;
   stories?: boolean;
-}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists, bgFlags, angleB, clips, hooks, speaker, texts, titles, floats, inscreens, bgs, rings, docus, orbits, neons, words, captionsAt, accentWords, faceTop, stories = false}) => {
+}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists, bgFlags, angleB, clips, hooks, speaker, texts, titles, floats, inscreens, bgs, rings, docus, orbits, neons, charts3d, words, captionsAt, accentWords, faceTop, stories = false}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -1182,6 +1241,13 @@ const ZoomedVideo: React.FC<{
           {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
         </>
       ) : null}
+      {/* объёмный 3D-график и кольцо за спиной: между видео и вырезкой */}
+      {!broll.some((x) => t >= x.at && t <= x.until) && chart3dActive(charts3d, t) ? (
+        <>
+          <Charts3D items={charts3d} />
+          {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
+        </>
+      ) : null}
       {/* свой фон за вырезанным спикером (без вырезки — не рисуется: спикер бы пропал) */}
       {!b && cutoutSrc && bgActive(bgs, t) ? (
         <>
@@ -1236,7 +1302,12 @@ const ZoomedVideo: React.FC<{
           {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
         </>
       ) : null}
-      {b && (b.mode === "pip" || b.mode === "screen" || !cutoutSrc) ? (
+      {b && b.mode === "full" ? (
+        // full — только картинка на весь кадр, спикер скрыт под ней (появляется снова, когда картинка уходит)
+        <AbsoluteFill style={imgStyle}>
+          <Img src={staticFile(b.src)} style={{width: "100%", height: "100%", objectFit: "cover", scale: String(kb)}} />
+        </AbsoluteFill>
+      ) : b && (b.mode === "pip" || b.mode === "screen" || !cutoutSrc) ? (
         // pip — спикер уезжает карточкой в правый нижний угол; screen — в большой экран по центру; картинка — на весь кадр
         <>
           <AbsoluteFill style={imgStyle}>
@@ -1987,6 +2058,9 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
   const siteFrom = f(p.site.at);
   const sfxAt: {at: number; src: string; volume?: number}[] = [
     ...(p.sounds ?? []).map((x) => ({at: x.at, src: p.sfx[x.kind] ?? p.sfx.pop, volume: x.volume ?? 0.45})),
+    ...pathSounds(p.paths).map((at) => ({at, src: p.sfx.click ?? p.sfx.pop, volume: 0.4})),
+    ...mergeSounds(p.merges).map((x) => ({at: x.at, src: x.kind === "click" ? p.sfx.click ?? p.sfx.pop : p.sfx.whoosh, volume: x.kind === "click" ? 0.4 : 0.32})),
+    ...(p.charts3d ?? []).map((x) => ({at: x.barsAt ?? x.at, src: p.sfx.whoosh, volume: 0.3})),
     ...p.chips.flatMap((g) => g.items.map((c) => ({at: c.at, src: p.sfx.pop}))),
     ...p.chips.flatMap((g) => g.items.filter((c) => c.strike !== undefined).map((c) => ({at: c.strike as number, src: p.sfx.whoosh}))),
     ...p.zooms.filter((z) => z.kind === "punch" && p.sfx.whip).map((z) => ({at: z.at, src: p.sfx.whip as string, volume: 0.16})),
@@ -2136,6 +2210,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
         docus={p.docus}
         orbits={p.orbits}
         neons={p.neons}
+        charts3d={p.charts3d}
         words={p.words}
         captionsAt={p.captionsAt}
         accentWords={p.accentWords}
@@ -2151,6 +2226,8 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
       {p.clips ? <ClipPanel clips={p.clips} /> : null}
       <ChecklistPanel lists={p.checklists} />
       <Lists items={p.lists} stories={stories} />
+      <MotionPaths items={p.paths} />
+      <Merges items={p.merges} />
       <Panels items={p.panels} stories={stories} />
       <Texts3D items={p.texts} plane="front" />
       <Titles items={p.titles} plane="front" />

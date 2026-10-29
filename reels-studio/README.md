@@ -403,6 +403,20 @@ python3 scripts/rebumper.py 2026-10-07-intro 2026-10-08-roboty   # Reels + Stori
 `texts[].anim` `write` (надпись пишется), `inscreens[].tone` `light` + `text` у `steps` (заголовок), `chips[].scale`,
 `sounds: [{at, kind: "click", volume}]` (звук в нужную секунду). Пример — `props/2026-10-29-alibaba.json`.
 
+## «Путь», 3D-график, фото без спикера
+
+- `paths` — моушн-схема шагов на светлой карточке (узлы с иконками на словах, дорога рисуется, бежит точка);
+- `charts3d` — объёмные столбики и кольцо за спиной спикера (Three.js), нужна вырезка `npm run matte` на отрезок;
+- `broll[].mode: "full"` — картинка на весь кадр, спикер скрыт;
+- вырезать повтор: `python3 scripts/rebuild.py <имя> <клип> --cut 41.00-41.77` (секунды склейки = время ролика − 1,47 с),
+  все слои props переносятся на новую шкалу сами.
+- `texts[].src` — картинка (логотип) вместо текста, за спиной или поверх; `stockDrop.swarm` — стрелки котировок по фону;
+  `paths[].arrow` — стрелка по «Пути»; `orbits[].bare` — предметы без фона по орбите (фон убирает
+  `python3 scripts/cutout.py <фото> <cut.png> --keep-largest`); `merges` — три круга с иероглифами сливаются в один;
+  `sounds` kind `boom` — удар (`sfx.boom`).
+- поправить кусок готового ролика: `remotion render … --frames=1060-1190 --crf=8 /dev/shm/seg.mp4`, затем ffmpeg
+  `trim` + `concat` по номерам кадров (не `overlay` с `-itsoffset`).
+
 ## Раскадровка
 
 ```bash

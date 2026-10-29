@@ -12,7 +12,7 @@
 // Ещё из этого референса: lists style «progress» (MontazhFx) и финал outros с сеткой кадров и словом (RefFx).
 // Акцент в текстах — **слово** (цвет бренда), строки — через « / ».
 import React from "react";
-import {AbsoluteFill, Easing, interpolate, OffthreadVideo, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
+import {AbsoluteFill, Easing, Img, interpolate, OffthreadVideo, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
 import {loadFont as loadOswald} from "@remotion/google-fonts/Oswald";
 import {loadFont as loadPlayfair} from "@remotion/google-fonts/PlayfairDisplay";
 import {SpeakerVideo} from "./EdlVideo";
@@ -374,7 +374,9 @@ const DocuFront: React.FC<{it: DocuItem; stories: boolean}> = ({it, stories}) =>
 export const Docus: React.FC<{items?: DocuItem[]; stories: boolean}> = ({items, stories}) => <Seqs items={items} name="Документалка" render={(it) => <DocuFront it={it} stories={stories} />} />;
 
 // ------------------------------------------------------------------ карточки по орбите вокруг головы
-export type OrbitItem = Span & {items: string[]};
+// bare — предметы без фона (PNG с прозрачностью) летают без рамки карточки и сами покачиваются-вращаются (Haier 29.10.2026:
+// «вокруг интерактивно крутятся стиральные машинки, холодильник, электрочайник, тостер, пылесос — настоящие»)
+export type OrbitItem = Span & {items: string[]; bare?: boolean};
 export const orbitActive = (items: OrbitItem[] | undefined, t: number) => !!activeAt(items, t);
 
 export const Orbits: React.FC<{items?: OrbitItem[]; focus: Focus; half: "back" | "front"}> = ({items, focus, half}) => {
@@ -406,6 +408,22 @@ export const Orbits: React.FC<{items?: OrbitItem[]; focus: Focus; half: "back" |
           const x = cx + 470 * r * Math.cos(c.th);
           const y = cy + 140 * r * c.depth - 40 * Math.cos(c.th);
           const s = (0.72 + 0.3 * c.depth) * (0.4 + 0.6 * r);
+          if (it.bare)
+            return (
+              <div key={c.i} style={{position: "absolute", left: x - 150, top: y - 190, width: 300, height: 380, perspective: 900, opacity: Math.min(1, r * 2)}}>
+                <Img
+                  src={staticFile(c.src)}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                    scale: String(s),
+                    transform: `rotateY(${Math.sin(local * 1.6 + c.i * 1.3) * 32 - Math.cos(c.th) * 20}deg) rotateZ(${Math.sin(local * 1.1 + c.i) * 7}deg)`,
+                    filter: `drop-shadow(0 22px 26px rgba(0,0,0,0.45))${c.depth < 0 ? ` brightness(${0.78 + 0.22 * (1 + c.depth)})` : ""}`,
+                  }}
+                />
+              </div>
+            );
           return (
             <div key={c.i} style={{position: "absolute", left: x - 115, top: y - 205, width: 230, height: 410, perspective: 900, opacity: Math.min(1, r * 2) * (half === "back" ? 0.92 : 1)}}>
               <div
