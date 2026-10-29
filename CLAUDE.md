@@ -35,6 +35,11 @@
   ~4,3 Мбит/с) обычным git в `finished-videos/publish/<проект>-instagram/<имя поста>/` (`.gitattributes`: `-filter binary`),
   в посте POST-HUB — поле `media_urls` со ссылкой raw.githubusercontent.com вместо `video_hub` (так вышел Reels SANY 26.10.2026).
 
+- **Архив вышедшего в Instagram** (Reels, Stories, карусели всех аккаунтов) — отдельный публичный репозиторий `Ostap-87/GTT-MEDIA-OLD`
+  без LFS (решение пользователя 29.10.2026): папки `instagram/<аккаунт>/ГГГГ-ММ/ГГГГ-ММ-ДД_ЧЧММ_<формат>_<тема>/` с файлами, подписью
+  и ссылкой на пост, индекс — `ИНДЕКС.md`. Пополняется после публикаций: `python3 tools/archive.py --post-hub … --video-hub …`
+  (подробно — README того репозитория). Мастера роликов остаются здесь, в `finished-videos/` (LFS).
+
 ## Презентации
 
 Папка `презентации/`:
