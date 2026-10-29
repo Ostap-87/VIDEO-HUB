@@ -17,7 +17,8 @@
    "kicker": "COSCO Shipping, Шанхай",
    "title": "TEU — контейнерооборот **COSCO**",
    "text": "Крупнейший портовый оператор мира, 46 терминалов",
-   "value": "90 млн"
+   "value": "90 млн",
+   "logo": "cosco"
   },
   {
    "kind": "photoCard",
@@ -41,12 +42,38 @@
    "image": "source-videos/карусели/2026-10-10-foto-tur-china-logistics-top10/04.jpg",
    "focus": "50% 30%",
    "kicker": "Компании маршрута",
-   "title": "Вся цепочка **поставок**",
-   "items": [
-    "Порты и море: COSCO Shipping",
-    "Экспресс: SF, ZTO, YTO, STO",
-    "Склады и платформы: JD, Cainiao",
-    "Ж/д и грузы: CRE, Sinotrans, Deppon"
+   "title": "**10 компаний** — вся цепочка поставок",
+   "logos": [
+    {
+     "src": "cosco"
+    },
+    {
+     "src": "sf-express"
+    },
+    {
+     "src": "zto"
+    },
+    {
+     "src": "yto"
+    },
+    {
+     "src": "sto"
+    },
+    {
+     "src": "jd-logistics"
+    },
+    {
+     "src": "cainiao"
+    },
+    {
+     "src": "china-railway-express"
+    },
+    {
+     "src": "sinotrans"
+    },
+    {
+     "src": "deppon"
+    }
    ]
   },
   {

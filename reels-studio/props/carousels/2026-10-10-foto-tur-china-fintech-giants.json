@@ -17,7 +17,8 @@
    "kicker": "Ant Group",
    "title": "пользователей Alipay",
    "text": "Больше половины мобильных платежей Китая",
-   "value": "1 млрд+"
+   "value": "1 млрд+",
+   "logo": "ant-group"
   },
   {
    "kind": "photoCard",
@@ -42,11 +43,31 @@
    "focus": "50% 30%",
    "kicker": "Компании маршрута",
    "title": "**8 компаний** за поездку",
-   "items": [
-    "Ant Group · Tencent · JD Digits",
-    "Du Xiaoman · Lufax",
-    "OneConnect · LexinFintech",
-    "East Money Information"
+   "logos": [
+    {
+     "src": "ant-group"
+    },
+    {
+     "src": "tencent"
+    },
+    {
+     "src": "jd-digits"
+    },
+    {
+     "src": "du-xiaoman"
+    },
+    {
+     "src": "lufax"
+    },
+    {
+     "src": "oneconnect"
+    },
+    {
+     "src": "lexin"
+    },
+    {
+     "src": "source-videos/логотипы/финансы/eastmoney.png"
+    }
    ]
   },
   {

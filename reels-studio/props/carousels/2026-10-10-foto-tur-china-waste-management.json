@@ -17,7 +17,8 @@
    "kicker": "«Лаоган», Шанхай",
    "title": "тонн отходов в сутки — **«Лаоган»**",
    "text": "Крупнейший в мире моно-завод энергоутилизации",
-   "value": "11 000"
+   "value": "11 000",
+   "logo": "shanghai-environment"
   },
   {
    "kind": "photoCard",
@@ -43,12 +44,28 @@
    "kicker": "Компании маршрута",
    "title": "Шесть **лидеров** отрасли",
    "items": [
-    "GEM — переработка батарей NEV",
-    "Shenzhen Energy — парк «Яньтянь»",
-    "Grandblue — мусоросжигание и вода",
     "China Everbright — 600+ экопроектов",
-    "Shanghai Environment — «Лаоган»",
-    "China Tianying — оператор отходов"
+    "Shanghai Environment — «Лаоган»"
+   ],
+   "logos": [
+    {
+     "src": "gem"
+    },
+    {
+     "src": "shenzhen-energy-environmental"
+    },
+    {
+     "src": "grandblue"
+    },
+    {
+     "src": "everbright-environment"
+    },
+    {
+     "src": "shanghai-environment"
+    },
+    {
+     "src": "tianying"
+    }
    ]
   },
   {

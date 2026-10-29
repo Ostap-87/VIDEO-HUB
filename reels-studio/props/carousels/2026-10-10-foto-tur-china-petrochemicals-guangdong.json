@@ -17,7 +17,8 @@
    "kicker": "BASF Zhanjiang Verbund",
    "title": "этилена в год — **BASF**",
    "text": "Первый крекинг на 100% возобновляемой энергии",
-   "value": "1 млн т"
+   "value": "1 млн т",
+   "logo": "basf"
   },
   {
    "kind": "photoCard",
@@ -44,10 +45,21 @@
    "title": "Шесть **гигантов** отрасли",
    "items": [
     "Sinopec Zhongke — СП с Kuwait Petroleum",
-    "BASF Zhanjiang Verbund",
-    "Sinopec Maoming и Guangzhou Petrochemical",
-    "CSPC — СП CNOOC и Shell",
-    "ExxonMobil Huizhou"
+    "CSPC — СП CNOOC и Shell"
+   ],
+   "logos": [
+    {
+     "src": "sinopec"
+    },
+    {
+     "src": "basf"
+    },
+    {
+     "src": "cspc"
+    },
+    {
+     "src": "exxonmobil"
+    }
    ]
   },
   {
