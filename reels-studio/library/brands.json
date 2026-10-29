@@ -4442,5 +4442,93 @@
   ],
   "logo": "source-videos/логотипы/еда/weigang-text.png",
   "note": "фирменного знака нет ни в SINOTECH, ни на Commons — нейтральная текстовая плашка, не подделка знака"
+ },
+ "sinotrans": {
+  "names": [
+   "Sinotrans",
+   "Синотранс",
+   "中国外运"
+  ],
+  "logo": "source-videos/логотипы/логистика/sinotrans.png"
+ },
+ "jd-logistics": {
+  "names": [
+   "JD Logistics",
+   "Джейди Логистикс",
+   "京东物流"
+  ],
+  "logo": "source-videos/логотипы/логистика/jd-logistics.png"
+ },
+ "china-railway-express": {
+  "names": [
+   "China Railway Express",
+   "China Railway",
+   "Чайна Рейлвей",
+   "中铁快运",
+   "中欧班列"
+  ],
+  "logo": "source-videos/логотипы/логистика/china-railway-express.png"
+ },
+ "cosco": {
+  "names": [
+   "COSCO",
+   "Коско",
+   "КОСКО",
+   "中远海运"
+  ],
+  "logo": "source-videos/логотипы/логистика/cosco.png"
+ },
+ "zto": {
+  "names": [
+   "ZTO",
+   "ZTO Express",
+   "Зитиоу",
+   "中通"
+  ],
+  "logo": "source-videos/логотипы/логистика/zto.png"
+ },
+ "yto": {
+  "names": [
+   "YTO",
+   "YTO Express",
+   "圆通"
+  ],
+  "logo": "source-videos/логотипы/логистика/yto.png"
+ },
+ "sto": {
+  "names": [
+   "STO",
+   "STO Express",
+   "申通"
+  ],
+  "logo": "source-videos/логотипы/логистика/sto.png"
+ },
+ "deppon": {
+  "names": [
+   "Deppon",
+   "Деппон",
+   "Дэппон",
+   "德邦"
+  ],
+  "logo": "source-videos/логотипы/логистика/deppon.png"
+ },
+ "cainiao": {
+  "names": [
+   "Cainiao",
+   "Цайняо",
+   "Цайнао",
+   "Кайнао",
+   "菜鸟"
+  ],
+  "logo": "source-videos/логотипы/логистика/cainiao.png"
+ },
+ "sf-express": {
+  "names": [
+   "SF Express",
+   "Эс Эф",
+   "Шуньфэн",
+   "顺丰"
+  ],
+  "logo": "source-videos/логотипы/логистика/sf-express.svg"
  }
 }

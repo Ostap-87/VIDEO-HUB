@@ -1,0 +1,138 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-29-foto-tur-china-dairy-smart-factories/01.jpg",
+   "kicker": "Бизнес-экспедиция · Китай",
+   "title": "Самые **умные** молочные заводы Китая",
+   "text": "Умные молочные заводы Китая · 5 дней · 5 городов",
+   "focus": "50% 30%"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-29-foto-tur-china-dairy-smart-factories/02.jpg",
+   "kicker": "Маршрут от фермы до прилавка",
+   "title": "самых автоматизированных молочных производств",
+   "text": "Yili, Mengniu, Weigang и Bright Dairy",
+   "value": "5",
+   "focus": "50% 30%"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-29-foto-tur-china-dairy-smart-factories/03.jpg",
+   "kicker": "Маршрут",
+   "title": "5 дней · **5 городов**",
+   "numbered": true,
+   "items": [
+    "День 1 · Хух-Хото: Yili",
+    "День 2 · Иньчуань: Mengniu",
+    "День 3 · Ухань: Mengniu",
+    "День 4 · Нанкин: Weigang Dairy",
+    "День 5 · Шанхай: Bright Dairy"
+   ],
+   "focus": "50% 30%"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-29-foto-tur-china-dairy-smart-factories/04.jpg",
+   "kicker": "Что на маршруте",
+   "title": "От **фермы** до прилавка",
+   "items": [
+    "«Маяковая фабрика» WEF — Mengniu в Нинся",
+    "Крупнейший в мире завод йогуртов — Ухань",
+    "5G-завод Weigang — Нанкин",
+    "Крупнейший завод охлаждённой продукции — Шанхай"
+   ],
+   "focus": "50% 30%"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-29-foto-tur-china-dairy-smart-factories/05.jpg",
+   "kicker": "Что вы увидите",
+   "title": "Что вы **увидите** изнутри",
+   "items": [
+    "Роботов и ИИ на линиях",
+    "Холодную цепь от фермы до полки",
+    "Оборудование, которое можно забрать себе",
+    "Прямые выходы на поставщиков"
+   ],
+   "focus": "50% 30%"
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-29-foto-tur-china-dairy-smart-factories/06a.jpg",
+     "label": "Самостоятельно",
+     "items": [
+      "Заводы — каждый со своим согласованием",
+      "Нет гарантии, что визит согласуют вовремя",
+      "2 перелёта и 2 поезда по 5 городам — сами"
+     ],
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-29-foto-tur-china-dairy-smart-factories/06b.jpg",
+     "label": "Global Tech Tour",
+     "items": [
+      "Визиты — через нашу сеть контактов",
+      "Перелёты и поезда включены",
+      "Переводчик-технолог на каждой встрече"
+     ],
+     "focus": "50% 30%"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-29-foto-tur-china-dairy-smart-factories/07.jpg",
+   "kicker": "Что входит",
+   "title": "Всё готово **до вылета**",
+   "items": [
+    "Визиты на 5 производств",
+    "2 перелёта и 2 скоростных поезда",
+    "Переводчик-технолог на каждой встрече",
+    "Проживание 6 ночей, отели 5 звёзд"
+   ],
+   "focus": "50% 30%"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-29-foto-tur-china-dairy-smart-factories/08.jpg",
+   "kicker": "Для кого",
+   "title": "Для молочной **отрасли**",
+   "text": "Молочным заводам, агрохолдингам, переработчикам и поставщикам оборудования",
+   "focus": "50% 30%"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-29-foto-tur-china-dairy-smart-factories/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-29-foto-tur-china-dairy-smart-factories/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-29-foto-tur-china-dairy-smart-factories/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}

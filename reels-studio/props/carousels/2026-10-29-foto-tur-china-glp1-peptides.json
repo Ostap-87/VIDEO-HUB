@@ -1,0 +1,137 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "photoCover",
+   "image": "source-videos/карусели/2026-10-29-foto-tur-china-glp1-peptides/01.jpg",
+   "kicker": "Бизнес-экспедиция · Китай",
+   "title": "Гонка за **GLP-1** изнутри",
+   "text": "GLP-1 и пептидная фарма Китая · 5 дней · 4 города",
+   "focus": "50% 30%"
+  },
+  {
+   "kind": "photoStat",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-29-foto-tur-china-glp1-peptides/02.jpg",
+   "kicker": "Фон тура",
+   "title": "истёк патент на семаглутид в Китае",
+   "text": "Вокруг препарата сразу началась гонка",
+   "value": "Март 2026",
+   "focus": "50% 30%"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-29-foto-tur-china-glp1-peptides/03.jpg",
+   "kicker": "Маршрут",
+   "title": "5 дней · **без перелётов**",
+   "numbered": true,
+   "items": [
+    "День 1 · Чанчжоу: WuXi TIDES",
+    "День 2 · Сучжоу: Innovent",
+    "День 3 · Ханчжоу: Huadong, Jiuyuan",
+    "День 4 · Тайчжоу: Langhua",
+    "День 5 · Ханчжоу: Sciwind"
+   ],
+   "focus": "50% 30%"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-29-foto-tur-china-glp1-peptides/04.jpg",
+   "kicker": "Компании маршрута",
+   "title": "**6 игроков** рынка GLP-1",
+   "items": [
+    "Innovent · Sciwind",
+    "Huadong Medicine · Jiuyuan Gene",
+    "WuXi TIDES · Langhua"
+   ],
+   "focus": "50% 30%"
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-29-foto-tur-china-glp1-peptides/05.jpg",
+   "kicker": "Что вы поймёте",
+   "title": "Три модели **рынка**",
+   "items": [
+    "Оригинальный препарат",
+    "Дженерик семаглутида",
+    "Контрактное производство пептидов",
+    "Где в цепочке место для партнёров"
+   ],
+   "focus": "50% 30%"
+  },
+  {
+   "kind": "photoPair",
+   "frame": false,
+   "kicker": "Почему с нами",
+   "title": "Самому или **с нами**",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-29-foto-tur-china-glp1-peptides/06a.jpg",
+     "label": "Самостоятельно",
+     "items": [
+      "Производители — каждый со своим согласованием",
+      "Нет гарантии, что визит согласуют вовремя",
+      "6 поездов по дельте Янцзы — сами"
+     ],
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-29-foto-tur-china-glp1-peptides/06b.jpg",
+     "label": "Global Tech Tour",
+     "items": [
+      "Визиты — через личную сеть контактов",
+      "Скоростные поезда включены",
+      "Перевод на каждой встрече"
+     ],
+     "focus": "50% 30%"
+    }
+   ]
+  },
+  {
+   "kind": "photoCard",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-29-foto-tur-china-glp1-peptides/07.jpg",
+   "kicker": "Что входит",
+   "title": "Всё готово **до вылета**",
+   "items": [
+    "Визиты и встречи по программе",
+    "6 скоростных поездов, без перелётов",
+    "Перевод на каждой встрече",
+    "Проживание 6 ночей, отели 5 звёзд"
+   ],
+   "focus": "50% 30%"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-29-foto-tur-china-glp1-peptides/08.jpg",
+   "kicker": "Для кого",
+   "title": "Для фармы и **инвесторов**",
+   "text": "Фармкомпаниям, дистрибьюторам, инвесторам и контрактным производителям, которые хотят увидеть рынок GLP-1 изнутри",
+   "focus": "50% 30%"
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Программа по дням",
+   "title": "За подробностями пиши в **личные сообщения**",
+   "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-29-foto-tur-china-glp1-peptides/01.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-29-foto-tur-china-glp1-peptides/02.jpg",
+     "focus": "50% 30%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-29-foto-tur-china-glp1-peptides/04.jpg",
+     "focus": "50% 30%"
+    }
+   ]
+  }
+ ]
+}

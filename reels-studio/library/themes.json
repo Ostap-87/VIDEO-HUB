@@ -514,6 +514,125 @@
   ],
   "audienceTitle": "Для кого поездка"
  },
+ "gonkong": {
+  "title": "Гонконгская школа отельного люкса",
+  "expedition": "/expeditions/hongkong-luxury-legacy",
+  "music": "inspiring-corporate-soundrider",
+  "logos": [
+   "отели",
+   "общие"
+  ],
+  "broll": {
+   "include": "hotel|lobby|hospitality|concierge|suite|luxury|butler|afternoon tea|doorman|hong kong|victoria harbour",
+   "tags": {
+    "отел": "hotel|lobby",
+    "гостиниц": "hotel|lobby",
+    "номер": "suite|guest room",
+    "лобби": "lobby",
+    "сервис": "concierge|butler|service",
+    "люкс": "luxury|suite",
+    "ресепшн": "reception|front desk",
+    "гост": "guest|hospitality",
+    "гонконг": "hong kong|victoria harbour",
+    "чай": "afternoon tea"
+   }
+  },
+  "accent": [
+   "Гонконг",
+   "люкс",
+   "отельного"
+  ],
+  "audienceTitle": "Для кого поездка"
+ },
+ "kit-gostinicy": {
+  "title": "Китайские гостиничные гиганты",
+  "expedition": "/expeditions/hotel-giants-china",
+  "music": "inspiring-corporate-soundrider",
+  "logos": [
+   "отели",
+   "общие"
+  ],
+  "broll": {
+   "include": "hotel|lobby|hospitality|reception|front desk|guest room|check-in|smart hotel|delivery robot",
+   "tags": {
+    "отел": "hotel|lobby",
+    "гостиниц": "hotel|lobby",
+    "номер": "suite|guest room",
+    "лобби": "lobby",
+    "сервис": "concierge|butler|service",
+    "люкс": "luxury|suite",
+    "ресепшн": "reception|front desk",
+    "гост": "guest|hospitality",
+    "робот": "robot",
+    "сет": "hotel chain|chain"
+   }
+  },
+  "accent": [
+   "гостиничные",
+   "отелей",
+   "гиганты"
+  ],
+  "audienceTitle": "Для кого поездка"
+ },
+ "logistika": {
+  "title": "Топ-10 логистических компаний Китая",
+  "expedition": "/expeditions/china-logistics-top10-expedition",
+  "music": "inspiring-corporate-soundrider",
+  "logos": [
+   "логистика",
+   "общие"
+  ],
+  "broll": {
+   "include": "logistic|warehouse|container|port|cargo|parcel|delivery|courier|freight|sorting|conveyor|rail freight|shipping|AGV|drone",
+   "tags": {
+    "склад": "warehouse",
+    "логист": "logistic|warehouse",
+    "посыл": "parcel|sorting",
+    "доставк": "delivery|courier",
+    "порт": "port|container",
+    "контейнер": "container",
+    "поезд": "rail|train",
+    "курьер": "courier",
+    "сортир": "sorting|conveyor",
+    "груз": "cargo|freight",
+    "дрон": "drone"
+   }
+  },
+  "accent": [
+   "логистика",
+   "логистических",
+   "посылок"
+  ],
+  "audienceTitle": "Для кого поездка"
+ },
+ "mir-gostinicy": {
+  "title": "Глобальные гостиничные сети в Китае",
+  "expedition": "/expeditions/global-hospitality-china",
+  "music": "inspiring-corporate-soundrider",
+  "logos": [
+   "отели",
+   "общие"
+  ],
+  "broll": {
+   "include": "hotel|lobby|hospitality|concierge|suite|luxury|ballroom|reception|front desk|guest room",
+   "tags": {
+    "отел": "hotel|lobby",
+    "гостиниц": "hotel|lobby",
+    "номер": "suite|guest room",
+    "лобби": "lobby",
+    "сервис": "concierge|butler|service",
+    "люкс": "luxury|suite",
+    "ресепшн": "reception|front desk",
+    "гост": "guest|hospitality"
+   }
+  },
+  "accent": [
+   "гостиничные",
+   "сети",
+   "отелей"
+  ],
+  "audienceTitle": "Для кого поездка"
+ },
  "obshchee": {
   "title": "Общая тема (визитка, анонс, новая отрасль)",
   "expedition": "/expeditions",
