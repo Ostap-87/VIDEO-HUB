@@ -83,12 +83,12 @@
    "end": 5.933
   },
   {
-   "text": "за",
+   "text": "The",
    "start": 5.933,
    "end": 6.013
   },
   {
-   "text": "пенинсула",
+   "text": "Peninsula",
    "start": 6.013,
    "end": 6.533
   },
@@ -228,12 +228,12 @@
    "end": 18.047
   },
   {
-   "text": "Пенинсула",
+   "text": "Peninsula",
    "start": 18.047,
    "end": 18.793
   },
   {
-   "text": "в",
+   "text": "—",
    "start": 18.793,
    "end": 18.973
   },
@@ -248,12 +248,12 @@
    "end": 20.433
   },
   {
-   "text": "Мандарин",
+   "text": "Mandarin",
    "start": 20.433,
    "end": 20.773
   },
   {
-   "text": "Ориентал,",
+   "text": "Oriental,",
    "start": 20.773,
    "end": 21.713
   },
@@ -283,7 +283,7 @@
    "end": 24.913
   },
   {
-   "text": "Роузвуд,",
+   "text": "Rosewood,",
    "start": 25.003,
    "end": 25.653
   },
@@ -293,12 +293,12 @@
    "end": 26.04
   },
   {
-   "text": "Чен,",
+   "text": "Чэн,",
    "start": 26.04,
    "end": 26.36
   },
   {
-   "text": "Шангрила,",
+   "text": "Shangri-La,",
    "start": 26.36,
    "end": 27.137
   },
@@ -313,7 +313,7 @@
    "end": 28.407
   },
   {
-   "text": "Лэнхам",
+   "text": "Langham",
    "start": 28.407,
    "end": 28.987
   },
@@ -323,12 +323,12 @@
    "end": 29.067
   },
   {
-   "text": "Ворф",
+   "text": "Wharf",
    "start": 29.067,
    "end": 29.417
   },
   {
-   "text": "Хоттлс",
+   "text": "Hotels",
    "start": 29.417,
    "end": 30.157
   },
@@ -343,12 +343,12 @@
    "end": 30.807
   },
   {
-   "text": "Марка",
+   "text": "Marco",
    "start": 30.807,
    "end": 31.117
   },
   {
-   "text": "Пола",
+   "text": "Polo",
    "start": 31.117,
    "end": 31.407
   },
@@ -358,7 +358,7 @@
    "end": 31.537
   },
   {
-   "text": "Никола.",
+   "text": "Niccolo.",
    "start": 31.537,
    "end": 32.107
   },
@@ -383,7 +383,7 @@
    "end": 33.947
   },
   {
-   "text": "Роузвуд",
+   "text": "Rosewood",
    "start": 33.947,
    "end": 34.597
   },
@@ -393,12 +393,12 @@
    "end": 34.707
   },
   {
-   "text": "Виктория",
+   "text": "Victoria",
    "start": 34.707,
    "end": 35.367
   },
   {
-   "text": "Дорксайд",
+   "text": "Dockside",
    "start": 35.367,
    "end": 36.027
   },
@@ -408,12 +408,12 @@
    "end": 36.107
   },
   {
-   "text": "Зе",
+   "text": "The",
    "start": 36.107,
    "end": 36.187
   },
   {
-   "text": "Мюррей.",
+   "text": "Murray.",
    "start": 36.187,
    "end": 36.893
   },
@@ -638,12 +638,12 @@
    "end": 54.367
   },
   {
-   "text": "из",
+   "text": "и",
    "start": 54.367,
    "end": 54.477
   },
   {
-   "text": "Берии",
+   "text": "Сбере",
    "start": 54.477,
    "end": 55.037
   },
@@ -873,7 +873,7 @@
    "end": 72.893
   },
   {
-   "text": "Пенинсула,",
+   "text": "Peninsula,",
    "start": 72.893,
    "end": 73.713
   },
@@ -1008,7 +1008,7 @@
    "end": 84.467
   },
   {
-   "text": "Вышли",
+   "text": "Вышлю",
    "start": 84.467,
    "end": 85.047
   },
@@ -1031,11 +1031,6 @@
    "text": "информацию.",
    "start": 86.177,
    "end": 87.147
-  },
-  {
-   "text": "Редактор",
-   "start": 87.147,
-   "end": 87.227
   }
  ],
  "accentWords": [
@@ -1043,6 +1038,18 @@
   "1928",
   "1963",
   "alibaba",
+  "hotels",
+  "langham",
+  "mandarin",
+  "marco",
+  "niccolo",
+  "oriental",
+  "peninsula",
+  "polo",
+  "rosewood",
+  "shangrila",
+  "the",
+  "wharf",
   "Гонконг",
   "лично",
   "люкс",
@@ -1051,6 +1058,7 @@
   "прозрачные",
   "пять",
   "сайт",
+  "сбере",
   "шесть"
  ],
  "cuts": [
@@ -1107,11 +1115,68 @@
   {
    "items": [
     {
-     "src": "source-videos/логотипы/общие/alibaba.svg",
-     "at": 53.64
+     "src": "source-videos/логотипы/отели/peninsula.png",
+     "at": 5.93
     }
    ],
-   "until": 55.37
+   "until": 7.53
+  },
+  {
+   "items": [
+    {
+     "src": "source-videos/логотипы/отели/peninsula.png",
+     "at": 18.05
+    },
+    {
+     "src": "source-videos/логотипы/отели/mandarin-oriental.png",
+     "at": 20.43
+    }
+   ],
+   "until": 22.71
+  },
+  {
+   "items": [
+    {
+     "src": "source-videos/логотипы/отели/rosewood-text.png",
+     "at": 25.0
+    },
+    {
+     "src": "source-videos/логотипы/отели/shangri-la-text.png",
+     "at": 26.36
+    },
+    {
+     "src": "source-videos/логотипы/отели/langham-text.png",
+     "at": 28.41
+    },
+    {
+     "src": "source-videos/логотипы/отели/wharf-hotels-text.png",
+     "at": 29.07
+    }
+   ],
+   "until": 31.16
+  },
+  {
+   "items": [
+    {
+     "src": "source-videos/логотипы/общие/alibaba.svg",
+     "at": 53.64
+    },
+    {
+     "src": "source-videos/логотипы/общие/sber.png",
+     "at": 54.48
+    }
+   ],
+   "until": 55.84,
+   "flip": true
+  },
+  {
+   "items": [
+    {
+     "src": "source-videos/логотипы/отели/peninsula.png",
+     "at": 72.89
+    }
+   ],
+   "until": 74.71
   }
  ],
  "numbers": [
@@ -1148,7 +1213,7 @@
    "transition": "wipe"
   },
   {
-   "src": "source-videos/2026-10-29-gonkong/broll/hf-334.png",
+   "src": "source-videos/2026-10-29-gonkong/broll/hf-74.png",
    "at": 44.0,
    "until": 45.78,
    "transition": "fade"
@@ -1166,7 +1231,7 @@
    "transition": "slide"
   },
   {
-   "src": "source-videos/2026-10-29-gonkong/broll/hf-483.png",
+   "src": "source-videos/2026-10-29-gonkong/broll/hf-76.png",
    "at": 70.49,
    "until": 72.58,
    "transition": "zoom"

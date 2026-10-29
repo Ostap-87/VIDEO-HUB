@@ -1080,62 +1080,6 @@
    "2026-10-28-moloko"
   ]
  },
- "54": {
-  "id": "f791f5b9-6507-4416-82a4-1e73ebc4a24a",
-  "prompt": "Photorealistic editorial photo of a heritage colonial-era luxury hotel lobby in Hong Kong: ornate classic architecture, high ceilings, elegant chandeliers, marble columns, afternoon tea lounge atmosphere, a view toward Victoria Harbour through tall windows. No text, no logos, no brand names, no signage, no watermarks anywhere in the image.",
-  "videos": [
-   "2026-10-29-gonkong"
-  ]
- },
- "258": {
-  "id": "9b506e96-4db0-46c5-8741-636cf35a7234",
-  "prompt": "Photorealistic bright morning aerial view of Hong Kong skyline and Victoria Harbour, soft warm sunrise light, clear sky, skyscrapers glowing in morning light, calm harbour water, airy and light atmosphere, documentary travel photography style, no text overlays",
-  "videos": [
-   "2026-10-29-gonkong"
-  ]
- },
- "204": {
-  "id": "1da93436-9f5f-4915-815d-8991342c8279",
-  "prompt": "Photorealistic bright photo of an elegant generic five-star hotel entrance, no visible brand signage, modern luxury architecture, a chauffeur car waiting at the entrance, daylight, warm inviting atmosphere, documentary travel photography style, no text overlays",
-  "videos": [
-   "2026-10-29-gonkong"
-  ]
- },
- "248": {
-  "id": "6f7ba289-f3c2-43bb-90a0-dbf95b1cd104",
-  "prompt": "Photorealistic bright photo of a luxurious five-star hotel entrance with a chauffeur car waiting outside, elegant modern Chinese architecture, daylight, warm inviting atmosphere, documentary travel photography style, no text overlays",
-  "videos": [
-   "2026-10-29-gonkong"
-  ]
- },
- "334": {
-  "id": "ef1c4438-60a7-4875-ae75-cf783bfbd3c0",
-  "prompt": "Photorealistic modern eye clinic hospital lobby, clean bright medical interior, no text, no logos",
-  "videos": [
-   "2026-10-29-gonkong"
-  ]
- },
- "93": {
-  "id": "e734f44f-2eef-4d85-9d35-9360fc12373a",
-  "prompt": "Photorealistic wide shot of a business negotiation meeting room in a Chinese environmental/waste management company headquarters. Large conference table, business delegation of 4-5 Russian business people in business suits sitting across from 3-4 Chinese executives in suits, interpreter standing beside the table gesturing, laptops and documents on the table, city skyline visible through floor-to-ceiling windows behind them, professional atmosphere, discussion moment. Ultra realistic photography, natural window lighting, 16:9 wide composition, documentary business photography style, no visible text or logos.",
-  "videos": [
-   "2026-10-29-gonkong"
-  ]
- },
- "50": {
-  "id": "d3a92305-bc30-4d01-83ae-4d3104ac814b",
-  "prompt": "Photorealistic editorial photo of a modern mid-upscale Chinese domestic hotel chain lobby: clean minimalist reception desk, warm wood and stone finishes, contemporary Chinese business-hotel design, soft ambient lighting, a staff member at the desk in soft focus. No text, no logos, no brand names, no signage, no watermarks anywhere in the image.",
-  "videos": [
-   "2026-10-29-gonkong"
-  ]
- },
- "483": {
-  "id": "ac7e3451-9e2e-41a8-a79f-0842e0ef9da9",
-  "prompt": "Photorealistic image of a stock exchange building facade in Hong Kong with a large digital ticker board showing rising numbers, IPO celebration, no text, no logos",
-  "videos": [
-   "2026-10-29-gonkong"
-  ]
- },
  "387": {
   "id": "a5424cff-6ff4-41d0-81a2-fa49a4bc2853",
   "prompt": "Photorealistic image of a large e-commerce fulfillment warehouse with conveyor belts and packages, workers sorting parcels, no text, no logos",
@@ -1190,6 +1134,153 @@
   "prompt": "Photorealistic editorial photo of a massive automated parcel sorting facility with conveyor belts full of packages and orange-liveried delivery trucks loading at a dock, high ceiling warehouse, dynamic motion blur on the belts, cinematic industrial lighting, high detail. No text, no logos, no brand names, no watermarks anywhere in the image.",
   "videos": [
    "2026-10-29-logistika"
+  ]
+ },
+ "54": {
+  "id": "f791f5b9-6507-4416-82a4-1e73ebc4a24a",
+  "prompt": "Photorealistic editorial photo of a heritage colonial-era luxury hotel lobby in Hong Kong: ornate classic architecture, high ceilings, elegant chandeliers, marble columns, afternoon tea lounge atmosphere, a view toward Victoria Harbour through tall windows. No text, no logos, no brand names, no signage, no watermarks anywhere in the image.",
+  "videos": [
+   "2026-10-29-gonkong"
+  ]
+ },
+ "258": {
+  "id": "9b506e96-4db0-46c5-8741-636cf35a7234",
+  "prompt": "Photorealistic bright morning aerial view of Hong Kong skyline and Victoria Harbour, soft warm sunrise light, clear sky, skyscrapers glowing in morning light, calm harbour water, airy and light atmosphere, documentary travel photography style, no text overlays",
+  "videos": [
+   "2026-10-29-gonkong"
+  ]
+ },
+ "204": {
+  "id": "1da93436-9f5f-4915-815d-8991342c8279",
+  "prompt": "Photorealistic bright photo of an elegant generic five-star hotel entrance, no visible brand signage, modern luxury architecture, a chauffeur car waiting at the entrance, daylight, warm inviting atmosphere, documentary travel photography style, no text overlays",
+  "videos": [
+   "2026-10-29-gonkong"
+  ]
+ },
+ "248": {
+  "id": "6f7ba289-f3c2-43bb-90a0-dbf95b1cd104",
+  "prompt": "Photorealistic bright photo of a luxurious five-star hotel entrance with a chauffeur car waiting outside, elegant modern Chinese architecture, daylight, warm inviting atmosphere, documentary travel photography style, no text overlays",
+  "videos": [
+   "2026-10-29-gonkong"
+  ]
+ },
+ "93": {
+  "id": "e734f44f-2eef-4d85-9d35-9360fc12373a",
+  "prompt": "Photorealistic wide shot of a business negotiation meeting room in a Chinese environmental/waste management company headquarters. Large conference table, business delegation of 4-5 Russian business people in business suits sitting across from 3-4 Chinese executives in suits, interpreter standing beside the table gesturing, laptops and documents on the table, city skyline visible through floor-to-ceiling windows behind them, professional atmosphere, discussion moment. Ultra realistic photography, natural window lighting, 16:9 wide composition, documentary business photography style, no visible text or logos.",
+  "videos": [
+   "2026-10-29-gonkong"
+  ]
+ },
+ "50": {
+  "id": "d3a92305-bc30-4d01-83ae-4d3104ac814b",
+  "prompt": "Photorealistic editorial photo of a modern mid-upscale Chinese domestic hotel chain lobby: clean minimalist reception desk, warm wood and stone finishes, contemporary Chinese business-hotel design, soft ambient lighting, a staff member at the desk in soft focus. No text, no logos, no brand names, no signage, no watermarks anywhere in the image.",
+  "videos": [
+   "2026-10-29-gonkong"
+  ]
+ },
+ "74": {
+  "id": "8023e2c8-b1d9-473e-b480-7925513f80fe",
+  "prompt": "Photorealistic wide shot inside a heritage luxury hotel group's corporate office in Hong Kong, elegant wood-paneled interior with historic photographs on walls, Hong Kong skyline visible through windows, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) observing a presentation, executive explaining the brand's legacy. Ultra realistic photography, 16:9 wide composition, documentary business photography style, no readable text or logos.",
+  "videos": [
+   "2026-10-29-gonkong"
+  ]
+ },
+ "76": {
+  "id": "1bf590e1-5a35-429c-baae-429c5bd9e158",
+  "prompt": "Photorealistic wide cover shot of a business expedition to Hong Kong's luxury hotel legacy. Opulent historic luxury hotel lobby with Hong Kong harbor skyline visible through large windows, marble floors, grand chandeliers, sophisticated heritage design. A confident business delegation of 3-4 people (mixed gender, Russian and Chinese, business casual attire) walking through. Upper third of frame kept relatively open for text overlay, no readable text or logos anywhere in the image. Ultra realistic photography, 16:9 wide composition, editorial travel/business photography style.",
+  "videos": [
+   "2026-10-29-gonkong"
+  ]
+ },
+ "125": {
+  "id": "ed791609-d2c1-4cff-913b-a24d8882db2b",
+  "prompt": "Photorealistic wide shot at GreenTree Hospitality modern hotel lobby in Shanghai, China, day 2 of a business expedition. Contemporary boutique hotel lobby with stylish minimalist design, Atour (Yaduo Group) branding visible on a nearby wall display, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) touring the lobby, Chinese hotel executive gesturing. GREENTREE logo clearly visible on wall signage in upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright lighting, 16:9 wide composition, documentary business photography style.",
+  "videos": [
+   "2026-10-29-kit-gostinicy"
+  ]
+ },
+ "126": {
+  "id": "594fde6f-0f49-41d7-9913-2bd00ad1a95d",
+  "prompt": "Photorealistic wide shot at Jin Jiang International hotel headquarters lobby in Shanghai, China, day 1 of a business expedition. Elegant 5-star hotel lobby with marble floors and chandelier, H World Group branding visible on a nearby digital display, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) touring the lobby, Chinese hotel executive gesturing. JIN JIANG logo clearly visible on wall signage in upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright lighting, 16:9 wide composition, documentary business photography style.",
+  "videos": [
+   "2026-10-29-kit-gostinicy"
+  ]
+ },
+ "124": {
+  "id": "92a93e21-d81f-4b20-ae0b-de63b0a1ee44",
+  "prompt": "Photorealistic wide shot at Kaiyuan Hotel Group headquarters lobby in Hangzhou, China, day 3 of a business expedition. Elegant modern hotel lobby with warm wood tones and soft lighting, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) touring the lobby, Chinese hotel executive gesturing. KAIYUAN logo clearly visible on wall signage in upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright lighting, 16:9 wide composition, documentary business photography style.",
+  "videos": [
+   "2026-10-29-kit-gostinicy"
+  ]
+ },
+ "123": {
+  "id": "a1b4aeab-5407-42fb-bafd-4fea5ef38748",
+  "prompt": "Photorealistic wide shot at Dossen Group hotel headquarters lobby in Guangzhou, China, day 4 of a business expedition. Modern mid-scale hotel lobby with clean contemporary design, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) touring the lobby, Chinese hotel executive gesturing. DOSSEN logo clearly visible on wall signage in upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright lighting, 16:9 wide composition, documentary business photography style.",
+  "videos": [
+   "2026-10-29-kit-gostinicy"
+  ]
+ },
+ "122": {
+  "id": "6751144f-a2ef-4c50-931b-f965267ce3cc",
+  "prompt": "Photorealistic wide shot at BTG Hotels Group headquarters lobby in Beijing, China, day 5 of a business expedition. Elegant 5-star hotel lobby with grand architecture and warm lighting, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) touring the lobby, Chinese hotel executive gesturing. BTG HOTELS logo clearly visible on wall signage in upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright lighting, 16:9 wide composition, documentary business photography style.",
+  "videos": [
+   "2026-10-29-kit-gostinicy"
+  ]
+ },
+ "240": {
+  "id": "69feedef-2844-4b62-b7a0-f251862b8d4e",
+  "prompt": "Photorealistic bright photo of an elegant generic five-star hotel entrance, no visible brand signage, modern luxury architecture, a chauffeur car waiting at the entrance, daylight, warm inviting atmosphere, documentary travel photography style, no text overlays",
+  "videos": [
+   "2026-10-29-kit-gostinicy"
+  ]
+ },
+ "70": {
+  "id": "fb67060e-4403-44d1-97f2-afaf047d02d4",
+  "prompt": "Photorealistic wide shot at Langham Hospitality Group headquarters in Hong Kong, day 3 of a business expedition. Elegant corporate office with luxury hotel brand displays, Wharf Hotels branding visible on a nearby meeting room glass wall, business delegation of 4-5 people in business casual attire (mixed gender, Russian and Chinese) touring the office, Chinese host gesturing. LANGHAM logo clearly visible on wall signage in upper third of frame with plenty of empty space below, single clean wordmark, no extra text. Ultra realistic photography, bright lighting, 16:9 wide composition, documentary business photography style.",
+  "videos": [
+   "2026-10-29-mir-gostinicy"
+  ]
+ },
+ "286": {
+  "id": "9a09e704-429c-4775-873b-67d917c8b209",
+  "prompt": "Photorealistic futuristic hotel lobby with a robot concierge greeting a guest, modern architecture, no text, no logos",
+  "videos": [
+   "2026-10-29-mir-gostinicy"
+  ]
+ },
+ "334": {
+  "id": "ef1c4438-60a7-4875-ae75-cf783bfbd3c0",
+  "prompt": "Photorealistic modern eye clinic hospital lobby, clean bright medical interior, no text, no logos",
+  "videos": [
+   "2026-10-29-mir-gostinicy"
+  ]
+ },
+ "104": {
+  "id": "21202524-90a1-4ce2-9151-14c7584b2db9",
+  "prompt": "Photorealistic wide shot of a business negotiation meeting room in a Chinese petrochemical company headquarters. Large conference table, business delegation of 4-5 Russian business people in business suits sitting across from 3-4 Chinese executives in suits, interpreter standing beside the table gesturing, laptops and documents on the table, city skyline visible through floor-to-ceiling windows behind them, professional atmosphere, discussion moment. Ultra realistic photography, natural window lighting, 16:9 wide composition, documentary business photography style, no visible text or logos.",
+  "videos": [
+   "2026-10-29-mir-gostinicy"
+  ]
+ },
+ "228": {
+  "id": "8ef99ff8-42fc-41a7-9301-1fa60593346d",
+  "prompt": "Photorealistic beautiful bright photo of an elegant Radisson hotel entrance, the Radisson logo and signage visible on the building facade, elegant modern luxury architecture, a chauffeur car waiting at the entrance, daylight, warm inviting atmosphere, documentary travel photography style, no other text",
+  "videos": [
+   "2026-10-29-mir-gostinicy"
+  ]
+ },
+ "524": {
+  "id": "2675cd8c-83ad-4008-a702-a63a9b794132",
+  "prompt": "Photorealistic editorial photo of a modern insurance and financial services office building lobby, clean corporate lighting, cinematic wide shot, high detail. No text, no logos, no brand names, no watermarks anywhere in the image.",
+  "videos": [
+   "2026-10-29-mir-gostinicy"
+  ]
+ },
+ "79": {
+  "id": "bd6cedd6-32c4-4bbd-adf3-0dc68b9761c0",
+  "prompt": "Photorealistic wide shot of a hotel industry roundtable discussion in a Shanghai conference room. Elegant round conference table, business delegation of 4-5 Russian business people in business suits sitting with 3-4 Chinese hotel executives in suits, interpreter standing beside the table gesturing, laptops and documents on the table, city skyline visible through floor-to-ceiling windows behind them, professional roundtable discussion atmosphere. Ultra realistic photography, natural window lighting, 16:9 wide composition, documentary business photography style, no visible text or logos.",
+  "videos": [
+   "2026-10-29-mir-gostinicy"
   ]
  }
 }
