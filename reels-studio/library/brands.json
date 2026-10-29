@@ -4531,5 +4531,110 @@
    "顺丰"
   ],
   "logo": "source-videos/логотипы/логистика/sf-express.svg"
+ },
+ "marriott": {
+  "names": [
+   "Marriott",
+   "Marriott International",
+   "Марриотт",
+   "Мэрриотт",
+   "Мариотт",
+   "Марриот",
+   "万豪",
+   "万豪国际"
+  ],
+  "logo": "source-videos/логотипы/отели/marriott.png",
+  "note": "Marriott International; https://commons.wikimedia.org/wiki/File:Marriott_International.svg — Public domain (простой текстовый логотип, PD)"
+ },
+ "hilton": {
+  "names": [
+   "Hilton",
+   "Hilton Worldwide",
+   "Хилтон",
+   "Хилтона",
+   "Хилтоне",
+   "希尔顿"
+  ],
+  "logo": "source-videos/логотипы/отели/hilton.png",
+  "note": "Hilton (Hilton Worldwide); https://commons.wikimedia.org/wiki/File:Hilton_Worldwide_logo.svg — Public domain (PD)"
+ },
+ "ihg": {
+  "names": [
+   "IHG",
+   "IHG Hotels & Resorts",
+   "InterContinental Hotels Group",
+   "ИЭйчДжи",
+   "Ай-эйч-джи",
+   "Интерконтиненталь",
+   "洲际酒店集团",
+   "洲际"
+  ],
+  "logo": "source-videos/логотипы/отели/ihg.png",
+  "note": "IHG Hotels & Resorts (InterContinental Hotels Group); https://commons.wikimedia.org/wiki/File:IHG_Hotels_&_Resorts_logo.svg — Public domain (PD)"
+ },
+ "hyatt": {
+  "names": [
+   "Hyatt",
+   "Хаятт",
+   "Хайятт",
+   "Хаят",
+   "Хаятте",
+   "凯悦"
+  ],
+  "logo": "source-videos/логотипы/отели/hyatt.png",
+  "note": "Hyatt Hotels Corporation; https://commons.wikimedia.org/wiki/File:Hyatt_Logo.svg — Public domain (PD)"
+ },
+ "wyndham": {
+  "names": [
+   "Wyndham",
+   "Wyndham Hotels & Resorts",
+   "Уиндем",
+   "Уиндхэм",
+   "Виндем",
+   "Виндхэм",
+   "温德姆"
+  ],
+  "logo": "source-videos/логотипы/отели/wyndham.png",
+  "note": "Wyndham Hotels & Resorts; https://commons.wikimedia.org/wiki/File:Wyndham_Hotels_&_Resorts_logo.svg — Public domain (PD)"
+ },
+ "waldorf-astoria": {
+  "names": [
+   "Waldorf Astoria",
+   "Waldorf-Astoria",
+   "Уолдорф Астория",
+   "Уолдорф-Астория",
+   "Вальдорф Астория",
+   "Вальдорф-Астория",
+   "华尔道夫"
+  ],
+  "logo": "source-videos/логотипы/отели/waldorf-astoria.png",
+  "note": "Waldorf Astoria Hotels & Resorts (Hilton); https://commons.wikimedia.org/wiki/File:WaldorfLogo.svg — Public domain (PD)"
+ },
+ "peninsula": {
+  "names": [
+   "The Peninsula",
+   "Peninsula",
+   "Peninsula Hotels",
+   "HSH",
+   "Пенинсула",
+   "Пенинсьюла",
+   "Пенинсула Хотелс",
+   "半岛酒店",
+   "半岛",
+   "香港上海大酒店"
+  ],
+  "logo": "source-videos/логотипы/отели/peninsula.png",
+  "note": "The Peninsula Hotels (HSH, The Hongkong and Shanghai Hotels); https://commons.wikimedia.org/wiki/File:ThePeninsulaHotelsLogo.svg — Public domain (PD)"
+ },
+ "mandarin-oriental": {
+  "names": [
+   "Mandarin Oriental",
+   "Мандарин Ориентал",
+   "Мандарин Ориентл",
+   "文华东方",
+   "文華東方"
+  ],
+  "logo": "source-videos/логотипы/отели/mandarin-oriental.png",
+  "note": "Mandarin Oriental Hotel Group; https://commons.wikimedia.org/wiki/File:Mandarin_Oriental_Hotel_Group_logo.svg — Public domain (PD)"
  }
 }

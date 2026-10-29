@@ -8,10 +8,10 @@
         # пересобрать по уже выбранным кускам (после правок), не ища паузы заново
 
 Что делает:
-1. Звук «как в студии»: нейросетевой шумодав DeepFilterNet3 (scripts/denoise.py, шум и гулкость; давит не глубже
-   18 дБ — так голос не глухой), эквалайзер (−1 дБ «бубнение» 300 Гц, +3 дБ верх от 5 кГц — возвращает согласные, которые
-   съедает шумодав), де-эссер, очень мягкая компрессия, громкость −14 LUFS (норма Instagram). Решения пользователя
-   08.10.2026 и 22.10.2026: «как из трубы», «глухой и с каким-то эхо» — недопустимо (замеры — в AUDIO_CHAIN).
+1. Звук «как в студии»: нейросетевой шумодав DeepFilterNet3 (scripts/denoise.py, шум и гулкость; предел 30 дБ), срез гула
+   ниже 85 Гц, эквалайзер по замеру ролика (voice_chain: верх голоса до нормы речи, «бубнение» 300 Гц — только если есть),
+   де-эссер, очень мягкая компрессия, громкость −14 LUFS (норма Instagram). Решения пользователя 08.10, 22.10 и 29.10.2026:
+   «как из трубы», «глухой и с каким-то эхо», «шумит за кадром» — недопустимо (замеры — у voice_chain).
 2. Находит паузы длиннее --min-pause секунд и вырезает их, оставляя по --keep секунд тишины по краям, чтобы речь
    не обрывалась. Паузы ищутся по звуку **после шумодава** (решение 14.10.2026: на уличной записи шум города прятал
    паузы — сырой звук не опускался ниже порога): кадры по 10 мс, порог — на 30 дБ тише громкой речи (90-й процентиль);
@@ -40,18 +40,94 @@ FPS = 30
 SR = 48000
 SPF = SR // FPS  # сэмплов на кадр (1600)
 DFN = pathlib.Path("/opt/dfn/bin/python")
-DFN_LIMIT = 18  # дБ: глубже шумодав не давит (без предела голос глухой, 22.10.2026)
-# после шумодава: эквалайзер, де-эссер, очень мягкая компрессия, громкость −14 LUFS.
+DFN_LIMIT = 30  # дБ: предел шумодава (29.10.2026: 18 → 30 — «шумит за кадром»; верх согласных при 30 тот же, что при 18)
+# после шумодава: срез гула, эквалайзер по замеру, де-эссер, очень мягкая компрессия, громкость −14 LUFS.
 # 22.10.2026 («голос глухой, как из трубы, и с каким-то эхо»), замер на уличном od-6: прежняя цепочка (−2 дБ 250 Гц,
 # −3 дБ 420 Гц, +2,5 дБ 3 кГц, компрессор −22 дБ 2,5:1 с подъёмом +3) давала «телефонную» середину и поднимала хвосты
-# слов — отражения улицы — на 3,2 дБ (эхо). Эта цепочка: хвосты как в исходнике (−9,2 дБ против −8,8), тембр речи
-# в пределах ±1 дБ от исходника, верх от 5 кГц возвращает то, что съел шумодав (−2,5 дБ на согласных).
-AUDIO_CHAIN = (
-    "highpass=f=70,"
-    "equalizer=f=300:t=q:w=1.0:g=-1,highshelf=f=5000:g=3,"
-    "deesser=i=0.3,"
-    "acompressor=threshold=-14dB:ratio=1.8:attack=20:release=300:makeup=1"
-)  # громкость −14 LUFS — отдельным шагом: замер + усиление + лимитер с компенсацией задержки (звук не сдвигается)
+# слов — отражения улицы — на 3,2 дБ (эхо). Компрессор с тех пор без подъёма.
+# 29.10.2026 («некоторый шум, как будто что-то шумит за кадром… чтобы голос был чистым и не звучал как из трубы»), замер
+# 11 исходников 28–29.10 (запись через приложение, AAC 106 кбит/с): верх голоса от 3,5 кГц провален на 13–21 дБ
+# (у SANY, снятого камерой iPhone, — 10–14), относительно среднего спектра речи (LTASS) 4,5–5,6 кГц ниже на 11–13 дБ,
+# 11 кГц — на 20 дБ: это и есть «труба». Поэтому эквалайзер подбирается по замеру каждого ролика (voice_chain):
+# полка от 3,8 кГц поднимает верх до нормы речи (до +10 дБ), полка от 9 кГц добавляет «воздух» (до +6), середина
+# 300 Гц убирается, только если она «бубнит» (выше нормы больше чем на 3 дБ); срез гула улицы — ниже 85 Гц.
+# Замер «Технопарков»: верх 4,5–5,6 кГц −11…−13 → +2…0 дБ, 11 кГц −20 → −6, шум в паузах −3 дБ, гул < 90 Гц −6 дБ.
+AUDIO_TAIL = "deesser=i=0.45:m=0.6:f=0.55,acompressor=threshold=-14dB:ratio=1.8:attack=20:release=300:makeup=1"
+LTASS = {350: 41.0, 700: 32.0, 4500: 12.0, 5600: 10.5, 11000: 5.0}  # средний спектр речи, дБ на Гц (Byrne 1994)
+
+
+def voice_shape(path):
+    """Отклонение спектра громкой речи от нормы (LTASS), дБ, относительно 700 Гц: {350, 4500, 5600, 11000: …}."""
+    import numpy as np
+
+    x, sr = read_wav(path)
+    x = x.astype(np.float32)
+    N = 4800
+    n = len(x) // N
+    X = x[: n * N].reshape(n, N)
+    rms = np.sqrt((X ** 2).mean(1))
+    loud = X[rms > np.percentile(rms, 70)]
+    S = 10 * np.log10((np.abs(np.fft.rfft(loud * np.hanning(N), axis=1)) ** 2).mean(0) + 1e-12)
+    f = np.fft.rfftfreq(N, 1 / sr)
+    band = {350: (200, 500), 700: (500, 1000), 4500: (4000, 5000), 5600: (4000, 8000), 11000: (8000, 16000)}
+    v = {k: S[(f >= lo) & (f < hi)].mean() for k, (lo, hi) in band.items()}
+    return {k: round(float(v[k] - v[700] - (LTASS[k] - LTASS[700])), 1) for k in (350, 4500, 5600, 11000)}
+
+
+def voice_chain(path):
+    """Цепочка ffmpeg для голоса после шумодава — эквалайзер по замеру этого ролика (см. выше)."""
+    d = voice_shape(path)
+    hi = max(0.0, min(10.0, -(d[4500] + d[5600]) / 2 - 4))
+    air = max(0.0, min(6.0, -d[11000] - hi - 6))
+    mid = max(0.0, min(4.0, d[350] - 3))
+    chain = ["highpass=f=85:p=2"]
+    if mid:
+        chain.append(f"equalizer=f=300:t=q:w=1.0:g={-mid:.1f}")
+    if hi:
+        chain.append(f"highshelf=f=3800:t=q:w=0.7:g={hi:.1f}")
+    if air:
+        chain.append(f"highshelf=f=9000:t=q:w=0.7:g={air:.1f}")
+    print(f"  голос: верх {d[4500]:+.1f}/{d[5600]:+.1f} дБ от нормы речи, 11 кГц {d[11000]:+.1f}, 300 Гц {d[350]:+.1f} → "
+          f"полка 3,8 кГц {hi:+.1f}, 9 кГц {air:+.1f}, 300 Гц {-mid:+.1f}")
+    return ",".join(chain + [AUDIO_TAIL])
+
+
+def build_voice(clean, frames_plan, video, out, tmp):
+    """Звук склейки из чистой записи по кускам (кадры исходника) → эквалайзер по замеру → −14 LUFS → в видео (копией)."""
+    import numpy as np
+    import wave
+
+    raw, _ = read_wav(clean)
+    pieces = []
+    fade = 192  # 4 мс — без щелчков на стыках
+    ramp = np.linspace(0, 1, fade, dtype=np.float32)
+    for f0, n in frames_plan:
+        a0, ln = f0 * SPF, n * SPF
+        seg = raw[a0 : a0 + ln]
+        if len(seg) < ln:
+            seg = np.pad(seg, (0, ln - len(seg)))
+        seg = seg.astype(np.float32)
+        seg[:fade] *= ramp
+        seg[-fade:] *= ramp[::-1]
+        pieces.append(seg)
+    cat = np.concatenate(pieces)
+    with wave.open(str(tmp / "voice.wav"), "wb") as w:
+        w.setnchannels(1)
+        w.setsampwidth(2)
+        w.setframerate(SR)
+        w.writeframes(np.clip(cat, -32768, 32767).astype(np.int16).tobytes())
+    # студийная обработка и сборка; длина звука = длине видео до сэмпла
+    run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(tmp / "voice.wav"), "-af", voice_chain(tmp / "voice.wav"), "-ar", str(SR),
+         "-c:a", "pcm_s16le", str(tmp / "voice.eq.wav")])
+    meas = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", str(tmp / "voice.eq.wav"), "-af", "ebur128", "-f", "null", "-"],
+                          capture_output=True, text=True).stderr
+    lufs = float(re.findall(r"I:\s+(-?[\d.]+) LUFS", meas)[-1])
+    gain = -14.0 - lufs
+    run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(video), "-i", str(tmp / "voice.eq.wav"),
+         "-map", "0:v", "-map", "1:a", "-c:v", "copy",
+         "-af", f"volume={gain:.2f}dB,alimiter=limit=0.89:level=false:latency=1,atrim=end_sample={len(cat)},apad=whole_len={len(cat)}",
+         "-ac", "2", "-c:a", "aac", "-b:a", "192k", "-ar", str(SR), "-movflags", "+faststart", str(out)])
+    print(f"голос: {lufs:.1f} LUFS → −14 LUFS ({gain:+.1f} дБ)")
 
 
 # iPhone снимает в HDR (HLG / Dolby Vision, bt2020). Без пересчёта склейка выходит 8-битной с пометкой HDR, и в рендере
@@ -304,39 +380,7 @@ def main():
              "-c:v", "copy", str(tmp / "video.mkv")])
         # 2) звук: весь исходник → шумодав (вся запись целиком — модели нужен контекст; кэш _work/<имя>.clean.wav) → куски по сэмплам
         clean = clean_src or clean_audio(src, work, a.no_denoise)
-        import numpy as np
-        import wave
-        raw, _ = read_wav(clean)
-        pieces = []
-        fade = 192  # 4 мс — без щелчков на стыках
-        ramp = np.linspace(0, 1, fade, dtype=np.float32)
-        for f0, n in frames_plan:
-            a0, ln = f0 * SPF, n * SPF
-            seg = raw[a0 : a0 + ln]
-            if len(seg) < ln:
-                seg = np.pad(seg, (0, ln - len(seg)))
-            seg = seg.copy()
-            seg[:fade] *= ramp
-            seg[-fade:] *= ramp[::-1]
-            pieces.append(seg)
-        cat = np.concatenate(pieces)
-        with wave.open(str(tmp / "voice.wav"), "wb") as w:
-            w.setnchannels(1)
-            w.setsampwidth(2)
-            w.setframerate(SR)
-            w.writeframes(np.clip(cat, -32768, 32767).astype(np.int16).tobytes())
-        # 3) студийная обработка и сборка; длина звука = длине видео до сэмпла
-        run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(tmp / "voice.wav"), "-af", AUDIO_CHAIN, "-ar", str(SR),
-             "-c:a", "pcm_s16le", str(tmp / "voice.eq.wav")])
-        meas = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", str(tmp / "voice.eq.wav"), "-af", "ebur128", "-f", "null", "-"],
-                              capture_output=True, text=True).stderr
-        lufs = float(re.findall(r"I:\s+(-?[\d.]+) LUFS", meas)[-1])
-        gain = -14.0 - lufs
-        run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(tmp / "video.mkv"), "-i", str(tmp / "voice.eq.wav"),
-             "-map", "0:v", "-map", "1:a", "-c:v", "copy",
-             "-af", f"volume={gain:.2f}dB,alimiter=limit=0.89:level=false:latency=1,atrim=end_sample={len(cat)},apad=whole_len={len(cat)}",
-             "-ac", "2", "-c:a", "aac", "-b:a", "192k", "-ar", str(SR), "-movflags", "+faststart", str(out)])
-        print(f"голос: {lufs:.1f} LUFS → −14 LUFS ({gain:+.1f} дБ)")
+        build_voice(clean, frames_plan, tmp / "video.mkv", out, tmp)
         for f in tmp.iterdir():
             f.unlink()
         tmp.rmdir()

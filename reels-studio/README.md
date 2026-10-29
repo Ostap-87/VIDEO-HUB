@@ -354,6 +354,7 @@ npm run transcribe -- ../source-videos/папка/clip.mp4    # → clip.words.j
 ```bash
 npm run transcribe -- ../source-videos/папка/clip.MOV                                  # слова с таймингами
 npm run cut -- ../source-videos/папка/clip.MOV --words ../source-videos/папка/clip.words.json  # чистый звук, без пауз
+python3 scripts/revoice.py 2026-10-28-legprom --render   # новый голос уже готовому ролику (без «трубы» и шума, 29.10.2026)
 python3 scripts/sync_check.py ../source-videos/папка/clip.MOV                      # синхрон склейки: нужен SYNC_OK
 npm run site -- https://globaltechtour.ru ../source-videos/папка/site/site.png          # скриншот сайта для финала
 npm run grid -- ../source-videos/папка/_work/clip.cut.mp4                            # сетка, линия глаз → layout.json (focus для зумов)
