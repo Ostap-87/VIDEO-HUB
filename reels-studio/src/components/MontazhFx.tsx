@@ -420,11 +420,12 @@ const TextOne: React.FC<{it: TextItem}> = ({it}) => {
   const shadow = depth > 0 ? Array.from({length: depth}, (_, d) => `${d + 1}px ${d + 1}px 0 ${ink}`).join(", ") + ", 10px 18px 30px rgba(0,0,0,0.4)" : "0 10px 30px rgba(0,0,0,0.45)";
   let text = F.caps ? it.text.toUpperCase() : it.text;
   // кегль по длине строки: слово не вылезает за край кадра (ширина буквы в долях кегля — по шрифту)
-  const widthK = {grotesk: 0.48, display: 0.78, serif: 0.52, hand: 0.42, mono: 0.62, body: 0.56, brush: 1.02, script: 0.42}[it.font ?? "grotesk"];
+  const widthK = {grotesk: 0.48, display: 0.8, serif: 0.52, hand: 0.42, mono: 0.62, body: 0.56, brush: 1.02, script: 0.42}[it.font ?? "grotesk"];
   const longest = Math.max(...text.split("\n").map((l) => l.length), 1);
   // поворот в перспективе раздувает ближний край — запас тем больше, чем сильнее поворот
   const room = 2 * Math.min(it.x ?? 540, 1080 - (it.x ?? 540)) + 80 - 8 * Math.abs(it.ry ?? 0);
-  const size = Math.min(it.size ?? 160, room / (longest * widthK));
+  // и не шире 1000 px всего: крупные цифры по центру (1985, 2012) уходили за края кадра (Haier, ByteDance 29.10.2026)
+  const size = Math.min(it.size ?? 160, room / (longest * widthK), 1000 / (longest * widthK));
   if (it.count && /^\d+$/.test(it.text)) text = String(Math.round(interpolate(t, [0.05, Math.min(0.85, dur * 0.5)], [0, Number(it.text)], {...clamp, easing: Easing.out(Easing.quad)})));
   if (anim === "type") text = text.slice(0, Math.ceil(interpolate(t, [0, Math.min(dur * 0.6, 0.06 * text.length + 0.2)], [0, text.length], clamp)));
   const ry = (it.ry ?? 0) + (anim === "swing" ? (1 - k) * 80 : 0) + (anim === "spin" ? t * 220 : 0);
