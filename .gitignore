@@ -3,6 +3,7 @@ node_modules
 source-videos/_test*/
 finished-videos/frames/
 finished-videos/_*
+finished-videos/tmp*/
 reels-studio/whisper.cpp/
 source-videos/**/*.words.json.tmp
 source-videos/**/_work/
