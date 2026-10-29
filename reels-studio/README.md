@@ -414,6 +414,14 @@ python3 scripts/rebumper.py 2026-10-07-intro 2026-10-08-roboty   # Reels + Stori
   `paths[].arrow` — стрелка по «Пути»; `orbits[].bare` — предметы без фона по орбите (фон убирает
   `python3 scripts/cutout.py <фото> <cut.png> --keep-largest`); `merges` — три круга с иероглифами сливаются в один;
   `sounds` kind `boom` — удар (`sfx.boom`).
+- ByteDance, Huawei, Xiaomi: `fx` `iris` (кадр раскрывается кругом) и `squeeze` (полосы сжимают кадр и отпускают);
+  `texts[].anim` `zoomout` / `spin` / `slam`; `vsteps` — пункты слева со стрелкой; `appui` — интерфейс ленты коротких видео;
+  `triangles` — серебристый треугольник за спиной; `windows` — окно над головой с картинками в ритм; `atoms` — логотип
+  с частицами на орбитах; `dashboards` — экраны кабинетов продавца без чисел; `ecos` — схема экосистемы с кольцом «360°».
+- карточка своей компании для финала:
+  `node scripts/site_cards.mjs https://globaltechtour.ru/corporate-training ../source-videos/<ролик>/site Xiaomi`.
+- рендер держит кэш кадров OffthreadVideo в пределах 1,5 ГБ; вместе с рендером — не больше одного тяжёлого процесса
+  (вырезка или пробные кадры).
 - поправить кусок готового ролика: `remotion render … --frames=1060-1190 --crf=8 /dev/shm/seg.mp4`, затем ffmpeg
   `trim` + `concat` по номерам кадров (не `overlay` с `-itsoffset`).
 

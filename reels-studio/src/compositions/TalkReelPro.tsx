@@ -36,6 +36,8 @@ import {Charts, DocuBack, docuActive, Docus, neonActive, Neons, orbitActive, Orb
 import {EdlAudio, EdlCtx, placeEdl, SpeakerVideo} from "../components/EdlVideo";
 import {MotionPaths, pathSounds} from "../components/MotionPath";
 import {Merges, mergeSounds} from "../components/MergeFx";
+import {AppUis, Triangles, triangleActive, triangleSounds, VSteps, vstepActive, vstepSounds} from "../components/StepsFx";
+import {Atoms, atomActive, Dashboards, dashActive, Ecos, ecoActive, ecoSounds, Windows, windowSounds} from "../components/EcoFx";
 import {chart3dActive, Charts3D} from "../components/Chart3D";
 import {loadFont as loadOswald} from "@remotion/google-fonts/Oswald";
 
@@ -220,9 +222,10 @@ export const talkReelProSchema = z.object({
         color2: z.string().optional(),
         font: z.enum(["grotesk", "display", "serif", "hand", "mono", "body", "brush", "script"]).optional(),
         plane: z.enum(["behind", "front"]).optional(),
-        anim: z.enum(["rise", "fly", "type", "swing", "fade", "write"]).optional(),
+        anim: z.enum(["rise", "fly", "type", "swing", "fade", "write", "zoomout", "spin", "slam"]).optional(),
         depth: z.number().optional(),
         shine: z.boolean().optional(),
+        count: z.boolean().optional(),
         src: z.string().optional(),
       }),
     )
@@ -309,7 +312,7 @@ export const talkReelProSchema = z.object({
     .optional(),
   // Переходы серии (components/SeriesFx.tsx): wipe — заливка цветом из угла в момент at; bw — ч/б с at до until, потом цвет
   fx: z
-    .array(z.object({type: z.enum(["wipe", "bw", "leak", "whip", "defocus"]), at: z.number(), until: z.number().optional(), color: z.string().optional(), corner: z.enum(["tl", "tr", "bl", "br"]).optional()}))
+    .array(z.object({type: z.enum(["wipe", "bw", "leak", "whip", "defocus", "iris", "squeeze"]), at: z.number(), until: z.number().optional(), color: z.string().optional(), corner: z.enum(["tl", "tr", "bl", "br"]).optional(), x: z.number().optional(), y: z.number().optional(), amount: z.number().optional()}))
     .optional(),
   // Приёмы из референсов Монтажной 23.10.2026 (components/RefFx.tsx): splits — «до / после» двумя экранами; titles —
   // заголовок «засечки или гротеск + рукопись» (plane behind — за спикером, нужен cutoutSrc); captionsAt — субтитры
@@ -453,6 +456,19 @@ export const talkReelProSchema = z.object({
       }),
     )
     .optional(),
+  // triangles — серебристый треугольник за спиной, вершины загораются по очереди (`lights`), Huawei 29.10.2026
+  triangles: z.array(z.object({at: z.number(), until: z.number(), x: z.number().optional(), y: z.number().optional(), size: z.number().optional(), lights: z.array(z.number()).optional()})).optional(),
+  // vsteps — столбик пунктов слева за спиной, по линии к пункту съезжает стрелка (components/StepsFx.tsx, ByteDance 29.10.2026)
+  vsteps: z.array(z.object({at: z.number(), until: z.number(), x: z.number().optional(), top: z.number().optional(), gap: z.number().optional(), title: z.string().optional(), items: z.array(z.object({text: z.string(), at: z.number()}))})).optional(),
+  // appui — интерфейс ленты коротких видео поверх кадра (вкладки, значки справа, @ник и подпись), без логотипа сервиса
+  appui: z.array(z.object({at: z.number(), until: z.number(), handle: z.string().optional(), caption: z.string().optional(), music: z.string().optional()})).optional(),
+  // Xiaomi 29.10.2026 (components/EcoFx.tsx): windows — окно-плашка над головой, картинки сменяются на словах (поверх кадра);
+  // atoms — логотип и частицы на трёх орбитах; dashboards — экраны кабинетов продавца с графиками без чисел;
+  // ecos — схема экосистемы: центр-кольцо и узлы на словах. Три последних — за спиной (нужна вырезка).
+  windows: z.array(z.object({at: z.number(), until: z.number(), x: z.number().optional(), y: z.number().optional(), w: z.number().optional(), h: z.number().optional(), items: z.array(z.object({src: z.string(), at: z.number(), label: z.string().optional()}))})).optional(),
+  atoms: z.array(z.object({at: z.number(), until: z.number(), src: z.string(), x: z.number().optional(), y: z.number().optional(), size: z.number().optional()})).optional(),
+  dashboards: z.array(z.object({at: z.number(), until: z.number(), title: z.string().optional(), screens: z.array(z.string()).optional()})).optional(),
+  ecos: z.array(z.object({at: z.number(), until: z.number(), center: z.string(), x: z.number().optional(), y: z.number().optional(), items: z.array(z.object({text: z.string(), at: z.number()}))})).optional(),
   // «собрать воедино» — три понятия (иероглиф + подпись) сходятся в один круг-итог (components/MergeFx.tsx, Haier 29.10.2026)
   merges: z
     .array(
@@ -1154,12 +1170,17 @@ const ZoomedVideo: React.FC<{
   orbits?: TalkReelProProps["orbits"];
   neons?: TalkReelProProps["neons"];
   charts3d?: TalkReelProProps["charts3d"];
+  vsteps?: TalkReelProProps["vsteps"];
+  triangles?: TalkReelProProps["triangles"];
+  atoms?: TalkReelProProps["atoms"];
+  dashboards?: TalkReelProProps["dashboards"];
+  ecos?: TalkReelProProps["ecos"];
   words?: TalkReelProProps["words"];
   captionsAt?: TalkReelProProps["captionsAt"];
   accentWords?: string[];
   faceTop?: number;
   stories?: boolean;
-}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists, bgFlags, angleB, clips, hooks, speaker, texts, titles, floats, inscreens, bgs, rings, docus, orbits, neons, charts3d, words, captionsAt, accentWords, faceTop, stories = false}) => {
+}> = ({src, cutoutSrc, cuts, broll, cities, zooms, stockDrop, focus, checklists, bgFlags, angleB, clips, hooks, speaker, texts, titles, floats, inscreens, bgs, rings, docus, orbits, neons, charts3d, vsteps, triangles, atoms, dashboards, ecos, words, captionsAt, accentWords, faceTop, stories = false}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
@@ -1245,6 +1266,29 @@ const ZoomedVideo: React.FC<{
       {!broll.some((x) => t >= x.at && t <= x.until) && chart3dActive(charts3d, t) ? (
         <>
           <Charts3D items={charts3d} />
+          {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
+        </>
+      ) : null}
+      {/* серебристый треугольник — за спиной */}
+      {!broll.some((x) => t >= x.at && t <= x.until) && triangleActive(triangles, t) ? (
+        <>
+          <Triangles items={triangles} />
+          {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
+        </>
+      ) : null}
+      {/* логотип-атом, экраны кабинетов, схема экосистемы — за спиной */}
+      {!broll.some((x) => t >= x.at && t <= x.until) && (atomActive(atoms, t) || dashActive(dashboards, t) || ecoActive(ecos, t)) ? (
+        <>
+          <Atoms items={atoms} />
+          <Dashboards items={dashboards} />
+          <Ecos items={ecos} />
+          {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
+        </>
+      ) : null}
+      {/* шаги слева со стрелкой — за спиной */}
+      {!broll.some((x) => t >= x.at && t <= x.until) && vstepActive(vsteps, t) ? (
+        <>
+          <VSteps items={vsteps} />
           {cutoutSrc ? <OffthreadVideo src={staticFile(cutoutSrc)} transparent muted style={videoStyle} /> : null}
         </>
       ) : null}
@@ -2059,6 +2103,12 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
   const sfxAt: {at: number; src: string; volume?: number}[] = [
     ...(p.sounds ?? []).map((x) => ({at: x.at, src: p.sfx[x.kind] ?? p.sfx.pop, volume: x.volume ?? 0.45})),
     ...pathSounds(p.paths).map((at) => ({at, src: p.sfx.click ?? p.sfx.pop, volume: 0.4})),
+    ...triangleSounds(p.triangles).map((at) => ({at, src: p.sfx.click ?? p.sfx.pop, volume: 0.45})),
+    ...vstepSounds(p.vsteps).map((at) => ({at, src: p.sfx.click ?? p.sfx.pop, volume: 0.4})),
+    ...windowSounds(p.windows).map((at) => ({at, src: p.sfx.click ?? p.sfx.pop, volume: 0.42})),
+    ...ecoSounds(p.ecos).map((at) => ({at, src: p.sfx.pop, volume: 0.38})),
+    ...[...(p.atoms ?? []), ...(p.dashboards ?? [])].map((x) => ({at: x.at, src: p.sfx.whoosh, volume: 0.34})),
+    ...(p.appui ?? []).map((x) => ({at: x.at, src: p.sfx.whoosh, volume: 0.35})),
     ...mergeSounds(p.merges).map((x) => ({at: x.at, src: x.kind === "click" ? p.sfx.click ?? p.sfx.pop : p.sfx.whoosh, volume: x.kind === "click" ? 0.4 : 0.32})),
     ...(p.charts3d ?? []).map((x) => ({at: x.barsAt ?? x.at, src: p.sfx.whoosh, volume: 0.3})),
     ...p.chips.flatMap((g) => g.items.map((c) => ({at: c.at, src: p.sfx.pop}))),
@@ -2087,7 +2137,9 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
       return [...snd.whoosh.map((at) => ({at, src: p.sfx.whoosh, volume: 0.3})), ...snd.click.map((at) => ({at, src: p.sfx.click ?? p.sfx.pop, volume: 0.5}))];
     }),
     // заливка из угла — «вжух»; ч/б → цвет — хлопок в момент вспышки цвета
-    ...(p.fx ?? []).map((x) => (x.type === "wipe" ? {at: x.at, src: p.sfx.whip ?? p.sfx.whoosh, volume: 0.35} : {at: x.until ?? x.at + 1, src: p.sfx.pop, volume: 0.35})),
+    ...(p.fx ?? []).map((x) =>
+      x.type === "wipe" || x.type === "iris" ? {at: x.at, src: p.sfx.whip ?? p.sfx.whoosh, volume: 0.35} : x.type === "squeeze" ? {at: x.until ?? x.at + 3, src: p.sfx.whoosh, volume: 0.45} : {at: x.until ?? x.at + 1, src: p.sfx.pop, volume: 0.35},
+    ),
     ...(p.episode ? [{at: p.speechSeconds, src: p.sfx.whoosh, volume: 0.3}] : []),
     // приёмы из референсов 23.10.2026
     ...p.zooms.filter((z) => z.kind === "macro").map((z) => ({at: z.at, src: p.sfx.whip ?? p.sfx.whoosh, volume: 0.22})),
@@ -2211,6 +2263,11 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
         orbits={p.orbits}
         neons={p.neons}
         charts3d={p.charts3d}
+        vsteps={p.vsteps}
+        triangles={p.triangles}
+        atoms={p.atoms}
+        dashboards={p.dashboards}
+        ecos={p.ecos}
         words={p.words}
         captionsAt={p.captionsAt}
         accentWords={p.accentWords}
@@ -2228,6 +2285,8 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
       <Lists items={p.lists} stories={stories} />
       <MotionPaths items={p.paths} />
       <Merges items={p.merges} />
+      <AppUis items={p.appui} />
+      <Windows items={p.windows} />
       <Panels items={p.panels} stories={stories} />
       <Texts3D items={p.texts} plane="front" />
       <Titles items={p.titles} plane="front" />

@@ -1,0 +1,1314 @@
+{
+ "mediaSrc": "source-videos/2026-10-29-bytedance/_work/bytedance.cut.mp4",
+ "cutoutSrc": "source-videos/2026-10-29-bytedance/_work/bytedance.cut.alpha.webm",
+ "words": [
+  {
+   "text": "Вы",
+   "start": 0.12,
+   "end": 0.25
+  },
+  {
+   "text": "смотрите",
+   "start": 0.25,
+   "end": 0.63
+  },
+  {
+   "text": "это",
+   "start": 0.63,
+   "end": 0.82
+  },
+  {
+   "text": "видео,",
+   "start": 0.82,
+   "end": 1.2
+  },
+  {
+   "text": "потому",
+   "start": 1.2,
+   "end": 1.58
+  },
+  {
+   "text": "что",
+   "start": 1.58,
+   "end": 1.77
+  },
+  {
+   "text": "алгоритм",
+   "start": 1.77,
+   "end": 2.32
+  },
+  {
+   "text": "решил,",
+   "start": 2.32,
+   "end": 2.72
+  },
+  {
+   "text": "что",
+   "start": 2.72,
+   "end": 2.98
+  },
+  {
+   "text": "оно",
+   "start": 2.98,
+   "end": 3.24
+  },
+  {
+   "text": "вам",
+   "start": 3.24,
+   "end": 3.5
+  },
+  {
+   "text": "интересно.",
+   "start": 3.5,
+   "end": 4.28
+  },
+  {
+   "text": "Компания,",
+   "start": 4.28,
+   "end": 4.95
+  },
+  {
+   "text": "которая",
+   "start": 4.95,
+   "end": 5.49
+  },
+  {
+   "text": "сделала",
+   "start": 5.49,
+   "end": 6.05
+  },
+  {
+   "text": "из",
+   "start": 6.05,
+   "end": 6.18
+  },
+  {
+   "text": "этого",
+   "start": 6.18,
+   "end": 6.56
+  },
+  {
+   "text": "бизнес,",
+   "start": 6.56,
+   "end": 7.26
+  },
+  {
+   "text": "называется",
+   "start": 7.26,
+   "end": 7.86
+  },
+  {
+   "text": "ByteDance.",
+   "start": 7.86,
+   "end": 8.4
+  },
+  {
+   "text": "ByteDance",
+   "start": 8.4,
+   "end": 8.9
+  },
+  {
+   "text": "основал",
+   "start": 8.9,
+   "end": 9.7
+  },
+  {
+   "text": "в",
+   "start": 9.7,
+   "end": 9.81
+  },
+  {
+   "text": "2012",
+   "start": 9.81,
+   "end": 10.5
+  },
+  {
+   "text": "году",
+   "start": 10.5,
+   "end": 10.96
+  },
+  {
+   "text": "Чжан",
+   "start": 10.96,
+   "end": 11.42
+  },
+  {
+   "text": "Имин.",
+   "start": 11.42,
+   "end": 12.1
+  },
+  {
+   "text": "Ставка",
+   "start": 12.1,
+   "end": 12.61
+  },
+  {
+   "text": "на",
+   "start": 12.61,
+   "end": 12.78
+  },
+  {
+   "text": "рекомендательные",
+   "start": 12.78,
+   "end": 14.14
+  },
+  {
+   "text": "алгоритмы",
+   "start": 14.14,
+   "end": 14.98
+  },
+  {
+   "text": "и",
+   "start": 14.98,
+   "end": 15.06
+  },
+  {
+   "text": "в",
+   "start": 15.06,
+   "end": 15.14
+  },
+  {
+   "text": "итоге",
+   "start": 15.14,
+   "end": 15.49
+  },
+  {
+   "text": "Douyin",
+   "start": 15.49,
+   "end": 15.95
+  },
+  {
+   "text": "и",
+   "start": 15.95,
+   "end": 16.03
+  },
+  {
+   "text": "TikTok.",
+   "start": 16.03,
+   "end": 16.82
+  },
+  {
+   "text": "Теперь",
+   "start": 16.82,
+   "end": 17.37
+  },
+  {
+   "text": "их",
+   "start": 17.37,
+   "end": 17.58
+  },
+  {
+   "text": "подход",
+   "start": 17.58,
+   "end": 18.1
+  },
+  {
+   "text": "к",
+   "start": 18.1,
+   "end": 18.19
+  },
+  {
+   "text": "данным",
+   "start": 18.19,
+   "end": 18.73
+  },
+  {
+   "text": "и",
+   "start": 18.73,
+   "end": 18.82
+  },
+  {
+   "text": "организации",
+   "start": 18.82,
+   "end": 19.84
+  },
+  {
+   "text": "можно",
+   "start": 19.84,
+   "end": 20.3
+  },
+  {
+   "text": "разобрать",
+   "start": 20.3,
+   "end": 21.29
+  },
+  {
+   "text": "за",
+   "start": 21.29,
+   "end": 21.37
+  },
+  {
+   "text": "три",
+   "start": 21.37,
+   "end": 21.56
+  },
+  {
+   "text": "дня.",
+   "start": 21.56,
+   "end": 22.08
+  },
+  {
+   "text": "День",
+   "start": 22.08,
+   "end": 22.37
+  },
+  {
+   "text": "первый",
+   "start": 22.37,
+   "end": 22.96
+  },
+  {
+   "text": "–",
+   "start": 22.96,
+   "end": 23.04
+  },
+  {
+   "text": "это",
+   "start": 23.04,
+   "end": 23.24
+  },
+  {
+   "text": "выставочный",
+   "start": 23.24,
+   "end": 24.25
+  },
+  {
+   "text": "зал",
+   "start": 24.25,
+   "end": 24.53
+  },
+  {
+   "text": "ByteDance.",
+   "start": 24.53,
+   "end": 25.14
+  },
+  {
+   "text": "Цифро-интеллектуальное",
+   "start": 25.14,
+   "end": 26.52
+  },
+  {
+   "text": "мышление.",
+   "start": 26.52,
+   "end": 27.18
+  },
+  {
+   "text": "Как",
+   "start": 27.42,
+   "end": 27.5
+  },
+  {
+   "text": "в",
+   "start": 27.5,
+   "end": 27.58
+  },
+  {
+   "text": "компании",
+   "start": 27.58,
+   "end": 28.15
+  },
+  {
+   "text": "формируют",
+   "start": 28.15,
+   "end": 28.86
+  },
+  {
+   "text": "мышление",
+   "start": 28.86,
+   "end": 29.5
+  },
+  {
+   "text": "роста",
+   "start": 29.5,
+   "end": 29.9
+  },
+  {
+   "text": "и",
+   "start": 29.9,
+   "end": 30.15
+  },
+  {
+   "text": "как",
+   "start": 30.15,
+   "end": 30.23
+  },
+  {
+   "text": "инновации",
+   "start": 30.23,
+   "end": 30.93
+  },
+  {
+   "text": "становятся",
+   "start": 30.93,
+   "end": 31.74
+  },
+  {
+   "text": "ежедневной",
+   "start": 31.74,
+   "end": 32.54
+  },
+  {
+   "text": "практикой.",
+   "start": 32.54,
+   "end": 33.42
+  },
+  {
+   "text": "День",
+   "start": 33.42,
+   "end": 33.7
+  },
+  {
+   "text": "второй",
+   "start": 33.7,
+   "end": 34.24
+  },
+  {
+   "text": "–",
+   "start": 34.24,
+   "end": 34.32
+  },
+  {
+   "text": "эффективность",
+   "start": 34.32,
+   "end": 34.96
+  },
+  {
+   "text": "цифровой",
+   "start": 34.96,
+   "end": 35.4
+  },
+  {
+   "text": "организации.",
+   "start": 35.4,
+   "end": 36.18
+  },
+  {
+   "text": "Как",
+   "start": 36.18,
+   "end": 36.43
+  },
+  {
+   "text": "гибкая",
+   "start": 36.43,
+   "end": 36.86
+  },
+  {
+   "text": "структура",
+   "start": 36.86,
+   "end": 37.55
+  },
+  {
+   "text": "дает",
+   "start": 37.55,
+   "end": 37.83
+  },
+  {
+   "text": "компании",
+   "start": 37.83,
+   "end": 38.46
+  },
+  {
+   "text": "энергию.",
+   "start": 38.46,
+   "end": 39.18
+  },
+  {
+   "text": "И",
+   "start": 39.18,
+   "end": 39.43
+  },
+  {
+   "text": "как",
+   "start": 39.43,
+   "end": 39.51
+  },
+  {
+   "text": "работать",
+   "start": 39.51,
+   "end": 40.15
+  },
+  {
+   "text": "с",
+   "start": 40.15,
+   "end": 40.23
+  },
+  {
+   "text": "цепочками",
+   "start": 40.23,
+   "end": 40.85
+  },
+  {
+   "text": "поставок",
+   "start": 40.85,
+   "end": 41.47
+  },
+  {
+   "text": "в",
+   "start": 41.47,
+   "end": 41.55
+  },
+  {
+   "text": "эпоху",
+   "start": 41.55,
+   "end": 41.91
+  },
+  {
+   "text": "интеллектуальных",
+   "start": 41.91,
+   "end": 43.14
+  },
+  {
+   "text": "технологий.",
+   "start": 43.14,
+   "end": 44.18
+  },
+  {
+   "text": "День",
+   "start": 44.18,
+   "end": 44.64
+  },
+  {
+   "text": "третий",
+   "start": 44.64,
+   "end": 45.33
+  },
+  {
+   "text": "–",
+   "start": 45.33,
+   "end": 45.68
+  },
+  {
+   "text": "воркшоп",
+   "start": 45.68,
+   "end": 46.03
+  },
+  {
+   "text": "по",
+   "start": 46.03,
+   "end": 46.23
+  },
+  {
+   "text": "контент-маркетингу",
+   "start": 46.23,
+   "end": 47.97
+  },
+  {
+   "text": "и",
+   "start": 47.97,
+   "end": 48.1
+  },
+  {
+   "text": "росту",
+   "start": 48.1,
+   "end": 48.67
+  },
+  {
+   "text": "на",
+   "start": 48.67,
+   "end": 48.78
+  },
+  {
+   "text": "ИИ.",
+   "start": 48.78,
+   "end": 49.14
+  },
+  {
+   "text": "Рост",
+   "start": 49.14,
+   "end": 49.42
+  },
+  {
+   "text": "бренда",
+   "start": 49.42,
+   "end": 49.84
+  },
+  {
+   "text": "через",
+   "start": 49.84,
+   "end": 50.19
+  },
+  {
+   "text": "данные,",
+   "start": 50.19,
+   "end": 50.68
+  },
+  {
+   "text": "продвижение",
+   "start": 50.68,
+   "end": 51.45
+  },
+  {
+   "text": "через",
+   "start": 51.45,
+   "end": 51.8
+  },
+  {
+   "text": "контентные",
+   "start": 51.8,
+   "end": 52.5
+  },
+  {
+   "text": "платформы",
+   "start": 52.5,
+   "end": 53.22
+  },
+  {
+   "text": "и",
+   "start": 53.22,
+   "end": 53.3
+  },
+  {
+   "text": "цифровая",
+   "start": 53.3,
+   "end": 53.63
+  },
+  {
+   "text": "трансформация",
+   "start": 53.63,
+   "end": 54.18
+  },
+  {
+   "text": "целой",
+   "start": 54.18,
+   "end": 54.94
+  },
+  {
+   "text": "отрасли.",
+   "start": 54.94,
+   "end": 56.24
+  },
+  {
+   "text": "Вы",
+   "start": 56.37,
+   "end": 56.49
+  },
+  {
+   "text": "спросите,",
+   "start": 56.49,
+   "end": 56.95
+  },
+  {
+   "text": "кому",
+   "start": 57.01,
+   "end": 57.27
+  },
+  {
+   "text": "же",
+   "start": 57.27,
+   "end": 57.4
+  },
+  {
+   "text": "ехать?",
+   "start": 57.4,
+   "end": 57.86
+  },
+  {
+   "text": "Прежде",
+   "start": 57.86,
+   "end": 58.32
+  },
+  {
+   "text": "всего,",
+   "start": 58.32,
+   "end": 58.65
+  },
+  {
+   "text": "руководителям",
+   "start": 58.65,
+   "end": 59.63
+  },
+  {
+   "text": "маркетинга",
+   "start": 59.63,
+   "end": 60.29
+  },
+  {
+   "text": "и",
+   "start": 60.29,
+   "end": 60.37
+  },
+  {
+   "text": "цифровых",
+   "start": 60.37,
+   "end": 60.96
+  },
+  {
+   "text": "направлений.",
+   "start": 60.96,
+   "end": 61.94
+  },
+  {
+   "text": "А",
+   "start": 61.94,
+   "end": 62.19
+  },
+  {
+   "text": "также",
+   "start": 62.19,
+   "end": 62.48
+  },
+  {
+   "text": "собственникам,",
+   "start": 62.48,
+   "end": 63.75
+  },
+  {
+   "text": "которые",
+   "start": 63.75,
+   "end": 64.39
+  },
+  {
+   "text": "хотят,",
+   "start": 64.39,
+   "end": 64.93
+  },
+  {
+   "text": "чтобы",
+   "start": 64.93,
+   "end": 65.38
+  },
+  {
+   "text": "данные",
+   "start": 65.38,
+   "end": 65.92
+  },
+  {
+   "text": "и",
+   "start": 65.92,
+   "end": 66.01
+  },
+  {
+   "text": "ИИ",
+   "start": 66.01,
+   "end": 66.43
+  },
+  {
+   "text": "приносили",
+   "start": 66.43,
+   "end": 67.0
+  },
+  {
+   "text": "рост,",
+   "start": 67.0,
+   "end": 67.52
+  },
+  {
+   "text": "а",
+   "start": 67.52,
+   "end": 67.6
+  },
+  {
+   "text": "не",
+   "start": 67.6,
+   "end": 67.76
+  },
+  {
+   "text": "только",
+   "start": 67.76,
+   "end": 68.25
+  },
+  {
+   "text": "красивые",
+   "start": 68.25,
+   "end": 68.9
+  },
+  {
+   "text": "отчеты.",
+   "start": 68.9,
+   "end": 69.56
+  },
+  {
+   "text": "Три",
+   "start": 69.56,
+   "end": 69.81
+  },
+  {
+   "text": "дня",
+   "start": 69.81,
+   "end": 70.14
+  },
+  {
+   "text": "–",
+   "start": 70.14,
+   "end": 70.22
+  },
+  {
+   "text": "группа",
+   "start": 70.22,
+   "end": 70.59
+  },
+  {
+   "text": "от",
+   "start": 70.59,
+   "end": 70.74
+  },
+  {
+   "text": "10",
+   "start": 70.74,
+   "end": 70.96
+  },
+  {
+   "text": "человек",
+   "start": 70.96,
+   "end": 71.68
+  },
+  {
+   "text": "с",
+   "start": 71.68,
+   "end": 71.93
+  },
+  {
+   "text": "переводом",
+   "start": 71.93,
+   "end": 72.55
+  },
+  {
+   "text": "на",
+   "start": 72.55,
+   "end": 72.72
+  },
+  {
+   "text": "русский",
+   "start": 72.72,
+   "end": 73.33
+  },
+  {
+   "text": "язык.",
+   "start": 73.33,
+   "end": 73.88
+  },
+  {
+   "text": "Заявка",
+   "start": 75.0,
+   "end": 75.8
+  },
+  {
+   "text": "по",
+   "start": 75.8,
+   "end": 76.15
+  },
+  {
+   "text": "ссылке",
+   "start": 76.15,
+   "end": 76.7
+  },
+  {
+   "text": "в",
+   "start": 76.7,
+   "end": 76.85
+  },
+  {
+   "text": "описании.",
+   "start": 76.85,
+   "end": 77.55
+  },
+  {
+   "text": "Спасибо",
+   "start": 77.66,
+   "end": 78.053
+  },
+  {
+   "text": "алгоритму,",
+   "start": 78.053,
+   "end": 79.013
+  },
+  {
+   "text": "что",
+   "start": 79.013,
+   "end": 79.353
+  },
+  {
+   "text": "показал",
+   "start": 79.353,
+   "end": 80.173
+  },
+  {
+   "text": "это",
+   "start": 80.173,
+   "end": 80.523
+  },
+  {
+   "text": "видео.",
+   "start": 80.523,
+   "end": 81.153
+  }
+ ],
+ "accentWords": [
+  "bytedance",
+  "2012",
+  "douyin",
+  "tiktok",
+  "три",
+  "10",
+  "данные",
+  "ии"
+ ],
+ "cuts": [
+  0.133,
+  4.367,
+  8.533,
+  12.2,
+  14.567,
+  15.4,
+  16.2,
+  16.9,
+  19.167,
+  22.233,
+  25.267,
+  27.367,
+  33.467,
+  34.4,
+  36.867,
+  44.7,
+  45.667,
+  46.367,
+  49.267,
+  54.9,
+  56.333,
+  57.067,
+  57.933,
+  63.2,
+  67.6,
+  69.633,
+  71.8,
+  73.8,
+  75.167,
+  77.567,
+  78.867,
+  81.333
+ ],
+ "chips": [],
+ "logos": [],
+ "numbers": [],
+ "broll": [],
+ "cities": [
+  {
+   "at": 10.96,
+   "until": 12.6,
+   "src": "source-videos/2026-10-29-bytedance/фото/zhang-yiming.png",
+   "name": "Чжан Имин",
+   "kicker": "Основатель ByteDance · 2012"
+  }
+ ],
+ "checklists": [],
+ "zooms": [
+  {
+   "at": 4.28,
+   "kind": "push",
+   "amount": 0.06,
+   "hold": 1.6
+  },
+  {
+   "at": 12.1,
+   "kind": "push",
+   "amount": 0.06,
+   "hold": 1.6
+  },
+  {
+   "at": 22.08,
+   "kind": "punch",
+   "amount": 0.16,
+   "hold": 0.6
+  },
+  {
+   "at": 33.42,
+   "kind": "push",
+   "amount": 0.06,
+   "hold": 1.4
+  },
+  {
+   "at": 56.37,
+   "kind": "push",
+   "amount": 0.07,
+   "hold": 1.2
+  }
+ ],
+ "sfx": {
+  "pop": "source-videos/2026-10-07-byt-tehnika/sfx/switch.wav",
+  "whoosh": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+  "whip": "source-videos/2026-10-07-byt-tehnika/sfx/whip.wav"
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+  "volume": 0.078,
+  "outroVolume": 0.18
+ },
+ "speechSeconds": 81.466,
+ "site": {
+  "at": 75.0,
+  "home": "source-videos/2026-10-29-alibaba/site/ct-0.png",
+  "catalog": "source-videos/2026-10-29-bytedance/site/card.png",
+  "route": [
+   "source-videos/2026-10-29-bytedance/site/card.png"
+  ]
+ },
+ "cta": "Обучение",
+ "ctaSeconds": 1.3,
+ "showSafeZone": false,
+ "format": "reels",
+ "focus": {
+  "x": 532,
+  "y": 775
+ },
+ "fx": [
+  {
+   "type": "iris",
+   "at": 0.0,
+   "until": 0.9,
+   "x": 532,
+   "y": 860
+  }
+ ],
+ "texts": [
+  {
+   "at": 6.3,
+   "until": 8.35,
+   "text": "ByteDance",
+   "src": "source-videos/логотипы/общие/bytedance.png",
+   "x": 540,
+   "y": 420,
+   "size": 900,
+   "depth": 3,
+   "plane": "behind",
+   "anim": "zoomout"
+  },
+  {
+   "at": 9.81,
+   "until": 12.0,
+   "text": "2012",
+   "x": 540,
+   "y": 420,
+   "size": 340,
+   "font": "display",
+   "shine": true,
+   "depth": 10,
+   "plane": "behind",
+   "anim": "fly"
+  },
+  {
+   "at": 15.49,
+   "until": 17.9,
+   "text": "抖音",
+   "font": "brush",
+   "shine": true,
+   "x": 540,
+   "y": 300,
+   "size": 260,
+   "depth": 6,
+   "plane": "behind",
+   "anim": "fly"
+  },
+  {
+   "at": 16.03,
+   "until": 17.9,
+   "text": "= TIKTOK",
+   "x": 540,
+   "y": 500,
+   "size": 120,
+   "font": "display",
+   "shine": true,
+   "depth": 10,
+   "plane": "behind",
+   "anim": "fly"
+  },
+  {
+   "at": 21.31,
+   "until": 22.02,
+   "text": "3",
+   "x": 200,
+   "y": 820,
+   "size": 640,
+   "font": "display",
+   "shine": true,
+   "depth": 10,
+   "plane": "behind",
+   "anim": "fly"
+  },
+  {
+   "at": 22.08,
+   "until": 25.1,
+   "text": "1",
+   "x": 200,
+   "y": 760,
+   "size": 640,
+   "font": "display",
+   "shine": true,
+   "depth": 10,
+   "plane": "behind",
+   "anim": "fly"
+  },
+  {
+   "at": 33.42,
+   "until": 36.1,
+   "text": "2",
+   "x": 200,
+   "y": 760,
+   "size": 640,
+   "font": "display",
+   "shine": true,
+   "depth": 10,
+   "plane": "behind",
+   "anim": "fly"
+  },
+  {
+   "at": 44.18,
+   "until": 49.1,
+   "text": "3",
+   "x": 200,
+   "y": 760,
+   "size": 640,
+   "font": "display",
+   "shine": true,
+   "depth": 10,
+   "plane": "behind",
+   "anim": "fly"
+  },
+  {
+   "at": 56.37,
+   "until": 57.84,
+   "text": "?",
+   "font": "display",
+   "x": 220,
+   "y": 720,
+   "size": 560,
+   "color": "#FFFFFF",
+   "color2": "#1D4ED8",
+   "depth": 9,
+   "plane": "behind",
+   "anim": "spin"
+  },
+  {
+   "at": 69.56,
+   "until": 70.7,
+   "text": "3",
+   "x": 540,
+   "y": 560,
+   "size": 900,
+   "font": "display",
+   "shine": true,
+   "depth": 10,
+   "plane": "behind",
+   "anim": "slam"
+  },
+  {
+   "at": 70.74,
+   "until": 72.2,
+   "text": "10",
+   "x": 540,
+   "y": 560,
+   "size": 700,
+   "font": "display",
+   "shine": true,
+   "depth": 10,
+   "plane": "behind",
+   "anim": "slam"
+  }
+ ],
+ "charts3d": [
+  {
+   "at": 25.14,
+   "until": 27.42,
+   "barsAt": 25.3,
+   "ringAt": 26.52,
+   "label": "Данные",
+   "ringLabel": "Интеллект"
+  }
+ ],
+ "paths": [
+  {
+   "at": 27.42,
+   "until": 33.42,
+   "top": 262,
+   "kicker": "ByteDance · День 1",
+   "title": "Выставочный зал",
+   "arrow": true,
+   "items": [
+    {
+     "text": "Мышление роста",
+     "at": 28.86,
+     "icon": "people"
+    },
+    {
+     "text": "Инновации",
+     "at": 30.22,
+     "icon": "star"
+    },
+    {
+     "text": "Ежедневная практика",
+     "at": 31.74,
+     "icon": "tech"
+    }
+   ]
+  },
+  {
+   "at": 49.14,
+   "until": 56.3,
+   "top": 262,
+   "kicker": "ByteDance · День 3",
+   "title": "Рост на контенте",
+   "arrow": true,
+   "items": [
+    {
+     "text": "Рост бренда через данные",
+     "at": 49.3,
+     "icon": "model"
+    },
+    {
+     "text": "Контентные платформы",
+     "at": 51.8,
+     "icon": "channels"
+    },
+    {
+     "text": "Цифровая трансформация",
+     "at": 53.26,
+     "icon": "platform"
+    }
+   ]
+  }
+ ],
+ "speaker": [
+  {
+   "at": 27.42,
+   "until": 33.42,
+   "corner": "bottom",
+   "scale": 0.56,
+   "style": "contour",
+   "bg": "blur"
+  },
+  {
+   "at": 49.14,
+   "until": 56.3,
+   "corner": "bottom",
+   "scale": 0.56,
+   "style": "contour",
+   "bg": "blur"
+  }
+ ],
+ "captionsAt": [
+  {
+   "at": 27.42,
+   "until": 33.45,
+   "style": "none"
+  },
+  {
+   "at": 49.14,
+   "until": 56.33,
+   "style": "none"
+  }
+ ],
+ "vsteps": [
+  {
+   "at": 36.18,
+   "until": 44.1,
+   "x": 70,
+   "top": 420,
+   "title": "ByteDance · День 2",
+   "items": [
+    {
+     "text": "Гибкая структура",
+     "at": 36.43
+    },
+    {
+     "text": "Энергия компании",
+     "at": 37.55
+    },
+    {
+     "text": "Цепочки поставок",
+     "at": 40.17
+    },
+    {
+     "text": "Эпоха ИИ",
+     "at": 41.54
+    }
+   ],
+   "gap": 165
+  }
+ ],
+ "appui": [
+  {
+   "at": 44.18,
+   "until": 49.1,
+   "handle": "@globaltechtour",
+   "caption": "Контент-маркетинг и рост на ИИ"
+  }
+ ],
+ "lists": [
+  {
+   "at": 57.86,
+   "until": 69.4,
+   "style": "flip",
+   "title": "Кому ехать?",
+   "items": [
+    {
+     "text": "Руководителям маркетинга",
+     "at": 58.65
+    },
+    {
+     "text": "Цифровым направлениям",
+     "at": 60.36
+    },
+    {
+     "text": "Собственникам — чтобы ИИ приносил рост",
+     "at": 62.48
+    }
+   ]
+  }
+ ],
+ "sounds": [
+  {
+   "at": 6.3,
+   "kind": "whoosh",
+   "volume": 0.4
+  },
+  {
+   "at": 9.81,
+   "kind": "whip",
+   "volume": 0.35
+  },
+  {
+   "at": 15.49,
+   "kind": "click",
+   "volume": 0.45
+  },
+  {
+   "at": 16.03,
+   "kind": "click",
+   "volume": 0.45
+  },
+  {
+   "at": 21.31,
+   "kind": "whoosh",
+   "volume": 0.35
+  },
+  {
+   "at": 22.08,
+   "kind": "whoosh",
+   "volume": 0.35
+  },
+  {
+   "at": 33.42,
+   "kind": "whoosh",
+   "volume": 0.35
+  },
+  {
+   "at": 44.18,
+   "kind": "whoosh",
+   "volume": 0.35
+  },
+  {
+   "at": 56.37,
+   "kind": "whoosh",
+   "volume": 0.35
+  },
+  {
+   "at": 69.56,
+   "kind": "whip",
+   "volume": 0.4
+  },
+  {
+   "at": 70.74,
+   "kind": "whip",
+   "volume": 0.4
+  }
+ ]
+}

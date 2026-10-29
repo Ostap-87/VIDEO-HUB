@@ -69,7 +69,7 @@ const MergeOne: React.FC<{it: MergeItem}> = ({it}) => {
         {it.title ? (
           <div style={{position: "absolute", left: 56, top: 42}}>
             {it.kicker ? <div style={{fontFamily: B.monoFont, fontSize: 26, letterSpacing: "0.16em", color: accent, textTransform: "uppercase"}}>{it.kicker}</div> : null}
-            <div style={{fontFamily: B.captionFont, fontWeight: 800, fontSize: Math.min(64, 840 / (Math.max(1, it.title.length) * 0.8)), lineHeight: 1.05, color: INK, textTransform: "uppercase", whiteSpace: "nowrap", marginTop: 6, clipPath: `inset(-20% ${100 - interpolate(t, [0.15, 0.6], [0, 100], {...clamp, easing: ease})}% -20% 0)`}}>
+            <div style={{fontFamily: B.captionFont, fontWeight: 800, fontSize: Math.min(64, 840 / (Math.max(1, it.title.length) * 0.95)), lineHeight: 1.05, color: INK, textTransform: "uppercase", whiteSpace: "nowrap", marginTop: 6, clipPath: `inset(-20% ${100 - interpolate(t, [0.15, 0.6], [0, 100], {...clamp, easing: ease})}% -20% 0)`}}>
               {it.title}
             </div>
           </div>
@@ -107,7 +107,8 @@ const MergeOne: React.FC<{it: MergeItem}> = ({it}) => {
                   opacity: 1 - m,
                   rotate: `${(1 - k) * 30}deg`,
                   fontFamily: `"${BRUSH}", "Noto Serif SC", serif`,
-                  fontSize: x.glyph.length > 1 ? 76 : 104,
+                  fontSize: x.glyph.length > 1 ? 70 : 104,
+                  whiteSpace: "nowrap",
                   color: "#FFFFFF",
                   textShadow: "0 4px 0 rgba(10,20,60,0.35)",
                 }}
@@ -151,7 +152,8 @@ const MergeOne: React.FC<{it: MergeItem}> = ({it}) => {
             justifyContent: "center",
             scale: String(Math.max(0, big)),
             fontFamily: `"${BRUSH}", "Noto Serif SC", serif`,
-            fontSize: it.result.glyph.length > 2 ? 92 : 130,
+            fontSize: Math.min(130, 250 / Math.max(1, it.result.glyph.length)),
+            whiteSpace: "nowrap",
             color: "#FFFFFF",
             textShadow: "0 5px 0 rgba(10,20,60,0.35)",
           }}

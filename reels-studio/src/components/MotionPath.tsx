@@ -146,7 +146,7 @@ const PathOne: React.FC<{it: PathItem}> = ({it}) => {
             {it.kicker ? (
               <div style={{fontFamily: B.monoFont, fontSize: 26, letterSpacing: "0.16em", color: accent, textTransform: "uppercase", opacity: interpolate(t, [0.1, 0.4], [0, 1], clamp)}}>{it.kicker}</div>
             ) : null}
-            <div style={{fontFamily: B.captionFont, fontWeight: 800, fontSize: Math.min(64, 840 / (Math.max(1, it.title.length) * 0.8)), lineHeight: 1.05, color: INK, textTransform: "uppercase", whiteSpace: "nowrap", marginTop: 6, clipPath: `inset(-20% ${100 - interpolate(t, [0.15, 0.6], [0, 100], {...clamp, easing: ease})}% -20% 0)`}}>
+            <div style={{fontFamily: B.captionFont, fontWeight: 800, fontSize: Math.min(64, 840 / (Math.max(1, it.title.length) * 0.95)), lineHeight: 1.05, color: INK, textTransform: "uppercase", whiteSpace: "nowrap", marginTop: 6, clipPath: `inset(-20% ${100 - interpolate(t, [0.15, 0.6], [0, 100], {...clamp, easing: ease})}% -20% 0)`}}>
               {it.title}
             </div>
           </div>

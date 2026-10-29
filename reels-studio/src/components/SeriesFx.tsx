@@ -18,7 +18,10 @@ const PAPER = "#F7F4EC";
 const MARKER = "#FFD92E";
 const ease = Easing.bezier(0.65, 0, 0.35, 1);
 
-export type FxItem = {type: "wipe" | "bw" | "leak" | "whip" | "defocus"; at: number; until?: number; color?: string; corner?: "tl" | "tr" | "bl" | "br"};
+// iris — кадр раскрывается кругом из точки x, y (ByteDance 29.10.2026: «видео начинается с кружка, который у меня из носа
+// расширяется на полный кадр»); squeeze — кадр плавно сужается полосами сверху и снизу и в until резко раскрывается
+// (Huawei 29.10.2026: «плавно сужение кадра… и резко расширение, когда говорю, что организуем обучение»)
+export type FxItem = {type: "wipe" | "bw" | "leak" | "whip" | "defocus" | "iris" | "squeeze"; at: number; until?: number; color?: string; corner?: "tl" | "tr" | "bl" | "br"; x?: number; y?: number; amount?: number};
 export type Episode = {n: number; total: number; title: string; next?: string; nextN?: number};
 
 // ч/б → цвет: 1 — полностью серый; после until цвет возвращается за 0,2 с со вспышкой яркости
@@ -57,6 +60,31 @@ export const ColorWipes: React.FC<{fx?: FxItem[]}> = ({fx}) => {
           const [x, y] = t < f.at + 0.32 ? CORNER[corner] : CORNER[OPPOSITE[corner]];
           const r = t < f.at + 0.32 ? grow : shrink;
           return <AbsoluteFill key={i} style={{background: f.color ?? MARKER, clipPath: `circle(${r}px at ${x}px ${y}px)`}} />;
+        })}
+      {(fx ?? [])
+        .filter((f) => f.type === "iris" && t <= (f.until ?? f.at + 0.9) + 0.02)
+        .map((f, i) => {
+          const r = interpolate(t, [f.at, f.until ?? f.at + 0.9], [0, 2300], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.bezier(0.55, 0, 0.25, 1)});
+          const x = f.x ?? 540;
+          const y = f.y ?? 960;
+          return (
+            <AbsoluteFill key={`iris-${i}`} style={{background: `radial-gradient(circle at ${x}px ${y}px, transparent ${r}px, rgba(255,255,255,0.9) ${r + 2}px, ${f.color ?? "#EEF2FA"} ${r + 40}px)`}} />
+          );
+        })}
+      {(fx ?? [])
+        .filter((f) => f.type === "squeeze" && t >= f.at && t <= (f.until ?? f.at + 3) + 0.25)
+        .map((f, i) => {
+          const until = f.until ?? f.at + 3;
+          const close = interpolate(t, [f.at, until], [0, f.amount ?? 0.3], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.bezier(0.4, 0, 0.6, 1)});
+          const open = interpolate(t, [until, until + 0.18], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic)});
+          const h = 1920 * close * open;
+          const bar: React.CSSProperties = {position: "absolute", left: 0, right: 0, height: h, background: f.color ?? "#05070D", boxShadow: "0 0 40px rgba(0,0,0,0.6)"};
+          return (
+            <React.Fragment key={`sq-${i}`}>
+              <div style={{...bar, top: 0}} />
+              <div style={{...bar, bottom: 0}} />
+            </React.Fragment>
+          );
         })}
     </>
   );

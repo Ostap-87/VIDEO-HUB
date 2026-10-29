@@ -166,6 +166,9 @@ def main():
         # мало места (< 3 ГБ): без кэша webpack (~250 МБ) — Chrome рендера падает с «disk space is low» (Alibaba v2, 29.10.2026)
         if shutil.disk_usage(ROOT).free < 3 * 2**30:
             R.append("--bundle-cache=false")
+        # кэш кадров OffthreadVideo — не больше 1,5 ГБ: без предела компоновщик дорос до 6,7 ГБ и его убила память
+        # (Haier 29.10.2026, вырезка + видео в нескольких слоях за спиной)
+        R.append("--offthreadvideo-cache-size-in-bytes=1500000000")
         if not a.stories_only:
             stage = "render-reels"
             reels = FIN / f"{a.name}.mp4"

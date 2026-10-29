@@ -362,9 +362,13 @@ export type TextItem = {
   color2?: string; // второй цвет: обводка / объём
   font?: "grotesk" | "display" | "serif" | "hand" | "mono" | "body" | "brush" | "script";
   plane?: "behind" | "front";
-  anim?: "rise" | "fly" | "type" | "swing" | "fade" | "write";
+  // zoomout — из огромного в обычный размер (ByteDance: «логотип появляется из мега-крупного в стандартный — зум наоборот»);
+  // spin — крутится вокруг вертикальной оси («вопросительный знак, который крутится»); slam — резко появляется и наезжает
+  // на зрителя («цифры резко появляются и на меня наезжают и сменяют друг друга»)
+  anim?: "rise" | "fly" | "type" | "swing" | "fade" | "write" | "zoomout" | "spin" | "slam";
   depth?: number; // объём букв, px
   shine?: boolean; // серебристый перелив по буквам (решение пользователя 29.10.2026: «цифра… переливалась серебристым»)
+  count?: boolean; // число отсчитывается от 0 до своего значения за первые ~0,8 с (Xiaomi 29.10.2026: «счётчик «9 правил»»)
   // картинка вместо текста (логотип за спиной; Ping An 29.10.2026: «на заднем фоне крупно логотип PingAn за мной»):
   // size — ширина картинки, px; повороты, плоскость и появление — как у текста
   src?: string;
@@ -421,8 +425,15 @@ const TextOne: React.FC<{it: TextItem}> = ({it}) => {
   // поворот в перспективе раздувает ближний край — запас тем больше, чем сильнее поворот
   const room = 2 * Math.min(it.x ?? 540, 1080 - (it.x ?? 540)) + 80 - 8 * Math.abs(it.ry ?? 0);
   const size = Math.min(it.size ?? 160, room / (longest * widthK));
+  if (it.count && /^\d+$/.test(it.text)) text = String(Math.round(interpolate(t, [0.05, Math.min(0.85, dur * 0.5)], [0, Number(it.text)], {...clamp, easing: Easing.out(Easing.quad)})));
   if (anim === "type") text = text.slice(0, Math.ceil(interpolate(t, [0, Math.min(dur * 0.6, 0.06 * text.length + 0.2)], [0, text.length], clamp)));
-  const ry = (it.ry ?? 0) + (anim === "swing" ? (1 - k) * 80 : 0);
+  const ry = (it.ry ?? 0) + (anim === "swing" ? (1 - k) * 80 : 0) + (anim === "spin" ? t * 220 : 0);
+  const grow =
+    anim === "zoomout"
+      ? interpolate(t, [0, Math.min(1.1, dur * 0.6)], [4.2, 1], {...clamp, easing: Easing.bezier(0.16, 1, 0.3, 1)})
+      : anim === "slam"
+        ? (0.3 + 0.7 * Math.min(1, k * 1.15)) * interpolate(t, [0.2, dur], [1, 1.45], {...clamp, easing: Easing.in(Easing.quad)})
+        : 1;
   const z = anim === "fly" ? (1 - k) * -1400 : 0;
   const dy = anim === "rise" ? (1 - k) * 160 : 0;
   const wrote = anim === "write" ? interpolate(t, [0.05, Math.min(dur * 0.6, 0.9)], [0, 100], {...clamp, easing: Easing.bezier(0.45, 0, 0.3, 1)}) : 100;
@@ -438,7 +449,8 @@ const TextOne: React.FC<{it: TextItem}> = ({it}) => {
         alignItems: "center",
         justifyContent: "center",
         perspective: 1400,
-        opacity: (anim === "fade" ? k : anim === "write" ? 1 : Math.min(1, k * 2)) * out,
+        opacity: (anim === "fade" ? k : anim === "write" ? 1 : anim === "zoomout" ? interpolate(t, [0, 0.18], [0, 1], clamp) : Math.min(1, k * 2)) * out,
+        scale: String(grow),
       }}
     >
       <div

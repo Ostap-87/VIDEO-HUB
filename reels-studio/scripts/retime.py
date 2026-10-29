@@ -45,7 +45,7 @@ def make_map(old, new):
 GENERIC = ("texts", "inscreens", "speaker", "widgets", "lists", "sounds", "captionsAt", "hooks", "titles", "panels", "emojis",
            "marks", "stamps", "floats", "cards", "chats", "asks", "bgs", "splits", "outros", "searches", "dots", "votes", "drums",
            "rings", "docus", "orbits", "charts", "timelines", "neons", "prompts", "screens", "socials", "arrows", "clips", "fx",
-           "bgFlags", "paths", "charts3d", "merges", "paletteAt")
+           "bgFlags", "paths", "charts3d", "merges", "vsteps", "appui", "triangles", "windows", "atoms", "dashboards", "ecos", "paletteAt")
 
 
 def main():
