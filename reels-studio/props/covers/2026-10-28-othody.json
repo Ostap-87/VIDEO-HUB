@@ -1,0 +1,30 @@
+{
+  "brand": "gtt",
+  "theme": "light",
+  "layout": "card",
+  "kicker": "Бизнес-экспедиция",
+  "titleSize": 84,
+  "subtitleSize": 38,
+  "titlePlate": true,
+  "photoFull": true,
+  "headerTop": 236,
+  "title": "**Переработка**\nотходов Китая",
+  "subtitle": "5 дней · 6 компаний · Шэньчжэнь → Фошань → Гуанчжоу → Шанхай → Хайань",
+  "logos": [
+    "gem",
+    "shenzhen-energy-environmental",
+    "grandblue",
+    "everbright-environment",
+    "shanghai-environment",
+    "tianying"
+  ],
+  "logoColumns": 3,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-28-othody/ostap-kadr.jpg",
+    "top": 0,
+    "height": 1700,
+    "focus": "50% 0%",
+    "zoom": 1.09
+  },
+  "logoSize": 1.4
+}

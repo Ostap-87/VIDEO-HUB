@@ -21,6 +21,7 @@ export const reelCoverSchema = z.object({
   logos: z.array(z.string()).optional(), // id из library/brands.json или путь от корня репозитория
   logosTitle: z.string().optional(), // подпись над логотипами
   logoColumns: z.number().optional(), // логотипы ровной сеткой: столько колонок, плашки одного размера
+  logoSize: z.number().optional(), // во сколько раз выше плашки логотипов на фото (1 — 78 px); 1,3–1,8 при 4–8 логотипах, чтобы круглые знаки не мельчали
   facts: z.array(z.string()).optional(), // короткие плашки-факты (**акцент**)
   factsTop: z.number().optional(), // факты строкой с переносом под заголовком (верх, px), а не столбиком внизу поверх фото
   hero: z
@@ -110,7 +111,7 @@ const Fact: React.FC<{text: string; s: Style}> = ({text, s}) => (
   </div>
 );
 
-export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, titleSize, subtitle, subtitleSize, logos, logosTitle, logoColumns, facts, factsTop, hero, layout, theme, photo, background, titlePlate, photoFull, avatar, logosTop, headerTop, guides}) => {
+export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, titleSize, subtitle, subtitleSize, logos, logosTitle, logoColumns, logoSize, facts, factsTop, hero, layout, theme, photo, background, titlePlate, photoFull, avatar, logosTop, headerTop, guides}) => {
   const top = headerTop ?? COVER.top;
   const light = theme === "light" && brand === "gtt";
   const s = light ? LIGHT : STYLES[brand];
@@ -187,8 +188,8 @@ export const ReelCover: React.FC<ReelCoverProps> = ({brand, kicker, title, title
           }}
         >
           {logoSrc.map((src) => (
-            <div key={src} style={{height: 78, borderRadius: 18, background: "#F4F6FA", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 18px"}}>
-              <Img src={staticFile(src)} style={{width: "100%", height: 52, objectFit: "contain"}} />
+            <div key={src} style={{height: Math.round(78 * (logoSize ?? 1)), borderRadius: 18, background: "#F4F6FA", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 18px"}}>
+              <Img src={staticFile(src)} style={{width: "100%", height: Math.round(52 * (logoSize ?? 1)), objectFit: "contain"}} />
             </div>
           ))}
         </div>

@@ -1,0 +1,28 @@
+{
+  "brand": "gtt",
+  "theme": "light",
+  "layout": "card",
+  "kicker": "Бизнес-экспедиция",
+  "titleSize": 84,
+  "subtitleSize": 38,
+  "titlePlate": true,
+  "photoFull": true,
+  "headerTop": 236,
+  "title": "**Умные молочные**\nзаводы Китая",
+  "subtitle": "5 дней · 5 заводов · Хух-Хото → Иньчуань → Ухань → Нанкин → Шанхай",
+  "logos": [
+    "yili",
+    "mengniu",
+    "weigang",
+    "bright-dairy"
+  ],
+  "logoColumns": 4,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-28-moloko/ostap-kadr.jpg",
+    "top": 0,
+    "height": 1700,
+    "focus": "50% 0%",
+    "zoom": 1.09
+  },
+  "logoSize": 1.8
+}

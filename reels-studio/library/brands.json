@@ -4414,5 +4414,33 @@
    "光明乳业"
   ],
   "logo": "source-videos/логотипы/еда/bright-dairy.png"
+ },
+ "deepblue-technology": {
+  "names": [
+   "DeepBlue Technology",
+   "DeepBlue",
+   "Дипблю",
+   "深兰科技"
+  ],
+  "logo": "source-videos/логотипы/ии/deepblue-technology.png"
+ },
+ "cspc": {
+  "names": [
+   "CSPC",
+   "CNOOC and Shell",
+   "中海壳牌"
+  ],
+  "logo": "source-videos/логотипы/энергетика/cspc.png"
+ },
+ "weigang": {
+  "names": [
+   "Weigang",
+   "Вэйган",
+   "Вейган",
+   "卫岗乳业",
+   "卫岗"
+  ],
+  "logo": "source-videos/логотипы/еда/weigang-text.png",
+  "note": "фирменного знака нет ни в SINOTECH, ни на Commons — нейтральная текстовая плашка, не подделка знака"
  }
 }

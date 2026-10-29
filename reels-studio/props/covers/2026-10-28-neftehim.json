@@ -1,0 +1,28 @@
+{
+  "brand": "gtt",
+  "theme": "light",
+  "layout": "card",
+  "kicker": "Бизнес-экспедиция",
+  "titleSize": 84,
+  "subtitleSize": 38,
+  "titlePlate": true,
+  "photoFull": true,
+  "headerTop": 236,
+  "title": "**Нефтехимия**\nКитая за 5 дней",
+  "subtitle": "6 комплексов · Чжаньцзян → Маомин → Гуанчжоу → Хуэйчжоу",
+  "logos": [
+    "sinopec",
+    "basf",
+    "cspc",
+    "exxonmobil"
+  ],
+  "logoColumns": 4,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-28-neftehim/ostap-kadr.jpg",
+    "top": 0,
+    "height": 1700,
+    "focus": "50% 0%",
+    "zoom": 1.09
+  },
+  "logoSize": 1.8
+}

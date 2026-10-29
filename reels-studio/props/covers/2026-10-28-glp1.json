@@ -1,0 +1,30 @@
+{
+  "brand": "gtt",
+  "theme": "light",
+  "layout": "card",
+  "kicker": "Бизнес-экспедиция",
+  "titleSize": 84,
+  "subtitleSize": 38,
+  "titlePlate": true,
+  "photoFull": true,
+  "headerTop": 236,
+  "title": "**GLP-1 и пептиды**\nКитая за 5 дней",
+  "subtitle": "6 компаний · Шанхай → Чанчжоу → Сучжоу → Ханчжоу → Тайчжоу",
+  "logos": [
+    "innovent",
+    "huadong-medicine",
+    "jiuyuan-gene",
+    "sciwind",
+    "wuxi-apptec",
+    "langhua"
+  ],
+  "logoColumns": 3,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-28-glp1/ostap-kadr.jpg",
+    "top": 0,
+    "height": 1700,
+    "focus": "50% 0%",
+    "zoom": 1.09
+  },
+  "logoSize": 1.3
+}

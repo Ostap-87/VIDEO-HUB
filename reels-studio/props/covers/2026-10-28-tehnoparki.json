@@ -1,0 +1,33 @@
+{
+  "brand": "gtt",
+  "theme": "light",
+  "layout": "card",
+  "kicker": "Бизнес-экспедиция",
+  "titleSize": 84,
+  "subtitleSize": 38,
+  "titlePlate": true,
+  "photoFull": true,
+  "headerTop": 236,
+  "title": "**Технопарки**\nКитая за 6 дней",
+  "subtitle": "9 компаний · Пекин → Шанхай → Шэньчжэнь",
+  "logos": [
+    "baidu",
+    "xiaomi",
+    "smic",
+    "wuxi-apptec",
+    "tesla",
+    "deepblue-technology",
+    "tencent",
+    "dji",
+    "zte"
+  ],
+  "logoColumns": 3,
+  "photo": {
+    "src": "source-videos/обложки/2026-10-28-tehnoparki/ostap-kadr.jpg",
+    "top": 0,
+    "height": 1700,
+    "focus": "50% 0%",
+    "zoom": 1.09
+  },
+  "logoSize": 1.15
+}
