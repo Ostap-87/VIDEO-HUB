@@ -1,0 +1,53 @@
+{
+ "label": "Программа тура",
+ "tour": "Переработка отходов Китая",
+ "tourLines": [
+  "Переработка",
+  "отходов Китая"
+ ],
+ "hook": {
+  "a": "Мусор",
+  "b": "это топливо"
+ },
+ "fact": "Из мусора — 1,6 млрд кВт·ч в год",
+ "route": [
+  "Шэньчжэнь",
+  "Фошань",
+  "Шанхай",
+  "Хайань",
+  "Наньтун"
+ ],
+ "logos": [
+  "gem",
+  "shenzhen-energy-environmental",
+  "grandblue",
+  "everbright-environment",
+  "shanghai-environment",
+  "tianying"
+ ],
+ "days": 5,
+ "companies": 6,
+ "cities": 5,
+ "photo": "source-videos/обложки/варианты-2026-10-30/gtt-bottle.jpg",
+ "layouts": [
+  "head",
+  "column",
+  "poster"
+ ],
+ "looks": [
+  {
+   "photo": "source-videos/обложки/варианты-2026-10-30/gtt-bottle.jpg"
+  },
+  {
+   "photo": "source-videos/обложки/варианты-2026-10-30/gtt-bottle-yellow.jpg",
+   "accent": "#FCD34D"
+  },
+  {
+   "photo": "source-videos/обложки/варианты-2026-10-30/gtt-bottle-white.jpg"
+  },
+  {
+   "photo": "source-videos/обложки/варианты-2026-10-30/hf-bottle-light.jpg",
+   "theme": "light"
+  }
+ ]
+}

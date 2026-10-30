@@ -10,7 +10,12 @@
 //  callout — инфографика: цифры тура выносками с линиями к бутылке;
 //  poster  — афиша в рамке: «Global Tech Tour представляет», огромное название тура внизу;
 //  route   — молния из бутылки превращается в линию маршрута: города — узлы вверх до названия.
-import React from "react";
+// Доработка 30.10.2026 (пользователю понравились head, column, poster; «с пятым… пониже текст, который сверху, и убрать рамку…
+// бутылку, из которой свет идёт жёлтый… бутылку натурального цвета с белым светом… бутылку с градиентом белого»):
+// theme — "dark" (по умолчанию) или "light" (светлый фон: текст графитом, акцент синий GTT), accent — свой цвет акцента
+// (жёлтый свет — золотой), layouts — какие раскладки и в каком порядке рисуют кадры, looks — несколько картинок одним рендером:
+// кадр N = looks[N / layouts] × layouts[N % layouts].
+import React, {createContext, useContext} from "react";
 import {AbsoluteFill, Img, staticFile, useCurrentFrame} from "remotion";
 import {z} from "zod";
 import {loadFont as loadPlayfair} from "@remotion/google-fonts/PlayfairDisplay";
@@ -24,8 +29,14 @@ const inter = loadInter("normal", {weights: ["500", "600", "700", "800"], subset
 
 export const BOTTLE = ["head", "plate", "column", "callout", "poster", "route"] as const;
 
+const lookSchema = z.object({photo: z.string(), theme: z.enum(["dark", "light"]).optional(), accent: z.string().optional()});
+
 export const coverBottleSchema = z.object({
   variant: z.enum(BOTTLE).optional(),
+  layouts: z.array(z.enum(BOTTLE)).optional(),
+  theme: z.enum(["dark", "light"]).optional(),
+  accent: z.string().optional(),
+  looks: z.array(lookSchema).optional(),
   label: z.string(), // «Программа тура»
   tour: z.string(), // «Переработка отходов Китая»
   tourLines: z.array(z.string()), // то же, по строкам для крупного набора
@@ -58,25 +69,48 @@ const nums = (p: CoverBottleProps): [number, string][] => [
 ];
 const metaLine = (p: CoverBottleProps) => nums(p).map(([n, w]) => `${n} ${w}`).join(" · ");
 
-const Pyr: React.FC<{size?: number}> = ({size = 40}) => (
-  <svg width={size} height={size} viewBox="0 0 64 64">
-    <path d="M24 6 L58 46 L8 54 Z" fill="#E0F2FE" />
-    <path d="M24 6 L58 46 L36 40 Z" fill="#7DD3FC" />
-    <path d="M24 6 L36 40 L8 54 Z" fill="#BAE6FD" />
-  </svg>
-);
-const Mark: React.FC<{color?: string; size?: number; style?: React.CSSProperties}> = ({color = "#FFFFFF", size = 26, style}) => (
-  <div style={{display: "flex", alignItems: "center", gap: 12, ...style}}>
-    <Pyr size={size * 1.4} />
-    <span style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: size, color}}>GLOBAL TECH TOUR</span>
-  </div>
-);
-// метка «ПРОГРАММА ТУРА» — голубая пилюля
-const Label: React.FC<{p: CoverBottleProps; style?: React.CSSProperties; solid?: boolean}> = ({p, style, solid}) => (
-  <span style={{display: "inline-block", fontFamily: inter.fontFamily, fontWeight: 800, fontSize: 32, letterSpacing: "0.16em", textTransform: "uppercase", color: solid ? "#06164A" : SKY, background: solid ? SKY : "rgba(125,211,252,0.12)", border: `2px solid ${SKY}`, borderRadius: 999, padding: "10px 26px", ...style}}>
-    {p.label}
-  </span>
-);
+// палитра темы: тёмная — белый текст и голубой акцент, светлая — графит и синий GTT
+type Pal = {light: boolean; bg: string; fg: string; acc: string; soft: string; plate: string; edge: string; shadow: string; pillFg: string};
+const rgba = (hex: string, a: number) => {
+  const h = hex.replace("#", "");
+  const n = parseInt(h.length === 3 ? h.replace(/./g, "$&$&") : h, 16);
+  return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`;
+};
+const palette = (theme?: "dark" | "light", accent?: string): Pal =>
+  theme === "light"
+    ? {light: true, bg: "#E9ECF1", fg: INK, acc: accent ?? BLUE, soft: "#46546F", plate: "rgba(255,255,255,0.86)", edge: rgba(accent ?? BLUE, 0.28), shadow: "none", pillFg: "#FFFFFF"}
+    : {light: false, bg: "#020718", fg: "#FFFFFF", acc: accent ?? SKY, soft: SOFT, plate: "rgba(2,7,24,0.8)", edge: rgba(accent ?? SKY, 0.45), shadow: "0 2px 22px rgba(2,7,24,0.85)", pillFg: "#06164A"};
+const PalCtx = createContext<Pal>(palette());
+const usePal = () => useContext(PalCtx);
+
+const Pyr: React.FC<{size?: number}> = ({size = 40}) => {
+  const c = usePal().light ? ["#93C5FD", "#2563EB", "#60A5FA"] : ["#E0F2FE", "#7DD3FC", "#BAE6FD"];
+  return (
+    <svg width={size} height={size} viewBox="0 0 64 64">
+      <path d="M24 6 L58 46 L8 54 Z" fill={c[0]} />
+      <path d="M24 6 L58 46 L36 40 Z" fill={c[1]} />
+      <path d="M24 6 L36 40 L8 54 Z" fill={c[2]} />
+    </svg>
+  );
+};
+const Mark: React.FC<{color?: string; size?: number; style?: React.CSSProperties}> = ({color, size = 26, style}) => {
+  const t = usePal();
+  return (
+    <div style={{display: "flex", alignItems: "center", gap: 12, ...style}}>
+      <Pyr size={size * 1.4} />
+      <span style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: size, color: color ?? t.fg}}>GLOBAL TECH TOUR</span>
+    </div>
+  );
+};
+// метка «ПРОГРАММА ТУРА» — пилюля цвета акцента
+const Label: React.FC<{p: CoverBottleProps; style?: React.CSSProperties; solid?: boolean}> = ({p, style, solid}) => {
+  const t = usePal();
+  return (
+    <span style={{display: "inline-block", fontFamily: inter.fontFamily, fontWeight: 800, fontSize: 32, letterSpacing: "0.16em", textTransform: "uppercase", color: solid ? t.pillFg : t.acc, background: solid ? t.acc : rgba(t.acc, t.light ? 0.08 : 0.12), border: `2px solid ${t.acc}`, borderRadius: 999, padding: "10px 26px", ...style}}>
+      {p.label}
+    </span>
+  );
+};
 const LogoRow: React.FC<{logos: string[]; h?: number; style?: React.CSSProperties}> = ({logos, h = 56, style}) => (
   <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: "#FFFFFF", borderRadius: 22, padding: "14px 20px", ...style}}>
     {logos.slice(0, 6).map((id) => (
@@ -84,32 +118,43 @@ const LogoRow: React.FC<{logos: string[]; h?: number; style?: React.CSSPropertie
     ))}
   </div>
 );
+// со сдвигом под картинкой — она же, размытая: край сдвинутой картинки растворяется в ней без шва
 const Bg: React.FC<{p: CoverBottleProps; shift?: number; scale?: number}> = ({p, shift = 0, scale = 1}) => (
-  <Img src={staticFile(p.photo)} style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", translate: `${shift}px 0`, scale: String(scale)}} />
+  <>
+    {shift ? <Img src={staticFile(p.photo)} style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", filter: "blur(40px)", scale: "1.25"}} /> : null}
+    <Img
+      src={staticFile(p.photo)}
+      style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", translate: `${shift}px 0`, scale: String(scale), ...(shift ? {maskImage: "linear-gradient(to right, transparent 0, #000 300px)", WebkitMaskImage: "linear-gradient(to right, transparent 0, #000 300px)"} : {})}}
+    />
+  </>
 );
 
 // ——— 1. шапка программы ———
-const Head: React.FC<{p: CoverBottleProps}> = ({p}) => (
-  <AbsoluteFill style={{background: "#020718"}}>
-    <Bg p={p} />
-    <div style={{position: "absolute", left: 50, right: 50, top: 250, textAlign: "center"}}>
-      <Label p={p} />
-      <div style={{fontFamily: playfair.fontFamily, fontWeight: 700, fontSize: 104, lineHeight: 1.02, color: "#FFFFFF", marginTop: 26}}>
-        {p.tourLines.map((l, i) => (
-          <div key={i}>{l}</div>
-        ))}
+const Head: React.FC<{p: CoverBottleProps}> = ({p}) => {
+  const t = usePal();
+  return (
+    <AbsoluteFill style={{background: t.bg}}>
+      <Bg p={p} />
+      <div style={{position: "absolute", left: 50, right: 50, top: 262, textAlign: "center", textShadow: t.shadow}}>
+        <Label p={p} style={{textShadow: "none"}} />
+        <div style={{fontFamily: playfair.fontFamily, fontWeight: 700, fontSize: 108, lineHeight: 1.02, color: t.fg, marginTop: 24}}>
+          {p.tourLines.map((l, i) => (
+            <div key={i}>{l}</div>
+          ))}
+        </div>
+        <div style={{fontFamily: playfairI.fontFamily, fontStyle: "italic", fontWeight: 700, fontSize: 60, color: t.acc, marginTop: 14}}>
+          {p.hook.a} — {p.hook.b}
+        </div>
       </div>
-      <div style={{fontFamily: playfairI.fontFamily, fontStyle: "italic", fontWeight: 700, fontSize: 60, color: SKY, marginTop: 14}}>
-        {p.hook.a} — {p.hook.b}
+      {/* внизу: цифры, маршрут и логотипы компаний */}
+      <div style={{position: "absolute", left: 40, right: 40, top: 1400, background: t.plate, border: `2px solid ${t.edge}`, borderRadius: 30, padding: "22px 26px 20px"}}>
+        <div style={{fontFamily: inter.fontFamily, fontWeight: 800, fontSize: 40, color: t.fg, textAlign: "center"}}>{metaLine(p)}</div>
+        <div style={{fontFamily: inter.fontFamily, fontWeight: 600, fontSize: 30, color: t.light ? t.soft : SOFT, textAlign: "center", marginTop: 6}}>{p.route.join(" · ")}</div>
+        <LogoRow logos={p.logos} h={46} style={{marginTop: 16, padding: "10px 16px", borderRadius: 18}} />
       </div>
-    </div>
-    {/* внизу: маршрут точками и цифры */}
-    <div style={{position: "absolute", left: 40, right: 40, top: 1440, background: "rgba(2,7,24,0.78)", border: "2px solid rgba(125,211,252,0.45)", borderRadius: 30, padding: "24px 30px"}}>
-      <div style={{fontFamily: inter.fontFamily, fontWeight: 800, fontSize: 40, color: "#FFFFFF", textAlign: "center"}}>{metaLine(p)}</div>
-      <div style={{fontFamily: inter.fontFamily, fontWeight: 600, fontSize: 30, color: SOFT, textAlign: "center", marginTop: 8}}>{p.route.join(" · ")}</div>
-    </div>
-  </AbsoluteFill>
-);
+    </AbsoluteFill>
+  );
+};
 
 // ——— 2. крючок сверху, большая плашка программы снизу ———
 const Plate: React.FC<{p: CoverBottleProps}> = ({p}) => (
@@ -140,31 +185,42 @@ const Plate: React.FC<{p: CoverBottleProps}> = ({p}) => (
 );
 
 // ——— 3. бутылка справа, слева колонка-спецификация ———
-const Column: React.FC<{p: CoverBottleProps}> = ({p}) => (
-  <AbsoluteFill style={{background: "#020718"}}>
-    <Bg p={p} shift={230} scale={1.08} />
-    <div style={{position: "absolute", left: 56, top: 252, width: 560}}>
-      <Mark size={24} />
-      <Label p={p} style={{marginTop: 30}} solid />
-      <div style={{fontFamily: playfair.fontFamily, fontWeight: 700, fontSize: 92, lineHeight: 1.02, color: "#FFFFFF", marginTop: 24}}>
-        {p.tourLines.map((l, i) => (
-          <div key={i}>{l}</div>
+const Column: React.FC<{p: CoverBottleProps}> = ({p}) => {
+  const t = usePal();
+  return (
+    <AbsoluteFill style={{background: t.bg}}>
+      <Bg p={p} shift={230} scale={1.08} />
+      <div style={{position: "absolute", left: 56, top: 280, width: 560, textShadow: t.shadow}}>
+        <Mark size={24} />
+        <Label p={p} style={{marginTop: 30, textShadow: "none"}} solid />
+        <div style={{fontFamily: playfair.fontFamily, fontWeight: 700, fontSize: 92, lineHeight: 1.02, color: t.fg, marginTop: 24}}>
+          {p.tourLines.map((l, i) => (
+            <div key={i}>{l}</div>
+          ))}
+        </div>
+        <div style={{width: 120, height: 5, background: t.acc, margin: "30px 0 26px"}} />
+        {nums(p).map(([n, w], i) => (
+          <div key={i} style={{display: "flex", alignItems: "baseline", gap: 18, marginTop: i ? 12 : 0}}>
+            <span style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: 96, lineHeight: 1, color: t.acc, width: 90}}>{n}</span>
+            <span style={{fontFamily: inter.fontFamily, fontWeight: 700, fontSize: 44, color: t.fg}}>{w}</span>
+          </div>
+        ))}
+        <div style={{fontFamily: playfairI.fontFamily, fontStyle: "italic", fontWeight: 700, fontSize: 52, lineHeight: 1.1, color: t.light ? t.soft : SOFT, marginTop: 40}}>
+          {p.hook.a} —<br />
+          {p.hook.b}
+        </div>
+      </div>
+      {/* логотипы компаний тура — плитка 3 × 2 под колонкой */}
+      <div style={{position: "absolute", left: 56, top: 1390, width: 470, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10, background: "#FFFFFF", borderRadius: 24, padding: 16, boxShadow: t.light ? "0 16px 40px rgba(23,23,29,0.12)" : "0 16px 40px rgba(2,7,24,0.6)"}}>
+        {p.logos.slice(0, 6).map((id) => (
+          <div key={id} style={{height: 64, display: "flex", alignItems: "center", justifyContent: "center"}}>
+            <Img src={staticFile(logoSrc(id))} style={{maxHeight: 54, maxWidth: 128, objectFit: "contain"}} />
+          </div>
         ))}
       </div>
-      <div style={{width: 120, height: 5, background: SKY, margin: "30px 0 26px"}} />
-      {nums(p).map(([n, w], i) => (
-        <div key={i} style={{display: "flex", alignItems: "baseline", gap: 18, marginTop: i ? 12 : 0}}>
-          <span style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: 96, lineHeight: 1, color: SKY, width: 90}}>{n}</span>
-          <span style={{fontFamily: inter.fontFamily, fontWeight: 700, fontSize: 44, color: "#FFFFFF"}}>{w}</span>
-        </div>
-      ))}
-      <div style={{fontFamily: playfairI.fontFamily, fontStyle: "italic", fontWeight: 700, fontSize: 52, lineHeight: 1.1, color: SOFT, marginTop: 40}}>
-        {p.hook.a} —<br />
-        {p.hook.b}
-      </div>
-    </div>
-  </AbsoluteFill>
-);
+    </AbsoluteFill>
+  );
+};
 
 // ——— 4. инфографика: цифры выносками к бутылке ———
 const Callout: React.FC<{p: CoverBottleProps}> = ({p}) => {
@@ -207,30 +263,32 @@ const Callout: React.FC<{p: CoverBottleProps}> = ({p}) => {
   );
 };
 
-// ——— 5. афиша в рамке ———
-const Poster: React.FC<{p: CoverBottleProps}> = ({p}) => (
-  <AbsoluteFill style={{background: "#020718"}}>
-    <Bg p={p} />
-    <div style={{position: "absolute", left: 34, right: 34, top: 230, bottom: 230, border: `3px solid ${SKY}`, borderRadius: 28}} />
-    <div style={{position: "absolute", left: 0, right: 0, top: 270, textAlign: "center"}}>
-      <div style={{fontFamily: inter.fontFamily, fontWeight: 700, fontSize: 32, letterSpacing: "0.22em", color: SOFT}}>GLOBAL TECH TOUR ПРЕДСТАВЛЯЕТ</div>
-      <div style={{fontFamily: playfairI.fontFamily, fontStyle: "italic", fontWeight: 700, fontSize: 92, lineHeight: 1.04, color: "#FFFFFF", marginTop: 26}}>
-        «{p.hook.a} —
-        <br />
-        <span style={{color: SKY}}>{p.hook.b}»</span>
+// ——— 5. афиша (рамку убрали по просьбе пользователя, верхний текст ниже) ———
+const Poster: React.FC<{p: CoverBottleProps}> = ({p}) => {
+  const t = usePal();
+  return (
+    <AbsoluteFill style={{background: t.bg}}>
+      <Bg p={p} />
+      <div style={{position: "absolute", left: 0, right: 0, top: 330, textAlign: "center", textShadow: t.shadow}}>
+        <div style={{fontFamily: inter.fontFamily, fontWeight: 700, fontSize: 32, letterSpacing: "0.22em", color: t.light ? t.soft : SOFT}}>GLOBAL TECH TOUR ПРЕДСТАВЛЯЕТ</div>
+        <div style={{fontFamily: playfairI.fontFamily, fontStyle: "italic", fontWeight: 700, fontSize: 92, lineHeight: 1.04, color: t.fg, marginTop: 26}}>
+          «{p.hook.a} —
+          <br />
+          <span style={{color: t.acc}}>{p.hook.b}»</span>
+        </div>
       </div>
-    </div>
-    <div style={{position: "absolute", left: 60, right: 60, top: 1220, background: "rgba(2,7,24,0.82)", borderRadius: 24, padding: "28px 30px 26px", textAlign: "center"}}>
-      <Label p={p} solid />
-      <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: 70, lineHeight: 1.04, color: "#FFFFFF", marginTop: 18, textTransform: "uppercase"}}>
-        {p.tourLines.map((l, i) => (
-          <div key={i}>{l}</div>
-        ))}
+      <div style={{position: "absolute", left: 60, right: 60, top: 1220, background: t.plate, border: t.light ? `2px solid ${t.edge}` : "none", borderRadius: 24, padding: "28px 30px 26px", textAlign: "center"}}>
+        <Label p={p} solid />
+        <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: 70, lineHeight: 1.04, color: t.fg, marginTop: 18, textTransform: "uppercase"}}>
+          {p.tourLines.map((l, i) => (
+            <div key={i}>{l}</div>
+          ))}
+        </div>
+        <div style={{fontFamily: inter.fontFamily, fontWeight: 700, fontSize: 38, color: t.acc, marginTop: 14}}>{metaLine(p)}</div>
       </div>
-      <div style={{fontFamily: inter.fontFamily, fontWeight: 700, fontSize: 38, color: SKY, marginTop: 14}}>{metaLine(p)}</div>
-    </div>
-  </AbsoluteFill>
-);
+    </AbsoluteFill>
+  );
+};
 
 // ——— 6. молния → маршрут ———
 const Route: React.FC<{p: CoverBottleProps}> = ({p}) => {
@@ -269,14 +327,20 @@ const Route: React.FC<{p: CoverBottleProps}> = ({p}) => {
   );
 };
 
-export const CoverBottle: React.FC<CoverBottleProps> = (p) => {
+export const CoverBottle: React.FC<CoverBottleProps> = (props) => {
   const frame = useCurrentFrame();
-  const v = p.variant ?? BOTTLE[Math.min(frame, BOTTLE.length - 1)];
+  const list = props.layouts?.length ? props.layouts : BOTTLE;
+  const looks = props.looks?.length ? props.looks : [{photo: props.photo, theme: props.theme, accent: props.accent}];
+  const look = looks[Math.min(Math.floor(frame / list.length), looks.length - 1)];
+  const p = {...props, ...look};
+  const v = props.variant ?? list[frame % list.length];
   const map: Record<(typeof BOTTLE)[number], React.FC<{p: CoverBottleProps}>> = {head: Head, plate: Plate, column: Column, callout: Callout, poster: Poster, route: Route};
   const C = map[v];
   return (
-    <AbsoluteFill style={{fontFamily: inter.fontFamily}}>
-      <C p={p} />
-    </AbsoluteFill>
+    <PalCtx.Provider value={palette(p.theme, p.accent)}>
+      <AbsoluteFill style={{fontFamily: inter.fontFamily}}>
+        <C p={p} />
+      </AbsoluteFill>
+    </PalCtx.Provider>
   );
 };
