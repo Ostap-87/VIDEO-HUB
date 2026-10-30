@@ -842,7 +842,9 @@ export const Floats: React.FC<{items?: FloatItem[]; plane: "behind" | "front"; f
 export const floatBehindActive = (items: FloatItem[] | undefined, t: number) => (items ?? []).some((it) => (it.plane ?? "behind") === "behind" && t >= it.at - 0.05 && t <= it.until + 0.05);
 
 // ------------------------------------------------------------------ карточка у груди (книга, тур, товар)
-export type CardItem = {at: number; until: number; src?: string; title: string; sub?: string; y?: number};
+// fit "contain" — картинка целиком, без обрезки (логотип); пустой title — карточка без подписей (Ping An 30.10.2026:
+// «не полностью отображается логотип… просто логотип»)
+export type CardItem = {at: number; until: number; src?: string; title: string; sub?: string; y?: number; fit?: "contain"};
 
 const CardOne: React.FC<{it: CardItem}> = ({it}) => {
   const frame = useCurrentFrame();
@@ -868,11 +870,11 @@ const CardOne: React.FC<{it: CardItem}> = ({it}) => {
         }}
       >
         {it.src ? (
-          <div style={{width: 444, height: 220, overflow: "hidden", borderRadius: sq ? 0 : 16}}>
-            <Media src={it.src} />
+          <div style={{width: 444, height: it.fit === "contain" ? 280 : 220, overflow: "hidden", borderRadius: sq ? 0 : 16}}>
+            <Media src={it.src} style={it.fit === "contain" ? {objectFit: "contain"} : undefined} />
           </div>
         ) : null}
-        <div style={{marginTop: it.src ? 12 : 4, fontFamily: B.bodyFont, fontWeight: 700, fontSize: 32, lineHeight: 1.15, color: "#15151B"}}>{it.title}</div>
+        {it.title ? <div style={{marginTop: it.src ? 12 : 4, fontFamily: B.bodyFont, fontWeight: 700, fontSize: 32, lineHeight: 1.15, color: "#15151B"}}>{it.title}</div> : null}
         {it.sub ? <div style={{marginTop: 4, fontFamily: B.bodyFont, fontWeight: 400, fontSize: 25, color: "#6B6B76"}}>{it.sub}</div> : null}
       </div>
     </div>

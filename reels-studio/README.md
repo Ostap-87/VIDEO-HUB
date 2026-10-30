@@ -420,6 +420,8 @@ python3 scripts/rebumper.py 2026-10-07-intro 2026-10-08-roboty   # Reels + Stori
   с частицами на орбитах; `dashboards` — экраны кабинетов продавца без чисел; `ecos` — схема экосистемы с кольцом «360°».
 - карточка своей компании для финала:
   `node scripts/site_cards.mjs https://globaltechtour.ru/corporate-training ../source-videos/<ролик>/site Xiaomi`.
+- финал без чужого бренда: снимок карточки с закрашенным низом `site/card-only.png` + `"catalogScroll": 0` в `site`;
+  карточка у груди только с логотипом — `cards[]`: `"fit": "contain"`, `"title": ""`; конец речи на нужной фразе — `muteAfter`.
 - рендер держит кэш кадров OffthreadVideo в пределах 1,5 ГБ; вместе с рендером — не больше одного тяжёлого процесса
   (вырезка или пробные кадры).
 - поправить кусок готового ролика: `remotion render … --frames=1060-1190 --crf=8 /dev/shm/seg.mp4`, затем ffmpeg

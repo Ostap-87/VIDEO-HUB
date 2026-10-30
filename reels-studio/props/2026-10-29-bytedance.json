@@ -801,36 +801,6 @@
    "text": "описании.",
    "start": 76.85,
    "end": 77.55
-  },
-  {
-   "text": "Спасибо",
-   "start": 77.66,
-   "end": 78.053
-  },
-  {
-   "text": "алгоритму,",
-   "start": 78.053,
-   "end": 79.013
-  },
-  {
-   "text": "что",
-   "start": 79.013,
-   "end": 79.353
-  },
-  {
-   "text": "показал",
-   "start": 79.353,
-   "end": 80.173
-  },
-  {
-   "text": "это",
-   "start": 80.173,
-   "end": 80.523
-  },
-  {
-   "text": "видео.",
-   "start": 80.523,
-   "end": 81.153
   }
  ],
  "accentWords": [
@@ -933,14 +903,15 @@
   "volume": 0.078,
   "outroVolume": 0.18
  },
- "speechSeconds": 81.466,
+ "speechSeconds": 77.75,
  "site": {
   "at": 75.0,
   "home": "source-videos/2026-10-29-alibaba/site/ct-0.png",
-  "catalog": "source-videos/2026-10-29-bytedance/site/card.png",
+  "catalog": "source-videos/2026-10-29-bytedance/site/card-only.png",
   "route": [
-   "source-videos/2026-10-29-bytedance/site/card.png"
-  ]
+   "source-videos/2026-10-29-bytedance/site/card-only.png"
+  ],
+  "catalogScroll": 0
  },
  "cta": "Обучение",
  "ctaSeconds": 1.3,
@@ -1310,5 +1281,6 @@
    "kind": "whip",
    "volume": 0.4
   }
- ]
+ ],
+ "muteAfter": 77.6
 }

@@ -1111,10 +1111,11 @@
  "site": {
   "at": 72.8,
   "home": "source-videos/2026-10-29-alibaba/site/ct-0.png",
-  "catalog": "source-videos/2026-10-29-huawei/site/card.png",
+  "catalog": "source-videos/2026-10-29-huawei/site/card-only.png",
   "route": [
-   "source-videos/2026-10-29-huawei/site/card.png"
-  ]
+   "source-videos/2026-10-29-huawei/site/card-only.png"
+  ],
+  "catalogScroll": 0
  },
  "cta": "Обучение",
  "ctaSeconds": 1.3,

@@ -262,8 +262,13 @@ export const talkReelProSchema = z.object({
   // duck — во сколько раз тише музыка, пока говорит спикер (0.5 ≈ −6 дБ); в паузах от 0,35 с возвращается за 0,25 с
   music: z.object({src: z.string(), volume: z.number(), outroVolume: z.number(), duck: z.number().optional()}).optional(),
   speechSeconds: z.number(),
+  // muteAfter — речь из видео глушится с этой секунды (за 0,12 с): дальше в склейке есть слова, которые не должны звучать
+  // под финалом (ByteDance 30.10.2026: «речь заканчивается на «Заявка по ссылке в описании»»)
+  muteAfter: z.number().optional(),
   // Финал: на экране телефона главная страница (прокрутка) → каталог экспедиций (прокрутка) → маршрут по дням
-  site: z.object({at: z.number(), home: z.string(), catalog: z.string(), route: z.array(z.string())}),
+  // catalogScroll — насколько прокручивать снимок каталога (доля, по умолчанию 0,32 длинной страницы); 0 — снимок одной
+  // карточки компании стоит на месте (ByteDance 30.10.2026: прокрутка уводила телефон на карточку другого бренда)
+  site: z.object({at: z.number(), home: z.string(), catalog: z.string(), route: z.array(z.string()), catalogScroll: z.number().optional()}),
   cta: z.string(),
   ctaSeconds: z.number(),
   // true — за последние ~1,6 с спикер возвращается из карточки в полный кадр; по умолчанию ролик заканчивается на сайте
@@ -346,7 +351,7 @@ export const talkReelProSchema = z.object({
   captionsAt: z.array(z.object({at: z.number(), until: z.number(), style: z.enum(["plate", "corner", "quiet", "mini", "duo", "ladder", "marker", "pill", "none"]), y: z.number().optional()})).optional(),
   chats: z.array(z.object({at: z.number(), until: z.number(), text: z.string(), image: z.string().optional(), label: z.string().optional(), y: z.number().optional()})).optional(),
   floats: z.array(z.object({at: z.number(), until: z.number(), items: z.array(z.string()), plane: z.enum(["behind", "front"]).optional()})).optional(),
-  cards: z.array(z.object({at: z.number(), until: z.number(), src: z.string().optional(), title: z.string(), sub: z.string().optional(), y: z.number().optional()})).optional(),
+  cards: z.array(z.object({at: z.number(), until: z.number(), src: z.string().optional(), title: z.string(), sub: z.string().optional(), y: z.number().optional(), fit: z.enum(["contain"]).optional()})).optional(),
   outros: z
     .array(
       z.object({
@@ -1785,10 +1790,11 @@ const ClipPanel: React.FC<{clips: NonNullable<TalkReelProProps["clips"]>}> = ({c
 };
 
 // Экран телефона в финале: страницы сменяют друг друга сдвигом влево
-const PhoneScreen: React.FC<{home: string; catalog: string; route: string[]; w: number; seconds: number}> = ({
+const PhoneScreen: React.FC<{home: string; catalog: string; route: string[]; w: number; seconds: number; catalogScroll?: number}> = ({
   home,
   catalog,
   route,
+  catalogScroll = 0.32,
   w,
   seconds,
 }) => {
@@ -1812,7 +1818,7 @@ const PhoneScreen: React.FC<{home: string; catalog: string; route: string[]; w: 
         <Img src={staticFile(home)} style={{width: "100%", translate: `0px ${-scrollOf(tHome, homeH * 0.28)}px`}} />
       </AbsoluteFill>
       <AbsoluteFill style={{translate: `${slide(tCat[0])}%`, background: "#FFFFFF"}}>
-        <Img src={staticFile(catalog)} style={{width: "100%", translate: `0px ${-scrollOf([tCat[0] + 0.3, tCat[1]], catH * 0.32)}px`}} />
+        <Img src={staticFile(catalog)} style={{width: "100%", translate: `0px ${-scrollOf([tCat[0] + 0.3, tCat[1]], catH * catalogScroll)}px`}} />
       </AbsoluteFill>
       {route.map((src, i) => {
         const at = routeStart + i * step;
@@ -1907,7 +1913,7 @@ const Finale: React.FC<{src: string; site: TalkReelProProps["site"]; title: stri
           }}
         >
           <div style={{position: "relative", width: "100%", height: "100%", borderRadius: 52, overflow: "hidden", background: "#FFFFFF"}}>
-            <PhoneScreen home={site.home} catalog={site.catalog} route={site.route} w={phoneW - 24} seconds={seconds} />
+            <PhoneScreen home={site.home} catalog={site.catalog} route={site.route} w={phoneW - 24} seconds={seconds} catalogScroll={site.catalogScroll} />
           </div>
         </div>
       </div>
@@ -2201,7 +2207,7 @@ const TalkReelProBody: React.FC<TalkReelProProps> = (p) => {
     <BrandCtx.Provider value={brand}>
     <EdlCtx.Provider value={edl}>
     <AbsoluteFill style={{backgroundColor: "#0B0D14"}}>
-      {edl ? <EdlAudio /> : <Audio src={staticFile(p.audioSrc || p.mediaSrc)} />}
+      {edl ? <EdlAudio /> : <Audio src={staticFile(p.audioSrc || p.mediaSrc)} volume={p.muteAfter === undefined ? undefined : (fr) => interpolate(fr / fps, [p.muteAfter!, p.muteAfter! + 0.12], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"})} />}
       {p.music ? (
         <Audio
           src={staticFile(p.music.src)}
