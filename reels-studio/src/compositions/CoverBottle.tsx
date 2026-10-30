@@ -46,6 +46,7 @@ const baseSchema = z.object({
   companies: z.number(),
   cities: z.number(),
   photo: z.string(),
+  photoY: z.number().optional(), // сдвиг картинки вниз, px: высокий предмет (самолёт над кораблём) уходит из-под крючка
 });
 // looks — любые поля поверх общих: одним рендером несколько картинок или несколько программ (предмет-символ на программу)
 export const coverBottleSchema = baseSchema.extend({looks: z.array(baseSchema.partial()).optional()});
@@ -70,7 +71,9 @@ const nums = (p: CoverBottleProps): [number, string][] => p.stats ?? [
 const metaLine = (p: CoverBottleProps) => nums(p).map(([n, w]) => `${n} ${w}`).join(" · ");
 
 // кегль крючка под длину строки: длинный крючок не вылезает за кадр
-const fitSize = (max: number, width: number, ...lines: string[]) => Math.min(max, Math.floor(width / (0.6 * Math.max(...lines.map((l) => l.length)))));
+const fitSize = (max: number, width: number, ...lines: string[]) => fitK(0.6, max, width, lines);
+// k — средняя ширина знака в долях кегля (антиква курсивом ~0.6, Unbounded заглавными ~0.8)
+const fitK = (k: number, max: number, width: number, lines: string[]) => Math.min(max, Math.floor(width / (k * Math.max(...lines.map((l) => l.length)))));
 
 // палитра темы: тёмная — белый текст и голубой акцент, светлая — графит и синий GTT
 type Pal = {light: boolean; bg: string; fg: string; acc: string; soft: string; plate: string; edge: string; shadow: string; pillFg: string};
@@ -117,7 +120,8 @@ const Label: React.FC<{p: CoverBottleProps; style?: React.CSSProperties; solid?:
 const LogoRow: React.FC<{logos: string[]; h?: number; style?: React.CSSProperties}> = ({logos, h = 56, style}) => (
   <div style={{display: "flex", alignItems: "center", justifyContent: logos.length < 3 ? "center" : "space-between", gap: 10, background: "#FFFFFF", borderRadius: 22, padding: "14px 20px", ...style, ...(logos.length < 3 ? {width: "fit-content", marginLeft: "auto", marginRight: "auto", paddingLeft: 40, paddingRight: 40} : {})}}>
     {logos.slice(0, 6).map((id) => (
-      <Img key={id} src={staticFile(logoSrc(id))} style={{maxHeight: h, maxWidth: 130, objectFit: "contain"}} />
+      // высота задана явно: у части SVG нет своих размеров, и без неё логотип схлопывается в ноль
+      <Img key={id} src={staticFile(logoSrc(id))} style={{height: logos.length < 3 ? Math.round(h * 1.4) : h, width: "auto", maxWidth: logos.length < 3 ? 300 : 130, objectFit: "contain"}} />
     ))}
   </div>
 );
@@ -133,7 +137,7 @@ const Bg: React.FC<{p: CoverBottleProps; shift?: number; scale?: number}> = ({p,
     {shift ? <Img src={staticFile(p.photo)} style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", filter: "blur(40px)", scale: "1.25"}} /> : null}
     <Img
       src={staticFile(p.photo)}
-      style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", translate: `${shift}px 0`, scale: String(scale), ...(shift ? {maskImage: "linear-gradient(to right, transparent 0, #000 300px)", WebkitMaskImage: "linear-gradient(to right, transparent 0, #000 300px)"} : {})}}
+      style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", translate: `${shift}px ${p.photoY ?? 0}px`, scale: String(scale), ...(shift ? {maskImage: "linear-gradient(to right, transparent 0, #000 300px)", WebkitMaskImage: "linear-gradient(to right, transparent 0, #000 300px)"} : {})}}
     />
   </>
 );
@@ -147,14 +151,22 @@ const Head: React.FC<{p: CoverBottleProps}> = ({p}) => {
       <Scrim />
       <div style={{position: "absolute", left: 50, right: 50, top: 262, textAlign: "center", textShadow: t.shadow}}>
         <Label p={p} style={{textShadow: "none"}} />
-        <div style={{fontFamily: playfair.fontFamily, fontWeight: 700, fontSize: 108, lineHeight: 1.02, color: t.fg, marginTop: 24}}>
+        <div style={{fontFamily: playfair.fontFamily, fontWeight: 700, fontSize: fitK(0.58, 108, 980, p.tourLines), lineHeight: 1.02, color: t.fg, marginTop: 24}}>
           {p.tourLines.map((l, i) => (
             <div key={i}>{l}</div>
           ))}
         </div>
-        <div style={{fontFamily: playfairI.fontFamily, fontStyle: "italic", fontWeight: 700, fontSize: fitSize(60, 980, `${p.hook.a} — ${p.hook.b}`), color: t.acc, marginTop: 14}}>
-          {p.hook.a} — {p.hook.b}
-        </div>
+        {fitSize(60, 980, `${p.hook.a} — ${p.hook.b}`) >= 50 ? (
+          <div style={{fontFamily: playfairI.fontFamily, fontStyle: "italic", fontWeight: 700, fontSize: fitSize(60, 980, `${p.hook.a} — ${p.hook.b}`), color: t.acc, marginTop: 14}}>
+            {p.hook.a} — {p.hook.b}
+          </div>
+        ) : (
+          // длинный крючок — в две строки, чтобы не мельчить
+          <div style={{fontFamily: playfairI.fontFamily, fontStyle: "italic", fontWeight: 700, fontSize: fitSize(60, 980, `${p.hook.a} —`, p.hook.b), lineHeight: 1.1, color: t.acc, marginTop: 14}}>
+            {p.hook.a} —<br />
+            {p.hook.b}
+          </div>
+        )}
       </div>
       {/* внизу: цифры, маршрут и логотипы компаний */}
       <div style={{position: "absolute", left: 40, right: 40, top: 1400, background: t.plate, border: `2px solid ${t.edge}`, borderRadius: 30, padding: "22px 26px 20px"}}>
@@ -224,7 +236,7 @@ const Column: React.FC<{p: CoverBottleProps}> = ({p}) => {
       <div style={{position: "absolute", left: 56, top: 1390, width: p.logos.length >= 3 ? 470 : 160 * p.logos.length + 32, display: "grid", gridTemplateColumns: `repeat(${Math.min(3, p.logos.length)}, 1fr)`, gap: 10, background: "#FFFFFF", borderRadius: 24, padding: 16, boxShadow: t.light ? "0 16px 40px rgba(23,23,29,0.12)" : "0 16px 40px rgba(2,7,24,0.6)"}}>
         {p.logos.slice(0, 6).map((id) => (
           <div key={id} style={{height: 64, display: "flex", alignItems: "center", justifyContent: "center"}}>
-            <Img src={staticFile(logoSrc(id))} style={{maxHeight: 54, maxWidth: 128, objectFit: "contain"}} />
+            <Img src={staticFile(logoSrc(id))} style={{height: 54, width: "auto", maxWidth: p.logos.length < 3 ? 150 : 128, objectFit: "contain"}} />
           </div>
         ))}
       </div>
@@ -290,7 +302,7 @@ const Poster: React.FC<{p: CoverBottleProps}> = ({p}) => {
       </div>
       <div style={{position: "absolute", left: 60, right: 60, top: 1220, background: t.plate, border: t.light ? `2px solid ${t.edge}` : "none", borderRadius: 24, padding: "28px 30px 26px", textAlign: "center"}}>
         <Label p={p} solid />
-        <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: 70, lineHeight: 1.04, color: t.fg, marginTop: 18, textTransform: "uppercase"}}>
+        <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: fitK(0.8, 70, 900, p.tourLines), lineHeight: 1.04, color: t.fg, marginTop: 18, textTransform: "uppercase"}}>
           {p.tourLines.map((l, i) => (
             <div key={i}>{l}</div>
           ))}

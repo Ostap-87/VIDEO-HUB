@@ -123,7 +123,7 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
         fps={30}
-        durationInFrames={12}
+        durationInFrames={60}
         schema={coverBottleSchema}
         defaultProps={{} as CoverBottleProps}
       />
