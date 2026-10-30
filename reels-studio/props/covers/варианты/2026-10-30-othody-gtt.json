@@ -1,0 +1,41 @@
+{
+ "tour": "Переработка отходов Китая",
+ "hook": {
+  "value": "11 000",
+  "unit": "тонн мусора в сутки",
+  "where": "Один завод в Шанхае"
+ },
+ "title": {
+  "a": "Энергия",
+  "b": "из мусора"
+ },
+ "objectTitle": {
+  "a": "Мусор",
+  "b": "это топливо"
+ },
+ "fact": "Из мусора — 1,6 млрд кВт·ч в год",
+ "hanzi": {
+  "a": "垃圾",
+  "b": "能源",
+  "pa": "LĀJĪ · МУСОР",
+  "pb": "NÉNGYUÁN · ЭНЕРГИЯ",
+  "ru": "Мусор →",
+  "accent": "энергия"
+ },
+ "logos": [
+  "gem",
+  "shenzhen-energy-environmental",
+  "grandblue",
+  "everbright-environment",
+  "shanghai-environment",
+  "tianying"
+ ],
+ "days": 5,
+ "companies": 6,
+ "cities": 5,
+ "photos": {
+  "kinoBlue": "source-videos/обложки/варианты-2026-10-30/gtt-kino-06b.jpg",
+  "kinoLight": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/06b.jpg",
+  "object": "source-videos/обложки/варианты-2026-10-30/gtt-bottle.jpg"
+ }
+}
