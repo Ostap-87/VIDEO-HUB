@@ -24,6 +24,7 @@ import {ReelCover, reelCoverSchema, type ReelCoverProps} from "./compositions/Re
 import {CoverIdeas, coverIdeasSchema, type CoverIdeasProps} from "./compositions/CoverIdeas";
 import {CoverLab, coverLabSchema, type CoverLabProps} from "./compositions/CoverLab";
 import {CoverGtt, coverGttSchema, type CoverGttProps} from "./compositions/CoverGtt";
+import {CoverBottle, coverBottleSchema, type CoverBottleProps} from "./compositions/CoverBottle";
 import {HookTitleDemo, hookTitleDemoSchema, type HookTitleDemoProps} from "./compositions/HookTitleDemo";
 import {AppPromo, appPromoFrames, appPromoSchema, type AppPromoProps} from "./compositions/AppPromo";
 import appPromoSample from "../props/2026-10-27-gtt-app-promo.json";
@@ -115,6 +116,16 @@ export const RemotionRoot: React.FC = () => {
         durationInFrames={1}
         schema={reelCoverSchema}
         defaultProps={{brand: "gtt", title: "**Обложка** Reels", layout: "speaker"} as ReelCoverProps}
+      />
+      <Composition
+        id="CoverBottle"
+        component={CoverBottle}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={6}
+        schema={coverBottleSchema}
+        defaultProps={{} as CoverBottleProps}
       />
       <Composition
         id="CoverGtt"
