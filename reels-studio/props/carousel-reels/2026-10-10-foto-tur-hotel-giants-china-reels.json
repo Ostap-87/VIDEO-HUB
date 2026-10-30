@@ -3,36 +3,44 @@
   "brand": "gtt",
   "slides": [
     {
-      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-tur-hotel-giants-china/01.png",
-      "seconds": 4.0
+      "src": "",
+      "seconds": 4.0,
+      "live": 0
     },
     {
-      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-tur-hotel-giants-china/02.png",
-      "seconds": 3.5
+      "src": "",
+      "seconds": 3.5,
+      "live": 1
     },
     {
-      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-tur-hotel-giants-china/03.png",
-      "seconds": 5.5
+      "src": "",
+      "seconds": 5.5,
+      "live": 2
     },
     {
-      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-tur-hotel-giants-china/04.png",
-      "seconds": 5.0
+      "src": "",
+      "seconds": 3.5,
+      "live": 3
     },
     {
-      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-tur-hotel-giants-china/05.png",
-      "seconds": 5.5
+      "src": "",
+      "seconds": 5.5,
+      "live": 4
     },
     {
-      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-tur-hotel-giants-china/06.png",
-      "seconds": 5.0
+      "src": "",
+      "seconds": 5.0,
+      "live": 5
     },
     {
-      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-tur-hotel-giants-china/07.png",
-      "seconds": 4.0
+      "src": "",
+      "seconds": 4.0,
+      "live": 6
     },
     {
-      "src": "finished-videos/frames/_carousel-reel-2026-10-10-foto-tur-hotel-giants-china/08.png",
-      "seconds": 5.5
+      "src": "",
+      "seconds": 5.5,
+      "live": 7
     }
   ],
   "music": {
@@ -40,5 +48,133 @@
     "volume": 0.55,
     "fadeOut": 1.6
   },
-  "swipeSfx": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav"
+  "swipeSfx": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+  "deck": {
+    "brand": "gtt",
+    "slides": [
+      {
+        "kind": "photoCover",
+        "image": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/01.jpg",
+        "focus": "50% 30%",
+        "kicker": "Бизнес-экспедиция · Китай",
+        "title": "Как китайские отели **растут на франшизе**",
+        "text": "Китайские гостиничные гиганты · 5 дней · 4 города"
+      },
+      {
+        "kind": "photoStat",
+        "frame": false,
+        "image": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/02.jpg",
+        "focus": "50% 30%",
+        "kicker": "Рынок",
+        "title": "гостиничный рынок мира",
+        "text": "Китай — крупнейший по числу номеров",
+        "value": "№1"
+      },
+      {
+        "kind": "photoCard",
+        "frame": true,
+        "image": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/03.jpg",
+        "focus": "50% 30%",
+        "kicker": "Маршрут",
+        "title": "5 дней · **4 города**",
+        "items": [
+          "День 1 · Шанхай: Jin Jiang, H World",
+          "День 2 · Шанхай: GreenTree, Atour",
+          "День 3 · Ханчжоу: Kaiyuan Hotel Group",
+          "День 4 · Гуанчжоу: Dossen Group",
+          "День 5 · Пекин: BTG Hotels Group"
+        ],
+        "numbered": true
+      },
+      {
+        "kind": "photoFull",
+        "frame": false,
+        "image": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/04.jpg",
+        "focus": "50% 30%",
+        "kicker": "Компании маршрута",
+        "title": "**7 гостиничных** групп",
+        "logos": [
+          {
+            "src": "jin-jiang"
+          },
+          {
+            "src": "h-world"
+          },
+          {
+            "src": "greentree"
+          },
+          {
+            "src": "atour"
+          },
+          {
+            "src": "kaiyuan"
+          },
+          {
+            "src": "dossen"
+          },
+          {
+            "src": "btg-hotels"
+          }
+        ]
+      },
+      {
+        "kind": "photoCard",
+        "frame": true,
+        "image": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/05.jpg",
+        "focus": "50% 30%",
+        "kicker": "Что вы поймёте",
+        "title": "Что вы **увидите** изнутри",
+        "items": [
+          "Как сети растут по франшизе",
+          "Госгруппы и биржевые лидеры рядом",
+          "Как Atour продаёт товары для сна",
+          "Что из этого применимо в России"
+        ]
+      },
+      {
+        "kind": "photoFull",
+        "frame": false,
+        "image": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/06.jpg",
+        "focus": "50% 30%",
+        "kicker": "Что входит",
+        "title": "Всё готово **до вылета**",
+        "items": [
+          "Отели 5 звёзд, 6 ночей",
+          "Обед и ужин ежедневно",
+          "Перелёты, поезда и трансферы",
+          "Перевод на каждой встрече"
+        ]
+      },
+      {
+        "kind": "photoCard",
+        "frame": true,
+        "image": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/07.jpg",
+        "focus": "50% 30%",
+        "kicker": "Для кого",
+        "title": "Для отельеров и **инвесторов**",
+        "text": "Прямые выходы на франчайзинг, управление и инвестиции в гостиничные активы"
+      },
+      {
+        "kind": "photoCta",
+        "kicker": "Программа по дням",
+        "title": "За подробностями пиши в **личные сообщения**",
+        "text": "Или заходи на сайт и оставляй заявку — свяжемся в течение 2 минут",
+        "images": [
+          {
+            "src": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/01.jpg",
+            "focus": "50% 30%"
+          },
+          {
+            "src": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/02.jpg",
+            "focus": "50% 30%"
+          },
+          {
+            "src": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/04.jpg",
+            "focus": "50% 30%"
+          }
+        ]
+      }
+    ],
+    "video": true
+  }
 }
