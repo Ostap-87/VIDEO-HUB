@@ -34,6 +34,11 @@ export const slideSchema = z.object({
     "photoPair",
     "photoStat",
     "photoCta",
+    // кампусы (решение пользователя 30.10.2026): пропуск гостя, маршрут по дням, полароиды, цитата на фото
+    "campusPass",
+    "campusRoute",
+    "campusPolaroids",
+    "campusQuote",
   ]),
   kicker: z.string().optional(), // надпись над заголовком (капсом, моно)
   title: z.string().optional(), // **слова** — акцент
@@ -56,6 +61,7 @@ export const slideSchema = z.object({
   left: z.object({title: z.string(), items: z.array(z.string())}).optional(), // compare
   right: z.object({title: z.string(), items: z.array(z.string())}).optional(),
   logos: z.array(z.object({src: z.string(), name: z.string().optional()})).optional(),
+  pass: z.object({role: z.string().optional(), name: z.string().optional(), line: z.string().optional()}).optional(), // campusPass: надписи на пропуске
   button: z.string().optional(), // cta, photoCta: текст кнопки (по умолчанию сайт бренда)
   mascot: z.enum(["wave", "point", "pointUp", "present", "jump", "tick", "none"]).optional(), // только aura
 });

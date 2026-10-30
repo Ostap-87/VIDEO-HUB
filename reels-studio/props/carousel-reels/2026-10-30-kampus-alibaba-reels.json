@@ -1,0 +1,174 @@
+{
+  "_": "Reels из карусели props/carousels/2026-10-30-kampus-alibaba.json (scripts/carousel_reel.py). Секунды слайдов можно править здесь.",
+  "brand": "gtt",
+  "slides": [
+    {
+      "src": "",
+      "seconds": 4.0,
+      "live": 0
+    },
+    {
+      "src": "",
+      "seconds": 3.5,
+      "live": 1
+    },
+    {
+      "src": "",
+      "seconds": 5.5,
+      "live": 2
+    },
+    {
+      "src": "",
+      "seconds": 3.5,
+      "live": 3
+    },
+    {
+      "src": "",
+      "seconds": 3.5,
+      "live": 4
+    },
+    {
+      "src": "",
+      "seconds": 4.5,
+      "live": 5
+    },
+    {
+      "src": "",
+      "seconds": 5.5,
+      "live": 6
+    },
+    {
+      "src": "",
+      "seconds": 5.5,
+      "live": 7
+    }
+  ],
+  "music": {
+    "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+    "volume": 0.55,
+    "fadeOut": 1.6
+  },
+  "swipeSfx": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+  "deck": {
+    "brand": "gtt",
+    "slides": [
+      {
+        "kind": "campusPass",
+        "image": "source-videos/карусели/2026-10-30-kampus-alibaba/01.jpg",
+        "focus": "50% 70%",
+        "logo": "alibaba",
+        "pass": {
+          "role": "ГОСТЬ КАМПУСА",
+          "name": "Управленческие инновации",
+          "line": "3 дня · Ханчжоу"
+        },
+        "kicker": "Обучение в кампусе · Китай",
+        "title": "Как Alibaba **управляет** экосистемой — изнутри",
+        "text": "Кампусы Биньцзян и Сиси, институт DAMO"
+      },
+      {
+        "kind": "photoStat",
+        "frame": true,
+        "image": "source-videos/карусели/2026-10-30-kampus-alibaba/02.jpg",
+        "focus": "50% 40%",
+        "logo": "alibaba",
+        "kicker": "Alibaba",
+        "value": "20 лет",
+        "title": "управленческих экспериментов",
+        "text": "Из них выросла экосистема на триллионы юаней"
+      },
+      {
+        "kind": "campusRoute",
+        "image": "source-videos/карусели/2026-10-30-kampus-alibaba/03.jpg",
+        "focus": "50% 30%",
+        "kicker": "Программа по дням",
+        "title": "3 дня · **3 площадки**",
+        "items": [
+          "Кампус Биньцзян — модель двух двигателей: стратегия и организация",
+          "Институт DAMO — технологии как часть стратегии управления",
+          "Кампус Сиси — система политкомиссаров"
+        ]
+      },
+      {
+        "kind": "campusPolaroids",
+        "kicker": "Модули программы",
+        "title": "Что вы **разберёте**",
+        "logo": "alibaba",
+        "images": [
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-alibaba/04a.jpg",
+            "focus": "50% 40%",
+            "caption": "Стратегическое мышление"
+          },
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-alibaba/04b.jpg",
+            "focus": "40% 50%",
+            "caption": "«Железная армия продаж»"
+          },
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-alibaba/04c.jpg",
+            "focus": "50% 40%",
+            "caption": "«Три топора» управления"
+          }
+        ]
+      },
+      {
+        "kind": "campusQuote",
+        "image": "source-videos/карусели/2026-10-30-kampus-alibaba/05.jpg",
+        "focus": "50% 40%",
+        "logo": "alibaba",
+        "text": "В мире не должно быть **трудного бизнеса**",
+        "author": "Миссия Alibaba · ценности «Шесть духовных мечей»"
+      },
+      {
+        "kind": "photoFull",
+        "frame": false,
+        "image": "source-videos/карусели/2026-10-30-kampus-alibaba/06.jpg",
+        "focus": "50% 35%",
+        "kicker": "Экосистема",
+        "title": "Одна компания — **шесть направлений**",
+        "items": [
+          "E-commerce и платежи",
+          "Логистика и финансы",
+          "Облако и локальные сервисы",
+          "DAMO — прорывные технологии"
+        ]
+      },
+      {
+        "kind": "photoFull",
+        "frame": false,
+        "image": "source-videos/карусели/2026-10-30-kampus-alibaba/07.jpg",
+        "focus": "50% 40%",
+        "kicker": "Для кого",
+        "title": "Для тех, кто строит **платформу**",
+        "text": "И для руководителей, у которых рост упёрся не в рынок, а в собственную организацию",
+        "items": [
+          "Группа от 10 человек",
+          "Всё с переводом на русский язык"
+        ]
+      },
+      {
+        "kind": "photoCta",
+        "kicker": "Обучение в кампусе Alibaba",
+        "title": "Хочешь в группу? Пиши в **личные сообщения**",
+        "text": "Или оставляй заявку на сайте — свяжемся в течение 2 минут",
+        "images": [
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-alibaba/01.jpg",
+            "focus": "50% 60%"
+          },
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-alibaba/04a.jpg",
+            "focus": "50% 40%",
+            "logo": "alibaba"
+          },
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-alibaba/05.jpg",
+            "focus": "50% 40%"
+          }
+        ]
+      }
+    ],
+    "video": true
+  }
+}

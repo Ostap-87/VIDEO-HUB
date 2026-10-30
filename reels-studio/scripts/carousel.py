@@ -11,6 +11,7 @@
 (текстовые слайды) и пример-фото-gtt.json, пример-фото-aura.json (фото-слайды).
 """
 import json
+import os
 import pathlib
 import shutil
 import subprocess
@@ -30,8 +31,12 @@ work = STUDIO.parent / "finished-videos" / "frames"  # черновики, в gi
 def render(props_path: pathlib.Path, dst: pathlib.Path) -> list[pathlib.Path]:
     tmp = work / f"_carousel-{dst.name}-tmp"
     shutil.rmtree(tmp, ignore_errors=True)
+    # места мало (облако): временные файлы — в память, без кэша webpack, как в auto.py
+    env = {**os.environ, "TMPDIR": "/dev/shm/remotion-tmp"} if pathlib.Path("/dev/shm").is_dir() else dict(os.environ)
+    pathlib.Path(env.get("TMPDIR", "/tmp")).mkdir(parents=True, exist_ok=True)
+    low = ["--bundle-cache=false"] if shutil.disk_usage(STUDIO).free < 3e9 else []
     subprocess.run(["./node_modules/.bin/remotion", "render", "src/index.ts", "Carousel", str(tmp), "--sequence", "--image-format=png",
-                    f"--props={props_path}", "--log=error"], check=True, cwd=STUDIO)
+                    f"--props={props_path}", "--log=error", *low], check=True, cwd=STUDIO, env=env)
     dst.mkdir(parents=True, exist_ok=True)
     for old in dst.glob("[0-9]*.png"):
         old.unlink()

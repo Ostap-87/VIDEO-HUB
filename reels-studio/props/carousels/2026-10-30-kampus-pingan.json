@@ -1,0 +1,106 @@
+{
+ "brand": "gtt",
+ "slides": [
+  {
+   "kind": "campusPass",
+   "image": "source-videos/карусели/2026-10-30-kampus-pingan/01.jpg",
+   "focus": "50% 40%",
+   "logo": "ping-an",
+   "pass": {
+    "role": "ГОСТЬ КАМПУСА",
+    "name": "Цифровая стратегия финансов",
+    "line": "3 дня · группа от 10"
+   },
+   "kicker": "Обучение в кампусе · Китай",
+   "title": "Страховая, которая стала **технологической**",
+   "text": "Как Ping An провела цифровую трансформацию в масштабе"
+  },
+  {
+   "kind": "photoStat",
+   "frame": true,
+   "image": "source-videos/карусели/2026-10-30-kampus-pingan/02.jpg",
+   "focus": "50% 35%",
+   "logo": "ping-an",
+   "kicker": "Ping An",
+   "value": "47-е",
+   "title": "место в Fortune Global 500",
+   "text": "9-е среди финансовых компаний мира (2025)"
+  },
+  {
+   "kind": "campusRoute",
+   "image": "source-videos/карусели/2026-10-30-kampus-pingan/03.jpg",
+   "focus": "50% 45%",
+   "kicker": "Программа по дням",
+   "title": "3 дня · **3 шага**",
+   "items": [
+    "Финансовый центр Ping An — видение цифровой стратегии",
+    "Финансовый институт Ping An — цифровое управление и культура",
+    "Воркшоп — от эффективности к результативности"
+   ]
+  },
+  {
+   "kind": "campusPolaroids",
+   "kicker": "Модули программы",
+   "title": "Что вы **разберёте**",
+   "logo": "ping-an",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-30-kampus-pingan/04a.jpg",
+     "focus": "50% 50%",
+     "caption": "Цифровая стратегия"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-30-kampus-pingan/04b.jpg",
+     "focus": "50% 40%",
+     "caption": "Культура как драйвер управления"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-30-kampus-pingan/04c.jpg",
+     "focus": "50% 50%",
+     "caption": "Пять управленческих сил"
+    }
+   ]
+  },
+  {
+   "kind": "campusQuote",
+   "image": "source-videos/карусели/2026-10-30-kampus-pingan/05.jpg",
+   "focus": "50% 50%",
+   "logo": "ping-an",
+   "text": "Финансы + **технологии**. Финансы + **экосистема**.",
+   "author": "Две стратегии Ping An · 50 млрд юаней в НИОКР, 25 лабораторий"
+  },
+  {
+   "kind": "photoFull",
+   "frame": false,
+   "image": "source-videos/карусели/2026-10-30-kampus-pingan/06.jpg",
+   "focus": "50% 40%",
+   "kicker": "Для кого",
+   "title": "Для банков, страховых и **финтеха**",
+   "text": "И для крупного бизнеса, который запускает цифровую трансформацию и хочет увидеть её в масштабе, а не на слайдах",
+   "items": [
+    "Группа от 10 человек",
+    "Всё с переводом на русский язык"
+   ]
+  },
+  {
+   "kind": "photoCta",
+   "kicker": "Обучение в кампусе Ping An",
+   "title": "Хочешь в группу? Пиши в **личные сообщения**",
+   "text": "Или оставляй заявку на сайте — свяжемся в течение 2 минут",
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-30-kampus-pingan/01.jpg",
+     "focus": "50% 40%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-30-kampus-pingan/04b.jpg",
+     "focus": "50% 40%"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-30-kampus-pingan/05.jpg",
+     "focus": "50% 50%"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,154 @@
+{
+  "_": "Reels из карусели props/carousels/2026-10-30-kampus-huawei.json (scripts/carousel_reel.py). Секунды слайдов можно править здесь.",
+  "brand": "gtt",
+  "slides": [
+    {
+      "src": "",
+      "seconds": 4.0,
+      "live": 0
+    },
+    {
+      "src": "",
+      "seconds": 4.0,
+      "live": 1
+    },
+    {
+      "src": "",
+      "seconds": 5.5,
+      "live": 2
+    },
+    {
+      "src": "",
+      "seconds": 3.5,
+      "live": 3
+    },
+    {
+      "src": "",
+      "seconds": 3.5,
+      "live": 4
+    },
+    {
+      "src": "",
+      "seconds": 5.0,
+      "live": 5
+    },
+    {
+      "src": "",
+      "seconds": 5.5,
+      "live": 6
+    }
+  ],
+  "music": {
+    "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+    "volume": 0.55,
+    "fadeOut": 1.6
+  },
+  "swipeSfx": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+  "deck": {
+    "brand": "gtt",
+    "slides": [
+      {
+        "kind": "campusPass",
+        "image": "source-videos/карусели/2026-10-30-kampus-huawei/01.jpg",
+        "focus": "50% 50%",
+        "logo": "huawei",
+        "pass": {
+          "role": "ГОСТЬ КАМПУСА",
+          "name": "Стратегическое управление",
+          "line": "3 дня · Шэньчжэнь"
+        },
+        "kicker": "Обучение в кампусе · Китай",
+        "title": "Стратегия, которая выдерживает **30 лет** роста",
+        "text": "Кампус Huawei в Шэньчжэне"
+      },
+      {
+        "kind": "photoStat",
+        "frame": true,
+        "image": "source-videos/карусели/2026-10-30-kampus-huawei/02.jpg",
+        "focus": "50% 50%",
+        "logo": "huawei",
+        "kicker": "Huawei",
+        "value": "170+",
+        "title": "стран, где работает компания",
+        "text": "200 000+ сотрудников, услугами пользуются более 3 млрд человек"
+      },
+      {
+        "kind": "campusRoute",
+        "image": "source-videos/карусели/2026-10-30-kampus-huawei/03.jpg",
+        "focus": "50% 40%",
+        "kicker": "Программа по дням",
+        "title": "3 дня · **3 темы**",
+        "items": [
+          "Культура и управление — ценности как рабочий инструмент",
+          "Стратегия и организация — строите стратегию сами и разбираете «железный треугольник»",
+          "Таланты и бизнес — «три опоры HR», армия продаж и IPD"
+        ]
+      },
+      {
+        "kind": "campusPolaroids",
+        "kicker": "Модули программы",
+        "title": "Что вы **разберёте**",
+        "logo": "huawei",
+        "images": [
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-huawei/04a.jpg",
+            "focus": "50% 45%",
+            "caption": "«Железный треугольник»"
+          },
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-huawei/04b.jpg",
+            "focus": "50% 45%",
+            "caption": "«Три опоры HR»"
+          },
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-huawei/04c.jpg",
+            "focus": "50% 45%",
+            "caption": "Интегрированная разработка (IPD)"
+          }
+        ]
+      },
+      {
+        "kind": "campusQuote",
+        "image": "source-videos/карусели/2026-10-30-kampus-huawei/05.jpg",
+        "focus": "50% 50%",
+        "logo": "huawei",
+        "text": "Ценности — рабочий **инструмент**, а не лозунг на стене",
+        "author": "Культура Huawei · самокритика и «дух борьбы»"
+      },
+      {
+        "kind": "photoFull",
+        "frame": false,
+        "image": "source-videos/карусели/2026-10-30-kampus-huawei/06.jpg",
+        "focus": "50% 40%",
+        "kicker": "Для кого",
+        "title": "Для тех, кто вырос из **ручного** управления",
+        "text": "Собственникам и управленческим командам, которые хотят систему",
+        "items": [
+          "Группа от 10 человек",
+          "Всё с переводом на русский язык"
+        ]
+      },
+      {
+        "kind": "photoCta",
+        "kicker": "Обучение в кампусе Huawei",
+        "title": "Хочешь в группу? Пиши в **личные сообщения**",
+        "text": "Или оставляй заявку на сайте — свяжемся в течение 2 минут",
+        "images": [
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-huawei/01.jpg",
+            "focus": "50% 50%"
+          },
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-huawei/04a.jpg",
+            "focus": "50% 45%"
+          },
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-huawei/05.jpg",
+            "focus": "50% 50%"
+          }
+        ]
+      }
+    ],
+    "video": true
+  }
+}

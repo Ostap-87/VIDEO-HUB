@@ -32,6 +32,9 @@
   `npx remotion bundle --public-dir=..` не запускать: он копирует весь репозиторий (~20 ГБ) и забивает память. **Память** среды — ~14 ГБ: рядом с рендером — не больше одного тяжёлого процесса (вырезка спикера или пробные кадры); кэш кадров рендера `auto.py` держит в 1,5 ГБ (29.10.2026: без предела рендер Haier дорос до 6,7 ГБ и упал). Старые медиа, которые
   уже лежат на GitHub (например, `finished-videos/для-телефона/`, `карусели/`), можно заменить указателями LFS:
   `git cat-file -p HEAD:<файл> > <файл>` (git изменений не видит), вернуть — `git lfs pull --include="<файл>"`.
+  Копии для публикации в `finished-videos/publish/` (обычный git) после пуша убираются с диска так: `git update-index
+  --skip-worktree -- <файл>` и удалить файл (ссылки raw.githubusercontent.com работают, git изменений не видит); вернуть —
+  `git update-index --no-skip-worktree -- <файл> && git checkout -- <файл>` (30.10.2026: так освобождено ~600 МБ).
 - **Бюджет Git LFS** (25.10.2026): GitHub отклонил загрузку новых видео — «This repository exceeded its LFS budget».
   Скачивание при этом работает. Пока владелец не поднимет бюджет (GitHub → Settings → Billing and licensing →
   Budgets and alerts, строка Git LFS), видео не коммить: остальное (props, фото, код) коммить и пушить как обычно, видео
@@ -81,6 +84,8 @@
 (раздел «Второй бренд: Aura Robotics»). Материалы Aura — `source-videos/aura-robotics/` (логотип: оригинал от пользователя
 в `логотип/оригиналы/`, вектор монограммы `логотип/ar-monogram.svg`; скриншоты сайта — `site/`; фото для примеров
 каруселей — `карусели-пример/`). Карусели Instagram (текстовые и фото) — `reels-studio/CLAUDE.md`, раздел «Карусели Instagram».
+Карусели «Обучение в кампусах» (Alibaba, Ping An, Haier, ByteDance, Huawei, Xiaomi; 30.10.2026) — на фото Higgsfield, с
+пропуском гостя, маршрутом, полароидами и цитатой, Reels к ним — живыми слайдами (`npm run carousel-reel -- <имя> --live`), там же, «Карусели «Обучение в кампусах»».
 Stories-анонсы каруселей — `npm run announce` (`finished-videos/анонсы/<имя>/`), описание там же, «Stories-анонс карусели». Reels из карусели с музыкой (API Instagram музыку к каруселям не ставит) — `npm run carousel-reel -- <карусель>` → `finished-videos/<карусель>-reels.mp4`, там же, «Reels из карусели».
 Третий бренд — личный сайт ostapdotcenko.ru (`"brand": "od"`, тема пайплайна `ostapdotcenko`, только Stories — `auto.py --render --stories-only`), стиль — `reels-studio/CLAUDE.md`, «Третий бренд»; снимки сайта — `source-videos/ostapdotcenko/site/`.
 Какой бренд у ролика, понятно из слов пользователя; не ясно — спроси, работу не останавливая.

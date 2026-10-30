@@ -8,6 +8,8 @@ API Instagram не ставит музыку к каруселям — поэт�
   npm run carousel-reel -- <имя> --guides         # проверочный кадр: безопасная зона Reels и кадр ленты 4:5
   npm run carousel-reel -- <имя> --no-host        # Aura без живого робота-ведущего (робот остаётся картинкой на слайдах)
   npm run carousel-reel -- <имя> --guest agv      # гость дня Aura: agv / arm / hand / dog (по кругу, решение пользователя 12.10.2026)
+  npm run carousel-reel -- <имя> --live           # живые слайды (решение пользователя 30.10.2026): на каждом слайде всё движется —
+                                                  # фото наезжает, пункты и маршрут появляются, цифры набегают, пропуск качается
 
 Aura по умолчанию — с роботом-ведущим (`host`): 3D-робот стоит справа под слайдом и «вытаскивает» каждый слайд (начиная
 с первого) из-за правого края — вперёд, как листают карусель; после обложки машет, на финале показывает на кнопку и машет
@@ -19,6 +21,7 @@ Aura по умолчанию — с роботом-ведущим (`host`): 3D-�
 сохраняются, `--reset` пересчитывает) и рендерит ролик. Громкость музыки — к ~−15 LUFS (голоса нет, музыка — весь звук).
 """
 import argparse
+import os
 import json
 import math
 import pathlib
@@ -38,6 +41,7 @@ ap.add_argument("--reset", action="store_true", help="пересчитать с�
 ap.add_argument("--no-host", action="store_true", help="Aura без робота-ведущего")
 ap.add_argument("--guest", choices=["agv", "arm", "hand", "dog"], help="гость дня Aura: во вступлении и на финальном слайде")
 ap.add_argument("--host-model", choices=["humanoid", "mascot"], help="ведущий Aura: новый гуманоид (по умолчанию) или маскот сайта")
+ap.add_argument("--live", action="store_true", help="живые слайды: рисуются в ролике и двигаются (без PNG)")
 a = ap.parse_args()
 name = a.name.removesuffix(".json")
 music_id, fixed, guides, reset = a.music, a.seconds, a.guides, a.reset
@@ -49,6 +53,10 @@ work = ROOT / "finished-videos" / "frames"
 slides_dir = work / f"_carousel-reel-{name}"
 out = ROOT / "finished-videos" / f"{reel_name}.mp4"
 SFX = "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav"  # whoosh из @remotion/sfx
+# места мало (облако): временные файлы Chrome — в память, без кэша webpack (~250 МБ), как в auto.py
+ENV = {**os.environ, "TMPDIR": "/dev/shm/remotion-tmp"} if pathlib.Path("/dev/shm").is_dir() else dict(os.environ)
+pathlib.Path(ENV.get("TMPDIR", "/tmp")).mkdir(parents=True, exist_ok=True)
+LOWDISK = ["--bundle-cache=false"] if shutil.disk_usage(ROOT).free < 3e9 else []
 
 
 def words(sl: dict) -> int:
@@ -78,19 +86,20 @@ if host:  # робот — живой, под слайдом; на самих с
         sl["mascot"] = "none"
 data.pop("guides", None)
 work.mkdir(parents=True, exist_ok=True)
-vprops = work / f"_carousel-reel-{name}.json"
-vprops.write_text(json.dumps(data, ensure_ascii=False))
-tmp = work / f"_carousel-reel-{name}-tmp"
-shutil.rmtree(tmp, ignore_errors=True)
-print(f"▶ слайды без «листай»: {len(data['slides'])} шт.")
-subprocess.run(["./node_modules/.bin/remotion", "render", "src/index.ts", "Carousel", str(tmp), "--sequence", "--image-format=png",
-                f"--props={vprops}", "--log=error"], check=True, cwd=STUDIO)
-shutil.rmtree(slides_dir, ignore_errors=True)
-slides_dir.mkdir(parents=True)
-for i, f in enumerate(sorted(tmp.glob("*.png")), 1):
-    shutil.move(str(f), slides_dir / f"{i:02d}.png")
-shutil.rmtree(tmp, ignore_errors=True)
-vprops.unlink()
+if not a.live:
+    vprops = work / f"_carousel-reel-{name}.json"
+    vprops.write_text(json.dumps(data, ensure_ascii=False))
+    tmp = work / f"_carousel-reel-{name}-tmp"
+    shutil.rmtree(tmp, ignore_errors=True)
+    print(f"▶ слайды без «листай»: {len(data['slides'])} шт.")
+    subprocess.run(["./node_modules/.bin/remotion", "render", "src/index.ts", "Carousel", str(tmp), "--sequence", "--image-format=png",
+                    f"--props={vprops}", "--log=error", *LOWDISK], check=True, cwd=STUDIO, env=ENV)
+    shutil.rmtree(slides_dir, ignore_errors=True)
+    slides_dir.mkdir(parents=True)
+    for i, f in enumerate(sorted(tmp.glob("*.png")), 1):
+        shutil.move(str(f), slides_dir / f"{i:02d}.png")
+    shutil.rmtree(tmp, ignore_errors=True)
+    vprops.unlink()
 
 lib = json.loads((STUDIO / "library" / "music.json").read_text())
 track = lib[music_id]["src"]
@@ -102,10 +111,13 @@ secs = old_secs if len(old_secs) == n else [seconds(sl, i == 0, i == n - 1) for 
 props = {
     "_": f"Reels из карусели props/carousels/{name}.json (scripts/carousel_reel.py). Секунды слайдов можно править здесь.",
     "brand": data["brand"],
-    "slides": [{"src": str((slides_dir / f"{i:02d}.png").relative_to(ROOT)), "seconds": s} for i, s in enumerate(secs, 1)],
+    "slides": [{"src": "", "seconds": s, "live": i - 1} if a.live else {"src": str((slides_dir / f"{i:02d}.png").relative_to(ROOT)), "seconds": s}
+               for i, s in enumerate(secs, 1)],
     "music": {"src": track, "volume": vol, "fadeOut": 1.6},
     "swipeSfx": SFX,
 }
+if a.live:
+    props["deck"] = data
 if host:
     props["host"] = True
     if a.host_model:
@@ -124,14 +136,14 @@ if guides:
     gp = work / f"_carousel-reel-{name}-зоны.json"
     gp.write_text(json.dumps(props, ensure_ascii=False))
     dst = work / f"{reel_name}-зоны.png"
-    subprocess.run(["./node_modules/.bin/remotion", "still", "src/index.ts", "CarouselReel", str(dst), f"--props={gp}", "--frame=0", "--log=error"],
-                   check=True, cwd=STUDIO)
+    subprocess.run(["./node_modules/.bin/remotion", "still", "src/index.ts", "CarouselReel", str(dst), f"--props={gp}", "--frame=0", "--log=error", *LOWDISK],
+                   check=True, cwd=STUDIO, env=ENV)
     gp.unlink()
     print(f"проверочный кадр → {dst}")
     sys.exit(0)
 
 subprocess.run(["./node_modules/.bin/remotion", "render", "src/index.ts", "CarouselReel", str(out), f"--props={reel_props}",
-                "--crf=18", "--log=error"], check=True, cwd=STUDIO)
+                "--crf=18", "--log=error", *LOWDISK], check=True, cwd=STUDIO, env=ENV)
 subprocess.run(["python3", "scripts/frames.py", str(out), "--every", "2"], check=True, cwd=STUDIO, capture_output=True)
 board = ROOT / "finished-videos" / "раскадровки" / f"{reel_name}.jpg"
 board.parent.mkdir(parents=True, exist_ok=True)

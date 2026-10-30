@@ -30,11 +30,14 @@ import {
   Source,
   Title,
   typo,
+  appear,
+  useAnim,
   useFit,
   type BrandId,
   type Style,
 } from "./kit";
 import type {Pic, Slide} from "./schema";
+import {CAMPUS_KINDS, CampusSlide, campusFull} from "./campus";
 
 type P = {sl: Slide; s: Style; brand: BrandId; last: boolean; mascot: boolean};
 
@@ -82,12 +85,13 @@ const Mark: React.FC<{s: Style; n?: number; size: number}> = ({s, n, size}) => (
 // список на фото-слайде (сценарии «Список» и «Шаги»): значок + текст цвета плашки, подгоняется вместе со слайдом
 const Items: React.FC<{items?: string[]; numbered?: boolean; s: Style; size?: number; style?: React.CSSProperties}> = ({items, numbered, s, size = 34, style}) => {
   const k = useFit();
+  const t = useAnim(); // живой режим: пункты появляются по очереди
   if (!items?.length) return null;
   const fs = Math.max(MIN_FONT, Math.round(size * k));
   return (
     <div style={{display: "flex", flexDirection: "column", gap: Math.round(16 * k), ...style}}>
       {items.map((it, i) => (
-        <div key={i} data-safe="" style={{display: "flex", alignItems: "flex-start", gap: 18}}>
+        <div key={i} data-safe="" style={{display: "flex", alignItems: "flex-start", gap: 18, opacity: appear(t, 0.45 + i * 0.22), translate: `${(1 - appear(t, 0.45 + i * 0.22)) * 40}px 0`}}>
           {/* номер шага — не мельче 30 px, поэтому значок с номером не меньше 48 px */}
           <Mark s={s} n={numbered ? i + 1 : undefined} size={numbered ? Math.max(48, Math.round(fs * 1.3)) : Math.round(fs * 1.3)} />
           <div style={{fontFamily: s.body, fontWeight: 500, fontSize: fs, lineHeight: 1.3, color: s.ink, minWidth: 0}}>
@@ -406,8 +410,18 @@ const PhotoPair: React.FC<P> = (p) => {
 };
 
 // крупная цифра: GTT — синяя со свечением (Unbounded), Aura — графитовая с лимонным маркером (Inter 800)
+// живой режим: число в начале значения «набегает» от нуля («20 лет», «1 млрд+»)
+const countUp = (text: string, t: number | null): string => {
+  const m = /^(\D*)(\d+(?:[\u00A0 ]\d{3})*)(.*)$/.exec(text); // \u00AB13 361 \u043B\u0435\u0442\u00BB \u2192 \u00AB13 361\u00BB \u0438 \u00AB \u043B\u0435\u0442\u00BB; \u043F\u0440\u043E\u0431\u0435\u043B \u043F\u0435\u0440\u0435\u0434 \u0441\u043B\u043E\u0432\u043E\u043C \u043E\u0441\u0442\u0430\u0451\u0442\u0441\u044F
+  if (t === null || !m) return text;
+  const n = Number(m[2].replace(/[\u00A0 ]/g, ""));
+  const v = Math.round(n * appear(t, 0.2, 1.1));
+  return m[1] + v.toLocaleString("ru-RU").replace(/\u202F/g, "\u00A0") + m[3];
+};
+
 const Value: React.FC<{text?: string; s: Style}> = ({text, s}) => {
   const k = useFit();
+  const t = useAnim();
   if (!text) return null;
   const base = text.length > 6 ? 150 : text.length > 4 ? 180 : 210;
   return (
@@ -430,7 +444,7 @@ const Value: React.FC<{text?: string; s: Style}> = ({text, s}) => {
         paddingRight: s.marker ? 8 : 0,
       }}
     >
-      {text}
+      {countUp(text, t)}
     </div>
   );
 };
@@ -503,12 +517,13 @@ const PhotoCta: React.FC<P> = ({sl, s, mascot}) => {
   );
 };
 
-export const PHOTO_KINDS = ["photoCover", "photoCard", "photoFull", "photoPair", "photoStat", "photoCta"] as const;
+export const PHOTO_KINDS = ["photoCover", "photoCard", "photoFull", "photoPair", "photoStat", "photoCta", ...CAMPUS_KINDS] as const;
 export const isPhotoKind = (k: string) => (PHOTO_KINDS as readonly string[]).includes(k);
 // без рамки (фото на весь слайд): шапка на «пилюлях», подвал внутри плашки, робота нет
-export const isFullBleed = (sl: Slide) => isPhotoKind(sl.kind) && !frameOf(sl);
+export const isFullBleed = (sl: Slide) => ((CAMPUS_KINDS as readonly string[]).includes(sl.kind) ? campusFull(sl.kind) : isPhotoKind(sl.kind) && !frameOf(sl));
 
 export const PhotoSlide: React.FC<P> = (p) => {
+  if ((CAMPUS_KINDS as readonly string[]).includes(p.sl.kind)) return <CampusSlide sl={p.sl} s={p.s} last={p.last} />;
   switch (p.sl.kind) {
     case "photoCover":
       return <PhotoCover {...p} />;

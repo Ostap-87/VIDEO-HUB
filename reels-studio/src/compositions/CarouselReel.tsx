@@ -16,7 +16,8 @@ import React from "react";
 import {AbsoluteFill, Easing, Img, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
 import {Audio} from "@remotion/media";
 import {z} from "zod";
-import {STYLES} from "./carousel/kit";
+import {AnimContext, STYLES} from "./carousel/kit";
+import {CAROUSEL, CarouselSlide, carouselSchema} from "./Carousel";
 import {AuraMascot, GESTURE_DUR, smooth, type GestureKind, type MascotPlan, type MascotStay} from "../components/AuraMascot";
 import {AuraBadge} from "../components/AuraBadge";
 import {AuraDog} from "../components/AuraDog";
@@ -27,7 +28,11 @@ import {GttIntro} from "./GttIntro";
 
 export const carouselReelSchema = z.object({
   brand: z.enum(["gtt", "aura"]),
-  slides: z.array(z.object({src: z.string(), seconds: z.number()})), // PNG 1080×1350 (путь от корня репозитория) и сколько секунд на экране
+  slides: z.array(z.object({src: z.string(), seconds: z.number(), live: z.number().optional()})), // PNG 1080×1350 (путь от корня репозитория) и сколько секунд на экране; live — номер слайда в deck
+  // живой режим (решение пользователя 30.10.2026: «использовать Remotion… интерактивные элементы»): слайды рисуются
+  // компонентами карусели прямо в ролике, и всё на них движется (фото наезжает, пункты и маршрут появляются, цифры
+  // набегают, пропуск качается, полароиды падают) — вместо неподвижных PNG
+  deck: carouselSchema.optional(),
   host: z.boolean().optional(), // робот Aura под слайдом вытаскивает слайды из-за правого края
   hostModel: z.enum(["humanoid", "mascot"]).optional(), // кто ведущий: новый гуманоид из 3D-арсенала (по умолчанию) или маскот сайта
   guest: z.enum(["agv", "arm", "hand", "dog"]).optional(), // гость дня (по кругу): во вступлении рядом с гуманоидом и на финальном слайде
@@ -160,7 +165,7 @@ export const humanoidHostPlan = (starts: number[], secs: number[]): HumanoidSpot
   return {stays, gestures};
 };
 
-const CarouselReelBody: React.FC<CarouselReelProps> = ({brand, slides, host, hostModel, guest, music, swipeSfx, guides}) => {
+const CarouselReelBody: React.FC<CarouselReelProps> = ({brand, slides, deck, host, hostModel, guest, music, swipeSfx, guides}) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames, width} = useVideoConfig();
   const s = STYLES[brand];
@@ -210,7 +215,15 @@ const CarouselReelBody: React.FC<CarouselReelProps> = ({brand, slides, host, hos
               scale: String(1 - 0.045 * lift),
             }}
           >
-            <Img src={staticFile(sl.src)} style={{width: "100%", height: "100%", display: "block"}} />
+            {deck && sl.live !== undefined ? (
+              <AnimContext.Provider value={t - starts[i]}>
+                <div style={{width: CAROUSEL.width, height: CAROUSEL.height, scale: String(card.w / CAROUSEL.width), transformOrigin: "0 0"}}>
+                  <CarouselSlide {...deck} video index={sl.live} />
+                </div>
+              </AnimContext.Provider>
+            ) : (
+              <Img src={staticFile(sl.src)} style={{width: "100%", height: "100%", display: "block"}} />
+            )}
           </div>
         ) : null,
       )}

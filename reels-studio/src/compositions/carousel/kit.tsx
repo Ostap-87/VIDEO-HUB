@@ -1,7 +1,7 @@
 // Общие детали карусели: размеры и поля безопасности, стили двух брендов, текст с акцентом, фото, логотип на фото,
 // плашки, кнопка, подгонка текста под место. Слайды — Carousel.tsx (текстовые) и carousel/photo.tsx (фото).
 import React, {useContext, useEffect, useLayoutEffect, useRef, useState} from "react";
-import {continueRender, delayRender, Img, staticFile} from "remotion";
+import {continueRender, delayRender, Easing, Img, interpolate, staticFile} from "remotion";
 import {loadFont as loadInter} from "@remotion/google-fonts/Inter";
 import {getInfo as notoScInfo, loadFont as loadNotoSc} from "@remotion/google-fonts/NotoSansSC";
 import {display, mono} from "../../fonts";
@@ -371,31 +371,47 @@ export const BrandMark: React.FC<{brand: BrandId; s: Style}> = ({brand, s}) =>
     </div>
   );
 
+// ——— движение в Reels из карусели ———
+// Живой режим (решение пользователя 30.10.2026: «использовать Remotion… интерактивные элементы, чтобы карусели и рилсы
+// по каруселям выглядели эстетично и креативно»): CarouselReel рисует слайды не картинками, а теми же компонентами, и
+// передаёт сюда t — секунды с момента, как слайд встал на место. В PNG-карусели t = null — всё в конечном положении.
+// Двигаем только opacity / translate / scale / rotate: размеры не меняются, подгонка текста (FitBox) не сбивается.
+export const AnimContext = React.createContext<number | null>(null);
+export const useAnim = () => useContext(AnimContext);
+// 0 → 1 с мягким выходом за dur секунд, начиная с from; без анимации — сразу 1
+export const appear = (t: number | null, from: number, dur = 0.5): number =>
+  t === null ? 1 : interpolate(t, [from, from + dur], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.bezier(0.16, 1, 0.3, 1)});
+
 // ——— фото ———
 // Фото в карточке (framed) или на весь слайд. Обрезка — object-fit: cover, focus задаёт, что оставить в кадре.
 // Тёмным градиентом не заливаем (ядро стиля). children — плашки поверх фото (не обрезаются скруглением).
-export const Photo: React.FC<{pic: Pic; s: Style; framed?: boolean; style?: React.CSSProperties; children?: React.ReactNode}> = ({pic, s, framed = true, style, children}) => (
-  <div style={{position: "relative", minHeight: 0, ...style}}>
-    <div
-      data-photo=""
-      style={{
-        position: "absolute",
-        inset: 0,
-        overflow: "hidden",
-        background: s.photo.empty,
-        borderRadius: framed ? s.photo.radius : 0,
-        border: framed ? s.photo.border : undefined,
-        boxShadow: framed ? s.photo.shadow : undefined,
-      }}
-    >
-      <Img
-        src={staticFile(pic.src)}
-        style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: pic.focus ?? "50% 50%", scale: String(pic.zoom ?? 1), transformOrigin: pic.focus ?? "50% 50%"}}
-      />
+// В живом режиме фото медленно наезжает (+7 % за 6 с) — «кен бёрнс».
+export const Photo: React.FC<{pic: Pic; s: Style; framed?: boolean; style?: React.CSSProperties; children?: React.ReactNode}> = ({pic, s, framed = true, style, children}) => {
+  const t = useAnim();
+  const drift = t === null ? 1 : interpolate(t, [-0.6, 6], [1, 1.07], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
+  return (
+    <div style={{position: "relative", minHeight: 0, ...style}}>
+      <div
+        data-photo=""
+        style={{
+          position: "absolute",
+          inset: 0,
+          overflow: "hidden",
+          background: s.photo.empty,
+          borderRadius: framed ? s.photo.radius : 0,
+          border: framed ? s.photo.border : undefined,
+          boxShadow: framed ? s.photo.shadow : undefined,
+        }}
+      >
+        <Img
+          src={staticFile(pic.src)}
+          style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: pic.focus ?? "50% 50%", scale: String((pic.zoom ?? 1) * drift), transformOrigin: pic.focus ?? "50% 50%"}}
+        />
+      </div>
+      {children}
     </div>
-    {children}
-  </div>
-);
+  );
+};
 
 // логотип бренда: id из library/brands.json ("ubtech") или путь от корня репозитория
 const LIB = brandsLib as Record<string, {logo?: string}>;

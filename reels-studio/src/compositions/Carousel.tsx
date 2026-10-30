@@ -245,8 +245,10 @@ const Footer: React.FC<{s: Style; last: boolean}> = ({s, last}) => (
   </div>
 );
 
-export const Carousel: React.FC<CarouselProps> = ({brand, slides, guides, video}) => {
-  const i = useCurrentFrame();
+// один слайд по номеру: PNG-карусель берёт номер из кадра, живые Reels из карусели (CarouselReel, deck) — свой для каждого слайда
+export const Carousel: React.FC<CarouselProps> = (p) => <CarouselSlide {...p} index={useCurrentFrame()} />;
+
+export const CarouselSlide: React.FC<CarouselProps & {index: number}> = ({brand, slides, guides, video, index: i}) => {
   loadCjk(JSON.stringify(slides)); // иероглифы в текстах — Noto Sans SC нужных кусков (один раз на набор знаков)
   const sl = slides[Math.min(i, slides.length - 1)];
   const s = STYLES[brand];

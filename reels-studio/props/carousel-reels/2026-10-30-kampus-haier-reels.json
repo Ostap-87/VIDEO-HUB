@@ -1,0 +1,168 @@
+{
+  "_": "Reels из карусели props/carousels/2026-10-30-kampus-haier.json (scripts/carousel_reel.py). Секунды слайдов можно править здесь.",
+  "brand": "gtt",
+  "slides": [
+    {
+      "src": "",
+      "seconds": 4.0,
+      "live": 0
+    },
+    {
+      "src": "",
+      "seconds": 4.0,
+      "live": 1
+    },
+    {
+      "src": "",
+      "seconds": 5.5,
+      "live": 2
+    },
+    {
+      "src": "",
+      "seconds": 3.5,
+      "live": 3
+    },
+    {
+      "src": "",
+      "seconds": 3.5,
+      "live": 4
+    },
+    {
+      "src": "",
+      "seconds": 4.5,
+      "live": 5
+    },
+    {
+      "src": "",
+      "seconds": 5.0,
+      "live": 6
+    },
+    {
+      "src": "",
+      "seconds": 5.5,
+      "live": 7
+    }
+  ],
+  "music": {
+    "src": "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3",
+    "volume": 0.55,
+    "fadeOut": 1.6
+  },
+  "swipeSfx": "source-videos/2026-10-07-byt-tehnika/sfx/whoosh.wav",
+  "deck": {
+    "brand": "gtt",
+    "slides": [
+      {
+        "kind": "campusPass",
+        "image": "source-videos/карусели/2026-10-30-kampus-haier/01.jpg",
+        "focus": "50% 50%",
+        "logo": "haier",
+        "pass": {
+          "role": "ГОСТЬ КАМПУСА",
+          "name": "Цифровая экосистема бренда",
+          "line": "3 дня · группа от 10"
+        },
+        "kicker": "Обучение в кампусе · Китай",
+        "title": "Как Haier сделал сотрудников **предпринимателями**",
+        "text": "Модель «人单合一» — изнутри"
+      },
+      {
+        "kind": "photoStat",
+        "frame": true,
+        "image": "source-videos/карусели/2026-10-30-kampus-haier/02.jpg",
+        "focus": "50% 45%",
+        "logo": "haier",
+        "kicker": "Haier",
+        "value": "16 лет",
+        "title": "подряд №1 в мире по продажам крупной бытовой техники",
+        "text": "Бренд в 160+ странах и регионах"
+      },
+      {
+        "kind": "campusRoute",
+        "image": "source-videos/карусели/2026-10-30-kampus-haier/03.jpg",
+        "focus": "50% 40%",
+        "kicker": "Программа по дням",
+        "title": "3 дня · **3 темы**",
+        "items": [
+          "«人单合一» — как сотрудники становятся внутренними предпринимателями",
+          "Умные фабрики — промышленный интернет на практике",
+          "Культура и таланты — 30 лет бренда и система OEC"
+        ]
+      },
+      {
+        "kind": "campusPolaroids",
+        "kicker": "Модули программы",
+        "title": "Что вы **разберёте**",
+        "logo": "haier",
+        "images": [
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-haier/04a.jpg",
+            "focus": "50% 45%",
+            "caption": "Промышленный интернет"
+          },
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-haier/04b.jpg",
+            "focus": "50% 40%",
+            "caption": "Ускорение предпринимательства"
+          },
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-haier/04c.jpg",
+            "focus": "50% 50%",
+            "caption": "Культура бренда и система OEC"
+          }
+        ]
+      },
+      {
+        "kind": "campusQuote",
+        "image": "source-videos/карусели/2026-10-30-kampus-haier/05.jpg",
+        "focus": "50% 50%",
+        "logo": "haier",
+        "text": "Разрушить границы между сотрудником и **рынком** — и не потерять контроль",
+        "author": "Модель «人单合一»"
+      },
+      {
+        "kind": "photoFull",
+        "frame": false,
+        "image": "source-videos/карусели/2026-10-30-kampus-haier/06.jpg",
+        "focus": "50% 40%",
+        "kicker": "Умные фабрики",
+        "title": "Больше всех в мире **«маячных» заводов**",
+        "text": "Образцовые «умные фабрики» и переход от массового производства к массовой кастомизации"
+      },
+      {
+        "kind": "photoFull",
+        "frame": false,
+        "image": "source-videos/карусели/2026-10-30-kampus-haier/07.jpg",
+        "focus": "50% 40%",
+        "kicker": "Для кого",
+        "title": "Для заводов, которым нужна **цифровизация**",
+        "text": "И для собственников, которым важна инициатива в команде",
+        "items": [
+          "Группа от 10 человек",
+          "Всё с переводом на русский язык"
+        ]
+      },
+      {
+        "kind": "photoCta",
+        "kicker": "Обучение в кампусе Haier",
+        "title": "Хочешь в группу? Пиши в **личные сообщения**",
+        "text": "Или оставляй заявку на сайте — свяжемся в течение 2 минут",
+        "images": [
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-haier/01.jpg",
+            "focus": "50% 50%"
+          },
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-haier/03.jpg",
+            "focus": "50% 40%"
+          },
+          {
+            "src": "source-videos/карусели/2026-10-30-kampus-haier/05.jpg",
+            "focus": "50% 50%"
+          }
+        ]
+      }
+    ],
+    "video": true
+  }
+}
