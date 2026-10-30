@@ -21,6 +21,7 @@ import carouselReelSample from "../props/carousel-reels/пример-aura.json";
 import {Aura3DShowcase, showcaseSeconds} from "./compositions/Aura3DShowcase";
 import {GttIntro, gttIntroSchema, gttIntroSeconds, type GttIntroProps} from "./compositions/GttIntro";
 import {ReelCover, reelCoverSchema, type ReelCoverProps} from "./compositions/ReelCover";
+import {CoverIdeas, coverIdeasSchema, type CoverIdeasProps} from "./compositions/CoverIdeas";
 import {HookTitleDemo, hookTitleDemoSchema, type HookTitleDemoProps} from "./compositions/HookTitleDemo";
 import {AppPromo, appPromoFrames, appPromoSchema, type AppPromoProps} from "./compositions/AppPromo";
 import appPromoSample from "../props/2026-10-27-gtt-app-promo.json";
@@ -112,6 +113,16 @@ export const RemotionRoot: React.FC = () => {
         durationInFrames={1}
         schema={reelCoverSchema}
         defaultProps={{brand: "gtt", title: "**Обложка** Reels", layout: "speaker"} as ReelCoverProps}
+      />
+      <Composition
+        id="CoverIdeas"
+        component={CoverIdeas}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={5}
+        schema={coverIdeasSchema}
+        defaultProps={{tour: "Тур", title: "**Обложка**", hook: {lead: "", value: "100", unit: "штук"}, facts: [], route: [], logos: [], days: 5, companies: 6, cities: 5, to: "SHA", toCity: "Шанхай", frame: "", cut: ""} as CoverIdeasProps}
       />
       <Composition
         id="StoryReel"

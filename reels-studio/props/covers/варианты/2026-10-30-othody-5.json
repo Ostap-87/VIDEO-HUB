@@ -1,0 +1,56 @@
+{
+ "tour": "Переработка отходов Китая",
+ "title": "Завод, где сгорает **треть** мусора Шанхая",
+ "question": "Куда Китай девает **мусор**?",
+ "hook": {
+  "lead": "Один завод в Шанхае сжигает",
+  "value": "11 000",
+  "unit": "тонн\n**мусора**\nв сутки"
+ },
+ "facts": [
+  {
+   "value": "1,6 млрд",
+   "text": "кВт·ч в год из мусора"
+  },
+  {
+   "value": "11 000 т",
+   "text": "отходов в сутки — один завод"
+  },
+  {
+   "value": "600+",
+   "text": "экопроектов China Everbright"
+  }
+ ],
+ "route": [
+  "Шэньчжэнь",
+  "Фошань",
+  "Шанхай",
+  "Хайань",
+  "Наньтун"
+ ],
+ "logos": [
+  "gem",
+  "shenzhen-energy-environmental",
+  "grandblue",
+  "everbright-environment",
+  "shanghai-environment",
+  "tianying"
+ ],
+ "days": 5,
+ "companies": 6,
+ "cities": 5,
+ "from": "Москва",
+ "to": "SZX",
+ "toCity": "Шэньчжэнь",
+ "frame": "source-videos/обложки/2026-10-28-othody/ostap-kadr.jpg",
+ "cut": "source-videos/обложки/варианты-2026-10-30/ostap-cut.png",
+ "photo": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/02.jpg",
+ "photos": {
+  "number": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/02.jpg",
+  "magazine": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/06b.jpg",
+  "ticket": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/01.jpg",
+  "sticker": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/05.jpg",
+  "stickerNote": "Свалка → эко-парк"
+ },
+ "headline": "Мусор → **энергия**"
+}

@@ -2,16 +2,29 @@
  "brand": "gtt",
  "slides": [
   {
-   "kind": "photoCover",
+   "kind": "campusPass",
    "image": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/01.jpg",
    "focus": "50% 30%",
+   "logo": [
+    "gem",
+    "shenzhen-energy-environmental",
+    "grandblue",
+    "everbright-environment",
+    "shanghai-environment",
+    "tianying"
+   ],
+   "pass": {
+    "role": "ДЕЛЕГАТ ЭКСПЕДИЦИИ",
+    "name": "Обращение с отходами Китая",
+    "line": "5 дней · 5 городов"
+   },
    "kicker": "Бизнес-экспедиция · Китай",
    "title": "Завод, где сгорает **треть** мусора Шанхая",
-   "text": "Обращение с отходами Китая · 5 дней · 5 городов"
+   "text": "Шэньчжэнь → Фошань → Шанхай → Хайань → Наньтун"
   },
   {
    "kind": "photoStat",
-   "frame": false,
+   "frame": true,
    "image": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/02.jpg",
    "focus": "50% 30%",
    "kicker": "«Лаоган», Шанхай",
@@ -21,24 +34,38 @@
    "logo": "shanghai-environment"
   },
   {
-   "kind": "photoCard",
-   "frame": true,
+   "kind": "campusRoute",
    "image": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/03.jpg",
    "focus": "50% 30%",
-   "kicker": "Маршрут",
+   "kicker": "Маршрут по дням",
    "title": "Три провинции, **один** перелёт",
    "items": [
-    "День 1 · Шэньчжэнь: GEM",
+    "День 1 · Шэньчжэнь — GEM",
     "День 2 · Shenzhen Energy и Grandblue",
-    "День 3 · Гуандун: China Everbright",
-    "День 4 · Шанхай: Shanghai Environment",
-    "День 5 · Хайань: China Tianying"
+    "День 3 · Гуандун — China Everbright",
+    "День 4 · Шанхай — Shanghai Environment",
+    "День 5 · Хайань — China Tianying"
    ],
-   "numbered": true
+   "logos": [
+    {
+     "src": "gem"
+    },
+    {
+     "src": "shenzhen-energy-environmental+grandblue"
+    },
+    {
+     "src": "everbright-environment"
+    },
+    {
+     "src": "shanghai-environment"
+    },
+    {
+     "src": "tianying"
+    }
+   ]
   },
   {
-   "kind": "photoFull",
-   "frame": false,
+   "kind": "tourStamps",
    "image": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/04.jpg",
    "focus": "50% 30%",
    "kicker": "Компании маршрута",
@@ -69,17 +96,25 @@
    ]
   },
   {
-   "kind": "photoCard",
-   "frame": true,
-   "image": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/05.jpg",
-   "focus": "50% 30%",
+   "kind": "campusPolaroids",
    "kicker": "Что вы поймёте",
    "title": "Что вы **поймёте**",
-   "items": [
-    "Как перерабатывают батареи электромобилей",
-    "Как свалка становится эко-парком",
-    "1,6 млрд кВт·ч в год из мусора",
-    "Как отрасль выходила за рубеж"
+   "images": [
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/05.jpg",
+     "focus": "50% 30%",
+     "caption": "Как перерабатывают батареи электромобилей"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/07.jpg",
+     "focus": "50% 30%",
+     "caption": "Как свалка становится эко-парком"
+    },
+    {
+     "src": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/08.jpg",
+     "focus": "50% 30%",
+     "caption": "1,6 млрд кВт·ч в год из мусора"
+    }
    ]
   },
   {
@@ -111,10 +146,7 @@
    "title": "Самому или **с нами**"
   },
   {
-   "kind": "photoCard",
-   "frame": true,
-   "image": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/07.jpg",
-   "focus": "50% 30%",
+   "kind": "tourTicket",
    "kicker": "Что входит",
    "title": "Что **входит** в тур",
    "items": [
@@ -122,16 +154,27 @@
     "Трансферы между городами",
     "Перевод: китайский и английский",
     "Проживание 6 ночей"
-   ]
-  },
-  {
-   "kind": "photoFull",
-   "frame": false,
-   "image": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/08.jpg",
-   "focus": "50% 30%",
-   "kicker": "Важно",
-   "title": "Бронируем **заранее**",
-   "text": "«Лаоган» — за 6 недель, объект Everbright — за 6–8 недель"
+   ],
+   "ticket": {
+    "to": "SZX",
+    "toCity": "Шэньчжэнь",
+    "stats": [
+     [
+      "5",
+      "дней"
+     ],
+     [
+      "6",
+      "ночей"
+     ],
+     [
+      "5",
+      "городов"
+     ]
+    ],
+    "from": "Москва"
+   },
+   "text": "Бронируем заранее. «Лаоган» — за 6 недель, объект Everbright — за 6–8 недель."
   },
   {
    "kind": "photoCta",

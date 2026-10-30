@@ -484,3 +484,8 @@ Aura: печать над головой сама уменьшается и по
 `props/od-варианты/серия.json` → `python3 scripts/series.py` (пишет props всех частей и печатает команды вырезки
 `python3 scripts/matte.py … --ranges …`; с `--matte` запускает их сам) → рендер как обычно
 `python3 scripts/auto.py --name 2026-10-14-od-N --render --stories-only`.
+
+### Карусели туров в стиле кампусов и варианты обложек (30.10.2026)
+
+- `python3 scripts/tour_creative.py 2026-10-10-foto-tur-<тур>` — карусель тура в новом виде (пропуск делегата, маршрут с логотипами, компании «штампами», полароиды, посадочный талон), затем `npm run carousel -- <имя> --guides`.
+- `npx remotion render src/index.ts CoverIdeas <папка> --sequence --image-format=png --props=./props/covers/варианты/<файл>.json` — пять вариантов обложки Reels (пропуск, журнал, цифра, талон, стикеры).

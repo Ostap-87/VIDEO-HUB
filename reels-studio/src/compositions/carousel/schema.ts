@@ -39,6 +39,10 @@ export const slideSchema = z.object({
     "campusRoute",
     "campusPolaroids",
     "campusQuote",
+    // туры в том же стиле (решение пользователя 30.10.2026: «мне понравились те карусели… внедрить в других программах»):
+    // логотипы компаний маршрута «штампами» на фото, посадочный талон с тем, что входит
+    "tourStamps",
+    "tourTicket",
   ]),
   kicker: z.string().optional(), // надпись над заголовком (капсом, моно)
   title: z.string().optional(), // **слова** — акцент
@@ -62,6 +66,9 @@ export const slideSchema = z.object({
   right: z.object({title: z.string(), items: z.array(z.string())}).optional(),
   logos: z.array(z.object({src: z.string(), name: z.string().optional()})).optional(),
   pass: z.object({role: z.string().optional(), name: z.string().optional(), line: z.string().optional()}).optional(), // campusPass: надписи на пропуске
+  ticket: z
+    .object({to: z.string(), toCity: z.string(), from: z.string().optional(), stats: z.array(z.tuple([z.string(), z.string()])).optional()})
+    .optional(), // tourTicket: код и город прилёта, плитки «5 дней · 6 ночей»
   button: z.string().optional(), // cta, photoCta: текст кнопки (по умолчанию сайт бренда)
   mascot: z.enum(["wave", "point", "pointUp", "present", "jump", "tick", "none"]).optional(), // только aura
 });
