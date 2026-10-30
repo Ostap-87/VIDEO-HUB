@@ -22,6 +22,7 @@ import {Aura3DShowcase, showcaseSeconds} from "./compositions/Aura3DShowcase";
 import {GttIntro, gttIntroSchema, gttIntroSeconds, type GttIntroProps} from "./compositions/GttIntro";
 import {ReelCover, reelCoverSchema, type ReelCoverProps} from "./compositions/ReelCover";
 import {CoverIdeas, coverIdeasSchema, type CoverIdeasProps} from "./compositions/CoverIdeas";
+import {CoverLab, coverLabSchema, type CoverLabProps} from "./compositions/CoverLab";
 import {HookTitleDemo, hookTitleDemoSchema, type HookTitleDemoProps} from "./compositions/HookTitleDemo";
 import {AppPromo, appPromoFrames, appPromoSchema, type AppPromoProps} from "./compositions/AppPromo";
 import appPromoSample from "../props/2026-10-27-gtt-app-promo.json";
@@ -113,6 +114,16 @@ export const RemotionRoot: React.FC = () => {
         durationInFrames={1}
         schema={reelCoverSchema}
         defaultProps={{brand: "gtt", title: "**Обложка** Reels", layout: "speaker"} as ReelCoverProps}
+      />
+      <Composition
+        id="CoverLab"
+        component={CoverLab}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={10}
+        schema={coverLabSchema}
+        defaultProps={{} as CoverLabProps}
       />
       <Composition
         id="CoverIdeas"

@@ -1,0 +1,93 @@
+{
+ "tour": "Переработка отходов Китая",
+ "headline": "Завод, где сгорает треть мусора Шанхая",
+ "question": "Куда Китай девает мусор?",
+ "hook": {
+  "value": "11 000",
+  "unit": "тонн мусора в сутки",
+  "where": "Один завод в Шанхае"
+ },
+ "facts": [
+  "Из мусора — 1,6 млрд кВт·ч в год",
+  "Шэньчжэнь → Фошань → Шанхай → Хайань → Наньтун",
+  "Свалка становится эко-парком",
+  "Как перерабатывают батареи электромобилей"
+ ],
+ "route": [
+  "Шэньчжэнь",
+  "Фошань",
+  "Шанхай",
+  "Хайань",
+  "Наньтун"
+ ],
+ "routeLogos": [
+  [
+   "gem"
+  ],
+  [
+   "shenzhen-energy-environmental",
+   "grandblue"
+  ],
+  [
+   "everbright-environment"
+  ],
+  [
+   "shanghai-environment"
+  ],
+  [
+   "tianying"
+  ]
+ ],
+ "logos": [
+  "gem",
+  "shenzhen-energy-environmental",
+  "grandblue",
+  "everbright-environment",
+  "shanghai-environment",
+  "tianying"
+ ],
+ "companyNames": [
+  "GEM",
+  "Shenzhen Energy",
+  "Grandblue",
+  "China Everbright",
+  "Shanghai Environment",
+  "China Tianying"
+ ],
+ "days": 5,
+ "companies": 6,
+ "from": "Москва",
+ "to": "SZX",
+ "hanzi": {
+  "a": "垃圾",
+  "b": "能源",
+  "pa": "LĀJĪ",
+  "pb": "NÉNGYUÁN",
+  "ru": "Мусор → энергия"
+ },
+ "photos": {
+  "poster": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/06b.jpg",
+  "dossier": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/02.jpg",
+  "paper": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/01.jpg",
+  "lock": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/05.jpg",
+  "search": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/02.jpg",
+  "brutal": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/04.jpg",
+  "collage": [
+   "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/01.jpg",
+   "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/02.jpg",
+   "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/05.jpg"
+  ],
+  "object": "source-videos/обложки/варианты-2026-10-30/hf-bottle-energy.jpg"
+ },
+ "notes": [
+  "11 000 т в сутки!",
+  "крупнейший в мире моно-завод",
+  "была свалка — стал эко-парк"
+ ],
+ "hints": [
+  "сколько энергии китай получает |из мусора",
+  "завод «лаоган» |11 000 тонн в сутки",
+  "как свалка в китае |стала эко-парком",
+  "переработка батарей |электромобилей в китае"
+ ]
+}
