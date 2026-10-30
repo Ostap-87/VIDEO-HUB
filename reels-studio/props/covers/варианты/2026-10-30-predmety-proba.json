@@ -1,0 +1,131 @@
+{
+ "label": "Программа тура",
+ "tour": "",
+ "tourLines": [
+  ""
+ ],
+ "hook": {
+  "a": "",
+  "b": ""
+ },
+ "fact": "",
+ "route": [],
+ "logos": [],
+ "days": 5,
+ "companies": 0,
+ "cities": 0,
+ "photo": "",
+ "layouts": [
+  "head",
+  "column",
+  "poster"
+ ],
+ "looks": [
+  {
+   "label": "Обучение в кампусе",
+   "tour": "Обучение в кампусе Haier",
+   "tourLines": [
+    "Кампус Haier"
+   ],
+   "hook": {
+    "a": "76 холодильников",
+    "b": "под кувалду"
+   },
+   "fact": "В 1985 году директор завода разбил кувалдой 76 бракованных холодильников",
+   "stats": [
+    [
+     3,
+     "дня"
+    ],
+    [
+     3,
+     "темы"
+    ]
+   ],
+   "route": [
+    "人单合一",
+    "умные фабрики",
+    "культура OEC"
+   ],
+   "logos": [
+    "haier"
+   ],
+   "days": 3,
+   "companies": 1,
+   "cities": 1,
+   "photo": "source-videos/обложки/предметы/haier.jpg"
+  },
+  {
+   "tour": "Топ-10 логистических компаний Китая",
+   "tourLines": [
+    "Логистика",
+    "Китая"
+   ],
+   "hook": {
+    "a": "Одна компания",
+    "b": "80 млн посылок в день"
+   },
+   "fact": "ZTO обрабатывает в среднем больше 80 млн посылок в день",
+   "route": [
+    "Пекин",
+    "Шанхай",
+    "Ханчжоу",
+    "Шэньчжэнь"
+   ],
+   "logos": [
+    "cosco",
+    "sf-express",
+    "jd-logistics",
+    "cainiao",
+    "zto",
+    "china-railway-express"
+   ],
+   "days": 5,
+   "companies": 10,
+   "cities": 4,
+   "photo": "source-videos/обложки/предметы/logistika.jpg"
+  },
+  {
+   "tour": "Гонконгская школа отельного люкса",
+   "tourLines": [
+    "Люкс-отели",
+    "Гонконга"
+   ],
+   "hook": {
+    "a": "Отель 1928 года",
+    "b": "до сих пор легенда"
+   },
+   "fact": "The Peninsula открылся в 1928 году",
+   "stats": [
+    [
+     5,
+     "дней"
+    ],
+    [
+     6,
+     "семейных групп"
+    ]
+   ],
+   "route": [
+    "Peninsula",
+    "Mandarin Oriental",
+    "Rosewood",
+    "Shangri-La",
+    "Langham",
+    "Wharf"
+   ],
+   "logos": [
+    "peninsula",
+    "mandarin-oriental",
+    "rosewood",
+    "shangri-la",
+    "langham",
+    "wharf-hotels"
+   ],
+   "days": 5,
+   "companies": 6,
+   "cities": 1,
+   "photo": "source-videos/обложки/предметы/gonkong.jpg"
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+[
+ {
+  "file": "haier.jpg",
+  "job_id": "128c1f6f-6e1f-463a-aee0-adce16e68d3f",
+  "model": "gpt_image_2_5 medium 1k 9:16",
+  "credits": 0.5,
+  "date": "2026-10-30",
+  "for": "обложка Reels кампуса Haier — кувалда и разбитый холодильник",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261030_090039_128c1f6f-6e1f-463a-aee0-adce16e68d3f.png"
+ },
+ {
+  "file": "logistika.jpg",
+  "job_id": "cfe78ad3-e944-4768-ac69-326ac0b7eddb",
+  "model": "gpt_image_2_5 medium 1k 9:16",
+  "credits": 0.5,
+  "date": "2026-10-30",
+  "for": "обложка Reels тура «Логистика Китая» — посылка со светом",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261030_090041_cfe78ad3-e944-4768-ac69-326ac0b7eddb.png"
+ },
+ {
+  "file": "gonkong.jpg",
+  "job_id": "ac10ea75-f470-4485-b83b-ffb55c14874d",
+  "model": "gpt_image_2_5 medium 1k 9:16",
+  "credits": 0.5,
+  "date": "2026-10-30",
+  "for": "обложка Reels тура «Люкс-отели Гонконга» — латунный ключ с кисточкой",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261030_090040_ac10ea75-f470-4485-b83b-ffb55c14874d.png"
+ }
+]

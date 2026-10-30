@@ -29,15 +29,13 @@ const inter = loadInter("normal", {weights: ["500", "600", "700", "800"], subset
 
 export const BOTTLE = ["head", "plate", "column", "callout", "poster", "route"] as const;
 
-const lookSchema = z.object({photo: z.string(), theme: z.enum(["dark", "light"]).optional(), accent: z.string().optional()});
-
-export const coverBottleSchema = z.object({
+const baseSchema = z.object({
   variant: z.enum(BOTTLE).optional(),
   layouts: z.array(z.enum(BOTTLE)).optional(),
   theme: z.enum(["dark", "light"]).optional(),
   accent: z.string().optional(),
-  looks: z.array(lookSchema).optional(),
-  label: z.string(), // «Программа тура»
+  stats: z.array(z.tuple([z.number(), z.string()])).optional(), // свои цифры вместо дней · компаний · городов (кампусы: 3 дня · 3 темы)
+  label: z.string(), // «Программа тура» / «Обучение в кампусе»
   tour: z.string(), // «Переработка отходов Китая»
   tourLines: z.array(z.string()), // то же, по строкам для крупного набора
   hook: z.object({a: z.string(), b: z.string()}), // «Мусор» / «это топливо»
@@ -49,6 +47,8 @@ export const coverBottleSchema = z.object({
   cities: z.number(),
   photo: z.string(),
 });
+// looks — любые поля поверх общих: одним рендером несколько картинок или несколько программ (предмет-символ на программу)
+export const coverBottleSchema = baseSchema.extend({looks: z.array(baseSchema.partial()).optional()});
 export type CoverBottleProps = z.infer<typeof coverBottleSchema>;
 
 const SKY = "#7DD3FC";
@@ -62,12 +62,15 @@ const plural = (n: number, a: string, b: string, c: string) => {
   if (m >= 11 && m <= 14) return c;
   return n % 10 === 1 ? a : n % 10 >= 2 && n % 10 <= 4 ? b : c;
 };
-const nums = (p: CoverBottleProps): [number, string][] => [
+const nums = (p: CoverBottleProps): [number, string][] => p.stats ?? [
   [p.days, plural(p.days, "день", "дня", "дней")],
   [p.companies, plural(p.companies, "компания", "компании", "компаний")],
   [p.cities, plural(p.cities, "город", "города", "городов")],
 ];
 const metaLine = (p: CoverBottleProps) => nums(p).map(([n, w]) => `${n} ${w}`).join(" · ");
+
+// кегль крючка под длину строки: длинный крючок не вылезает за кадр
+const fitSize = (max: number, width: number, ...lines: string[]) => Math.min(max, Math.floor(width / (0.6 * Math.max(...lines.map((l) => l.length)))));
 
 // палитра темы: тёмная — белый текст и голубой акцент, светлая — графит и синий GTT
 type Pal = {light: boolean; bg: string; fg: string; acc: string; soft: string; plate: string; edge: string; shadow: string; pillFg: string};
@@ -112,12 +115,18 @@ const Label: React.FC<{p: CoverBottleProps; style?: React.CSSProperties; solid?:
   );
 };
 const LogoRow: React.FC<{logos: string[]; h?: number; style?: React.CSSProperties}> = ({logos, h = 56, style}) => (
-  <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, background: "#FFFFFF", borderRadius: 22, padding: "14px 20px", ...style}}>
+  <div style={{display: "flex", alignItems: "center", justifyContent: logos.length < 3 ? "center" : "space-between", gap: 10, background: "#FFFFFF", borderRadius: 22, padding: "14px 20px", ...style, ...(logos.length < 3 ? {width: "fit-content", marginLeft: "auto", marginRight: "auto", paddingLeft: 40, paddingRight: 40} : {})}}>
     {logos.slice(0, 6).map((id) => (
       <Img key={id} src={staticFile(logoSrc(id))} style={{maxHeight: h, maxWidth: 130, objectFit: "contain"}} />
     ))}
   </div>
 );
+// затемнение верха в тёмной теме: высокий предмет (ручка кувалды, ключ) уходит под текст и не спорит с ним
+const Scrim: React.FC = () => {
+  const t = usePal();
+  return t.light ? null : <div style={{position: "absolute", left: 0, right: 0, top: 0, height: 900, background: `linear-gradient(to bottom, ${rgba(t.bg, 0.7)} 0, ${rgba(t.bg, 0.55)} 520px, ${rgba(t.bg, 0)} 900px)`}} />;
+};
+
 // со сдвигом под картинкой — она же, размытая: край сдвинутой картинки растворяется в ней без шва
 const Bg: React.FC<{p: CoverBottleProps; shift?: number; scale?: number}> = ({p, shift = 0, scale = 1}) => (
   <>
@@ -135,6 +144,7 @@ const Head: React.FC<{p: CoverBottleProps}> = ({p}) => {
   return (
     <AbsoluteFill style={{background: t.bg}}>
       <Bg p={p} />
+      <Scrim />
       <div style={{position: "absolute", left: 50, right: 50, top: 262, textAlign: "center", textShadow: t.shadow}}>
         <Label p={p} style={{textShadow: "none"}} />
         <div style={{fontFamily: playfair.fontFamily, fontWeight: 700, fontSize: 108, lineHeight: 1.02, color: t.fg, marginTop: 24}}>
@@ -142,7 +152,7 @@ const Head: React.FC<{p: CoverBottleProps}> = ({p}) => {
             <div key={i}>{l}</div>
           ))}
         </div>
-        <div style={{fontFamily: playfairI.fontFamily, fontStyle: "italic", fontWeight: 700, fontSize: 60, color: t.acc, marginTop: 14}}>
+        <div style={{fontFamily: playfairI.fontFamily, fontStyle: "italic", fontWeight: 700, fontSize: fitSize(60, 980, `${p.hook.a} — ${p.hook.b}`), color: t.acc, marginTop: 14}}>
           {p.hook.a} — {p.hook.b}
         </div>
       </div>
@@ -201,17 +211,17 @@ const Column: React.FC<{p: CoverBottleProps}> = ({p}) => {
         <div style={{width: 120, height: 5, background: t.acc, margin: "30px 0 26px"}} />
         {nums(p).map(([n, w], i) => (
           <div key={i} style={{display: "flex", alignItems: "baseline", gap: 18, marginTop: i ? 12 : 0}}>
-            <span style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: 96, lineHeight: 1, color: t.acc, width: 90}}>{n}</span>
+            <span style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: 96, lineHeight: 1, color: t.acc, width: 74 * Math.max(...nums(p).map(([m]) => String(m).length)) + 16}}>{n}</span>
             <span style={{fontFamily: inter.fontFamily, fontWeight: 700, fontSize: 44, color: t.fg}}>{w}</span>
           </div>
         ))}
-        <div style={{fontFamily: playfairI.fontFamily, fontStyle: "italic", fontWeight: 700, fontSize: 52, lineHeight: 1.1, color: t.light ? t.soft : SOFT, marginTop: 40}}>
+        <div style={{fontFamily: playfairI.fontFamily, fontStyle: "italic", fontWeight: 700, fontSize: fitSize(52, 560, `${p.hook.a} —`, p.hook.b), lineHeight: 1.1, color: t.light ? t.soft : SOFT, marginTop: 40}}>
           {p.hook.a} —<br />
           {p.hook.b}
         </div>
       </div>
       {/* логотипы компаний тура — плитка 3 × 2 под колонкой */}
-      <div style={{position: "absolute", left: 56, top: 1390, width: 470, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10, background: "#FFFFFF", borderRadius: 24, padding: 16, boxShadow: t.light ? "0 16px 40px rgba(23,23,29,0.12)" : "0 16px 40px rgba(2,7,24,0.6)"}}>
+      <div style={{position: "absolute", left: 56, top: 1390, width: p.logos.length >= 3 ? 470 : 160 * p.logos.length + 32, display: "grid", gridTemplateColumns: `repeat(${Math.min(3, p.logos.length)}, 1fr)`, gap: 10, background: "#FFFFFF", borderRadius: 24, padding: 16, boxShadow: t.light ? "0 16px 40px rgba(23,23,29,0.12)" : "0 16px 40px rgba(2,7,24,0.6)"}}>
         {p.logos.slice(0, 6).map((id) => (
           <div key={id} style={{height: 64, display: "flex", alignItems: "center", justifyContent: "center"}}>
             <Img src={staticFile(logoSrc(id))} style={{maxHeight: 54, maxWidth: 128, objectFit: "contain"}} />
@@ -269,9 +279,10 @@ const Poster: React.FC<{p: CoverBottleProps}> = ({p}) => {
   return (
     <AbsoluteFill style={{background: t.bg}}>
       <Bg p={p} />
+      <Scrim />
       <div style={{position: "absolute", left: 0, right: 0, top: 330, textAlign: "center", textShadow: t.shadow}}>
         <div style={{fontFamily: inter.fontFamily, fontWeight: 700, fontSize: 32, letterSpacing: "0.22em", color: t.light ? t.soft : SOFT}}>GLOBAL TECH TOUR ПРЕДСТАВЛЯЕТ</div>
-        <div style={{fontFamily: playfairI.fontFamily, fontStyle: "italic", fontWeight: 700, fontSize: 92, lineHeight: 1.04, color: t.fg, marginTop: 26}}>
+        <div style={{fontFamily: playfairI.fontFamily, fontStyle: "italic", fontWeight: 700, fontSize: fitSize(92, 980, `«${p.hook.a} —`, `${p.hook.b}»`), lineHeight: 1.04, color: t.fg, marginTop: 26}}>
           «{p.hook.a} —
           <br />
           <span style={{color: t.acc}}>{p.hook.b}»</span>
@@ -330,9 +341,9 @@ const Route: React.FC<{p: CoverBottleProps}> = ({p}) => {
 export const CoverBottle: React.FC<CoverBottleProps> = (props) => {
   const frame = useCurrentFrame();
   const list = props.layouts?.length ? props.layouts : BOTTLE;
-  const looks = props.looks?.length ? props.looks : [{photo: props.photo, theme: props.theme, accent: props.accent}];
+  const looks = props.looks?.length ? props.looks : [{}];
   const look = looks[Math.min(Math.floor(frame / list.length), looks.length - 1)];
-  const p = {...props, ...look};
+  const p = {...props, ...look} as CoverBottleProps;
   const v = props.variant ?? list[frame % list.length];
   const map: Record<(typeof BOTTLE)[number], React.FC<{p: CoverBottleProps}>> = {head: Head, plate: Plate, column: Column, callout: Callout, poster: Poster, route: Route};
   const C = map[v];
