@@ -46,6 +46,7 @@ const baseSchema = z.object({
   companies: z.number(),
   cities: z.number(),
   photo: z.string(),
+  photoScale: z.number().optional(), // < 1 — уменьшить высокий предмет (масштаб от верхнего края), поля по бокам — размытая копия
   photoY: z.number().optional(), // сдвиг картинки вниз, px: высокий предмет (самолёт над кораблём) уходит из-под крючка
   // пустые бейджи на картинке (координаты кадра 1080×1920 до сдвига photoY) — на их белые лицевые стороны ставим логотипы компаний
   badges: z.array(z.object({x: z.number(), y: z.number(), w: z.number(), h: z.number(), logos: z.array(z.string())})).optional(),
@@ -151,12 +152,13 @@ const Scrim: React.FC = () => {
 const Bg: React.FC<{p: CoverBottleProps; shift?: number; scale?: number}> = ({p, shift = 0, scale = 1}) => {
   const t = usePal();
   const y = p.photoY ?? 0;
+  const ps = p.photoScale ?? 1;
   return (
   <>
-    {shift ? <Img src={staticFile(p.photo)} style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", filter: "blur(40px)", scale: "1.25"}} /> : null}
+    {shift || ps < 1 ? <Img src={staticFile(p.photo)} style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", filter: "blur(40px)", scale: "1.25"}} /> : null}
     <Img
       src={staticFile(p.photo)}
-      style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", translate: `${shift}px ${y}px`, scale: String(scale), ...(shift ? {maskImage: "linear-gradient(to right, transparent 0, #000 300px)", WebkitMaskImage: "linear-gradient(to right, transparent 0, #000 300px)"} : {})}}
+      style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", translate: `${shift}px ${y}px`, scale: String(scale * ps), transformOrigin: ps < 1 ? "50% 0%" : undefined, ...(shift ? {maskImage: "linear-gradient(to right, transparent 0, #000 300px)", WebkitMaskImage: "linear-gradient(to right, transparent 0, #000 300px)"} : {})}}
     />
     {y < 0 ? <div style={{position: "absolute", left: 0, right: 0, top: 1920 + y - 260, bottom: 0, background: `linear-gradient(to bottom, ${rgba(t.bg, 0)} 0, ${t.bg} 260px)`}} /> : null}
   </>
