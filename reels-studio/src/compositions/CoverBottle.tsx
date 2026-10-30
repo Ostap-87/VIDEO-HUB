@@ -47,6 +47,8 @@ const baseSchema = z.object({
   cities: z.number(),
   photo: z.string(),
   photoY: z.number().optional(), // сдвиг картинки вниз, px: высокий предмет (самолёт над кораблём) уходит из-под крючка
+  // пустые бейджи на картинке (координаты кадра 1080×1920 до сдвига photoY) — на их белые лицевые стороны ставим логотипы компаний
+  badges: z.array(z.object({x: z.number(), y: z.number(), w: z.number(), h: z.number(), logos: z.array(z.string())})).optional(),
 });
 // looks — любые поля поверх общих: одним рендером несколько картинок или несколько программ (предмет-символ на программу)
 export const coverBottleSchema = baseSchema.extend({looks: z.array(baseSchema.partial()).optional()});
@@ -125,6 +127,19 @@ const LogoRow: React.FC<{logos: string[]; h?: number; style?: React.CSSPropertie
     ))}
   </div>
 );
+// логотипы на бейджах картинки: «напечатаны» на белой лицевой стороне (multiply), столбиком
+const Badges: React.FC<{p: CoverBottleProps}> = ({p}) => (
+  <>
+    {(p.badges ?? []).map((b, i) => (
+      <div key={i} style={{position: "absolute", left: b.x, top: b.y + (p.photoY ?? 0), width: b.w, height: b.h, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "space-evenly", padding: "34px 30px"}}>
+        {b.logos.map((id) => (
+          <Img key={id} src={staticFile(logoSrc(id))} style={{height: Math.min(86, (b.h - 120) / b.logos.length), width: "auto", maxWidth: b.w - 60, objectFit: "contain", mixBlendMode: "multiply"}} />
+        ))}
+      </div>
+    ))}
+  </>
+);
+
 // затемнение верха в тёмной теме: высокий предмет (ручка кувалды, ключ) уходит под текст и не спорит с ним
 const Scrim: React.FC = () => {
   const t = usePal();
@@ -154,6 +169,7 @@ const Head: React.FC<{p: CoverBottleProps}> = ({p}) => {
   return (
     <AbsoluteFill style={{background: t.bg}}>
       <Bg p={p} />
+      <Badges p={p} />
       <Scrim />
       <div style={{position: "absolute", left: 50, right: 50, top: 262, textAlign: "center", textShadow: t.shadow}}>
         <Label p={p} style={{textShadow: "none"}} />
@@ -261,6 +277,7 @@ const Callout: React.FC<{p: CoverBottleProps}> = ({p}) => {
   return (
     <AbsoluteFill style={{background: "#020718"}}>
       <Bg p={p} />
+      <Badges p={p} />
       <div style={{position: "absolute", left: 50, right: 50, top: 252, textAlign: "center"}}>
         <Label p={p} />
         <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: 70, lineHeight: 1.06, color: "#FFFFFF", marginTop: 24}}>{p.tour}</div>
@@ -297,9 +314,10 @@ const Poster: React.FC<{p: CoverBottleProps}> = ({p}) => {
   return (
     <AbsoluteFill style={{background: t.bg}}>
       <Bg p={p} />
+      <Badges p={p} />
       <Scrim />
       <div style={{position: "absolute", left: 0, right: 0, top: 330, textAlign: "center", textShadow: t.shadow}}>
-        <div style={{fontFamily: inter.fontFamily, fontWeight: 700, fontSize: 32, letterSpacing: "0.22em", color: t.light ? t.soft : SOFT}}>GLOBAL TECH TOUR ПРЕДСТАВЛЯЕТ</div>
+        <div style={{fontFamily: inter.fontFamily, fontWeight: 700, fontSize: 36, letterSpacing: "0.24em", color: t.light ? t.soft : SOFT}}>GLOBAL TECH TOUR</div>
         <div style={{fontFamily: playfairI.fontFamily, fontStyle: "italic", fontWeight: 700, fontSize: fitSize(92, 980, `«${p.hook.a} —`, `${p.hook.b}»`), lineHeight: 1.04, color: t.fg, marginTop: 26}}>
           «{p.hook.a} —
           <br />
@@ -331,6 +349,7 @@ const Route: React.FC<{p: CoverBottleProps}> = ({p}) => {
   return (
     <AbsoluteFill style={{background: "#020718"}}>
       <Bg p={p} />
+      <Badges p={p} />
       <div style={{position: "absolute", left: 50, right: 50, top: 252, textAlign: "center"}}>
         <Label p={p} />
         <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: 68, lineHeight: 1.06, color: "#FFFFFF", marginTop: 22}}>{p.tour}</div>

@@ -99,8 +99,43 @@
     "huawei",
     "meituan"
    ],
-   "photo": "source-videos/обложки/предметы/tech-giganty.jpg",
-   "photoY": -250
+   "photo": "source-videos/обложки/предметы/tech-giganty-3.jpg",
+   "photoY": -250,
+   "badges": [
+    {
+     "x": 86,
+     "y": 891,
+     "w": 257,
+     "h": 481,
+     "logos": [
+      "baidu",
+      "xiaomi",
+      "alibaba"
+     ]
+    },
+    {
+     "x": 411,
+     "y": 891,
+     "w": 257,
+     "h": 481,
+     "logos": [
+      "tencent",
+      "huawei",
+      "meituan"
+     ]
+    },
+    {
+     "x": 732,
+     "y": 891,
+     "w": 256,
+     "h": 481,
+     "logos": [
+      "unitree",
+      "xiaohongshu",
+      "ubtech"
+     ]
+    }
+   ]
   },
   {
    "label": "Программа тура",

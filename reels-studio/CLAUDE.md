@@ -869,7 +869,12 @@ half… No text, no letters, no numbers, no logos» — без надписей 
 ИИ — расколотый чип; props `…-predmety-vyshedshie.json`). Готовые обложки — `finished-videos/обложки/афиша/<ролик>.jpg`; для роликов
 в очереди они же — `finished-videos/обложки/<ролик>.jpg`. Обложка первой секундой — в копии для публикации (та же ссылка
 `finished-videos/publish/gtt-instagram/<пост>/<имя>.mp4`, перезапись, H.264 4 Мбит/с, кодирование в `/dev/shm`), в посте POST-HUB
-`thumb_offset: 500` и `cover:`; у вышедших Reels API обложку не меняет — только вручную в приложении Instagram. Когда на диске мало места, копию
+`thumb_offset: 500` и `cover:`; у вышедших Reels API обложку не меняет — только вручную в приложении Instagram. Правки 30.10.2026
+(«везде убрать слово «Представляет», оставить просто Global Tech Tour; баннер для техгигантов — с тремя бейджами и логотипами
+компаний, к которым едем»): над крючком афиши только «GLOBAL TECH TOUR»; поле `badges` — пустые бейджи на картинке
+(`{x, y, w, h, logos}` в кадре 1080×1920 до `photoY`), логотипы ставятся столбиком на белые лицевые стороны (multiply) — у
+«Техгигантов» `tech-giganty-3.jpg`: три бейджа по три логотипа (Baidu, Xiaomi, Alibaba · Tencent, Huawei, Meituan · Unitree,
+Xiaohongshu, UBTech). Листы — `finished-videos/обложки/афиша-вышедшие-v2-<дата>.jpg` и `афиша-очередь-v2-<дата>.jpg`. Когда на диске мало места, копию
 кодирую в `/dev/shm` и кладу в git без рабочего файла: `git hash-object -w --no-filters <файл>` → `git update-index --cacheinfo
 100644,<sha>,<путь>` → `--skip-worktree` (без `--no-filters` git по маске `*.mp4` делает LFS-указатель, и пуш падает на бюджете LFS).
 
