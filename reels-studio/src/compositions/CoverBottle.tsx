@@ -132,15 +132,21 @@ const Scrim: React.FC = () => {
 };
 
 // со сдвигом под картинкой — она же, размытая: край сдвинутой картинки растворяется в ней без шва
-const Bg: React.FC<{p: CoverBottleProps; shift?: number; scale?: number}> = ({p, shift = 0, scale = 1}) => (
+// photoY < 0 поднимает предмет над плашкой афиши; освободившийся низ кадра уходит в цвет фона
+const Bg: React.FC<{p: CoverBottleProps; shift?: number; scale?: number}> = ({p, shift = 0, scale = 1}) => {
+  const t = usePal();
+  const y = p.photoY ?? 0;
+  return (
   <>
     {shift ? <Img src={staticFile(p.photo)} style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", filter: "blur(40px)", scale: "1.25"}} /> : null}
     <Img
       src={staticFile(p.photo)}
-      style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", translate: `${shift}px ${p.photoY ?? 0}px`, scale: String(scale), ...(shift ? {maskImage: "linear-gradient(to right, transparent 0, #000 300px)", WebkitMaskImage: "linear-gradient(to right, transparent 0, #000 300px)"} : {})}}
+      style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", translate: `${shift}px ${y}px`, scale: String(scale), ...(shift ? {maskImage: "linear-gradient(to right, transparent 0, #000 300px)", WebkitMaskImage: "linear-gradient(to right, transparent 0, #000 300px)"} : {})}}
     />
+    {y < 0 ? <div style={{position: "absolute", left: 0, right: 0, top: 1920 + y - 260, bottom: 0, background: `linear-gradient(to bottom, ${rgba(t.bg, 0)} 0, ${t.bg} 260px)`}} /> : null}
   </>
-);
+  );
+};
 
 // ——— 1. шапка программы ———
 const Head: React.FC<{p: CoverBottleProps}> = ({p}) => {
@@ -300,9 +306,9 @@ const Poster: React.FC<{p: CoverBottleProps}> = ({p}) => {
           <span style={{color: t.acc}}>{p.hook.b}»</span>
         </div>
       </div>
-      <div style={{position: "absolute", left: 60, right: 60, top: 1220, background: t.plate, border: t.light ? `2px solid ${t.edge}` : "none", borderRadius: 24, padding: "28px 30px 26px", textAlign: "center"}}>
+      <div style={{position: "absolute", left: 60, right: 60, top: 1250, background: t.plate, border: t.light ? `2px solid ${t.edge}` : "none", borderRadius: 24, padding: "28px 30px 26px", textAlign: "center"}}>
         <Label p={p} solid />
-        <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: fitK(0.8, 70, 900, p.tourLines), lineHeight: 1.04, color: t.fg, marginTop: 18, textTransform: "uppercase"}}>
+        <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: fitK(1.0, 70, 900, p.tourLines), lineHeight: 1.04, color: t.fg, marginTop: 18, textTransform: "uppercase"}}>
           {p.tourLines.map((l, i) => (
             <div key={i}>{l}</div>
           ))}
