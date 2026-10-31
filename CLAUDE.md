@@ -35,6 +35,10 @@
   Копии для публикации в `finished-videos/publish/` (обычный git) после пуша убираются с диска так: `git update-index
   --skip-worktree -- <файл>` и удалить файл (ссылки raw.githubusercontent.com работают, git изменений не видит); вернуть —
   `git update-index --no-skip-worktree -- <файл> && git checkout -- <файл>` (30.10.2026: так освобождено ~600 МБ).
+  31.10.2026: `git status` по изменённым медиа под LFS (подменённые указатели, перезаписанные ролики) запускает фильтр LFS и
+  пишет временную копию ролика в `.git/lfs/tmp` — на почти полном диске это его добивает (хук в конце хода вызывает `git status`).
+  Такие файлы помечать `git update-index --skip-worktree` (список изменённых без фильтра: `git -c filter.lfs.process= -c
+  filter.lfs.clean=cat -c filter.lfs.required=false status --porcelain | grep '^ M'`); недописанный файл из `.git/lfs/tmp` — удалить.
 - **Бюджет Git LFS** (25.10.2026): GitHub отклонил загрузку новых видео — «This repository exceeded its LFS budget».
   Скачивание при этом работает. Пока владелец не поднимет бюджет (GitHub → Settings → Billing and licensing →
   Budgets and alerts, строка Git LFS), видео не коммить: остальное (props, фото, код) коммить и пушить как обычно, видео
