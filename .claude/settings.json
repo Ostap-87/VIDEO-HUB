@@ -1,4 +1,9 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(python3 CONTROL/TOOLS/blog_od.py:*)"
+    ]
+  },
   "hooks": {
     "SessionStart": [
       {
