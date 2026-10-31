@@ -874,7 +874,10 @@ half… No text, no letters, no numbers, no logos» — без надписей 
 компаний, к которым едем»): над крючком афиши только «GLOBAL TECH TOUR»; поле `badges` — пустые бейджи на картинке
 (`{x, y, w, h, logos}` в кадре 1080×1920 до `photoY`), логотипы ставятся столбиком на белые лицевые стороны (multiply) — у
 «Техгигантов» `tech-giganty-3.jpg`: три бейджа по три логотипа (Baidu, Xiaomi, Alibaba · Tencent, Huawei, Meituan · Unitree,
-Xiaohongshu, UBTech). Листы — `finished-videos/обложки/афиша-вышедшие-v2-<дата>.jpg` и `афиша-очередь-v2-<дата>.jpg`. Когда на диске мало места, копию
+Xiaohongshu, UBTech). Листы — `finished-videos/обложки/афиша-вышедшие-v2-<дата>.jpg` и `афиша-очередь-v2-<дата>.jpg`. «Автопром»
+(пользователь 31.10: «просто батарейка не очень смотрится») — вариант № 45 из трёх (`avto-scan`, `avto-swap`, `avto-exploded`, props
+`…-avto-3.json`): машина над своей батареей (`avto-swap.jpg`). `photoScale` < 1 — уменьшить высокий предмет (от верхнего края, поля по
+бокам — размытая копия). Архив 13 обложек вышедших Reels для ручной замены в Instagram — `finished-videos/обложки/covers-published-reels.zip`. Когда на диске мало места, копию
 кодирую в `/dev/shm` и кладу в git без рабочего файла: `git hash-object -w --no-filters <файл>` → `git update-index --cacheinfo
 100644,<sha>,<путь>` → `--skip-worktree` (без `--no-filters` git по маске `*.mp4` делает LFS-указатель, и пуш падает на бюджете LFS).
 
