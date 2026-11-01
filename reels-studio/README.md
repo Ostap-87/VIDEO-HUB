@@ -489,3 +489,13 @@ Aura: печать над головой сама уменьшается и по
 
 - `python3 scripts/tour_creative.py 2026-10-10-foto-tur-<тур>` — карусель тура в новом виде (пропуск делегата, маршрут с логотипами, компании «штампами», полароиды, посадочный талон), затем `npm run carousel -- <имя> --guides`.
 - `npx remotion render src/index.ts CoverIdeas <папка> --sequence --image-format=png --props=./props/covers/варианты/<файл>.json` — пять вариантов обложки Reels (пропуск, журнал, цифра, талон, стикеры).
+
+## Знак GTT «кристалл»: аватары и хайлайты
+
+```
+node reels-studio/tools/gtt-crystal/render.mjs still аватар.jpg "w=1080&h=1080&k=0.82&ring=1&t=0.33&ss=2"
+node reels-studio/tools/gtt-crystal/render.mjs loop  видеоаватар.mp4 "w=800&h=800&k=0.82&ring=1&t=0.33&ss=2"
+node reels-studio/tools/gtt-crystal/render.mjs still хайлайт.jpg "page=obj&obj=plane&k=1.3&w=1080&h=1920&cy=960&ss=2"
+```
+Готовый комплект и инструкция — `finished-videos/обложки/gtt-бренд/`. Параметры — в шапке `render.mjs`.
+
