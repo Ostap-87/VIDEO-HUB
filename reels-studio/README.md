@@ -495,6 +495,7 @@ Aura: печать над головой сама уменьшается и по
 ```
 node reels-studio/tools/nav-covers/render.mjs                       # все из covers.json
 node reels-studio/tools/nav-covers/render.mjs kampus-haier-reels    # одна
+node reels-studio/tools/nav-covers/menus.mjs                        # карусели-меню для закрепа (menus.json)
 ```
 Данные — `reels-studio/tools/nav-covers/covers.json` (только факты со слайдов карусели), выход —
 `finished-videos/обложки/reels-из-каруселей/<имя>.jpg`; в публикацию — `cover.jpg` в папку ролика в `finished-videos/publish/…` и `cover_url` в посте POST-HUB.
