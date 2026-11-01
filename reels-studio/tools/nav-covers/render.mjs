@@ -65,8 +65,9 @@ const T = {
   // «Маршрут из логотипов» (пользователь 01.11.2026: «первый вариант ок, но надо чуть креативней… чтобы потом и на другие обложки
   // можно было применять»): компании маршрута по порядку визитов — змейкой, пунктир маршрута, номера, самолёт в конце. Без городов. 4–10 логотипов.
   route: (o) => {
-    const n = o.logos.length, per = n <= 4 ? 2 : 3, rows = Math.ceil(n / per), X0 = 84, W = 912, Y0 = 430, H = rows > 3 ? 820 : 780;
-    const rh = H / rows, cw = per === 3 ? 252 : 360, ch = rows > 3 ? 132 : per === 3 ? 150 : 170;
+    // 01.11.2026: логотипы крупнее (просьба пользователя «чуть крупнее, чтобы было красивее») — карточки 300×200 вместо 252×150
+    const n = o.logos.length, per = n <= 4 ? 2 : 3, rows = Math.ceil(n / per), X0 = per === 3 ? 48 : 84, W = per === 3 ? 984 : 912, Y0 = 420, H = rows > 3 ? 880 : 860;
+    const rh = H / rows, cw = per === 3 ? 300 : 380, ch = rows > 3 ? 172 : per === 3 ? 200 : 230;
     const pts = o.logos.map((l, i) => {
       const r = Math.floor(i / per), inRow = r === rows - 1 ? n - r * per : per; let c = i % per; if (r % 2) c = inRow - 1 - c;
       const step = W / per, off = (per - inRow) * step / 2;
@@ -79,7 +80,8 @@ const T = {
       else { const side = (Math.floor((i - 1) / per) % 2) ? -1 : 1, ex = side > 0 ? Math.max(a.x, b.x) + cw * 0.62 : Math.min(a.x, b.x) - cw * 0.62; d += ` C ${ex} ${a.y} ${ex} ${b.y} ${b.x} ${b.y}`; }
     }
     const last = pts[n - 1], prev = pts[n - 2] || { x: last.x - 1, y: last.y }, dir = Math.abs(prev.y - last.y) < 1 ? (last.x > prev.x ? 1 : -1) : (Math.floor((n - 1) / per) % 2 ? -1 : 1);
-    const px = last.x + dir * (cw / 2 + 58), ang = dir > 0 ? 90 : -90;
+    let px = last.x + dir * (cw / 2 + 58), py = last.y, ang = dir > 0 ? 90 : -90;
+    if (px > 1040 || px < 40) { px = last.x; py = last.y + ch / 2 + 52; ang = 180; }   // у края кадра самолёт — под последней карточкой
     return `<div class="cv">${BG(o.photo)}
     <div style="position:absolute;inset:0;background-image:radial-gradient(#9cc4ff22 2px,transparent 2.5px);background-size:34px 34px;mask:linear-gradient(180deg,transparent 12%,#000 30%,#000 66%,transparent 80%)"></div>
     <div class="gtt">GLOBAL TECH TOUR</div>
@@ -87,9 +89,9 @@ const T = {
     <svg width="1080" height="1920" style="position:absolute;inset:0"><defs><filter id="g"><feGaussianBlur stdDeviation="7"/></filter></defs>
       <path d="${d}" fill="none" stroke="#3d8bff" stroke-width="16" stroke-linecap="round" opacity=".55" filter="url(#g)"/>
       <path d="${d}" fill="none" stroke="#cfe2ff" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 22"/></svg>
-    ${pts.map(p => `<div style="position:absolute;left:${p.x - cw / 2}px;top:${p.y - ch / 2}px;width:${cw}px;height:${ch}px;background:#fff;border-radius:24px;display:flex;align-items:center;justify-content:center;padding:22px 26px;box-shadow:0 22px 44px #000a,0 0 0 4px #ffffff22;rotate:${p.rot}deg">
+    ${pts.map(p => `<div style="position:absolute;left:${p.x - cw / 2}px;top:${p.y - ch / 2}px;width:${cw}px;height:${ch}px;background:#fff;border-radius:24px;display:flex;align-items:center;justify-content:center;padding:14px 18px;box-shadow:0 22px 44px #000a,0 0 0 4px #ffffff22;rotate:${p.rot}deg">
       <img src="${U(p.l)}" style="max-width:100%;max-height:100%;object-fit:contain"><div style="position:absolute;left:-18px;top:-18px;width:52px;height:52px;border-radius:50%;background:#1a73e8;color:#fff;font:800 26px Inter;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px #06132f,0 0 24px #3d8bff">${p.i + 1}</div></div>`).join('')}
-    <div style="position:absolute;left:${px - 34}px;top:${last.y - 34}px;width:68px;height:68px;color:#fff;rotate:${ang}deg;filter:drop-shadow(0 0 14px #3d8bff)">${PLANE(68)}</div>
+    <div style="position:absolute;left:${px - 34}px;top:${py - 34}px;width:68px;height:68px;color:#fff;rotate:${ang}deg;filter:drop-shadow(0 0 14px #3d8bff)">${PLANE(68)}</div>
     <div class="ttl">${hl(o.t)}</div><div class="ft"><span>${o.foot ? o.foot + ' · ' + pl(o.comp || n, 'компания', 'компании', 'компаний') : pl(o.days, 'день', 'дня', 'дней') + ' · ' + pl(o.comp || n, 'компания', 'компании', 'компаний')}</span><span>смотри →</span></div></div>`;
   },
   pola: (o) => `<div class="cv">${BG(o.photo)}<div class="gtt">GLOBAL TECH TOUR</div>
