@@ -423,6 +423,347 @@
    ],
    "comp": 6,
    "days": 5
+  },
+  {
+   "name": "tur-china-film-industry-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-china-film-industry/01.jpg",
+   "t": "Киноиндустрия Китая **изнутри**",
+   "logos": [
+    "source-videos/логотипы/медиа/china-film-group.png",
+    "source-videos/логотипы/медиа/youku.png",
+    "source-videos/логотипы/медиа/bona-film.png",
+    "source-videos/логотипы/медиа/huayi-brothers.png",
+    "source-videos/логотипы/медиа/iqiyi.png",
+    "source-videos/логотипы/медиа/shanghai-film-group.png",
+    "source-videos/логотипы/медиа/tencent-penguin-pictures.png",
+    "source-videos/логотипы/медиа/huace.png"
+   ],
+   "comp": 8,
+   "days": 5
+  },
+  {
+   "name": "tur-china-ticketing-travel-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-china-ticketing-travel/01.jpg",
+   "t": "От билета до **стриминга**: 7 штаб-квартир",
+   "logos": [
+    "source-videos/логотипы/медиа/damai.png",
+    "source-videos/логотипы/медиа/maoyan.png",
+    "source-videos/логотипы/ритейл/meituan.svg",
+    "source-videos/логотипы/медиа/tongcheng.png",
+    "source-videos/логотипы/медиа/trip-com.svg",
+    "source-videos/логотипы/медиа/fliggy.png",
+    "source-videos/логотипы/медиа/tme.png"
+   ],
+   "comp": 7,
+   "days": 5
+  },
+  {
+   "name": "tur-japan-beauty-industry-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-japan-beauty-industry/01.jpg",
+   "t": "Как Япония **изобретает** косметику",
+   "logos": [
+    "source-videos/логотипы/косметика/shiseido.svg",
+    "source-videos/логотипы/косметика/fancl.png",
+    "source-videos/логотипы/косметика/kao.png",
+    "source-videos/логотипы/косметика/kanebo.png",
+    "source-videos/логотипы/косметика/pola-orbis.png",
+    "source-videos/логотипы/косметика/kose.png",
+    "source-videos/логотипы/косметика/mandom.png",
+    "source-videos/логотипы/косметика/rohto.png"
+   ],
+   "comp": 10,
+   "days": 5
+  },
+  {
+   "name": "tur-japan-bubble-tea-coffee-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-japan-bubble-tea-coffee/01.jpg",
+   "t": "Кофе Японии **от завода** до чашки",
+   "logos": [
+    "source-videos/логотипы/чай-кофе/ucc-ueshima-coffee.png",
+    "source-videos/логотипы/чай-кофе/suntory-boss-coffee.png",
+    "source-videos/логотипы/чай-кофе/arabica-percent.png",
+    "source-videos/логотипы/чай-кофе/ogawa-coffee.png",
+    "source-videos/логотипы/чай-кофе/starbucks-reserve-roastery-nakameguro.png",
+    "source-videos/логотипы/чай-кофе/blue-bottle.png",
+    "source-videos/логотипы/чай-кофе/doutor-coffee.png"
+   ],
+   "comp": 8,
+   "days": 5
+  },
+  {
+   "name": "tur-japan-dark-kitchen-delivery-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-japan-dark-kitchen-delivery/01.jpg",
+   "t": "Кухня, где **готовят роботы**",
+   "logos": [
+    "source-videos/логотипы/техгиганты/demae-can.png",
+    "source-videos/логотипы/техгиганты/uber-eats.svg",
+    "source-videos/логотипы/техгиганты/wolt.png",
+    "source-videos/логотипы/роботы/connected-robotics.png",
+    "source-videos/логотипы/роботы/techmagic.png",
+    "source-videos/логотипы/роботы/softbank-robotics.png",
+    "source-videos/логотипы/роботы/zmp.png",
+    "source-videos/логотипы/роботы/panasonic-robotics.png"
+   ],
+   "comp": 10,
+   "days": 5
+  },
+  {
+   "name": "tur-japan-food-dairy-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-japan-food-dairy/01.jpg",
+   "t": "Где придумали умами и **Cup Noodles**",
+   "logos": [
+    "source-videos/логотипы/еда/yakult-honsha.svg",
+    "source-videos/логотипы/еда/meiji-holdings.svg",
+    "source-videos/логотипы/еда/kikkoman.png",
+    "source-videos/логотипы/еда/kewpie.png",
+    "source-videos/логотипы/еда/ajinomoto.svg",
+    "source-videos/логотипы/еда/fuji-oil.png",
+    "source-videos/логотипы/еда/nissin-foods.png",
+    "source-videos/логотипы/еда/morinaga-milk.svg"
+   ],
+   "comp": 9,
+   "days": 5
+  },
+  {
+   "name": "tur-japan-longevity-biotech-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-japan-longevity-biotech/01.jpg",
+   "t": "Лаборатория **нобелевского** открытия",
+   "logos": [
+    "source-videos/логотипы/медицина/fujifilm-ips.svg",
+    "source-videos/логотипы/медицина/healios.png",
+    "source-videos/логотипы/медицина/eisai.png",
+    "source-videos/логотипы/косметика/shiseido.svg",
+    "source-videos/логотипы/медицина/kaneka.png",
+    "source-videos/логотипы/косметика/rohto.png",
+    "source-videos/логотипы/общие/kyoto-university-cira.png",
+    "source-videos/логотипы/общие/riken-wako.png"
+   ],
+   "comp": 10,
+   "days": 5
+  },
+  {
+   "name": "tur-japan-retail-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-japan-retail/01.jpg",
+   "t": "Как Япония **автоматизирует** магазины",
+   "logos": [
+    "source-videos/логотипы/ритейл/seven-eleven.png",
+    "source-videos/логотипы/ритейл/lawson.png",
+    "source-videos/логотипы/ритейл/familymart.svg",
+    "source-videos/логотипы/ритейл/uniqlo.svg",
+    "source-videos/логотипы/ритейл/muji.svg",
+    "source-videos/логотипы/ритейл/don-quijote.png",
+    "source-videos/логотипы/ритейл/nitori.png",
+    "source-videos/логотипы/ритейл/trial.png"
+   ],
+   "comp": 10,
+   "days": 5
+  },
+  {
+   "name": "tur-japan-tech-internet-giants-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-japan-tech-internet-giants/01.jpg",
+   "t": "Японский ИИ и интернет **изнутри**",
+   "logos": [
+    "source-videos/логотипы/ии/preferred-networks.png",
+    "source-videos/логотипы/ии/sakana-ai.png",
+    "source-videos/логотипы/техгиганты/ly-corporation.svg",
+    "source-videos/логотипы/техгиганты/paypay.png",
+    "source-videos/логотипы/техгиганты/rakuten-crimson-house.svg",
+    "source-videos/логотипы/техгиганты/mercari.png",
+    "source-videos/логотипы/общие/fujitsu.svg",
+    "source-videos/логотипы/общие/ntt.png"
+   ],
+   "comp": 10,
+   "days": 5
+  },
+  {
+   "name": "tur-thailand-beauty-industry-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-thailand-beauty-industry/01.jpg",
+   "t": "Тайская **косметика** изнутри",
+   "logos": [
+    "source-videos/логотипы/косметика/better-way-mistine.png",
+    "source-videos/логотипы/косметика/karmarts.png",
+    "source-videos/логотипы/косметика/srichand-snp.png",
+    "source-videos/логотипы/косметика/beauty-buffet.png",
+    "source-videos/логотипы/косметика/harnn.png",
+    "source-videos/логотипы/косметика/divana.png",
+    "source-videos/логотипы/косметика/oriental-princess.png",
+    "source-videos/логотипы/косметика/beiersdorf.png"
+   ],
+   "comp": 10,
+   "days": 5
+  },
+  {
+   "name": "tur-thailand-bubble-tea-coffee-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-thailand-bubble-tea-coffee/01.jpg",
+   "t": "Кофейня на заправке — **5000+** точек",
+   "logos": [
+    "source-videos/логотипы/чай-кофе/cafe-amazon-ptt.svg",
+    "source-videos/логотипы/чай-кофе/inthanin-bangchak.png",
+    "source-videos/логотипы/чай-кофе/chatramue.png",
+    "source-videos/логотипы/чай-кофе/karun-thai-tea.png",
+    "source-videos/логотипы/чай-кофе/pacamara.png",
+    "source-videos/логотипы/чай-кофе/roots-coffee.png",
+    "source-videos/логотипы/чай-кофе/true-coffee.png",
+    "source-videos/логотипы/чай-кофе/koi-the.png"
+   ],
+   "comp": 11,
+   "days": 5
+  },
+  {
+   "name": "tur-thailand-dark-kitchen-delivery-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-thailand-dark-kitchen-delivery/01.jpg",
+   "t": "Кто **выигрывает** доставку Бангкока",
+   "logos": [
+    "source-videos/логотипы/техгиганты/line-man-wongnai.png",
+    "source-videos/логотипы/техгиганты/grab.svg",
+    "source-videos/логотипы/техгиганты/foodpanda.svg",
+    "source-videos/логотипы/техгиганты/robinhood-scb.png",
+    "source-videos/логотипы/техгиганты/freshket.png",
+    "source-videos/логотипы/техгиганты/cloudeats.png",
+    "source-videos/логотипы/техгиганты/cp-cloud-kitchen.png",
+    "source-videos/логотипы/техгиганты/shopee-food.svg"
+   ],
+   "comp": 9,
+   "days": 5
+  },
+  {
+   "name": "tur-thailand-food-dairy-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-thailand-food-dairy/01.jpg",
+   "t": "Тунец, йогурт и **растительное** мясо",
+   "logos": [
+    "source-videos/логотипы/еда/charoen-pokphand-foods.png",
+    "source-videos/логотипы/еда/thai-union-group.png",
+    "source-videos/логотипы/еда/space-f.png",
+    "source-videos/логотипы/еда/betagro.png",
+    "source-videos/логотипы/еда/dutch-mill.png",
+    "source-videos/логотипы/еда/nr-instant-produce.png",
+    "source-videos/логотипы/еда/more-meat.png",
+    "source-videos/логотипы/еда/meiji.svg"
+   ],
+   "comp": 9,
+   "days": 5
+  },
+  {
+   "name": "tur-thailand-longevity-biotech-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-thailand-longevity-biotech/01.jpg",
+   "t": "Биовозраст, теломеры и **стволовые** клетки",
+   "logos": [
+    "source-videos/логотипы/медицина/bdms-wellness-clinic.png",
+    "source-videos/логотипы/медицина/vitallife-bumrungrad.png",
+    "source-videos/логотипы/медицина/medeze-group.png",
+    "source-videos/логотипы/медицина/vaanaa-longevity-clinic.png",
+    "source-videos/логотипы/медицина/rakxa-integrative-wellness.png",
+    "source-videos/логотипы/медицина/mousai-wellness-center.png",
+    "source-videos/логотипы/медицина/boston-health-longevity.png",
+    "source-videos/логотипы/медицина/vega-clinic.png"
+   ],
+   "comp": 8,
+   "days": 4
+  },
+  {
+   "name": "tur-thailand-retail-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-thailand-retail/01.jpg",
+   "t": "Вторая в мире сеть **7-Eleven**",
+   "logos": [
+    "source-videos/логотипы/ритейл/cp-all.png",
+    "source-videos/логотипы/ритейл/central-retail.png",
+    "source-videos/логотипы/ритейл/siam-piwat.png",
+    "source-videos/логотипы/ритейл/siam-paragon.png",
+    "source-videos/логотипы/ритейл/cp-axtra.png",
+    "source-videos/логотипы/ритейл/lotus.svg",
+    "source-videos/логотипы/ритейл/big-c.svg",
+    "source-videos/логотипы/ритейл/homepro.png"
+   ],
+   "comp": 9,
+   "days": 5
+  },
+  {
+   "name": "tur-thailand-tech-internet-giants-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-thailand-tech-internet-giants/01.jpg",
+   "t": "Как Таиланд строит **свой** ИИ",
+   "logos": [
+    "source-videos/логотипы/ии/scb-10x-abacus.png",
+    "source-videos/логотипы/техгиганты/line.svg",
+    "source-videos/логотипы/ии/amity-solutions.png",
+    "source-videos/логотипы/техгиганты/lazada.svg",
+    "source-videos/логотипы/техгиганты/shopee.svg",
+    "source-videos/логотипы/техгиганты/tiktok-shop.png",
+    "source-videos/логотипы/техгиганты/truemoney-ascend.png",
+    "source-videos/логотипы/ии/botnoi.png"
+   ],
+   "comp": 10,
+   "days": 5
+  },
+  {
+   "name": "tur-vietnam-food-dairy-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-vietnam-food-dairy/01.jpg",
+   "t": "Ферма на **70 000** коров",
+   "logos": [
+    "source-videos/логотипы/еда/vinamilk.svg",
+    "source-videos/логотипы/еда/nutifood.png",
+    "source-videos/логотипы/еда/masan-consumer.png",
+    "source-videos/логотипы/еда/vissan.png",
+    "source-videos/логотипы/еда/dutch-lady-frieslandcampina.png",
+    "source-videos/логотипы/еда/th-true-milk.png",
+    "source-videos/логотипы/еда/acecook.png"
+   ],
+   "comp": 7,
+   "days": 5
+  },
+  {
+   "name": "tur-vietnam-retail-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-vietnam-retail/01.jpg",
+   "t": "Больше **двух** магазинов в день",
+   "logos": [
+    "source-videos/логотипы/ритейл/mwg.png",
+    "source-videos/логотипы/ритейл/fpt-long-chau.png",
+    "source-videos/логотипы/ритейл/saigon-coop.png",
+    "source-videos/логотипы/ритейл/central-retail-vietnam.png",
+    "source-videos/логотипы/ритейл/aeon.png",
+    "source-videos/логотипы/ритейл/wincommerce.png",
+    "source-videos/логотипы/ритейл/circle-k.svg",
+    "source-videos/логотипы/ритейл/con-cung.png"
+   ],
+   "comp": 9,
+   "days": 5
+  },
+  {
+   "name": "xingwang-visit",
+   "kind": "pola",
+   "photo": "source-videos/2026-10-26-xingwang/фото/koni.jpg",
+   "py": "45%",
+   "hand": "Xingwang · Чанша",
+   "pill": "Визит · технопарк Xingwang",
+   "t": "В гостях у **председателя** группы",
+   "_": "полароид — визиты; факты — из карусели 2026-10-26-foto-xingwang"
+  },
+  {
+   "name": "yingke-visit",
+   "kind": "pola",
+   "photo": "source-videos/2026-10-26-yingke/фото/IMG_5765.jpg",
+   "py": "40%",
+   "hand": "Юрфирма YingKe",
+   "pill": "Визит · юрфирма YingKe",
+   "t": "Крупнейшая юрфирма мира **по числу юристов**",
+   "_": "полароид — визиты; факты — из карусели 2026-10-26-foto-yingke"
   }
  ]
 }

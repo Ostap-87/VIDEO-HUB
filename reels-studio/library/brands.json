@@ -4769,5 +4769,112 @@
   ],
   "logo": "source-videos/логотипы/отели/accor-text.png",
   "note": "нейтральная текстовая плашка (знака в открытых источниках не нашлось) — заменить оригиналом, когда будет"
+ },
+ "china-film-group": {
+  "names": [
+   "China Film Group",
+   "China Film",
+   "CFGC",
+   "Чайна Филм"
+  ],
+  "logo": "source-videos/логотипы/медиа/china-film-group.png"
+ },
+ "bona-film": {
+  "names": [
+   "Bona Film Group",
+   "Bona",
+   "Бона"
+  ],
+  "logo": "source-videos/логотипы/медиа/bona-film.png"
+ },
+ "huayi-brothers": {
+  "names": [
+   "Huayi Brothers",
+   "Huayi",
+   "Хуайи"
+  ],
+  "logo": "source-videos/логотипы/медиа/huayi-brothers.png"
+ },
+ "iqiyi": {
+  "names": [
+   "iQiyi",
+   "iQIYI",
+   "Айцийи"
+  ],
+  "logo": "source-videos/логотипы/медиа/iqiyi.png"
+ },
+ "youku": {
+  "names": [
+   "Youku",
+   "Юку"
+  ],
+  "logo": "source-videos/логотипы/медиа/youku.png"
+ },
+ "shanghai-film-group": {
+  "names": [
+   "Shanghai Film Group",
+   "SFG"
+  ],
+  "logo": "source-videos/логотипы/медиа/shanghai-film-group.png"
+ },
+ "tencent-penguin-pictures": {
+  "names": [
+   "Tencent Penguin Pictures",
+   "Tencent Penguin"
+  ],
+  "logo": "source-videos/логотипы/медиа/tencent-penguin-pictures.png"
+ },
+ "huace": {
+  "names": [
+   "Zhejiang Huace",
+   "Huace",
+   "Хуацэ"
+  ],
+  "logo": "source-videos/логотипы/медиа/huace.png"
+ },
+ "damai": {
+  "names": [
+   "Damai",
+   "Дамай"
+  ],
+  "logo": "source-videos/логотипы/медиа/damai.png"
+ },
+ "maoyan": {
+  "names": [
+   "Maoyan",
+   "Маоянь"
+  ],
+  "logo": "source-videos/логотипы/медиа/maoyan.png"
+ },
+ "tongcheng": {
+  "names": [
+   "Tongcheng",
+   "Tongcheng Travel",
+   "Тунчэн"
+  ],
+  "logo": "source-videos/логотипы/медиа/tongcheng.png"
+ },
+ "trip-com": {
+  "names": [
+   "Trip.com",
+   "Ctrip",
+   "Трип.ком"
+  ],
+  "logo": "source-videos/логотипы/медиа/trip-com.svg"
+ },
+ "fliggy": {
+  "names": [
+   "Fliggy",
+   "Флигги"
+  ],
+  "logo": "source-videos/логотипы/медиа/fliggy.png"
+ },
+ "tme": {
+  "names": [
+   "TME",
+   "Tencent Music",
+   "Tencent Music Entertainment"
+  ],
+  "logo": "source-videos/логотипы/медиа/tme.png"
  }
 }
