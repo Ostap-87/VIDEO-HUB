@@ -1,0 +1,77 @@
+{
+  "brand": "gtt",
+  "stories": [
+    {
+      "cover": "finished-videos/frames/_ann/tur-china-petrochemicals-guangdong/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-china-petrochemicals-guangdong/03.jpg",
+        "finished-videos/frames/_ann/tur-china-petrochemicals-guangdong/02.jpg"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "6 крупнейших комплексов Гуандуна"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/kampus-haier/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/kampus-haier/03.jpg",
+        "finished-videos/frames/_ann/kampus-haier/02.jpg"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Как Haier сделал сотрудников предпринимателями"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/tur-china-logistics-top10/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-china-logistics-top10/03.jpg",
+        "finished-videos/frames/_ann/tur-china-logistics-top10/02.jpg"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "10 лидеров логистики Китая"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/kampus-bytedance/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/kampus-bytedance/03.jpg",
+        "finished-videos/frames/_ann/kampus-bytedance/02.jpg"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Как алгоритм стал стратегией"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/tur-hotel-giants-china/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-hotel-giants-china/03.jpg",
+        "finished-videos/frames/_ann/tur-hotel-giants-china/02.jpg"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Как китайские отели растут на франшизе"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/kampus-huawei/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/kampus-huawei/03.jpg",
+        "finished-videos/frames/_ann/kampus-huawei/02.jpg"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Стратегия, которая выдерживает 30 лет роста"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/tur-global-hospitality-china/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-global-hospitality-china/03.jpg",
+        "finished-videos/frames/_ann/tur-global-hospitality-china/02.jpg"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Как Marriott и Hilton адаптируются к Китаю"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/kampus-xiaomi/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/kampus-xiaomi/03.jpg",
+        "finished-videos/frames/_ann/kampus-xiaomi/02.jpg"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Как Xiaomi делает хиты продаж"
+    }
+  ]
+}
