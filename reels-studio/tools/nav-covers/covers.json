@@ -1,35 +1,218 @@
 {
-  "_": "Обложки Reels из каруселей (решение пользователя 01.11.2026, формат 5 навигации): программа тура — «посадочный талон», обучение в кампусе — «пропуск». Факты — только со слайдов самих каруселей (маршрут, компании). Выход: finished-videos/обложки/reels-из-каруселей/<name>.jpg (1080×1920).",
-  "covers": [
-    {"name": "tur-china-petrochemicals-guangdong-reels", "kind": "talon", "photo": "source-videos/карусели/2026-10-10-foto-tur-china-petrochemicals-guangdong/01.jpg",
-     "from": "ЧЖАНЬЦЗЯН", "to": "ХУЭЙЧЖОУ", "via": "через Маомин и Гуанчжоу · весь маршрут на авто", "prog": "Нефтехимия Китая", "days": 5, "cities": 4, "comp": 6,
-     "cos": "Sinopec Zhongke · BASF · Sinopec · Guangzhou Petrochemical · CSPC · ExxonMobil", "t": "6 крупнейших **комплексов** Гуандуна"},
-    {"name": "tur-china-logistics-top10-reels", "kind": "talon", "photo": "source-videos/карусели/2026-10-10-foto-tur-china-logistics-top10/01.jpg",
-     "from": "ПЕКИН", "to": "ШЭНЬЧЖЭНЬ", "via": "через Шанхай и Ханчжоу", "prog": "Логистика Китая", "days": 5, "cities": 4, "comp": 10,
-     "cos": "JD Logistics · Sinotrans · CRE · COSCO Shipping · ZTO · YTO · STO · Deppon · Cainiao · SF Express", "t": "10 лидеров **логистики** Китая"},
-    {"name": "tur-hotel-giants-china-reels", "kind": "talon", "photo": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/01.jpg",
-     "from": "ШАНХАЙ", "to": "ПЕКИН", "via": "через Ханчжоу и Гуанчжоу", "prog": "Гостиничные гиганты Китая", "days": 5, "cities": 4, "comp": 7,
-     "cos": "Jin Jiang · H World · GreenTree · Atour · Kaiyuan · Dossen · BTG Hotels", "t": "Как китайские отели **растут на франшизе**"},
-    {"name": "tur-global-hospitality-china-reels", "kind": "talon", "photo": "source-videos/карусели/2026-10-10-foto-tur-global-hospitality-china/01.jpg",
-     "from": "ШАНХАЙ", "via": "5 дней в одном городе · круглый стол о локализации бренда", "prog": "Мировые отели в Китае", "days": 5, "cities": 1, "comp": 6,
-     "cos": "Marriott · Hilton · IHG · Accor · Hyatt · Wyndham · Waldorf Astoria · Tomorrow Square", "t": "Как Marriott и Hilton **адаптируются** к Китаю"},
-    {"name": "tur-china-fintech-giants-reels", "kind": "talon", "photo": "source-videos/карусели/2026-10-10-foto-tur-china-fintech-giants/01.jpg",
-     "from": "ПЕКИН", "to": "ШАНХАЙ", "via": "через Шэньчжэнь и Ханчжоу", "prog": "Финтех-гиганты Китая", "days": 5, "cities": 4, "comp": 8,
-     "cos": "JD Digits · Du Xiaoman · Tencent · OneConnect · Lexin · Ant Group · Lufax · East Money", "t": "Кто построил **финтех** Китая"},
-    {"name": "tur-china-waste-management-reels", "kind": "talon", "photo": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/01.jpg",
-     "from": "ШЭНЬЧЖЭНЬ", "to": "НАНЬТУН", "via": "через Фошань, Шанхай и Хайань", "prog": "Переработка отходов Китая", "days": 5, "cities": 5, "comp": 6,
-     "cos": "GEM · Shenzhen Energy · Grandblue · Everbright · Shanghai Environment · Tianying", "t": "Завод, где сгорает **треть** мусора Шанхая"},
-    {"name": "kampus-haier-reels", "kind": "pass", "photo": "source-videos/карусели/2026-10-30-kampus-haier/01.jpg", "logo": "source-videos/логотипы/бытовая-техника/haier.svg",
-     "pass": "Цифровая экосистема бренда", "line": "3 дня · группа от 10", "t": "Как Haier сделал сотрудников **предпринимателями**"},
-    {"name": "kampus-bytedance-reels", "kind": "pass", "photo": "source-videos/карусели/2026-10-30-kampus-bytedance/01.jpg", "logo": "source-videos/логотипы/общие/bytedance.png",
-     "pass": "Цифро-интеллектуальный рост", "line": "3 дня · группа от 10", "t": "Как алгоритм стал **стратегией**"},
-    {"name": "kampus-huawei-reels", "kind": "pass", "photo": "source-videos/карусели/2026-10-30-kampus-huawei/01.jpg", "logo": "source-videos/логотипы/общие/huawei.svg",
-     "pass": "Стратегическое управление", "line": "3 дня · Шэньчжэнь", "t": "Стратегия, которая выдерживает **30 лет** роста"},
-    {"name": "kampus-xiaomi-reels", "kind": "pass", "photo": "source-videos/карусели/2026-10-30-kampus-xiaomi/01.jpg", "logo": "source-videos/логотипы/общие/xiaomi.svg",
-     "pass": "Создание хитовых продуктов", "line": "3 дня · группа от 10", "t": "Как Xiaomi делает **хиты** продаж"},
-    {"name": "kampus-pingan-reels", "kind": "pass", "photo": "source-videos/карусели/2026-10-30-kampus-pingan/01.jpg", "logo": "source-videos/логотипы/финансы/ping-an.svg",
-     "pass": "Цифровая стратегия финансов", "line": "3 дня · группа от 10", "t": "Страховая, которая стала **технологической**"},
-    {"name": "kampus-alibaba-reels", "kind": "pass", "photo": "source-videos/карусели/2026-10-30-kampus-alibaba/01.jpg", "logo": "source-videos/логотипы/общие/alibaba.svg",
-     "pass": "Управленческие инновации", "line": "3 дня · Ханчжоу", "t": "Как Alibaba **управляет** экосистемой"}
-  ]
+ "_": "Обложки Reels из каруселей (решение пользователя 01.11.2026, формат 5 навигации): программа тура — «посадочный талон», обучение в кампусе — «пропуск». Факты — только со слайдов самих каруселей (маршрут, компании). Выход: finished-videos/обложки/reels-из-каруселей/<name>.jpg (1080×1920).",
+ "covers": [
+  {
+   "kind": "route",
+   "days": 5,
+   "name": "tur-china-petrochemicals-guangdong-reels",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-china-petrochemicals-guangdong/01.jpg",
+   "t": "6 крупнейших **комплексов** Гуандуна",
+   "comp": 6,
+   "logos": [
+    "source-videos/логотипы/энергетика/sinopec.png",
+    "source-videos/логотипы/энергетика/basf.png",
+    "source-videos/логотипы/энергетика/cspc.png",
+    "source-videos/логотипы/энергетика/exxonmobil.png"
+   ],
+   "_talon": "прежний талон заменён маршрутом из логотипов (01.11.2026)"
+  },
+  {
+   "kind": "route",
+   "days": 5,
+   "name": "tur-china-logistics-top10-reels",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-china-logistics-top10/01.jpg",
+   "t": "10 лидеров **логистики** Китая",
+   "logos": [
+    "source-videos/логотипы/ритейл/jd.svg",
+    "source-videos/логотипы/логистика/sinotrans.png",
+    "source-videos/логотипы/логистика/china-railway-express.png",
+    "source-videos/логотипы/логистика/cosco.png",
+    "source-videos/логотипы/логистика/zto.png",
+    "source-videos/логотипы/логистика/yto.png",
+    "source-videos/логотипы/логистика/sto.png",
+    "source-videos/логотипы/логистика/deppon.png",
+    "source-videos/логотипы/логистика/cainiao.png",
+    "source-videos/логотипы/логистика/sf-express.svg"
+   ],
+   "_talon": "прежний талон заменён маршрутом из логотипов (01.11.2026)"
+  },
+  {
+   "kind": "route",
+   "days": 5,
+   "name": "tur-hotel-giants-china-reels",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-hotel-giants-china/01.jpg",
+   "t": "Как китайские отели **растут на франшизе**",
+   "logos": [
+    "source-videos/логотипы/отели/jin-jiang-text.png",
+    "source-videos/логотипы/отели/h-world-text.png",
+    "source-videos/логотипы/отели/greentree-text.png",
+    "source-videos/логотипы/отели/atour-text.png",
+    "source-videos/логотипы/отели/kaiyuan-text.png",
+    "source-videos/логотипы/отели/dossen-text.png",
+    "source-videos/логотипы/отели/btg-hotels-text.png"
+   ],
+   "_talon": "прежний талон заменён маршрутом из логотипов (01.11.2026)"
+  },
+  {
+   "kind": "route",
+   "days": 5,
+   "name": "tur-global-hospitality-china-reels",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-global-hospitality-china/01.jpg",
+   "t": "Как Marriott и Hilton **адаптируются** к Китаю",
+   "logos": [
+    "source-videos/логотипы/отели/marriott.png",
+    "source-videos/логотипы/отели/hilton.png",
+    "source-videos/логотипы/отели/ihg.png",
+    "source-videos/логотипы/отели/accor-text.png",
+    "source-videos/логотипы/отели/hyatt.png",
+    "source-videos/логотипы/отели/wyndham.png"
+   ],
+   "_talon": "прежний талон заменён маршрутом из логотипов (01.11.2026)"
+  },
+  {
+   "kind": "route",
+   "days": 5,
+   "name": "tur-china-fintech-giants-reels",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-china-fintech-giants/01.jpg",
+   "t": "Кто построил **финтех** Китая",
+   "logos": [
+    "source-videos/логотипы/ритейл/jd.svg",
+    "source-videos/логотипы/финансы/du-xiaoman.png",
+    "source-videos/логотипы/общие/tencent.svg",
+    "source-videos/логотипы/финансы/oneconnect.png",
+    "source-videos/логотипы/финансы/lexin.png",
+    "source-videos/логотипы/финансы/ant-group.svg",
+    "source-videos/логотипы/финансы/lufax.png",
+    "source-videos/логотипы/финансы/eastmoney.png"
+   ],
+   "_talon": "прежний талон заменён маршрутом из логотипов (01.11.2026)"
+  },
+  {
+   "kind": "route",
+   "days": 5,
+   "name": "tur-china-waste-management-reels",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-china-waste-management/01.jpg",
+   "t": "Завод, где сгорает **треть** мусора Шанхая",
+   "logos": [
+    "source-videos/логотипы/энергетика/gem.png",
+    "source-videos/логотипы/энергетика/shenzhen-energy-environmental.png",
+    "source-videos/логотипы/энергетика/grandblue.png",
+    "source-videos/логотипы/энергетика/everbright-environment.png",
+    "source-videos/логотипы/энергетика/shanghai-environment.png",
+    "source-videos/логотипы/энергетика/tianying.png"
+   ],
+   "_talon": "прежний талон заменён маршрутом из логотипов (01.11.2026)"
+  },
+  {
+   "name": "kampus-haier-reels",
+   "kind": "pass",
+   "photo": "source-videos/карусели/2026-10-30-kampus-haier/01.jpg",
+   "logo": "source-videos/логотипы/бытовая-техника/haier.svg",
+   "pass": "Цифровая экосистема бренда",
+   "line": "3 дня · группа от 10",
+   "t": "Как Haier сделал сотрудников **предпринимателями**"
+  },
+  {
+   "name": "kampus-bytedance-reels",
+   "kind": "pass",
+   "photo": "source-videos/карусели/2026-10-30-kampus-bytedance/01.jpg",
+   "logo": "source-videos/логотипы/общие/bytedance.png",
+   "pass": "Цифро-интеллектуальный рост",
+   "line": "3 дня · группа от 10",
+   "t": "Как алгоритм стал **стратегией**"
+  },
+  {
+   "name": "kampus-huawei-reels",
+   "kind": "pass",
+   "photo": "source-videos/карусели/2026-10-30-kampus-huawei/01.jpg",
+   "logo": "source-videos/логотипы/общие/huawei.svg",
+   "pass": "Стратегическое управление",
+   "line": "3 дня · Шэньчжэнь",
+   "t": "Стратегия, которая выдерживает **30 лет** роста"
+  },
+  {
+   "name": "kampus-xiaomi-reels",
+   "kind": "pass",
+   "photo": "source-videos/карусели/2026-10-30-kampus-xiaomi/01.jpg",
+   "logo": "source-videos/логотипы/общие/xiaomi.svg",
+   "pass": "Создание хитовых продуктов",
+   "line": "3 дня · группа от 10",
+   "t": "Как Xiaomi делает **хиты** продаж"
+  },
+  {
+   "name": "kampus-pingan-reels",
+   "kind": "pass",
+   "photo": "source-videos/карусели/2026-10-30-kampus-pingan/01.jpg",
+   "logo": "source-videos/логотипы/финансы/ping-an.svg",
+   "pass": "Цифровая стратегия финансов",
+   "line": "3 дня · группа от 10",
+   "t": "Страховая, которая стала **технологической**"
+  },
+  {
+   "name": "kampus-alibaba-reels",
+   "kind": "pass",
+   "photo": "source-videos/карусели/2026-10-30-kampus-alibaba/01.jpg",
+   "logo": "source-videos/логотипы/общие/alibaba.svg",
+   "pass": "Управленческие инновации",
+   "line": "3 дня · Ханчжоу",
+   "t": "Как Alibaba **управляет** экосистемой"
+  },
+  {
+   "kind": "route",
+   "days": 5,
+   "name": "tur-china-glp1-peptides-reels",
+   "photo": "source-videos/карусели/2026-10-29-foto-tur-china-glp1-peptides/01.jpg",
+   "t": "Гонка за **GLP-1** изнутри",
+   "logos": [
+    "source-videos/логотипы/медицина/wuxi-apptec.png",
+    "source-videos/логотипы/медицина/innovent.png",
+    "source-videos/логотипы/медицина/huadong-medicine.png",
+    "source-videos/логотипы/медицина/jiuyuan-gene.png",
+    "source-videos/логотипы/медицина/langhua.png",
+    "source-videos/логотипы/медицина/sciwind.png"
+   ],
+   "_talon": "прежний талон заменён маршрутом из логотипов (01.11.2026)"
+  },
+  {
+   "kind": "route",
+   "days": 5,
+   "name": "tur-china-dairy-smart-factories-reels",
+   "photo": "source-videos/карусели/2026-10-29-foto-tur-china-dairy-smart-factories/01.jpg",
+   "t": "Самые **умные** молочные заводы Китая",
+   "comp": 4,
+   "logos": [
+    "source-videos/логотипы/еда/yili.png",
+    "source-videos/логотипы/еда/mengniu.svg",
+    "source-videos/логотипы/еда/weigang-text.png",
+    "source-videos/логотипы/еда/bright-dairy.png"
+   ],
+   "_talon": "прежний талон заменён маршрутом из логотипов (01.11.2026)"
+  },
+  {
+   "kind": "route",
+   "days": 5,
+   "name": "tur-hongkong-luxury-legacy-reels",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-hongkong-luxury-legacy/01.jpg",
+   "t": "Люкс на **наследии**, а не на франшизе",
+   "logos": [
+    "source-videos/логотипы/отели/peninsula.png",
+    "source-videos/логотипы/отели/mandarin-oriental.png",
+    "source-videos/логотипы/отели/rosewood-text.png",
+    "source-videos/логотипы/отели/shangri-la-text.png",
+    "source-videos/логотипы/отели/langham-text.png",
+    "source-videos/логотипы/отели/wharf-hotels-text.png"
+   ],
+   "_talon": "прежний талон заменён маршрутом из логотипов (01.11.2026)"
+  },
+  {
+   "name": "sany-visit",
+   "kind": "pola",
+   "photo": "source-videos/2026-10-25-sany/IMG_5645.jpg",
+   "py": "35%",
+   "hand": "SANY · Чанша",
+   "pill": "Визит · завод SANY",
+   "t": "Приехал **лично**: завод, менеджмент, переговоры",
+   "_": "полароид — визиты (формат 5); факты — из подписи Reels SANY 26.10.2026"
+  }
+ ]
 }

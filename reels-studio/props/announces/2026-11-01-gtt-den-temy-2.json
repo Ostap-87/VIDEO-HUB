@@ -1,0 +1,32 @@
+{
+  "brand": "gtt",
+  "stories": [
+    {
+      "cover": "finished-videos/frames/_ann/tur-china-glp1-peptides/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-china-glp1-peptides/03.jpg",
+        "finished-videos/frames/_ann/tur-china-glp1-peptides/02.jpg"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Гонка за GLP-1 изнутри"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/tur-china-dairy-smart-factories/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-china-dairy-smart-factories/03.jpg",
+        "finished-videos/frames/_ann/tur-china-dairy-smart-factories/02.jpg"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Самые умные молочные заводы Китая"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/tur-hongkong-luxury-legacy/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-hongkong-luxury-legacy/03.jpg",
+        "finished-videos/frames/_ann/tur-hongkong-luxury-legacy/02.jpg"
+      ],
+      "title": "Листай карусель **в профиле**",
+      "note": "Люкс на наследии, а не на франшизе"
+    }
+  ]
+}

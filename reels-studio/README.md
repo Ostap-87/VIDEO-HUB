@@ -497,6 +497,8 @@ node reels-studio/tools/nav-covers/render.mjs                       # все и�
 node reels-studio/tools/nav-covers/render.mjs kampus-haier-reels    # одна
 node reels-studio/tools/nav-covers/menus.mjs                        # карусели-меню для закрепа (menus.json)
 ```
+Виды: `route` (программа: «К кому едем · маршрут по компаниям», 4–10 логотипов), `pass` (кампус), `pola` (визит, подпись от руки); `talon` — прежний, не используется. Обложки всех вышедших Reels по порядку с первого поста и
+инструкция замены в приложении — `finished-videos/обложки/вышедшие-reels-формат5/`.
 Данные — `reels-studio/tools/nav-covers/covers.json` (только факты со слайдов карусели), выход —
 `finished-videos/обложки/reels-из-каруселей/<имя>.jpg`; в публикацию — `cover.jpg` в папку ролика в `finished-videos/publish/…` и `cover_url` в посте POST-HUB.
 
