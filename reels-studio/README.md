@@ -490,6 +490,15 @@ Aura: печать над головой сама уменьшается и по
 - `python3 scripts/tour_creative.py 2026-10-10-foto-tur-<тур>` — карусель тура в новом виде (пропуск делегата, маршрут с логотипами, компании «штампами», полароиды, посадочный талон), затем `npm run carousel -- <имя> --guides`.
 - `npx remotion render src/index.ts CoverIdeas <папка> --sequence --image-format=png --props=./props/covers/варианты/<файл>.json` — пять вариантов обложки Reels (пропуск, журнал, цифра, талон, стикеры).
 
+## Обложки Reels из каруселей GTT (талон / пропуск)
+
+```
+node reels-studio/tools/nav-covers/render.mjs                       # все из covers.json
+node reels-studio/tools/nav-covers/render.mjs kampus-haier-reels    # одна
+```
+Данные — `reels-studio/tools/nav-covers/covers.json` (только факты со слайдов карусели), выход —
+`finished-videos/обложки/reels-из-каруселей/<имя>.jpg`; в публикацию — `cover.jpg` в папку ролика в `finished-videos/publish/…` и `cover_url` в посте POST-HUB.
+
 ## Знак GTT «кристалл»: аватары и хайлайты
 
 ```
