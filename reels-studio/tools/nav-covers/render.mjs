@@ -90,7 +90,7 @@ const T = {
     ${pts.map(p => `<div style="position:absolute;left:${p.x - cw / 2}px;top:${p.y - ch / 2}px;width:${cw}px;height:${ch}px;background:#fff;border-radius:24px;display:flex;align-items:center;justify-content:center;padding:22px 26px;box-shadow:0 22px 44px #000a,0 0 0 4px #ffffff22;rotate:${p.rot}deg">
       <img src="${U(p.l)}" style="max-width:100%;max-height:100%;object-fit:contain"><div style="position:absolute;left:-18px;top:-18px;width:52px;height:52px;border-radius:50%;background:#1a73e8;color:#fff;font:800 26px Inter;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px #06132f,0 0 24px #3d8bff">${p.i + 1}</div></div>`).join('')}
     <div style="position:absolute;left:${px - 34}px;top:${last.y - 34}px;width:68px;height:68px;color:#fff;rotate:${ang}deg;filter:drop-shadow(0 0 14px #3d8bff)">${PLANE(68)}</div>
-    <div class="ttl">${hl(o.t)}</div><div class="ft"><span>${pl(o.days, 'день', 'дня', 'дней')} · ${pl(o.comp || n, 'компания', 'компании', 'компаний')}</span><span>смотри →</span></div></div>`;
+    <div class="ttl">${hl(o.t)}</div><div class="ft"><span>${o.foot ? o.foot + ' · ' + pl(o.comp || n, 'компания', 'компании', 'компаний') : pl(o.days, 'день', 'дня', 'дней') + ' · ' + pl(o.comp || n, 'компания', 'компании', 'компаний')}</span><span>смотри →</span></div></div>`;
   },
   pola: (o) => `<div class="cv">${BG(o.photo)}<div class="gtt">GLOBAL TECH TOUR</div>
     <div style="position:absolute;left:120px;top:360px;width:840px;padding:32px 32px 140px;background:#fbfaf6;box-shadow:0 40px 90px #000b;rotate:3deg">
@@ -108,7 +108,7 @@ const tmp = path.join(process.env.TMPDIR || '/tmp', 'nav-cover.html');
 const br = await chromium.launch(); const p = await br.newPage({ viewport: { width: 1080, height: 1920 } });
 for (const c of list) {
   fs.writeFileSync(tmp, `<!doctype html><meta charset="utf-8"><style>${FONTS}${CSS}</style>${T[c.kind](c)}`);
-  await p.goto('file://' + tmp); await p.evaluate(() => document.fonts.ready); await p.waitForLoadState('networkidle');
+  await p.goto('file://' + tmp); await p.evaluate(() => document.fonts.ready); await p.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => console.log('  (долго грузится — снимаю как есть)'));
   await p.screenshot({ path: path.join(OUT, c.name + '.jpg'), type: 'jpeg', quality: 90 }); console.log('✓', c.name);
 }
 await br.close();

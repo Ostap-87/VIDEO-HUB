@@ -213,6 +213,216 @@
    "pill": "Визит · завод SANY",
    "t": "Приехал **лично**: завод, менеджмент, переговоры",
    "_": "полароид — визиты (формат 5); факты — из подписи Reels SANY 26.10.2026"
+  },
+  {
+   "name": "tur-robotics-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-robotics/01.jpg",
+   "t": "12 заводов **роботов** за одну поездку",
+   "logos": [
+    "source-videos/логотипы/роботы/galbot.png",
+    "source-videos/логотипы/роботы/robotera.png",
+    "source-videos/логотипы/роботы/agibot.png",
+    "source-videos/логотипы/роботы/kepler.png",
+    "source-videos/логотипы/роботы/fourier.png",
+    "source-videos/логотипы/техгиганты/ubtech.svg",
+    "source-videos/логотипы/роботы/limx-dynamics.png",
+    "source-videos/логотипы/роботы/pudu-robotics.png"
+   ],
+   "comp": 12,
+   "days": 5
+  },
+  {
+   "name": "tur-robotics-humanoids-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-13-foto-tur-robotics-humanoids/01.jpg",
+   "t": "Кто делает **гуманоидов** в Китае",
+   "logos": [
+    "source-videos/логотипы/роботы/galbot.png",
+    "source-videos/логотипы/роботы/robotera.png",
+    "source-videos/логотипы/роботы/agibot.png",
+    "source-videos/логотипы/роботы/kepler.png",
+    "source-videos/логотипы/роботы/fourier.png",
+    "source-videos/логотипы/техгиганты/ubtech.svg",
+    "source-videos/логотипы/роботы/limx-dynamics.png",
+    "source-videos/логотипы/роботы/pudu-robotics.png"
+   ],
+   "comp": 8,
+   "days": 5
+  },
+  {
+   "name": "tur-china-tech-giants-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-china-tech-giants/01.jpg",
+   "t": "Девять **гигантов** Китая за одну поездку",
+   "logos": [
+    "source-videos/логотипы/общие/baidu.png",
+    "source-videos/логотипы/общие/xiaomi.svg",
+    "source-videos/логотипы/общие/alibaba.svg",
+    "source-videos/логотипы/техгиганты/unitree.png",
+    "source-videos/логотипы/ритейл/meituan.svg",
+    "source-videos/логотипы/техгиганты/xiaohongshu.svg",
+    "source-videos/логотипы/общие/tencent.svg",
+    "source-videos/логотипы/общие/huawei.svg",
+    "source-videos/логотипы/техгиганты/ubtech.svg"
+   ],
+   "comp": 9,
+   "days": 5
+  },
+  {
+   "name": "tur-china-tea-coffee-retail-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-china-tea-coffee-retail/01.jpg",
+   "t": "Как Luckin обогнал **Starbucks** в Китае",
+   "logos": [
+    "source-videos/логотипы/чай-кофе/chagee.svg",
+    "source-videos/логотипы/чай-кофе/manner-coffee.png",
+    "source-videos/логотипы/чай-кофе/m-stand.png",
+    "source-videos/логотипы/чай-кофе/luckin-coffee.svg",
+    "source-videos/логотипы/чай-кофе/heytea.svg",
+    "source-videos/логотипы/чай-кофе/wang-lao-ji.png"
+   ],
+   "comp": 7,
+   "days": 5
+  },
+  {
+   "name": "tur-china-beauty-antiage-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-china-beauty-antiage/01.jpg",
+   "t": "Где рождаются **бьюти-хиты** Китая",
+   "logos": [
+    "source-videos/логотипы/косметика/pechoin.png",
+    "source-videos/логотипы/косметика/chando.png",
+    "source-videos/логотипы/косметика/kans.png",
+    "source-videos/логотипы/косметика/proya.png",
+    "source-videos/логотипы/косметика/florasis.png",
+    "source-videos/логотипы/косметика/maogeping.png",
+    "source-videos/логотипы/косметика/perfect-diary.svg",
+    "source-videos/логотипы/косметика/carslan.png"
+   ],
+   "comp": 8,
+   "days": 5
+  },
+  {
+   "name": "tur-china-auto-plants-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-china-auto-plants/01.jpg",
+   "t": "Шесть **автозаводов** — с севера на юг",
+   "logos": [
+    "source-videos/логотипы/общие/xiaomi.svg",
+    "source-videos/логотипы/авто/nio.svg",
+    "source-videos/логотипы/авто/maextro.svg",
+    "source-videos/логотипы/авто/saic.svg",
+    "source-videos/логотипы/авто/gac-aion.svg",
+    "source-videos/логотипы/авто/xpeng.svg"
+   ],
+   "comp": 6,
+   "days": 5
+  },
+  {
+   "name": "tur-china-appliances-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-china-appliances/01.jpg",
+   "t": "9 заводов **техники**: от Циндао до Шуньдэ",
+   "logos": [
+    "source-videos/логотипы/общие/xiaomi.svg",
+    "source-videos/логотипы/бытовая-техника/haier.svg",
+    "source-videos/логотипы/бытовая-техника/hisense.svg",
+    "source-videos/логотипы/бытовая-техника/robam.png",
+    "source-videos/логотипы/бытовая-техника/supor.png",
+    "source-videos/логотипы/бытовая-техника/midea.svg",
+    "source-videos/логотипы/бытовая-техника/galanz.png",
+    "source-videos/логотипы/бытовая-техника/gree.svg",
+    "source-videos/логотипы/бытовая-техника/skyworth.png"
+   ],
+   "comp": 9,
+   "days": 5
+  },
+  {
+   "name": "tur-china-retail-showrooms-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-china-retail-showrooms/01.jpg",
+   "t": "Ритейл Китая: 9 **флагманов** вживую",
+   "logos": [
+    "source-videos/логотипы/ритейл/jd.svg",
+    "source-videos/логотипы/ритейл/meituan.svg",
+    "source-videos/логотипы/ритейл/pinduoduo.svg",
+    "source-videos/логотипы/общие/alibaba.svg",
+    "source-videos/логотипы/ритейл/sams-club.svg",
+    "source-videos/логотипы/ритейл/yonghui.png"
+   ],
+   "comp": 9,
+   "days": 6
+  },
+  {
+   "name": "tur-confectionery-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-confectionery/01.jpg",
+   "t": "Китайские торты **обгоняют** мировые бренды",
+   "logos": [
+    "source-videos/логотипы/кондитерка/holiland.png",
+    "source-videos/логотипы/кондитерка/wedome.svg",
+    "source-videos/логотипы/кондитерка/21cake.png",
+    "source-videos/логотипы/кондитерка/ganso.png",
+    "source-videos/логотипы/кондитерка/85c.png",
+    "source-videos/логотипы/кондитерка/xingfu-xibing.png",
+    "source-videos/логотипы/кондитерка/maxims.png"
+   ],
+   "comp": 8,
+   "days": 5
+  },
+  {
+   "name": "tur-china-ai-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-china-ai/01.jpg",
+   "t": "Китай — второй мировой **центр ИИ**",
+   "logos": [
+    "source-videos/логотипы/ии/zhipu.png",
+    "source-videos/логотипы/ии/kimi.png",
+    "source-videos/логотипы/общие/bytedance.png",
+    "source-videos/логотипы/общие/baidu.png",
+    "source-videos/логотипы/ии/sensetime.png",
+    "source-videos/логотипы/общие/alibaba.svg",
+    "source-videos/логотипы/ии/deepseek.svg",
+    "source-videos/логотипы/общие/tencent.svg"
+   ],
+   "comp": 10,
+   "days": 5
+  },
+  {
+   "name": "tur-china-tech-parks-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-china-tech-parks/01.jpg",
+   "t": "Как попасть в **технопарки** Китая",
+   "logos": [
+    "source-videos/логотипы/общие/baidu.png",
+    "source-videos/логотипы/общие/xiaomi.svg",
+    "source-videos/логотипы/техгиганты/smic.png",
+    "source-videos/логотипы/медицина/wuxi-apptec.png",
+    "source-videos/логотипы/авто/tesla.png",
+    "source-videos/логотипы/ии/deepblue-technology.png",
+    "source-videos/логотипы/общие/tencent.svg",
+    "source-videos/логотипы/техгиганты/dji.svg",
+    "source-videos/логотипы/техгиганты/zte.svg"
+   ],
+   "comp": 9,
+   "foot": "5 технопарков"
+  },
+  {
+   "name": "tur-china-global-brands-reels",
+   "kind": "route",
+   "photo": "source-videos/карусели/2026-10-10-foto-tur-china-global-brands/01.jpg",
+   "t": "Как китайские бренды **покорили мир**",
+   "logos": [
+    "source-videos/логотипы/ритейл/li-ning.png",
+    "source-videos/логотипы/ритейл/anta.svg",
+    "source-videos/логотипы/ритейл/bosideng.png",
+    "source-videos/логотипы/ритейл/jnby.png",
+    "source-videos/логотипы/ритейл/peacebird.png",
+    "source-videos/логотипы/ритейл/urban-revivo.png"
+   ],
+   "comp": 6,
+   "days": 5
   }
  ]
 }
