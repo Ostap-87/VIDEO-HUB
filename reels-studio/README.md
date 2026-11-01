@@ -496,6 +496,7 @@ Aura: печать над головой сама уменьшается и по
 node reels-studio/tools/gtt-crystal/render.mjs still аватар.jpg "w=1080&h=1080&k=0.82&ring=1&t=0.33&ss=2"
 node reels-studio/tools/gtt-crystal/render.mjs loop  видеоаватар.mp4 "w=800&h=800&k=0.82&ring=1&t=0.33&ss=2"
 node reels-studio/tools/gtt-crystal/render.mjs still хайлайт.jpg "page=obj&obj=plane&k=1.3&w=1080&h=1920&cy=960&ss=2"
+node reels-studio/tools/gtt-crystal/render.mjs still хайлайт-иероглиф.jpg "page=obj&obj=none&ring=1&k=0.82&chs=ring&ch=学&w=1080&h=1920&cy=960&ss=2"
 ```
 Готовый комплект и инструкция — `finished-videos/обложки/gtt-бренд/`. Параметры — в шапке `render.mjs`.
 

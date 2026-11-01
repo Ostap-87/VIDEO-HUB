@@ -7,9 +7,11 @@ html,body{margin:0;overflow:hidden;background:transparent}
  background:radial-gradient(closest-side,rgba(90,170,255,.75),rgba(40,120,255,.25) 55%,rgba(40,120,255,0));filter:blur(calc(var(--s)*0.02))}
 canvas{position:absolute;left:0;top:0;filter:drop-shadow(0 0 calc(var(--s)*0.03) rgba(80,160,255,.9)) drop-shadow(0 0 calc(var(--s)*0.09) rgba(26,115,232,.75))}
 #ring{position:absolute;left:0;top:0;width:100%;height:100%}
+#ov{position:absolute;inset:0;pointer-events:none;z-index:5}
+#ov>*{position:absolute;left:0;right:0;text-align:center;white-space:nowrap}
 </style>
 <script type="importmap">{"imports":{"three":"/reels-studio/node_modules/three/build/three.module.js","three/addons/":"/reels-studio/node_modules/three/examples/jsm/"}}</script>
-</head><body><div id="st"><div id="floor"></div><svg id="ring"></svg></div>
+</head><body><div id="st"><div id="floor"></div><svg id="ring"></svg><div id="ov"></div></div>
 <script type="module">
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
@@ -19,6 +21,8 @@ import { LineMaterial } from 'three/addons/lines/LineMaterial.js';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js';
+import { TTFLoader } from 'three/addons/loaders/TTFLoader.js';
+import { Font } from 'three/addons/loaders/FontLoader.js';
 const q = new URLSearchParams(location.search);
 const W = +q.get('w') || 1080, H = +q.get('h') || 1080, S = Math.min(W, H) * (+q.get('k') || 1), CY = +q.get('cy') || H / 2;
 const st = document.getElementById('st'); st.style.setProperty('--w', W + 'px'); st.style.setProperty('--h', H + 'px');
@@ -76,9 +80,26 @@ const build = {
     g.setAttribute('position', new THREE.Float32BufferAttribute(v, 3)); g.computeVertexNormals(); part(g, m => {}, 1); },
   question: () => { },
 };
-build.none = () => {};
+build.none = () => {}; build.char = () => {};
 build[OBJ] ? build[OBJ]() : build.crystal();
 let fontReady = Promise.resolve();
+// иероглиф объёмным стеклом (obj=char&ch=学, шрифт fonts/brush.ttf или serifsc.ttf — параметр cf)
+if (OBJ === 'char') fontReady = new Promise(r => new TTFLoader().load(`fonts/${q.get('cf') || 'brush'}.ttf`, json => {
+  const ch = q.get('ch') || '学', g = new TextGeometry(ch, { font: new Font(json), size: ch.length > 1 ? 1.0 : 1.6, depth: 0.3, curveSegments: 4, bevelEnabled: false });
+  g.center(); part(g, m => {}, 40); r(); }));
+// иероглиф поверх: chs=inside (внутри кристалла) | ring (в кольце, как аватар) | serif (с переводом курсивом) | seal (красная печать)
+const CH = q.get('ch'), CHS = q.get('chs'), RU = q.get('ru') || '';
+if (CH && CHS) { const ov = document.getElementById('ov'), two = CH.length > 1, fs = (k) => `${S * k * (two ? 0.62 : 1)}px`;
+  const glow = (c1, c2) => `0 0 ${S*0.006}px #fff,0 0 ${S*0.02}px ${c1},0 0 ${S*0.05}px ${c2},0 0 ${S*0.11}px ${c2}`;
+  if (CHS === 'inside') { ov.innerHTML = `<div style="top:${CY - S*0.13*(two ? 0.62 : 1)}px;font:${fs(0.26)}/1 Brush;color:#f2f8ff;text-shadow:${glow('#7db8ff','#1a73e8')}">${CH}</div>`; }
+  if (CHS === 'ring') { ov.innerHTML = `<div style="top:${CY - S*0.25*(two ? 0.62 : 1)}px;font:${fs(0.48)}/1 Brush;color:#eaf4ff;text-shadow:${glow('#8cc4ff','#1a73e8')}">${CH}</div>`; }
+  if (CHS === 'serif') { ov.innerHTML = `<div style="top:${CY - S*0.36}px;font:800 ${S*0.026}px Golos;letter-spacing:.32em;color:rgba(220,235,255,.72)">GLOBAL TECH TOUR</div>
+     <div style="top:${CY - S*(two ? 0.2 : 0.28)}px;font:900 ${fs(0.44)}/1 SerifSC;background:linear-gradient(180deg,#fff 25%,#8cc0ff);-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 0 ${S*0.018}px rgba(90,160,255,.95)) drop-shadow(0 0 ${S*0.05}px rgba(26,115,232,.8))">${CH}</div>
+     <div style="top:${CY + S*0.2}px;font:italic 700 ${S*0.075}px Playfair;color:#7db8ff;text-shadow:0 0 ${S*0.02}px rgba(60,140,255,.9)">${RU}</div>`; }
+  if (CHS === 'seal') { const z = S * 0.48; ov.innerHTML = `<div style="left:${W/2 - z/2}px;right:auto;top:${CY - z/2}px;width:${z}px;height:${z}px;border-radius:${z*0.12}px;
+     background:radial-gradient(circle at 35% 30%,#ff5a4a,#d22f27 55%,#9e1d17);box-shadow:inset 0 0 0 ${z*0.035}px rgba(255,235,220,.85),0 ${z*0.04}px ${z*0.12}px rgba(0,0,0,.45),0 0 ${z*0.25}px rgba(255,80,60,.35);
+     display:flex;align-items:center;justify-content:center;font:900 ${fs(0.34)}/1 SerifSC;color:#fff3e8;rotate:-4deg">${CH}</div>`; }
+}
 if (OBJ === 'question') fontReady = new Promise(r => new FontLoader().load('/reels-studio/node_modules/three/examples/fonts/helvetiker_bold.typeface.json', f => {
   const g = new TextGeometry('?', { font: f, size: 1.9, depth: 0.35, curveSegments: 5, bevelEnabled: false }); g.center(); part(g, m => {}, 30); r(); }));
 // свет внутри кристалла
@@ -86,7 +107,7 @@ const gl = document.createElement('canvas'); gl.width = gl.height = 128; const g
 const g2 = gg.createRadialGradient(64, 64, 0, 64, 64, 64); g2.addColorStop(0, 'rgba(255,255,255,1)'); g2.addColorStop(.18, 'rgba(170,215,255,.85)'); g2.addColorStop(.5, 'rgba(60,140,255,.35)'); g2.addColorStop(1, 'rgba(26,115,232,0)');
 gg.fillStyle = g2; gg.fillRect(0, 0, 128, 128);
 const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(gl), blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false, transparent: true }));
-glow.scale.setScalar(1.25); glow.material.opacity = 0.8; crystal.add(glow); if (OBJ === 'none') { glow.visible = false; }
+glow.scale.setScalar(1.25); glow.material.opacity = 0.8; crystal.add(glow); if (OBJ === 'none') { glow.visible = false; } if (q.get('chs') === 'inside') { glow.material.opacity = 0.35; }
 const core = new THREE.Mesh(new THREE.SphereGeometry(0.07, 24, 24), new THREE.MeshBasicMaterial({ color: 0xffffff })); crystal.add(core); core.visible = OBJ !== 'none';
 crystal.scale.setScalar(scale * 0.95);
 // свет: синий снизу, холодный контровой, мягкий сверху
@@ -105,7 +126,7 @@ const pts = new THREE.Points(new THREE.BufferGeometry().setAttribute('position',
   new THREE.PointsMaterial({ size: 0.07, map: new THREE.CanvasTexture(spr), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, color: 0xa8d4ff }));
 pts.scale.setScalar(scale * 1.1); scene.add(pts);
 window.renderAt = (t) => { // t от 0 до 1 — один оборот
-  const R0 = {crystal:[0.32,0.6,0.18], globe:[0.3,0.4,0.1], star:[0.25,-0.45,0.05], plane:[0.45,-0.6,0.2], cap:[0.42,0.3,0.05], factory:[0.3,-0.55,0], camera:[0.2,-0.5,0.05], paper:[0.55,0.35,-0.25], question:[0.15,-0.45,0]}[OBJ] || [0.3,0.6,0.1];
+  const R0 = {char:[0.12,-0.42,0.02], crystal:[0.32,0.6,0.18], globe:[0.3,0.4,0.1], star:[0.25,-0.45,0.05], plane:[0.45,-0.6,0.2], cap:[0.42,0.3,0.05], factory:[0.3,-0.55,0], camera:[0.2,-0.5,0.05], paper:[0.55,0.35,-0.25], question:[0.15,-0.45,0]}[OBJ] || [0.3,0.6,0.1];
   crystal.rotation.set(R0[0] + Math.sin(t * Math.PI * 2) * 0.06, t * Math.PI * 2 + R0[1], R0[2]);
   crystal.position.y = Math.sin(t * Math.PI * 2) * 0.05 * scale;
   pts.rotation.y = t * Math.PI * 2;
