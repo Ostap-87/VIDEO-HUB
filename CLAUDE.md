@@ -47,6 +47,11 @@
   пишет временную копию ролика в `.git/lfs/tmp` — на почти полном диске это его добивает (хук в конце хода вызывает `git status`).
   Такие файлы помечать `git update-index --skip-worktree` (список изменённых без фильтра: `git -c filter.lfs.process= -c
   filter.lfs.clean=cat -c filter.lfs.required=false status --porcelain | grep '^ M'`); недописанный файл из `.git/lfs/tmp` — удалить.
+  01.11.2026: основная папка `/home/user/VIDEO-HUB` — **частичная копия** (`extensions.partialClone origin`, фильтр `blob:limit=1m`):
+  `git fetch` не тянет большие файлы. Если в `main` пришли новые копии для публикации (`finished-videos/publish/**/*.mp4`), не делать
+  `git pull`/`merge` (он скачает и распакует ролики на диск): маленькие изменённые файлы — `git checkout origin/main -- <пути>`, большие —
+  в индекс без файла (`git update-index --add --cacheinfo <mode>,<sha>,<путь>` + `--skip-worktree`), затем `git update-ref refs/heads/main origin/main`.
+  Sparse-checkout в основной папке не включать: там ~1800 файлов со skip-worktree, он вернул бы их на диск.
 - **Бюджет Git LFS** (25.10.2026): GitHub отклонил загрузку новых видео — «This repository exceeded its LFS budget».
   Скачивание при этом работает. Пока владелец не поднимет бюджет (GitHub → Settings → Billing and licensing →
   Budgets and alerts, строка Git LFS), видео не коммить: остальное (props, фото, код) коммить и пушить как обычно, видео
