@@ -415,6 +415,8 @@ const countUp = (text: string, t: number | null): string => {
   const m = /^(\D*)(\d+(?:[\u00A0 ]\d{3})*)(.*)$/.exec(text); // \u00AB13 361 \u043B\u0435\u0442\u00BB \u2192 \u00AB13 361\u00BB \u0438 \u00AB \u043B\u0435\u0442\u00BB; \u043F\u0440\u043E\u0431\u0435\u043B \u043F\u0435\u0440\u0435\u0434 \u0441\u043B\u043E\u0432\u043E\u043C \u043E\u0441\u0442\u0430\u0451\u0442\u0441\u044F
   if (t === null || !m) return text;
   const n = Number(m[2].replace(/[\u00A0 ]/g, ""));
+  // год («1928», «Март 2026») и значения со словом перед числом не «набегают»: иначе мелькает «Март 1782», а «2 026» не влезает (01.11.2026)
+  if (/\p{L}/u.test(m[1]) || (/^\d{4}$/.test(m[2]) && n >= 1800 && n <= 2100)) return text;
   const v = Math.round(n * appear(t, 0.2, 1.1));
   return m[1] + v.toLocaleString("ru-RU").replace(/\u202F/g, "\u00A0") + m[3];
 };
