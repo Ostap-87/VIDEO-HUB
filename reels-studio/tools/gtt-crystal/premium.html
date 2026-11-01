@@ -64,24 +64,27 @@ const B = {
     const FUS = new THREE.MeshPhysicalMaterial({ color: 0x8fc2ff, metalness: 0.15, roughness: 0.1, clearcoat: 1, clearcoatRoughness: 0.03, envMapIntensity: 1.7, sheen: 0.4, sheenColor: new THREE.Color(0x9fd0ff) });
     const fus = add(new THREE.LatheGeometry(prof.map(p => new THREE.Vector2(p[0], p[1])), 72), FUS, m => { m.rotation.z = -Math.PI / 2; }, P);
     for (const sd of [1, -1]) { for (let i = 0; i < 22; i++) add(new THREE.SphereGeometry(0.021, 10, 8), GLOW, m => { m.position.set(-0.95 + i * 0.088, 0.07, sd * 0.256); m.scale.set(1, 1.3, 0.35); }, P);
-      add(new THREE.SphereGeometry(0.05, 16, 10), DARK, m => { m.position.set(1.36, 0.1, sd * 0.15); m.scale.set(1.3, 0.55, 0.5); m.rotation.y = sd * 0.5; }, P); }
+    }
+    // лобовое стекло: секции на поверхности носа (лата фюзеляжа, углы вокруг оси — от бока через верх к другому боку)
+    const rAt = (y) => { for (let i = 1; i < prof.length; i++) if (y <= prof[i][1]) { const [r0, y0] = prof[i - 1], [r1, y1] = prof[i]; return r0 + (r1 - r0) * (y - y0) / (y1 - y0); } return 0; };
+    const WIN = new THREE.MeshPhysicalMaterial({ color: 0x06142e, metalness: 0.5, roughness: 0.05, clearcoat: 1, clearcoatRoughness: 0.02, envMapIntensity: 2.2 });
+    for (const [a0, a1, y0, y1] of [[202, 238, 1.3, 1.45], [242, 268, 1.335, 1.475], [272, 298, 1.335, 1.475], [302, 338, 1.3, 1.45]]) { const pts = []; for (let k = 0; k <= 8; k++) { const y = y0 + k * (y1 - y0) / 8; pts.push(new THREE.Vector2(rAt(y) * 1.012 + 0.002, y)); }
+      const pane = add(new THREE.LatheGeometry(pts, 14, a0 * Math.PI / 180, (a1 - a0) * Math.PI / 180), WIN, m => { m.rotation.z = -Math.PI / 2; }, P); pane.userData.noOutline = true; }
     const wingGeo = (pts, t, bev) => new THREE.ExtrudeGeometry(shape(pts), { depth: t, bevelEnabled: true, bevelThickness: bev, bevelSize: bev * 0.9, bevelSegments: 3, curveSegments: 12 });
     const WING = [[0.45, 0], [-0.33, 1.78], [-0.6, 1.78], [-0.52, 0]];
     for (const sd of [1, -1]) {
       const w = add(wingGeo(WING, 0.04, 0.022), GLASS, m => { m.rotation.x = sd * Math.PI / 2; m.position.set(0.1, -0.13, 0); m.rotateY(sd * 0.07); }, P); halo(w, 1.015, 0.18);
-      add(wingGeo([[0, 0], [-0.2, 0], [-0.13, 0.3], [-0.06, 0.3]], 0.02, 0.01), GLASS, m => { m.position.set(-0.2, -0.13 + 1.78 * 0.07, sd * 1.79 - 0.01); }, P); // законцовка
+
     }
     for (const sd of [1, -1]) add(wingGeo([[-1.08, 0], [-1.38, 0.64], [-1.53, 0.64], [-1.55, 0]], 0.026, 0.012), GLASS, m => { m.rotation.x = sd * Math.PI / 2; m.position.set(0, 0.07, 0); m.rotateY(sd * 0.05); }, P);
     const fin = add(wingGeo([[-0.92, 0.17], [-1.42, 0.88], [-1.62, 0.88], [-1.6, 0.17]], 0.028, 0.012), GLASS, m => { m.position.z = -0.014; }, P); halo(fin, 1.02, 0.18);
-    add(new THREE.SphereGeometry(0.028, 10, 8), GLOW, m => m.position.set(-1.6, 0.9, 0), P);
-    for (const sd of [1, -1]) add(new THREE.SphereGeometry(0.03, 10, 8), GLOW, m => m.position.set(-0.47, -0.13 + 1.78 * 0.07, sd * 1.8), P);
     P.rotation.set(0.22, -0.55, 0.16); P.scale.setScalar(1.08); },
 };
 (B[OBJ] || B.plane)();
 // неон: neon=1 — абрис по силуэту, 2 — + грани крыльев и оперения, 3 — «чистый неон» (корпус тёмное стекло); nc — цвет неона
 const NEON = +(q.get('neon') || 0), NC = new THREE.Color('#' + (q.get('nc') || 'cfeeff'));
 if (NEON) {
-  const meshes = []; root.traverse(o => { if (o.isMesh && o.material !== GLOW && !(o.material && o.material.blending === THREE.AdditiveBlending)) meshes.push(o); });
+  const meshes = []; root.traverse(o => { if (o.isMesh && !o.userData.noOutline && o.material !== GLOW && !(o.material && o.material.blending === THREE.AdditiveBlending)) meshes.push(o); });
   const outline = (m, th) => { const g0 = new THREE.BufferGeometry(); g0.setAttribute('position', m.geometry.attributes.position.clone()); if (m.geometry.index) g0.setIndex(m.geometry.index.clone());
     const g = mergeVertices(g0, 1e-4); g.computeVertexNormals();
     const hull = (t, col) => { const mat = new THREE.MeshBasicMaterial({ color: col, side: THREE.BackSide });
@@ -95,7 +98,7 @@ if (NEON) {
     const mk = (lw, col, op) => { const lg = new LineSegmentsGeometry().setPositions(e.attributes.position.array); const lm = new LineMaterial({ color: col, linewidth: lw, transparent: true, opacity: op }); lm.resolution.set(W, H);
       const L = new LineSegments2(lg, lm); L.position.copy(m.position); L.rotation.copy(m.rotation); L.scale.copy(m.scale); m.parent.add(L); };
     mk(S * 0.007, new THREE.Color(0x2f86ff), 0.55); mk(S * 0.0026, NC, 1); });
-  if (NEON === 3) meshes.forEach(m => { if (m.material !== DARK) m.material = new THREE.MeshPhysicalMaterial({ color: 0x061736, metalness: 0.3, roughness: 0.06, clearcoat: 1, envMapIntensity: 0.9 }); });
+  if (NEON === 3) meshes.forEach(m => { if (m.material !== DARK && !m.userData.noOutline) m.material = new THREE.MeshPhysicalMaterial({ color: 0x061736, metalness: 0.3, roughness: 0.06, clearcoat: 1, envMapIntensity: 0.9 }); });
   document.querySelector('canvas').style.filter = `drop-shadow(0 0 ${S*0.006}px rgba(255,255,255,.9)) drop-shadow(0 0 ${S*0.02}px #${NC.getHexString()}) drop-shadow(0 0 ${S*0.06}px rgba(26,115,232,.85))`;
 }
 root.scale.setScalar(S / H * 1.0);
