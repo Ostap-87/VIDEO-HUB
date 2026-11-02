@@ -90,40 +90,105 @@ const Stage: React.FC<{L: Layout}> = ({L}) => {
 };
 
 // ---------- телефон ----------
-const Phone: React.FC<{w: number; children: React.ReactNode; shadow?: number; shine?: number; back?: string}> = ({w, children, shadow = 1, shine = -1, back}) => {
+// v4.1 (решение пользователя 02.11.2026: «телефон не реалистичный, как будто плоский, как лист бумаги — сделай максимально
+// реалистичным»): настоящий объём в CSS 3D — корпус из слоёв по толщине (титановая рамка с бликом по скруглению), кнопки на
+// торцах, стекло экрана с отражением, которое ездит при повороте, задняя крышка с блоком камер и значком GTT (видна на обороте),
+// статус-бар iOS над приложением. Экран записи вписан под статус-бар: SB — его высота, CS — масштаб содержимого.
+export const SB = 0.054, CS = 1 - SB;
+const mix = (a: number[], b: number[], k: number) => `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * k)).join(",")})`;
+const StatusBar: React.FC<{w: number; tone: "dark" | "light"}> = ({w, tone}) => {
+  const c = tone === "light" ? "#ffffff" : "#0b0d12";
   const k = w / SCREEN_W;
-  const bez = Math.round(w * 0.035);
-  const sw = w, sh = SCREEN_H * k;
-  const r = w * 0.15;
+  const cy = w * 0.07;
   return (
-    <div style={{position: "relative", width: sw + bez * 2, height: sh + bez * 2, borderRadius: r + bez,
-      background: "linear-gradient(145deg, #3a3d46 0%, #15161a 40%, #2a2c33 100%)",
-      boxShadow: `0 ${50 * shadow}px ${110 * shadow}px rgba(20,30,60,${0.28 * shadow}), 0 ${12 * shadow}px ${30 * shadow}px rgba(20,30,60,${0.18 * shadow}), inset 0 0 0 2px rgba(255,255,255,0.10)`}}>
-      {/* кнопки сбоку */}
-      <div style={{position: "absolute", left: -4, top: sh * 0.2, width: 5, height: sh * 0.07, borderRadius: 3, background: "#2a2c33"}} />
-      <div style={{position: "absolute", left: -4, top: sh * 0.3, width: 5, height: sh * 0.11, borderRadius: 3, background: "#2a2c33"}} />
-      <div style={{position: "absolute", right: -4, top: sh * 0.26, width: 5, height: sh * 0.15, borderRadius: 3, background: "#2a2c33"}} />
-      <div style={{position: "absolute", left: bez, top: bez, width: sw, height: sh, borderRadius: r, overflow: "hidden", background: "#e8edf4"}}>
-        {children}
-        {/* стекло: мягкий блик */}
-        <div style={{position: "absolute", inset: 0, background: "linear-gradient(115deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 70%, rgba(255,255,255,0.07) 100%)", pointerEvents: "none"}} />
-        {/* v3: блик проходит по стеклу на входе в сцену */}
-        {shine >= 0 && shine <= 1 ? (
-          <div style={{position: "absolute", top: "-20%", bottom: "-20%", width: "38%", left: `${-50 + shine * 170}%`, rotate: "18deg", pointerEvents: "none",
-            background: "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.42) 50%, rgba(255,255,255,0) 100%)"}} />
-        ) : null}
-        {/* v3: спинка телефона, пока он развёрнут экраном от зрителя (оборот 360°) */}
-        {back ? (
-          <div style={{position: "absolute", inset: 0, background: "linear-gradient(150deg, #1e3a8a 0%, #0b1d55 55%, #081440 100%)", display: "flex", alignItems: "center", justifyContent: "center"}}>
-            <Img src={staticFile(back)} style={{width: w * 0.34, height: w * 0.34, borderRadius: w * 0.08, boxShadow: "0 0 60px rgba(125,211,252,0.55)"}} />
+    <div style={{position: "absolute", left: 0, top: 0, width: w, height: w * 0.14, pointerEvents: "none"}}>
+      <div style={{position: "absolute", left: w * 0.1, top: cy - 9 * k, width: w * 0.2, textAlign: "center", fontFamily: body.fontFamily, fontWeight: 700, fontSize: 16 * k, lineHeight: `${18 * k}px`, color: c, letterSpacing: "-0.01em"}}>9:41</div>
+      <svg width={74 * k} height={14 * k} viewBox="0 0 74 14" style={{position: "absolute", right: w * 0.075, top: cy - 7 * k}}>
+        {[0, 1, 2, 3].map((i) => <rect key={i} x={i * 5} y={10 - i * 3} width={3.4} height={4 + i * 3} rx={1} fill={c} />)}
+        <path d="M30 4.6a10 10 0 0114 0M32.4 7.4a6.4 6.4 0 019.2 0M35 10.2a2.8 2.8 0 014 0" fill="none" stroke={c} strokeWidth={1.9} strokeLinecap="round" />
+        <rect x={49} y={1.5} width={21} height={11} rx={3.4} fill="none" stroke={c} strokeOpacity={0.45} strokeWidth={1.2} />
+        <rect x={50.8} y={3.3} width={15.6} height={7.4} rx={2} fill={c} />
+        <path d="M71.4 5.4v3.2a1.6 1.6 0 000-3.2z" fill={c} fillOpacity={0.5} />
+      </svg>
+    </div>
+  );
+};
+const Phone: React.FC<{w: number; children: React.ReactNode; shadow?: number; shine?: number; ry?: number; backIcon?: string; tone?: "dark" | "light"}> = ({w, children, shadow = 1, shine = -1, ry = 0, backIcon, tone = "dark"}) => {
+  const bez = Math.round(w * 0.035);
+  const sw = w, sh = SCREEN_H * (w / SCREEN_W);
+  const r = w * 0.15;
+  const W = sw + bez * 2, H = sh + bez * 2, R = r + bez;
+  const D = Math.round(w * 0.105); // толщина корпуса
+  const N = 16;
+  const a = (ry * Math.PI) / 180;
+  const lightL = 0.55 + 0.45 * Math.max(0, Math.sin(-a) + 0.3), lightR = 0.55 + 0.45 * Math.max(0, Math.sin(a) + 0.3);
+  const DARK = [24, 26, 31], LITE = [196, 201, 210];
+  // отражение на стекле едет против поворота
+  const glareX = 30 - ry * 2.2;
+  const btn = (side: "l" | "r", top: number, h: number) =>
+    [-0.2, 0, 0.2].map((z, i) => (
+      <div key={`${side}${top}${i}`} style={{position: "absolute", [side === "l" ? "left" : "right"]: -w * 0.012, top: H * top, width: w * 0.02, height: H * h, borderRadius: w * 0.01,
+        transform: `translateZ(${z * D}px)`, background: `linear-gradient(${side === "l" ? 90 : 270}deg, ${mix(DARK, LITE, 0.75 * (side === "l" ? lightL : lightR))}, ${mix(DARK, LITE, 0.25)})`}} />
+    ));
+  return (
+    <div style={{position: "relative", width: W, height: H, transformStyle: "preserve-3d"}}>
+      {/* корпус по толщине: слои рамки, середина светлее (скруглённый титановый обод) */}
+      {Array.from({length: N}).map((_, i) => {
+        const tt = i / (N - 1);
+        const band = 0.18 + 0.82 * Math.pow(Math.sin(Math.PI * tt), 0.55);
+        return (
+          <div key={i} style={{position: "absolute", inset: 0, borderRadius: R, transform: `translateZ(${-D / 2 + tt * D}px)`,
+            background: `linear-gradient(100deg, ${mix(DARK, LITE, band * lightL)} 0%, ${mix(DARK, LITE, band * 0.42)} 48%, ${mix(DARK, LITE, band * lightR * 0.9)} 100%)`,
+            boxShadow: i === 0 ? `0 ${50 * shadow}px ${110 * shadow}px rgba(20,30,60,${0.3 * shadow}), 0 ${14 * shadow}px ${34 * shadow}px rgba(20,30,60,${0.2 * shadow})` : undefined}} />
+        );
+      })}
+      {btn("l", 0.165, 0.045)}{btn("l", 0.235, 0.075)}{btn("l", 0.325, 0.075)}{btn("r", 0.27, 0.115)}
+      {/* задняя крышка: матовое стекло GTT, блок камер, значок */}
+      <div style={{position: "absolute", inset: 0, borderRadius: R, transform: `translateZ(${-D / 2 - 0.6}px) rotateY(180deg)`, backfaceVisibility: "hidden",
+        background: "linear-gradient(150deg, #2a4ea8 0%, #13297a 48%, #0b1a4f 100%)", boxShadow: "inset 0 0 0 3px rgba(190,200,215,0.55), inset 0 0 40px rgba(0,0,0,0.35)", overflow: "hidden"}}>
+        <div style={{position: "absolute", inset: 0, background: `linear-gradient(${120 + ry * 0.6}deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.16) 48%, rgba(255,255,255,0) 62%)`}} />
+        <div style={{position: "absolute", left: W * 0.07, top: W * 0.07, width: W * 0.4, height: W * 0.4, borderRadius: W * 0.11, background: "linear-gradient(145deg, rgba(60,90,170,0.95), rgba(14,30,80,0.95))",
+          boxShadow: "inset 0 0 0 2px rgba(200,210,230,0.5), 0 6px 18px rgba(0,0,0,0.45)"}}>
+          {[[0.27, 0.27], [0.27, 0.73], [0.73, 0.5]].map(([x, y], i) => (
+            <div key={i} style={{position: "absolute", left: `${x * 100}%`, top: `${y * 100}%`, width: W * 0.15, height: W * 0.15, translate: "-50% -50%", borderRadius: "50%",
+              background: "radial-gradient(circle at 38% 35%, #4b5f86 0%, #0d1424 38%, #020307 70%)", boxShadow: "0 0 0 3px #2b3240, 0 0 0 5px rgba(210,215,225,0.6), 0 4px 10px rgba(0,0,0,0.6)"}} />
+          ))}
+          <div style={{position: "absolute", left: "73%", top: "22%", width: W * 0.045, height: W * 0.045, translate: "-50% -50%", borderRadius: "50%", background: "radial-gradient(circle, #fff8dc, #b8a77a)"}} />
+        </div>
+        {backIcon ? <Img src={staticFile(backIcon)} style={{position: "absolute", left: "50%", top: "52%", translate: "-50% -50%", width: W * 0.24, height: W * 0.24, borderRadius: W * 0.055, opacity: 0.92,
+          boxShadow: "0 0 40px rgba(125,211,252,0.5)"}} /> : null}
+      </div>
+      {/* лицевая сторона: чёрное стекло с полированной фаской и экраном */}
+      <div style={{position: "absolute", inset: 0, borderRadius: R, transform: `translateZ(${D / 2 + 0.6}px)`, backfaceVisibility: "hidden", background: "#030305"}}>
+        <div style={{position: "absolute", inset: 0, borderRadius: R, border: `${Math.max(2, w * 0.007)}px solid`, borderColor: `${mix(DARK, LITE, 0.95)} ${mix(DARK, LITE, 0.55 * lightR)} ${mix(DARK, LITE, 0.3)} ${mix(DARK, LITE, 0.8 * lightL)}`}} />
+        <div style={{position: "absolute", left: bez, top: bez, width: sw, height: sh, borderRadius: r, overflow: "hidden", background: "#eef1f6", boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.5)"}}>
+          {children}
+          <StatusBar w={sw} tone={tone} />
+          {/* стекло: отражение студийного света, сдвигается при повороте */}
+          <div style={{position: "absolute", inset: 0, pointerEvents: "none",
+            background: `linear-gradient(118deg, rgba(255,255,255,0) ${glareX - 18}%, rgba(255,255,255,0.13) ${glareX}%, rgba(255,255,255,0.03) ${glareX + 14}%, rgba(255,255,255,0) ${glareX + 30}%)`}} />
+          {shine >= 0 && shine <= 1 ? (
+            <div style={{position: "absolute", top: "-20%", bottom: "-20%", width: "38%", left: `${-50 + shine * 170}%`, rotate: "18deg", pointerEvents: "none",
+              background: "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.42) 50%, rgba(255,255,255,0) 100%)"}} />
+          ) : null}
+          {/* «остров» с объективом фронтальной камеры */}
+          <div style={{position: "absolute", left: sw / 2 - w * 0.15, top: w * 0.028, width: w * 0.3, height: w * 0.085, borderRadius: w * 0.05, background: "#050506"}}>
+            <div style={{position: "absolute", right: w * 0.03, top: "50%", width: w * 0.034, height: w * 0.034, translate: "0 -50%", borderRadius: "50%",
+              background: "radial-gradient(circle at 40% 35%, #2c3a58, #07090f 65%)"}} />
           </div>
-        ) : null}
-        {/* «остров» */}
-        <div style={{position: "absolute", left: sw / 2 - w * 0.15, top: w * 0.028, width: w * 0.3, height: w * 0.085, borderRadius: w * 0.05, background: "#0b0b0d"}} />
+        </div>
+        {/* блик по всему стеклу, включая рамку экрана */}
+        <div style={{position: "absolute", inset: 0, borderRadius: R, pointerEvents: "none", background: "linear-gradient(160deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 22%)"}} />
       </div>
     </div>
   );
 };
+// экран записи, вписанный под статус-бар
+const Fit: React.FC<{children: React.ReactNode}> = ({children}) => (
+  <AbsoluteFill style={{background: "#eef1f6"}}>
+    <div style={{position: "absolute", left: `${((1 - CS) / 2) * 100}%`, top: `${SB * 100}%`, width: `${CS * 100}%`, height: `${CS * 100}%`, overflow: "hidden"}}>{children}</div>
+  </AbsoluteFill>
+);
 
 // ---------- позы телефона по сценам ----------
 type Pose = {x: number; y: number; s: number; ry: number; rz: number; o: number};
@@ -184,7 +249,6 @@ const HomeScreen: React.FC<{k: number; stills: string; pulse: number}> = ({k, st
   const gtt = icon(9);
   return (
     <AbsoluteFill style={{background: "linear-gradient(160deg, #6ea8ff 0%, #2563eb 45%, #1e3a8a 100%)"}}>
-      <div style={{position: "absolute", left: 30 * k, top: 18 * k, color: "white", fontFamily: body.fontFamily, fontWeight: 700, fontSize: 16 * k}}>9:41</div>
       {Array.from({length: 16}).map((_, i) => {
         if (i === 9) return null;
         const p = icon(i);
@@ -233,16 +297,16 @@ const ScreenBeat: React.FC<{b: Beat; p: AppPromoProps; k: number; enter: boolean
   const shade = enter ? interpolate(frame, [0, 10], [0.25, 0], clamp) : 0;
   let content: React.ReactNode = null;
   if (b.screen) {
-    content = <OffthreadVideo src={staticFile(b.screen)} muted style={{width: "100%", height: "100%", objectFit: "cover"}} />;
+    content = <Fit><OffthreadVideo src={staticFile(b.screen)} muted style={{width: "100%", height: "100%", objectFit: "cover"}} /></Fit>;
   } else if (b.visual === "reveal") {
     content = <HomeScreen k={k} stills={p.stills} pulse={Math.max(0, Math.sin((frame / fps) * 5))} />;
   } else if (b.visual === "wechat") {
     const y = interpolate(frame, [fps * 0.4, fps * 2.6], [0, -(2116 - 1688) / 2], {...clamp, easing: ease});
-    content = <Img src={staticFile(`${p.stills}/1-visit.png`)} style={{width: "100%", position: "absolute", top: y * (k * SCREEN_W / 390) / 2}} />;
+    content = <Fit><Img src={staticFile(`${p.stills}/1-visit.png`)} style={{width: "100%", position: "absolute", top: y * (k * SCREEN_W / 390) / 2}} /></Fit>;
   } else if (b.visual === "counter") {
-    content = <Img src={staticFile(`${p.stills}/${b.still || "start-globe.png"}`)} style={{width: "100%", height: "100%", objectFit: "cover"}} />;
+    content = <Fit><Img src={staticFile(`${p.stills}/${b.still || "start-globe.png"}`)} style={{width: "100%", height: "100%", objectFit: "cover"}} /></Fit>;
   } else if (b.visual === "final") {
-    content = <Img src={staticFile(`${p.stills}/today.png`)} style={{width: "100%", height: "100%", objectFit: "cover"}} />;
+    content = <Fit><Img src={staticFile(`${p.stills}/today.png`)} style={{width: "100%", height: "100%", objectFit: "cover"}} /></Fit>;
   }
   // запуск приложения с главного экрана: иконка раскрывается в экран
   const launch = b.launch !== undefined ? b.launch - b.w0 : null;
@@ -471,9 +535,11 @@ const Three: React.FC<{b: Beat; L: Layout; p: AppPromoProps}> = ({b, L, p}) => {
         const x = (L.W - total) / 2 + i * (w * 1.07 + gap);
         return (
           <div key={i} style={{position: "absolute", left: x, top: y0 + (i === 1 ? -30 : 20) - 40 * lift * on, opacity: s, translate: `0 ${(1 - s) * 120}px`, rotate: `${(i - 1) * 4 * (1 - s * 0.6)}deg`, scale: String(1 + 0.05 * lift * on)}}>
-            <Phone w={w} shadow={0.7}>
-              <Img src={staticFile(`${p.stills}/${srcs[i]}`)} style={{width: "100%", height: srcs[i].includes("visit") ? "auto" : "100%", objectFit: "cover"}} />
-            </Phone>
+            <div style={{transform: `perspective(1800px) rotateY(${(1 - i) * 16 + Math.sin(frame / fps * 0.8 + i) * 3}deg) rotateX(4deg)`, transformStyle: "preserve-3d"}}>
+              <Phone w={w} shadow={0.7} ry={(1 - i) * 16}>
+                <Fit><Img src={staticFile(`${p.stills}/${srcs[i]}`)} style={{width: "100%", height: srcs[i].includes("visit") ? "auto" : "100%", objectFit: "cover"}} /></Fit>
+              </Phone>
+            </div>
             <div style={{marginTop: 26, textAlign: "center", fontFamily: body.fontFamily, fontWeight: 700, fontSize: isH ? 32 : 30, color: on === 1 ? C.accent : C.text, opacity: frame >= said ? 1 : 0.5}}>{bw.text}</div>
           </div>
         );
@@ -985,6 +1051,9 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
     else if (t >= flipAt && t < flipAt + 0.26) flipRy = interpolate(t, [flipAt, flipAt + 0.26], [-90, 0], {...clamp, easing: Easing.out(Easing.quad)});
   }
   const float = Math.sin(t * 1.1) * 8;
+  // v4.1: телефон «в руке» — лёгкое покачивание и наклон, чтобы был виден объём корпуса
+  const curB0 = beats[bi];
+  const toneNow: "dark" | "light" = curB0?.visual === "reveal" || (curB0?.launch !== undefined && t < curB0.launch + 0.3) ? "light" : "dark";
   // v3: переход на стыке сцен — «камера» (наезд-сквозь, смаз), поворот телефона на 360°, оверлеи (вспышка, круг, шторки)
   const tr = transAt(beats, t);
   const cam = camOf(tr);
@@ -1020,7 +1089,8 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
     const F = {x: L.W / 2, y: isH ? 560 : 950};
     const params = (z: Zoom, pan: number) => {
       if (z.box) {
-        const bx = z.to ? z.box.map((v, i) => v + (z.to![i] - v) * pan) : z.box;
+        const b0 = z.to ? z.box.map((v, i) => v + (z.to![i] - v) * pan) : z.box;
+        const bx = [(1 - CS) / 2 + b0[0] * CS, SB + b0[1] * CS, b0[2] * CS, b0[3] * CS];
         const bez = Math.round(L.phoneW * 0.035);
         const lx = bez + (bx[0] + bx[2] / 2) * SCREEN_W * k, ly = bez + (bx[1] + bx[3] / 2) * SCREEN_H * k;
         const bw = bx[2] * SCREEN_W * k * pose.s, bh = bx[3] * SCREEN_H * k * pose.s;
@@ -1049,6 +1119,9 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
   // в монтаже функций заголовок остаётся (на светлой полосе сверху), подпись наезда — внизу
   const featNow = !!beats[bi]?.feature;
   const textK = featNow ? 1 : 1 - Math.max(zk, topWK) * 0.97;
+  const swayY = Math.sin(t * 0.55) * 5 * (1 - zk);
+  const tiltX = (3 + Math.sin(t * 0.42 + 1) * 2.2) * (1 - zk);
+  const ryEff = pose.ry * (1 - zk) + flipRy + spinRy + swayY;
 
   // громкость музыки: громче до голоса и в финале
   const firstVoice = beats[0].start, lastVoice = beats[beats.length - 1].end;
@@ -1117,15 +1190,20 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
         );
       })}
 
+      {/* v4.1: мягкая тень телефона на «полу» */}
+      {pose.o > 0.02 ? (
+        <div style={{position: "absolute", left: pose.x - phoneOuterW * 0.44 * pose.s - ryEff * 1.6, top: pose.y + phoneOuterH * pose.s + 18 + floatZ * 0.3, width: phoneOuterW * 0.88 * pose.s, height: 54 * pose.s,
+          borderRadius: "50%", background: "radial-gradient(ellipse at center, rgba(20,30,60,0.30) 0%, rgba(20,30,60,0.12) 45%, rgba(20,30,60,0) 72%)", opacity: pose.o * (1 - 0.35 * (floatZ + 8) / 16) * (1 - zk)}} />
+      ) : null}
       {/* телефон */}
-      <div style={{position: "absolute", left: pose.x - phoneOuterW / 2, top: pose.y + floatZ, width: phoneOuterW, height: phoneOuterH, opacity: pose.o,
-        transform: `perspective(2400px) rotateY(${pose.ry * (1 - zk) + flipRy + spinRy}deg) rotateZ(${pose.rz * (1 - zk)}deg) scale(${pose.s * (1 - 0.12 * Math.sin(Math.PI * Math.min(1, spinRy / 360)))})`, transformOrigin: "50% 0%"}}>
-        <div style={{translate: `${zx}px ${zy}px`, scale: String(zoom), transformOrigin: "50% 50%"}}>
-          <Phone w={L.phoneW} shine={shine} back={spinRy % 360 > 90 && spinRy % 360 < 270 ? `${p.stills}/app-icon.png` : undefined}>
+      <div style={{position: "absolute", left: pose.x - phoneOuterW / 2, top: pose.y + floatZ, width: phoneOuterW, height: phoneOuterH, opacity: pose.o < 0.999 ? pose.o : undefined, transformStyle: "preserve-3d",
+        transform: `perspective(2400px) rotateX(${tiltX}deg) rotateY(${ryEff}deg) rotateZ(${pose.rz * (1 - zk)}deg) scale(${pose.s * (1 - 0.12 * Math.sin(Math.PI * Math.min(1, spinRy / 360)))})`, transformOrigin: "50% 0%"}}>
+        <div style={{translate: `${zx}px ${zy}px`, scale: String(zoom), transformOrigin: "50% 50%", transformStyle: "preserve-3d"}}>
+          <Phone w={L.phoneW} shine={shine} ry={ryEff} backIcon={`${p.stills}/app-icon.png`} tone={toneNow}>
             <ScreenStack p={p} beats={beats} k={k} />
             {(p.taps as {at: number; x: number; y: number; hold: number}[]).map((tp, i) => (
               <Sequence key={`tap${i}`} from={f(tp.at) - f(0.35)} durationInFrames={f(0.35) + f(tp.hold) + 18} layout="none">
-                <AbsoluteFill><Tap x={tp.x} y={tp.y} hold={tp.hold} k={k} /></AbsoluteFill>
+                <AbsoluteFill><Tap x={(1 - CS) / 2 + tp.x * CS} y={SB + tp.y * CS} hold={tp.hold} k={k} /></AbsoluteFill>
               </Sequence>
             ))}
           </Phone>
