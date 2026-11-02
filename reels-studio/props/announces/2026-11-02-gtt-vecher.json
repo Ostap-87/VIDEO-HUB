@@ -1,0 +1,104 @@
+{
+  "brand": "gtt",
+  "stories": [
+    {
+      "cover": "finished-videos/frames/_ann/tur-china-tech-parks/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-china-tech-parks/03.jpg",
+        "finished-videos/frames/_ann/tur-china-tech-parks/02.jpg"
+      ],
+      "title": "Смотри Reels **в профиле**",
+      "note": "Как попасть в технопарки Китая"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/tur-robotics/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-robotics/03.jpg",
+        "finished-videos/frames/_ann/tur-robotics/02.jpg"
+      ],
+      "title": "Смотри Reels **в профиле**",
+      "note": "12 заводов роботов за одну поездку"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/tur-china-ai/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-china-ai/03.jpg",
+        "finished-videos/frames/_ann/tur-china-ai/02.jpg"
+      ],
+      "title": "Смотри Reels **в профиле**",
+      "note": "Китай — второй мировой центр ИИ"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/tur-confectionery/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-confectionery/03.jpg",
+        "finished-videos/frames/_ann/tur-confectionery/02.jpg"
+      ],
+      "title": "Смотри Reels **в профиле**",
+      "note": "Китайские торты обгоняют мировые бренды"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/tur-china-global-brands/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-china-global-brands/03.jpg",
+        "finished-videos/frames/_ann/tur-china-global-brands/02.jpg"
+      ],
+      "title": "Смотри Reels **в профиле**",
+      "note": "Как китайские бренды покорили мир"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/tur-china-retail-showrooms/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-china-retail-showrooms/03.jpg",
+        "finished-videos/frames/_ann/tur-china-retail-showrooms/02.jpg"
+      ],
+      "title": "Смотри Reels **в профиле**",
+      "note": "Ритейл Китая: 9 флагманов вживую"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/tur-china-appliances/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-china-appliances/03.jpg",
+        "finished-videos/frames/_ann/tur-china-appliances/02.jpg"
+      ],
+      "title": "Смотри Reels **в профиле**",
+      "note": "9 заводов техники: от Циндао до Шуньдэ"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/tur-china-auto-plants/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-china-auto-plants/03.jpg",
+        "finished-videos/frames/_ann/tur-china-auto-plants/02.jpg"
+      ],
+      "title": "Смотри Reels **в профиле**",
+      "note": "Шесть автозаводов — с севера на юг"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/tur-china-beauty-antiage/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-china-beauty-antiage/03.jpg",
+        "finished-videos/frames/_ann/tur-china-beauty-antiage/02.jpg"
+      ],
+      "title": "Смотри Reels **в профиле**",
+      "note": "Где рождаются бьюти-хиты Китая"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/tur-china-tea-coffee-retail/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-china-tea-coffee-retail/03.jpg",
+        "finished-videos/frames/_ann/tur-china-tea-coffee-retail/02.jpg"
+      ],
+      "title": "Смотри Reels **в профиле**",
+      "note": "Как Luckin обогнал Starbucks в Китае"
+    },
+    {
+      "cover": "finished-videos/frames/_ann/tur-china-tech-giants/01.jpg",
+      "back": [
+        "finished-videos/frames/_ann/tur-china-tech-giants/03.jpg",
+        "finished-videos/frames/_ann/tur-china-tech-giants/02.jpg"
+      ],
+      "title": "Смотри Reels **в профиле**",
+      "note": "Девять гигантов Китая за одну поездку"
+    }
+  ]
+}
