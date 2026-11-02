@@ -9,7 +9,7 @@
 //    wechat (мини-программа), final (слоган и плашка CTA); заставка GTT в начале и в конце.
 // format: "v" — 1080×1920 (Reels/Stories), "h" — 1920×1080 (презентации, сайт, YouTube).
 import React from "react";
-import {AbsoluteFill, Easing, Img, interpolate, OffthreadVideo, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
+import {AbsoluteFill, AnimatedImage, Easing, Img, interpolate, OffthreadVideo, Sequence, spring, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
 import {Audio} from "@remotion/media";
 import {z} from "zod";
 import {body, display, mono} from "../fonts";
@@ -42,9 +42,13 @@ type Beat = {
   chips?: {text: string; at: number}[]; bigWords?: {text: string; at: number}[];
   counter?: {value: number; label: string; at: number; sub: string; subAt: number};
   screen?: string; screenDur?: number; flip?: number; threeOrder?: string[];
-  orbit?: {text: string; icon: string; at: number}[];
-  report?: {at?: number; excel?: number; pdf?: number; rub?: number; done?: number};
-  mind?: {report?: number; map?: number; companies?: number; deals?: number; contacts?: number; next?: number; auto?: number};
+  orbit?: {text: string; icon?: string; logo?: string; sub?: string; at: number}[];
+  report?: {at?: number; excel?: number; pdf?: number; rub?: number; done?: number; time?: number};
+  mind?: {report?: number; map?: number; time?: number; day?: number; companies?: number; deals?: number; contacts?: number; next?: number; auto?: number};
+  // v3 (02.11.2026): переход на входе в сцену, крупное слово за телефоном, эмодзи на слове
+  trans?: "none" | "zoom" | "whip" | "spin" | "iris" | "flash" | "shutter";
+  accent?: string;
+  emoji?: {src: string; at: number};
 };
 
 const INTRO = 54, OUTRO = 45, OVERLAP = 10;
@@ -54,7 +58,8 @@ export const appPromoFrames = (p: AppPromoProps, fps = 30) => Math.round(p.total
 const layoutOf = (format: "v" | "h") =>
   format === "h"
     ? {W: 1920, H: 1080, phoneW: 430, phoneX: 1390, phoneY: 60, textX: 150, textW: 860, kickerY: 250, titleSize: 76, chipY: 610, chipSize: 34, capY: 930, capSize: 38, capX: 150, capAlign: "left" as const}
-    : {W: 1080, H: 1920, phoneW: 600, phoneX: 540, phoneY: 610, textX: 72, textW: 936, kickerY: 262, titleSize: 80, chipY: 0, chipSize: 34, capY: 1440, capSize: 44, capX: 540, capAlign: "center" as const};
+    // v3: телефон целиком в кадре (низ ~1500, выше интерфейса Instagram), субтитры под ним
+    : {W: 1080, H: 1920, phoneW: 440, phoneX: 540, phoneY: 515, textX: 72, textW: 936, kickerY: 262, titleSize: 76, chipY: 0, chipSize: 32, capY: 1528, capSize: 40, capX: 540, capAlign: "center" as const};
 type Layout = ReturnType<typeof layoutOf>;
 
 const clamp = {extrapolateLeft: "clamp", extrapolateRight: "clamp"} as const;
@@ -80,7 +85,7 @@ const Stage: React.FC<{L: Layout}> = ({L}) => {
 };
 
 // ---------- телефон ----------
-const Phone: React.FC<{w: number; children: React.ReactNode; shadow?: number}> = ({w, children, shadow = 1}) => {
+const Phone: React.FC<{w: number; children: React.ReactNode; shadow?: number; shine?: number; back?: string}> = ({w, children, shadow = 1, shine = -1, back}) => {
   const k = w / SCREEN_W;
   const bez = Math.round(w * 0.035);
   const sw = w, sh = SCREEN_H * k;
@@ -97,6 +102,17 @@ const Phone: React.FC<{w: number; children: React.ReactNode; shadow?: number}> =
         {children}
         {/* стекло: мягкий блик */}
         <div style={{position: "absolute", inset: 0, background: "linear-gradient(115deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 70%, rgba(255,255,255,0.07) 100%)", pointerEvents: "none"}} />
+        {/* v3: блик проходит по стеклу на входе в сцену */}
+        {shine >= 0 && shine <= 1 ? (
+          <div style={{position: "absolute", top: "-20%", bottom: "-20%", width: "38%", left: `${-50 + shine * 170}%`, rotate: "18deg", pointerEvents: "none",
+            background: "linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.42) 50%, rgba(255,255,255,0) 100%)"}} />
+        ) : null}
+        {/* v3: спинка телефона, пока он развёрнут экраном от зрителя (оборот 360°) */}
+        {back ? (
+          <div style={{position: "absolute", inset: 0, background: "linear-gradient(150deg, #1e3a8a 0%, #0b1d55 55%, #081440 100%)", display: "flex", alignItems: "center", justifyContent: "center"}}>
+            <Img src={staticFile(back)} style={{width: w * 0.34, height: w * 0.34, borderRadius: w * 0.08, boxShadow: "0 0 60px rgba(125,211,252,0.55)"}} />
+          </div>
+        ) : null}
         {/* «остров» */}
         <div style={{position: "absolute", left: sw / 2 - w * 0.15, top: w * 0.028, width: w * 0.3, height: w * 0.085, borderRadius: w * 0.05, background: "#0b0b0d"}} />
       </div>
@@ -113,10 +129,10 @@ const poseOf = (b: Beat | undefined, i: number, L: Layout): Pose => {
   if (b.visual === "chaos") return {...base, y: L.phoneY + L.H * 0.9, s: 0.8, ry: 0, rz: 8, o: 0};
   if (b.visual === "reveal") return {...base, ry: 0, rz: 0};
   if (b.visual === "three" || b.visual === "mindgrow" || b.visual === "chats") return {...base, s: 0.7, o: 0, ry: 0, rz: 0, y: b.visual === "chats" ? L.phoneY + L.H * 0.9 : base.y};
-  if (b.visual === "orbit") return L.W > L.H ? {...base, x: 1360, y: 250, s: 0.74, ry: -6, rz: 0} : {...base, y: 760, s: 0.66, ry: 0, rz: 0};
-  if (b.visual === "receipts") return L.W > L.H ? {...base, x: 1480, ry: -12, rz: 1.5} : {...base, x: 870, y: 1130, s: 0.5, ry: -12, rz: 2};
-  if (b.visual === "counter") return L.W > L.H ? {...base, x: L.phoneX + 20, ry: -14, rz: 2} : {...base, s: 0.82, y: L.phoneY + 210, ry: 10, rz: -2};
-  if (b.visual === "final") return L.W > L.H ? {...base, x: L.phoneX - 40, ry: -6, rz: 0} : {...base, s: 0.86, y: L.phoneY + 170, ry: 0, rz: 0};
+  if (b.visual === "orbit") return L.W > L.H ? {...base, x: 1360, y: 250, s: 0.74, ry: -6, rz: 0} : {...base, y: 600, s: 0.82, ry: 0, rz: 0};
+  if (b.visual === "receipts") return L.W > L.H ? {...base, x: 1480, ry: -12, rz: 1.5} : {...base, x: 860, y: 1130, s: 0.62, ry: -12, rz: 2};
+  if (b.visual === "counter") return L.W > L.H ? {...base, x: L.phoneX + 20, ry: -14, rz: 2} : {...base, s: 0.9, y: L.phoneY + 150, ry: 10, rz: -2};
+  if (b.visual === "final") return L.W > L.H ? {...base, x: L.phoneX - 40, ry: -6, rz: 0} : {...base, s: 0.86, y: L.phoneY + 20, ry: 0, rz: 0};
   return base;
 };
 const mixPose = (a: Pose, b: Pose, k: number): Pose => ({
@@ -484,9 +500,9 @@ const Cta: React.FC<{b: Beat; L: Layout}> = ({b, L}) => {
 
 // ---------- хаос чатов: уведомления мессенджеров сыплются на экран ----------
 const NETS = {
-  tg: {color: "#2AABEE", name: "Telegram", icon: "M3 11.5l17-7-3 15-5.5-4-3 3v-4.5l8.5-7.5-10.5 6z"},
-  wx: {color: "#07C160", name: "WeChat", icon: "M9 5C5 5 2 7.6 2 10.8c0 1.8 1 3.4 2.6 4.5L4 18l3-1.6c.6.2 1.3.3 2 .3M14.5 9c3.3 0 6 2.2 6 5s-2.7 5-6 5c-.6 0-1.2-.1-1.8-.2L10 20l.6-2.3c-1.3-.9-2.1-2.3-2.1-3.7 0-2.8 2.7-5 6-5z"},
-  wa: {color: "#25D366", name: "WhatsApp", icon: "M12 3a9 9 0 00-7.8 13.5L3 21l4.6-1.2A9 9 0 1012 3zm-3 5c.3 0 .6 0 .8.6l.8 1.9c.1.3 0 .6-.2.8l-.6.7c.6 1.2 1.6 2.2 2.8 2.8l.7-.6c.2-.2.5-.3.8-.2l1.9.8c.5.2.6.5.6.8 0 1.2-1 2.1-2.2 2.1-3.6 0-7.4-3.8-7.4-7.4C7 9 7.8 8 9 8z"},
+  tg: {color: "#2AABEE", name: "Telegram", logo: "source-videos/логотипы/общие/telegram.svg", icon: "M3 11.5l17-7-3 15-5.5-4-3 3v-4.5l8.5-7.5-10.5 6z"},
+  wx: {color: "#07C160", name: "WeChat", logo: "source-videos/логотипы/общие/wechat.png", icon: "M9 5C5 5 2 7.6 2 10.8c0 1.8 1 3.4 2.6 4.5L4 18l3-1.6c.6.2 1.3.3 2 .3M14.5 9c3.3 0 6 2.2 6 5s-2.7 5-6 5c-.6 0-1.2-.1-1.8-.2L10 20l.6-2.3c-1.3-.9-2.1-2.3-2.1-3.7 0-2.8 2.7-5 6-5z"},
+  wa: {color: "#25D366", name: "WhatsApp", logo: "source-videos/логотипы/общие/whatsapp.svg", icon: "M12 3a9 9 0 00-7.8 13.5L3 21l4.6-1.2A9 9 0 1012 3zm-3 5c.3 0 .6 0 .8.6l.8 1.9c.1.3 0 .6-.2.8l-.6.7c.6 1.2 1.6 2.2 2.8 2.8l.7-.6c.2-.2.5-.3.8-.2l1.9.8c.5.2.6.5.6.8 0 1.2-1 2.1-2.2 2.1-3.6 0-7.4-3.8-7.4-7.4C7 9 7.8 8 9 8z"},
 } as const;
 const CHATS: {net: keyof typeof NETS; who: string; text: string}[] = [
   {net: "tg", who: "GTT Пекин · делегация", text: "Где встречаемся утром?"},
@@ -518,8 +534,14 @@ const Chats: React.FC<{beats: Beat[]; L: Layout; dur: number; collapseAt: number
   const W = isH ? 620 : 860, H = isH ? 104 : 128;
   const cx = L.W / 2, top = isH ? 300 : 560;
   const big = beats.flatMap((b) => b.bigWords || []);
+  // v3: эмодзи «взрыв мозга» на слове + чаты трясутся («закипает мозг»)
+  const emo = beats.map((b) => b.emoji).find(Boolean);
+  const emoF = emo ? Math.round((emo.at - b0) * fps) : 1e9;
+  const shakeK = frame >= emoF ? interpolate(frame, [emoF, emoF + 24], [1, 0], clamp) * (1 - col) : 0;
+  const shakeX = Math.sin(frame * 2.3) * 14 * shakeK, shakeY = Math.cos(frame * 3.1) * 8 * shakeK;
   return (
     <AbsoluteFill>
+      <AbsoluteFill style={{translate: `${shakeX}px ${shakeY}px`}}>
       {CHATS.map((c, i) => {
         const at = Math.round(times[i] * fps);
         if (frame < at) return null;
@@ -536,8 +558,9 @@ const Chats: React.FC<{beats: Beat[]; L: Layout; dur: number; collapseAt: number
           <div key={i} style={{position: "absolute", left: x + sx * col, top: y + sy * col, width: W, height: H, borderRadius: H * 0.28, background: "rgba(255,255,255,0.94)",
             boxShadow: "0 16px 40px rgba(20,30,60,0.18)", display: "flex", alignItems: "center", gap: 18, padding: "0 22px", boxSizing: "border-box",
             opacity: s * fade * (1 - col), scale: String((0.85 + 0.15 * s) * (1 - 0.6 * col)), rotate: `${rot}deg`, zIndex: i}}>
-            <div style={{width: H * 0.56, height: H * 0.56, borderRadius: H * 0.16, background: n.color, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0}}>
-              <svg width={H * 0.36} height={H * 0.36} viewBox="0 0 24 24"><path d={n.icon} fill="white" stroke="white" strokeWidth={0.6} strokeLinejoin="round" /></svg>
+            {/* v3: настоящие логотипы мессенджеров */}
+            <div style={{width: H * 0.62, height: H * 0.62, borderRadius: H * 0.18, background: "white", border: `2px solid ${n.color}33`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0}}>
+              <Img src={staticFile(n.logo)} style={{width: H * 0.46, height: H * 0.46, objectFit: "contain"}} />
             </div>
             <div style={{display: "flex", flexDirection: "column", gap: 4, minWidth: 0, flex: 1}}>
               <div style={{display: "flex", justifyContent: "space-between", fontFamily: body.fontFamily, fontSize: isH ? 20 : 24, color: C.muted}}>
@@ -551,6 +574,19 @@ const Chats: React.FC<{beats: Beat[]; L: Layout; dur: number; collapseAt: number
           </div>
         );
       })}
+      </AbsoluteFill>
+      {emo && frame >= emoF - 1 ? (() => {
+        const s = spring({frame: frame - emoF, fps, config: {damping: 9, stiffness: 160, mass: 0.8}});
+        const gone = interpolate(t, [collapseAt - 0.2, collapseAt + 0.25], [1, 0], clamp);
+        const size = isH ? 240 : 300;
+        return (
+          <div style={{position: "absolute", left: isH ? 1500 : 690, top: isH ? 600 : 1150, width: size, height: size, translate: "-50% -50%", zIndex: 60,
+            scale: String((0.3 + 0.7 * s) * (1 + 0.04 * Math.sin(frame * 0.9))), rotate: `${Math.sin(frame * 0.7) * 8}deg`, opacity: Math.min(1, s * 1.5) * gone,
+            filter: "drop-shadow(0 18px 30px rgba(20,30,60,0.28))"}}>
+            <AnimatedImage src={staticFile(emo.src)} width={size} height={size} fit="contain" style={{width: size, height: size}} />
+          </div>
+        );
+      })() : null}
       {big.map((w, i) => {
         const at = Math.round((w.at - b0) * fps);
         const next = big[i + 1] ? Math.round((big[i + 1].at - b0) * fps) : Math.round(collapseAt * fps);
@@ -593,17 +629,29 @@ const Orbit: React.FC<{b: Beat; L: Layout; center: {x: number; y: number}; rx: n
         const s = spring({frame: frame - at, fps, config: {damping: 12, stiffness: 180, mass: 0.7}});
         const ang = (-90 + i * (360 / items.length)) * Math.PI / 180 + t * 0.12;
         const x = center.x + Math.cos(ang) * rx * (0.6 + 0.4 * s), y = center.y + Math.sin(ang) * ry * (0.6 + 0.4 * s);
+        const box = isH ? 56 : 64;
+        // v3: по пунктиру бегут «данные» от телефона к сервису
+        const flow = ((t * 0.9 + i * 0.37) % 1);
+        const dx = center.x + (x - center.x) * flow, dy = center.y + (y - center.y) * flow;
+        const textLogo = o.logo?.startsWith("text:");
         return (
           <React.Fragment key={i}>
             <svg width={L.W} height={L.H} style={{position: "absolute", inset: 0, pointerEvents: "none"}}>
               <line x1={center.x} y1={center.y} x2={x} y2={y} stroke="rgba(37,99,235,0.35)" strokeWidth={2.5} strokeDasharray="6 8" opacity={s} />
+              <circle cx={dx} cy={dy} r={6} fill={C.accent} opacity={s * Math.sin(flow * Math.PI)} />
             </svg>
-            <div style={{position: "absolute", left: x, top: y, translate: "-50% -50%", display: "flex", alignItems: "center", gap: 12, padding: isH ? "12px 22px 12px 14px" : "14px 26px 14px 16px",
-              borderRadius: 999, background: "rgba(255,255,255,0.95)", boxShadow: "0 14px 34px rgba(20,30,60,0.18)", opacity: s, scale: String(0.6 + 0.4 * s)}}>
-              <div style={{width: isH ? 40 : 48, height: isH ? 40 : 48, borderRadius: 14, background: C.accent, display: "flex", alignItems: "center", justifyContent: "center"}}>
-                <svg width={isH ? 24 : 28} height={isH ? 24 : 28} viewBox="0 0 24 24"><path d={ORB_ICONS[o.icon] || ORB_ICONS.chat} fill="none" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" /></svg>
+            <div style={{position: "absolute", left: x, top: y, translate: "-50% -50%", display: "flex", alignItems: "center", gap: 12, padding: isH ? "10px 22px 10px 10px" : "10px 24px 10px 10px",
+              borderRadius: 999, background: "rgba(255,255,255,0.96)", boxShadow: "0 14px 34px rgba(20,30,60,0.18)", opacity: s, scale: String(0.6 + 0.4 * s)}}>
+              <div style={{width: box, height: box, borderRadius: 16, background: o.logo && !textLogo ? "white" : C.accent, border: o.logo && !textLogo ? `2px solid ${C.line}` : "none",
+                display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden"}}>
+                {o.logo && !textLogo ? <Img src={staticFile(o.logo)} style={{width: box * 0.74, height: box * 0.74, objectFit: "contain"}} />
+                  : textLogo ? <span style={{fontFamily: body.fontFamily, fontWeight: 700, fontSize: box * 0.42, color: "white"}}>{(o.sub || o.text).slice(0, 1)}</span>
+                  : <svg width={box * 0.55} height={box * 0.55} viewBox="0 0 24 24"><path d={ORB_ICONS[o.icon || "chat"] || ORB_ICONS.chat} fill="none" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" /></svg>}
               </div>
-              <span style={{fontFamily: body.fontFamily, fontWeight: 700, fontSize: isH ? 30 : 36, color: C.text, whiteSpace: "nowrap"}}>{o.text}</span>
+              <div style={{display: "flex", flexDirection: "column", lineHeight: 1.05}}>
+                <span style={{fontFamily: body.fontFamily, fontWeight: 700, fontSize: isH ? 28 : 32, color: C.text, whiteSpace: "nowrap"}}>{o.text}</span>
+                {o.sub ? <span style={{fontFamily: body.fontFamily, fontSize: isH ? 18 : 20, color: C.muted, whiteSpace: "nowrap"}}>{o.sub}</span> : null}
+              </div>
             </div>
           </React.Fragment>
         );
@@ -614,10 +662,13 @@ const Orbit: React.FC<{b: Beat; L: Layout; center: {x: number; y: number}; rx: n
 
 // ---------- чеки слетаются в единый отчёт ----------
 const RECEIPTS = [
-  {img: "chek-taksi.jpg", note: "Такси DiDi: отель → JD.com", cny: 86, rub: "1 038"},
-  {img: "chek-obed.jpg", note: "Обед с партнёрами", cny: 268, rub: "3 235"},
-  {img: "chek-svyaz.jpg", note: "Связь, пакет на 7 дней", cny: 120, rub: "1 448"},
+  {img: "chek-taksi.jpg", note: "Такси DiDi: отель → JD.com", cny: 86, rub: "1 038", fx: ["1 038 ₽", "$12", "€11", "5 900 ₸"]},
+  {img: "chek-obed.jpg", note: "Обед с партнёрами", cny: 268, rub: "3 235", fx: ["3 235 ₽", "$37", "€34", "18 400 ₸"]},
+  {img: "chek-svyaz.jpg", note: "Связь, пакет на 7 дней", cny: 120, rub: "1 448", fx: ["1 448 ₽", "$17", "€15", "8 200 ₸"]},
 ];
+// v3 (пометка пользователя: «суммы фиксируются в любой выбранной валюте») — демо-суммы, перебор валют на слове «валюте»
+const CUR = ["₽", "$", "€", "₸"];
+const TOTALS = ["5 721 ₽", "$66", "€60", "32 500 ₸"];
 const Receipts: React.FC<{b: Beat; L: Layout; from: {x: number; y: number}; imgDir: string}> = ({b, L, from, imgDir}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -629,6 +680,9 @@ const Receipts: React.FC<{b: Beat; L: Layout; from: {x: number; y: number}; imgD
   const cardIn = spring({frame: frame - f(r.at, -0.3), fps, config: theme.motion.snappy});
   const pop = (at: number) => spring({frame: frame - at, fps, config: {damping: 11, stiffness: 190, mass: 0.7}});
   const done = pop(f(r.done, -0.05));
+  // валюта: от слова «валюте» каждые 0,4 с следующая, на 5-м шаге снова рубли
+  const curI = frame < f(r.rub) ? 0 : Math.min(4, Math.floor((frame - f(r.rub)) / Math.round(0.4 * fps))) % 4;
+  const timeS = pop(f(r.time, -0.05));
   return (
     <AbsoluteFill>
       {/* отчёт */}
@@ -646,15 +700,21 @@ const Receipts: React.FC<{b: Beat; L: Layout; from: {x: number; y: number}; imgD
               <div style={{flex: 1, fontFamily: body.fontFamily, fontSize: isH ? 24 : 27, color: C.text}}>{rc.note}</div>
               <div style={{textAlign: "right", fontFamily: body.fontFamily}}>
                 <div style={{fontWeight: 700, fontSize: isH ? 26 : 29, color: C.text}}>¥{rc.cny}</div>
-                <div style={{fontSize: isH ? 21 : 23, color: frame >= f(r.rub) ? C.accent : C.muted, opacity: frame >= f(r.rub, -0.1) ? 1 : 0}}>≈ {rc.rub} ₽</div>
+                <div style={{fontSize: isH ? 21 : 23, color: frame >= f(r.rub) ? C.accent : C.muted, opacity: frame >= f(r.excel, -0.1) ? 1 : 0}}>≈ {rc.fx[curI]}</div>
               </div>
             </div>
           );
         })}
         <div style={{position: "absolute", left: 30, right: 30, bottom: 24, display: "flex", justifyContent: "space-between", alignItems: "baseline", fontFamily: body.fontFamily,
-          opacity: frame >= f(r.rub, -0.1) ? 1 : 0}}>
-          <span style={{fontSize: isH ? 22 : 24, color: C.muted}}>по курсу ЦБ РФ на дату чека</span>
-          <span style={{fontWeight: 700, fontSize: isH ? 32 : 36, color: C.text}}>Итого 5 721 ₽</span>
+          opacity: frame >= f(r.excel, -0.1) ? 1 : 0}}>
+          <span style={{display: "flex", gap: 8}}>
+            {CUR.map((c, j) => (
+              <span key={c} style={{width: isH ? 38 : 44, height: isH ? 38 : 44, borderRadius: 12, display: "inline-flex", alignItems: "center", justifyContent: "center", fontWeight: 700,
+                fontSize: isH ? 22 : 25, background: j === curI && frame >= f(r.rub) ? C.accent : C.primary, color: j === curI && frame >= f(r.rub) ? "white" : C.muted,
+                scale: String(j === curI && frame >= f(r.rub) ? 1.12 : 1)}}>{c}</span>
+            ))}
+          </span>
+          <span style={{fontWeight: 700, fontSize: isH ? 32 : 36, color: C.text}}>Итого {TOTALS[curI]}</span>
         </div>
         {/* форматы */}
         {[{t: "XLSX", c: "#1D7A45", at: f(r.excel, -0.05)}, {t: "PDF", c: "#D93636", at: f(r.pdf, -0.05)}].map((x, i) => {
@@ -669,8 +729,12 @@ const Receipts: React.FC<{b: Beat; L: Layout; from: {x: number; y: number}; imgD
           <div style={{position: "absolute", left: "50%", top: "52%", translate: "-50% -50%", rotate: `${-8 + (1 - done) * 20}deg`, scale: String(1.6 - 0.6 * done), opacity: Math.min(1, done * 1.4),
             border: `5px solid ${C.accent}`, borderRadius: 18, padding: "14px 26px", background: "rgba(255,255,255,0.88)", color: C.accent, fontFamily: display.fontFamily, fontWeight: 700,
             fontSize: isH ? 34 : 38, textAlign: "center", lineHeight: 1.15, whiteSpace: "nowrap"}}>
-            Бухгалтерии ✓<br /><span style={{fontFamily: body.fontFamily, fontSize: isH ? 24 : 27}}>одним файлом</span>
+            Бухгалтеру ✓<br /><span style={{fontFamily: body.fontFamily, fontSize: isH ? 24 : 27}}>одним файлом · фото и цифры</span>
           </div>
+        ) : null}
+        {frame >= f(r.time, -0.05) ? (
+          <div style={{position: "absolute", left: "50%", bottom: -34, translate: "-50% 0", padding: "12px 24px", borderRadius: 999, background: C.text, color: "white",
+            fontFamily: body.fontFamily, fontWeight: 700, fontSize: isH ? 24 : 28, whiteSpace: "nowrap", opacity: timeS, scale: String(0.6 + 0.4 * timeS)}}>⏱ Без ручной сборки отчётов</div>
         ) : null}
       </div>
       {/* летящие чеки */}
@@ -690,13 +754,15 @@ const Receipts: React.FC<{b: Beat; L: Layout; from: {x: number; y: number}; imgD
 };
 
 // ---------- майндмэп поездки растёт сам + PDF-отчёт ----------
+const LG = "source-videos/логотипы/ритейл/";
+// v3 (пометка пользователя: «время, день, компания… при раскладке майндмэпа показывай логотипы компаний»); поездка — демо
 const MIND = [
-  {name: "JD.com", leaf: "Договорились: презентация до конца ноября", kind: "deals"},
-  {name: "Meituan", leaf: "Курьеров распределяет алгоритм", kind: "companies"},
-  {name: "Hema", leaf: "Повторная встреча с закупками — декабрь", kind: "next"},
-  {name: "Alibaba", leaf: "Следующий шаг: пилот на площадке", kind: "next"},
-  {name: "Pinduoduo", leaf: "Визитки: 3 контакта", kind: "contacts"},
-  {name: "Yonghui", leaf: "Пришлём образцы отделу закупок", kind: "deals"},
+  {name: "JD.com", logo: LG + "jd.svg", day: "День 1", time: "10:00", leaf: "Договорились: презентация до конца ноября", kind: "deals"},
+  {name: "Meituan", logo: LG + "meituan.svg", day: "День 1", time: "15:30", leaf: "Курьеров распределяет алгоритм", kind: "companies"},
+  {name: "Hema", logo: LG + "hema.png", day: "День 2", time: "11:00", leaf: "Повторная встреча с закупками — декабрь", kind: "next"},
+  {name: "Alibaba", logo: "source-videos/логотипы/общие/alibaba.svg", day: "День 3", time: "10:30", leaf: "Следующий шаг: пилот на площадке", kind: "next"},
+  {name: "Pinduoduo", logo: LG + "pinduoduo.svg", day: "День 4", time: "14:00", leaf: "Визитки: 3 контакта", kind: "contacts"},
+  {name: "Yonghui", logo: LG + "yonghui.png", day: "День 5", time: "09:30", leaf: "Пришлём образцы отделу закупок", kind: "deals"},
 ] as const;
 const MindGrow: React.FC<{b: Beat; L: Layout}> = ({b, L}) => {
   const frame = useCurrentFrame();
@@ -717,7 +783,7 @@ const MindGrow: React.FC<{b: Beat; L: Layout}> = ({b, L}) => {
         {MIND.map((n, i) => {
           const ang = ANG[i] * Math.PI / 180;
           const x = cx + Math.cos(ang) * rx, y = cy + Math.sin(ang) * ry;
-          const at = f(m.companies, -0.1 + i * 0.12);
+          const at = f(m.map, -0.1 + i * 0.12);
           const k = interpolate(frame, [at, at + 10], [0, 1], {...clamp, easing: ease});
           const len = Math.hypot(x - cx, y - cy);
           return (
@@ -729,17 +795,29 @@ const MindGrow: React.FC<{b: Beat; L: Layout}> = ({b, L}) => {
       {MIND.map((n, i) => {
         const ang = ANG[i] * Math.PI / 180;
         const x = cx + Math.cos(ang) * rx, y = cy + Math.sin(ang) * ry;
-        const s = pop(f(m.companies, 0.15 + i * 0.12));
+        // логотипы появляются вместе с раскладкой карты, на «компания» — вспыхивают
+        const s = pop(f(m.map, 0.1 + i * 0.12));
+        const hl = interpolate(frame, [f(m.companies, i * 0.08), f(m.companies, i * 0.08 + 0.25), f(m.companies, i * 0.08 + 0.6)], [0, 1, 0], clamp);
         const leafAt = f((m as Record<string, number | undefined>)[n.kind], 0.05 + (i % 2) * 0.15);
         const ls = pop(leafAt);
+        const ts = pop(f(m.time, i * 0.06)), ds = pop(f(m.day, i * 0.06));
         const below = Math.sin(ang) > -0.2;
         return (
           <React.Fragment key={i}>
-            <div style={{position: "absolute", left: x, top: y, translate: "-50% -50%", padding: isH ? "12px 24px" : "14px 26px", borderRadius: 999, background: C.surface,
-              border: `3px solid ${C.accent}`, fontFamily: body.fontFamily, fontWeight: 700, fontSize: isH ? 30 : 34, color: C.text, opacity: s, scale: String(0.6 + 0.4 * s),
-              boxShadow: `0 12px 30px rgba(37,99,235,${0.15 + 0.25 * glow})`, whiteSpace: "nowrap"}}>{n.name}</div>
+            <div style={{position: "absolute", left: x, top: y, translate: "-50% -50%", width: isH ? 210 : 220, height: isH ? 78 : 86, borderRadius: 22, background: C.surface,
+              border: `3px solid ${C.accent}`, display: "flex", alignItems: "center", justifyContent: "center", opacity: s, scale: String((0.6 + 0.4 * s) * (1 + 0.1 * hl)),
+              boxShadow: `0 12px 30px rgba(37,99,235,${0.15 + 0.25 * glow + 0.3 * hl})`}}>
+              <Img src={staticFile(n.logo)} style={{maxWidth: "76%", maxHeight: "56%", objectFit: "contain"}} />
+              {/* время и день визита — маленькие чипы над логотипом */}
+              <div style={{position: "absolute", left: "50%", top: -26, translate: "-50% 0", display: "flex", gap: 6, whiteSpace: "nowrap"}}>
+                {frame >= f(m.day, i * 0.06) ? <span style={{padding: "4px 10px", borderRadius: 999, background: C.accent, color: "white", fontFamily: mono.fontFamily, fontSize: isH ? 17 : 19,
+                  opacity: ds, scale: String(0.6 + 0.4 * ds)}}>{n.day}</span> : null}
+                {frame >= f(m.time, i * 0.06) ? <span style={{padding: "4px 10px", borderRadius: 999, background: C.text, color: "white", fontFamily: mono.fontFamily, fontSize: isH ? 17 : 19,
+                  opacity: ts, scale: String(0.6 + 0.4 * ts)}}>{n.time}</span> : null}
+              </div>
+            </div>
             {frame >= leafAt ? (
-              <div style={{position: "absolute", left: x, top: y + (below ? 1 : -1) * (isH ? 62 : 72), translate: "-50% -50%", maxWidth: isH ? 330 : 300, padding: "10px 16px", borderRadius: 14,
+              <div style={{position: "absolute", left: x, top: y + (below ? (isH ? 84 : 94) : -(isH ? 104 : 116)), translate: "-50% -50%", maxWidth: isH ? 330 : 300, padding: "10px 16px", borderRadius: 14,
                 background: "rgba(255,255,255,0.92)", boxShadow: "0 8px 20px rgba(20,30,60,0.12)", fontFamily: body.fontFamily, fontSize: isH ? 21 : 24, lineHeight: 1.25, color: C.text,
                 textAlign: "center", opacity: ls, scale: String(0.7 + 0.3 * ls)}}>{n.leaf}</div>
             ) : null}
@@ -771,6 +849,95 @@ const MindGrow: React.FC<{b: Beat; L: Layout}> = ({b, L}) => {
   );
 };
 
+// ---------- v3: переходы между сценами (решение пользователя 02.11.2026: «интересные и необычные переходы») ----------
+const TR = 0.32; // половина перехода, с
+type TransKind = NonNullable<Beat["trans"]>;
+const transAt = (beats: Beat[], t: number): {type: TransKind; k: number; T: number} | null => {
+  for (let i = 1; i < beats.length; i++) {
+    const T = beats[i].w0, tp = beats[i].trans;
+    if (!tp || tp === "none") continue;
+    if (t >= T - TR && t < T + TR) return {type: tp, k: (t - (T - TR)) / (2 * TR), T};
+  }
+  return null;
+};
+// «камера»: наезд-сквозь, хлёсткий смаз — двигают всю сцену
+const camOf = (tr: ReturnType<typeof transAt>) => {
+  if (!tr) return {x: 0, s: 1, blur: 0};
+  const a = tr.k < 0.5 ? tr.k / 0.5 : (1 - tr.k) / 0.5; // 0 → 1 (на стыке) → 0
+  const inn = tr.k < 0.5;
+  if (tr.type === "zoom") return {x: 0, s: inn ? 1 + 0.55 * a * a : 1 - 0.22 * a, blur: 16 * a * a};
+  if (tr.type === "whip") return {x: (inn ? -1 : 1) * 340 * a * a, s: 1, blur: 20 * a * a};
+  return {x: 0, s: 1, blur: 0};
+};
+const TransOverlay: React.FC<{tr: ReturnType<typeof transAt>; L: Layout}> = ({tr, L}) => {
+  if (!tr) return null;
+  const {k} = tr;
+  const a = k < 0.5 ? k / 0.5 : (1 - k) / 0.5;
+  const diag = Math.hypot(L.W, L.H);
+  if (tr.type === "flash") {
+    return (
+      <AbsoluteFill style={{pointerEvents: "none"}}>
+        <AbsoluteFill style={{background: "radial-gradient(circle at 50% 45%, rgba(255,255,255,1), rgba(219,234,254,0.85) 55%, rgba(255,255,255,0.6))", opacity: Math.pow(a, 1.6)}} />
+        <div style={{position: "absolute", top: -L.H * 0.2, height: L.H * 1.4, width: L.W * 0.35, left: -L.W * 0.4 + k * L.W * 1.5, rotate: "20deg",
+          background: "linear-gradient(90deg, rgba(255,255,255,0), rgba(125,211,252,0.55), rgba(255,255,255,0))", opacity: a}} />
+      </AbsoluteFill>
+    );
+  }
+  if (tr.type === "iris") {
+    const e = Easing.inOut(Easing.cubic);
+    const r = k < 0.5 ? e(k / 0.5) * diag * 0.62 : e((k - 0.5) / 0.5) * diag * 0.62;
+    const style: React.CSSProperties = k < 0.5
+      ? {clipPath: `circle(${r}px at 50% 45%)`}
+      : {maskImage: `radial-gradient(circle at 50% 45%, transparent ${r}px, black ${r + 2}px)`, WebkitMaskImage: `radial-gradient(circle at 50% 45%, transparent ${r}px, black ${r + 2}px)`};
+    return (
+      <AbsoluteFill style={{pointerEvents: "none", background: `radial-gradient(circle at 50% 45%, #3b82f6, ${C.accent} 45%, #1e3a8a)`, ...style}}>
+        <div style={{position: "absolute", left: "50%", top: "45%", translate: "-50% -50%", fontFamily: display.fontFamily, fontWeight: 700, fontSize: L.W > L.H ? 120 : 110, color: "white",
+          opacity: k < 0.5 ? 0 : 1 - (k - 0.5) / 0.5}}>GTT</div>
+      </AbsoluteFill>
+    );
+  }
+  if (tr.type === "shutter") {
+    const N = 6;
+    return (
+      <AbsoluteFill style={{pointerEvents: "none", overflow: "hidden"}}>
+        {Array.from({length: N}).map((_, j) => {
+          const d = j * 0.05;
+          const kk = Math.max(0, Math.min(1, (k - d) / (1 - 0.05 * (N - 1))));
+          const e = Easing.inOut(Easing.cubic);
+          const y = kk < 0.5 ? -100 + 100 * e(kk / 0.5) : 100 * e((kk - 0.5) / 0.5);
+          return <div key={j} style={{position: "absolute", top: 0, bottom: 0, left: `${(j * 100) / N}%`, width: `${100 / N + 0.3}%`, translate: `0 ${y}%`,
+            background: j % 2 ? C.accent : "#1d4ed8", boxShadow: "0 0 40px rgba(30,58,138,0.35)"}} />;
+        })}
+      </AbsoluteFill>
+    );
+  }
+  return null;
+};
+
+// ---------- v3: крупное слово за телефоном («текст за объектом») ----------
+const AccentWord: React.FC<{text: string; L: Layout; dur: number; cy: number}> = ({text, L, dur, cy}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const isH = L.W > L.H;
+  const letters = text.split("");
+  const size = Math.min(isH ? 260 : 300, (isH ? 1500 : 1040) / (letters.length * 0.74));
+  const out = interpolate(frame, [dur - 10, dur], [1, 0], clamp);
+  const drift = interpolate(frame, [0, dur], [-24, 24]);
+  return (
+    <div style={{position: "absolute", left: 0, width: L.W, top: cy - size * 0.6, textAlign: "center", whiteSpace: "nowrap", opacity: out, translate: `${drift}px 0`}}>
+      {letters.map((ch, i) => {
+        const s = spring({frame: frame - 2 - i * 2, fps, config: {damping: 14, stiffness: 120, mass: 0.9}});
+        return (
+          <span key={i} style={{display: "inline-block", fontFamily: display.fontFamily, fontWeight: 700, fontSize: size, lineHeight: 1.2, letterSpacing: "-0.02em",
+            color: "rgba(37,99,235,0.11)", WebkitTextStroke: `${isH ? 3.5 : 4}px rgba(37,99,235,0.55)`, opacity: s, translate: `0 ${(1 - s) * 90}px`, rotate: `${(1 - s) * 8}deg`}}>
+            {ch === " " ? "\u00a0" : ch}
+          </span>
+        );
+      })}
+    </div>
+  );
+};
+
 // ---------- ролик ----------
 export const AppPromo: React.FC<AppPromoProps> = (p) => {
   const frame = useCurrentFrame();
@@ -796,6 +963,12 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
     else if (t >= flipAt && t < flipAt + 0.26) flipRy = interpolate(t, [flipAt, flipAt + 0.26], [-90, 0], {...clamp, easing: Easing.out(Easing.quad)});
   }
   const float = Math.sin(t * 1.1) * 8;
+  // v3: переход на стыке сцен — «камера» (наезд-сквозь, смаз), поворот телефона на 360°, оверлеи (вспышка, круг, шторки)
+  const tr = transAt(beats, t);
+  const cam = camOf(tr);
+  const spinRy = tr && tr.type === "spin" ? 360 * Easing.inOut(Easing.cubic)(tr.k) : 0;
+  const curB = beats[bi];
+  const shine = curB && curB.screen ? interpolate(t, [curB.w0 + 0.2, curB.w0 + 0.85], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "extend"}) : -1;
 
   // наезд на элемент экрана
   const fz = (p.focus as {at: number; until: number; box: {x: number; y: number; w: number; h: number}}[]).find((z) => t >= z.at - 0.4 && t <= z.until + 0.5);
@@ -829,6 +1002,21 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
   return (
     <AbsoluteFill style={{backgroundColor: C.primary}}>
       <Stage L={L} />
+      <AbsoluteFill style={{scale: String(cam.s), translate: `${cam.x}px 0`, filter: cam.blur > 0.3 ? `blur(${cam.blur.toFixed(1)}px)` : undefined}}>
+
+      {/* v3: крупное слово за телефоном */}
+      {beats.map((b) => {
+        if (!b.accent) return null;
+        const from = f(b.w0);
+        const dur = f(b.w1) - from;
+        const pz = poseOf(b, beats.indexOf(b), L);
+        const cy = pz.y + (SCREEN_H * k + L.phoneW * 0.07) * pz.s * (isH ? 0.5 : 0.42);
+        return (
+          <Sequence key={`acc-${b.id}`} from={from} durationInFrames={dur} premountFor={fps} name={`Слово ${b.accent}`}>
+            <AccentWord text={b.accent} L={L} dur={dur} cy={cy} />
+          </Sequence>
+        );
+      })}
 
       {/* особые сцены под телефоном */}
       {beats.map((b) => {
@@ -848,7 +1036,7 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
             {b.visual === "three" ? <Three b={b} L={L} p={p} /> : null}
             {b.visual === "counter" ? <Counter b={b} L={L} /> : null}
             {b.visual === "chats" ? <Chats beats={beats.slice(bi2, beats.indexOf(last) + 1)} L={L} dur={dur} collapseAt={last.w1 - b.w0 + 0.1} /> : null}
-            {b.visual === "orbit" ? <Orbit b={b} L={L} center={pc} rx={isH ? 470 : 400} ry={isH ? 420 : 520} /> : null}
+            {b.visual === "orbit" ? <Orbit b={b} L={L} center={pc} rx={isH ? 500 : 365} ry={isH ? 420 : 440} /> : null}
             {b.visual === "receipts" ? <Receipts b={b} L={L} from={pc} imgDir={p.stills.replace(/stills$/, "img")} /> : null}
             {b.visual === "mindgrow" ? <MindGrow b={b} L={L} /> : null}
           </Sequence>
@@ -857,9 +1045,9 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
 
       {/* телефон */}
       <div style={{position: "absolute", left: pose.x - phoneOuterW / 2, top: pose.y + float, width: phoneOuterW, height: phoneOuterH, opacity: pose.o,
-        transform: `perspective(2400px) rotateY(${pose.ry + flipRy}deg) rotateZ(${pose.rz}deg) scale(${pose.s})`, transformOrigin: "50% 0%"}}>
+        transform: `perspective(2400px) rotateY(${pose.ry + flipRy + spinRy}deg) rotateZ(${pose.rz}deg) scale(${pose.s * (1 - 0.12 * Math.sin(Math.PI * Math.min(1, spinRy / 360)))})`, transformOrigin: "50% 0%"}}>
         <div style={{translate: `${zx}px ${zy}px`, scale: String(zoom), transformOrigin: "50% 50%"}}>
-          <Phone w={L.phoneW}>
+          <Phone w={L.phoneW} shine={shine} back={spinRy % 360 > 90 && spinRy % 360 < 270 ? `${p.stills}/app-icon.png` : undefined}>
             <ScreenStack p={p} beats={beats} k={k} />
             {(p.taps as {at: number; x: number; y: number; hold: number}[]).map((tp, i) => (
               <Sequence key={`tap${i}`} from={f(tp.at) - f(0.35)} durationInFrames={f(0.35) + f(tp.hold) + 18} layout="none">
@@ -888,6 +1076,9 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
         );
       })}
 
+      </AbsoluteFill>
+      <TransOverlay tr={tr} L={L} />
+
       {p.showCaptions !== false ? <Captions p={p} L={L} /> : null}
 
       {/* звук */}
@@ -901,6 +1092,12 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
       {beats.filter((b) => ["reveal", "three", "counter", "wechat"].includes(b.visual) || b.launch !== undefined).map((b) => (
         <Sequence key={`wh${b.id}`} from={f(b.launch ?? b.w0)} durationInFrames={f(1)} layout="none">
           <Audio src={staticFile(`${p.sfxDir}/${b.launch !== undefined ? "switch" : "whoosh"}.wav`)} volume={0.3} />
+        </Sequence>
+      ))}
+
+      {beats.filter((b, i) => i > 0 && b.trans && b.trans !== "none").map((b) => (
+        <Sequence key={`trs${b.id}`} from={Math.max(0, f(b.w0 - TR))} durationInFrames={f(1)} layout="none">
+          <Audio src={staticFile(`${p.sfxDir}/whoosh.wav`)} volume={b.trans === "flash" || b.trans === "iris" ? 0.34 : 0.26} />
         </Sequence>
       ))}
 

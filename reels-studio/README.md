@@ -318,6 +318,15 @@ npx remotion render src/index.ts AppPromo ../finished-videos/2026-10-27-gtt-app-
 ```
 Сценарий v2 для чтения — `promo/2026-10-27-gtt-app-v2.md`.
 
+Версия 3 (02.11.2026, правки из «Монтажного листа»: новые тексты 10 сцен, телефон целиком в кадре, переходы `trans`, слово за телефоном
+`accent`, эмодзи на слове, логотипы в чатах, интеграциях и майндмэпе, валюты в отчёте):
+```bash
+python3 scripts/promo_voice.py promo/2026-10-27-gtt-app-v3.json --beats-dir ../source-videos/2026-10-27-gtt-app-promo/voice-v3/beats
+python3 scripts/promo_build.py promo/2026-10-27-gtt-app-v3.json        # экраны → screens-v3/, props …-v3.json
+TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts AppPromo ../finished-videos/2026-10-27-gtt-app-promo-v3.mp4 --props=./props/2026-10-27-gtt-app-promo-v3.json --bundle-cache=false
+```
+Сценарий v3 для чтения — `promo/2026-10-27-gtt-app-v3.md`.
+
 Ролик о программе для компьютера — композиция `DeskPromo` (пример — SibDoc, монитор с браузером и MacBook):
 ```bash
 # программа запущена локально (SibDoc: python3 -m uvicorn app.server:app --port 8000)

@@ -90,7 +90,7 @@ def main():
         t = tb[b["id"]]
         beat = {"id": b["id"], "part": b["part"], "visual": b.get("visual", "phone"), "start": t["start"], "end": t["end"],
                 "w0": round(W0[i], 3), "w1": round(W1[i], 3)}
-        for k in ("title", "cta", "fx", "still", "threeOrder", "device"):
+        for k in ("title", "cta", "fx", "still", "threeOrder", "device", "trans", "accent"):
             if b.get(k):
                 beat[k] = b[k]
         if b.get("kicker"):
@@ -106,6 +106,8 @@ def main():
         for key in ("report", "mind"):
             if b.get(key):
                 beat[key] = {("at" if k == "on" else k[:-2]): round(word_time(t, v), 3) for k, v in b[key].items() if k == "on" or k.endswith("On")}
+        if b.get("emoji"):
+            beat["emoji"] = {"src": b["emoji"]["src"], "at": round(word_time(t, b["emoji"]["on"]), 3)}
         if b.get("counter"):
             c = b["counter"]
             beat["counter"] = {**c, "at": round(word_time(t, c["on"]), 3), "subAt": round(word_time(t, c["subOn"]), 3)}
