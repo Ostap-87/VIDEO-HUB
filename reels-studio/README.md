@@ -512,3 +512,13 @@ node reels-studio/tools/gtt-crystal/render.mjs still хайлайт-иерогл
 ```
 Готовый комплект и инструкция — `finished-videos/обложки/gtt-бренд/`. Параметры — в шапке `render.mjs`.
 
+## Личный профиль @ostap.dotsenko: обложки, аватар, карусель, ролик
+
+```
+node reels-studio/tools/od-posts/od-posts.mjs            # обложки первого ряда, 3 аватара, карусель «Кто я», лист
+node reels-studio/tools/od-posts/od-posts.mjs covers     # только обложки (avatar | carousel | sheet)
+node reels-studio/tools/od-posts/reel-3-proekta.mjs      # ролик «3 проекта» → finished-videos/2026-11-02-od-3-proekta.mp4
+node reels-studio/tools/od-posts/reel-3-proekta.mjs --still 5.6,11.5   # пробные кадры в /dev/shm/od3/
+```
+Готовое и подписи — `finished-videos/обложки/ostap-посты-2026-11-02/` (`КАК-ПОСТАВИТЬ.md`).
+
