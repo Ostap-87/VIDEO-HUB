@@ -32,19 +32,31 @@ const CSS = `
 .wm{position:absolute;font:400 600px/1 MSZ;color:rgba(255,217,46,.10)}
 .strip{position:absolute;left:0;right:0;bottom:0;height:240px;background:#191922}
 .strip div{position:absolute;left:60px;right:60px;bottom:118px;font:900 46px/1.1 Unbounded;color:#FFD92E}
+body{--ink:#12121A;--acc:#FFD92E}
+.card{border:10px solid #191922;box-shadow:16px 16px 0 #191922}
+/* GTT в личном профиле — тёмно-синий (решение пользователя 02.11.2026) */
+.hb{position:absolute;inset:0;background:radial-gradient(circle at 50% 28%,#1B3A8F,#0B1D55 55%,#081440);background-image:radial-gradient(rgba(125,211,252,.15) 3.4px,transparent 4px),radial-gradient(circle at 50% 28%,#1B3A8F,#0B1D55 55%,#081440);background-size:22px 22px,100% 100%}
+body.nv{--ink:#0B1D55;--acc:#7DD3FC;background:#081440}
+body.nv .lab{color:#7DD3FC}body.nv .wm{color:rgba(125,211,252,.10)}
+body.nv .card{border-color:#081440;box-shadow:16px 16px 0 #2563EB}
+body.nv .bub{border-color:#081440;box-shadow:12px 12px 0 #2563EB;color:#081440}body.nv .bub small{color:#2563EB}body.nv .bub::after{border-top-color:#081440}
+body.nv .sfx{color:#7DD3FC;-webkit-text-stroke-color:#081440;text-shadow:10px 10px 0 #081440}
+body.nv .speed{background:repeating-conic-gradient(from 0deg at var(--sx,60%) var(--sy,35%),rgba(125,211,252,.07) 0 2deg,transparent 2deg 9deg)}
+body.nv .strip{background:#081440}body.nv .strip div{color:#7DD3FC}body.nv .frm{border-color:#081440}
+.site{position:absolute;left:60px;top:1712px;font:600 30px JB;letter-spacing:.08em;color:#7DD3FC}
 `;
-const img = (n, ext = 'jpg') => `${SRC}${n}.${ext}`;
+const img = (n, ext = 'jpg') => String(n).includes('/') ? `file://${ROOT}/${n}` : `${SRC}${n}.${ext}`;
 const seal = `<div class="seal">多</div>`;
 const titleBlock = (label, title, zh, sub, top = 1236) => `<div class="a" style="left:60px;right:150px;top:${top}px;display:flex;flex-direction:column;gap:14px">
   <div class="lab">${label}</div><div style="font:900 82px/1.03 Unbounded;color:#fff;letter-spacing:-.02em">${title}</div>
-  <div style="font:600 36px/1.25 Golos;color:#ECEAE3">${zh ? `<span style="font:400 46px MSZ;color:#FFD92E">${zh}</span>${sub ? ' · ' : ''}` : ''}${sub || ''}</div></div>`;
+  <div style="font:600 36px/1.25 Golos;color:#ECEAE3">${zh ? `<span style="font:400 46px MSZ;color:var(--acc)">${zh}</span>${sub ? ' · ' : ''}` : ''}${sub || ''}</div></div>`;
 const T = {
   // fit: 'blur' — кадр целиком по высоте (не режет голову и руки), по бокам — его размытая копия
   D1: c => (c.fit === 'blur'
     ? `<div class="ph" style="left:0;top:0;width:1080px;height:1300px;background-image:url('${img(c.n, c.ext)}');background-position:center;filter:blur(30px) brightness(.62);scale:1.15"></div>
     <div class="ph" style="left:0;top:0;width:1080px;height:${c.fh || 1300}px;background-image:url('${img(c.n, c.ext)}');background-position:center top;background-size:auto 100%"></div>`
     : `<div class="ph" style="left:0;top:0;width:1080px;height:1300px;background-image:url('${img(c.n, c.ext)}');background-position:${c.pos || 'center 30%'};background-size:${c.size || 'cover'}"></div>`) + `
-    <div class="a" style="left:0;right:0;top:1060px;height:240px;background:linear-gradient(transparent,#12121A)"></div><div class="a" style="left:0;right:0;top:1290px;bottom:0;background:#12121A"></div>
+    <div class="a" style="left:0;right:0;top:1060px;height:240px;background:linear-gradient(transparent,var(--ink))"></div><div class="a" style="left:0;right:0;top:1290px;bottom:0;background:var(--ink)"></div>${c.navy ? '<div class="hb" style="top:1290px;opacity:.9"></div><div class="site">globaltechtour.ru</div>' : ''}
     <div class="wm" style="right:-40px;top:1180px">${c.wm}</div>${titleBlock(c.label, c.title, c.zh, c.sub)}${seal}`,
   D2: c => `<div class="hk"></div><div class="wm" style="right:-60px;top:820px">${c.wm}</div>
     <div class="ph" style="left:60px;top:290px;width:960px;height:${c.ph || 620}px;background-image:url('${img(c.n, c.ext)}');background-position:${c.pos || 'center'};border:8px solid #FFD92E;box-shadow:14px 14px 0 #E8341C"></div>
@@ -56,7 +68,7 @@ const T = {
     <img class="cut" src="${img(c.n, 'png')}" style="${c.cutSt}">
     ${titleBlock(c.label, c.title, c.zh, c.sub, 290)}${seal}`,
   M1: c => `<div class="${c.bg}"></div><div class="speed"></div>
-    <div class="ph" style="left:${c.cx ?? 50}px;top:${c.cy ?? 250}px;width:${c.cw || 980}px;height:${c.ch || 1400}px;background-image:url('${img(c.n, c.ext)}');background-position:${c.pos || 'center'};background-size:${c.size || 'cover'};border:10px solid #191922;box-shadow:16px 16px 0 #191922;rotate:${c.rot ?? -1.5}deg"></div>
+    <div class="ph card" style="left:${c.cx ?? 50}px;top:${c.cy ?? 250}px;width:${c.cw || 980}px;height:${c.ch || 1400}px;background-image:url('${img(c.n, c.ext)}');background-position:${c.pos || 'center'};background-size:${c.size || 'cover'};rotate:${c.rot ?? -1.5}deg"></div>
     <div class="bub" style="${c.bubSt};--tail:${c.tail || '70px'}">${c.bubble}${c.zh ? `<small>${c.zh}</small>` : ''}</div>
     ${c.sfx ? `<div class="sfx" style="${c.sfxSt}">${c.sfx}</div>` : ''}<div class="strip"><div>${c.strip}</div></div>${seal}<div class="frm"></div>`,
   M2: c => `<div class="${c.bg}"></div><div class="speed" style="--sx:55%;--sy:45%"></div>
@@ -89,7 +101,26 @@ export const COVERS = [
   { n: 45, slug: 'закрытые-заводы', views: 682, t: 'M1', bg: 'hr', pos: 'center 30%', bubble: 'Как показать закрытые заводы?', zh: '封闭工厂', bubSt: 'left:56px;top:270px;width:600px', sfx: '嘘!', sfxSt: 'right:70px;top:1200px;color:#FFD92E', strip: 'Чем я занимаюсь: роботизация' },
   { n: 46, slug: 'pov-козы', views: 738, t: 'M1', bg: 'hy', pos: 'center 80%', size: 'auto 150%', bubble: 'POV: опять ты со своими козами тусишь?', bubSt: 'left:56px;top:270px;width:640px', sfx: '哈哈!', sfxSt: 'right:60px;top:1240px', strip: 'Козы, свяжитесь со мной' },
 ];
+// Посты про GTT в личном профиле (02.11.2026: «обложку для ролика про SANY и видео, где я рассказываю про ГТТ, от 12 октября») —
+// те же рамки на тёмно-синем GTT (navy). Кадры: SANY — фото пользователя с завода, «Интро» — исходник intro.MOV (0,1 с и 31 с).
+const SANY = 'source-videos/2026-10-25-sany/фото/', K = 'source-videos/ostapdotcenko/reels-кадры/';
+export const GTT_COVERS = [
+  { out: 'sany-дело.jpg', navy: 1, t: 'D1', n: SANY + 'IMG_5674.jpg', pos: 'center 22%', label: 'GTT · визит на завод', title: 'SANY изнутри', zh: '三一重工', sub: 'встреча с менеджментом и завод', wm: '工' },
+  { out: 'sany-маньхуа.jpg', navy: 1, t: 'M1', bg: 'hb', n: SANY + 'IMG_5645.jpg', pos: 'center 45%', bubble: 'SANY изнутри!', zh: '三一重工', bubSt: 'left:56px;top:760px;width:500px', tail: '380px', sfx: '走!', sfxSt: 'right:60px;top:1250px', strip: 'Визит GTT · Чанша' },
+  { out: 'интро-12-10-дело.jpg', navy: 1, t: 'D1', n: K + 'gtt-intro-31.jpg', pos: 'center 38%', label: 'Global Tech Tour · знакомство', title: 'Кто я и что<br>такое GTT', zh: '全球科技之旅', sub: 'ex-Alibaba · ex-Сбер', wm: '游' },
+  { out: 'интро-12-10-маньхуа.jpg', navy: 1, t: 'M1', bg: 'hb', n: K + 'gtt-intro-0.1.jpg', pos: 'center 45%', bubble: 'Остап, ты турагент?', zh: '你是旅行社的吗？', bubSt: 'left:56px;top:290px;width:560px', sfx: '不!', sfxSt: 'right:70px;top:1200px', strip: 'Нет. Сейчас объясню почему' },
+];
 const isMain = process.argv[1] && process.argv[1].endsWith('reel-covers.mjs');
+if (isMain && process.argv[2] === 'gtt') {
+  const OUTG = `${ROOT}/finished-videos/обложки/ostap-reels-gtt`; fs.mkdirSync(OUTG, { recursive: true });
+  const br = await chromium.launch(); const pg = await br.newPage({ viewport: { width: 1080, height: 1920 } });
+  for (const c of GTT_COVERS) {
+    fs.writeFileSync('/tmp/od-rc-tmp.html', `<!doctype html><meta charset="utf-8"><style>${CSS}</style><body class="nv">${T[c.t](c)}</body>`);
+    await pg.goto('file:///tmp/od-rc-tmp.html'); await pg.evaluate(() => document.fonts.ready); await pg.waitForTimeout(200);
+    await pg.screenshot({ path: `${OUTG}/${c.out}`, type: 'jpeg', quality: 92 }); console.log('✓', c.out);
+  }
+  await br.close(); process.exit(0);
+}
 if (isMain) {
   const only = process.argv.slice(2).map(Number);
   fs.mkdirSync(OUT, { recursive: true });
