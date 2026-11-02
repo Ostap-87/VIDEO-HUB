@@ -519,6 +519,7 @@ node reels-studio/tools/od-posts/od-posts.mjs            # обложки пер
 node reels-studio/tools/od-posts/od-posts.mjs covers     # только обложки (avatar | carousel | sheet)
 node reels-studio/tools/od-posts/reel-3-proekta.mjs      # ролик «3 проекта» → finished-videos/2026-11-02-od-3-proekta.mp4
 node reels-studio/tools/od-posts/reel-3-proekta.mjs --still 5.6,11.5   # пробные кадры в /dev/shm/od3/
+node reels-studio/tools/od-posts/reel-covers.mjs          # 22 обложки своих Reels (или номера постов: … reel-covers.mjs 38 18)
 ```
 Готовое и подписи — `finished-videos/обложки/ostap-посты-2026-11-02/` (`КАК-ПОСТАВИТЬ.md`).
 

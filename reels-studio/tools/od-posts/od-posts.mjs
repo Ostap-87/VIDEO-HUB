@@ -128,14 +128,14 @@ const SLIDES = [
    <div class="a" style="left:64px;right:180px;bottom:64px;font:500 30px/1.35 Golos;color:#A9A7B4">С 2025 — свои проекты. Их три →</div>${stamp}`,
   // 4 — GlobalTechTour
   `<div class="ph" style="left:0;top:0;width:1080px;height:640px;background-image:url('${U('group')}');background-position:center 40%"></div>
-   <div class="a" style="left:0;right:0;top:500px;height:140px;background:linear-gradient(transparent,#12121A)"></div><div class="a" style="left:0;right:0;top:640px;bottom:0;background:#12121A"></div>
-   <div class="wm" style="right:-40px;top:560px;font-size:520px">游</div>${num(4, '#fff')}
-   <div class="a lab" style="left:64px;top:600px;color:#FFD92E">Проект 1 · 游 экспедиции</div>
+   <div class="a" style="left:0;right:0;top:500px;height:140px;background:linear-gradient(transparent,#0B1D55)"></div><div class="a" style="left:0;right:0;top:640px;bottom:0;background:radial-gradient(circle at 80% 30%,#1B3A8F 0,#0B1D55 60%,#081440 100%)"></div>
+   <div class="wm" style="right:-40px;top:560px;font-size:520px;color:rgba(125,211,252,.10)">游</div>${num(4, '#fff')}
+   <div class="a lab" style="left:64px;top:600px;color:#7DD3FC">Проект 1 · 游 экспедиции</div>
    <div class="a" style="left:60px;top:650px;font:900 80px/1 Unbounded;color:#fff;letter-spacing:-.02em">Global Tech Tour</div>
    <div class="a" style="left:64px;right:120px;top:770px;display:grid;gap:18px">
-    ${li('Технологические экспедиции в Китай и ЮВА: заводы и R&D-центры BYD, Xiaomi, Baidu, Meituan, Poizon, Leju Robotics')}
-    ${li('Корпоративный форум Мегамаркета в Шэньчжэне — 1200+ участников под ключ')}</div>
-   <div class="a" style="left:64px;bottom:64px;font:700 30px JB;color:#FFD92E;letter-spacing:.04em">@globaltech_tour · globaltechtour.ru</div>${stamp}`,
+    ${li('Технологические экспедиции в Китай и ЮВА: заводы и R&D-центры BYD, Xiaomi, Baidu, Meituan, Poizon, Leju Robotics', '#ECEAE3', '#7DD3FC')}
+    ${li('Корпоративный форум Мегамаркета в Шэньчжэне — 1200+ участников под ключ', '#ECEAE3', '#7DD3FC')}</div>
+   <div class="a" style="left:64px;bottom:64px;font:700 30px JB;color:#7DD3FC;letter-spacing:.04em">@globaltech_tour · globaltechtour.ru</div>${stamp}`,
   // 5 — Aura Robotics
   `<div class="hk"></div><div class="wm" style="left:-60px;top:640px;color:rgba(232,52,28,.16)">机</div>${num(5)}
    <div class="a lab" style="left:64px;top:120px;color:#FFD92E">Проект 2 · 机 роботы</div>

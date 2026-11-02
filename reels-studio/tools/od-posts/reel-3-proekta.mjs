@@ -28,6 +28,9 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>
 .a{position:absolute}.sc{position:absolute;inset:0;display:none;overflow:hidden}
 .hy{position:absolute;inset:0;background:#FFD92E;background-image:radial-gradient(rgba(25,25,34,.16) 3.4px,transparent 4px);background-size:22px 22px}
 .hk{position:absolute;inset:0;background:#15151D;background-image:radial-gradient(rgba(255,217,46,.13) 3.4px,transparent 4px);background-size:22px 22px}
+/* GTT — тёмно-синий фирменный (решение пользователя 02.11.2026: «проекты ГТТ — не на чёрном, а на тёмно-синем») */
+.hb{position:absolute;inset:0;background:radial-gradient(circle at 70% 25%,#1B3A8F 0,#0B1D55 55%,#081440 100%);}
+.hb::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(125,211,252,.16) 3.4px,transparent 4px);background-size:22px 22px}
 .hr{position:absolute;inset:0;background:#E8341C;background-image:radial-gradient(rgba(25,25,34,.2) 3.4px,transparent 4px);background-size:22px 22px}
 .speed{position:absolute;inset:-300px;background:repeating-conic-gradient(from var(--r,0deg) at 50% 50%,rgba(25,25,34,.09) 0 2deg,transparent 2deg 9deg)}
 .bub{position:absolute;background:#fff;border:7px solid #191922;padding:22px 28px 20px;font:900 58px/1.08 Unbounded;color:#191922;box-shadow:12px 12px 0 #191922;letter-spacing:-.01em;transform-origin:20% 100%}
@@ -58,7 +61,7 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>
 </div>
 
 ${['gtt', 'aura', 'od'].map((k) => {
-  const c = { gtt: ['hk', '#FFD92E', '#fff', '游', 'rgba(255,217,46,.08)', 'Проект 1 · 游 экспедиции', 'Global Tech Tour', 'globaltechtour.ru', '#FFD92E'],
+  const c = { gtt: ['hb', '#7DD3FC', '#fff', '游', 'rgba(125,211,252,.10)', 'Проект 1 · 游 экспедиции', 'Global Tech Tour', 'globaltechtour.ru', '#7DD3FC'],
     aura: ['hr', '#FFD92E', '#fff', '机', 'rgba(25,25,34,.12)', 'Проект 2 · 机 роботы', 'Aura Robotics', 'aura-robotics.ru', '#191922'],
     od: ['hy', '#191922', '#191922', '多', 'rgba(232,52,28,.12)', 'Проект 3 · 多 личный сайт', 'ostapdotcenko<span style="color:#E8341C">.ru</span>', 'ссылка — в шапке профиля', '#E8341C'] }[k];
   const pills = { gtt: ['Экспедиции в <b>Китай и ЮВА</b>', 'Заводы и R&amp;D: <b>BYD, Xiaomi, Baidu</b>', '<b>Meituan, Poizon, Leju Robotics</b>', 'Форум Мегамаркета на <b>1200+</b> участников'],
@@ -68,7 +71,7 @@ ${['gtt', 'aura', 'od'].map((k) => {
   <div class="a lab" id="${k}Lab" style="left:64px;top:270px;color:${c[1]}">${c[5]}</div>
   <div class="a ttl" id="${k}Ttl" style="left:60px;right:160px;top:322px;color:${c[2]};font-size:${k === 'od' ? 72 : 92}px">${c[6]}</div>
   <div class="phone" id="${k}Phone"><div class="scr"><img id="${k}Img" src="${TMP}/${k}/f0001.jpg"></div><div class="isl"></div></div>
-  ${pills.map((p, i) => `<div class="pill" id="${k}P${i}" style="top:${560 + i * 200}px;--sh:${k === 'aura' ? '#191922' : k === 'od' ? '#E8341C' : '#FFD92E'}">${p}</div>`).join('')}
+  ${pills.map((p, i) => `<div class="pill" id="${k}P${i}" style="top:${560 + i * 200}px;--sh:${k === 'aura' ? '#191922' : k === 'od' ? '#E8341C' : '#2563EB'}">${p}</div>`).join('')}
   <div class="link" id="${k}Link" style="color:${c[8]}">${c[7]}</div></div>`;
 }).join('')}
 
@@ -91,7 +94,7 @@ const rise=(id,t,a,d=.45,dy=60)=>{const k=eo(p(t,a,a+d));set(id,{opacity:k,trans
 const left=(id,t,a,d=.4)=>{const k=eo(p(t,a,a+d));set(id,{opacity:k,translate:((1-k)*-120)+'px 0'})};
 const pop=(id,t,a,d=.38)=>{const x=p(t,a,a+d);set(id,{opacity:x>0?1:0,scale:String(.4+.6*eb(x))})};
 const stamp=(id,t,a,rot=-10)=>{const x=p(t,a,a+.28);set(id,{opacity:x>0?1:0,scale:String(2.4-1.4*eo(x)),rotate:rot+(1-eo(x))*-14+'deg'})};
-const WIPE={gtt:['hk','100% 100%'],aura:['hr','0% 100%'],od:['hy','100% 0%'],cta:['hk','0% 0%']};
+const WIPE={gtt:['hb','100% 100%'],aura:['hr','0% 100%'],od:['hy','100% 0%'],cta:['hk','0% 0%']};
 async function setT(t){
   for(const k in S){const [a,b]=S[k];$(k).style.display=(t>=a&&t<b)?'block':'none'}
   // хук

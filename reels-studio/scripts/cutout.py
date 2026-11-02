@@ -6,6 +6,7 @@
 (стойки ограждения, люди и коробки позади убираются); --upscale — увеличить результат (Lanczos) для обложки 1080×1920.
 """
 import argparse
+import os
 import pathlib
 
 import numpy as np
@@ -23,6 +24,9 @@ def ensure_model():
         return
     import subprocess
 
+    # ~/.cache/birefnet бывает ссылкой на /dev/shm/birefnet, а /dev/shm между ходами очищается — создаю цель ссылки
+    if MODEL.parent.is_symlink() and not MODEL.parent.exists():
+        pathlib.Path(os.readlink(MODEL.parent)).mkdir(parents=True, exist_ok=True)
     MODEL.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run(["curl", "-sSL", "--fail", "-o", str(MODEL) + ".part", MODEL_URL], check=True)
     pathlib.Path(str(MODEL) + ".part").rename(MODEL)
