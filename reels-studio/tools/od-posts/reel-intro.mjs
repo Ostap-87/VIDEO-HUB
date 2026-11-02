@@ -42,7 +42,7 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>
 </style></head><body><div class="seal">多</div>
 
 <div class="sc" id="hook"><div class="hk"></div>
-  <div class="a" id="hookPh" style="left:0;top:0;width:1080px;height:1330px;overflow:hidden"><div class="kb" id="hookKb" style="background-image:url('${P}2017-01-08-костюм-портрет.jpg');background-position:center 25%"></div></div>
+  <div class="a" id="hookPh" style="left:0;top:0;width:1080px;height:1330px;overflow:hidden"><div class="kb" id="hookKb" style="background-image:url('${P}2024-12-01-выступление.jpg');background-position:68% 0%;background-size:auto 1520px"></div></div>
   <div class="a" style="left:0;right:0;top:1000px;height:340px;background:linear-gradient(transparent,#15151D)"></div>
   <div class="lab" id="hookLab" style="top:1150px">Остап Доценко · 多增科</div>
   <div class="a" id="hookT1" style="left:60px;top:1215px;font:900 84px/1 Unbounded;color:#fff">Ex Alibaba.</div>
@@ -69,7 +69,7 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>
 <div class="sc" id="mega"><div class="hk"></div><div class="wm" style="right:-60px;top:880px;color:rgba(255,217,46,.08)">市</div>
   <div class="lab" id="megaLab">Кейс · Мегамаркет / Сбер · 2023–2025</div>
   <div class="ttl" id="megaTtl">Head of<br>B2B Marketing</div>
-  ${card('megaC1', `${P}2024-07-31-мегасреда-бейдж.jpg`, 'left:64px;top:560px;width:470px;height:590px;rotate:-3deg', 'center 25%')}
+  ${card('megaC1', `${P}2025-06-01-портрет-чб.jpg`, 'left:64px;top:560px;width:470px;height:590px;rotate:-3deg', 'center 20%')}
   ${card('megaC2', `${P}2024-10-26-мегасреда-спикер.jpg`, 'left:520px;top:640px;width:500px;height:360px;rotate:3deg', 'center 30%')}
   ${stat('megaS1', '+350%', 'рост продавцов<br>за год', 64, 1190, 320, 64)}${stat('megaS2', '50 000', 'продавцов<br>на площадке', 420, 1190, 320, 64)}${stat('megaS3', '86', 'регионов<br>России', 800, 1190, 220, 64)}
   <div class="pill" id="megaP1" style="top:1372px;font-size:27px">«Мегасреда» · <b>20 городов</b></div>
@@ -105,11 +105,11 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>
 </div>
 
 <div class="sc" id="cta"><div class="hk"></div>
-  <img class="cut" id="ctaCut" src="${SV}фото-от-пользователя/остап/вырезки/ostap-portret-sait.png" style="right:-120px;bottom:0;height:1250px">
+  <img class="cut" id="ctaCut" src="${SV}фото-от-пользователя/остап/вырезки/ostap-portret-sait.png" style="right:-190px;bottom:0;height:1250px">
   <div class="lab" id="ctaLab">Остап Доценко · 多增科</div>
   <div class="a" id="ctaT" style="left:60px;top:330px;width:620px;font:900 88px/1.02 Unbounded;color:#fff">Подпи&shy;сывайся</div>
   <div class="a" id="ctaS" style="left:64px;top:540px;width:560px;font:700 40px/1.25 Golos;color:#ECEAE3">Китай изнутри, роботы и бизнес — без глянца</div>
-  <div class="a" id="ctaBox" style="left:64px;top:1120px;width:560px;background:#FFD92E;padding:26px 30px;box-shadow:12px 12px 0 #E8341C;display:grid;gap:12px;font:700 32px JB;color:#191922">
+  <div class="a" id="ctaBox" style="left:64px;top:1330px;width:500px;background:#FFD92E;padding:26px 30px;box-shadow:12px 12px 0 #E8341C;display:grid;gap:12px;font:700 32px JB;color:#191922">
     <div>@ostap.dotsenko</div><div>ostapdotcenko.ru</div><div style="color:#1D4ED8">@globaltech_tour</div></div>
 </div>
 
