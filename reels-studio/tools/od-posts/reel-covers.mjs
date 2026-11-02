@@ -102,20 +102,31 @@ export const COVERS = [
   { n: 46, slug: 'pov-козы', views: 738, t: 'M1', bg: 'hy', pos: 'center 80%', size: 'auto 150%', bubble: 'POV: опять ты со своими козами тусишь?', bubSt: 'left:56px;top:270px;width:640px', sfx: '哈哈!', sfxSt: 'right:60px;top:1240px', strip: 'Козы, свяжитесь со мной' },
 ];
 // Посты про GTT в личном профиле (02.11.2026: «обложку для ролика про SANY и видео, где я рассказываю про ГТТ, от 12 октября») —
-// те же рамки на тёмно-синем GTT (navy). Кадры: SANY — фото пользователя с завода, «Интро» — исходник intro.MOV (0,1 с и 31 с).
+// те же рамки на тёмно-синем GTT (navy). Кадры: SANY — фото пользователя с завода, «Китай из окна» — кадры самого Reels.
 const SANY = 'source-videos/2026-10-25-sany/фото/', K = 'source-videos/ostapdotcenko/reels-кадры/';
 export const GTT_COVERS = [
   { out: 'sany-дело.jpg', navy: 1, t: 'D1', n: SANY + 'IMG_5674.jpg', pos: 'center 22%', label: 'GTT · визит на завод', title: 'SANY изнутри', zh: '三一重工', sub: 'встреча с менеджментом и завод', wm: '工' },
   { out: 'sany-маньхуа.jpg', navy: 1, t: 'M1', bg: 'hb', n: SANY + 'IMG_5645.jpg', pos: 'center 45%', bubble: 'SANY изнутри!', zh: '三一重工', bubSt: 'left:56px;top:760px;width:500px', tail: '380px', sfx: '走!', sfxSt: 'right:60px;top:1250px', strip: 'Визит GTT · Чанша' },
-  { out: 'интро-12-10-дело.jpg', navy: 1, t: 'D1', n: K + 'gtt-intro-31.jpg', pos: 'center 38%', label: 'Global Tech Tour · знакомство', title: 'Кто я и что<br>такое GTT', zh: '全球科技之旅', sub: 'ex-Alibaba · ex-Сбер', wm: '游' },
-  { out: 'интро-12-10-маньхуа.jpg', navy: 1, t: 'M1', bg: 'hb', n: K + 'gtt-intro-0.1.jpg', pos: 'center 45%', bubble: 'Остап, ты турагент?', zh: '你是旅行社的吗？', bubSt: 'left:56px;top:290px;width:560px', sfx: '不!', sfxSt: 'right:70px;top:1200px', strip: 'Нет. Сейчас объясню почему' },
+  { out: 'sany-маньхуа-селфи.jpg', navy: 1, t: 'M1', bg: 'hb', n: SANY + 'IMG_5674.jpg', pos: 'center 30%', rot: -1.2, bubble: 'SANY изнутри!', zh: '三一重工', bubSt: 'right:50px;top:262px;width:470px', tail: '90px', sfx: '走!', sfxSt: 'right:46px;top:860px', strip: 'Визит GTT · Чанша' },
+  // «Китай из окна» — соавторский Reels GTT 12.10 (белая рубашка); кадры — из ролика (API Instagram, 720p), обрезаны ниже вшитого
+  // логотипа и выше субтитров, увеличены lanczos + резкость
+  { out: 'китай-из-окна-дело.jpg', navy: 1, t: 'D1', n: K + 'gtt-okno-a.jpg', pos: 'center top', label: 'GTT · знакомство', title: 'Китай не из<br>окна автобуса', zh: '全球科技之旅', sub: '1000+ компаний в базе', wm: '游' },
+  { out: 'китай-из-окна-маньхуа.jpg', navy: 1, t: 'M1', bg: 'hb', n: K + 'gtt-okno-b.jpg', pos: 'center', cy: 330, ch: 1180, bubble: 'Большинство видит Китай из окна автобуса', zh: '从大巴窗外看中国', bubSt: 'left:56px;top:250px;width:640px', sfx: '不!', sfxSt: 'right:50px;top:1160px', strip: 'GTT · внутрь корпораций' },
 ];
 const isMain = process.argv[1] && process.argv[1].endsWith('reel-covers.mjs');
-if (isMain && process.argv[2] === 'gtt') {
-  const OUTG = `${ROOT}/finished-videos/обложки/ostap-reels-gtt`; fs.mkdirSync(OUTG, { recursive: true });
+// Обложка ролика «Интро · официально» (2026-11-02-od-intro.mp4) — стиль профиля, фото в костюме из его Instagram.
+const PR = 'source-videos/фото-от-пользователя/остап/из-профиля/';
+export const INTRO_COVERS = [
+  { out: 'интро-официально-дело.jpg', t: 'D1', n: PR + '2023-11-17-костюм.jpg', pos: 'center 0%', label: 'Знакомство · кто я', title: 'Ex Alibaba.<br>Ex Сбер.', zh: '多增科', sub: 'сейчас — Шанхай', wm: '我' },
+  { out: 'интро-официально-маньхуа.jpg', t: 'M1', bg: 'hy', n: PR + '2017-01-08-костюм-портрет.jpg', pos: 'center 20%', cy: 300, ch: 1320, bubble: 'Кто я и чем занимаюсь?', zh: '我是谁？', bubSt: 'right:56px;top:250px;width:560px', tail: '380px', sfx: '你好!', sfxSt: 'left:50px;top:1260px', strip: 'Ex Alibaba · Ex Сбер · Шанхай' },
+];
+const RUNS = { gtt: [GTT_COVERS, 'ostap-reels-gtt', true], intro: [INTRO_COVERS, 'ostap-интро', false] };
+if (isMain && RUNS[process.argv[2]]) {
+  const [list, dir, navy] = RUNS[process.argv[2]];
+  const OUTG = `${ROOT}/finished-videos/обложки/${dir}`; fs.mkdirSync(OUTG, { recursive: true });
   const br = await chromium.launch(); const pg = await br.newPage({ viewport: { width: 1080, height: 1920 } });
-  for (const c of GTT_COVERS) {
-    fs.writeFileSync('/tmp/od-rc-tmp.html', `<!doctype html><meta charset="utf-8"><style>${CSS}</style><body class="nv">${T[c.t](c)}</body>`);
+  for (const c of list) {
+    fs.writeFileSync('/tmp/od-rc-tmp.html', `<!doctype html><meta charset="utf-8"><style>${CSS}</style><body class="${navy ? 'nv' : ''}">${T[c.t](c)}</body>`);
     await pg.goto('file:///tmp/od-rc-tmp.html'); await pg.evaluate(() => document.fonts.ready); await pg.waitForTimeout(200);
     await pg.screenshot({ path: `${OUTG}/${c.out}`, type: 'jpeg', quality: 92 }); console.log('✓', c.out);
   }
