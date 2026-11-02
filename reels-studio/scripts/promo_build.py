@@ -6,7 +6,9 @@
 promo_voice.py) и записи экрана (source-videos/<name>/clips/<клип>.mp4 + .json, пишет app_record.mjs).
 Для каждой сцены собирает source-videos/<name>/screens/<сцена>.mp4: от действия к действию клип играет как записан,
 лишнее ожидание срезается, нехватка добирается стоп-кадром (во время паузы экран и так неподвижен). Метка совпадает
-с началом своего слова минус `lead` (палец успевает подлететь). Пишет props/<name>.json для композиции AppPromo:
+с началом своего слова минус `lead` (палец успевает подлететь). v4: у сцены `zooms` (box — доли экрана телефона или pt — точка кадра, scale, to — куда сдвинуться, label), `widgets`
+(trio / ring / bars), `hook` и `hook2` (slam / stamp), `countries` (график программ по странам); сцена без голоса —
+`silent: <с>`, у её нажатий и зумов вместо слова `at` (секунды от начала сцены). Пишет props/<name>.json для композиции AppPromo:
 окна сцен, нажатия (x, y — доли экрана телефона), наезды на рамку элемента, плашки и крупные слова по времени слов,
 субтитры из слов диктора.
 """
@@ -38,6 +40,21 @@ def word_time(beat: dict, on: str, after: float = -1) -> float:
         if w["start"] > after and norm(w["text"]).startswith(key):
             return w["start"]
     raise SystemExit(f"{beat['id']}: слово «{on}» не найдено в «{' '.join(x['text'] for x in beat['words'])}»")
+
+
+def when(beat: dict, c: dict, key: str = "on", after: float = -1) -> float:
+    """Время элемента: слово `on` или `at` — секунды от начала сцены (сцены без голоса)."""
+    at_key = "at" if key == "on" else key.replace("On", "At")
+    if isinstance(c.get(at_key), (int, float)):
+        return beat["start"] + c[at_key]
+    return word_time(beat, c[key], after)
+
+
+def until_of(beat: dict, at: float, u, default: float = 2.0) -> float:
+    """Конец элемента: число — секунды после начала, строка — слово сцены, нет — default."""
+    if isinstance(u, str):
+        return word_time(beat, u, at - 0.01)
+    return at + (u if isinstance(u, (int, float)) else default)
 
 
 def clip_info(clips_dir: pathlib.Path, cid: str) -> dict:
@@ -93,11 +110,52 @@ def main():
         for k in ("title", "cta", "fx", "still", "threeOrder", "device", "trans", "accent"):
             if b.get(k):
                 beat[k] = b[k]
-        if b.get("kicker"):
+        if b.get("feature"):
+            n, tot = b["feature"]
+            beat["kicker"] = f"ЕЩЁ В ПРИЛОЖЕНИИ · {n:02d}/{tot}"
+            beat["feature"] = b["feature"]
+        elif b.get("kicker"):
             kick_n += 1
             beat["kicker"] = f"{kick_n:02d} · {b['kicker'].upper()}"
+        if b.get("silent"):
+            beat["silent"] = True
         if b.get("chips"):
-            beat["chips"] = [{"text": c["text"], "at": round(word_time(t, c["on"]), 3)} for c in b["chips"]]
+            beat["chips"] = [{"text": c["text"], "at": round(when(t, c), 3), **({"icon": c["icon"]} if c.get("icon") else {})} for c in b["chips"]]
+        # v4 (02.11.2026): зумы в экран телефона или в точку кадра, плашки-виджеты, хуки, график стран
+        if b.get("zooms"):
+            zs = []
+            for z in b["zooms"]:
+                at = when(t, z) + z.get("delay", 0)
+                zz = {"at": round(at, 3), "until": round(at + z.get("hold", 1.2), 3)}
+                for k2 in ("box", "to", "pt", "scale", "label", "labelY"):
+                    if z.get(k2) is not None:
+                        zz[k2] = z[k2]
+                zs.append(zz)
+            beat["zooms"] = zs
+        if b.get("widgets"):
+            ws = []
+            for w in b["widgets"]:
+                at = when(t, w)
+                ws.append({**{k2: v for k2, v in w.items() if k2 not in ("on", "until")}, "at": round(at, 3), "until": round(until_of(t, at, w.get("until")), 3)})
+            beat["widgets"] = ws
+        hooks = []
+        for hk in ("hook", "hook2"):
+            h = b.get(hk)
+            if not h:
+                continue
+            at = when(t, h)
+            hh = {k2: v for k2, v in h.items() if k2 not in ("on", "until", "lineOn", "subOn")}
+            hh.update({"at": round(at, 3), "until": round(until_of(t, at, h.get("until"), 1.5), 3)})
+            if h.get("lineOn"):
+                hh["lineAt"] = [round(word_time(t, w), 3) for w in h["lineOn"]]
+            if h.get("subOn"):
+                hh["subAt"] = round(word_time(t, h["subOn"]), 3)
+            hooks.append(hh)
+        if hooks:
+            beat["hooks"] = hooks
+        if b.get("countries"):
+            c = b["countries"]
+            beat["countries"] = {"at": round(word_time(t, c["on"]), 3), "subAt": round(word_time(t, c["subOn"]), 3), "items": c["items"]}
         if b.get("words"):
             beat["bigWords"] = [{"text": c["text"], "at": round(word_time(t, c["on"]), 3)} for c in b["words"]]
         for key in ("orbit", "checks"):  # элементы, которые появляются каждый на своём слове
@@ -117,7 +175,7 @@ def main():
             info = {c["clip"]: clip_info(clips_dir, c["clip"]) for c in cues}
             rows, after = [], -1
             for c in cues:
-                T = word_time(t, c["on"], after - 0.01)
+                T = when(t, c, after=after - 0.01)
                 after = T
                 m = info[c["clip"]]["marks"].get(c["mark"])
                 if m is None:

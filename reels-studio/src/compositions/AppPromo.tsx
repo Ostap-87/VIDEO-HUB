@@ -15,6 +15,7 @@ import {z} from "zod";
 import {body, display, mono} from "../fonts";
 import {theme} from "../theme";
 import {GttIntro} from "./GttIntro";
+import {Countries, Hooks, hookSounds, Widgets, ZoomLabel, zoomAt, type Hook, type Widget, type Zoom} from "./app-promo/V4Fx";
 
 const C = theme.colors;
 const SCREEN_W = 390, SCREEN_H = 844; // экран записи в точках (видео 780×1688)
@@ -49,6 +50,10 @@ type Beat = {
   trans?: "none" | "zoom" | "whip" | "spin" | "iris" | "flash" | "shutter";
   accent?: string;
   emoji?: {src: string; at: number};
+  // v4 (02.11.2026): зумы в экран, плашки-виджеты, хуки, график стран, сцены без голоса (монтаж функций)
+  zooms?: Zoom[]; widgets?: Widget[]; hooks?: Hook[];
+  countries?: {at: number; subAt: number; items: [string, string, number][]};
+  feature?: [number, number]; silent?: boolean;
 };
 
 const INTRO = 54, OUTRO = 45, OVERLAP = 10;
@@ -128,7 +133,7 @@ const poseOf = (b: Beat | undefined, i: number, L: Layout): Pose => {
   if (!b) return base;
   if (b.visual === "chaos") return {...base, y: L.phoneY + L.H * 0.9, s: 0.8, ry: 0, rz: 8, o: 0};
   if (b.visual === "reveal") return {...base, ry: 0, rz: 0};
-  if (b.visual === "three" || b.visual === "mindgrow" || b.visual === "chats") return {...base, s: 0.7, o: 0, ry: 0, rz: 0, y: b.visual === "chats" ? L.phoneY + L.H * 0.9 : base.y};
+  if (b.visual === "three" || b.visual === "mindgrow" || b.visual === "chats" || b.visual === "countries") return {...base, s: 0.7, o: 0, ry: 0, rz: 0, y: b.visual === "chats" ? L.phoneY + L.H * 0.9 : base.y};
   if (b.visual === "orbit") return L.W > L.H ? {...base, x: 1360, y: 250, s: 0.74, ry: -6, rz: 0} : {...base, y: 600, s: 0.82, ry: 0, rz: 0};
   if (b.visual === "receipts") return L.W > L.H ? {...base, x: 1480, ry: -12, rz: 1.5} : {...base, x: 860, y: 1130, s: 0.62, ry: -12, rz: 2};
   if (b.visual === "counter") return L.W > L.H ? {...base, x: L.phoneX + 20, ry: -14, rz: 2} : {...base, s: 0.9, y: L.phoneY + 150, ry: 10, rz: -2};
@@ -209,7 +214,7 @@ const ScreenStack: React.FC<{p: AppPromoProps; beats: Beat[]; k: number}> = ({p,
       {beats.map((b, i) => {
         const from = f(b.w0);
         const dur = f(b.w1 + HANDLE) - from;
-        if (["chaos", "three", "mindgrow", "chats"].includes(b.visual)) return null;
+        if (["chaos", "three", "mindgrow", "chats", "countries"].includes(b.visual)) return null;
         const prevVisual = beats[i - 1]?.visual;
         return (
           <Sequence key={b.id} from={from} durationInFrames={dur} premountFor={fps} name={`Экран ${b.id}`}>
@@ -286,7 +291,17 @@ const Title: React.FC<{b: Beat; L: Layout; dur: number; center?: boolean; size?:
       opacity: 1 - out, translate: `0 ${-40 * out}px`, padding: center ? "0 64px" : 0, boxSizing: "border-box"}}>
       {b.kicker ? (
         <div style={{fontFamily: mono.fontFamily, fontWeight: 500, fontSize: isH ? 26 : 30, letterSpacing: "0.14em", color: C.accent, marginBottom: 22,
-          opacity: kickIn, translate: `0 ${(1 - kickIn) * 20}px`}}>{b.kicker}</div>
+          opacity: kickIn, translate: `0 ${(1 - kickIn) * 20}px`, display: "flex", alignItems: "center", gap: 18, justifyContent: center ? "center" : "flex-start", flexWrap: "wrap"}}>
+          {b.kicker}
+          {b.feature ? (
+            <span style={{display: "inline-flex", gap: 7}}>
+              {Array.from({length: b.feature[1]}).map((_, j) => (
+                <span key={j} style={{width: 12, height: 12, borderRadius: 6, background: j < b.feature![0] ? C.accent : "rgba(37,99,235,0.18)",
+                  scale: String(j === b.feature![0] - 1 ? 1 + 0.5 * Math.max(0, 1 - frame / 10) : 1)}} />
+              ))}
+            </span>
+          ) : null}
+        </div>
       ) : null}
       <div style={{fontFamily: display.fontFamily, fontWeight: 700, fontSize: fs, lineHeight: 1.06, color: C.text, letterSpacing: "-0.01em", textWrap: "balance" as never}}>
         {words.map(({w, acc, i}) => {
@@ -301,6 +316,12 @@ const Title: React.FC<{b: Beat; L: Layout; dur: number; center?: boolean; size?:
 };
 
 // ---------- плашки на словах ----------
+const CHIP_ICONS: Record<string, string> = {
+  check: "M5 12.5l4.2 4.2L19 7", pin: "M12 21s-6-6.2-6-11a6 6 0 0112 0c0 4.8-6 11-6 11zm0-8a3 3 0 100-6 3 3 0 000 6z",
+  bus: "M5 4h14v12H5zM5 11h14M7 19v-3M17 19v-3M8 14h.01M16 14h.01", chat: "M4 5h16v11H9l-5 4z",
+  poll: "M5 20V10M12 20V4M19 20v-7", mic: "M12 3a3 3 0 013 3v6a3 3 0 01-6 0V6a3 3 0 013-3zM5 11a7 7 0 0014 0M12 18v3",
+  lang: "M4 5h9M8.5 3v2M6 5c0 4 3 7 6 8M11 5c0 4-3 7-6 8M13 21l4-9 4 9M14.5 18h5",
+};
 const Chips: React.FC<{b: Beat; L: Layout; dur: number}> = ({b, L, dur}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -321,8 +342,9 @@ const Chips: React.FC<{b: Beat; L: Layout; dur: number}> = ({b, L, dur}) => {
           <div key={i} style={{position: "absolute", ...pos, display: "flex", alignItems: "center", gap: 14, padding: isH ? "14px 26px 14px 16px" : "16px 28px 16px 18px",
             borderRadius: 999, background: "rgba(255,255,255,0.86)", backdropFilter: "blur(14px)", boxShadow: "0 14px 34px rgba(20,30,60,0.16)", border: `2px solid ${C.surface}`,
             opacity: s * (1 - out), scale: String(0.7 + 0.3 * s), transformOrigin: isH || i % 2 === 0 ? "left center" : "right center"}}>
-            <div style={{width: L.chipSize * 1.15, height: L.chipSize * 1.15, borderRadius: "50%", background: C.accent, display: "flex", alignItems: "center", justifyContent: "center"}}>
-              <svg width={L.chipSize * 0.62} height={L.chipSize * 0.62} viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="white" strokeWidth={3.2} strokeLinecap="round" strokeLinejoin="round" /></svg>
+            <div style={{width: L.chipSize * 1.5, height: L.chipSize * 1.5, borderRadius: L.chipSize * 0.42, background: `linear-gradient(145deg, #4F8BFF, ${C.accent} 60%, #1D3FB8)`, display: "flex", alignItems: "center", justifyContent: "center",
+              boxShadow: "0 6px 14px rgba(37,99,235,0.35), inset 0 2px 0 rgba(255,255,255,0.35)"}}>
+              <svg width={L.chipSize * 0.86} height={L.chipSize * 0.86} viewBox="0 0 24 24"><path d={CHIP_ICONS[(c as {icon?: string}).icon || "check"] || CHIP_ICONS.check} fill="none" stroke="white" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" /></svg>
             </div>
             <span style={{fontFamily: body.fontFamily, fontWeight: 700, fontSize: L.chipSize, color: C.text, whiteSpace: "nowrap"}}>{c.text}</span>
           </div>
@@ -770,7 +792,7 @@ const MindGrow: React.FC<{b: Beat; L: Layout}> = ({b, L}) => {
   const isH = L.W > L.H;
   const m = b.mind || {};
   const f = (s?: number, d = 0) => (s === undefined ? 1e9 : Math.round((s - b.w0 + d) * fps));
-  const cx = isH ? 1290 : 540, cy = isH ? 620 : 1060;
+  const cx = isH ? 1290 : 540, cy = isH ? 620 : 1110; // v4: ниже, чтобы листья верхних узлов не заходили под PDF
   const rx = isH ? 400 : 330, ry = isH ? 360 : 480;
   const ANG = [-150, 180, 150, -30, 0, 30];
   const pop = (at: number) => spring({frame: frame - at, fps, config: {damping: 12, stiffness: 170, mass: 0.7}});
@@ -831,7 +853,7 @@ const MindGrow: React.FC<{b: Beat; L: Layout}> = ({b, L}) => {
         <div style={{fontFamily: body.fontFamily, fontWeight: 400, fontSize: isH ? 22 : 24, opacity: 0.9, marginTop: 6}}>{glow > 0.5 ? "собирается автоматически ✓" : "6 дней · 9 компаний"}</div>
       </div>
       {/* PDF-отчёт */}
-      <div style={{position: "absolute", left: isH ? 150 : 72, top: isH ? 640 : 560, opacity: pdf, translate: `${(1 - pdf) * -60}px 0`, display: "flex", alignItems: "center", gap: 18}}>
+      <div style={{position: "absolute", left: isH ? 150 : 72, top: isH ? 640 : 515, opacity: pdf, translate: `${(1 - pdf) * -60}px 0`, display: "flex", alignItems: "center", gap: 18}}>
         <div style={{position: "relative", width: isH ? 120 : 110, height: isH ? 150 : 140}}>
           {[2, 1, 0].map((j) => (
             <div key={j} style={{position: "absolute", inset: 0, borderRadius: 10, background: C.surface, border: `2px solid ${C.line}`, boxShadow: "0 10px 24px rgba(20,30,60,0.15)",
@@ -988,11 +1010,60 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
   const phoneOuterW = L.phoneW * 1.07;
   const phoneOuterH = SCREEN_H * k + L.phoneW * 0.07;
 
+  // v4: «камера» наезжает в часть экрана телефона (box) или в точку кадра (pt)
+  const allZooms = beats.flatMap((b) => b.zooms || []);
+  const zr = zoomAt(allZooms, t);
+  const zk = zr ? zr.k : 0;
+  const floatZ = float * (1 - zk);
+  let zs = 1, ztx = 0, zty = 0;
+  if (zr) {
+    const F = {x: L.W / 2, y: isH ? 560 : 950};
+    const params = (z: Zoom, pan: number) => {
+      if (z.box) {
+        const bx = z.to ? z.box.map((v, i) => v + (z.to![i] - v) * pan) : z.box;
+        const bez = Math.round(L.phoneW * 0.035);
+        const lx = bez + (bx[0] + bx[2] / 2) * SCREEN_W * k, ly = bez + (bx[1] + bx[3] / 2) * SCREEN_H * k;
+        const bw = bx[2] * SCREEN_W * k * pose.s, bh = bx[3] * SCREEN_H * k * pose.s;
+        return {x: pose.x + (lx - phoneOuterW / 2) * pose.s, y: pose.y + floatZ + ly * pose.s,
+          s: z.scale ?? Math.min(2.2, (isH ? 1500 : 980) / bw, (isH ? 820 : 1050) / bh)};
+      }
+      return {x: z.pt?.[0] ?? L.W / 2, y: z.pt?.[1] ?? L.H / 2, s: z.scale ?? 1.5};
+    };
+    let P = params(zr.a, zr.pan);
+    if (zr.prev && zr.mix < 1) {
+      const Q = params(zr.prev, 1);
+      P = {x: Q.x + (P.x - Q.x) * zr.mix, y: Q.y + (P.y - Q.y) * zr.mix, s: Q.s + (P.s - Q.s) * zr.mix};
+    }
+    zs = 1 + (P.s - 1) * zk;
+    const Fx = P.x + (F.x - P.x) * zk, Fy = P.y + (F.y - P.y) * zk;
+    ztx = Fx - P.x * zs; zty = Fy - P.y * zs;
+  }
+  // текущая валюта отчёта (для столбиков расходов)
+  const repB = beats.find((b) => b.report && t >= b.w0 && t < b.w1 + 0.5);
+  const curNow = repB && repB.report?.rub !== undefined && t >= repB.report.rub ? CUR[Math.min(4, Math.floor((t - repB.report.rub) / 0.4)) % 4] : "₽";
+  const allWidgets = beats.flatMap((b) => b.widgets || []);
+  const allHooks = beats.flatMap((b) => b.hooks || []);
+  // плашка-тройка сверху прячет заголовок сцены
+  const topW = allWidgets.find((w) => w.kind === "trio" && (w.y ?? 300) < 700 && t >= w.at - 0.1 && t <= w.until + 0.4);
+  const topWK = topW ? interpolate(t, [topW.at - 0.1, topW.at + 0.15, topW.until, topW.until + 0.4], [0, 1, 1, 0], clamp) : 0;
+  // в монтаже функций заголовок остаётся (на светлой полосе сверху), подпись наезда — внизу
+  const featNow = !!beats[bi]?.feature;
+  const textK = featNow ? 1 : 1 - Math.max(zk, topWK) * 0.97;
+
   // громкость музыки: громче до голоса и в финале
   const firstVoice = beats[0].start, lastVoice = beats[beats.length - 1].end;
+  const silentRuns: [number, number][] = [];
+  beats.forEach((b) => {
+    if (!b.silent) return;
+    const last = silentRuns[silentRuns.length - 1];
+    if (last && b.w0 - last[1] < 0.3) last[1] = b.w1; else silentRuns.push([b.w0 + 0.25, b.w1]);
+  });
   const musicVol = (fr: number) => {
     const s = fr / fps;
-    const base = p.musicVolume ?? 0.13;
+    const base0 = p.musicVolume ?? 0.13;
+    // v4: в сценах без голоса (монтаж функций) музыка громче
+    const sil = silentRuns.find((r) => s >= r[0] - 0.2 && s <= r[1] + 0.2);
+    const base = sil ? base0 + (0.34 - base0) * interpolate(s, [sil[0] - 0.2, sil[0] + 0.15, sil[1] - 0.15, sil[1] + 0.2], [0, 1, 1, 0], clamp) : base0;
     if (s < firstVoice - 0.3) return 0.42;
     if (s < firstVoice) return interpolate(s, [firstVoice - 0.3, firstVoice], [0.42, base]);
     if (s > lastVoice + 0.2) return interpolate(s, [lastVoice + 0.2, lastVoice + 0.8, p.total - 0.6, p.total], [base, 0.4, 0.4, 0], clamp);
@@ -1013,14 +1084,16 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
         const cy = pz.y + (SCREEN_H * k + L.phoneW * 0.07) * pz.s * (isH ? 0.5 : 0.42);
         return (
           <Sequence key={`acc-${b.id}`} from={from} durationInFrames={dur} premountFor={fps} name={`Слово ${b.accent}`}>
-            <AccentWord text={b.accent} L={L} dur={dur} cy={cy} />
+            <AbsoluteFill style={{opacity: 1 - zk}}><AccentWord text={b.accent} L={L} dur={dur} cy={cy} /></AbsoluteFill>
           </Sequence>
         );
       })}
 
+      {/* v4: всё, что под «камерой» наезда, — особые сцены и телефон */}
+      <AbsoluteFill style={{transform: `translate(${ztx}px, ${zty}px) scale(${zs})`, transformOrigin: "0 0"}}>
       {/* особые сцены под телефоном */}
       {beats.map((b) => {
-        if (!["chaos", "three", "counter", "chats", "orbit", "receipts", "mindgrow"].includes(b.visual)) return null;
+        if (!["chaos", "three", "counter", "chats", "orbit", "receipts", "mindgrow", "countries"].includes(b.visual)) return null;
         const bi2 = beats.indexOf(b);
         if (b.visual === "chats" && beats[bi2 - 1]?.visual === "chats") return null; // чаты рисуются одной сценой
         let last = b;
@@ -1039,13 +1112,14 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
             {b.visual === "orbit" ? <Orbit b={b} L={L} center={pc} rx={isH ? 500 : 365} ry={isH ? 420 : 440} /> : null}
             {b.visual === "receipts" ? <Receipts b={b} L={L} from={pc} imgDir={p.stills.replace(/stills$/, "img")} /> : null}
             {b.visual === "mindgrow" ? <MindGrow b={b} L={L} /> : null}
+            {b.visual === "countries" && b.countries ? <Countries c={b.countries} w0={b.w0} W={L.W} /> : null}
           </Sequence>
         );
       })}
 
       {/* телефон */}
-      <div style={{position: "absolute", left: pose.x - phoneOuterW / 2, top: pose.y + float, width: phoneOuterW, height: phoneOuterH, opacity: pose.o,
-        transform: `perspective(2400px) rotateY(${pose.ry + flipRy + spinRy}deg) rotateZ(${pose.rz}deg) scale(${pose.s * (1 - 0.12 * Math.sin(Math.PI * Math.min(1, spinRy / 360)))})`, transformOrigin: "50% 0%"}}>
+      <div style={{position: "absolute", left: pose.x - phoneOuterW / 2, top: pose.y + floatZ, width: phoneOuterW, height: phoneOuterH, opacity: pose.o,
+        transform: `perspective(2400px) rotateY(${pose.ry * (1 - zk) + flipRy + spinRy}deg) rotateZ(${pose.rz * (1 - zk)}deg) scale(${pose.s * (1 - 0.12 * Math.sin(Math.PI * Math.min(1, spinRy / 360)))})`, transformOrigin: "50% 0%"}}>
         <div style={{translate: `${zx}px ${zy}px`, scale: String(zoom), transformOrigin: "50% 50%"}}>
           <Phone w={L.phoneW} shine={shine} back={spinRy % 360 > 90 && spinRy % 360 < 270 ? `${p.stills}/app-icon.png` : undefined}>
             <ScreenStack p={p} beats={beats} k={k} />
@@ -1058,7 +1132,12 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
         </div>
       </div>
 
-      {/* заголовки, плашки и CTA — поверх телефона */}
+      </AbsoluteFill>
+
+      {featNow && zk > 0 ? <div style={{position: "absolute", left: 0, top: 0, width: L.W, height: isH ? 300 : 560, opacity: zk,
+        background: `linear-gradient(180deg, ${C.primary} 0%, rgba(238,238,242,0.94) 62%, rgba(238,238,242,0) 100%)`}} /> : null}
+      {/* заголовки, плашки и CTA — поверх телефона (при наезде прячутся, вместо них — подпись наезда) */}
+      <AbsoluteFill style={{opacity: textK}}>
       {beats.map((b) => {
         const from = f(b.w0);
         const dur = f(b.w1) - from + f(0.3);
@@ -1075,9 +1154,13 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
           </Sequence>
         );
       })}
+      </AbsoluteFill>
+      <Widgets items={allWidgets} t={t} W={L.W} cur={curNow} zk={zk} />
+      {zr && zr.a.label ? <ZoomLabel text={zr.a.label} k={zk} at={zr.a.at} t={t} W={L.W} y={zr.a.labelY ?? (featNow && !isH ? 1390 : isH ? 60 : 268)} /> : null}
 
       </AbsoluteFill>
       <TransOverlay tr={tr} L={L} />
+      <Hooks items={allHooks} t={t} W={L.W} H={L.H} imgDir={p.stills.replace(/stills$/, "img")} />
 
       {p.showCaptions !== false ? <Captions p={p} L={L} /> : null}
 
@@ -1095,6 +1178,22 @@ export const AppPromo: React.FC<AppPromoProps> = (p) => {
         </Sequence>
       ))}
 
+      {/* v4: звук наездов, хуков и плашек */}
+      {allZooms.map((z, i) => (
+        <Sequence key={`zs${i}`} from={Math.max(0, f(z.at) - 2)} durationInFrames={f(0.8)} layout="none">
+          <Audio src={staticFile(`${p.sfxDir}/whip.wav`)} volume={0.2} />
+        </Sequence>
+      ))}
+      {hookSounds(allHooks).map((h, i) => (
+        <Sequence key={`hs${i}`} from={Math.max(0, f(h.at) - 1)} durationInFrames={f(1.2)} layout="none">
+          <Audio src={staticFile(`${p.sfxDir}/${h.kind}.wav`)} volume={h.kind === "ding" ? 0.32 : 0.34} />
+        </Sequence>
+      ))}
+      {allWidgets.map((w, i) => (
+        <Sequence key={`ws${i}`} from={Math.max(0, f(w.at))} durationInFrames={f(0.6)} layout="none">
+          <Audio src={staticFile(`${p.sfxDir}/switch.wav`)} volume={0.24} />
+        </Sequence>
+      ))}
       {beats.filter((b, i) => i > 0 && b.trans && b.trans !== "none").map((b) => (
         <Sequence key={`trs${b.id}`} from={Math.max(0, f(b.w0 - TR))} durationInFrames={f(1)} layout="none">
           <Audio src={staticFile(`${p.sfxDir}/whoosh.wav`)} volume={b.trans === "flash" || b.trans === "iris" ? 0.34 : 0.26} />

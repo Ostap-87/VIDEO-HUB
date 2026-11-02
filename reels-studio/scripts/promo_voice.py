@@ -3,6 +3,8 @@
   python3 scripts/promo_voice.py promo/2026-10-27-gtt-app.json --piper <модель.onnx>   # черновой голос (локально, бесплатно)
   python3 scripts/promo_voice.py promo/2026-10-27-gtt-app.json --audio voice-final.mp3  # готовая озвучка одним файлом
   python3 scripts/promo_voice.py promo/2026-10-27-gtt-app-v2.json --beats-dir <папка>   # озвучка по сценам: <id сцены>.wav
+  (в спецификации: voice.tempo — темп без смены высоты, voice.maxPause — паузы внутри фраз не длиннее, с; у сцены
+   "voice": "<id>" — взять озвучку другой сцены, "silent": <с> — сцена без голоса)
 
 Сцена (beat) — одна фраза диктора. Черновик: каждая сцена синтезируется отдельно (Piper). Готовая озвучка (Higgsfield / диктор)
 режется на сцены по словам Whisper. Дальше одинаково: тишина по краям срезается, между сценами — пауза `voice.gapAfter`
@@ -53,6 +55,52 @@ def trim(a: np.ndarray, thr=0.012, pad=0.04) -> np.ndarray:
     s = max(0, loud[0] * win - int(pad * SR))
     e = min(len(a), (loud[-1] + 1) * win + int(pad * SR))
     return a[s:e]
+
+
+def squeeze(a: np.ndarray, max_pause: float, thr_db=-38.0, min_run=0.18) -> np.ndarray:
+    """Укорачивает паузы внутри фразы до max_pause (решение пользователя 02.11.2026: «голос слишком заторможенный»):
+    тихие отрезки длиннее max_pause (окно 10 мс, на thr_db тише пика фразы) вырезаются из середины, стык — плавный 10 мс."""
+    win = SR // 100
+    n = len(a) // win
+    if n == 0:
+        return a
+    rms = np.sqrt((a[: n * win].reshape(n, win) ** 2).mean(axis=1)) + 1e-9
+    q = 20 * np.log10(rms / rms.max()) < thr_db
+    keep, i, last = [], 0, 0
+    while i < n:
+        if not q[i]:
+            i += 1
+            continue
+        j = i
+        while j < n and q[j]:
+            j += 1
+        L = (j - i) / 100
+        if i > 0 and j < n and L >= min_run and L > max_pause:
+            cut = L - max_pause
+            s = (i * win) + int((L - cut) / 2 * SR)
+            e = s + int(cut * SR)
+            keep.append((last, s))
+            last = e
+        i = j
+    keep.append((last, len(a)))
+    fade = SR // 100
+    out = []
+    for s, e in keep:
+        seg = a[s:e].copy()
+        if len(seg) > 2 * fade:
+            seg[:fade] *= np.linspace(0, 1, fade)
+            seg[-fade:] *= np.linspace(1, 0, fade)
+        out.append(seg)
+    return np.concatenate(out)
+
+
+def speed(a: np.ndarray, tempo: float) -> np.ndarray:
+    """Темп без смены высоты голоса (ffmpeg atempo)."""
+    if abs(tempo - 1) < 1e-3:
+        return a
+    raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-f", "f32le", "-ar", str(SR), "-ac", "1", "-i", "-", "-af", f"atempo={tempo}",
+                          "-f", "f32le", "-"], input=a.astype(np.float32).tobytes(), check=True, capture_output=True).stdout
+    return np.frombuffer(raw, dtype=np.float32).copy()
 
 
 def norm(w: str) -> str:
@@ -161,7 +209,8 @@ def main():
     out_dir = REPO / "source-videos" / spec.get("sourceDir", spec["name"]) / spec.get("voiceDir", "voice")
 
     if a.beats_dir:
-        parts = [load(pathlib.Path(a.beats_dir) / f"{b['id']}.wav") for b in beats]
+        # silent — сцена без голоса (монтаж функций под музыку), длина в секундах
+        parts = [np.zeros(int(b["silent"] * SR), dtype=np.float32) if b.get("silent") else load(pathlib.Path(a.beats_dir) / f"{b.get('voice', b['id'])}.wav") for b in beats]
     elif a.audio:
         parts = split_final(load(pathlib.Path(a.audio)), beats)
     elif a.piper:
@@ -169,10 +218,23 @@ def main():
     else:
         raise SystemExit("нужен --piper, --audio или --beats-dir")
 
+    vcfg = spec.get("voice", {})
+    tempo, max_pause = vcfg.get("tempo", 1.0), vcfg.get("maxPause")
     track, t, out = [], a.offset, []
     track.append(np.zeros(int(a.offset * SR), dtype=np.float32))
     for b, p in zip(beats, parts):
+        if b.get("silent"):
+            dur = len(p) / SR
+            out.append({"id": b["id"], "start": round(t, 3), "end": round(t + dur, 3), "words": []})
+            pause = b.get("pauseAfter", 0.0)
+            track += [p, np.zeros(int(pause * SR), dtype=np.float32)]
+            t += dur + pause
+            print(f"{b['id']}: {out[-1]['start']:.2f}–{out[-1]['end']:.2f}  (без голоса)")
+            continue
         p = trim(p)
+        if max_pause:
+            p = squeeze(p, max_pause)
+        p = speed(p, tempo)
         peak = np.abs(p).max() or 1.0
         p = p * (0.89 / peak)
         dur = len(p) / SR

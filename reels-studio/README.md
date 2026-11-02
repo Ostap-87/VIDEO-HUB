@@ -327,6 +327,16 @@ TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts AppPromo ../finish
 ```
 Сценарий v3 для чтения — `promo/2026-10-27-gtt-app-v3.md`.
 
+Версия 4 (02.11.2026: голос v3 быстрее и без длинных пауз, наезды в экран, хуки, плашки и графики; две версии — 1 минута и расширенная):
+```bash
+B=../source-videos/2026-10-27-gtt-app-promo/voice-v3/beats
+python3 scripts/promo_voice.py promo/2026-11-02-gtt-app-60.json --beats-dir $B     # голос → voice-v4-60/
+python3 scripts/promo_build.py promo/2026-11-02-gtt-app-60.json                    # экраны → screens-v4-60/, props …-60.json
+TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts AppPromo ../finished-videos/2026-11-02-gtt-app-promo-60.mp4 --props=./props/2026-11-02-gtt-app-promo-60.json --bundle-cache=false
+# расширенная — то же с promo/2026-11-02-gtt-app-full.json → finished-videos/2026-11-02-gtt-app-promo-full.mp4
+```
+Сценарий v4 для чтения — `promo/2026-11-02-gtt-app-v4.md`.
+
 Ролик о программе для компьютера — композиция `DeskPromo` (пример — SibDoc, монитор с браузером и MacBook):
 ```bash
 # программа запущена локально (SibDoc: python3 -m uvicorn app.server:app --port 8000)
