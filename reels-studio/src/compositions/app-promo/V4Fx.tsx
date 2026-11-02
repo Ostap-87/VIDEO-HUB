@@ -228,8 +228,10 @@ export const Countries: React.FC<{c: {at: number; subAt: number; items: [string,
   const t = frame / fps + w0;
   const total = c.items.reduce((a, x) => a + x[2], 0);
   const max = Math.max(...c.items.map((x) => x[2]));
-  const k = interpolate(t, [c.at - 0.1, c.at + 1.1], [0, 1], {...clamp, easing: Easing.out(Easing.cubic)});
-  const head = spring({frame: Math.round((t - c.at + 0.15) * fps), fps, config: {damping: 12, stiffness: 150}});
+  // график строится сразу со входа в сцену (без пустого кадра до слова), к слову «семидесяти» — уже почти целиком
+  const a0 = Math.min(c.at, w0 + 0.3);
+  const k = interpolate(t, [a0 - 0.1, c.at + 0.9], [0, 1], {...clamp, easing: Easing.out(Easing.cubic)});
+  const head = spring({frame: Math.round((t - a0 + 0.15) * fps), fps, config: {damping: 12, stiffness: 150}});
   const sub = spring({frame: Math.round((t - c.subAt + 0.05) * fps), fps, config: {damping: 12, stiffness: 180}});
   const top = 560, rowH = 96;
   return (
@@ -244,7 +246,7 @@ export const Countries: React.FC<{c: {at: number; subAt: number; items: [string,
         </span>
       </div>
       {c.items.map(([code, name, v], j) => {
-        const a = c.at + j * 0.07;
+        const a = a0 + j * 0.07;
         const s = spring({frame: Math.round((t - a) * fps), fps, config: {damping: 14, stiffness: 170}});
         const g = interpolate(t, [a, a + 0.7], [0, 1], {...clamp, easing: ease});
         return (
