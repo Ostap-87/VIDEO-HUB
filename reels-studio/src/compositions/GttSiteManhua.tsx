@@ -28,6 +28,8 @@ const im = (n: string) => `${IMG}${n}.jpg`;
 const PH = "source-videos/2026-11-03-gtt-sait-manhua/фото/";
 const ph = (n: string) => `${PH}${n}.jpg`;
 const CLIP = "source-videos/2026-05-21-шэньчжэнь-с-группой/";
+// фото и видео от пользователя (WeTransfer 03.11.2026): встреча с основателем Hema, саммит в Вэйфане, Чанша, делегация, форум
+const WT = "source-videos/2026-11-03-wt-hema-roboty/";
 const LOGO = "source-videos/логотипы/";
 const FLAG = "интернет-материалы/флаги/";
 const CRYSTAL = "finished-videos/обложки/gtt-бренд/instagram/gtt-аватар-мастер-2160.png";
@@ -369,20 +371,24 @@ const Ch3: React.FC<{hema?: string}> = ({hema}) => {
           <Photo src={ph("yingke-rukovodstvo")} w={402} h={460} pos="50% 30%" zoom={z(62)} />
           <Cap at={70} y={396}>Переговоры в YingKe</Cap>
         </Panel>
-        <Panel x={48} y={910} w={402} h={400} at={74} from="bottom" bg={G.ink}>
-          <Photo src={"source-videos/2026-10-25-sany/IMG_5645.jpg"} w={402} h={400} pos="50% 45%" zoom={z(74)} />
+        <Panel x={48} y={910} w={300} h={400} at={74} from="bottom" bg={G.ink}>
+          <Photo src={"source-videos/2026-10-25-sany/IMG_5645.jpg"} w={300} h={400} pos="50% 45%" zoom={z(74)} />
           <Cap at={82} y={336}>Ворота SANY</Cap>
         </Panel>
-        <Panel x={470} y={910} w={562} h={400} at={86} from="right" bg="#fff">
+        <Panel x={362} y={910} w={330} h={400} at={86} from="bottom" bg={G.ink}>
           {hema ? (
-            <Photo src={hema} w={562} h={400} pos="50% 30%" zoom={z(86)} />
+            <Photo src={hema} w={330} h={400} pos="50% 25%" zoom={z(86)} />
           ) : (
-            <div style={{position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 12, background: "radial-gradient(circle, #fff, #E8EEFB)"}}>
-              <Img src={staticFile(`${LOGO}ритейл/hema.png`)} style={{width: 300, height: 170, objectFit: "contain"}} />
-              <div style={{fontFamily: FONT.zcool, fontSize: 56, color: G.ink}}>盒马</div>
-            </div>
+            <OffthreadVideo src={staticFile(`${WT}hema-osnovatel.mp4`)} muted style={{position: "absolute", left: 0, top: -60, width: 330, height: 587, objectFit: "cover"}} />
           )}
+          <Img src={staticFile(`${LOGO}ритейл/hema.png`)} style={{position: "absolute", right: 10, top: 10, width: 110, height: 52, objectFit: "contain", background: "#fff", borderRadius: 8, padding: 4}} />
           <Cap at={94} y={336}>Основатель Hema</Cap>
+        </Panel>
+        <Panel x={706} y={910} w={326} h={400} at={98} from="right" bg={G.ink}>
+          <Photo src={`${WT}vejfan-sammit.jpg`} w={326} h={400} pos="50% 55%" zoom={z(98)} />
+          <Cap at={104} y={300}>Саммит предпринимателей
+            <br />
+            Вэйфана</Cap>
         </Panel>
         {f >= 110 ? (
           <div style={{position: "absolute", left: 90, top: 760, width: 900, rotate: "-8deg", scale: String(2.2 - 1.2 * st), opacity: Math.min(1, st * 2), border: `10px solid ${G.red}`, padding: "18px 22px", background: "rgba(255,255,255,.88)", textAlign: "center", boxShadow: "0 0 0 6px rgba(232,52,28,.25)"}}>
@@ -391,12 +397,20 @@ const Ch3: React.FC<{hema?: string}> = ({hema}) => {
           </div>
         ) : null}
         <Sfx text="啪!" x={860} y={1180} size={110} color={G.red} stroke="#fff" at={110} font={FONT.zcool} rot={12} />
-        <Answer x={48} y={1334} w={984} at={140} size={32}>
+        <Answer x={48} y={1334} w={740} at={140} size={30}>
           Личное общение <span style={{color: G.sky}}>с собственниками, CEO и топ-менеджерами</span>
         </Answer>
-        <Answer x={48} y={1438} w={760} at={162} size={30} light rot={-1}>
+        <Answer x={48} y={1448} w={620} at={162} size={28} light rot={-1}>
           + авторские лекции топ-менеджеров
         </Answer>
+        {f >= 150 ? (
+          <div style={{position: "absolute", left: 812, top: 1330, width: 220, background: "#fff", padding: 10, paddingBottom: 4, border: `3px solid ${G.ink}`, rotate: "4deg", boxShadow: `7px 9px 0 rgba(10,15,36,.6)`, scale: String(1.5 - 0.5 * spring({frame: f - 150, fps, config: {damping: 12, stiffness: 220}}))}}>
+            <div style={{position: "relative", width: 200, height: 136, overflow: "hidden", border: `2px solid ${G.ink}`}}>
+              <Photo src={`${WT}konferenciya-delegaciya.jpg`} w={200} h={136} pos="50% 50%" />
+            </div>
+            <div style={{fontFamily: FONT.hand, fontSize: 30, color: G.ink, textAlign: "center"}}>в зале с делегацией</div>
+          </div>
+        ) : null}
       </AbsoluteFill>
     </AbsoluteFill>
   );
@@ -478,7 +492,7 @@ const Ch5: React.FC = () => {
         {/* карточка партнёра со штампом «проверено» */}
         <div style={{position: "absolute", left: 640, top: 560, width: 390, background: "#fff", border: `4px solid ${G.ink}`, borderRadius: 16, overflow: "hidden", rotate: "3deg", boxShadow: `9px 9px 0 ${G.blue}`, opacity: p(f, 60, 68), translate: `${(1 - p(f, 60, 72, EO)) * 500}px 0`}}>
           <div style={{position: "relative", width: 390, height: 260, overflow: "hidden"}}>
-            <Photo src={ph("yingke-peregovory")} w={390} h={260} pos="50% 50%" />
+            <Photo src={`${WT}forum-peregovory.jpg`} w={390} h={260} pos="50% 40%" />
           </div>
           <div style={{padding: "12px 16px"}}>
             <div style={{fontFamily: FONT.mono, fontSize: 20, color: G.blue}}>ПАРТНЁР · 合作伙伴</div>
@@ -491,6 +505,18 @@ const Ch5: React.FC = () => {
             <div style={{fontFamily: FONT.oswald, fontSize: 26, color: G.red, letterSpacing: "0.1em"}}>ПРОВЕРЕНО</div>
           </div>
         ) : null}
+        {[[`${WT}chansha-ostrov.jpg`, "Чанша", 640, -4, 124], [`${WT}delegaciya-saudity.jpg`, "делегация", 846, 5, 136]].map(([src, cap, x, rot, at]) => {
+          const k = spring({frame: f - (at as number), fps, config: {damping: 12, stiffness: 220, mass: 0.7}});
+          if (f < (at as number)) return null;
+          return (
+            <div key={cap as string} style={{position: "absolute", left: x as number, top: 1000, width: 190, background: "#fff", padding: 8, paddingBottom: 2, border: `3px solid ${G.ink}`, rotate: `${rot}deg`, boxShadow: `7px 9px 0 rgba(10,15,36,.6)`, scale: String(1.5 - 0.5 * k), opacity: Math.min(1, k * 2)}}>
+              <div style={{position: "relative", width: 174, height: 120, overflow: "hidden", border: `2px solid ${G.ink}`}}>
+                <Photo src={src as string} w={174} h={120} pos="50% 40%" />
+              </div>
+              <div style={{fontFamily: FONT.hand, fontSize: 28, color: G.ink, textAlign: "center"}}>{cap as string}</div>
+            </div>
+          );
+        })}
         <Answer x={48} y={1190} w={984} at={118} size={34}>
           Подбираем и проверяем партнёров — <span style={{color: G.sky}}>переговоры с повесткой и переводом</span>
         </Answer>
@@ -601,9 +627,12 @@ const SC: Record<keyof typeof T, [number, string, number][]> = {
   ch6: [[0, "whip", 0.5], [6, "whoosh", 0.4], [18, "whoosh", 0.35], ...CASES.map((_, i) => [56 + i * 9, "shutter-modern", 0.35] as [number, string, number]), [110, "anime-wow", 0.3], [124, "whoosh", 0.35]],
   fin: [[0, "whoosh", 0.5], [26, "page-turn", 0.8], [40, "whip", 0.45], [44, "vine-boom", 0.45], [62, "whoosh", 0.5], [78, "vine-boom", 0.4], ...Array.from({length: 8}, (_, i) => [82 + i * 4, "mouse-click", 0.2] as [number, string, number]), [112, "whoosh", 0.3], [124, "ding", 0.35], [176, "vine-boom", 0.45]],
 };
+// звук: "whoosh" — @remotion/sfx (source-videos/2026-11-03-od-sait-manhua/sfx/), "@whoosh-2" — библиотека интернет-материалы/звуки/ (CC0 / CC BY, авторы — АВТОРЫ.md)
+const sfxSrc = (n: string) => (n.startsWith("@") ? `интернет-материалы/звуки/${n.slice(1)}.wav` : `${SFXP}${n}.wav`);
 const SOUNDS: [number, string, number][] = (Object.keys(SC) as (keyof typeof T)[]).flatMap((k) => SC[k].map(([at, n, v]) => [T[k][0] + at, n, v] as [number, string, number]));
 
-export const GttSiteManhua: React.FC<{clean?: boolean; hema?: string}> = ({clean = false, hema}) => {
+// мат знаками во всех версиях (решение пользователя 03.11.2026)
+export const GttSiteManhua: React.FC<{clean?: boolean; hema?: string}> = ({clean = true, hema}) => {
   useBrush(true);
   const {fps} = useVideoConfig();
   const f = useCurrentFrame();
@@ -662,7 +691,7 @@ export const GttSiteManhua: React.FC<{clean?: boolean; hema?: string}> = ({clean
       />
       {SOUNDS.map(([at, name, vol], i) => (
         <Sequence key={i} from={at} durationInFrames={Math.round(4.5 * fps)} premountFor={fps}>
-          <Audio src={staticFile(`${SFXP}${name}.wav`)} volume={vol} />
+          <Audio src={staticFile(sfxSrc(name))} volume={vol} />
         </Sequence>
       ))}
     </AbsoluteFill>

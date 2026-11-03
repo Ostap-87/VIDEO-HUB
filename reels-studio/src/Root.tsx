@@ -242,7 +242,7 @@ export const RemotionRoot: React.FC = () => {
           height: props.format === "h" ? 1080 : 1920,
         })}
       />
-      <Composition id="GttSiteManhua" component={GttSiteManhua} width={1080} height={1920} fps={30} durationInFrames={GTT_MANHUA_FRAMES} defaultProps={{clean: false}} />
+      <Composition id="GttSiteManhua" component={GttSiteManhua} width={1080} height={1920} fps={30} durationInFrames={GTT_MANHUA_FRAMES} defaultProps={{clean: true}} />
       <Composition
         id="GttSiteManhuaPreview"
         component={GttSiteManhuaPreview}
@@ -250,9 +250,9 @@ export const RemotionRoot: React.FC = () => {
         height={1920}
         fps={30}
         durationInFrames={GTT_MANHUA_FRAMES}
-        defaultProps={{step: 30, start: 15, clean: false}}
+        defaultProps={{step: 30, start: 15, clean: true}}
       />
-      <Composition id="AuraSiteManhua" component={AuraSiteManhua} width={1080} height={1920} fps={30} durationInFrames={AURA_MANHUA_FRAMES} defaultProps={{clean: false}} />
+      <Composition id="AuraSiteManhua" component={AuraSiteManhua} width={1080} height={1920} fps={30} durationInFrames={AURA_MANHUA_FRAMES} defaultProps={{clean: true}} />
       <Composition
         id="AuraSiteManhuaPreview"
         component={AuraSiteManhuaPreview}
@@ -260,7 +260,7 @@ export const RemotionRoot: React.FC = () => {
         height={1920}
         fps={30}
         durationInFrames={AURA_MANHUA_FRAMES}
-        defaultProps={{step: 30, start: 15, clean: false}}
+        defaultProps={{step: 30, start: 15, clean: true}}
       />
       <Composition id="SiteManhua" component={SiteManhua} width={1080} height={1920} fps={30} durationInFrames={SITE_MANHUA_FRAMES} />
       <Composition

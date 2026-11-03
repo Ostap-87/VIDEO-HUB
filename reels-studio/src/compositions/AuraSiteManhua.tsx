@@ -9,7 +9,7 @@
 // clean — версия для Facebook и LinkedIn: мат знаками («нах#й», «бл@#ь»), решение пользователя «Ок, одобряю».
 // Музыка Upbeat Corporate (Soundrider, CC BY 3.0) с 5 с трека: удар на 8,0 с трека приходится на 3,0 с ролика — «дроп».
 import React from "react";
-import {AbsoluteFill, Freeze, Sequence, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
+import {AbsoluteFill, Freeze, OffthreadVideo, Sequence, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
 import {Audio} from "@remotion/media";
 import {useBrush, BRUSH} from "../components/MontazhFx";
 import {body} from "../fonts";
@@ -34,6 +34,8 @@ const IMG = "source-videos/aura-robotics/site/2026-11-03-сайт/";
 const im = (n: string) => `${IMG}${n}.jpg`;
 const SFXP = "source-videos/2026-11-03-od-sait-manhua/sfx/";
 const MUSIC = "интернет-материалы/музыка/upbeat-corporate-soundrider.mp3";
+// видео от пользователя (WeTransfer 03.11.2026): запуск серийного производства гуманоидов, стеллажи, роботы в цеху
+const ROBOTS = "source-videos/2026-11-03-wt-hema-roboty/roboty-zavod.mp4";
 const INTER = body.fontFamily;
 
 // сцены (глобальные кадры): следующая открывается поверх предыдущей
@@ -208,14 +210,17 @@ const Fact: React.FC = () => {
         </div>
       </div>
       <Sfx text="轰!" x={60} y={300} size={130} color={A.parch} stroke={A.ink} at={20} font={FONT.zcool} rot={12} />
-      <Plate x={48} y={1100} w={640} at={58} size={36} rot={-1.5}>
+      {/* настоящий завод: стеллажи с гуманоидами → роботы идут по цеху (видео от пользователя) */}
+      <Panel x={48} y={1150} w={984} h={384} at={40} from="bottom" bg={A.ink} rot={-1}>
+        <Sequence from={40} layout="none">
+          <OffthreadVideo src={staticFile(ROBOTS)} trimBefore={Math.round(5.9 * fps)} muted style={{position: "absolute", left: 0, top: -50, width: 984, height: 467, objectFit: "cover", scale: String(1 + 0.08 * p(f, 40, 126))}} />
+        </Sequence>
+        <div style={{position: "absolute", left: 18, bottom: 16, background: A.lemon, border: `3px solid ${A.ink}`, padding: "4px 14px", fontFamily: FONT.mono, fontSize: 24, color: A.ink}}>ЗАВОД ГУМАНОИДОВ · 工厂</div>
+      </Panel>
+      <Plate x={48} y={1080} w={700} at={58} size={34} rot={-1.5}>
         Мы работаем там, где их делают, — и привозим <span style={{color: A.lemon}}>по заводской цене</span>
       </Plate>
-      <Panel x={60} y={1290} w={420} h={230} at={40} bg={A.ink} rot={-2}>
-        <Shot src={im("home-3")} crop={[0, 1300, 975, 534]} w={420} h={230} zoom={1 + 0.06 * p(f, 40, 126)} />
-      </Panel>
-      <Tape x={300} y={1460} at={50} rot={-5} font={FONT.mono} size={30} bg={A.ink} color={A.lemon}>aura-robotics.ru</Tape>
-      <AuraMascot plan={{stays: [{at: 0, x: 850, y: 1570, face: -0.5}], gestures: [{at: 0.4, kind: "pointUp"}, {at: 2.5, kind: "nod"}]}} scale={1.3} dpr={1.5} />
+      <AuraMascot plan={{stays: [{at: 0, x: 900, y: 1580, face: -0.5}], gestures: [{at: 0.4, kind: "pointUp"}, {at: 2.5, kind: "nod"}]}} scale={1.2} dpr={1.5} />
     </AbsoluteFill>
   );
 };
@@ -507,7 +512,10 @@ const Fin: React.FC<{clean?: boolean}> = ({clean}) => {
   const ra = {left: 0, top: 0, width: 440, height: 280, floor: 268, k: 92};
   return (
     <AbsoluteFill style={{background: A.deep, translate: sumShake(f, [[4, 10, 18], [70, 8, 14], [130, 10, 16]], "fin")}}>
-      <Halftone bg={A.deep} dot="rgba(255,246,93,.08)" size={20} r={3} />
+      {/* за командой — армия гуманоидов с запуска производства (видео от пользователя), приглушена */}
+      <OffthreadVideo src={staticFile(ROBOTS)} muted style={{position: "absolute", left: -1000, top: 0, width: 3080, height: 1920, objectFit: "cover", filter: "grayscale(.55) brightness(.42) contrast(1.15)", scale: String(1.05 + 0.04 * p(f, 0, 156))}} />
+      <AbsoluteFill style={{background: "linear-gradient(180deg, rgba(28,28,28,.55), rgba(28,28,28,.2) 45%, rgba(28,28,28,.85))"}} />
+      <Halftone bg="transparent" dot="rgba(255,246,93,.10)" size={20} r={3} />
       <SpeedLines color={A.lemon} cx={540} cy={1250} inner={500} opacity={0.55} seed="fi" />
       <div style={{position: "absolute", left: 540 - 200, top: 1090, opacity: p(f, 6, 16)}}>
         <AuraBadge size={400} />
@@ -563,9 +571,12 @@ const SC: Record<keyof typeof T, [number, string, number][]> = {
   ch4: [[0, "whip", 0.5], [8, "whoosh", 0.35], [20, "shutter-modern", 0.45], [46, "shutter-modern", 0.45], [72, "shutter-modern", 0.45], [96, "ding", 0.35], [98, "mouse-click", 0.3]],
   fin: [[0, "whoosh", 0.5], [6, "vine-boom", 0.5], [10, "whip", 0.4], [40, "whip", 0.4], [70, "vine-boom", 0.35], [74, "mouse-click", 0.25], [80, "mouse-click", 0.25], [86, "mouse-click", 0.25], [100, "mouse-click", 0.5], [104, "ding", 0.35], [132, "vine-boom", 0.45]],
 };
+// звук: "whoosh" — @remotion/sfx (source-videos/2026-11-03-od-sait-manhua/sfx/), "@whoosh-2" — библиотека интернет-материалы/звуки/ (CC0 / CC BY, авторы — АВТОРЫ.md)
+const sfxSrc = (n: string) => (n.startsWith("@") ? `интернет-материалы/звуки/${n.slice(1)}.wav` : `${SFXP}${n}.wav`);
 const SOUNDS: [number, string, number][] = (Object.keys(SC) as (keyof typeof T)[]).flatMap((k) => SC[k].map(([at, n, v]) => [T[k][0] + at, n, v] as [number, string, number]));
 
-export const AuraSiteManhua: React.FC<{clean?: boolean}> = ({clean = false}) => {
+// мат знаками во всех версиях (решение пользователя 03.11.2026: «все слова матершинные в роликах надо сделать такими, как в роликах для Фейсбук»)
+export const AuraSiteManhua: React.FC<{clean?: boolean}> = ({clean = true}) => {
   useBrush(true);
   const {fps} = useVideoConfig();
   const f = useCurrentFrame();
@@ -619,7 +630,7 @@ export const AuraSiteManhua: React.FC<{clean?: boolean}> = ({clean = false}) => 
       />
       {SOUNDS.map(([at, name, vol], i) => (
         <Sequence key={i} from={at} durationInFrames={Math.round(4.5 * fps)} premountFor={fps}>
-          <Audio src={staticFile(`${SFXP}${name}.wav`)} volume={vol} />
+          <Audio src={staticFile(sfxSrc(name))} volume={vol} />
         </Sequence>
       ))}
     </AbsoluteFill>
