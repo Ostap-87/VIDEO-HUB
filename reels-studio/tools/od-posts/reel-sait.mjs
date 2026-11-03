@@ -90,7 +90,7 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>
   ${fact('insF0', 64, 1000, 460, '13+', 'лет строю бизнес<br>Россия ↔ Китай ↔ ЮВА', cnt(13, '', '+'))}
   ${fact('insF1', 64, 1000, 460, '5', 'языков: русский, English,<br>中文, 한국어, O‘zbek', cnt(5))}
   <div class="a fact" id="insF2" style="left:64px;top:1000px;width:460px"><div class="num" style="font-size:62px;line-height:1.12">Alibaba →<br>Сбер →</div><div class="flab">свои проекты: Global Tech Tour<br>и Aura Robotics</div></div>
-  ${fact('insF3', 64, 1000, 460, '+350%', 'рост продавцов<br>Мегамаркета за год', cnt(350, '+', '%'))}
+  <div class="a fact" id="insF3" style="left:64px;top:1000px;width:460px"><div class="num" style="font-size:100px" ${cnt(350, '+', '%')}>+350%</div><div class="flab">рост продавцов<br>Мегамаркета за год</div></div>
   ${fact('insF4', 64, 1000, 460, '8', 'кейсов, которыми<br>горжусь', cnt(8))}
   ${phone('insPh', 'ru', ['ru-00-top', 'ru-01-about', 'ru-02-career', 'ru-03-results', 'ru-04-projects'], 'left:556px;top:540px;rotate:2deg', '#FFD92E')}
 </div>
