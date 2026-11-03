@@ -39,7 +39,8 @@ const ROBOTS = "source-videos/2026-11-03-wt-hema-roboty/roboty-zavod.mp4";
 const INTER = body.fontFamily;
 
 // сцены (глобальные кадры): следующая открывается поверх предыдущей
-const T = {hook: [0, 96], wake: [90, 186], fact: [180, 306], ch1: [294, 516], ch2: [504, 696], ch3: [684, 876], ch4: [864, 1056], fin: [1044, 1200]} as const;
+// тайминг 03.11.2026 (v2): реплики хука держатся дольше (успеть прочитать), хвосты главы 4 и финала короче
+const T = {hook: [0, 120], wake: [114, 210], fact: [204, 330], ch1: [318, 540], ch2: [528, 720], ch3: [708, 900], ch4: [888, 1068], fin: [1056, 1200]} as const;
 
 // мат: в Instagram — как в сценарии, для Facebook и LinkedIn — знаками
 const MAT: Record<string, string> = {нахуй: "нах#й", блять: "бл@#ь"};
@@ -117,16 +118,16 @@ const Hook: React.FC<{clean?: boolean}> = ({clean}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const m = useMat(clean);
-  const b1 = spring({frame: f - 8, fps, config: {damping: 10, stiffness: 230, mass: 0.6}});
-  const b2 = spring({frame: f - 30, fps, config: {damping: 8, stiffness: 300, mass: 0.5}});
-  const nah = spring({frame: f - 36, fps, config: {damping: 7, stiffness: 320, mass: 0.5}});
+  const b1 = spring({frame: f - 6, fps, config: {damping: 10, stiffness: 230, mass: 0.6}});
+  const b2 = spring({frame: f - 40, fps, config: {damping: 8, stiffness: 300, mass: 0.5}});
+  const nah = spring({frame: f - 46, fps, config: {damping: 7, stiffness: 320, mass: 0.5}});
   return (
-    <AbsoluteFill style={{background: A.deep, translate: sumShake(f, [[30, 8, 16], [36, 12, 22], [62, 6, 10]], "hk")}}>
+    <AbsoluteFill style={{background: A.deep, translate: sumShake(f, [[40, 8, 16], [46, 12, 22], [86, 6, 10]], "hk")}}>
       <Halftone bg={A.deep} dot="rgba(255,246,93,.07)" size={20} r={3} />
-      <AbsoluteFill style={{background: `radial-gradient(ellipse 520px 760px at 650px 1150px, rgba(255,246,93,${0.12 + 0.12 * p(f, 60, 70)}), transparent 70%)`}} />
+      <AbsoluteFill style={{background: `radial-gradient(ellipse 520px 760px at 650px 1150px, rgba(255,246,93,${0.12 + 0.12 * p(f, 84, 94)}), transparent 70%)`}} />
       <Crate x={520} y={1290} w={460} h={330} />
-      <AuraMascot plan={{stays: [{at: 0, x: 750, y: 1300, face: -0.3}], gestures: [{at: -0.2, kind: "sleep"}]}} scale={2.7} dpr={1.25} />
-      {f < 62
+      <AuraMascot plan={{stays: [{at: 0, x: 750, y: 1300, face: -0.3}], gestures: [{at: 0, kind: "sleep"}]}} scale={2.7} dpr={1.25} />
+      {f < 86
         ? ["Z", "z", "z"].map((z, i) => {
             const t = (f + i * 14) % 42;
             return (
@@ -136,23 +137,23 @@ const Hook: React.FC<{clean?: boolean}> = ({clean}) => {
             );
           })
         : null}
-      <Skeptic x={-80} y={1150} scale={1.25} emo={f < 30 ? "neutral" : "angry"} talk={(f >= 8 && f < 26) || (f >= 32 && f < 58)} rim={A.lemon} fill="#0E0E0E" accent={A.lemon} />
-      {f >= 8 && f < 30 ? (
+      <Skeptic x={-80} y={1150} scale={1.25} emo={f < 40 ? "neutral" : "angry"} talk={(f >= 6 && f < 36) || (f >= 42 && f < 80)} rim={A.lemon} fill="#0E0E0E" accent={A.lemon} />
+      {f >= 6 && f < 40 ? (
         <Bubble x={30} y={700} w={560} h={290} tail={[200, 540]} scale={0.3 + 0.7 * b1} opacity={Math.min(1, b1 * 2)} fill={A.parch} stroke={A.ink}>
           <div style={dela(70)}>Робот?</div>
           <div style={dela(56)}>Из Китая?</div>
         </Bubble>
       ) : null}
-      {f >= 30 ? (
+      {f >= 40 ? (
         <Bubble x={10} y={600} w={620} h={420} shout tail={[220, 650]} scale={0.3 + 0.7 * b2} opacity={Math.min(1, b2 * 2)} fill={A.parch} stroke={A.ink}>
           <div style={dela(70)}>Да</div>
-          <div style={{...dela(92, A.ink), scale: String(f >= 36 ? 0.4 + 0.6 * nah : 0.4)}}>
+          <div style={{...dela(92, A.ink), scale: String(f >= 46 ? 0.4 + 0.6 * nah : 0.4)}}>
             <Mark>{m("нахуй")}</Mark>
           </div>
           <div style={dela(70)}>надо!</div>
         </Bubble>
       ) : null}
-      <Sfx text="嗯？" x={640} y={330} size={140} color={A.lemon} stroke={A.ink} at={62} font={FONT.zcool} rot={8} />
+      <Sfx text="嗯？" x={640} y={330} size={140} color={A.lemon} stroke={A.ink} at={86} font={FONT.zcool} rot={8} />
       <Letterbox h={110} />
     </AbsoluteFill>
   );
@@ -555,7 +556,7 @@ const Fin: React.FC<{clean?: boolean}> = ({clean}) => {
       <AuraDog x={380} y={1530} scale={1.25} face={-0.6} hops={[0.6, 1.6, 3.4]} />
       <AuraMascot plan={{stays: [{at: 0, x: 580, y: 1530, face: 0}], gestures: [{at: 0.4, kind: "present"}, {at: 2.2, kind: "wave"}]}} scale={1.35} dpr={1.5} />
       <AuraHumanoidSpot plan={{stays: [{at: 0, x: 840, face: -Math.PI / 2}], gestures: [{at: 0.5, kind: "wave"}, {at: 3.2, kind: "pointUp"}]}} y={1530} scale={1.4} dpr={1.5} />
-      <Letterbox h={140 * p(f, 128, 152, EIO)} />
+      <Letterbox h={140 * p(f, 118, 142, EIO)} />
     </AbsoluteFill>
   );
 };

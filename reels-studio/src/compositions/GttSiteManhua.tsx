@@ -21,8 +21,8 @@ import {
   SlashReveal, SpeedLines, Vignette, countText, p, sumShake, typed,
 } from "./site-manhua/fx";
 
-export const GTT_MANHUA_FRAMES = 1800;
-const G = {n1: "#1B3A8F", n2: "#0B1D55", n3: "#081440", blue: "#2563EB", sky: "#7DD3FC", red: "#E8341C", ink: "#0A0F24", paper: "#F4F6FB"};
+export const GTT_MANHUA_FRAMES = 1770;
+const G = {n1: "#4677EC", n2: "#2556CE", n3: "#1A43A8", deep: "#0B1D55", blue: "#2563EB", sky: "#7DD3FC", red: "#E8341C", ink: "#0A0F24", paper: "#F4F6FB"};
 const IMG = "source-videos/globaltechtour/site/2026-11-03-сайт/";
 const im = (n: string) => `${IMG}${n}.jpg`;
 const PH = "source-videos/2026-11-03-gtt-sait-manhua/фото/";
@@ -37,7 +37,8 @@ const SFXP = "source-videos/2026-11-03-od-sait-manhua/sfx/";
 const MUSIC = "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3";
 const INTER = body.fontFamily;
 
-const T = {hook: [0, 126], drop: [120, 270], ch1: [258, 510], ch2: [498, 720], ch3: [708, 960], ch4: [948, 1200], ch5: [1188, 1410], ch6: [1398, 1620], fin: [1608, 1800]} as const;
+// тайминг 03.11.2026 (v2): каждая реплика держится столько, сколько нужно на чтение (~15 знаков в секунду + 0,6 с), без провалов
+const T = {hook: [0, 168], drop: [156, 264], ch1: [252, 492], ch2: [480, 738], ch3: [726, 996], ch4: [984, 1194], ch5: [1182, 1398], ch6: [1386, 1590], fin: [1578, 1770]} as const;
 
 const MAT: Record<string, string> = {Хер: "Х#р", Охуеть: "Ох#еть", Заебок: "Зае#ок"};
 const useMat = (clean?: boolean) => (w: string) => (clean ? MAT[w] ?? w : w);
@@ -58,7 +59,7 @@ const ChapterHead: React.FC<{zh: string; no: string; title: string; at?: number}
   const brush = p(f, at + 6, at + 20, EO);
   return (
     <div style={{position: "absolute", left: 64, top: 262, display: "flex", alignItems: "center", gap: 24, opacity: k, translate: `${(1 - k) * -160}px 0`}}>
-      <div style={{fontFamily: FONT.zcool, fontSize: 100, color: G.sky, lineHeight: 1, textShadow: `6px 6px 0 ${G.ink}`}}>{zh}</div>
+      <div style={{fontFamily: FONT.zcool, fontSize: 100, color: "#fff", lineHeight: 1, textShadow: `6px 6px 0 ${G.ink}`}}>{zh}</div>
       <div>
         <div style={{fontFamily: FONT.oswald, fontSize: 30, letterSpacing: "0.18em", color: G.red}}>{no}</div>
         <div style={dela(50)}>{title}</div>
@@ -76,7 +77,7 @@ const Answer: React.FC<{x: number; y: number; w: number; at: number; size?: numb
   if (f < at || (until !== undefined && f > until)) return null;
   const k = p(f, at, at + 8, EO) * (until !== undefined ? 1 - p(f, until - 6, until) : 1);
   return (
-    <div style={{position: "absolute", left: x, top: y, width: w, background: light ? "#fff" : G.blue, border: `4px solid ${G.ink}`, padding: "16px 22px", rotate: `${rot}deg`, boxShadow: `9px 9px 0 ${light ? G.blue : G.ink}`, opacity: k, translate: `0 ${(1 - k) * 40}px`, ...inter(size, light ? G.ink : "#fff")}}>
+    <div style={{position: "absolute", left: x, top: y, width: w, background: light ? "#fff" : G.deep, border: `4px solid ${G.ink}`, padding: "16px 22px", rotate: `${rot}deg`, boxShadow: `9px 9px 0 ${light ? G.blue : G.sky}`, opacity: k, translate: `0 ${(1 - k) * 40}px`, ...inter(size, light ? G.ink : "#fff")}}>
       {children}
     </div>
   );
@@ -127,16 +128,16 @@ const Hook: React.FC<{clean?: boolean}> = ({clean}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const m = useMat(clean);
-  const frozen = f >= 54;
-  const crack = p(f, 54, 60, EO);
-  const her = spring({frame: f - 86, fps, config: {damping: 7, stiffness: 300, mass: 0.5}});
+  const frozen = f >= 92;
+  const crack = p(f, 92, 98, EO);
+  const her = spring({frame: f - 122, fps, config: {damping: 7, stiffness: 300, mass: 0.5}});
   return (
-    <AbsoluteFill style={{translate: sumShake(f, [[54, 14, 26], [86, 12, 22]], "hk")}}>
+    <AbsoluteFill style={{translate: sumShake(f, [[92, 14, 26], [122, 12, 22]], "hk")}}>
       <AbsoluteFill style={{filter: frozen ? "grayscale(.85) contrast(1.15)" : undefined}}>
         <NavyBg cy={60} />
         <SpeedLines color="rgba(125,211,252,.35)" cx={600} cy={1300} inner={500} opacity={frozen ? 0.9 : 0.4} seed="h0" />
-        <Director x={330} y={1080} scale={1.45} emo={f < 54 ? "neutral" : f < 86 ? "shock" : "sweat"} talk={f >= 8 && f < 50} phone={f < 54} from={1} />
-        <Say x={40} y={330} w={1000} h={400} at={6} until={56} tail={[560, 830]}>
+        <Director x={330} y={1080} scale={1.45} emo={f < 92 ? "neutral" : f < 122 ? "shock" : "sweat"} talk={f >= 8 && f < 86} phone={f < 92} from={1} />
+        <Say x={40} y={330} w={1000} h={400} at={6} until={94} tail={[560, 830]}>
           <div style={dela(62, G.ink)}>Снова Китай?</div>
           <div style={{...inter(44, G.ink), marginTop: 12}}>Да я всё и так знаю</div>
           <div style={inter(44, G.ink)}>и в интернете посмотрел.</div>
@@ -147,17 +148,17 @@ const Hook: React.FC<{clean?: boolean}> = ({clean}) => {
           <path d={CRACK} fill="none" stroke="#fff" strokeWidth={7} strokeLinejoin="bevel" pathLength={1} strokeDasharray={1} strokeDashoffset={1 - crack} style={{filter: "drop-shadow(0 0 8px rgba(125,211,252,.9))"}} />
         </svg>
       ) : null}
-      <Answer x={60} y={420} w={960} at={60} size={56} rot={-2}>
+      <Answer x={60} y={420} w={960} at={98} size={56} rot={-2}>
         А на завод тебя <span style={{color: G.sky}}>интернет пустит?</span>
       </Answer>
-      {f >= 86 ? (
+      {f >= 122 ? (
         <div style={{position: "absolute", left: 0, right: 0, top: 640, textAlign: "center", scale: String(1.8 - 0.8 * her)}}>
           <div style={dela(122, G.red, {WebkitTextStroke: `6px #fff`, paintOrder: "stroke fill", textShadow: `10px 10px 0 ${G.ink}`})}>{m("Хер")} тебе!</div>
           <div style={{fontFamily: FONT.zcool, fontSize: 130, color: "#fff", lineHeight: 1.1, textShadow: `8px 8px 0 ${G.red}`}}>进不去！</div>
           <div style={{fontFamily: FONT.mono, fontSize: 30, color: G.sky, letterSpacing: "0.12em"}}>(«НЕ ПУСТЯТ!»)</div>
         </div>
       ) : null}
-      <Flash at={54} dur={4} />
+      <Flash at={92} dur={4} />
       <Letterbox h={110} />
     </AbsoluteFill>
   );
@@ -169,18 +170,18 @@ const Drop: React.FC = () => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const cr = spring({frame: f - 2, fps, config: {damping: 12, stiffness: 110, mass: 0.9}});
-  const t1 = spring({frame: f - 16, fps, config: {damping: 11, stiffness: 260, mass: 0.6}});
+  const t1 = spring({frame: f - 12, fps, config: {damping: 11, stiffness: 260, mass: 0.6}});
   return (
-    <AbsoluteFill style={{translate: sumShake(f, [[0, 16, 30], [40, 6, 10], [52, 6, 10], [64, 6, 10], [76, 6, 10]], "dr")}}>
+    <AbsoluteFill style={{translate: sumShake(f, [[0, 16, 30], [28, 6, 10], [38, 6, 10], [48, 6, 10], [58, 6, 10]], "dr")}}>
       <NavyBg cy={36} />
       <SpeedLines color="rgba(125,211,252,.6)" cx={540} cy={700} inner={380} opacity={0.8} seed="d1" />
       <Img src={staticFile(CRYSTAL)} style={{position: "absolute", left: 540 - 340, top: 380, width: 680, height: 680, borderRadius: "50%", mixBlendMode: "screen", scale: String(2.6 - 1.6 * cr), rotate: `${(1 - cr) * -120 + Math.sin(f / 20) * 3}deg`, opacity: Math.min(1, cr * 1.5)}} />
-      <div style={{position: "absolute", left: 0, right: 0, top: 1060, textAlign: "center", scale: String(f >= 16 ? 1.7 - 0.7 * t1 : 0)}}>
+      <div style={{position: "absolute", left: 0, right: 0, top: 1060, textAlign: "center", scale: String(f >= 12 ? 1.7 - 0.7 * t1 : 0)}}>
         <div style={dela(70, "#fff", {textShadow: `7px 7px 0 ${G.blue}`})}>GLOBAL TECH TOUR</div>
       </div>
-      <div style={{position: "absolute", left: 0, right: 0, top: 1178, textAlign: "center", opacity: p(f, 24, 32), ...inter(42, G.sky)}}>Бизнес-экспедиции в Китай и не только</div>
+      <div style={{position: "absolute", left: 0, right: 0, top: 1178, textAlign: "center", opacity: p(f, 18, 26), ...inter(42, G.sky)}}>Бизнес-экспедиции в Китай и не только</div>
       {STATS.map(([v, suf, label], i) => {
-        const at = 40 + i * 12;
+        const at = 28 + i * 10;
         if (f < at) return null;
         const s = spring({frame: f - at, fps, config: {damping: 9, stiffness: 300, mass: 0.5}});
         const x = 70 + (i % 2) * 500;
@@ -188,7 +189,7 @@ const Drop: React.FC = () => {
         return (
           <div key={label} style={{position: "absolute", left: x, top: y, width: 440, height: 130, scale: String(1.6 - 0.6 * s), transformOrigin: "0 50%"}}>
             <Burst x={56} y={44} r={60} color={G.blue} stroke="#fff" sw={5} rot={f * 0.8 + i * 20} seed={`ds${i}`} points={14} />
-            <div style={{position: "relative", ...dela(76, "#fff", {textShadow: `5px 5px 0 ${G.ink}`})}}>{countText(f, at, 14, v, "", suf)}</div>
+            <div style={{position: "relative", ...dela(76, "#fff", {textShadow: `5px 5px 0 ${G.ink}`})}}>{countText(f, at, 12, v, "", suf)}</div>
             <div style={{position: "relative", ...inter(34, G.sky)}}>{label}</div>
           </div>
         );
@@ -213,10 +214,10 @@ const Ch1: React.FC = () => {
   return (
     <AbsoluteFill>
       <NavyBg />
-      <AbsoluteFill style={{translate: sumShake(f, [[8, 8, 14], [70, 5, 8], [150, 6, 10]], "c1")}}>
+      <AbsoluteFill style={{translate: sumShake(f, [[8, 8, 14], [66, 5, 8], [128, 6, 10]], "c1")}}>
         <ChapterHead zh="第一话" no="ГЛАВА 1" title="Готовые программы" />
         {COUNTRIES.map(([c, n], i) => {
-          const at = 14 + i * 6;
+          const at = 12 + i * 5;
           const on = p(f, at, at + 4);
           return (
             <div key={c} style={{position: "absolute", left: 48 + (i % 3) * 332, top: 440 + Math.floor(i / 3) * 96, width: 312, height: 80, display: "flex", alignItems: "center", gap: 14, background: on > 0.5 ? "#fff" : "rgba(255,255,255,.08)", border: `4px solid ${on > 0.5 ? G.ink : "rgba(125,211,252,.4)"}`, borderRadius: 14, padding: "0 14px", boxShadow: on > 0.5 ? `0 0 28px rgba(125,211,252,.7), 6px 6px 0 ${G.blue}` : "none", scale: String(1 + 0.15 * Math.sin(on * Math.PI))}}>
@@ -230,11 +231,11 @@ const Ch1: React.FC = () => {
           <div style={dela(46, G.ink)}>Ну и нах#я мне</div>
           <div style={dela(64, G.red, {WebkitTextStroke: `2px ${G.ink}`, paintOrder: "stroke fill"})}>76 программ?</div>
         </Say>
-        <div style={{position: "absolute", left: 600, top: 760, rotate: "4deg", opacity: p(f, 70, 78), translate: `${(1 - p(f, 70, 82, EO)) * 500}px 0`}}>
-          <Phone w={430} imgs={[im("expeditions-1"), im("expeditions-2")]} mode="swap" keys={[[0, 0], [130, 1]]} url="globaltechtour.ru" glareAt={96} />
+        <div style={{position: "absolute", left: 600, top: 760, rotate: "4deg", opacity: p(f, 66, 74), translate: `${(1 - p(f, 66, 78, EO)) * 500}px 0`}}>
+          <Phone w={430} imgs={[im("expeditions-1"), im("expeditions-2")]} mode="swap" keys={[[0, 0], [118, 1]]} url="globaltechtour.ru" glareAt={90} />
         </div>
         {PROGS.map(([t, s], i) => {
-          const at = 84 + i * 9;
+          const at = 76 + i * 8;
           if (f < at) return null;
           const k = spring({frame: f - at, fps, config: {damping: 12, stiffness: 200, mass: 0.7}});
           return (
@@ -244,10 +245,10 @@ const Ch1: React.FC = () => {
             </div>
           );
         })}
-        <Answer x={48} y={1320} w={984} at={150} size={34}>
+        <Answer x={48} y={1320} w={984} at={128} size={34}>
           Курируемые программы по нишам: <span style={{color: G.sky}}>маршрут, компании и логистика уже собраны</span>
         </Answer>
-        <Sfx text="啪!" x={830} y={600} size={110} color={G.red} stroke="#fff" at={84} font={FONT.zcool} rot={10} />
+        <Sfx text="啪!" x={830} y={600} size={110} color={G.red} stroke="#fff" at={76} font={FONT.zcool} rot={10} />
       </AbsoluteFill>
     </AbsoluteFill>
   );
@@ -260,14 +261,14 @@ const Ch2: React.FC<{clean?: boolean}> = ({clean}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const m = useMat(clean);
-  const gone = p(f, 150, 162, EIO);
-  const pdf = spring({frame: f - 128, fps, config: {damping: 12, stiffness: 140, mass: 0.8}});
+  const gone = p(f, 170, 182, EIO);
+  const pdf = spring({frame: f - 136, fps, config: {damping: 12, stiffness: 140, mass: 0.8}});
   // курсор: от одного отмеченного логотипа к другому
   const cur = (() => {
     const pts = PICK.map((i) => [48 + (i % 3) * 160 + 120, 900 + Math.floor(i / 3) * 120 + 80]);
     let x = 560, y = 1300;
     PICK.forEach((_, j) => {
-      const a = 74 + j * 12;
+      const a = 80 + j * 14;
       const k = p(f, a, a + 8, EIO);
       if (f >= a) { x = x + (pts[j][0] - x) * k; y = y + (pts[j][1] - y) * k; }
     });
@@ -276,27 +277,27 @@ const Ch2: React.FC<{clean?: boolean}> = ({clean}) => {
   return (
     <AbsoluteFill>
       <NavyBg />
-      <AbsoluteFill style={{translate: sumShake(f, [[56, 6, 10], [66, 6, 10], [128, 8, 14], [168, 10, 18]], "c2")}}>
+      <AbsoluteFill style={{translate: sumShake(f, [[60, 6, 10], [72, 6, 10], [136, 8, 14], [200, 10, 18]], "c2")}}>
         <ChapterHead zh="第二话" no="ГЛАВА 2" title="Собери сам" />
         <Director x={-40} y={1180} scale={0.85} emo="neutral" talk={f >= 6 && f < 44} at={0} until={52} />
         <Say x={330} y={1130} w={680} h={260} at={6} until={54} tail={[60, 200]}>
           <div style={dela(50, G.ink)}>А если мне</div>
           <div style={dela(50, G.ink)}>надо своё?</div>
         </Say>
-        <div style={{position: "absolute", left: 570, top: 430, rotate: "-3deg", opacity: p(f, 40, 48), translate: `${(1 - p(f, 40, 54, EO)) * 500}px 0`}}>
-          <Phone w={440} imgs={[im("constructor-1"), im("constructor-2")]} mode="swap" keys={[[0, 0], [60, 1]]} url="globaltechtour.ru" tapAt={[[86, 480, 1190]]} />
+        <div style={{position: "absolute", left: 570, top: 430, rotate: "-3deg", opacity: p(f, 44, 52), translate: `${(1 - p(f, 44, 58, EO)) * 500}px 0`}}>
+          <Phone w={440} imgs={[im("constructor-1"), im("constructor-2")]} mode="swap" keys={[[0, 0], [64, 1]]} url="globaltechtour.ru" tapAt={[[94, 480, 1190]]} />
         </div>
         <div style={{position: "absolute", inset: 0, translate: `${-700 * gone}px 0`}}>
           {[["2 дня", "4 компании"], ["5 дней", "8–14 компаний"]].map(([a, b], i) => (
-            <Chip key={a} x={48} y={440 + i * 100} at={56 + i * 10} rot={i ? 2 : -2} size={30}>
+            <Chip key={a} x={48} y={440 + i * 100} at={60 + i * 12} rot={i ? 2 : -2} size={30}>
               <span style={dela(44, G.blue)}>{a}</span>
               <span>· {b}</span>
             </Chip>
           ))}
           {LOGOS.map((l, i) => {
-            const at = 62 + i * 3;
+            const at = 66 + i * 3;
             const ticked = PICK.indexOf(i);
-            const tk = ticked >= 0 ? p(f, 74 + ticked * 12 + 7, 74 + ticked * 12 + 12, EO) : 0;
+            const tk = ticked >= 0 ? p(f, 80 + ticked * 14 + 7, 80 + ticked * 14 + 12, EO) : 0;
             return (
               <div key={l} style={{position: "absolute", left: 48 + (i % 3) * 172, top: 900 + Math.floor(i / 3) * 120, width: 156, height: 104, background: "#fff", border: `4px solid ${tk > 0.5 ? G.blue : G.ink}`, borderRadius: 14, display: "flex", alignItems: "center", justifyContent: "center", opacity: p(f, at, at + 4), scale: String(1 + 0.12 * Math.sin(tk * Math.PI)), boxShadow: tk > 0.5 ? `0 0 24px rgba(37,99,235,.8)` : "none"}}>
                 <Img src={staticFile(`${LOGO}${l}`)} style={{maxWidth: 120, maxHeight: 64, objectFit: "contain"}} />
@@ -308,16 +309,16 @@ const Ch2: React.FC<{clean?: boolean}> = ({clean}) => {
               </div>
             );
           })}
-          {f >= 70 && f < 150 ? (
+          {f >= 76 && f < 170 ? (
             <svg width={60} height={70} style={{position: "absolute", left: cur[0], top: cur[1]}} viewBox="0 0 60 70">
               <path d="M4,4 L4,56 L18,44 L28,66 L38,62 L28,40 L48,40 Z" fill="#fff" stroke={G.ink} strokeWidth={4} strokeLinejoin="round" />
             </svg>
           ) : null}
         </div>
-        <Answer x={48} y={1290} w={984} at={118} size={34} until={166}>
+        <Answer x={48} y={1290} w={984} at={128} size={34} until={204}>
           Выберите формат, отметьте компании — <span style={{color: G.sky}}>мы соберём маршрут</span>
         </Answer>
-        {f >= 128 ? (
+        {f >= 136 ? (
           // PDF программы вылетает из телефона
           <div style={{position: "absolute", left: 640 - 300 * pdf, top: 820 - 160 * pdf, width: 300, height: 400, background: "#fff", border: `4px solid ${G.ink}`, boxShadow: `10px 12px 0 ${G.blue}`, rotate: `${-16 * pdf}deg`, scale: String(0.4 + 0.6 * pdf), padding: 20}}>
             <div style={{fontFamily: FONT.mono, fontSize: 20, color: G.red}}>ПРОГРАММА.pdf</div>
@@ -328,9 +329,9 @@ const Ch2: React.FC<{clean?: boolean}> = ({clean}) => {
             <div style={{position: "absolute", right: 16, bottom: 14, fontFamily: FONT.oswald, fontSize: 22, color: G.blue}}>GLOBAL TECH TOUR</div>
           </div>
         ) : null}
-        <Sfx text="嘀!" x={760} y={1150} size={96} color={G.sky} stroke={G.ink} at={128} font={FONT.zcool} rot={-10} until={170} />
-        <Director x={-30} y={1050} scale={0.92} emo="wow" talk={f >= 168 && f < 200} at={160} from={-1} />
-        <Say x={360} y={1000} w={650} h={300} at={168} tail={[40, 200]} shout>
+        <Sfx text="嘀!" x={760} y={1150} size={96} color={G.sky} stroke={G.ink} at={136} font={FONT.zcool} rot={-10} until={186} />
+        <Director x={-30} y={1050} scale={0.92} emo="wow" talk={f >= 200 && f < 236} at={192} from={-1} />
+        <Say x={360} y={1000} w={650} h={300} at={200} tail={[40, 200]} shout>
           <div style={dela(64, G.red, {WebkitTextStroke: `2px ${G.ink}`, paintOrder: "stroke fill"})}>{m("Охуеть")}.</div>
           <div style={dela(56, G.ink)}>Сам собрал.</div>
         </Say>
@@ -351,60 +352,60 @@ const Cap: React.FC<{children: React.ReactNode; at: number; x?: number; y?: numb
 const Ch3: React.FC<{hema?: string}> = ({hema}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const st = spring({frame: f - 110, fps, config: {damping: 8, stiffness: 320, mass: 0.6}});
-  const z = (a: number) => 1 + 0.07 * p(f, a, 252);
+  const st = spring({frame: f - 124, fps, config: {damping: 8, stiffness: 320, mass: 0.6}});
+  const z = (a: number) => 1 + 0.07 * p(f, a, 270);
   return (
     <AbsoluteFill>
       <NavyBg />
-      <AbsoluteFill style={{translate: sumShake(f, [[50, 6, 10], [62, 6, 10], [74, 6, 10], [86, 6, 10], [110, 16, 28]], "c3")}}>
+      <AbsoluteFill style={{translate: sumShake(f, [[58, 6, 10], [70, 6, 10], [82, 6, 10], [94, 6, 10], [106, 6, 10], [124, 16, 28]], "c3")}}>
         <ChapterHead zh="第三话" no="ГЛАВА 3" title="Первые лица" />
-        <Director x={330} y={860} scale={1.15} emo="sweat" talk={f >= 6 && f < 44} at={0} until={48} from={1} />
-        <Say x={60} y={430} w={960} h={330} at={6} until={50} tail={[560, 520]}>
+        <Director x={330} y={860} scale={1.15} emo="sweat" talk={f >= 6 && f < 50} at={0} until={56} from={1} />
+        <Say x={60} y={430} w={960} h={330} at={6} until={58} tail={[560, 520]}>
           <div style={dela(56, G.ink)}>Да кто меня пустит</div>
           <div style={dela(56, G.ink)}>дальше проходной?</div>
         </Say>
-        <Panel x={48} y={430} w={560} h={460} at={50} from="left" bg={G.ink}>
-          <Photo src={ph("xingwang-hou")} w={560} h={460} pos="50% 30%" zoom={z(50)} />
-          <Cap at={58} y={396}>Председатель Xingwang Хоу Синван</Cap>
+        <Panel x={48} y={430} w={560} h={460} at={58} from="left" bg={G.ink}>
+          <Photo src={ph("xingwang-hou")} w={560} h={460} pos="50% 30%" zoom={z(58)} />
+          <Cap at={66} y={396}>Председатель Xingwang Хоу Синван</Cap>
         </Panel>
-        <Panel x={630} y={430} w={402} h={460} at={62} from="right" bg={G.ink}>
-          <Photo src={ph("yingke-rukovodstvo")} w={402} h={460} pos="50% 30%" zoom={z(62)} />
-          <Cap at={70} y={396}>Переговоры в YingKe</Cap>
+        <Panel x={630} y={430} w={402} h={460} at={70} from="right" bg={G.ink}>
+          <Photo src={ph("yingke-rukovodstvo")} w={402} h={460} pos="50% 30%" zoom={z(70)} />
+          <Cap at={78} y={396}>Переговоры в YingKe</Cap>
         </Panel>
-        <Panel x={48} y={910} w={300} h={400} at={74} from="bottom" bg={G.ink}>
-          <Photo src={"source-videos/2026-10-25-sany/IMG_5645.jpg"} w={300} h={400} pos="50% 45%" zoom={z(74)} />
-          <Cap at={82} y={336}>Ворота SANY</Cap>
+        <Panel x={48} y={910} w={300} h={400} at={82} from="bottom" bg={G.ink}>
+          <Photo src={"source-videos/2026-10-25-sany/IMG_5645.jpg"} w={300} h={400} pos="50% 45%" zoom={z(82)} />
+          <Cap at={90} y={336}>Ворота SANY</Cap>
         </Panel>
-        <Panel x={362} y={910} w={330} h={400} at={86} from="bottom" bg={G.ink}>
+        <Panel x={362} y={910} w={330} h={400} at={94} from="bottom" bg={G.ink}>
           {hema ? (
-            <Photo src={hema} w={330} h={400} pos="50% 25%" zoom={z(86)} />
+            <Photo src={hema} w={330} h={400} pos="50% 25%" zoom={z(94)} />
           ) : (
             <OffthreadVideo src={staticFile(`${WT}hema-osnovatel.mp4`)} muted style={{position: "absolute", left: 0, top: -60, width: 330, height: 587, objectFit: "cover"}} />
           )}
           <Img src={staticFile(`${LOGO}ритейл/hema.png`)} style={{position: "absolute", right: 10, top: 10, width: 110, height: 52, objectFit: "contain", background: "#fff", borderRadius: 8, padding: 4}} />
-          <Cap at={94} y={336}>Основатель Hema</Cap>
+          <Cap at={102} y={336}>Основатель Hema</Cap>
         </Panel>
-        <Panel x={706} y={910} w={326} h={400} at={98} from="right" bg={G.ink}>
-          <Photo src={`${WT}vejfan-sammit.jpg`} w={326} h={400} pos="50% 55%" zoom={z(98)} />
-          <Cap at={104} y={300}>Саммит предпринимателей
+        <Panel x={706} y={910} w={326} h={400} at={106} from="right" bg={G.ink}>
+          <Photo src={`${WT}vejfan-sammit.jpg`} w={326} h={400} pos="50% 55%" zoom={z(106)} />
+          <Cap at={112} y={300}>Саммит предпринимателей
             <br />
             Вэйфана</Cap>
         </Panel>
-        {f >= 110 ? (
+        {f >= 124 ? (
           <div style={{position: "absolute", left: 90, top: 760, width: 900, rotate: "-8deg", scale: String(2.2 - 1.2 * st), opacity: Math.min(1, st * 2), border: `10px solid ${G.red}`, padding: "18px 22px", background: "rgba(255,255,255,.88)", textAlign: "center", boxShadow: "0 0 0 6px rgba(232,52,28,.25)"}}>
             <div style={dela(60, G.red, {lineHeight: 1.1})}>ТУДА, КУДА С УЛИЦЫ</div>
             <div style={dela(60, G.red, {lineHeight: 1.1})}>НЕ ПУСКАЮТ</div>
           </div>
         ) : null}
-        <Sfx text="啪!" x={860} y={1180} size={110} color={G.red} stroke="#fff" at={110} font={FONT.zcool} rot={12} />
-        <Answer x={48} y={1334} w={740} at={140} size={30}>
+        <Sfx text="啪!" x={860} y={1180} size={110} color={G.red} stroke="#fff" at={124} font={FONT.zcool} rot={12} />
+        <Answer x={48} y={1334} w={740} at={150} size={30}>
           Личное общение <span style={{color: G.sky}}>с собственниками, CEO и топ-менеджерами</span>
         </Answer>
-        <Answer x={48} y={1448} w={620} at={162} size={28} light rot={-1}>
+        <Answer x={48} y={1448} w={620} at={172} size={28} light rot={-1}>
           + авторские лекции топ-менеджеров
         </Answer>
-        {f >= 150 ? (
-          <div style={{position: "absolute", left: 812, top: 1330, width: 220, background: "#fff", padding: 10, paddingBottom: 4, border: `3px solid ${G.ink}`, rotate: "4deg", boxShadow: `7px 9px 0 rgba(10,15,36,.6)`, scale: String(1.5 - 0.5 * spring({frame: f - 150, fps, config: {damping: 12, stiffness: 220}}))}}>
+        {f >= 160 ? (
+          <div style={{position: "absolute", left: 812, top: 1330, width: 220, background: "#fff", padding: 10, paddingBottom: 4, border: `3px solid ${G.ink}`, rotate: "4deg", boxShadow: `7px 9px 0 rgba(10,15,36,.6)`, scale: String(1.5 - 0.5 * spring({frame: f - 160, fps, config: {damping: 12, stiffness: 220}}))}}>
             <div style={{position: "relative", width: 200, height: 136, overflow: "hidden", border: `2px solid ${G.ink}`}}>
               <Photo src={`${WT}konferenciya-delegaciya.jpg`} w={200} h={136} pos="50% 50%" />
             </div>
@@ -424,11 +425,11 @@ const Ch4: React.FC = () => {
   return (
     <AbsoluteFill>
       <NavyBg />
-      <div style={{position: "absolute", left: 0, right: 0, top: 380, textAlign: "center", fontFamily: BRUSH, fontSize: 900, lineHeight: 1, color: "rgba(125,211,252,.10)", scale: String(1 + 0.05 * p(f, 0, 252))}}>学</div>
-      <AbsoluteFill style={{translate: sumShake(f, CAMPUS.map((_, i) => [20 + i * 12, 5, 8] as [number, number, number]), "c4")}}>
+      <div style={{position: "absolute", left: 0, right: 0, top: 380, textAlign: "center", fontFamily: BRUSH, fontSize: 900, lineHeight: 1, color: "rgba(125,211,252,.10)", scale: String(1 + 0.05 * p(f, 0, 210))}}>学</div>
+      <AbsoluteFill style={{translate: sumShake(f, CAMPUS.map((_, i) => [14 + i * 10, 5, 8] as [number, number, number]), "c4")}}>
         <ChapterHead zh="第四话" no="ГЛАВА 4" title="Учёба в кампусах" />
         {CAMPUS.map(([l, n], i) => {
-          const at = 20 + i * 12;
+          const at = 14 + i * 10;
           if (f < at) return null;
           const s = spring({frame: f - at, fps, config: {damping: 13, stiffness: 180, mass: 0.8}});
           const col = i % 2;
@@ -447,8 +448,8 @@ const Ch4: React.FC = () => {
           );
         })}
         <Director x={640} y={1060} scale={0.95} emo="neutral" glasses at={4} from={1} />
-        <Sfx text="学!" x={720} y={880} size={130} color={G.sky} stroke={G.ink} at={96} font={BRUSH} rot={-8} />
-        <Answer x={48} y={1250} w={600} at={100} size={32}>
+        <Sfx text="学!" x={720} y={880} size={130} color={G.sky} stroke={G.ink} at={74} font={BRUSH} rot={-8} />
+        <Answer x={48} y={1250} w={600} at={78} size={32}>
           <span style={{color: G.sky}}>Трёхдневные интенсивы:</span> стратегия, цифровизация, управление — из первых рук, с переводом
         </Answer>
       </AbsoluteFill>
@@ -461,12 +462,12 @@ const LIST = ["Трансферы", "Отели", "Синхронный пере
 const Ch5: React.FC = () => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const seal = spring({frame: f - 104, fps, config: {damping: 8, stiffness: 320, mass: 0.6}});
+  const seal = spring({frame: f - 92, fps, config: {damping: 8, stiffness: 320, mass: 0.6}});
   const tear = 0;
   return (
     <AbsoluteFill>
       <NavyBg />
-      <AbsoluteFill style={{translate: sumShake(f, [...LIST.map((_, i) => [18 + i * 14, 4, 6] as [number, number, number]), [104, 14, 24]], "c5")}}>
+      <AbsoluteFill style={{translate: sumShake(f, [...LIST.map((_, i) => [16 + i * 12, 4, 6] as [number, number, number]), [92, 14, 24]], "c5")}}>
         <ChapterHead zh="第五话" no="ГЛАВА 5" title="Под ключ" />
         {/* блокнот: верхний лист отрывается после всех галочек */}
         <div style={{position: "absolute", left: 60, top: 450, width: 600, height: 700, background: "#E3E8F4", border: `4px solid ${G.ink}`, borderRadius: 14, rotate: "-2deg"}} />
@@ -475,7 +476,7 @@ const Ch5: React.FC = () => {
             {Array.from({length: 9}, (_, i) => <div key={i} style={{width: 16, height: 40, borderRadius: 8, background: "#9AA6BF", border: `3px solid ${G.ink}`}} />)}
           </div>
           {LIST.map((t, i) => {
-            const at = 18 + i * 14;
+            const at = 16 + i * 12;
             const k = p(f, at, at + 6, EO);
             return (
               <div key={t} style={{position: "absolute", left: 30, top: 40 + i * 120, right: 20, display: "flex", alignItems: "center", gap: 18, opacity: p(f, at - 6, at)}}>
@@ -490,7 +491,7 @@ const Ch5: React.FC = () => {
           })}
         </div>
         {/* карточка партнёра со штампом «проверено» */}
-        <div style={{position: "absolute", left: 640, top: 560, width: 390, background: "#fff", border: `4px solid ${G.ink}`, borderRadius: 16, overflow: "hidden", rotate: "3deg", boxShadow: `9px 9px 0 ${G.blue}`, opacity: p(f, 60, 68), translate: `${(1 - p(f, 60, 72, EO)) * 500}px 0`}}>
+        <div style={{position: "absolute", left: 640, top: 560, width: 390, background: "#fff", border: `4px solid ${G.ink}`, borderRadius: 16, overflow: "hidden", rotate: "3deg", boxShadow: `9px 9px 0 ${G.blue}`, opacity: p(f, 56, 64), translate: `${(1 - p(f, 56, 68, EO)) * 500}px 0`}}>
           <div style={{position: "relative", width: 390, height: 260, overflow: "hidden"}}>
             <Photo src={`${WT}forum-peregovory.jpg`} w={390} h={260} pos="50% 40%" />
           </div>
@@ -499,13 +500,13 @@ const Ch5: React.FC = () => {
             <div style={inter(28, G.ink)}>Переговоры с повесткой и переводом</div>
           </div>
         </div>
-        {f >= 104 ? (
+        {f >= 92 ? (
           <div style={{position: "absolute", left: 760, top: 760, width: 220, height: 220, borderRadius: "50%", border: `10px solid ${G.red}`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", rotate: "-14deg", scale: String(2 - seal), opacity: Math.min(1, seal * 2), background: "rgba(255,255,255,.5)"}}>
             <div style={{fontFamily: FONT.zcool, fontSize: 64, color: G.red, lineHeight: 1}}>已验证</div>
             <div style={{fontFamily: FONT.oswald, fontSize: 26, color: G.red, letterSpacing: "0.1em"}}>ПРОВЕРЕНО</div>
           </div>
         ) : null}
-        {[[`${WT}chansha-ostrov.jpg`, "Чанша", 640, -4, 124], [`${WT}delegaciya-saudity.jpg`, "делегация", 846, 5, 136]].map(([src, cap, x, rot, at]) => {
+        {[[`${WT}chansha-ostrov.jpg`, "Чанша", 640, -4, 116], [`${WT}delegaciya-saudity.jpg`, "делегация", 846, 5, 128]].map(([src, cap, x, rot, at]) => {
           const k = spring({frame: f - (at as number), fps, config: {damping: 12, stiffness: 220, mass: 0.7}});
           if (f < (at as number)) return null;
           return (
@@ -517,7 +518,7 @@ const Ch5: React.FC = () => {
             </div>
           );
         })}
-        <Answer x={48} y={1190} w={984} at={118} size={34}>
+        <Answer x={48} y={1190} w={984} at={108} size={34}>
           Подбираем и проверяем партнёров — <span style={{color: G.sky}}>переговоры с повесткой и переводом</span>
         </Answer>
         <Director x={600} y={1290} scale={0.62} emo="calm" at={150} from={1} />
@@ -534,7 +535,7 @@ const Ch6: React.FC = () => {
   return (
     <AbsoluteFill>
       <NavyBg />
-      <AbsoluteFill style={{translate: sumShake(f, [[6, 6, 10], [18, 6, 10], ...CASES.map((_, i) => [56 + i * 9, 4, 6] as [number, number, number])], "c6")}}>
+      <AbsoluteFill style={{translate: sumShake(f, [[6, 6, 10], [18, 6, 10], ...CASES.map((_, i) => [48 + i * 8, 4, 6] as [number, number, number])], "c6")}}>
         <ChapterHead zh="第六话" no="ГЛАВА 6" title="Кейсы" />
         <Panel x={48} y={430} w={600} h={360} at={6} from="left" bg={G.ink}>
           <OffthreadVideo src={staticFile(`${CLIP}A0099.mp4`)} trimBefore={Math.round(9.4 * fps)} muted style={{position: "absolute", left: 0, top: -120, width: 600, height: 1067, objectFit: "cover"}} />
@@ -544,7 +545,7 @@ const Ch6: React.FC = () => {
           <OffthreadVideo src={staticFile(`${CLIP}A0120.mp4`)} trimBefore={Math.round(1 * fps)} muted style={{position: "absolute", left: 0, top: -150, width: 364, height: 647, objectFit: "cover"}} />
         </Panel>
         {CASES.map(([src, name], i) => {
-          const at = 56 + i * 9;
+          const at = 48 + i * 8;
           if (f < at) return null;
           const s = spring({frame: f - at, fps, config: {damping: 12, stiffness: 210, mass: 0.7}});
           const col = i % 3;
@@ -558,10 +559,10 @@ const Ch6: React.FC = () => {
             </div>
           );
         })}
-        <Answer x={48} y={1420} w={984} at={124} size={30} rot={-1}>
+        <Answer x={48} y={1420} w={984} at={108} size={30} rot={-1}>
           <span style={{color: G.sky}}>Форум Мегамаркета (Сбер) в Шэньчжэне</span> — 1200+ участников под ключ
         </Answer>
-        <Sfx text="哇!" x={860} y={360} size={100} color={G.sky} stroke={G.ink} at={110} font={FONT.zcool} rot={10} />
+        <Sfx text="哇!" x={860} y={360} size={100} color={G.sky} stroke={G.ink} at={100} font={FONT.zcool} rot={10} />
       </AbsoluteFill>
     </AbsoluteFill>
   );

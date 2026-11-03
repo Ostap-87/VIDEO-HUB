@@ -127,7 +127,8 @@ const Ch1: React.FC = () => {
         </Panel>
         <Narration x={600} y={492} at={28} font={FONT.oswald} size={30} rot={2}>РОССИЯ ↔ КИТАЙ ↔ ЮВА</Narration>
         <Panel x={48} y={826} w={500} h={500} poly={[[0, 0.1], [1, 0], [1, 1], [0, 1]]} at={48} from="bottom">
-          <Shot src={im("ru-01-about")} crop={[90, 240, 800, 900]} w={500} h={500} zoom={z(48, 222)} />
+          {/* живое фото со сцены (Мегамаркет), прислал пользователь 03.11.2026 — вместо куска экрана «Обо мне» */}
+          <Img src={staticFile("source-videos/фото-от-пользователя/остап/2026-11-03-для-финала/foto-5.jpg")} style={{position: "absolute", left: 0, top: 0, width: 500, height: 500, objectFit: "cover", objectPosition: "78% 25%", scale: String(z(48, 222))}} />
         </Panel>
         {f >= 62 ? (
           <Bubble x={56} y={1170} w={500} h={200} tail={[300, -30]} scale={spring({frame: f - 62, fps: 30, config: {damping: 10, stiffness: 240}})}>

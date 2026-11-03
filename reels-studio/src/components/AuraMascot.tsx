@@ -19,7 +19,7 @@ export type MascotStay = {at: number; x: number; y: number; face?: number};
 export type MascotPlan = {stays: MascotStay[]; gestures: {at: number; kind: GestureKind}[]};
 
 export const GESTURE_DUR: Record<GestureKind, number> = {
-  wave: 2.4, point: 1.8, pointUp: 2.2, tick: 0.9, push: 1.0, pull: 1.1, present: 1.4, jump: 1.75, nod: 1.2, scan: 2.6, shrug: 1.6, sleep: 2.6,
+  wave: 2.4, point: 1.8, pointUp: 2.2, tick: 0.9, push: 1.0, pull: 1.1, present: 1.4, jump: 1.75, nod: 1.2, scan: 2.6, shrug: 1.6, sleep: 3.4,
 };
 
 export const C = {light: "#F8F6F3", dark: "#262626", accent: "#FFF65D", glow: "#FFF65D"};
