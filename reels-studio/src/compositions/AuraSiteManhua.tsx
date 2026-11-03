@@ -33,7 +33,8 @@ const A = {parch: "#F8F6F3", ink: "#262626", lemon: "#FFF65D", fog: "#D9D7D5", d
 const IMG = "source-videos/aura-robotics/site/2026-11-03-сайт/";
 const im = (n: string) => `${IMG}${n}.jpg`;
 const SFXP = "source-videos/2026-11-03-od-sait-manhua/sfx/";
-const MUSIC = "интернет-материалы/музыка/upbeat-corporate-soundrider.mp3";
+// музыка v2: Exit the Premises — Kevin MacLeod (incompetech.com), CC BY 4.0; удар на 6,9 с трека = прыжок маскота (3,8 с ролика)
+const MUSIC = "интернет-материалы/музыка/exit-the-premises-kevin-macleod.mp3";
 // видео от пользователя (WeTransfer 03.11.2026): запуск серийного производства гуманоидов, стеллажи, роботы в цеху
 const ROBOTS = "source-videos/2026-11-03-wt-hema-roboty/roboty-zavod.mp4";
 const INTER = body.fontFamily;
@@ -562,15 +563,16 @@ const Fin: React.FC<{clean?: boolean}> = ({clean}) => {
 };
 
 // звуки по сценам: [кадр сцены, файл, громкость]
+// звуки v2 (03.11.2026: «больше разных звуков»): "@имя" — библиотека интернет-материалы/звуки/ (CC0 / CC BY), "@zvukitop/zt-…" — zvukitop.com
 const SC: Record<keyof typeof T, [number, string, number][]> = {
-  hook: [[8, "whip", 0.35], [30, "whip", 0.45], [36, "vine-boom", 0.4], [62, "switch", 0.6], [64, "anime-wow", 0.6]],
-  wake: [[0, "vine-boom", 0.6], [2, "whoosh", 0.5], [8, "whip", 0.45], [8, "switch", 0.3], [34, "mouse-click", 0.3], [35, "switch", 0.3], [62, "switch", 0.3]],
-  fact: [[0, "whip", 0.5], [4, "vine-boom", 0.35], [20, "vine-boom", 0.45], [40, "mouse-click", 0.4], [50, "shutter-modern", 0.4], [58, "whoosh", 0.4]],
-  ch1: [[0, "page-turn", 0.6], [12, "whoosh", 0.45], [40, "vine-boom", 0.3], [50, "vine-boom", 0.3], [60, "vine-boom", 0.3], [54, "whip", 0.35], [64, "whip", 0.35], [74, "whip", 0.35], [84, "whoosh", 0.4], [104, "page-turn", 0.7], [122, "switch", 0.5], [128, "whoosh", 0.4], [132, "shutter-modern", 0.45]],
-  ch2: [[0, "whip", 0.5], ...Array.from({length: 8}, (_, i) => [14 + i * 7, "mouse-click", 0.3] as [number, string, number]), [54, "switch", 0.3], [84, "switch", 0.3], [92, "whoosh", 0.6], [96, "whip", 0.4], [120, "vine-boom", 0.35], [138, "vine-boom", 0.35]],
-  ch3: [[0, "page-turn", 0.6], [26, "mouse-click", 0.5], [30, "switch", 0.55], [50, "switch", 0.55], [70, "switch", 0.55], [90, "switch", 0.55], [100, "ding", 0.4], [138, "whoosh", 0.4], [146, "whip", 0.35]],
-  ch4: [[0, "whip", 0.5], [8, "whoosh", 0.35], [20, "shutter-modern", 0.45], [46, "shutter-modern", 0.45], [72, "shutter-modern", 0.45], [96, "ding", 0.35], [98, "mouse-click", 0.3]],
-  fin: [[0, "whoosh", 0.5], [6, "vine-boom", 0.5], [10, "whip", 0.4], [40, "whip", 0.4], [70, "vine-boom", 0.35], [74, "mouse-click", 0.25], [80, "mouse-click", 0.25], [86, "mouse-click", 0.25], [100, "mouse-click", 0.5], [104, "ding", 0.35], [132, "vine-boom", 0.45]],
+  hook: [[6, "@pop-2", 0.45], [40, "@impact-3", 0.45], [40, "@zvukitop/zt-slap", 0.35], [46, "@zvukitop/zt-cinema-hit", 0.35], [84, "@robot-1", 0.5], [86, "anime-wow", 0.55], [86, "@beep-1", 0.35]],
+  wake: [[0, "@impact-1", 0.7], [2, "@whoosh-4", 0.5], [8, "@pop-1", 0.45], [10, "@servo-1", 0.4], [12, "@boing-1", 0.35], [34, "@click-2", 0.3], [38, "@boing-1", 0.3], [62, "@boing-1", 0.3]],
+  fact: [[0, "@whoosh-1", 0.5], [4, "@impact-4", 0.35], [20, "@boom-1", 0.5], [40, "@swipe-1", 0.45], [42, "@servo-2", 0.35], [58, "@whoosh-3", 0.4], [70, "@robot-1", 0.3]],
+  ch1: [[0, "@flip-1", 0.6], [12, "@swipe-1", 0.45], [14, "@servo-1", 0.35], [40, "@stamp-1", 0.5], [50, "@stamp-1", 0.5], [60, "@stamp-1", 0.5], [54, "@whoosh-3", 0.3], [64, "@whoosh-3", 0.3], [74, "@whoosh-3", 0.3], [84, "@whoosh-2", 0.4], [104, "@tear-1", 0.8], [122, "@pop-1", 0.45], [128, "@whoosh-2", 0.4], [132, "@zvukitop/zt-shutter", 0.4], [134, "@beep-1", 0.3]],
+  ch2: [[0, "@glitch-1", 0.55], ...Array.from({length: 8}, (_, i) => [14 + i * 7, i % 2 ? "@click-2" : "@pop-1", 0.33] as [number, string, number]), [54, "@click-1", 0.3], [84, "@click-1", 0.3], [92, "@whoosh-4", 0.55], [96, "@servo-2", 0.4], [120, "@coin-2", 0.4], [138, "@coin-1", 0.4]],
+  ch3: [[0, "@flip-1", 0.6], [26, "@click-1", 0.5], [30, "@zvukitop/zt-click", 0.55], [50, "@zvukitop/zt-click", 0.55], [70, "@zvukitop/zt-click", 0.55], [90, "@zvukitop/zt-click", 0.55], [92, "@ding-2", 0.25], [100, "@cash-1", 0.5], [138, "@whoosh-2", 0.4], [146, "@pop-2", 0.4]],
+  ch4: [[0, "@whoosh-1", 0.5], [8, "@whoosh-3", 0.35], [20, "@shutter-1", 0.45], [46, "@shutter-1", 0.45], [72, "@shutter-1", 0.45], [36, "@servo-2", 0.3], [96, "@success-1", 0.4], [98, "@cheer-1", 0.3]],
+  fin: [[0, "@whoosh-4", 0.5], [6, "@impact-2", 0.55], [10, "@pop-2", 0.4], [40, "@pop-1", 0.4], [70, "@boom-1", 0.4], [74, "@typing-1", 0.35], [100, "@click-1", 0.5], [104, "@ding-1", 0.4], [122, "@impact-1", 0.5]],
 };
 // звук: "whoosh" — @remotion/sfx (source-videos/2026-11-03-od-sait-manhua/sfx/), "@whoosh-2" — библиотека интернет-материалы/звуки/ (CC0 / CC BY, авторы — АВТОРЫ.md)
 const sfxSrc = (n: string) => (n.startsWith("@") ? `интернет-материалы/звуки/${n.slice(1)}.wav` : `${SFXP}${n}.wav`);
@@ -626,8 +628,8 @@ export const AuraSiteManhua: React.FC<{clean?: boolean}> = ({clean = true}) => {
       <Vignette strength={0.3} />
       <Audio
         src={staticFile(MUSIC)}
-        trimBefore={Math.round(5 * fps)}
-        volume={(x) => interpolate(x, [0, 84, 90, AURA_MANHUA_FRAMES - 40, AURA_MANHUA_FRAMES - 1], [0.16, 0.16, 0.5, 0.5, 0], CL)}
+        trimBefore={Math.round(3.1 * fps)}
+        volume={(x) => interpolate(x, [0, 108, 114, AURA_MANHUA_FRAMES - 40, AURA_MANHUA_FRAMES - 1], [0.14, 0.14, 0.4, 0.4, 0], CL)}
       />
       {SOUNDS.map(([at, name, vol], i) => (
         <Sequence key={i} from={at} durationInFrames={Math.round(4.5 * fps)} premountFor={fps}>

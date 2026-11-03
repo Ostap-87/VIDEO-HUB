@@ -34,7 +34,8 @@ const LOGO = "source-videos/логотипы/";
 const FLAG = "интернет-материалы/флаги/";
 const CRYSTAL = "finished-videos/обложки/gtt-бренд/instagram/gtt-аватар-мастер-2160.png";
 const SFXP = "source-videos/2026-11-03-od-sait-manhua/sfx/";
-const MUSIC = "интернет-материалы/музыка/inspiring-corporate-soundrider.mp3";
+// музыка v2: EDM Detection Mode — Kevin MacLeod (incompetech.com), CC BY 4.0; удар на 13,9 с трека = влёт кристалла (5,2 с ролика)
+const MUSIC = "интернет-материалы/музыка/edm-detection-mode-kevin-macleod.mp3";
 const INTER = body.fontFamily;
 
 // тайминг 03.11.2026 (v2): каждая реплика держится столько, сколько нужно на чтение (~15 знаков в секунду + 0,6 с), без провалов
@@ -617,16 +618,17 @@ const Fin: React.FC<{clean?: boolean}> = ({clean}) => {
   );
 };
 
+// звуки v2 (03.11.2026: «больше разных звуков»): "@имя" — библиотека интернет-материалы/звуки/ (CC0 / CC BY), "@zvukitop/zt-…" — zvukitop.com
 const SC: Record<keyof typeof T, [number, string, number][]> = {
-  hook: [[6, "whip", 0.35], [54, "vine-boom", 0.6], [54, "shutter-modern", 0.6], [60, "whoosh", 0.45], [86, "vine-boom", 0.5], [86, "whip", 0.45], [96, "anime-wow", 0.35]],
-  drop: [[0, "vine-boom", 0.6], [2, "whoosh", 0.55], [16, "whip", 0.4], [40, "mouse-click", 0.4], [52, "mouse-click", 0.4], [64, "mouse-click", 0.4], [76, "mouse-click", 0.4]],
-  ch1: [[0, "page-turn", 0.6], [8, "whip", 0.4], ...COUNTRIES.map((_, i) => [14 + i * 6, "switch", 0.35] as [number, string, number]), [70, "whoosh", 0.45], [84, "vine-boom", 0.3], ...PROGS.map((_, i) => [84 + i * 9, "mouse-click", 0.3] as [number, string, number]), [130, "switch", 0.3], [150, "whoosh", 0.4]],
-  ch2: [[0, "whip", 0.5], [6, "whip", 0.35], [40, "whoosh", 0.4], [56, "mouse-click", 0.4], [66, "mouse-click", 0.4], ...PICK.map((_, j) => [74 + j * 12 + 8, "switch", 0.5] as [number, string, number]), [118, "whoosh", 0.35], [128, "shutter-modern", 0.5], [130, "whoosh", 0.5], [160, "whip", 0.4], [168, "vine-boom", 0.45]],
-  ch3: [[0, "page-turn", 0.6], [6, "whip", 0.35], [50, "whoosh", 0.45], [62, "whoosh", 0.4], [74, "whoosh", 0.4], [86, "whoosh", 0.4], [110, "vine-boom", 0.6], [110, "whip", 0.45], [140, "whoosh", 0.35], [162, "mouse-click", 0.35]],
-  ch4: [[0, "whip", 0.5], ...CAMPUS.map((_, i) => [20 + i * 12, "page-turn", 0.35] as [number, string, number]), [96, "ding", 0.35], [100, "whoosh", 0.35]],
-  ch5: [[0, "page-turn", 0.6], ...LIST.map((_, i) => [18 + i * 14 + 2, "switch", 0.5] as [number, string, number]), [60, "whoosh", 0.4], [104, "vine-boom", 0.55], [118, "whoosh", 0.35], [150, "whip", 0.3]],
-  ch6: [[0, "whip", 0.5], [6, "whoosh", 0.4], [18, "whoosh", 0.35], ...CASES.map((_, i) => [56 + i * 9, "shutter-modern", 0.35] as [number, string, number]), [110, "anime-wow", 0.3], [124, "whoosh", 0.35]],
-  fin: [[0, "whoosh", 0.5], [26, "page-turn", 0.8], [40, "whip", 0.45], [44, "vine-boom", 0.45], [62, "whoosh", 0.5], [78, "vine-boom", 0.4], ...Array.from({length: 8}, (_, i) => [82 + i * 4, "mouse-click", 0.2] as [number, string, number]), [112, "whoosh", 0.3], [124, "ding", 0.35], [176, "vine-boom", 0.45]],
+  hook: [[6, "@pop-2", 0.5], [10, "@vibrate-1", 0.45], [92, "@glass-1", 0.85], [92, "@impact-1", 0.55], [98, "@whoosh-3", 0.5], [122, "@impact-3", 0.6], [122, "@zvukitop/zt-slap", 0.45], [132, "@zvukitop/zt-wrong", 0.3]],
+  drop: [[0, "@impact-2", 0.7], [2, "@whoosh-4", 0.5], [12, "@sweep-1", 0.4], [28, "@click-2", 0.45], [38, "@click-2", 0.45], [48, "@click-2", 0.45], [58, "@zvukitop/zt-cinema-hit", 0.45]],
+  ch1: [[0, "@flip-1", 0.6], [8, "@impact-3", 0.4], ...COUNTRIES.map((_, i) => [12 + i * 5, i % 2 ? "@click-2" : "@beep-1", 0.3] as [number, string, number]), [66, "@swipe-1", 0.5], [76, "@zvukitop/zt-slap", 0.45], ...PROGS.map((_, i) => [76 + i * 8, "@pop-1", 0.32] as [number, string, number]), [118, "@click-1", 0.4], [128, "@whoosh-2", 0.4]],
+  ch2: [[0, "@whoosh-1", 0.5], [6, "@pop-2", 0.5], [44, "@swipe-1", 0.45], [60, "@pop-1", 0.45], [72, "@pop-1", 0.45], ...PICK.map((_, j) => [80 + j * 14 + 8, "@click-1", 0.55] as [number, string, number]), [130, "@ding-2", 0.3], [94, "@click-2", 0.4], [128, "@whoosh-3", 0.4], [136, "@typewriter-1", 0.5], [138, "@whoosh-2", 0.4], [192, "@whoosh-4", 0.45], [200, "@impact-3", 0.5], [204, "@cheer-1", 0.3]],
+  ch3: [[0, "@glitch-1", 0.5], [6, "@pop-2", 0.5], [10, "@heartbeat-1", 0.4], [58, "@shutter-1", 0.45], [70, "@shutter-1", 0.4], [82, "@shutter-1", 0.4], [94, "@shutter-1", 0.4], [106, "@shutter-1", 0.4], [124, "@stamp-1", 0.85], [124, "@impact-4", 0.4], [150, "@whoosh-2", 0.35], [160, "@pop-1", 0.35], [172, "@click-2", 0.35]],
+  ch4: [[0, "@flip-1", 0.6], ...CAMPUS.map((_, i) => [14 + i * 10, i % 2 ? "@zvukitop/zt-slap" : "@whoosh-3", 0.32] as [number, string, number]), [74, "@ding-3", 0.5], [78, "@whoosh-2", 0.35]],
+  ch5: [[0, "@whoosh-1", 0.5], ...LIST.map((_, i) => [16 + i * 12 + 2, "@zvukitop/zt-click", 0.5] as [number, string, number]), [66, "@ding-2", 0.25], [56, "@swipe-1", 0.45], [92, "@stamp-1", 0.85], [96, "@success-1", 0.35], [108, "@whoosh-3", 0.35], [116, "@shutter-1", 0.35], [128, "@shutter-1", 0.35], [150, "@pop-2", 0.3]],
+  ch6: [[0, "@whoosh-4", 0.5], [6, "@shutter-1", 0.4], [18, "@whoosh-2", 0.35], ...CASES.map((_, i) => [48 + i * 8, i % 2 ? "@pop-1" : "@shutter-1", 0.32] as [number, string, number]), [100, "@applause-1", 0.3], [108, "@whoosh-3", 0.35]],
+  fin: [[0, "@whoosh-4", 0.5], [26, "@tear-1", 0.85], [40, "@impact-3", 0.5], [44, "@cheer-1", 0.3], [62, "@impact-2", 0.55], [64, "@sweep-1", 0.35], [78, "@boom-1", 0.45], [82, "@typing-1", 0.4], [112, "@whoosh-2", 0.3], [124, "@ding-1", 0.4], [176, "@impact-1", 0.5]],
 };
 // звук: "whoosh" — @remotion/sfx (source-videos/2026-11-03-od-sait-manhua/sfx/), "@whoosh-2" — библиотека интернет-материалы/звуки/ (CC0 / CC BY, авторы — АВТОРЫ.md)
 const sfxSrc = (n: string) => (n.startsWith("@") ? `интернет-материалы/звуки/${n.slice(1)}.wav` : `${SFXP}${n}.wav`);
@@ -687,8 +689,8 @@ export const GttSiteManhua: React.FC<{clean?: boolean; hema?: string}> = ({clean
       <Vignette strength={0.32} />
       <Audio
         src={staticFile(MUSIC)}
-        trimBefore={Math.round(12 * fps)}
-        volume={(x) => interpolate(x, [0, 112, 120, GTT_MANHUA_FRAMES - 45, GTT_MANHUA_FRAMES - 1], [0.16, 0.16, 0.5, 0.5, 0], CL)}
+        trimBefore={Math.round(8.7 * fps)}
+        volume={(x) => interpolate(x, [0, 150, 156, GTT_MANHUA_FRAMES - 45, GTT_MANHUA_FRAMES - 1], [0.18, 0.18, 0.46, 0.46, 0], CL)}
       />
       {SOUNDS.map(([at, name, vol], i) => (
         <Sequence key={i} from={at} durationInFrames={Math.round(4.5 * fps)} premountFor={fps}>

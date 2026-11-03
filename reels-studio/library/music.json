@@ -5,5 +5,12 @@
  "upbeat-corporate-soundrider": {"src": "интернет-материалы/музыка/upbeat-corporate-soundrider.mp3", "volume": 0.11, "outroVolume": 0.25},
  "bidous-transit-bluedot": {"src": "интернет-материалы/музыка/bidous-transit-bluedot.mp3", "volume": 0.22, "outroVolume": 0.5},
  "inspiring-ambient-motivation-soundrider": {"src": "интернет-материалы/музыка/inspiring-ambient-motivation-soundrider.mp3", "volume": 0.072, "outroVolume": 0.17},
- "trivial-call-bluedot": {"src": "интернет-материалы/музыка/trivial-call-bluedot.mp3", "volume": 0.15, "outroVolume": 0.34}
+ "trivial-call-bluedot": {"src": "интернет-материалы/музыка/trivial-call-bluedot.mp3", "volume": 0.15, "outroVolume": 0.34},
+ "_техно_03_11_2026": "Энергичная электроника (03.11.2026, CC BY). volume = 10^((−20 − LUFS)/20) — громкость для ролика только под музыку (≈ −20 LUFS); voiceVolume — под голосом (≈ −32 LUFS, как у треков выше); drops — секунды самых сильных ударов после тихой части (под склейку/вспышку), по убыванию силы; bpm — по анализу.",
+ "edm-detection-mode-kevin-macleod": {"src": "интернет-материалы/музыка/edm-detection-mode-kevin-macleod.mp3", "volume": 0.46, "outroVolume": 0.46, "voiceVolume": 0.115, "lufs": -13.2, "bpm": 128, "drops": [135.55, 14.8, 119.8]},
+ "exit-the-premises-kevin-macleod": {"src": "интернет-материалы/музыка/exit-the-premises-kevin-macleod.mp3", "volume": 0.37, "outroVolume": 0.37, "voiceVolume": 0.092, "lufs": -11.3, "bpm": 128, "drops": [6.95, 144.45, 83.65]},
+ "cut-and-dry-kevin-macleod": {"src": "интернет-материалы/музыка/cut-and-dry-kevin-macleod.mp3", "volume": 0.38, "outroVolume": 0.38, "voiceVolume": 0.095, "lufs": -11.6, "bpm": 122, "drops": [93.5, 29.55, 124.5]},
+ "go-cart-drop-mix-kevin-macleod": {"src": "интернет-материалы/музыка/go-cart-drop-mix-kevin-macleod.mp3", "volume": 0.24, "outroVolume": 0.24, "voiceVolume": 0.061, "lufs": -7.7, "bpm": 115, "drops": [76.25, 35.35, 118.0]},
+ "space-dimensions-techno-matthew-pablo": {"src": "интернет-материалы/музыка/space-dimensions-techno-matthew-pablo.mp3", "volume": 0.3, "outroVolume": 0.3, "voiceVolume": 0.076, "lufs": -9.6, "bpm": 137, "drops": [63.0, 6.6, 109.45]},
+ "brain-dance-kevin-macleod": {"src": "интернет-материалы/музыка/brain-dance-kevin-macleod.mp3", "volume": 0.71, "outroVolume": 0.71, "voiceVolume": 0.178, "lufs": -17.0, "bpm": 124, "drops": [128.3, 32.95, 140.4]}
 }

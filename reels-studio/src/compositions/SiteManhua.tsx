@@ -18,7 +18,8 @@ import {
 export const SITE_MANHUA_FRAMES = 1164;
 const IMG = "source-videos/ostapdotcenko/site/2026-11-03-сайт/";
 const SFXP = "source-videos/2026-11-03-od-sait-manhua/sfx/";
-const MUSIC = "интернет-материалы/музыка/inspiring-technology-soundrider.mp3";
+// музыка v2: Space Dimensions (Techno Version) — Matthew Pablo (opengameart.org), CC BY 3.0; удар на 63,1 с трека = влёт телефона (2,2 с)
+const MUSIC = "интернет-материалы/музыка/space-dimensions-techno-matthew-pablo.mp3";
 const CUT = "source-videos/фото-от-пользователя/остап/вырезки/ostap-portret-sait.png";
 const im = (n: string) => `${IMG}${n}.jpg`;
 
@@ -440,15 +441,17 @@ const Fin: React.FC<{photo: FinPhoto}> = ({photo}) => {
 };
 
 // звуки по сценам: [кадр сцены, файл, громкость] → глобальные кадры через T
+// звуки v2 (03.11.2026: «больше разных звуков»): "@имя" — библиотека интернет-материалы/звуки/ (CC0 / CC BY), "@zvukitop/zt-…" — zvukitop.com
 const SC: Record<keyof typeof T, [number, string, number][]> = {
-  cold: [[0, "whip", 0.5], [7, "whip", 0.45], [13, "whip", 0.45], [19, "vine-boom", 0.45], [28, "whoosh", 0.4], [36, "vine-boom", 0.55], [36, "whip", 0.4], [64, "whoosh", 0.6], [70, "whip", 0.4], [84, "shutter-modern", 0.5], [92, "ding", 0.18]],
-  ch1: [[0, "page-turn", 0.6], [18, "whip", 0.4], [48, "whoosh", 0.4], [78, "vine-boom", 0.3], [104, "mouse-click", 0.5], [116, "mouse-click", 0.5], [128, "whoosh", 0.45]],
-  ch2: [[0, "whip", 0.5], [6, "whoosh", 0.4], [24, "vine-boom", 0.4], [58, "vine-boom", 0.35], [92, "vine-boom", 0.35], [126, "vine-boom", 0.35], [30, "mouse-click", 0.3], [64, "mouse-click", 0.3], [98, "mouse-click", 0.3], [132, "mouse-click", 0.3]],
-  ch3: [[0, "whip", 0.5], [28, "switch", 0.6], [28, "whoosh", 0.3], [54, "switch", 0.6], [54, "whoosh", 0.3], [80, "switch", 0.6], [80, "whoosh", 0.3], [104, "ding", 0.25], [116, "whoosh", 0.5], [144, "mouse-click", 0.5], [150, "whip", 0.4], [176, "mouse-click", 0.5], [182, "whip", 0.4], [212, "whoosh", 0.45], [218, "whoosh", 0.45], [224, "whoosh", 0.45]],
-  ch4: [[0, "page-turn", 0.6], [27, "page-turn", 0.25], [34, "page-turn", 0.25], [41, "page-turn", 0.25], [48, "page-turn", 0.25], [55, "page-turn", 0.25], [62, "page-turn", 0.25], [80, "whoosh", 0.4], [104, "vine-boom", 0.35],
-    [130, "shutter-modern", 0.35], [140, "shutter-modern", 0.35], [150, "shutter-modern", 0.35], [160, "shutter-modern", 0.35], [170, "shutter-modern", 0.35], [180, "whoosh", 0.5], [182, "whip", 0.4], [188, "whip", 0.4], [194, "whip", 0.4]],
-  fin: [[0, "whoosh", 0.5], [6, "vine-boom", 0.45], [16, "whip", 0.4], [40, "mouse-click", 0.3], [46, "mouse-click", 0.3], [52, "mouse-click", 0.3], [58, "mouse-click", 0.3], [64, "mouse-click", 0.3], [80, "switch", 0.5], [92, "switch", 0.5], [120, "ding", 0.3], [150, "whoosh", 0.3]],
+  cold: [[0, "@impact-3", 0.5], [7, "@impact-3", 0.45], [13, "@impact-3", 0.45], [19, "@boom-1", 0.55], [28, "@pop-2", 0.45], [36, "@impact-2", 0.55], [36, "@zvukitop/zt-slap", 0.4], [40, "@zvukitop/zt-wrong", 0.25], [64, "@whoosh-4", 0.6], [66, "@impact-1", 0.5], [70, "@whoosh-3", 0.4], [84, "@shutter-1", 0.5], [92, "@ding-2", 0.25]],
+  ch1: [[0, "@flip-1", 0.6], [18, "@swipe-1", 0.4], [48, "@whoosh-2", 0.4], [78, "@boom-1", 0.35], [104, "@click-1", 0.5], [116, "@click-2", 0.5], [128, "@whoosh-3", 0.45]],
+  ch2: [[0, "@whoosh-1", 0.5], [6, "@sweep-1", 0.35], [24, "@impact-3", 0.45], [58, "@impact-4", 0.4], [92, "@impact-3", 0.4], [126, "@impact-1", 0.45], [30, "@coin-1", 0.3], [64, "@pop-1", 0.3], [98, "@coin-2", 0.3], [132, "@cash-1", 0.35]],
+  ch3: [[0, "@glitch-1", 0.5], [28, "@beep-1", 0.5], [28, "@whoosh-3", 0.3], [54, "@beep-1", 0.5], [54, "@whoosh-3", 0.3], [80, "@beep-1", 0.5], [80, "@whoosh-3", 0.3], [104, "@success-1", 0.35], [116, "@whoosh-4", 0.5], [144, "@click-1", 0.5], [150, "@glitch-2", 0.45], [176, "@click-1", 0.5], [182, "@glitch-3", 0.45], [212, "@swipe-1", 0.45], [218, "@swipe-1", 0.4], [224, "@swipe-1", 0.4]],
+  ch4: [[0, "@flip-1", 0.6], [27, "@flip-1", 0.28], [34, "@flip-1", 0.28], [41, "@flip-1", 0.28], [48, "@flip-1", 0.28], [55, "@flip-1", 0.28], [62, "@flip-1", 0.28], [80, "@whoosh-2", 0.4], [104, "@zvukitop/zt-cinema-hit", 0.4],
+    [130, "@typing-1", 0.35], [150, "@shutter-1", 0.3], [170, "@shutter-1", 0.3], [180, "@whoosh-4", 0.5], [182, "@pop-1", 0.4], [188, "@pop-1", 0.4], [194, "@pop-2", 0.4]],
+  fin: [[0, "@whoosh-4", 0.5], [6, "@impact-2", 0.5], [16, "@pop-2", 0.45], [40, "@typing-1", 0.4], [80, "@pop-1", 0.5], [92, "@pop-1", 0.5], [120, "@ding-3", 0.4], [124, "@cheer-1", 0.25], [150, "@whoosh-2", 0.3]],
 };
+const sfxSrc = (n: string) => (n.startsWith("@") ? `интернет-материалы/звуки/${n.slice(1)}.wav` : `${SFXP}${n}.wav`);
 const SOUNDS: [number, string, number][] = (Object.keys(SC) as (keyof typeof T)[]).flatMap((k) => SC[k].map(([at, n, v]) => [T[k][0] + at, n, v] as [number, string, number]));
 
 export const SiteManhua: React.FC<{fin?: FinPhoto}> = ({fin}) => {
@@ -468,12 +471,12 @@ export const SiteManhua: React.FC<{fin?: FinPhoto}> = ({fin}) => {
       <Vignette strength={0.35} />
       <Audio
         src={staticFile(MUSIC)}
-        trimBefore={Math.round(12.6 * fps)}
-        volume={(x) => interpolate(x, [0, 6, SITE_MANHUA_FRAMES - 45, SITE_MANHUA_FRAMES - 1], [0, 0.5, 0.5, 0], CL)}
+        trimBefore={Math.round(60.9 * fps)}
+        volume={(x) => interpolate(x, [0, 6, SITE_MANHUA_FRAMES - 45, SITE_MANHUA_FRAMES - 1], [0, 0.34, 0.34, 0], CL)}
       />
       {SOUNDS.map(([at, name, vol], i) => (
         <Sequence key={i} from={at} durationInFrames={Math.round(4.5 * fps)} premountFor={fps}>
-          <Audio src={staticFile(`${SFXP}${name}.wav`)} volume={vol} />
+          <Audio src={staticFile(sfxSrc(name))} volume={vol} />
         </Sequence>
       ))}
     </AbsoluteFill>
