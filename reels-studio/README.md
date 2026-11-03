@@ -549,6 +549,7 @@ node reels-studio/tools/od-posts/reel-intro.mjs           # интро «офи�
 node reels-studio/tools/gtt-reel/mockup.mjs                  # первый макет (11 кадров) → finished-videos/макеты/2026-11-03-gtt-проект/
 node reels-studio/tools/gtt-reel/reel-gruppy.mjs --still 0,6.5,15.5   # пробные кадры в /dev/shm/gtr/
 node reels-studio/tools/gtt-reel/reel-gruppy.mjs             # ролик → finished-videos/2026-11-03-gtt-gruppy.mp4
+node reels-studio/tools/gtt-reel/reel-gruppy-od.mjs          # он же в стиле личного профиля → finished-videos/2026-11-03-od-gruppy.mp4
 ```
 Куски публикаций — `source-videos/2026-11-03-gtt-проект/из-instagram/` (`README.json`). Свежий список публикаций со ссылками на файлы —
 Actions POST-HUB «Профиль Instagram — сводка» (строки `POST`, `CHILD`, `STORY`). Архив сторис API не отдаёт — только файлами от пользователя.
