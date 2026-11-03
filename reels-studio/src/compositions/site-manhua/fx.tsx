@@ -267,7 +267,7 @@ export const GlitchText: React.FC<{children: React.ReactNode; style: React.CSSPr
 
 // телефон с настоящими экранами сайта. imgs — снимки 975×2110; mode "strip": шапка стоит, страница листается по keys
 // ([кадр, номер экрана]); mode "swap": снимки целиком сменяют друг друга по keys (смена языка, с глитч-полосами)
-export const Phone: React.FC<{w?: number; imgs: string[]; header?: string; keys?: [number, number][]; mode?: "strip" | "swap"; tapAt?: [number, number, number][]; glareAt?: number; glitchAt?: number[]}> = ({w = 470, imgs, header, keys = [[0, 0]], mode = "strip", tapAt = [], glareAt, glitchAt = []}) => {
+export const Phone: React.FC<{w?: number; imgs: string[]; header?: string; keys?: [number, number][]; mode?: "strip" | "swap"; tapAt?: [number, number, number][]; glareAt?: number; glitchAt?: number[]; url?: string}> = ({w = 470, imgs, header, keys = [[0, 0]], mode = "strip", tapAt = [], glareAt, glitchAt = [], url = "ostapdotcenko.ru"}) => {
   const f = useCurrentFrame();
   const SW = w - 34, K = SW / 975, SH = Math.round(2110 * K), HH = 160 * K, BH = 1950 * K, SB = 40;
   // текущая позиция по ключам: переезд 12 кадров
@@ -311,7 +311,7 @@ export const Phone: React.FC<{w?: number; imgs: string[]; header?: string; keys?
           </div>
         ) : null}
         <div style={{position: "absolute", left: 0, right: 0, bottom: 0, height: 62, background: "rgba(236,234,227,.95)", borderTop: "1px solid #D5D2C8", zIndex: 3, display: "flex", alignItems: "center", justifyContent: "center"}}>
-          <span style={{background: "#DEDBD1", borderRadius: 14, padding: "7px 22px", font: "600 19px monospace", color: C.ink}}>ostapdotcenko.ru</span>
+          <span style={{background: "#DEDBD1", borderRadius: 14, padding: "7px 22px", font: "600 19px monospace", color: C.ink}}>{url}</span>
         </div>
         {tapAt.map(([a, x, y], i) => {
           const k = p(f, a - 6, a + 10);

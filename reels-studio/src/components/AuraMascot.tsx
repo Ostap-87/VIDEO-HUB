@@ -14,12 +14,12 @@ import * as THREE from "three";
 import {RoomEnvironment} from "three/examples/jsm/environments/RoomEnvironment.js";
 import {useCurrentFrame, useVideoConfig} from "remotion";
 
-export type GestureKind = "wave" | "point" | "pointUp" | "tick" | "push" | "pull" | "present" | "jump" | "nod" | "scan" | "shrug";
+export type GestureKind = "wave" | "point" | "pointUp" | "tick" | "push" | "pull" | "present" | "jump" | "nod" | "scan" | "shrug" | "sleep";
 export type MascotStay = {at: number; x: number; y: number; face?: number};
 export type MascotPlan = {stays: MascotStay[]; gestures: {at: number; kind: GestureKind}[]};
 
 export const GESTURE_DUR: Record<GestureKind, number> = {
-  wave: 2.4, point: 1.8, pointUp: 2.2, tick: 0.9, push: 1.0, pull: 1.1, present: 1.4, jump: 1.75, nod: 1.2, scan: 2.6, shrug: 1.6,
+  wave: 2.4, point: 1.8, pointUp: 2.2, tick: 0.9, push: 1.0, pull: 1.1, present: 1.4, jump: 1.75, nod: 1.2, scan: 2.6, shrug: 1.6, sleep: 2.6,
 };
 
 export const C = {light: "#F8F6F3", dark: "#262626", accent: "#FFF65D", glow: "#FFF65D"};
@@ -239,6 +239,22 @@ function applyGesture(P: Pose, kind: GestureKind, p: number, t: number) {
   const e = env(p);
   const R = P.arm.R;
   const L = P.arm.L;
+  if (kind === "sleep") {
+    // спит (манхуа-ролик Aura 03.11.2026): голова свешена, корпус осел, руки висят, глаза погашены; последние 15 % — просыпается,
+    // глаза вспыхивают ярче обычного
+    const k = p < 0.85 ? 1 : 1 - smooth((p - 0.85) / 0.15);
+    const breathe = Math.sin(t * 2.2) * 0.04;
+    P.head = [lerp(P.head[0], 0.5 + breathe, k), P.head[1], lerp(P.head[2], 0.12, k)];
+    P.spine.r = [P.spine.r[0] + 0.16 * k, P.spine.r[1], P.spine.r[2] + 0.05 * k];
+    P.hips.y -= 0.05 * k;
+    R.sh = [R.sh[0] - 0.05 * k, 0, lerp(R.sh[2], 0.12, k)];
+    L.sh = [L.sh[0] - 0.05 * k, 0, lerp(L.sh[2], -0.12, k)];
+    R.el = [lerp(R.el[0], -0.1, k), 0, 0];
+    L.el = [lerp(L.el[0], -0.1, k), 0, 0];
+    P.blink = p < 0.85;
+    P.eyeGlow = p < 0.85 ? 0.05 : P.eyeGlow + 4 * (1 - smooth((p - 0.85) / 0.15)) + 1.5;
+    return;
+  }
   if (kind === "wave") {
     const s = Math.sin(t * 8.5);
     R.sh = [lerp(R.sh[0], -0.22, e), 0, lerp(R.sh[2], 1.98 + s * 0.05, e)];

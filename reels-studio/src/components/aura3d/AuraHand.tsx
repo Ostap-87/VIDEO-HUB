@@ -25,7 +25,8 @@ export const HAND = {
 
 // поза: f — сгибы трёх фаланг каждого пальца (указательный, средний, безымянный, мизинец), th — большой палец:
 // поворот основания (x, y, z) и сгибы трёх фаланг. Щипок (pinch) подобран численно: кончики сходятся в одной точке.
-export type HandPose = {f: [V3, V3, V3, V3]; th: [number, number, number, number, number, number]};
+// sp — добавочное разведение пальцев (рад., к HAND.fingers[].spread): «V» указательным и средним
+export type HandPose = {f: [V3, V3, V3, V3]; th: [number, number, number, number, number, number]; sp?: [number, number, number, number]};
 export const POSES = {
   open: {f: [[0.05, 0.08, 0.05], [0.04, 0.06, 0.04], [0.05, 0.08, 0.05], [0.08, 0.1, 0.06]], th: [0.15, -0.45, 0.75, 0.05, 0.1, 0.05]},
   relaxed: {f: [[0.25, 0.35, 0.2], [0.3, 0.4, 0.25], [0.35, 0.45, 0.3], [0.4, 0.5, 0.3]], th: [0.25, -0.7, 0.85, 0.15, 0.25, 0.15]},
@@ -33,11 +34,14 @@ export const POSES = {
   point: {f: [[0.02, 0.04, 0.02], [1.45, 1.6, 1.1], [1.45, 1.65, 1.1], [1.4, 1.6, 1.05]], th: [0.45, -1.1, 0.95, 0.45, 0.7, 0.4]},
   pinchOpen: {f: [[0.42, 0.52, 0.25], [0.75, 0.95, 0.6], [0.85, 1.05, 0.65], [0.9, 1.1, 0.7]], th: [0.4, -1.0, 1.0, 0.0, 0.1, 0.05]},
   pinch: {f: [[0.842, 1.099, 0.557], [0.95, 1.2, 0.7], [1.0, 1.25, 0.75], [1.05, 1.3, 0.8]], th: [0.462, -1.113, 1.079, 0.208, 0.487, 0.317]},
+  // знак «V» (манхуа-ролик Aura 03.11.2026: «рука машет и показывает знак V пальцами»)
+  peace: {f: [[0.02, 0.04, 0.02], [0.02, 0.04, 0.02], [1.45, 1.65, 1.1], [1.4, 1.6, 1.05]], th: [0.5, -1.15, 0.95, 0.5, 0.75, 0.45], sp: [0.26, -0.24, 0, 0]},
 } satisfies Record<string, HandPose>;
 export type PoseName = keyof typeof POSES | "hold";
 const mixPose = (a: HandPose, b: HandPose, k: number): HandPose => ({
   f: a.f.map((v, i) => v.map((x, j) => x + (b.f[i][j] - x) * k)) as HandPose["f"],
   th: a.th.map((x, i) => x + (b.th[i] - x) * k) as HandPose["th"],
+  sp: [0, 1, 2, 3].map((i) => (a.sp?.[i] ?? 0) + ((b.sp?.[i] ?? 0) - (a.sp?.[i] ?? 0)) * k) as [number, number, number, number],
 });
 // hold — держит предмет ~0,1 ед.: почти щипок
 export const poseOf = (p: PoseName | HandPose): HandPose => (typeof p === "string" ? (p === "hold" ? mixPose(POSES.pinchOpen, POSES.pinch, 0.8) : POSES[p]) : p);
@@ -176,7 +180,7 @@ export const HandRig: React.FC<{pose: HandPose}> = ({pose}) => (
       <Parchment />
     </RBox>
     {HAND.fingers.map((F, k) => (
-      <group key={k} position={F.base} rotation={[0, 0, F.spread]}>
+      <group key={k} position={F.base} rotation={[0, 0, F.spread + (pose.sp?.[k] ?? 0)]}>
         <Digit lens={F.lens} curls={pose.f[k]} w={k === 3 ? 0.88 : 1} />
       </group>
     ))}

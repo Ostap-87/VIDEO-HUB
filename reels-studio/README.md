@@ -544,6 +544,10 @@ node reels-studio/tools/od-posts/reel-sait.mjs            # ролик «Мой 
 # «Мой сайт» v2 — манхуа-трейлер (Remotion, 39 с), из reels-studio:
 # TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts SiteManhua ../finished-videos/2026-11-03-od-sait-manhua.mp4 --bundle-cache=false --crf=18
 # кадр каждую секунду за один прогон: … SiteManhuaPreview /dev/shm/prev --sequence --frames=0-38 --scale=0.5
+# манхуа-ролики про сайты Aura (40 с) и GTT (60 с); версия для Facebook и LinkedIn — --props='{"clean":true}' → …-fb.mp4
+# TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts AuraSiteManhua ../finished-videos/2026-11-03-aura-sait-manhua.mp4 --bundle-cache=false --crf=18
+# TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts GttSiteManhua ../finished-videos/2026-11-03-gtt-sait-manhua.mp4 --bundle-cache=false --crf=18
+# пробные кадры: … GttSiteManhuaPreview /dev/shm/prev --sequence --frames=0-20 --scale=0.5 --props='{"step":1,"start":0,"frames":[30,200,420]}'
 ```
 Готовое и подписи — `finished-videos/обложки/ostap-посты-2026-11-02/` (`КАК-ПОСТАВИТЬ.md`).
 

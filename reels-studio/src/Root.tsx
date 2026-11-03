@@ -30,6 +30,8 @@ import {AppPromo, appPromoFrames, appPromoSchema, type AppPromoProps} from "./co
 import appPromoSample from "../props/2026-10-27-gtt-app-promo.json";
 import {DeskPromo, deskPromoFrames, deskPromoSchema, type DeskPromoProps} from "./compositions/DeskPromo";
 import {SiteManhua, SiteManhuaPreview, SITE_MANHUA_FRAMES} from "./compositions/SiteManhua";
+import {AuraSiteManhua, AuraSiteManhuaPreview, AURA_MANHUA_FRAMES} from "./compositions/AuraSiteManhua";
+import {GttSiteManhua, GttSiteManhuaPreview, GTT_MANHUA_FRAMES} from "./compositions/GttSiteManhua";
 import deskPromoSample from "../props/2026-10-27-sibdoc-promo.json";
 
 export const RemotionRoot: React.FC = () => {
@@ -239,6 +241,26 @@ export const RemotionRoot: React.FC = () => {
           width: props.format === "h" ? 1920 : 1080,
           height: props.format === "h" ? 1080 : 1920,
         })}
+      />
+      <Composition id="GttSiteManhua" component={GttSiteManhua} width={1080} height={1920} fps={30} durationInFrames={GTT_MANHUA_FRAMES} defaultProps={{clean: false}} />
+      <Composition
+        id="GttSiteManhuaPreview"
+        component={GttSiteManhuaPreview}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={GTT_MANHUA_FRAMES}
+        defaultProps={{step: 30, start: 15, clean: false}}
+      />
+      <Composition id="AuraSiteManhua" component={AuraSiteManhua} width={1080} height={1920} fps={30} durationInFrames={AURA_MANHUA_FRAMES} defaultProps={{clean: false}} />
+      <Composition
+        id="AuraSiteManhuaPreview"
+        component={AuraSiteManhuaPreview}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={AURA_MANHUA_FRAMES}
+        defaultProps={{step: 30, start: 15, clean: false}}
       />
       <Composition id="SiteManhua" component={SiteManhua} width={1080} height={1920} fps={30} durationInFrames={SITE_MANHUA_FRAMES} />
       <Composition
