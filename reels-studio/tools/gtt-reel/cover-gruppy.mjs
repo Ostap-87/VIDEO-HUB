@@ -3,6 +3,7 @@
 // Unbounded 900 + Golos + кисть Ma Shan Zheng + рукописный Caveat. Кадры — настоящие (его Reels и съёмка SANY / Xingwang / YingKe),
 // стоп-кадры — source-videos/2026-11-03-gtt-проект/обложка/. Важное — в зоне сетки профиля 3:4 (y 240–1680).
 // Четыре варианта на выбор: A «Мозаика», B «Полароиды и костюм», C «Страница маньхуа», D «Оглавление».
+// Выбран B (решение пользователя 03.11.2026), облачко повёрнуто на −6°, чтобы не заходило на лоб.
 // Запуск: node reels-studio/tools/gtt-reel/cover-gruppy.mjs → finished-videos/обложки/ostap-gruppy/ (+ _лист.jpg с видом в сетке)
 import { createRequire } from 'module'; import fs from 'fs'; import { execSync } from 'child_process';
 const { chromium } = createRequire(import.meta.url)('playwright');
@@ -33,7 +34,7 @@ const V = {
   // B — портрет в костюме справа, слева облачко и три полароида с подписями от руки
   'B-полароиды': `<div class="hk"></div><div class="speed"></div>
     <img class="cut" src="${CUT}" style="right:-200px;bottom:240px;height:1180px">
-    <div class="bub" style="left:56px;top:262px;width:700px">Куда я вожу группы в&nbsp;Китае?<small>我带团去哪儿？</small></div>
+    <div class="bub" style="left:44px;top:262px;width:690px;font-size:64px;rotate:-6deg;transform-origin:0 100%">Куда я вожу группы в&nbsp;Китае?<small>我带团去哪儿？</small></div>
     ${pola(`${K}robot-push.jpg`, 'left:50px;top:690px;rotate:-7deg', 'center 35%', 'к роботам')}
     ${pola(`${K}sany-group.jpg`, 'left:120px;top:1010px;rotate:5deg', 'center 50%', 'на заводы')}
     ${pola(`${XW}koni.jpg`, 'left:40px;top:1300px;rotate:-4deg;z-index:3', 'center 45%', 'к председателям')}
