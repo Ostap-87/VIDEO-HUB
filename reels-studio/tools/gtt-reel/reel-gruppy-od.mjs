@@ -6,6 +6,8 @@
 // Факты: подписи его постов (AgiBot — 10 000 роботов, Kepler — 30 кг на 2 руки, R&D-центр BYD, Шанхай — Пекин, Шэньчжэнь), его слова в
 // сторис SANY («приехал лично… чтобы показывать это вам»), сайт globaltechtour.ru (1000+ компаний, 18 отраслей, 76 программ, 9 стран,
 // названия программ), подписи каруселей Xingwang и YingKe. В финале — фото в костюме, как в интро «официально» (решение пользователя 03.11.2026). Музыка Upbeat Corporate (Soundrider, CC BY 3.0 — автор в подписи поста).
+// v3 (03.11.2026: «по этой ссылке есть видео, в которых есть я… можно использовать для создания роликов»): сцена «Потом — с группой»
+// из съёмки камерой в Шэньчжэне 21.05.2026 (source-videos/2026-05-21-шэньчжэнь-с-группой/), группа в хуке и мозаике, 60 с.
 // Запуск: node reels-studio/tools/gtt-reel/reel-gruppy-od.mjs [--still 0.5,6,14] [--frames A-B] [--encode-only]
 import { createRequire } from 'module'; import fs from 'fs'; import { execSync } from 'child_process';
 const { chromium } = createRequire(import.meta.url)('playwright');
@@ -13,18 +15,21 @@ const ROOT = '/home/user/VIDEO-HUB', SV = `file://${ROOT}/source-videos/`, F = `
 const IG = `${ROOT}/source-videos/2026-11-03-gtt-проект/из-instagram/`, SANY = `${ROOT}/source-videos/2026-10-25-sany/`;
 const XW = `${SV}2026-10-26-xingwang/фото/`, YK = `${SV}2026-10-26-yingke/фото/`, AV = `${SV}фото-от-пользователя/остап/ostap-portret-sait.jpg`;
 const NAME = '2026-11-03-od-gruppy', FPS = 30;
-const S = { hook: [0, 3.6], self: [3.6, 9.6], robots: [9.6, 17.6], plants: [17.6, 25.2], bosses: [25.2, 31.0], events: [31.0, 35.8],
-  road: [35.8, 39.8], more: [39.8, 44.0], nums: [44.0, 47.6], tiny: [47.6, 51.4], cta: [51.4, 55.4] };
-const DUR = 55.4, N = Math.round(DUR * FPS), TMP = '/dev/shm/gtr-od', FR = `${TMP}/frames`;
+const S = { hook: [0, 3.6], self: [3.6, 9.6], group: [9.6, 17.6], robots: [17.6, 24.2], plants: [24.2, 30.8], bosses: [30.8, 36.4], events: [36.4, 40.8],
+  road: [40.8, 44.6], more: [44.6, 48.8], nums: [48.8, 52.2], tiny: [52.2, 56.0], cta: [56.0, 60.0] };
+const DUR = 60.0, N = Math.round(DUR * FPS), TMP = '/dev/shm/gtr-od', FR = `${TMP}/frames`;
 const args = process.argv.slice(2), arg = k => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : null; };
 
 const TM = 'zscale=tin=arib-std-b67:min=bt2020nc:pin=bt2020:rin=tv:t=linear:npl=150,format=gbrpf32le,zscale=p=bt709,tonemap=tonemap=hable:desat=0:peak=4,zscale=t=bt709:m=bt709:r=pc,format=rgb24,eq=saturation=1.25:contrast=1.08:brightness=0.03,colorbalance=rm=0.05:bm=-0.05:rs=0.02:bs=-0.03,';
 // кусок: [файл, с какой секунды файла, сколько, HDR iPhone, ширина кадров]
+const CAM = `${ROOT}/source-videos/2026-05-21-шэньчжэнь-с-группой/`;
 const CL = {
-  h1: [`${IG}2026-05-28_43_6-21.mp4`, 8.0, 1.0, 0, 720], h2: [`${SANY}IMG_5656.MOV`, 7.4, 0.9, 1, 720],
-  h3: [`${IG}2026-05-28_44_13-33.mp4`, 1.0, 0.9, 0, 720], h4: [`${SANY}IMG_5657.MOV`, 1.0, 0.9, 1, 720],
+  h1: [`${IG}2026-05-28_43_6-21.mp4`, 8.0, 1.0, 0, 720], h2: [`${CAM}A0099.mp4`, 9.4, 0.9, 0, 720],
+  h3: [`${IG}2026-05-28_44_13-33.mp4`, 1.0, 0.9, 0, 720], h4: [`${CAM}A0231.mp4`, 2.0, 0.9, 0, 720],
   s1: [`${IG}2026-05-31_39_2-10.mp4`, 2.0, 5.8, 0, 720], s2: [`${IG}2026-05-31_42_50-70.mp4`, 2.0, 5.6, 0, 720],
   s3: [`${SANY}IMG_5671.MOV`, 2.0, 5.4, 1, 720], s4: [`${IG}2026-05-23_46_0-5.mp4`, 0.0, 4.9, 0, 720],
+  g1: [`${CAM}A0099.mp4`, 0.5, 4.0, 0, 720], g2: [`${CAM}A0120.mp4`, 1.2, 4.0, 0, 720], g3: [`${CAM}A0190.mp4`, 4.0, 4.0, 0, 720],
+  g4: [`${CAM}A0130.mp4`, 2.6, 4.6, 0, 720], g5: [`${CAM}A0070.mp4`, 2.0, 4.6, 0, 720], g6: [`${CAM}A0231.mp4`, 0.4, 4.6, 0, 720],
   r1: [`${IG}2026-05-28_44_13-33.mp4`, 7.0, 4.2, 0, 720], r2: [`${IG}2026-05-31_41_2-12.mp4`, 1.0, 4.2, 0, 720],
   r3: [`${IG}2026-05-31_39_46-55.mp4`, 0.4, 4.2, 0, 720], r4: [`${IG}2026-05-31_40_0-14.mp4`, 0.0, 4.2, 0, 720],
   r5: [`${IG}2026-05-20_48_56-70.mp4`, 2.0, 4.2, 0, 720], r6: [`${IG}2026-06-03_36_24-58.mp4`, 20.4, 3.6, 0, 720],
@@ -58,7 +63,7 @@ const pill = (id, t, st) => `<div class="pill" id="${id}" style="${st}">${t}</di
 const stat = (id, num, lab, x, y, w = 440) => `<div class="a" id="${id}" style="left:${x}px;top:${y}px;width:${w}px"><div class="num" data-n="${num}">${num}</div><div class="slab">${lab}</div></div>`;
 const head = (k, lab, ttl, wm) => `<div class="wm" id="${k}Wm">${wm}</div><div class="a lab" id="${k}Lab">${lab}</div><div class="a ttl" id="${k}Ttl">${ttl}</div>`;
 const CHIPS = ['Пищевые производства', 'Молочные заводы', 'Кондитерка', 'Чай и кофе', 'Косметика', 'Автопром и электромобили', 'Бытовая техника', 'Техгиганты и ИИ', 'Логистика', 'Финтех', 'Нефтехимия', 'Переработка отходов'];
-const TINY = ['r1', 'p1', 's2', 'e3', 'r4', 'h2', 'w2', 'r3', 's3', 'e1', 'r5', 'p2', 'b3', 'w1', 'r2', 's1', 'p3', 'e2', 'r6', 'w3'];
+const TINY = ['r1', 'g1', 's2', 'e3', 'g6', 'r4', 'g3', 'w2', 'r3', 'g2', 's3', 'e1', 'g5', 'p2', 'b3', 'r2', 'g4', 'p1', 'r6', 'w3'];
 const FAN = ['left:40px;top:505px;width:330px;height:590px;rotate:-6deg', 'left:375px;top:475px;width:330px;height:590px;rotate:1deg', 'left:710px;top:515px;width:330px;height:590px;rotate:6deg'];
 
 const html = `<!doctype html><html><head><meta charset="utf-8"><style>
@@ -124,9 +129,17 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>
   <div class="ink" id="selfInk" style="left:130px;top:900px;rotate:-2deg">Смотрю сам —<br>потом показываю вам</div>
 </div>
 
+<div class="sc R" id="group"><div class="hr"></div>${head('group', 'Шаг 2 · потом — с группой <span class="zh">团</span>', 'Потом — <em>с группой</em>', '团')}
+  ${vcard('gC1', 'g1', FAN[0], 0.4, 'center 40%')}${vcard('gC2', 'g2', FAN[1], 0.7, 'center 35%')}${vcard('gC3', 'g3', FAN[2], 1.0, 'center 45%')}
+  ${vcard('gC4', 'g4', FAN[0], 3.6, 'center 30%')}${vcard('gC5', 'g5', FAN[1], 3.9, 'center 40%')}${vcard('gC6', 'g6', FAN[2], 4.2, 'center 55%')}
+  ${pill('gP1', 'Сам веду <b>группу</b>', 'top:1170px;--ps:#FFD92E')}
+  ${pill('gP2', 'Объясняю <b>на месте</b>', 'top:1270px;--ps:#FFD92E')}
+  ${pill('gP3', 'Встречи и презентации <b>для группы</b>', 'top:1370px;--ps:#FFD92E')}
+</div>
+
 <div class="sc Y" id="robots"><div class="hy"></div>${head('robots', '01 · К роботам <span class="zh">机</span>', 'Роботы — <em>вживую</em>', '机')}
   ${story('rC1', 'r1', FAN[0], 'AgiBot', 1, 3, 0.4)}${story('rC2', 'r2', FAN[1], 'Kepler', 2, 3, 0.7)}${story('rC3', 'r3', FAN[2], 'AgiBot', 3, 3, 1.0)}
-  ${story('rC4', 'r4', FAN[0], 'Kepler', 1, 3, 4.2)}${story('rC5', 'r5', FAN[1], '', 2, 3, 4.5)}${story('rC6', 'r6', FAN[2], 'Leju', 3, 3, 4.8)}
+  ${story('rC4', 'r4', FAN[0], 'Kepler', 1, 3, 3.3)}${story('rC5', 'r5', FAN[1], '', 2, 3, 3.6)}${story('rC6', 'r6', FAN[2], 'Leju', 3, 3, 3.9)}
   <div class="sfx" id="robotsSfx" style="left:770px;top:990px;font-size:170px">哇!</div>
   ${pill('rP1', '<b>AgiBot</b> — 10 000 роботов уже в работе', 'top:1170px')}
   ${pill('rP2', '<b>Kepler</b> — 30 кг на две руки', 'top:1270px')}
@@ -207,8 +220,8 @@ function count(id,t,a,d=1.0){const e=$(id); if(!e) return; const n=e.querySelect
 function vid(img,l,loads,key){const k=key||img.dataset.k, a=+img.dataset.a||0, n=NF[k]||1;
   const f=Math.min(n,1+Math.max(0,Math.floor((l-a)*30))), src='file://'+TMP+'/'+k+'/f'+String(f).padStart(4,'0')+'.jpg';
   if(img.getAttribute('src')!==src){img.setAttribute('src',src);loads.push(img.decode().catch(()=>{}))}}
-const HOOK=[['h1',0,.9,''],['h2',.9,1.8,'SANY · Чанша'],['h3',1.8,2.7,'AgiBot · Шанхай'],['h4',2.7,3.6,'SANY · Чанша']];
-const WIPE={tiny:['hy','0% 100%'],self:['hk','100% 100%'],robots:['hy','0% 100%'],plants:['hr','100% 0%'],bosses:['hk','0% 0%'],events:['hy','100% 100%'],road:['hr','0% 100%'],more:['hk','100% 0%'],nums:['hk','0% 0%'],cta:['hk','100% 100%']};
+const HOOK=[['h1',0,.9,''],['h2',.9,1.8,'Шэньчжэнь'],['h3',1.8,2.7,'AgiBot · Шанхай'],['h4',2.7,3.6,'Шэньчжэнь']];
+const WIPE={group:['hr','0% 0%'],tiny:['hy','0% 100%'],self:['hk','100% 100%'],robots:['hy','0% 100%'],plants:['hr','100% 0%'],bosses:['hk','0% 0%'],events:['hy','100% 100%'],road:['hr','0% 100%'],more:['hk','100% 0%'],nums:['hk','0% 0%'],cta:['hk','100% 100%']};
 async function setT(t){
   const loads=[];
   for(const k in S){const [a,b]=S[k];$(k).style.display=(t>=a&&t<b)?'block':'none'}
@@ -225,8 +238,10 @@ async function setT(t){
     $(k).querySelectorAll('img.v').forEach(img=>vid(img,l,loads));
   }
   l=t-S.self[0]; drop('sC1',l,.3); drop('sC2',l,.7); drop('sC3',l,1.1); drop('sC4',l,1.5); stamp('selfInk',l,2.6,-2);
-  l=t-S.robots[0]; drop('rC1',l,.4,3.8); drop('rC2',l,.7,3.9); drop('rC3',l,1.0,4.0); drop('rC4',l,4.2); drop('rC5',l,4.5); drop('rC6',l,4.8);
-  stamp('robotsSfx',l,5.6,8); pop('rP1',l,1.6); pop('rP2',l,2.6); pop('rP3',l,5.2);
+  l=t-S.group[0]; drop('gC1',l,.4,3.3); drop('gC2',l,.7,3.4); drop('gC3',l,1.0,3.5); drop('gC4',l,3.6); drop('gC5',l,3.9); drop('gC6',l,4.2);
+  pop('gP1',l,1.6); pop('gP2',l,2.6); pop('gP3',l,5.0);
+  l=t-S.robots[0]; drop('rC1',l,.4,3.0); drop('rC2',l,.7,3.1); drop('rC3',l,1.0,3.2); drop('rC4',l,3.3); drop('rC5',l,3.6); drop('rC6',l,3.9);
+  stamp('robotsSfx',l,4.6,8); pop('rP1',l,1.4); pop('rP2',l,2.4); pop('rP3',l,4.4);
   l=t-S.plants[0]; drop('pC1',l,.3); drop('pC2',l,.9); drop('pC3',l,1.4); pop('pP1',l,2.0); pop('pP2',l,2.6); pop('pP3',l,3.6);
   l=t-S.bosses[0]; pop('bP1',l,.6); pop('bP2',l,1.0); drop('bC1',l,.5); drop('bC2',l,.9); drop('bC3',l,1.3); kb('bC1',l,6); kb('bC2',l,6);
   l=t-S.events[0]; drop('eC1',l,.4); drop('eC2',l,.7); drop('eC3',l,1.0); pop('eP1',l,1.8); pop('eP2',l,2.6);
@@ -266,7 +281,7 @@ if (!args.includes('--encode-only')) {
 // звук: музыка + «вжух» на переходах + щелчки на плашках, штампах и цифрах
 const SFX = `${ROOT}/source-videos/2026-10-07-byt-tehnika/sfx`;
 const W = Object.values(S).slice(1).map(([a]) => a - 0.3);
-const C = [0.6, S.self[0] + 2.6, S.robots[0] + 1.6, S.robots[0] + 2.6, S.robots[0] + 5.2, S.robots[0] + 5.6, S.plants[0] + 2.0, S.plants[0] + 2.6, S.plants[0] + 3.6,
+const C = [0.6, S.self[0] + 2.6, S.group[0] + 1.6, S.group[0] + 2.6, S.group[0] + 5.0, S.robots[0] + 1.4, S.robots[0] + 2.4, S.robots[0] + 4.4, S.robots[0] + 4.6, S.plants[0] + 2.0, S.plants[0] + 2.6, S.plants[0] + 3.6,
   S.bosses[0] + .6, S.bosses[0] + 1.0, S.events[0] + 1.8, S.events[0] + 2.6, S.road[0] + 1.6, ...[0, 3, 6, 9].map(i => S.more[0] + .55 + i * .16),
   S.nums[0] + .3, S.nums[0] + .6, S.nums[0] + .9, S.nums[0] + 1.2, S.tiny[0] + .55, S.tiny[0] + 1.5, S.cta[0] + .35];
 const ins = [`-i "${ROOT}/интернет-материалы/музыка/upbeat-corporate-soundrider.mp3"`, ...W.map(() => `-i ${SFX}/whoosh.wav`), ...C.map(() => `-i ${SFX}/switch.wav`)];
