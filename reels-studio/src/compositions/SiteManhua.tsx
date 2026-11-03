@@ -394,7 +394,10 @@ const Ch4: React.FC = () => {
 };
 
 // ── 5. Финал: портрет-наклейка в линиях концентрации, «Заходи в гости!», адрес печатается, 未完待续 ─────────────
-const Fin: React.FC = () => {
+// фото финала: по умолчанию — портрет с сайта; варианты 03.11.2026 — `финал-сайт-N.png` (props `fin`)
+export type FinPhoto = {src: string; h: number; right: number; bottom?: number; origin?: string};
+const FIN_DEFAULT: FinPhoto = {src: CUT, h: 1090, right: -250};
+const Fin: React.FC<{photo: FinPhoto}> = ({photo}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const ps = spring({frame: f - 4, fps, config: {damping: 11, stiffness: 200, mass: 0.8}});
@@ -405,8 +408,8 @@ const Fin: React.FC = () => {
       <Halftone bg={C.y} dot="rgba(25,25,34,.16)" />
       <SpeedLines color={C.ink} opacity={0.75} cx={780} cy={1150} inner={540} seed="c5" />
       <Img
-        src={staticFile(CUT)}
-        style={{position: "absolute", right: -250, bottom: 0, height: 1090, scale: String(1.3 - 0.3 * ps), transformOrigin: "70% 100%", filter: "drop-shadow(7px 0 0 #fff) drop-shadow(-7px 0 0 #fff) drop-shadow(0 7px 0 #fff) drop-shadow(0 -7px 0 #fff) drop-shadow(16px 16px 0 #15151D)"}}
+        src={staticFile(photo.src)}
+        style={{position: "absolute", right: photo.right, bottom: photo.bottom ?? 0, height: photo.h, scale: String(1.3 - 0.3 * ps), transformOrigin: photo.origin ?? "70% 100%", filter: "drop-shadow(7px 0 0 #fff) drop-shadow(-7px 0 0 #fff) drop-shadow(0 7px 0 #fff) drop-shadow(0 -7px 0 #fff) drop-shadow(16px 16px 0 #15151D)"}}
       />
       {f >= 16 ? (
         <Bubble x={44} y={286} w={640} h={300} shout tail={[600, 330]} scale={0.3 + 0.7 * bub} opacity={Math.min(1, bub * 2)}>
@@ -446,7 +449,7 @@ const SC: Record<keyof typeof T, [number, string, number][]> = {
 };
 const SOUNDS: [number, string, number][] = (Object.keys(SC) as (keyof typeof T)[]).flatMap((k) => SC[k].map(([at, n, v]) => [T[k][0] + at, n, v] as [number, string, number]));
 
-export const SiteManhua: React.FC = () => {
+export const SiteManhua: React.FC<{fin?: FinPhoto}> = ({fin}) => {
   useBrush(true);
   const {fps} = useVideoConfig();
   const f = useCurrentFrame();
@@ -457,7 +460,7 @@ export const SiteManhua: React.FC = () => {
       <Sequence from={T.ch2[0]} durationInFrames={T.ch2[1] - T.ch2[0]} premountFor={fps}><SlashReveal dur={12}><Ch2 /></SlashReveal></Sequence>
       <Sequence from={T.ch3[0]} durationInFrames={T.ch3[1] - T.ch3[0]} premountFor={fps}><GlitchReveal dur={12}><Ch3 /></GlitchReveal></Sequence>
       <Sequence from={T.ch4[0]} durationInFrames={T.ch4[1] - T.ch4[0]} premountFor={fps}><PageReveal dur={14}><Ch4 /></PageReveal></Sequence>
-      <Sequence from={T.fin[0]} durationInFrames={T.fin[1] - T.fin[0]} premountFor={fps}><CircleReveal dur={12} x={780} y={1150}><Fin /></CircleReveal></Sequence>
+      <Sequence from={T.fin[0]} durationInFrames={T.fin[1] - T.fin[0]} premountFor={fps}><CircleReveal dur={12} x={780} y={1150}><Fin photo={fin ?? FIN_DEFAULT} /></CircleReveal></Sequence>
       <div style={{position: "absolute", right: 64, top: 262, width: 84, height: 84, background: C.seal, color: "#fff", fontFamily: BRUSH, fontSize: 64, lineHeight: "84px", textAlign: "center", borderRadius: 10, boxShadow: "0 0 0 5px #fff", rotate: "-4deg", opacity: f < 66 ? 0 : 1}}>多</div>
       <Grain opacity={0.14} />
       <Vignette strength={0.35} />
@@ -477,11 +480,13 @@ export const SiteManhua: React.FC = () => {
 
 // проверка без полного рендера: кадр N предпросмотра = кадр start + N × step ролика
 // (npx remotion render … SiteManhuaPreview <папка> --sequence --frames=0-38; длина та же, что у ролика, иначе Freeze упирается в конец)
-export const SiteManhuaPreview: React.FC<{step: number; start: number}> = ({step, start}) => {
+export const SiteManhuaPreview: React.FC<{step: number; start: number; fin?: FinPhoto; fins?: FinPhoto[]}> = ({step, start, fin, fins}) => {
   const f = useCurrentFrame();
+  // fins — варианты фото финала: кадр N = кадр `start` ролика с фото fins[N] (лист для выбора, 03.11.2026)
+  const photo = fins ? fins[Math.min(f, fins.length - 1)] : fin;
   return (
-    <Freeze frame={Math.min(SITE_MANHUA_FRAMES - 1, start + f * step)}>
-      <SiteManhua />
+    <Freeze frame={Math.min(SITE_MANHUA_FRAMES - 1, fins ? start : start + f * step)}>
+      <SiteManhua fin={photo} />
     </Freeze>
   );
 };
