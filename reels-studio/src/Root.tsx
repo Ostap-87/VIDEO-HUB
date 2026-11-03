@@ -29,6 +29,7 @@ import {HookTitleDemo, hookTitleDemoSchema, type HookTitleDemoProps} from "./com
 import {AppPromo, appPromoFrames, appPromoSchema, type AppPromoProps} from "./compositions/AppPromo";
 import appPromoSample from "../props/2026-10-27-gtt-app-promo.json";
 import {DeskPromo, deskPromoFrames, deskPromoSchema, type DeskPromoProps} from "./compositions/DeskPromo";
+import {SiteManhua, SiteManhuaPreview, SITE_MANHUA_FRAMES} from "./compositions/SiteManhua";
 import deskPromoSample from "../props/2026-10-27-sibdoc-promo.json";
 
 export const RemotionRoot: React.FC = () => {
@@ -238,6 +239,16 @@ export const RemotionRoot: React.FC = () => {
           width: props.format === "h" ? 1920 : 1080,
           height: props.format === "h" ? 1080 : 1920,
         })}
+      />
+      <Composition id="SiteManhua" component={SiteManhua} width={1080} height={1920} fps={30} durationInFrames={SITE_MANHUA_FRAMES} />
+      <Composition
+        id="SiteManhuaPreview"
+        component={SiteManhuaPreview}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={SITE_MANHUA_FRAMES}
+        defaultProps={{step: 30, start: 15}}
       />
       <Composition
         id="GTTLogo"

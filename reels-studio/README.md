@@ -541,6 +541,9 @@ node reels-studio/tools/od-posts/reel-3-proekta.mjs --still 5.6,11.5   # про�
 node reels-studio/tools/od-posts/reel-covers.mjs          # 22 обложки своих Reels (или номера постов: … reel-covers.mjs 38 18)
 node reels-studio/tools/od-posts/reel-intro.mjs           # интро «официально» → finished-videos/2026-11-02-od-intro.mp4 (--still 2.8,11.8)
 node reels-studio/tools/od-posts/reel-sait.mjs            # ролик «Мой сайт» → finished-videos/2026-11-03-od-sait.mp4 (38 с, --still 0,15.8,31.5)
+# «Мой сайт» v2 — манхуа-трейлер (Remotion, 39 с), из reels-studio:
+# TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts SiteManhua ../finished-videos/2026-11-03-od-sait-manhua.mp4 --bundle-cache=false --crf=18
+# кадр каждую секунду за один прогон: … SiteManhuaPreview /dev/shm/prev --sequence --frames=0-38 --scale=0.5
 ```
 Готовое и подписи — `finished-videos/обложки/ostap-посты-2026-11-02/` (`КАК-ПОСТАВИТЬ.md`).
 

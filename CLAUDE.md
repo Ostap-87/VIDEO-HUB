@@ -150,6 +150,8 @@ Stories-анонсы каруселей — `npm run announce` (`finished-videos
 генератор `reels-studio/tools/od-posts/reel-intro.mjs`, фото — `source-videos/фото-от-пользователя/остап/из-профиля/`.
 Ролик «Мой сайт» (03.11.2026, до 40 с: разделы, три языка RU · EN · 中文, блог) — `finished-videos/2026-11-03-od-sait.mp4`, генератор
 `reels-studio/tools/od-posts/reel-sait.mjs`, настоящие экраны сайта — `source-videos/ostapdotcenko/site/2026-11-03-сайт/`.
+Вторая версия — манхуа-трейлер в Remotion (главы 第一话…第四话, глитч, перелистывание, календарь статей, 未完待续): композиция `SiteManhua`,
+`finished-videos/2026-11-03-od-sait-manhua.mp4`; манхуа-набор эффектов для следующих роликов — `reels-studio/src/compositions/site-manhua/fx.tsx`.
 
 ## Монтажная — приложение для монтажа (решение пользователя 22.10.2026)
 
