@@ -394,9 +394,10 @@ const Ch4: React.FC = () => {
 };
 
 // ── 5. Финал: портрет-наклейка в линиях концентрации, «Заходи в гости!», адрес печатается, 未完待续 ─────────────
-// фото финала: по умолчанию — портрет с сайта; варианты 03.11.2026 — `финал-сайт-N.png` (props `fin`)
+// фото финала: выбор пользователя 03.11.2026 — вариант 3, белый костюм в зале ШОС с жестом «заходи» (`финал-сайт-3.png`);
+// прежний портрет с сайта — `{src: CUT, h: 1090, right: -250}`; другие варианты — props `fin`
 export type FinPhoto = {src: string; h: number; right: number; bottom?: number; origin?: string};
-const FIN_DEFAULT: FinPhoto = {src: CUT, h: 1090, right: -250};
+const FIN_DEFAULT: FinPhoto = {src: "source-videos/фото-от-пользователя/остап/вырезки/финал-сайт-3.png", h: 1500, right: -89, bottom: -330};
 const Fin: React.FC<{photo: FinPhoto}> = ({photo}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();

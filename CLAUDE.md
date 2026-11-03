@@ -53,6 +53,12 @@
   `git pull`/`merge` (он скачает и распакует ролики на диск): маленькие изменённые файлы — `git checkout origin/main -- <пути>`, большие —
   в индекс без файла (`git update-index --add --cacheinfo <mode>,<sha>,<путь>` + `--skip-worktree`), затем `git update-ref refs/heads/main origin/main`.
   Sparse-checkout в основной папке не включать: там ~1800 файлов со skip-worktree, он вернул бы их на диск.
+  03.11.2026: локальные копии объектов git > 1 МБ, уже лежащие на GitHub (1083 шт., 1,7 ГБ — картинки, копии для публикации),
+  удалены из `.git/objects` (проверено: все достижимы из `origin/main`). Поэтому **обычный `git commit` здесь не запускать** — перед
+  записью дерева он докачивает все недостающие объекты индекса разом и забивает диск; коммит и пуш —
+  `bash reels-studio/scripts/lean_commit.sh "сообщение" <пути>` (`write-tree --missing-ok` + `commit-tree`). Не запускать и
+  `git ls-tree --long`, `git lfs ls-files`, `git gc` — они тоже докачивают большие объекты (лишние промисор-паки после такой
+  докачки — `*.promisor` с их `.pack/.idx/.rev` — можно удалить, объекты останутся на GitHub).
 - **Бюджет Git LFS** (25.10.2026): GitHub отклонил загрузку новых видео — «This repository exceeded its LFS budget».
   Скачивание при этом работает. Пока владелец не поднимет бюджет (GitHub → Settings → Billing and licensing →
   Budgets and alerts, строка Git LFS), видео не коммить: остальное (props, фото, код) коммить и пушить как обычно, видео
