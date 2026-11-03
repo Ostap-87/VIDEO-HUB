@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>SibDoc 2.0 — пост-контроль Россия → Китай</title>
+<!-- Презентация SibDoc (03.11.2026). Факты — только из репозитория Ostap-87/SibDoc (README, docs/, CHANGELOG),
+     документов «Аудит SibDoc» и «Архитектура проектов» (Claude Docs) и демо-набора программы (data/demo, данные вымышленные).
+     Сборка: python3 презентации/sibdoc/build.py 2026-11-03-sibdoc -->
+<link rel="stylesheet" href="fonts/noto-sans-sc.css">
+<style>
+@font-face { font-family: "Inter"; src: url("fonts/Inter-normal-cyrillic-ext.woff2") format("woff2"); font-weight: 100 900; unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
+@font-face { font-family: "Inter"; src: url("fonts/Inter-normal-cyrillic.woff2") format("woff2"); font-weight: 100 900; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Inter"; src: url("fonts/Inter-normal-latin-ext.woff2") format("woff2"); font-weight: 100 900; unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Inter"; src: url("fonts/Inter-normal-latin.woff2") format("woff2"); font-weight: 100 900; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+:root {
+  --blue: #2457D6; --blue2: #3D7BFF; --navy: #0B1B3F; --ink: #14203A; --muted: #5B6884; --line: #DDE4F0;
+  --bg: #F3F6FB; --green: #1E9E4A; --amber: #D98A00; --red: #D23C3C; --card: #FFFFFF;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+@page { size: 1920px 1080px; margin: 0; }
+html, body { background: #9AA6BC; }
+body { font-family: "Inter", "NSC", "Noto Sans CJK SC", sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+.slide { width: 1920px; height: 1080px; position: relative; overflow: hidden; background: var(--bg); padding: 92px 120px 96px; page-break-after: always; break-after: page; }
+.slide + .slide { margin-top: 0; }
+.top { position: absolute; left: 120px; right: 120px; top: 40px; display: flex; align-items: center; justify-content: space-between; font-size: 20px; color: var(--muted); letter-spacing: .02em; }
+.top .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; color: var(--ink); font-size: 22px; }
+.top .brand img { width: 34px; height: 34px; border-radius: 9px; }
+.top .num { font-variant-numeric: tabular-nums; font-weight: 600; }
+.kicker { font-size: 22px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); margin-top: 26px; }
+h1 { font-size: 72px; line-height: 1.04; font-weight: 800; letter-spacing: -.025em; color: var(--navy); margin-top: 14px; text-wrap: balance; max-width: 1500px; }
+h1 em { font-style: normal; color: var(--blue); }
+.lead { font-size: 30px; line-height: 1.42; color: var(--muted); margin-top: 22px; max-width: 1240px; }
+.foot { position: absolute; left: 120px; right: 120px; bottom: 34px; font-size: 18px; color: #8A95AD; display: flex; justify-content: space-between; }
+.card { background: var(--card); border-radius: 26px; border: 1.5px solid var(--line); box-shadow: 0 18px 44px rgba(20,40,90,.08); }
+.shot { border-radius: 18px; border: 1.5px solid var(--line); box-shadow: 0 30px 70px rgba(20,40,90,.18); display: block; }
+.pill { display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; border-radius: 999px; background: #E7EEFF; color: var(--blue); font-weight: 700; font-size: 22px; }
+.grid { display: grid; gap: 28px; }
+.ico { width: 64px; height: 64px; border-radius: 18px; background: linear-gradient(145deg, var(--blue2), var(--blue)); display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 22px rgba(36,87,214,.3); flex-shrink: 0; }
+.ico svg { width: 34px; height: 34px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.c-title { font-size: 30px; font-weight: 800; color: var(--navy); letter-spacing: -.01em; }
+.c-text { font-size: 23px; line-height: 1.45; color: var(--muted); margin-top: 10px; }
+.zh { font-family: "NSC", "Inter", sans-serif; }
+.st { display: inline-block; padding: 4px 14px; border-radius: 8px; font-weight: 800; font-size: 20px; letter-spacing: .04em; }
+.st.ok { background: #DDF5E5; color: var(--green); } .st.rv { background: #FFF0CC; color: #A86A00; } .st.is { background: #FCE0E0; color: var(--red); } .st.sk { background: #EEF1F6; color: var(--muted); }
+table.t { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 22px; }
+table.t th { text-align: left; font-size: 17px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 700; padding: 0 18px 12px; }
+table.t td { padding: 15px 18px; border-top: 1.5px solid var(--line); vertical-align: top; line-height: 1.35; }
+table.t td.n { font-weight: 800; color: var(--blue); width: 60px; font-variant-numeric: tabular-nums; }
+table.t td.k { font-weight: 800; color: var(--navy); width: 330px; }
+table.t td.f { color: #7C879E; font-size: 18px; width: 230px; font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; }
+.dark { background: radial-gradient(circle at 75% 20%, #2C5BD8 0%, #13307F 45%, #0A1A45 100%); color: #fff; }
+.dark h1, .dark .c-title { color: #fff; } .dark .lead, .dark .c-text { color: #C6D3F2; } .dark .kicker { color: #8FB4FF; }
+.dark .top, .dark .foot { color: #9FB2DE; } .dark .top .brand { color: #fff; }
+.big { font-size: 120px; font-weight: 800; letter-spacing: -.04em; line-height: 1; color: var(--blue); font-variant-numeric: tabular-nums; }
+.lab { font-size: 24px; color: var(--muted); margin-top: 6px; font-weight: 600; }
+.arrow { color: var(--blue); font-weight: 800; }
+.check { width: 30px; height: 30px; border-radius: 50%; background: var(--green); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.check svg { width: 18px; height: 18px; stroke: #fff; stroke-width: 3.2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+ul.l { list-style: none; display: grid; gap: 16px; }
+ul.l li { display: flex; gap: 16px; align-items: flex-start; font-size: 25px; line-height: 1.38; color: var(--ink); }
+ul.l li b { color: var(--navy); }
+.soon { display: inline-block; font-size: 16px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--amber); background: #FFF3D6; padding: 3px 10px; border-radius: 6px; margin-left: 8px; vertical-align: 3px; }
+</style>
+</head>
+<body>
+
+<!-- 1. Обложка -->
+<section class="slide dark">
+  <div class="top"><div class="brand"><img src="img/icon.png" alt="">SibDoc</div><div class="num">PostControl Suite 2.0</div></div>
+  <div style="position:absolute; left:120px; top:250px; width:860px;">
+    <img src="img/icon.png" alt="" style="width:150px; height:150px; border-radius:36px; box-shadow:0 30px 70px rgba(0,0,0,.35);">
+    <div style="font-size:120px; font-weight:800; letter-spacing:-.04em; margin-top:40px; line-height:1;">SibDoc</div>
+    <div style="font-size:46px; font-weight:700; line-height:1.18; margin-top:22px; letter-spacing:-.01em;">Пост-контроль таможенных деклараций <span style="color:#8FB4FF">Россия → Китай</span></div>
+    <div class="lead" style="font-size:30px; margin-top:24px;">Сверка ДТ РФ, китайских деклараций <span class="zh">报关单</span> и данных SAP — без ручной работы</div>
+    <div style="display:flex; gap:14px; margin-top:40px; flex-wrap:wrap;">
+      <span class="pill" style="background:rgba(255,255,255,.12); color:#fff;">RU · EN · <span class="zh">中文</span></span>
+      <span class="pill" style="background:rgba(255,255,255,.12); color:#fff;">Браузер · Windows · Linux · сервер · Mac</span>
+    </div>
+  </div>
+  <img class="shot" src="img/sum.jpg" alt="" style="position:absolute; right:-140px; top:200px; width:1000px; transform: perspective(2200px) rotateY(-14deg) rotateX(3deg); border:none;">
+  <div class="foot"><span>Презентация продукта · 3 ноября 2026</span><span>Экраны — демо-набор программы, данные вымышленные</span></div>
+</section>
+
+<!-- 2. Задача -->
+<section class="slide">
+  <div class="top"><div class="brand"><img src="img/icon.png" alt="">SibDoc</div><div class="num">02 / 14</div></div>
+  <div class="kicker">Задача</div>
+  <h1>Три системы, три языка — и <em>ручная сверка</em></h1>
+  <p class="lead">Товар идёт из России в Китай: российская экспортная ДТ с одной стороны, китайская импортная декларация с другой, учёт в SAP посередине.</p>
+  <div class="grid" style="grid-template-columns: repeat(3, 1fr); margin-top:56px;">
+    <div class="card" style="padding:40px;">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h6M9 16h6"/></svg></div>
+      <div class="c-title" style="margin-top:26px;">ДТ РФ</div>
+      <div class="c-text">XML ФТС от брокера, Excel или скан декларации на русском</div>
+    </div>
+    <div class="card" style="padding:40px;">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h6M9 16h6"/></svg></div>
+      <div class="c-title" style="margin-top:26px;"><span class="zh">报关单</span> КНР</div>
+      <div class="c-text">Excel, CSV или XML китайского брокера, сканы на китайском</div>
+    </div>
+    <div class="card" style="padding:40px;">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 10h16M4 15h16M10 5v14"/></svg></div>
+      <div class="c-title" style="margin-top:26px;">SAP · FineBI</div>
+      <div class="c-text">Закупки, контракты, цены, контейнеры — выгрузки таблицами</div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:34px; padding:30px 40px; display:flex; align-items:center; gap:28px; border-color:#F3C9C9; background:#FFF7F7;">
+    <div style="font-size:54px; font-weight:800; color:var(--red);">≠</div>
+    <div style="font-size:28px; line-height:1.4; color:var(--ink);"><b>Сверять вручную — долго, а одно расхождение легко пропустить:</b> цена, код ТН ВЭД, вес, условия поставки, контракт — в разных файлах, форматах и на разных языках.</div>
+  </div>
+  <div class="foot"><span>SibDoc 2.0</span><span>Пост-контроль Россия → Китай</span></div>
+</section>
+
+<!-- 3. Решение -->
+<section class="slide">
+  <div class="top"><div class="brand"><img src="img/icon.png" alt="">SibDoc</div><div class="num">03 / 14</div></div>
+  <div class="kicker">Решение</div>
+  <h1>SibDoc делает сверку <em>за специалиста</em></h1>
+  <p class="lead">Загрузили файлы — нажали одну кнопку — получили статус по каждой строке и отчёт на двух языках.</p>
+  <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:0; margin-top:70px; position:relative;">
+    <div style="position:absolute; left:12%; right:12%; top:47px; height:6px; border-radius:3px; background:linear-gradient(90deg, var(--blue2), var(--blue));"></div>
+    <div style="text-align:center; position:relative; padding:0 24px;">
+      <div style="width:100px; height:100px; border-radius:50%; background:var(--blue); color:#fff; font-size:44px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto; box-shadow:0 0 0 12px var(--bg), 0 16px 34px rgba(36,87,214,.35);">1</div>
+      <div class="c-title" style="margin-top:34px;">Загрузка</div>
+      <div class="c-text">Excel, CSV, XML деклараций, ZIP или сканы. Колонки RU · EN · <span class="zh">中文</span> узнаются сами</div>
+    </div>
+    <div style="text-align:center; position:relative; padding:0 24px;">
+      <div style="width:100px; height:100px; border-radius:50%; background:var(--blue); color:#fff; font-size:44px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto; box-shadow:0 0 0 12px var(--bg), 0 16px 34px rgba(36,87,214,.35);">2</div>
+      <div class="c-title" style="margin-top:34px;">Одна кнопка</div>
+      <div class="c-text">Сначала качество данных, затем семь проверок за один прогон</div>
+    </div>
+    <div style="text-align:center; position:relative; padding:0 24px;">
+      <div style="width:100px; height:100px; border-radius:50%; background:var(--blue); color:#fff; font-size:44px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto; box-shadow:0 0 0 12px var(--bg), 0 16px 34px rgba(36,87,214,.35);">3</div>
+      <div class="c-title" style="margin-top:34px;">Статус и причина</div>
+      <div class="c-text"><span class="st ok">OK</span> <span class="st rv">REVIEW</span> <span class="st is">ISSUE</span><br>пояснение на русском и китайском</div>
+    </div>
+    <div style="text-align:center; position:relative; padding:0 24px;">
+      <div style="width:100px; height:100px; border-radius:50%; background:var(--green); color:#fff; font-size:44px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto; box-shadow:0 0 0 12px var(--bg), 0 16px 34px rgba(30,158,74,.35);">4</div>
+      <div class="c-title" style="margin-top:34px;">Отчёт</div>
+      <div class="c-text">Excel и PDF, RU + <span class="zh">中文</span>, с номером прогона и записью в журнале</div>
+    </div>
+  </div>
+  <div class="foot"><span>SibDoc 2.0</span><span>Пост-контроль Россия → Китай</span></div>
+</section>
+
+<!-- 4. Загрузка -->
+<section class="slide">
+  <div class="top"><div class="brand"><img src="img/icon.png" alt="">SibDoc</div><div class="num">04 / 14</div></div>
+  <div style="display:grid; grid-template-columns: 700px 1fr; gap:60px;">
+    <div>
+      <div class="kicker">Шаг 1 · Загрузка</div>
+      <h1 style="font-size:64px;">Любые файлы — <em>один словарь полей</em></h1>
+      <ul class="l" style="margin-top:38px;">
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>8 слотов:</b> широкая таблица, закупки SAP, ДТ РФ, <span class="zh">报关单</span> КНР, SAP ↔ декларации, черновики, справочники ТН ВЭД и элементов</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Форматы:</b> CSV, Excel (и старый .xls), XML ДТ ФТС и <span class="zh">报关单</span>, ZIP, сканы PDF и TIFF; файл до 100 МБ</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Кодировки</b> UTF-8, Windows-1251, GBK — сами; лист и строка заголовков ищутся автоматически</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Словарь полей:</b> «Контейнер», «<span class="zh">集装箱号</span>», «Container number» → одно поле. Новая база подключается настройкой, не кодом</span></li>
+      </ul>
+    </div>
+    <img class="shot" src="img/home.jpg" alt="" style="width:100%; margin-top:40px;">
+  </div>
+  <div class="foot"><span>SibDoc 2.0</span><span>Экран «Загрузка данных», демо-набор</span></div>
+</section>
+
+<!-- 5. Декларации и сканы -->
+<section class="slide">
+  <div class="top"><div class="brand"><img src="img/icon.png" alt="">SibDoc</div><div class="num">05 / 14</div></div>
+  <div class="kicker">Декларации и сканы</div>
+  <h1>ДТ и <span class="zh">报关单</span> — целиком. <em>Скан — в данные</em></h1>
+  <div style="display:grid; grid-template-columns: 1fr 290px 290px; gap:36px; margin-top:40px; align-items:start;">
+    <div>
+      <img class="shot" src="img/decl.jpg" alt="" style="width:100%; height:500px; object-fit:cover; object-position:50% 0;">
+      <ul class="l" style="margin-top:28px; gap:12px;">
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span>Каждая декларация — карточкой, подписи полей RU + <span class="zh">中文</span>; поиск по номеру, контейнеру, контракту</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span>Сканы на русском, английском и китайском: поля подсвечены, «В сверку» — одной кнопкой</span></li>
+      </ul>
+    </div>
+    <div><img class="shot" src="img/scan-dt.jpg" alt="" style="width:100%;"><div class="lab" style="text-align:center;">Скан ДТ РФ</div></div>
+    <div><img class="shot" src="img/scan-cn.jpg" alt="" style="width:100%;"><div class="lab" style="text-align:center;">Скан <span class="zh">报关单</span></div></div>
+  </div>
+  <div class="foot"><span>Распознавание — Tesseract (rus, eng, chi_sim); у PDF сначала берётся текстовый слой</span><span>Демо-сканы, данные вымышленные</span></div>
+</section>
+
+<!-- 6. Проверки -->
+<section class="slide">
+  <div class="top"><div class="brand"><img src="img/icon.png" alt="">SibDoc</div><div class="num">06 / 14</div></div>
+  <div class="kicker">Шаг 2 · Одна кнопка</div>
+  <h1>Качество данных + <em>7 проверок</em> за один прогон</h1>
+  <div class="card" style="margin-top:40px; padding:30px 22px 14px;">
+    <table class="t">
+      <tr><th>№</th><th>Проверка</th><th>Что сравнивает</th><th>Правила</th></tr>
+      <tr><td class="n">—</td><td class="k">Качество данных</td><td>пустые колонки, текст в числах, дубли ключей, контрольная цифра контейнера ISO 6346, смешанные алфавиты, обрезанные номера</td><td class="f">system.yaml</td></tr>
+      <tr><td class="n">0</td><td class="k">Полнота</td><td>все ли обязательные поля заполнены</td><td class="f">completeness.yaml</td></tr>
+      <tr><td class="n">1</td><td class="k">Цена</td><td>цена SAP против декларации, с пересчётом валют и ценой за тонну</td><td class="f">price.yaml</td></tr>
+      <tr><td class="n">2</td><td class="k">Код ТН ВЭД / HS</td><td>код товара против справочника и марки</td><td class="f">hs_code.yaml</td></tr>
+      <tr><td class="n">3</td><td class="k">Условия поставки</td><td>Incoterms и место поставки</td><td class="f">incoterms.yaml</td></tr>
+      <tr><td class="n">4</td><td class="k">Элементы декларации</td><td>заявленные элементы (<span class="zh">申报要素</span>) против эталонных</td><td class="f">decl_elements.yaml</td></tr>
+      <tr><td class="n">5</td><td class="k">Контракт</td><td>основной контракт и допсоглашение, в т. ч. «склеенные» в одной ячейке</td><td class="f">contracts.yaml</td></tr>
+      <tr><td class="n">6</td><td class="k">ДТ ↔ <span class="zh">报关单</span> ↔ SAP</td><td>один груз в двух декларациях и в SAP: вес, цена, валюта, условия; частичный выпуск — REVIEW</td><td class="f">cross_border.yaml</td></tr>
+    </table>
+  </div>
+  <div class="foot"><span>Правила — config/rules/*.yaml, меняются в интерфейсе без программиста</span><span>SibDoc 2.0</span></div>
+</section>
+
+<!-- 7. Результат -->
+<section class="slide">
+  <div class="top"><div class="brand"><img src="img/icon.png" alt="">SibDoc</div><div class="num">07 / 14</div></div>
+  <div style="display:grid; grid-template-columns: 560px 1fr; gap:60px;">
+    <div>
+      <div class="kicker">Шаг 3 · Результат</div>
+      <h1 style="font-size:64px;">Сразу видно, <em>где и почему</em></h1>
+      <p class="lead" style="font-size:27px;">У каждой строки — статус и пояснение на двух языках. Например: цена в китайской декларации ниже, чем в SAP.</p>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:22px; margin-top:40px;">
+        <div class="card" style="padding:24px 28px;"><div class="big" style="font-size:84px; color:var(--navy);">49</div><div class="lab">строк проверено</div></div>
+        <div class="card" style="padding:24px 28px;"><div class="big" style="font-size:84px; color:var(--green);">39</div><div class="lab"><span class="st ok">OK</span> в порядке</div></div>
+        <div class="card" style="padding:24px 28px;"><div class="big" style="font-size:84px; color:var(--red);">6</div><div class="lab"><span class="st is">ISSUE</span> расхождение</div></div>
+        <div class="card" style="padding:24px 28px;"><div class="big" style="font-size:84px; color:var(--amber);">4</div><div class="lab"><span class="st rv">REVIEW</span> проверить</div></div>
+      </div>
+    </div>
+    <img class="shot" src="img/sum.jpg" alt="" style="width:100%; margin-top:30px;">
+  </div>
+  <div class="foot"><span>Прогон на демо-наборе программы (data/demo), данные вымышленные</span><span>SibDoc 2.0</span></div>
+</section>
+
+<!-- 8. Курсы и правила -->
+<section class="slide">
+  <div class="top"><div class="brand"><img src="img/icon.png" alt="">SibDoc</div><div class="num">08 / 14</div></div>
+  <div class="kicker">Курсы и правила</div>
+  <h1>Официальные курсы. <em>Правила — без программиста</em></h1>
+  <div class="grid" style="grid-template-columns: 1fr 1fr; margin-top:52px;">
+    <div class="card" style="padding:44px;">
+      <div style="display:flex; gap:22px; align-items:center;"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 9h6a2 2 0 010 4H9v4M8 13h5"/></svg></div><div class="c-title">Курсы валют на дату документа</div></div>
+      <ul class="l" style="margin-top:30px;">
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>ЦБ РФ</b> — для российской стороны</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Народный банк Китая</b> — центральный курс CFETS (<span class="zh">中间价</span>)</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span>Ручные курсы на дату или месяц, в т. ч. месячный курс таможни КНР; кэш курсов</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span>Применённые курсы записываются в каждый прогон и в отчёт</span></li>
+      </ul>
+    </div>
+    <div class="card" style="padding:44px;">
+      <div style="display:flex; gap:22px; align-items:center;"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 6h10M4 12h16M4 18h7"/><circle cx="17" cy="6" r="2.5"/><circle cx="14" cy="18" r="2.5"/></svg></div><div class="c-title">Допуски и правила проверок</div></div>
+      <ul class="l" style="margin-top:30px;">
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span>Допуск по цене, синонимы условий поставки и другие параметры — прямо в окне программы</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span>Каждая правка — в журнале: <b>«было → стало»</b>, автор, время</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span>История версий правил и <b>откат</b> к любой прошлой</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span>При включённом входе правила меняет только администратор</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>config/rates.yaml · config/rules/*.yaml</span><span>SibDoc 2.0</span></div>
+</section>
+
+<!-- 9. Отчёты и журнал -->
+<section class="slide">
+  <div class="top"><div class="brand"><img src="img/icon.png" alt="">SibDoc</div><div class="num">09 / 14</div></div>
+  <div class="kicker">Шаг 4 · Отчёт</div>
+  <h1>Excel и PDF — <em>на русском и китайском</em></h1>
+  <div style="position:relative; height:560px; margin-top:44px;">
+    <img class="shot" src="img/xl-01.jpg" alt="" style="position:absolute; left:0; top:20px; height:520px; transform:rotate(-3deg);">
+    <img class="shot" src="img/rep-01.jpg" alt="" style="position:absolute; left:330px; top:0; width:700px;">
+    <img class="shot" src="img/rep-03.jpg" alt="" style="position:absolute; left:470px; top:150px; width:700px; transform:rotate(2deg);">
+    <div style="position:absolute; left:1240px; top:0; width:440px;">
+      <ul class="l">
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Excel:</b> сводка, лист на каждую проверку, «ДТ РФ», «<span class="zh">报关单</span> КНР», курсы; формулы обезврежены</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>PDF</b> с иероглифами и декларациями целиком</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Номер прогона</b>, автор, источники; хранятся 100 последних</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span><b>Журнал событий</b> по дням: загрузки, проверки, отчёты, правки; выгрузка CSV</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>Отчёты демо-прогона</span><span>SibDoc 2.0</span></div>
+</section>
+
+<!-- 10. Коннекторы -->
+<section class="slide">
+  <div class="top"><div class="brand"><img src="img/icon.png" alt="">SibDoc</div><div class="num">10 / 14</div></div>
+  <div class="kicker">Коннекторы</div>
+  <h1>Данные могут <em>приходить сами</em></h1>
+  <p class="lead">12 коннекторов описаны в настройках и выключены до получения доступов. У каждого — «Проверить» и «Забрать данные». Пароли — только в переменных окружения сервера.</p>
+  <div class="grid" style="grid-template-columns: 1fr 1fr 0.8fr; margin-top:44px;">
+    <div class="card" style="padding:36px;">
+      <div class="c-title" style="color:var(--green);">Готовы к включению</div>
+      <div class="c-text" style="margin-top:4px;">нужны только адреса и пароли</div>
+      <ul class="l" style="margin-top:24px; gap:12px;">
+        <li>Почта брокеров (IMAP)</li><li>Папка входящих файлов</li><li>SFTP брокера</li><li>API брокера</li><li>База FineBI</li><li>SAP S/4HANA (OData)</li>
+      </ul>
+    </div>
+    <div class="card" style="padding:36px;">
+      <div class="c-title" style="color:var(--amber);">Задел — нужен доступ</div>
+      <div class="c-text" style="margin-top:4px;">уточнить у клиента и систем</div>
+      <ul class="l" style="margin-top:24px; gap:12px;">
+        <li>1С (OData)</li><li>ЭТРАН</li><li>Единое окно Китая</li><li>Kingdee</li><li>Yonyou</li><li>Курсы банка</li>
+      </ul>
+    </div>
+    <div class="card" style="padding:36px; background:linear-gradient(160deg,#FFFFFF,#EEF3FF);">
+      <div class="c-title">Уведомления</div>
+      <div class="c-text" style="margin-top:4px;">о прогонах и расхождениях</div>
+      <ul class="l" style="margin-top:24px; gap:12px;">
+        <li>WeCom</li><li>Telegram</li><li>Почта</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>docs/CONNECTORS.md</span><span>SibDoc 2.0</span></div>
+</section>
+
+<!-- 11. Где работает -->
+<section class="slide">
+  <div class="top"><div class="brand"><img src="img/icon.png" alt="">SibDoc</div><div class="num">11 / 14</div></div>
+  <div class="kicker">Где работает</div>
+  <h1>Одна программа — <em>данные внутри компании</em></h1>
+  <div class="grid" style="grid-template-columns: repeat(3, 1fr); margin-top:56px;">
+    <div class="card" style="padding:40px;">
+      <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
+      <div class="c-title" style="margin-top:26px;">В браузере</div>
+      <div class="c-text">Windows, Linux или сервер компании. Docker-образ с китайскими шрифтами, запуск не от root, проверка живости</div>
+    </div>
+    <div class="card" style="padding:40px;">
+      <div class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="2"/><path d="M2 19h20"/></svg></div>
+      <div class="c-title" style="margin-top:26px;">Приложение для Mac</div>
+      <div class="c-text">Установщик кладёт «SibDoc» в «Программы» и значок на рабочий стол; распознавание сканов ставится само, без Homebrew</div>
+    </div>
+    <div class="card" style="padding:40px;">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 17l6-5-6-5M12 19h8"/></svg></div>
+      <div class="c-title" style="margin-top:26px;">Командная строка</div>
+      <div class="c-text">Прогон без интерфейса (run_cli.py) и контрольный прогон на эталоне и демо-наборе (verify.sh)</div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:34px; padding:30px 40px; display:flex; gap:40px; align-items:center;">
+    <span class="pill">Интерфейс RU · EN · <span class="zh">中文</span></span>
+    <div style="font-size:26px; color:var(--ink); line-height:1.4;">Одна программа для обеих сторон границы. Роли — администратор и оператор; в прототипе вход выключен.</div>
+  </div>
+  <div class="foot"><span>docs/DEPLOY.md · install_mac.command</span><span>SibDoc 2.0</span></div>
+</section>
+
+<!-- 12. Аудит → 2.0 и качество -->
+<section class="slide">
+  <div class="top"><div class="brand"><img src="img/icon.png" alt="">SibDoc</div><div class="num">12 / 14</div></div>
+  <div class="kicker">Качество</div>
+  <h1>Аудит 22.10 → <em>версия 2.0</em></h1>
+  <div style="display:grid; grid-template-columns: 1fr 1.25fr; gap:40px; margin-top:44px;">
+    <div class="grid" style="grid-template-columns: 1fr 1fr; gap:22px; align-content:start;">
+      <div class="card" style="padding:28px 30px;"><div class="big" style="font-size:96px;">171</div><div class="lab">автотест — все проходят</div></div>
+      <div class="card" style="padding:28px 30px;"><div class="big" style="font-size:96px;">~55</div><div class="lab">адресов API</div></div>
+      <div class="card" style="padding:28px 30px;"><div class="big" style="font-size:96px; color:var(--green);">PASS</div><div class="lab">verify: эталон и демо</div></div>
+      <div class="card" style="padding:28px 30px;"><div class="big" style="font-size:96px;">12</div><div class="lab">коннекторов + 3 канала</div></div>
+    </div>
+    <div class="card" style="padding:34px 40px;">
+      <div class="c-title">Что исправлено по итогам аудита</div>
+      <ul class="l" style="margin-top:22px; gap:14px;">
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span>Цена и HS-код больше не дают «OK» при настоящей ошибке; убраны ложные расхождения</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span>ДТ РФ и <span class="zh">报关单</span> — полноценные источники; новая сквозная сверка</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span>Курсы ЦБ и CFETS, журнал событий, история правил с откатом</span></li>
+        <li><span class="check"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span><span>Защита: правила — только администратору, сессии отзываются, формулы в отчётах обезврежены, опасные XML отклоняются</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>Python 3.11 · FastAPI · pandas · Tesseract</span><span>docs/CHANGELOG.md</span></div>
+</section>
+
+<!-- 13. Дорожная карта -->
+<section class="slide">
+  <div class="top"><div class="brand"><img src="img/icon.png" alt="">SibDoc</div><div class="num">13 / 14</div></div>
+  <div class="kicker">Дальше</div>
+  <h1>От прототипа — <em>к работе на реальных данных</em></h1>
+  <div class="card" style="margin-top:40px; padding:24px 22px 8px;">
+    <table class="t">
+      <tr><th>Этап</th><th>Что входит</th><th>Ориентир</th></tr>
+      <tr><td class="k">0. Закрыть</td><td>закрытый репозиторий без реальных данных, вход включён, правила — только администратору</td><td style="width:240px;">1–2 дня</td></tr>
+      <tr><td class="k">1. Проверки <span class="st ok" style="font-size:15px;">сделано в 2.0</span></td><td>корректные проверки, автотесты, кодировки и листы, прогоны с номерами и историей</td><td>—</td></tr>
+      <tr><td class="k">2. Первые коннекторы</td><td>почта и XML ДТ, курсы ЦБ и КНР (есть), тариф КНР, уведомления, сканы в проверках, ночной прогон</td><td>3–4 недели</td></tr>
+      <tr><td class="k">3. Новые функции</td><td>сверка веса и мест, валютный контроль, задачи на исправление, панель показателей, санкционный скрининг</td><td>1–2 месяца</td></tr>
+      <tr><td class="k">4. Интеграции</td><td>1С, ЭТРАН, Единое окно, китайские ERP, банки, ИИ-помощник в контуре клиента</td><td>по мере доступов</td></tr>
+    </table>
+  </div>
+  <div class="foot"><span>Сроки — ориентир для одного разработчика из плана аудита</span><span>SibDoc 2.0</span></div>
+</section>
+
+<!-- 14. Что нужно для запуска -->
+<section class="slide dark">
+  <div class="top"><div class="brand"><img src="img/icon.png" alt="">SibDoc</div><div class="num">14 / 14</div></div>
+  <div class="kicker">Для запуска у клиента</div>
+  <h1 style="color:#fff;">Что нужно согласовать</h1>
+  <div class="grid" style="grid-template-columns: 1fr 1fr; gap:24px 60px; margin-top:52px; font-size:27px; line-height:1.42;">
+    <div><b style="color:#fff;">Где работает.</b> <span style="color:#C6D3F2;">Компьютер специалиста, сервер клиента или сервер в РФ; сколько пользователей, есть ли китайская сторона</span></div>
+    <div><b style="color:#fff;">Системы клиента.</b> <span style="color:#C6D3F2;">Версия SAP, база FineBI, есть ли 1С; какие брокеры в РФ и Китае и в каком виде присылают данные</span></div>
+    <div><b style="color:#fff;">Бизнес-правила.</b> <span style="color:#C6D3F2;">Допуск по цене, валюты и единицы, синонимы условий поставки, сверка кода по марке и заводу</span></div>
+    <div><b style="color:#fff;">Данные для пилота.</b> <span style="color:#C6D3F2;">Обезличенные примеры; доступы к системам — только в переменные сервера</span></div>
+  </div>
+  <div style="position:absolute; left:120px; right:120px; bottom:110px; display:flex; align-items:center; gap:30px;">
+    <img src="img/icon.png" alt="" style="width:96px; height:96px; border-radius:24px;">
+    <div style="font-size:44px; font-weight:800; letter-spacing:-.01em;">SibDoc — пост-контроль Россия → Китай <span style="color:#8FB4FF;">без ручной сверки</span></div>
+  </div>
+  <div class="foot"><span>Рекламный ролик: finished-videos/2026-10-27-sibdoc-promo.mp4 (2:12)</span><span>SibDoc 2.0 · 2026</span></div>
+</section>
+
+</body>
+</html>
