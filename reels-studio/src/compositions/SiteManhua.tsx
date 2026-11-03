@@ -1,6 +1,6 @@
 // «Мой сайт» v2 — манхуа-трейлер ostapdotcenko.ru для личного профиля @ostap.dotsenko (03.11.2026: «более креативный вариант,
 // чтобы отличался от того, что ты делал ранее… Remotion, больше спецэффектов и шрифтов, стиль маньхуа, моушн-дизайн, переходы
-// и хуки, элементы графики… кинематографично и очень завлекающе»). 1080×1920, 30 к/с, 39 с.
+// и хуки, элементы графики… кинематографично и очень завлекающе»). 1080×1920, 30 к/с, 38,8 с.
 // Сайт подан как манхуа с главами: 第一话 кто он, 第二话 цифры, 第三话 три языка (экран «выбери язык», как в игре),
 // 第四话 блог — «новая глава каждый день» (календарь отрывается по дням с настоящими статьями), финал 未完待续.
 // Экраны — настоящие снимки сайта (source-videos/ostapdotcenko/site/2026-11-03-сайт/), факты — только из src/i18n/*.ts сайта.
@@ -15,7 +15,7 @@ import {
   Narration, PageReveal, Panel, Phone, Sfx, Shot, SlashReveal, SpeedLines, Tape, Vignette, countText, p, sumShake, typed,
 } from "./site-manhua/fx";
 
-export const SITE_MANHUA_FRAMES = 1170;
+export const SITE_MANHUA_FRAMES = 1164;
 const IMG = "source-videos/ostapdotcenko/site/2026-11-03-сайт/";
 const SFXP = "source-videos/2026-11-03-od-sait-manhua/sfx/";
 const MUSIC = "интернет-материалы/музыка/inspiring-technology-soundrider.mp3";
@@ -23,7 +23,7 @@ const CUT = "source-videos/фото-от-пользователя/остап/в�
 const im = (n: string) => `${IMG}${n}.jpg`;
 
 // сцены (глобальные кадры): каждая следующая открывается поверх предыдущей за 12–14 кадров
-const T = {cold: [0, 120], ch1: [108, 330], ch2: [318, 495], ch3: [483, 735], ch4: [723, 990], fin: [978, 1170]} as const;
+const T = {cold: [0, 120], ch1: [108, 318], ch2: [306, 501], ch3: [489, 753], ch4: [741, 996], fin: [984, 1164]} as const;
 
 const dela = (size: number, color = C.ink, extra: React.CSSProperties = {}): React.CSSProperties => ({fontFamily: FONT.dela, fontSize: size, color, lineHeight: 1.02, ...extra});
 
@@ -58,45 +58,46 @@ const Chip: React.FC<{x: number; y: number; at: number; rot?: number; bg?: strin
   );
 };
 
-// ── 0. Холодное открытие: «У МЕНЯ ЕСТЬ САЙТ.» ударами → облачко → дроп: телефон влетает в кадр ───────────────
+// ── 0. Холодное открытие: «А ЕЩЁ / У МЕНЯ / ЕСТЬ / САЙТ.» ударами → облачко «Ну и НАХУЯ?» с наездом → дроп: телефон
+// влетает в кадр, сверху 我的网站 (правки пользователя 03.11.2026 в «Монтажном листе»)
 const Cold: React.FC = () => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const drop = f >= 66;
-  const words: [string, number, number][] = [["У МЕНЯ", 0, 600], ["ЕСТЬ", 9, 780], ["САЙТ.", 18, 960]];
+  const words: [string, number, number][] = [["А ЕЩЁ", 0, 440], ["У МЕНЯ", 7, 600], ["ЕСТЬ", 13, 760], ["САЙТ.", 19, 920]];
   const ph = spring({frame: f - 66, fps, config: {damping: 14, stiffness: 120, mass: 0.9}});
-  const bub = spring({frame: f - 30, fps, config: {damping: 10, stiffness: 220, mass: 0.6}});
+  const bub = spring({frame: f - 28, fps, config: {damping: 10, stiffness: 220, mass: 0.6}});
+  const wtf = spring({frame: f - 36, fps, config: {damping: 7, stiffness: 320, mass: 0.5}});
+  // наезд камеры на «НАХУЯ» в облачке и обратно перед дропом
+  const zoom = 1 + 0.22 * p(f, 34, 44, EO) - 0.22 * p(f, 58, 66, EIO);
+  const zh = spring({frame: f - 70, fps, config: {damping: 11, stiffness: 300, mass: 0.6}});
   return (
-    <AbsoluteFill style={{translate: sumShake(f, [[9, 8, 16], [18, 12, 30], [66, 12, 26], [84, 6, 10]], "cold")}}>
+    <AbsoluteFill style={{translate: sumShake(f, [[7, 6, 12], [13, 6, 12], [19, 12, 30], [36, 14, 26], [66, 12, 26], [84, 6, 10]], "cold")}}>
       {!drop ? (
-        <>
+        <AbsoluteFill style={{scale: String(zoom), transformOrigin: "540px 1330px"}}>
           <AbsoluteFill style={{background: C.ink}} />
-          <SpeedLines color="#fff" opacity={0.8} inner={430} cy={820} seed="c0" />
+          <SpeedLines color="#fff" opacity={0.8} inner={430} cy={f < 34 ? 760 : 1330} seed="c0" />
           {words.map(([t, at, y]) => {
             const s = at === 0 ? 1 : spring({frame: f - at, fps, config: {damping: 11, stiffness: 300, mass: 0.6}});
             return f >= at ? (
-              <div key={t} style={{position: "absolute", left: 0, right: 0, top: y, textAlign: "center", ...dela(168, "#fff", {textShadow: `12px 12px 0 ${C.red}`}), scale: String(1.9 - 0.9 * s)}}>{t}</div>
+              <div key={t} style={{position: "absolute", left: 0, right: 0, top: y, textAlign: "center", ...dela(150, "#fff", {textShadow: `12px 12px 0 ${C.red}`}), scale: String(1.9 - 0.9 * s)}}>{t}</div>
             ) : null;
           })}
-          <Sfx text="咚!" x={760} y={1120} size={120} color={C.y} at={18} font={FONT.zcool} rot={10} />
-          {f >= 30 ? (
-            <Bubble x={90} y={1200} w={900} h={330} shout tail={[700, -40]} scale={0.3 + 0.7 * bub} opacity={Math.min(1, bub * 2)}>
-              <div style={dela(56)}>Сейчас покажу —</div>
-              <div style={dela(56, C.red)}>как в манхуа!</div>
-              <div style={{fontFamily: BRUSH, fontSize: 52, color: C.ink, marginTop: 6}}>像漫画一样</div>
+          <Sfx text="咚!" x={820} y={930} size={110} color={C.y} at={19} font={FONT.zcool} rot={10} />
+          {f >= 28 ? (
+            <Bubble x={150} y={1150} w={780} h={360} shout tail={[620, -50]} scale={0.3 + 0.7 * bub} opacity={Math.min(1, bub * 2)}>
+              <div style={dela(64)}>Ну и</div>
+              <div style={{...dela(124, C.red, {WebkitTextStroke: `3px ${C.ink}`, paintOrder: "stroke fill"}), scale: String(f >= 36 ? 0.4 + 0.6 * wtf : 0.4), opacity: f >= 36 ? 1 : 0}}>НАХУЯ?</div>
             </Bubble>
           ) : null}
-          <Sfx text="哇!" x={720} y={330} size={130} color={C.y} at={34} font={FONT.zcool} rot={-12} until={66} />
-        </>
+          <Sfx text="啥?!" x={700} y={300} size={130} color={C.y} at={40} font={FONT.zcool} rot={-12} until={66} />
+        </AbsoluteFill>
       ) : (
         <>
           <Halftone bg={C.y} dot="rgba(25,25,34,.16)" />
           <SpeedLines color={C.ink} opacity={0.85} inner={560} cy={1060} seed="c1" />
           <div style={{position: "absolute", left: 64, top: 270, fontFamily: FONT.mono, fontSize: 30, letterSpacing: "0.16em", color: C.ink}}>ОСТАП ДОЦЕНКО · 多增科</div>
-          {[["МОЙ", 70, 320], ["САЙТ", 76, 470]].map(([t, at, y]) => {
-            const s = spring({frame: f - (at as number), fps, config: {damping: 11, stiffness: 300, mass: 0.6}});
-            return f >= (at as number) ? <div key={t as string} style={{position: "absolute", left: 60, top: y as number, ...dela(150, C.ink, {textShadow: `10px 10px 0 ${C.red}`}), scale: String(1.8 - 0.8 * s), transformOrigin: "0 50%"}}>{t}</div> : null;
-          })}
+          {f >= 70 ? <div style={{position: "absolute", left: 56, top: 330, fontFamily: FONT.zcool, fontSize: 170, lineHeight: 1, color: C.ink, textShadow: `10px 10px 0 ${C.red}`, scale: String(1.8 - 0.8 * zh), transformOrigin: "0 50%"}}>我的网站</div> : null}
           <AbsoluteFill style={{perspective: 1800}}>
             <div style={{position: "absolute", left: 470, top: 560, transformStyle: "preserve-3d", transform: `translateY(${(1 - ph) * 1300}px) rotateX(${(1 - ph) * 65 + 6}deg) rotateY(${-34 + ph * 22}deg) rotateZ(${(1 - ph) * -20 + 4}deg) scale(${0.75 + 0.25 * ph})`}}>
               <Phone w={470} imgs={[im("ru-00-top")]} mode="swap" glareAt={92} />
@@ -155,54 +156,60 @@ const Ch1: React.FC = () => {
   );
 };
 
-// ── 2. Глава 2 «Цифры»: +350% во взрыве, $48M и 3 млрд ₽ панелями, «8 кейсов» с телефоном ─────────────────────
+// ── 2. Глава 2 «Кейсы» (правка пользователя 03.11.2026: «блок с цифрами убрал бы, а проекты наоборот расписал — Мегасреда,
+// Минэкономразвития — взрывными плашками»): «8 кейсов, которыми горжусь» и четыре проекта с сайта, каждый — плашка во взрыве
+type Case = {at: number; x: number; y: number; rot: number; kicker: string; title: string; chips: [string, number?, string?][]; sfx: string; burst: string};
+const CASES: Case[] = [
+  {at: 24, x: 30, y: 470, rot: -2, kicker: "МЕГАМАРКЕТ / СБЕР · 2023–2025", title: "Минэкономразвития × Мегамаркет", chips: [["регионов", 86], ["продавцов", 50000]], sfx: "轰!", burst: C.y},
+  {at: 58, x: 270, y: 718, rot: 2, kicker: "МЕГАМАРКЕТ / СБЕР · 2024", title: "Федеральный марафон «Мегасреда»", chips: [["городов", 20], ["млн+ просмотров", 1]], sfx: "砰!", burst: "#fff"},
+  {at: 92, x: 30, y: 966, rot: -2, kicker: "МЕГАМАРКЕТ / СБЕР · 2024", title: "«Сделано в России»", chips: [["компаний", 2000, "0 → "]], sfx: "咚!", burst: C.y},
+  {at: 126, x: 270, y: 1214, rot: 2, kicker: "ALIBABA GROUP · 2020–2022", title: "O2O-партнёрства AliExpress", chips: [["медиа-партнёров", 120, "+"]], sfx: "啪!", burst: "#fff"},
+];
+const CasePlate: React.FC<{c: Case}> = ({c}) => {
+  const f = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  if (f < c.at) return null;
+  const s = spring({frame: f - c.at, fps, config: {damping: 11, stiffness: 240, mass: 0.7}});
+  const flash = 1 - p(f, c.at + 1, c.at + 6);
+  return (
+    <div style={{position: "absolute", left: c.x, top: c.y, width: 740, zIndex: 2, rotate: `${c.rot * (2 - s)}deg`, scale: String(1.5 - 0.5 * s), opacity: Math.min(1, s * 2), transformOrigin: "30% 50%"}}>
+      <Burst x={40} y={105} r={105} color={c.burst} rot={f * 0.9} seed={c.title} sw={7} />
+      <div style={{position: "relative", marginLeft: 50, background: "#fff", border: `6px solid ${C.ink}`, boxShadow: `12px 12px 0 ${C.ink}`, padding: "16px 24px 18px"}}>
+        <div style={{fontFamily: FONT.mono, fontSize: 21, letterSpacing: "0.1em", color: C.red}}>{c.kicker}</div>
+        <div style={{...dela(38, C.ink), marginTop: 6, lineHeight: 1.06}}>{c.title}</div>
+        <div style={{display: "flex", gap: 12, marginTop: 12, flexWrap: "wrap"}}>
+          {c.chips.map(([lab, n, pre], i) => (
+            <div key={lab} style={{background: i % 2 ? C.red : C.y, color: i % 2 ? "#fff" : C.ink, border: `4px solid ${C.ink}`, padding: "6px 14px", fontFamily: FONT.golos, fontWeight: 800, fontSize: 30, whiteSpace: "nowrap"}}>
+              <span style={{fontFamily: FONT.dela}}>{n !== undefined ? countText(f, c.at + 4 + i * 4, 16, n, pre === "+" ? "" : pre ?? "", pre === "+" ? "+" : "") : ""}</span> {lab}
+            </div>
+          ))}
+        </div>
+        <div style={{position: "absolute", inset: 0, background: "#fff", opacity: flash * 0.9}} />
+      </div>
+      <Sfx text={c.sfx} x={660} y={96} size={96} color={C.y} at={c.at + 2} font={FONT.zcool} rot={12} />
+    </div>
+  );
+};
 const Ch2: React.FC = () => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const bs = spring({frame: f - 8, fps, config: {damping: 10, stiffness: 160, mass: 0.8}});
-  const hit = spring({frame: f - 38, fps, config: {damping: 9, stiffness: 300, mass: 0.5}});
-  const counting = p(f, 10, 38);
-  const out = p(f, 112, 120, EIO);
-  const part3 = f >= 116;
+  const h = spring({frame: f - 6, fps, config: {damping: 10, stiffness: 260}});
   return (
-    <AbsoluteFill style={{translate: sumShake(f, [[38, 14, 30], [70, 6, 10], [80, 6, 10], [118, 8, 16]], "ch2")}}>
+    <AbsoluteFill style={{translate: sumShake(f, [[6, 8, 14], ...CASES.map((c) => [c.at, 10, 18] as [number, number, number])], "ch2"), scale: String(1 + 0.04 * p(f, 140, 195))}}>
       <Halftone bg={C.red} dot="rgba(25,25,34,.22)" />
-      <SpeedLines color={C.ink} opacity={0.55} cy={820} inner={420} seed="c2" />
+      <SpeedLines color={C.ink} opacity={0.5} cy={f < 58 ? 640 : f < 92 ? 880 : f < 126 ? 1120 : 1350} inner={380} seed="c2" />
       <div style={{position: "absolute", left: 64, top: 270, display: "flex", alignItems: "baseline", gap: 18, opacity: p(f, 2, 10), translate: `${(1 - p(f, 2, 12, EO)) * -140}px 0`}}>
         <span style={{fontFamily: FONT.zcool, fontSize: 70, color: C.y}}>第二话</span>
-        <span style={dela(46, "#fff")}>{part3 ? "Кейсы" : "Цифры"}</span>
+        <span style={dela(46, "#fff")}>Кейсы</span>
       </div>
-      <AbsoluteFill style={{opacity: 1 - out, scale: String(1 - 0.2 * out)}}>
-        <Burst x={540} y={800} r={390} color={C.y} rot={f * 0.5} scale={0.2 + 0.8 * bs} seed="b2" sw={12} />
-        <div style={{position: "absolute", left: 0, right: 0, top: 700, textAlign: "center", ...dela(176, C.ink, {WebkitTextStroke: "4px #fff", paintOrder: "stroke fill"}), filter: `blur(${(counting < 1 && counting > 0 ? 5 : 0).toFixed(0)}px)`, scale: String(f >= 38 ? 1.25 - 0.25 * hit : 1)}}>
-          {countText(f, 10, 28, 350, "+", "%")}
+      {f >= 6 ? (
+        <div style={{position: "absolute", left: 60, top: 336, display: "flex", alignItems: "center", gap: 22, scale: String(1.5 - 0.5 * h), transformOrigin: "0 50%"}}>
+          <span style={dela(110, C.y, {WebkitTextStroke: `6px ${C.ink}`, paintOrder: "stroke fill", textShadow: `10px 10px 0 ${C.ink}`})}>8</span>
+          <span style={dela(42, "#fff", {WebkitTextStroke: `2px ${C.ink}`})}>кейсов,<br />которыми горжусь</span>
         </div>
-        <Narration x={150} y={1090} w={780} at={42} font={FONT.golos} size={36} sh={C.ink}>
-          <span style={{fontWeight: 800}}>рост продавцов Мегамаркета за год</span>
-        </Narration>
-        <Sfx text="轰!" x={770} y={430} size={140} color="#fff" at={38} font={FONT.zcool} rot={12} />
-        <Panel x={40} y={1240} w={490} h={250} poly={[[0, 0.1], [1, 0], [0.94, 1], [0, 1]]} at={70} bg={C.ink} from="left">
-          <div style={{position: "absolute", left: 34, top: 40, ...dela(96, C.y)}}>$48M</div>
-          <div style={{position: "absolute", left: 38, top: 150, fontFamily: FONT.golos, fontWeight: 800, fontSize: 30, lineHeight: 1.15, color: "#fff"}}>GMV AliExpress<br />Россия и СНГ</div>
-        </Panel>
-        <Panel x={540} y={1250} w={500} h={240} poly={[[0.06, 0], [1, 0.08], [1, 1], [0, 1]]} at={80} bg={C.paper} from="right">
-          <div style={{position: "absolute", left: 60, top: 36, ...dela(84, C.ink)}}>3 млрд ₽</div>
-          <div style={{position: "absolute", left: 64, top: 140, fontFamily: FONT.golos, fontWeight: 800, fontSize: 30, lineHeight: 1.15, color: C.ink}}>чистой прибыли<br />Q4 2023</div>
-        </Panel>
-      </AbsoluteFill>
-      {part3 ? (
-        <>
-          <div style={{position: "absolute", left: 40, top: 430, ...dela(380, C.y, {WebkitTextStroke: `8px ${C.ink}`, paintOrder: "stroke fill", textShadow: `14px 14px 0 ${C.ink}`}), scale: String(1.6 - 0.6 * spring({frame: f - 118, fps, config: {damping: 10, stiffness: 260}}))}}>8</div>
-          <div style={{position: "absolute", left: 64, top: 860, width: 470, ...dela(54, "#fff", {WebkitTextStroke: `2px ${C.ink}`}), opacity: p(f, 124, 132)}}>кейсов, которыми горжусь</div>
-          <Narration x={64} y={1080} w={460} at={134} font={FONT.golos} size={28} sh={C.ink}>
-            <b>Сбер × Минэкономразвития</b> · «Мегасреда» · <b>AliExpress O2O</b> · «Сделано в России»…
-          </Narration>
-          <div style={{position: "absolute", left: 580, top: 540, rotate: "5deg", translate: `${(1 - spring({frame: f - 120, fps, config: {damping: 14, stiffness: 140}})) * 700}px 0`}}>
-            <Phone w={430} imgs={[im("ru-04-projects")]} header={im("ru-00-top")} glareAt={140} />
-          </div>
-        </>
       ) : null}
-      <Flash at={116} dur={5} max={0.7} />
+      {CASES.map((c) => <CasePlate key={c.title} c={c} />)}
+      {CASES.map((c) => <Flash key={c.title} at={c.at} dur={4} max={0.35} />)}
     </AbsoluteFill>
   );
 };
@@ -216,82 +223,82 @@ const LANGS = [
 const Ch3: React.FC = () => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const sel = f < 36 ? -1 : f < 56 ? 0 : f < 76 ? 1 : 2;
-  const cardsOut = p(f, 108, 118, EIO);
-  const phoneIn = spring({frame: f - 112, fps, config: {damping: 14, stiffness: 130}});
-  const lang = f < 146 ? 0 : f < 178 ? 1 : 2;
-  const gl = Math.max(f >= 146 && f < 156 ? 1 - (f - 146) / 10 : 0, f >= 178 && f < 188 ? 1 - (f - 178) / 10 : 0, f >= 112 && f < 120 ? 1 - (f - 112) / 8 : 0);
-  const vs = f >= 204;
+  // правки пользователя 03.11.2026: карточки крупнее; на выборе карточка приближается и возвращается на место; телефон крупнее
+  const SEL = [28, 54, 80];
+  const sel = f < SEL[0] ? -1 : f < SEL[1] ? 0 : f < SEL[2] ? 1 : 2;
+  const cardsOut = p(f, 114, 124, EIO);
+  const phoneIn = spring({frame: f - 116, fps, config: {damping: 14, stiffness: 130}});
+  const lang = f < 150 ? 0 : f < 182 ? 1 : 2;
+  const gl = Math.max(f >= 150 && f < 160 ? 1 - (f - 150) / 10 : 0, f >= 182 && f < 192 ? 1 - (f - 182) / 10 : 0, f >= 116 && f < 124 ? 1 - (f - 116) / 8 : 0);
+  const vs = f >= 212;
   return (
-    <AbsoluteFill style={{background: C.ink, translate: sumShake(f, [[36, 5, 8], [56, 5, 8], [76, 5, 8], [146, 8, 14], [178, 8, 14], [204, 6, 12], [210, 6, 12], [216, 6, 12]], "ch3")}}>
+    <AbsoluteFill style={{background: C.ink, translate: sumShake(f, [[28, 5, 8], [54, 5, 8], [80, 5, 8], [150, 8, 14], [182, 8, 14], [212, 6, 12], [218, 6, 12], [224, 6, 12]], "ch3")}}>
       <AbsoluteFill style={{backgroundImage: "linear-gradient(rgba(255,217,46,.07) 2px, transparent 2px), linear-gradient(90deg, rgba(255,217,46,.07) 2px, transparent 2px)", backgroundSize: "60px 60px", backgroundPosition: `0 ${f * 2}px`}} />
       <div style={{position: "absolute", left: 64, top: 270, display: "flex", alignItems: "baseline", gap: 16}}>
         <span style={{fontFamily: FONT.zcool, fontSize: 58, color: C.y}}>第三话</span>
         <span style={{fontFamily: FONT.oswald, fontSize: 34, letterSpacing: "0.16em", color: "#fff"}}>ТРИ ЯЗЫКА</span>
       </div>
-      {f < 120 ? (
+      {f < 124 ? (
         <AbsoluteFill style={{opacity: 1 - cardsOut, translate: `0 ${-cardsOut * 200}px`}}>
-          <div style={{position: "absolute", left: 64, top: 370, fontFamily: FONT.pixel, fontSize: 50, color: C.y, opacity: f > 20 && Math.floor(f / 8) % 2 === 1 && sel < 0 ? 0.25 : 1}}>ВЫБЕРИ ЯЗЫК</div>
-          <div style={{position: "absolute", left: 64, top: 448, fontFamily: FONT.zcool, fontSize: 52, color: C.red}}>选择语言</div>
+          <div style={{position: "absolute", left: 64, top: 360, fontFamily: FONT.pixel, fontSize: 50, color: C.y, opacity: f > 20 && Math.floor(f / 8) % 2 === 1 && sel < 0 ? 0.25 : 1}}>ВЫБЕРИ ЯЗЫК</div>
+          <div style={{position: "absolute", left: 64, top: 436, fontFamily: FONT.zcool, fontSize: 52, color: C.red}}>选择语言</div>
           {LANGS.map((l, i) => {
             const s = spring({frame: f - (8 + i * 6), fps, config: {damping: 13, stiffness: 200}});
             const on = sel === i;
+            const a = SEL[i];
+            const k = p(f, a, a + 8, EO) - p(f, a + 16, a + 24, EIO); // приближение и возврат
+            const x = 28 + i * 348, w = 330;
             return (
-              <div key={l.code} style={{position: "absolute", left: 64 + i * 326, top: 570, width: 300, translate: `0 ${(1 - s) * 900}px`, scale: String(on ? 1.07 : 1), filter: sel >= 0 && !on ? "brightness(.5) grayscale(.6)" : "none"}}>
-                <div style={{position: "relative", width: 300, height: 500, border: `6px solid ${on ? C.red : C.y}`, overflow: "hidden", background: C.bone, boxShadow: on ? `0 0 0 6px ${C.y}, 12px 12px 0 ${C.red}` : "10px 10px 0 rgba(0,0,0,.4)"}}>
-                  <Shot src={im(`${l.img}-01-about`)} crop={[0, 200, 975, 1760]} w={288} h={488} />
+              <div key={l.code} style={{position: "absolute", left: x, top: 540, width: w, zIndex: k > 0 ? 5 : 1, translate: `${((540 - (x + w / 2)) * k).toFixed(1)}px ${((1 - s) * 900 - 30 * k).toFixed(1)}px`, scale: String(1 + 0.55 * k), filter: sel >= 0 && !on ? "brightness(.5) grayscale(.6)" : "none"}}>
+                <div style={{position: "relative", width: w, height: 580, border: `7px solid ${on ? C.red : C.y}`, overflow: "hidden", background: C.bone, boxShadow: on ? `0 0 0 7px ${C.y}, 14px 14px 0 ${C.red}` : "10px 10px 0 rgba(0,0,0,.4)"}}>
+                  <Shot src={im(`${l.img}-01-about`)} crop={[0, 200, 975, 1760]} w={w - 14} h={566} />
                 </div>
-                <div style={{marginTop: 16, textAlign: "center", fontFamily: l.code === "中文" ? FONT.zcool : FONT.pixel, fontSize: l.code === "中文" ? 48 : 34, color: on ? C.y : "#fff"}}>{l.code}</div>
-                {on ? <div style={{position: "absolute", left: 104, top: -66, fontFamily: FONT.pixel, fontSize: 24, color: C.ink, background: C.red, padding: "8px 10px", border: `4px solid ${C.ink}`}}>1P▼</div> : null}
+                <div style={{marginTop: 16, textAlign: "center", fontFamily: l.code === "中文" ? FONT.zcool : FONT.pixel, fontSize: l.code === "中文" ? 54 : 40, color: on ? C.y : "#fff"}}>{l.code}</div>
+                {on ? <div style={{position: "absolute", left: w / 2 - 50, top: -70, fontFamily: FONT.pixel, fontSize: 24, color: C.ink, background: C.red, padding: "8px 10px", border: `4px solid ${C.ink}`}}>1P▼</div> : null}
               </div>
             );
           })}
-          {f >= 90 ? (
-            <div style={{position: "absolute", left: 0, right: 0, top: 1240, textAlign: "center", opacity: Math.floor(f / 4) % 2 ? 1 : 0.6}}>
+          {f >= 104 ? (
+            <div style={{position: "absolute", left: 0, right: 0, top: 1260, textAlign: "center", opacity: Math.floor(f / 4) % 2 ? 1 : 0.6}}>
               <span style={{fontFamily: FONT.pixel, fontSize: 60, color: "#fff"}}>READY?</span>
               <span style={{fontFamily: FONT.zcool, fontSize: 70, color: C.y, marginLeft: 22}}>准备！</span>
             </div>
           ) : null}
         </AbsoluteFill>
       ) : null}
-      {f >= 112 && !vs ? (
+      {f >= 116 && !vs ? (
         <>
-          <div style={{position: "absolute", left: 0, right: 0, top: 560, textAlign: "center", ...dela(560, "transparent", {WebkitTextStroke: `6px ${C.y}`}), opacity: 0.22}}>{lang === 2 ? "中" : LANGS[lang].code}</div>
-          <GlitchText amount={gl} seed="hero" style={{position: "absolute", left: 40, right: 40, top: 372, textAlign: "center", ...(lang === 2 ? {fontFamily: FONT.zcool, fontSize: 104, color: "#fff"} : dela(84, "#fff")), lineHeight: 1.1}}>
+          <div style={{position: "absolute", left: 0, right: 0, top: 640, textAlign: "center", ...dela(560, "transparent", {WebkitTextStroke: `6px ${C.y}`}), opacity: 0.22}}>{lang === 2 ? "中" : LANGS[lang].code}</div>
+          <GlitchText amount={gl} seed="hero" style={{position: "absolute", left: 40, right: 40, top: 362, textAlign: "center", ...(lang === 2 ? {fontFamily: FONT.zcool, fontSize: 104, color: "#fff"} : dela(84, "#fff")), lineHeight: 1.1}}>
             {LANGS[lang].hero}
           </GlitchText>
-          <AbsoluteFill style={{perspective: 1800}}>
-            <div style={{position: "absolute", left: 340, top: 600, transform: `translateY(${(1 - phoneIn) * 1200}px) rotateY(${-14 + 6 * Math.sin(f / 30)}deg) rotateX(6deg)`}}>
-              <Phone w={400} imgs={[im("ru-00-top"), im("en-00-top"), im("zh-00-top")]} mode="swap" keys={[[0, 0], [146, 1], [178, 2]]} tapAt={[[140, 653, 85], [172, 746, 85]]} glitchAt={[146, 178]} />
+          <AbsoluteFill style={{perspective: 2000}}>
+            <div style={{position: "absolute", left: 210, top: 500, transformOrigin: "50% 0%", transform: `translateY(${(1 - phoneIn) * 1300}px) rotateY(${-6 + 3 * Math.sin(f / 30)}deg) rotateX(4deg) scale(${1 + 0.06 * p(f, 120, 210)})`}}>
+              <Phone w={660} imgs={[im("ru-00-top"), im("en-00-top"), im("zh-00-top")]} mode="swap" keys={[[0, 0], [150, 1], [182, 2]]} tapAt={[[144, 653, 85], [176, 746, 85]]} glitchAt={[150, 182]} />
             </div>
           </AbsoluteFill>
-          <div style={{position: "absolute", left: 0, right: 0, top: 492, display: "flex", gap: 14, justifyContent: "center"}}>
-            {LANGS.map((l, i) => (
-              <div key={l.code} style={{padding: "10px 22px", border: `5px solid ${C.y}`, background: lang === i ? C.y : "transparent", color: lang === i ? C.ink : C.y, fontFamily: l.code === "中文" ? FONT.zcool : FONT.pixel, fontSize: l.code === "中文" ? 44 : 30}}>{l.code}</div>
-            ))}
-          </div>
         </>
       ) : null}
       {vs ? (
         <>
           <ActionLines color="rgba(255,217,46,.25)" angle={-60} speed={90} seed="vs" />
           {LANGS.map((l, i) => (
-            <Panel key={l.code} x={-10 + i * 345} y={470} w={420} h={820} poly={[[0.12, 0], [1, 0], [0.88, 1], [0, 1]]} at={204 + i * 6} from={i === 1 ? "top" : "bottom"} bg={C.bone}>
-              <Shot src={im(`${l.img}-00-top`)} crop={[0, 300, 540, 1050]} w={420} h={820} zoom={1 + 0.06 * p(f, 204, 252)} />
+            <Panel key={l.code} x={-10 + i * 345} y={470} w={420} h={820} poly={[[0.12, 0], [1, 0], [0.88, 1], [0, 1]]} at={212 + i * 6} from={i === 1 ? "top" : "bottom"} bg={C.bone}>
+              <Shot src={im(`${l.img}-00-top`)} crop={[0, 300, 540, 1050]} w={420} h={820} zoom={1 + 0.06 * p(f, 212, 264)} />
             </Panel>
           ))}
           {LANGS.map((l, i) => (
-            <Chip key={l.code} x={120 + i * 345} y={1300} at={214 + i * 6} rot={i % 2 ? 3 : -3} bg={C.y} size={l.code === "中文" ? 40 : 38}>{l.code}</Chip>
+            <Chip key={l.code} x={120 + i * 345} y={1300} at={222 + i * 6} rot={i % 2 ? 3 : -3} bg={C.y} size={l.code === "中文" ? 40 : 38}>{l.code}</Chip>
           ))}
-          <Narration x={64} y={1420} w={952} at={226} font={FONT.golos} size={32} sh={C.red}>
+          <Narration x={64} y={1420} w={952} at={234} font={FONT.golos} size={32} sh={C.red}>
             <b>Весь сайт — по-русски, по-английски и по-китайски</b>
           </Narration>
-          <Sfx text="啪!" x={770} y={1160} size={130} color={C.y} at={216} font={FONT.zcool} rot={-8} />
+          <Sfx text="啪!" x={770} y={1160} size={130} color={C.y} at={224} font={FONT.zcool} rot={-8} />
         </>
       ) : null}
       <AbsoluteFill style={{background: "repeating-linear-gradient(0deg, rgba(0,0,0,.18) 0 2px, transparent 2px 5px)", pointerEvents: "none"}} />
-      <Flash at={112} dur={4} max={0.5} />
-      <Flash at={204} dur={5} max={0.6} />
+      <Flash at={116} dur={4} max={0.5} />
+      <Flash at={212} dur={5} max={0.6} />
     </AbsoluteFill>
   );
 };
@@ -399,23 +406,23 @@ const Fin: React.FC = () => {
       <SpeedLines color={C.ink} opacity={0.75} cx={780} cy={1150} inner={540} seed="c5" />
       <Img
         src={staticFile(CUT)}
-        style={{position: "absolute", right: -190, bottom: 0, height: 1180, scale: String(1.3 - 0.3 * ps), transformOrigin: "70% 100%", filter: "drop-shadow(7px 0 0 #fff) drop-shadow(-7px 0 0 #fff) drop-shadow(0 7px 0 #fff) drop-shadow(0 -7px 0 #fff) drop-shadow(16px 16px 0 #15151D)"}}
+        style={{position: "absolute", right: -250, bottom: 0, height: 1090, scale: String(1.3 - 0.3 * ps), transformOrigin: "70% 100%", filter: "drop-shadow(7px 0 0 #fff) drop-shadow(-7px 0 0 #fff) drop-shadow(0 7px 0 #fff) drop-shadow(0 -7px 0 #fff) drop-shadow(16px 16px 0 #15151D)"}}
       />
       {f >= 16 ? (
-        <Bubble x={44} y={300} w={660} h={340} shout tail={[620, 360]} scale={0.3 + 0.7 * bub} opacity={Math.min(1, bub * 2)}>
+        <Bubble x={44} y={286} w={640} h={300} shout tail={[600, 330]} scale={0.3 + 0.7 * bub} opacity={Math.min(1, bub * 2)}>
           <div style={dela(70)}>Заходи</div>
           <div style={dela(70, C.red)}>в гости!</div>
           <div style={{fontFamily: BRUSH, fontSize: 52, color: C.ink, marginTop: 4}}>欢迎光临！</div>
         </Bubble>
       ) : null}
       {f >= 40 ? (
-        <div style={{position: "absolute", left: 54, top: 700, rotate: "-4deg", background: C.ink, padding: "18px 30px", boxShadow: `12px 12px 0 ${C.red}`}}>
-          <span style={{fontFamily: FONT.unb, fontSize: 50, color: C.y}}>{url}</span>
-          <span style={{fontFamily: FONT.unb, fontSize: 50, color: C.y, opacity: Math.floor(f / 8) % 2 ? 1 : 0}}>▌</span>
+        <div style={{position: "absolute", left: 54, top: 618, rotate: "-4deg", background: C.ink, padding: "14px 26px", boxShadow: `12px 12px 0 ${C.red}`}}>
+          <span style={{fontFamily: FONT.unb, fontSize: 42, color: C.y}}>{url}</span>
+          <span style={{fontFamily: FONT.unb, fontSize: 42, color: C.y, opacity: Math.floor(f / 8) % 2 ? 1 : 0}}>▌</span>
         </div>
       ) : null}
-      <Chip x={70} y={850} at={80} rot={2}>RU · EN · <span style={{fontFamily: FONT.zcool}}>中文</span></Chip>
-      <Chip x={70} y={950} at={92} rot={-2} bg={C.red} color="#fff">Новая глава — каждый день</Chip>
+      <Chip x={70} y={735} at={80} rot={2}>RU · EN · <span style={{fontFamily: FONT.zcool}}>中文</span></Chip>
+      <Chip x={70} y={830} at={92} rot={-2} bg={C.red} color="#fff">Новая глава — каждый день</Chip>
       {f >= 120 ? (
         <>
           <div style={{position: "absolute", left: 60, top: 1290, fontFamily: FONT.zcool, fontSize: 116, color: C.ink, textShadow: `8px 8px 0 #fff`, scale: String(1.5 - 0.5 * spring({frame: f - 120, fps, config: {damping: 10, stiffness: 260}})), transformOrigin: "0 50%"}}>未完待续…</div>
@@ -427,19 +434,17 @@ const Fin: React.FC = () => {
   );
 };
 
-// звуки: [кадр, файл, громкость]
-const SOUNDS: [number, string, number][] = [
-  [0, "whip", 0.5], [9, "whip", 0.5], [18, "vine-boom", 0.45], [30, "whoosh", 0.4], [34, "anime-wow", 0.22], [64, "whoosh", 0.6], [70, "whip", 0.35], [76, "whip", 0.35], [84, "shutter-modern", 0.5], [92, "ding", 0.18],
-  [108, "page-turn", 0.6], [126, "whip", 0.4], [156, "whoosh", 0.4], [186, "vine-boom", 0.3], [212, "mouse-click", 0.5], [224, "mouse-click", 0.5], [236, "whoosh", 0.45],
-  [318, "whip", 0.5], [326, "whoosh", 0.4], [356, "vine-boom", 0.5], [388, "whoosh", 0.45], [398, "whoosh", 0.45], [434, "whip", 0.45], [436, "shutter-modern", 0.35],
-  [483, "whip", 0.5], [519, "switch", 0.6], [539, "switch", 0.6], [559, "switch", 0.6], [573, "ding", 0.25], [595, "whoosh", 0.5], [623, "mouse-click", 0.5], [629, "whip", 0.4], [655, "mouse-click", 0.5], [661, "whip", 0.4],
-  [687, "whoosh", 0.45], [693, "whoosh", 0.45], [699, "whoosh", 0.45],
-  [723, "page-turn", 0.6], [750, "page-turn", 0.25], [757, "page-turn", 0.25], [764, "page-turn", 0.25], [771, "page-turn", 0.25], [778, "page-turn", 0.25], [785, "page-turn", 0.25],
-  [803, "whoosh", 0.4], [827, "vine-boom", 0.35], [853, "shutter-modern", 0.35], [863, "shutter-modern", 0.35], [873, "shutter-modern", 0.35], [883, "shutter-modern", 0.35], [893, "shutter-modern", 0.35],
-  [903, "whoosh", 0.5], [905, "whip", 0.4], [911, "whip", 0.4], [917, "whip", 0.4],
-  [978, "whoosh", 0.5], [984, "vine-boom", 0.45], [994, "whip", 0.4], [1018, "mouse-click", 0.3], [1024, "mouse-click", 0.3], [1030, "mouse-click", 0.3], [1036, "mouse-click", 0.3], [1042, "mouse-click", 0.3], [1048, "mouse-click", 0.3],
-  [1058, "switch", 0.5], [1070, "switch", 0.5], [1098, "ding", 0.3], [1128, "whoosh", 0.3],
-];
+// звуки по сценам: [кадр сцены, файл, громкость] → глобальные кадры через T
+const SC: Record<keyof typeof T, [number, string, number][]> = {
+  cold: [[0, "whip", 0.5], [7, "whip", 0.45], [13, "whip", 0.45], [19, "vine-boom", 0.45], [28, "whoosh", 0.4], [36, "vine-boom", 0.55], [36, "whip", 0.4], [64, "whoosh", 0.6], [70, "whip", 0.4], [84, "shutter-modern", 0.5], [92, "ding", 0.18]],
+  ch1: [[0, "page-turn", 0.6], [18, "whip", 0.4], [48, "whoosh", 0.4], [78, "vine-boom", 0.3], [104, "mouse-click", 0.5], [116, "mouse-click", 0.5], [128, "whoosh", 0.45]],
+  ch2: [[0, "whip", 0.5], [6, "whoosh", 0.4], [24, "vine-boom", 0.4], [58, "vine-boom", 0.35], [92, "vine-boom", 0.35], [126, "vine-boom", 0.35], [30, "mouse-click", 0.3], [64, "mouse-click", 0.3], [98, "mouse-click", 0.3], [132, "mouse-click", 0.3]],
+  ch3: [[0, "whip", 0.5], [28, "switch", 0.6], [28, "whoosh", 0.3], [54, "switch", 0.6], [54, "whoosh", 0.3], [80, "switch", 0.6], [80, "whoosh", 0.3], [104, "ding", 0.25], [116, "whoosh", 0.5], [144, "mouse-click", 0.5], [150, "whip", 0.4], [176, "mouse-click", 0.5], [182, "whip", 0.4], [212, "whoosh", 0.45], [218, "whoosh", 0.45], [224, "whoosh", 0.45]],
+  ch4: [[0, "page-turn", 0.6], [27, "page-turn", 0.25], [34, "page-turn", 0.25], [41, "page-turn", 0.25], [48, "page-turn", 0.25], [55, "page-turn", 0.25], [62, "page-turn", 0.25], [80, "whoosh", 0.4], [104, "vine-boom", 0.35],
+    [130, "shutter-modern", 0.35], [140, "shutter-modern", 0.35], [150, "shutter-modern", 0.35], [160, "shutter-modern", 0.35], [170, "shutter-modern", 0.35], [180, "whoosh", 0.5], [182, "whip", 0.4], [188, "whip", 0.4], [194, "whip", 0.4]],
+  fin: [[0, "whoosh", 0.5], [6, "vine-boom", 0.45], [16, "whip", 0.4], [40, "mouse-click", 0.3], [46, "mouse-click", 0.3], [52, "mouse-click", 0.3], [58, "mouse-click", 0.3], [64, "mouse-click", 0.3], [80, "switch", 0.5], [92, "switch", 0.5], [120, "ding", 0.3], [150, "whoosh", 0.3]],
+};
+const SOUNDS: [number, string, number][] = (Object.keys(SC) as (keyof typeof T)[]).flatMap((k) => SC[k].map(([at, n, v]) => [T[k][0] + at, n, v] as [number, string, number]));
 
 export const SiteManhua: React.FC = () => {
   useBrush(true);
