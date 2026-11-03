@@ -5,7 +5,7 @@
 // Кадры — только реальные: его Reels (куски в source-videos/2026-11-03-gtt-проект/из-instagram/, README.json) и съёмка SANY / Xingwang / YingKe.
 // Факты: подписи его постов (AgiBot — 10 000 роботов, Kepler — 30 кг на 2 руки, R&D-центр BYD, Шанхай — Пекин, Шэньчжэнь), его слова в
 // сторис SANY («приехал лично… чтобы показывать это вам»), сайт globaltechtour.ru (1000+ компаний, 18 отраслей, 76 программ, 9 стран,
-// названия программ), подписи каруселей Xingwang и YingKe. Музыка Upbeat Corporate (Soundrider, CC BY 3.0 — автор в подписи поста).
+// названия программ), подписи каруселей Xingwang и YingKe. В финале — фото в костюме, как в интро «официально» (решение пользователя 03.11.2026). Музыка Upbeat Corporate (Soundrider, CC BY 3.0 — автор в подписи поста).
 // Запуск: node reels-studio/tools/gtt-reel/reel-gruppy-od.mjs [--still 0.5,6,14] [--frames A-B] [--encode-only]
 import { createRequire } from 'module'; import fs from 'fs'; import { execSync } from 'child_process';
 const { chromium } = createRequire(import.meta.url)('playwright');
@@ -14,8 +14,8 @@ const IG = `${ROOT}/source-videos/2026-11-03-gtt-проект/из-instagram/`, 
 const XW = `${SV}2026-10-26-xingwang/фото/`, YK = `${SV}2026-10-26-yingke/фото/`, AV = `${SV}фото-от-пользователя/остап/ostap-portret-sait.jpg`;
 const NAME = '2026-11-03-od-gruppy', FPS = 30;
 const S = { hook: [0, 3.6], self: [3.6, 9.6], robots: [9.6, 17.6], plants: [17.6, 25.2], bosses: [25.2, 31.0], events: [31.0, 35.8],
-  road: [35.8, 39.8], more: [39.8, 44.0], nums: [44.0, 47.6], cta: [47.6, 52.0] };
-const DUR = 52.0, N = Math.round(DUR * FPS), TMP = '/dev/shm/gtr-od', FR = `${TMP}/frames`;
+  road: [35.8, 39.8], more: [39.8, 44.0], nums: [44.0, 47.6], tiny: [47.6, 51.4], cta: [51.4, 55.4] };
+const DUR = 55.4, N = Math.round(DUR * FPS), TMP = '/dev/shm/gtr-od', FR = `${TMP}/frames`;
 const args = process.argv.slice(2), arg = k => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : null; };
 
 const TM = 'zscale=tin=arib-std-b67:min=bt2020nc:pin=bt2020:rin=tv:t=linear:npl=150,format=gbrpf32le,zscale=p=bt709,tonemap=tonemap=hable:desat=0:peak=4,zscale=t=bt709:m=bt709:r=pc,format=rgb24,eq=saturation=1.25:contrast=1.08:brightness=0.03,colorbalance=rm=0.05:bm=-0.05:rs=0.02:bs=-0.03,';
@@ -58,6 +58,7 @@ const pill = (id, t, st) => `<div class="pill" id="${id}" style="${st}">${t}</di
 const stat = (id, num, lab, x, y, w = 440) => `<div class="a" id="${id}" style="left:${x}px;top:${y}px;width:${w}px"><div class="num" data-n="${num}">${num}</div><div class="slab">${lab}</div></div>`;
 const head = (k, lab, ttl, wm) => `<div class="wm" id="${k}Wm">${wm}</div><div class="a lab" id="${k}Lab">${lab}</div><div class="a ttl" id="${k}Ttl">${ttl}</div>`;
 const CHIPS = ['Пищевые производства', 'Молочные заводы', 'Кондитерка', 'Чай и кофе', 'Косметика', 'Автопром и электромобили', 'Бытовая техника', 'Техгиганты и ИИ', 'Логистика', 'Финтех', 'Нефтехимия', 'Переработка отходов'];
+const TINY = ['r1', 'p1', 's2', 'e3', 'r4', 'h2', 'w2', 'r3', 's3', 'e1', 'r5', 'p2', 'b3', 'w1', 'r2', 's1', 'p3', 'e2', 'r6', 'w3'];
 const FAN = ['left:40px;top:505px;width:330px;height:590px;rotate:-6deg', 'left:375px;top:475px;width:330px;height:590px;rotate:1deg', 'left:710px;top:515px;width:330px;height:590px;rotate:6deg'];
 
 const html = `<!doctype html><html><head><meta charset="utf-8"><style>
@@ -95,6 +96,7 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>
 .bub{position:absolute;background:#fff;border:7px solid #191922;padding:22px 28px 20px;font:900 60px/1.06 Unbounded;color:#191922;box-shadow:12px 12px 0 #191922;letter-spacing:-.01em;transform-origin:20% 100%}
 .bub small{display:block;margin-top:10px;font:400 50px/1.1 MSZ;color:#E8341C;letter-spacing:0}
 .bub::after{content:"";position:absolute;bottom:-40px;left:80px;border:18px solid transparent;border-top:28px solid #191922}
+.bub.tr::after{left:auto;right:80px}
 .sfx{position:absolute;font:400 200px/1 MSZ;color:#E8341C;-webkit-text-stroke:6px #191922;text-shadow:10px 10px 0 #191922;z-index:20}
 .ink{position:absolute;background:#191922;color:#FFD92E;font:900 40px/1.2 Unbounded;padding:20px 28px;box-shadow:10px 10px 0 #E8341C;z-index:20}
 .num{font:900 120px/1 Unbounded;color:#FFD92E;letter-spacing:-.04em;white-space:nowrap}
@@ -172,10 +174,17 @@ const html = `<!doctype html><html><head><meta charset="utf-8"><style>
   ${stat('nS3', '76', 'программ', 64, 1010)}${stat('nS4', '9', 'стран', 620, 1010)}
 </div>
 
+<div class="sc Y" id="tiny"><div class="hy"></div>
+  <div class="a" id="tinyGrid" style="left:-40px;top:250px;width:1160px;height:1700px;transform-origin:50% 40%">${TINY.map((k, i) => `<div class="story" id="tg${i}" style="left:${(i % 4) * 290}px;top:${Math.floor(i / 4) * 340}px;width:270px;height:320px;border-radius:20px;border-width:5px;box-shadow:8px 8px 0 #191922;rotate:${[-3, 2, -1, 3, 1, -2][i % 6]}deg"><img class="v" data-k="${k}" data-a="${0.1 + i * 0.05}"></div>`).join('')}</div>
+  <div class="a" style="inset:0;background:rgba(255,217,46,.22)"></div>
+  <div class="ink" id="tinyT1" style="left:64px;right:64px;top:640px;font-size:60px;line-height:1.08;padding:30px 34px;rotate:-1.5deg">Это только <span style="color:#fff">малая часть</span> того, что я делаю</div>
+  <div class="bub" id="tinyT2" style="left:120px;right:64px;top:930px;font-size:50px;rotate:1deg;transform-origin:30% 0%">…и малая часть того, что можно показать<small>还有更多！</small></div>
+</div>
+
 <div class="sc K" id="cta"><div class="hk"></div>
-  <img class="cut" id="ctaCut" src="${SV}фото-от-пользователя/остап/вырезки/ostap-sany-selfi.png" style="left:-160px;bottom:-40px;height:1000px">
-  <div class="bub" id="ctaBub" style="right:64px;top:380px;width:560px;font-size:58px;transform-origin:30% 100%">Поехали со&nbsp;мной?<small>一起去吧！</small></div>
-  <div class="a" id="ctaBox" style="right:64px;top:930px;width:560px;background:#FFD92E;padding:28px 32px;box-shadow:12px 12px 0 #E8341C;display:grid;gap:14px;font:700 33px JB;color:#191922">
+  <img class="cut" id="ctaCut" src="${SV}фото-от-пользователя/остап/вырезки/ostap-portret-sait.png" style="right:-190px;bottom:0;height:1150px">
+  <div class="bub tr" id="ctaBub" style="left:64px;top:380px;width:560px;font-size:58px;transform-origin:80% 100%">Поехали со&nbsp;мной?<small>一起去吧！</small></div>
+  <div class="a" id="ctaBox" style="left:64px;top:672px;width:500px;background:#FFD92E;padding:28px 32px;box-shadow:12px 12px 0 #E8341C;display:grid;gap:14px;font:700 33px JB;color:#191922">
     <div>游 globaltechtour.ru</div><div>多 @ostap.dotsenko</div>
     <div id="ctaAsk" style="margin-top:8px;padding-top:16px;border-top:4px solid #191922;font:800 34px/1.25 Golos">Пиши в директ — подберём программу под вашу группу</div></div>
 </div>
@@ -199,7 +208,7 @@ function vid(img,l,loads,key){const k=key||img.dataset.k, a=+img.dataset.a||0, n
   const f=Math.min(n,1+Math.max(0,Math.floor((l-a)*30))), src='file://'+TMP+'/'+k+'/f'+String(f).padStart(4,'0')+'.jpg';
   if(img.getAttribute('src')!==src){img.setAttribute('src',src);loads.push(img.decode().catch(()=>{}))}}
 const HOOK=[['h1',0,.9,''],['h2',.9,1.8,'SANY · Чанша'],['h3',1.8,2.7,'AgiBot · Шанхай'],['h4',2.7,3.6,'SANY · Чанша']];
-const WIPE={self:['hk','100% 100%'],robots:['hy','0% 100%'],plants:['hr','100% 0%'],bosses:['hk','0% 0%'],events:['hy','100% 100%'],road:['hr','0% 100%'],more:['hk','100% 0%'],nums:['hk','0% 0%'],cta:['hk','100% 100%']};
+const WIPE={tiny:['hy','0% 100%'],self:['hk','100% 100%'],robots:['hy','0% 100%'],plants:['hr','100% 0%'],bosses:['hk','0% 0%'],events:['hy','100% 100%'],road:['hr','0% 100%'],more:['hk','100% 0%'],nums:['hk','0% 0%'],cta:['hk','100% 100%']};
 async function setT(t){
   const loads=[];
   for(const k in S){const [a,b]=S[k];$(k).style.display=(t>=a&&t<b)?'block':'none'}
@@ -224,7 +233,9 @@ async function setT(t){
   l=t-S.road[0]; drop('wC1',l,.3); drop('wC2',l,.6); drop('wC3',l,.9); pop('wP1',l,1.6);
   l=t-S.more[0]; for(let i=0;i<${CHIPS.length};i++) pop('ch'+i,l,.55+i*.16,.32); rise('moreS',l,2.9,.45,40);
   l=t-S.nums[0]; {const img=$('nSt').querySelector('.v'); img.style.scale=String(1+0.05*p(l,0,3.8))} left('numsLab',l,.1); count('nS1',l,.3); count('nS2',l,.6); count('nS3',l,.9); count('nS4',l,1.2);
-  l=t-S.cta[0]; {const k=eb(p(l,0,.55));set('ctaCut',{translate:((1-k)*-600)+'px 0'})} pop('ctaBub',l,.35,.4); rise('ctaBox',l,1.0,.45,80); rise('ctaAsk',l,1.6,.4,40);
+  l=t-S.tiny[0]; {const z=eo(p(l,0,3.6)); set('tinyGrid',{scale:String(1.55-.55*z)})} for(let i=0;i<${TINY.length};i++) pop('tg'+i,l,.05+i*.04,.3);
+  rise('tinyT1',l,.55,.45,70); pop('tinyT2',l,1.5,.4);
+  l=t-S.cta[0]; {const k=eb(p(l,0,.55));set('ctaCut',{translate:((1-k)*600)+'px 0'})} pop('ctaBub',l,.35,.4); rise('ctaBox',l,1.0,.45,80); rise('ctaAsk',l,1.6,.4,40);
   // переход: круг цвета следующей сцены из угла за 0,35 с до стыка
   let w=null; for(const k in WIPE){const T=S[k][0]; if(t>=T-.35&&t<T) w=[k,p(t,T-.35,T)]}
   if(w){const [k,x]=w;$('wipe').style.display='block';$('wipeBg').className=WIPE[k][0];$('wipe').style.clipPath='circle('+(eo(x)*2300)+'px at '+WIPE[k][1]+')'} else $('wipe').style.display='none';
@@ -257,7 +268,7 @@ const SFX = `${ROOT}/source-videos/2026-10-07-byt-tehnika/sfx`;
 const W = Object.values(S).slice(1).map(([a]) => a - 0.3);
 const C = [0.6, S.self[0] + 2.6, S.robots[0] + 1.6, S.robots[0] + 2.6, S.robots[0] + 5.2, S.robots[0] + 5.6, S.plants[0] + 2.0, S.plants[0] + 2.6, S.plants[0] + 3.6,
   S.bosses[0] + .6, S.bosses[0] + 1.0, S.events[0] + 1.8, S.events[0] + 2.6, S.road[0] + 1.6, ...[0, 3, 6, 9].map(i => S.more[0] + .55 + i * .16),
-  S.nums[0] + .3, S.nums[0] + .6, S.nums[0] + .9, S.nums[0] + 1.2, S.cta[0] + .35];
+  S.nums[0] + .3, S.nums[0] + .6, S.nums[0] + .9, S.nums[0] + 1.2, S.tiny[0] + .55, S.tiny[0] + 1.5, S.cta[0] + .35];
 const ins = [`-i "${ROOT}/интернет-материалы/музыка/upbeat-corporate-soundrider.mp3"`, ...W.map(() => `-i ${SFX}/whoosh.wav`), ...C.map(() => `-i ${SFX}/switch.wav`)];
 const fl = [`[1:a]atrim=0:${DUR},afade=t=in:d=0.3,afade=t=out:st=${DUR - 1.8}:d=1.8,volume=0.6[m]`,
   ...W.map((s, i) => `[${i + 2}:a]adelay=${Math.round(s * 1000)}|${Math.round(s * 1000)},volume=0.4[w${i}]`),
