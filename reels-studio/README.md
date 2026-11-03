@@ -540,6 +540,7 @@ node reels-studio/tools/od-posts/reel-3-proekta.mjs      # ролик «3 про
 node reels-studio/tools/od-posts/reel-3-proekta.mjs --still 5.6,11.5   # пробные кадры в /dev/shm/od3/
 node reels-studio/tools/od-posts/reel-covers.mjs          # 22 обложки своих Reels (или номера постов: … reel-covers.mjs 38 18)
 node reels-studio/tools/od-posts/reel-intro.mjs           # интро «официально» → finished-videos/2026-11-02-od-intro.mp4 (--still 2.8,11.8)
+node reels-studio/tools/od-posts/reel-sait.mjs            # ролик «Мой сайт» → finished-videos/2026-11-03-od-sait.mp4 (38 с, --still 0,15.8,31.5)
 ```
 Готовое и подписи — `finished-videos/обложки/ostap-посты-2026-11-02/` (`КАК-ПОСТАВИТЬ.md`).
 

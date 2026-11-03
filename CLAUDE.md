@@ -148,6 +148,8 @@ Stories-анонсы каруселей — `npm run announce` (`finished-videos
 на тёмно-синем) — `finished-videos/обложки/ostap-reels-gtt/`; обложка нового интро «официально» — `finished-videos/обложки/ostap-интро/`.
 Интро «официально» (фото в костюме из его Instagram, кейсы Alibaba и Мегамаркета/Сбера с цифрами с сайта) — `finished-videos/2026-11-02-od-intro.mp4`,
 генератор `reels-studio/tools/od-posts/reel-intro.mjs`, фото — `source-videos/фото-от-пользователя/остап/из-профиля/`.
+Ролик «Мой сайт» (03.11.2026, до 40 с: разделы, три языка RU · EN · 中文, блог) — `finished-videos/2026-11-03-od-sait.mp4`, генератор
+`reels-studio/tools/od-posts/reel-sait.mjs`, настоящие экраны сайта — `source-videos/ostapdotcenko/site/2026-11-03-сайт/`.
 
 ## Монтажная — приложение для монтажа (решение пользователя 22.10.2026)
 
