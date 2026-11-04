@@ -17,7 +17,7 @@ import {Skeptic} from "./site-manhua/skeptic";
 import {Bubble, Burst, C, Grain, Halftone, Narration, Phone, Sfx, SpeedLines, Tape, Vignette} from "./site-manhua/fx";
 import {useBrush, BRUSH} from "../components/MontazhFx";
 
-export const MANHUA_COVERS = 15;
+export const MANHUA_COVERS = 18;
 // все анимации набора к этому кадру уже закончились; 3D-жесты считаются от T секунд
 const F = 200;
 const T = F / 30;
@@ -592,8 +592,90 @@ const GttJin: React.FC = () => (
   </AbsoluteFill>
 );
 
-const COVERS = [OdHook, OdPage, AuraHook, AuraTeam, GttHook, GttPeople, GttVs, GttCampus, GttPage, GttCountries, GttKeyhole, GttMagazine, GttForbidden, GttChat, GttJin];
-export const COVER_NAMES = ["od-A-hook", "od-B-glavy", "aura-A-hook", "aura-B-komanda", "gtt-A-hook", "gtt-B-pervye-lica", "gtt-C-vs", "gtt-D-kampusy", "gtt-E-stranica", "gtt-F-strany", "gtt-G-skvazhina", "gtt-H-zhurnal", "gtt-I-403", "gtt-J-chat", "gtt-K-jin"];
+// ── английские версии выбранных обложек (04.11.2026: «обложки к этим видео на английском… по примеру русских») ──
+const OdHookEn: React.FC = () => (
+  <AbsoluteFill style={{background: C.ink}}>
+    <SpeedLines color="#fff" opacity={0.75} inner={400} cy={560} seed="oda" />
+    <div style={abs(64, 286, mono(30, "#fff"))}>OSTAP DOTSENKO · 多增科</div>
+    {[["VISIT", 340, 124, "#fff"], ["MY WEBSITE,", 474, 98, "#fff"], ["READ MY BLOG!", 604, 80, C.y]].map(([t, y, s, c]) => (
+      <div key={t as string} style={{position: "absolute", left: 0, right: 0, top: y as number, textAlign: "center", whiteSpace: "nowrap", ...dela(s as number, c as string, {textShadow: `12px 12px 0 ${C.red}`})}}>{t}</div>
+    ))}
+    <Sfx text="哇!" x={860} y={250} size={110} color={C.y} at={0} font={FONT.zcool} rot={12} />
+    {/* жёлтая половина с косым срезом */}
+    <AbsoluteFill style={{clipPath: "polygon(0 930px, 1080px 860px, 1080px 1920px, 0 1920px)"}}>
+      <Halftone bg={C.y} dot="rgba(25,25,34,.16)" />
+      <SpeedLines color={C.ink} opacity={0.55} inner={520} cx={300} cy={1300} seed="odb" />
+    </AbsoluteFill>
+    <svg width={1080} height={1920} style={{position: "absolute", inset: 0}}>
+      <line x1={0} y1={930} x2={1080} y2={860} stroke={C.ink} strokeWidth={14} />
+      <line x1={0} y1={952} x2={1080} y2={882} stroke={C.red} strokeWidth={8} />
+    </svg>
+    <div style={abs(60, 1000, {fontFamily: FONT.zcool, fontSize: 120, color: C.ink, lineHeight: 1, textShadow: `8px 8px 0 ${C.red}`})}>我的网站</div>
+    <AbsoluteFill style={{perspective: 1800}}>
+      <div style={abs(70, 1150, {transform: "rotateY(18deg) rotateZ(-7deg)", transformStyle: "preserve-3d"})}>
+        <Phone w={380} imgs={[`${OD_IMG}en-00-top.jpg`]} mode="swap" />
+      </div>
+    </AbsoluteFill>
+    <Img src={staticFile(`${CUT}финал-сайт-3.png`)} style={{position: "absolute", right: -90, bottom: -40, height: 1000, filter: `drop-shadow(8px 0 0 #fff) drop-shadow(-8px 0 0 #fff) drop-shadow(0 8px 0 #fff) drop-shadow(0 -8px 0 #fff) drop-shadow(18px 18px 0 ${C.ink})`}} />
+    <Tape x={300} y={1560} at={0} rot={-4} font={FONT.mono} size={54}>ostapdotcenko.ru</Tape>
+    <Grain opacity={0.12} />
+  </AbsoluteFill>
+);
+
+const AuraHookEn: React.FC = () => (
+  <AbsoluteFill style={{background: A.deep}}>
+    <Halftone bg={A.deep} dot="rgba(255,246,93,.08)" size={20} r={3} />
+    <AbsoluteFill style={{background: "radial-gradient(ellipse 560px 760px at 760px 1150px, rgba(255,246,93,.26), transparent 70%)"}} />
+    <div style={abs(64, 282, mono(28, A.lemon))}>AURA ROBOTICS · AURA-ROBOTICS.RU</div>
+    <div style={abs(60, 330, dela(104, A.parch))}>Factory robots.</div>
+    <div style={abs(60, 456, dela(84, A.ink, {background: A.lemon, padding: "4px 18px", boxShadow: `8px 8px 0 ${A.parch}`}))}>No middlemen</div>
+    <Crate x={570} y={1420} w={440} h={320} />
+    <AuraMascot plan={{stays: [{at: 0, x: 790, y: 1430, face: -0.35}], gestures: [{at: T - 0.8, kind: "pointUp"}]}} scale={2.25} dpr={1.5} />
+    <Skeptic x={-90} y={1170} scale={1.2} emo="shock" rim={A.lemon} fill="#0E0E0E" accent={A.lemon} />
+    <Bubble x={36} y={660} w={500} h={270} tail={[180, 540]} fill={A.parch} stroke={A.ink} scale={1} opacity={1}>
+      <div style={dela(64, A.ink)}>A robot?</div>
+      <div style={dela(52, A.ink)}>From China?</div>
+    </Bubble>
+    <Bubble x={575} y={590} w={460} h={260} shout tail={[95, 345]} fill="#fff" stroke={A.ink} scale={1} opacity={1}>
+      <div style={dela(104, A.ink)}>
+        <Mark>YES!</Mark>
+      </div>
+    </Bubble>
+    <Sfx text="嗯？" x={440} y={1060} size={120} color={A.lemon} stroke={A.ink} at={0} font={FONT.zcool} rot={-8} />
+    <Grain opacity={0.1} />
+  </AbsoluteFill>
+);
+
+const GttMagazineEn: React.FC = () => (
+  <AbsoluteFill style={{background: "#fff"}}>
+    <AbsoluteFill style={{background: `radial-gradient(circle at 60% 62%, ${G.n1}, ${G.n2} 50%, ${G.n3})`, clipPath: "polygon(0 560px, 1080px 520px, 1080px 1920px, 0 1920px)"}} />
+    <AbsoluteFill style={{clipPath: "polygon(0 560px, 1080px 520px, 1080px 1920px, 0 1920px)"}}>
+      <SpeedLines color="rgba(255,255,255,.55)" cx={640} cy={1150} inner={330} opacity={0.9} seed="mg" />
+    </AbsoluteFill>
+    {/* шапка журнала */}
+    <div style={abs(40, 250, {...mono(26, G.ink)})}>ISSUE #1 · 第一话 · EXPEDITIONS TO CHINA</div>
+    <div style={abs(30, 290, dela(240, G.blue, {letterSpacing: "-0.02em", textShadow: `8px 8px 0 ${G.red}, 16px 16px 0 ${G.ink}`, lineHeight: 1}))}>GTT</div>
+    <div style={abs(722, 322, {width: 330, whiteSpace: "nowrap"})}>
+      <div style={{fontFamily: FONT.zcool, fontSize: 52, color: G.ink, lineHeight: 1}}>全球科技之旅</div>
+      <div style={{...inter(30, G.ink), marginTop: 10}}>GLOBAL TECH TOUR</div>
+      <div style={{...inter(27, G.red), marginTop: 6}}>All about closed China</div>
+    </div>
+    {/* фото пользователя 04.11.2026 (выступление с микрофоном, закреп профиля); логотип площадки срезан вместе с низом кадра */}
+    <Img src={staticFile(`${CUT}ostap-megamarket-mikrofon.png`)} style={{position: "absolute", left: 170, top: 720, height: 1220, filter: `drop-shadow(10px 0 0 #fff) drop-shadow(-10px 0 0 #fff) drop-shadow(0 -10px 0 #fff) drop-shadow(18px 18px 0 ${G.ink})`}} />
+    <Blurb x={220} y={815} r={215} color="#fff" rot={-8} seed="b1"><span style={{fontSize: 30}}>EXCLUSIVE</span><span style={dela(50, G.red, {lineHeight: 1.1})}>ACCESS</span></Blurb>
+    <Blurb x={200} y={1195} r={175} color={G.sky} rot={6} seed="b2"><span style={{fontSize: 24}}>SPECIAL ISSUE</span><span>Campuses</span><span>Huawei</span><span>Alibaba</span></Blurb>
+    <Blurb x={215} y={1510} r={150} color="#FFD92E" rot={-5} seed="b3"><span style={{fontSize: 36}}>9 countries</span><span>76 programs</span></Blurb>
+    <div style={abs(790, 1555, {background: "#fff", border: `4px solid ${G.ink}`, padding: "10px 12px", rotate: "3deg"})}>
+      <div style={{width: 210, height: 70, background: `repeating-linear-gradient(90deg, ${G.ink} 0 5px, transparent 5px 9px, ${G.ink} 9px 11px, transparent 11px 16px, ${G.ink} 16px 20px, transparent 20px 23px)`}} />
+      <div style={{...mono(20, G.ink), marginTop: 6, textAlign: "center"}}>globaltechtour.ru</div>
+    </div>
+    <Sfx text="轰!" x={860} y={620} size={130} color="#fff" stroke={G.ink} at={0} font={FONT.zcool} rot={12} />
+    <Grain opacity={0.08} />
+  </AbsoluteFill>
+);
+
+const COVERS = [OdHook, OdPage, AuraHook, AuraTeam, GttHook, GttPeople, GttVs, GttCampus, GttPage, GttCountries, GttKeyhole, GttMagazine, GttForbidden, GttChat, GttJin, OdHookEn, AuraHookEn, GttMagazineEn];
+export const COVER_NAMES = ["od-A-hook", "od-B-glavy", "aura-A-hook", "aura-B-komanda", "gtt-A-hook", "gtt-B-pervye-lica", "gtt-C-vs", "gtt-D-kampusy", "gtt-E-stranica", "gtt-F-strany", "gtt-G-skvazhina", "gtt-H-zhurnal", "gtt-I-403", "gtt-J-chat", "gtt-K-jin", "od-A-hook-en", "aura-A-hook-en", "gtt-H-zhurnal-en"];
 
 export const ManhuaCovers: React.FC = () => {
   const f = useCurrentFrame();

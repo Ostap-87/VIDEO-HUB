@@ -11,7 +11,9 @@ const ROOT = '/home/user/VIDEO-HUB', SV = `file://${ROOT}/source-videos/`, F = `
 const K = `${SV}2026-11-03-gtt-проект/обложка/`, XW = `${SV}2026-10-26-xingwang/фото/`, YK = `${SV}2026-10-26-yingke/фото/`;
 const CUT = `${SV}фото-от-пользователя/остап/вырезки/ostap-portret-sait.png`, NF = `file://${ROOT}/reels-studio/tools/nav-covers/fonts/`;
 const FON = process.argv.includes('fony');
-const OUT = `${ROOT}/finished-videos/обложки/ostap-gruppy${FON ? '/фоны' : ''}`;
+// en — английская версия выбранной обложки B2 (04.11.2026, к ролику 2026-11-04-od-gruppy-en) → ostap-gruppy/en/
+const EN = process.argv.includes('en');
+const OUT = `${ROOT}/finished-videos/обложки/ostap-gruppy${FON ? '/фоны' : EN ? '/en' : ''}`;
 fs.mkdirSync(OUT, { recursive: true }); fs.mkdirSync('/dev/shm/cg', { recursive: true });
 
 const tile = (src, st, pos = 'center 30%', cap = '') => `<div class="tile" style="${st}"><div class="ph" style="background-image:url('${src}');background-position:${pos}"></div>${cap ? `<i>${cap}</i>` : ''}</div>`;
@@ -27,14 +29,18 @@ const BG = {
   navy: { bg: '<div class="hb"></div>', speed: 'rgba(125,211,252,.08)', sh: '#2563EB', tag: 'background:#7DD3FC;color:#081440;box-shadow:8px 8px 0 #2563EB', sfx: '' },
   photo: { bg: `<div class="phbg" style="background-image:url('${K}sany-group.jpg')"></div><div class="a" style="inset:0;background:rgba(21,21,29,.62)"></div><div class="dots"></div>`, speed: 'rgba(255,217,46,.06)', sh: '#FFD92E', tag: 'background:#FFD92E;color:#191922;box-shadow:8px 8px 0 #E8341C', sfx: '' },
 };
-const makeB = (k) => { const b = BG[k]; return `${b.bg}<div class="speed" style="--sp:${b.speed}"></div>
+const TXT = {
+  ru: { q: 'Куда я вожу группы в&nbsp;Китае?', p1: 'к роботам', p2: 'на заводы', p3: 'к председателям', tag: 'только реальные кадры' },
+  en: { q: 'Where do I take groups in&nbsp;China?', p1: 'to robots', p2: 'to factories', p3: 'to chairmen', tag: 'only real footage' },
+};
+const makeB = (k, lang = 'ru') => { const b = BG[k], L = TXT[lang]; return `${b.bg}<div class="speed" style="--sp:${b.speed}"></div>
     <img class="cut" src="${CUT}" style="right:-200px;bottom:240px;height:1180px;-webkit-mask-image:linear-gradient(#000 80%,transparent 99%);mask-image:linear-gradient(#000 80%,transparent 99%)">
-    <div class="bub" style="left:44px;top:262px;width:690px;font-size:64px;rotate:-6deg;transform-origin:0 100%">Куда я вожу группы в&nbsp;Китае?<small>我带团去哪儿？</small></div>
-    ${pola(`${K}robot-push.jpg`, `left:50px;top:690px;rotate:-7deg;--psh:${b.sh}`, 'center 35%', 'к роботам')}
-    ${pola(`${K}sany-group.jpg`, `left:120px;top:1010px;rotate:5deg;--psh:${b.sh}`, 'center 50%', 'на заводы')}
-    ${pola(`${XW}koni.jpg`, `left:40px;top:1300px;rotate:-4deg;z-index:3;--psh:${b.sh}`, 'center 45%', 'к председателям')}
+    <div class="bub" style="left:44px;top:262px;width:690px;font-size:64px;rotate:-6deg;transform-origin:0 100%">${L.q}<small>我带团去哪儿？</small></div>
+    ${pola(`${K}robot-push.jpg`, `left:50px;top:690px;rotate:-7deg;--psh:${b.sh}`, 'center 35%', L.p1)}
+    ${pola(`${K}sany-group.jpg`, `left:120px;top:1010px;rotate:5deg;--psh:${b.sh}`, 'center 50%', L.p2)}
+    ${pola(`${XW}koni.jpg`, `left:40px;top:1300px;rotate:-4deg;z-index:3;--psh:${b.sh}`, 'center 45%', L.p3)}
     <div class="sfx" style="right:56px;top:300px;font-size:170px;rotate:8deg;${b.sfx}">走!</div>
-    <div class="tag" style="right:64px;top:1450px;rotate:2deg;${b.tag}">только реальные кадры</div>`; };
+    <div class="tag" style="right:64px;top:1450px;rotate:2deg;${b.tag}">${L.tag}</div>`; };
 const FONY = { 'B1-чернила': 'ink', 'B2-жёлтый': 'yellow', 'B3-красный': 'red', 'B4-бумага': 'paper', 'B5-тёмно-синий-GTT': 'navy', 'B6-фото-цеха': 'photo' };
 
 const V = {
@@ -77,7 +83,7 @@ const V = {
     <div class="tag" style="left:64px;top:1545px;rotate:-1.5deg;background:#E8341C;color:#fff;box-shadow:8px 8px 0 #FFD92E">и это только малая часть</div>`,
 };
 
-const SET = FON ? Object.fromEntries(Object.entries(FONY).map(([n, k]) => [n, makeB(k)])) : V;
+const SET = EN ? { 'B2-жёлтый-en': makeB('yellow', 'en') } : FON ? Object.fromEntries(Object.entries(FONY).map(([n, k]) => [n, makeB(k)])) : V;
 const html = `<!doctype html><html><head><meta charset="utf-8"><style>
 @font-face{font-family:Unbounded;font-weight:200 900;src:url('file://${F}Unbounded-variable.ttf')}
 @font-face{font-family:Golos;font-weight:400 900;src:url('file://${F}GolosText-variable.ttf')}

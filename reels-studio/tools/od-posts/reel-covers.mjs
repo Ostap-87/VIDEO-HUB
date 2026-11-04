@@ -120,7 +120,12 @@ export const INTRO_COVERS = [
   { out: 'интро-официально-дело.jpg', t: 'D1', n: PR + '2023-11-17-костюм.jpg', pos: 'center 0%', label: 'Знакомство · кто я', title: 'Ex Alibaba.<br>Ex Сбер.', zh: '多增科', sub: 'сейчас — Шанхай', wm: '我' },
   { out: 'интро-официально-маньхуа.jpg', t: 'M1', bg: 'hy', n: PR + '2017-01-08-костюм-портрет.jpg', pos: 'center 20%', cy: 300, ch: 1320, bubble: 'Кто я и чем занимаюсь?', zh: '我是谁？', bubSt: 'right:56px;top:250px;width:560px', tail: '380px', sfx: '你好!', sfxSt: 'left:50px;top:1260px', strip: 'Ex Alibaba · Ex Сбер · Шанхай' },
 ];
-const RUNS = { gtt: [GTT_COVERS, 'ostap-reels-gtt', true], intro: [INTRO_COVERS, 'ostap-интро', false] };
+// английские версии обложек интро (04.11.2026, к ролику 2026-11-04-od-intro-en) → ostap-интро/en/
+export const INTRO_COVERS_EN = [
+  { out: 'intro-official-delo-en.jpg', t: 'D1', n: PR + '2023-11-17-костюм.jpg', pos: 'center 0%', label: 'Meet me · who I am', title: 'Ex Alibaba.<br>Ex Sber.', zh: '多增科', sub: 'now — Shanghai', wm: '我' },
+  { out: 'intro-official-manhua-en.jpg', t: 'M1', bg: 'hy', n: PR + '2017-01-08-костюм-портрет.jpg', pos: 'center 20%', cy: 300, ch: 1320, bubble: 'Who am I and what do I do?', zh: '我是谁？', bubSt: 'right:56px;top:250px;width:560px', tail: '380px', sfx: '你好!', sfxSt: 'left:50px;top:1260px', strip: 'Ex Alibaba · Ex Sber · Shanghai' },
+];
+const RUNS = { gtt: [GTT_COVERS, 'ostap-reels-gtt', true], intro: [INTRO_COVERS, 'ostap-интро', false], 'intro-en': [INTRO_COVERS_EN, 'ostap-интро/en', false] };
 if (isMain && RUNS[process.argv[2]]) {
   const [list, dir, navy] = RUNS[process.argv[2]];
   const OUTG = `${ROOT}/finished-videos/обложки/${dir}`; fs.mkdirSync(OUTG, { recursive: true });

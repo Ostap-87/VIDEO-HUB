@@ -1123,7 +1123,14 @@ git (`.gitattributes`: `-filter binary`), как копии для публик�
   текста, берутся русские снимки.
 - Тексты — с английских версий сайтов (заголовки статей блога, названия программ `title_en` из `tours.json`, кейсы `en.ts`); числа по-английски
   (`countText(…, "en-US")` в `site-manhua/fx.tsx`, «50,000»). Мат — английский, тоже знаками (`F#CK`, `d#mn`, `H#ll`, `Holy sh#t`).
-- Музыка та же, что в русских версиях; строка автора в подписи — та же. Обложки английских версий не делали.
+- Музыка та же, что в русских версиях; строка автора в подписи — та же.
+- **Обложки английских версий** (04.11.2026: «обложки к этим видео на английском… по примеру тех, что делали для русских») — те же
+  выбранные варианты с английским текстом: манхуа — кадры 15–17 `ManhuaCovers` (`OdHookEn` «Visit my website, read my blog!»,
+  `AuraHookEn` «Factory robots. No middlemen» · «A robot? From China?» — «YES!», `GttMagazineEn` «Exclusive access», «All about closed China»;
+  `--frames=15-17`); интро — `node reels-studio/tools/od-posts/reel-covers.mjs intro-en` (`INTRO_COVERS_EN`, два варианта, как у русского) →
+  `finished-videos/обложки/ostap-интро/en/`; «Куда я вожу группы» — `node reels-studio/tools/gtt-reel/cover-gruppy.mjs en` (B2 жёлтый,
+  тексты `TXT.en`) → `ostap-gruppy/en/`; «3 projects» — кадр 2,2 с ролика (как у русского — первый кадр). Готовые —
+  `finished-videos/обложки/2026-11-04-<ролик>-en.jpg`, лист с видом в сетке — `лист-en-2026-11-04.jpg`, архив `covers-en-2026-11-04.zip`.
 
 ## Библиотека звуков и техно-музыка (03.11.2026)
 
