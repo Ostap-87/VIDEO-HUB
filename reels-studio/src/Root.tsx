@@ -31,6 +31,7 @@ import appPromoSample from "../props/2026-10-27-gtt-app-promo.json";
 import {DeskPromo, deskPromoFrames, deskPromoSchema, type DeskPromoProps} from "./compositions/DeskPromo";
 import {SiteManhua, SiteManhuaPreview, SITE_MANHUA_FRAMES} from "./compositions/SiteManhua";
 import {BlogNews, BlogNewsPreview, bnFrames, type BlogNewsProps} from "./compositions/BlogNews";
+import {BlogNewsCovers} from "./compositions/BlogNewsCovers";
 import blogNewsSample from "../props/blog-news/001-coffee-with-hint-audit.json";
 import {SiteManhuaEn, SiteManhuaEnPreview, SITE_MANHUA_EN_FRAMES} from "./compositions/SiteManhuaEn";
 import {AuraSiteManhua, AuraSiteManhuaPreview, AURA_MANHUA_FRAMES} from "./compositions/AuraSiteManhua";
@@ -300,6 +301,8 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{...(blogNewsSample as BlogNewsProps), step: 30, start: 15}}
         calculateMetadata={({props}: {props: BlogNewsProps}) => ({durationInFrames: bnFrames(props)})}
       />
+      {/* обложки выпусков «多 NEWS»: кадр N = выпуск N / 3 × раскладка (journal, shout, page) */}
+      <Composition id="BlogNewsCovers" component={BlogNewsCovers} width={1080} height={1920} fps={30} durationInFrames={30} />
       {/* английские версии (04.11.2026) */}
       <Composition id="GttSiteManhuaEn" component={GttSiteManhuaEn} width={1080} height={1920} fps={30} durationInFrames={GTT_MANHUA_EN_FRAMES} defaultProps={{clean: true}} />
       <Composition id="GttSiteManhuaEnPreview" component={GttSiteManhuaEnPreview} width={1080} height={1920} fps={30} durationInFrames={GTT_MANHUA_EN_FRAMES} defaultProps={{step: 30, start: 15, clean: true}} />

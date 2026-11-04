@@ -192,5 +192,24 @@
   "Конец 2025: 31 048 кофеен, выручка 49,3 млрд ¥ (+43 %)",
   "Лето 2025: первые кофейни на Манхэттене",
   "Основатели открыли Cotti Coffee — чашка подешевела до девяти юаней с копейками"
- ]
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/hf-padenie.jpg",
+  "heroPos": "50% 40%",
+  "alt": "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/hf-feniks.jpg",
+  "altPos": "50% 30%",
+  "big": "−76 %",
+  "bigText": "акции за один день",
+  "blurbs": [
+   {
+    "big": "2,2 млрд ¥",
+    "text": "выдуманных продаж"
+   },
+   {
+    "big": "31 048",
+    "text": "кофеен к концу 2025-го"
+   }
+  ],
+  "tag": "Обман, делистинг — и возвращение"
+ }
 }

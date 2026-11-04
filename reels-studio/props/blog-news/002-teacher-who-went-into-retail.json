@@ -199,5 +199,24 @@
   "Декабрь 2023: ссора из-за текстов эфиров — акции East Buy −22 %",
   "Июль 2024: Дун Юйхуэй ушёл, продажи East Buy за год −40 % (Caixin)",
   "Выручка New Oriental: ≈4,3 млрд $ (2021) → 5,66 млрд $ (2026)"
- ]
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/teacher-who-went-into-retail/hf-strim.jpg",
+  "heroPos": "50% 30%",
+  "alt": "source-videos/ostapdotcenko/blog-news/teacher-who-went-into-retail/hf-zapret.jpg",
+  "altPos": "50% 30%",
+  "big": "60 000",
+  "bigText": "сотрудников уволено",
+  "blurbs": [
+   {
+    "big": "−90 %",
+    "text": "стоимость за 2021 год"
+   },
+   {
+    "big": "5,66 млрд $",
+    "text": "выручка в 2026-м"
+   }
+  ],
+  "tag": "Запрет, кукуруза в эфире — и возвращение"
+ }
 }

@@ -196,5 +196,24 @@
   "«Тонкая красная линия»: план 1000 сотрудников, на пике ≈150",
   "Июнь 2025: цифровой двойник — 13 млн просмотров, 55 млн ¥ продаж",
   "Сентябрь 2025: спор с Xibei — брокколи со сроком хранения два года"
- ]
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/hf-dvoinik.jpg",
+  "heroPos": "50% 30%",
+  "alt": "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/hf-kladbishche.jpg",
+  "altPos": "50% 50%",
+  "big": "198 дней",
+  "bigText": "прожил мессенджер «Пуля»",
+  "blurbs": [
+   {
+    "big": "≈600 млн ¥",
+    "text": "долгов Smartisan"
+   },
+   {
+    "big": "13 млн",
+    "text": "просмотров у цифрового двойника"
+   }
+  ],
+  "tag": "Шесть провалов — и цифровой двойник"
+ }
 }
