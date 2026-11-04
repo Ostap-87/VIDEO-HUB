@@ -243,9 +243,9 @@ export const Panel: React.FC<{x: number; y: number; w: number; h: number; poly?:
 };
 
 // число набегает от нуля
-export const countText = (f: number, at: number, dur: number, value: number, pre = "", suf = "") => {
+export const countText = (f: number, at: number, dur: number, value: number, pre = "", suf = "", loc = "ru-RU") => {
   const v = Math.round(value * p(f, at, at + dur, Easing.out(Easing.cubic)));
-  return `${pre}${v >= 10000 ? v.toLocaleString("ru-RU").replace(/ /g, " ") : v}${suf}`;
+  return `${pre}${v >= 10000 ? v.toLocaleString(loc).replace(/ /g, " ") : v}${suf}`;
 };
 
 // буквы печатаются по одной

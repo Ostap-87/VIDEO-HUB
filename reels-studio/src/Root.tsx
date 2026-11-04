@@ -30,8 +30,11 @@ import {AppPromo, appPromoFrames, appPromoSchema, type AppPromoProps} from "./co
 import appPromoSample from "../props/2026-10-27-gtt-app-promo.json";
 import {DeskPromo, deskPromoFrames, deskPromoSchema, type DeskPromoProps} from "./compositions/DeskPromo";
 import {SiteManhua, SiteManhuaPreview, SITE_MANHUA_FRAMES} from "./compositions/SiteManhua";
+import {SiteManhuaEn, SiteManhuaEnPreview, SITE_MANHUA_EN_FRAMES} from "./compositions/SiteManhuaEn";
 import {AuraSiteManhua, AuraSiteManhuaPreview, AURA_MANHUA_FRAMES} from "./compositions/AuraSiteManhua";
+import {AuraSiteManhuaEn, AuraSiteManhuaEnPreview, AURA_MANHUA_EN_FRAMES} from "./compositions/AuraSiteManhuaEn";
 import {GttSiteManhua, GttSiteManhuaPreview, GTT_MANHUA_FRAMES} from "./compositions/GttSiteManhua";
+import {GttSiteManhuaEn, GttSiteManhuaEnPreview, GTT_MANHUA_EN_FRAMES} from "./compositions/GttSiteManhuaEn";
 import {ManhuaCovers, MANHUA_COVERS} from "./compositions/ManhuaCovers";
 import deskPromoSample from "../props/2026-10-27-sibdoc-promo.json";
 
@@ -274,6 +277,13 @@ export const RemotionRoot: React.FC = () => {
         durationInFrames={SITE_MANHUA_FRAMES}
         defaultProps={{step: 30, start: 15}}
       />
+      {/* английские версии (04.11.2026) */}
+      <Composition id="GttSiteManhuaEn" component={GttSiteManhuaEn} width={1080} height={1920} fps={30} durationInFrames={GTT_MANHUA_EN_FRAMES} defaultProps={{clean: true}} />
+      <Composition id="GttSiteManhuaEnPreview" component={GttSiteManhuaEnPreview} width={1080} height={1920} fps={30} durationInFrames={GTT_MANHUA_EN_FRAMES} defaultProps={{step: 30, start: 15, clean: true}} />
+      <Composition id="AuraSiteManhuaEn" component={AuraSiteManhuaEn} width={1080} height={1920} fps={30} durationInFrames={AURA_MANHUA_EN_FRAMES} defaultProps={{clean: true}} />
+      <Composition id="AuraSiteManhuaEnPreview" component={AuraSiteManhuaEnPreview} width={1080} height={1920} fps={30} durationInFrames={AURA_MANHUA_EN_FRAMES} defaultProps={{step: 30, start: 15, clean: true}} />
+      <Composition id="SiteManhuaEn" component={SiteManhuaEn} width={1080} height={1920} fps={30} durationInFrames={SITE_MANHUA_EN_FRAMES} />
+      <Composition id="SiteManhuaEnPreview" component={SiteManhuaEnPreview} width={1080} height={1920} fps={30} durationInFrames={SITE_MANHUA_EN_FRAMES} defaultProps={{step: 30, start: 15}} />
       <Composition
         id="GTTLogo"
         component={SiteLogoPreview}

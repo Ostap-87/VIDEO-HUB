@@ -1106,6 +1106,25 @@ git (`.gitattributes`: `-filter binary`), как копии для публик�
     Готовая — `finished-videos/обложки/2026-11-03-gtt-sait-manhua.jpg`.
     Выбранную ставлю `cover_url` в пост POST-HUB или первой секундой ролика (`npm run cover`).
 
+## Английские версии роликов (04.11.2026)
+
+Пользователь: «а теперь давай все эти ролики сделаем на английском языке, в том числе и тот ролик, который обо мне» — выбраны шесть:
+три манхуа, интро «официально», «Куда я вожу группы», «3 проекта». Английская версия — **копия** композиции или скрипта с переводом
+надписей (русская остаётся как есть), имя файла и ролика с `-en` / `En`:
+- Remotion: `SiteManhuaEn`, `AuraSiteManhuaEn`, `GttSiteManhuaEn` (`src/compositions/*En.tsx`, превью `…EnPreview`), рендер как у русских:
+  `TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts <Композиция>En ../finished-videos/2026-11-04-<ролик>-en.mp4 --bundle-cache=false --crf=18`;
+- скрипты Playwright: `tools/od-posts/reel-intro-en.mjs`, `tools/gtt-reel/reel-gruppy-od-en.mjs`, `tools/od-posts/reel-3-proekta-en.mjs`
+  (свои папки кадров в `/dev/shm/*-en`, выход `finished-videos/2026-11-04-<ролик>-en.mp4`).
+- Экраны сайтов — **английские версии самих сайтов**: ostapdotcenko.ru (`localStorage.lang = en`), aura-robotics.ru/en, globaltechtour.ru/en
+  (`localStorage['global-tech-tour-locale'] = en`), снимки 390×844 × 2,5 с префиксом `en-` рядом с русскими
+  (`source-videos/ostapdotcenko/site/2026-11-03-сайт/en-*`, `source-videos/aura-robotics/site/2026-11-03-сайт/en-*`,
+  `source-videos/globaltechtour/site/2026-11-03-сайт/en-*`), прокрутка — `source-videos/сайты-прокрутка/*-en.mp4`
+  (`scripts/site_scroll.mjs … --locale en-US --ls lang=en`; новые ключи `--locale` и `--ls ключ=значение`). Кадры кейсов Aura — фото без
+  текста, берутся русские снимки.
+- Тексты — с английских версий сайтов (заголовки статей блога, названия программ `title_en` из `tours.json`, кейсы `en.ts`); числа по-английски
+  (`countText(…, "en-US")` в `site-manhua/fx.tsx`, «50,000»). Мат — английский, тоже знаками (`F#CK`, `d#mn`, `H#ll`, `Holy sh#t`).
+- Музыка та же, что в русских версиях; строка автора в подписи — та же. Обложки английских версий не делали.
+
 ## Библиотека звуков и техно-музыка (03.11.2026)
 
 «Надо использовать больше разных звуков для эффектов… и нужно ещё найти нормальную музыку в стиле техно и бесплатную для роликов».

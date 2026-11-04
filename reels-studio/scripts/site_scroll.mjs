@@ -3,6 +3,7 @@
 //
 //   node scripts/site_scroll.mjs <url> <out.mp4> [--from <css-селектор или px>] [--seconds 16] [--speed 170]
 //        [--hide ".tgme_channel_info_counters"] [--w 432] [--h 768] [--dpr 2.5] [--wait 1500] [--end]
+//        [--locale en-US] [--ls lang=en]   (английская версия сайта: язык браузера и запись в localStorage)
 //
 // Кадр 432×768 CSS px при плотности 2.5 = 1080×1920 (весь экран Stories). Каждый кадр — свой скриншот после прокрутки
 // на нужную высоту (не запись экрана): прокрутка ровная, с плавным разгоном и торможением, 30 кадров в секунду.
@@ -36,7 +37,12 @@ const browser = await pw.chromium.launch({
   executablePath: existsSync(CLOUD_BROWSER) ? CLOUD_BROWSER : undefined,
   proxy: process.env.HTTPS_PROXY ? {server: process.env.HTTPS_PROXY} : undefined,
 });
-const page = await (await browser.newContext({viewport: {width: W, height: H}, deviceScaleFactor: DPR, isMobile: true, hasTouch: true, locale: "ru-RU"})).newPage();
+const page = await (await browser.newContext({viewport: {width: W, height: H}, deviceScaleFactor: DPR, isMobile: true, hasTouch: true, locale: opt("locale", "ru-RU")})).newPage();
+// --ls ключ=значение — запись в localStorage до загрузки (язык сайта: ostapdotcenko.ru — lang=en, globaltechtour.ru — global-tech-tour-locale=en)
+for (let i = 0; i < args.length; i++) if (args[i] === "--ls") {
+  const [k, v] = args[i + 1].split("=");
+  await page.addInitScript(([k, v]) => { try { localStorage.setItem(k, v); } catch (e) {} }, [k, v]);
+}
 // страница могла не загрузиться (ошибка прокси «upstream request failed», пустой ответ) — до 4 попыток, иначе ошибка
 for (let i = 1; ; i++) {
   const res = await page.goto(url, {waitUntil: "networkidle", timeout: 90000}).catch((e) => ({ok: () => false, status: () => String(e).slice(0, 80)}));
