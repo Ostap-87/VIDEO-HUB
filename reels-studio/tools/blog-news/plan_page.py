@@ -9,6 +9,7 @@ from pathlib import Path
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[3]
+MUSIC = json.loads((ROOT / "reels-studio/library/music.json").read_text())
 Q = ROOT / "reels-studio/props/blog-news/очередь.json"
 DAYS = ["пн", "вт", "ср", "чт", "пт", "сб", "вс"]
 MON = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"]
@@ -56,7 +57,12 @@ def main():
             rows.append(f'<h2 class="season"><span class="zh">{E(e["zh"])}</span><span class="sname">Сезон «{E(e["season"])}»</span><span class="count">{e["stotal"]} {"выпуск" if e["stotal"] == 1 else "выпуска" if e["stotal"] < 5 else "выпусков"}</span></h2>')
         d, wd = when(e["day"])
         t = thumb(e["slug"])
-        pilot = e["n"] == 1
+        ready = e.get("status") in ("готов", "вышел")  # готовые выпуски: о ком и какая музыка — из props выпуска
+        pr = next(iter((ROOT / "reels-studio/props/blog-news").glob(f'*-{e["slug"]}.json')), None)
+        pj = json.loads(pr.read_text()) if pr else {}
+        mus = next((m for m in MUSIC.values() if m.get("title") and m.get("src") == pj.get("music", {}).get("src")), {})
+        tag = " · ".join(x for x in [e.get("status", ""), pj.get("brand", {}).get("name", ""), f'музыка: {mus["title"]}' if mus.get("title") else ""] if x)
+        pilot = ready
         excerpt = json.loads('"' + ex.get(e["slug"], "") + '"') if ex.get(e["slug"]) else ""
         rows.append(
             f'<article class="ep{" pilot" if pilot else ""}">'
@@ -64,7 +70,7 @@ def main():
             f'<div class="when"><b>{d}</b><span>{wd} · {e["sn"]}/{e["stotal"]}</span></div>'
             + (f'<img class="cov" src="{t}" alt="">' if t else '<div class="cov none">多</div>')
             + f'<div class="txt"><h3>{E(e["title"])}</h3><p>{E(excerpt)}</p>'
-            + ('<span class="tag">пилот готов · Luckin Coffee</span>' if pilot else "")
+            + (f'<span class="tag">{E(tag)}</span>' if ready else "")
             + "</div></article>"
         )
     aura = "".join(f'<li><span>{E(x["date"][8:10])}.{E(x["date"][5:7])}</span>{E(x["title"])}</li>' for x in q.get("aura", []))

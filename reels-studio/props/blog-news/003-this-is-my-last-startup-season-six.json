@@ -1,0 +1,200 @@
+{
+ "show": "多 NEWS",
+ "cover": "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/cover.jpg",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/ru-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/ru-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/ru-02.jpg"
+ ],
+ "ep": 3,
+ "season": {
+  "name": "Перезапуски",
+  "zh": "重启",
+  "n": 3,
+  "total": 3
+ },
+ "title": "Это мой последний стартап. Часть шестая",
+ "date": "2026-10-20",
+ "slug": "this-is-my-last-startup-season-six",
+ "hook": {
+  "lines": [
+   "ЭТО МОЙ",
+   "ПОСЛЕДНИЙ",
+   "СТАРТАП"
+  ],
+  "shout": [
+   "…и это уже",
+   "часть шестая!"
+  ],
+  "sfx": "再"
+ },
+ "beats": [
+  {
+   "kind": "fall",
+   "sec": 8.2,
+   "zh": "败",
+   "kicker": "2006 → 2019",
+   "title": "Каталог провалов",
+   "img": "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/hf-kladbishche.jpg",
+   "imgPos": "50% 55%",
+   "steps": [
+    {
+     "when": "2006",
+     "text": "блог-платформа «Нюбо» — закрылась"
+    },
+    {
+     "when": "2008",
+     "text": "школа английского «Лао Ло» — закрылась"
+    },
+    {
+     "when": "2018",
+     "text": "компьютер TNT и мессенджер «Пуля» против WeChat"
+    }
+   ],
+   "big": {
+    "num": 198,
+    "suf": " дней",
+    "text": "прожила команда мессенджера «Пуля»"
+   },
+   "stamp": {
+    "text": "ЗАКРЫТО",
+    "sub": "«Нюбо» · «Лао Ло» · «Пуля»",
+    "zh": "关门"
+   },
+   "note": "Провал, посчитанный с точностью до дня, уже немного успех."
+  },
+  {
+   "kind": "rise",
+   "sec": 8.0,
+   "zh": "还债",
+   "kicker": "2018 → 2022",
+   "title": "Возврат долгов",
+   "img": "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/hf-dolg.jpg",
+   "imgPos": "50% 45%",
+   "steps": [
+    {
+     "when": "КОНЕЦ 2018",
+     "text": "Smartisan закрыт, долги ≈600 млн ¥, Ло — поручитель"
+    },
+    {
+     "when": "ЗАПРЕТ",
+     "text": "ни самолётов, ни первого класса, ни хороших отелей"
+    },
+    {
+     "when": "ВЕСНА 2020",
+     "text": "стримы на Douyin: продаёт всё подряд"
+    }
+   ],
+   "big": {
+    "num": 15,
+    "suf": " млн ¥",
+    "text": "цена места в первом эфире — так говорят"
+   },
+   "note": "Публика назвала это «Повесть о настоящем возврате долгов»."
+  },
+  {
+   "kind": "fall",
+   "sec": 8.3,
+   "zh": "最后",
+   "kicker": "2022 → 2025",
+   "title": "Последний стартап",
+   "img": "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/hf-ochki.jpg",
+   "imgPos": "50% 72%",
+   "steps": [
+    {
+     "when": "2022",
+     "text": "«Тонкая красная линия»: AR-очки"
+    },
+    {
+     "when": "ПРОТОТИП",
+     "text": "слишком тяжёлый для серии"
+    },
+    {
+     "when": "ЯНВ 2025",
+     "text": "разворот к ИИ: бета ассистента J1"
+    }
+   ],
+   "big": {
+    "pre": "≈",
+    "num": 50,
+    "suf": " млн $",
+    "text": "ангельский раунд: Meituan, DJI, известные фонды"
+   },
+   "stamp": {
+    "text": "ПОВОРОТ",
+    "sub": "AR → ИИ",
+    "zh": "转型"
+   },
+   "note": "«Это, наверное, мой последний стартап. Я вложу в него всё». Ло Юнхао, 2022"
+  },
+  {
+   "kind": "vs",
+   "sec": 8.3,
+   "zh": "分身",
+   "kicker": "2025",
+   "title": "Двойник",
+   "img": "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/hf-dvoinik.jpg",
+   "imgPos": "50% 28%",
+   "left": "ДВОЙНИК",
+   "right": "ЖИВОЙ ЛО",
+   "round": "ROUND 2025 · BAIDU",
+   "result": "Июнь 2025: по некоторым категориям аватар продал больше, чем живой Ло в мае",
+   "facts": [
+    {
+     "num": 13,
+     "suf": " млн",
+     "text": "просмотров за эфир больше 6 часов"
+    },
+    {
+     "pre": "≈",
+     "num": 55,
+     "suf": " млн ¥",
+     "text": "продаж цифрового двойника за один эфир"
+    },
+    {
+     "num": 97,
+     "suf": " тыс.",
+     "text": "слов описаний товаров сгенерировала нейросеть"
+    }
+   ]
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Провал —",
+   "не точка,",
+   "а запятая."
+  ],
+  "zh": "失败不是句号，是逗号。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-megamarket-mikrofon.png",
+  "from": "— из статьи"
+ },
+ "next": {
+  "n": 4,
+  "title": "Самый быстрый человек в городе",
+  "season": "Наблюдения",
+  "zh": "观察",
+  "newSeason": true
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/cybernetic-enhancements-dafuqex.mp3",
+  "drop": 53.0,
+  "vol": 0.2
+ },
+ "brand": {
+  "name": "Ло Юнхао",
+  "zh": "罗永浩"
+ },
+ "ticker": [
+  "Ло Юнхао (罗永浩) — основатель Smartisan, телефоны линейки «Орех»",
+  "2006 «Нюбо» → 2008 «Лао Ло» → 2012 Smartisan",
+  "2018: мессенджер «Пуля» — команду распустили через 198 дней",
+  "2019: электронная сигарета — брошена меньше чем за полгода",
+  "Долги Smartisan — ≈600 млн ¥, Ло — личный поручитель",
+  "2019: патенты Smartisan купила ByteDance",
+  "Январь 2022: исполнительные производства исчезли из судебных баз",
+  "«Тонкая красная линия»: план 1000 сотрудников, на пике ≈150",
+  "Июнь 2025: цифровой двойник — 13 млн просмотров, 55 млн ¥ продаж",
+  "Сентябрь 2025: спор с Xibei — брокколи со сроком хранения два года"
+ ]
+}

@@ -154,7 +154,7 @@ const Hook: React.FC<{h: BlogNewsProps["hook"]; cover: string; brand?: BlogNewsP
         const at = i === 0 ? -10 : 4 + 8 * i;
         if (f < at) return null;
         const s = spring({frame: f - at, fps, config: {damping: 9, stiffness: 300, mass: 0.6}});
-        return <div key={i} style={{position: "absolute", left: 64, top: 910 + i * 150, ...dela(128, cols[i % 3]), scale: String(1.7 - 0.7 * s), transformOrigin: "0 50%", textShadow: `8px 8px 0 ${i === 0 ? C.red : C.ink}`}}>{t}</div>;
+        return <div key={i} style={{position: "absolute", left: 64, top: 910 + i * 150, ...dela(Math.min(128, Math.floor(950 / (t.length * 0.92))), cols[i % 3]), scale: String(1.7 - 0.7 * s), transformOrigin: "0 50%", textShadow: `8px 8px 0 ${i === 0 ? C.red : C.ink}`}}>{t}</div>;
       })}
       {h.sfx ? <Sfx text={h.sfx} x={820} y={1330} size={160} color={C.red} stroke="#fff" rot={12} at={30} font={BRUSH} /> : null}
       {f >= 52 ? (
@@ -242,7 +242,7 @@ const Story: React.FC<{b: BNStory; dur: number; brand?: BlogNewsProps["brand"]}>
         </div>
       </Panel>
       {brand ? <BrandPlate b={brand} at={10} x={600} y={418} scale={0.62} rot={3} /> : null}
-      {b.mark ? <Sfx text={b.mark} x={300} y={790} size={70} color={fall ? C.red : C.y} stroke={fall ? "#fff" : C.ink} rot={-6} at={tMark} font={FONT.dela} /> : null}
+      {b.mark ? <Sfx text={b.mark} x={300} y={790} size={Math.min(70, Math.floor(700 / (b.mark.length * 0.72)))} color={fall ? C.red : C.y} stroke={fall ? "#fff" : C.ink} rot={-6} at={tMark} font={FONT.dela} /> : null}
       {b.steps.map((s, i) => (
         <Chip key={i} x={64} y={925 + i * 122} at={22 + i * 30} rot={i % 2 ? 1.5 : -1.5} bg={fall ? "#fff" : C.y} size={30} maxW={540}>
           <span style={{color: C.red, fontFamily: FONT.oswald, letterSpacing: "0.06em"}}>{s.when}</span>{"  "}{s.text}
@@ -337,7 +337,7 @@ const Punch: React.FC<{P: BlogNewsProps}> = ({P}) => {
       />
       {f >= 14 ? (
         <Bubble x={44} y={280} w={760} h={560} shout tail={[700, 640]} scale={0.3 + 0.7 * bub} opacity={Math.min(1, bub * 2)}>
-          {P.punch.lines.map((t, i) => <div key={i} style={dela(i === P.punch.lines.length - 1 ? 74 : 62, i === P.punch.lines.length - 1 ? C.red : C.ink)}>{t}</div>)}
+          {P.punch.lines.map((t, i) => <div key={i} style={dela(i === P.punch.lines.length - 1 ? (P.punch.lines.length > 4 ? 64 : 74) : P.punch.lines.length > 4 ? 52 : 62, i === P.punch.lines.length - 1 ? C.red : C.ink)}>{t}</div>)}
           {P.punch.zh ? <div style={{fontFamily: BRUSH, fontSize: 42, whiteSpace: "nowrap", color: C.ink, marginTop: 8}}>{P.punch.zh}</div> : null}
         </Bubble>
       ) : null}
@@ -372,10 +372,10 @@ const Fin: React.FC<{P: BlogNewsProps}> = ({P}) => {
       <Chip x={540} y={610} at={30} rot={2} size={28}>RU · EN · <span style={{fontFamily: FONT.zcool}}>中文</span></Chip>
       {f >= 46 ? (
         <div style={{position: "absolute", left: 530, right: 52, top: 730, background: "#fff", border: `6px solid ${C.ink}`, boxShadow: `12px 12px 0 ${C.ink}`, padding: "20px 24px", rotate: "1.5deg", scale: String(1.5 - 0.5 * card), opacity: Math.min(1, card * 2), transformOrigin: "50% 0"}}>
-          <div style={{fontFamily: FONT.oswald, fontSize: 32, letterSpacing: "0.16em", color: C.red}}>{nx ? (nx.newSeason ? "СЕЗОН ОКОНЧЕН · ЗАВТРА" : "ЗАВТРА") : "СЕЗОН ОКОНЧЕН"}</div>
+          <div style={{fontFamily: FONT.oswald, fontSize: nx?.newSeason ? 27 : 32, letterSpacing: nx?.newSeason ? "0.1em" : "0.16em", color: C.red, whiteSpace: "nowrap"}}>{nx ? (nx.newSeason ? "СЕЗОН ОКОНЧЕН · ЗАВТРА" : "ЗАВТРА") : "СЕЗОН ОКОНЧЕН"}</div>
           {nx ? (
             <>
-              {nx.newSeason ? <div style={{fontFamily: FONT.golos, fontWeight: 800, fontSize: 30, color: C.ink, marginTop: 6}}>{`Новый сезон «${nx.season}» `}<span style={{fontFamily: FONT.zcool}}>{nx.zh}</span></div> : null}
+              {nx.newSeason ? <div style={{fontFamily: FONT.golos, fontWeight: 800, fontSize: 26, color: C.ink, marginTop: 6, whiteSpace: "nowrap"}}>{`Новый сезон «${nx.season}» `}<span style={{fontFamily: FONT.zcool}}>{nx.zh}</span></div> : null}
               <div style={{fontFamily: FONT.zcool, fontSize: 60, color: C.ink, lineHeight: 1.1, marginTop: 6}}>{`第${nx.n}话 · №${nx.n}`}</div>
               <div style={{...dela(nx.title.length > 34 ? 36 : 44, C.ink), marginTop: 8}}>{nx.title}</div>
             </>

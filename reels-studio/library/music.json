@@ -174,5 +174,222 @@
    139.75
   ],
   "note": "№84 из подборки 100: Deva — Xenocity - Sleight of Hand (Glitch-Hop), CC0, OpenGameArt; музыка «多 NEWS» с 04.11.2026"
+ },
+ "pool-011": {
+  "src": "интернет-материалы/музыка/bouncer-of-far-different-nature.mp3",
+  "volume": 0.221,
+  "lufs": -6.9,
+  "drops": [
+   79.3,
+   15.05,
+   46.0,
+   68.05
+  ],
+  "duration": 93.8,
+  "title": "Bouncer",
+  "artist": "Of Far Different Nature",
+  "license": "CC0",
+  "attribution": "Музыка: Of Far Different Nature — Bouncer (CC0)",
+  "page": "https://opengameart.org/content/bouncer-0",
+  "note": "№11 подборки 100; пул «多 NEWS» (04.11.2026)"
+ },
+ "pool-013": {
+  "src": "интернет-материалы/музыка/raving-1000-handz.mp3",
+  "volume": 0.417,
+  "lufs": -12.4,
+  "drops": [
+   35.85,
+   67.35,
+   114.6,
+   98.85,
+   82.85
+  ],
+  "duration": 180.0,
+  "title": "Raving",
+  "artist": "1000 Handz",
+  "license": "CC BY 4.0",
+  "attribution": "Музыка: 1000 Handz — Raving (CC BY 4.0)",
+  "page": "https://freemusicarchive.org/music/1000-handz/cc-by-free-to-use-dancehouse-instrumentals/raving/",
+  "note": "№13 подборки 100; пул «多 NEWS» (04.11.2026) Удар 35,85 с (вход бочки после брейка 32–34 с) — найден вручную, выпуск №2 «多 NEWS»."
+ },
+ "pool-019": {
+  "src": "интернет-материалы/музыка/phonk-remix-holiznacc0.mp3",
+  "volume": 0.385,
+  "lufs": -11.7,
+  "drops": [
+   10.45,
+   31.35,
+   104.4,
+   64.6
+  ],
+  "duration": 169.5,
+  "title": "Phonk Remix",
+  "artist": "HoliznaCC0",
+  "license": "CC0",
+  "attribution": "Музыка: HoliznaCC0 — Phonk Remix (CC0)",
+  "page": "https://freemusicarchive.org/music/holiznacc0/phonk-aura-farming/phonk-remix/",
+  "note": "№19 подборки 100; пул «多 NEWS» (04.11.2026)"
+ },
+ "pool-021": {
+  "src": "интернет-материалы/музыка/phonk-ish-holiznacc0.mp3",
+  "volume": 0.519,
+  "lufs": -14.3,
+  "drops": [
+   16.0,
+   79.45,
+   30.35,
+   94.4
+  ],
+  "duration": 145.5,
+  "title": "Phonk ish",
+  "artist": "HoliznaCC0",
+  "license": "CC0",
+  "attribution": "Музыка: HoliznaCC0 — Phonk ish (CC0)",
+  "page": "https://freemusicarchive.org/music/holiznacc0/phonk-aura-farming/phonk-ish/",
+  "note": "№21 подборки 100; пул «多 NEWS» (04.11.2026)"
+ },
+ "pool-043": {
+  "src": "интернет-материалы/музыка/neon-hyperdrive-adiutorium.mp3",
+  "volume": 0.501,
+  "lufs": -14.0,
+  "drops": [
+   41.25,
+   83.5,
+   17.65,
+   56.65
+  ],
+  "duration": 129.7,
+  "title": "Neon Hyperdrive",
+  "artist": "Adiutorium",
+  "license": "CC0",
+  "attribution": "Музыка: Adiutorium — Neon Hyperdrive (CC0)",
+  "page": "https://opengameart.org/content/neon-hyperdrive",
+  "note": "№43 подборки 100; пул «多 NEWS» (04.11.2026)"
+ },
+ "pool-046": {
+  "src": "интернет-материалы/музыка/hyper-ultra-racing-cynicmusic.mp3",
+  "volume": 0.272,
+  "lufs": -8.7,
+  "drops": [
+   11.5,
+   45.8,
+   21.5,
+   28.65
+  ],
+  "duration": 79.7,
+  "title": "Hyper Ultra-Racing",
+  "artist": "cynicmusic",
+  "license": "CC0",
+  "attribution": "Музыка: cynicmusic — Hyper Ultra-Racing (CC0)",
+  "page": "https://opengameart.org/content/hyper-ultra-racing",
+  "note": "№46 подборки 100; пул «多 NEWS» (04.11.2026)"
+ },
+ "pool-066": {
+  "src": "интернет-материалы/музыка/cybernetic-enhancements-dafuqex.mp3",
+  "volume": 0.204,
+  "lufs": -6.2,
+  "drops": [
+   53.0,
+   185.5,
+   82.4,
+   214.25
+  ],
+  "duration": 279.8,
+  "title": "Cybernetic Enhancements",
+  "artist": "Dafuqex",
+  "license": "CC BY 4.0",
+  "attribution": "Музыка: Dafuqex — Cybernetic Enhancements (CC BY 4.0)",
+  "page": "https://archive.org/details/SRS02406",
+  "note": "№66 подборки 100; пул «多 NEWS» (04.11.2026) Удар 53,0 с — выпуск №3 «多 NEWS»."
+ },
+ "pool-068": {
+  "src": "интернет-материалы/музыка/endless-cyber-runner-looping-eric-matyas.mp3",
+  "volume": 0.661,
+  "lufs": -16.4,
+  "drops": [
+   57.2,
+   9.2,
+   80.2,
+   32.7
+  ],
+  "duration": 96.0,
+  "title": "Endless Cyber Runner (Looping)",
+  "artist": "Eric Matyas",
+  "license": "CC BY 4.0",
+  "attribution": "Музыка: Eric Matyas — Endless Cyber Runner (Looping) (CC BY 4.0)",
+  "page": "https://opengameart.org/content/endless-cyber-runner-looping",
+  "note": "№68 подборки 100; пул «多 NEWS» (04.11.2026)"
+ },
+ "pool-074": {
+  "src": "интернет-материалы/музыка/global-tech-geoff-harvey-purple-planet-music.mp3",
+  "volume": 0.776,
+  "lufs": -17.8,
+  "drops": [
+   54.9,
+   82.35,
+   27.5,
+   62.45
+  ],
+  "duration": 92.0,
+  "title": "Global Tech",
+  "artist": "Geoff Harvey (Purple Planet Music)",
+  "license": "CC BY 4.0",
+  "attribution": "Музыка: Geoff Harvey (Purple Planet Music) — Global Tech (CC BY 4.0)",
+  "page": "https://freemusicarchive.org/music/geoff-harvey-purple-planet-music/deep-state/global-tech/",
+  "note": "№74 подборки 100; пул «多 NEWS» (04.11.2026)"
+ },
+ "pool-078": {
+  "src": "интернет-материалы/музыка/union-square-edit-decktonic.mp3",
+  "volume": 0.327,
+  "lufs": -10.3,
+  "drops": [
+   37.5,
+   82.9,
+   67.5,
+   52.5
+  ],
+  "duration": 210.0,
+  "title": "Union Square [Edit]",
+  "artist": "Decktonic",
+  "license": "CC BY 4.0",
+  "attribution": "Музыка: Decktonic — Union Square [Edit] (CC BY 4.0)",
+  "page": "https://freemusicarchive.org/music/Decktonic/Forgotten_Machines/Decktonic_-_Forgotten_Machines_-_07_Union_Square_-Edit-/",
+  "note": "№78 подборки 100; пул «多 NEWS» (04.11.2026)"
+ },
+ "pool-081": {
+  "src": "интернет-материалы/музыка/magnetz-1000-handz.mp3",
+  "volume": 0.38,
+  "lufs": -11.6,
+  "drops": [
+   131.35,
+   65.75,
+   33.7,
+   98.55
+  ],
+  "duration": 146.3,
+  "title": "Magnetz",
+  "artist": "1000 Handz",
+  "license": "CC BY 4.0",
+  "attribution": "Музыка: 1000 Handz — Magnetz (CC BY 4.0)",
+  "page": "https://freemusicarchive.org/music/1000-handz/cc-by-free-to-use-dancehouse-instrumentals/magnetz/",
+  "note": "№81 подборки 100; пул «多 NEWS» (04.11.2026) Удар 65,70 с — «Мой сайт» (манхуа) и выпуск №1 «多 NEWS»."
+ },
+ "pool-096": {
+  "src": "интернет-материалы/музыка/rise-of-spirit-alexandr-zhelanov.mp3",
+  "volume": 0.347,
+  "lufs": -10.8,
+  "drops": [
+   2.5,
+   67.7,
+   28.1,
+   41.5
+  ],
+  "duration": 82.4,
+  "title": "Rise of Spirit",
+  "artist": "Alexandr Zhelanov",
+  "license": "CC BY 3.0",
+  "attribution": "Музыка: Alexandr Zhelanov — Rise of Spirit (CC BY 3.0)",
+  "page": "https://opengameart.org/content/rise-of-spirit",
+  "note": "№96 подборки 100; пул «多 NEWS» (04.11.2026)"
  }
 }

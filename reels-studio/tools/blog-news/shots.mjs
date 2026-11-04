@@ -24,9 +24,14 @@ const browser = await chromium.launch();
 const ctx = await browser.newContext({viewport: {width: 390, height: 844}, deviceScaleFactor: 2.5, isMobile: true, hasTouch: true, locale: lang === "zh" ? "zh-CN" : lang === "en" ? "en-US" : "ru-RU"});
 await ctx.addInitScript((l) => { try { localStorage.setItem("lang", l); } catch {} }, lang);
 const page = await ctx.newPage();
+// страница могла не догрузиться (прокси, 04.11.2026: три белых кадра по 12 КБ у «Последнего стартапа») — проверяем, что текст
+// статьи на месте, иначе повтор; после 4 попыток — ошибка, а не пустые кадры
 for (let i = 0; i < 4; i++) {
-  try { await page.goto(`https://ostapdotcenko.ru/blog/${slug}`, {waitUntil: "networkidle", timeout: 60000}); break; }
-  catch (e) { if (i === 3) throw e; await page.waitForTimeout(3000); }
+  try {
+    await page.goto(`https://ostapdotcenko.ru/blog/${slug}`, {waitUntil: "networkidle", timeout: 60000});
+    await page.waitForFunction(() => document.body.innerText.length > 1500, null, {timeout: 20000});
+    break;
+  } catch (e) { if (i === 3) throw new Error(`статья не загрузилась: ${e.message}`); await page.waitForTimeout(3000); }
 }
 // плавная прокрутка вниз и обратно — чтобы сработали появления блоков и догрузились картинки
 const H = await page.evaluate(() => document.documentElement.scrollHeight);

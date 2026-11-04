@@ -1,0 +1,50 @@
+[
+ {
+  "file": "hf-auditoriya.jpg",
+  "job_id": "70500de3-620a-43a4-b347-f8078974ba16",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_141212_70500de3-620a-43a4-b347-f8078974ba16.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "акт «Взлёт»: переполненная аудитория, учитель у доски"
+ },
+ {
+  "file": "hf-zapret.jpg",
+  "job_id": "d774b94b-d8fa-4af8-856d-dc9755a20508",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_141453_d774b94b-d8fa-4af8-856d-dc9755a20508.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "акт «Запрет»: пустые классы, парты грузят в деревни"
+ },
+ {
+  "file": "hf-strim.jpg",
+  "job_id": "676fb3dd-275d-49d8-9ae4-62a6ac557c09",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_141455_676fb3dd-275d-49d8-9ae4-62a6ac557c09.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "акт «Бакалея»: учитель ведёт стрим с кукурузой и рисом"
+ },
+ {
+  "file": "hf-vozvrat.jpg",
+  "job_id": "eff89c34-c62f-4567-b96f-5c0a93893416",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_141219_eff89c34-c62f-4567-b96f-5c0a93893416.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "акт «Возвращение»: ученики входят в светлый центр"
+ }
+]

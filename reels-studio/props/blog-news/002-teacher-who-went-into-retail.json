@@ -1,0 +1,203 @@
+{
+ "show": "多 NEWS",
+ "cover": "source-videos/ostapdotcenko/blog-news/teacher-who-went-into-retail/cover.jpg",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/teacher-who-went-into-retail/ru-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/teacher-who-went-into-retail/ru-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/teacher-who-went-into-retail/ru-02.jpg"
+ ],
+ "ep": 2,
+ "season": {
+  "name": "Перезапуски",
+  "zh": "重启",
+  "n": 2,
+  "total": 3
+ },
+ "title": "Учитель ушёл в торговлю",
+ "date": "2026-10-27",
+ "slug": "teacher-who-went-into-retail",
+ "hook": {
+  "lines": [
+   "ЕМУ",
+   "ЗАПРЕТИЛИ",
+   "УЧИТЬ"
+  ],
+  "shout": [
+   "…и он ушёл",
+   "в торговлю!"
+  ],
+  "sfx": "禁"
+ },
+ "beats": [
+  {
+   "kind": "rise",
+   "sec": 8.0,
+   "zh": "起",
+   "kicker": "1993 → 2021",
+   "title": "Взлёт",
+   "img": "source-videos/ostapdotcenko/blog-news/teacher-who-went-into-retail/hf-auditoriya.jpg",
+   "imgPos": "50% 35%",
+   "steps": [
+    {
+     "when": "ГАОКАО ×3",
+     "text": "дважды провалил английский, потом — Пекинский университет"
+    },
+    {
+     "when": "1993",
+     "text": "основал New Oriental: курсы к TOEFL и GRE"
+    },
+    {
+     "when": "2006",
+     "text": "вывел компанию на Нью-Йоркскую биржу"
+    }
+   ],
+   "big": {
+    "pre": "≈",
+    "num": 4.3,
+    "dec": 1,
+    "suf": " млрд $",
+    "text": "выручка за финансовый год до мая 2021-го"
+   },
+   "note": "Девиз New Oriental: «В отчаянии ищи надежду — и жизнь непременно засияет»."
+  },
+  {
+   "kind": "fall",
+   "sec": 8.4,
+   "zh": "禁",
+   "kicker": "2021",
+   "title": "Запрет",
+   "img": "source-videos/ostapdotcenko/blog-news/teacher-who-went-into-retail/hf-zapret.jpg",
+   "imgPos": "50% 50%",
+   "steps": [
+    {
+     "when": "ЛЕТО 2021",
+     "text": "«двойное снижение»: школьные предметы — не ради прибыли"
+    },
+    {
+     "when": "ЗА 2021",
+     "text": "выручка −80 %, уволено 60 тысяч человек"
+    },
+    {
+     "when": "НОЯ 2021",
+     "text": "≈80 тысяч комплектов парт — сельским школам"
+    }
+   ],
+   "big": {
+    "pre": "≈",
+    "num": 20,
+    "suf": " млрд ¥",
+    "text": "на возвраты за курсы, пособия и аренду"
+   },
+   "mark": "−90 % стоимости",
+   "stamp": {
+    "text": "ЗАПРЕЩЕНО",
+    "sub": "«двойное снижение» · 2021",
+    "zh": "双减"
+   },
+   "note": "Парта — единственный сотрудник New Oriental, которого в тот год уволили с повышением."
+  },
+  {
+   "kind": "rise",
+   "sec": 8.2,
+   "zh": "直播",
+   "kicker": "2021 → 2023",
+   "title": "Бакалея",
+   "img": "source-videos/ostapdotcenko/blog-news/teacher-who-went-into-retail/hf-strim.jpg",
+   "imgPos": "50% 30%",
+   "steps": [
+    {
+     "when": "ДЕК 2021",
+     "text": "эфир на Douyin: рис и фрукты — как урок географии"
+    },
+    {
+     "when": "ИЮН 2022",
+     "text": "учителя продают по-английски, звезда — Дун Юйхуэй"
+    },
+    {
+     "when": "МАР 2023",
+     "text": "Koolearn переименовали в East Buy"
+    }
+   ],
+   "big": {
+    "num": 10,
+    "suf": " млн",
+    "text": "подписчиков за неделю (было ≈1 млн)"
+   },
+   "mark": "акции ×5 за неделю",
+   "note": "«В отчаянии ищи надежду». Надежда нашлась в отделе бакалеи."
+  },
+  {
+   "kind": "vs",
+   "sec": 8.2,
+   "zh": "逆袭",
+   "kicker": "2023 → 2026",
+   "title": "Возвращение",
+   "img": "source-videos/ostapdotcenko/blog-news/teacher-who-went-into-retail/hf-vozvrat.jpg",
+   "imgPos": "50% 38%",
+   "left": "УЧИТЕЛЬ",
+   "right": "ЗАПРЕТ",
+   "round": "ROUND 2026 · КИТАЙ",
+   "result": "New Oriental вернулась в класс через другую дверь: экзамены, учёба за рубежом, поездки",
+   "facts": [
+    {
+     "num": 971,
+     "suf": " млн ¥",
+     "text": "первая прибыль East Buy, финансовый год до мая 2023-го"
+    },
+    {
+     "pre": "≈",
+     "num": 34,
+     "suf": " млн",
+     "text": "зрителей у эфира, где Юй и Дун мирились"
+    },
+    {
+     "num": 5.66,
+     "dec": 2,
+     "suf": " млрд $",
+     "text": "выручка New Oriental за финансовый год до мая 2026-го"
+    }
+   ]
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Профессию",
+   "запретить",
+   "можно.",
+   "Умение",
+   "объяснять —",
+   "нельзя."
+  ],
+  "zh": "职业能禁，本事禁不了。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-yingke-mikrofon.png",
+  "from": "— из статьи"
+ },
+ "next": {
+  "n": 3,
+  "title": "Это мой последний стартап. Часть шестая",
+  "season": "Перезапуски",
+  "zh": "重启",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/raving-1000-handz.mp3",
+  "drop": 35.85,
+  "vol": 0.4
+ },
+ "brand": {
+  "name": "New Oriental",
+  "zh": "新东方"
+ },
+ "ticker": [
+  "Юй Миньхун (俞敏洪) — гаокао с третьей попытки, Пекинский университет",
+  "1993: основал New Oriental — подготовка к TOEFL и GRE",
+  "2006: New Oriental — на Нью-Йоркской бирже",
+  "Лето 2021: «двойное снижение» — школьные предметы не ради прибыли",
+  "2021: стоимость −90 %, выручка −80 %, уволено 60 тысяч",
+  "≈80 тысяч комплектов парт — сельским школам",
+  "Июнь 2022: подписчики стрима — с ≈1 до 10 млн за неделю",
+  "Декабрь 2023: ссора из-за текстов эфиров — акции East Buy −22 %",
+  "Июль 2024: Дун Юйхуэй ушёл, продажи East Buy за год −40 % (Caixin)",
+  "Выручка New Oriental: ≈4,3 млрд $ (2021) → 5,66 млрд $ (2026)"
+ ]
+}

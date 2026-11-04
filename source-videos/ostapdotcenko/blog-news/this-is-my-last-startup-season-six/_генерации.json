@@ -1,0 +1,50 @@
+[
+ {
+  "file": "hf-kladbishche.jpg",
+  "job_id": "43beb384-a954-4900-af7e-c48ef7ade803",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_141503_43beb384-a954-4900-af7e-c48ef7ade803.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "акт «Каталог провалов»: кладбище гаджетов"
+ },
+ {
+  "file": "hf-dolg.jpg",
+  "job_id": "6cc411b6-480c-442a-820d-10f3580ea887",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_141223_6cc411b6-480c-442a-820d-10f3580ea887.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "акт «Возврат долгов»: лестница из монет из ямы счетов"
+ },
+ {
+  "file": "hf-ochki.jpg",
+  "job_id": "bca4adc5-83c0-4cab-8e00-d3f04ac4cba8",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_141215_bca4adc5-83c0-4cab-8e00-d3f04ac4cba8.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "акт «Последний стартап»: тяжёлые AR-очки в пустом офисе"
+ },
+ {
+  "file": "hf-dvoinik.jpg",
+  "job_id": "466fcd4c-aa6b-4d06-a498-c51d52b79311",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_141504_466fcd4c-aa6b-4d06-a498-c51d52b79311.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "акт «Двойник»: голограмма-двойник продаёт в стриме"
+ }
+]
