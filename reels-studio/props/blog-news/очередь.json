@@ -1,0 +1,732 @@
+{
+ "show": "多 NEWS",
+ "about": "манхуа-новости по статьям блога ostapdotcenko.ru: один выпуск в день, сезоны по нишам, сквозная нумерация",
+ "start": "2026-11-05",
+ "updated": "2026-11-04",
+ "seasons": [
+  {
+   "id": "perezapuski",
+   "name": "Перезапуски",
+   "zh": "重启",
+   "episodes": 3
+  },
+  {
+   "id": "nablyudeniya",
+   "name": "Наблюдения",
+   "zh": "观察",
+   "episodes": 5
+  },
+  {
+   "id": "napitki",
+   "name": "Напитки Азии",
+   "zh": "饮品",
+   "episodes": 9
+  },
+  {
+   "id": "kuhni",
+   "name": "Центральные кухни",
+   "zh": "厨房",
+   "episodes": 11
+  },
+  {
+   "id": "keisy",
+   "name": "Кейсы",
+   "zh": "案例",
+   "episodes": 1
+  }
+ ],
+ "episodes": [
+  {
+   "n": 1,
+   "day": "2026-11-05",
+   "season_id": "perezapuski",
+   "season": "Перезапуски",
+   "zh": "重启",
+   "sn": 1,
+   "stotal": 3,
+   "slug": "coffee-with-hint-audit",
+   "date": "2026-11-03",
+   "title": "Кофе с привкусом протокола",
+   "tag": "Перезапуски",
+   "status": "план",
+   "next": {
+    "n": 2,
+    "title": "Учитель ушёл в торговлю",
+    "season": "Перезапуски",
+    "zh": "重启",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 2,
+   "day": "2026-11-06",
+   "season_id": "perezapuski",
+   "season": "Перезапуски",
+   "zh": "重启",
+   "sn": 2,
+   "stotal": 3,
+   "slug": "teacher-who-went-into-retail",
+   "date": "2026-10-27",
+   "title": "Учитель ушёл в торговлю",
+   "tag": "Перезапуски",
+   "status": "план",
+   "next": {
+    "n": 3,
+    "title": "Это мой последний стартап. Часть шестая",
+    "season": "Перезапуски",
+    "zh": "重启",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 3,
+   "day": "2026-11-07",
+   "season_id": "perezapuski",
+   "season": "Перезапуски",
+   "zh": "重启",
+   "sn": 3,
+   "stotal": 3,
+   "slug": "this-is-my-last-startup-season-six",
+   "date": "2026-10-20",
+   "title": "Это мой последний стартап. Часть шестая",
+   "tag": "Перезапуски",
+   "status": "план",
+   "next": {
+    "n": 4,
+    "title": "Самый быстрый человек в городе",
+    "season": "Наблюдения",
+    "zh": "观察",
+    "newSeason": true
+   }
+  },
+  {
+   "n": 4,
+   "day": "2026-11-08",
+   "season_id": "nablyudeniya",
+   "season": "Наблюдения",
+   "zh": "观察",
+   "sn": 1,
+   "stotal": 5,
+   "slug": "fastest-man-town",
+   "date": "2026-11-04",
+   "title": "Самый быстрый человек в городе",
+   "tag": "Наблюдения",
+   "status": "план",
+   "next": {
+    "n": 5,
+    "title": "Город, где не носят кошелёк",
+    "season": "Наблюдения",
+    "zh": "观察",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 5,
+   "day": "2026-11-09",
+   "season_id": "nablyudeniya",
+   "season": "Наблюдения",
+   "zh": "观察",
+   "sn": 2,
+   "stotal": 5,
+   "slug": "city-where-nobody-carries-wallet",
+   "date": "2026-10-28",
+   "title": "Город, где не носят кошелёк",
+   "tag": "Наблюдения",
+   "status": "план",
+   "next": {
+    "n": 6,
+    "title": "Площадь принадлежит танцующим",
+    "season": "Наблюдения",
+    "zh": "观察",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 6,
+   "day": "2026-11-10",
+   "season_id": "nablyudeniya",
+   "season": "Наблюдения",
+   "zh": "观察",
+   "sn": 3,
+   "stotal": 5,
+   "slug": "whoever-dances-owns-square",
+   "date": "2026-10-21",
+   "title": "Площадь принадлежит танцующим",
+   "tag": "Наблюдения",
+   "status": "план",
+   "next": {
+    "n": 7,
+    "title": "Куриное нёбо, лапша и никаких сожалений",
+    "season": "Наблюдения",
+    "zh": "观察",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 7,
+   "day": "2026-11-11",
+   "season_id": "nablyudeniya",
+   "season": "Наблюдения",
+   "zh": "观察",
+   "sn": 4,
+   "stotal": 5,
+   "slug": "chicken-palate-noodles-no-regrets",
+   "date": "2026-09-05",
+   "title": "Куриное нёбо, лапша и никаких сожалений",
+   "tag": "Еда в Китае",
+   "status": "план",
+   "next": {
+    "n": 8,
+    "title": "Три дня в Шанхае, и ты уже эксперт по Китаю",
+    "season": "Наблюдения",
+    "zh": "观察",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 8,
+   "day": "2026-11-12",
+   "season_id": "nablyudeniya",
+   "season": "Наблюдения",
+   "zh": "观察",
+   "sn": 5,
+   "stotal": 5,
+   "slug": "three-days-shanghai-china-expert",
+   "date": "2026-09-04",
+   "title": "Три дня в Шанхае, и ты уже эксперт по Китаю",
+   "tag": "Наблюдения",
+   "status": "план",
+   "next": {
+    "n": 9,
+    "title": "Напитки Азии: Япония — кофе уже взрослый, бабл-ти всё ещё подросток",
+    "season": "Напитки Азии",
+    "zh": "饮品",
+    "newSeason": true
+   }
+  },
+  {
+   "n": 9,
+   "day": "2026-11-13",
+   "season_id": "napitki",
+   "season": "Напитки Азии",
+   "zh": "饮品",
+   "sn": 1,
+   "stotal": 9,
+   "slug": "asia-drinks-japan-coffee-bubble-tea",
+   "date": "2026-09-10",
+   "title": "Напитки Азии: Япония — кофе уже взрослый, бабл-ти всё ещё подросток",
+   "tag": "Напитки Азии",
+   "status": "план",
+   "next": {
+    "n": 10,
+    "title": "Напитки Азии: Южная Корея — кофейная война и лопнувший пузырь бабл-ти",
+    "season": "Напитки Азии",
+    "zh": "饮品",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 10,
+   "day": "2026-11-14",
+   "season_id": "napitki",
+   "season": "Напитки Азии",
+   "zh": "饮品",
+   "sn": 2,
+   "stotal": 9,
+   "slug": "asia-drinks-korea-coffee-war-bubble-tea",
+   "date": "2026-09-13",
+   "title": "Напитки Азии: Южная Корея — кофейная война и лопнувший пузырь бабл-ти",
+   "tag": "Напитки Азии",
+   "status": "план",
+   "next": {
+    "n": 11,
+    "title": "Напитки Азии: Вьетнам — экспортёр робусты, который не может выбрать своего лидера",
+    "season": "Напитки Азии",
+    "zh": "饮品",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 11,
+   "day": "2026-11-15",
+   "season_id": "napitki",
+   "season": "Напитки Азии",
+   "zh": "饮品",
+   "sn": 3,
+   "stotal": 9,
+   "slug": "asia-drinks-vietnam-robusta-coffee-egg-coffee",
+   "date": "2026-09-14",
+   "title": "Напитки Азии: Вьетнам — экспортёр робусты, который не может выбрать своего лидера",
+   "tag": "Напитки Азии",
+   "status": "план",
+   "next": {
+    "n": 12,
+    "title": "Напитки Азии: Таиланд - кофе на бензоколонке и чай, который держит рынок восемьдесят лет",
+    "season": "Напитки Азии",
+    "zh": "饮品",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 12,
+   "day": "2026-11-16",
+   "season_id": "napitki",
+   "season": "Напитки Азии",
+   "zh": "饮品",
+   "sn": 4,
+   "stotal": 9,
+   "slug": "asia-drinks-thailand-cafe-amazon-chatramue",
+   "date": "2026-09-18",
+   "title": "Напитки Азии: Таиланд - кофе на бензоколонке и чай, который держит рынок восемьдесят лет",
+   "tag": "Напитки Азии",
+   "status": "план",
+   "next": {
+    "n": 13,
+    "title": "Напитки Азии: Малайзия - франчайзи, который переиграл международный бренд за шесть недель",
+    "season": "Напитки Азии",
+    "zh": "饮品",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 13,
+   "day": "2026-11-17",
+   "season_id": "napitki",
+   "season": "Напитки Азии",
+   "zh": "饮品",
+   "sn": 5,
+   "stotal": 9,
+   "slug": "asia-drinks-malaysia-zus-tealive-oldtown",
+   "date": "2026-09-19",
+   "title": "Напитки Азии: Малайзия - франчайзи, который переиграл международный бренд за шесть недель",
+   "tag": "Напитки Азии",
+   "status": "план",
+   "next": {
+    "n": 14,
+    "title": "Напитки Азии: Индия - страна чая, где рынок кофеен втрое больше рынка чайных",
+    "season": "Напитки Азии",
+    "zh": "饮品",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 14,
+   "day": "2026-11-18",
+   "season_id": "napitki",
+   "season": "Напитки Азии",
+   "zh": "饮品",
+   "sn": 6,
+   "stotal": 9,
+   "slug": "asia-drinks-india-coffee-tea-paradox",
+   "date": "2026-09-22",
+   "title": "Напитки Азии: Индия - страна чая, где рынок кофеен втрое больше рынка чайных",
+   "tag": "Напитки Азии",
+   "status": "план",
+   "next": {
+    "n": 15,
+    "title": "Напитки Азии: Индонезия - кофе с углём, кофе из циветты, и локальные сети, обогнавшие Starbucks",
+    "season": "Напитки Азии",
+    "zh": "饮品",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 15,
+   "day": "2026-11-19",
+   "season_id": "napitki",
+   "season": "Напитки Азии",
+   "zh": "饮品",
+   "sn": 7,
+   "stotal": 9,
+   "slug": "asia-drinks-indonesia-charcoal-civet-coffee",
+   "date": "2026-09-28",
+   "title": "Напитки Азии: Индонезия - кофе с углём, кофе из циветты, и локальные сети, обогнавшие Starbucks",
+   "tag": "Напитки Азии",
+   "status": "план",
+   "next": {
+    "n": 16,
+    "title": "Напитки Азии: Лаос и Камбоджа -кофейная сверхдержава и заправочная сеть, которая пришла снова",
+    "season": "Напитки Азии",
+    "zh": "饮品",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 16,
+   "day": "2026-11-20",
+   "season_id": "napitki",
+   "season": "Напитки Азии",
+   "zh": "饮品",
+   "sn": 8,
+   "stotal": 9,
+   "slug": "asia-drinks-laos-cambodia-coffee-superpower-gas-station",
+   "date": "2026-09-30",
+   "title": "Напитки Азии: Лаос и Камбоджа -кофейная сверхдержава и заправочная сеть, которая пришла снова",
+   "tag": "Напитки Азии",
+   "status": "план",
+   "next": {
+    "n": 17,
+    "title": "Напитки Азии: Мьянма - кофе против опийного мака и обвал курса валюты",
+    "season": "Напитки Азии",
+    "zh": "饮品",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 17,
+   "day": "2026-11-21",
+   "season_id": "napitki",
+   "season": "Напитки Азии",
+   "zh": "饮品",
+   "sn": 9,
+   "stotal": 9,
+   "slug": "asia-drinks-myanmar-coffee-opium-currency-collapse",
+   "date": "2026-10-01",
+   "title": "Напитки Азии: Мьянма - кофе против опийного мака и обвал курса валюты",
+   "tag": "Напитки Азии",
+   "status": "план",
+   "next": {
+    "n": 18,
+    "title": "Центральные кухни: закон, институт и миллионы порций",
+    "season": "Центральные кухни",
+    "zh": "厨房",
+    "newSeason": true
+   }
+  },
+  {
+   "n": 18,
+   "day": "2026-11-22",
+   "season_id": "kuhni",
+   "season": "Центральные кухни",
+   "zh": "厨房",
+   "sn": 1,
+   "stotal": 11,
+   "slug": "china-central-kitchens-food-industry",
+   "date": "2026-09-07",
+   "title": "Центральные кухни: закон, институт и миллионы порций",
+   "tag": "Пищепром Китая",
+   "status": "план",
+   "next": {
+    "n": 19,
+    "title": "Центральные кухни: напитки — та же логика, только в стакане",
+    "season": "Центральные кухни",
+    "zh": "厨房",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 19,
+   "day": "2026-11-23",
+   "season_id": "kuhni",
+   "season": "Центральные кухни",
+   "zh": "厨房",
+   "sn": 2,
+   "stotal": 11,
+   "slug": "china-central-kitchens-drinks-industry",
+   "date": "2026-09-08",
+   "title": "Центральные кухни: напитки — та же логика, только в стакане",
+   "tag": "Напитки Китая",
+   "status": "план",
+   "next": {
+    "n": 20,
+    "title": "Центральные кухни: Россия против Китая — насколько велик разрыв",
+    "season": "Центральные кухни",
+    "zh": "厨房",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 20,
+   "day": "2026-11-24",
+   "season_id": "kuhni",
+   "season": "Центральные кухни",
+   "zh": "厨房",
+   "sn": 3,
+   "stotal": 11,
+   "slug": "china-central-kitchens-russia-vs-china",
+   "date": "2026-09-09",
+   "title": "Центральные кухни: Россия против Китая — насколько велик разрыв",
+   "tag": "Пищепром Китая",
+   "status": "план",
+   "next": {
+    "n": 21,
+    "title": "Центральные кухни: Япония — 56 189 магазинов, которые почти не готовят",
+    "season": "Центральные кухни",
+    "zh": "厨房",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 21,
+   "day": "2026-11-25",
+   "season_id": "kuhni",
+   "season": "Центральные кухни",
+   "zh": "厨房",
+   "sn": 4,
+   "stotal": 11,
+   "slug": "central-kitchens-japan",
+   "date": "2026-10-06",
+   "title": "Центральные кухни: Япония — 56 189 магазинов, которые почти не готовят",
+   "tag": "Центральные кухни",
+   "status": "план",
+   "next": {
+    "n": 22,
+    "title": "Южная Корея. Треугольник, который заменил обед",
+    "season": "Центральные кухни",
+    "zh": "厨房",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 22,
+   "day": "2026-11-26",
+   "season_id": "kuhni",
+   "season": "Центральные кухни",
+   "zh": "厨房",
+   "sn": 5,
+   "stotal": 11,
+   "slug": "central-kitchens-korea-2026",
+   "date": "2026-10-08",
+   "title": "Южная Корея. Треугольник, который заменил обед",
+   "tag": "Корея / Ритейл",
+   "status": "план",
+   "next": {
+    "n": 23,
+    "title": "Вьетнам. Овощи против конбини",
+    "season": "Центральные кухни",
+    "zh": "厨房",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 23,
+   "day": "2026-11-27",
+   "season_id": "kuhni",
+   "season": "Центральные кухни",
+   "zh": "厨房",
+   "sn": 6,
+   "stotal": 11,
+   "slug": "vietnam-vegetables-vs-convenience-stores",
+   "date": "2026-10-09",
+   "title": "Вьетнам. Овощи против конбини",
+   "tag": "Центральные кухни",
+   "status": "план",
+   "next": {
+    "n": 24,
+    "title": "Индия. Самая большая кухня страны -  школьная",
+    "season": "Центральные кухни",
+    "zh": "厨房",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 24,
+   "day": "2026-11-28",
+   "season_id": "kuhni",
+   "season": "Центральные кухни",
+   "zh": "厨房",
+   "sn": 7,
+   "stotal": 11,
+   "slug": "india-the-countrys-biggest-kitchen-is-the-school-one",
+   "date": "2026-10-10",
+   "title": "Индия. Самая большая кухня страны -  школьная",
+   "tag": "Центральные кухни",
+   "status": "план",
+   "next": {
+    "n": 25,
+    "title": "Индонезия. Кухня, которая кормит 57 миллионов",
+    "season": "Центральные кухни",
+    "zh": "厨房",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 25,
+   "day": "2026-11-29",
+   "season_id": "kuhni",
+   "season": "Центральные кухни",
+   "zh": "厨房",
+   "sn": 8,
+   "stotal": 11,
+   "slug": "indonesia-the-kitchen-that-feeds-57-million",
+   "date": "2026-10-11",
+   "title": "Индонезия. Кухня, которая кормит 57 миллионов",
+   "tag": "Центральные кухни",
+   "status": "план",
+   "next": {
+    "n": 26,
+    "title": "Камбоджа, Лаос и Мьянма. Кухня, которой почти нет",
+    "season": "Центральные кухни",
+    "zh": "厨房",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 26,
+   "day": "2026-11-30",
+   "season_id": "kuhni",
+   "season": "Центральные кухни",
+   "zh": "厨房",
+   "sn": 9,
+   "stotal": 11,
+   "slug": "cambodia-laos-and-myanmar-the-kitchen-that-barely-exists",
+   "date": "2026-10-12",
+   "title": "Камбоджа, Лаос и Мьянма. Кухня, которой почти нет",
+   "tag": "Центральные кухни",
+   "status": "план",
+   "next": {
+    "n": 27,
+    "title": "Малайзия. Кухня с сертификатом халяль",
+    "season": "Центральные кухни",
+    "zh": "厨房",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 27,
+   "day": "2026-12-01",
+   "season_id": "kuhni",
+   "season": "Центральные кухни",
+   "zh": "厨房",
+   "sn": 10,
+   "stotal": 11,
+   "slug": "malaysia-the-kitchen-with-a-halal-certificate",
+   "date": "2026-10-13",
+   "title": "Малайзия. Кухня с сертификатом халяль",
+   "tag": "Центральные кухни",
+   "status": "план",
+   "next": {
+    "n": 28,
+    "title": "Таиланд. Шестнадцать тысяч «семёрок» и одна кухня",
+    "season": "Центральные кухни",
+    "zh": "厨房",
+    "newSeason": false
+   }
+  },
+  {
+   "n": 28,
+   "day": "2026-12-02",
+   "season_id": "kuhni",
+   "season": "Центральные кухни",
+   "zh": "厨房",
+   "sn": 11,
+   "stotal": 11,
+   "slug": "thailand-sixteen-thousand-7-elevens-and-one-kitchen",
+   "date": "2026-10-14",
+   "title": "Таиланд. Шестнадцать тысяч «семёрок» и одна кухня",
+   "tag": "Центральные кухни",
+   "status": "план",
+   "next": {
+    "n": 29,
+    "title": "Как вырастить базу продавцов на 350%: кейс Мегамаркета",
+    "season": "Кейсы",
+    "zh": "案例",
+    "newSeason": true
+   }
+  },
+  {
+   "n": 29,
+   "day": "2026-12-03",
+   "season_id": "keisy",
+   "season": "Кейсы",
+   "zh": "案例",
+   "sn": 1,
+   "stotal": 1,
+   "slug": "megamarket-seller-growth-350",
+   "date": "2026-08-25",
+   "title": "Как вырастить базу продавцов на 350%: кейс Мегамаркета",
+   "tag": "E-commerce",
+   "status": "план",
+   "next": null
+  }
+ ],
+ "aura": [
+  {
+   "slug": "asia-robot-coffee-2026",
+   "date": "2026-09-04",
+   "title": "Пока вы читали эту статью, в Азии робот уже сварил вам кофе"
+  },
+  {
+   "slug": "wrc-2026-beijing-robots-stopped-dancing",
+   "date": "2026-09-06",
+   "title": "WRC 2026: роботы наконец перестали танцевать и пошли работать"
+  },
+  {
+   "slug": "run-robot-run",
+   "date": "2026-10-15",
+   "title": "Беги, железяка, беги"
+  },
+  {
+   "slug": "shenzhen-some-assembly-required",
+   "date": "2026-10-16",
+   "title": "Конструктор «Шэньчжэнь»"
+  },
+  {
+   "slug": "here-be-dragons",
+   "date": "2026-10-17",
+   "title": "Здесь водятся драконы"
+  },
+  {
+   "slug": "tale-three-cities",
+   "date": "2026-10-18",
+   "title": "Три сестры"
+  },
+  {
+   "slug": "first-customer-is-state",
+   "date": "2026-10-19",
+   "title": "Первый покупатель — государство"
+  },
+  {
+   "slug": "1-250-frying-pans",
+   "date": "2026-10-22",
+   "title": "Тысяча двести пятьдесят сковородок"
+  },
+  {
+   "slug": "hand-is-most-expensive-part-human",
+   "date": "2026-10-23",
+   "title": "Рука — самая дорогая часть человека"
+  },
+  {
+   "slug": "crowded-house-empty-wallet",
+   "date": "2026-10-24",
+   "title": "В тесноте, да не в прибыли"
+  },
+  {
+   "slug": "could-you-sit-with-him-for-while",
+   "date": "2026-10-25",
+   "title": "Посидите с ним, пожалуйста"
+  },
+  {
+   "slug": "robocop-without-handcuffs",
+   "date": "2026-10-26",
+   "title": "Дядя Стёпа на колёсах"
+  },
+  {
+   "slug": "bread-circuits",
+   "date": "2026-10-29",
+   "title": "Хлеба и роботов"
+  },
+  {
+   "slug": "more-robots-per-capita-than-anyone",
+   "date": "2026-10-30",
+   "title": "Робот на душу населения"
+  },
+  {
+   "slug": "birthplace-humanoids",
+   "date": "2026-10-31",
+   "title": "Япония — родина гуманоидов"
+  },
+  {
+   "slug": "are-you-free",
+   "date": "2026-11-01",
+   "title": "Шеф, свободен?"
+  },
+  {
+   "slug": "no-legs-no-tips",
+   "date": "2026-11-02",
+   "title": "Ни ног, ни чаевых"
+  }
+ ],
+ "aura_note": "статьи про роботов — отдельная дорожка: под роботов заточен aura-robotics.ru (решение за пользователем)",
+ "unassigned": []
+}

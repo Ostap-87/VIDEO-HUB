@@ -549,6 +549,10 @@ node reels-studio/tools/od-posts/reel-sait.mjs            # ролик «Мой 
 # TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts GttSiteManhua ../finished-videos/2026-11-03-gtt-sait-manhua.mp4 --bundle-cache=false --crf=18
 # пробные кадры: … GttSiteManhuaPreview /dev/shm/prev --sequence --frames=0-20 --scale=0.5 --props='{"step":1,"start":0,"frames":[30,200,420]}'
 # обложки трёх манхуа-роликов (od и Aura по 2 варианта, GTT — 11: A–K): TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts ManhuaCovers /dev/shm/covers --sequence --image-format=png --frames=0-14 --bundle-cache=false
+# «多 NEWS» — манхуа-новости по статьям блога (04.11.2026), из корня репозитория:
+#   python3 reels-studio/tools/blog-news/queue.py --start 2026-11-05 --sync      # очередь выпусков по сезонам → props/blog-news/очередь.json
+#   node reels-studio/tools/blog-news/shots.mjs <slug> --n 3                      # экраны статьи с телефона
+# из reels-studio: TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts BlogNews ../finished-videos/blog-news/001-coffee-with-hint-audit.mp4 --props=props/blog-news/001-coffee-with-hint-audit.json --bundle-cache=false --crf=18
 # английские версии (04.11.2026): SiteManhuaEn / AuraSiteManhuaEn / GttSiteManhuaEn (Remotion) и node tools/od-posts/reel-intro-en.mjs, tools/gtt-reel/reel-gruppy-od-en.mjs, tools/od-posts/reel-3-proekta-en.mjs
 #   → finished-videos/обложки/манхуа-сайты/ (кадр 0–1 «Мой сайт», 2–3 Aura, 4–9 GTT A–F; --frames=0-9)
 ```

@@ -1,0 +1,144 @@
+{
+ "show": "多 NEWS",
+ "ep": 1,
+ "season": {
+  "name": "Перезапуски",
+  "zh": "重启",
+  "n": 1,
+  "total": 3
+ },
+ "title": "Кофе с привкусом протокола",
+ "date": "2026-11-03",
+ "slug": "coffee-with-hint-audit",
+ "cover": "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/cover.jpg",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/ru-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/ru-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/ru-02.jpg"
+ ],
+ "hook": {
+  "lines": [
+   "КОФЕЙНЯ",
+   "ОБМАНУЛА",
+   "ВЕСЬ МИР"
+  ],
+  "shout": [
+   "…а потом его же",
+   "и напоила!"
+  ],
+  "sfx": "骗"
+ },
+ "beats": [
+  {
+   "kind": "rise",
+   "sec": 9.5,
+   "zh": "起",
+   "kicker": "2017 → 2019",
+   "title": "Взлёт",
+   "ticker": "LK · NASDAQ",
+   "steps": [
+    {
+     "when": "ОКТ 2017",
+     "text": "основана в Пекине"
+    },
+    {
+     "when": "МАЙ 2019",
+     "text": "Nasdaq, 17 $ за акцию"
+    }
+   ],
+   "big": {
+    "pre": "≈",
+    "num": 645,
+    "suf": " млн $",
+    "text": "привлекла на бирже"
+   },
+   "note": "Полтора года от первой кофейни до биржевого звонка."
+  },
+  {
+   "kind": "fall",
+   "sec": 10.5,
+   "zh": "崩",
+   "kicker": "2020",
+   "title": "Падение",
+   "img": "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/hf-padenie.jpg",
+   "imgPos": "50% 42%",
+   "steps": [
+    {
+     "when": "31.01.2020",
+     "text": "Muddy Waters: продажи сильно завышены"
+    },
+    {
+     "when": "02.04.2020",
+     "text": "компания признала сама"
+    }
+   ],
+   "big": {
+    "num": 2.2,
+    "dec": 1,
+    "suf": " млрд ¥",
+    "text": "продаж за 2019 год выдумали (≈ 310 млн $)"
+   },
+   "mark": "−76 % за день",
+   "stamp": {
+    "text": "ДЕЛИСТИНГ",
+    "sub": "Nasdaq · 29.06.2020",
+    "zh": "退市"
+   },
+   "note": "Декабрь 2020: штраф 180 млн $ Комиссии по ценным бумагам США."
+  },
+  {
+   "kind": "vs",
+   "sec": 10.5,
+   "zh": "逆袭",
+   "kicker": "2022 → 2025",
+   "title": "Возвращение",
+   "img": "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/hf-ochered.jpg",
+   "imgPos": "50% 38%",
+   "left": "LUCKIN",
+   "right": "STARBUCKS",
+   "round": "ROUND 2023 · КИТАЙ",
+   "result": "Лето 2023: квартальная выручка в Китае — больше, чем у Starbucks",
+   "facts": [
+    {
+     "num": 31048,
+     "text": "кофеен к концу 2025-го"
+    },
+    {
+     "num": 49.3,
+     "dec": 1,
+     "suf": " млрд ¥",
+     "text": "выручка за 2025 год, +43 %"
+    },
+    {
+     "num": 5.42,
+     "dec": 2,
+     "suf": " млн",
+     "text": "чашек латте с байцзю за первый день"
+    }
+   ]
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Обман был",
+   "в отчётах,",
+   "а не",
+   "в стаканах."
+  ],
+  "zh": "假的是账本，不是咖啡。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-megamarket-mikrofon.png",
+  "from": "— из статьи"
+ },
+ "next": {
+  "n": 2,
+  "title": "Учитель ушёл в торговлю",
+  "season": "Перезапуски",
+  "zh": "重启",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/exit-the-premises-kevin-macleod.mp3",
+  "drop": 6.95,
+  "vol": 0.37
+ }
+}

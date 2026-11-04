@@ -30,6 +30,8 @@ import {AppPromo, appPromoFrames, appPromoSchema, type AppPromoProps} from "./co
 import appPromoSample from "../props/2026-10-27-gtt-app-promo.json";
 import {DeskPromo, deskPromoFrames, deskPromoSchema, type DeskPromoProps} from "./compositions/DeskPromo";
 import {SiteManhua, SiteManhuaPreview, SITE_MANHUA_FRAMES} from "./compositions/SiteManhua";
+import {BlogNews, BlogNewsPreview, bnFrames, type BlogNewsProps} from "./compositions/BlogNews";
+import blogNewsSample from "../props/blog-news/001-coffee-with-hint-audit.json";
 import {SiteManhuaEn, SiteManhuaEnPreview, SITE_MANHUA_EN_FRAMES} from "./compositions/SiteManhuaEn";
 import {AuraSiteManhua, AuraSiteManhuaPreview, AURA_MANHUA_FRAMES} from "./compositions/AuraSiteManhua";
 import {AuraSiteManhuaEn, AuraSiteManhuaEnPreview, AURA_MANHUA_EN_FRAMES} from "./compositions/AuraSiteManhuaEn";
@@ -276,6 +278,27 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         durationInFrames={SITE_MANHUA_FRAMES}
         defaultProps={{step: 30, start: 15}}
+      />
+      {/* «多 NEWS» — манхуа-новости по статьям блога ostapdotcenko.ru (04.11.2026); props — reels-studio/props/blog-news/NNN-<slug>.json */}
+      <Composition
+        id="BlogNews"
+        component={BlogNews}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={bnFrames(blogNewsSample as BlogNewsProps)}
+        defaultProps={blogNewsSample as BlogNewsProps}
+        calculateMetadata={({props}: {props: BlogNewsProps}) => ({durationInFrames: bnFrames(props)})}
+      />
+      <Composition
+        id="BlogNewsPreview"
+        component={BlogNewsPreview}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={bnFrames(blogNewsSample as BlogNewsProps)}
+        defaultProps={{...(blogNewsSample as BlogNewsProps), step: 30, start: 15}}
+        calculateMetadata={({props}: {props: BlogNewsProps}) => ({durationInFrames: bnFrames(props)})}
       />
       {/* английские версии (04.11.2026) */}
       <Composition id="GttSiteManhuaEn" component={GttSiteManhuaEn} width={1080} height={1920} fps={30} durationInFrames={GTT_MANHUA_EN_FRAMES} defaultProps={{clean: true}} />

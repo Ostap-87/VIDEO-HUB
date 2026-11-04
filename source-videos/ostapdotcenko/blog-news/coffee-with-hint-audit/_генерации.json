@@ -1,0 +1,20 @@
+[
+ {
+  "file": "hf-padenie.jpg",
+  "job_id": "bbadad6b-f1ef-42df-9940-4a5f3059fb97",
+  "model": "gpt_image_2_5 medium 1k 3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "for": "多 NEWS №1 (Luckin): падение — стакан на отчётах и обвал графика",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_130034_bbadad6b-f1ef-42df-9940-4a5f3059fb97.png"
+ },
+ {
+  "file": "hf-ochered.jpg",
+  "job_id": "b544fe0b-c80a-4930-ab7f-9d677e2802c5",
+  "model": "gpt_image_2_5 medium 1k 3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "for": "多 NEWS №1 (Luckin): возвращение — очередь у кофейного киоска",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_130033_b544fe0b-c80a-4930-ab7f-9d677e2802c5.png"
+ }
+]
