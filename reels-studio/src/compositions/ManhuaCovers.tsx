@@ -464,13 +464,14 @@ const GttMagazine: React.FC = () => (
     <div style={abs(722, 322, {width: 330, whiteSpace: "nowrap"})}>
       <div style={{fontFamily: FONT.zcool, fontSize: 52, color: G.ink, lineHeight: 1}}>全球科技之旅</div>
       <div style={{...inter(30, G.ink), marginTop: 10}}>GLOBAL TECH TOUR</div>
-      <div style={{...inter(24, G.red), marginTop: 6}}>манхуа о закрытом Китае</div>
+      <div style={{...inter(27, G.red), marginTop: 6}}>Всё о закрытом Китае</div>
     </div>
-    <Img src={staticFile(`${CUT}ostap-yingke-mikrofon.png`)} style={{position: "absolute", left: 300, top: 760, height: 1000, filter: `drop-shadow(10px 0 0 #fff) drop-shadow(-10px 0 0 #fff) drop-shadow(0 -10px 0 #fff) drop-shadow(18px 18px 0 ${G.ink})`}} />
-    <Blurb x={215} y={820} r={190} color="#fff" rot={-8} seed="b1"><span style={{color: G.red}}>НОВАЯ ГЛАВА</span><span>Основатель</span><span>Hema</span></Blurb>
+    {/* фото пользователя 04.11.2026 (выступление с микрофоном, закреп профиля); логотип площадки срезан вместе с низом кадра */}
+    <Img src={staticFile(`${CUT}ostap-megamarket-mikrofon.png`)} style={{position: "absolute", left: 170, top: 720, height: 1220, filter: `drop-shadow(10px 0 0 #fff) drop-shadow(-10px 0 0 #fff) drop-shadow(0 -10px 0 #fff) drop-shadow(18px 18px 0 ${G.ink})`}} />
+    <Blurb x={220} y={815} r={215} color="#fff" rot={-8} seed="b1"><span style={{fontSize: 27}}>ЭКСКЛЮЗИВНЫЙ</span><span style={dela(48, G.red, {lineHeight: 1.1})}>ДОСТУП</span></Blurb>
     <Blurb x={200} y={1195} r={175} color={G.sky} rot={6} seed="b2"><span style={{fontSize: 24}}>СПЕЦВЫПУСК</span><span>Кампусы</span><span>Huawei</span><span>Alibaba</span></Blurb>
     <Blurb x={215} y={1510} r={150} color="#FFD92E" rot={-5} seed="b3"><span style={{fontSize: 40}}>9 стран</span><span>76 программ</span></Blurb>
-    <div style={abs(780, 1500, {background: "#fff", border: `4px solid ${G.ink}`, padding: "10px 12px", rotate: "3deg"})}>
+    <div style={abs(790, 1555, {background: "#fff", border: `4px solid ${G.ink}`, padding: "10px 12px", rotate: "3deg"})}>
       <div style={{width: 210, height: 70, background: `repeating-linear-gradient(90deg, ${G.ink} 0 5px, transparent 5px 9px, ${G.ink} 9px 11px, transparent 11px 16px, ${G.ink} 16px 20px, transparent 20px 23px)`}} />
       <div style={{...mono(20, G.ink), marginTop: 6, textAlign: "center"}}>globaltechtour.ru</div>
     </div>
