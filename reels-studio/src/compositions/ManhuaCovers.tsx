@@ -1,0 +1,281 @@
+// Обложки трёх манхуа-роликов про сайты (04.11.2026: «а теперь обложки сделай под каждое из видео»): «Мой сайт»
+// (SiteManhua), Aura Robotics (AuraSiteManhua), Global Tech Tour (GttSiteManhua) — по два варианта на ролик:
+// A — по хуку ролика (первая сцена: персонажи, облачка, иероглиф-звук), B — по содержанию (главы, факты, первые лица).
+// Тот же манхуа-набор, шрифты и герои, что в самих роликах (site-manhua/fx.tsx, скептик, 3D-маскот, робособака, гуманоид).
+// 1080×1920, кадр N = обложка N (0–1 «Мой сайт», 2–3 Aura, 4–5 GTT); всё важное — в полосе сетки профиля 3:4 (y 240–1680).
+// Мата на обложках нет. Факты — те же, что в роликах (с сайтов). Рендер всех шести:
+// npx remotion render src/index.ts ManhuaCovers <папка> --sequence --image-format=png --frames=0-5
+import React from "react";
+import {AbsoluteFill, Freeze, Img, staticFile, useCurrentFrame} from "remotion";
+import {body} from "../fonts";
+import {AuraMascot} from "../components/AuraMascot";
+import {AuraDog} from "../components/AuraDog";
+import {AuraHumanoidSpot} from "../components/AuraHumanoidSpot";
+import {AuraBadge} from "../components/AuraBadge";
+import {FONT} from "./site-manhua/fonts";
+import {Skeptic} from "./site-manhua/skeptic";
+import {Bubble, Burst, C, Grain, Halftone, Narration, Phone, Sfx, SpeedLines, Tape, Vignette} from "./site-manhua/fx";
+
+export const MANHUA_COVERS = 6;
+// все анимации набора к этому кадру уже закончились; 3D-жесты считаются от T секунд
+const F = 200;
+const T = F / 30;
+const INTER = body.fontFamily;
+const A = {parch: "#F8F6F3", ink: "#262626", lemon: "#FFF65D", deep: "#1C1C1C", kraft: "#BE9A62"};
+const G = {n1: "#4677EC", n2: "#2556CE", n3: "#1A43A8", deep: "#0B1D55", blue: "#2563EB", sky: "#7DD3FC", red: "#E8341C", ink: "#0A0F24"};
+const OD_IMG = "source-videos/ostapdotcenko/site/2026-11-03-сайт/";
+const CUT = "source-videos/фото-от-пользователя/остап/вырезки/";
+const CRYSTAL = "finished-videos/обложки/gtt-бренд/instagram/gtt-аватар-мастер-2160.png";
+const PH = "source-videos/2026-11-03-gtt-sait-manhua/фото/";
+
+const dela = (size: number, color: string, extra: React.CSSProperties = {}): React.CSSProperties => ({fontFamily: FONT.dela, fontSize: size, color, lineHeight: 1.02, ...extra});
+const inter = (size: number, color: string, extra: React.CSSProperties = {}): React.CSSProperties => ({fontFamily: INTER, fontWeight: 700, fontSize: size, color, lineHeight: 1.2, letterSpacing: "-0.01em", ...extra});
+const mono = (size: number, color: string, extra: React.CSSProperties = {}): React.CSSProperties => ({fontFamily: FONT.mono, fontSize: size, color, letterSpacing: "0.14em", ...extra});
+const abs = (left: number, top: number, extra: React.CSSProperties = {}): React.CSSProperties => ({position: "absolute", left, top, ...extra});
+
+// полароид: фото в белой рамке, подпись от руки, скотч сверху
+const Polaroid: React.FC<{x: number; y: number; w: number; h: number; src: string; pos?: string; rot: number; caption: string; tape?: string}> = ({x, y, w, h, src, pos = "50% 35%", rot, caption, tape = "rgba(255,246,93,.85)"}) => (
+  <div style={abs(x, y, {width: w + 36, padding: "18px 18px 0", background: "#fff", rotate: `${rot}deg`, boxShadow: "14px 18px 0 rgba(10,15,36,.55)", border: `4px solid ${G.ink}`})}>
+    <Img src={staticFile(src)} style={{width: w, height: h, objectFit: "cover", objectPosition: pos, display: "block", border: `3px solid ${G.ink}`}} />
+    <div style={{fontFamily: FONT.hand, fontSize: 46, color: G.ink, textAlign: "center", padding: "8px 0 12px", lineHeight: 1.1}}>{caption}</div>
+    <div style={abs(w / 2 - 50, -26, {width: 140, height: 44, background: tape, rotate: "-6deg", border: `3px solid ${G.ink}`})} />
+  </div>
+);
+
+// ── «Мой сайт», A: хук — «У МЕНЯ ЕСТЬ САЙТ.» ударами на чернилах, снизу жёлтый растр: телефон с сайтом и портрет ─────────────
+const OdHook: React.FC = () => (
+  <AbsoluteFill style={{background: C.ink}}>
+    <SpeedLines color="#fff" opacity={0.75} inner={400} cy={560} seed="oda" />
+    <div style={abs(64, 286, mono(30, "#fff"))}>ОСТАП ДОЦЕНКО · 多增科</div>
+    {[["У МЕНЯ", 350, 140, "#fff"], ["ЕСТЬ", 500, 140, "#fff"], ["САЙТ.", 650, 172, C.y]].map(([t, y, s, c]) => (
+      <div key={t as string} style={{position: "absolute", left: 0, right: 0, top: y as number, textAlign: "center", whiteSpace: "nowrap", ...dela(s as number, c as string, {textShadow: `12px 12px 0 ${C.red}`})}}>{t}</div>
+    ))}
+    <Sfx text="咚!" x={850} y={300} size={120} color={C.y} at={0} font={FONT.zcool} rot={12} />
+    {/* жёлтая половина с косым срезом */}
+    <AbsoluteFill style={{clipPath: "polygon(0 930px, 1080px 860px, 1080px 1920px, 0 1920px)"}}>
+      <Halftone bg={C.y} dot="rgba(25,25,34,.16)" />
+      <SpeedLines color={C.ink} opacity={0.55} inner={520} cx={300} cy={1300} seed="odb" />
+    </AbsoluteFill>
+    <svg width={1080} height={1920} style={{position: "absolute", inset: 0}}>
+      <line x1={0} y1={930} x2={1080} y2={860} stroke={C.ink} strokeWidth={14} />
+      <line x1={0} y1={952} x2={1080} y2={882} stroke={C.red} strokeWidth={8} />
+    </svg>
+    <div style={abs(60, 1000, {fontFamily: FONT.zcool, fontSize: 120, color: C.ink, lineHeight: 1, textShadow: `8px 8px 0 ${C.red}`})}>我的网站</div>
+    <AbsoluteFill style={{perspective: 1800}}>
+      <div style={abs(70, 1150, {transform: "rotateY(18deg) rotateZ(-7deg)", transformStyle: "preserve-3d"})}>
+        <Phone w={380} imgs={[`${OD_IMG}ru-00-top.jpg`]} mode="swap" />
+      </div>
+    </AbsoluteFill>
+    <Img src={staticFile(`${CUT}финал-сайт-3.png`)} style={{position: "absolute", right: -90, bottom: -40, height: 1000, filter: `drop-shadow(8px 0 0 #fff) drop-shadow(-8px 0 0 #fff) drop-shadow(0 8px 0 #fff) drop-shadow(0 -8px 0 #fff) drop-shadow(18px 18px 0 ${C.ink})`}} />
+    <Tape x={300} y={1560} at={0} rot={-4} font={FONT.mono} size={54}>ostapdotcenko.ru</Tape>
+    <Grain opacity={0.12} />
+  </AbsoluteFill>
+);
+
+// ── «Мой сайт», B: страница манхуа — четыре главы ролика панелями ─────────────────────────────────────────────────────────
+const PanelBox: React.FC<{x: number; y: number; w: number; h: number; bg: string; rot?: number; children: React.ReactNode}> = ({x, y, w, h, bg, rot = 0, children}) => (
+  <div style={abs(x, y, {width: w, height: h, background: bg, border: `7px solid ${C.ink}`, boxShadow: `12px 12px 0 ${C.ink}`, overflow: "hidden", rotate: `${rot}deg`})}>{children}</div>
+);
+const ChapterTag: React.FC<{zh: string; ru: string; dark?: boolean}> = ({zh, ru, dark}) => (
+  <div style={abs(0, 0, {display: "flex", alignItems: "baseline", gap: 10, zIndex: 2, background: dark ? C.ink : "transparent", padding: "10px 16px 8px", borderRight: dark ? `5px solid ${C.ink}` : undefined})}>
+    <span style={{fontFamily: FONT.zcool, fontSize: 52, color: dark ? C.y : C.ink, lineHeight: 1}}>{zh}</span>
+    <span style={{...inter(28, dark ? "#fff" : C.ink), background: dark ? "transparent" : C.y, padding: "0 6px"}}>{ru}</span>
+  </div>
+);
+const OdPage: React.FC = () => (
+  <AbsoluteFill style={{background: C.paper}}>
+    <Halftone bg={C.paper} dot="rgba(25,25,34,.08)" size={18} r={2.6} />
+    <div style={abs(64, 280, mono(30, C.ink))}>OSTAPDOTCENKO.RU · 我的网站</div>
+    <div style={abs(58, 330, dela(132, C.ink, {textShadow: `10px 10px 0 ${C.red}`, whiteSpace: "nowrap"}))}>МОЙ САЙТ</div>
+    <div style={abs(64, 500, dela(70, C.ink))}>
+      <span style={{background: C.y, padding: "0 12px"}}>как манхуа</span>
+    </div>
+    <Sfx text="哇!" x={840} y={480} size={110} color={C.red} at={0} font={FONT.zcool} rot={10} />
+    {/* 1. кто он — живое фото со сцены */}
+    <PanelBox x={56} y={640} w={560} h={500} bg={C.ink}>
+      <Img src={staticFile("source-videos/фото-от-пользователя/остап/2026-11-03-для-финала/foto-5.jpg")} style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: "78% 25%"}} />
+      <ChapterTag zh="第一话" ru="Кто он" dark />
+    </PanelBox>
+    {/* 2. цифры */}
+    <PanelBox x={650} y={640} w={374} h={500} bg={C.y}>
+      <ChapterTag zh="第二话" ru="Цифры" />
+      <div style={abs(0, 130, {width: 374, height: 300})}>
+        <Burst x={187} y={150} r={170} color="#fff" stroke={C.ink} sw={7} seed="odn" points={18} />
+      </div>
+      <div style={{position: "absolute", left: 0, right: 0, top: 230, textAlign: "center", ...dela(74, C.red, {WebkitTextStroke: `3px ${C.ink}`, paintOrder: "stroke fill"})}}>+350%</div>
+      <div style={{position: "absolute", left: 0, right: 0, top: 340, textAlign: "center", ...inter(30, C.ink)}}>рост продавцов</div>
+    </PanelBox>
+    {/* 3. три языка — экран выбора как в игре */}
+    <PanelBox x={56} y={1176} w={470} h={400} bg={C.ink}>
+      <ChapterTag zh="第三话" ru="Три языка" dark />
+      <div style={{fontFamily: FONT.pixel, fontSize: 26, color: C.y, position: "absolute", left: 24, top: 96}}>ВЫБЕРИ ЯЗЫК</div>
+      {["RU", "EN", "中文"].map((l, i) => (
+        <div key={l} style={abs(24 + i * 146, 160, {width: 128, height: 170, border: `5px solid ${i === 2 ? C.y : "#fff"}`, background: i === 2 ? C.red : "transparent", display: "flex", alignItems: "center", justifyContent: "center", ...(l === "中文" ? {fontFamily: FONT.zcool, fontSize: 52, color: "#fff"} : dela(52, "#fff"))})}>{l}</div>
+      ))}
+      <div style={{fontFamily: FONT.pixel, fontSize: 22, color: "#fff", position: "absolute", left: 24, top: 352}}>▶ 1P READY?</div>
+    </PanelBox>
+    {/* 4. блог — отрывной календарь */}
+    <PanelBox x={560} y={1176} w={464} h={400} bg="#fff">
+      <ChapterTag zh="第四话" ru="Блог" />
+      <div style={abs(36, 100, {width: 200, height: 250, border: `5px solid ${C.ink}`, background: "#fff", boxShadow: `8px 8px 0 ${C.red}`})}>
+        <div style={{height: 56, background: C.red, borderBottom: `5px solid ${C.ink}`, ...mono(26, "#fff", {textAlign: "center", lineHeight: "56px", letterSpacing: "0.1em"})}}>НОЯБРЬ</div>
+        <div style={{textAlign: "center", ...dela(120, C.ink, {lineHeight: 1.4})}}>4</div>
+      </div>
+      <div style={abs(256, 112, {width: 190, ...inter(34, C.ink)})}>новая статья каждый день</div>
+      <div style={abs(256, 290, {width: 190, ...inter(26, C.red)})}>RU · EN · 中文</div>
+    </PanelBox>
+    <Grain opacity={0.1} />
+  </AbsoluteFill>
+);
+
+// деревянный ящик MADE IN CHINA (как в хуке ролика Aura)
+const Crate: React.FC<{x: number; y: number; w: number; h: number}> = ({x, y, w, h}) => (
+  <div style={abs(x, y, {width: w, height: h})}>
+    <div style={{position: "absolute", left: 18, right: -18, top: -26, height: 30, background: "#D8B985", border: `4px solid ${A.ink}`, transform: "skewX(-34deg)", transformOrigin: "0 100%"}} />
+    <div style={{position: "absolute", inset: 0, background: `repeating-linear-gradient(180deg, ${A.kraft} 0 74px, #A88550 74px 80px)`, border: `5px solid ${A.ink}`, boxShadow: "inset 0 -30px 60px rgba(0,0,0,.28)"}} />
+    <div style={{position: "absolute", left: 0, right: 0, top: 58, textAlign: "center", fontFamily: FONT.oswald, fontSize: 56, letterSpacing: "0.12em", color: "rgba(38,38,38,.78)"}}>MADE IN CHINA</div>
+    <div style={{position: "absolute", left: 0, right: 0, top: 134, textAlign: "center", fontFamily: FONT.zcool, fontSize: 64, color: "rgba(38,38,38,.72)"}}>中国制造</div>
+  </div>
+);
+const Mark: React.FC<{children: React.ReactNode}> = ({children}) => (
+  <span style={{background: `linear-gradient(${A.lemon}, ${A.lemon}) no-repeat 0 88% / 100% 46%`, padding: "0 6px"}}>{children}</span>
+);
+const AuraPill: React.FC<{x: number; y: number; children: React.ReactNode; dark?: boolean; size?: number; rot?: number}> = ({x, y, children, dark, size = 38, rot = 0}) => (
+  <div style={abs(x, y, {display: "flex", alignItems: "center", gap: 14, background: dark ? A.ink : A.parch, border: `4px solid ${A.ink}`, borderRadius: 999, padding: "12px 28px 12px 16px", whiteSpace: "nowrap", boxShadow: `7px 7px 0 ${dark ? A.lemon : A.ink}`, rotate: `${rot}deg`})}>
+    <span style={{width: size * 0.62, height: size * 0.62, borderRadius: 99, background: A.lemon, border: `4px solid ${dark ? A.parch : A.ink}`}} />
+    <span style={inter(size, dark ? A.parch : A.ink)}>{children}</span>
+  </div>
+);
+
+// ── Aura, A: хук — скептик «Робот? Из Китая?», маскот вскочил на ящик: «НАДО!» ────────────────────────────────────────────
+const AuraHook: React.FC = () => (
+  <AbsoluteFill style={{background: A.deep}}>
+    <Halftone bg={A.deep} dot="rgba(255,246,93,.08)" size={20} r={3} />
+    <AbsoluteFill style={{background: "radial-gradient(ellipse 560px 760px at 760px 1150px, rgba(255,246,93,.26), transparent 70%)"}} />
+    <div style={abs(64, 282, mono(28, A.lemon))}>AURA ROBOTICS · AURA-ROBOTICS.RU</div>
+    <div style={abs(60, 330, dela(104, A.parch))}>Робот с завода.</div>
+    <div style={abs(60, 456, dela(84, A.ink, {background: A.lemon, padding: "4px 18px", boxShadow: `8px 8px 0 ${A.parch}`}))}>Без посредников</div>
+    <Crate x={570} y={1420} w={440} h={320} />
+    <AuraMascot plan={{stays: [{at: 0, x: 790, y: 1430, face: -0.35}], gestures: [{at: T - 0.8, kind: "pointUp"}]}} scale={2.25} dpr={1.5} />
+    <Skeptic x={-90} y={1170} scale={1.2} emo="shock" rim={A.lemon} fill="#0E0E0E" accent={A.lemon} />
+    <Bubble x={36} y={660} w={500} h={270} tail={[180, 540]} fill={A.parch} stroke={A.ink} scale={1} opacity={1}>
+      <div style={dela(68, A.ink)}>Робот?</div>
+      <div style={dela(52, A.ink)}>Из Китая?</div>
+    </Bubble>
+    <Bubble x={575} y={590} w={460} h={260} shout tail={[95, 345]} fill="#fff" stroke={A.ink} scale={1} opacity={1}>
+      <div style={dela(120, A.ink)}>
+        <Mark>НАДО!</Mark>
+      </div>
+    </Bubble>
+    <Sfx text="嗯？" x={440} y={1060} size={120} color={A.lemon} stroke={A.ink} at={0} font={FONT.zcool} rot={-8} />
+    <Grain opacity={0.1} />
+  </AbsoluteFill>
+);
+
+// ── Aura, B: вся команда у печати Aura + факт с сайта во взрыве ─────────────────────────────────────────────────────────────
+const AuraTeam: React.FC = () => (
+  <AbsoluteFill style={{background: A.parch}}>
+    <Halftone bg={A.parch} dot="rgba(38,38,38,.07)" size={20} r={2.6} />
+    <SpeedLines color="rgba(38,38,38,.5)" inner={520} cy={1240} seed="aut" opacity={0.6} />
+    <div style={abs(64, 282, mono(28, A.ink))}>AURA-ROBOTICS.RU · 第一话</div>
+    <div style={abs(60, 330, dela(104, A.ink))}>Робот с завода.</div>
+    <div style={abs(60, 456, dela(92, A.ink))}>
+      <Mark>Без посредников</Mark>
+    </div>
+    <div style={abs(40, 640, {width: 1000, height: 420})}>
+      <Burst x={500} y={250} r={265} color={A.lemon} stroke={A.ink} sw={8} seed="aub" points={22} />
+    </div>
+    <div style={{position: "absolute", left: 150, right: 150, top: 790, textAlign: "center"}}>
+      <div style={dela(64, A.ink)}>Больше половины</div>
+      <div style={inter(38, A.ink)}>промышленных роботов в мире</div>
+      <div style={{...dela(58, A.parch), background: A.ink, display: "inline-block", padding: "6px 18px", marginTop: 10}}>ставят в Китае</div>
+    </div>
+    <div style={abs(540 - 260, 1050, {width: 520, height: 520, opacity: 0.9})}>
+      <AuraBadge size={520} />
+    </div>
+    <AuraDog x={210} y={1600} scale={1.6} face={-0.6} stands={[{at: T - 1.2, dur: 4}]} />
+    <AuraMascot plan={{stays: [{at: 0, x: 540, y: 1600, face: 0}], gestures: [{at: T - 0.9, kind: "wave"}]}} scale={1.9} dpr={1.5} />
+    <AuraHumanoidSpot plan={{stays: [{at: 0, x: 860, face: -Math.PI / 2}], gestures: [{at: T - 0.8, kind: "wave"}]}} y={1600} scale={1.55} dpr={1.5} />
+    <AuraPill x={64} y={1110} size={34} rot={-3}>100+ производителей</AuraPill>
+    <AuraPill x={640} y={1190} size={34} rot={3} dark>17 городов Китая</AuraPill>
+    <Grain opacity={0.08} />
+  </AbsoluteFill>
+);
+
+const NavyBg: React.FC<{cy?: number}> = ({cy = 35}) => (
+  <>
+    <AbsoluteFill style={{background: `radial-gradient(circle at 50% ${cy}%, ${G.n1}, ${G.n2} 55%, ${G.n3})`}} />
+    <Halftone bg="transparent" dot="rgba(125,211,252,.08)" size={22} r={3} />
+  </>
+);
+const CRACK = "M640,1010 L560,930 L520,820 L470,760 M640,1010 L760,940 L840,960 L960,880 M640,1010 L700,1120 L690,1240 L760,1330 M640,1010 L520,1060 L400,1050 L300,1110 M560,930 L480,960 M760,940 L790,860 M700,1120 L800,1150";
+
+// ── GTT, A: хук — «А на завод тебя интернет пустит?» · 进不去！ — и пропуск GTT: «А нас — пускают» ──────────────────────────
+const GttHook: React.FC = () => (
+  <AbsoluteFill>
+    <AbsoluteFill style={{filter: "grayscale(.8) contrast(1.15)"}}>
+      <NavyBg cy={60} />
+      <SpeedLines color="rgba(125,211,252,.4)" cx={600} cy={1300} inner={500} opacity={0.9} seed="ga" />
+      <Skeptic x={60} y={1150} scale={1.4} emo="sweat" tie fill={G.ink} rim={G.sky} accent={G.red} />
+    </AbsoluteFill>
+    <svg width={1080} height={1920} style={{position: "absolute", inset: 0}}>
+      <path d={CRACK} fill="none" stroke="#fff" strokeWidth={7} strokeLinejoin="bevel" style={{filter: "drop-shadow(0 0 8px rgba(125,211,252,.9))"}} />
+    </svg>
+    <div style={abs(60, 300, {width: 960, background: G.deep, border: `4px solid ${G.ink}`, padding: "18px 24px", rotate: "-2deg", boxShadow: `9px 9px 0 ${G.sky}`, ...inter(54, "#fff")})}>
+      А на завод тебя <span style={{color: G.sky}}>интернет пустит?</span>
+    </div>
+    <div style={{position: "absolute", left: 0, right: 0, top: 560, textAlign: "center"}}>
+      <div style={{fontFamily: FONT.zcool, fontSize: 210, color: "#fff", lineHeight: 1.05, textShadow: `10px 10px 0 ${G.red}`}}>进不去！</div>
+      <div style={dela(82, G.red, {WebkitTextStroke: "6px #fff", paintOrder: "stroke fill", textShadow: `8px 8px 0 ${G.ink}`, whiteSpace: "nowrap"})}>НЕ ПУСТЯТ!</div>
+    </div>
+    {/* пропуск GTT: белая карта на ленте, справа снизу */}
+    <div style={abs(600, 1250, {width: 420, background: "#fff", border: `5px solid ${G.ink}`, borderRadius: 22, boxShadow: `12px 12px 0 ${G.blue}`, rotate: "6deg", padding: "22px 26px", overflow: "hidden"})}>
+      <div style={{display: "flex", alignItems: "center", gap: 14}}>
+        <Img src={staticFile(CRYSTAL)} style={{width: 92, height: 92, borderRadius: "50%"}} />
+        <div style={dela(36, G.ink)}>GLOBAL TECH TOUR</div>
+      </div>
+      <div style={{...mono(24, G.blue), marginTop: 14}}>ПРОПУСК · 通行证</div>
+      <div style={{...dela(66, G.ink), marginTop: 8}}>А нас —</div>
+      <div style={dela(66, G.blue)}>пускают.</div>
+      <div style={{marginTop: 14, height: 46, background: `repeating-linear-gradient(90deg, ${G.ink} 0 6px, transparent 6px 10px, ${G.ink} 10px 13px, transparent 13px 19px)`}} />
+    </div>
+    <div style={abs(800, 1140, {width: 14, height: 130, background: G.red, rotate: "6deg", border: `3px solid ${G.ink}`})} />
+    <Grain opacity={0.1} />
+    <Vignette strength={0.3} />
+  </AbsoluteFill>
+);
+
+// ── GTT, B: первые лица — полароиды настоящих встреч, «Туда, куда с улицы не пускают» ─────────────────────────────────────
+const GttPeople: React.FC = () => (
+  <AbsoluteFill>
+    <NavyBg cy={40} />
+    <SpeedLines color="rgba(125,211,252,.35)" cx={540} cy={1100} inner={560} opacity={0.6} seed="gb" />
+    <div style={abs(64, 280, {display: "flex", alignItems: "center", gap: 16})}>
+      <Img src={staticFile(CRYSTAL)} style={{width: 84, height: 84, borderRadius: "50%"}} />
+      <div style={mono(30, G.sky)}>GLOBAL TECH TOUR · 第三话</div>
+    </div>
+    <div style={abs(60, 380, dela(88, "#fff", {textShadow: `8px 8px 0 ${G.ink}`, width: 980}))}>Туда, куда</div>
+    <div style={abs(60, 476, dela(88, "#fff", {textShadow: `8px 8px 0 ${G.ink}`}))}>с улицы</div>
+    <div style={abs(60, 572, dela(88, G.red, {WebkitTextStroke: "5px #fff", paintOrder: "stroke fill", textShadow: `8px 8px 0 ${G.ink}`}))}>не пускают</div>
+    <Polaroid x={24} y={700} w={290} h={370} src={`${PH}yingke-rukovodstvo.jpg`} rot={-7} caption="YingKe 盈科" />
+    <Polaroid x={730} y={690} w={290} h={370} src="source-videos/2026-10-25-sany/IMG_5645.jpg" pos="50% 30%" rot={6} caption="у ворот SANY" tape="rgba(125,211,252,.9)" />
+    <Polaroid x={350} y={1040} w={360} h={440} src="source-videos/обложки/2026-11-03-manhua/hema-kadr.jpg" pos="50% 22%" rot={-2} caption="с основателем Hema" tape="rgba(232,52,28,.85)" />
+    <Narration x={64} y={1612} at={0} font={FONT.oswald} size={34} rot={-2} bg="#fff" color={G.ink}>9 СТРАН · 76 ПРОГРАММ · 1000+ КОМПАНИЙ</Narration>
+    <Sfx text="哇!" x={820} y={1260} size={120} color="#fff" stroke={G.ink} at={0} font={FONT.zcool} rot={12} />
+    <Grain opacity={0.1} />
+    <Vignette strength={0.28} />
+  </AbsoluteFill>
+);
+
+const COVERS = [OdHook, OdPage, AuraHook, AuraTeam, GttHook, GttPeople];
+export const COVER_NAMES = ["od-A-hook", "od-B-glavy", "aura-A-hook", "aura-B-komanda", "gtt-A-hook", "gtt-B-pervye-lica"];
+
+export const ManhuaCovers: React.FC = () => {
+  const f = useCurrentFrame();
+  const Cover = COVERS[Math.min(COVERS.length - 1, f)];
+  return (
+    <Freeze frame={F}>
+      <Cover />
+    </Freeze>
+  );
+};

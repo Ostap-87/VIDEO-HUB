@@ -32,6 +32,7 @@ import {DeskPromo, deskPromoFrames, deskPromoSchema, type DeskPromoProps} from "
 import {SiteManhua, SiteManhuaPreview, SITE_MANHUA_FRAMES} from "./compositions/SiteManhua";
 import {AuraSiteManhua, AuraSiteManhuaPreview, AURA_MANHUA_FRAMES} from "./compositions/AuraSiteManhua";
 import {GttSiteManhua, GttSiteManhuaPreview, GTT_MANHUA_FRAMES} from "./compositions/GttSiteManhua";
+import {ManhuaCovers, MANHUA_COVERS} from "./compositions/ManhuaCovers";
 import deskPromoSample from "../props/2026-10-27-sibdoc-promo.json";
 
 export const RemotionRoot: React.FC = () => {
@@ -242,6 +243,7 @@ export const RemotionRoot: React.FC = () => {
           height: props.format === "h" ? 1080 : 1920,
         })}
       />
+      <Composition id="ManhuaCovers" component={ManhuaCovers} width={1080} height={1920} fps={30} durationInFrames={MANHUA_COVERS} />
       <Composition id="GttSiteManhua" component={GttSiteManhua} width={1080} height={1920} fps={30} durationInFrames={GTT_MANHUA_FRAMES} defaultProps={{clean: true}} />
       <Composition
         id="GttSiteManhuaPreview"
