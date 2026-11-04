@@ -1,0 +1,50 @@
+[
+ {
+  "file": "hf-kashtany.jpg",
+  "job_id": "c7c1be4e-ae13-4760-a4a4-8a1d21bea1b1",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_151259_c7c1be4e-ae13-4760-a4a4-8a1d21bea1b1.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "список «Оплачено по QR-коду»"
+ },
+ {
+  "file": "hf-turist.jpg",
+  "job_id": "1ec7c49c-7bf5-4d44-b094-6d32428ba3e1",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_151258_1ec7c49c-7bf5-4d44-b094-6d32428ba3e1.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "цифра «Кто кого сканирует»"
+ },
+ {
+  "file": "hf-batareya.jpg",
+  "job_id": "134959a2-080e-46e6-96e2-d54509f6cb2a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_151259_134959a2-080e-46e6-96e2-d54509f6cb2a.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "разворот «Телефон сел»"
+ },
+ {
+  "file": "hf-babushka.jpg",
+  "job_id": "f3af7374-8689-49e0-902c-b7a4bf335b14",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_151259_f3af7374-8689-49e0-902c-b7a4bf335b14.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "акт «За бабушкой»"
+ }
+]

@@ -1,0 +1,50 @@
+[
+ {
+  "file": "hf-pudun.jpg",
+  "job_id": "d779b106-ce03-415f-ab11-b6f3999a7221",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_152716_d779b106-ce03-415f-ab11-b6f3999a7221.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "хук и список «Симптомы эксперта»"
+ },
+ {
+  "file": "hf-infuzoria.jpg",
+  "job_id": "5b53343b-891a-4d9e-8117-8bae73cbc2ab",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_152718_5b53343b-891a-4d9e-8117-8bae73cbc2ab.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "разворот «Инфузория-туфелька»"
+ },
+ {
+  "file": "hf-uzhin.jpg",
+  "job_id": "37f04bbd-597b-4222-aed3-afd2e34eb233",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_152717_37f04bbd-597b-4222-aed3-afd2e34eb233.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "диалог «Случай первый»"
+ },
+ {
+  "file": "hf-bar.jpg",
+  "job_id": "0f493794-6d40-44d2-b290-5dffa10b8e83",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_152718_0f493794-6d40-44d2-b290-5dffa10b8e83.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "VS «Случай второй»"
+ }
+]

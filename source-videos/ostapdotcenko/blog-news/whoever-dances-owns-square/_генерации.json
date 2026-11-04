@@ -1,0 +1,50 @@
+[
+ {
+  "file": "hf-ploshchad.jpg",
+  "job_id": "8bf49ab1-23ba-489a-8af9-7c6146f8039a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_151848_8bf49ab1-23ba-489a-8af9-7c6146f8039a.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "цифра «Сто миллионов», разворот"
+ },
+ {
+  "file": "hf-sosedi.jpg",
+  "job_id": "9dda1aaa-3f21-4246-859f-88d719923590",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_151849_9dda1aaa-3f21-4246-859f-88d719923590.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "акт «Сорок тысяч на тишину»"
+ },
+ {
+  "file": "hf-chinovniki.jpg",
+  "job_id": "6f0492cf-3fdc-4f98-a6e3-b6ce06c8495e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_151848_6f0492cf-3fdc-4f98-a6e3-b6ce06c8495e.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "диалог «Двенадцать программ»"
+ },
+ {
+  "file": "hf-noch.jpg",
+  "job_id": "b1e49319-064f-41d4-9db2-24665964f15c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_151849_b1e49319-064f-41d4-9db2-24665964f15c.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "не вошла: на картинке европейская площадь"
+ }
+]

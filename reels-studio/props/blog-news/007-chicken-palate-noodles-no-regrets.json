@@ -1,0 +1,189 @@
+{
+ "show": "多 NEWS",
+ "ep": 7,
+ "season": {
+  "name": "Наблюдения",
+  "zh": "观察",
+  "n": 4,
+  "total": 5
+ },
+ "title": "Куриное нёбо, лапша и никаких сожалений",
+ "date": "2026-09-05",
+ "slug": "chicken-palate-noodles-no-regrets",
+ "cover": "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/hf-zakuski.jpg",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/ru-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/ru-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/ru-02.jpg"
+ ],
+ "accent": "#3FE0FF",
+ "hook": {
+  "style": "split",
+  "lines": [
+   "ЖАРЕНЫЕ",
+   "ТАРАКАНЫ?",
+   "НЕТ."
+  ],
+  "shout": [
+   "Это не Китай —",
+   "аттракцион!"
+  ],
+  "sfx": "吃"
+ },
+ "beats": [
+  {
+   "kind": "stat",
+   "sec": 8.0,
+   "zh": "八",
+   "kicker": "ОФИЦИАЛЬНО",
+   "title": "Восемь кухонь",
+   "img": "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/hf-karta8.jpg",
+   "imgPos": "50% 45%",
+   "big": {
+    "pre": "≈",
+    "num": 80000,
+    "text": "официально зарегистрированных блюд"
+   },
+   "equal": "8 региональных кухонь",
+   "chips": [
+    "Сычуань, Кантон, Шаньдун, Су — четыре главные",
+    "У городов — свои: хуайянская, Шуньдэ"
+   ]
+  },
+  {
+   "kind": "list",
+   "sec": 8.8,
+   "zh": "零食",
+   "kicker": "НАБОР ПОЛУМЕСТНОГО",
+   "title": "Что берут у метро",
+   "img": "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/hf-zakuski.jpg",
+   "imgPos": "50% 60%",
+   "mark": "吃",
+   "items": [
+    "Бабл-ти в дорогу",
+    "Куриные нёба",
+    "Утиные шеи",
+    "Рыбьи бёдрышки",
+    "Латяо — на любую остроту",
+    "Маринованная медуза",
+    "Кисло-острая картофельная соломка",
+    "И это реально вкусно!"
+   ]
+  },
+  {
+   "kind": "page",
+   "sec": 7.6,
+   "zh": "面",
+   "kicker": "СТАНОВИШЬСЯ ПОЛУМЕСТНЫМ",
+   "title": "Лапша с утра",
+   "panels": [
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/hf-lapsha.jpg",
+     "imgPos": "50% 12%",
+     "cap": "Лапшу здесь едят и с утра"
+    },
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/hf-lapsha.jpg",
+     "imgPos": "60% 88%",
+     "zoom": 1.2,
+     "cap": "За каждым углом — дед со своим рецептом",
+     "sfx": "嗦"
+    }
+   ],
+   "big": {
+    "big": "6–7",
+    "text": "основных видов лапши"
+   }
+  },
+  {
+   "kind": "fall",
+   "sec": 8.6,
+   "zh": "早",
+   "kicker": "ПЯТЬ ЗВЁЗД",
+   "title": "Завтрак в Ханчжоу",
+   "img": "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/hf-zavtrak.jpg",
+   "imgPos": "50% 40%",
+   "steps": [
+    {
+     "when": "ХАНЧЖОУ",
+     "text": "пятизвёздочный отель, шведский стол"
+    },
+    {
+     "when": "СОСЕД",
+     "text": "куриная ножка, кость — на пол"
+    },
+    {
+     "when": "ДАЛЬШЕ",
+     "text": "сигарета и чих на весь зал"
+    }
+   ],
+   "big": {
+    "num": 15,
+    "suf": " минут",
+    "text": "— и он спокойно продолжает завтракать"
+   },
+   "stamp": {
+    "text": "5 ЗВЁЗД",
+    "sub": "спектакль бесплатно",
+    "zh": "五星"
+   },
+   "note": "Ты пришёл есть — значит, ты ешь."
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Ты пришёл",
+   "есть —",
+   "значит,",
+   "ты ешь."
+  ],
+  "zh": "来了，就吃。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-yingke-mikrofon.png",
+  "from": "— из статьи"
+ },
+ "next": {
+  "n": 8,
+  "title": "Три дня в Шанхае, и ты уже эксперт по Китаю",
+  "season": "Наблюдения",
+  "zh": "观察",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/phonk-ish-holiznacc0.mp3",
+  "drop": 16.0,
+  "vol": 0.5
+ },
+ "brand": {
+  "name": "Еда в Китае",
+  "zh": "中国菜"
+ },
+ "ticker": [
+  "Восемь основных региональных кухонь Китая",
+  "Четыре главные: сычуаньская, кантонская, шаньдунская, суская",
+  "Официально зарегистрированных блюд — около 80 тысяч",
+  "Скорпионы на палочке — аттракцион для иностранцев, а не Китай",
+  "Любые переговоры начинаются с совместной еды",
+  "Хочешь подписать контракт — сначала съешь утку, а лучше две",
+  "Основных видов лапши — шесть-семь",
+  "В Гонконге за курение в ресторане — штраф"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/hf-zakuski.jpg",
+  "heroPos": "50% 50%",
+  "alt": "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/hf-zavtrak.jpg",
+  "altPos": "50% 35%",
+  "big": "80 000",
+  "bigText": "официальных блюд",
+  "blurbs": [
+   {
+    "big": "8",
+    "text": "региональных кухонь"
+   },
+   {
+    "big": "6–7",
+    "text": "видов лапши"
+   }
+  ],
+  "tag": "Закуски у метро, лапша — и завтрак-шоу"
+ }
+}

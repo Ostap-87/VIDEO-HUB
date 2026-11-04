@@ -1,0 +1,217 @@
+{
+ "show": "多 NEWS",
+ "ep": 6,
+ "season": {
+  "name": "Наблюдения",
+  "zh": "观察",
+  "n": 3,
+  "total": 5
+ },
+ "title": "Площадь принадлежит танцующим",
+ "date": "2026-10-21",
+ "slug": "whoever-dances-owns-square",
+ "cover": "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/cover.jpg",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/ru-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/ru-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/ru-02.jpg"
+ ],
+ "accent": "#3FE0FF",
+ "hook": {
+  "style": "split",
+  "lines": [
+   "ВОСЕМЬ ВЕЧЕРА.",
+   "ПЛОЩАДЬ.",
+   "КОЛОНКА."
+  ],
+  "shout": [
+   "Площадь —",
+   "танцующим!"
+  ],
+  "sfx": "舞"
+ },
+ "beats": [
+  {
+   "kind": "stat",
+   "sec": 8.0,
+   "zh": "舞",
+   "kicker": "ОЦЕНКА ПРЕССЫ",
+   "title": "Сто миллионов",
+   "img": "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/hf-ploshchad.jpg",
+   "imgPos": "50% 40%",
+   "big": {
+    "pre": "до ",
+    "num": 100,
+    "suf": " млн",
+    "text": "человек танцуют вечерами на площадях"
+   },
+   "equal": "население небольшой европейской страны",
+   "chips": [
+    "Ряды по 20, 40, иногда 100 человек",
+    "Каждый вечер в восемь"
+   ]
+  },
+  {
+   "kind": "fall",
+   "sec": 8.4,
+   "zh": "吵",
+   "kicker": "СОСЕДИ",
+   "title": "Сорок тысяч на тишину",
+   "img": "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/hf-sosedi.jpg",
+   "imgPos": "50% 28%",
+   "steps": [
+    {
+     "when": "ПЕКИН",
+     "text": "выстрел в воздух и собаки на танцующих"
+    },
+    {
+     "when": "ГДЕ-ТО",
+     "text": "пакеты из окон"
+    },
+    {
+     "when": "СОСЕДИ",
+     "text": "скинулись на свою колонку"
+    }
+   ],
+   "big": {
+    "pre": ">",
+    "num": 40,
+    "suf": " тыс. $",
+    "text": "собрали на колонку, чтобы перекричать чужую"
+   },
+   "stamp": {
+    "text": "ТИШИНА",
+    "sub": "товар премиальный",
+    "zh": "静"
+   },
+   "note": "Нельзя победить человека, который пришёл не воевать, а потанцевать."
+  },
+  {
+   "kind": "dialog",
+   "sec": 8.8,
+   "zh": "十二",
+   "kicker": "2015 · ВЕДОМСТВА",
+   "title": "Двенадцать программ",
+   "img": "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/hf-chinovniki.jpg",
+   "imgPos": "50% 30%",
+   "a": {
+    "name": "Ведомство",
+    "tie": true,
+    "glasses": true,
+    "emo": "sweat"
+   },
+   "b": {
+    "name": "Бабушки",
+    "fill": "#C8102E",
+    "emo": "calm"
+   },
+   "lines": [
+    {
+     "who": "a",
+     "text": "Товарищи, вот двенадцать утверждённых программ."
+    },
+    {
+     "who": "b",
+     "text": "А мы танцуем свою."
+    },
+    {
+     "who": "a",
+     "text": "Это научно обоснованная программа!"
+    },
+    {
+     "who": "b",
+     "text": "А мы танцуем свою."
+    },
+    {
+     "who": "a",
+     "text": "Тогда считайте, что это рекомендация."
+    },
+    {
+     "who": "b",
+     "text": "Считаем."
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "sec": 7.8,
+   "zh": "噪",
+   "kicker": "ЗАКОН · ИЮНЬ 2022",
+   "title": "Договориться о децибелах",
+   "panels": [
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/hf-ploshchad.jpg",
+     "imgPos": "20% 85%",
+     "zoom": 1.25,
+     "cap": "Закон о шуме: место, время и громкость — по правилам площадки"
+    },
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/cover.jpg",
+     "imgPos": "50% 50%",
+     "cap": "Площадь работает в две смены, как хороший завод",
+     "sfx": "嘘"
+    }
+   ],
+   "big": {
+    "num": 9,
+    "suf": " вечера",
+    "text": "до девяти — танцующим, после — спящим"
+   }
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Некуда спешить,",
+   "но есть",
+   "куда идти."
+  ],
+  "zh": "不用赶路，但有地方可去。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/финал-сайт-5.png",
+  "from": "— из статьи"
+ },
+ "next": {
+  "n": 7,
+  "title": "Куриное нёбо, лапша и никаких сожалений",
+  "season": "Наблюдения",
+  "zh": "观察",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/bouncer-of-far-different-nature.mp3",
+  "drop": 15.0,
+  "vol": 0.21
+ },
+ "brand": {
+  "name": "Танцы на площадях",
+  "zh": "广场舞"
+ },
+ "ticker": [
+  "Китайская пресса: так танцуют до 100 млн человек",
+  "Ряды по 20, 40, иногда 100 человек — каждый вечер в восемь",
+  "Пекин: в воздух стреляли и спускали на танцующих собак",
+  "Соседи собрали больше 40 тыс. $ на свою колонку",
+  "2015: двенадцать «научных» программ, одна — под «Маленькое яблочко»",
+  "Ведомства уточнили: программы не обязательны",
+  "5 июня 2022: закон о шуме — правила площадки по месту, времени и громкости",
+  "Площадь до девяти — танцующим, после девяти — спящим"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/hf-ploshchad.jpg",
+  "heroPos": "50% 40%",
+  "alt": "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/hf-sosedi.jpg",
+  "altPos": "50% 25%",
+  "big": "100 млн",
+  "bigText": "танцуют на площадях",
+  "blurbs": [
+   {
+    "big": ">40 тыс. $",
+    "text": "на соседскую колонку"
+   },
+   {
+    "big": "12",
+    "text": "«научных» программ"
+   }
+  ],
+  "tag": "Колонка, соседи — и закон о шуме"
+ }
+}

@@ -17,7 +17,9 @@ import {
   Narration, PageReveal, Panel, Phone, Sfx, SlashReveal, SpeedLines, Tape, Vignette, p, sumShake, typed,
 } from "./site-manhua/fx";
 
-export type BNFact = {num?: number; dec?: number; pre?: string; suf?: string; big?: string; text: string};
+import {DialogAct, HookSplit, ListAct, PageAct, SND_HOOK_SPLIT, StatAct, sndDialog, sndList, sndPage, sndStat, type BNAct2} from "./blog-news/acts2";
+import {AccCtx, BrandPlate, ChapterHead, Chip, countNum, dela, ruDate, useAcc, type BNBrand, type BNFact} from "./blog-news/kit";
+export type {BNFact} from "./blog-news/kit";
 export type BNStory = {
   kind: "rise" | "fall"; sec: number; zh: string; kicker: string; title: string;
   img?: string; imgPos?: string; ticker?: string; // без картинки — манхуа-график на чернилах (ticker — подпись графика)
@@ -27,21 +29,22 @@ export type BNVs = {
   kind: "vs"; sec: number; zh: string; kicker: string; title: string; img: string; imgPos?: string;
   left: string; right: string; round: string; result: string; facts: BNFact[];
 };
-export type BNBeat = BNStory | BNVs;
+export type BNBeat = BNStory | BNVs | BNAct2;
 export type BNNext = {n: number; title: string; season: string; zh: string; newSeason: boolean} | null;
 export type BlogNewsProps = {
   show?: string; ep: number; season: {name: string; zh: string; n: number; total: number};
   title: string; date: string; slug: string; cover: string; shots: string[];
-  hook: {lines: string[]; shout: string[]; sfx?: string};
+  hook: {lines: string[]; shout: string[]; sfx?: string; style?: "classic" | "split"}; // split — хук «полосами» (второй сезон)
   beats: BNBeat[];
   punch: {lines: string[]; zh?: string; photo: string; from?: string};
   next?: BNNext;
   music: {src: string; from?: number; drop: number; vol: number};
   // о ком статья (правка 04.11.2026: «надо указать, что это Luckin Coffee, чтобы было понимание у людей») — плашка с логотипом
   // в хуке и на каждом акте, строка в заставке
-  brand?: {name: string; zh?: string; logo?: string; icon?: number}; // icon — доля ширины логотипа слева, если в нём есть и знак, и надпись (показываем только знак)
+  brand?: BNBrand;
   // бегущая строка новостей внизу (с заставки до конца): ещё факты статьи сверх актов («чуть больше данных»)
   ticker?: string[];
+  accent?: string; // цвет сезона (по умолчанию жёлтый первого сезона)
 };
 
 const HOOK = 102, ID = 66, PUNCH = 132, FIN = 144, X = 12; // кадры (30 к/с); X — наложение соседних сцен (переход)
@@ -57,48 +60,17 @@ export const bnFrames = (P: BlogNewsProps) => {
   return s[s.length - 1][1];
 };
 
-const dela = (size: number, color: string = C.ink, extra: React.CSSProperties = {}): React.CSSProperties => ({fontFamily: FONT.dela, fontSize: size, color, lineHeight: 1.04, ...extra});
-const RU_MONTHS = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
-const ruDate = (iso: string) => `${Number(iso.slice(8, 10))} ${RU_MONTHS[Number(iso.slice(5, 7)) - 1]} ${iso.slice(0, 4)}`;
-// число набегает от нуля, с дробной частью через запятую и пробелами в тысячах
-const countNum = (f: number, at: number, dur: number, x: BNFact) => {
-  if (x.num === undefined) return x.big ?? "";
-  const v = x.num * p(f, at, at + dur, EO);
-  const s = (x.dec ? v.toFixed(x.dec) : String(Math.round(v))).replace(".", ",").replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-  return `${x.pre ?? ""}${s}${x.suf ?? ""}`;
-};
-
-// плашка «о ком»: логотип + название + китайское название, как бейдж на обложке статьи
-const BrandPlate: React.FC<{b: NonNullable<BlogNewsProps["brand"]>; at: number; x: number; y: number; scale?: number; rot?: number}> = ({b, at, x, y, scale = 1, rot = -3}) => {
-  const f = useCurrentFrame();
-  const {fps} = useVideoConfig();
-  if (f < at) return null;
-  const s = spring({frame: f - at, fps, config: {damping: 9, stiffness: 300, mass: 0.6}});
-  return (
-    <div style={{position: "absolute", left: x, top: y, display: "flex", alignItems: "center", gap: 16 * scale, background: "#fff", border: `${5 * scale}px solid ${C.ink}`, borderRadius: 18 * scale, padding: `${10 * scale}px ${22 * scale}px`, boxShadow: `${8 * scale}px ${8 * scale}px 0 ${C.ink}`, rotate: `${rot}deg`, scale: String(scale * (1.8 - 0.8 * s)), transformOrigin: "0 50%", opacity: Math.min(1, s * 2)}}>
-      {b.logo ? (
-        <div style={{height: 64, overflow: "hidden", width: b.icon ? 64 * b.icon * 3.64 : "auto", flexShrink: 0}}>
-          <Img src={staticFile(b.logo)} style={{height: 64, width: "auto", display: "block"}} />
-        </div>
-      ) : null}
-      <div>
-        <div style={{fontFamily: FONT.dela, fontSize: 40, color: C.ink, lineHeight: 1, whiteSpace: "nowrap"}}>{b.name}</div>
-        {b.zh ? <div style={{fontFamily: FONT.zcool, fontSize: 34, color: C.red, lineHeight: 1.1}}>{b.zh}</div> : null}
-      </div>
-    </div>
-  );
-};
-
 // бегущая строка новостей внизу кадра (над интерфейсом Instagram: 1478–1534)
 const Ticker: React.FC<{items: string[]; show: string}> = ({items, show}) => {
   const f = useCurrentFrame();
+  const acc = useAcc();
   const k = p(f, 0, 10, EO);
   const text = items.join("   ◆   ");
   const run = `${text}   ◆   ${text}   ◆   ${text}`;
   return (
-    <div style={{position: "absolute", left: 0, right: 0, top: 1478, height: 58, background: C.ink, borderTop: `4px solid ${C.y}`, borderBottom: `4px solid ${C.y}`, overflow: "hidden", translate: `0 ${(1 - k) * 80}px`}}>
+    <div style={{position: "absolute", left: 0, right: 0, top: 1478, height: 58, background: C.ink, borderTop: `4px solid ${acc}`, borderBottom: `4px solid ${acc}`, overflow: "hidden", translate: `0 ${(1 - k) * 80}px`}}>
       <div style={{position: "absolute", left: 230 - f * 5.2, top: 7, whiteSpace: "nowrap", fontFamily: FONT.golos, fontWeight: 800, fontSize: 32, color: "#fff"}}>{run}</div>
-      <div style={{position: "absolute", left: 0, top: 0, bottom: 0, width: 210, background: C.red, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, boxShadow: `6px 0 0 ${C.y}`}}>
+      <div style={{position: "absolute", left: 0, top: 0, bottom: 0, width: 210, background: C.red, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, boxShadow: `6px 0 0 ${acc}`}}>
         <span style={{fontFamily: BRUSH, fontSize: 40, color: "#fff"}}>多</span>
         <span style={{fontFamily: FONT.dela, fontSize: 30, color: "#fff"}}>{show.replace("多", "").trim() || "NEWS"}</span>
       </div>
@@ -106,42 +78,13 @@ const Ticker: React.FC<{items: string[]; show: string}> = ({items, show}) => {
   );
 };
 
-const ChapterHead: React.FC<{zh: string; kicker: string; title: string; dark?: boolean}> = ({zh, kicker, title, dark}) => {
-  const f = useCurrentFrame();
-  const k = p(f, 2, 12, EO);
-  const brush = p(f, 8, 22, EO);
-  return (
-    <div style={{position: "absolute", left: 64, top: 268, display: "flex", alignItems: "center", gap: 26, opacity: k, translate: `${(1 - k) * -160}px 0`}}>
-      <div style={{fontFamily: FONT.zcool, fontSize: 104, color: dark ? C.y : C.ink, lineHeight: 1}}>{zh}</div>
-      <div>
-        <div style={{fontFamily: FONT.oswald, fontSize: 32, letterSpacing: "0.16em", color: C.red}}>{kicker}</div>
-        <div style={dela(56, dark ? "#fff" : C.ink)}>{title}</div>
-      </div>
-      <svg width={560} height={40} style={{position: "absolute", left: 0, top: 118, overflow: "visible"}}>
-        <path d="M4,22 C120,6 260,34 420,14 C470,8 520,18 556,12" fill="none" stroke={C.red} strokeWidth={14} strokeLinecap="round" pathLength={1} strokeDasharray={1} strokeDashoffset={1 - brush} />
-      </svg>
-    </div>
-  );
-};
-
-const Chip: React.FC<{x: number; y: number; at: number; rot?: number; bg?: string; color?: string; children: React.ReactNode; size?: number; maxW?: number}> = ({x, y, at, rot = 0, bg = "#fff", color = C.ink, children, size = 32, maxW}) => {
-  const f = useCurrentFrame();
-  const {fps} = useVideoConfig();
-  if (f < at) return null;
-  const s = spring({frame: f - at, fps, config: {damping: 10, stiffness: 260, mass: 0.6}});
-  return (
-    <div style={{position: "absolute", left: x, top: y, maxWidth: maxW, background: bg, color, border: `5px solid ${C.ink}`, padding: "10px 20px", fontFamily: FONT.golos, fontWeight: 800, fontSize: size, lineHeight: 1.18, rotate: `${rot}deg`, scale: String(1.6 - 0.6 * s), opacity: Math.min(1, s * 2), boxShadow: `8px 8px 0 ${C.ink}`, transformOrigin: "0 50%"}}>
-      {children}
-    </div>
-  );
-};
-
 // ── 0. Хук: обложка статьи шлёпается, три слова ударами, облачко-крик ────────────────────────────────────────────────
 const Hook: React.FC<{h: BlogNewsProps["hook"]; cover: string; brand?: BlogNewsProps["brand"]}> = ({h, cover, brand}) => {
   const f = useCurrentFrame();
+  const acc = useAcc();
   const {fps} = useVideoConfig();
   const bub = spring({frame: f - 52, fps, config: {damping: 10, stiffness: 220, mass: 0.6}});
-  const cols = ["#fff", C.red, C.y];
+  const cols = ["#fff", C.red, acc];
   return (
     <AbsoluteFill style={{translate: sumShake(f, [[0, 8, 18], [12, 6, 12], [20, 6, 12], [28, 10, 22], [52, 12, 24]], "hook")}}>
       <AbsoluteFill style={{background: C.ink}} />
@@ -169,12 +112,13 @@ const Hook: React.FC<{h: BlogNewsProps["hook"]; cover: string; brand?: BlogNewsP
 // ── 1. Заставка рубрики: печать 多 + NEWS, выпуск насквозь, сезон-ниша ────────────────────────────────────────────────
 const Ident: React.FC<{P: BlogNewsProps}> = ({P}) => {
   const f = useCurrentFrame();
+  const acc = useAcc();
   const {fps} = useVideoConfig();
   const seal = spring({frame: f - 2, fps, config: {damping: 9, stiffness: 240, mass: 0.7}});
   const news = spring({frame: f - 8, fps, config: {damping: 10, stiffness: 280, mass: 0.6}});
   return (
     <AbsoluteFill style={{translate: sumShake(f, [[2, 12, 26], [8, 8, 16]], "id")}}>
-      <Halftone bg={C.y} dot="rgba(25,25,34,.16)" />
+      <Halftone bg={acc} dot="rgba(25,25,34,.16)" />
       <SpeedLines color={C.ink} opacity={0.5} cx={540} cy={640} inner={360} seed="id" />
       <div style={{position: "absolute", left: 540 - 175, top: 300, width: 350, height: 350, background: C.seal, borderRadius: 26, boxShadow: `0 0 0 12px #fff, 18px 18px 0 12px ${C.ink}`, display: "flex", alignItems: "center", justifyContent: "center", rotate: `${-8 + 4 * seal}deg`, scale: String(2.2 - 1.2 * seal)}}>
         <span style={{fontFamily: BRUSH, fontSize: 290, color: "#fff", lineHeight: 1}}>多</span>
@@ -186,8 +130,8 @@ const Ident: React.FC<{P: BlogNewsProps}> = ({P}) => {
       </Chip>
       {f >= 30 ? (
         <div style={{position: "absolute", left: 64, right: 64, top: 1170, background: C.ink, padding: "22px 30px", boxShadow: `12px 12px 0 ${C.red}`, rotate: "-1deg", opacity: p(f, 30, 36), translate: `0 ${(1 - p(f, 30, 40, EO)) * 60}px`}}>
-          <div style={dela(64, C.y)}>{P.title}</div>
-          {P.brand ? <div style={{fontFamily: FONT.golos, fontWeight: 800, fontSize: 36, color: "#fff", marginTop: 10}}>{`О ком: ${P.brand.name} `}<span style={{fontFamily: FONT.zcool, color: C.y}}>{P.brand.zh ?? ""}</span></div> : null}
+          <div style={dela(64, acc)}>{P.title}</div>
+          {P.brand ? <div style={{fontFamily: FONT.golos, fontWeight: 800, fontSize: 36, color: "#fff", marginTop: 10}}>{`О ком: ${P.brand.name} `}<span style={{fontFamily: FONT.zcool, color: acc}}>{P.brand.zh ?? ""}</span></div> : null}
           <div style={{fontFamily: FONT.mono, fontSize: 28, color: "#fff", marginTop: 10}}>{`${ruDate(P.date)} · ostapdotcenko.ru/blog`}</div>
         </div>
       ) : null}
@@ -216,6 +160,7 @@ const Chart: React.FC<{fall: boolean; at: number; dur: number; w: number; h: num
 // ── акт «взлёт / падение»: панель (картинка или график на чернилах), вехи, крупная цифра во взрыве, штамп, цитата ────────
 const Story: React.FC<{b: BNStory; dur: number; brand?: BlogNewsProps["brand"]}> = ({b, dur, brand}) => {
   const f = useCurrentFrame();
+  const acc = useAcc();
   const {fps} = useVideoConfig();
   const fall = b.kind === "fall";
   const tBig = Math.round(dur * 0.4), tStamp = Math.round(dur * 0.58), tNote = Math.round(dur * 0.68), tMark = Math.round(dur * 0.3);
@@ -234,7 +179,7 @@ const Story: React.FC<{b: BNStory; dur: number; brand?: BlogNewsProps["brand"]}>
           <>
             {Array.from({length: 9}).map((_, i) => <div key={`h${i}`} style={{position: "absolute", left: 0, right: 0, top: (i + 1) * 52, height: 2, background: "rgba(255,255,255,.12)"}} />)}
             {Array.from({length: 17}).map((_, i) => <div key={`v${i}`} style={{position: "absolute", top: 0, bottom: 0, left: (i + 1) * 56, width: 2, background: "rgba(255,255,255,.12)"}} />)}
-            {b.ticker ? <div style={{position: "absolute", left: 30, top: 24, fontFamily: FONT.mono, fontSize: 34, color: C.y}}>{b.ticker}</div> : null}
+            {b.ticker ? <div style={{position: "absolute", left: 30, top: 24, fontFamily: FONT.mono, fontSize: 34, color: acc}}>{b.ticker}</div> : null}
           </>
         )}
         <div style={{position: "absolute", left: 40, top: 40, width: PW - 80, height: PH - 80}}>
@@ -242,15 +187,15 @@ const Story: React.FC<{b: BNStory; dur: number; brand?: BlogNewsProps["brand"]}>
         </div>
       </Panel>
       {brand ? <BrandPlate b={brand} at={10} x={600} y={418} scale={0.62} rot={3} /> : null}
-      {b.mark ? <Sfx text={b.mark} x={300} y={790} size={Math.min(70, Math.floor(700 / (b.mark.length * 0.72)))} color={fall ? C.red : C.y} stroke={fall ? "#fff" : C.ink} rot={-6} at={tMark} font={FONT.dela} /> : null}
+      {b.mark ? <Sfx text={b.mark} x={300} y={790} size={Math.min(70, Math.floor(700 / (b.mark.length * 0.72)))} color={fall ? C.red : acc} stroke={fall ? "#fff" : C.ink} rot={-6} at={tMark} font={FONT.dela} /> : null}
       {b.steps.map((s, i) => (
-        <Chip key={i} x={64} y={925 + i * 122} at={22 + i * 30} rot={i % 2 ? 1.5 : -1.5} bg={fall ? "#fff" : C.y} size={30} maxW={540}>
+        <Chip key={i} x={64} y={925 + i * 122} at={22 + i * 30} rot={i % 2 ? 1.5 : -1.5} bg={fall ? "#fff" : acc} size={30} maxW={540}>
           <span style={{color: C.red, fontFamily: FONT.oswald, letterSpacing: "0.06em"}}>{s.when}</span>{"  "}{s.text}
         </Chip>
       ))}
       {f >= tBig ? (
         <>
-          <Burst x={838} y={1070} r={178} color={fall ? C.red : C.y} stroke={fall ? "#fff" : C.ink} scale={0.3 + 0.7 * bs} rot={f * 0.4} seed={`${b.title}b`} />
+          <Burst x={838} y={1070} r={178} color={fall ? C.red : acc} stroke={fall ? "#fff" : C.ink} scale={0.3 + 0.7 * bs} rot={f * 0.4} seed={`${b.title}b`} />
           <div style={{position: "absolute", left: 630, width: 400, top: 1070 - 46, textAlign: "center", ...dela((b.big.big ?? `${b.big.pre ?? ""}${b.big.num ?? ""}${b.big.suf ?? ""}`).length > 9 ? 50 : (b.big.big ?? `${b.big.pre ?? ""}${b.big.num ?? ""}${b.big.suf ?? ""}`).length > 7 ? 58 : 72, fall ? "#fff" : C.ink, {textShadow: `5px 5px 0 ${fall ? C.ink : "#fff"}`, whiteSpace: "nowrap"}), scale: String(0.3 + 0.7 * bs)}}>{countNum(f, tBig, 26, b.big)}</div>
           <div style={{position: "absolute", right: 64, width: 440, top: 1262, textAlign: "right", fontFamily: FONT.golos, fontWeight: 800, fontSize: 30, lineHeight: 1.2, color: fall ? "#fff" : C.ink, opacity: p(f, tBig + 8, tBig + 14)}}>{b.big.text}</div>
         </>
@@ -262,7 +207,7 @@ const Story: React.FC<{b: BNStory; dur: number; brand?: BlogNewsProps["brand"]}>
           {b.stamp.zh ? <div style={{position: "absolute", right: -70, top: -60, fontFamily: BRUSH, fontSize: 96, color: C.red, rotate: "14deg"}}>{b.stamp.zh}</div> : null}
         </div>
       ) : null}
-      {b.note ? <Narration x={64} y={b.note.length > 90 ? 1336 : 1352} w={952} at={tNote} font={FONT.golos} size={b.note.length > 90 ? 28 : 32} bg={fall ? C.y : "#fff"}>{b.note}</Narration> : null}
+      {b.note ? <Narration x={64} y={b.note.length > 90 ? 1336 : 1352} w={952} at={tNote} font={FONT.golos} size={b.note.length > 90 ? 28 : 32} bg={fall ? acc : "#fff"}>{b.note}</Narration> : null}
     </AbsoluteFill>
   );
 };
@@ -270,6 +215,7 @@ const Story: React.FC<{b: BNStory; dur: number; brand?: BlogNewsProps["brand"]}>
 // ── акт «VS»: экран файтинга, K.O., три цифры ────────────────────────────────────────────────────────────────────────
 const Vs: React.FC<{b: BNVs; dur: number; brand?: BlogNewsProps["brand"]}> = ({b, dur, brand}) => {
   const f = useCurrentFrame();
+  const acc = useAcc();
   const {fps} = useVideoConfig();
   const tKo = Math.round(dur * 0.24);
   const ko = spring({frame: f - tKo, fps, config: {damping: 8, stiffness: 300, mass: 0.6}});
@@ -278,7 +224,7 @@ const Vs: React.FC<{b: BNVs; dur: number; brand?: BlogNewsProps["brand"]}> = ({b
     <div style={{position: "absolute", top: 438, [left ? "left" : "right"]: 64, width: 400, height: 92}}>
       <div style={{fontFamily: FONT.pixel, fontSize: 22, color: "#fff", textAlign: left ? "left" : "right", marginBottom: 10}}>{left ? `1P ${b.left}` : `${b.right} 2P`}</div>
       <div style={{height: 34, border: `5px solid ${C.ink}`, background: "#fff", position: "relative"}}>
-        <div style={{position: "absolute", top: 0, bottom: 0, [left ? "left" : "right"]: 0, width: `${k * 100}%`, background: left ? C.y : C.red}} />
+        <div style={{position: "absolute", top: 0, bottom: 0, [left ? "left" : "right"]: 0, width: `${k * 100}%`, background: left ? acc : C.red}} />
       </div>
     </div>
   );
@@ -289,15 +235,15 @@ const Vs: React.FC<{b: BNVs; dur: number; brand?: BlogNewsProps["brand"]}> = ({b
       <ChapterHead zh={b.zh} kicker={b.kicker} title={b.title} dark />
       {bar(true, 1)}
       {bar(false, hpR)}
-      <div style={{position: "absolute", left: 0, right: 0, top: 440, textAlign: "center", ...dela(84, C.y, {WebkitTextStroke: `4px ${C.ink}`, paintOrder: "stroke fill"})}}>VS</div>
+      <div style={{position: "absolute", left: 0, right: 0, top: 440, textAlign: "center", ...dela(84, acc, {WebkitTextStroke: `4px ${C.ink}`, paintOrder: "stroke fill"})}}>VS</div>
       <Panel x={64} y={560} w={952} h={370} at={4} from="bottom" bg="#000">
         <Img src={staticFile(b.img)} style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: b.imgPos ?? "50% 40%", scale: String(1.04 + 0.08 * p(f, 0, dur))}} />
       </Panel>
-      <div style={{position: "absolute", left: 70, top: 572, fontFamily: FONT.pixel, fontSize: 26, color: C.y, textShadow: `4px 4px 0 ${C.ink}`, opacity: p(f, 6, 12)}}>{b.round}</div>
+      <div style={{position: "absolute", left: 70, top: 572, fontFamily: FONT.pixel, fontSize: 26, color: acc, textShadow: `4px 4px 0 ${C.ink}`, opacity: p(f, 6, 12)}}>{b.round}</div>
       {brand ? <BrandPlate b={brand} at={10} x={650} y={866} scale={0.6} rot={-3} /> : null}
       {f >= tKo ? (
         <>
-          <div style={{position: "absolute", left: 540, top: 745, translate: "-50% -50%", rotate: "-8deg", scale: String(2.6 - 1.6 * ko), ...dela(210, C.y, {WebkitTextStroke: `10px ${C.ink}`, paintOrder: "stroke fill", textShadow: `14px 14px 0 ${C.ink}`})}}>K.O.!</div>
+          <div style={{position: "absolute", left: 540, top: 745, translate: "-50% -50%", rotate: "-8deg", scale: String(2.6 - 1.6 * ko), ...dela(210, acc, {WebkitTextStroke: `10px ${C.ink}`, paintOrder: "stroke fill", textShadow: `14px 14px 0 ${C.ink}`})}}>K.O.!</div>
           <Chip x={64} y={952} at={tKo + 8} rot={-1} bg="#fff" size={30} maxW={952}>{b.result}</Chip>
         </>
       ) : null}
@@ -307,7 +253,7 @@ const Vs: React.FC<{b: BNVs; dur: number; brand?: BlogNewsProps["brand"]}> = ({b
         const s = spring({frame: f - at, fps, config: {damping: 11, stiffness: 260, mass: 0.6}});
         return (
           <div key={i} style={{position: "absolute", left: 64, right: 64, top: 1072 + i * 112, display: "flex", alignItems: "baseline", gap: 22, translate: `${(1 - s) * -700}px 0`}}>
-            <div style={dela(72, i % 2 ? C.y : "#fff", {WebkitTextStroke: `3px ${C.ink}`, paintOrder: "stroke fill", textShadow: `6px 6px 0 ${C.ink}`, whiteSpace: "nowrap"})}>{countNum(f, at, 24, x)}</div>
+            <div style={dela(72, i % 2 ? acc : "#fff", {WebkitTextStroke: `3px ${C.ink}`, paintOrder: "stroke fill", textShadow: `6px 6px 0 ${C.ink}`, whiteSpace: "nowrap"})}>{countNum(f, at, 24, x)}</div>
             <div style={{fontFamily: FONT.golos, fontWeight: 800, fontSize: 30, lineHeight: 1.15, color: "#fff", textShadow: `3px 3px 0 ${C.ink}`}}>{x.text}</div>
           </div>
         );
@@ -320,12 +266,13 @@ const Vs: React.FC<{b: BNVs; dur: number; brand?: BlogNewsProps["brand"]}> = ({b
 // ── панчлайн автора: Остап с микрофоном, облачко с цитатой из статьи ─────────────────────────────────────────────────
 const Punch: React.FC<{P: BlogNewsProps}> = ({P}) => {
   const f = useCurrentFrame();
+  const acc = useAcc();
   const {fps} = useVideoConfig();
   const ps = spring({frame: f - 4, fps, config: {damping: 11, stiffness: 200, mass: 0.8}});
   const bub = spring({frame: f - 14, fps, config: {damping: 10, stiffness: 230, mass: 0.6}});
   return (
     <AbsoluteFill style={{translate: sumShake(f, [[4, 10, 20], [14, 8, 14]], "pu")}}>
-      <Halftone bg={C.y} dot="rgba(25,25,34,.16)" />
+      <Halftone bg={acc} dot="rgba(25,25,34,.16)" />
       <SpeedLines color={C.ink} opacity={0.6} cx={760} cy={1250} inner={520} seed="pu" />
       <div style={{position: "absolute", left: 64, top: 1030, width: 400, rotate: "-5deg", background: "#fff", padding: "16px 16px 54px", boxShadow: `10px 10px 0 ${C.ink}`, opacity: p(f, 26, 32), translate: `0 ${(1 - p(f, 26, 40, EO)) * 120}px`}}>
         <Img src={staticFile(P.cover)} style={{width: "100%", height: 250, objectFit: "cover", display: "block"}} />
@@ -349,6 +296,7 @@ const Punch: React.FC<{P: BlogNewsProps}> = ({P}) => {
 // ── финал: телефон с настоящей статьёй, адрес, анонс следующего выпуска (сквозная очередь) ─────────────────────────────
 const Fin: React.FC<{P: BlogNewsProps}> = ({P}) => {
   const f = useCurrentFrame();
+  const acc = useAcc();
   const {fps} = useVideoConfig();
   const ph = spring({frame: f - 2, fps, config: {damping: 13, stiffness: 140, mass: 0.9}});
   const card = spring({frame: f - 46, fps, config: {damping: 10, stiffness: 240, mass: 0.6}});
@@ -365,8 +313,8 @@ const Fin: React.FC<{P: BlogNewsProps}> = ({P}) => {
       <div style={{position: "absolute", left: 540, top: 386, ...dela(80, C.red), opacity: p(f, 10, 16)}}>целиком</div>
       {f >= 18 ? (
         <div style={{position: "absolute", left: 530, top: 500, rotate: "-3deg", background: C.ink, padding: "12px 20px", boxShadow: `10px 10px 0 ${C.red}`}}>
-          <span style={{fontFamily: FONT.unb, fontSize: 32, color: C.y}}>{url}</span>
-          <span style={{fontFamily: FONT.unb, fontSize: 32, color: C.y, opacity: Math.floor(f / 8) % 2 ? 1 : 0}}>▌</span>
+          <span style={{fontFamily: FONT.unb, fontSize: 32, color: acc}}>{url}</span>
+          <span style={{fontFamily: FONT.unb, fontSize: 32, color: acc, opacity: Math.floor(f / 8) % 2 ? 1 : 0}}>▌</span>
         </div>
       ) : null}
       <Chip x={540} y={610} at={30} rot={2} size={28}>RU · EN · <span style={{fontFamily: FONT.zcool}}>中文</span></Chip>
@@ -438,21 +386,28 @@ export const BlogNews: React.FC<BlogNewsProps> = (P) => {
     (c: React.ReactNode) => <PageReveal dur={14}>{c}</PageReveal>,
   ];
   const sounds: Snd[] = [
-    ...SND_HOOK.map(([a, n, v]) => [S[0][0] + a, n, v] as [number, string, number]),
+    ...(P.hook.style === "split" ? SND_HOOK_SPLIT : SND_HOOK).map(([a, n, v]) => [Math.max(0, S[0][0] + a), n, v] as [number, string, number]),
     ...SND_ID.map(([a, n, v]) => [S[1][0] + a, n, v] as [number, string, number]),
     ...P.beats.flatMap((b, i) => {
       const d = S[2 + i][1] - S[2 + i][0];
-      return (b.kind === "vs" ? sndVs(d) : sndStory(b, d)).map(([a, n, v]) => [S[2 + i][0] + a, n, v] as [number, string, number]);
+      const snd = b.kind === "vs" ? sndVs(d) : b.kind === "stat" ? sndStat(b, d) : b.kind === "dialog" ? sndDialog(b, d) : b.kind === "list" ? sndList(b, d) : b.kind === "page" ? sndPage(b, d) : sndStory(b, d);
+      return snd.map(([a, n, v]) => [S[2 + i][0] + a, n, v] as [number, string, number]);
     }),
     ...SND_PUNCH.map(([a, n, v]) => [S[2 + nb][0] + a, n, v] as [number, string, number]),
     ...SND_FIN.map(([a, n, v]) => [S[3 + nb][0] + a, n, v] as [number, string, number]),
   ];
   const seq = (i: number, node: React.ReactNode) => <Sequence key={i} from={S[i][0]} durationInFrames={S[i][1] - S[i][0]} premountFor={fps}>{node}</Sequence>;
   return (
+    <AccCtx.Provider value={P.accent ?? C.y}>
     <AbsoluteFill style={{background: C.ink, overflow: "hidden"}}>
-      {seq(0, <Hook h={P.hook} cover={P.cover} brand={P.brand} />)}
+      {seq(0, P.hook.style === "split" ? <HookSplit h={P.hook} cover={P.cover} brand={P.brand} /> : <Hook h={P.hook} cover={P.cover} brand={P.brand} />)}
       {seq(1, <CircleReveal dur={12} x={540} y={480}><Ident P={P} /></CircleReveal>)}
-      {P.beats.map((b, i) => seq(2 + i, reveal[i % reveal.length](b.kind === "vs" ? <Vs b={b} dur={S[2 + i][1] - S[2 + i][0]} brand={P.brand} /> : <Story b={b} dur={S[2 + i][1] - S[2 + i][0]} brand={P.brand} />)))}
+      {P.beats.map((b, i) => {
+        const d = S[2 + i][1] - S[2 + i][0];
+        const node = b.kind === "vs" ? <Vs b={b} dur={d} brand={P.brand} /> : b.kind === "stat" ? <StatAct b={b} dur={d} brand={P.brand} /> : b.kind === "dialog" ? <DialogAct b={b} dur={d} brand={P.brand} />
+          : b.kind === "list" ? <ListAct b={b} dur={d} brand={P.brand} /> : b.kind === "page" ? <PageAct b={b} dur={d} brand={P.brand} /> : <Story b={b} dur={d} brand={P.brand} />;
+        return seq(2 + i, reveal[(i + (P.accent ? 1 : 0)) % reveal.length](node));
+      })}
       {seq(2 + nb, <InkReveal dur={12} id="pu" x={760} y={1250}><Punch P={P} /></InkReveal>)}
       {seq(3 + nb, <CircleReveal dur={12} x={270} y={760}><Fin P={P} /></CircleReveal>)}
       {/* печать 多 — после заставки, на всех сценах, как у промо */}
@@ -475,6 +430,7 @@ export const BlogNews: React.FC<BlogNewsProps> = (P) => {
         </Sequence>
       ))}
     </AbsoluteFill>
+    </AccCtx.Provider>
   );
 };
 

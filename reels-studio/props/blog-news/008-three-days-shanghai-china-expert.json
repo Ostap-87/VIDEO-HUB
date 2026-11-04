@@ -1,0 +1,202 @@
+{
+ "show": "多 NEWS",
+ "ep": 8,
+ "season": {
+  "name": "Наблюдения",
+  "zh": "观察",
+  "n": 5,
+  "total": 5
+ },
+ "title": "Три дня в Шанхае, и ты уже эксперт по Китаю",
+ "date": "2026-09-04",
+ "slug": "three-days-shanghai-china-expert",
+ "cover": "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/hf-pudun.jpg",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/ru-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/ru-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/ru-02.jpg"
+ ],
+ "accent": "#3FE0FF",
+ "hook": {
+  "style": "split",
+  "lines": [
+   "ТРИ ДНЯ",
+   "В ШАНХАЕ —",
+   "И ЭКСПЕРТ"
+  ],
+  "shout": [
+   "Иероглифов —",
+   "ни одного!"
+  ],
+  "sfx": "吹"
+ },
+ "beats": [
+  {
+   "kind": "list",
+   "sec": 8.0,
+   "zh": "症",
+   "kicker": "УЗНАЮТСЯ СРАЗУ",
+   "title": "Симптомы эксперта",
+   "img": "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/hf-pudun.jpg",
+   "imgPos": "50% 40%",
+   "mark": "吹",
+   "items": [
+    "Ни одного иероглифа — кроме вывески любимой забегаловки",
+    "Английский — «hello, how much»",
+    "Кругозор: от бутика Nike до бутика Zara",
+    "Зато — «связи с властными кругами»",
+    "Главное — апломб. Он компенсирует всё"
+   ]
+  },
+  {
+   "kind": "dialog",
+   "sec": 8.8,
+   "zh": "一",
+   "kicker": "УЖИН НА 15 ЧЕЛОВЕК",
+   "title": "Случай первый",
+   "img": "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/hf-uzhin.jpg",
+   "imgPos": "50% 22%",
+   "a": {
+    "name": "Я",
+    "emo": "calm"
+   },
+   "b": {
+    "name": "Эксперт",
+    "emo": "angry",
+    "fill": "#7A1F2B"
+   },
+   "lines": [
+    {
+     "who": "a",
+     "text": "Сколько наций официально живёт в Китае?"
+    },
+    {
+     "who": "b",
+     "text": "…"
+    },
+    {
+     "who": "b",
+     "text": "Это полная х#йня, никому не интересно!"
+    },
+    {
+     "who": "a",
+     "text": "Когда основали Компартию Китая?"
+    },
+    {
+     "who": "b",
+     "text": "…"
+    }
+   ]
+  },
+  {
+   "kind": "vs",
+   "sec": 8.2,
+   "zh": "二",
+   "kicker": "БАР В ШАНХАЕ",
+   "title": "Случай второй",
+   "img": "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/hf-bar.jpg",
+   "imgPos": "50% 35%",
+   "left": "ЮРИСТ",
+   "right": "НАЧАЛЬНИК",
+   "round": "ROUND · ПЯТНИЦА, БАР",
+   "result": "«Возите через Бендер-Аббас?» — «А где это вообще?»",
+   "facts": [
+    {
+     "num": 3,
+     "suf": " недели",
+     "text": "оба в Китае"
+    },
+    {
+     "pre": ">",
+     "num": 30,
+     "suf": " лет",
+     "text": "начальнику отдела логистики"
+    },
+    {
+     "big": "0",
+     "text": "слов по-английски и по-китайски у начальника"
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "sec": 8.0,
+   "zh": "虫",
+   "kicker": "ДИАГНОЗ",
+   "title": "Инфузория-туфелька",
+   "panels": [
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/hf-infuzoria.jpg",
+     "imgPos": "50% 30%",
+     "cap": "Цели нет, зато есть реснички — гребут бодро"
+    },
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/hf-infuzoria.jpg",
+     "imgPos": "62% 70%",
+     "zoom": 1.3,
+     "cap": "…куда — не особо понимая",
+     "sfx": "嗯"
+    }
+   ],
+   "big": {
+    "num": 2,
+    "suf": " вопроса",
+    "text": "— и видно, на каких вибрациях собеседник"
+   }
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Апломб",
+   "компенсирует",
+   "всё."
+  ],
+  "zh": "自信能弥补一切。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-megamarket-mikrofon.png",
+  "from": "— из статьи"
+ },
+ "next": {
+  "n": 9,
+  "title": "Напитки Азии: Япония — кофе уже взрослый, бабл-ти всё ещё подросток",
+  "season": "Напитки Азии",
+  "zh": "饮品",
+  "newSeason": true
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/endless-cyber-runner-looping-eric-matyas.mp3",
+  "drop": 33.0,
+  "vol": 0.64
+ },
+ "brand": {
+  "name": "«Эксперты по Китаю»",
+  "zh": "中国通"
+ },
+ "ticker": [
+  "Эксперт по Китаю получается между выдачей багажа и первым такси",
+  "Китайский — ни иероглифа, английский — «hello, how much»",
+  "Кругозор: от бутика Nike до бутика Zara",
+  "Gentle Monster: очки там правда вайбовые",
+  "Ужин на 15 человек: два простых вопроса — и тишина",
+  "Бар в Шанхае: «Бендер-Аббас? А где это вообще?»",
+  "Среди менеджеров за рубежом полно толковых людей — но не только их"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/hf-pudun.jpg",
+  "heroPos": "50% 35%",
+  "alt": "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/hf-bar.jpg",
+  "altPos": "50% 30%",
+  "big": "3 дня",
+  "bigText": "— и эксперт по Китаю",
+  "blurbs": [
+   {
+    "big": "0",
+    "text": "иероглифов"
+   },
+   {
+    "big": "2",
+    "text": "простых вопроса"
+   }
+  ],
+  "tag": "Апломб, инфузория — и Бендер-Аббас"
+ }
+}

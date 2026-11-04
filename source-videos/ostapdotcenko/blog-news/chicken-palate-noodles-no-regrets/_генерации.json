@@ -1,0 +1,50 @@
+[
+ {
+  "file": "hf-karta8.jpg",
+  "job_id": "9c77fd25-0694-4eb0-a602-32a7407f17e0",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_152552_9c77fd25-0694-4eb0-a602-32a7407f17e0.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "цифра «Восемь кухонь»"
+ },
+ {
+  "file": "hf-zakuski.jpg",
+  "job_id": "475dcd59-69db-4e11-8abd-282e19a937a9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_152551_475dcd59-69db-4e11-8abd-282e19a937a9.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "хук и список «Что берут у метро»"
+ },
+ {
+  "file": "hf-lapsha.jpg",
+  "job_id": "5d8f0ead-9db4-4fb8-90fc-39b1bbcce409",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_152552_5d8f0ead-9db4-4fb8-90fc-39b1bbcce409.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "разворот «Лапша с утра»"
+ },
+ {
+  "file": "hf-zavtrak.jpg",
+  "job_id": "9dd8d508-5724-4f82-880f-780d270075d9",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_152551_9dd8d508-5724-4f82-880f-780d270075d9.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "акт «Завтрак в Ханчжоу»"
+ }
+]

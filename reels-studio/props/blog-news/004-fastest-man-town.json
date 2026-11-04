@@ -1,0 +1,210 @@
+{
+ "show": "多 NEWS",
+ "ep": 4,
+ "season": {
+  "name": "Наблюдения",
+  "zh": "观察",
+  "n": 1,
+  "total": 5
+ },
+ "title": "Самый быстрый человек в городе",
+ "date": "2026-11-04",
+ "slug": "fastest-man-town",
+ "cover": "source-videos/ostapdotcenko/blog-news/fastest-man-town/cover.jpg",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/fastest-man-town/ru-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/fastest-man-town/ru-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/fastest-man-town/ru-02.jpg"
+ ],
+ "accent": "#3FE0FF",
+ "hook": {
+  "style": "split",
+  "lines": [
+   "ЗАКАЗ ПРИНЯТ.",
+   "ОН УЖЕ",
+   "ЕДЕТ."
+  ],
+  "shout": [
+   "Еду не ждут —",
+   "её встречают!"
+  ],
+  "sfx": "快"
+ },
+ "beats": [
+  {
+   "kind": "stat",
+   "sec": 8.0,
+   "zh": "蜂",
+   "kicker": "2023 · MEITUAN",
+   "title": "Это не улица, это улей",
+   "img": "source-videos/ostapdotcenko/blog-news/fastest-man-town/hf-uley.jpg",
+   "imgPos": "50% 45%",
+   "big": {
+    "num": 7.45,
+    "dec": 2,
+    "suf": " млн",
+    "text": "курьеров получили доход у одного Meituan за 2023 год"
+   },
+   "equal": "население Гонконга",
+   "chips": [
+    "80 млрд ¥ выплат курьерам за год",
+    "≈3,65 ¥ за доставку — расчёт TechNode"
+   ]
+  },
+  {
+   "kind": "page",
+   "sec": 8.4,
+   "zh": "困",
+   "kicker": "СЕНТЯБРЬ 2020",
+   "title": "В ловушке системы",
+   "panels": [
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/fastest-man-town/hf-mozg.jpg",
+     "imgPos": "50% 22%",
+     "cap": "«Мегамозг» у Meituan, «Ковчег» у Ele.me",
+     "sfx": "嗡"
+    },
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/fastest-man-town/hf-mozg.jpg",
+     "imgPos": "50% 88%",
+     "zoom": 1.25,
+     "cap": "Успел — молодец. Завтра успеешь быстрее"
+    }
+   ],
+   "big": {
+    "num": 8,
+    "suf": " минут",
+    "text": "гибкости на заказ — ответ Meituan на следующий день"
+   }
+  },
+  {
+   "kind": "dialog",
+   "sec": 8.6,
+   "zh": "话",
+   "kicker": "СЦЕНКА У ПОДЪЕЗДА",
+   "title": "Самый короткий роман",
+   "a": {
+    "name": "Я",
+    "emo": "neutral"
+   },
+   "b": {
+    "name": "Курьер",
+    "fill": "#E8B800",
+    "phone": true,
+    "emo": "calm"
+   },
+   "lines": [
+    {
+     "who": "a",
+     "text": "Вы где?"
+    },
+    {
+     "who": "b",
+     "text": "Внизу."
+    },
+    {
+     "who": "a",
+     "text": "Я вас не вижу."
+    },
+    {
+     "who": "b",
+     "text": "Я в жёлтой куртке."
+    },
+    {
+     "who": "a",
+     "text": "Тут все в жёлтых куртках."
+    },
+    {
+     "who": "b",
+     "text": "Я тот, который уже уезжает. Пять звёзд, пожалуйста!"
+    }
+   ]
+  },
+  {
+   "kind": "vs",
+   "sec": 8.0,
+   "zh": "战",
+   "kicker": "5 ИЮЛЯ 2025",
+   "title": "Рекорд",
+   "img": "source-videos/ostapdotcenko/blog-news/fastest-man-town/hf-servery.jpg",
+   "imgPos": "50% 40%",
+   "left": "КУРЬЕРЫ",
+   "right": "СЕРВЕРЫ",
+   "round": "ROUND 2025 · ВОЙНА ДОСТАВКИ",
+   "result": "Курьеры выдержали. Серверы — нет.",
+   "facts": [
+    {
+     "pre": ">",
+     "num": 120,
+     "suf": " млн",
+     "text": "заказов за день — рекорд Meituan"
+    },
+    {
+     "big": "2025",
+     "text": "JD зашёл в доставку, Alibaba ответил субсидиями"
+    },
+    {
+     "big": "соцстрах",
+     "text": "курьерам: JD — штатным, Meituan — постоянным"
+    }
+   ]
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Скорость —",
+   "это не",
+   "технология.",
+   "Это человек."
+  ],
+  "zh": "速度不是技术，是人。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/финал-сайт-2.png",
+  "from": "— из статьи"
+ },
+ "next": {
+  "n": 5,
+  "title": "Город, где не носят кошелёк",
+  "season": "Наблюдения",
+  "zh": "观察",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/hyper-ultra-racing-cynicmusic.mp3",
+  "drop": 11.5,
+  "vol": 0.26
+ },
+ "brand": {
+  "name": "Курьеры доставки",
+  "zh": "外卖骑手"
+ },
+ "ticker": [
+  "Meituan: 7,45 млн курьеров получили доход в 2023 году",
+  "Выплаты курьерам — 80 млрд ¥ за год, ≈3,65 ¥ за доставку (TechNode)",
+  "Куртки: жёлтые, синие, с 2025 года ещё и красные",
+  "Сентябрь 2020: «Курьеры доставки — в ловушке системы», журнал «Жэньу»",
+  "«Мегамозг» у Meituan, «Ковчег» у Ele.me",
+  "Ответ Meituan: восемь минут гибкости на заказ",
+  "2025: JD.com зашёл в доставку еды, Alibaba ответил субсидиями",
+  "5 июля 2025: больше 120 млн заказов за день — серверы легли",
+  "Соцстрахование курьерам: JD — штатным с марта 2025-го"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/fastest-man-town/hf-uley.jpg",
+  "heroPos": "50% 45%",
+  "alt": "source-videos/ostapdotcenko/blog-news/fastest-man-town/hf-mozg.jpg",
+  "altPos": "50% 30%",
+  "big": "7,45 млн",
+  "bigText": "курьеров у одного Meituan",
+  "blurbs": [
+   {
+    "big": "8 минут",
+    "text": "гибкости на заказ"
+   },
+   {
+    "big": ">120 млн",
+    "text": "заказов за один день"
+   }
+  ],
+  "tag": "Улей, алгоритм — и рекорд"
+ }
+}

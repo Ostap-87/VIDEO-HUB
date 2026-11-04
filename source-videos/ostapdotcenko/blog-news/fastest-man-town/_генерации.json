@@ -1,0 +1,50 @@
+[
+ {
+  "file": "hf-uley.jpg",
+  "job_id": "ffbdd337-49a0-4dba-88de-f923a947def1",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_150802_ffbdd337-49a0-4dba-88de-f923a947def1.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "акт «Это не улица, это улей»"
+ },
+ {
+  "file": "hf-mozg.jpg",
+  "job_id": "7aa09d05-fcdd-4c3d-a942-1adefb910397",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_150756_7aa09d05-fcdd-4c3d-a942-1adefb910397.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "разворот «В ловушке системы»"
+ },
+ {
+  "file": "hf-servery.jpg",
+  "job_id": "c200979f-d073-4762-8ebd-e84905e65d4d",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_150757_c200979f-d073-4762-8ebd-e84905e65d4d.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "VS «Рекорд»"
+ },
+ {
+  "file": "hf-uzhin.jpg",
+  "job_id": "9f57c8cf-c1d4-4c32-adcf-beaae8922901",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_150756_9f57c8cf-c1d4-4c32-adcf-beaae8922901.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "what": "не вошла в ролик (запас)"
+ }
+]

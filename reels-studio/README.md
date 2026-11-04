@@ -554,6 +554,8 @@ node reels-studio/tools/od-posts/reel-sait.mjs            # ролик «Мой 
 #   node reels-studio/tools/blog-news/shots.mjs <slug> --n 3                      # экраны статьи с телефона
 #   python3 reels-studio/tools/blog-news/plan_page.py /tmp/plan.html             # страница «Сетка 多 NEWS» (артефакт QUoq6wuLpPypUjHBe4yy3X)
 #   python3 reels-studio/tools/blog-news/music_pool.py                           # 15 треков пользователя целиком → library/music.json (pool-NNN)
+# обложки «крик» (из reels-studio): npx remotion render src/index.ts BlogNewsCovers /tmp/cov --sequence --image-format=jpeg --props='{"eps":[…],"layouts":["shout"]}'
+#   второй сезон: в props — "accent", "hook": {"style": "split"}, акты kind = stat | dialog | list | page (см. reels-studio/CLAUDE.md, «多 NEWS»)
 # из reels-studio: TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts BlogNews ../finished-videos/blog-news/001-coffee-with-hint-audit.mp4 --props=props/blog-news/001-coffee-with-hint-audit.json --bundle-cache=false --crf=18
 # английские версии (04.11.2026): SiteManhuaEn / AuraSiteManhuaEn / GttSiteManhuaEn (Remotion) и node tools/od-posts/reel-intro-en.mjs, tools/gtt-reel/reel-gruppy-od-en.mjs, tools/od-posts/reel-3-proekta-en.mjs
 #   → finished-videos/обложки/манхуа-сайты/ (кадр 0–1 «Мой сайт», 2–3 Aura, 4–9 GTT A–F; --frames=0-9)
