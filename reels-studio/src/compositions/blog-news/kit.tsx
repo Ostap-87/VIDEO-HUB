@@ -55,7 +55,7 @@ export const ChapterHead: React.FC<{zh: string; kicker: string; title: string; d
       <div style={{fontFamily: FONT.zcool, fontSize: 104, color: dark ? acc : C.ink, lineHeight: 1}}>{zh}</div>
       <div>
         <div style={{fontFamily: FONT.oswald, fontSize: 32, letterSpacing: "0.16em", color: C.red}}>{kicker}</div>
-        <div style={dela(Math.min(56, Math.floor((912 - (64 + zh.length * 104 + 26)) / (Math.max(1, title.length) * 0.6))), dark ? "#fff" : C.ink, {whiteSpace: "nowrap"})}>{title}</div>
+        <div style={dela(Math.min(56, Math.floor((912 - (64 + zh.length * 104 + 26)) / (Math.max(1, title.length) * 0.72))), dark ? "#fff" : C.ink, {whiteSpace: "nowrap"})}>{title}</div>
       </div>
       <svg width={560} height={40} style={{position: "absolute", left: 0, top: 118, overflow: "visible"}}>
         <path d="M4,22 C120,6 260,34 420,14 C470,8 520,18 556,12" fill="none" stroke={C.red} strokeWidth={14} strokeLinecap="round" pathLength={1} strokeDasharray={1} strokeDashoffset={1 - brush} />
