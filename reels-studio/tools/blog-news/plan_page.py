@@ -60,7 +60,7 @@ def main():
         ready = e.get("status") in ("готов", "вышел")  # готовые выпуски: о ком и какая музыка — из props выпуска
         pr = next(iter((ROOT / "reels-studio/props/blog-news").glob(f'*-{e["slug"]}.json')), None)
         pj = json.loads(pr.read_text()) if pr else {}
-        mus = next((m for m in MUSIC.values() if m.get("title") and m.get("src") == pj.get("music", {}).get("src")), {})
+        mus = next((m for m in MUSIC.values() if isinstance(m, dict) and m.get("title") and m.get("src") == pj.get("music", {}).get("src")), {})
         tag = " · ".join(x for x in [e.get("status", ""), pj.get("brand", {}).get("name", ""), f'музыка: {mus["title"]}' if mus.get("title") else ""] if x)
         pilot = ready
         excerpt = json.loads('"' + ex.get(e["slug"], "") + '"') if ex.get(e["slug"]) else ""
