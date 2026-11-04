@@ -15,8 +15,9 @@ import {AuraBadge} from "../components/AuraBadge";
 import {FONT} from "./site-manhua/fonts";
 import {Skeptic} from "./site-manhua/skeptic";
 import {Bubble, Burst, C, Grain, Halftone, Narration, Phone, Sfx, SpeedLines, Tape, Vignette} from "./site-manhua/fx";
+import {useBrush, BRUSH} from "../components/MontazhFx";
 
-export const MANHUA_COVERS = 10;
+export const MANHUA_COVERS = 15;
 // все анимации набора к этому кадру уже закончились; 3D-жесты считаются от T секунд
 const F = 200;
 const T = F / 30;
@@ -402,11 +403,200 @@ const GttCountries: React.FC = () => (
   </AbsoluteFill>
 );
 
-const COVERS = [OdHook, OdPage, AuraHook, AuraTeam, GttHook, GttPeople, GttVs, GttCampus, GttPage, GttCountries];
-export const COVER_NAMES = ["od-A-hook", "od-B-glavy", "aura-A-hook", "aura-B-komanda", "gtt-A-hook", "gtt-B-pervye-lica", "gtt-C-vs", "gtt-D-kampusy", "gtt-E-stranica", "gtt-F-strany"];
+// ── вторая серия GTT (04.11.2026: «сделай ещё варианты для ГТТ — покреативнее») ────────────────────────────────────────────────
+
+// G «Скважина»: стальная дверь завода «闲人免进», в замочной скважине — свет и настоящий завод (ворота SANY)
+const KEYHOLE = "M 320 860 A 220 220 0 1 1 760 860 A 220 220 0 1 1 320 860 Z M 468 990 L 612 990 L 712 1400 L 368 1400 Z";
+const GttKeyhole: React.FC = () => (
+  <AbsoluteFill style={{background: "#0A1430"}}>
+    {/* сталь: вертикальные листы, заклёпки, блик */}
+    <AbsoluteFill style={{background: "repeating-linear-gradient(90deg, #13224D 0 268px, #0C1838 268px 274px, #1A2C5E 274px 276px)"}} />
+    <AbsoluteFill style={{background: "radial-gradient(circle, rgba(125,211,252,.22) 0 5px, transparent 6px) 0 0 / 135px 120px", opacity: 0.7}} />
+    <AbsoluteFill style={{background: "linear-gradient(115deg, transparent 30%, rgba(125,211,252,.10) 45%, transparent 60%)"}} />
+    <SpeedLines color="rgba(125,211,252,.55)" cx={540} cy={1000} inner={420} opacity={0.85} seed="kh" />
+    {/* табличка на двери */}
+    <div style={abs(170, 270, {width: 740, background: "#F4F6FB", border: `6px solid ${G.ink}`, padding: "14px 20px", textAlign: "center", boxShadow: `10px 10px 0 ${G.red}`, rotate: "-1.5deg"})}>
+      <div style={{fontFamily: FONT.zcool, fontSize: 78, color: G.red, lineHeight: 1}}>闲人免进</div>
+      <div style={{...mono(28, G.ink), marginTop: 6}}>ПОСТОРОННИМ ВХОД ВОСПРЕЩЁН</div>
+    </div>
+    {/* скважина: внутри — настоящий завод */}
+    <AbsoluteFill style={{clipPath: `path("${KEYHOLE}")`}}>
+      <Img src={staticFile("source-videos/2026-10-25-sany/IMG_5645.jpg")} style={{position: "absolute", left: 240, top: 600, width: 600, height: 820, objectFit: "cover", objectPosition: "50% 35%"}} />
+      <AbsoluteFill style={{background: "radial-gradient(ellipse 260px 420px at 540px 1000px, rgba(255,255,255,.0), rgba(125,211,252,.35))"}} />
+    </AbsoluteFill>
+    <svg width={1080} height={1920} style={{position: "absolute", inset: 0}}>
+      <path d={KEYHOLE} fill="none" stroke={G.ink} strokeWidth={30} />
+      <path d={KEYHOLE} fill="none" stroke={G.sky} strokeWidth={8} style={{filter: "drop-shadow(0 0 18px rgba(125,211,252,.95))"}} />
+    </svg>
+    <Bubble x={560} y={560} w={470} h={210} tail={[60, 300]} fill="#fff" stroke={G.ink}>
+      <div style={dela(52, G.ink)}>Что там</div>
+      <div style={dela(52, G.blue)}>внутри?</div>
+    </Bubble>
+    <Sfx text="嘘…" x={70} y={600} size={120} color="#fff" stroke={G.ink} at={0} font={FONT.zcool} rot={-10} />
+    <div style={abs(60, 1450, {display: "flex", alignItems: "center", gap: 18, background: "#fff", border: `5px solid ${G.ink}`, borderRadius: 20, padding: "14px 24px", boxShadow: `10px 10px 0 ${G.blue}`, rotate: "-2deg"})}>
+      <Img src={staticFile(CRYSTAL)} style={{width: 84, height: 84, borderRadius: "50%"}} />
+      <div>
+        <div style={dela(44, G.ink)}>Ключ — у нас.</div>
+        <div style={mono(24, G.blue)}>GLOBAL TECH TOUR · 全球科技之旅</div>
+      </div>
+    </div>
+    <Grain opacity={0.12} />
+    <Vignette strength={0.4} />
+  </AbsoluteFill>
+);
+
+// H «Журнал манги»: обложка выпуска — огромное GTT, герой на линиях концентрации, анонсы глав в звёздах, штрихкод
+const Blurb: React.FC<{x: number; y: number; r: number; color: string; rot?: number; children: React.ReactNode; seed: string; text?: string}> = ({x, y, r, color, rot = 0, children, seed, text = G.ink}) => (
+  <div style={abs(x - r, y - r, {width: r * 2, height: r * 2, rotate: `${rot}deg`})}>
+    <Burst x={r} y={r} r={r} color={color} stroke={G.ink} sw={6} seed={seed} points={16} />
+    <div style={{position: "absolute", inset: r * 0.3, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", ...inter(r * 0.18, text, {lineHeight: 1.08})}}>{children}</div>
+  </div>
+);
+const GttMagazine: React.FC = () => (
+  <AbsoluteFill style={{background: "#fff"}}>
+    <AbsoluteFill style={{background: `radial-gradient(circle at 60% 62%, ${G.n1}, ${G.n2} 50%, ${G.n3})`, clipPath: "polygon(0 560px, 1080px 520px, 1080px 1920px, 0 1920px)"}} />
+    <AbsoluteFill style={{clipPath: "polygon(0 560px, 1080px 520px, 1080px 1920px, 0 1920px)"}}>
+      <SpeedLines color="rgba(255,255,255,.55)" cx={640} cy={1150} inner={330} opacity={0.9} seed="mg" />
+    </AbsoluteFill>
+    {/* шапка журнала */}
+    <div style={abs(40, 250, {...mono(26, G.ink)})}>ВЫПУСК №1 · 第一话 · ЭКСПЕДИЦИИ В КИТАЙ</div>
+    <div style={abs(30, 290, dela(240, G.blue, {letterSpacing: "-0.02em", textShadow: `8px 8px 0 ${G.red}, 16px 16px 0 ${G.ink}`, lineHeight: 1}))}>GTT</div>
+    <div style={abs(722, 322, {width: 330, whiteSpace: "nowrap"})}>
+      <div style={{fontFamily: FONT.zcool, fontSize: 52, color: G.ink, lineHeight: 1}}>全球科技之旅</div>
+      <div style={{...inter(30, G.ink), marginTop: 10}}>GLOBAL TECH TOUR</div>
+      <div style={{...inter(24, G.red), marginTop: 6}}>манхуа о закрытом Китае</div>
+    </div>
+    <Img src={staticFile(`${CUT}ostap-yingke-mikrofon.png`)} style={{position: "absolute", left: 300, top: 760, height: 1000, filter: `drop-shadow(10px 0 0 #fff) drop-shadow(-10px 0 0 #fff) drop-shadow(0 -10px 0 #fff) drop-shadow(18px 18px 0 ${G.ink})`}} />
+    <Blurb x={215} y={820} r={190} color="#fff" rot={-8} seed="b1"><span style={{color: G.red}}>НОВАЯ ГЛАВА</span><span>Основатель</span><span>Hema</span></Blurb>
+    <Blurb x={200} y={1195} r={175} color={G.sky} rot={6} seed="b2"><span style={{fontSize: 24}}>СПЕЦВЫПУСК</span><span>Кампусы</span><span>Huawei</span><span>Alibaba</span></Blurb>
+    <Blurb x={215} y={1510} r={150} color="#FFD92E" rot={-5} seed="b3"><span style={{fontSize: 40}}>9 стран</span><span>76 программ</span></Blurb>
+    <div style={abs(780, 1500, {background: "#fff", border: `4px solid ${G.ink}`, padding: "10px 12px", rotate: "3deg"})}>
+      <div style={{width: 210, height: 70, background: `repeating-linear-gradient(90deg, ${G.ink} 0 5px, transparent 5px 9px, ${G.ink} 9px 11px, transparent 11px 16px, ${G.ink} 16px 20px, transparent 20px 23px)`}} />
+      <div style={{...mono(20, G.ink), marginTop: 6, textAlign: "center"}}>globaltechtour.ru</div>
+    </div>
+    <Sfx text="轰!" x={860} y={620} size={130} color="#fff" stroke={G.ink} at={0} font={FONT.zcool} rot={12} />
+    <Grain opacity={0.08} />
+  </AbsoluteFill>
+);
+
+// I «403»: телефон Директора с трещиной — поиск «завод изнутри» → 403 · 进不去, рядом пропуск GTT
+const CRACK2 = "M120,140 L210,260 L190,330 L260,420 M210,260 L330,240 L420,300 M190,330 L90,380 L40,470 M260,420 L250,560 M330,240 L360,150";
+const GttForbidden: React.FC = () => (
+  <AbsoluteFill>
+    <NavyBg cy={45} />
+    <SpeedLines color="rgba(125,211,252,.35)" cx={480} cy={1050} inner={480} opacity={0.6} seed="fb" />
+    <div style={abs(60, 280, {width: 960, background: "#fff", border: `5px solid ${G.ink}`, padding: "16px 22px", rotate: "-2deg", boxShadow: `9px 9px 0 ${G.ink}`, ...inter(48, G.ink)})}>
+      «Да я всё посмотрел <span style={{color: G.red}}>в интернете</span>»
+    </div>
+    {/* телефон */}
+    <div style={abs(110, 480, {width: 520, height: 1040, background: G.ink, borderRadius: 64, padding: 18, rotate: "-7deg", boxShadow: `18px 18px 0 rgba(10,15,36,.6)`})}>
+      <div style={{position: "relative", width: "100%", height: "100%", background: "#fff", borderRadius: 48, overflow: "hidden"}}>
+        <div style={{margin: "60px 24px 0", border: `3px solid #C9D3EA`, borderRadius: 40, padding: "14px 22px", ...inter(28, "#5B6684")}}>🔍 завод SANY изнутри</div>
+        <div style={{textAlign: "center", marginTop: 110, ...dela(170, G.ink, {lineHeight: 1})}}>403</div>
+        <div style={{textAlign: "center", ...mono(30, G.ink)}}>FORBIDDEN</div>
+        <div style={{textAlign: "center", marginTop: 40, fontFamily: FONT.zcool, fontSize: 92, color: G.red, lineHeight: 1}}>进不去！</div>
+        <div style={{textAlign: "center", marginTop: 14, ...inter(32, "#5B6684")}}>Доступ запрещён</div>
+        <svg width={484} height={1004} style={{position: "absolute", inset: 0}}>
+          <path d={CRACK2} fill="none" stroke={G.ink} strokeWidth={4} opacity={0.75} />
+          <path d={CRACK2} fill="none" stroke="#fff" strokeWidth={1.5} transform="translate(2 1)" />
+        </svg>
+      </div>
+    </div>
+    {/* пропуск GTT */}
+    <div style={abs(630, 860, {width: 400, background: "#fff", border: `5px solid ${G.ink}`, borderRadius: 22, boxShadow: `12px 12px 0 ${G.blue}`, rotate: "8deg", padding: "22px 24px"})}>
+      <div style={{display: "flex", alignItems: "center", gap: 12}}>
+        <Img src={staticFile(CRYSTAL)} style={{width: 80, height: 80, borderRadius: "50%"}} />
+        <div style={dela(32, G.ink)}>GLOBAL TECH TOUR</div>
+      </div>
+      <div style={{...mono(22, G.blue), marginTop: 12}}>ПРОПУСК · 通行证</div>
+      <div style={{...dela(56, G.ink), marginTop: 10}}>200</div>
+      <div style={inter(30, G.ink)}>Вход разрешён</div>
+      <div style={{marginTop: 14, height: 40, background: `repeating-linear-gradient(90deg, ${G.ink} 0 6px, transparent 6px 10px, ${G.ink} 10px 13px, transparent 13px 19px)`}} />
+    </div>
+    <div style={abs(820, 760, {width: 14, height: 110, background: G.red, rotate: "8deg", border: `3px solid ${G.ink}`})} />
+    <Sfx text="啪!" x={720} y={1300} size={130} color="#fff" stroke={G.ink} at={0} font={FONT.zcool} rot={10} />
+    <Grain opacity={0.1} />
+    <Vignette strength={0.3} />
+  </AbsoluteFill>
+);
+
+// J «Чат»: переписка с заводом — «不行», «进不去！», в чат добавлен Global Tech Tour — «欢迎光临！»
+const Msg: React.FC<{side: "l" | "r"; y: number; w?: number; children: React.ReactNode; avatar?: string; color?: string}> = ({side, y, w = 640, children, avatar, color}) => (
+  <div style={abs(side === "l" ? 40 : 1080 - 40 - w - 100, y, {display: "flex", flexDirection: side === "l" ? "row" : "row-reverse", alignItems: "flex-start", gap: 18, width: w + 100})}>
+    <div style={{width: 82, height: 82, borderRadius: 18, background: avatar ? "#fff" : side === "l" ? "#E7ECF7" : G.sky, border: `4px solid ${G.ink}`, overflow: "hidden", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", ...dela(34, G.ink)}}>
+      {avatar ? <Img src={staticFile(avatar)} style={{width: "100%", height: "100%"}} /> : side === "l" ? <span style={{fontFamily: FONT.zcool, fontSize: 50, lineHeight: 1}}>厂</span> : "Я"}
+    </div>
+    <div style={{background: color ?? (side === "l" ? "#fff" : "#95EC69"), border: `4px solid ${G.ink}`, borderRadius: 22, padding: "16px 22px", boxShadow: `7px 7px 0 ${G.ink}`, ...inter(40, G.ink)}}>{children}</div>
+  </div>
+);
+const GttChat: React.FC = () => (
+  <AbsoluteFill style={{background: "#EDF1FA"}}>
+    <Halftone bg="#EDF1FA" dot="rgba(37,99,235,.07)" size={18} r={2.4} />
+    <div style={abs(0, 250, {width: 1080, height: 110, background: G.deep, borderBottom: `5px solid ${G.ink}`, display: "flex", alignItems: "center", gap: 18, padding: "0 40px"})}>
+      <div style={dela(40, "#fff")}>Завод · 工厂</div>
+      <div style={mono(22, G.sky)}>в сети</div>
+    </div>
+    <Msg side="r" y={400} w={600}>Здравствуйте! Можно к вам на завод?</Msg>
+    <Msg side="l" y={560} w={360}>
+      <span style={{fontFamily: FONT.zcool, fontSize: 56, lineHeight: 1}}>不行。</span>
+      <div style={inter(28, "#5B6684")}>Нельзя.</div>
+    </Msg>
+    <Msg side="r" y={740} w={460}>А если очень надо?</Msg>
+    <Msg side="l" y={880} w={420}>
+      <span style={{fontFamily: FONT.zcool, fontSize: 64, color: G.red, lineHeight: 1}}>进不去！</span>
+    </Msg>
+    <div style={abs(140, 1040, {width: 800, textAlign: "center", background: "rgba(10,15,36,.75)", borderRadius: 999, padding: "12px 20px", ...inter(30, "#fff")})}>Global Tech Tour добавлен в чат</div>
+    <Msg side="l" y={1140} w={640} avatar={CRYSTAL} color="#fff">
+      <div style={inter(26, G.blue)}>Global Tech Tour</div>
+      Пропуск оформлен. Ждём у проходной ✓
+    </Msg>
+    <Msg side="l" y={1380} w={520}>
+      <span style={{fontFamily: FONT.zcool, fontSize: 60, lineHeight: 1}}>欢迎光临！</span>
+      <div style={inter(28, "#5B6684")}>Добро пожаловать!</div>
+    </Msg>
+    <Sfx text="哇!" x={820} y={1290} size={140} color={G.blue} stroke="#fff" at={0} font={FONT.zcool} rot={12} />
+    <Grain opacity={0.06} />
+  </AbsoluteFill>
+);
+
+// K «进»: огромный иероглиф кистью «войти» — как ворота, у основания группа входит внутрь, красная печать GTT
+const Person: React.FC<{x: number; s: number; c: string}> = ({x, s, c}) => (
+  <g transform={`translate(${x} 0) scale(${s})`}>
+    <circle cx={0} cy={-118} r={16} fill={c} />
+    <path d="M -20 -98 Q 0 -104 20 -98 L 24 -40 L 14 -40 L 12 0 L 2 0 L 0 -38 L -2 0 L -12 0 L -14 -40 L -24 -40 Z" fill={c} />
+  </g>
+);
+const GttJin: React.FC = () => (
+  <AbsoluteFill style={{background: G.deep}}>
+    <AbsoluteFill style={{background: `radial-gradient(ellipse 600px 700px at 540px 1180px, rgba(125,211,252,.35), transparent 70%)`}} />
+    <Halftone bg="transparent" dot="rgba(125,211,252,.07)" size={22} r={3} />
+    <div style={abs(64, 280, mono(30, G.sky))}>GLOBAL TECH TOUR · 全球科技之旅</div>
+    <div style={{position: "absolute", left: 0, right: 0, top: 360, textAlign: "center", fontFamily: BRUSH, fontSize: 1000, lineHeight: 1, color: "#fff", textShadow: `16px 16px 0 ${G.blue}, 0 0 80px rgba(125,211,252,.55)`}}>进</div>
+    <svg width={1080} height={1920} style={{position: "absolute", inset: 0}}>
+      <g transform="translate(0 1395)">
+        {[[380, 0.9], [440, 1.05], [505, 0.95], [565, 1.1], [630, 0.9], [690, 1]].map(([x, s], i) => <Person key={i} x={x} s={s} c={G.ink} />)}
+      </g>
+    </svg>
+    <div style={abs(64, 1440, {...dela(72, "#fff", {textShadow: `7px 7px 0 ${G.ink}`, whiteSpace: "nowrap"})})}>Войти туда,</div>
+    <div style={abs(64, 1526, {...dela(72, G.sky, {textShadow: `7px 7px 0 ${G.ink}`, whiteSpace: "nowrap"})})}>куда не пускают</div>
+    {/* пометка-перевод и печать */}
+    <div style={abs(770, 420, {...inter(34, G.sky), rotate: "6deg"})}>jìn — «войти»</div>
+    <div style={abs(840, 1420, {width: 180, height: 180, border: `8px solid ${G.red}`, borderRadius: 12, rotate: "-8deg", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: G.deep, boxShadow: "0 0 30px rgba(232,52,28,.45)"})}>
+      <div style={dela(64, G.red, {lineHeight: 1})}>GTT</div>
+      <div style={{fontFamily: FONT.zcool, fontSize: 36, color: G.red, lineHeight: 1.1}}>科技之旅</div>
+    </div>
+    <div style={abs(40, 360, {writingMode: "vertical-rl", fontFamily: FONT.zcool, fontSize: 44, color: "rgba(255,255,255,.75)", lineHeight: 1.1})}>别人进不去的地方，我们带你进去</div>
+    <Grain opacity={0.12} />
+    <Vignette strength={0.35} />
+  </AbsoluteFill>
+);
+
+const COVERS = [OdHook, OdPage, AuraHook, AuraTeam, GttHook, GttPeople, GttVs, GttCampus, GttPage, GttCountries, GttKeyhole, GttMagazine, GttForbidden, GttChat, GttJin];
+export const COVER_NAMES = ["od-A-hook", "od-B-glavy", "aura-A-hook", "aura-B-komanda", "gtt-A-hook", "gtt-B-pervye-lica", "gtt-C-vs", "gtt-D-kampusy", "gtt-E-stranica", "gtt-F-strany", "gtt-G-skvazhina", "gtt-H-zhurnal", "gtt-I-403", "gtt-J-chat", "gtt-K-jin"];
 
 export const ManhuaCovers: React.FC = () => {
   const f = useCurrentFrame();
+  useBrush(true);
   const Cover = COVERS[Math.min(COVERS.length - 1, f)];
   return (
     <Freeze frame={F}>
