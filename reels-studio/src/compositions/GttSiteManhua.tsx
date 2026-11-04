@@ -34,8 +34,10 @@ const LOGO = "source-videos/логотипы/";
 const FLAG = "интернет-материалы/флаги/";
 const CRYSTAL = "finished-videos/обложки/gtt-бренд/instagram/gtt-аватар-мастер-2160.png";
 const SFXP = "source-videos/2026-11-03-od-sait-manhua/sfx/";
-// музыка v2: EDM Detection Mode — Kevin MacLeod (incompetech.com), CC BY 4.0; удар на 13,9 с трека = влёт кристалла (5,2 с ролика)
-const MUSIC = "интернет-материалы/музыка/edm-detection-mode-kevin-macleod.mp3";
+// музыка v3 (выбор пользователя 04.11.2026, №43): Neon Hyperdrive — Adiutorium (OpenGameArt), CC0;
+// удар 41,23 с трека = влёт кристалла (5,2 с ролика); брейкдаун трека 62–82,5 с (главы 3–5) поднят по громкости,
+// второй удар 82,57 с = 46,5 с ролика — вход в главу 6
+const MUSIC = "интернет-материалы/музыка/neon-hyperdrive-adiutorium.mp3";
 const INTER = body.fontFamily;
 
 // тайминг 03.11.2026 (v2): каждая реплика держится столько, сколько нужно на чтение (~15 знаков в секунду + 0,6 с), без провалов
@@ -689,8 +691,8 @@ export const GttSiteManhua: React.FC<{clean?: boolean; hema?: string}> = ({clean
       <Vignette strength={0.32} />
       <Audio
         src={staticFile(MUSIC)}
-        trimBefore={Math.round(8.7 * fps)}
-        volume={(x) => interpolate(x, [0, 150, 156, GTT_MANHUA_FRAMES - 45, GTT_MANHUA_FRAMES - 1], [0.18, 0.18, 0.46, 0.46, 0], CL)}
+        trimBefore={Math.round(36.03 * fps)}
+        volume={(x) => interpolate(x, [0, 150, 156, 774, 788, 1388, 1396, GTT_MANHUA_FRAMES - 45, GTT_MANHUA_FRAMES - 1], [0.55, 0.55, 0.335, 0.335, 0.9, 0.9, 0.5, 0.5, 0], CL)}
       />
       {SOUNDS.map(([at, name, vol], i) => (
         <Sequence key={i} from={at} durationInFrames={Math.round(4.5 * fps)} premountFor={fps}>

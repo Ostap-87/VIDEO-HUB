@@ -33,8 +33,9 @@ const A = {parch: "#F8F6F3", ink: "#262626", lemon: "#FFF65D", fog: "#D9D7D5", d
 const IMG = "source-videos/aura-robotics/site/2026-11-03-сайт/";
 const im = (n: string) => `${IMG}${n}.jpg`;
 const SFXP = "source-videos/2026-11-03-od-sait-manhua/sfx/";
-// музыка v2: Exit the Premises — Kevin MacLeod (incompetech.com), CC BY 4.0; удар на 6,9 с трека = прыжок маскота (3,8 с ролика)
-const MUSIC = "интернет-материалы/музыка/exit-the-premises-kevin-macleod.mp3";
+// музыка v3 (выбор пользователя 04.11.2026, №78): Union Square [Edit] — Decktonic (Free Music Archive), CC BY 4.0;
+// тихий брейк трека 79–82,5 с — сон маскота, удар 82,48 с = прыжок маскота (3,8 с ролика)
+const MUSIC = "интернет-материалы/музыка/union-square-edit-decktonic.mp3";
 // видео от пользователя (WeTransfer 03.11.2026): запуск серийного производства гуманоидов, стеллажи, роботы в цеху
 const ROBOTS = "source-videos/2026-11-03-wt-hema-roboty/roboty-zavod.mp4";
 const INTER = body.fontFamily;
@@ -628,8 +629,8 @@ export const AuraSiteManhua: React.FC<{clean?: boolean}> = ({clean = true}) => {
       <Vignette strength={0.3} />
       <Audio
         src={staticFile(MUSIC)}
-        trimBefore={Math.round(3.1 * fps)}
-        volume={(x) => interpolate(x, [0, 108, 114, AURA_MANHUA_FRAMES - 40, AURA_MANHUA_FRAMES - 1], [0.14, 0.14, 0.4, 0.4, 0], CL)}
+        trimBefore={Math.round(78.68 * fps)}
+        volume={(x) => interpolate(x, [0, 108, 114, AURA_MANHUA_FRAMES - 40, AURA_MANHUA_FRAMES - 1], [0.22, 0.22, 0.33, 0.33, 0], CL)}
       />
       {SOUNDS.map(([at, name, vol], i) => (
         <Sequence key={i} from={at} durationInFrames={Math.round(4.5 * fps)} premountFor={fps}>

@@ -18,8 +18,9 @@ import {
 export const SITE_MANHUA_FRAMES = 1164;
 const IMG = "source-videos/ostapdotcenko/site/2026-11-03-сайт/";
 const SFXP = "source-videos/2026-11-03-od-sait-manhua/sfx/";
-// музыка v2: Space Dimensions (Techno Version) — Matthew Pablo (opengameart.org), CC BY 3.0; удар на 63,1 с трека = влёт телефона (2,2 с)
-const MUSIC = "интернет-материалы/музыка/space-dimensions-techno-matthew-pablo.mp3";
+// музыка v3 (выбор пользователя 04.11.2026, №81): Magnetz — 1000 Handz (Free Music Archive), CC BY 4.0;
+// удар на 65,70 с трека = влёт телефона (2,2 с); провал трека 94–98,5 с приходится на вход в финал, удар 98,47 с — 35,0 с ролика
+const MUSIC = "интернет-материалы/музыка/magnetz-1000-handz.mp3";
 const CUT = "source-videos/фото-от-пользователя/остап/вырезки/ostap-portret-sait.png";
 const im = (n: string) => `${IMG}${n}.jpg`;
 
@@ -471,8 +472,8 @@ export const SiteManhua: React.FC<{fin?: FinPhoto}> = ({fin}) => {
       <Vignette strength={0.35} />
       <Audio
         src={staticFile(MUSIC)}
-        trimBefore={Math.round(60.9 * fps)}
-        volume={(x) => interpolate(x, [0, 6, SITE_MANHUA_FRAMES - 45, SITE_MANHUA_FRAMES - 1], [0, 0.34, 0.34, 0], CL)}
+        trimBefore={Math.round(63.5 * fps)}
+        volume={(x) => interpolate(x, [0, 6, 905, 917, 1041, 1049, SITE_MANHUA_FRAMES - 45, SITE_MANHUA_FRAMES - 1], [0, 0.38, 0.38, 0.55, 0.55, 0.38, 0.38, 0], CL)}
       />
       {SOUNDS.map(([at, name, vol], i) => (
         <Sequence key={i} from={at} durationInFrames={Math.round(4.5 * fps)} premountFor={fps}>
