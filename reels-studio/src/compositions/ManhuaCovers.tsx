@@ -16,7 +16,7 @@ import {FONT} from "./site-manhua/fonts";
 import {Skeptic} from "./site-manhua/skeptic";
 import {Bubble, Burst, C, Grain, Halftone, Narration, Phone, Sfx, SpeedLines, Tape, Vignette} from "./site-manhua/fx";
 
-export const MANHUA_COVERS = 6;
+export const MANHUA_COVERS = 10;
 // все анимации набора к этому кадру уже закончились; 3D-жесты считаются от T секунд
 const F = 200;
 const T = F / 30;
@@ -42,15 +42,15 @@ const Polaroid: React.FC<{x: number; y: number; w: number; h: number; src: strin
   </div>
 );
 
-// ── «Мой сайт», A: хук — «У МЕНЯ ЕСТЬ САЙТ.» ударами на чернилах, снизу жёлтый растр: телефон с сайтом и портрет ─────────────
+// ── «Мой сайт», A (правка пользователя 04.11.2026: «не У меня есть сайт — Заходи на мой сайт, Читай мой блог») — ударами на чернилах, снизу жёлтый растр: телефон с сайтом и портрет ─────────────
 const OdHook: React.FC = () => (
   <AbsoluteFill style={{background: C.ink}}>
     <SpeedLines color="#fff" opacity={0.75} inner={400} cy={560} seed="oda" />
     <div style={abs(64, 286, mono(30, "#fff"))}>ОСТАП ДОЦЕНКО · 多增科</div>
-    {[["У МЕНЯ", 350, 140, "#fff"], ["ЕСТЬ", 500, 140, "#fff"], ["САЙТ.", 650, 172, C.y]].map(([t, y, s, c]) => (
+    {[["ЗАХОДИ", 340, 124, "#fff"], ["НА МОЙ САЙТ,", 474, 98, "#fff"], ["ЧИТАЙ МОЙ БЛОГ!", 604, 78, C.y]].map(([t, y, s, c]) => (
       <div key={t as string} style={{position: "absolute", left: 0, right: 0, top: y as number, textAlign: "center", whiteSpace: "nowrap", ...dela(s as number, c as string, {textShadow: `12px 12px 0 ${C.red}`})}}>{t}</div>
     ))}
-    <Sfx text="咚!" x={850} y={300} size={120} color={C.y} at={0} font={FONT.zcool} rot={12} />
+    <Sfx text="哇!" x={860} y={250} size={110} color={C.y} at={0} font={FONT.zcool} rot={12} />
     {/* жёлтая половина с косым срезом */}
     <AbsoluteFill style={{clipPath: "polygon(0 930px, 1080px 860px, 1080px 1920px, 0 1920px)"}}>
       <Halftone bg={C.y} dot="rgba(25,25,34,.16)" />
@@ -267,8 +267,143 @@ const GttPeople: React.FC = () => (
   </AbsoluteFill>
 );
 
-const COVERS = [OdHook, OdPage, AuraHook, AuraTeam, GttHook, GttPeople];
-export const COVER_NAMES = ["od-A-hook", "od-B-glavy", "aura-A-hook", "aura-B-komanda", "gtt-A-hook", "gtt-B-pervye-lica"];
+
+const LOGO = "source-videos/логотипы/";
+const FLAG = "интернет-материалы/флаги/";
+const Title: React.FC<{y: number; lines: [string, string?][]; size?: number}> = ({y, lines, size = 88}) => (
+  <>
+    {lines.map(([s, c], i) => (
+      <div key={s} style={abs(60, y + i * (size + 8), dela(size, c ?? "#fff", {textShadow: `8px 8px 0 ${G.ink}`, whiteSpace: "nowrap", ...(c === G.red ? {WebkitTextStroke: "5px #fff", paintOrder: "stroke fill"} : {})}))}>{s}</div>
+    ))}
+  </>
+);
+const GttHead: React.FC<{zh?: string; light?: boolean}> = ({zh = "全球科技之旅", light}) => (
+  <div style={abs(64, 280, {display: "flex", alignItems: "center", gap: 16})}>
+    <Img src={staticFile(CRYSTAL)} style={{width: 84, height: 84, borderRadius: "50%"}} />
+    <div style={mono(30, light ? G.blue : G.sky)}>GLOBAL TECH TOUR · {zh}</div>
+  </div>
+);
+
+// ── GTT, C: экран файтинга «VS» — Директор с телефоном («я всё посмотрел в интернете») против Остапа на переговорах ────────────
+const GttVs: React.FC = () => (
+  <AbsoluteFill style={{background: G.ink}}>
+    {/* левая половина — серый «интернет» */}
+    <AbsoluteFill style={{clipPath: "polygon(0 0, 640px 0, 440px 1920px, 0 1920px)", filter: "grayscale(1) contrast(1.1)"}}>
+      <NavyBg cy={50} />
+      <SpeedLines color="rgba(255,255,255,.35)" cx={260} cy={1100} inner={300} seed="gvl" />
+      <Skeptic x={-150} y={1000} scale={1.3} emo="neutral" phone tie fill={G.ink} rim="#fff" accent={G.red} />
+    </AbsoluteFill>
+    {/* правая — синий GTT */}
+    <AbsoluteFill style={{clipPath: "polygon(640px 0, 1080px 0, 1080px 1920px, 440px 1920px)"}}>
+      <NavyBg cy={40} />
+      <SpeedLines color="rgba(125,211,252,.6)" cx={820} cy={1100} inner={320} seed="gvr" />
+      <Img src={staticFile(`${CUT}ostap-yingke-mikrofon.png`)} style={{position: "absolute", left: 420, top: 820, height: 900, filter: `drop-shadow(8px 0 0 #fff) drop-shadow(-8px 0 0 #fff) drop-shadow(0 -8px 0 #fff) drop-shadow(16px 16px 0 ${G.ink})`}} />
+    </AbsoluteFill>
+    <svg width={1080} height={1920} style={{position: "absolute", inset: 0}}>
+      <line x1={640} y1={0} x2={440} y2={1920} stroke="#fff" strokeWidth={18} />
+      <line x1={652} y1={0} x2={452} y2={1920} stroke={G.red} strokeWidth={8} />
+    </svg>
+    <div style={{fontFamily: FONT.pixel, fontSize: 30, color: G.sky, position: "absolute", left: 0, right: 0, top: 290, textAlign: "center"}}>ROUND 1 · FIGHT!</div>
+    <div style={abs(40, 360, {width: 520, background: "#fff", border: `5px solid ${G.ink}`, padding: "14px 20px", rotate: "-3deg", boxShadow: `8px 8px 0 ${G.ink}`, ...inter(40, G.ink)})}>
+      «Я всё посмотрел <span style={{color: G.red}}>в интернете</span>»
+    </div>
+    <div style={abs(520, 560, {width: 520, background: G.deep, border: `5px solid ${G.ink}`, padding: "14px 20px", rotate: "3deg", boxShadow: `8px 8px 0 ${G.sky}`, ...inter(40, "#fff")})}>
+      «А я был <span style={{color: G.sky}}>внутри</span>»
+    </div>
+    <div style={{position: "absolute", left: 0, right: 0, top: 760, textAlign: "center", ...dela(230, G.red, {WebkitTextStroke: "8px #fff", paintOrder: "stroke fill", textShadow: `14px 14px 0 ${G.ink}`, fontStyle: "italic"})}}>VS</div>
+    <div style={abs(40, 1560, {display: "flex", gap: 14})}>
+      <div style={{background: "#fff", border: `4px solid ${G.ink}`, padding: "8px 16px", ...mono(26, G.ink)}}>ИНТЕРНЕТ</div>
+    </div>
+    <div style={abs(640, 1560, {background: G.blue, border: `4px solid ${G.ink}`, padding: "8px 16px", ...mono(26, "#fff")})}>GLOBAL TECH TOUR</div>
+    <Grain opacity={0.1} />
+  </AbsoluteFill>
+);
+
+// ── GTT, D: пропуска шести кампусов на лентах — учёба у Huawei, Alibaba, Xiaomi… ──────────────────────────────────────────────
+const CAMPUS: [string, string][] = [["общие/huawei.svg", "Huawei"], ["общие/alibaba.svg", "Alibaba"], ["общие/xiaomi.svg", "Xiaomi"], ["бытовая-техника/haier.svg", "Haier"], ["общие/bytedance.png", "ByteDance"], ["финансы/ping-an.svg", "Ping An"]];
+const GttCampus: React.FC = () => (
+  <AbsoluteFill>
+    <NavyBg cy={45} />
+    <SpeedLines color="rgba(125,211,252,.35)" cx={540} cy={1150} inner={520} opacity={0.6} seed="gc" />
+    <GttHead zh="第四话" />
+    <Title y={380} lines={[["Пропуск"], ["в кампусы"], ["Huawei и Alibaba", G.sky]]} size={84} />
+    {CAMPUS.map(([l, n], i) => {
+      const col = i % 3;
+      const row = Math.floor(i / 3);
+      return (
+        <div key={n} style={abs(48 + col * 334, 820 + row * 380 + (col === 1 ? 40 : 0), {width: 300, rotate: `${(col - 1) * 6 + (row ? 3 : -3)}deg`})}>
+          <div style={abs(133, -70, {width: 34, height: 80, background: G.blue, border: `3px solid ${G.ink}`})} />
+          <div style={{background: "#fff", border: `4px solid ${G.ink}`, borderRadius: 18, overflow: "hidden", boxShadow: `9px 9px 0 ${G.blue}`}}>
+            <div style={{background: G.blue, color: "#fff", padding: "8px 14px", ...mono(20, "#fff")}}>ГОСТЬ КАМПУСА</div>
+            <div style={{height: 150, display: "flex", alignItems: "center", justifyContent: "center"}}>
+              <Img src={staticFile(`${LOGO}${l}`)} style={{maxWidth: 220, maxHeight: 92, objectFit: "contain"}} />
+            </div>
+            <div style={{padding: "0 14px 12px", ...inter(30, G.ink)}}>{n}</div>
+          </div>
+        </div>
+      );
+    })}
+    <Sfx text="学!" x={830} y={300} size={140} color={G.sky} stroke={G.ink} at={0} font={FONT.zcool} rot={-8} />
+    <Narration x={64} y={1612} at={0} font={FONT.oswald} size={32} rot={-2} bg="#fff" color={G.ink}>ИНТЕНСИВЫ ИЗ ПЕРВЫХ РУК · С ПЕРЕВОДОМ</Narration>
+    <Grain opacity={0.1} />
+    <Vignette strength={0.28} />
+  </AbsoluteFill>
+);
+
+// ── GTT, E: страница манхуа — «Интернет туда не пустит»: четыре панели с настоящими встречами и визитами ────────────────────────
+const GttPage: React.FC = () => {
+  const panel = (x: number, y: number, w: number, h: number, src: string, pos: string, tag: string, rot = 0) => (
+    <div style={abs(x, y, {width: w, height: h, border: `7px solid ${G.ink}`, boxShadow: `12px 12px 0 ${G.ink}`, overflow: "hidden", rotate: `${rot}deg`, background: G.ink})}>
+      <Img src={staticFile(src)} style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: pos}} />
+      <div style={abs(0, 0, {background: G.ink, color: "#fff", padding: "8px 14px", ...inter(28, "#fff")})}>{tag}</div>
+    </div>
+  );
+  return (
+    <AbsoluteFill style={{background: "#F4F6FB"}}>
+      <Halftone bg="#F4F6FB" dot="rgba(37,99,235,.10)" size={18} r={2.6} />
+      <GttHead zh="第三话" light />
+      <div style={abs(60, 380, dela(90, G.ink, {textShadow: `8px 8px 0 ${G.sky}`, whiteSpace: "nowrap"}))}>Интернет</div>
+      <div style={abs(60, 482, dela(80, G.blue, {textShadow: `8px 8px 0 ${G.ink}`, whiteSpace: "nowrap"}))}>туда не пустит</div>
+      {panel(48, 640, 600, 470, "source-videos/обложки/2026-11-03-manhua/hema-kadr.jpg", "50% 18%", "С основателем Hema", -1)}
+      {panel(676, 640, 356, 470, "source-videos/2026-10-25-sany/IMG_5645.jpg", "50% 30%", "SANY", 1)}
+      {panel(48, 1140, 420, 440, `${PH}yingke-rukovodstvo.jpg`, "50% 30%", "YingKe 盈科", 1)}
+      {panel(496, 1140, 536, 440, `${PH}xingwang-hou.jpg`, "50% 30%", "Xingwang", -1)}
+      <Sfx text="进!" x={840} y={330} size={120} color={G.red} stroke="#fff" at={0} font={FONT.zcool} rot={10} />
+      <Grain opacity={0.08} />
+    </AbsoluteFill>
+  );
+};
+
+// ── GTT, F: 9 стран загораются флагами, во взрыве — 76 программ ─────────────────────────────────────────────────────────────
+const COUNTRIES: [string, string][] = [["cn", "Китай"], ["jp", "Япония"], ["kr", "Корея"], ["th", "Таиланд"], ["vn", "Вьетнам"], ["id", "Индонезия"], ["my", "Малайзия"], ["in", "Индия"], ["ae", "ОАЭ"]];
+const GttCountries: React.FC = () => (
+  <AbsoluteFill>
+    <NavyBg cy={55} />
+    <SpeedLines color="rgba(125,211,252,.5)" cx={540} cy={1180} inner={420} opacity={0.75} seed="gf" />
+    <GttHead />
+    <Title y={380} lines={[["Бизнес-экспедиции"], ["в Китай"], ["и не только", G.sky]]} size={70} />
+    {COUNTRIES.map(([c, n], i) => (
+      <div key={c} style={abs(48 + (i % 3) * 332, 690 + Math.floor(i / 3) * 96, {width: 312, height: 80, display: "flex", alignItems: "center", gap: 14, background: "#fff", border: `4px solid ${G.ink}`, borderRadius: 14, padding: "0 14px", boxShadow: `0 0 28px rgba(125,211,252,.6), 6px 6px 0 ${G.blue}`})}>
+        <Img src={staticFile(`${FLAG}${c}.png`)} style={{width: 64, height: 44, objectFit: "cover", border: `2px solid ${G.ink}`}} />
+        <span style={inter(30, G.ink)}>{n}</span>
+      </div>
+    ))}
+    <div style={abs(40, 990, {width: 1000, height: 520})}>
+      <Burst x={500} y={260} r={300} color={G.blue} stroke="#fff" sw={8} seed="gfb" points={22} />
+    </div>
+    <div style={{position: "absolute", left: 0, right: 0, top: 1120, textAlign: "center"}}>
+      <div style={dela(170, "#fff", {textShadow: `10px 10px 0 ${G.ink}`, lineHeight: 1})}>76</div>
+      <div style={inter(40, G.sky)}>готовых программ</div>
+    </div>
+    <Narration x={64} y={1612} at={0} font={FONT.oswald} size={34} rot={-2} bg="#fff" color={G.ink}>1000+ КОМПАНИЙ · 18 ОТРАСЛЕЙ</Narration>
+    <Sfx text="轰!" x={830} y={1040} size={130} color="#fff" stroke={G.ink} at={0} font={FONT.zcool} rot={12} />
+    <Grain opacity={0.1} />
+    <Vignette strength={0.28} />
+  </AbsoluteFill>
+);
+
+const COVERS = [OdHook, OdPage, AuraHook, AuraTeam, GttHook, GttPeople, GttVs, GttCampus, GttPage, GttCountries];
+export const COVER_NAMES = ["od-A-hook", "od-B-glavy", "aura-A-hook", "aura-B-komanda", "gtt-A-hook", "gtt-B-pervye-lica", "gtt-C-vs", "gtt-D-kampusy", "gtt-E-stranica", "gtt-F-strany"];
 
 export const ManhuaCovers: React.FC = () => {
   const f = useCurrentFrame();

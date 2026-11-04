@@ -548,8 +548,8 @@ node reels-studio/tools/od-posts/reel-sait.mjs            # ролик «Мой 
 # TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts AuraSiteManhua ../finished-videos/2026-11-03-aura-sait-manhua.mp4 --bundle-cache=false --crf=18
 # TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts GttSiteManhua ../finished-videos/2026-11-03-gtt-sait-manhua.mp4 --bundle-cache=false --crf=18
 # пробные кадры: … GttSiteManhuaPreview /dev/shm/prev --sequence --frames=0-20 --scale=0.5 --props='{"step":1,"start":0,"frames":[30,200,420]}'
-# обложки трёх манхуа-роликов (по 2 варианта): TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts ManhuaCovers /dev/shm/covers --sequence --image-format=png --frames=0-5 --bundle-cache=false
-#   → finished-videos/обложки/манхуа-сайты/ (кадр 0–1 «Мой сайт», 2–3 Aura, 4–5 GTT)
+# обложки трёх манхуа-роликов (по 2 варианта): TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts ManhuaCovers /dev/shm/covers --sequence --image-format=png --frames=0-9 --bundle-cache=false
+#   → finished-videos/обложки/манхуа-сайты/ (кадр 0–1 «Мой сайт», 2–3 Aura, 4–9 GTT A–F; --frames=0-9)
 ```
 Готовое и подписи — `finished-videos/обложки/ostap-посты-2026-11-02/` (`КАК-ПОСТАВИТЬ.md`).
 
