@@ -16,5 +16,23 @@
   "date": "2026-11-04",
   "for": "多 NEWS №1 (Luckin): возвращение — очередь у кофейного киоска",
   "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_130033_b544fe0b-c80a-4930-ab7f-9d677e2802c5.png"
+ },
+ {
+  "file": "hf-vzlet.jpg",
+  "job_id": "7720fb9f-9123-4ad6-b044-98719ad6c9c3",
+  "model": "gpt_image_2_5 medium 1k 3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "for": "多 NEWS №1 (Luckin): взлёт — киоск без столиков, заказ в приложении",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_134311_7720fb9f-9123-4ad6-b044-98719ad6c9c3.png"
+ },
+ {
+  "file": "hf-feniks.jpg",
+  "job_id": "796b854f-8dd8-42f1-90d3-e11ce732adcb",
+  "model": "gpt_image_2_5 medium 1k 3:4",
+  "credits": 0.5,
+  "date": "2026-11-04",
+  "for": "多 NEWS №1 (Luckin): перезапуск — феникс из пара над стаканом",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261104_134421_796b854f-8dd8-42f1-90d3-e11ce732adcb.png"
  }
 ]

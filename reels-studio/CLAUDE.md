@@ -1162,7 +1162,20 @@ git (`.gitattributes`: `-filter binary`), как копии для публик�
   сайта (`git show origin/main:public/img/… > …/cover.jpg`); картинки Higgsfield — туда же, журнал `_генерации.json`.
 - Рендер (из `reels-studio`): `TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts BlogNews ../finished-videos/blog-news/NNN-<slug>.mp4
   --props=props/blog-news/NNN-<slug>.json --bundle-cache=false --crf=18`; пробные кадры — `BlogNewsPreview` с `frames: [...]`
-  (`--sequence --scale=0.5`). Выпуск №1 (пилот) — «Кофе с привкусом протокола» (Luckin), музыка Exit the Premises (Kevin MacLeod, CC BY 4.0).
+  (`--sequence --scale=0.5`). Выпуск №1 (пилот) — «Кофе с привкусом протокола» (Luckin Coffee).
+- **Правки пилота (04.11.2026)**: «надо указать, что это Luckin Coffee… музыка не очень, поменяй… чуть больше данных… на каждый ролик
+  3–4 картинки в стиле манхуа… больше звуковых эффектов». Поэтому в каждом выпуске:
+  - `brand` {`name`, `zh`, `logo`, `icon`} — о ком статья: плашка с логотипом и китайским названием в хуке (под тремя словами), на панели
+    каждого акта и строка «О ком: …» в заставке; `icon` — доля ширины логотипа, если в нём и знак, и надпись (показываем только знак);
+  - `ticker[]` — бегущая строка новостей внизу кадра (y 1478–1534, над интерфейсом Instagram) с заставки до конца: ещё 8–10 фактов статьи;
+  - 4 акта по ~8 с (до 3 вех в акте), у каждого акта своя манхуа-картинка Higgsfield (≤ 0,5 кредита, `gpt_image_2_5` medium 1k 3:4,
+    «Chinese manhua ink illustration, halftone… No text, no letters, no numbers, no logos»), журнал — `_генерации.json` в папке статьи;
+  - звук на каждом появлении: удары, вжухи, штамп, печатная машинка, монеты и касса на цифрах, стекло и сердцебиение на падении, гудок,
+    аплодисменты на K.O., часы на «Завтра» (`SND_*`, `sndStory`, `sndVs` в `BlogNews.tsx`, библиотека `интернет-материалы/звуки/`);
+  - музыка рубрики — Deva «Xenocity - Sleight of Hand» (глитч-хоп, CC0, №84 подборки; `library/music.json` → `xenocity-sleight-of-hand-deva`,
+    удар 42,1 с ставится на заставку).
+- **Страница-план** — `python3 tools/blog-news/plan_page.py <out.html>` (обложки и анонсы статей с сайта, сезоны, «сезон окончен → завтра
+  новый», дорожка роботов) → артефакт «Сетка 多 NEWS» https://claude.ai/artifact/QUoq6wuLpPypUjHBe4yy3X (обновлять тем же путём).
 
 ## Библиотека звуков и техно-музыка (03.11.2026)
 
@@ -1878,7 +1891,7 @@ Starter упёрся в лимит голосов). Образец — 2–3 м�
 
 # Статус реализации
 
-Готово (04.11.2026): «多 NEWS» — манхуа-новости по статьям блога ostapdotcenko.ru: композиция `BlogNews` (акты rise / fall / vs, заставка выпуска, анонс следующего), сквозная очередь по сезонам-нишам `tools/blog-news/queue.py`, экраны статьи `tools/blog-news/shots.mjs`; пилот — выпуск №1 о Luckin.
+Готово (04.11.2026): «多 NEWS» — манхуа-новости по статьям блога ostapdotcenko.ru: композиция `BlogNews` (акты rise / fall / vs, заставка выпуска, анонс следующего), сквозная очередь по сезонам-нишам `tools/blog-news/queue.py`, экраны статьи `tools/blog-news/shots.mjs`, бренд статьи `brand`, бегущая строка `ticker`, страница-план `tools/blog-news/plan_page.py`; пилот — выпуск №1 о Luckin Coffee.
 Готово (03.11.2026): манхуа-ролики про сайты — `AuraSiteManhua` (40 с, маскот спит → вскакивает, AGV, роборука со знаком «V»,
 гуманоид из экрана, квиз, полароиды отзывов) и `GttSiteManhua` (60 с, Директор, 9 глав, кадры группы, кейсы, кампусы); скептик-силуэт
 `site-manhua/skeptic.tsx`, жест маскота `sleep`, поза руки `peace`; версии для Facebook и LinkedIn с матом знаками (`clean`);
