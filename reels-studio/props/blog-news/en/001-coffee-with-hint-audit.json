@@ -1,0 +1,220 @@
+{
+ "show": "多 NEWS",
+ "ep": 1,
+ "season": {
+  "name": "Restarts",
+  "zh": "重启",
+  "n": 1,
+  "total": 3
+ },
+ "title": "Coffee with a Hint of Audit",
+ "date": "2026-11-03",
+ "slug": "coffee-with-hint-audit",
+ "cover": "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/cover.jpg",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/en-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/en-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/en-02.jpg"
+ ],
+ "hook": {
+  "lines": [
+   "A COFFEE CHAIN",
+   "FOOLED",
+   "THE WORLD"
+  ],
+  "shout": [
+   "…then kept it",
+   "caffeinated!"
+  ],
+  "sfx": "骗"
+ },
+ "beats": [
+  {
+   "kind": "rise",
+   "sec": 8.0,
+   "zh": "起",
+   "kicker": "2017 → 2019",
+   "title": "Takeoff",
+   "img": "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/hf-vzlet.jpg",
+   "imgPos": "50% 45%",
+   "steps": [
+    {
+     "when": "OCT 2017",
+     "text": "founded in Beijing"
+    },
+    {
+     "when": "MODEL",
+     "text": "pickup counters, orders only in the app"
+    },
+    {
+     "when": "MAY 2019",
+     "text": "Nasdaq, $17 a share"
+    }
+   ],
+   "big": {
+    "pre": "≈$",
+    "num": 645,
+    "suf": "M",
+    "text": "raised on Nasdaq"
+   },
+   "note": "Eighteen months from first store to opening bell."
+  },
+  {
+   "kind": "fall",
+   "sec": 8.3,
+   "zh": "崩",
+   "kicker": "2020",
+   "title": "The Fall",
+   "img": "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/hf-padenie.jpg",
+   "imgPos": "50% 42%",
+   "steps": [
+    {
+     "when": "JAN 31, 2020",
+     "text": "Muddy Waters: sales heavily inflated"
+    },
+    {
+     "when": "APR 2, 2020",
+     "text": "the company admitted it"
+    },
+    {
+     "when": "MAY 2020",
+     "text": "CEO and COO fired"
+    }
+   ],
+   "big": {
+    "num": 2.2,
+    "dec": 1,
+    "suf": "B",
+    "text": "of 2019 sales made up (≈ $310M)",
+    "pre": "¥"
+   },
+   "mark": "−76% in a day",
+   "stamp": {
+    "text": "DELISTED",
+    "sub": "Nasdaq · June 29, 2020",
+    "zh": "退市"
+   },
+   "note": "A $180M SEC fine, then bankruptcy protection in February 2021."
+  },
+  {
+   "kind": "rise",
+   "sec": 7.8,
+   "zh": "重生",
+   "kicker": "2021 → 2022",
+   "title": "Restart",
+   "img": "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/hf-feniks.jpg",
+   "imgPos": "50% 40%",
+   "steps": [
+    {
+     "when": "SPRING 2021",
+     "text": "Centurium Capital put in another $240M"
+    },
+    {
+     "when": "2022",
+     "text": "the company exited bankruptcy"
+    }
+   ],
+   "big": {
+    "num": 460,
+    "suf": "M",
+    "text": "of debt restructured",
+    "pre": "$"
+   },
+   "note": "“Today’s Luckin is an essentially new company — with only the name unchanged.” Guo Jinyi, CEO"
+  },
+  {
+   "kind": "vs",
+   "sec": 8.3,
+   "zh": "逆袭",
+   "kicker": "2023 → 2025",
+   "title": "The Comeback",
+   "img": "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/hf-ochered.jpg",
+   "imgPos": "50% 38%",
+   "left": "LUCKIN",
+   "right": "STARBUCKS",
+   "round": "ROUND 2023 · CHINA",
+   "result": "Summer 2023: quarterly revenue in China tops Starbucks",
+   "facts": [
+    {
+     "num": 31048,
+     "text": "stores by the end of 2025"
+    },
+    {
+     "num": 49.3,
+     "dec": 1,
+     "suf": "B",
+     "text": "2025 revenue, up 43%",
+     "pre": "¥"
+    },
+    {
+     "num": 5.42,
+     "dec": 2,
+     "suf": "M",
+     "text": "Moutai baijiu lattes on day one"
+    }
+   ]
+  }
+ ],
+ "punch": {
+  "lines": [
+   "The fraud",
+   "was in",
+   "the reports,",
+   "not in",
+   "the cups."
+  ],
+  "zh": "假的是账本，不是咖啡。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-megamarket-mikrofon.png",
+  "from": "— from the article"
+ },
+ "next": {
+  "n": 2,
+  "title": "The Teacher Who Went into Retail",
+  "season": "Restarts",
+  "zh": "重启",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/magnetz-1000-handz.mp3",
+  "drop": 65.7,
+  "vol": 0.37
+ },
+ "brand": {
+  "name": "Luckin Coffee",
+  "zh": "瑞幸咖啡",
+  "logo": "source-videos/логотипы/чай-кофе/luckin-coffee.svg",
+  "icon": 0.235
+ },
+ "ticker": [
+  "Luckin Coffee (瑞幸咖啡) — founded in Beijing in October 2017",
+  "Nasdaq IPO in May 2019: $17 a share, ≈$645M raised",
+  "April 2, 2020: admitted ¥2.2B of fabricated sales",
+  "June 29, 2020: delisted from Nasdaq",
+  "SEC fine — $180 million",
+  "2022: exited bankruptcy",
+  "2023: China’s largest coffee chain",
+  "End of 2025: 31,048 stores, revenue ¥49.3B (+43%)",
+  "Summer 2025: first stores in Manhattan",
+  "The founders launched Cotti Coffee — a cup dropped to around nine yuan"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/hf-padenie.jpg",
+  "heroPos": "50% 40%",
+  "alt": "source-videos/ostapdotcenko/blog-news/coffee-with-hint-audit/hf-feniks.jpg",
+  "altPos": "50% 30%",
+  "big": "−76%",
+  "bigText": "share price in one day",
+  "blurbs": [
+   {
+    "big": "¥2.2B",
+    "text": "of made-up sales"
+   },
+   {
+    "big": "31,048",
+    "text": "stores by the end of 2025"
+   }
+  ],
+  "tag": "Fraud, delisting — and a comeback"
+ },
+ "lang": "en"
+}

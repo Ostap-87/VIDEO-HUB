@@ -1,0 +1,212 @@
+{
+ "show": "多 NEWS",
+ "ep": 4,
+ "season": {
+  "name": "Observations",
+  "zh": "观察",
+  "n": 1,
+  "total": 5
+ },
+ "title": "The Fastest Man in Town",
+ "date": "2026-11-04",
+ "slug": "fastest-man-town",
+ "cover": "source-videos/ostapdotcenko/blog-news/fastest-man-town/cover.jpg",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/fastest-man-town/en-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/fastest-man-town/en-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/fastest-man-town/en-02.jpg"
+ ],
+ "accent": "#3FE0FF",
+ "hook": {
+  "style": "split",
+  "lines": [
+   "ORDER ACCEPTED.",
+   "HE’S ON",
+   "HIS WAY."
+  ],
+  "shout": [
+   "Don’t wait for food —",
+   "greet it!"
+  ],
+  "sfx": "快"
+ },
+ "beats": [
+  {
+   "kind": "stat",
+   "sec": 8.0,
+   "zh": "蜂",
+   "kicker": "2023 · MEITUAN",
+   "title": "Not a Street but a Beehive",
+   "img": "source-videos/ostapdotcenko/blog-news/fastest-man-town/hf-uley.jpg",
+   "imgPos": "50% 45%",
+   "big": {
+    "num": 7.45,
+    "dec": 2,
+    "suf": "M",
+    "text": "riders earned income on Meituan in 2023"
+   },
+   "equal": "the population of Hong Kong",
+   "chips": [
+    "¥80B paid to riders in a year",
+    "≈¥3.65 per delivery — TechNode’s math"
+   ]
+  },
+  {
+   "kind": "page",
+   "sec": 8.4,
+   "zh": "困",
+   "kicker": "SEPTEMBER 2020",
+   "title": "Trapped in the System",
+   "panels": [
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/fastest-man-town/hf-mozg.jpg",
+     "imgPos": "50% 22%",
+     "cap": "Meituan’s “Super Brain,” Ele.me’s “Ark”",
+     "sfx": "嗡"
+    },
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/fastest-man-town/hf-mozg.jpg",
+     "imgPos": "50% 88%",
+     "zoom": 1.25,
+     "cap": "Made it — great. Tomorrow, make it faster"
+    }
+   ],
+   "big": {
+    "num": 8,
+    "suf": " minutes",
+    "text": "of flexibility per order — Meituan’s reply the next day"
+   }
+  },
+  {
+   "kind": "dialog",
+   "sec": 8.6,
+   "zh": "话",
+   "kicker": "A SCENE AT THE ENTRANCE",
+   "title": "The Shortest Relationship",
+   "a": {
+    "name": "Me",
+    "emo": "neutral"
+   },
+   "b": {
+    "name": "Rider",
+    "fill": "#E8B800",
+    "phone": true,
+    "emo": "calm"
+   },
+   "lines": [
+    {
+     "who": "a",
+     "text": "Where are you?"
+    },
+    {
+     "who": "b",
+     "text": "Downstairs."
+    },
+    {
+     "who": "a",
+     "text": "I can’t see you."
+    },
+    {
+     "who": "b",
+     "text": "I’m in a yellow jacket."
+    },
+    {
+     "who": "a",
+     "text": "Everybody’s in a yellow jacket."
+    },
+    {
+     "who": "b",
+     "text": "I’m the one who’s already leaving. Five stars, please!"
+    }
+   ]
+  },
+  {
+   "kind": "vs",
+   "sec": 8.0,
+   "zh": "战",
+   "kicker": "JULY 5, 2025",
+   "title": "The Record",
+   "img": "source-videos/ostapdotcenko/blog-news/fastest-man-town/hf-servery.jpg",
+   "imgPos": "50% 40%",
+   "left": "RIDERS",
+   "right": "SERVERS",
+   "round": "ROUND 2025 · DELIVERY WAR",
+   "result": "The riders held up. The servers didn’t.",
+   "facts": [
+    {
+     "pre": ">",
+     "num": 120,
+     "suf": "M",
+     "text": "orders in a day — Meituan’s record"
+    },
+    {
+     "big": "2025",
+     "text": "JD entered delivery, Alibaba hit back with subsidies"
+    },
+    {
+     "big": "insurance",
+     "text": "for riders: JD full-time, Meituan most regular"
+    }
+   ]
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Speed",
+   "isn’t a",
+   "technology.",
+   "It’s a person."
+  ],
+  "zh": "速度不是技术，是人。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/финал-сайт-2.png",
+  "from": "— from the article"
+ },
+ "next": {
+  "n": 5,
+  "title": "The City Where Nobody Carries a Wallet",
+  "season": "Observations",
+  "zh": "观察",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/hyper-ultra-racing-cynicmusic.mp3",
+  "drop": 11.5,
+  "vol": 0.26
+ },
+ "brand": {
+  "name": "Delivery riders",
+  "zh": "外卖骑手"
+ },
+ "ticker": [
+  "Meituan: 7.45M riders earned income in 2023",
+  "¥80B paid to riders in a year, ≈¥3.65 per delivery (TechNode)",
+  "Jackets: yellow, blue, and since 2025 red ones too",
+  "September 2020: “Delivery Riders, Trapped in the System,” Renwu magazine",
+  "Meituan’s “Super Brain,” Ele.me’s “Ark”",
+  "Meituan’s reply: eight minutes of flexibility per order",
+  "2025: JD.com entered food delivery, Alibaba answered with subsidies",
+  "July 5, 2025: over 120M orders in a day — the servers buckled",
+  "Social insurance for riders: JD full-time riders from March 2025"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/fastest-man-town/hf-uley.jpg",
+  "heroPos": "50% 45%",
+  "alt": "source-videos/ostapdotcenko/blog-news/fastest-man-town/hf-mozg.jpg",
+  "altPos": "50% 30%",
+  "big": "7.45M",
+  "bigText": "riders on Meituan alone",
+  "blurbs": [
+   {
+    "big": "8 minutes",
+    "text": "of flexibility per order"
+   },
+   {
+    "big": ">120M",
+    "text": "orders in one day"
+   }
+  ],
+  "tag": "A beehive, an algorithm — and a record"
+ },
+ "look": "light",
+ "lang": "en"
+}

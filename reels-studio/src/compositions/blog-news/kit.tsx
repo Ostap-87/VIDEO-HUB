@@ -10,6 +10,20 @@ export type BNBrand = {name: string; zh?: string; logo?: string; icon?: number};
 
 // цвет сезона (04.11.2026: «чтобы следующие ролики чуть отличались по визуалу… но сохраняли стиль манхуа»): жёлтый — первый сезон,
 // у каждого следующего свой акцент (props.accent); им красятся заставка, плашки, взрывы, бегущая строка, фон панчлайна
+// язык выпуска (05.11.2026: «к каждому ролику сразу делай дубль на английском языке») — подписи шаблона, формат чисел и даты
+export type BNLang = "ru" | "en";
+export const LangCtx = React.createContext<BNLang>("ru");
+export const useLang = () => React.useContext(LangCtx);
+export const TX = {
+  ru: {issue: (n: number) => `Выпуск №${n}`, season: (s: string) => `Сезон «${s}» `, about: "О ком:", fromArticle: "из статьи ↑", read: ["Читай", "целиком"],
+    tomorrow: "ЗАВТРА", overTomorrow: "СЕЗОН ОКОНЧЕН · ЗАВТРА", over: "СЕЗОН ОКОНЧЕН", newSeason: (s: string) => `Новый сезон «${s}» `, soon: "Скоро — новые выпуски",
+    follow: "подпишись — новый выпуск каждый день", no: "№", coverSeason: (s: string) => `сезон «${s}»`},
+  en: {issue: (n: number) => `Episode #${n}`, season: (s: string) => `Season “${s}” `, about: "About:", fromArticle: "from the article ↑", read: ["Read it", "in full"],
+    tomorrow: "TOMORROW", overTomorrow: "SEASON OVER · TOMORROW", over: "SEASON OVER", newSeason: (s: string) => `New season “${s}” `, soon: "New episodes soon",
+    follow: "follow — a new episode every day", no: "#", coverSeason: (s: string) => `season “${s}”`},
+};
+const EN_MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+export const fmtDate = (iso: string, lang: BNLang) => (lang === "en" ? `${EN_MONTHS[Number(iso.slice(5, 7)) - 1]} ${Number(iso.slice(8, 10))}, ${iso.slice(0, 4)}` : ruDate(iso));
 export const AccCtx = React.createContext<string>(C.y);
 export const useAcc = () => React.useContext(AccCtx);
 // светлый режим (05.11.2026: «сделай следующие ролики чуть светлее и не такие мрачные — сейчас очень мрачно и сложно читается»):
@@ -27,10 +41,12 @@ export const dela = (size: number, color: string = C.ink, extra: React.CSSProper
 export const RU_MONTHS = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
 export const ruDate = (iso: string) => `${Number(iso.slice(8, 10))} ${RU_MONTHS[Number(iso.slice(5, 7)) - 1]} ${iso.slice(0, 4)}`;
 // число набегает от нуля, с дробной частью через запятую и пробелами в тысячах
-export const countNum = (f: number, at: number, dur: number, x: BNFact) => {
+export const countNum = (f: number, at: number, dur: number, x: BNFact, lang: BNLang = "ru") => {
   if (x.num === undefined) return x.big ?? "";
   const v = x.num * p(f, at, at + dur, EO);
-  const s = (x.dec ? v.toFixed(x.dec) : String(Math.round(v))).replace(".", ",").replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  const raw = x.dec ? v.toFixed(x.dec) : String(Math.round(v));
+  const [ip, fp] = raw.split(".");
+  const s = lang === "en" ? `${ip.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}${fp ? "." + fp : ""}` : `${ip.replace(/\B(?=(\d{3})+(?!\d))/g, " ")}${fp ? "," + fp : ""}`;
   return `${x.pre ?? ""}${s}${x.suf ?? ""}`;
 };
 

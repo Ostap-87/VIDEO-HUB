@@ -1,0 +1,222 @@
+{
+ "show": "多 NEWS",
+ "cover": "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/cover.jpg",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/en-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/en-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/en-02.jpg"
+ ],
+ "ep": 3,
+ "season": {
+  "name": "Restarts",
+  "zh": "重启",
+  "n": 3,
+  "total": 3
+ },
+ "title": "This Is My Last Startup. Season Six",
+ "date": "2026-10-20",
+ "slug": "this-is-my-last-startup-season-six",
+ "hook": {
+  "lines": [
+   "THIS IS MY",
+   "LAST",
+   "STARTUP"
+  ],
+  "shout": [
+   "…and this is",
+   "season six!"
+  ],
+  "sfx": "再"
+ },
+ "beats": [
+  {
+   "kind": "fall",
+   "sec": 8.2,
+   "zh": "败",
+   "kicker": "2006 → 2019",
+   "title": "A Catalog of Flops",
+   "img": "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/hf-kladbishche.jpg",
+   "imgPos": "50% 55%",
+   "steps": [
+    {
+     "when": "2006",
+     "text": "blogging platform Bullog — closed"
+    },
+    {
+     "when": "2008",
+     "text": "Laoluo English school — closed"
+    },
+    {
+     "when": "2018",
+     "text": "TNT desktop and Bullet Message vs WeChat"
+    }
+   ],
+   "big": {
+    "num": 198,
+    "suf": " days",
+    "text": "the Bullet Message team lasted"
+   },
+   "stamp": {
+    "text": "CLOSED",
+    "sub": "Bullog · Laoluo · Bullet",
+    "zh": "关门"
+   },
+   "note": "A failure counted down to the day is already a small success."
+  },
+  {
+   "kind": "rise",
+   "sec": 8.0,
+   "zh": "还债",
+   "kicker": "2018 → 2022",
+   "title": "Paying It Back",
+   "img": "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/hf-dolg.jpg",
+   "imgPos": "50% 45%",
+   "steps": [
+    {
+     "when": "END 2018",
+     "text": "Smartisan shut, ≈¥600M debt, Luo the guarantor"
+    },
+    {
+     "when": "BLACKLIST",
+     "text": "no flights, no first class, no nice hotels"
+    },
+    {
+     "when": "SPRING 2020",
+     "text": "Douyin streams: sells everything"
+    }
+   ],
+   "big": {
+    "num": 15,
+    "suf": "M",
+    "text": "per slot on his first stream, reportedly",
+    "pre": "¥"
+   },
+   "note": "Netizens called it “The Legend of Really Paying Back.”"
+  },
+  {
+   "kind": "fall",
+   "sec": 8.3,
+   "zh": "最后",
+   "kicker": "2022 → 2025",
+   "title": "The Last Startup",
+   "img": "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/hf-ochki.jpg",
+   "imgPos": "50% 72%",
+   "steps": [
+    {
+     "when": "2022",
+     "text": "Thin Red Line: AR glasses"
+    },
+    {
+     "when": "PROTOTYPE",
+     "text": "too heavy to mass-produce"
+    },
+    {
+     "when": "JAN 2025",
+     "text": "pivot to AI: J1 Assistant beta"
+    }
+   ],
+   "big": {
+    "pre": "≈$",
+    "num": 50,
+    "suf": "M",
+    "text": "angel round: Meituan, DJI, top funds"
+   },
+   "stamp": {
+    "text": "PIVOT",
+    "sub": "AR → AI",
+    "zh": "转型"
+   },
+   "note": "“This will probably be my last venture. I’m putting everything into it.” Luo Yonghao, 2022"
+  },
+  {
+   "kind": "vs",
+   "sec": 8.3,
+   "zh": "分身",
+   "kicker": "2025",
+   "title": "The Avatar",
+   "img": "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/hf-dvoinik.jpg",
+   "imgPos": "50% 28%",
+   "left": "AVATAR",
+   "right": "REAL LUO",
+   "round": "ROUND 2025 · BAIDU",
+   "result": "June 2025: in several categories the avatar outsold the real Luo’s May stream",
+   "facts": [
+    {
+     "num": 13,
+     "suf": "M",
+     "text": "views in a 6-hour-plus stream"
+    },
+    {
+     "pre": "≈¥",
+     "num": 55,
+     "suf": "M",
+     "text": "avatar sales in one stream"
+    },
+    {
+     "num": 97,
+     "suf": "K",
+     "text": "words of product copy written by AI"
+    }
+   ]
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Failure",
+   "is a comma,",
+   "not a",
+   "full stop."
+  ],
+  "zh": "失败不是句号，是逗号。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-megamarket-mikrofon.png",
+  "from": "— from the article"
+ },
+ "next": {
+  "n": 4,
+  "title": "The Fastest Man in Town",
+  "season": "Observations",
+  "zh": "观察",
+  "newSeason": true
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/cybernetic-enhancements-dafuqex.mp3",
+  "drop": 53.0,
+  "vol": 0.2
+ },
+ "brand": {
+  "name": "Luo Yonghao",
+  "zh": "罗永浩"
+ },
+ "ticker": [
+  "Luo Yonghao (罗永浩) — founder of Smartisan",
+  "2006 Bullog → 2008 Laoluo English → 2012 Smartisan",
+  "2018: Bullet Message — team disbanded after 198 days",
+  "2019: an e-cigarette — dropped in under six months",
+  "Smartisan debts — ≈¥600M, Luo the personal guarantor",
+  "2019: ByteDance bought Smartisan’s patents",
+  "January 2022: enforcement records vanished from court databases",
+  "Thin Red Line: planned 1,000 staff, peaked at ≈150",
+  "June 2025: AI avatar — 13M views, ¥55M in sales",
+  "September 2025: the Xibei row — broccoli with a two-year shelf life"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/hf-dvoinik.jpg",
+  "heroPos": "50% 30%",
+  "alt": "source-videos/ostapdotcenko/blog-news/this-is-my-last-startup-season-six/hf-kladbishche.jpg",
+  "altPos": "50% 50%",
+  "big": "198 days",
+  "bigText": "Bullet Message lasted",
+  "blurbs": [
+   {
+    "big": "≈¥600M",
+    "text": "of Smartisan debt"
+   },
+   {
+    "big": "13M",
+    "text": "views for the AI avatar"
+   }
+  ],
+  "tag": "Six flops — and an AI avatar"
+ },
+ "lang": "en"
+}

@@ -557,6 +557,9 @@ node reels-studio/tools/od-posts/reel-sait.mjs            # ролик «Мой 
 # обложки «крик» (из reels-studio): npx remotion render src/index.ts BlogNewsCovers /tmp/cov --sequence --image-format=jpeg --props='{"eps":[…],"layouts":["shout"]}'
 #   второй сезон: в props — "accent", "look": "light", "hook": {"style": "split"}, акты kind = stat | dialog | list | page (см. reels-studio/CLAUDE.md, «多 NEWS»)
 # из reels-studio: TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts BlogNews ../finished-videos/blog-news/001-coffee-with-hint-audit.mp4 --props=props/blog-news/001-coffee-with-hint-audit.json --bundle-cache=false --crf=18
+#   английский дубль каждого выпуска (05.11.2026): python3 tools/blog-news/en_props.py [N] → props/blog-news/en/NNN-<slug>.json;
+#   node tools/blog-news/shots.mjs <slug> --lang en --n 3; рендер с --props=props/blog-news/en/NNN-<slug>.json → ../finished-videos/blog-news/NNN-<slug>-en.mp4;
+#   обложки RU + EN одним прогоном: BlogNewsCovers, "eps": [русские…, английские…] → обложки/blog-news/NNN-<slug>.jpg и NNN-<slug>-en.jpg
 # английские версии (04.11.2026): SiteManhuaEn / AuraSiteManhuaEn / GttSiteManhuaEn (Remotion) и node tools/od-posts/reel-intro-en.mjs, tools/gtt-reel/reel-gruppy-od-en.mjs, tools/od-posts/reel-3-proekta-en.mjs
 #   → finished-videos/обложки/манхуа-сайты/ (кадр 0–1 «Мой сайт», 2–3 Aura, 4–9 GTT A–F; --frames=0-9)
 ```

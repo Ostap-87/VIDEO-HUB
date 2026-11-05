@@ -1,0 +1,220 @@
+{
+ "show": "多 NEWS",
+ "ep": 6,
+ "season": {
+  "name": "Observations",
+  "zh": "观察",
+  "n": 3,
+  "total": 5
+ },
+ "title": "Whoever Dances Owns the Square",
+ "date": "2026-10-21",
+ "slug": "whoever-dances-owns-square",
+ "cover": "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/cover.jpg",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/en-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/en-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/en-02.jpg"
+ ],
+ "accent": "#3FE0FF",
+ "hook": {
+  "style": "split",
+  "lines": [
+   "EIGHT P.M.",
+   "THE SQUARE.",
+   "THE SPEAKER."
+  ],
+  "shout": [
+   "The square belongs",
+   "to the dancers!"
+  ],
+  "sfx": "舞"
+ },
+ "beats": [
+  {
+   "kind": "stat",
+   "sec": 8.0,
+   "zh": "舞",
+   "kicker": "PRESS ESTIMATE",
+   "title": "A Hundred Million",
+   "img": "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/hf-ploshchad.jpg",
+   "imgPos": "50% 40%",
+   "big": {
+    "pre": "up to ",
+    "num": 100,
+    "suf": "M",
+    "text": "people dance on squares at night"
+   },
+   "equal": "a mid-sized country",
+   "chips": [
+    "Rows of 20, 40, sometimes 100",
+    "Every night at eight"
+   ]
+  },
+  {
+   "kind": "fall",
+   "sec": 8.4,
+   "zh": "吵",
+   "kicker": "THE NEIGHBORS",
+   "title": "$40,000 for Silence",
+   "img": "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/hf-sosedi.jpg",
+   "imgPos": "50% 28%",
+   "steps": [
+    {
+     "when": "BEIJING",
+     "text": "a shotgun fired, dogs set on dancers"
+    },
+    {
+     "when": "ELSEWHERE",
+     "text": "bags dropped from windows"
+    },
+    {
+     "when": "NEIGHBORS",
+     "text": "pooled money for their own speaker"
+    }
+   ],
+   "big": {
+    "pre": ">$",
+    "num": 40,
+    "suf": "K",
+    "text": "for a speaker to drown out theirs"
+   },
+   "stamp": {
+    "text": "SILENCE",
+    "sub": "a premium product",
+    "zh": "静"
+   },
+   "note": "You can’t defeat someone who came to dance, not to fight."
+  },
+  {
+   "kind": "dialog",
+   "sec": 8.8,
+   "zh": "十二",
+   "kicker": "2015 · THE MINISTRIES",
+   "title": "Twelve Routines",
+   "img": "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/hf-chinovniki.jpg",
+   "imgPos": "50% 30%",
+   "a": {
+    "name": "Ministry",
+    "tie": true,
+    "glasses": true,
+    "emo": "sweat"
+   },
+   "b": {
+    "name": "Grandmas",
+    "fill": "#C8102E",
+    "emo": "calm"
+   },
+   "lines": [
+    {
+     "who": "a",
+     "text": "Comrades, here are twelve approved routines."
+    },
+    {
+     "who": "b",
+     "text": "We dance our own."
+    },
+    {
+     "who": "a",
+     "text": "This routine is scientifically designed!"
+    },
+    {
+     "who": "b",
+     "text": "We dance our own."
+    },
+    {
+     "who": "a",
+     "text": "Then consider it a recommendation."
+    },
+    {
+     "who": "b",
+     "text": "Considered."
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "sec": 7.8,
+   "zh": "噪",
+   "kicker": "LAW · JUNE 2022",
+   "title": "Negotiating the Decibels",
+   "panels": [
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/hf-ploshchad.jpg",
+     "imgPos": "20% 85%",
+     "zoom": 1.25,
+     "cap": "Noise law: area, time and volume — by the venue’s rules"
+    },
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/cover.jpg",
+     "imgPos": "50% 50%",
+     "cap": "The square runs two shifts, like a well-managed factory",
+     "sfx": "嘘"
+    }
+   ],
+   "big": {
+    "num": 9,
+    "suf": " p.m.",
+    "text": "till nine — dancers, after nine — sleepers"
+   }
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Nowhere",
+   "to hurry,",
+   "but somewhere",
+   "to go."
+  ],
+  "zh": "不用赶路，但有地方可去。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/финал-сайт-5.png",
+  "from": "— from the article"
+ },
+ "next": {
+  "n": 7,
+  "title": "Chicken Palate, Noodles, and Zero Regrets",
+  "season": "Observations",
+  "zh": "观察",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/bouncer-of-far-different-nature.mp3",
+  "drop": 15.0,
+  "vol": 0.21
+ },
+ "brand": {
+  "name": "Square dancing",
+  "zh": "广场舞"
+ },
+ "ticker": [
+  "Chinese media: up to 100M people dance like this",
+  "Rows of 20, 40, sometimes 100 — every night at eight",
+  "Beijing: a shotgun fired into the air, dogs set on the dancers",
+  "Neighbors pooled over $40,000 for their own speaker",
+  "2015: twelve “scientific” routines, one set to “Little Apple”",
+  "Officials clarified: the routines are optional",
+  "June 5, 2022: noise law — venue rules on area, time and volume",
+  "The square: dancers till nine, sleepers after nine"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/hf-ploshchad.jpg",
+  "heroPos": "50% 40%",
+  "alt": "source-videos/ostapdotcenko/blog-news/whoever-dances-owns-square/hf-sosedi.jpg",
+  "altPos": "50% 25%",
+  "big": "100M",
+  "bigText": "dance on squares",
+  "blurbs": [
+   {
+    "big": ">$40K",
+    "text": "for the neighbors’ speaker"
+   },
+   {
+    "big": "12",
+    "text": "“scientific” routines"
+   }
+  ],
+  "tag": "A speaker, neighbors — and a noise law"
+ },
+ "look": "light",
+ "lang": "en"
+}

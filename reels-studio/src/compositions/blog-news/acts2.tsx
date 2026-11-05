@@ -14,7 +14,7 @@ import {BRUSH} from "../../components/MontazhFx";
 import {FONT} from "../site-manhua/fonts";
 import {ActionLines, Bubble, Burst, C, EIO, EO, Flash, Halftone, Narration, Panel, Sfx, SpeedLines, p, sumShake} from "../site-manhua/fx";
 import {Skeptic, type Emo} from "../site-manhua/skeptic";
-import {BrandPlate, ChapterHead, Chip, countNum, dela, numStyle, useAcc, useLook, type BNBrand, type BNFact} from "./kit";
+import {BrandPlate, ChapterHead, Chip, countNum, dela, numStyle, useAcc, useLang, useLook, type BNBrand, type BNFact} from "./kit";
 
 type Head = {zh: string; kicker: string; title: string; sec: number};
 export type BNStat = Head & {kind: "stat"; img: string; imgPos?: string; big: BNFact; equal?: string; chips?: string[]; note?: string};
@@ -62,7 +62,7 @@ export const HookSplit: React.FC<{h: {lines: string[]; shout: string[]; sfx?: st
       {h.sfx ? <Sfx text={h.sfx} x={850} y={1176} size={150} color={C.red} stroke="#fff" rot={14} at={40} font={BRUSH} /> : null}
       {f >= 56 ? (
         <Bubble x={40} y={1262} w={640} h={262} shout tail={[520, -60]} scale={0.3 + 0.7 * bub} opacity={Math.min(1, bub * 2)}>
-          {h.shout.map((t, i) => <div key={i} style={dela(i ? 52 : 42, i ? C.red : C.ink, {whiteSpace: "nowrap"})}>{t}</div>)}
+          {h.shout.map((t, i) => <div key={i} style={dela(Math.min(i ? 52 : 42, Math.floor(500 / (Math.max(1, t.length) * 0.6))), i ? C.red : C.ink, {whiteSpace: "nowrap"})}>{t}</div>)}
         </Bubble>
       ) : null}
       {brand ? <BrandPlate b={brand} at={44} x={630} y={1330} scale={0.8} rot={3} /> : null}
@@ -78,6 +78,7 @@ export const StatAct: React.FC<{b: BNStat; dur: number; brand?: BNBrand}> = ({b,
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const acc = useAcc();
+  const lang = useLang();
   const tN = 16, tE = Math.round(dur * 0.4), tC = Math.round(dur * 0.52), tNote = Math.round(dur * 0.66);
   const ns = spring({frame: f - tN, fps, config: {damping: 9, stiffness: 210, mass: 0.8}});
   const es = spring({frame: f - tE, fps, config: {damping: 10, stiffness: 260, mass: 0.6}});
@@ -105,7 +106,7 @@ export const StatAct: React.FC<{b: BNStat; dur: number; brand?: BNBrand}> = ({b,
         <>
           <Burst x={540} y={800} r={330} color="#fff" stroke={C.ink} scale={0.3 + 0.7 * ns} rot={f * 0.25} seed={`${b.title}st`} points={22} />
           {/* цифра — на плотной плашке цвета сезона: чернилами по цвету, без теней и двойных обводок */}
-          <div style={{position: "absolute", left: 540, top: 800, translate: "-50% -50%", rotate: "-3deg", scale: String(0.4 + 0.6 * ns), background: acc, border: `8px solid ${C.ink}`, boxShadow: `14px 14px 0 ${C.ink}`, padding: "6px 34px 12px", ...numStyle(size, C.ink)}}>{countNum(f, tN, 30, b.big)}</div>
+          <div style={{position: "absolute", left: 540, top: 800, translate: "-50% -50%", rotate: "-3deg", scale: String(0.4 + 0.6 * ns), background: acc, border: `8px solid ${C.ink}`, boxShadow: `14px 14px 0 ${C.ink}`, padding: "6px 34px 12px", ...numStyle(size, C.ink)}}>{countNum(f, tN, 30, b.big, lang)}</div>
           <div style={{position: "absolute", left: 540, top: 1000, translate: "-50% 0", maxWidth: 900, textAlign: "center", fontFamily: FONT.golos, fontWeight: 800, fontSize: 36, lineHeight: 1.16, color: C.ink, background: "#fff", border: `5px solid ${C.ink}`, padding: "10px 24px", boxShadow: `8px 8px 0 ${C.ink}`, opacity: p(f, tN + 22, tN + 30)}}>{b.big.text}</div>
         </>
       ) : null}
@@ -249,6 +250,7 @@ export const PageAct: React.FC<{b: BNPage; dur: number; brand?: BNBrand}> = ({b,
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const acc = useAcc();
+  const lang = useLang();
   const L = b.panels.length >= 3 ? PAGE3 : PAGE2;
   const panels = b.panels.slice(0, L.length);
   const zoomEnd = Math.round(dur * (b.big ? 0.66 : 0.8));
@@ -296,8 +298,9 @@ export const PageAct: React.FC<{b: BNPage; dur: number; brand?: BNBrand}> = ({b,
         <>
           <Burst x={540} y={960} r={250} color={acc} stroke={C.ink} scale={0.3 + 0.7 * bs} rot={f * 0.3} seed={`${b.title}pg`} />
           <div style={{position: "absolute", left: 0, right: 0, top: 960 - 90, textAlign: "center", scale: String(0.3 + 0.7 * bs)}}>
-            <div style={numStyle(fitW(factStr(b.big), 110, 420, 0.8), C.ink)}>{countNum(f, zoomEnd + 4, 22, b.big)}</div>
-            <div style={{fontFamily: FONT.golos, fontWeight: 800, fontSize: 30, lineHeight: 1.15, color: C.ink, margin: "8px auto 0", width: 380}}>{b.big.text}</div>
+            <div style={numStyle(fitW(factStr(b.big), 110, 350, 0.66), C.ink)}>{countNum(f, zoomEnd + 4, 22, b.big, lang)}</div>
+            {/* подпись — на белой плашке: на спицах звезды поверх картинки текст не читался */}
+            <div style={{display: "inline-block", fontFamily: FONT.golos, fontWeight: 800, fontSize: 30, lineHeight: 1.15, color: C.ink, margin: "14px auto 0", maxWidth: 560, background: "#fff", border: `4px solid ${C.ink}`, boxShadow: `6px 6px 0 ${C.ink}`, padding: "8px 18px"}}>{b.big.text}</div>
           </div>
         </>
       ) : null}

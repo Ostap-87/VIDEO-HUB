@@ -12,6 +12,7 @@ import {useBrush, BRUSH} from "../components/MontazhFx";
 import {FONT} from "./site-manhua/fonts";
 import {ActionLines, Bubble, Burst, C, Grain, Halftone, Panel, Sfx, SpeedLines, Vignette} from "./site-manhua/fx";
 import type {BlogNewsProps} from "./BlogNews";
+import {TX} from "./blog-news/kit";
 import ep1 from "../../props/blog-news/001-coffee-with-hint-audit.json";
 import ep2 from "../../props/blog-news/002-teacher-who-went-into-retail.json";
 import ep3 from "../../props/blog-news/003-this-is-my-last-startup-season-six.json";
@@ -58,8 +59,9 @@ const BigBurst: React.FC<{x: number; y: number; r: number; big: string; text: st
   <>
     <Burst x={x} y={y} r={r} color={color} stroke={C.ink} rot={rot * 3} seed={seed} />
     <div style={abs(x - r, y - r * 0.42, {width: r * 2, textAlign: "center", rotate: `${rot}deg`})}>
-      <div style={dela(fit(big, r * 0.5, r * 1.4, 0.86), ink, {whiteSpace: "nowrap"})}>{big}</div>
-      <div style={{fontFamily: FONT.golos, fontWeight: 800, fontSize: Math.round(r * 0.15), lineHeight: 1.1, color: ink, marginTop: 6, padding: `0 ${r * 0.3}px`}}>{text}</div>
+      {/* цифра и подпись — по ширине звезды (05.11.2026: «60 000» и подписи вылезали за края) */}
+      <div style={dela(fit(big, r * 0.44, r * 1.45, 0.78), C.y, {display: "inline-block", whiteSpace: "nowrap", background: C.ink, border: "4px solid #fff", boxShadow: `6px 6px 0 ${C.red}`, padding: "2px 14px 6px"})}>{big}</div>
+      <div style={{fontFamily: FONT.golos, fontWeight: 800, fontSize: Math.round(r * 0.125), lineHeight: 1.1, color: ink, marginTop: 8, padding: `0 ${Math.round(r * 0.44)}px`}}>{text}</div>
     </div>
   </>
 );
@@ -119,20 +121,20 @@ const Shout: React.FC<{P: Ep}> = ({P}) => {
       <SpeedLines color="#fff" opacity={0.16} cx={540} cy={640} inner={430} seed={`s${P.ep}`} />
       <ActionLines color="#fff" opacity={0.06} angle={-14} seed={`sa${P.ep}`} />
       <Seal x={56} y={250} s={96} rot={-6} />
-      <div style={abs(172, 262, dela(66, "#fff", {letterSpacing: "0.02em"}))}>{`NEWS №${P.ep}`}</div>
-      <div style={abs(170, 336, {fontFamily: FONT.golos, fontWeight: 800, fontSize: 26, color: C.y})}>{`сезон «${P.season.name}» · ${P.season.n}/${P.season.total}`}</div>
+      <div style={abs(172, 262, dela(66, "#fff", {letterSpacing: "0.02em"}))}>{`NEWS ${TX[P.lang ?? "ru"].no}${P.ep}`}</div>
+      <div style={abs(170, 336, {fontFamily: FONT.golos, fontWeight: 800, fontSize: 26, color: C.y})}>{`${TX[P.lang ?? "ru"].coverSeason(P.season.name)} · ${P.season.n}/${P.season.total}`}</div>
       <Panel x={60} y={400} w={960} h={560} at={AT} rot={-2} bg="#000">
         <Img src={staticFile(a.alt ?? a.hero)} style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: a.altPos ?? "50% 40%"}} />
       </Panel>
       <Bubble x={500} y={372} w={520} h={240} shout tail={[200, 360]} rot={3}>
-        {P.hook.shout.map((t, i) => <div key={i} style={dela(i ? 52 : 40, i ? C.red : C.ink, {whiteSpace: "nowrap"})}>{t}</div>)}
+        {P.hook.shout.map((t, i) => <div key={i} style={dela(Math.min(i ? 52 : 40, Math.floor(350 / (Math.max(1, t.length) * 0.6))), i ? C.red : C.ink, {whiteSpace: "nowrap"})}>{t}</div>)}
       </Bubble>
       {P.hook.lines.map((t, i) => (
         <div key={i} style={abs(60, 1000 + i * 140, {...dela(Math.min(132, Math.floor(950 / (t.length * 0.92))), cols[i % 3]), textShadow: `9px 9px 0 ${i === 0 ? C.red : "#000"}`})}>{t}</div>
       ))}
       {P.hook.sfx ? <Sfx text={P.hook.sfx} x={80} y={800} size={170} color={C.red} stroke="#fff" rot={-12} at={AT} font={BRUSH} /> : null}
       <Brand P={P} x={60} y={1470} rot={-3} />
-      <BigBurst x={850} y={1545} r={130} big={a.big} text={a.bigText} seed={`sb${P.ep}`} rot={6} />
+      <BigBurst x={850} y={1548} r={158} big={a.big} text={a.bigText} seed={`sb${P.ep}`} rot={6} />
       <Grain opacity={0.12} />
       <Vignette strength={0.3} />
     </AbsoluteFill>

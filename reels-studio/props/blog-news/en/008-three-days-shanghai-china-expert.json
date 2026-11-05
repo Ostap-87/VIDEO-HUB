@@ -1,0 +1,205 @@
+{
+ "show": "多 NEWS",
+ "ep": 8,
+ "season": {
+  "name": "Observations",
+  "zh": "观察",
+  "n": 5,
+  "total": 5
+ },
+ "title": "Three Days in Shanghai and You're Already a China Expert",
+ "date": "2026-09-04",
+ "slug": "three-days-shanghai-china-expert",
+ "cover": "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/hf-pudun.jpg",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/en-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/en-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/en-02.jpg"
+ ],
+ "accent": "#3FE0FF",
+ "hook": {
+  "style": "split",
+  "lines": [
+   "THREE DAYS",
+   "IN SHANGHAI —",
+   "AN EXPERT"
+  ],
+  "shout": [
+   "Characters known:",
+   "zero!"
+  ],
+  "sfx": "吹"
+ },
+ "beats": [
+  {
+   "kind": "list",
+   "sec": 8.0,
+   "zh": "症",
+   "kicker": "INSTANTLY RECOGNIZABLE",
+   "title": "Symptoms of an Expert",
+   "img": "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/hf-pudun.jpg",
+   "imgPos": "50% 40%",
+   "mark": "吹",
+   "items": [
+    "Not a single character — except his favorite noodle joint’s sign",
+    "English: “hello, how much”",
+    "Worldview: from the Nike store to the Zara store",
+    "But — “connections in the halls of power”",
+    "Above all, swagger. It compensates for everything"
+   ]
+  },
+  {
+   "kind": "dialog",
+   "sec": 8.8,
+   "zh": "一",
+   "kicker": "DINNER FOR 15",
+   "title": "Case One",
+   "img": "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/hf-uzhin.jpg",
+   "imgPos": "50% 22%",
+   "a": {
+    "name": "Me",
+    "emo": "calm"
+   },
+   "b": {
+    "name": "Expert",
+    "emo": "angry",
+    "fill": "#7A1F2B"
+   },
+   "lines": [
+    {
+     "who": "a",
+     "text": "How many ethnic groups officially live in China?"
+    },
+    {
+     "who": "b",
+     "text": "…"
+    },
+    {
+     "who": "b",
+     "text": "That’s total b#llsh#t, nobody cares!"
+    },
+    {
+     "who": "a",
+     "text": "When was the Communist Party founded?"
+    },
+    {
+     "who": "b",
+     "text": "…"
+    }
+   ]
+  },
+  {
+   "kind": "vs",
+   "sec": 8.2,
+   "zh": "二",
+   "kicker": "A BAR IN SHANGHAI",
+   "title": "Case Two",
+   "img": "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/hf-bar.jpg",
+   "imgPos": "50% 35%",
+   "left": "LAWYER",
+   "right": "THE BOSS",
+   "round": "ROUND · FRIDAY, A BAR",
+   "result": "“Through Bandar Abbas?” — “Where’s that, exactly?”",
+   "facts": [
+    {
+     "num": 3,
+     "suf": " weeks",
+     "text": "both have been in China"
+    },
+    {
+     "pre": ">",
+     "num": 30,
+     "suf": " years",
+     "text": "the head of logistics is over"
+    },
+    {
+     "big": "0",
+     "text": "words of English or Chinese — the boss"
+    }
+   ]
+  },
+  {
+   "kind": "page",
+   "sec": 8.0,
+   "zh": "虫",
+   "kicker": "DIAGNOSIS",
+   "title": "The Paramecium",
+   "panels": [
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/hf-infuzoria.jpg",
+     "imgPos": "50% 30%",
+     "cap": "No goal, but cilia — paddling energetically"
+    },
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/hf-infuzoria.jpg",
+     "imgPos": "62% 70%",
+     "zoom": 1.3,
+     "cap": "…where to, not quite sure",
+     "sfx": "嗯"
+    }
+   ],
+   "big": {
+    "num": 2,
+    "suf": " questions",
+    "text": "— and you see what frequency they’re on"
+   }
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Swagger",
+   "compensates",
+   "for",
+   "everything."
+  ],
+  "zh": "自信能弥补一切。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-megamarket-mikrofon.png",
+  "from": "— from the article"
+ },
+ "next": {
+  "n": 9,
+  "title": "Asia’s Drinks: Japan — Coffee Already Grew Up, Bubble Tea Is Still a Teenager",
+  "season": "Asia's Drinks",
+  "zh": "饮品",
+  "newSeason": true
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/endless-cyber-runner-looping-eric-matyas.mp3",
+  "drop": 33.0,
+  "vol": 0.64
+ },
+ "brand": {
+  "name": "“China experts”",
+  "zh": "中国通"
+ },
+ "ticker": [
+  "A China expert is made between baggage claim and the first taxi",
+  "Chinese — not a single character, English — “hello, how much”",
+  "Worldview: from the Nike store to the Zara store",
+  "Gentle Monster: the glasses really are pretty vibey",
+  "Dinner for 15: two simple questions — and silence",
+  "A bar in Shanghai: “Bandar Abbas? Where’s that, exactly?”",
+  "Plenty of sharp managers go abroad — but not only them"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/hf-pudun.jpg",
+  "heroPos": "50% 35%",
+  "alt": "source-videos/ostapdotcenko/blog-news/three-days-shanghai-china-expert/hf-bar.jpg",
+  "altPos": "50% 30%",
+  "big": "3 days",
+  "bigText": "— and a China expert",
+  "blurbs": [
+   {
+    "big": "0",
+    "text": "Chinese characters"
+   },
+   {
+    "big": "2",
+    "text": "simple questions"
+   }
+  ],
+  "tag": "Swagger, a paramecium — and Bandar Abbas"
+ },
+ "look": "light",
+ "lang": "en"
+}

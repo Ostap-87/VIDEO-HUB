@@ -1,0 +1,191 @@
+{
+ "show": "多 NEWS",
+ "ep": 7,
+ "season": {
+  "name": "Observations",
+  "zh": "观察",
+  "n": 4,
+  "total": 5
+ },
+ "title": "Chicken Palate, Noodles, and Zero Regrets",
+ "date": "2026-09-05",
+ "slug": "chicken-palate-noodles-no-regrets",
+ "cover": "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/hf-zakuski.jpg",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/en-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/en-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/en-02.jpg"
+ ],
+ "accent": "#3FE0FF",
+ "hook": {
+  "style": "split",
+  "lines": [
+   "FRIED",
+   "COCKROACHES?",
+   "NO."
+  ],
+  "shout": [
+   "That’s not China —",
+   "it’s a tourist show!"
+  ],
+  "sfx": "吃"
+ },
+ "beats": [
+  {
+   "kind": "stat",
+   "sec": 8.0,
+   "zh": "八",
+   "kicker": "OFFICIALLY",
+   "title": "Eight Cuisines",
+   "img": "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/hf-karta8.jpg",
+   "imgPos": "50% 45%",
+   "big": {
+    "pre": "≈",
+    "num": 80000,
+    "text": "officially registered dishes"
+   },
+   "equal": "8 regional cuisines",
+   "chips": [
+    "Sichuan, Cantonese, Shandong, Jiangsu — the big four",
+    "Cities have their own: Huaiyang, Shunde"
+   ]
+  },
+  {
+   "kind": "list",
+   "sec": 8.8,
+   "zh": "零食",
+   "kicker": "THE SEMI-LOCAL KIT",
+   "title": "What to Grab by the Metro",
+   "img": "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/hf-zakuski.jpg",
+   "imgPos": "50% 60%",
+   "mark": "吃",
+   "items": [
+    "Bubble tea to go",
+    "Chicken palates",
+    "Duck necks",
+    "Fish thighs",
+    "Latiao — every spice level",
+    "Pickled jellyfish",
+    "Hot-and-sour potato strips",
+    "And it’s genuinely delicious!"
+   ]
+  },
+  {
+   "kind": "page",
+   "sec": 7.6,
+   "zh": "面",
+   "kicker": "BECOMING SEMI-LOCAL",
+   "title": "Noodles for Breakfast",
+   "panels": [
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/hf-lapsha.jpg",
+     "imgPos": "50% 12%",
+     "cap": "Yes, they eat noodles in the morning"
+    },
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/hf-lapsha.jpg",
+     "imgPos": "60% 88%",
+     "zoom": 1.2,
+     "cap": "Six or seven main kinds — and you start telling them apart",
+     "sfx": "嗦"
+    }
+   ],
+   "big": {
+    "big": "6–7",
+    "text": "main kinds of noodles"
+   }
+  },
+  {
+   "kind": "fall",
+   "sec": 8.6,
+   "zh": "早",
+   "kicker": "FIVE STARS",
+   "title": "Breakfast in Hangzhou",
+   "img": "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/hf-zavtrak.jpg",
+   "imgPos": "50% 40%",
+   "steps": [
+    {
+     "when": "HANGZHOU",
+     "text": "five-star hotel, buffet breakfast"
+    },
+    {
+     "when": "ACROSS FROM US",
+     "text": "a chicken leg, the bone — onto the floor"
+    },
+    {
+     "when": "NEXT",
+     "text": "a cigarette and a sneeze across the room"
+    }
+   ],
+   "big": {
+    "num": 15,
+    "suf": " minutes",
+    "text": "— and he calmly goes on eating"
+   },
+   "stamp": {
+    "text": "5 STARS",
+    "sub": "free show included",
+    "zh": "五星"
+   },
+   "note": "You came here to eat, so you eat."
+  }
+ ],
+ "punch": {
+  "lines": [
+   "You came",
+   "here to eat,",
+   "so",
+   "you eat."
+  ],
+  "zh": "来了，就吃。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-yingke-mikrofon.png",
+  "from": "— from the article"
+ },
+ "next": {
+  "n": 8,
+  "title": "Three Days in Shanghai and You're Already a China Expert",
+  "season": "Observations",
+  "zh": "观察",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/phonk-ish-holiznacc0.mp3",
+  "drop": 16.0,
+  "vol": 0.5
+ },
+ "brand": {
+  "name": "Food in China",
+  "zh": "中国菜"
+ },
+ "ticker": [
+  "China has eight major regional cuisines",
+  "The big four: Sichuan, Cantonese, Shandong, Jiangsu",
+  "About 80,000 officially registered dishes",
+  "Scorpions on a stick are a show for foreigners, not China",
+  "Any negotiation starts with eating together",
+  "Want to sign a contract? First eat a duck. Two, ideally",
+  "Six or seven main kinds of noodles",
+  "In Hong Kong, smoking in a restaurant gets you a fine"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/hf-zakuski.jpg",
+  "heroPos": "50% 50%",
+  "alt": "source-videos/ostapdotcenko/blog-news/chicken-palate-noodles-no-regrets/hf-zavtrak.jpg",
+  "altPos": "50% 35%",
+  "big": "80,000",
+  "bigText": "official dishes",
+  "blurbs": [
+   {
+    "big": "8",
+    "text": "regional cuisines"
+   },
+   {
+    "big": "6–7",
+    "text": "kinds of noodles"
+   }
+  ],
+  "tag": "Metro snacks, noodles — and a breakfast show"
+ },
+ "look": "light",
+ "lang": "en"
+}

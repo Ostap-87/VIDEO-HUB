@@ -1,0 +1,183 @@
+{
+ "show": "多 NEWS",
+ "ep": 5,
+ "season": {
+  "name": "Observations",
+  "zh": "观察",
+  "n": 2,
+  "total": 5
+ },
+ "title": "The City Where Nobody Carries a Wallet",
+ "date": "2026-10-28",
+ "slug": "city-where-nobody-carries-wallet",
+ "cover": "source-videos/ostapdotcenko/blog-news/city-where-nobody-carries-wallet/cover.jpg",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/city-where-nobody-carries-wallet/en-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/city-where-nobody-carries-wallet/en-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/city-where-nobody-carries-wallet/en-02.jpg"
+ ],
+ "accent": "#3FE0FF",
+ "hook": {
+  "style": "split",
+  "lines": [
+   "MY WALLET",
+   "STAYED AT",
+   "THE HOTEL."
+  ],
+  "shout": [
+   "Not forgetfulness —",
+   "adaptation!"
+  ],
+  "sfx": "扫"
+ },
+ "beats": [
+  {
+   "kind": "list",
+   "sec": 8.6,
+   "zh": "码",
+   "kicker": "AN INTERMISSION",
+   "title": "Paid by QR Code",
+   "img": "source-videos/ostapdotcenko/blog-news/city-where-nobody-carries-wallet/hf-kashtany.jpg",
+   "imgPos": "50% 40%",
+   "mark": "码",
+   "items": [
+    "Lunch.",
+    "A taxi.",
+    "A bike.",
+    "A power bank, so your phone doesn’t die while you pay with your phone.",
+    "A street musician.",
+    "A second lunch.",
+    "The feeling that you belong."
+   ]
+  },
+  {
+   "kind": "stat",
+   "sec": 8.0,
+   "zh": "外",
+   "kicker": "H1 2024",
+   "title": "Who Scans Whom",
+   "img": "source-videos/ostapdotcenko/blog-news/city-where-nobody-carries-wallet/hf-turist.jpg",
+   "imgPos": "50% 40%",
+   "big": {
+    "pre": ">",
+    "num": 5,
+    "suf": "M",
+    "text": "foreign visitors paid by phone in China"
+   },
+   "equal": "four times more than a year earlier",
+   "chips": [
+    ">90M transactions — seven times more",
+    "≈1.1B internet users in China"
+   ]
+  },
+  {
+   "kind": "page",
+   "sec": 7.6,
+   "zh": "死",
+   "kicker": "THE SCARY PART",
+   "title": "A Dead Phone",
+   "panels": [
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/city-where-nobody-carries-wallet/hf-batareya.jpg",
+     "imgPos": "50% 25%",
+     "cap": "Anywhere else, a dead phone is an inconvenience"
+    },
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/city-where-nobody-carries-wallet/hf-batareya.jpg",
+     "imgPos": "50% 78%",
+     "zoom": 1.3,
+     "cap": "In China, it’s a temporary loss of citizenship",
+     "sfx": "啊"
+    }
+   ]
+  },
+  {
+   "kind": "rise",
+   "sec": 8.4,
+   "zh": "奶奶",
+   "kicker": "2020 → 2024",
+   "title": "Back for Grandma",
+   "img": "source-videos/ostapdotcenko/blog-news/city-where-nobody-carries-wallet/hf-babushka.jpg",
+   "imgPos": "50% 35%",
+   "steps": [
+    {
+     "when": "LAW",
+     "text": "cash is legal tender"
+    },
+    {
+     "when": "2020",
+     "text": "the central bank fined 16 organizations"
+    },
+    {
+     "when": "2024",
+     "text": "a KFC franchise in Wuxi among them"
+    }
+   ],
+   "big": {
+    "pre": "up to ¥",
+    "num": 500,
+    "suf": "K",
+    "text": "fine for refusing cash"
+   },
+   "note": "First everyone races ahead. Then somebody goes back for grandma."
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Money you",
+   "can’t see",
+   "is spent",
+   "like time."
+  ],
+  "zh": "看不见的钱，像时间一样花掉。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/финал-сайт-4.png",
+  "from": "— from the article"
+ },
+ "next": {
+  "n": 6,
+  "title": "Whoever Dances Owns the Square",
+  "season": "Observations",
+  "zh": "观察",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/global-tech-geoff-harvey-purple-planet-music.mp3",
+  "drop": 27.5,
+  "vol": 0.74
+ },
+ "brand": {
+  "name": "Alipay · WeChat Pay",
+  "zh": "支付宝 · 微信支付"
+ },
+ "ticker": [
+  "China has almost 1.1 billion internet users",
+  "The big question: “Do you scan me, or do I scan you?”",
+  "Since 2023–2024, foreign cards link more easily to Alipay and WeChat Pay",
+  "H1 2024: >5M foreign visitors paid by phone — four times more",
+  "Over 90M foreign transactions — seven times more than a year earlier",
+  "Cash is legal tender, refusing it is not allowed",
+  "2020: the central bank fined 16 organizations, some up to ¥500,000",
+  "2024: a KFC franchise in Wuxi was among those fined"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/city-where-nobody-carries-wallet/hf-turist.jpg",
+  "heroPos": "50% 40%",
+  "alt": "source-videos/ostapdotcenko/blog-news/city-where-nobody-carries-wallet/hf-batareya.jpg",
+  "altPos": "50% 30%",
+  "big": ">5M",
+  "bigText": "foreigners paid by phone",
+  "blurbs": [
+   {
+    "big": "1.1B",
+    "text": "people online in China"
+   },
+   {
+    "big": "¥500K",
+    "text": "fine for refusing cash"
+   }
+  ],
+  "tag": "QR codes, a dead phone — and grandma"
+ },
+ "look": "light",
+ "lang": "en"
+}
