@@ -122,6 +122,7 @@ Inter, 16:9), не шаблон GTT: `презентации/sibdoc/<дата-т
 Stories-анонсы каруселей — `npm run announce` (`finished-videos/анонсы/<имя>/`), описание там же, «Stories-анонс карусели». Reels из карусели с музыкой (API Instagram музыку к каруселям не ставит) — `npm run carousel-reel -- <карусель>` → `finished-videos/<карусель>-reels.mp4`, там же, «Reels из карусели».
 Третий бренд — личный сайт ostapdotcenko.ru (`"brand": "od"`, тема пайплайна `ostapdotcenko`, только Stories — `auto.py --render --stories-only`), стиль — `reels-studio/CLAUDE.md`, «Третий бренд»; снимки сайта — `source-videos/ostapdotcenko/site/`.
 Команда Aura (05.11.2026, имена утверждены пользователем): 16 3D-персонажей — Ави, Скаут, Леон, Нова, Роли, Кэрри, Арми, Титан, Тихон, Пятёрка, Рубин, Шустрик, Рыжик, Сокол, Стриж, Аист; портреты, превью сцен применения и лист — `finished-videos/обложки/aura-персонажи/` (`AuraCast`, `AuraScenesPreview`, `tools/aura-cast/sheet.py`), «имя → модель и скин» — `reels-studio/CLAUDE.md`, «Команда Aura».
+Скаут на тёмном складе и в пещере (05.11.2026, DarkScan 2.0: реалистичный мир, лидар с облаком точек, карта SLAM, «как видит робот») — кадры `scene-2-dark-scan*.png`, `scene-5-dark-cave*.png` там же, ролики 7 с `scene-2-dark-scan.mp4`, `scene-5-dark-cave.mp4` (вне git), порядок — `reels-studio/CLAUDE.md`, «Скаут в темноте».
 Какой бренд у ролика, понятно из слов пользователя; не ясно — спроси, работу не останавливая.
 
 ## Присланный ролик — сразу в работу (решение пользователя 08.10.2026)

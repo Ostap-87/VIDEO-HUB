@@ -7,6 +7,11 @@
        --bundle-cache=false --concurrency=1 --timeout=180000
   2) python3 tools/aura-cast/sheet.py <tmp>   (из reels-studio) — раскладывает кадры по именам NN-<id>.png и scene-N-<id>.png
      в finished-videos/обложки/aura-персонажи/ и собирает _лист.jpg.
+Скаут в темноте (05.11.2026, DarkScan 2.0): кадры AuraDarkStills (склад a, b, c, пещера a, b, c) —
+  TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts AuraDarkStills <tmp>/dark --sequence --image-format=png \
+    --bundle-cache=false --concurrency=1 --timeout=300000
+  → scene-2-dark-scan.png, …-b.png, …-c.png и scene-5-dark-cave.png, …-b.png, …-c.png + ряд «Скаут в темноте» на листе.
+Папки, которых нет в <tmp> (cast, scenes, dark), не перерисовываются: лист собирается из уже готовых файлов в OUT.
 Имена и роли — те же, что в src/compositions/AuraCast.tsx (PORTRAITS); меняешь там — поменяй и здесь.
 """
 import glob
@@ -41,8 +46,18 @@ SCENES = [
     ("dark-scan", "Скаут сканирует тёмный склад (лидар)"),
     ("arm-pallet", "Титан: с конвейера — на поддон"),
     ("drone-racks", "Сокол: инвентаризация стеллажей"),
-    ("dark-cave", "Скаут идёт по пещере (облако точек)"),
+    ("dark-cave", "Скаут сканирует пещеру (лидар)"),
     ("cargo-delivery", "Аист: доставка на площадку"),
+]
+
+# Скаут в темноте: кадры AuraDarkStills по порядку → имя файла, подпись
+DARK = [
+    ("scene-2-dark-scan.png", "Склад · как видим мы"),
+    ("scene-2-dark-scan-b.png", "Склад · как видит робот"),
+    ("scene-2-dark-scan-c.png", "Склад · ¾ сзади, фара"),
+    ("scene-5-dark-cave.png", "Пещера · как видим мы"),
+    ("scene-5-dark-cave-b.png", "Пещера · как видит робот"),
+    ("scene-5-dark-cave-c.png", "Пещера · ¾ сзади, лужи"),
 ]
 
 INTER = "/usr/share/fonts/opentype/inter/Inter-{}.otf"
@@ -66,18 +81,24 @@ def main(tmp):
     os.makedirs(OUT, exist_ok=True)
     cast = frames(os.path.join(tmp, "cast"))
     scenes = frames(os.path.join(tmp, "scenes"))
-    assert len(cast) == len(CAST) + 1, f"кадров AuraCast {len(cast)}, ждали {len(CAST) + 1}"
-    assert len(scenes) == len(SCENES), f"кадров AuraScenesPreview {len(scenes)}, ждали {len(SCENES)}"
-    names = []
-    for i, f in enumerate(cast):
-        nm = f"{i + 1:02d}-{CAST[i][0]}.png" if i < len(CAST) else f"{i + 1:02d}-team.png"
-        Image.open(f).save(os.path.join(OUT, nm), optimize=True)
-        names.append(nm)
-    snames = []
-    for i, f in enumerate(scenes):
-        nm = f"scene-{i + 1}-{SCENES[i][0]}.png"
-        Image.open(f).save(os.path.join(OUT, nm), optimize=True)
-        snames.append(nm)
+    dark = frames(os.path.join(tmp, "dark"))
+    names = [f"{i + 1:02d}-{CAST[i][0]}.png" for i in range(len(CAST))] + [f"{len(CAST) + 1:02d}-team.png"]
+    snames = [f"scene-{i + 1}-{SCENES[i][0]}.png" for i in range(len(SCENES))]
+    if cast:
+        assert len(cast) == len(CAST) + 1, f"кадров AuraCast {len(cast)}, ждали {len(CAST) + 1}"
+        for f, nm in zip(cast, names):
+            Image.open(f).save(os.path.join(OUT, nm), optimize=True)
+    if scenes:
+        assert len(scenes) == len(SCENES), f"кадров AuraScenesPreview {len(scenes)}, ждали {len(SCENES)}"
+        for f, nm in zip(scenes, snames):
+            Image.open(f).save(os.path.join(OUT, nm), optimize=True)
+    if dark:
+        assert len(dark) == len(DARK), f"кадров AuraDarkStills {len(dark)}, ждали {len(DARK)}"
+        for f, (nm, _) in zip(dark, DARK):
+            Image.open(f).save(os.path.join(OUT, nm), optimize=True)
+    missing = [n for n in names + snames if not os.path.exists(os.path.join(OUT, n))]
+    assert not missing, f"нет готовых файлов: {missing}"
+    dnames = [nm for nm, _ in DARK if os.path.exists(os.path.join(OUT, nm))]
 
     # лист: шапка, портреты 6 в ряд (300×375) с подписями, ниже — сцены 6 в ряд (9:16)
     cols, tw, th, cap, pad = 6, 300, 375, 96, 28
@@ -85,6 +106,8 @@ def main(tmp):
     sw, sh, scap = 300, 533, 62
     W = pad + cols * (tw + pad)
     H = 150 + rows * (th + cap + pad) + 70 + sh + scap + pad
+    if dnames:
+        H += 66 + sh + 40 + pad
     sheet = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(sheet)
     d.text((pad, 34), "Персонажи Aura Robotics", font=font("Bold", 52), fill=INK)
@@ -136,8 +159,18 @@ def main(tmp):
         lines.append(line)
         for k, ln in enumerate(lines[:2]):
             d.text((x + 38, yy + 2 + k * 22), ln, font=font("Medium", 18), fill=INK)
+    if dnames:
+        y0 += sh + scap + 4
+        d.text((pad, y0), "Скаут в темноте: склад и пещера (лидар, облако точек, карта SLAM)", font=font("Bold", 34), fill=INK)
+        y0 += 56
+        for i, nm in enumerate(dnames):
+            x = pad + i * (sw + pad)
+            im = Image.open(os.path.join(OUT, nm)).convert("RGB").resize((sw, sh), Image.LANCZOS)
+            sheet.paste(im, (x, y0))
+            d.rectangle([x - 1, y0 - 1, x + sw, y0 + sh], outline=INK, width=2)
+            d.text((x, y0 + sh + 8), dict(DARK)[nm], font=font("Medium", 18), fill=INK)
     sheet.save(os.path.join(OUT, "_лист.jpg"), quality=86, optimize=True)
-    print("OK", OUT, len(names), "портретов,", len(snames), "сцен")
+    print("OK", OUT, len(names), "портретов,", len(snames), "сцен,", len(dnames), "кадров Скаута в темноте")
 
 
 if __name__ == "__main__":

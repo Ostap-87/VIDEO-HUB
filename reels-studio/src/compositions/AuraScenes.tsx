@@ -29,7 +29,7 @@ export const SCENES: SceneDef[] = [
     kicker: "Робособака-разведчик",
     title: "Сканирует тёмный склад",
     dur: DARK_SECONDS,
-    at: 5.2,
+    at: 1.4,
     dark: "warehouse",
   },
   {
@@ -50,7 +50,7 @@ export const SCENES: SceneDef[] = [
     cam: {pos: [2.9, 2.1, 3.6], target: [-0.7, 1.55, -0.6], fov: 46},
     body: (t) => <DroneRackScan t={t} />,
   },
-  {id: "dark-cave", kicker: "Робособака-разведчик", title: "Идёт по пещере", dur: DARK_SECONDS, at: 6.0, dark: "cave"},
+  {id: "dark-cave", kicker: "Робособака-разведчик", title: "Сканирует пещеру", dur: DARK_SECONDS, at: 1.4, dark: "cave"},
   {
     id: "cargo-delivery",
     kicker: "Грузовой дрон",
@@ -118,4 +118,40 @@ export const AuraScenesPreview: React.FC<{dpr?: number}> = ({dpr = 2}) => {
   const f = useCurrentFrame();
   const d = SCENES[Math.min(f, SCENES.length - 1)];
   return <SceneView d={d} t={d.at} dpr={dpr} />;
+};
+
+// DarkScan отдельно (05.11.2026, «собаки на складе и в пещере — сделать максимально детализированно и реалистично»):
+// AuraDarkClip — ролик 7 с (1080×1920, `kind`: склад / пещера) с переходом «как видим мы → как видит робот → обратно»;
+// AuraDarkStills — кадры для превью: кадр N = DARK_STILLS[N] (склад a, b, c, пещера a, b, c)
+export const AuraDarkClip: React.FC<{kind?: "warehouse" | "cave"; dpr?: number}> = ({kind = "warehouse", dpr = 1}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const d = SCENES.find((x) => x.dark === kind)!;
+  const black = interpolate(frame, [0, 0.4 * fps], [1, 0], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
+  return (
+    <AbsoluteFill style={{background: "#000"}}>
+      <DarkScan kind={kind} t={frame / fps} dpr={dpr} />
+      <Label kicker={d.kicker} title={d.title} dark />
+      <AbsoluteFill style={{background: "#000", opacity: black}} />
+    </AbsoluteFill>
+  );
+};
+export const DARK_STILLS: {kind: "warehouse" | "cave"; t: number; look?: "lit" | "robot"}[] = [
+  {kind: "warehouse", t: 1.4},
+  {kind: "warehouse", t: 3.15},
+  {kind: "warehouse", t: 6.5},
+  {kind: "cave", t: 1.4},
+  {kind: "cave", t: 3.15},
+  {kind: "cave", t: 6.5},
+];
+export const AuraDarkStills: React.FC<{dpr?: number; only?: number}> = ({dpr = 2, only}) => {
+  const f = useCurrentFrame();
+  const st = DARK_STILLS[Math.min(only ?? f, DARK_STILLS.length - 1)];
+  const d = SCENES.find((x) => x.dark === st.kind)!;
+  return (
+    <AbsoluteFill style={{background: "#000"}}>
+      <DarkScan kind={st.kind} t={st.t} look={st.look} dpr={dpr} />
+      <Label kicker={d.kicker} title={d.title} dark />
+    </AbsoluteFill>
+  );
 };

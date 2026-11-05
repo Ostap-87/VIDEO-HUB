@@ -4,21 +4,22 @@
 // - ConveyorCarryScene — гуманоид на колёсах подъезжает к конвейеру, опускает торс, берёт коробку двумя руками, сдаёт назад,
 //   разворачивается и ставит коробку на поднятую площадку AGV, затем приглашающий жест (~14 с);
 // - ArmPalletScene — манипулятор быстро («щёлк») снимает коробки с упора конвейера и кладёт на поддон 2 × 2 (по 2,6 с на коробку);
-// - DarkScan — тёмный склад (`kind: "warehouse"`) или пещера (`"cave"`): робособака идёт с фарой (конус света, прожектор освещает
-//   стеллажи и камни), лидар-веер вращается, и облако точек проявляется там, где прошёл луч (свежие точки — ярко-лимонные, потом
-//   гаснут до тусклых — карта SLAM); `hud` — счётчик точек;
+// - DarkScan — тёмный склад (`kind: "warehouse"`) или пещера (`"cave"`), версия 2 (05.11.2026): реалистичный мир, свет, тени,
+//   отражения, лидар с облаком точек на настоящих поверхностях, переход «как видим мы → как видит робот», HUD и карта SLAM
+//   (мир и 3D — DarkWorld.tsx, здесь — HUD и обёртка);
 // - DroneRackScan — дрон-инспектор летит вдоль стеллажа, камера на гимбале смотрит на полки, отсканированные коробки получают
 //   лимонную рамку и галочку;
 // - CargoDelivery — грузовой дрон прилетает с коробкой на тросе, зависает над площадкой, опускает коробку, отпускает и улетает.
 import React, {useMemo} from "react";
-import * as THREE from "three";
 import {useCurrentFrame, useVideoConfig} from "remotion";
 import {Stage, type Cam, type V3} from "./kit";
 import {Conveyor, Pallet, Rack, conveyorBoxAt, conveyorStopAt, palletSlot, rackBoxes, type ConveyorProps, type RackProps} from "./Conveyor";
 import {WheelHumanoidModel} from "./AuraWheelHumanoid";
 import {AgvModel} from "./AuraAgv";
 import {ArmModel, HOME, type ArmKey, type ArmItem, type ArmSkin} from "./AuraArm";
-import {DogModel, dogPose, lidarAngle, type DogPlan} from "./AuraDog";
+import {dogPose, lidarAngle} from "./AuraDog";
+import {DEFAULT_WAVES, DarkWorldScene, LIDAR_R, darkWorld, dogTrail, revealedCount, waveState, type DarkKind, type DarkWorldData, type Waves} from "./DarkWorld";
+import {ThreeCanvas} from "@remotion/three";
 import {DroneModel, DronePad, droneState, type DronePlan} from "./AuraDrone";
 
 const useT = (t?: number) => {
@@ -113,175 +114,171 @@ export const ArmPalletScene: React.FC<{t?: number; skin?: ArmSkin; n?: number}> 
   );
 };
 
-// ===== DarkScan: тёмный склад или пещера, собака с фарой и лидаром =====
-const hash = (n: number) => {
-  const x = Math.sin(n * 12.9898 + 78.233) * 43758.5453;
-  return x - Math.floor(x);
-};
-const vnoise = (x: number, y: number) => {
-  const xi = Math.floor(x);
-  const yi = Math.floor(y);
-  const xf = x - xi;
-  const yf = y - yi;
-  const h = (a: number, b: number) => hash(a * 57.1 + b * 113.3);
-  const s = (q: number) => q * q * (3 - 2 * q);
-  const a = h(xi, yi) + (h(xi + 1, yi) - h(xi, yi)) * s(xf);
-  const b = h(xi, yi + 1) + (h(xi + 1, yi + 1) - h(xi, yi + 1)) * s(xf);
-  return a + (b - a) * s(yf);
-};
+// ===== DarkScan: тёмный склад или пещера, Скаут с фарой и лидаром (05.11.2026, версия 2 — DarkWorld.tsx) =====
+const HUD_MONO = "JetBrains Mono, monospace";
+const fmtInt = (n: number) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+// значок радара: круг, перекрестье, сектор луча (поворачивается вместе с лидаром)
+const Radar: React.FC<{a: number; size?: number}> = ({a, size = 46}) => (
+  <svg width={size} height={size} viewBox="-24 -24 48 48" style={{flex: "none"}}>
+    <defs>
+      <radialGradient id="rdr" r="1">
+        <stop offset="0" stopColor="#FFF65D" stopOpacity="0.85" />
+        <stop offset="1" stopColor="#FFF65D" stopOpacity="0" />
+      </radialGradient>
+    </defs>
+    <circle r="21" fill="rgba(255,246,93,0.06)" stroke="#FFF65D" strokeWidth="2" />
+    <circle r="11" fill="none" stroke="rgba(255,246,93,0.45)" strokeWidth="1.5" />
+    <path d="M-21 0H21M0 -21V21" stroke="rgba(255,246,93,0.3)" strokeWidth="1.2" />
+    <g transform={`rotate(${(-a * 180) / Math.PI})`}>
+      <path d="M0 0 L21 0 A21 21 0 0 0 15.4 -14.3 Z" fill="url(#rdr)" />
+      <path d="M0 0 L21 0" stroke="#FFFBD0" strokeWidth="2.2" />
+    </g>
+    <circle r="2.6" fill="#FFF65D" />
+  </svg>
+);
 
-export const DARK_RACKS: RackProps[] = [
-  {p: [-1.55, 0, -3.2], yaw: Math.PI / 2, bays: 7, levels: 3, bayW: 1.4, seed: 3},
-  {p: [1.55, 0, -3.2], yaw: -Math.PI / 2, bays: 7, levels: 3, bayW: 1.4, seed: 7},
-];
-export const DARK_DOG: DogPlan = {stays: [{at: 0, x: 0, z: 2.6, yaw: Math.PI / 2}, {at: 10, x: 0.1, z: -6.5, yaw: Math.PI / 2}], speed: 0.95};
-const LIDAR_R = 5.2;
-
-// облако точек сцены: поверхности стеллажей и коробок или стены пещеры
-const cloudPoints = (kind: "warehouse" | "cave", density: number): Float32Array => {
-  const pts: number[] = [];
-  let seed = 1;
-  const rnd = () => hash(seed++ * 0.731);
-  const push = (x: number, y: number, z: number, j = 0.012) => pts.push(x + (rnd() - 0.5) * j, y + (rnd() - 0.5) * j, z + (rnd() - 0.5) * j);
-  if (kind === "warehouse") {
-    for (const R of DARK_RACKS) {
-      const M = new THREE.Matrix4().makeTranslation(...(R.p ?? [0, 0, 0])).multiply(new THREE.Matrix4().makeRotationY(R.yaw ?? 0));
-      const bays = R.bays ?? 4;
-      const W = bays * (R.bayW ?? 1.5);
-      const dp = R.depth ?? 0.9;
-      const levels = R.levels ?? 3;
-      const lh = R.levelH ?? 1.0;
-      const v = new THREE.Vector3();
-      // балки и стойки (лицевая сторона)
-      for (let l = 0; l <= levels; l++)
-        for (let k = 0; k < W * 18 * density; k++) {
-          v.set(-W / 2 + rnd() * W, 0.12 + l * lh + (rnd() - 0.5) * 0.08, dp / 2 + 0.04).applyMatrix4(M);
-          push(v.x, v.y, v.z);
-        }
-      for (let b = 0; b <= bays; b++)
-        for (let k = 0; k < 40 * density; k++) {
-          v.set(-W / 2 + b * (R.bayW ?? 1.5), rnd() * (levels * lh + 0.2), dp / 2).applyMatrix4(M);
-          push(v.x, v.y, v.z);
-        }
-      // коробки: лицевая грань гуще, верх — реже
-      for (const B of rackBoxes(R)) {
-        const q = new THREE.Matrix4().makeTranslation(...B.c).multiply(new THREE.Matrix4().makeRotationY(B.yaw));
-        const n = Math.round(B.s[0] * B.s[1] * 260 * density);
-        for (let k = 0; k < n; k++) {
-          v.set((rnd() - 0.5) * B.s[0], (rnd() - 0.5) * B.s[1], B.s[2] / 2).applyMatrix4(q);
-          push(v.x, v.y, v.z);
-        }
-        for (let k = 0; k < n * 0.3; k++) {
-          v.set((rnd() - 0.5) * B.s[0], B.s[1] / 2, (rnd() - 0.5) * B.s[2]).applyMatrix4(q);
-          push(v.x, v.y, v.z);
+// карта SLAM в углу: сетка занятости (стены/полки — лимонные, свободный пол — синий), путь собаки, дальность, сектор луча
+const SlamMap: React.FC<{world: DarkWorldData; t: number; size: number}> = ({world, t, size}) => {
+  const ref = React.useRef<HTMLCanvasElement>(null);
+  const S = size * 2;
+  React.useLayoutEffect(() => {
+    const ctx = ref.current?.getContext("2d");
+    if (!ctx) return;
+    const P = dogPose(world.plan, t);
+    const cx = P.root[0];
+    const cz = P.root[2];
+    const half = 11;
+    const k = S / (2 * half);
+    const X = (x: number) => S / 2 + (x - cx) * k;
+    const Y = (z: number) => S / 2 + (z - cz) * k + S * 0.12;
+    ctx.clearRect(0, 0, S, S);
+    ctx.fillStyle = "rgba(5,7,11,0.94)";
+    ctx.fillRect(0, 0, S, S);
+    ctx.strokeStyle = "rgba(255,255,255,0.06)";
+    ctx.lineWidth = 1;
+    for (let g = Math.ceil((cx - half) / 2) * 2; g < cx + half; g += 2) {
+      ctx.beginPath();
+      ctx.moveTo(X(g), 0);
+      ctx.lineTo(X(g), S);
+      ctx.stroke();
+    }
+    for (let g = Math.ceil((cz - half - 3) / 2) * 2; g < cz + half + 3; g += 2) {
+      ctx.beginPath();
+      ctx.moveTo(0, Y(g));
+      ctx.lineTo(S, Y(g));
+      ctx.stroke();
+    }
+    const G = world.grid;
+    const cp = G.cs * k + 0.6;
+    for (let iz = 0; iz < G.nz; iz++) {
+      const z = G.z0 + iz * G.cs;
+      const y = Y(z);
+      if (y < -cp || y > S) continue;
+      for (let ix = 0; ix < G.nx; ix++) {
+        const x = X(G.x0 + ix * G.cs);
+        if (x < -cp || x > S) continue;
+        const o = G.occT[iz * G.nx + ix];
+        const f = G.freeT[iz * G.nx + ix];
+        if (o <= t) {
+          ctx.fillStyle = t - o < 0.35 ? "#FFFFFF" : "#FFF65D";
+          ctx.fillRect(x, y, cp, cp);
+        } else if (f <= t) {
+          ctx.fillStyle = t - f < 0.35 ? "rgba(140,190,255,0.9)" : "rgba(43,108,176,0.62)";
+          ctx.fillRect(x, y, cp, cp);
         }
       }
     }
-    // пол прохода и дальняя стена
-    for (let k = 0; k < 900 * density; k++) push((rnd() - 0.5) * 2.6, 0.005, 3 - rnd() * 11, 0);
-    for (let k = 0; k < 700 * density; k++) push((rnd() - 0.5) * 6, rnd() * 4, -8.4);
-  } else {
-    // пещера: свод по сечению, радиус шумит по длине и углу; ближняя к камере половина свода не рисуется
-    for (let k = 0; k < 7000 * density; k++) {
-      const z = 3 - rnd() * 11.5;
-      const phi = 0.08 + rnd() * (Math.PI - 0.16);
-      const r = 2.0 + 0.55 * vnoise(z * 0.9, phi * 3.1) + 0.25 * vnoise(z * 2.7 + 9, phi * 7);
-      push(Math.cos(phi) * r * 1.05 + Math.sin(z * 0.35) * 0.4, Math.sin(phi) * r * 0.95, z, 0.02);
-    }
-    for (let k = 0; k < 1600 * density; k++) {
-      const z = 3 - rnd() * 11.5;
-      const x = (rnd() - 0.5) * 3.4 + Math.sin(z * 0.35) * 0.4;
-      push(x, 0.04 * vnoise(x * 3, z * 3), z, 0.01);
-    }
-  }
-  return new Float32Array(pts);
+    // путь
+    const tr = dogTrail(world, t);
+    ctx.setLineDash([7, 6]);
+    ctx.strokeStyle = "rgba(255,255,255,0.8)";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    tr.forEach(([x, z], i) => (i ? ctx.lineTo(X(x), Y(z)) : ctx.moveTo(X(x), Y(z))));
+    ctx.lineTo(X(cx), Y(cz));
+    ctx.stroke();
+    ctx.setLineDash([]);
+    // дальность и сектор луча
+    const px = X(cx);
+    const py = Y(cz);
+    ctx.strokeStyle = "rgba(255,246,93,0.35)";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(px, py, LIDAR_R * k, 0, Math.PI * 2);
+    ctx.stroke();
+    const th = P.yaw + lidarAngle(t);
+    const grd = ctx.createRadialGradient(px, py, 0, px, py, LIDAR_R * k);
+    grd.addColorStop(0, "rgba(255,246,93,0.5)");
+    grd.addColorStop(1, "rgba(255,246,93,0.02)");
+    ctx.fillStyle = grd;
+    ctx.beginPath();
+    ctx.moveTo(px, py);
+    ctx.arc(px, py, LIDAR_R * k, -th, -th + 0.55);
+    ctx.closePath();
+    ctx.fill();
+    // собака — стрелка по курсу
+    ctx.save();
+    ctx.translate(px, py);
+    ctx.rotate(-P.yaw);
+    ctx.fillStyle = "#FFF65D";
+    ctx.strokeStyle = "#0B0D10";
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(16, 0);
+    ctx.lineTo(-10, 10);
+    ctx.lineTo(-5, 0);
+    ctx.lineTo(-10, -10);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+  });
+  return <canvas ref={ref} width={S} height={S} style={{width: size, height: size, display: "block", borderRadius: "0 0 12px 12px"}} />;
 };
 
-// когда луч лидара впервые прошёл по точке (с): обход по кадрам, луч — курс собаки + угол лидара
-const revealTimes = (P: Float32Array, plan: DogPlan, T: number, R: number): Float32Array => {
-  const n = P.length / 3;
-  const out = new Float32Array(n).fill(1e9);
-  const dt = 1 / 30;
-  let prev = 0;
-  const TAU = Math.PI * 2;
-  for (let t = 0; t <= T; t += dt) {
-    const d = dogPose(plan, t);
-    const th = d.yaw + lidarAngle(t);
-    const cx = d.root[0] + Math.cos(d.yaw) * 0.5;
-    const cz = d.root[2] - Math.sin(d.yaw) * 0.5;
-    const span = t === 0 ? TAU : (((th - prev) % TAU) + TAU) % TAU;
-    for (let i = 0; i < n; i++) {
-      if (out[i] < 1e8) continue;
-      const dx = P[i * 3] - cx;
-      const dz = P[i * 3 + 2] - cz;
-      if (dx * dx + dz * dz > R * R) continue;
-      const a = Math.atan2(-dz, dx);
-      const rel = (((a - prev) % TAU) + TAU) % TAU;
-      if (rel <= span) out[i] = t;
-    }
-    prev = th;
-  }
-  return out;
-};
-
-const RockField: React.FC = () => {
-  const rocks = useMemo(
-    () =>
-      Array.from({length: 26}, (_, k) => {
-        const z = 2.5 - hash(k * 3.1) * 10.5;
-        const side = k % 2 ? 1 : -1;
-        return {p: [side * (1.25 + hash(k * 7.7) * 0.6) + Math.sin(z * 0.35) * 0.4, 0.1, z] as V3, s: 0.18 + hash(k * 5.3) * 0.35, r: hash(k) * 3};
-      }),
-    [],
-  );
+// HUD: слева — «ЛИДАР 360°», счётчик точек, статус; справа — карта SLAM
+const ScanHud: React.FC<{world: DarkWorldData; t: number; robot: number; top: number; width: number}> = ({world, t, robot, top, width}) => {
+  const scale = React.useMemo(() => 1.2e6 / Math.max(1, revealedCount(world, 7)), [world]);
+  const pts = revealedCount(world, t) * scale;
+  const P = dogPose(world.plan, t);
+  const a = P.yaw + lidarAngle(t);
+  const blink = Math.floor(t * 2.2) % 2 === 0;
+  const panel: React.CSSProperties = {background: "rgba(8,10,14,0.72)", border: "1.5px solid rgba(255,246,93,0.35)", borderRadius: 16, boxShadow: "0 10px 30px rgba(0,0,0,0.35)"};
+  const mapW = 300;
   return (
     <>
-      {rocks.map((r, k) => (
-        <mesh key={k} position={r.p} rotation={[r.r, r.r * 2, 0]} scale={[r.s * 1.3, r.s * 0.8, r.s]}>
-          <dodecahedronGeometry args={[1, 0]} />
-          <meshStandardMaterial color="#4B4741" roughness={0.95} flatShading />
-        </mesh>
-      ))}
+      <div style={{position: "absolute", left: 56, top, padding: "14px 20px 16px 16px", fontFamily: HUD_MONO, ...panel}}>
+        <div style={{display: "flex", alignItems: "center", gap: 14}}>
+          <Radar a={a} />
+          <div style={{color: "#FFF65D", fontSize: 34, fontWeight: 700, letterSpacing: "0.06em"}}>ЛИДАР 360°</div>
+        </div>
+        <div style={{color: "#EDEBE7", fontSize: 28, fontWeight: 500, marginTop: 10, letterSpacing: "0.02em"}}>
+          точек: <span style={{color: "#FFFFFF", fontWeight: 700}}>{fmtInt(pts)}</span>
+        </div>
+        <div style={{display: "flex", alignItems: "center", gap: 10, marginTop: 6, fontSize: 25, color: robot > 0.5 ? "#FFF65D" : "#B4BDC8"}}>
+          <span style={{width: 12, height: 12, borderRadius: 6, background: robot > 0.5 ? "#FFF65D" : "#E5383B", opacity: blink ? 1 : 0.25}} />
+          {robot > 0.5 ? "так видит робот" : "карта строится"}
+        </div>
+      </div>
+      <div style={{position: "absolute", left: width - 56 - mapW, top, width: mapW, overflow: "hidden", ...panel}}>
+        <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", padding: "9px 14px 8px", fontFamily: HUD_MONO}}>
+          <span style={{color: "#FFF65D", fontSize: 21, fontWeight: 700, letterSpacing: "0.1em"}}>КАРТА SLAM</span>
+          <span style={{display: "flex", alignItems: "center", gap: 6, color: "#B4BDC8", fontSize: 17}}>
+            <span style={{width: (4 * 2 * (mapW - 0)) / (2 * 11) / 2, height: 3, background: "#B4BDC8"}} />2 м
+          </span>
+        </div>
+        <SlamMap world={world} t={t} size={mapW} />
+      </div>
     </>
   );
 };
 
-const Cloud: React.FC<{P: Float32Array; reveal: Float32Array; t: number; size?: number}> = ({P, reveal, t, size = 0.055}) => {
-  const geo = useMemo(() => {
-    const g = new THREE.BufferGeometry();
-    g.setAttribute("position", new THREE.BufferAttribute(P, 3));
-    g.setAttribute("color", new THREE.BufferAttribute(new Float32Array(P.length), 3));
-    return g;
-  }, [P]);
-  const col = geo.getAttribute("color") as THREE.BufferAttribute;
-  const arr = col.array as Float32Array;
-  for (let i = 0; i < reveal.length; i++) {
-    const age = t - reveal[i];
-    if (age < 0) {
-      arr[i * 3] = arr[i * 3 + 1] = arr[i * 3 + 2] = 0;
-      continue;
-    }
-    // свежая точка — яркий лимонный, через ~1,2 с — тусклый лимонно-серый (остаётся картой)
-    const k = Math.exp(-age / 0.5);
-    const hgt = P[i * 3 + 1];
-    const base = 0.4 + 0.12 * Math.min(1, hgt / 3);
-    arr[i * 3] = base + k * 1.1;
-    arr[i * 3 + 1] = base * 0.97 + k * 1.05;
-    arr[i * 3 + 2] = base * 0.45 + k * 0.25;
-  }
-  col.needsUpdate = true;
-  return (
-    <points geometry={geo}>
-      <pointsMaterial size={size} vertexColors transparent depthWrite={false} blending={THREE.AdditiveBlending} sizeAttenuation />
-    </points>
-  );
-};
-
-export const DARK_SECONDS = 10;
+export const DARK_SECONDS = 7;
+// kind — склад или пещера; t — время сцены (без него — от начала Sequence); waves — переходы «как видим мы → как видит робот → обратно»
+// ([начало волны, начало возврата], по умолчанию [[2.5, 4.9]]; false — без переходов); look — принудительно «lit» / «robot» (для кадров);
+// hud — HUD (ЛИДАР 360°, точки, карта SLAM), hudTop — его верх (px, под подписью сцены); density — плотность облака точек
 export const DarkScan: React.FC<{
-  kind?: "warehouse" | "cave";
-  plan?: DogPlan;
-  cam?: Cam;
+  kind?: DarkKind;
   left?: number;
   top?: number;
   width?: number;
@@ -289,32 +286,29 @@ export const DarkScan: React.FC<{
   dpr?: number;
   density?: number;
   hud?: boolean;
+  hudTop?: number;
+  waves?: Waves | false;
+  look?: "lit" | "robot";
   t?: number;
-}> = ({kind = "warehouse", plan = DARK_DOG, cam = {pos: [1.3, 2.7, 5.4], target: [0, 0.85, -2.6], fov: 42}, left = 0, top = 0, width = 1080, height = 1920, dpr = 1, density = 1, hud = true, t: tp}) => {
+}> = ({kind = "warehouse", left = 0, top = 0, width = 1080, height = 1920, dpr = 1, density = 1, hud = true, hudTop = 468, waves = DEFAULT_WAVES, look, t: tp}) => {
   const t = useT(tp);
-  const P = useMemo(() => cloudPoints(kind, density), [kind, density]);
-  const reveal = useMemo(() => revealTimes(P, plan, 30, LIDAR_R), [P, plan]);
-  const shown = reveal.reduce((a, r) => a + (r <= t ? 1 : 0), 0);
+  const world = useMemo(() => darkWorld(kind, density), [kind, density]);
+  const W = waveState(t, waves, look);
   return (
-    <div style={{position: "absolute", left, top, width, height, overflow: "hidden", background: "radial-gradient(ellipse 90% 70% at 50% 35%, #1B1D21 0%, #0E0F11 60%, #070809 100%)"}}>
-      <Stage cam={cam} width={width} height={height} dpr={dpr} mood="dark">
-        <hemisphereLight args={["#9FB0C4", "#0B0C0E", 0.12]} />
-        <directionalLight position={[3, 6, 4]} intensity={0.08} />
-        <fog attach="fog" args={["#0B0C0E", 7, 17]} />
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, -3]}>
-          <planeGeometry args={[30, 30]} />
-          <meshStandardMaterial color={kind === "cave" ? "#2B2824" : "#1D2024"} roughness={0.9} />
-        </mesh>
-        {kind === "warehouse" ? DARK_RACKS.map((R, k) => <Rack key={k} {...R} />) : <RockField />}
-        <Cloud P={P} reveal={reveal} t={t} />
-        <DogModel t={t} plan={plan} headlight lidar={LIDAR_R} />
-      </Stage>
-      {hud ? (
-        <div style={{position: "absolute", left: 64, top: 430, fontFamily: "JetBrains Mono, monospace", color: "#FFF65D", fontSize: 30, letterSpacing: "0.08em", lineHeight: 1.5, textShadow: "0 0 12px rgba(255,246,93,0.5)"}}>
-          <div>LIDAR · SLAM</div>
-          <div style={{color: "#D9D7D5", fontSize: 26}}>{String(shown).padStart(5, "0")} точек</div>
-        </div>
-      ) : null}
+    <div style={{position: "absolute", left, top, width, height, overflow: "hidden", background: "#0B0E12"}}>
+      <ThreeCanvas
+        width={width}
+        height={height}
+        dpr={dpr}
+        shadows
+        gl={{antialias: true, preserveDrawingBuffer: true}}
+        camera={{fov: 44, near: 0.05, far: 140, position: [0, 1.5, 5]}}
+        style={{position: "absolute", inset: 0}}
+      >
+        <DarkWorldScene world={world} t={t} waves={waves} look={look} />
+      </ThreeCanvas>
+      <div style={{position: "absolute", inset: 0, background: "radial-gradient(ellipse 85% 70% at 50% 58%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.38) 100%)"}} />
+      {hud ? <ScanHud world={world} t={t} robot={W.robot} top={hudTop} width={width} /> : null}
     </div>
   );
 };

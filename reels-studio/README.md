@@ -165,6 +165,11 @@ TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts AuraScenesPreview 
 python3 tools/aura-cast/sheet.py /dev/shm/cast
 # демо всех сцен подряд (1080×1920)
 TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts AuraScenes ../finished-videos/3d-арсенал/aura-сцены.mp4 --bundle-cache=false
+# Скаут в темноте (DarkScan 2.0): 6 кадров (склад и пещера: как видим мы / как видит робот / ¾ сзади) → лист
+TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts AuraDarkStills /dev/shm/cast/dark --sequence --image-format=png --bundle-cache=false --concurrency=1 --timeout=300000
+python3 tools/aura-cast/sheet.py /dev/shm/cast
+# ролики 7 с (kind: warehouse | cave), затем сжать ffmpeg до ≤ 15 МБ в finished-videos/обложки/aura-персонажи/
+TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts AuraDarkClip /dev/shm/dk/cave.mp4 --props='{"kind":"cave"}' --bundle-cache=false --concurrency=2 --timeout=300000 --crf=16
 ```
 Подробно — `CLAUDE.md`, «Команда Aura: скины, новые персонажи, сцены применения».
 

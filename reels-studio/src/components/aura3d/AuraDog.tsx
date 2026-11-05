@@ -14,10 +14,11 @@
 import React from "react";
 import * as THREE from "three";
 import {useCurrentFrame, useVideoConfig} from "remotion";
-import {Bolt, Box, Capsule, LightCone, Cyl, EyeGlow, Glow, Graphite, Hose, Parchment, RBox, Ring, Rubber, Shadow, SkinScope, Sph, Tag, Visor, clamp01, env, pathAt, smooth, win, type Stay, type V3} from "./kit";
+import {Bolt, Box, Capsule, LightCone, Cyl, EyeGlow, Glow, Graphite, Hose, Parchment, RBox, Ring, Rubber, Shadow, SkinScope, Sph, Tag, Visor, clamp01, env, pathAt, smooth, win, type PathState, type Stay, type V3} from "./kit";
 
 export type DogAction = {at: number; kind: "hop" | "stand" | "dance"; dur?: number};
-export type DogPlan = {stays: Stay[]; speed?: number; actions?: DogAction[]};
+// path — свой путь вместо stays (05.11.2026, DarkScan): функция t → {x, z, yaw, dist, speed, moving}, например ровный шаг по кривой пещеры
+export type DogPlan = {stays: Stay[]; speed?: number; actions?: DogAction[]; path?: (t: number) => PathState};
 
 // угол лидара относительно корпуса (рад): оборот за 1/LIDAR_HZ с; мировой угол луча = курс собаки + lidarAngle(t)
 export const LIDAR_HZ = 1.1;
@@ -42,10 +43,10 @@ const legIK = (dx: number, dy: number): [number, number] => {
   return [phi - a, Math.PI - g]; // колено назад: бедро отклонено назад, голень — вперёд
 };
 
-type Pose = {root: V3; yaw: number; body: V3; pitch: number; roll: number; legs: Record<LegId, {ab: number; hip: number; knee: number}>; air: number};
+export type Pose = {root: V3; yaw: number; body: V3; pitch: number; roll: number; legs: Record<LegId, {ab: number; hip: number; knee: number}>; air: number};
 
 export const dogPose = (plan: DogPlan, t: number): Pose => {
-  const st = pathAt(plan.stays, t, plan.speed ?? 1.1, 0.4);
+  const st = plan.path ? plan.path(t) : pathAt(plan.stays, t, plan.speed ?? 1.1, 0.4);
   const acts = plan.actions ?? [];
   // --- трюки ---
   let rootY = 0;
@@ -126,6 +127,13 @@ export const dogPose = (plan: DogPlan, t: number): Pose => {
   return {root: [st.x, rootY, st.z], yaw: st.yaw + yawAdd, body, pitch, roll, legs, air: rootY};
 };
 
+// матрица корпуса собаки в мире (точка корпуса → мир): фара, лидар, крепления сцены DarkScan считают свои мировые координаты так
+export const dogBodyMatrix = (P: Pose): THREE.Matrix4 =>
+  new THREE.Matrix4()
+    .makeTranslation(P.root[0], P.root[1], P.root[2])
+    .multiply(new THREE.Matrix4().makeRotationY(P.yaw))
+    .multiply(new THREE.Matrix4().compose(new THREE.Vector3(...P.body), new THREE.Quaternion().setFromEuler(new THREE.Euler(P.roll, 0, P.pitch, "XYZ")), new THREE.Vector3(1, 1, 1)));
+
 const Leg: React.FC<{x: number; z: number; pose: {ab: number; hip: number; knee: number}}> = ({x, z, pose}) => {
   const {L1, L2, hipY} = DOG3D;
   const side = Math.sign(z);
@@ -200,7 +208,8 @@ const LidarFan: React.FC<{t: number; range: number}> = ({t, range}) => {
   );
 };
 
-export const DogModel: React.FC<{plan: DogPlan; t?: number; skin?: string; headlight?: boolean; lidar?: number}> = ({plan, t: tProp, skin, headlight, lidar}) => {
+// children — детали, закреплённые на корпусе (координаты корпуса: +x вперёд, +y вверх, +z — правый бок)
+export const DogModel: React.FC<{plan: DogPlan; t?: number; skin?: string; headlight?: boolean; lidar?: number; children?: React.ReactNode}> = ({plan, t: tProp, skin, headlight, lidar, children}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = tProp ?? frame / fps;
@@ -267,6 +276,7 @@ export const DogModel: React.FC<{plan: DogPlan; t?: number; skin?: string; headl
           <Hose pts={[[0.45, -0.1, 0.1], [0.5, -0.14, 0.08], [0.52, -0.16, 0.03]]} r={0.008} seg={10} />
           {headlight ? <Headlight /> : null}
           {lidar ? <LidarFan t={t} range={lidar} /> : null}
+          {children}
           {LEGS.map((L) => (
             <Leg key={L.id} x={L.x} z={L.z} pose={P.legs[L.id]} />
           ))}
