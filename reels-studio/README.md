@@ -173,6 +173,22 @@ TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts AuraDarkClip /dev/
 ```
 Подробно — `CLAUDE.md`, «Команда Aura: скины, новые персонажи, сцены применения».
 
+### Робокитай — сериал Aura без голоса (05.11.2026)
+
+Серия = статья блога aura-robotics.ru, 60–70 с: письмо клиента → карта Китая с поездом и печатью края → прибытие героев →
+испытание на макете склада → поворот (типичная ошибка) → флипчарт Ави (критерии и расчёт) → роботы у клиента → ссылка и анонс.
+Композиция `RobokitaiEpisode`, props `props/robokitai/NNN-<город>.json` (тексты, цифры, длины шагов, музыка).
+
+```bash
+# пробные кадры: props + "frames": [кадры ролика] → кадр N = frames[N]
+TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts RobokitaiPreview /dev/shm/rk/stills --sequence --frames=0-11 --image-format=jpeg --props=/dev/shm/rk/stills.json --bundle-cache=false --concurrency=2 --timeout=180000
+# ролик (68,6 с — ~31 мин при --concurrency=3), затем в finished-videos/ и копия для телефона ≤ 30 МБ (ffmpeg -crf 25)
+TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts RobokitaiEpisode /dev/shm/rk/out.mp4 --props=props/robokitai/001-hangzhou.json --bundle-cache=false --concurrency=3 --timeout=180000 --crf=20
+# контур Китая и города карты (Natural Earth, общественное достояние) → src/compositions/robokitai/chinaMap.ts
+python3 tools/robokitai/china_map.py
+```
+Подробно — `CLAUDE.md`, «Робокитай — сериал Aura».
+
 ## Пересборка готового ролика (вырезать кусок, новый звук)
 
 ```bash

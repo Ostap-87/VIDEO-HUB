@@ -34,6 +34,8 @@ import {DeskPromo, deskPromoFrames, deskPromoSchema, type DeskPromoProps} from "
 import {SiteManhua, SiteManhuaPreview, SITE_MANHUA_FRAMES} from "./compositions/SiteManhua";
 import {BlogNews, BlogNewsPreview, bnFrames, type BlogNewsProps} from "./compositions/BlogNews";
 import {BlogNewsCovers} from "./compositions/BlogNewsCovers";
+import {RobokitaiEpisode, RobokitaiPreview, rkFrames, type RobokitaiProps} from "./compositions/RobokitaiEpisode";
+import robokitaiSample from "../props/robokitai/001-hangzhou.json";
 import blogNewsSample from "../props/blog-news/001-coffee-with-hint-audit.json";
 import {SiteManhuaEn, SiteManhuaEnPreview, SITE_MANHUA_EN_FRAMES} from "./compositions/SiteManhuaEn";
 import {AuraSiteManhua, AuraSiteManhuaPreview, AURA_MANHUA_FRAMES} from "./compositions/AuraSiteManhua";
@@ -310,6 +312,27 @@ export const RemotionRoot: React.FC = () => {
         durationInFrames={bnFrames(blogNewsSample as BlogNewsProps)}
         defaultProps={{...(blogNewsSample as BlogNewsProps), step: 30, start: 15}}
         calculateMetadata={({props}: {props: BlogNewsProps}) => ({durationInFrames: bnFrames(props)})}
+      />
+      {/* «Робокитай · 机器人中国» — сериал Aura (05.11.2026); props — reels-studio/props/robokitai/NNN-<город>.json */}
+      <Composition
+        id="RobokitaiEpisode"
+        component={RobokitaiEpisode}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={rkFrames(robokitaiSample as RobokitaiProps)}
+        defaultProps={robokitaiSample as RobokitaiProps}
+        calculateMetadata={({props}: {props: RobokitaiProps}) => ({durationInFrames: rkFrames(props)})}
+      />
+      <Composition
+        id="RobokitaiPreview"
+        component={RobokitaiPreview}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={rkFrames(robokitaiSample as RobokitaiProps)}
+        defaultProps={{...(robokitaiSample as RobokitaiProps), step: 30, start: 15}}
+        calculateMetadata={({props}: {props: RobokitaiProps}) => ({durationInFrames: rkFrames(props)})}
       />
       {/* обложки выпусков «多 NEWS»: кадр N = выпуск N / 3 × раскладка (journal, shout, page) */}
       <Composition id="BlogNewsCovers" component={BlogNewsCovers} width={1080} height={1920} fps={30} durationInFrames={30} />

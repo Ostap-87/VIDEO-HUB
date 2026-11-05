@@ -12,9 +12,11 @@
 // без логотипов и наклеек с текстом). Детали: болты площадки, шильдики, решётка динамика, контакты зарядки, кнопка-стоп.
 import React from "react";
 import {useCurrentFrame, useVideoConfig} from "remotion";
-import {Accent, Alu, Bolt, Box, CargoBox, Cyl, Glow, Graphite, Metal, Parchment, RBox, Rubber, Seam, Shadow, SkinScope, Tag, Vents, Visor, clamp01, pathAt, track, useSkin, type Stay, type V3} from "./kit";
+import {Accent, Alu, Bolt, Box, CargoBox, Cyl, Glow, Graphite, Metal, Parchment, RBox, Rubber, Seam, Shadow, SkinScope, Tag, Vents, Visor, clamp01, pathAt, track, useSkin, type PathState, type Stay, type V3} from "./kit";
 
-export type AgvPlan = {stays: Stay[]; speed?: number; lift?: [number, number][]; boxes?: number; loads?: number[]; unloads?: number[]};
+// path — свой путь вместо stays (05.11.2026, «Робокитай»): функция t → {x, z, yaw, dist, speed, moving}, например плавный объезд
+// коробки по кривой (curvePath в compositions/robokitai/scene3d.tsx); выгрузка unloads считается по stays
+export type AgvPlan = {stays: Stay[]; speed?: number; lift?: [number, number][]; boxes?: number; loads?: number[]; unloads?: number[]; path?: (t: number) => PathState};
 
 export const AGV = {L: 2.0, W: 1.36, wheelR: 0.16, track: 0.7, plateY: 0.58, liftMax: 0.24, box: [0.8, 0.42, 0.7] as V3};
 const LOAD = 0.6; // секунд падает новая коробка
@@ -83,7 +85,7 @@ export const AgvModel: React.FC<{plan: AgvPlan; t?: number; skin?: "aura" | "ora
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = tProp ?? frame / fps;
-  const st = pathAt(plan.stays, t, plan.speed ?? 1.4, 0.7, true);
+  const st = plan.path ? plan.path(t) : pathAt(plan.stays, t, plan.speed ?? 1.4, 0.7, true);
   const lift = clamp01(track(t, plan.lift ?? [[0, 0]])) * AGV.liftMax;
   const c = cargoAt(plan, t);
   const [bx, bh, bz] = AGV.box;
