@@ -12,6 +12,16 @@ export type BNBrand = {name: string; zh?: string; logo?: string; icon?: number};
 // у каждого следующего свой акцент (props.accent); им красятся заставка, плашки, взрывы, бегущая строка, фон панчлайна
 export const AccCtx = React.createContext<string>(C.y);
 export const useAcc = () => React.useContext(AccCtx);
+// светлый режим (05.11.2026: «сделай следующие ролики чуть светлее и не такие мрачные — сейчас очень мрачно и сложно читается»):
+// look: "light" — у хука, списка, «падения» и цифры на весь кадр бумажный фон вместо чернил, края почти не затемнены
+export const LookCtx = React.createContext<"dark" | "light">("dark");
+export const useLook = () => React.useContext(LookCtx);
+// крупная цифра — чётко (05.11.2026: «цифры надо чётче прорисовывать, сейчас они чуть сливаются»): плотная заливка, без сдвинутой тени;
+// на тёмном/цветном — тонкая чернильная обводка, не двойная
+export const numStyle = (size: number, color: string, outline = false): React.CSSProperties => ({
+  fontFamily: FONT.dela, fontSize: size, color, lineHeight: 1.02, whiteSpace: "nowrap",
+  ...(outline ? {WebkitTextStroke: `${Math.max(3, Math.round(size * 0.045))}px ${C.ink}`, paintOrder: "stroke fill"} : {}),
+});
 
 export const dela = (size: number, color: string = C.ink, extra: React.CSSProperties = {}): React.CSSProperties => ({fontFamily: FONT.dela, fontSize: size, color, lineHeight: 1.04, ...extra});
 export const RU_MONTHS = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];

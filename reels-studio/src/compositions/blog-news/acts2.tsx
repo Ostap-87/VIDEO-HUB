@@ -14,7 +14,7 @@ import {BRUSH} from "../../components/MontazhFx";
 import {FONT} from "../site-manhua/fonts";
 import {ActionLines, Bubble, Burst, C, EIO, EO, Flash, Halftone, Narration, Panel, Sfx, SpeedLines, p, sumShake} from "../site-manhua/fx";
 import {Skeptic, type Emo} from "../site-manhua/skeptic";
-import {BrandPlate, ChapterHead, Chip, countNum, dela, useAcc, type BNBrand, type BNFact} from "./kit";
+import {BrandPlate, ChapterHead, Chip, countNum, dela, numStyle, useAcc, useLook, type BNBrand, type BNFact} from "./kit";
 
 type Head = {zh: string; kicker: string; title: string; sec: number};
 export type BNStat = Head & {kind: "stat"; img: string; imgPos?: string; big: BNFact; equal?: string; chips?: string[]; note?: string};
@@ -40,10 +40,11 @@ export const HookSplit: React.FC<{h: {lines: string[]; shout: string[]; sfx?: st
   const acc = useAcc();
   const bub = spring({frame: f - 56, fps, config: {damping: 10, stiffness: 220, mass: 0.6}});
   const ats = [-8, 8, 24];
+  const light = useLook() === "light";
   return (
     <AbsoluteFill style={{translate: sumShake(f, [[0, 10, 18], [14, 8, 14], [30, 10, 18], [40, 14, 26]], "hs")}}>
-      <AbsoluteFill style={{background: C.ink}} />
-      <ActionLines color="#fff" opacity={0.1} angle={-16} seed="hs" />
+      {light ? <Halftone bg={C.paper} dot="rgba(25,25,34,.14)" /> : <AbsoluteFill style={{background: C.ink}} />}
+      <ActionLines color={light ? C.ink : "#fff"} opacity={light ? 0.07 : 0.1} angle={-16} seed="hs" />
       {BANDS.map((b, i) => (
         <Panel key={i} x={40} y={b.y} w={1000} h={b.h} at={ats[i]} from={b.from} poly={b.poly} bg="#000">
           <Img src={staticFile(cover)} style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: b.pos, scale: String(1.3 - 0.12 * p(f, ats[i], ats[i] + 90)), translate: `${(i % 2 ? -1 : 1) * 30 * p(f, ats[i], ats[i] + 90)}px 0`}} />
@@ -80,28 +81,38 @@ export const StatAct: React.FC<{b: BNStat; dur: number; brand?: BNBrand}> = ({b,
   const tN = 16, tE = Math.round(dur * 0.4), tC = Math.round(dur * 0.52), tNote = Math.round(dur * 0.66);
   const ns = spring({frame: f - tN, fps, config: {damping: 9, stiffness: 210, mass: 0.8}});
   const es = spring({frame: f - tE, fps, config: {damping: 10, stiffness: 260, mass: 0.6}});
-  const size = fitW(factStr(b.big), 170, 900, 0.8);
+  const size = fitW(factStr(b.big), 160, 820, 0.8);
   const chips = (b.chips ?? []).slice(0, 2);
+  const light = useLook() === "light";
   return (
     <AbsoluteFill style={{translate: sumShake(f, [[tN + 28, 18, 30], [tE, 10, 18]], b.title)}}>
       <AbsoluteFill style={{background: "#000"}}>
         <Img src={staticFile(b.img)} style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: b.imgPos ?? "50% 45%", scale: String(1.04 + 0.16 * p(f, 0, dur, EIO))}} />
       </AbsoluteFill>
-      <AbsoluteFill style={{background: "linear-gradient(180deg, rgba(12,12,18,.94) 0px, rgba(12,12,18,.88) 410px, rgba(12,12,18,.3) 620px, rgba(12,12,18,.45) 1000px, rgba(12,12,18,.93) 1600px)"}} />
-      <SpeedLines color="#fff" opacity={0.3 * p(f, tN, tN + 10)} cx={540} cy={800} inner={400} seed={`${b.title}s`} />
-      <ChapterHead zh={b.zh} kicker={b.kicker} title={b.title} dark />
+      {light ? (
+        <>
+          {/* светлый режим: картинка живая, сверху бумажная шапка главы, снизу светлая дымка под подписи */}
+          <AbsoluteFill style={{background: "linear-gradient(180deg, rgba(247,244,236,0) 640px, rgba(247,244,236,.55) 1180px, rgba(247,244,236,.92) 1500px)"}} />
+          <div style={{position: "absolute", left: 0, right: 0, top: 0, height: 418, background: C.paper, borderBottom: `8px solid ${C.ink}`, boxShadow: `0 8px 0 ${acc}`}} />
+        </>
+      ) : (
+        <AbsoluteFill style={{background: "linear-gradient(180deg, rgba(12,12,18,.94) 0px, rgba(12,12,18,.88) 410px, rgba(12,12,18,.3) 620px, rgba(12,12,18,.45) 1000px, rgba(12,12,18,.93) 1600px)"}} />
+      )}
+      <SpeedLines color="#fff" opacity={(light ? 0.18 : 0.3) * p(f, tN, tN + 10)} cx={540} cy={800} inner={400} seed={`${b.title}s`} />
+      <ChapterHead zh={b.zh} kicker={b.kicker} title={b.title} dark={!light} />
       {brand ? <BrandPlate b={brand} at={10} x={640} y={430} scale={0.6} rot={3} /> : null}
       {f >= tN ? (
         <>
-          <Burst x={540} y={800} r={310} color={acc} stroke={C.ink} scale={0.3 + 0.7 * ns} rot={f * 0.25} seed={`${b.title}st`} points={22} />
-          <div style={{position: "absolute", left: 0, right: 0, top: 800 - size * 0.56, textAlign: "center", scale: String(0.4 + 0.6 * ns), ...dela(size, C.ink, {whiteSpace: "nowrap", WebkitTextStroke: "12px #fff", paintOrder: "stroke fill", textShadow: `10px 10px 0 ${C.ink}`})}}>{countNum(f, tN, 30, b.big)}</div>
-          <div style={{position: "absolute", left: 110, right: 110, top: 1000, textAlign: "center", fontFamily: FONT.golos, fontWeight: 800, fontSize: 38, lineHeight: 1.16, color: "#fff", textShadow: `4px 4px 0 ${C.ink}`, opacity: p(f, tN + 22, tN + 30)}}>{b.big.text}</div>
+          <Burst x={540} y={800} r={330} color="#fff" stroke={C.ink} scale={0.3 + 0.7 * ns} rot={f * 0.25} seed={`${b.title}st`} points={22} />
+          {/* цифра — на плотной плашке цвета сезона: чернилами по цвету, без теней и двойных обводок */}
+          <div style={{position: "absolute", left: 540, top: 800, translate: "-50% -50%", rotate: "-3deg", scale: String(0.4 + 0.6 * ns), background: acc, border: `8px solid ${C.ink}`, boxShadow: `14px 14px 0 ${C.ink}`, padding: "6px 34px 12px", ...numStyle(size, C.ink)}}>{countNum(f, tN, 30, b.big)}</div>
+          <div style={{position: "absolute", left: 540, top: 1000, translate: "-50% 0", maxWidth: 900, textAlign: "center", fontFamily: FONT.golos, fontWeight: 800, fontSize: 36, lineHeight: 1.16, color: C.ink, background: "#fff", border: `5px solid ${C.ink}`, padding: "10px 24px", boxShadow: `8px 8px 0 ${C.ink}`, opacity: p(f, tN + 22, tN + 30)}}>{b.big.text}</div>
         </>
       ) : null}
       {b.equal && f >= tE ? (
-        <div style={{position: "absolute", left: 540, top: 1128, translate: "-50% 0", rotate: "-3deg", scale: String(1.8 - 0.8 * es), opacity: Math.min(1, es * 2), background: C.ink, border: `6px solid ${acc}`, padding: "12px 26px", boxShadow: `10px 10px 0 ${C.red}`, whiteSpace: "nowrap", ...dela(fitW(`= ${b.equal}`, 56, 900, 0.66), acc)}}>{`= ${b.equal}`}</div>
+        <div style={{position: "absolute", left: 540, top: 1172, translate: "-50% 0", rotate: "-3deg", scale: String(1.8 - 0.8 * es), opacity: Math.min(1, es * 2), background: C.ink, border: `6px solid ${acc}`, padding: "12px 26px", boxShadow: `10px 10px 0 ${C.red}`, whiteSpace: "nowrap", ...dela(fitW(`= ${b.equal}`, 56, 900, 0.66), acc)}}>{`= ${b.equal}`}</div>
       ) : null}
-      {chips.map((c, i) => <Chip key={i} x={i ? 1016 - 600 : 64} y={1252 + i * 104} at={tC + i * 14} rot={i ? 2 : -2} bg={i ? acc : "#fff"} size={30} maxW={600}>{c}</Chip>)}
+      {chips.map((c, i) => <Chip key={i} x={i ? 1016 - 600 : 64} y={1284 + i * 96} at={tC + i * 14} rot={i ? 2 : -2} bg={i ? acc : "#fff"} size={30} maxW={600}>{c}</Chip>)}
       {b.note && !chips.length ? <Narration x={64} y={1352} w={952} at={tNote} font={FONT.golos} size={32} bg={acc}>{b.note}</Narration> : null}
       <Flash at={tN + 28} dur={5} max={0.55} />
     </AbsoluteFill>
@@ -186,14 +197,15 @@ export const ListAct: React.FC<{b: BNList; dur: number; brand?: BNBrand}> = ({b,
   const y0 = 440;
   const rowH = Math.min(150, Math.floor((1440 - y0) / n));
   const step = Math.floor((dur * 0.82 - 12) / n);
+  const light = useLook() === "light";
   return (
     <AbsoluteFill style={{translate: sumShake(f, b.items.map((_, k) => [12 + k * step, k === n - 1 ? 16 : 6, k === n - 1 ? 26 : 10] as [number, number, number]), b.title)}}>
-      <AbsoluteFill style={{background: C.ink}} />
-      {b.img ? <Img src={staticFile(b.img)} style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: b.imgPos ?? "50% 50%", opacity: 0.32, filter: "grayscale(0.4) contrast(1.1)", scale: String(1.08 + 0.06 * p(f, 0, dur))}} /> : null}
-      <AbsoluteFill style={{background: "linear-gradient(180deg, rgba(21,21,29,.85), rgba(21,21,29,.55) 40%, rgba(21,21,29,.85))"}} />
-      <ActionLines color="#fff" opacity={0.08} angle={-10} seed={`${b.title}l`} />
-      {b.mark ? <div style={{position: "absolute", left: 0, right: 0, top: 560, textAlign: "center", fontFamily: BRUSH, fontSize: 760, lineHeight: 1, color: acc, opacity: 0.16}}>{b.mark}</div> : null}
-      <ChapterHead zh={b.zh} kicker={b.kicker} title={b.title} dark />
+      <AbsoluteFill style={{background: light ? C.paper : C.ink}} />
+      {b.img ? <Img src={staticFile(b.img)} style={{position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: b.imgPos ?? "50% 50%", opacity: light ? 0.22 : 0.32, filter: "grayscale(0.4) contrast(1.1)", scale: String(1.08 + 0.06 * p(f, 0, dur))}} /> : null}
+      {light ? <Halftone bg="rgba(247,244,236,.55)" dot="rgba(25,25,34,.12)" /> : <AbsoluteFill style={{background: "linear-gradient(180deg, rgba(21,21,29,.85), rgba(21,21,29,.55) 40%, rgba(21,21,29,.85))"}} />}
+      <ActionLines color={light ? C.ink : "#fff"} opacity={light ? 0.06 : 0.08} angle={-10} seed={`${b.title}l`} />
+      {b.mark ? <div style={{position: "absolute", left: 0, right: 0, top: 560, textAlign: "center", fontFamily: BRUSH, fontSize: 760, lineHeight: 1, color: acc, opacity: light ? 0.3 : 0.16}}>{b.mark}</div> : null}
+      <ChapterHead zh={b.zh} kicker={b.kicker} title={b.title} dark={!light} />
       {b.items.map((t, k) => {
         const at = 12 + k * step;
         if (f < at) return null;
@@ -204,7 +216,7 @@ export const ListAct: React.FC<{b: BNList; dur: number; brand?: BNBrand}> = ({b,
         const fs = Math.min(36, Math.floor(rowH * 0.3));
         return (
           <div key={k} style={{position: "absolute", left: 64, right: 64, top: y, height: rowH - 14, display: "flex", alignItems: "center", gap: 18, translate: `${(1 - s) * (fromL ? -1100 : 1100)}px 0`, rotate: `${fromL ? -1.2 : 1.2}deg`}}>
-            <div style={{width: rowH - 30, height: rowH - 30, flexShrink: 0, borderRadius: "50%", background: last ? C.red : acc, border: `6px solid #fff`, boxShadow: `6px 6px 0 #000`, display: "flex", alignItems: "center", justifyContent: "center", ...dela(Math.round((rowH - 30) * 0.5), last ? "#fff" : C.ink)}}>{k + 1}</div>
+            <div style={{width: rowH - 30, height: rowH - 30, flexShrink: 0, borderRadius: "50%", background: last ? C.red : acc, border: `6px solid ${light ? C.ink : "#fff"}`, boxShadow: `6px 6px 0 ${light ? C.ink : "#000"}`, display: "flex", alignItems: "center", justifyContent: "center", ...dela(Math.round((rowH - 30) * 0.5), last ? "#fff" : C.ink)}}>{k + 1}</div>
             <div style={{flex: 1, background: last ? C.y : "#fff", border: `5px solid ${C.ink}`, boxShadow: `8px 8px 0 ${last ? C.red : "#000"}`, padding: "8px 20px", fontFamily: last ? FONT.dela : FONT.golos, fontWeight: 800, fontSize: last ? fs + 4 : fs, lineHeight: 1.12, color: last ? C.red : C.ink}}>{t}</div>
           </div>
         );
@@ -284,7 +296,7 @@ export const PageAct: React.FC<{b: BNPage; dur: number; brand?: BNBrand}> = ({b,
         <>
           <Burst x={540} y={960} r={250} color={acc} stroke={C.ink} scale={0.3 + 0.7 * bs} rot={f * 0.3} seed={`${b.title}pg`} />
           <div style={{position: "absolute", left: 0, right: 0, top: 960 - 90, textAlign: "center", scale: String(0.3 + 0.7 * bs)}}>
-            <div style={dela(fitW(factStr(b.big), 110, 420, 0.8), C.ink, {whiteSpace: "nowrap", textShadow: "6px 6px 0 #fff"})}>{countNum(f, zoomEnd + 4, 22, b.big)}</div>
+            <div style={numStyle(fitW(factStr(b.big), 110, 420, 0.8), C.ink)}>{countNum(f, zoomEnd + 4, 22, b.big)}</div>
             <div style={{fontFamily: FONT.golos, fontWeight: 800, fontSize: 30, lineHeight: 1.15, color: C.ink, margin: "8px auto 0", width: 380}}>{b.big.text}</div>
           </div>
         </>
