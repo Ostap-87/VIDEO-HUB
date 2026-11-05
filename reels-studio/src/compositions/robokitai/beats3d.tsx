@@ -18,17 +18,17 @@ import {Alert, BRUSH_CJK, EO, INTER, MONO, NamePlate, PANEL, Paper, RK, ScenePan
 import {Sounds, type Snd} from "./beats2d";
 import type {RobokitaiProps} from "./types";
 
-const useT = () => {
+export const useT = () => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   return {f, fps, t: f / fps};
 };
 // точка 3D → кадр 1080×1920 (через панель)
-const toScreen = (p: V3, cam: Cam): [number, number] => {
+export const toScreen = (p: V3, cam: Cam): [number, number] => {
   const [x, y] = project(p, cam, PANEL.w, PANEL.h);
   return [PANEL.x + x, PANEL.y + y];
 };
-const HomeBadge: React.FC<{label: string}> = ({label}) => (
+export const HomeBadge: React.FC<{label: string}> = ({label}) => (
   <span style={{display: "inline-flex", alignItems: "center", gap: 8, marginLeft: 6}}>
     <span style={{display: "inline-flex", alignItems: "center", justifyContent: "center", width: 46, height: 46, borderRadius: 9, background: RK.red, color: RK.paper, fontFamily: BRUSH_CJK, fontSize: 36, rotate: "-6deg"}}>家</span>
     <span style={{fontFamily: INTER, fontWeight: 800, fontSize: 32, color: RK.red}}>{label}</span>
@@ -204,7 +204,7 @@ const SlamInset: React.FC<{tb: number; label: string}> = ({tb, label}) => {
   );
 };
 
-const TargetRing: React.FC<{p: [number, number]; pulse: number; o?: number}> = ({p, pulse, o = 1}) => (
+export const TargetRing: React.FC<{p: [number, number]; pulse: number; o?: number}> = ({p, pulse, o = 1}) => (
   <group position={[p[0], 0.016, p[1]]} rotation={[-Math.PI / 2, 0, 0]}>
     <mesh>
       <ringGeometry args={[0.62, 0.74, 40]} />
@@ -313,7 +313,7 @@ const TW_CAM: [number, Cam][] = [
 const THR = {w: 0.3, h: 0.12};
 const GAP = {dx: 0.62, w: 0.08};
 // лидар Скаута вниз-вперёд: вертикальный веер качается вправо-влево
-const FloorScan: React.FC<{t: number; o: number}> = ({t, o}) =>
+export const FloorScan: React.FC<{t: number; o: number}> = ({t, o}) =>
   o <= 0.01 ? null : (
     <group position={[0.52, -0.11, 0]} rotation={[0, Math.sin(t * 2.4) * 0.55, -0.62]}>
       <mesh rotation={[0, 0, 0]}>
@@ -327,7 +327,7 @@ const FloorScan: React.FC<{t: number; o: number}> = ({t, o}) =>
     </group>
   );
 // выноска размера на кадре: от точки a к плашке
-const Callout: React.FC<{a: [number, number]; b: [number, number]; label: string; at: number; color?: string; tick?: [number, number]}> = ({a, b, label, at, color = RK.ink, tick}) => {
+export const Callout: React.FC<{a: [number, number]; b: [number, number]; label: string; at: number; color?: string; tick?: [number, number]}> = ({a, b, label, at, color = RK.ink, tick}) => {
   const f = useCurrentFrame();
   const s = usePop(at, 12);
   if (s <= 0) return null;

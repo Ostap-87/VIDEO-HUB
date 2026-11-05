@@ -97,7 +97,8 @@ export const Header: React.FC<{series: string; zh: string; ep: number; city?: st
       <div style={{display: "flex", alignItems: "center", gap: 14, fontFamily: MONO_CJK, fontWeight: 700, fontSize: 25, letterSpacing: "0.12em", color: RK.ink}}>
         <span style={{display: "inline-flex", alignItems: "center", justifyContent: "center", width: 40, height: 40, background: RK.red, color: RK.paper, borderRadius: 7, fontFamily: BRUSH_CJK, fontSize: 30, letterSpacing: 0, rotate: "-4deg"}}>机</span>
         <span>
-          {series.toUpperCase()} · {zh}
+          {series.toUpperCase()}
+          {zh ? ` · ${zh}` : ""}
         </span>
         <span style={{color: RK.muted}}>·</span>
         <span>СЕРИЯ {ep}</span>

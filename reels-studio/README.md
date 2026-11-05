@@ -188,6 +188,12 @@ TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts RobokitaiEpisode /
 python3 tools/robokitai/china_map.py
 ```
 Подробно — `CLAUDE.md`, «Робокитай — сериал Aura».
+Версия 2 с драматургией (холодное открытие, дедлайн «до 11.11», клиент-скептик, угадайка, кризис, поворот, крючок) —
+композиция `RobokitaiDrama`, props `props/robokitai/001-hangzhou-v2.json`:
+```bash
+TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts RobokitaiDrama /dev/shm/rk/out.mp4 --props=props/robokitai/001-hangzhou-v2.json --bundle-cache=false --concurrency=3 --timeout=180000 --crf=20
+# пробные кадры — RobokitaiDramaPreview с "frames" в props (кадр N = frames[N]), --sequence --frames=0-<N-1>
+```
 
 ## Пересборка готового ролика (вырезать кусок, новый звук)
 

@@ -135,10 +135,11 @@ const along = (pts: [number, number][], k: number) => {
 };
 const poly = (pts: [number, number][]) => pts.map((q, i) => `${i ? "L" : "M"}${q[0].toFixed(1)},${q[1].toFixed(1)}`).join("");
 
-export const MapBeat: React.FC<{P: RobokitaiProps}> = ({P}) => {
+// k — темп (1 — как в серии 1; 0,72 — короче, для драмы v2): все моменты сцены умножаются на k
+export const MapBeat: React.FC<{P: RobokitaiProps; k?: number}> = ({P, k = 1}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const sec = f / fps;
+  const sec = f / fps / k;
   const route = P.map.route.map((n) => CITY_XY[n]).filter(Boolean);
   const to = P.map.route[P.map.route.length - 1];
   const from = P.map.route[0];
@@ -160,10 +161,10 @@ export const MapBeat: React.FC<{P: RobokitaiProps}> = ({P}) => {
   const lineK = p01(sec, 1.25, 2.85, EIO);
   const path = catmull(route.map(scr), 12);
   const head = along(path, lineK);
-  const arrive = Math.round(2.9 * fps);
+  const arrive = Math.round(2.9 * k * fps);
   const end = scr(CITY_XY[to]);
   const start = scr(CITY_XY[from]);
-  const titleAt = Math.round(3.05 * fps);
+  const titleAt = Math.round(3.05 * k * fps);
   const ts = usePop(titleAt, 15);
   const shake = f >= arrive && f < arrive + 8 ? Math.sin((f - arrive) * 2.4) * (8 - (f - arrive)) : 0;
   return (
@@ -232,7 +233,7 @@ export const MapBeat: React.FC<{P: RobokitaiProps}> = ({P}) => {
           <div style={{fontFamily: INTER, fontWeight: 700, fontSize: 40, letterSpacing: "-0.02em", lineHeight: 1.15, color: RK.ink, marginTop: 4, whiteSpace: "nowrap"}}>{P.city.tagline}</div>
         </div>
       ) : null}
-      <Sounds list={[[0.0, "@swipe-1", 0.35], [1.25, "@whoosh-2", 0.45], [1.6, "@sweep-1", 0.12], [2.9, "@stamp-1", 0.6], [3.05, "@pop-1", 0.3]]} />
+      <Sounds list={([[0.0, "@swipe-1", 0.35], [1.25, "@whoosh-2", 0.45], [1.6, "@sweep-1", 0.12], [2.9, "@stamp-1", 0.6], [3.05, "@pop-1", 0.3]] as Snd[]).map(([a, n, v]) => [a * k, n, v] as Snd)} />
     </AbsoluteFill>
   );
 };

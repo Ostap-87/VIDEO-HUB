@@ -124,7 +124,8 @@ Stories-анонсы каруселей — `npm run announce` (`finished-videos
 Команда Aura (05.11.2026, имена утверждены пользователем): 16 3D-персонажей — Ави, Скаут, Леон, Нова, Роли, Кэрри, Арми, Титан, Тихон, Пятёрка, Рубин, Шустрик, Рыжик, Сокол, Стриж, Аист; портреты, превью сцен применения и лист — `finished-videos/обложки/aura-персонажи/` (`AuraCast`, `AuraScenesPreview`, `tools/aura-cast/sheet.py`), «имя → модель и скин» — `reels-studio/CLAUDE.md`, «Команда Aura».
 Скаут на тёмном складе и в пещере (05.11.2026, DarkScan 2.0: реалистичный мир, лидар с облаком точек, карта SLAM, «как видит робот») — кадры `scene-2-dark-scan*.png`, `scene-5-dark-cave*.png` там же, ролики 7 с `scene-2-dark-scan.mp4`, `scene-5-dark-cave.mp4` (вне git), порядок — `reels-studio/CLAUDE.md`, «Скаут в темноте».
 Сериал Aura «Робокитай · 机器人中国» (05.11.2026, без голоса: «чтобы по картинкам было всё понятно») — композиция `RobokitaiEpisode`, серия = статья блога Aura,
-props `reels-studio/props/robokitai/NNN-<город>.json`, ролики `finished-videos/robokitai-NNN-<город>.mp4` (вне git); порядок — `reels-studio/CLAUDE.md`, «Робокитай — сериал Aura».
+props `reels-studio/props/robokitai/NNN-<город>.json`, ролики `finished-videos/robokitai-NNN-<город>.mp4` (вне git); версия 2 с драматургией (дедлайн, клиент-скептик,
+угадайка, кризис, поворот, крючок) — композиция `RobokitaiDrama`, props `…-v2.json`; порядок — `reels-studio/CLAUDE.md`, «Робокитай — сериал Aura».
 Какой бренд у ролика, понятно из слов пользователя; не ясно — спроси, работу не останавливая.
 
 ## Присланный ролик — сразу в работу (решение пользователя 08.10.2026)
