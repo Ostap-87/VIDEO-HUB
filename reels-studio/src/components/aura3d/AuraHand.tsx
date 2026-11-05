@@ -7,10 +7,12 @@
 // rot — [наклон x, разворот y, крен z] (порядок YXZ: разворот вокруг вертикали — последним); между ключами всё плавно. wiggle — окна [от, до], когда пальцы шевелятся волной. items — предметы (кубик/шарик):
 // start, size, carry — окна, когда предмет зажат между большим и указательным (точка щипка считается по позе пальцев).
 // Чтобы взять предмет, запястье ставится функцией handReach(точка предмета, поворот) — щипок придёт ровно в предмет.
+// Скины (05.11.2026): skin="aura" — как было; "chrome" — чёрные глянцевые фаланги, хромированные накладки и предплечье,
+// красные кольца шарниров #E5383B (ближе к референсу). Детали: винты на тыльной накладке, сухожилия-тросики, жгут на запястье.
 import React from "react";
 import * as THREE from "three";
 import {useCurrentFrame, useVideoConfig} from "remotion";
-import {Capsule, Cyl, Glow, Graphite, Parchment, RBox, Ring, Shadow, Sph, smooth, win, type V3} from "./kit";
+import {Bolt, Capsule, Cyl, Glow, Graphite, Hose, Led, Parchment, RBox, Ring, Shadow, SkinScope, Sph, smooth, win, type SkinId, type V3} from "./kit";
 
 type Finger = {base: V3; spread: number; lens: V3};
 export const HAND = {
@@ -179,6 +181,12 @@ export const HandRig: React.FC<{pose: HandPose}> = ({pose}) => (
     <RBox s={[0.15, 0.2, 0.08]} r={0.04} p={[-0.16, 0.27, -0.05]} rot={[0, 0, 0.35]}>
       <Parchment />
     </RBox>
+    {/* винты тыльной накладки, сухожилия-тросики к пальцам, диод */}
+    {[-0.13, 0.15].flatMap((x) => [0.33, 0.55].map((y) => <Bolt key={`${x}${y}`} p={[x, y, 0.074]} rot={[Math.PI / 2, 0, 0]} r={0.011} />))}
+    {[-0.05, 0.05].map((x) => (
+      <Hose key={x} pts={[[x * 0.6, 0.12, 0.07], [x, 0.3, 0.082], [x * 1.1, 0.5, 0.082], [x * 1.2, 0.6, 0.06]]} r={0.006} mat="metal" seg={16} />
+    ))}
+    <Led p={[0.1, 0.17, 0.068]} r={0.009} k={2.2} />
     {HAND.fingers.map((F, k) => (
       <group key={k} position={F.base} rotation={[0, 0, F.spread + (pose.sp?.[k] ?? 0)]}>
         <Digit lens={F.lens} curls={pose.f[k]} w={k === 3 ? 0.88 : 1} />
@@ -190,14 +198,14 @@ export const HandRig: React.FC<{pose: HandPose}> = ({pose}) => (
   </>
 );
 
-export const HandModel: React.FC<{plan: HandPlan; t?: number}> = ({plan, t: tProp}) => {
+export const HandModel: React.FC<{plan: HandPlan; t?: number; skin?: SkinId}> = ({plan, t: tProp, skin}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = tProp ?? frame / fps;
   const st = handState(plan, t);
   const {pose} = st;
   return (
-    <>
+    <SkinScope skin={skin}>
       <group position={st.p} rotation={new THREE.Euler(st.rot[0], st.rot[1], st.rot[2], "YXZ")}>
         {/* предплечье и запястье */}
         <Cyl a={0.15} b={0.17} h={0.7} p={[0, -0.38, 0]}>
@@ -212,6 +220,16 @@ export const HandModel: React.FC<{plan: HandPlan; t?: number}> = ({plan, t: tPro
         <Ring r={0.125} tube={0.008} p={[0, 0.03, 0]} rot={[Math.PI / 2, 0, 0]}>
           <Glow k={2} />
         </Ring>
+        {/* жгут кабелей из предплечья в запястье, шов и винты предплечья */}
+        {[-0.06, 0.0, 0.06].map((x) => (
+          <Hose key={x} pts={[[x, -0.3, -0.155], [x * 1.1, -0.1, -0.13], [x * 0.8, 0.02, -0.1]]} r={0.012} mat={x === 0 ? "dark" : "rubber"} seg={14} />
+        ))}
+        <RBox s={[0.008, 0.5, 0.008]} r={0.003} p={[0.162, -0.4, 0]}>
+          <meshStandardMaterial color="#0D1014" roughness={0.9} />
+        </RBox>
+        {[-0.2, -0.55].map((y) => (
+          <Bolt key={y} p={[0, y, 0.163]} rot={[Math.PI / 2, 0, 0]} r={0.013} />
+        ))}
         <HandRig pose={pose} />
       </group>
       {(plan.items ?? []).map((it, k) => {
@@ -236,7 +254,7 @@ export const HandModel: React.FC<{plan: HandPlan; t?: number}> = ({plan, t: tPro
           </group>
         );
       })}
-    </>
+    </SkinScope>
   );
 };
 

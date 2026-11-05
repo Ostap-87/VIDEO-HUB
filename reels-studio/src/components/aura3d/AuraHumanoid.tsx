@@ -7,19 +7,22 @@
 // План: stays — куда идти (шаг с обратной кинематикой ног: ступни не скользят, руки маховые, таз покачивается);
 // gestures — {at, kind}: wave (помахать), point (показать вперёд), present (пригласить, руки в стороны), bow (поклон),
 // nod (кивнуть), look (оглядеться).
+// Скины (05.11.2026): skin="aura" — как было; "navy" — белые панели, тёмно-синие #1F2A5A вставки, красные #E5383B акценты,
+// белые глаза, серые кисти (ближе к референсу). Детали: болты плеч, кабели шеи, шильдик-полосы на плече, швы панелей.
 import React from "react";
 import * as THREE from "three";
 import {useCurrentFrame, useVideoConfig} from "remotion";
-import {Box, Capsule, Cyl, Glow, Graphite, Metal, Parchment, RBox, Ring, Seam, Shadow, Sph, Visor, clamp01, pathAt, smooth, type Stay, type V3} from "./kit";
+import {Accent, Bolt, Box, Capsule, Cyl, EyeGlow, Glow, Graphite, Hose, Metal, Parchment, RBox, Ring, Seam, Shadow, SkinScope, Sph, Visor, clamp01, pathAt, smooth, useSkin, type Stay, type V3} from "./kit";
 import {HandRig, POSES, type HandPose} from "./AuraHand";
 
 export type HumanoidGesture = {at: number; kind: "wave" | "point" | "pointUp" | "present" | "bow" | "nod" | "look" | "pull"};
 export type HumanoidPlan = {stays: Stay[]; speed?: number; gestures?: HumanoidGesture[]};
+export type HumanoidSkin = "aura" | "navy";
 export const HUMANOID = {hipY: 1.71, hipX: 0.15, L1: 0.82, L2: 0.78, ankle: 0.14, shX: 0.47, shY: 0.73, UA: 0.58, FA: 0.5, hand: 0.4, cycle: 1.1};
 // pull — «вытащить из-за края» (Reels из карусели): правая рука тянется вперёд, на 35 % хватает, тянет на себя, отпускает
 export const H_DUR: Record<HumanoidGesture["kind"], number> = {wave: 2.6, point: 1.9, pointUp: 2.1, present: 1.9, bow: 2.0, nod: 1.2, look: 2.4, pull: 1.1};
 
-type Arm = {flex: number; abd: number; elbow: number; twist: number; hand: HandPose};
+export type Arm = {flex: number; abd: number; elbow: number; twist: number; hand: HandPose};
 type Leg = {hip: number; knee: number; ankle: number};
 type HPose = {
   pos: V3;
@@ -137,8 +140,9 @@ export const humanoidPose = (plan: HumanoidPlan, t: number): HPose => {
 };
 
 // рука: плечо (подъём вперёд flex, в сторону abd, поворот twist) → локоть → кисть (HandRig)
-const ArmChain: React.FC<{side: 1 | -1; a: Arm}> = ({side, a}) => {
+export const ArmChain: React.FC<{side: 1 | -1; a: Arm}> = ({side, a}) => {
   const {UA, FA, hand} = HUMANOID;
+  const handSkin = useSkin().hand;
   return (
     <group rotation={new THREE.Euler(-a.flex, a.twist, side * a.abd, "ZXY")}>
       <Sph r={0.11}>
@@ -148,8 +152,15 @@ const ArmChain: React.FC<{side: 1 | -1; a: Arm}> = ({side, a}) => {
         <Parchment />
       </RBox>
       <Box s={[0.012, 0.16, 0.06]} p={[side * 0.087, -UA * 0.38, 0]}>
-        <meshStandardMaterial color="#FFF65D" roughness={0.45} />
+        <Accent />
       </Box>
+      {/* шильдик-полосы на плече (на референсе — номер; у нас — простые штрихи) */}
+      {[0, 1].map((k) => (
+        <Box key={k} s={[0.012, 0.022, 0.1]} p={[side * 0.087, -UA * 0.2 - k * 0.035, 0]}>
+          <Graphite />
+        </Box>
+      ))}
+      <Bolt p={[0, -0.06, 0.087]} rot={[Math.PI / 2, 0, 0]} r={0.012} />
       <group position={[0, -UA, 0]} rotation={[-a.elbow, 0, 0]}>
         <group rotation={[0, 0, Math.PI / 2]}>
           <Cyl a={0.085} b={0.085} h={0.2}>
@@ -163,8 +174,9 @@ const ArmChain: React.FC<{side: 1 | -1; a: Arm}> = ({side, a}) => {
           <Graphite />
         </RBox>
         <RBox s={[0.155, 0.05, 0.155]} r={0.02} p={[0, -FA + 0.08, 0]}>
-          <meshPhysicalMaterial color="#FFF65D" roughness={0.35} clearcoat={0.9} />
+          <Accent />
         </RBox>
+        <Hose pts={[[0, -0.05, -0.08], [0.02, -FA * 0.5, -0.085], [0, -FA + 0.12, -0.08]]} r={0.01} seg={12} />
         {/* запястье — шарнир со светящимся кольцом; кисть вплотную: пальцы вниз, ладонь к бедру; левая — зеркальная правая */}
         <Sph r={0.068} p={[0, -FA + 0.005, 0]}>
           <Graphite />
@@ -174,7 +186,9 @@ const ArmChain: React.FC<{side: 1 | -1; a: Arm}> = ({side, a}) => {
         </Ring>
         <group position={[0, -FA + 0.045, 0]} scale={[side, 1, 1]}>
           <group rotation={new THREE.Euler(0, -Math.PI / 2, Math.PI, "YXZ")} scale={hand}>
-            <HandRig pose={a.hand} />
+            <SkinScope skin={handSkin}>
+              <HandRig pose={a.hand} />
+            </SkinScope>
           </group>
         </group>
       </group>
@@ -198,7 +212,7 @@ const LegChain: React.FC<{side: 1 | -1; l: Leg}> = ({side, l}) => {
       {/* лимонные полосы на бедре (на референсе — красные) */}
       {[0, 1, 2, 3, 4].map((k) => (
         <Box key={k} s={[0.05, 0.03, 0.01]} p={[side * 0.06, -0.3 - k * 0.055, 0.138]} r={[0, 0, side * -0.35]}>
-          <meshStandardMaterial color="#FFF65D" roughness={0.45} />
+          <Accent />
         </Box>
       ))}
       <group position={[0, -L1, 0]} rotation={[l.knee, 0, 0]}>
@@ -235,7 +249,7 @@ const LegChain: React.FC<{side: 1 | -1; l: Leg}> = ({side, l}) => {
             <Graphite />
           </RBox>
           <Box s={[0.012, 0.035, 0.16]} p={[side * 0.097, -0.06, 0.1]}>
-            <meshStandardMaterial color="#FFF65D" roughness={0.45} />
+            <Accent />
           </Box>
         </group>
       </group>
@@ -243,13 +257,14 @@ const LegChain: React.FC<{side: 1 | -1; l: Leg}> = ({side, l}) => {
   );
 };
 
-export const HumanoidModel: React.FC<{plan: HumanoidPlan; t?: number}> = ({plan, t: tProp}) => {
+export const HumanoidModel: React.FC<{plan: HumanoidPlan; t?: number; skin?: HumanoidSkin}> = ({plan, t: tProp, skin}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = tProp ?? frame / fps;
   const P = humanoidPose(plan, t);
   const {hipX, shX, shY} = HUMANOID;
   return (
+    <SkinScope skin={skin}>
     <group position={P.pos}>
       <Shadow w={1.3} d={1.0} />
       <group rotation={[0, P.yaw, 0]}>
@@ -297,11 +312,18 @@ export const HumanoidModel: React.FC<{plan: HumanoidPlan; t?: number}> = ({plan,
               {/* эмблема-треугольник на груди: светящийся лимонный контур */}
               <mesh position={[0, 0.08, 0.205]} rotation={[0, 0, Math.PI / 2]}>
                 <torusGeometry args={[0.065, 0.013, 8, 3]} />
-                <meshStandardMaterial color="#FFF65D" emissive="#FFF65D" emissiveIntensity={P.glow * 0.9} />
+                <Glow k={P.glow * 0.9} />
               </mesh>
               <RBox s={[0.4, 0.05, 0.02]} r={0.01} p={[0, -0.16, 0.2]}>
                 <Graphite />
               </RBox>
+              {/* швы грудной панели и винты */}
+              {[-1, 1].map((sx) => (
+                <Box key={sx} s={[0.006, 0.36, 0.01]} p={[sx * 0.2, 0.02, 0.2]}>
+                  <Seam />
+                </Box>
+              ))}
+              {[-1, 1].flatMap((sx) => [0.16, -0.08].map((y) => <Bolt key={`${sx}${y}`} p={[sx * 0.26, y, 0.19]} rot={[Math.PI / 2, 0, 0]} r={0.011} />))}
             </group>
             {/* плечи и руки */}
             {[-1, 1].map((s) => (
@@ -309,6 +331,9 @@ export const HumanoidModel: React.FC<{plan: HumanoidPlan; t?: number}> = ({plan,
                 <RBox s={[0.25, 0.26, 0.3]} r={0.12} p={[s * 0.03, 0.06, 0]}>
                   <Parchment />
                 </RBox>
+                {[-0.07, 0.07].map((z) => (
+                  <Bolt key={z} p={[s * 0.06, 0.19, z]} r={0.012} />
+                ))}
                 <group position={[s * 0.16, 0.05, 0]} rotation={[0, 0, Math.PI / 2]}>
                   <Cyl a={0.09} b={0.09} h={0.03}>
                     <Graphite />
@@ -329,10 +354,14 @@ export const HumanoidModel: React.FC<{plan: HumanoidPlan; t?: number}> = ({plan,
                 <Metal />
               </Cyl>
             ))}
+            {/* кабели шеи сзади */}
+            {[-1, 1].map((s) => (
+              <Hose key={s} pts={[[s * 0.1, 0.82, -0.15], [s * 0.08, 0.95, -0.12], [s * 0.05, 1.07, -0.07]]} r={0.012} seg={12} />
+            ))}
             <group position={[0, 1.04, 0]} rotation={new THREE.Euler(P.head.pitch, P.head.yaw, P.head.roll, "YXZ")}>
               <mesh position={[0, 0.2, -0.01]} scale={[0.93, 1.06, 1.04]}>
                 <sphereGeometry args={[0.235, 32, 24]} />
-                <meshPhysicalMaterial color="#F8F6F3" metalness={0.1} roughness={0.3} clearcoat={1} clearcoatRoughness={0.06} />
+                <Parchment />
               </mesh>
               {/* визор */}
               <mesh position={[0, 0.17, 0.07]} scale={[0.86, 0.72, 0.78]}>
@@ -343,13 +372,13 @@ export const HumanoidModel: React.FC<{plan: HumanoidPlan; t?: number}> = ({plan,
               {[-0.07, 0.07].map((x) => (
                 <mesh key={x} position={[x, 0.19, 0.25]} scale={[1, P.blink ? 0.15 : 1, 0.5]}>
                   <capsuleGeometry args={[0.014, 0.05, 4, 8]} />
-                  <meshStandardMaterial color="#FFF65D" emissive="#FFF65D" emissiveIntensity={P.glow} />
+                  <EyeGlow k={P.glow} />
                 </mesh>
               ))}
               {/* лимонное «V» на лбу шлема */}
               {[-1, 1].map((s) => (
                 <Box key={s} s={[0.035, 0.12, 0.03]} p={[s * 0.04, 0.39, 0.13]} r={[-0.55, 0, s * 0.55]}>
-                  <meshPhysicalMaterial color="#FFF65D" roughness={0.35} clearcoat={0.9} />
+                  <Accent />
                 </Box>
               ))}
               {/* «уши» — диски по бокам */}
@@ -368,5 +397,6 @@ export const HumanoidModel: React.FC<{plan: HumanoidPlan; t?: number}> = ({plan,
         </group>
       </group>
     </group>
+    </SkinScope>
   );
 };

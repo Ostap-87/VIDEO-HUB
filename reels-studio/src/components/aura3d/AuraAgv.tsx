@@ -8,9 +8,11 @@
 // - lift — ключевые кадры подъёма площадки 0…1 ([[3.5, 0], [4, 1], [5, 1], [5.4, 0]]);
 // - boxes — сколько коробок стоит на площадке в начале (стопкой, до 3), loads — моменты, когда сверху опускается ещё одна
 //   (её «кладёт» манипулятор или человек), unloads — моменты, когда верхняя съезжает назад и остаётся на полу.
+// Скины (05.11.2026): skin="aura" — как было; "orange" — оранжевый корпус #F26B1D, чёрный пояс и бампер (как на референсе,
+// без логотипов и наклеек с текстом). Детали: болты площадки, шильдики, решётка динамика, контакты зарядки, кнопка-стоп.
 import React from "react";
 import {useCurrentFrame, useVideoConfig} from "remotion";
-import {Alu, Box, CargoBox, Cyl, Glow, Graphite, Metal, Parchment, RBox, Rubber, Seam, Shadow, Visor, clamp01, pathAt, track, type Stay, type V3} from "./kit";
+import {Accent, Alu, Bolt, Box, CargoBox, Cyl, Glow, Graphite, Metal, Parchment, RBox, Rubber, Seam, Shadow, SkinScope, Tag, Vents, Visor, clamp01, pathAt, track, useSkin, type Stay, type V3} from "./kit";
 
 export type AgvPlan = {stays: Stay[]; speed?: number; lift?: [number, number][]; boxes?: number; loads?: number[]; unloads?: number[]};
 
@@ -63,7 +65,21 @@ const Wheel: React.FC<{z: number; a: number}> = ({z, a}) => (
   </group>
 );
 
-export const AgvModel: React.FC<{plan: AgvPlan; t?: number}> = ({plan, t: tProp}) => {
+const StopButton: React.FC = () => {
+  const s = useSkin();
+  return (
+    <>
+      <Cyl a={0.06} b={0.065} h={0.025} p={[-0.82, 0.54, 0.52]}>
+        <meshStandardMaterial color="#1A1C1F" roughness={0.6} />
+      </Cyl>
+      <Cyl a={0.05} b={0.055} h={0.04} p={[-0.82, 0.555, 0.52]}>
+        <meshStandardMaterial color={s.stop ?? s.accent} roughness={0.4} />
+      </Cyl>
+    </>
+  );
+};
+
+export const AgvModel: React.FC<{plan: AgvPlan; t?: number; skin?: "aura" | "orange"}> = ({plan, t: tProp, skin}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = tProp ?? frame / fps;
@@ -86,7 +102,7 @@ export const AgvModel: React.FC<{plan: AgvPlan; t?: number}> = ({plan, t: tProp}
     return {p: [s.x + Math.cos(s.yaw) * back, bh / 2, s.z - Math.sin(s.yaw) * back], yaw: s.yaw + 0.12};
   };
   return (
-    <>
+    <SkinScope skin={skin}>
       <group position={[st.x, 0, st.z]} rotation={[0, st.yaw, 0]}>
         <Shadow w={2.7} d={2.0} />
         <group rotation={[0, 0, pitch]}>
@@ -98,7 +114,7 @@ export const AgvModel: React.FC<{plan: AgvPlan; t?: number}> = ({plan, t: tProp}
             <Parchment />
           </RBox>
           <RBox s={[1.985, 0.09, 1.365]} r={0.035} p={[0, 0.29, 0]}>
-            <meshPhysicalMaterial color="#FFF65D" metalness={0.1} roughness={0.35} clearcoat={0.9} clearcoatRoughness={0.08} />
+            <Accent />
           </RBox>
           {/* верх корпуса под площадкой — матовый тёмный (глянцевый ловил лимонный свет и казался оливковым) */}
           <RBox s={[1.9, 0.05, 1.28]} r={0.02} p={[0, 0.515, 0]}>
@@ -129,10 +145,20 @@ export const AgvModel: React.FC<{plan: AgvPlan; t?: number}> = ({plan, t: tProp}
           ))}
           <Wheel z={0.71} a={-wl} />
           <Wheel z={-0.71} a={-wr} />
-          {/* кнопка-стоп сзади: лимонная */}
-          <Cyl a={0.05} b={0.055} h={0.04} p={[-0.82, 0.555, 0.52]}>
-            <meshStandardMaterial color="#FFF65D" roughness={0.4} />
-          </Cyl>
+          {/* кнопка-стоп сзади: лимонная у Aura, красная у оранжевого */}
+          <StopButton />
+          {/* шильдики по бокам, решётка динамика спереди, контакты зарядки сзади */}
+          {[-1, 1].map((s) => (
+            <Tag key={s} p={[-0.45, 0.38, s * 0.672]} rot={[0, s > 0 ? 0 : Math.PI, 0]} w={0.24} h={0.1} />
+          ))}
+          <Vents p={[0.986, 0.24, 0.42]} rot={[0, Math.PI / 2, 0]} n={3} w={0.14} gap={0.03} />
+          <Vents p={[0.986, 0.24, -0.42]} rot={[0, Math.PI / 2, 0]} n={3} w={0.14} gap={0.03} />
+          {[-0.2, 0.2].map((z) => (
+            <Box key={z} s={[0.02, 0.06, 0.16]} p={[-0.99, 0.36, z]}>
+              <meshStandardMaterial color="#C8A458" metalness={0.9} roughness={0.25} />
+            </Box>
+          ))}
+          {[-0.82, 0.82].flatMap((x) => [-0.58, 0.58].map((z) => <Bolt key={`${x}${z}`} p={[x, 0.5, z]} r={0.016} />))}
           {/* подъёмник и площадка */}
           {lift > 0.01 ? (
             <Cyl a={0.12} b={0.12} h={lift + 0.04} p={[0, 0.52 + (lift + 0.04) / 2, 0]}>
@@ -143,6 +169,7 @@ export const AgvModel: React.FC<{plan: AgvPlan; t?: number}> = ({plan, t: tProp}
             <RBox s={[1.7, 0.04, 1.2]} r={0.015} p={[0, 0.56, 0]}>
               <Alu />
             </RBox>
+            {[-0.8, 0.8].flatMap((x) => [-0.55, 0.55].map((z) => <Bolt key={`${x}${z}`} p={[x, 0.58, z]} r={0.014} />))}
             {[-0.5, 0, 0.5].flatMap((x) =>
               [-0.22, 0.22].map((z) => (
                 <Cyl key={`${x}${z}`} a={0.085} b={0.085} h={0.006} p={[x, 0.581, z]}>
@@ -196,6 +223,6 @@ export const AgvModel: React.FC<{plan: AgvPlan; t?: number}> = ({plan, t: tProp}
           </group>
         );
       })}
-    </>
+    </SkinScope>
   );
 };

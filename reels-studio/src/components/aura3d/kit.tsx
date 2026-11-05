@@ -5,12 +5,18 @@
 // - ключевые кадры `track` (значение по времени с плавным переходом) и мягкая тень на полу `Shadow`;
 // - `Stage` — 3D-сцена (весь кадр или прямоугольник) с камерой и светом как у маскота; модели ставятся в мировых
 //   единицах (1 ед. ≈ 0,5 м: маскот ~3,4 ед. ростом), `groundAt` переводит точку кадра (px) в точку на полу сцены.
-// Модели: AuraAgv.tsx, AuraArm.tsx, AuraDog.tsx, AuraHand.tsx, витрина — compositions/Aura3DShowcase.tsx.
-import React, {useMemo} from "react";
+// - скины (05.11.2026, «манипуляторы и роборуки другого цвета и другого дизайна»): `SkinScope skin="navy"` меняет цвета
+//   материалов Parchment / Graphite / Accent / Glow у всего, что внутри; по умолчанию — палитра Aura (как было);
+// - детали (05.11.2026, «максимально детально»): болты `Bolt` / `BoltRing`, шланги и кабели `Hose`, гофра `Bellows`,
+//   таблички-шильдики `Tag` (только простые фигуры, без чужих логотипов и надписей), прорези `Vents`, диоды `Led`.
+// Модели: AuraAgv.tsx, AuraArm.tsx, AuraDog.tsx, AuraHand.tsx, AuraHumanoid.tsx, AuraWheelHumanoid.tsx, AuraDrone.tsx,
+// конвейер и поддон — Conveyor.tsx, сцены применения — Scenes.tsx; витрина — compositions/Aura3DShowcase.tsx, портреты — AuraCast.tsx.
+import React, {useContext, useEffect, useMemo} from "react";
 import * as THREE from "three";
 import {ThreeCanvas} from "@remotion/three";
 import {RoundedBoxGeometry} from "three/examples/jsm/geometries/RoundedBoxGeometry.js";
-import {C, CameraLook, smooth, type V3} from "../AuraMascot";
+import {useThree} from "@react-three/fiber";
+import {C, CameraLook, Cyl, Rubber, Metal, Seam, smooth, type V3} from "../AuraMascot";
 
 export {C, Paint, Joint, Rubber, Metal, Seam, Box, Sph, Cyl, Plate, CameraLook, env, lerp, smooth} from "../AuraMascot";
 export type {V3} from "../AuraMascot";
@@ -59,13 +65,184 @@ export const Ring: React.FC<{r: number; tube: number; p?: V3; rot?: V3; children
     {children}
   </mesh>
 );
-export const Glow: React.FC<{k?: number}> = ({k = 2.4}) => <meshStandardMaterial color={C.glow} emissive={C.glow} emissiveIntensity={k} />;
+// --- скины ---
+// body — основные панели (пергамент у Aura), dark — каркас и шарниры (графит), accent — полосы и метки (лимонный),
+// glow — светящиеся кольца и диоды, eye — глаза (по умолчанию glow); *Metal / *Rough / *Cc — металличность, шероховатость, лак
+export type Skin = {
+  id: string;
+  body: string;
+  bodyMetal?: number;
+  bodyRough?: number;
+  bodyCc?: number;
+  dark: string;
+  darkMetal?: number;
+  darkRough?: number;
+  darkCc?: number;
+  accent: string;
+  accentGlow?: number;
+  glow: string;
+  glowK?: number;
+  eye?: string;
+  stop?: string;
+  hand?: string; // скин кистей (имя из SKINS)
+};
+export const SKINS = {
+  // Aura — как сайт: пергамент, графит, лимонный
+  aura: {id: "aura", body: C.light, dark: C.dark, accent: C.accent, glow: C.glow},
+  // промышленный белый (референс manipulyator.png): белая эмаль, графитовые моторы, без лимонного
+  industrial: {id: "industrial", body: "#EEEEEA", bodyRough: 0.38, bodyCc: 0.55, dark: "#23262A", darkMetal: 0.3, darkRough: 0.42, darkCc: 0.3, accent: "#23262A", glow: "#9FB3C8", glowK: 0.5, stop: "#E5383B"},
+  // кобот: белый с синими акцентами и синими световыми кольцами
+  cobot: {id: "cobot", body: "#F5F7F9", bodyRough: 0.26, dark: "#3B414A", darkMetal: 0.2, darkRough: 0.35, accent: "#2B6CB0", glow: "#3D8BFF", glowK: 1.1},
+  // хром (референс roboruka.png): чёрные глянцевые фаланги, хромированные накладки, красные кольца
+  chrome: {id: "chrome", body: "#DDE2E8", bodyMetal: 1, bodyRough: 0.13, bodyCc: 1, dark: "#0D0F12", darkMetal: 0.55, darkRough: 0.14, darkCc: 1, accent: "#E5383B", glow: "#E5383B", glowK: 1.2},
+  // оранжевый AGV (референс agv.webp): оранжевый корпус, чёрные пояс и бампер, тёплые белые диоды
+  orange: {id: "orange", body: "#F26B1D", bodyRough: 0.34, bodyCc: 0.7, dark: "#1C1D20", accent: "#17181A", glow: "#FFE3B8", glowK: 0.9, stop: "#E5383B"},
+  // тёмно-синий гуманоид (референс gumanoid.webp): белые панели, тёмно-синие вставки, красные акценты
+  navy: {id: "navy", body: "#F4F5F7", bodyRough: 0.28, dark: "#1F2A5A", darkMetal: 0.12, darkRough: 0.3, accent: "#E5383B", glow: "#E5383B", glowK: 0.9, eye: "#EAF4FF", hand: "navyHand"},
+  navyHand: {id: "navyHand", body: "#E9EBEE", dark: "#4A4F57", darkMetal: 0.2, darkRough: 0.4, accent: "#E5383B", glow: "#E5383B", glowK: 0.8},
+  // белый с оранжевым (второй скин дронов): белый пластик, графит, оранжевые метки и диоды
+  whiteOrange: {id: "whiteOrange", body: "#F2F2EF", bodyRough: 0.3, dark: "#2A2C30", darkMetal: 0.2, accent: "#F26B1D", glow: "#FF8A3D", glowK: 1.1},
+} satisfies Record<string, Skin>;
+export type SkinId = keyof typeof SKINS;
+export const skinOf = (k?: SkinId | Skin | string): Skin => (k === undefined ? SKINS.aura : typeof k === "string" ? (SKINS as Record<string, Skin>)[k] ?? SKINS.aura : k);
+const SkinCtx = React.createContext<Skin>(SKINS.aura);
+export const useSkin = () => useContext(SkinCtx);
+// всё внутри — в цветах скина (по умолчанию Aura); skin — имя из SKINS или свой объект
+export const SkinScope: React.FC<{skin?: SkinId | Skin | string; children: React.ReactNode}> = ({skin, children}) => {
+  const parent = useSkin();
+  const value = skin === undefined ? parent : skinOf(skin);
+  return <SkinCtx.Provider value={value}>{children}</SkinCtx.Provider>;
+};
+
+export const Glow: React.FC<{k?: number; c?: string}> = ({k = 2.4, c}) => {
+  const s = useSkin();
+  const col = c ?? s.glow;
+  return <meshStandardMaterial color={col} emissive={col} emissiveIntensity={k * (s.glowK ?? 1)} />;
+};
+// глаза-диоды: цвет глаз скина
+export const EyeGlow: React.FC<{k?: number}> = ({k = 2.4}) => {
+  const s = useSkin();
+  const col = s.eye ?? s.glow;
+  return <meshStandardMaterial color={col} emissive={col} emissiveIntensity={k * (s.eye ? 0.8 : s.glowK ?? 1)} />;
+};
 export const Visor = () => <meshPhysicalMaterial color="#05070A" metalness={0.4} roughness={0.05} clearcoat={1} clearcoatRoughness={0.02} />;
 export const Alu = () => <meshStandardMaterial color="#C9CFD4" metalness={0.8} roughness={0.32} />;
-export const Graphite: React.FC<{cc?: number}> = ({cc = 0.85}) => (
-  <meshPhysicalMaterial color={C.dark} metalness={0.1} roughness={0.3} clearcoat={cc} clearcoatRoughness={0.06} />
+export const Chrome = () => <meshStandardMaterial color="#E6EAEE" metalness={1} roughness={0.1} />;
+export const Carbon = () => <meshPhysicalMaterial color="#1B1D20" metalness={0.25} roughness={0.42} clearcoat={0.7} clearcoatRoughness={0.25} />;
+export const Graphite: React.FC<{cc?: number}> = ({cc = 0.85}) => {
+  const s = useSkin();
+  return <meshPhysicalMaterial color={s.dark} metalness={s.darkMetal ?? 0.1} roughness={s.darkRough ?? 0.3} clearcoat={s.darkCc ?? cc} clearcoatRoughness={0.06} />;
+};
+export const Parchment: React.FC = () => {
+  const s = useSkin();
+  return <meshPhysicalMaterial color={s.body} metalness={s.bodyMetal ?? 0.1} roughness={s.bodyRough ?? 0.3} clearcoat={s.bodyCc ?? 1} clearcoatRoughness={0.06} />;
+};
+// акцент скина (лимонный у Aura): полосы, метки, кольца
+export const Accent: React.FC<{cc?: number}> = ({cc = 0.9}) => {
+  const s = useSkin();
+  return <meshPhysicalMaterial color={s.accent} metalness={0.1} roughness={0.38} clearcoat={cc} clearcoatRoughness={0.08} emissive={s.accent} emissiveIntensity={s.accentGlow ?? 0} />;
+};
+
+// --- детали ---
+// болт с шестигранной головкой; ось болта — +y (поверните rot, чтобы он смотрел из нужной грани)
+export const Bolt: React.FC<{p?: V3; rot?: V3; r?: number}> = ({p = [0, 0, 0], rot, r = 0.018}) => (
+  <group position={p} rotation={rot}>
+    <mesh position={[0, r * 0.3, 0]}>
+      <cylinderGeometry args={[r, r, r * 0.6, 6]} />
+      <meshStandardMaterial color="#8E979F" metalness={0.95} roughness={0.28} />
+    </mesh>
+    <mesh position={[0, r * 0.62, 0]}>
+      <cylinderGeometry args={[r * 0.45, r * 0.45, 0.004, 6]} />
+      <meshStandardMaterial color="#2B3036" metalness={0.6} roughness={0.5} />
+    </mesh>
+  </group>
 );
-export const Parchment: React.FC = () => <meshPhysicalMaterial color={C.light} metalness={0.1} roughness={0.3} clearcoat={1} clearcoatRoughness={0.06} />;
+// болты по кругу радиуса R в плоскости XZ (головками вверх, +y); rot — повернуть кольцо целиком
+export const BoltRing: React.FC<{n: number; R: number; p?: V3; rot?: V3; r?: number; phase?: number}> = ({n, R, p = [0, 0, 0], rot, r = 0.018, phase = 0}) => (
+  <group position={p} rotation={rot}>
+    {Array.from({length: n}, (_, k) => {
+      const a = phase + (k * 2 * Math.PI) / n;
+      return <Bolt key={k} p={[Math.cos(a) * R, 0, Math.sin(a) * R]} r={r} />;
+    })}
+  </group>
+);
+// шланг / кабель по точкам (плавная кривая); mat — резина (по умолчанию), графит скина, акцент, металл
+export const Hose: React.FC<{pts: V3[]; r?: number; mat?: "rubber" | "dark" | "accent" | "metal" | "glow"; seg?: number}> = ({pts, r = 0.02, mat = "rubber", seg = 28}) => {
+  const key = pts.map((q) => q.map((v) => v.toFixed(3)).join(",")).join(";");
+  const geo = useMemo(
+    () => new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts.map((q) => new THREE.Vector3(...q))), seg, r, 8, false),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [key, r, seg],
+  );
+  useEffect(() => () => geo.dispose(), [geo]);
+  return (
+    <mesh geometry={geo}>
+      {mat === "rubber" ? <Rubber /> : mat === "dark" ? <Graphite /> : mat === "accent" ? <Accent /> : mat === "metal" ? <Metal /> : <Glow k={1.6} />}
+    </mesh>
+  );
+};
+// гофра (чехол пружины, кабель-канал): кольца вдоль отрезка от a до b
+export const Bellows: React.FC<{a: V3; b: V3; r?: number; n?: number}> = ({a, b, r = 0.06, n = 12}) => {
+  const A = new THREE.Vector3(...a);
+  const B = new THREE.Vector3(...b);
+  const len = A.distanceTo(B);
+  const q = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), B.clone().sub(A).normalize());
+  const e = new THREE.Euler().setFromQuaternion(q);
+  return (
+    <group position={a} rotation={e}>
+      <Cyl a={r * 0.62} b={r * 0.62} h={len} p={[0, len / 2, 0]}>
+        <Seam />
+      </Cyl>
+      {Array.from({length: n}, (_, k) => (
+        <Ring key={k} r={r * 0.78} tube={r * 0.3} p={[0, (len * (k + 0.5)) / n, 0]} rot={[Math.PI / 2, 0, 0]}>
+          <meshStandardMaterial color="#17191C" roughness={0.75} />
+        </Ring>
+      ))}
+    </group>
+  );
+};
+// шильдик: светлая табличка с тёмной рамкой, строки-«штрихи» и квадрат акцента (простые фигуры, без текста); лицом к +z
+export const Tag: React.FC<{p: V3; rot?: V3; w?: number; h?: number; dark?: boolean}> = ({p, rot, w = 0.16, h = 0.08, dark}) => (
+  <group position={p} rotation={rot}>
+    <mesh>
+      <planeGeometry args={[w, h]} />
+      <meshStandardMaterial color={dark ? "#1E2124" : "#F2F0EC"} roughness={0.5} polygonOffset polygonOffsetFactor={-2} />
+    </mesh>
+    <mesh position={[-w * 0.36, 0, 0.001]}>
+      <planeGeometry args={[h * 0.55, h * 0.55]} />
+      <Accent />
+    </mesh>
+    {[0.22, 0, -0.22].map((y, k) => (
+      <mesh key={k} position={[w * 0.1, y * h, 0.001]}>
+        <planeGeometry args={[w * (k === 0 ? 0.55 : 0.42), h * 0.1]} />
+        <meshStandardMaterial color={dark ? "#9AA1A8" : "#5D6166"} roughness={0.6} />
+      </mesh>
+    ))}
+  </group>
+);
+// прорези вентиляции: n щелей по вертикали, лицом к +z
+export const Vents: React.FC<{p: V3; rot?: V3; n?: number; w?: number; gap?: number}> = ({p, rot, n = 4, w = 0.14, gap = 0.028}) => (
+  <group position={p} rotation={rot}>
+    {Array.from({length: n}, (_, k) => (
+      <RBox key={k} s={[w, gap * 0.45, 0.012]} r={0.004} p={[0, (k - (n - 1) / 2) * gap, 0]}>
+        <Seam />
+      </RBox>
+    ))}
+  </group>
+);
+// диод: светящаяся точка в тёмном ободке; c — свой цвет (иначе glow скина)
+export const Led: React.FC<{p: V3; r?: number; k?: number; c?: string}> = ({p, r = 0.014, k = 2.4, c}) => (
+  <group position={p}>
+    <mesh>
+      <sphereGeometry args={[r * 1.35, 10, 8]} />
+      <meshStandardMaterial color="#121418" roughness={0.6} />
+    </mesh>
+    <mesh position={[0, 0, r * 0.5]}>
+      <sphereGeometry args={[r, 10, 8]} />
+      <Glow k={k} c={c} />
+    </mesh>
+  </group>
+);
 
 // картонная коробка: картон, графитовый скотч крест-накрест, лимонная наклейка на боку
 export const CargoBox: React.FC<{s?: V3; p?: V3; rot?: V3}> = ({s = [0.6, 0.45, 0.5], p = [0, 0, 0], rot}) => (
@@ -132,6 +309,38 @@ export const Shadow: React.FC<{w: number; d: number; p?: V3; o?: number; yaw?: n
   </mesh>
 );
 
+// мягкий градиент для конусов света: ярко у источника, к краю — в ноль (alphaMap по длине конуса)
+let beamTex: THREE.Texture | null = null;
+const getBeamTex = () => {
+  if (beamTex) return beamTex;
+  const c = document.createElement("canvas");
+  c.width = 4;
+  c.height = 128;
+  const g = c.getContext("2d")!;
+  const grad = g.createLinearGradient(0, 0, 0, 128);
+  grad.addColorStop(0, "#ffffff");
+  grad.addColorStop(0.35, "#7a7a7a");
+  grad.addColorStop(1, "#000000");
+  g.fillStyle = grad;
+  g.fillRect(0, 0, 4, 128);
+  beamTex = new THREE.CanvasTexture(c);
+  return beamTex;
+};
+// конус света вдоль +x из начала координат: длина len, раскрытие angle (рад), яркость o
+export const LightCone: React.FC<{len: number; angle: number; o?: number; color?: string}> = ({len, angle, o = 0.22, color = "#FFF4C8"}) => (
+  <group rotation={[0, 0, Math.PI / 2]} position={[len / 2, 0, 0]}>
+    <mesh>
+      <coneGeometry args={[Math.tan(angle) * len, len, 40, 1, true]} />
+      <meshBasicMaterial color={color} alphaMap={getBeamTex()} transparent opacity={o} side={THREE.DoubleSide} depthWrite={false} blending={THREE.AdditiveBlending} />
+    </mesh>
+    <mesh>
+      <coneGeometry args={[Math.tan(angle * 0.55) * len, len, 32, 1, true]} />
+      <meshBasicMaterial color={color} alphaMap={getBeamTex()} transparent opacity={o * 0.9} side={THREE.DoubleSide} depthWrite={false} blending={THREE.AdditiveBlending} />
+    </mesh>
+  </group>
+);
+
+
 // --- сцена ---
 export type Cam = {pos: V3; target: V3; fov?: number};
 export const CAM_DEFAULT: Cam = {pos: [4.2, 3.4, 8.5], target: [0, 1, 0], fov: 30};
@@ -145,16 +354,39 @@ export const Lights: React.FC = () => (
 );
 
 // 3D-сцена: прямоугольник кадра (по умолчанию весь кадр 1080×1920), камера, свет и студийное окружение маскота
-export const Stage: React.FC<{cam?: Cam; left?: number; top?: number; width?: number; height?: number; dpr?: number; style?: React.CSSProperties; children: React.ReactNode}> = ({
-  cam = CAM_DEFAULT,
-  left = 0,
-  top = 0,
-  width = 1080,
-  height = 1920,
-  dpr = 1,
-  style,
-  children,
-}) => (
+// камера по props на каждом кадре (у холста камера задаётся только при создании: без этого кадры подряд в одной вкладке
+// брали камеру первого кадра, а движение камеры не работало)
+const CamSync: React.FC<{cam: Cam}> = ({cam}) => {
+  const camera = useThree((st) => st.camera) as THREE.PerspectiveCamera;
+  React.useLayoutEffect(() => {
+    camera.position.set(cam.pos[0], cam.pos[1], cam.pos[2]);
+    camera.fov = cam.fov ?? 30;
+    camera.lookAt(cam.target[0], cam.target[1], cam.target[2]);
+    camera.updateProjectionMatrix();
+  }, [camera, cam.pos[0], cam.pos[1], cam.pos[2], cam.target[0], cam.target[1], cam.target[2], cam.fov]);
+  return null;
+};
+// окружение тише или ярче (1 — как у маскота); в тёмных сценах DarkScan — почти без отражений
+const EnvK: React.FC<{k: number}> = ({k}) => {
+  const scene = useThree((st) => st.scene);
+  React.useLayoutEffect(() => {
+    scene.environmentIntensity = k;
+  }, [scene, k]);
+  return null;
+};
+// mood: "studio" — студийный свет маскота (по умолчанию), "dark" — без общего света (сцена ставит свои фонари), env — яркость отражений
+export const Stage: React.FC<{
+  cam?: Cam;
+  left?: number;
+  top?: number;
+  width?: number;
+  height?: number;
+  dpr?: number;
+  style?: React.CSSProperties;
+  mood?: "studio" | "dark";
+  env?: number;
+  children: React.ReactNode;
+}> = ({cam = CAM_DEFAULT, left = 0, top = 0, width = 1080, height = 1920, dpr = 1, style, mood = "studio", env, children}) => (
   <div style={{position: "absolute", left, top, width, height, pointerEvents: "none", ...style}}>
     <ThreeCanvas
       width={width}
@@ -164,8 +396,10 @@ export const Stage: React.FC<{cam?: Cam; left?: number; top?: number; width?: nu
       camera={{fov: cam.fov ?? 30, position: cam.pos, near: 0.05, far: 200}}
       style={{position: "absolute", inset: 0}}
     >
+      <CamSync cam={cam} />
       <CameraLook target={cam.target} />
-      <Lights />
+      <EnvK k={env ?? (mood === "dark" ? 0.06 : 1)} />
+      {mood === "studio" ? <Lights /> : null}
       {children}
     </ThreeCanvas>
   </div>

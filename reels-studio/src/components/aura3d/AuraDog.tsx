@@ -8,14 +8,20 @@
 //   hop — подпрыгнуть (0,75 с); stand — встать на задние лапы и помахать передними (dur, по умолчанию 2,5 с);
 //   dance — танец (dur, по умолчанию 4 с): пружинит, качается, по очереди поднимает передние лапы, посередине встаёт
 //   на задние лапы и машет, в конце — прыжок с оборотом.
+// Разведка в темноте (05.11.2026, «собака идёт и сканирует пещеру или тёмный склад»): headlight — фара с конусом света
+// (настоящий прожектор освещает стены), lidar — вращающийся веер лидара под «подбородком» (угол — lidarAngle; облако
+// точек, которое он открывает, рисует сцена DarkScan в Scenes.tsx). Детали: болты боковых панелей, защёлка батареи, шильдик.
 import React from "react";
 import * as THREE from "three";
 import {useCurrentFrame, useVideoConfig} from "remotion";
-import {Box, Capsule, Cyl, Glow, Graphite, Parchment, RBox, Ring, Rubber, Shadow, Sph, Visor, clamp01, env, pathAt, smooth, win, type Stay, type V3} from "./kit";
+import {Bolt, Box, Capsule, LightCone, Cyl, EyeGlow, Glow, Graphite, Hose, Parchment, RBox, Ring, Rubber, Shadow, SkinScope, Sph, Tag, Visor, clamp01, env, pathAt, smooth, win, type Stay, type V3} from "./kit";
 
 export type DogAction = {at: number; kind: "hop" | "stand" | "dance"; dur?: number};
 export type DogPlan = {stays: Stay[]; speed?: number; actions?: DogAction[]};
 
+// угол лидара относительно корпуса (рад): оборот за 1/LIDAR_HZ с; мировой угол луча = курс собаки + lidarAngle(t)
+export const LIDAR_HZ = 1.1;
+export const lidarAngle = (t: number) => 2 * Math.PI * LIDAR_HZ * t;
 export const DOG3D = {L1: 0.34, L2: 0.36, hipX: 0.4, hipY: -0.06, legZ: 0.25, bodyY: 0.62, cycle: 0.5};
 const HOP = 0.75;
 type LegId = "FL" | "FR" | "RL" | "RR";
@@ -162,7 +168,39 @@ const Leg: React.FC<{x: number; z: number; pose: {ab: number; hip: number; knee:
   );
 };
 
-export const DogModel: React.FC<{plan: DogPlan; t?: number}> = ({plan, t: tProp}) => {
+const Headlight: React.FC = () => {
+  const target = React.useMemo(() => new THREE.Object3D(), []);
+  return (
+    <group position={[0.63, 0.06, 0]} rotation={[0, 0, -0.16]}>
+      <primitive object={target} position={[4, 0, 0]} />
+      <spotLight target={target} angle={0.5} penumbra={0.55} intensity={40} distance={14} decay={1.4} color="#FFF1C2" />
+      <LightCone len={5.5} angle={0.36} o={0.2} />
+      <mesh position={[0.005, 0, 0]} rotation={[0, 0, -Math.PI / 2]}>
+        <circleGeometry args={[0.035, 20]} />
+        <meshBasicMaterial color="#FFFBE6" />
+      </mesh>
+    </group>
+  );
+};
+
+const LidarFan: React.FC<{t: number; range: number}> = ({t, range}) => {
+  const a = lidarAngle(t);
+  return (
+    <group position={[0.52, -0.11, 0]} rotation={[0, a, 0]}>
+      <mesh rotation={[-Math.PI / 2, 0, 0]}>
+        <circleGeometry args={[range, 24, -0.55, 0.55]} />
+        <meshBasicMaterial color="#FFF65D" transparent opacity={0.09} side={THREE.DoubleSide} depthWrite={false} blending={THREE.AdditiveBlending} />
+      </mesh>
+      {/* ведущий край луча */}
+      <mesh position={[range / 2, 0, 0]}>
+        <boxGeometry args={[range, 0.008, 0.008]} />
+        <meshBasicMaterial color="#FFF65D" transparent opacity={0.75} depthWrite={false} blending={THREE.AdditiveBlending} />
+      </mesh>
+    </group>
+  );
+};
+
+export const DogModel: React.FC<{plan: DogPlan; t?: number; skin?: string; headlight?: boolean; lidar?: number}> = ({plan, t: tProp, skin, headlight, lidar}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = tProp ?? frame / fps;
@@ -170,6 +208,7 @@ export const DogModel: React.FC<{plan: DogPlan; t?: number}> = ({plan, t: tProp}
   const glow = 2.4 + Math.sin(t * 2.4) * 0.6;
   const blink = t % 4.3 < 0.12 || (t + 2.1) % 6.7 < 0.1;
   return (
+    <SkinScope skin={skin}>
     <group position={[P.root[0], 0, P.root[2]]}>
       <Shadow w={1.7} d={1.0} o={1 - P.air * 1.4} yaw={P.yaw} />
       <group position={[0, P.root[1], 0]} rotation={[0, P.yaw, 0]}>
@@ -206,7 +245,7 @@ export const DogModel: React.FC<{plan: DogPlan; t?: number}> = ({plan, t: tProp}
           {[-0.065, 0.065].map((z) => (
             <mesh key={z} position={[0.628, 0.025, z]} scale={[1, blink ? 0.15 : 1, 1]}>
               <sphereGeometry args={[0.024, 14, 10]} />
-              <meshStandardMaterial color="#FFF65D" emissive="#FFF65D" emissiveIntensity={glow} />
+              <EyeGlow k={glow} />
             </mesh>
           ))}
           <Sph r={0.08} p={[0.52, -0.11, 0]}>
@@ -215,11 +254,25 @@ export const DogModel: React.FC<{plan: DogPlan; t?: number}> = ({plan, t: tProp}
           <Ring r={0.06} tube={0.008} p={[0.55, -0.12, 0]} rot={[0, Math.PI / 2, 0]}>
             <Glow k={1.4} />
           </Ring>
+          {/* детали: болты боковых панелей, защёлка батареи сзади, шильдик, кабель к сенсору */}
+          {[-1, 1].flatMap((sd) => [-0.24, 0.2].map((x) => <Bolt key={`${sd}${x}`} p={[x, 0.04, sd * 0.201]} rot={[sd * Math.PI / 2, 0, 0]} r={0.011} />))}
+          <RBox s={[0.05, 0.1, 0.22]} r={0.02} p={[-0.53, 0.02, 0]}>
+            <Graphite />
+          </RBox>
+          <Box s={[0.012, 0.03, 0.1]} p={[-0.557, 0.04, 0]}>
+            <Glow k={1.2} />
+          </Box>
+          <Tag p={[-0.3, -0.03, 0.202]} w={0.12} h={0.05} />
+          <Tag p={[-0.3, -0.03, -0.202]} rot={[0, Math.PI, 0]} w={0.12} h={0.05} />
+          <Hose pts={[[0.45, -0.1, 0.1], [0.5, -0.14, 0.08], [0.52, -0.16, 0.03]]} r={0.008} seg={10} />
+          {headlight ? <Headlight /> : null}
+          {lidar ? <LidarFan t={t} range={lidar} /> : null}
           {LEGS.map((L) => (
             <Leg key={L.id} x={L.x} z={L.z} pose={P.legs[L.id]} />
           ))}
         </group>
       </group>
     </group>
+    </SkinScope>
   );
 };

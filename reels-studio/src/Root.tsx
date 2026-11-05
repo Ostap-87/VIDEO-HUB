@@ -19,6 +19,8 @@ import announceSample from "../props/announces/пример-gtt.json";
 import {CarouselReel, carouselReelSchema, reelSeconds, type CarouselReelProps} from "./compositions/CarouselReel";
 import carouselReelSample from "../props/carousel-reels/пример-aura.json";
 import {Aura3DShowcase, showcaseSeconds} from "./compositions/Aura3DShowcase";
+import {AuraCast, castFrames} from "./compositions/AuraCast";
+import {AuraScenes, AuraScenesPreview, SCENES as AURA_SCENES, scenesSeconds} from "./compositions/AuraScenes";
 import {GttIntro, gttIntroSchema, gttIntroSeconds, type GttIntroProps} from "./compositions/GttIntro";
 import {ReelCover, reelCoverSchema, type ReelCoverProps} from "./compositions/ReelCover";
 import {CoverIdeas, coverIdeasSchema, type CoverIdeasProps} from "./compositions/CoverIdeas";
@@ -201,6 +203,11 @@ export const RemotionRoot: React.FC = () => {
         calculateMetadata={({props}: {props: GttIntroProps}) => ({durationInFrames: Math.round(gttIntroSeconds(props.mode) * 30)})}
       />
       <Composition id="Aura3DShowcase" component={Aura3DShowcase} width={1080} height={1920} fps={30} durationInFrames={Math.round(showcaseSeconds() * 30)} />
+      {/* персонажи Aura (05.11.2026): кадр N = портрет N, последний — общий состав; 1080×1350 */}
+      <Composition id="AuraCast" component={AuraCast} width={1080} height={1350} fps={30} durationInFrames={castFrames()} defaultProps={{dpr: 2}} />
+      {/* сцены применения Aura: конвейер, поддон, DarkScan, дроны; превью — кадр N = сцена N */}
+      <Composition id="AuraScenes" component={AuraScenes} width={1080} height={1920} fps={30} durationInFrames={Math.round(scenesSeconds() * 30)} />
+      <Composition id="AuraScenesPreview" component={AuraScenesPreview} width={1080} height={1920} fps={30} durationInFrames={AURA_SCENES.length} defaultProps={{dpr: 2}} />
       <Composition id="FlagTest" component={FlagTest} width={1080} height={1920} fps={30} durationInFrames={300} />
       <Composition id="AuraPreview" component={AuraPreview} width={VIDEO.width} height={VIDEO.height} fps={VIDEO.fps} durationInFrames={VIDEO.fps * 15} />
       <Composition

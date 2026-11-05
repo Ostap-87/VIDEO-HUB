@@ -151,6 +151,23 @@ Stories «про мои соцсети»: в props `socials` (карточка �
 композиция `Aura3DShowcase`, рендер: `npx remotion render src/index.ts Aura3DShowcase ../finished-videos/3d-арсенал/aura-3d-витрина.mp4`.
 Подробно (поля планов, примеры) — `CLAUDE.md`, раздел «3D-арсенал Aura».
 
+### Команда Aura: 16 персонажей, скины, сцены применения (05.11.2026)
+
+Имена: Ави (маскот), Скаут (собака), Леон и Нова (гуманоиды), Роли и Кэрри (гуманоиды на колёсах), Арми, Титан, Тихон (манипуляторы, кобот),
+Пятёрка и Рубин (роборуки), Шустрик и Рыжик (AGV), Сокол и Стриж (дроны-инспекторы), Аист (грузовой дрон). Скин — prop `skin` у модели
+(`industrial`, `cobot`, `chrome`, `orange`, `navy`, `whiteOrange`). Новые модели: `WheelHumanoidModel`, `DroneModel`; эмоции маскота — `emotes`.
+Сцены: `ConveyorCarryScene`, `ArmPalletScene`, `DarkScan`, `DroneRackScan`, `CargoDelivery` (`src/components/aura3d/Scenes.tsx`).
+
+```bash
+# портреты (кадр N = персонаж N, 17 — вся команда) и превью сцен → finished-videos/обложки/aura-персонажи/ + _лист.jpg
+TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts AuraCast /dev/shm/cast/cast --sequence --image-format=png --bundle-cache=false
+TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts AuraScenesPreview /dev/shm/cast/scenes --sequence --image-format=png --bundle-cache=false --concurrency=1 --timeout=180000
+python3 tools/aura-cast/sheet.py /dev/shm/cast
+# демо всех сцен подряд (1080×1920)
+TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts AuraScenes ../finished-videos/3d-арсенал/aura-сцены.mp4 --bundle-cache=false
+```
+Подробно — `CLAUDE.md`, «Команда Aura: скины, новые персонажи, сцены применения».
+
 ## Пересборка готового ролика (вырезать кусок, новый звук)
 
 ```bash

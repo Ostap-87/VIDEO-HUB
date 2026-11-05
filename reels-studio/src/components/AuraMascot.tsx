@@ -5,8 +5,11 @@
 //   пешком (по горизонтали) или перепрыгивает (если меняется высота), поворачиваясь по ходу движения;
 // - gestures: жесты в моменты событий ролика — wave (помахать), point / pointUp (показать), tick (поставить галочку),
 //   push (вытолкнуть плашку), present (поднять руки, «выдвигая» плашки вверх), jump (подпрыгнуть от радости),
-//   nod, scan (осмотреться), shrug.
-// План для ролика строится автоматически из props (mascotPlan в TalkReelPro).
+//   nod, scan (осмотреться), shrug;
+// - emotes (05.11.2026, «делать чуть выразительнее самих маскотов»): {at, kind, dur?} — глаза-диоды меняют форму:
+//   happy ^ ^, surprised O O, thinking — — (голова набок), wink (подмигнуть ^), alert (глаза крупнее и «!» над головой);
+//   прыжок — с сильным сжатием и растяжением (squash & stretch) на толчке, в полёте и при приземлении.
+// План для ролика строится автоматически из props (mascotPlan в TalkReelPro). Маскот в 3D-сцене Stage — MascotModel (ниже).
 import React from "react";
 import {ThreeCanvas} from "@remotion/three";
 import {useThree} from "@react-three/fiber";
@@ -16,7 +19,10 @@ import {useCurrentFrame, useVideoConfig} from "remotion";
 
 export type GestureKind = "wave" | "point" | "pointUp" | "tick" | "push" | "pull" | "present" | "jump" | "nod" | "scan" | "shrug" | "sleep";
 export type MascotStay = {at: number; x: number; y: number; face?: number};
-export type MascotPlan = {stays: MascotStay[]; gestures: {at: number; kind: GestureKind}[]};
+export type EmoteKind = "happy" | "surprised" | "thinking" | "wink" | "alert";
+export type MascotEmote = {at: number; kind: EmoteKind; dur?: number};
+export type MascotPlan = {stays: MascotStay[]; gestures: {at: number; kind: GestureKind}[]; emotes?: MascotEmote[]};
+export const EMOTE_DUR: Record<EmoteKind, number> = {happy: 1.6, surprised: 1.4, thinking: 2.2, wink: 1.0, alert: 1.4};
 
 export const GESTURE_DUR: Record<GestureKind, number> = {
   wave: 2.4, point: 1.8, pointUp: 2.2, tick: 0.9, push: 1.0, pull: 1.1, present: 1.4, jump: 1.75, nod: 1.2, scan: 2.6, shrug: 1.6, sleep: 3.4,
@@ -82,6 +88,8 @@ type Pose = {
   leg: Record<"L" | "R", {hip: number; kn: number; an: number}>;
   blink: boolean;
   eyeGlow: number;
+  squash: number; // высота × squash, ширина × 1/√squash (опора — ступни)
+  emote: null | {kind: EmoteKind; w: number};
 };
 
 const Arm: React.FC<{s: 1 | -1; pose: Pose["arm"]["L"]}> = ({s, pose}) => (
@@ -142,8 +150,91 @@ const Leg: React.FC<{s: 1 | -1; pose: Pose["leg"]["L"]}> = ({s, pose}) => (
   </group>
 );
 
+// глаз-«штрих» для эмоций: светящаяся капсула длиной l, повёрнутая на угол a (рад) в плоскости лица
+const Stroke: React.FC<{p: [number, number]; l: number; a: number; glow: number}> = ({p, l, a, glow}) => (
+  <mesh position={[p[0], p[1], 0]} rotation={[0, 0, a]}>
+    <capsuleGeometry args={[0.021, l, 4, 10]} />
+    <meshStandardMaterial color={C.glow} emissive={C.glow} emissiveIntensity={glow} />
+  </mesh>
+);
+// форма глаза при эмоции (центр глаза — 0, 0): ^, O, —
+const EyeShape: React.FC<{shape: "caret" | "ring" | "line"; glow: number}> = ({shape, glow}) =>
+  shape === "caret" ? (
+    <>
+      <Stroke p={[-0.027, 0.0]} l={0.052} a={-0.8} glow={glow} />
+      <Stroke p={[0.027, 0.0]} l={0.052} a={0.8} glow={glow} />
+    </>
+  ) : shape === "ring" ? (
+    <mesh>
+      <torusGeometry args={[0.052, 0.017, 8, 24]} />
+      <meshStandardMaterial color={C.glow} emissive={C.glow} emissiveIntensity={glow} />
+    </mesh>
+  ) : (
+    <Stroke p={[0, 0.012]} l={0.075} a={Math.PI / 2} glow={glow} />
+  );
+
+const Eyes: React.FC<{pose: Pose}> = ({pose}) => {
+  const e = pose.emote;
+  const w = e ? e.w : 0;
+  const pop = w * (1 + 0.3 * Math.sin(Math.PI * w)); // форма «выпрыгивает» с перелётом
+  const big = e?.kind === "alert" ? 1 + 0.35 * w : 1;
+  const shapeOf = (side: number): null | "caret" | "ring" | "line" => {
+    if (!e) return null;
+    if (e.kind === "happy") return "caret";
+    if (e.kind === "surprised") return "ring";
+    if (e.kind === "thinking") return "line";
+    if (e.kind === "wink") return side > 0 ? "caret" : null;
+    return null;
+  };
+  return (
+    <>
+      {[-0.085, 0.085].map((x) => {
+        const shape = shapeOf(x);
+        const k = shape ? 1 - w : 1;
+        return (
+          <group key={x} position={[x, 0.11, 0.265]}>
+            {k > 0.02 ? (
+              <mesh scale={[big * k, (pose.blink && w < 0.5 ? 0.12 : 1) * big * k, big]}>
+                <sphereGeometry args={[0.045, 16, 12]} />
+                <meshStandardMaterial color={C.glow} emissive={C.glow} emissiveIntensity={pose.eyeGlow} />
+              </mesh>
+            ) : null}
+            {shape && pop > 0.02 ? (
+              <group scale={[pop, pop, 1]} position={[0, 0, 0.012]}>
+                <EyeShape shape={shape} glow={1.7} />
+              </group>
+            ) : null}
+          </group>
+        );
+      })}
+      {/* «!» над головой: тревога — выпрыгивает с пружиной и покачивается */}
+      {e?.kind === "alert" && pop > 0.02 ? (
+        <group position={[0.2, 0.66 + 0.04 * Math.sin(Math.PI * w), 0.05]} rotation={[0, 0, -0.18]} scale={pop}>
+          <mesh position={[0, 0.07, 0]}>
+            <capsuleGeometry args={[0.032, 0.13, 4, 10]} />
+            <meshStandardMaterial color={C.glow} emissive={C.glow} emissiveIntensity={2.6} />
+          </mesh>
+          <mesh position={[0, -0.09, 0]}>
+            <sphereGeometry args={[0.036, 12, 10]} />
+            <meshStandardMaterial color={C.glow} emissive={C.glow} emissiveIntensity={2.6} />
+          </mesh>
+        </group>
+      ) : null}
+    </>
+  );
+};
+
+// мелкие болты на панелях маскота (детализация 05.11.2026)
+const MBolt: React.FC<{p: V3}> = ({p}) => (
+  <mesh position={p} rotation={[Math.PI / 2, 0, 0]}>
+    <cylinderGeometry args={[0.013, 0.013, 0.012, 6]} />
+    <meshStandardMaterial color="#8E979F" metalness={0.95} roughness={0.28} />
+  </mesh>
+);
+
 const Robot: React.FC<{pose: Pose}> = ({pose}) => (
   <group rotation={[0, pose.yaw, 0]} position={[0, pose.rootY, 0]}>
+    <group scale={[1 / Math.sqrt(pose.squash), pose.squash, 1 / Math.sqrt(pose.squash)]}>
     <group position={[pose.hips.x, pose.hips.y, 0]} rotation={[0, pose.hips.ry, 0]}>
       <Plate s={[0.6, 0.28, 0.42]} p={[0, 0.05, 0]} c={C.dark} cc={0.85} />
       <Plate s={[0.5, 0.1, 0.44]} p={[0, 0.2, 0]} c={C.light} />
@@ -173,6 +264,7 @@ const Robot: React.FC<{pose: Pose}> = ({pose}) => (
         <Sph r={0.05} p={[0, 0.5, 0.27]}>
           <meshStandardMaterial color={C.glow} emissive={C.glow} emissiveIntensity={pose.eyeGlow} />
         </Sph>
+        {[-1, 1].flatMap((sx) => [0.22, 0.58].map((y) => <MBolt key={`${sx}${y}`} p={[sx * 0.235, y, 0.258]} />))}
         {/* шея и голова */}
         <group position={[0, 0.88, 0]}>
           <Cyl a={0.1} b={0.115} h={0.16}>
@@ -189,13 +281,8 @@ const Robot: React.FC<{pose: Pose}> = ({pose}) => (
             <Box s={[0.36, 0.21, 0.11]} p={[0, 0.1, 0.2]} r={[-0.13, 0, 0]}>
               <meshPhysicalMaterial color="#05070A" metalness={0.4} roughness={0.05} clearcoat={1} clearcoatRoughness={0.02} />
             </Box>
-            {/* два глаза-диода (на сайте один; в ролике два — живее мимика) */}
-            {[-0.085, 0.085].map((x) => (
-              <mesh key={x} position={[x, 0.11, 0.265]} scale={[1, pose.blink ? 0.12 : 1, 1]}>
-                <sphereGeometry args={[0.045, 16, 12]} />
-                <meshStandardMaterial color={C.glow} emissive={C.glow} emissiveIntensity={pose.eyeGlow} />
-              </mesh>
-            ))}
+            {/* два глаза-диода (на сайте один; в ролике два — живее мимика); эмоции меняют их форму */}
+            <Eyes pose={pose} />
             <Box s={[0.055, 0.15, 0.06]} p={[-0.255, 0.12, 0.05]}>
               <Paint c={C.dark} />
             </Box>
@@ -209,6 +296,7 @@ const Robot: React.FC<{pose: Pose}> = ({pose}) => (
       </group>
       <Leg s={-1} pose={pose.leg.L} />
       <Leg s={1} pose={pose.leg.R} />
+    </group>
     </group>
   </group>
 );
@@ -232,7 +320,33 @@ function basePose(t: number): Pose {
     // моргание по фиксированному «случайному» расписанию — кадр всегда одинаковый
     blink: (t % 3.7) < 0.12 || ((t + 1.3) % 5.9) < 0.1,
     eyeGlow: 2.6 + Math.sin(t * 2.1) * 0.6,
+    squash: 1,
+    emote: null,
   };
+}
+
+// эмоция в момент t: форма глаз и поза головы (думает — голова набок, подмигивает — кивок набок, тревога — вздрагивает)
+function applyEmote(P: Pose, emotes: MascotEmote[] | undefined, t: number) {
+  if (!emotes?.length) return;
+  const e = [...emotes].reverse().find((x) => t >= x.at && t < x.at + (x.dur ?? EMOTE_DUR[x.kind]));
+  if (!e) return;
+  const d = e.dur ?? EMOTE_DUR[e.kind];
+  const u = (t - e.at) / d;
+  const w = smooth(Math.min(1, Math.min(u, 1 - u) / Math.min(0.5, 0.14 / d)));
+  P.emote = {kind: e.kind, w};
+  if (e.kind === "thinking") P.head = [P.head[0] - 0.12 * w, P.head[1] + 0.15 * w, P.head[2] + 0.2 * w];
+  if (e.kind === "wink") P.head = [P.head[0], P.head[1], P.head[2] - 0.14 * w * Math.sin(Math.PI * u)];
+  if (e.kind === "happy") P.head = [P.head[0] - 0.06 * w + 0.05 * Math.sin(t * 9) * w, P.head[1], P.head[2]];
+  if (e.kind === "surprised") {
+    P.head = [P.head[0] - 0.14 * w, P.head[1], P.head[2]];
+    P.spine.r = [P.spine.r[0] - 0.08 * w, P.spine.r[1], P.spine.r[2]];
+  }
+  if (e.kind === "alert") {
+    const jolt = Math.exp(-u * 10) * Math.sin(u * 40) * 0.06;
+    P.hips.y += jolt;
+    P.head = [P.head[0] - 0.1 * w, P.head[1], P.head[2]];
+    P.eyeGlow += 1.5 * w;
+  }
 }
 
 function applyGesture(P: Pose, kind: GestureKind, p: number, t: number) {
@@ -320,31 +434,39 @@ function applyGesture(P: Pose, kind: GestureKind, p: number, t: number) {
     let armX = 0;
     let spread = 0;
     let k: number;
+    // squash & stretch (05.11.2026): сжатие при приседе и приземлении, вытягивание на толчке и в падении
+    let sq = 1;
     if (p < 0.2) {
       k = p / 0.2;
       k *= k;
       crouch = k;
       armX = k * 0.95;
+      sq = 1 - 0.13 * k;
     } else if (p < 0.32) {
       k = (p - 0.2) / 0.12;
       crouch = 1 - k * 1.35;
       armX = 0.95 - k * 3.1;
+      sq = 0.87 + 0.33 * smooth(k);
     } else if (p < 0.76) {
       k = (p - 0.32) / 0.44;
       air = Math.sin(k * Math.PI);
       tuck = air * 1.05;
       armX = -2.15 + k * 0.3;
       spread = air * 0.3;
+      sq = 1 + 0.2 * Math.abs(Math.cos(k * Math.PI)) ** 1.5;
     } else if (p < 0.9) {
       k = (p - 0.76) / 0.14;
       crouch = Math.sin(k * Math.PI) * 1.25;
       armX = -0.85 * (1 - k) + k * 0.3;
       spread = 0.35 * Math.sin(k * Math.PI);
+      sq = k < 0.12 ? 1.2 - (0.2 + 0.2) * (k / 0.12) : 0.8 + 0.2 * smooth((k - 0.12) / 0.88);
     } else {
       k = (p - 0.9) / 0.1;
       crouch = 0.22 * (1 - k) * Math.cos(k * Math.PI * 2);
       armX = 0.3 * (1 - k);
+      sq = 1 + 0.06 * (1 - k) * Math.sin(k * Math.PI * 2);
     }
+    P.squash = sq;
     const a = Math.max(0, crouch) * 0.62;
     const drop = 1.28 * (1 - Math.cos(a));
     for (const s of ["L", "R"] as const) P.leg[s] = {hip: -a - tuck * 0.85, kn: 2 * a + tuck * 1.3, an: -a - tuck * 0.35};
@@ -427,6 +549,7 @@ export const AuraMascot: React.FC<{plan: MascotPlan; scale?: number; dpr?: numbe
     P.yaw = s.face;
     if (s.gesture) applyGesture(P, s.gesture.kind, s.gesture.p, t);
   }
+  applyEmote(P, plan.emotes, t);
   const shadowK = s.move?.kind === "hop" ? 1 - Math.sin(s.move.p * Math.PI) * 0.5 : 1 - Math.max(0, P.rootY) * 0.35;
   return (
     <div style={{position: "absolute", left: s.x - (W * scale) / 2, top: s.y - FOOT * scale, width: W * scale, height: H * scale, pointerEvents: "none"}}>
@@ -479,4 +602,55 @@ export const CameraLook: React.FC<{target?: V3}> = ({target = [0, 1.62, 0]}) => 
     return () => envTex.dispose();
   }, [camera, gl, scene, target[0], target[1], target[2]]); // по числам: новый массив на каждом кадре не пересоздаёт окружение
   return null;
+};
+
+// мягкая тень (радиальный градиент) — как Shadow в aura3d/kit (здесь своя копия: kit сам импортирует этот файл)
+let softShadow: THREE.Texture | null = null;
+const getSoftShadow = () => {
+  if (softShadow) return softShadow;
+  const c = document.createElement("canvas");
+  c.width = c.height = 128;
+  const g = c.getContext("2d")!;
+  const grad = g.createRadialGradient(64, 64, 0, 64, 64, 64);
+  grad.addColorStop(0, "rgba(0,0,0,0.5)");
+  grad.addColorStop(0.55, "rgba(0,0,0,0.22)");
+  grad.addColorStop(1, "rgba(0,0,0,0)");
+  g.fillStyle = grad;
+  g.fillRect(0, 0, 128, 128);
+  softShadow = new THREE.CanvasTexture(c);
+  return softShadow;
+};
+
+// маскот в 3D-сцене Stage (мировые единицы, рост ~3,4 ед.; портреты AuraCast, сцены с другими моделями): стоит в p, курс yaw
+// (0 — лицом к зрителю при камере спереди), жесты и эмоции — как у AuraMascot, время — секунды от начала Sequence
+export const MascotModel: React.FC<{
+  p?: V3;
+  yaw?: number;
+  gestures?: {at: number; kind: GestureKind}[];
+  emotes?: MascotEmote[];
+  t?: number;
+  shadow?: boolean;
+}> = ({p = [0, 0, 0], yaw = 0, gestures = [], emotes, t: tProp, shadow = true}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const t = tProp ?? frame / fps;
+  const P = basePose(t);
+  P.yaw = yaw;
+  const g = [...gestures].reverse().find((x) => t >= x.at && t < x.at + GESTURE_DUR[x.kind]);
+  if (g) applyGesture(P, g.kind, (t - g.at) / GESTURE_DUR[g.kind], t);
+  applyEmote(P, emotes, t);
+  return (
+    <group position={p}>
+      {shadow ? (
+        <mesh position={[0, 0.004, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={[1 - Math.max(0, P.rootY) * 0.3, 0.75 - Math.max(0, P.rootY) * 0.25, 1]} renderOrder={-1}>
+          <planeGeometry args={[2.1, 2.1]} />
+          <meshBasicMaterial map={getSoftShadow()} transparent depthWrite={false} />
+        </mesh>
+      ) : null}
+      {/* подошвы маскота — на высоте ~0,265 ед. над нулём модели: опускаем на пол сцены */}
+      <group position={[0, -0.265, 0]}>
+        <Robot pose={P} />
+      </group>
+    </group>
+  );
 };
