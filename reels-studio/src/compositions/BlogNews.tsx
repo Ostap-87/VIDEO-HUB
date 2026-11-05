@@ -299,7 +299,7 @@ const Punch: React.FC<{P: BlogNewsProps}> = ({P}) => {
       {f >= 14 ? (
         <Bubble x={44} y={280} w={760} h={560} shout tail={[700, 640]} scale={0.3 + 0.7 * bub} opacity={Math.min(1, bub * 2)}>
           {P.punch.lines.map((t, i) => <div key={i} style={dela(Math.min(i === P.punch.lines.length - 1 ? (P.punch.lines.length > 4 ? 64 : 74) : P.punch.lines.length > 4 ? 52 : 62, Math.floor(600 / (Math.max(1, t.length) * 0.62))), i === P.punch.lines.length - 1 ? C.red : C.ink, {whiteSpace: "nowrap"})}>{t}</div>)}
-          {P.punch.zh ? <div style={{fontFamily: BRUSH, fontSize: 42, whiteSpace: "nowrap", color: C.ink, marginTop: 8}}>{P.punch.zh}</div> : null}
+          {P.punch.zh ? <div style={{fontFamily: BRUSH, fontSize: Math.min(42, Math.floor(530 / Math.max(1, P.punch.zh.length))), whiteSpace: "nowrap", color: C.ink, marginTop: 8}}>{P.punch.zh}</div> : null}
         </Bubble>
       ) : null}
       {P.punch.from ? <div style={{position: "absolute", left: 70, top: 880, fontFamily: FONT.hand, fontSize: 44, color: C.red, rotate: "-3deg", opacity: p(f, 34, 42)}}>{P.punch.from}</div> : null}
