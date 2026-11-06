@@ -1,0 +1,532 @@
+<!doctype html>
+<!-- Ostap Dotsenko resume in Simplified Chinese, creative version "BI dashboard / analytics report" (06.11.2026, task: all resume versions
+     in English and Chinese). Same design, photos and layout as 2026-11-06-resume-dashboard (fonts and photos are taken from its folder).
+     Humour in natural Chinese BI-UI terms: 报表, 状态：在线, 导出, 时间范围, 数据源 · 已连接, 同步, SQL query with Chinese table/column names,
+     the ROI gauge "指针直接爆表" (off the charts), 利益相关方反馈, 每日提示, 事件日志.
+     Charts use only numbers from ../RESUME-MASTER.md (no invented intermediate points). Wording: site src/i18n/zh.ts + glossary ../RESUME-I18N.md.
+     Fonts: Inter, JetBrains Mono (Latin) + Noto Sans SC (hanzi, subset by build.py). Build: python3 build.py 2026-11-06-resume-dashboard-zh -->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>奥斯塔普·多增科 — 仪表盘简历</title>
+<link rel="stylesheet" href="../2026-11-06-resume-dashboard/fonts/fonts.css">
+<link rel="stylesheet" href="fonts/noto-sans-sc.css">
+<style>
+:root {
+  --bg: #ECEFF4; --card: #FFFFFF; --line: #E1E5EB; --grid: #E6E8EC; --axis: #C3C7CE;
+  --ink: #0B1220; --ink2: #3D4757; --muted: #586274; --nav: #0E1526;
+  --s1: #2a78d6; --s1w: rgba(42,120,214,.10); --s1t: #dbe7f7; --s2: #eb6834; --s3: #1baf7a;
+  --good: #0ca30c; --goodtext: #006300; --crit: #d03b3b;
+  --zh: "NSC", "Noto Sans SC", "WenQuanYi Zen Hei", sans-serif;
+  --sans: "Inter", var(--zh); --mono: "JBMono", "Inter", var(--zh);
+}
+@page { size: 210mm 297mm; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #b5bac3; }
+body { font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: antialiased; font-size: 11px; line-height: 1.55; font-synthesis: none; line-break: strict; }
+.page { width: 794px; height: 1123px; position: relative; overflow: hidden; background: var(--bg); margin: 0 auto 24px;
+  page-break-after: always; break-after: page; padding: 16px 18px 28px; display: flex; flex-direction: column; gap: 8px; }
+@media print { html, body { background: none; } .page { margin: 0; } }
+b { font-weight: 700; }
+.zh { font-family: var(--zh); }
+.mono { font-family: var(--mono); }
+.row { display: flex; gap: 8px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; position: relative; overflow: hidden;
+  box-shadow: 0 1px 2px rgba(14,21,38,.05); }
+.ct { display: flex; align-items: baseline; gap: 8px; }
+.ct h3 { font-size: 12.5px; font-weight: 700; line-height: 1.4; }
+.ct .sub { font-size: 10.5px; color: var(--muted); }
+.ct .r { margin-left: auto; }
+
+/* header */
+.appbar { flex: none; height: 40px; background: var(--nav); color: #fff; border-radius: 10px; display: flex; align-items: center; gap: 10px; padding: 0 12px; }
+.appbar .logo { width: 22px; height: 22px; border-radius: 6px; background: var(--s1); display: grid; grid-template-columns: 1fr 1fr; gap: 2px; padding: 5px; }
+.appbar .logo i { background: #fff; border-radius: 1px; opacity: .95; }
+.appbar .logo i:nth-child(2) { opacity: .55; } .appbar .logo i:nth-child(3) { opacity: .7; }
+.appbar .t { font-size: 13px; font-weight: 700; white-space: nowrap; }
+.appbar .t span { color: #b9c3d6; font-weight: 500; }
+.appbar .st { margin-left: auto; display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16);
+  border-radius: 20px; padding: 2px 10px 2px 8px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.appbar .st i { width: 8px; height: 8px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 2px rgba(12,163,12,.3); }
+.appbar .btn { font-size: 10.5px; font-weight: 600; border: 1px solid rgba(255,255,255,.25); border-radius: 6px; padding: 2px 8px; color: #e6eaf2; white-space: nowrap; }
+.filters { flex: none; display: flex; gap: 6px; align-items: center; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 1px 8px;
+  font-size: 10.8px; color: var(--ink2); white-space: nowrap; line-height: 1.6; }
+.chip b { color: var(--ink); font-weight: 600; }
+.chip .dd { color: var(--muted); font-size: 10.5px; transform: scale(.75); display: inline-block; }
+
+/* profile */
+.profile { flex: 1; display: flex; flex-direction: column; padding: 11px 14px 11px; }
+.kick { font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+.name { font-size: 30px; font-weight: 900; line-height: 1.15; margin-top: 2px; }
+.name small { font-size: 13px; font-weight: 500; color: var(--muted); margin-left: 10px; }
+.role { font-size: 16px; font-weight: 700; margin-top: 3px; line-height: 1.4; }
+.cos { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.co { font-size: 11px; font-weight: 600; border-radius: 5px; padding: 1px 6px; background: #F1F4F8; border: 1px solid var(--line); line-height: 1.6; }
+.co .pl { font-style: normal; font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: var(--goodtext); background: #E7F5E7; border-radius: 4px; padding: 0 4px; margin-left: 4px; }
+.co i { display: inline-block; width: 7px; height: 7px; border-radius: 2px; margin-right: 5px; transform: translateY(-.5px); }
+.target { margin-top: 7px; display: flex; gap: 8px; align-items: center; background: #F2F6FD; border: 1px solid #cfdcf2; border-radius: 7px; padding: 4px 9px; }
+.target .k { font-family: var(--mono); font-size: 11px; font-weight: 700; color: #1d4f91; white-space: nowrap; }
+.target .v { font-size: 12.5px; font-weight: 700; line-height: 1.45; }
+.target .v span { font-weight: 500; color: var(--ink2); }
+.contacts { margin-top: 7px; display: flex; flex-wrap: wrap; gap: 0 11px; font-size: 11px; color: var(--ink2); }
+.contacts span { white-space: nowrap; }
+.contacts i { font-style: normal; font-family: var(--mono); font-size: 10.5px; color: var(--muted); margin-right: 4px; }
+.cam { width: 200px; flex: none; padding: 0; background: #000; border-color: #0E1526; }
+.cam img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cam .ov { position: absolute; left: 8px; right: 8px; display: flex; justify-content: space-between; align-items: center; font-family: var(--mono);
+  font-size: 10.5px; color: #fff; }
+.cam .ov span { background: rgba(8,12,22,.72); border-radius: 4px; padding: 0 6px; white-space: nowrap; }
+.cam .rec i { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--crit); margin-right: 5px; transform: translateY(-.5px); }
+
+/* KPI */
+.kpis { flex: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.kpi { padding: 8px 8px 8px 12px; }
+.kpi .l { font-size: 11px; color: var(--ink2); font-weight: 600; line-height: 1.4; white-space: nowrap; }
+.kpi .v { font-size: 22px; font-weight: 700; letter-spacing: -.02em; line-height: 1.2; margin-top: 2px; white-space: nowrap; }
+.kpi .v .u { font-size: 17px; letter-spacing: 0; }
+.kpi .d { display: inline-block; font-size: 10.5px; font-weight: 700; color: var(--goodtext); background: #E7F5E7; border-radius: 4px; padding: 0 5px; margin-top: 3px; white-space: nowrap; }
+.kpi .s { font-size: 10.5px; color: var(--muted); margin-top: 2px; line-height: 1.45; }
+.kpi .bar { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--s1); }
+
+/* charts */
+svg text { font-family: var(--sans); }
+#growth, #gauge, #slope { display: block; }
+.cap { font-size: 10.5px; color: var(--muted); line-height: 1.4; }
+.note { font-size: 11px; color: var(--ink2); line-height: 1.4; font-weight: 600; }
+
+/* Gantt */
+.query { display: flex; align-items: center; gap: 8px; background: #0E1526; color: #E6EAF2; border-radius: 7px; padding: 4px 6px 4px 10px; font-family: var(--mono); font-size: 11px; line-height: 1.5; }
+.query .kw { color: #7FB0F0; font-weight: 700; }
+.query .num { color: #7FD7B5; }
+.query .run { margin-left: auto; background: var(--s1); color: #fff; border-radius: 5px; padding: 1px 8px; font-weight: 700; font-size: 10.5px; white-space: nowrap; }
+.query .res { color: #A9B4C8; font-size: 10.5px; white-space: nowrap; }
+.legend { display: flex; gap: 12px; font-size: 10.5px; color: var(--ink2); }
+.legend span { display: inline-flex; align-items: center; gap: 5px; }
+.legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.gantt { position: relative; margin-top: 4px; }
+.gantt .legend { position: absolute; left: 0; bottom: 1px; }
+.g-row { display: grid; grid-template-columns: 226px 1fr; align-items: center; min-height: 26px; border-top: 1px solid var(--grid); }
+.g-row:first-of-type { border-top: none; }
+.g-lab b { display: block; font-size: 11px; font-weight: 700; line-height: 1.2; }
+.g-lab span { display: block; font-size: 10.5px; color: var(--ink2); line-height: 1.2; }
+.g-track { position: relative; height: 26px; }
+.g-bar { position: absolute; top: 7px; height: 12px; border-radius: 4px; }
+.g-txt { position: absolute; top: 5px; font-size: 10.5px; color: var(--ink2); white-space: nowrap; line-height: 16px; }
+.g-txt b { color: var(--ink); font-weight: 600; font-family: var(--mono); font-size: 10.5px; }
+.g-grid { position: absolute; top: 0; bottom: 18px; left: 226px; right: 0; pointer-events: none; }
+.g-grid i { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--grid); }
+.g-grid i.now { background: var(--ink); width: 1px; }
+.g-axis { position: relative; height: 18px; margin-left: 226px; border-top: 1px solid var(--axis); }
+.g-axis span { position: absolute; top: 2px; transform: translateX(-50%); font-family: var(--mono); font-size: 10.5px; color: var(--muted); line-height: 1.4; }
+
+/* data sources */
+.srcs { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14px; margin-top: 5px; }
+.src { display: grid; grid-template-columns: 26px 1fr 12px; align-items: center; gap: 8px; padding: 2px 0; border-top: 1px solid var(--grid); }
+.src:nth-child(-n+2) { border-top: none; }
+.src .ic { width: 26px; height: 26px; border-radius: 6px; background: #F1F4F8; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: var(--ink); }
+.src .ic.k { background: var(--nav); color: #fff; border-color: var(--nav); }
+.src .ic.wx { background: #1AAD5B; color: #fff; border-color: #1AAD5B; font-size: 10px; }
+.src b { display: block; font-size: 11.5px; font-weight: 700; line-height: 1.3; }
+.src a { color: inherit; text-decoration: none; }
+.src span { display: block; font-size: 10.5px; color: var(--ink2); line-height: 1.35; }
+.sync { margin-top: 5px; padding-top: 4px; white-space: nowrap; border-top: 1px dashed var(--line); font-size: 10.5px; color: var(--ink2); line-height: 1.45; }
+.sync .mono { color: var(--goodtext); font-weight: 700; margin-right: 4px; }
+.ok { font-size: 10.5px; font-weight: 600; color: var(--goodtext); white-space: nowrap; display: inline-flex; align-items: center; gap: 4px; }
+.ok svg { flex: none; }
+
+/* languages, skills */
+.lng { display: grid; grid-template-columns: 66px 1fr 40px; align-items: center; gap: 8px; margin-top: 4px; font-size: 11px; }
+.lng .tr { position: relative; height: 8px; background: var(--s1t); border-radius: 4px; }
+.lng .tr i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--s1); border-radius: 4px; }
+.lng em { font-style: normal; font-family: var(--mono); font-size: 10.5px; font-weight: 700; text-align: right; }
+.scale { display: grid; grid-template-columns: 66px 1fr 40px; gap: 8px; margin-top: 3px; }
+.scale div { display: grid; grid-template-columns: repeat(6, 1fr); text-align: center; font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+.skills { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 18px; margin-top: 3px; }
+.skills h4 { font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: #1d4f91; line-height: 1.4; }
+.skills p { font-size: 11px; line-height: 1.55; margin-top: 0; }
+.lst { list-style: none; }
+.lst li { font-size: 11px; line-height: 1.55; padding-left: 12px; position: relative; margin-top: 1px; }
+.lst li::before { content: ""; position: absolute; left: 1px; top: 6.5px; width: 5px; height: 5px; border-radius: 50%; background: var(--s1); }
+.ftr { position: absolute; left: 18px; right: 18px; bottom: 9px; display: flex; justify-content: space-between; gap: 12px; font-size: 10.5px; color: var(--muted); white-space: nowrap; }
+.ftr b { color: var(--ink2); font-weight: 600; }
+
+/* page 2 */
+.tabs { display: flex; gap: 2px; margin-left: 14px; }
+.tabs span { font-size: 11.5px; font-weight: 500; color: #b9c3d6; padding: 2px 10px; border-radius: 6px; white-space: nowrap; }
+.tabs span.on { background: rgba(255,255,255,.12); color: #fff; font-weight: 700; }
+.dr { display: grid; grid-template-columns: 100px 1fr; gap: 12px; padding: 3px 0 4px; border-top: 1px solid var(--grid); }
+.dr:first-of-type { border-top: none; }
+.dr .p { font-family: var(--mono); font-size: 11px; font-weight: 700; line-height: 1.4; }
+.dr .p span { display: block; font-family: var(--sans); font-weight: 500; font-size: 10.5px; color: var(--muted); margin-top: 0; }
+.dr .m { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; margin-top: 4px; }
+.dr .m i { font-style: normal; font-family: var(--mono); font-size: 10.5px; font-weight: 700; background: #EEF3FB; color: #17457f; border-radius: 4px; padding: 0 5px; white-space: nowrap; line-height: 1.5; }
+.dr h4 { font-size: 12.5px; font-weight: 700; line-height: 1.45; }
+.dr h4 .c { color: #1d4f91; }
+.dr h4 .zh2 { font-weight: 500; font-size: 10.5px; color: var(--muted); }
+.dr h4 .nt { font-weight: 500; font-size: 11px; color: var(--ink2); }
+.dr .x { font-size: 11px; color: var(--ink2); line-height: 1.55; margin-top: 0; }
+.dr ul { list-style: none; margin-top: 1px; }
+.dr li { font-size: 11px; line-height: 1.55; padding-left: 12px; position: relative; margin-top: 1px; text-wrap: pretty; }
+.dr li::before { content: ""; position: absolute; left: 1px; top: 7px; width: 5px; height: 5px; border-radius: 1px; background: var(--s1); }
+.dr li b { font-weight: 700; }
+.ev { display: grid; grid-template-columns: 34px 1fr; gap: 6px; padding: 2px 0; border-top: 1px solid var(--grid); font-size: 11px; line-height: 1.5; }
+.ev:first-of-type { border-top: none; }
+.ev .y { font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: var(--ink2); padding-top: 1px; }
+.qt { border-left: 3px solid var(--s1); background: #F6F8FB; border-radius: 0 7px 7px 0; padding: 5px 10px 5px; margin-top: 6px; }
+.qt p { font-size: 11.4px; line-height: 1.6; }
+.qt span { display: block; font-size: 10.5px; color: var(--muted); margin-top: 1px; }
+.tip { margin-left: auto; font-size: 10.5px; color: var(--ink2); background: #FDF3EE; border: 1px solid #f5d5c6; border-radius: 6px; padding: 0 8px; white-space: nowrap; }
+.tip b { font-family: var(--zh); font-weight: 700; color: var(--ink); font-size: 11.5px; }
+</style>
+</head>
+<body>
+
+<!-- ======================= page 1: overview ======================= -->
+<section class="page">
+
+  <div class="appbar">
+    <div class="logo"><i></i><i></i><i></i><i></i></div>
+    <div class="t">报表：奥斯塔普·多增科 <span>· 周期 2013 — 2026</span></div>
+    <div class="st"><i></i>状态：在线 · 开放合作</div>
+    <div class="btn">⤓ 导出</div>
+  </div>
+
+  <div class="filters">
+    <span class="chip">时间范围：<b>2013 — 2026</b> <span class="dd">▼</span></span>
+    <span class="chip">市场：<b>俄罗斯 ↔ 中国 ↔ 东南亚</b> <span class="dd">▼</span></span>
+    <span class="chip">国家：<b>20+</b></span>
+    <span class="chip">语言：<b>5</b></span>
+    <span class="chip">常驻：<b>上海 · 莫斯科（混合办公）</b></span>
+  </div>
+
+  <div class="row" style="height:202px; flex:none">
+    <div class="card profile">
+      <div class="kick">个人档案 · 13+ 年 · 俄罗斯 ↔ 中国 ↔ 东南亚 · B2B 市场营销 · 全球商务</div>
+      <div class="name">奥斯塔普·多增科 <small>Ostap Dotsenko</small></div>
+      <div class="role">业务拓展与市场营销负责人</div>
+      <div class="cos">
+        <span class="co"><i style="background:var(--s1)"></i>阿里巴巴 · AliExpress<em class="pl">P&amp;L</em></span>
+        <span class="co"><i style="background:var(--s1)"></i>Megamarket（Sber）<em class="pl">P&amp;L</em></span>
+        <span class="co"><i style="background:var(--s2)"></i>上海自主创业<em class="pl">P&amp;L</em></span>
+      </div>
+      <div class="target"><span class="k">目标职位</span><span class="v">CBDO · CMO · 国际业务拓展总监 <span>（俄罗斯 ↔ 中国 ↔ 东南亚）</span></span></div>
+      <div class="contacts">
+        <span><i>电话</i>+86 137 6171 6355</span><span><i>电话/WA</i>+7 985 874-49-58</span><span><i>微信</i>ostap10081987</span><span><i>邮箱</i>norbanking@gmail.com</span><span><i>TG</i>@ostapdotcenko</span>
+      </div>
+    </div>
+    <div class="card cam">
+      <img src="../2026-11-06-resume-dashboard/img/cam-stage.jpg" alt="Ostap Dotsenko on stage" style="object-position: 66% 40%">
+      <div class="ov" style="top:8px"><span class="rec"><i></i>REC · CAM 01</span><span>1/2</span></div>
+      <div class="ov" style="bottom:8px"><span>舞台上</span><span>2024.12.01</span></div>
+    </div>
+  </div>
+
+  <div class="kpis">
+    <div class="card kpi"><div class="bar"></div><div class="l">卖家数量增长</div><div class="v">+350%</div><div class="s">同比 · Megamarket</div></div>
+    <div class="card kpi"><div class="bar"></div><div class="l">GMV · AliExpress</div><div class="v">4800<span class="u">万美元</span></div><div class="d">▲ 同比 +100%</div></div>
+    <div class="card kpi"><div class="bar" style="background:var(--s2)"></div><div class="l">年营销预算</div><div class="v">&gt;&nbsp;10<span class="u">亿卢布</span></div><div class="s">团队最多 40 人</div></div>
+    <div class="card kpi"><div class="bar"></div><div class="l">我主导项目的成效</div><div class="v">30<span class="u">亿卢布</span></div><div class="s">净利润 · 2023年第四季度<br>Megamarket</div></div>
+    <div class="card kpi"><div class="bar"></div><div class="l">项目覆盖地区</div><div class="v">86</div><div class="s">与经济发展部合作</div></div>
+  </div>
+
+  <div class="row" style="height:162px; flex:none">
+    <div class="card" style="flex:1.3">
+      <div class="ct"><h3>核心指标增长，%</h3></div>
+      <div class="cap">Megamarket · AliExpress</div>
+      <svg id="growth" width="100%" height="100" style="margin-top:4px"></svg>
+    </div>
+    <div class="card" style="flex:1">
+      <div class="ct"><h3>平均投放 ROI</h3></div>
+      <div class="cap">阿里巴巴集团 · 2020–2022</div>
+      <svg id="gauge" width="100%" height="80" style="margin-top:1px"></svg>
+      <div class="note" style="text-align:center">指针直接爆表</div>
+    </div>
+    <div class="card" style="flex:1.05">
+      <div class="ct"><h3>“俄罗斯制造”</h3></div>
+      <div class="cap">参与企业数 · 2024</div>
+      <svg id="slope" width="100%" height="104" style="margin-top:2px"></svg>
+    </div>
+  </div>
+
+  <div class="card" style="flex:none; padding-bottom:6px">
+    <div class="query"><span><span class="kw">SELECT</span> * <span class="kw">FROM</span> 工作经历 <span class="kw">WHERE</span> 成果 &gt; <span class="num">0</span> <span class="kw">ORDER BY</span> 时间 <span class="kw">DESC</span>;</span>
+      <span class="res">→ 7 行 · 13+ 年</span><span class="run">▶ 运行</span></div>
+    <div class="gantt" id="gantt"></div>
+  </div>
+
+  <div class="row" style="flex:1; min-height:0">
+    <div class="card" style="flex:1">
+      <div class="ct"><h3>数据源</h3><span class="sub">网站、博客、社交媒体 · 9/9</span>
+        <span class="ok r"><svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="#0ca30c"/><path d="M3.2 6.2l1.8 1.8 3.8-3.8" stroke="#fff" stroke-width="1.6" fill="none"/></svg>已连接</span></div>
+      <div class="srcs" id="sources"></div>
+      <div class="sync"><span class="mono">↻ 同步</span> 博客：2026.10.15 起每日更新 · RU · EN · 中文</div>
+    </div>
+    <div class="card" style="width:304px; flex:none">
+      <div class="ct"><h3>利益相关方反馈</h3><span class="sub">来自网站的评价</span></div>
+      <div class="qt"><p>“Ostap 有一种难得的能力，能从战略到战术完整地看待市场……”</p><span>Alexey K.，销售副总裁 · Megamarket</span></div>
+      <div class="qt"><p>“……25 倍的 ROI 就是最好的证明。”</p><span>Li W.，区域总监 · 阿里巴巴集团</span></div>
+      <div class="qt"><p>“……能在俄罗斯、中国和东南亚市场同样游刃有余……”</p><span>Muhammad A.，首席执行官 · HiTarget 印尼</span></div>
+    </div>
+  </div>
+
+  <div class="ftr"><span><b>奥斯塔普·多增科</b> · 仪表盘简历 · 第 1 / 2 页</span><span>* 数据来自真实项目；部分数据因保密协议已做匿名处理</span></div>
+</section>
+
+<!-- ======================= page 2: details ======================= -->
+<section class="page">
+
+  <div class="appbar" style="height:34px">
+    <div class="logo"><i></i><i></i><i></i><i></i></div>
+    <div class="t">报表：奥斯塔普·多增科</div>
+    <div class="tabs"><span>概览</span><span class="on">明细</span><span>媒体</span><span>反馈</span></div>
+    <div class="st"><i></i>在线 · 开放合作</div>
+  </div>
+
+  <div class="card" style="flex:none; padding-top:7px; padding-bottom:3px">
+    <div class="query"><span><span class="kw">SELECT</span> 职位, 公司, 成果 <span class="kw">FROM</span> 工作经历 <span class="kw">ORDER BY</span> 时间 <span class="kw">DESC</span>;</span>
+      <span class="res">→ 7 行</span><span class="run">▶ 运行</span></div>
+
+    <div style="margin-top:4px">
+    <div class="dr">
+      <div class="p">2025 — 至今<span>上海</span><div class="m"><i>论坛 1200+ 人</i><i>所有者损益</i></div></div>
+      <div>
+        <h4>所有者与创始人 · <span class="c">上海拼那克了科技有限公司</span> <span class="zh2">Shanghai Pinnacle Technology Co., Ltd.</span></h4>
+        <div class="x">GlobalTechTour —— 中国与东南亚科技考察；Aura Robotics —— 机器人与自动化，直接向中国厂商甄选机器人。</div>
+        <ul>
+          <li>为 <b>Megamarket（Sber）在深圳一站式承办 1200+ 人企业论坛</b>：物流、场地、商务日程全程负责。</li>
+          <li>带领代表团走进 <b>BYD、小米、百度、美团、得物、Leju Robotics</b> 的工厂与研发中心；为 Aura 客户直接对接机器人制造商的管理层与研发团队，而非普通经理。</li>
+          <li><b>BelMol</b> 在 Kepler 工厂经过 2 小时会谈即敲定乳制品生产自动化方案；<b>SolarTek</b> 5 天内参观了 Leju Robotics、Robotera、AgiBot 和 Kepler；<b>Prosto Eda</b> 与食品行业机器人设备制造商的创始人本人会面。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dr">
+      <div class="p">2023 — 2025<span>俄罗斯</span><div class="m"><i>同比 +350%</i><i>5 万卖家</i><i>86 个地区</i><i>30亿卢布成效</i><i>P&amp;L</i></div></div>
+      <div>
+        <h4>B2B 市场负责人 · <span class="c">Megamarket（Sber 生态）</span> <span class="nt">—— 俄罗斯第三大电商平台</span></h4>
+        <div class="x">团队 <b>16–40 人</b>（直接管理及通过下属主管）· 年营销预算<b>超过 10亿卢布</b> · <b>负责业务线损益</b>。</div>
+        <ul>
+          <li>卖家招募 B2B 营销：<b>卖家数量同比 +350%</b>，平台卖家达 <b>5 万家</b>。</li>
+          <li>与<b>俄罗斯经济发展部</b>合作，依托“我的事业”中心在 <b>86 个地区</b>推出联邦级企业家支持计划：从零搭建获客战略、营销物料与区域传播。</li>
+          <li>联邦马拉松 <b>“Megasreda”覆盖 20 座城市</b>——从概念、物流到内容与公关全程操盘；<b>观看量 100 万+</b>。</li>
+          <li>“俄罗斯制造”：品牌计划、入驻体系、视频推广——参与企业<b>从 0 增至 2000 家</b>。</li>
+          <li>面向残障人士生产者的社会公益市集：定位、UX、公关活动。</li>
+          <li>我主导的项目带来 <b>30亿卢布净利润（2023年第四季度）</b>。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dr">
+      <div class="p">2022 — 2023<span>乌兹别克斯坦 · 哈萨克斯坦 · 东南亚</span></div>
+      <div>
+        <h4>独立顾问 · <span class="c">AdTech / MarTech / EduTech</span></h4>
+        <ul><li>MyDars、HiTarget（印尼）；<b>20+ 合作伙伴</b>；面向东南亚的产品本地化。</li></ul>
+      </div>
+    </div>
+    <div class="dr">
+      <div class="p">2020 — 2022<span>俄罗斯与独联体</span><div class="m"><i>GMV 4800万美元</i><i>ROI 25×</i><i>120+ 媒体</i></div></div>
+      <div>
+        <h4>O2O 与新业务负责人 · <span class="c">阿里巴巴集团 —— AliExpress 俄罗斯与独联体</span></h4>
+        <div class="x">团队<b>最多 5 人</b> · <b>负责 O2O 业务线损益</b>。</div>
+        <ul>
+          <li>合作伙伴：<b>Alfa 银行、Tinkoff、MTS 银行、Megafon、Beeline、俄罗斯石油公司</b>及 <b>120+ 家媒体集团</b>。</li>
+          <li><b>GMV 4800万美元（同比 +100%）</b>，<b>新买家 +185%</b>，<b>平均投放 ROI 25 倍</b>。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dr">
+      <div class="p">2017 — 2020<span>上海 · 香港</span><div class="m"><i>所有者损益</i></div></div>
+      <div>
+        <h4>联合创始人 · <span class="c">O.F.D 创意机构</span> <span class="nt">· 2017年为筹备与启动期</span></h4>
+        <ul>
+          <li>中俄联合团队：为中俄市场提供品牌推广与广告方案。客户：<b>FOREO、DECATHLON、中国银行、WWE、CDEK</b>。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dr">
+      <div class="p">2015 — 2017<span>莫斯科 · 上海</span></div>
+      <div>
+        <h4>商务与业务拓展负责人 · <span class="c">Data Centric Alliance</span></h4>
+        <ul><li>媒体采购与亚洲市场业务拓展；<b>Google 香港、Yahoo 香港、腾讯、携程、百度</b>。</li></ul>
+      </div>
+    </div>
+    <div class="dr">
+      <div class="p">2013 — 2015<span>中国 · 东南亚</span></div>
+      <div>
+        <h4>业务拓展经理 —— 中国 / 东南亚 · <span class="c">CityAds Media</span></h4>
+        <ul><li>效果与联盟营销（CPA / CPC / CPL），中国与东南亚市场；Sasa（香港）。</li></ul>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="card" style="flex:none; padding-top:7px; padding-bottom:7px">
+    <div class="ct"><h3>技能</h3><span class="sub">4 个维度</span><span class="tip">每日提示：<b>千里之行，始于足下</b> —— 老子《道德经》</span></div>
+    <div class="skills">
+      <div><h4>business_development</h4><p>市场进入、合作与联盟、与一把手谈判、亚洲与独联体拓展、新业务</p></div>
+      <div><h4>marketing</h4><p>B2B 营销、需求挖掘、Performance、产品营销、销售赋能、品牌计划</p></div>
+      <div><h4>tech_data</h4><p>电商平台、AdTech / MarTech、营销自动化、CRM 与数据分析、O2O</p></div>
+      <div><h4>communications</h4><p>GR 与政府项目、联邦级活动、公关 · 俄联邦与独联体 50+ 场展会与论坛</p></div>
+    </div>
+  </div>
+
+  <div class="row" style="flex:1; min-height:0">
+    <div class="card" style="flex:1">
+      <div class="ct"><h3>事件日志</h3><span class="sub">舞台与媒体</span></div>
+      <div style="display:grid; grid-template-columns: 1fr 124px; gap: 10px; margin-top: 2px">
+        <div>
+          <div class="ev"><span class="y">2024</span><span><b>Russian Retail Show 2024</b> —— 演讲嘉宾</span></div>
+          <div class="ev"><span class="y">2024</span><span><b>Amber Forum 2024</b> —— 圆桌讨论</span></div>
+          <div class="ev"><span class="y">2024</span><span><b>“制造商峰会”</b>，伊尔库茨克 —— 圆桌</span></div>
+          <div class="ev"><span class="y">2025</span><span><b>Russian Retail Week 2025</b> · <b>上合组织论坛 2025</b></span></div>
+          <div class="ev"><span class="y">RU</span><span>联邦马拉松 <b>“Megasreda”</b></span></div>
+        </div>
+        <div class="card cam" style="width:auto; border-radius:8px">
+          <img src="../2026-11-06-resume-dashboard/img/cam-rrs.jpg" alt="Ostap Dotsenko, Russian Retail Show 2024 panel" style="object-position: 50% 45%">
+          <div class="ov" style="top:6px; left:6px; right:6px"><span class="rec"><i></i>CAM 02</span></div>
+          <div class="ov" style="bottom:6px; left:6px; right:6px"><span>RRS 2024</span></div>
+        </div>
+      </div>
+      <div class="ct" style="margin-top:3px"><h3 style="font-size:12px">媒体提及</h3></div>
+      <ul class="lst">
+        <li><b>RBC</b> —— 专访“最重要的是懂行，并且敢于行动”；<b>RBC Industries</b></li>
+        <li><b>Sber Business</b> —— 指南《电商平台：完整盈利指南》</li>
+        <li><b>TASS</b> —— 乌里扬诺夫斯克州与 Megamarket 共建地方商品展示平台</li>
+        <li><b>“我的事业”</b> —— 线上马拉松，观看量 100 万+</li>
+      </ul>
+    </div>
+    <div class="card" style="width:248px; flex:none">
+      <div class="ct"><h3>语言</h3><span class="sub">CEFR 等级</span></div>
+      <div id="langs"></div>
+      <div class="scale"><span></span><div><span>A1</span><span>A2</span><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div><span></span></div>
+      <div class="ct" style="margin-top:6px"><h3>教育背景</h3></div>
+      <ul class="lst" style="margin-top:0">
+        <li>民法专业 —— 国际大学</li>
+        <li>韩语教师 —— 塔什干国立东方学学院附属中学</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ftr"><span><b>完整商务版及ATS版本可应要求提供</b></span><span>ostapdotcenko.ru · 微信 ostap10081987 · Telegram @ostapdotcenko · 第 2 / 2 页</span></div>
+</section>
+
+<script>
+// Charts use only numbers from RESUME-MASTER.md; no invented intermediate points.
+const C = { s1: '#2a78d6', s1w: 'rgba(42,120,214,0.10)', s1t: '#dbe7f7', s2: '#eb6834', s3: '#1baf7a', ink: '#0B1220', ink2: '#3D4757',
+  muted: '#586274', grid: '#E6E8EC', axis: '#C3C7CE', surf: '#FFFFFF' };
+const MONO = 'JBMono, Inter, NSC';
+const NS = 'http://www.w3.org/2000/svg';
+const el = (svg, tag, attrs, text) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text != null) e.textContent = text; svg.appendChild(e); return e; };
+const hbar = (x0, y, w, h, r = 4) => `M${x0},${y} H${x0 + w - r} A${r},${r} 0 0 1 ${x0 + w},${y + r} V${y + h - r} A${r},${r} 0 0 1 ${x0 + w - r},${y + h} H${x0} Z`;
+
+// 1. Growth, % — horizontal bars, one series
+(() => {
+  const svg = document.getElementById('growth'), W = svg.getBoundingClientRect().width;
+  const data = [['卖家，同比', 350], ['新买家', 185], ['GMV，同比', 100]];
+  const x0 = 76, plotW = W - x0 - 44, max = 400, sx = v => x0 + v / max * plotW, rowH = 25, top = 2, barH = 13;
+  for (let v = 0; v <= max; v += 100) {
+    el(svg, 'line', { x1: sx(v), x2: sx(v), y1: top, y2: top + rowH * data.length, stroke: v ? C.grid : C.axis, 'stroke-width': 1 });
+    if (v % 200 === 0) el(svg, 'text', { x: sx(v), y: top + rowH * data.length + 13, 'font-size': 10.5, fill: C.muted, 'text-anchor': 'middle', 'font-family': MONO }, v ? v + '%' : '0');
+  }
+  data.forEach(([lab, v], i) => {
+    const y = top + i * rowH + (rowH - barH) / 2;
+    el(svg, 'text', { x: 0, y: y + 11, 'font-size': 11, fill: C.ink2 }, lab);
+    el(svg, 'path', { d: hbar(x0, y, sx(v) - x0, barH), fill: C.s1 });
+    el(svg, 'text', { x: sx(v) + 5, y: y + 11.5, 'font-size': 12, 'font-weight': 700, fill: C.ink }, '+' + v + '%');
+  });
+})();
+
+// 2. ROI 25× — half-circle gauge 0–25, needle at the stop
+(() => {
+  const svg = document.getElementById('gauge'), W = svg.getBoundingClientRect().width;
+  const cx = W / 2, cy = 68, R = 47, max = 25, ang = v => Math.PI - v / max * Math.PI;
+  const pt = (v, r) => [cx + Math.cos(ang(v)) * r, cy - Math.sin(ang(v)) * r];
+  const arc = (v0, v1, r) => { const [x0, y0] = pt(v0, r), [x1, y1] = pt(v1, r); return `M${x0},${y0} A${r},${r} 0 0 1 ${x1},${y1}`; };
+  el(svg, 'path', { d: arc(0, 25, R), stroke: C.s1, 'stroke-width': 11, fill: 'none', 'stroke-linecap': 'butt' });
+  for (let v = 0; v <= max; v += 5) {
+    const [a, b] = pt(v, R + 7), [c, d] = pt(v, R + 11), [tx, ty] = pt(v, R + 19);
+    el(svg, 'line', { x1: a, y1: b, x2: c, y2: d, stroke: C.axis, 'stroke-width': 1 });
+    el(svg, 'text', { x: tx, y: ty + 3.5, 'font-size': 10.5, fill: C.muted, 'text-anchor': v < 12 ? 'end' : (v > 13 ? 'start' : 'middle'), 'font-family': MONO }, v);
+  }
+  const [nx, ny] = pt(25, R - 9);
+  el(svg, 'line', { x1: cx, y1: cy, x2: nx, y2: ny, stroke: C.ink, 'stroke-width': 2, 'stroke-linecap': 'round' });
+  el(svg, 'circle', { cx, cy, r: 5, fill: C.ink, stroke: C.surf, 'stroke-width': 2 });
+  el(svg, 'text', { x: cx, y: cy - 15, 'font-size': 24, 'font-weight': 700, fill: C.ink, 'text-anchor': 'middle', 'letter-spacing': '-0.02em' }, '25×');
+})();
+
+// 3. "Made in Russia" 0 → 2 000 — two points (start and 2024)
+(() => {
+  const svg = document.getElementById('slope'), W = svg.getBoundingClientRect().width;
+  const L = 38, R = W - 14, T = 20, B = 86, max = 2000, sy = v => B - v / max * (B - T);
+  [0, 1000, 2000].forEach(v => {
+    el(svg, 'line', { x1: L, x2: R, y1: sy(v), y2: sy(v), stroke: v ? C.grid : C.axis, 'stroke-width': 1 });
+    el(svg, 'text', { x: L - 6, y: sy(v) + 3.5, 'font-size': 10.5, fill: C.muted, 'text-anchor': 'end', 'font-family': MONO }, v ? String(v) : '0');
+  });
+  const p0 = [L + 14, sy(0)], p1 = [R - 10, sy(2000)];
+  el(svg, 'path', { d: `M${p0[0]},${p0[1]} L${p1[0]},${p1[1]} L${p1[0]},${B} Z`, fill: C.s1w });
+  el(svg, 'line', { x1: p0[0], y1: p0[1], x2: p1[0], y2: p1[1], stroke: C.s1, 'stroke-width': 2, 'stroke-linecap': 'round' });
+  [p0, p1].forEach(([x, y]) => el(svg, 'circle', { cx: x, cy: y, r: 4.5, fill: C.s1, stroke: C.surf, 'stroke-width': 2 }));
+  el(svg, 'text', { x: p1[0] - 8, y: p1[1] - 6, 'font-size': 12, 'font-weight': 700, fill: C.ink, 'text-anchor': 'end' }, '2000 家企业');
+  el(svg, 'text', { x: p0[0], y: B + 14, 'font-size': 10.5, fill: C.muted, 'text-anchor': 'middle', 'font-family': MONO }, '起点');
+  el(svg, 'text', { x: p1[0], y: B + 14, 'font-size': 10.5, fill: C.muted, 'text-anchor': 'middle', 'font-family': MONO }, '2024');
+})();
+
+// 4. Gantt: role periods (2013 — now), colour = role type
+(() => {
+  const root = document.getElementById('gantt');
+  const Y0 = 2013, Y1 = 2027.7, NOW = 2026.85;
+  const rows = [
+    ['所有者与创始人', '上海拼那克了科技有限公司', 2025, NOW, 's2', '2025 — 至今', 'Megamarket 深圳论坛 1200+ 人', 'L'],
+    ['B2B 市场负责人', 'Megamarket（Sber 生态）', 2023, 2025, 's1', '2023 — 2025', '卖家同比 +350% · 86 个地区', 'L'],
+    ['独立顾问', 'AdTech / MarTech / EduTech', 2022, 2023, 's3', '2022 — 2023', '20+ 合作伙伴 · 乌兹别克斯坦、哈萨克斯坦、东南亚', 'L'],
+    ['O2O 与新业务负责人', '阿里巴巴集团 —— AliExpress 俄罗斯与独联体', 2020, 2022, 's1', '2020 — 2022', 'GMV 4800万美元 · ROI 25×', 'L'],
+    ['联合创始人', 'O.F.D 创意机构', 2017, 2020, 's2', '2017 — 2020', '上海 / 香港', 'R'],
+    ['商务与业务拓展负责人', 'Data Centric Alliance', 2015, 2017, 's1', '2015 — 2017', 'Google 香港、腾讯、百度', 'R'],
+    ['业务拓展经理 —— 中国 / 东南亚', 'CityAds Media', 2013, 2015, 's1', '2013 — 2015', 'CPA / CPC / CPL · 中国与东南亚', 'R'],
+  ];
+  const pct = y => ((y - Y0) / (Y1 - Y0) * 100);
+  let html = '<div class="g-grid">';
+  for (let y = Y0; y <= 2025; y += 2) html += `<i style="left:${pct(y)}%"></i>`;
+  html += `<i class="now" style="left:${pct(NOW)}%"></i></div>`;
+  rows.forEach(([role, co, a, b, s, per, res, side]) => {
+    const txt = `<b>${per}</b> · ${res}`;
+    const pos = side === 'L' ? `right:${100 - pct(a) + 1.2}%` : `left:${pct(b) + 1.2}%`;
+    html += `<div class="g-row"><div class="g-lab"><b>${role.replace('&', '&amp;')}</b><span>${co}</span></div><div class="g-track">
+      <div class="g-bar" style="left:${pct(a)}%; width:${pct(b) - pct(a)}%; background:var(--${s})"></div>
+      <div class="g-txt" style="${pos}">${txt}</div></div></div>`;
+  });
+  html += '<div class="g-axis">';
+  for (let y = Y0; y <= 2025; y += 2) html += `<span style="left:${pct(y)}%">${y}</span>`;
+  html += `<span style="left:${pct(NOW)}%; color:#0B1220; font-weight:700">现在</span></div>`;
+  html += '<div class="legend"><span><i style="background:var(--s1)"></i>受雇</span><span><i style="background:var(--s2)"></i>自主创业</span><span><i style="background:var(--s3)"></i>顾问</span></div>';
+  root.innerHTML = html;
+})();
+
+// 5. Data sources (social networks, blogs, sites)
+(() => {
+  const rows = [
+    ['WEB', 'ostapdotcenko.ru', '网站 · RU · EN · 中文', 'k'],
+    ['BLOG', 'ostapdotcenko.ru/blog', '每日更新 · 三种语言', 'k'],
+    ['微信', 'ostap10081987', '微信', 'wx'],
+    ['TG', '@ostapdotcenko', 'Telegram'],
+    ['IG', '@ostap.dotsenko', 'Instagram'],
+    ['f', 'Ostap Dotsenko', 'Facebook'],
+    ['in', '<a href="https://www.linkedin.com/in/ostapdot%D1%81enko/">linkedin.com/in/ostapdot&#x441;enko</a>', 'LinkedIn · 1.1万+关注者'],
+    ['GTT', 'globaltechtour.ru', '项目 + 博客'],
+    ['AR', 'aura-robotics.ru', '项目 + 博客'],
+  ];
+  const tick = '<svg width="12" height="12" viewBox="0 0 12 12" aria-label="ok"><circle cx="6" cy="6" r="6" fill="#0ca30c"/><path d="M3.2 6.2l1.8 1.8 3.8-3.8" stroke="#fff" stroke-width="1.6" fill="none"/></svg>';
+  document.getElementById('sources').innerHTML = rows.map(([ic, b, s, k]) =>
+    `<div class="src"><span class="ic${k ? ' ' + k : ''}">${ic}</span><div><b>${b}</b><span>${s}</span></div>${tick}</div>`).join('');
+})();
+
+// 6. Languages on the CEFR scale (A1…C2), native = full bar
+(() => {
+  const lv = { A1: 1, A2: 2, B1: 3, B2: 4, 'B2+': 4.5, C1: 5, C2: 6, '母语': 6 };
+  const rows = [['俄语', '母语'], ['英语', 'C1'], ['中文', 'B2+'], ['乌兹别克语', 'B1'], ['韩语', 'A2']];
+  document.getElementById('langs').innerHTML = rows.map(([n, l]) =>
+    `<div class="lng"><span>${n}</span><div class="tr"><i style="width:${l === '母语' ? 100 : (lv[l] - 0.5) / 6 * 100}%"></i></div><em>${l}</em></div>`).join('');
+})();
+</script>
+</body>
+</html>

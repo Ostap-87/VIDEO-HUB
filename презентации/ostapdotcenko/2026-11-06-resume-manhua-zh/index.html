@@ -1,0 +1,407 @@
+<!doctype html>
+<!-- Ostap Dotsenko resume in Simplified Chinese, creative version "Manhua comic: the hero's journey" (06.11.2026, task: all resume
+     versions in English and Chinese). Same design, photos and layout as 2026-11-06-resume-manhua (fonts and photos are taken from its folder).
+     Humour in the language of real Chinese 漫画: 第N话 chapter titles, onomatopoeia 嘭！叮～唰！嗨！咻～轰！, caption 与此同时，在上海……,
+     战斗力 (power level), 超能力, 英雄学院, 回忆杀 (flashback), 追更 (where to follow new chapters), 求关注, 断更, 下一话预告, 未完待续.
+     Facts only from ../RESUME-MASTER.md; wording from the site (src/i18n/zh.ts) and the glossary in ../RESUME-I18N.md.
+     Fonts: Latin as in the original (Russo One, Rubik, Pangolin); hanzi in Noto Sans SC (build.py) and OFL subsets in fonts/cjk-extra.css:
+     ZCOOL QingKe HuangYou for headings and sound effects, ZCOOL KuaiLe for speech bubbles, Ma Shan Zheng for 第N话 and 未完待续.
+     Build: python3 build.py 2026-11-06-resume-manhua-zh -->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>奥斯塔普·多增科 — 漫画简历</title>
+<link rel="stylesheet" href="../2026-11-06-resume-manhua/fonts/fonts.css">
+<link rel="stylesheet" href="fonts/noto-sans-sc.css">
+<link rel="stylesheet" href="fonts/cjk-extra.css">
+<style>
+:root {
+  --ink: #121214; --paper: #FFFFFF; --red: #E1232B; --cyan: #0A9BD8; --tint: #E6F5FC; --pink: #FDE8E8; --dim: #4A4A52;
+  --zh: "NSC", "Noto Sans SC", "WenQuanYi Zen Hei", sans-serif;
+  --title: "RussoOne", "ZQK", var(--zh); --body: "Rubik", var(--zh); --hand: "Pangolin", "ZKL", var(--zh);
+  --brush: "MSZ", var(--zh);
+}
+@page { size: 210mm 297mm; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #9a9aa0; }
+body { font-family: var(--body); color: var(--ink); -webkit-font-smoothing: antialiased; font-size: 11.2px; line-height: 1.55; font-synthesis: none; line-break: strict; }
+.page { width: 794px; height: 1123px; position: relative; overflow: hidden; background: var(--paper); margin: 0 auto 24px;
+  page-break-after: always; break-after: page; padding: 18px 20px 28px; display: flex; flex-direction: column; gap: 6px; }
+@media print { html, body { background: none; } .page { margin: 0; } }
+b { font-weight: 700; }
+.zh { font-family: var(--zh); }
+
+/* panels */
+.row { display: flex; gap: 8px; }
+.panel { position: relative; border: 3px solid var(--ink); background: var(--paper); overflow: hidden; }
+.pad { padding: 10px 12px 10px; }
+.dots { position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(circle, var(--c, var(--cyan)) 0 1.5px, transparent 1.9px); background-size: 7px 7px; }
+.speed { position: absolute; inset: 0; pointer-events: none;
+  background: repeating-conic-gradient(from 3deg at var(--sx, 30%) var(--sy, 45%), rgba(18,18,20,.82) 0 .55deg, transparent .55deg 4.6deg);
+  -webkit-mask: radial-gradient(circle at var(--sx, 30%) var(--sy, 45%), transparent 0 var(--hole, 34%), #000 72%); }
+.cap { background: var(--tint); border: 2px solid var(--ink); padding: 6px 9px; position: relative; z-index: 2; }
+.cap .k { display: inline-block; font-family: var(--title); font-size: 12px; background: var(--ink); color: #fff;
+  padding: 1px 7px 1px; margin: -6px 0 5px -9px; line-height: 1.5; }
+.bubble { position: absolute; z-index: 4; background: #fff; border: 2.5px solid var(--ink); border-radius: 50%; padding: 12px 18px;
+  font-family: var(--hand); font-size: 13px; line-height: 1.35; text-align: center; display: flex; align-items: center; justify-content: center; }
+.bubble .tail { position: absolute; z-index: 2; overflow: visible; }
+
+/* bursts */
+.burst { position: absolute; z-index: 3; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.burst svg { position: absolute; inset: -6px; width: calc(100% + 12px); height: calc(100% + 12px); z-index: -1; overflow: visible; }
+.burst .num { font-family: var(--body); font-weight: 900; font-style: italic; line-height: .95; letter-spacing: -.02em; color: #fff;
+  -webkit-text-stroke: 1.2px var(--ink); paint-order: stroke fill; text-shadow: 2px 2px 0 var(--ink); white-space: nowrap; }
+.burst .num .h { font-family: var(--title); font-style: normal; letter-spacing: 0; font-size: 0.82em; margin-left: 1px; }
+.burst.w .num { color: var(--red); text-shadow: 2px 2px 0 rgba(18,18,20,.9); }
+.tag { position: absolute; z-index: 4; background: var(--ink); color: #fff; font-weight: 600; font-size: 10.8px; line-height: 1.4; padding: 3px 6px; text-align: center; }
+.sfx { position: absolute; z-index: 4; font-family: var(--title); color: var(--red); -webkit-text-stroke: 1.2px var(--ink); paint-order: stroke fill;
+  text-shadow: 2px 2px 0 var(--ink); transform: rotate(var(--r, -8deg)); line-height: 1; }
+
+/* header */
+.title { display: flex; align-items: stretch; gap: 8px; height: 73px; flex: none; }
+.logo { flex: 1; position: relative; border: 3px solid var(--ink); background: var(--red); overflow: hidden; padding: 4px 14px 0; }
+.logo .dots { --c: rgba(255,255,255,.28); }
+.logo h1 { position: relative; font-family: "RussoOne", var(--zh); font-weight: 900; font-size: 42px; line-height: 1; color: #fff;
+  -webkit-text-stroke: 2px var(--ink); paint-order: stroke fill; text-shadow: 3px 3px 0 var(--ink); white-space: nowrap; }
+.logo .sub { position: relative; display: flex; gap: 10px; align-items: baseline; margin-top: 3px; color: #fff; font-weight: 700; font-size: 12px; }
+.logo .sub .en { letter-spacing: .08em; }
+.tcont { width: 292px; flex: none; border: 3px solid var(--ink); background: #fff; padding: 4px 10px 4px; font-size: 11px; line-height: 1.5; }
+.tcont i { font-style: normal; color: var(--red); font-weight: 800; font-size: 10.5px; margin-right: 4px; }
+.tcont span { white-space: nowrap; }
+
+/* hero */
+.hero { height: 308px; flex: none; }
+.hero .main { width: 462px; flex: none; background: var(--tint); }
+.hero .main .dots { -webkit-mask: linear-gradient(200deg, #000 0%, transparent 60%); }
+.hero .main img { position: absolute; left: -8px; bottom: -4px; height: 298px; z-index: 2;
+  filter: drop-shadow(2.5px 0 0 var(--ink)) drop-shadow(-2.5px 0 0 var(--ink)) drop-shadow(0 2.5px 0 var(--ink)) drop-shadow(0 -2.5px 0 var(--ink)); }
+.side-col { flex: 1; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.who { padding: 9px 12px 8px; font-size: 11.6px; line-height: 1.6; }
+.who .k { margin-left: -12px; margin-top: -9px; }
+.who b { font-weight: 800; }
+.mission { background: var(--ink); color: #fff; padding: 7px 12px 6px; border: 3px solid var(--ink); }
+.mission .k { font-family: var(--title); font-size: 14px; color: #fff; }
+.mission .k span { color: #ff6b70; }
+.mission p { font-weight: 800; font-size: 13.5px; line-height: 1.45; margin-top: 2px; }
+.mission .power { border-top: 1px solid rgba(255,255,255,.35); margin-top: 6px; padding-top: 5px; font-size: 11.4px; line-height: 1.55; color: #f1f1f4; }
+.mission .power b { color: #ff6b70; font-weight: 800; font-family: var(--title); font-size: 13px; }
+.mission p i { font-style: normal; font-weight: 500; font-size: 11.4px; display: block; color: #e9e9ee; margin-top: 1px; }
+.sticker { position: absolute; z-index: 5; background: #fff; border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); padding: 4px 8px 5px;
+  transform: rotate(-5deg); text-align: center; }
+.sticker b { display: block; font-family: var(--title); font-weight: 400; font-size: 15px; line-height: 1.2; }
+.sticker b span { color: var(--red); }
+.sticker em { display: block; font-style: normal; font-size: 10.8px; line-height: 1.4; margin-top: 2px; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+.chips span { border: 1.5px solid var(--ink); background: #fff; padding: 1px 6px; font-size: 10.8px; font-weight: 600; line-height: 1.45; }
+.chips span b { font-weight: 800; }
+
+/* chapters */
+.ch { padding: 6px 12px 7px; }
+.ch-head { display: flex; align-items: center; gap: 9px; flex-wrap: nowrap; }
+.hua { font-family: var(--brush); font-size: 28px; line-height: 1; color: var(--red); flex: none; margin-top: -2px; }
+.ep { font-family: var(--title); font-size: 17px; line-height: 1.2; flex: 1; min-width: 0; }
+.when { flex: none; background: var(--ink); color: #fff; font-weight: 700; font-size: 11px; padding: 2px 8px 1px; white-space: nowrap; line-height: 1.5; }
+.role { font-weight: 800; font-size: 12.8px; line-height: 1.45; margin-top: 4px; }
+.role .co { color: var(--red); }
+.role .zh2 { font-weight: 500; font-size: 11px; color: var(--dim); }
+.ctx { font-size: 11px; color: var(--dim); margin-top: 1px; line-height: 1.55; }
+.ch ul { list-style: none; margin-top: 2px; }
+.ch li { padding-left: 15px; position: relative; margin-top: 1px; line-height: 1.55; text-wrap: pretty; }
+.ch li::before { content: ""; position: absolute; left: 1px; top: 5.5px; width: 0; height: 0; border-style: solid; border-width: 4.5px 0 4.5px 8px;
+  border-color: transparent transparent transparent var(--red); }
+.ch li b { font-weight: 800; }
+
+/* page 2 */
+.powers { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 14px; margin-top: 7px; }
+.powers h4 { font-family: var(--title); font-weight: 400; font-size: 14px; color: var(--red); line-height: 1.3; }
+.powers p { font-size: 11.2px; line-height: 1.55; margin-top: 1px; }
+.ptitle { font-family: var(--title); font-size: 18px; line-height: 1.2; }
+.ptitle small { font-family: var(--body); font-weight: 600; font-size: 10.8px; color: var(--dim); margin-left: 6px; }
+.lv { display: grid; grid-template-columns: 70px 1fr 40px; align-items: center; gap: 7px; margin-top: 3px; font-size: 11.4px; font-weight: 600; }
+.lv .bar { height: 11px; border: 2px solid var(--ink); position: relative; background: #fff; transform: skewX(-14deg); }
+.lv .bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--red); }
+.lv .bar i.c { background: var(--cyan); }
+.lv em { font-style: normal; font-weight: 800; font-size: 10.8px; text-align: right; white-space: nowrap; }
+.quote { position: relative; background: #fff; border: 2.5px solid var(--ink); border-radius: 16px; padding: 7px 11px 6px; font-family: var(--hand);
+  font-size: 14px; line-height: 1.45; }
+.quote + .quote { margin-top: 13px; }
+.quote::after { content: ""; position: absolute; bottom: -11px; left: 26px; width: 14px; height: 14px; background: #fff; border-right: 2.5px solid var(--ink);
+  border-bottom: 2.5px solid var(--ink); transform: skewX(35deg) rotate(45deg) scale(.8, 1.1); }
+.quote.r::after { left: auto; right: 26px; transform: skewX(-35deg) rotate(45deg) scale(.8, 1.1); }
+.quote cite { display: block; font-family: var(--body); font-style: normal; font-weight: 700; font-size: 10.8px; line-height: 1.35; margin-top: 2px; color: var(--dim); }
+.list { list-style: none; }
+.list li { padding-left: 13px; position: relative; margin-top: 3px; font-size: 11.2px; line-height: 1.55; }
+.list li::before { content: ""; position: absolute; left: 0; top: 6px; width: 6px; height: 6px; background: var(--cyan); border: 1.5px solid var(--ink); }
+.find { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; margin-top: 8px; position: relative; z-index: 2; }
+.net { display: flex; align-items: center; gap: 8px; background: #fff; border: 2px solid var(--ink); padding: 3px 8px 3px 4px; box-shadow: 3px 3px 0 var(--ink); }
+.net .ic { flex: none; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; background: var(--ink); color: #fff;
+  font-family: var(--title); font-size: 10.5px; letter-spacing: .02em; }
+.net .ic.r { background: var(--red); } .net .ic.c { background: var(--cyan); color: var(--ink); } .net .ic.g { background: #1AAD5B; font-size: 11px; }
+.net b { display: block; font-weight: 800; font-size: 12.4px; line-height: 1.25; }
+.net span { display: block; font-size: 10.6px; line-height: 1.35; color: var(--dim); font-weight: 500; }
+.net.wide { grid-column: span 2; }
+.net a { color: inherit; text-decoration: none; }
+.ftr { position: absolute; left: 20px; right: 20px; bottom: 9px; display: flex; justify-content: space-between; font-size: 10.5px; font-weight: 600; color: var(--dim); }
+.ftr b { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<!-- ======================= 第 1 页 ======================= -->
+<section class="page">
+
+  <div class="title">
+    <div class="logo"><div class="dots"></div>
+      <h1>奥斯塔普·多增科</h1>
+      <div class="sub"><span class="en">OSTAP DOTSENKO</span><span>· 主角成长之路 2013 → 2026</span></div>
+    </div>
+    <div class="tcont">
+      <span><i>电话</i>+86&nbsp;137 6171 6355 · <i>微信</i>ostap10081987</span><br>
+      <span><i>电话 / WA</i>+7&nbsp;985&nbsp;874-49-58</span><br>
+      <span><i>邮箱</i>norbanking@gmail.com · <i>TG</i>@ostapdotcenko</span><br>
+      <span><i>网站</i>ostapdotcenko.ru · 上海 · 莫斯科（混合办公）</span>
+    </div>
+  </div>
+
+  <div class="row hero">
+    <div class="panel main"><div class="dots"></div><div class="speed" style="--sx:28%; --sy:38%; --hole:30%"></div>
+      <img src="../2026-11-06-resume-manhua/img/hero-mic.png" alt="Ostap Dotsenko">
+      <div class="sticker" style="left:150px; top:10px; width:128px"><b>连载 <span>13+</span> 年</b><em>20+ 国 · 5 种语言<br>定价：一次面试</em></div>
+      <div class="burst" data-n="13" style="right:12px; top:6px; width:152px; height:82px"><span class="num" style="font-size:34px">+350%</span></div>
+      <div class="tag" style="right:14px; top:90px; width:150px">卖家数量同比增长 · Megamarket</div>
+      <div class="burst" data-n="12" data-fill="cyan" style="right:8px; top:128px; width:152px; height:78px"><span class="num" style="font-size:30px">4800<span class="h">万美元</span></span></div>
+      <div class="tag" style="right:12px; top:208px; width:152px">GMV，同比 +100% · AliExpress</div>
+      <div class="burst" data-n="11" style="right:22px; top:240px; width:124px; height:60px"><span class="num" style="font-size:32px">25×</span></div>
+      <div class="tag" style="right:150px; top:258px; width:128px">平均投放 ROI · 阿里巴巴集团</div>
+      <div class="sfx" style="right:178px; top:80px; font-size:28px; --r:-12deg">嘭！</div>
+      <div class="sfx" style="right:172px; top:136px; font-size:24px; --r:8deg">叮～</div>
+    </div>
+    <div class="side-col">
+      <div class="cap who"><span class="k">与此同时，在上海……</span><br>
+        <b>业务拓展与市场营销负责人。</b>13 年多来深耕俄罗斯、中国与东南亚的交汇处。曾负责 <b>Megamarket</b>（Sber 生态）的 B2B 市场营销，以及 <b>AliExpress 俄罗斯与独联体</b>（<b>阿里巴巴集团</b>）的 O2O 业务。如今在上海自主创业。</div>
+      <div class="mission chk" style="flex:1; overflow:hidden"><div class="k">主角正在寻找<span>新任务</span>：</div>
+        <p>CBDO · CMO · 国际业务拓展总监<i>俄罗斯 ↔ 中国 ↔ 东南亚</i></p>
+        <div class="power"><b>战斗力：</b>团队最多 40 人 · 年营销预算超过 10亿卢布 · 在 Megamarket、阿里巴巴及自有企业负责 P&amp;L。</div></div>
+    </div>
+  </div>
+
+  <!-- 第一话 -->
+  <div class="panel ch" style="flex:none">
+    <div class="ch-head"><span class="hua">第一话</span><span class="ep">「上海创业记」</span><span class="when">2025 — 至今 · 上海</span></div>
+    <div class="role">所有者与创始人 · <span class="co">上海拼那克了科技有限公司</span> <span class="zh2">Shanghai Pinnacle Technology Co., Ltd.</span></div>
+    <div class="ctx">GlobalTechTour —— 赴中国与东南亚的科技考察与标杆考察之旅；Aura Robotics —— 机器人与自动化，直接从中国制造商处甄选机器人。<b style="color:var(--ink)">作为所有者承担损益。</b></div>
+    <ul>
+      <li>为 <b>Megamarket（Sber）在深圳一站式承办 1200+ 人企业论坛</b>：物流、场地、商务日程全程负责。</li>
+      <li>带领代表团走进 <b>BYD、小米、百度、美团、得物、Leju Robotics</b> 的工厂与研发中心；为 Aura 客户直接对接机器人制造商的管理层与研发团队，而非普通经理。</li>
+      <li><b>BelMol</b> 在 Kepler 工厂经过 2 小时会谈即敲定乳制品生产自动化方案；<b>SolarTek</b> 5 天内参观了 Leju Robotics、Robotera、AgiBot 和 Kepler；<b>Prosto Eda</b> 与食品行业机器人设备制造商的创始人本人会面。</li>
+    </ul>
+  </div>
+
+  <!-- 第二话 -->
+  <div class="panel ch" style="flex:none; display:grid; grid-template-columns: 1fr 226px; gap: 10px">
+    <div>
+      <div class="ch-head"><span class="hua">第二话</span><span class="ep">「卖家争夺战」</span><span class="when">2023 — 2025</span></div>
+      <div class="role">B2B 市场负责人 · <span class="co">Megamarket（Sber 生态）</span></div>
+      <div class="ctx">俄罗斯第三大电商平台 · <b style="color:var(--ink)">团队 16–40 人（直接管理及通过下属主管）· 年营销预算超过 10亿卢布 · 负责业务线损益</b></div>
+      <ul>
+        <li>卖家招募 B2B 营销：<b>卖家数量同比 +350%</b>，平台卖家达 <b>5 万家</b>。</li>
+        <li>与<b>俄罗斯经济发展部</b>合作，依托“我的事业”中心在 <b>86 个地区</b>推出联邦级企业家支持计划：获客战略、营销物料、区域传播，从零搭建。</li>
+        <li>联邦马拉松 <b>“Megasreda”覆盖 20 座城市</b>——从概念、物流到内容与公关全程操盘；<b>观看量 100 万+</b>。</li>
+        <li>“俄罗斯制造”：品牌计划、入驻体系、视频推广——参与企业<b>从 0 增至 2000 家</b>。</li>
+        <li>面向残障人士生产者的社会公益市集：定位、UX、公关活动。</li>
+        <li>我主导的项目带来 <b>30亿卢布净利润（2023年第四季度）</b>。</li>
+      </ul>
+    </div>
+    <div style="position:relative">
+      <div class="dots" style="--c: rgba(225,35,43,.5); inset:-9px -13px -10px -6px; -webkit-mask: linear-gradient(90deg, transparent, #000 60%)"></div>
+      <div class="burst w" data-n="13" style="left:2px; top:2px; width:150px; height:60px"><span class="num" style="font-size:30px">5<span class="h">万</span></span></div>
+      <div class="tag" style="left:96px; top:50px; width:128px">平台卖家数量</div>
+      <div class="burst w" data-n="12" style="left:2px; top:84px; width:150px; height:60px"><span class="num" style="font-size:30px">86</span></div>
+      <div class="tag" style="left:96px; top:132px; width:128px">个地区 × 经济发展部</div>
+      <div class="burst" data-n="15" style="left:0; top:164px; width:176px; height:64px"><span class="num" style="font-size:23px">0&thinsp;→&thinsp;2000</span></div>
+      <div class="tag" style="left:70px; top:216px; width:154px">家企业加入“俄罗斯制造”</div>
+      <div class="sfx" style="right:2px; top:176px; font-size:24px; --r:-10deg">唰！</div>
+    </div>
+  </div>
+
+  <!-- 第三话 + 第四话 -->
+  <div class="row" style="flex:1; min-height:0">
+    <div class="panel ch" style="width:282px; flex:none">
+      <div class="ch-head"><span class="hua">第三话</span><span class="when">2022 — 2023</span></div>
+      <div class="ep" style="margin-top:3px">「顾问在路上」</div>
+      <div class="role">独立顾问 · <span class="co">AdTech / MarTech / EduTech</span></div>
+      <ul>
+        <li>乌兹别克斯坦、哈萨克斯坦、东南亚：MyDars、HiTarget（印尼）；<b>20+ 合作伙伴</b>；面向东南亚的产品本地化。</li>
+      </ul>
+      <div class="burst w" data-n="12" style="right:22px; bottom:34px; width:128px; height:60px"><span class="num" style="font-size:30px">20+</span></div>
+      <div class="tag" style="right:14px; bottom:12px; width:112px">合作伙伴</div>
+      <div class="sfx" style="left:18px; bottom:22px; font-size:26px; --r:-8deg">咻～</div>
+    </div>
+    <div class="panel ch" style="flex:1">
+      <div class="dots" style="--c: rgba(10,155,216,.45); -webkit-mask: linear-gradient(250deg, #000 0%, transparent 45%)"></div>
+      <div class="ch-head" style="position:relative"><span class="hua">第四话</span><span class="ep">「银行 × 电信」</span><span class="when">2020 — 2022</span></div>
+      <div class="role" style="position:relative">O2O 与新业务负责人 · <span class="co">阿里巴巴集团 —— AliExpress 俄罗斯与独联体</span> <span style="font-weight:700; font-size:11px">· 团队最多 5 人 · 负责 O2O 业务线损益</span></div>
+      <ul style="position:relative">
+        <li>合作伙伴：<b>Alfa 银行、Tinkoff、MTS 银行、Megafon、Beeline、俄罗斯石油公司</b>及 <b>120+ 家媒体集团</b>。</li>
+        <li><b>GMV 4800万美元（同比 +100%）</b>，<b>新买家 +185%</b>，<b>平均投放 ROI 25 倍</b>。</li>
+      </ul>
+      <div class="burst" data-n="13" style="right:196px; bottom:32px; width:148px; height:62px"><span class="num" style="font-size:30px">+185%</span></div>
+      <div class="tag" style="right:204px; bottom:12px; width:124px">新买家 · AliExpress</div>
+      <div class="burst" data-n="12" data-fill="cyan" style="right:24px; bottom:32px; width:140px; height:62px"><span class="num" style="font-size:30px">120+</span></div>
+      <div class="tag" style="right:20px; bottom:12px; width:136px">家媒体集团 · 俄与独联体</div>
+      <div class="sfx" style="left:18px; bottom:24px; font-size:26px; --r:6deg">轰！</div>
+    </div>
+  </div>
+
+  <div class="ftr"><span><b>奥斯塔普·多增科</b> · 漫画简历 · 倒序连载：从最新一话读起</span><span>ostapdotcenko.ru · 第 1 / 2 页 →</span></div>
+</section>
+
+<!-- ======================= 第 2 页 ======================= -->
+<section class="page">
+
+  <div class="row" style="height:212px; flex:none">
+    <div class="panel ch" style="flex:1.16">
+      <div class="ch-head"><span class="hua">第五话</span><span class="when">2017 — 2020</span></div>
+      <div class="ep" style="margin-top:3px">「中俄双城记」</div>
+      <div class="role">联合创始人 · <span class="co">O.F.D 创意机构</span></div>
+      <div class="ctx">上海 / 香港 · <b style="color:var(--ink)">作为所有者承担损益</b><br>2017年为筹备与启动期</div>
+      <ul>
+        <li>中俄联合团队项目：为中俄两国市场提供品牌推广与广告解决方案。</li>
+        <li>客户：<b>FOREO、DECATHLON、中国银行、WWE、CDEK</b>。</li>
+      </ul>
+    </div>
+    <div class="panel ch" style="flex:1">
+      <div class="ch-head"><span class="hua">第六话</span><span class="when">2015 — 2017</span></div>
+      <div class="ep" style="margin-top:3px">「纵横亚洲媒体」</div>
+      <div class="role">商务与业务拓展负责人 · <span class="co">Data Centric Alliance</span></div>
+      <div class="ctx">莫斯科 / 上海</div>
+      <ul>
+        <li>媒体采购与亚洲市场业务拓展。</li>
+        <li><b>Google 香港、Yahoo 香港、腾讯、携程、百度</b>。</li>
+      </ul>
+    </div>
+    <div class="panel ch" style="flex:1; background: var(--tint)">
+      <div class="ch-head"><span class="hua">第七话</span><span class="when">2013 — 2015</span></div>
+      <div class="ep" style="margin-top:3px">「第一步」</div>
+      <div class="role">业务拓展经理 —— 中国 / 东南亚 · <span class="co">CityAds Media</span></div>
+      <ul>
+        <li>效果与联盟营销（CPA / CPC / CPL），中国与东南亚；Sasa（香港）。</li>
+      </ul>
+      <div class="cap" style="margin-top:5px; background:#fff; padding:3px 8px; font-size:10.8px; line-height:1.35"><b class="hua" style="font-size:19px; color:var(--ink); white-space:nowrap">千里之行，始于足下</b><br>—— 老子《道德经》</div>
+    </div>
+  </div>
+
+  <div class="row" style="height:204px; flex:none">
+    <div class="panel pad" style="flex:1">
+      <div class="dots" style="--c: rgba(225,35,43,.35); -webkit-mask: radial-gradient(circle at 100% 0%, #000 0, transparent 45%)"></div>
+      <div class="ptitle" style="position:relative">超能力 <small>核心能力 · 没有披风，但有 KPI</small></div>
+      <div class="powers" style="position:relative">
+        <div><h4>⚡ 业务拓展</h4><p>市场进入战略、合作与联盟、与企业一把手谈判、亚洲与独联体市场拓展、新业务。</p></div>
+        <div><h4>⚡ 市场营销</h4><p>B2B 市场营销、需求挖掘、Performance、产品营销、销售赋能、品牌计划。</p></div>
+        <div><h4>⚡ 技术与数据</h4><p>电子商务与电商平台、AdTech / MarTech、营销自动化、CRM 与数据分析、O2O。</p></div>
+        <div><h4>⚡ 传播</h4><p>GR 与政府项目、联邦级活动、公关 · 俄联邦与独联体 50+ 场展会与论坛。</p></div>
+      </div>
+    </div>
+    <div class="panel pad" style="width:272px; flex:none; padding-top:9px">
+      <div class="ptitle">技能等级 <small>语言</small></div>
+      <div class="lv"><span>俄语</span><div class="bar"><i style="width:100%"></i></div><em>母语</em></div>
+      <div class="lv"><span>英语</span><div class="bar"><i style="width:86%"></i></div><em>C1</em></div>
+      <div class="lv"><span>中文</span><div class="bar"><i class="c" style="width:72%"></i></div><em>B2+</em></div>
+      <div class="lv"><span>乌兹别克语</span><div class="bar"><i style="width:56%"></i></div><em>B1</em></div>
+      <div class="lv"><span>韩语</span><div class="bar"><i style="width:34%"></i></div><em>A2</em></div>
+      <div class="ptitle" style="margin-top:7px; font-size:15px">英雄学院</div>
+      <ul class="list" style="margin-top:0">
+        <li>民法专业 —— 国际大学</li>
+        <li>韩语教师 —— 塔什干国立东方学学院附中</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row" style="height:318px; flex:none">
+    <div class="panel" style="width:150px; flex:none; background:#000">
+      <img src="../2026-11-06-resume-manhua/img/aliexpress.jpg" alt="Ostap, AliExpress office" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:38% 50%">
+      <div class="cap" style="position:absolute; left:6px; top:6px; right:6px; padding:4px 7px; font-size:10.8px; line-height:1.4"><b style="font-family:var(--title); font-weight:400; font-size:14px">回忆杀：</b><br>AliExpress 办公室，2022</div>
+      <div class="sfx" style="left:12px; bottom:12px; font-size:30px; color:#fff; --r:-8deg">嗨！</div>
+    </div>
+    <div class="panel pad" style="flex:1; background: var(--tint)">
+      <div class="ptitle">其他角色的台词</div>
+      <div style="font-size:10.8px; color:var(--dim); font-weight:600; margin-top:1px">评价来自 ostapdotcenko.ru</div>
+      <div class="quote" style="margin-top:7px">“Ostap 有一种难得的能力，能从战略到战术完整地看待市场……”<cite>—— Alexey K.，销售副总裁 · Megamarket</cite></div>
+      <div class="quote r">“……25 倍的 ROI 就是最好的证明。”<cite>—— Li W.，区域总监 · 阿里巴巴集团</cite></div>
+      <div class="quote">“……能在俄罗斯、中国和东南亚市场同样游刃有余……”<cite>—— Muhammad A.，首席执行官 · HiTarget 印尼</cite></div>
+    </div>
+    <div class="panel pad" style="width:262px; flex:none">
+      <div class="ptitle" style="font-size:16px">上镜记录 <small>媒体</small></div>
+      <ul class="list">
+        <li><b>RBC</b> —— 专访“最重要的是懂行，并且敢于行动”</li>
+        <li><b>Sber Business</b> —— 电商平台盈利指南</li>
+        <li><b>RBC Industries</b> · <b>TASS</b> —— 乌里扬诺夫斯克州 × Megamarket</li>
+        <li><b>“我的事业”</b> —— 马拉松，100 万+ 观看</li>
+      </ul>
+      <div class="ptitle" style="font-size:16px; margin-top:6px">登台亮相 <small>演讲</small></div>
+      <div class="chips">
+        <span><b>Russian Retail Show 2024</b> · 演讲嘉宾</span>
+        <span><b>Amber Forum 2024</b> · 圆桌</span>
+        <span><b>“制造商峰会”</b>，伊尔库茨克，2024</span>
+        <span><b>Russian Retail Week 2025</b></span>
+        <span><b>上合组织论坛 2025</b></span>
+        <span><b>“Megasreda”</b></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="flex:1; min-height:0">
+    <div class="panel pad" style="flex:1; background:#fff">
+      <div class="dots" style="--c: rgba(10,155,216,.5); -webkit-mask: linear-gradient(200deg, #000 0%, transparent 55%)"></div>
+      <div class="ptitle" style="position:relative; font-size:22px">追更渠道 <small>网站、博客、社交媒体</small></div>
+      <div class="find" style="margin-right:152px">
+        <div class="net wide"><span class="ic r">WEB</span><div><b>ostapdotcenko.ru</b><span>三种语言的网站：RU · EN · 中文</span></div></div>
+        <div class="net wide"><span class="ic r">BLOG</span><div><b>ostapdotcenko.ru/blog</b><span>每日更新，三种语言（2026.10.15 起）</span></div></div>
+        <div class="net"><span class="ic g">微信</span><div><b>ostap10081987</b><span>微信</span></div></div>
+        <div class="net"><span class="ic c">TG</span><div><b>@ostapdotcenko</b><span>Telegram</span></div></div>
+        <div class="net"><span class="ic">IG</span><div><b>@ostap.dotsenko</b><span>Instagram</span></div></div>
+        <div class="net"><span class="ic">f</span><div><b>Ostap Dotsenko</b><span>Facebook</span></div></div>
+        <div class="net wide"><span class="ic">in</span><div><a href="https://www.linkedin.com/in/ostapdot%D1%81enko/"><b>linkedin.com/in/ostapdot&#x441;enko</b></a><span>LinkedIn · 1.1万+关注者</span></div></div>
+        <div class="net"><span class="ic c">GTT</span><div><b>globaltechtour.ru</b><span>项目 + 博客</span></div></div>
+        <div class="net"><span class="ic c">AURA</span><div><b>aura-robotics.ru</b><span>项目 + 博客</span></div></div>
+      </div>
+      <img src="../2026-11-06-resume-manhua/img/selfie.png" alt="Ostap, selfie" style="position:absolute; right:-16px; bottom:-6px; height:196px; z-index:1;
+        filter: drop-shadow(2px 0 0 #121214) drop-shadow(-2px 0 0 #121214) drop-shadow(0 -2px 0 #121214)">
+      <div class="bubble" style="right:6px; top:40px; width:146px; height:70px; font-size:13.5px; padding:8px 12px">求关注！博客日更，绝不断更！
+        <svg class="tail" width="26" height="30" viewBox="0 0 26 30" style="left:64px; bottom:-27px"><path d="M2 0 L14 28 L22 0" fill="#fff" stroke="#121214" stroke-width="2.5" stroke-linejoin="round"/></svg></div>
+    </div>
+    <div class="panel" style="width:262px; flex:none; background: var(--red)">
+      <div class="speed" style="--sx:72%; --sy:72%; --hole:24%; opacity:.5"></div>
+      <img src="../2026-11-06-resume-manhua/img/sit.png" alt="Ostap" style="position:absolute; right:-18px; bottom:-4px; height:206px; z-index:2;
+        filter: drop-shadow(2px 0 0 #121214) drop-shadow(-2px 0 0 #121214) drop-shadow(0 -2px 0 #121214)">
+      <div class="cap" style="position:absolute; left:10px; top:10px; right:10px; background:#fff; z-index:3">
+        <div style="font-family:var(--title); font-size:19px; line-height:1.2">下一话预告……</div>
+        <div style="font-family:var(--hand); font-size:16px; line-height:1.3; margin-top:2px; color:var(--red)">……在贵公司开始连载？</div>
+      </div>
+      <div class="hua" style="position:absolute; left:12px; top:96px; z-index:3; font-size:34px; color:#fff; text-shadow: 2px 2px 0 var(--ink)">未完待续</div>
+      <div class="tag" style="left:10px; bottom:12px; text-align:left; z-index:3; width:146px">微信 ostap10081987<br>Telegram @ostapdotcenko<br>norbanking@gmail.com<br>推荐人信息可应要求提供</div>
+    </div>
+  </div>
+
+  <div class="ftr"><span><b>完整商务版及ATS版本可应要求提供</b></span><span>奥斯塔普·多增科 · ostapdotcenko.ru · 第 2 / 2 页</span></div>
+</section>
+
+<script>
+document.querySelectorAll('.burst').forEach((el, k) => {
+  const n = +(el.dataset.n || 12), w = el.offsetWidth + 12, h = el.offsetHeight + 12;
+  const fill = el.dataset.fill === 'cyan' ? '#0A9BD8' : (el.classList.contains('w') ? '#FFFFFF' : '#E1232B');
+  let s = 17 + k * 131;
+  const rnd = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+  const pts = [];
+  for (let i = 0; i < n * 2; i++) {
+    const a = (i / (n * 2)) * Math.PI * 2 + (rnd() - 0.5) * 0.16;
+    const r = i % 2 ? 0.70 + rnd() * 0.07 : 0.93 + rnd() * 0.07;
+    pts.push(((0.5 + Math.cos(a) * r * 0.5) * w).toFixed(1) + ',' + ((0.5 + Math.sin(a) * r * 0.5) * h).toFixed(1));
+  }
+  const p = pts.join(' ');
+  el.insertAdjacentHTML('afterbegin', `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><polygon points="${p}" fill="#121214" transform="translate(4 4)"/><polygon points="${p}" fill="${fill}" stroke="#121214" stroke-width="2.6" stroke-linejoin="miter"/></svg>`);
+});
+</script>
+</body>
+</html>

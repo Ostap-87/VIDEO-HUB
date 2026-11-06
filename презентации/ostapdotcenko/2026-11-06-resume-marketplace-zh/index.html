@@ -1,0 +1,434 @@
+<!doctype html>
+<!-- Ostap Dotsenko resume in Simplified Chinese, creative version "Marketplace product card" (06.11.2026, task: all resume versions
+     in English and Chinese). Same design, photos and layout as 2026-11-06-resume-marketplace (fonts and photos are taken from its folder).
+     Humour in the language of Chinese shopping platforms (generic words only, no real platform colours, logos or names): platform 人才好货,
+     keyword-stuffed product title with 【】, 爆款, 实名认证, price 面议, 宝贝详情, 规格参数, 包装清单, 问大家, 掌柜, 直播间, 经典老款.
+     Facts only from ../RESUME-MASTER.md; wording from the site (src/i18n/zh.ts) and the glossary in ../RESUME-I18N.md.
+     Fonts: Onest (Latin) + Noto Sans SC (hanzi, build.py). Build: python3 build.py 2026-11-06-resume-marketplace-zh -->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>奥斯塔普·多增科 — 商品详情</title>
+<link rel="stylesheet" href="../2026-11-06-resume-marketplace/fonts/fonts.css">
+<link rel="stylesheet" href="fonts/noto-sans-sc.css">
+<style>
+:root {
+  --bg: #EDEFF3; --card: #FFFFFF; --ink: #15171C; --dim: #555B68; --line: #DFE2E8; --soft: #F4F5F7;
+  --acc: #08796C; --acc-d: #065F55; --acc-soft: #E2F3F0;
+  --star: #F5A000; --hit: #E3304B; --ok: #13804A;
+  --t1: #FFF0C2; --t2: #FFE1E6; --t3: #DDF2EE; --t4: #E3EAFF;
+  --font: "Onest", "NSC", "Noto Sans SC", "WenQuanYi Zen Hei", sans-serif;
+}
+@page { size: 210mm 297mm; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #9aa0aa; }
+body { font-family: var(--font); color: var(--ink); -webkit-font-smoothing: antialiased; font-feature-settings: "tnum" 1; font-synthesis: none; line-break: strict; }
+.page { width: 794px; height: 1123px; position: relative; overflow: hidden; background: var(--bg); margin: 0 auto 24px;
+  page-break-after: always; break-after: page; padding: 0 22px 30px; display: flex; flex-direction: column; gap: 8px; }
+@media print { html, body { background: none; } .page { margin: 0; } }
+.card { background: var(--card); border-radius: 16px; padding: 13px 16px; }
+.dim { color: var(--dim); }
+b, strong { font-weight: 700; }
+svg.i { width: 14px; height: 14px; flex: none; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.h2 { font-size: 16px; font-weight: 900; display: flex; align-items: baseline; gap: 8px; }
+.h2 small { font-size: 11px; font-weight: 400; color: var(--dim); }
+
+/* platform header */
+.topbar { display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; background: var(--card);
+  margin: 0 -22px; padding: 9px 22px; border-bottom: 1px solid var(--line); }
+.logo { display: flex; align-items: center; gap: 7px; font-weight: 900; font-size: 19px; color: var(--acc); }
+.logo .ic { width: 26px; height: 26px; border-radius: 8px; background: var(--acc); display: grid; place-items: center; }
+.logo .ic svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.logo i { font-style: normal; color: var(--ink); }
+.search { display: flex; align-items: center; border: 2px solid var(--acc); border-radius: 11px; height: 36px; overflow: hidden; min-width: 0; }
+.search .q { flex: 1; min-width: 0; padding: 0 12px; font-size: 12.5px; font-weight: 500; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.search .q svg { color: var(--dim); }
+.search .go { background: var(--acc); color: #fff; font-weight: 700; font-size: 13px; height: 100%; padding: 0 18px; display: grid; place-items: center; flex: none; }
+.nav { display: flex; gap: 14px; }
+.nav span { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 10.5px; font-weight: 500; color: var(--dim); position: relative; }
+.nav svg.i { width: 18px; height: 18px; color: var(--ink); }
+.nav .cnt { position: absolute; top: -4px; right: -2px; background: var(--hit); color: #fff; font-size: 9px; font-style: normal; font-weight: 800; border-radius: 8px; padding: 0 4px; line-height: 14px; }
+.crumbs { font-size: 10.5px; color: var(--dim); display: flex; gap: 6px; flex-wrap: wrap; }
+.crumbs b { color: var(--ink); font-weight: 700; }
+
+/* product card */
+.prod { display: grid; grid-template-columns: 54px 236px 1fr; gap: 12px; padding: 14px; }
+.thumbs { display: flex; flex-direction: column; gap: 8px; }
+.thumbs div { width: 54px; height: 55px; border-radius: 10px; overflow: hidden; border: 2px solid transparent; background: var(--soft); }
+.thumbs div.on { border-color: var(--acc); }
+.thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.thumbs .cut img { object-fit: contain; object-position: 50% 100%; }
+.thumbs .more { display: grid; place-items: center; text-align: center; font-size: 11px; font-weight: 700; color: var(--dim); line-height: 1.3; border: 1.5px dashed #C9CED6; background: none; }
+.main-ph { position: relative; height: 244px; border-radius: 14px; overflow: hidden;
+  background: radial-gradient(120% 70% at 50% 108%, #D5ECE7 0 46%, transparent 47%), linear-gradient(180deg, #F7F8FA, #ECEFF3); }
+.main-ph img { position: absolute; left: 50%; bottom: 0; height: 92%; transform: translateX(-50%); display: block; }
+.main-ph .st { position: absolute; left: 10px; top: 10px; display: flex; flex-direction: column; gap: 5px; align-items: flex-start; }
+.tag { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 7px; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.tag.hit { background: var(--hit); color: #fff; }
+.tag.ver { background: var(--acc-soft); color: var(--acc-d); }
+.tag.gr { background: var(--soft); color: var(--ink); font-weight: 600; }
+.tag.dark { background: var(--ink); color: #fff; }
+.tag.line { border: 1.2px solid var(--hit); color: var(--hit); background: #fff; padding: 1px 7px; }
+.main-ph .fav { position: absolute; right: 10px; top: 10px; width: 30px; height: 30px; border-radius: 50%; background: #fff; display: grid; place-items: center; box-shadow: 0 2px 6px rgba(0,0,0,.12); }
+.main-ph .fav svg { width: 16px; height: 16px; stroke: var(--hit); fill: var(--hit); }
+.main-ph .dots { position: absolute; bottom: 9px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; background: rgba(255,255,255,.92); padding: 4px 7px; border-radius: 10px; }
+.main-ph .dots i { width: 6px; height: 6px; border-radius: 50%; background: #C5CAD3; }
+.main-ph .dots i.on { background: var(--acc); width: 14px; border-radius: 3px; }
+
+.info { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.info .row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.brand { font-size: 11px; color: var(--dim); }
+.brand a { color: var(--acc); font-weight: 700; text-decoration: none; }
+h1 { font-size: 18.5px; line-height: 1.42; font-weight: 900; }
+h1 .kw { color: var(--hit); }
+.rate { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--dim); }
+.rate .stars { display: flex; gap: 1px; }
+.rate .stars svg { width: 15px; height: 15px; fill: var(--star); }
+.rate b { color: var(--ink); font-size: 13px; font-weight: 800; }
+.lbl { font-size: 11px; color: var(--dim); display: flex; gap: 5px; flex-wrap: wrap; align-items: center; }
+.lbl .w { width: 100%; margin-bottom: -1px; }
+.lbl.scale .sv { font-size: 11.5px; font-weight: 700; color: var(--ink); line-height: 1.55; }
+.lbl.scale .k { font-size: 11px; font-weight: 400; color: var(--dim); }
+.pill { border: 1.5px solid var(--line); border-radius: 9px; padding: 3px 8px; font-size: 11px; color: var(--ink); line-height: 1.3; font-weight: 700; }
+.opt { border: 1.5px solid var(--line); border-radius: 9px; padding: 3px 9px; font-size: 11.5px; font-weight: 700; color: var(--ink); }
+.opt.on { border-color: var(--hit); box-shadow: inset 0 0 0 1px var(--hit); color: var(--hit); }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; grid-column: 1 / -1; }
+.kpi { border-radius: 11px; padding: 7px 10px; }
+.kpi b { display: block; font-size: 21px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; }
+.kpi span { display: block; font-size: 11.2px; font-weight: 700; line-height: 1.4; margin-top: 2px; }
+.kpi em { display: block; font-style: normal; font-size: 10.5px; color: var(--dim); line-height: 1.35; }
+.note { grid-column: 1 / -1; font-size: 10.5px; color: var(--dim); margin-top: -4px; }
+.k1 { background: var(--t1); } .k2 { background: var(--t2); } .k3 { background: var(--t3); } .k4 { background: var(--t4); }
+
+/* specs + buy box */
+.row2 { display: grid; grid-template-columns: 1fr 262px; gap: 9px; }
+.specs { margin-top: 5px; }
+.spec { display: flex; align-items: baseline; gap: 6px; font-size: 11.4px; line-height: 1.5; padding: 2px 0; }
+.spec .k { color: var(--dim); white-space: nowrap; }
+.spec .d { flex: 1; border-bottom: 1.5px dotted #C3C8D1; transform: translateY(-3px); min-width: 12px; }
+.spec .v { font-weight: 600; text-align: right; max-width: 70%; }
+.spec .v small { display: block; font-size: 10.5px; font-weight: 400; color: var(--dim); }
+.buy { display: flex; flex-direction: column; gap: 7px; }
+.price { font-size: 11px; color: var(--dim); }
+.price b { display: flex; align-items: baseline; gap: 4px; color: var(--hit); font-size: 26px; line-height: 1.15; font-weight: 900; margin-top: 1px; }
+.price b small { font-size: 15px; font-weight: 800; }
+.price b i { font-style: normal; font-size: 11px; font-weight: 400; color: var(--dim); margin-left: 6px; }
+.btns { display: grid; grid-template-columns: 1fr 1.25fr; border-radius: 12px; overflow: hidden; }
+.btn { text-align: center; font-weight: 900; font-size: 13.5px; padding: 10px 6px; }
+.btn.alt { background: #FFE8C2; color: #A85A00; }
+.btn.main { background: var(--hit); color: #fff; }
+.dl { display: flex; flex-direction: column; gap: 3px; }
+.dl div { display: flex; gap: 7px; font-size: 11.2px; line-height: 1.45; align-items: flex-start; }
+.dl svg.i { color: var(--acc); margin-top: 2px; }
+.dl .live { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 3px #D3EEDF; margin: 5px 3px 0; flex: none; }
+.seller { border-top: 1px solid var(--line); padding-top: 7px; display: flex; flex-direction: column; gap: 2px; }
+.seller .who { display: flex; gap: 8px; align-items: center; margin-bottom: 2px; }
+.seller .av { width: 32px; height: 32px; border-radius: 50%; background: var(--acc-soft) url("../2026-11-06-resume-marketplace/img/main-mikrofon.png") no-repeat 50% 4% / 150% auto; flex: none; }
+.seller .who b { font-size: 11.5px; display: block; line-height: 1.35; }
+.seller .who span { font-size: 10.5px; color: var(--dim); }
+.seller .c { font-size: 11px; line-height: 1.45; white-space: nowrap; }
+.seller .c i { font-style: normal; color: var(--dim); display: inline-block; width: 30px; font-weight: 600; font-size: 10.5px; }
+
+.kitc { display: grid; grid-template-columns: 206px 1fr; gap: 22px; margin-top: 5px; }
+.kitc h4, .shops h4 { font-size: 11px; font-weight: 900; color: var(--acc-d); }
+.lang { display: grid; grid-template-columns: 66px 1fr 40px; gap: 8px; align-items: center; font-size: 11.2px; margin-top: 2px; }
+.lang .bar { height: 7px; border-radius: 4px; background: #E9ECF0; overflow: hidden; }
+.lang .bar i { display: block; height: 100%; background: var(--acc); border-radius: 4px; }
+.lang em { font-style: normal; font-size: 10.5px; color: var(--dim); text-align: right; font-weight: 600; }
+.chk { list-style: none; }
+.chk li { font-size: 11.2px; line-height: 1.55; padding-left: 18px; position: relative; margin-top: 2px; text-wrap: pretty; }
+.chk li::before { content: ""; position: absolute; left: 0; top: 4px; width: 11px; height: 11px; border-radius: 3px; background: var(--acc); }
+.chk li::after { content: ""; position: absolute; left: 3px; top: 6.5px; width: 5px; height: 3px; border-left: 1.6px solid #fff; border-bottom: 1.6px solid #fff; transform: rotate(-45deg); }
+
+.qa { margin-top: 5px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 18px; }
+.qa > div { font-size: 11.2px; line-height: 1.55; }
+.qa .q { font-weight: 700; display: flex; gap: 6px; }
+.qa .q::before { content: "问"; width: 16px; height: 16px; border-radius: 4px; background: #FF8A00; color: #fff; font-size: 10px; font-weight: 700; display: grid; place-items: center; flex: none; margin-top: 2px; }
+.qa .a { display: flex; gap: 6px; }
+.qa .a::before { content: "答"; width: 16px; height: 16px; border-radius: 4px; background: var(--acc); color: #fff; font-size: 10px; font-weight: 700; display: grid; place-items: center; flex: none; margin-top: 2px; }
+.qa .a b { color: var(--acc-d); }
+
+/* page 2 */
+.tabs { display: flex; gap: 22px; border-bottom: 1px solid var(--line); margin: 0 -16px 2px; padding: 0 16px; }
+.tabs span { font-size: 13px; font-weight: 500; color: var(--dim); padding-bottom: 7px; }
+.tabs small { font-size: 11px; font-weight: 400; color: var(--dim); }
+.tabs span.on { color: var(--ink); font-weight: 900; box-shadow: inset 0 -3px 0 var(--hit); }
+.tabs sup { font-size: 10.5px; color: var(--hit); margin-left: 2px; font-weight: 700; }
+.job { display: grid; grid-template-columns: 100px 1fr; gap: 12px; padding: 4px 0 4px; border-top: 1px solid var(--line); }
+.desc > .job:first-of-type { border-top: none; padding-top: 5px; }
+.job .y { font-size: 12.5px; font-weight: 800; line-height: 1.35; }
+.job .y span { display: block; font-size: 10.5px; color: var(--dim); font-weight: 400; margin-top: 2px; line-height: 1.45; }
+.job .y .tag { display: inline-flex; margin-top: 5px; color: #fff; font-weight: 700; line-height: 1.5; }
+.job h3 { font-size: 13px; font-weight: 900; line-height: 1.45; }
+.job h3 em { font-style: normal; font-weight: 400; color: var(--dim); }
+.job .ctx { font-size: 11.2px; color: var(--dim); line-height: 1.55; margin-top: 1px; }
+.job ul { list-style: none; margin-top: 1px; }
+.job li { font-size: 11.2px; line-height: 1.55; padding-left: 13px; position: relative; margin-top: 1px; text-wrap: pretty; }
+.job li::before { content: ""; position: absolute; left: 2px; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--acc); }
+.job li b { font-weight: 700; }
+.early { border-top: 2px solid var(--ink); padding-top: 5px; margin-top: 2px; }
+.early .job:first-of-type { border-top: none; }
+.early .job .y { font-size: 12px; }
+.early .job h3 { font-size: 12.6px; }
+.early .lab { font-size: 11.5px; font-weight: 900; color: var(--acc-d); }
+.early .lab small { font-weight: 400; color: var(--dim); font-size: 10.5px; margin-left: 6px; }
+
+.row4 { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 8px; margin-top: 6px; }
+.rev { border: 1.5px solid var(--line); border-radius: 12px; padding: 7px 11px; display: flex; flex-direction: column; gap: 4px; }
+.rev .top { display: flex; align-items: center; gap: 6px; font-size: 10.5px; color: var(--dim); }
+.rev .top .stars { display: flex; gap: 1px; }
+.rev .top .stars svg { width: 11px; height: 11px; fill: var(--star); }
+.rev .who { display: flex; gap: 8px; align-items: center; margin-top: auto; }
+.rev .ava { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 10.5px; color: #fff; flex: none; }
+.rev .who b { font-size: 11.5px; display: block; line-height: 1.3; }
+.rev .who span { font-size: 10.5px; color: var(--dim); line-height: 1.35; }
+.rev p { font-size: 11.4px; line-height: 1.6; }
+.rev .who span.ava { color: #fff; line-height: 1; }
+.rev .who > div { font-size: 10.5px; line-height: 1.35; }
+
+.row5 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.press { display: flex; flex-direction: column; gap: 8px; }
+.press .chk li { margin-top: 2px; }
+.shops .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 6px; }
+.shop { border: 1.5px solid var(--line); border-radius: 11px; padding: 3px 8px; display: flex; gap: 8px; align-items: center; }
+.shop .m { width: 28px; height: 28px; border-radius: 9px; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 11px; flex: none; letter-spacing: -0.02em; }
+.shop b { display: block; font-size: 11.2px; font-weight: 800; line-height: 1.35; word-break: break-word; }
+.shop span { display: block; font-size: 10.5px; color: var(--dim); line-height: 1.4; margin-top: 0; }
+.shop a { color: inherit; text-decoration: none; }
+.shop.big { border-color: var(--acc); background: var(--acc-soft); }
+.ftr { position: absolute; left: 22px; right: 22px; bottom: 10px; display: flex; justify-content: space-between; font-size: 10.5px; color: var(--dim); }
+.ftr b { color: var(--ink); font-weight: 700; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="star" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></symbol>
+</svg>
+
+<!-- ============ 第 1 页 — 商品详情 ============ -->
+<section class="page" style="gap:8px">
+  <div class="topbar">
+    <div class="logo"><span class="ic"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg></span><span>人才<i>好货</i></span></div>
+    <div class="search"><span class="q"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>业务拓展负责人 中国 东南亚 会俄语</span><span class="go">搜索</span></div>
+    <div class="nav">
+      <span><svg class="i" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>收藏</span>
+      <span><svg class="i" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3.5h3l2.4 11.2h11l2-8H6.6"/></svg>购物车<em class="cnt deco">1</em></span>
+    </div>
+  </div>
+
+  <div class="crumbs"><span>首页</span>›<span>人才</span>›<span>高管</span>›<span>业务拓展与市场营销</span>›<b>俄罗斯 ⇄ 中国 ⇄ 东南亚</b></div>
+
+  <div class="card prod">
+    <div class="thumbs">
+      <div class="on cut" style="background:#EEF1F4"><img src="../2026-11-06-resume-marketplace/img/main-mikrofon.png" alt=""></div>
+      <div><img src="../2026-11-06-resume-marketplace/img/thumb-megasreda.jpg" alt="" style="object-position:62% 20%"></div>
+      <div><img src="../2026-11-06-resume-marketplace/img/thumb-aliexpress.jpg" alt="" style="object-position:40% 70%"></div>
+      <div class="more">+20<br>个国家</div>
+    </div>
+    <div class="main-ph">
+      <img src="../2026-11-06-resume-marketplace/img/main-mikrofon.png" alt="Ostap Dotsenko">
+      <div class="st"><span class="tag hit">爆款</span><span class="tag dark">13+ 年</span></div>
+      <div class="fav"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></div>
+      <div class="dots"><i class="on"></i><i></i><i></i></div>
+    </div>
+    <div class="info">
+      <div class="row"><span class="tag hit">爆款</span><span class="tag ver"><svg class="i" viewBox="0 0 24 24" style="width:12px;height:12px;stroke-width:3"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>实名认证掌柜</span><span class="tag line">正品保障</span><span class="tag line">现货</span></div>
+      <div class="brand">品牌：<a>Ostap Dotsenko</a> · 奥斯塔普·多增科</div>
+      <h1><span class="kw">【官方正品】</span>奥斯塔普·多增科 业务拓展与市场营销负责人 俄中东南亚 13+年 5种语言<span class="kw">现货速发</span></h1>
+      <div class="rate"><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><b>5.0</b>· 2013 年起好评不断</div>
+      <div class="lbl scale"><span class="sv"><span class="k">规模：</span>团队最多 40 人 · 年营销预算超过 10亿卢布 · 在 Megamarket、阿里巴巴及自有企业负责 P&amp;L</span></div>
+      <div class="lbl"><span class="w">合作品牌：</span><span class="pill">阿里巴巴集团 · AliExpress</span><span class="pill">Megamarket（Sber）</span><span class="pill">Shanghai Pinnacle</span></div>
+      <div class="lbl"><span class="w">选择规格（目标职位）：</span><span class="opt on">CBDO</span><span class="opt">CMO</span><span class="opt">国际业务拓展总监</span></div>
+    </div>
+    <div class="kpis">
+      <div class="kpi k1"><b>+350%</b><span>卖家数量同比增长</span><em>Megamarket</em></div>
+      <div class="kpi k2"><b>4800万美元</b><span>GMV，同比 +100%</span><em>AliExpress 俄罗斯与独联体</em></div>
+      <div class="kpi k3"><b>25×</b><span>平均投放 ROI</span><em>阿里巴巴，2020–2022</em></div>
+      <div class="kpi k4"><b>30亿卢布</b><span>净利润，2023年第四季度</span><em>我主导项目的成效</em></div>
+    </div>
+    <div class="note">数据来自真实项目；部分数据因保密协议已做匿名处理。所有评价与数据均来自 ostapdotcenko.ru。</div>
+  </div>
+
+  <div class="row2">
+    <div class="card">
+      <div class="h2">规格参数</div>
+      <div class="specs">
+        <div class="spec"><span class="k">从业经验</span><span class="d"></span><span class="v">13+ 年，2013 年起</span></div>
+        <div class="spec"><span class="k">到过国家</span><span class="d"></span><span class="v">20+</span></div>
+        <div class="spec"><span class="k">语言</span><span class="d"></span><span class="v">5 种：俄语、英语、中文、乌兹别克语、韩语</span></div>
+        <div class="spec"><span class="k">适配市场</span><span class="d"></span><span class="v">俄罗斯、中国、东南亚</span></div>
+        <div class="spec"><span class="k">合作品牌</span><span class="d"></span><span class="v">阿里巴巴集团、Megamarket（Sber）、Data Centric Alliance、CityAds Media</span></div>
+        <div class="spec"><span class="k">专业领域</span><span class="d"></span><span class="v">B2B 市场营销 · 全球商务 · AdTech</span></div>
+        <div class="spec"><span class="k">目标职位</span><span class="d"></span><span class="v">CBDO · CMO · 国际业务拓展总监</span></div>
+        <div class="spec"><span class="k">教育背景</span><span class="d"></span><span class="v">民法专业 —— 国际大学；韩语教师 —— 塔什干国立东方学学院附属中学</span></div>
+        <div class="spec"><span class="k">发货地</span><span class="d"></span><span class="v">上海 · 莫斯科（混合办公）</span></div>
+        <div class="spec"><span class="k">售后保障</span><span class="d"></span><span class="v">千里之行，始于足下<small>—— 老子《道德经》</small></span></div>
+      </div>
+    </div>
+    <div class="card buy">
+      <div class="price">价格<b><small>¥</small>面议<i>具体面谈</i></b></div>
+      <div class="btns"><div class="btn alt">加入候选</div><div class="btn main">立即邀约面试</div></div>
+      <div class="dl">
+        <div><svg class="i" viewBox="0 0 24 24"><path d="M2 7h11v9H2zM13 10h4.5l3 3v3H13z"/><circle cx="6" cy="17.5" r="1.7"/><circle cx="17" cy="17.5" r="1.7"/></svg><span><b>配送：</b>上海 ⇄ 莫斯科，包邮</span></div>
+        <div><i class="live"></i><span><b>现货：</b>开放新项目与合作</span></div>
+        <div><svg class="i" viewBox="0 0 24 24"><path d="M3 7.5L12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5l9 4.5 9-4.5M12 12v9"/></svg><span><b>套装内含：</b>5 种语言 · 20+ 国</span></div>
+      </div>
+      <div class="seller">
+        <div class="who"><span class="av"></span><div><b>掌柜：奥斯塔普·多增科</b><span>2013 年开店至今</span></div></div>
+        <div class="c"><i>电话</i>+86 137 6171 6355</div>
+        <div class="c"><i>电话</i>+7 985 874-49-58 · WhatsApp</div>
+        <div class="c"><i>微信</i>ostap10081987</div>
+        <div class="c"><i>TG</i>@ostapdotcenko</div>
+        <div class="c"><i>邮箱</i>norbanking@gmail.com</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="h2">包装清单 <small>本商品包含以下内容</small></div>
+    <div class="kitc">
+      <div>
+        <h4>语言</h4>
+        <div class="lang"><span>俄语</span><div class="bar"><i style="width:100%"></i></div><em>母语</em></div>
+        <div class="lang"><span>英语</span><div class="bar"><i style="width:88%"></i></div><em>C1</em></div>
+        <div class="lang"><span>中文</span><div class="bar"><i style="width:74%"></i></div><em>B2+</em></div>
+        <div class="lang"><span>乌兹别克语</span><div class="bar"><i style="width:58%"></i></div><em>B1</em></div>
+        <div class="lang"><span>韩语</span><div class="bar"><i style="width:36%"></i></div><em>A2</em></div>
+      </div>
+      <div>
+        <h4>核心能力</h4>
+        <ul class="chk">
+          <li><b>业务拓展：</b>市场进入战略、合作与联盟、与一把手谈判、亚洲与独联体市场拓展、新业务。</li>
+          <li><b>市场营销：</b>B2B 市场营销、需求挖掘、Performance、产品营销、销售赋能、品牌计划。</li>
+          <li><b>技术与数据：</b>电商平台、AdTech / MarTech、营销自动化、CRM 与数据分析、O2O。</li>
+          <li><b>传播：</b>GR 与政府项目、联邦级活动、公关。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="h2">问大家 <small>已购买者与围观群众的提问</small></div>
+    <div class="qa">
+      <div><div class="q">在中国用，需要转换插头吗？</div><div class="a"><span><b>掌柜：</b>不用——常驻上海，中文 B2+。</span></div></div>
+      <div><div class="q">扛得住联邦级的规模吗？</div><div class="a"><span><b>掌柜：</b>扛得住——与经济发展部合作覆盖 86 个地区。</span></div></div>
+    </div>
+  </div>
+
+  <div class="ftr"><span>人才好货 · 商品详情「奥斯塔普·多增科」</span><span><b>ostapdotcenko.ru</b> · 第 1 / 2 页</span></div>
+</section>
+
+<!-- ============ 第 2 页 — 宝贝详情、评价、店铺 ============ -->
+<section class="page" style="gap:7px">
+  <div class="card desc" style="margin-top:10px">
+    <div class="tabs"><span class="on">宝贝详情 <small>· 工作经历，由近及远</small></span><span>规格参数</span><span>累计评价<sup>3</sup></span><span>媒体评测</span><span>掌柜的店铺<sup>9</sup></span></div>
+
+    <div class="job">
+      <div class="y">2025 — 至今<span>上海</span><span class="tag hit">新品上市</span></div>
+      <div>
+        <h3>所有者与创始人 · 上海拼那克了科技有限公司 <em>（Shanghai Pinnacle Technology Co., Ltd.）</em></h3>
+        <div class="ctx">GlobalTechTour —— 中国与东南亚科技考察；Aura Robotics —— 直接向中国厂商甄选机器人。作为所有者承担损益。</div>
+        <ul>
+          <li>为 <b>Megamarket（Sber）在深圳一站式承办 1200+ 人企业论坛</b>：物流、场地、商务日程全程负责。</li>
+          <li>带领代表团走进 <b>BYD、小米、百度、美团、得物、Leju Robotics</b> 的工厂与研发中心；为 Aura 客户直接对接机器人制造商的管理层与研发团队，而非普通经理。</li>
+          <li><b>BelMol</b> 在 Kepler 工厂经过 2 小时会谈即敲定乳制品生产自动化方案；<b>SolarTek</b> 5 天内参观了 Leju Robotics、Robotera、AgiBot 和 Kepler。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="y">2023 — 2025<span>俄罗斯</span></div>
+      <div>
+        <h3>B2B 市场负责人 · Megamarket（Sber 生态）<em>—— 俄罗斯第三大电商平台</em></h3>
+        <div class="ctx">团队 16–40 人（直接管理及通过下属主管）· 年营销预算超过 10亿卢布 · 负责业务线损益（P&amp;L）。</div>
+        <ul>
+          <li>B2B 卖家招募：<b>卖家同比 +350%</b>，平台卖家 <b>5 万家</b>；我主导的项目带来 <b>30亿卢布净利润（2023年第四季度）</b>。</li>
+          <li>与<b>俄罗斯经济发展部</b>合作，依托“我的事业”中心在 <b>86 个地区</b>推出联邦级企业家支持计划：从零搭建获客战略、营销物料与区域传播。</li>
+          <li>“Megasreda”全国创业马拉松覆盖 <b>20 座城市</b>，从概念到公关全程操盘；<b>观看量 100 万+</b>。</li>
+          <li>“俄罗斯制造”：品牌计划、入驻体系、视频推广——参与企业<b>从 0 增至 2000 家</b>；为残障人士生产者打造社会公益市集。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="y">2022 — 2023<span>乌兹别克斯坦 · 哈萨克斯坦 · 东南亚</span></div>
+      <div>
+        <h3>独立顾问 · AdTech / MarTech / EduTech</h3>
+        <ul><li>MyDars、HiTarget（印尼）；<b>20+ 合作伙伴</b>；面向东南亚的产品本地化。</li></ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="y">2020 — 2022<span>俄罗斯与独联体</span></div>
+      <div>
+        <h3>O2O 与新业务负责人 · 阿里巴巴集团 —— AliExpress 俄罗斯与独联体</h3>
+        <div class="ctx">团队最多 5 人 · 负责 O2O 业务线损益（P&amp;L）。</div>
+        <ul>
+          <li>合作伙伴：<b>Alfa 银行、Tinkoff、MTS 银行、Megafon、Beeline、俄罗斯石油公司</b>及 <b>120+ 家媒体集团</b>。</li>
+          <li><b>GMV 4800万美元（同比 +100%）</b>，<b>新买家 +185%</b>，<b>平均投放 ROI 25 倍</b>。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="early">
+      <div class="lab">经典老款 · 2013 — 2020<small>口碑款，至今仍在发挥作用</small></div>
+      <div class="job"><div class="y">2017 — 2020<span>上海 / 香港</span></div><div><h3>联合创始人 · O.F.D 创意机构 <em>· 2017年为筹备与启动期</em></h3>
+        <ul><li>中俄联合团队：为中俄市场做品牌推广。客户：<b>FOREO、DECATHLON、中国银行、WWE、CDEK</b>。承担所有者损益。</li></ul></div></div>
+      <div class="job"><div class="y">2015 — 2017<span>莫斯科 / 上海</span></div><div><h3>商务与业务拓展负责人 · Data Centric Alliance</h3>
+        <ul><li>媒体采购与亚洲市场业务拓展；<b>Google 香港、Yahoo 香港、腾讯、携程、百度</b>。</li></ul></div></div>
+      <div class="job"><div class="y">2013 — 2015<span>中国 / 东南亚</span></div><div><h3>业务拓展经理 —— 中国 / 东南亚 · CityAds Media</h3>
+        <ul><li>效果与联盟营销（CPA / CPC / CPL），中国与东南亚市场；<b>Sasa</b>（香港）。</li></ul></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="h2">累计评价 <small>来自 ostapdotcenko.ru · 推荐人信息可应要求提供</small></div>
+    <div class="row4">
+      <div class="rev"><div class="top"><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>好评</div><p>“Ostap 有一种难得的能力，能从战略到战术完整地看待市场……”</p><div class="who"><span class="ava" style="background:#08796C">AK</span><div><b>Alexey K.</b><span>销售副总裁 · Megamarket</span></div></div></div>
+      <div class="rev"><div class="top"><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>好评</div><p>“……25 倍的 ROI 就是最好的证明。”</p><div class="who"><span class="ava" style="background:#B8402B">LW</span><div><b>Li W.</b><span>区域总监 · 阿里巴巴集团</span></div></div></div>
+      <div class="rev"><div class="top"><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>好评</div><p>“……能在俄罗斯、中国和东南亚市场同样游刃有余……”</p><div class="who"><span class="ava" style="background:#3A4FB8">MA</span><div><b>Muhammad A.</b><span>首席执行官 · HiTarget 印尼</span></div></div></div>
+    </div>
+  </div>
+
+  <div class="row5">
+    <div class="card press">
+      <div>
+        <div class="h2">媒体评测</div>
+        <ul class="chk" style="margin-top:3px">
+          <li><b>RBC</b> —— 专访“最重要的是懂行，并且敢于行动”</li>
+          <li><b>RBC Industries</b> · <b>TASS</b> —— 乌里扬诺夫斯克州与 Megamarket</li>
+          <li><b>Sber Business</b> —— 指南《电商平台：完整盈利指南》</li>
+          <li><b>“我的事业”</b> —— 线上马拉松，观看量 100 万+</li>
+        </ul>
+      </div>
+      <div>
+        <div class="h2">线下直播间 <small>商品现场讲解</small></div>
+        <ul class="chk" style="margin-top:3px">
+          <li><b>Russian Retail Show 2024</b> —— 演讲嘉宾</li>
+          <li><b>Amber Forum 2024</b> —— 圆桌讨论</li>
+          <li><b>“制造商峰会”</b>，伊尔库茨克，2024 —— 圆桌</li>
+          <li><b>Russian Retail Week 2025</b> · <b>上合组织论坛 2025</b></li>
+          <li>“Megasreda” · 俄联邦与独联体 50+ 场展会与论坛</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card shops">
+      <div class="h2">掌柜的其他店铺 <small>在这里找到我：社媒、博客、网站</small></div>
+      <div class="grid">
+        <div class="shop big" style="grid-column: 1 / -1"><span class="m" style="background:#08796C">OD</span><div><b>ostapdotcenko.ru · ostapdotcenko.ru/blog</b><span>网站与博客：每日更新文章 · RU · EN · 中文</span></div></div>
+        <div class="shop"><span class="m" style="background:#1F9D55">微信</span><div><b>ostap10081987</b><span>微信</span></div></div>
+        <div class="shop"><span class="m" style="background:#22799F">TG</span><div><b>@ostapdotcenko</b><span>Telegram</span></div></div>
+        <div class="shop"><span class="m" style="background:#B8305F">IG</span><div><b>@ostap.dotsenko</b><span>Instagram</span></div></div>
+        <div class="shop"><span class="m" style="background:#3B5590">f</span><div><b>Ostap Dotsenko</b><span>Facebook</span></div></div>
+        <div class="shop" style="grid-column: 1 / -1"><span class="m" style="background:#2C5E9E">in</span><div><a href="https://www.linkedin.com/in/ostapdot%D1%81enko/"><b>linkedin.com/in/ostapdot&#x441;enko</b></a><span>LinkedIn · 1.1万+关注者</span></div></div>
+        <div class="shop"><span class="m" style="background:#1A56C4">GTT</span><div><b>globaltechtour.ru</b><span>+ 博客 · 科技考察</span></div></div>
+        <div class="shop"><span class="m" style="background:#5B2A86">AR</span><div><b>aura-robotics.ru</b><span>+ 博客 · 机器人</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ftr"><span><b>完整商务版及ATS版本可应要求提供</b></span><span>商品详情页格式的简历 · 第 2 / 2 页</span></div>
+</section>
+
+</body>
+</html>
