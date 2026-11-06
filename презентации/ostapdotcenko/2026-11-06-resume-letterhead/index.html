@@ -1,0 +1,283 @@
+<!doctype html>
+<!-- Резюме Остапа Доценко — строгая версия «Деловой бланк с монограммой» (06.11.2026, задача пользователя: «ещё 6 версий резюме,
+     в других стилях, более строгих и консервативных, и где моё фото в костюме стандартное»).
+     Факты — только из ../RESUME-MASTER.md (сайт ostapdotcenko.ru + ответы пользователя на вопросы аудита 06.11.2026).
+     Стиль: фирменный бланк — монограмма «ОД» в тонкой двойной рамке, бордовый акцент, антиква Source Serif 4 (OFL) во всём документе,
+     тонкие горизонтальные линейки, небольшое фото, контакты в нижнем колонтитуле обеих страниц.
+     Китайские знаки — Noto Serif SC (OFL), подмножество знаков документа: fonts/noto-serif-sc.css.
+     Сборка: python3 build.py 2026-11-06-resume-letterhead → готовые/2026-11-06-ostap-resume-letterhead.pdf -->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Остап Доценко — резюме</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="fonts/noto-serif-sc.css">
+<style>
+:root {
+  --ink: #221F1E; --wine: #6E1F2C; --grey: #5F5752; --rule: #CDBFBC; --hair: #E4DAD7; --paper: #FFFDF9;
+  --serif: "Source Serif 4", "NSerifSC", Georgia, serif;
+}
+@page { size: 210mm 297mm; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #A7A19C; }
+body { font-family: var(--serif); color: var(--ink); -webkit-font-smoothing: antialiased; font-size: 11.6px; line-height: 1.42;
+  font-optical-sizing: auto; font-variant-numeric: lining-nums; }
+a { color: inherit; text-decoration: none; }
+.page { width: 794px; height: 1123px; position: relative; overflow: hidden; background: var(--paper); margin: 0 auto 24px;
+  page-break-after: always; break-after: page; padding: 36px 58px 80px; }
+@media print { html, body { background: none; } .page { margin: 0; } }
+
+/* бланк */
+.lh { display: grid; grid-template-columns: 70px 1fr 88px; gap: 20px; align-items: center; }
+.mono { width: 70px; height: 70px; border: 1px solid var(--wine); padding: 3px; }
+.mono div { width: 100%; height: 100%; border: 0.75px solid var(--wine); display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 25px; letter-spacing: 0.06em; color: var(--wine); font-variation-settings: "opsz" 40; padding-left: 2px; }
+h1 { font-weight: 600; font-size: 27px; line-height: 1.05; letter-spacing: 0.12em; text-transform: uppercase; font-variation-settings: "opsz" 48; }
+.role { font-style: italic; font-size: 15px; color: var(--wine); margin-top: 6px; }
+.alt { font-size: 11.6px; color: var(--grey); margin-top: 3px; letter-spacing: 0.02em; }
+.photo { width: 88px; height: 117px; border: 1px solid var(--wine); padding: 3px; background: #fff; }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.dbl { margin: 16px 0 0; height: 4px; border-top: 1.2px solid var(--wine); border-bottom: 0.6px solid var(--wine); }
+.lead { font-size: 12px; padding: 8px 0 0; text-align: center; color: var(--ink); }
+.lead b { font-weight: 600; color: var(--wine); }
+.zh { font-style: normal; color: var(--grey); }
+
+/* заголовки разделов — по центру, между тонкими линейками */
+h2 { display: flex; align-items: center; gap: 14px; margin: 15px 0 7px; font-weight: 600; font-size: 11.5px; letter-spacing: 0.24em;
+  text-transform: uppercase; color: var(--wine); }
+h2::before, h2::after { content: ""; flex: 1; height: 0.75px; background: var(--rule); }
+.summary { font-size: 12.2px; line-height: 1.5; text-wrap: pretty; }
+.summary b { font-weight: 600; }
+
+/* показатели — как в годовом отчёте */
+.figs { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 0.75px solid var(--wine); border-bottom: 0.75px solid var(--wine); }
+.figs div { padding: 7px 10px 7px; border-left: 0.75px solid var(--rule); }
+.figs div:nth-child(4n+1) { border-left: none; padding-left: 0; }
+.figs div:nth-child(n+5) { border-top: 0.75px solid var(--hair); }
+.figs b { display: block; font-weight: 600; font-size: 21px; line-height: 1.1; color: var(--wine); white-space: nowrap; font-variation-settings: "opsz" 36; }
+.figs span { display: block; font-size: 10.8px; line-height: 1.32; margin-top: 2px; text-wrap: balance; }
+.figs i { display: block; font-size: 10.5px; color: var(--grey); margin-top: 1px; }
+
+.p1 h2 { margin: 19px 0 9px; }
+.p1 .job li { line-height: 1.45; }
+
+/* опыт */
+.job { display: grid; grid-template-columns: 84px 1fr; gap: 16px; padding: 7px 0 7px; border-top: 0.75px solid var(--hair); }
+.job.first { border-top: none; padding-top: 2px; }
+.job .dt { font-style: italic; font-size: 11.6px; color: var(--grey); text-align: right; padding-top: 1px; line-height: 1.35; }
+.job .dt small { display: block; font-size: 10.5px; margin-top: 2px; }
+.job h3 { font-weight: 600; font-size: 13.2px; line-height: 1.3; }
+.job .co { font-style: italic; font-size: 12.2px; color: var(--wine); }
+.scale { font-size: 11.2px; color: var(--ink); margin-top: 3px; }
+.scale em { font-style: italic; color: var(--wine); margin-right: 3px; }
+.job ul, .plain { list-style: none; margin-top: 3px; }
+.job li, .plain li { font-size: 11.4px; line-height: 1.4; padding-left: 13px; position: relative; margin-top: 2px; text-wrap: pretty; }
+.job li::before, .plain li::before { content: "–"; position: absolute; left: 0; top: 0; color: var(--wine); }
+.job li b, .plain li b { font-weight: 600; }
+
+/* стр. 2 */
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+.comp p { font-size: 11.4px; line-height: 1.4; padding: 2px 0; border-bottom: 0.75px solid var(--hair); text-wrap: pretty; }
+.comp p:last-child { border-bottom: none; }
+.comp b { font-weight: 600; }
+.comp p > span:first-child { font-weight: 600; font-style: italic; color: var(--wine); margin-right: 4px; }
+.comp p > span:first-child::after { content: " —"; font-style: normal; font-weight: 400; color: var(--grey); }
+.links { display: grid; grid-template-columns: 1fr 1.18fr; gap: 0 26px; }
+.links p { display: grid; grid-template-columns: 86px 1fr; gap: 8px; font-size: 11.4px; line-height: 1.4; margin-bottom: 4px; }
+.links p > span:first-child { font-style: italic; color: var(--grey); }
+.links b { font-weight: 600; }
+.reco { margin-top: 8px; text-align: center; font-size: 11.6px; }
+.reco b { font-weight: 600; color: var(--wine); }
+
+/* колонтитул с контактами */
+.ftr { position: absolute; left: 58px; right: 58px; bottom: 19px; text-align: center; }
+.ftr .r { height: 4px; border-top: 0.6px solid var(--wine); border-bottom: 1.2px solid var(--wine); margin-bottom: 7px; }
+.ftr .c { font-size: 10.6px; line-height: 1.45; color: var(--ink); }
+.ftr .c i { color: var(--wine); font-style: normal; padding: 0 4px; }
+.ftr .p { font-size: 10px; font-style: italic; color: var(--grey); margin-top: 2px; }
+.cont { text-align: center; font-style: italic; font-size: 11px; color: var(--grey); margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<!-- ============ стр. 1 ============ -->
+<section class="page p1">
+  <header class="lh">
+    <div class="mono"><div>ОД</div></div>
+    <div>
+      <h1>Остап Доценко</h1>
+      <div class="role">Руководитель по развитию бизнеса и маркетингу</div>
+      <div class="alt">Alibaba Group&nbsp;· Мегамаркет (экосистема Сбера)&nbsp;· свой бизнес в Шанхае</div>
+      <div class="alt">Ostap Dotsenko&nbsp;· <span class="zh">奥斯塔普·多增科</span>&nbsp;· Шанхай&nbsp;· Москва (гибрид)</div>
+    </div>
+    <div class="photo"><img src="img/portrait.jpg" alt="Остап Доценко"></div>
+  </header>
+  <div class="dbl"></div>
+  <div class="lead"><b>Целевая позиция:</b> CBDO&nbsp;· CMO&nbsp;· директор по международному развитию (Россия — Китай — ЮВА)</div>
+
+  <h2>Профессиональный профиль</h2>
+  <p class="summary"><b>13+&nbsp;лет в развитии бизнеса и маркетинге на стыке России, Китая и Юго-Восточной Азии.</b> Руководил
+    B2B-маркетингом <b>Мегамаркета</b> (e-commerce №3 в России, экосистема Сбера) и направлением O2O <b>AliExpress Россия и СНГ</b>
+    (Alibaba Group). Команды до 40 человек, маркетинговый бюджет больше 1&nbsp;млрд&nbsp;₽ в год, P&amp;L в Мегамаркете, Alibaba и своём бизнесе.
+    Федеральные программы и партнёрства с банками, телекомом и государством. 20+&nbsp;стран, 5 языков, включая китайский.</p>
+
+  <h2>Ключевые показатели</h2>
+  <div class="figs">
+    <div><b>+350%</b><span>рост числа продавцов год к году</span><i>Мегамаркет</i></div>
+    <div><b>3&nbsp;млрд&nbsp;₽</b><span>чистой прибыли от моих программ, Q4&nbsp;2023</span><i>Мегамаркет</i></div>
+    <div><b>$48M</b><span>GMV, рост +100% год к году</span><i>AliExpress Россия и СНГ</i></div>
+    <div><b>25×</b><span>средний ROI кампаний</span><i>Alibaba, 2020–2022</i></div>
+    <div><b>50&nbsp;000</b><span>продавцов на платформе</span><i>Мегамаркет</i></div>
+    <div><b>86</b><span>регионов — программа с Минэкономразвития</span><i>Мегамаркет</i></div>
+    <div><b>+185%</b><span>новых покупателей</span><i>AliExpress</i></div>
+    <div><b>0 → 2&nbsp;000</b><span>компаний в «Сделано в России»</span><i>Мегамаркет, 2024</i></div>
+  </div>
+
+  <h2>Опыт работы</h2>
+
+  <div class="job first">
+    <div class="dt">2025 — н.&nbsp;в.</div>
+    <div>
+      <h3>Собственник и основатель</h3>
+      <div class="co">Shanghai Pinnacle Technology Co., Ltd. <span class="zh">· 上海拼那克了科技有限公司&nbsp;· Шанхай</span></div>
+      <div class="scale"><em>Масштаб:</em> P&amp;L собственника&nbsp;· GlobalTechTour — технологические экспедиции и бенчмарк-туры в Китай и ЮВА; Aura Robotics — подбор роботов напрямую у китайских производителей.</div>
+      <ul>
+        <li>Корпоративный форум <b>Мегамаркета (Сбер) в Шэньчжэне на 1&nbsp;200+ участников</b> — под ключ: логистика, площадка, деловая программа.</li>
+        <li>Визиты делегаций на заводы и в R&amp;D <b>BYD, Xiaomi, Baidu, Meituan, Poizon, Leju Robotics</b>; для клиентов Aura — прямой доступ к руководству и R&amp;D производителей роботов.</li>
+        <li><b>БелМол</b> решил вопрос автоматизации молочного производства за 2 часа переговоров на заводе Kepler; <b>СоларТек</b> за 5 дней посетил Leju Robotics, Robotera, AgiBot и Kepler.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="dt">2023 — 2025</div>
+    <div>
+      <h3>Head of B2B Marketing</h3>
+      <div class="co">Мегамаркет (экосистема Сбера) — e-commerce №3 в России</div>
+      <div class="scale"><em>Масштаб:</em> команда 16–40 человек (прямо и через руководителей)&nbsp;· маркетинговый бюджет больше 1&nbsp;млрд&nbsp;₽ в год&nbsp;· P&amp;L направления.</div>
+      <ul>
+        <li>Выстроил B2B-маркетинг привлечения продавцов: <b>+350% продавцов год к году</b>, <b>50&nbsp;000 продавцов</b> на платформе; эффект моих программ — <b>3&nbsp;млрд&nbsp;₽ чистой прибыли, Q4&nbsp;2023</b>.</li>
+        <li>С <b>Минэкономразвития России</b> — федеральная программа поддержки предпринимателей на базе центров «Мой бизнес» в <b>86 регионах</b>: стратегия привлечения, материалы, региональная коммуникация — с нуля.</li>
+        <li>Федеральный марафон «Мегасреда» в <b>20 городах</b> — от концепции и логистики до контента и PR; <b>1&nbsp;млн+ просмотров</b>.</li>
+        <li>«Сделано в России»: бренд-программа, онбординг, видеокампания — <b>от 0 до 2&nbsp;000 компаний</b> (2024). Социальный маркетплейс для производителей с ограниченными физическими возможностями: позиционирование, UX, PR-кампания.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="ftr">
+    <div class="r"></div>
+    <div class="c">+86 137 6171 6355<i>·</i>+7 985 874-49-58 (WhatsApp)<i>·</i><a href="mailto:norbanking@gmail.com">norbanking@gmail.com</a><i>·</i>Telegram <a href="https://t.me/ostapdotcenko">@ostapdotcenko</a><i>·</i><a href="https://ostapdotcenko.ru">ostapdotcenko.ru</a></div>
+    <div class="p">Остап Доценко — резюме&nbsp;· стр. 1 из 2</div>
+  </footer>
+</section>
+
+<!-- ============ стр. 2 ============ -->
+<section class="page">
+  <div class="cont">Опыт работы — продолжение</div>
+
+  <div class="job first">
+    <div class="dt">2022 — 2023</div>
+    <div>
+      <h3>Independent Adviser&nbsp;· AdTech / MarTech / EduTech</h3>
+      <div class="co">Узбекистан, Казахстан, Юго-Восточная Азия</div>
+      <ul>
+        <li>MyDars, HiTarget (Индонезия); <b>20+ партнёров</b>; локализация продуктов для ЮВА.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="dt">2020 — 2022</div>
+    <div>
+      <h3>Head of O2O &amp; New Business</h3>
+      <div class="co">Alibaba Group — AliExpress Россия и СНГ</div>
+      <div class="scale"><em>Масштаб:</em> команда до 5 человек&nbsp;· P&amp;L направления O2O.</div>
+      <ul>
+        <li>Построил направление O2O-партнёрств: <b>Альфа-Банк, Тинькофф, МТС Банк, МегаФон, Билайн, Роснефть</b> и <b>120+ медиахолдингов</b>.</li>
+        <li><b>GMV $48M (+100% год к году)</b>, <b>новые покупатели +185%</b>, средний <b>ROI кампаний 25×</b>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="dt">2017 — 2020</div>
+    <div>
+      <h3>Co-founder</h3>
+      <div class="co">O.F.D Creative Agency <span class="zh">· Шанхай / Гонконг</span></div>
+      <div class="scale"><em>Масштаб:</em> P&amp;L собственника&nbsp;· 2017 — подготовка и запуск.</div>
+      <ul>
+        <li>Совместный проект китайской и российской команд: рекламные решения для продвижения бизнеса на рынках Китая и России. Клиенты: <b>FOREO, DECATHLON, Bank of China, WWE, CDEK</b>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="dt">2015 — 2017</div>
+    <div>
+      <h3>Head of Commerce &amp; BD</h3>
+      <div class="co">Data Centric Alliance <span class="zh">· Москва / Шанхай</span></div>
+      <ul>
+        <li>Медиазакупки и развитие бизнеса в Азии; партнёры — <b>Google HK, Yahoo HK, Tencent, Ctrip, Baidu</b>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="dt">2013 — 2015</div>
+    <div>
+      <h3>BD Manager — КНР / ЮВА</h3>
+      <div class="co">CityAds Media <span class="zh">· Китай и Юго-Восточная Азия</span></div>
+      <ul>
+        <li>Performance- и аффилиат-маркетинг (CPA / CPC / CPL); клиенты — в&nbsp;т.&nbsp;ч. Sasa (Гонконг).</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Компетенции</h2>
+  <div class="comp">
+    <p><span>Business Development</span><span>Стратегия выхода на рынки&nbsp;· партнёрства и альянсы&nbsp;· переговоры с первыми лицами&nbsp;· BD&nbsp;Asia&nbsp;&amp;&nbsp;CIS&nbsp;· новые направления</span></p>
+    <p><span>Маркетинг</span><span>B2B Marketing&nbsp;· Demand Generation&nbsp;· Performance&nbsp;· Product Marketing&nbsp;· Sales Enablement&nbsp;· бренд-программы</span></p>
+    <p><span>Технологии и данные</span><span>E-commerce и маркетплейсы&nbsp;· AdTech / MarTech&nbsp;· Marketing Automation&nbsp;· CRM&nbsp;&amp;&nbsp;Analytics&nbsp;· O2O</span></p>
+    <p><span>Коммуникации</span><span>GR и госпрограммы&nbsp;· федеральные мероприятия&nbsp;· PR&nbsp;· 50+ выставок и форумов в РФ и СНГ</span></p>
+  </div>
+
+  <h2>Образование и языки</h2>
+  <div class="comp">
+    <p><span>Образование</span><span>гражданское право (МИУ); преподаватель корейского языка (лицей при ТашГИВ)</span></p>
+    <p><span>Языки</span><span>русский (родной)&nbsp;· английский (C1)&nbsp;· китайский (B2+)&nbsp;· узбекский (B1)&nbsp;· корейский (A2)</span></p>
+  </div>
+
+  <h2>Медиа и выступления</h2>
+  <div class="comp">
+    <p><span>Медиа</span><span><b>РБК</b> — интервью «Главное — знать матчасть и не бояться»; <b>РБК Отрасли</b>&nbsp;· <b>Сбер Бизнес</b> — гайд «Маркетплейсы: большая инструкция по заработку»&nbsp;· <b>ТАСС</b> — Ульяновская область и Мегамаркет: региональная витрина&nbsp;· <b>«Мой бизнес»</b> — федеральный марафон, 1&nbsp;млн+ просмотров</span></p>
+    <p><span>Выступления</span><span><b>Russian Retail Show 2024</b> — спикер&nbsp;· <b>Amber Forum 2024</b> — панельная дискуссия&nbsp;· <b>«Саммит производителей»</b>, Иркутск, 2024 — панель&nbsp;· <b>Russian Retail Week 2025</b>&nbsp;· <b>форум ШОС 2025</b>&nbsp;· «Мегасреда»</span></p>
+  </div>
+
+  <h2>Сайт, блог и соцсети</h2>
+  <div class="links">
+    <div>
+      <p><span>Сайт</span><span><a href="https://ostapdotcenko.ru"><b>ostapdotcenko.ru</b></a> — RU&nbsp;· EN&nbsp;· 中文</span></p>
+      <p><span>Блог</span><span><a href="https://ostapdotcenko.ru/blog"><b>ostapdotcenko.ru/blog</b></a> — статьи каждый день на трёх языках</span></p>
+      <p><span>GlobalTechTour</span><span><a href="https://globaltechtour.ru"><b>globaltechtour.ru</b></a> и блог</span></p>
+      <p><span>Aura Robotics</span><span><a href="https://aura-robotics.ru"><b>aura-robotics.ru</b></a> и блог</span></p>
+    </div>
+    <div>
+      <p><span>LinkedIn</span><span><a href="https://www.linkedin.com/in/ostapdot%D1%81enko/"><b>linkedin.com/in/ostapdot&#x441;enko</b></a>&nbsp;· 11&nbsp;000+&nbsp;подписчиков</span></p>
+      <p><span>Telegram</span><span><a href="https://t.me/ostapdotcenko"><b>@ostapdotcenko</b></a></span></p>
+      <p><span>Instagram</span><span><a href="https://instagram.com/ostap.dotsenko"><b>@ostap.dotsenko</b></a></span></p>
+      <p><span>Facebook</span><span><b>Ostap Dotsenko</b></span></p>
+    </div>
+  </div>
+
+  <p class="reco"><b>Рекомендации</b> — по запросу: от руководителей Мегамаркета, Alibaba Group и партнёров в ЮВА.</p>
+
+
+  <footer class="ftr">
+    <div class="r"></div>
+    <div class="c">+86 137 6171 6355<i>·</i>+7 985 874-49-58 (WhatsApp)<i>·</i><a href="mailto:norbanking@gmail.com">norbanking@gmail.com</a><i>·</i>Telegram <a href="https://t.me/ostapdotcenko">@ostapdotcenko</a><i>·</i><a href="https://ostapdotcenko.ru">ostapdotcenko.ru</a></div>
+    <div class="p">Остап Доценко — резюме&nbsp;· стр. 2 из 2</div>
+  </footer>
+</section>
+
+</body>
+</html>
