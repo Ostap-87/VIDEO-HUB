@@ -26,10 +26,13 @@ const AR = fs.readFileSync(`${ROOT}/source-videos/aura-robotics/логотип/a
 const RK = [
   { name: 'robokitai-000-trailer', ep: 'СЕРИЯ 0', stamp: '机', img: 'ep0-komanda.jpg', pos: 'center 40%',
     title: 'Добро пожаловать в <mark>Робокитай</mark>', city: 'Знакомство', zh: '',
-    tag: '16 героев · 8 краёв Китая', note: 'Каждая серия — задача настоящего клиента' },
+    tag: '16 героев · 8 краёв Китая', note: 'Каждая серия — задача клиента' },
   { name: 'robokitai-001-hangzhou', ep: 'СЕРИЯ 1', stamp: '杭', img: 'ep1-kadr.jpg', pos: 'center 74%',
     title: 'Склад <mark>не успевает</mark>.<br>AGV или AMR?', city: 'Ханчжоу', zh: '杭州',
-    tag: 'край четвероногих и складских машин', note: 'Рыжик или Шустрик — кто довезёт?' },
+    tag: 'край складских машин', note: 'Рыжик или Шустрик — кто?' },
+  { name: 'robokitai-001-hangzhou-v2', ep: 'СЕРИЯ 1', stamp: '杭', img: 'ep1-kadr.jpg', pos: 'center 74%',
+    title: 'Склад <mark>не успевает</mark>.<br>AGV или AMR?', city: 'Ханчжоу', zh: '杭州',
+    tag: 'край складских машин', note: 'До 11.11 осталось 2 дня' },
   { name: 'robokitai-002-suzhou', ep: 'СЕРИЯ 2', stamp: '苏', img: 'ep2-kadr.jpg', pos: 'center 25%',
     title: 'Какой <mark>кобот</mark><br>нужен цеху?', city: 'Сучжоу', zh: '苏州',
     tag: 'край коботов', note: 'Деталь 4 кг → кобот на 8–10 кг' },
@@ -53,10 +56,10 @@ mark{background:linear-gradient(transparent 52%,#F4E35B 52%,#F4E35B 92%,transpar
 .city{display:flex;align-items:baseline;gap:22px;flex-wrap:wrap}
 .city b{font:900 92px/1 Golos;text-transform:uppercase;letter-spacing:-.01em}
 .city .zh{font:80px/1 MSZ;color:#D6262B}
-.city .tag{font:600 36px Golos;color:#55545C;width:100%;margin-top:2px}
-.note{max-width:950px;background:#16161C;color:#fff;font:700 40px/1.2 Golos;padding:18px 28px;border-radius:16px}
-.note::before{content:"";display:inline-block;width:18px;height:18px;border-radius:50%;background:#F4E35B;margin-right:16px;vertical-align:4px}
-.foot{position:absolute;top:1690px;left:64px;right:64px;display:flex;align-items:center;gap:18px;font:700 30px JB;color:#55545C}
+.city .tag{font:700 46px Golos;color:#3E3D45;width:100%;margin-top:4px}
+.note{max-width:960px;background:#16161C;color:#fff;font:800 52px/1.15 Golos;padding:20px 30px;border-radius:16px}
+.note::before{content:"";display:inline-block;width:22px;height:22px;border-radius:50%;background:#F4E35B;margin-right:16px;vertical-align:4px}
+.foot{position:absolute;top:1700px;left:64px;right:64px;display:flex;align-items:center;gap:18px;font:700 36px JB;color:#3E3D45}
 .foot svg{width:58px;height:58px}
 </style></head><body>
 <div class="hdr"><div class="brand"><span class="seal">机</span>РОБОКИТАЙ <span class="zh">机器人中国</span></div><div class="ep">${c.ep}</div></div>
@@ -65,7 +68,7 @@ mark{background:linear-gradient(transparent 52%,#F4E35B 52%,#F4E35B 92%,transpar
 <div class="stamp">${c.stamp}</div>
 <div class="info"><div class="city"><b>${c.city}</b>${c.zh ? `<span class="zh">${c.zh}</span>` : ''}<span class="tag">${c.tag}</span></div>
 <div class="note">${c.note}</div></div>
-<div class="foot">${AR}<span>aura-robotics.ru/blog · без слов, по картинкам</span></div>
+<div class="foot">${AR}<span>aura-robotics.ru/blog</span></div>
 <script>window.fit=()=>{const h=document.querySelector('h1');let f=112;h.style.fontSize=f+'px';while(h.offsetHeight>2.2*f&&f>60){f-=4;h.style.fontSize=f+'px'}}</script>
 </body></html>`;
 
