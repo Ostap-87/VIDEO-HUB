@@ -65,8 +65,9 @@ b { font-weight: 700; }
 .name small { font-size: 12px; font-weight: 500; color: var(--muted); letter-spacing: 0; margin-left: 8px; }
 .role { font-size: 15px; font-weight: 700; margin-top: 5px; letter-spacing: -.01em; }
 .role-sub { font-size: 11px; color: var(--ink2); margin-top: 1px; }
-.cos { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
-.co { font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 8px; background: #F1F4F8; border: 1px solid var(--line); }
+.cos { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; }
+.co { font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 6px; background: #F1F4F8; border: 1px solid var(--line); }
+.co .pl { font-style: normal; font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: var(--goodtext); background: #E7F5E7; border-radius: 4px; padding: 0 4px; margin-left: 4px; }
 .co i { display: inline-block; width: 7px; height: 7px; border-radius: 2px; margin-right: 5px; transform: translateY(-.5px); }
 .target { margin-top: 8px; display: flex; gap: 8px; align-items: center; background: #F2F6FD; border: 1px solid #cfdcf2; border-radius: 7px; padding: 5px 9px; }
 .target .k { font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: #1d4f91; white-space: nowrap; }
@@ -94,6 +95,7 @@ b { font-weight: 700; }
 
 /* графики */
 svg text { font-family: var(--sans); }
+#growth, #gauge, #slope { display: block; }
 .cap { font-size: 10.5px; color: var(--muted); line-height: 1.3; }
 .note { font-size: 10.5px; color: var(--ink2); line-height: 1.3; }
 
@@ -109,13 +111,13 @@ svg text { font-family: var(--sans); }
 .legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
 .gantt { position: relative; margin-top: 4px; }
 .gantt .legend { position: absolute; left: 0; bottom: 1px; }
-.g-row { display: grid; grid-template-columns: 226px 1fr; align-items: center; min-height: 27px; border-top: 1px solid var(--grid); }
+.g-row { display: grid; grid-template-columns: 226px 1fr; align-items: center; min-height: 26px; border-top: 1px solid var(--grid); }
 .g-row:first-of-type { border-top: none; }
 .g-lab b { display: block; font-size: 11px; font-weight: 700; line-height: 1.2; }
 .g-lab span { display: block; font-size: 10.5px; color: var(--ink2); line-height: 1.25; }
-.g-track { position: relative; height: 27px; }
-.g-bar { position: absolute; top: 7.5px; height: 12px; border-radius: 4px; }
-.g-txt { position: absolute; top: 5.5px; font-size: 10.5px; color: var(--ink2); white-space: nowrap; line-height: 16px; }
+.g-track { position: relative; height: 26px; }
+.g-bar { position: absolute; top: 7px; height: 12px; border-radius: 4px; }
+.g-txt { position: absolute; top: 5px; font-size: 10.5px; color: var(--ink2); white-space: nowrap; line-height: 16px; }
 .g-txt b { color: var(--ink); font-weight: 600; font-family: var(--mono); font-size: 10.5px; }
 .g-grid { position: absolute; top: 0; bottom: 18px; left: 226px; right: 0; pointer-events: none; }
 .g-grid i { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--grid); }
@@ -125,12 +127,13 @@ svg text { font-family: var(--sans); }
 
 /* источники */
 .srcs { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14px; margin-top: 6px; }
-.src { display: grid; grid-template-columns: 26px 1fr 12px; align-items: center; gap: 8px; padding: 5px 0; border-top: 1px solid var(--grid); }
+.src { display: grid; grid-template-columns: 26px 1fr 12px; align-items: center; gap: 8px; padding: 4px 0; border-top: 1px solid var(--grid); }
 .src:nth-child(-n+2) { border-top: none; }
 .src .ic { width: 26px; height: 26px; border-radius: 6px; background: #F1F4F8; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center;
   font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: var(--ink); }
 .src .ic.k { background: var(--nav); color: #fff; border-color: var(--nav); }
 .src b { display: block; font-size: 11.5px; font-weight: 700; line-height: 1.2; }
+.src a { color: inherit; text-decoration: none; }
 .src span { display: block; font-size: 10.5px; color: var(--ink2); line-height: 1.25; }
 .sync { margin-top: 6px; padding-top: 5px; white-space: nowrap; border-top: 1px dashed var(--line); font-size: 10.5px; color: var(--ink2); line-height: 1.35; }
 .sync .mono { color: var(--goodtext); font-weight: 700; margin-right: 4px; }
@@ -160,7 +163,7 @@ svg text { font-family: var(--sans); }
 .tabs { display: flex; gap: 2px; margin-left: 14px; }
 .tabs span { font-size: 11px; font-weight: 500; color: #b9c3d6; padding: 3px 9px; border-radius: 6px; white-space: nowrap; }
 .tabs span.on { background: rgba(255,255,255,.12); color: #fff; font-weight: 700; }
-.dr { display: grid; grid-template-columns: 100px 1fr; gap: 12px; padding: 4px 0 4px; border-top: 1px solid var(--grid); }
+.dr { display: grid; grid-template-columns: 100px 1fr; gap: 12px; padding: 3px 0 4px; border-top: 1px solid var(--grid); }
 .dr:first-of-type { border-top: none; }
 .dr .p { font-family: var(--mono); font-size: 11px; font-weight: 700; line-height: 1.3; }
 .dr .p span { display: block; font-family: var(--sans); font-weight: 500; font-size: 10.5px; color: var(--muted); margin-top: 1px; }
@@ -169,6 +172,7 @@ svg text { font-family: var(--sans); }
 .dr h4 { font-size: 12px; font-weight: 700; line-height: 1.3; }
 .dr h4 .c { color: #1d4f91; }
 .dr h4 .zh { font-weight: 500; font-size: 10.5px; color: var(--muted); }
+.dr h4 .nt { font-weight: 500; font-size: 10.8px; color: var(--ink2); }
 .dr .x { font-size: 10.8px; color: var(--ink2); line-height: 1.33; margin-top: 1px; }
 .dr ul { list-style: none; margin-top: 2px; }
 .dr li { font-size: 11px; line-height: 1.33; padding-left: 12px; position: relative; margin-top: 1px; text-wrap: pretty; }
@@ -215,9 +219,9 @@ svg text { font-family: var(--sans); }
       <div class="name">Остап Доценко <small>Ostap Dotsenko · <span class="zh">奥斯塔普·多增科</span></small></div>
       <div class="role">Руководитель по развитию бизнеса и маркетингу</div>
       <div class="cos">
-        <span class="co"><i style="background:var(--s1)"></i>Alibaba Group · AliExpress</span>
-        <span class="co"><i style="background:var(--s1)"></i>Мегамаркет (Сбер)</span>
-        <span class="co"><i style="background:var(--s2)"></i>свой бизнес в Шанхае</span>
+        <span class="co"><i style="background:var(--s1)"></i>Alibaba · AliExpress<em class="pl">P&amp;L</em></span>
+        <span class="co"><i style="background:var(--s1)"></i>Мегамаркет (Сбер)<em class="pl">P&amp;L</em></span>
+        <span class="co"><i style="background:var(--s2)"></i>свой бизнес в Шанхае<em class="pl">P&amp;L</em></span>
       </div>
       <div class="target"><span class="k">ЦЕЛЕВАЯ РОЛЬ</span><span class="v">CBDO · CMO · директор по международному развитию <span>(Россия ↔ Китай ↔ ЮВА)</span></span></div>
       <div class="contacts">
@@ -234,27 +238,27 @@ svg text { font-family: var(--sans); }
   <div class="kpis">
     <div class="card kpi"><div class="bar"></div><div class="l">Рост числа продавцов</div><div class="v">+350%</div><div class="s">г/г · Мегамаркет</div></div>
     <div class="card kpi"><div class="bar"></div><div class="l">GMV · AliExpress</div><div class="v">$48M</div><div class="d">▲ +100% год к году</div></div>
-    <div class="card kpi"><div class="bar"></div><div class="l">Продавцов на платформе</div><div class="v">50&nbsp;000</div><div class="s">Мегамаркет</div></div>
-    <div class="card kpi"><div class="bar"></div><div class="l">Чистая прибыль</div><div class="v">3&nbsp;млрд&nbsp;₽</div><div class="s">Q4 2023 · Мегамаркет</div></div>
+    <div class="card kpi"><div class="bar" style="background:var(--s2)"></div><div class="l">Маркетинговый бюджет</div><div class="v">&gt;&nbsp;1&nbsp;млрд&nbsp;₽</div><div class="s">в год<br>команды до 40 человек</div></div>
+    <div class="card kpi"><div class="bar"></div><div class="l">Эффект моих программ</div><div class="v">3&nbsp;млрд&nbsp;₽</div><div class="s">чистой прибыли<br>Q4 2023 · Мегамаркет</div></div>
     <div class="card kpi"><div class="bar"></div><div class="l">Регионов в программе</div><div class="v">86</div><div class="s">с Минэкономразвития</div></div>
   </div>
 
-  <div class="row" style="height:176px; flex:none">
+  <div class="row" style="height:162px; flex:none">
     <div class="card" style="flex:1.3">
       <div class="ct"><h3>Рост ключевых метрик, %</h3></div>
       <div class="cap">Мегамаркет · AliExpress</div>
-      <svg id="growth" width="100%" height="112" style="margin-top:6px"></svg>
+      <svg id="growth" width="100%" height="100" style="margin-top:6px"></svg>
     </div>
     <div class="card" style="flex:1">
       <div class="ct"><h3>Средний ROI кампаний</h3></div>
       <div class="cap">Alibaba Group · 2020–2022</div>
-      <svg id="gauge" width="100%" height="94" style="margin-top:4px"></svg>
+      <svg id="gauge" width="100%" height="80" style="margin-top:3px"></svg>
       <div class="note" style="text-align:center">стрелка упёрлась в край шкалы</div>
     </div>
     <div class="card" style="flex:1.05">
       <div class="ct"><h3>«Сделано в России»</h3></div>
       <div class="cap">компаний в программе · 2024</div>
-      <svg id="slope" width="100%" height="116" style="margin-top:4px"></svg>
+      <svg id="slope" width="100%" height="104" style="margin-top:4px"></svg>
     </div>
   </div>
 
@@ -298,7 +302,7 @@ svg text { font-family: var(--sans); }
 
     <div style="margin-top:4px">
     <div class="dr">
-      <div class="p">2025 — н. в.<span>Шанхай</span><div class="m"><i>форум 1&nbsp;200+</i></div></div>
+      <div class="p">2025 — н. в.<span>Шанхай</span><div class="m"><i>форум 1&nbsp;200+</i><i>P&amp;L собственника</i></div></div>
       <div>
         <h4>Собственник и основатель · <span class="c">Shanghai Pinnacle Technology Co., Ltd.</span> <span class="zh">上海拼那克了科技有限公司</span></h4>
         <div class="x">GlobalTechTour — технологические экспедиции и бенчмарк-туры в Китай и ЮВА; Aura Robotics — робототехника и автоматизация, подбор роботов напрямую у китайских производителей.</div>
@@ -310,17 +314,17 @@ svg text { font-family: var(--sans); }
       </div>
     </div>
     <div class="dr">
-      <div class="p">2023 — 2025<span>Россия</span><div class="m"><i>+350% г/г</i><i>50&nbsp;000 продавцов</i><i>86 регионов</i><i>3&nbsp;млрд&nbsp;₽</i></div></div>
+      <div class="p">2023 — 2025<span>Россия</span><div class="m"><i>+350% г/г</i><i>50&nbsp;000 продавцов</i><i>86 регионов</i><i>3&nbsp;млрд&nbsp;₽ эффект</i><i>P&amp;L</i></div></div>
       <div>
-        <h4>Head of B2B Marketing · <span class="c">Мегамаркет (экосистема Сбера)</span></h4>
-        <div class="x">E-commerce №3 в России.</div>
+        <h4>Head of B2B Marketing · <span class="c">Мегамаркет (экосистема Сбера)</span> <span class="nt">— e-commerce №3 в России</span></h4>
+        <div class="x">Команда <b>16–40 человек</b> · маркетинговый бюджет <b>больше 1&nbsp;млрд&nbsp;₽ в год</b> · <b>P&amp;L направления</b>.</div>
         <ul>
           <li>B2B-маркетинг привлечения продавцов: <b>+350% продавцов год к году</b>, <b>50&nbsp;000 продавцов</b> на платформе.</li>
           <li>С <b>Минэкономразвития России</b> — федеральная программа поддержки предпринимателей на базе центров «Мой бизнес» в <b>86 регионах</b>: стратегия привлечения, материалы, региональная коммуникация — с нуля.</li>
           <li>Федеральный марафон <b>«Мегасреда» в 20 городах</b> — от концепции и логистики до контента и PR; <b>1&nbsp;млн+ просмотров</b>.</li>
           <li>«Сделано в России»: бренд-программа, онбординг, видеокампания — <b>от 0 до 2&nbsp;000 компаний</b>.</li>
           <li>Социальный маркетплейс для производителей с ограниченными физическими возможностями: позиционирование, UX, PR-кампания.</li>
-          <li><b>3&nbsp;млрд&nbsp;₽ чистой прибыли, Q4 2023.</b></li>
+          <li>Эффект моих программ — <b>3&nbsp;млрд&nbsp;₽ чистой прибыли, Q4 2023.</b></li>
         </ul>
       </div>
     </div>
@@ -335,6 +339,7 @@ svg text { font-family: var(--sans); }
       <div class="p">2020 — 2022<span>Россия и СНГ</span><div class="m"><i>GMV $48M</i><i>ROI 25×</i><i>120+ медиа</i></div></div>
       <div>
         <h4>Head of O2O &amp; New Business · <span class="c">Alibaba Group — AliExpress Россия и СНГ</span></h4>
+        <div class="x">Команда <b>до 5 человек</b> · <b>P&amp;L направления O2O</b>.</div>
         <ul>
           <li>Партнёрства: <b>Альфа-Банк, Тинькофф, МТС Банк, МегаФон, Билайн, Роснефть</b> и <b>120+ медиахолдингов</b>.</li>
           <li><b>GMV $48M (+100% год к году)</b>, <b>новые покупатели +185%</b>, средний <b>ROI кампаний 25×</b>.</li>
@@ -342,9 +347,9 @@ svg text { font-family: var(--sans); }
       </div>
     </div>
     <div class="dr">
-      <div class="p">2018 — 2020<span>Шанхай · Гонконг</span></div>
+      <div class="p">2017 — 2020<span>Шанхай · Гонконг</span><div class="m"><i>P&amp;L собственника</i></div></div>
       <div>
-        <h4>Co-founder · <span class="c">O.F.D Creative Agency</span></h4>
+        <h4>Co-founder · <span class="c">O.F.D Creative Agency</span> <span class="nt">· 2017 — подготовка и запуск</span></h4>
         <ul>
           <li>Совместный проект китайской и российской команд: рекламные решения для продвижения бизнеса на рынках Китая и России. Клиенты: <b>FOREO, DECATHLON, Bank of China, WWE, CDEK</b>.</li>
         </ul>
@@ -429,7 +434,7 @@ const hbar = (x0, y, w, h, r = 4) => `M${x0},${y} H${x0 + w - r} A${r},${r} 0 0 
 (() => {
   const svg = document.getElementById('growth'), W = svg.getBoundingClientRect().width;
   const data = [['Продавцы, г/г', 350], ['Новые покупатели', 185], ['GMV, г/г', 100]];
-  const x0 = 114, plotW = W - x0 - 44, max = 400, sx = v => x0 + v / max * plotW, rowH = 28, top = 2, barH = 14;
+  const x0 = 114, plotW = W - x0 - 44, max = 400, sx = v => x0 + v / max * plotW, rowH = 25, top = 2, barH = 13;
   for (let v = 0; v <= max; v += 100) {
     el(svg, 'line', { x1: sx(v), x2: sx(v), y1: top, y2: top + rowH * data.length, stroke: v ? C.grid : C.axis, 'stroke-width': 1 });
     if (v % 200 === 0) el(svg, 'text', { x: sx(v), y: top + rowH * data.length + 13, 'font-size': 10.5, fill: C.muted, 'text-anchor': 'middle', 'font-family': 'JBMono' }, v ? v + '%' : '0');
@@ -445,7 +450,7 @@ const hbar = (x0, y, w, h, r = 4) => `M${x0},${y} H${x0 + w - r} A${r},${r} 0 0 
 // 2. ROI 25× — полукруглая шкала 0–25, подписи снаружи, стрелка в упоре
 (() => {
   const svg = document.getElementById('gauge'), W = svg.getBoundingClientRect().width;
-  const cx = W / 2, cy = 78, R = 52, max = 25, ang = v => Math.PI - v / max * Math.PI;
+  const cx = W / 2, cy = 68, R = 47, max = 25, ang = v => Math.PI - v / max * Math.PI;
   const pt = (v, r) => [cx + Math.cos(ang(v)) * r, cy - Math.sin(ang(v)) * r];
   const arc = (v0, v1, r) => { const [x0, y0] = pt(v0, r), [x1, y1] = pt(v1, r); return `M${x0},${y0} A${r},${r} 0 0 1 ${x1},${y1}`; };
   el(svg, 'path', { d: arc(0, 25, R), stroke: C.s1, 'stroke-width': 11, fill: 'none', 'stroke-linecap': 'butt' });
@@ -463,7 +468,7 @@ const hbar = (x0, y, w, h, r = 4) => `M${x0},${y} H${x0 + w - r} A${r},${r} 0 0 
 // 3. «Сделано в России» 0 → 2 000 — две точки (старт и 2024), без промежуточных
 (() => {
   const svg = document.getElementById('slope'), W = svg.getBoundingClientRect().width;
-  const L = 38, R = W - 14, T = 22, B = 96, max = 2000, sy = v => B - v / max * (B - T);
+  const L = 38, R = W - 14, T = 20, B = 86, max = 2000, sy = v => B - v / max * (B - T);
   [0, 1000, 2000].forEach(v => {
     el(svg, 'line', { x1: L, x2: R, y1: sy(v), y2: sy(v), stroke: v ? C.grid : C.axis, 'stroke-width': 1 });
     el(svg, 'text', { x: L - 6, y: sy(v) + 3.5, 'font-size': 10.5, fill: C.muted, 'text-anchor': 'end', 'font-family': 'JBMono' }, v ? v.toLocaleString('ru-RU') : '0');
@@ -486,7 +491,7 @@ const hbar = (x0, y, w, h, r = 4) => `M${x0},${y} H${x0 + w - r} A${r},${r} 0 0 
     ['Head of B2B Marketing', 'Мегамаркет (экосистема Сбера)', 2023, 2025, 's1', '2023 — 2025', '+350% продавцов г/г · 86 регионов', 'L'],
     ['Independent Adviser', 'AdTech / MarTech / EduTech', 2022, 2023, 's3', '2022 — 2023', '20+ партнёров · Узбекистан, Казахстан, ЮВА', 'L'],
     ['Head of O2O & New Business', 'Alibaba Group — AliExpress РФ и СНГ', 2020, 2022, 's1', '2020 — 2022', 'GMV $48M · ROI 25×', 'L'],
-    ['Co-founder', 'O.F.D Creative Agency', 2018, 2020, 's2', '2018 — 2020', 'Шанхай / Гонконг', 'R'],
+    ['Co-founder', 'O.F.D Creative Agency', 2017, 2020, 's2', '2017 — 2020', 'Шанхай / Гонконг', 'R'],
     ['Head of Commerce & BD', 'Data Centric Alliance', 2015, 2017, 's1', '2015 — 2017', 'Google HK, Tencent, Baidu', 'R'],
     ['BD Manager — КНР / ЮВА', 'CityAds Media', 2013, 2015, 's1', '2013 — 2015', 'CPA / CPC / CPL · Китай и ЮВА', 'R'],
   ];
@@ -516,7 +521,7 @@ const hbar = (x0, y, w, h, r = 4) => `M${x0},${y} H${x0 + w - r} A${r},${r} 0 0 
     ['BLOG', 'ostapdotcenko.ru/blog', 'каждый день · 3 языка', 1],
     ['IG', '@ostap.dotsenko', 'Instagram'],
     ['TG', '@ostapdotcenko', 'Telegram'],
-    ['in', 'Ostap Dotsenko', 'LinkedIn'],
+    ['in', '<a href="https://www.linkedin.com/in/ostapdot%D1%81enko/">linkedin.com/in/<wbr>ostapdotсenko</a>', '11 000+ подписчиков'],
     ['f', 'Ostap Dotsenko', 'Facebook'],
     ['GTT', 'globaltechtour.ru', 'проект + блог'],
     ['AR', 'aura-robotics.ru', 'проект + блог'],

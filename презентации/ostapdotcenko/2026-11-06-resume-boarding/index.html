@@ -27,7 +27,7 @@
 html, body { background: #9aa3ad; }
 body { font-family: var(--text); color: var(--ink); -webkit-font-smoothing: antialiased; }
 .page { width: 794px; height: 1123px; position: relative; overflow: hidden; background: var(--sky); margin: 0 auto 24px;
-  page-break-after: always; break-after: page; padding: 22px 28px 30px; display: flex; flex-direction: column; gap: 12px; }
+  page-break-after: always; break-after: page; padding: 22px 28px 30px; display: flex; flex-direction: column; gap: 10px; }
 @media print { html, body { background: none; } .page { margin: 0; } }
 .lab { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); }
 .mono { font-family: var(--mono); }
@@ -78,6 +78,8 @@ b { font-weight: 700; }
 .f .v.big { font-family: var(--disp); font-size: 17px; font-weight: 600; letter-spacing: 0.02em; }
 .f.go .v { color: var(--green); }
 .strip { display: grid; grid-template-columns: 1fr 1fr 1.25fr; gap: 10px; margin: 0 16px 8px; padding: 6px 0; border-top: 1px dashed #B9C4D2; border-bottom: 1px dashed #B9C4D2; }
+.strip .r2 { padding-top: 5px; border-top: 1px dashed #B9C4D2; }
+.strip .r2 .v { color: var(--navy); }
 .target { margin: 0 16px; padding: 7px 10px; background: #FFF4DA; border-radius: 8px; font-size: 11.6px; line-height: 1.35; display: flex; gap: 8px; align-items: baseline; }
 .target .lab { color: #7A5300; white-space: nowrap; font-weight: 700; }
 .pfoot { display: flex; align-items: center; gap: 14px; padding: 8px 16px 11px; }
@@ -93,11 +95,13 @@ b { font-weight: 700; }
 .k7 .it span { display: block; font-size: 10.8px; font-weight: 600; line-height: 1.25; margin-top: 1px; }
 .k7 .it i { font-style: normal; color: var(--dim); display: block; font-size: 10.5px; line-height: 1.2; }
 .qr { display: flex; gap: 7px; align-items: center; border-top: 1px dashed #B9C4D2; padding-top: 8px; }
-.qr .q { width: 66px; height: 66px; background: #fff; padding: 6px; border: 1px solid var(--line); border-radius: 6px; flex: none; }
+.qr .q { width: 60px; height: 60px; background: #fff; padding: 6px; border: 1px solid var(--line); border-radius: 6px; flex: none; }
 .qr .q img { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
 .qr .tx { font-size: 10.5px; line-height: 1.3; }
 .qr .tx b { font-family: var(--mono); font-size: 10.5px; display: block; letter-spacing: -0.02em; }
-.tear { font-family: var(--mono); font-size: 9.5px; color: var(--dim); text-align: center; letter-spacing: 0.06em; }
+.stub .tgt { background: #FFF4DA; border-radius: 8px; padding: 6px 8px 7px; font-size: 11px; line-height: 1.32; }
+.stub .tgt .lab { color: #7A5300; font-weight: 700; display: block; margin-bottom: 2px; }
+.tear { font-family: var(--mono); font-size: 9.5px; color: var(--dim); text-align: center; letter-spacing: 0.01em; white-space: nowrap; }
 
 /* ===== табло ===== */
 .board { background: var(--board); border-radius: 14px; padding: 12px 16px 12px; color: var(--boardtx); }
@@ -116,15 +120,15 @@ b { font-weight: 700; }
 
 /* ===== низ стр. 1 ===== */
 .row3 { display: grid; grid-template-columns: 236px minmax(0, 1fr); gap: 12px; }
-.contact .ln { display: grid; grid-template-columns: 62px 1fr; gap: 6px; font-size: 11.3px; line-height: 1.3; margin-top: 5px; align-items: baseline; }
+.contact .ln { display: grid; grid-template-columns: 62px 1fr; gap: 6px; font-size: 11.3px; line-height: 1.3; margin-top: 3px; align-items: baseline; }
 .contact .ln .lab { font-size: 9.5px; }
 .contact .ln span { font-family: var(--mono); font-weight: 600; font-size: 11px; }
-.contact .tg { display: flex; gap: 10px; align-items: center; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); }
+.contact .tg { display: flex; gap: 10px; align-items: center; margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--line); }
 .contact .tg .q { width: 64px; height: 64px; padding: 4px; border: 1px solid var(--line); border-radius: 6px; flex: none; }
 .contact .tg .q img { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
 .contact .tg div { font-size: 10.5px; line-height: 1.3; }
 .contact .tg b { font-family: var(--mono); font-size: 11px; display: block; }
-.kit { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; margin-top: 7px; }
+.kit { display: grid; grid-template-columns: 0.8fr 1fr; gap: 0 16px; margin-top: 7px; }
 .langs .l { display: grid; grid-template-columns: 54px 1fr 50px; gap: 7px; align-items: center; font-size: 11.2px; margin-top: 4px; }
 .langs .bar { height: 6px; background: var(--paper2); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
 .langs .bar i { display: block; height: 100%; background: var(--navy); }
@@ -157,17 +161,20 @@ b { font-weight: 700; }
 .chain .n.now i { background: var(--amber); border-color: var(--ink); }
 .chain .n b { display: block; font-family: var(--disp); font-size: 14px; font-weight: 600; margin-top: 3px; }
 .chain .n span { display: block; font-size: 10.5px; line-height: 1.2; color: var(--ink); }
-.seg { display: grid; grid-template-columns: 124px 1fr; gap: 10px; padding: 5px 0; border-top: 1px dashed #BFC9D6; }
+.seg { display: grid; grid-template-columns: 124px 1fr; gap: 10px; padding: 4px 0; border-top: 1px dashed #BFC9D6; }
 .segs .seg:first-of-type { border-top: none; padding-top: 2px; }
 .seg .y .n { font-family: var(--mono); font-size: 9.5px; color: var(--dim); letter-spacing: 0.02em; margin-right: 4px; }
 .seg .y b { display: block; font-family: var(--disp); font-weight: 600; font-size: 16px; line-height: 1.1; margin-top: 3px; }
 .seg .y .ap { display: inline-block; margin-top: 0; font-family: var(--mono); font-size: 10px; font-weight: 700; background: var(--navy); color: #fff; border-radius: 4px; padding: 1px 5px; letter-spacing: 0.02em; }
-.seg .y .pl { display: block; font-size: 10.5px; color: var(--dim); margin-top: 3px; line-height: 1.25; }
+.seg .y .pl { display: block; font-size: 10.5px; color: var(--ink); margin-top: 3px; line-height: 1.28; }
+.seg .y .pl + .pl { margin-top: 1px; }
+.seg .y .pl b { display: inline; font-family: var(--text); font-size: inherit; font-weight: 700; line-height: inherit; margin: 0; }
+a { color: inherit; text-decoration: none; }
 .seg h3 { font-size: 13px; font-weight: 700; line-height: 1.28; }
 .seg h3 em { font-style: normal; font-weight: 500; color: var(--dim); }
 .seg .ctx { font-size: 11px; color: var(--dim); line-height: 1.36; margin-top: 2px; }
 .seg ul { list-style: none; margin-top: 2px; }
-.seg li { font-size: 11px; line-height: 1.36; padding-left: 14px; position: relative; margin-top: 2px; text-wrap: pretty; }
+.seg li { font-size: 11px; line-height: 1.32; padding-left: 14px; position: relative; margin-top: 2px; text-wrap: pretty; }
 .seg li::before { content: "✓"; position: absolute; left: 0; top: 0; font-size: 10px; font-weight: 700; color: var(--green); font-family: var(--text); }
 .seg li b { font-weight: 700; }
 .row4 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
@@ -224,19 +231,21 @@ b { font-weight: 700; }
         <div class="f"><div class="lab">Багаж · baggage</div><div class="v">5 языков · 20+ стран</div></div>
         <div class="f"><div class="lab">Направления</div><div class="v">Россия · Китай · ЮВА</div></div>
         <div class="f go"><div class="lab">Посадка · boarding</div><div class="v">сейчас — открыт к проектам</div></div>
+        <div class="f r2"><div class="lab">Экипаж · crew</div><div class="v">команды до 40 человек</div></div>
+        <div class="f r2"><div class="lab">Топливо · fuel</div><div class="v">маркетинговый бюджет &gt; 1 млрд ₽ в год</div></div>
+        <div class="f r2"><div class="lab">Командир · P&amp;L</div><div class="v">P&amp;L в Мегамаркете, Alibaba и своём бизнесе</div></div>
       </div>
-      <div class="target"><span class="lab">Желаемый рейс</span><span><b>CBDO · CMO · директор по международному развитию</b> (Россия ↔ Китай ↔ ЮВА)</span></div>
       <div class="pfoot"><svg class="bars" viewBox="0 0 302 40" preserveAspectRatio="none"><rect x="0" y="0" width="2" height="40"/><rect x="3" y="0" width="2" height="40"/><rect x="7" y="0" width="2" height="40"/><rect x="12" y="0" width="2" height="40"/><rect x="16" y="0" width="2" height="40"/><rect x="21" y="0" width="3" height="40"/><rect x="27" y="0" width="1" height="40"/><rect x="29" y="0" width="1" height="40"/><rect x="32" y="0" width="1" height="40"/><rect x="34" y="0" width="1" height="40"/><rect x="37" y="0" width="2" height="40"/><rect x="40" y="0" width="3" height="40"/><rect x="45" y="0" width="3" height="40"/><rect x="50" y="0" width="2" height="40"/><rect x="54" y="0" width="1" height="40"/><rect x="56" y="0" width="1" height="40"/><rect x="60" y="0" width="1" height="40"/><rect x="64" y="0" width="1" height="40"/><rect x="66" y="0" width="1" height="40"/><rect x="70" y="0" width="1" height="40"/><rect x="74" y="0" width="2" height="40"/><rect x="78" y="0" width="1" height="40"/><rect x="81" y="0" width="2" height="40"/><rect x="84" y="0" width="3" height="40"/><rect x="88" y="0" width="2" height="40"/><rect x="91" y="0" width="2" height="40"/><rect x="96" y="0" width="1" height="40"/><rect x="98" y="0" width="3" height="40"/><rect x="102" y="0" width="1" height="40"/><rect x="104" y="0" width="1" height="40"/><rect x="106" y="0" width="1" height="40"/><rect x="109" y="0" width="2" height="40"/><rect x="114" y="0" width="1" height="40"/><rect x="116" y="0" width="1" height="40"/><rect x="118" y="0" width="2" height="40"/><rect x="123" y="0" width="2" height="40"/><rect x="126" y="0" width="2" height="40"/><rect x="129" y="0" width="1" height="40"/><rect x="132" y="0" width="1" height="40"/><rect x="135" y="0" width="1" height="40"/><rect x="137" y="0" width="1" height="40"/><rect x="141" y="0" width="1" height="40"/><rect x="145" y="0" width="3" height="40"/><rect x="151" y="0" width="2" height="40"/><rect x="154" y="0" width="1" height="40"/><rect x="156" y="0" width="1" height="40"/><rect x="158" y="0" width="1" height="40"/><rect x="160" y="0" width="2" height="40"/><rect x="165" y="0" width="2" height="40"/><rect x="169" y="0" width="1" height="40"/><rect x="171" y="0" width="2" height="40"/><rect x="174" y="0" width="1" height="40"/><rect x="177" y="0" width="3" height="40"/><rect x="183" y="0" width="3" height="40"/><rect x="189" y="0" width="2" height="40"/><rect x="194" y="0" width="1" height="40"/><rect x="197" y="0" width="3" height="40"/><rect x="201" y="0" width="1" height="40"/><rect x="204" y="0" width="1" height="40"/><rect x="207" y="0" width="2" height="40"/><rect x="211" y="0" width="1" height="40"/><rect x="214" y="0" width="2" height="40"/><rect x="217" y="0" width="1" height="40"/><rect x="221" y="0" width="2" height="40"/><rect x="225" y="0" width="1" height="40"/><rect x="228" y="0" width="3" height="40"/><rect x="232" y="0" width="3" height="40"/><rect x="238" y="0" width="1" height="40"/><rect x="242" y="0" width="3" height="40"/><rect x="247" y="0" width="3" height="40"/><rect x="251" y="0" width="1" height="40"/><rect x="254" y="0" width="3" height="40"/><rect x="260" y="0" width="1" height="40"/><rect x="263" y="0" width="2" height="40"/><rect x="267" y="0" width="2" height="40"/><rect x="270" y="0" width="1" height="40"/><rect x="273" y="0" width="1" height="40"/><rect x="275" y="0" width="2" height="40"/><rect x="278" y="0" width="2" height="40"/><rect x="282" y="0" width="2" height="40"/><rect x="285" y="0" width="3" height="40"/><rect x="290" y="0" width="3" height="40"/><rect x="295" y="0" width="2" height="40"/><rect x="299" y="0" width="2" height="40"/></svg><div class="lab">Ручная кладь: B2B Marketing ·<br>Global Business · AdTech</div></div>
     </div>
     <div class="stub">
       <div class="band"><div class="t"><b style="font-size:18px">КОРЕШОК</b></div></div>
       <div class="sb">
-        <div class="rt">MOW <i>⇄</i> SHA</div>
-        <div class="k7"><div class="lab">Для рекрутера: главное за 7 секунд</div>
+        <div class="tgt"><span class="lab">Желаемый рейс</span><b>CBDO · CMO · директор по международному развитию</b> (Россия ↔ Китай ↔ ЮВА)</div>
+        <div class="k7"><div class="lab">Рекрутеру · за 7 секунд</div>
           <div class="it"><b>+350%</b><span>продавцов год к году</span><i>Мегамаркет</i></div>
           <div class="it"><b>$48M</b><span>GMV, +100% год к году</span><i>AliExpress Россия и СНГ</i></div>
           <div class="it"><b>25×</b><span>средний ROI кампаний</span><i>Alibaba, 2020–2022</i></div>
-          <div class="it"><b>3 млрд ₽</b><span>чистой прибыли, Q4 2023</span><i>Мегамаркет</i></div>
+          <div class="it"><b>3 млрд ₽</b><span>чистой прибыли от моих программ, Q4 2023</span><i>Мегамаркет</i></div>
         </div>
         <div class="qr"><div class="q"><img src="img/qr-site.svg" alt="QR ostapdotcenko.ru"></div><div class="tx"><b>ostapdotcenko.ru</b>сайт и блог<br>RU · EN · 中文</div></div>
         <div class="tear">✂ оторвать и оставить себе</div>
@@ -331,8 +340,8 @@ b { font-weight: 700; }
         <div class="line">
       <div class="n"><i></i><b>2013</b><span>CityAds Media</span></div>
       <div class="n"><i></i><b>2015</b><span>Data Centric Alliance</span></div>
-      <div class="n"><i></i><b>2018</b><span>O.F.D Creative Agency</span></div>
-      <div class="n"><i></i><b>2020</b><span>Alibaba Group · AliExpress</span></div>
+      <div class="n"><i></i><b>2017</b><span>O.F.D Agency</span></div>
+      <div class="n"><i></i><b>2020</b><span>Alibaba Group</span></div>
       <div class="n"><i></i><b>2022</b><span>Independent Adviser</span></div>
       <div class="n"><i></i><b>2023</b><span>Мегамаркет (Сбер)</span></div>
       <div class="n now"><i></i><b>2025</b><span>Shanghai Pinnacle</span></div>
@@ -343,7 +352,7 @@ b { font-weight: 700; }
     <div class="h" style="margin-bottom:6px">Сегменты <small>от текущего к первому · даты, компании, результаты</small></div>
 
     <div class="seg">
-      <div class="y"><span class="n">СЕГМ. 7</span><span class="ap">SHA</span><b>2025 — н. в.</b></div>
+      <div class="y"><span class="n">СЕГМ. 7</span><span class="ap">SHA</span><b>2025 — н. в.</b><span class="pl"><b>P&amp;L собственника</b></span></div>
       <div>
         <h3>Собственник и основатель · Shanghai Pinnacle Technology Co., Ltd.</h3>
         <div class="ctx">GlobalTechTour — технологические экспедиции и бенчмарк-туры в Китай и ЮВА; Aura Robotics — робототехника и автоматизация, подбор роботов напрямую у китайских производителей.</div>
@@ -356,11 +365,11 @@ b { font-weight: 700; }
     </div>
 
     <div class="seg">
-      <div class="y"><span class="n">СЕГМ. 6</span><span class="ap">RU</span><b>2023 — 2025</b></div>
+      <div class="y"><span class="n">СЕГМ. 6</span><span class="ap">RU</span><b>2023 — 2025</b><span class="pl">Команда <b>16–40 человек</b></span><span class="pl">Маркетинговый бюджет <b>больше 1 млрд ₽ в год</b></span><span class="pl"><b>P&amp;L направления</b></span></div>
       <div>
         <h3>Head of B2B Marketing · Мегамаркет (экосистема Сбера) <em>— e-commerce №3 в России</em></h3>
         <ul>
-          <li>B2B-маркетинг привлечения продавцов: <b>+350% продавцов год к году</b>, <b>50 000 продавцов</b> на платформе; <b>3 млрд ₽ чистой прибыли, Q4 2023</b>.</li>
+          <li>B2B-маркетинг привлечения продавцов: <b>+350% продавцов год к году</b>, <b>50 000 продавцов</b> на платформе; эффект моих программ — <b>3 млрд ₽ чистой прибыли, Q4 2023</b>.</li>
           <li>С <b>Минэкономразвития России</b> — федеральная программа поддержки предпринимателей на базе центров «Мой бизнес» в <b>86 регионах</b>: стратегия привлечения, материалы, региональная коммуникация — с нуля.</li>
           <li>Федеральный марафон «Мегасреда» в <b>20 городах</b> — от концепции до контента и PR; <b>1 млн+ просмотров</b>.</li>
           <li>«Сделано в России»: бренд-программа, онбординг, видеокампания — <b>от 0 до 2 000 компаний</b>; социальный маркетплейс для производителей с ограниченными физическими возможностями.</li>
@@ -377,7 +386,7 @@ b { font-weight: 700; }
     </div>
 
     <div class="seg">
-      <div class="y"><span class="n">СЕГМ. 4</span><span class="ap">RU·СНГ</span><b>2020 — 2022</b></div>
+      <div class="y"><span class="n">СЕГМ. 4</span><span class="ap">RU·СНГ</span><b>2020 — 2022</b><span class="pl">Команда <b>до 5 человек</b></span><span class="pl"><b>P&amp;L направления O2O</b></span></div>
       <div>
         <h3>Head of O2O &amp; New Business · Alibaba Group — AliExpress Россия и СНГ</h3>
         <ul>
@@ -388,9 +397,10 @@ b { font-weight: 700; }
     </div>
 
     <div class="seg">
-      <div class="y"><span class="n">СЕГМ. 3</span><span class="ap">SHA·HKG</span><b>2018 — 2020</b></div>
+      <div class="y"><span class="n">СЕГМ. 3</span><span class="ap">SHA·HKG</span><b>2017 — 2020</b><span class="pl"><b>P&amp;L собственника</b></span></div>
       <div>
         <h3>Co-founder · O.F.D Creative Agency <em>— Шанхай / Гонконг</em></h3>
+        <div class="ctx">2017 — подготовка и запуск</div>
         <ul><li>Совместный проект китайской и российской команд: рекламные решения для продвижения бизнеса на рынках Китая и России. Клиенты: <b>FOREO, DECATHLON, Bank of China, WWE, CDEK</b>.</li></ul>
       </div>
     </div>
@@ -420,7 +430,7 @@ b { font-weight: 700; }
         <div class="it gold"><span class="m">BLOG</span><div><b>ostapdotcenko.ru/blog</b><span>статьи каждый день</span></div></div>
         <div class="it"><span class="m">IG</span><div><b>@ostap.dotsenko</b><span>Instagram</span></div></div>
         <div class="it"><span class="m">TG</span><div><b>@ostapdotcenko</b><span>Telegram</span></div></div>
-        <div class="it"><span class="m">in</span><div><b>Ostap Dotsenko</b><span>LinkedIn</span></div></div>
+        <div class="it"><span class="m">in</span><div><a href="https://www.linkedin.com/in/ostapdot%D1%81enko/"><b>linkedin.com/in/<br>ostapdotсenko</b></a><span>11 000+ подписчиков</span></div></div>
         <div class="it"><span class="m">f</span><div><b>Ostap Dotsenko</b><span>Facebook</span></div></div>
         <div class="it"><span class="m">GTT</span><div><b>globaltechtour.ru</b><span>+ блог · экспедиции</span></div></div>
         <div class="it"><span class="m">AR</span><div><b>aura-robotics.ru</b><span>+ блог · роботы</span></div></div>

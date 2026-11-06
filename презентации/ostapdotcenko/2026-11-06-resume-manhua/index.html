@@ -25,7 +25,7 @@
 html, body { background: #9a9aa0; }
 body { font-family: var(--body); color: var(--ink); -webkit-font-smoothing: antialiased; font-size: 11.2px; line-height: 1.4; }
 .page { width: 794px; height: 1123px; position: relative; overflow: hidden; background: var(--paper); margin: 0 auto 24px;
-  page-break-after: always; break-after: page; padding: 18px 20px 28px; display: flex; flex-direction: column; gap: 8px; }
+  page-break-after: always; break-after: page; padding: 18px 20px 28px; display: flex; flex-direction: column; gap: 6px; }
 @media print { html, body { background: none; } .page { margin: 0; } }
 b { font-weight: 700; }
 .zh { font-family: var(--zh); }
@@ -59,7 +59,7 @@ b { font-weight: 700; }
   text-shadow: 2px 2px 0 var(--ink); transform: rotate(var(--r, -8deg)); letter-spacing: .02em; line-height: 1; }
 
 /* ---- шапка ---- */
-.title { display: flex; align-items: stretch; gap: 8px; height: 76px; flex: none; }
+.title { display: flex; align-items: stretch; gap: 8px; height: 73px; flex: none; }
 .logo { flex: 1; position: relative; border: 3px solid var(--ink); background: var(--red); overflow: hidden; padding: 6px 14px 0; }
 .logo .dots { --c: rgba(255,255,255,.28); }
 .logo h1 { position: relative; font-family: var(--title); font-weight: 400; font-size: 41px; line-height: 1; color: #fff; letter-spacing: .01em;
@@ -97,7 +97,7 @@ b { font-weight: 700; }
 .chips span b { font-weight: 800; }
 
 /* ---- главы ---- */
-.ch { padding: 8px 12px 9px; }
+.ch { padding: 7px 12px 7px; }
 .ch-head { display: flex; align-items: center; gap: 9px; flex-wrap: nowrap; }
 .hua { font-family: var(--brush); font-size: 27px; line-height: 1; color: var(--red); flex: none; margin-top: -2px; }
 .ep { font-family: var(--title); font-size: 13.5px; line-height: 1.1; flex: 1; min-width: 0; }
@@ -107,7 +107,7 @@ b { font-weight: 700; }
 .role .zh { font-weight: 500; font-size: 11px; color: var(--dim); }
 .ctx { font-size: 11px; color: var(--dim); margin-top: 2px; line-height: 1.36; }
 .ch ul { list-style: none; margin-top: 3px; }
-.ch li { padding-left: 15px; position: relative; margin-top: 2.5px; line-height: 1.38; text-wrap: pretty; }
+.ch li { padding-left: 15px; position: relative; margin-top: 2px; line-height: 1.38; text-wrap: pretty; }
 .ch li::before { content: ""; position: absolute; left: 1px; top: 4.5px; width: 0; height: 0; border-style: solid; border-width: 4.5px 0 4.5px 8px;
   border-color: transparent transparent transparent var(--red); }
 .ch li b { font-weight: 800; }
@@ -142,6 +142,7 @@ b { font-weight: 700; }
 .net b { display: block; font-weight: 800; font-size: 12.4px; line-height: 1.15; }
 .net span { display: block; font-size: 10.5px; line-height: 1.2; color: var(--dim); font-weight: 500; }
 .net.wide { grid-column: span 2; }
+.net a { color: inherit; text-decoration: none; }
 .ftr { position: absolute; left: 20px; right: 20px; bottom: 9px; display: flex; justify-content: space-between; font-size: 10.5px; font-weight: 600; color: var(--dim); }
 .ftr b { color: var(--ink); }
 </style>
@@ -184,7 +185,7 @@ b { font-weight: 700; }
         (<b>Alibaba Group</b>). Сейчас — свой бизнес в Шанхае.</div>
       <div class="mission chk" style="flex:1; overflow:hidden"><div class="k">ГЕРОЙ ИЩЕТ <span>НОВУЮ МИССИЮ</span>:</div>
         <p>CBDO · CMO · директор по международному развитию<i>Россия ↔ Китай ↔ Юго-Восточная Азия</i></p>
-        <div class="power"><b>Суперсила:</b> стратегия выхода на рынки, партнёрства и альянсы, переговоры с первыми лицами.</div></div>
+        <div class="power"><b>Уровень силы:</b> команды до 40 человек · маркетинговый бюджет больше 1&nbsp;млрд&nbsp;₽ в год · P&amp;L в Мегамаркете, Alibaba и своём бизнесе.</div></div>
     </div>
   </div>
 
@@ -192,7 +193,7 @@ b { font-weight: 700; }
   <div class="panel ch" style="flex:none">
     <div class="ch-head"><span class="hua">第一话</span><span class="ep">Глава 1. «Свой бизнес в Шанхае»</span><span class="when">2025 — н. в. · Шанхай</span></div>
     <div class="role">Собственник и основатель · <span class="co">Shanghai Pinnacle Technology Co., Ltd.</span> <span class="zh">上海拼那克了科技有限公司</span></div>
-    <div class="ctx">GlobalTechTour — технологические экспедиции и бенчмарк-туры в Китай и ЮВА; Aura Robotics — робототехника и автоматизация, подбор роботов напрямую у китайских производителей.</div>
+    <div class="ctx">GlobalTechTour — технологические экспедиции и бенчмарк-туры в Китай и ЮВА; Aura Robotics — робототехника и автоматизация, подбор роботов напрямую у китайских производителей. <b style="color:var(--ink)">P&amp;L собственника.</b></div>
     <ul>
       <li>Корпоративный форум <b>Мегамаркета (Сбер) в Шэньчжэне на 1&nbsp;200+ участников</b> — под ключ: логистика, площадка, деловая программа.</li>
       <li>Визиты делегаций на заводы и в R&amp;D <b>BYD, Xiaomi, Baidu, Meituan, Poizon, Leju Robotics</b>; клиентам Aura — прямой доступ к руководству и R&amp;D производителей роботов, а не к рядовым менеджерам.</li>
@@ -204,14 +205,15 @@ b { font-weight: 700; }
   <div class="panel ch" style="flex:none; display:grid; grid-template-columns: 1fr 226px; gap: 10px">
     <div>
       <div class="ch-head"><span class="hua">第二话</span><span class="ep">Глава 2. «Битва за продавцов»</span><span class="when">2023 — 2025</span></div>
-      <div class="role">Head of B2B Marketing · <span class="co">Мегамаркет (экосистема Сбера)</span> <span style="font-weight:500; font-size:11px; color:var(--dim); white-space:nowrap">— e-commerce №3 в России</span></div>
+      <div class="role">Head of B2B Marketing · <span class="co">Мегамаркет (экосистема Сбера)</span></div>
+      <div class="ctx">E-commerce №3 в России · <b style="color:var(--ink)">команда 16–40 человек · маркетинговый бюджет больше 1&nbsp;млрд&nbsp;₽ в год · P&amp;L направления</b></div>
       <ul>
         <li>B2B-маркетинг привлечения продавцов: <b>+350% продавцов год к году</b>, <b>50&nbsp;000 продавцов</b> на платформе.</li>
         <li>С <b>Минэкономразвития России</b> — федеральная программа поддержки предпринимателей на базе центров «Мой бизнес» в <b>86 регионах</b>: стратегия привлечения, материалы, региональная коммуникация — с нуля.</li>
         <li>Федеральный марафон <b>«Мегасреда» в 20 городах</b> — от концепции и логистики до контента и PR; <b>1&nbsp;млн+ просмотров</b>.</li>
         <li>«Сделано в России»: бренд-программа, онбординг, видеокампания — <b>от 0 до 2&nbsp;000 компаний</b>.</li>
         <li>Социальный маркетплейс для производителей с ограниченными физическими возможностями: позиционирование, UX, PR-кампания.</li>
-        <li><b>3&nbsp;млрд ₽ чистой прибыли, Q4 2023.</b></li>
+        <li>Эффект моих программ — <b>3&nbsp;млрд ₽ чистой прибыли, Q4 2023.</b></li>
       </ul>
     </div>
     <div style="position:relative">
@@ -239,7 +241,7 @@ b { font-weight: 700; }
     <div class="panel ch" style="flex:1">
       <div class="dots" style="--c: rgba(10,155,216,.45); -webkit-mask: linear-gradient(250deg, #000 0%, transparent 45%)"></div>
       <div class="ch-head" style="position:relative"><span class="hua">第四话</span><span class="ep">Глава 4. «Банки + телеком»</span><span class="when">2020 — 2022</span></div>
-      <div class="role" style="position:relative">Head of O2O &amp; New Business · <span class="co">Alibaba Group — AliExpress Россия и СНГ</span></div>
+      <div class="role" style="position:relative">Head of O2O &amp; New Business · <span class="co">Alibaba Group — AliExpress Россия и СНГ</span> <span style="font-weight:700; font-size:11px">· команда до 5 человек · P&amp;L направления O2O</span></div>
       <ul style="position:relative">
         <li>Партнёрства: <b>Альфа-Банк, Тинькофф, МТС Банк, МегаФон, Билайн, Роснефть</b> и <b>120+ медиахолдингов</b>.</li>
         <li><b>GMV $48M (+100% год к году)</b>, <b>новые покупатели +185%</b>, средний <b>ROI кампаний 25×</b>.</li>
@@ -255,10 +257,10 @@ b { font-weight: 700; }
 
   <div class="row" style="height:212px; flex:none">
     <div class="panel ch" style="flex:1.16">
-      <div class="ch-head"><span class="hua">第五话</span><span class="when">2018 — 2020</span></div>
+      <div class="ch-head"><span class="hua">第五话</span><span class="when">2017 — 2020</span></div>
       <div class="ep" style="margin-top:3px">Глава 5. «Два берега»</div>
       <div class="role">Co-founder · <span class="co">O.F.D Creative Agency</span></div>
-      <div class="ctx">Шанхай / Гонконг.</div>
+      <div class="ctx">Шанхай / Гонконг · <b style="color:var(--ink)">P&amp;L собственника</b><br>2017 — подготовка и запуск</div>
       <ul>
         <li>Совместный проект китайской и российской команд: рекламные решения для продвижения бизнеса на рынках Китая и России.</li>
         <li>Клиенты: <b>FOREO, DECATHLON, Bank of China, WWE, CDEK</b>.</li>
@@ -353,7 +355,7 @@ b { font-weight: 700; }
         <div class="net wide"><span class="ic r">BLOG</span><div><b>ostapdotcenko.ru/blog</b><span>статьи каждый день, на трёх языках (с 15.10.2026)</span></div></div>
         <div class="net"><span class="ic">IG</span><div><b>@ostap.dotsenko</b><span>Instagram</span></div></div>
         <div class="net"><span class="ic c">TG</span><div><b>@ostapdotcenko</b><span>Telegram</span></div></div>
-        <div class="net"><span class="ic">in</span><div><b>Ostap Dotsenko</b><span>LinkedIn</span></div></div>
+        <div class="net"><span class="ic">in</span><div><a href="https://www.linkedin.com/in/ostapdot%D1%81enko/"><b>linkedin.com/in/<br>ostapdotсenko</b></a><span>11 000+ подписчиков</span></div></div>
         <div class="net"><span class="ic">f</span><div><b>Ostap Dotsenko</b><span>Facebook</span></div></div>
         <div class="net"><span class="ic c">GTT</span><div><b>globaltechtour.ru</b><span>проект + блог</span></div></div>
         <div class="net"><span class="ic c">AURA</span><div><b>aura-robotics.ru</b><span>проект + блог</span></div></div>
