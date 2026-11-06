@@ -385,7 +385,7 @@ export const CupMeterAct: React.FC<{b: BNCup; dur: number; brand?: BNBrand}> = (
       ) : null}
       {/* правая колонка: цифра на плашке цвета сезона, подпись, плашки */}
       <div style={{position: "absolute", left: 580, top: colY, width: 436, display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 22}}>
-        {f >= tF0 ? <div style={{background: acc, border: `8px solid ${C.ink}`, boxShadow: `12px 12px 0 ${C.ink}`, padding: "4px 24px 10px", rotate: "-3deg", scale: String(0.4 + 0.6 * bs), transformOrigin: "0 50%", ...numStyle(fitW(factStr(b.big), 116, 380, 0.68), C.ink)}}>{countNum(f, tF0, tF1 - tF0, b.big, lang)}</div> : null}
+        {f >= tF0 ? <div style={{background: acc, border: `8px solid ${C.ink}`, boxShadow: `12px 12px 0 ${C.ink}`, padding: "4px 24px 10px", rotate: "-3deg", scale: String(0.4 + 0.6 * bs), transformOrigin: "0 50%", ...numStyle(factStr(b.big).length > 5 ? fitW(factStr(b.big), 116, 340, 0.8) : fitW(factStr(b.big), 116, 380, 0.68), C.ink)}}>{countNum(f, tF0, tF1 - tF0, b.big, lang)}</div> : null}
         {f >= tF0 + 14 ? <div style={{background: "#fff", border: `5px solid ${C.ink}`, boxShadow: `7px 7px 0 ${C.ink}`, padding: "10px 18px", fontFamily: FONT.golos, fontWeight: 800, fontSize: 32, lineHeight: 1.15, color: C.ink, opacity: p(f, tF0 + 14, tF0 + 22)}}>{b.big.text}</div> : null}
         {(b.chips ?? []).slice(0, 2).map((c, i) => {
           const at = tC + i * 16;
