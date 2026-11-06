@@ -1,0 +1,562 @@
+{
+ "series": {
+  "name": "Робокитай",
+  "zh": "机器人中国",
+  "ep": 6
+ },
+ "city": {
+  "name": "Пекин",
+  "zh": "京",
+  "zhFull": "北京",
+  "tagline": "Край зрения"
+ },
+ "title": "Гуманоид для кафедры",
+ "article": "aura-robotics.ru/blog/humanoid-for-lab-unitree-g1-vs-booster (17.11.2026)",
+ "music": {
+  "src": "интернет-материалы/музыка/edm-detection-mode-kevin-macleod.mp3",
+  "volume": 0.3,
+  "aFrom": 0,
+  "bFrom": 119.8,
+  "bAt": "fix",
+  "duck": [
+   "guess"
+  ],
+  "credit": "Музыка: «EDM Detection Mode» — Kevin MacLeod (incompetech.com), CC BY 4.0. Звуки: Packsmithy, Gregor Quendel (OpenGameArt), CC BY 4.0; zvukitop.com"
+ },
+ "countdown": {
+  "label": "до семестра",
+  "done": "семестр ✓",
+  "doneAt": [
+   "payoff",
+   1.0
+  ],
+  "keys": [
+   [
+    "cold",
+    0,
+    5
+   ],
+   [
+    "letter",
+    0.9,
+    5
+   ],
+   [
+    "try1",
+    0.3,
+    4
+   ],
+   [
+    "try2",
+    0.3,
+    3
+   ],
+   [
+    "try3",
+    0.3,
+    2
+   ],
+   [
+    "crisis",
+    0.3,
+    1
+   ],
+   [
+    "payoff",
+    0.3,
+    0
+   ]
+  ],
+  "blink": [
+   "crisis"
+  ],
+  "hide": [
+   "cold",
+   "guess",
+   "board",
+   "cliff"
+  ]
+ },
+ "manager": {
+  "label": "завкафедрой",
+  "look": "prof",
+  "moods": [
+   [
+    "letter",
+    0,
+    "skeptic"
+   ],
+   [
+    "try1",
+    1.5,
+    "doubt"
+   ],
+   [
+    "try2",
+    1.5,
+    "tense"
+   ],
+   [
+    "try3",
+    1.5,
+    "tense"
+   ],
+   [
+    "crisis",
+    0,
+    "despair"
+   ],
+   [
+    "insight",
+    4,
+    "doubt"
+   ],
+   [
+    "fix",
+    3,
+    "ok"
+   ],
+   [
+    "payoff",
+    1.0,
+    "happy"
+   ]
+  ],
+  "inset": [
+   "try1",
+   "try2",
+   "try3",
+   "insight",
+   "fix"
+  ]
+ },
+ "map": {
+  "route": [
+   "Шанхай",
+   "Нанкин",
+   "Сюйчжоу",
+   "Цзинань",
+   "Пекин"
+  ],
+  "dots": [
+   "Шанхай",
+   "Нанкин",
+   "Сюйчжоу",
+   "Цзинань",
+   "Пекин",
+   "Шэньян"
+  ],
+  "kicker": "Серия 6",
+  "k": 0.72
+ },
+ "beats": [
+  {
+   "id": "cold",
+   "kind": "scene",
+   "sec": 5.4,
+   "music": false,
+   "world": "labFall",
+   "title": {
+    "text": "Его купили, чтобы он падал",
+    "mark": "падал",
+    "at": 2.1
+   },
+   "flash": {
+    "text": "За 5 дней до семестра…",
+    "at": 3.7
+   },
+   "sounds": [
+    [
+     0.2,
+     "@servo-1",
+     0.2
+    ],
+    [
+     0.8,
+     "@servo-2",
+     0.2
+    ],
+    [
+     2.0,
+     "@impact-1",
+     0.45
+    ],
+    [
+     2.1,
+     "@boing-1",
+     0.12
+    ],
+    [
+     3.6,
+     "@whoosh-3",
+     0.3
+    ]
+   ]
+  },
+  {
+   "id": "letter",
+   "kind": "letter",
+   "sec": 5.4,
+   "cut": true,
+   "sos": "SOS · Пекин",
+   "city": "北京 · кафедра · гуманоид",
+   "hint": "lab",
+   "host": {
+    "name": "Ави",
+    "role": "проводник"
+   },
+   "lines": [
+    {
+     "text": "Грант на гуманоида.",
+     "mark": "гуманоида."
+    },
+    {
+     "text": "Берём самого высокого?"
+    },
+    {
+     "text": "Чтобы впечатлял!"
+    }
+   ]
+  },
+  {
+   "id": "map",
+   "kind": "map",
+   "sec": 4.2
+  },
+  {
+   "id": "try1",
+   "kind": "scene",
+   "sec": 5.2,
+   "world": "labLift",
+   "tag": {
+    "text": "попытка 1 / 3"
+   },
+   "plates": [
+    {
+     "name": "Леон",
+     "role": "гуманоид 1,3 м",
+     "at": 0.4,
+     "x": 90,
+     "y": 520
+    }
+   ],
+   "title": {
+    "text": "Поднять с пола одному — тяжело",
+    "mark": "одному",
+    "at": 0.6
+   },
+   "sounds": [
+    [
+     0.8,
+     "@zvukitop/zt-gear",
+     0.25
+    ],
+    [
+     2.2,
+     "@impact-3",
+     0.2
+    ]
+   ]
+  },
+  {
+   "id": "try2",
+   "kind": "scene",
+   "sec": 5.2,
+   "cut": true,
+   "world": "labCup",
+   "tag": {
+    "text": "попытка 2 / 3"
+   },
+   "plates": [
+    {
+     "name": "Нова",
+     "role": "гуманоид 1,2 м",
+     "at": 0.4,
+     "x": 90,
+     "y": 520
+    }
+   ],
+   "title": {
+    "text": "Без кистей — пианист в варежках",
+    "mark": "в варежках",
+    "at": 0.6
+   },
+   "huh": 1.9,
+   "sounds": [
+    [
+     0.9,
+     "@servo-1",
+     0.2
+    ],
+    [
+     1.7,
+     "@error-1",
+     0.25
+    ]
+   ]
+  },
+  {
+   "id": "try3",
+   "kind": "scene",
+   "sec": 5.2,
+   "cut": true,
+   "world": "labBattery",
+   "tint": "night",
+   "tag": {
+    "text": "попытка 3 / 3"
+   },
+   "title": {
+    "text": "Идея пришла — а робот на зарядке",
+    "mark": "на зарядке",
+    "at": 0.6
+   },
+   "sounds": [
+    [
+     1.2,
+     "@ding-3",
+     0.3
+    ],
+    [
+     3.4,
+     "@beep-1",
+     0.3
+    ],
+    [
+     3.7,
+     "@error-1",
+     0.25
+    ]
+   ]
+  },
+  {
+   "id": "guess",
+   "kind": "guess",
+   "sec": 4.2,
+   "cut": true,
+   "world": "labFall",
+   "freeze": 2.6,
+   "style": "yesno",
+   "q": "Робот упал. Это брак?",
+   "opts": [
+    {
+     "name": "Да"
+    },
+    {
+     "name": "Нет"
+    }
+   ]
+  },
+  {
+   "id": "crisis",
+   "kind": "scene",
+   "sec": 5.4,
+   "cut": true,
+   "music": false,
+   "world": "labFall",
+   "t0": 0.6,
+   "tint": "red",
+   "tilt": 2,
+   "title": {
+    "text": "Опять упал. Вернуть поставщику?",
+    "mark": "Вернуть",
+    "at": 1.6,
+    "red": true
+   },
+   "manager": {
+    "mood": "despair",
+    "arms": "head",
+    "at": 2.2
+   },
+   "sounds": [
+    [
+     1.4,
+     "@impact-1",
+     0.4
+    ],
+    [
+     1.6,
+     "@error-1",
+     0.35
+    ]
+   ]
+  },
+  {
+   "id": "insight",
+   "kind": "scene",
+   "sec": 8.0,
+   "world": "labNova",
+   "plates": [
+    {
+     "name": "Нова",
+     "role": "зоркая",
+     "at": 0.4,
+     "x": 90,
+     "y": 470
+    }
+   ],
+   "title": {
+    "text": "Падает? Это условие задачи",
+    "mark": "условие задачи",
+    "at": 0.4,
+    "out": 3.8
+   },
+   "bulb": 3.0,
+   "cards": [
+    {
+     "at": 3.8,
+     "lines": [
+      {
+       "text": "Рама стоит дешевле одного колена",
+       "mark": "дешевле одного колена"
+      }
+     ],
+     "note": "из статьи"
+    }
+   ],
+   "sounds": [
+    [
+     2.6,
+     "@laser-1",
+     0.15
+    ],
+    [
+     3.0,
+     "@ding-1",
+     0.35
+    ]
+   ]
+  },
+  {
+   "id": "board",
+   "kind": "board",
+   "sec": 6.2,
+   "boardTitle": "Спросите поставщика",
+   "criteria": [
+    {
+     "title": "1 · Узлы",
+     "text": "что страдает при падении"
+    },
+    {
+     "title": "2 · Приводы",
+     "text": "сколько стоят и как быстро придут"
+    },
+    {
+     "title": "3 · Гарантия",
+     "text": "условия — в договоре"
+    },
+    {
+     "title": "4 · Запас",
+     "text": "вторая батарея и рама"
+    }
+   ]
+  },
+  {
+   "id": "fix",
+   "kind": "scene",
+   "sec": 7.4,
+   "world": "labFrame",
+   "plates": [
+    {
+     "name": "Леон",
+     "role": "на подвесе",
+     "at": 0.4,
+     "x": 90,
+     "y": 470
+    }
+   ],
+   "title": {
+    "text": "Рама, подвес, вторая батарея",
+    "mark": "вторая батарея",
+    "at": 0.6,
+    "out": 4.0
+   },
+   "cards": [
+    {
+     "at": 4.0,
+     "lines": [
+      {
+       "text": "Железо устареет. Код, статьи и выпускники останутся",
+       "mark": "выпускники останутся"
+      }
+     ],
+     "note": "из статьи"
+    }
+   ],
+   "sounds": [
+    [
+     2.9,
+     "@impact-3",
+     0.2
+    ],
+    [
+     3.2,
+     "@servo-2",
+     0.25
+    ],
+    [
+     3.9,
+     "@success-1",
+     0.2
+    ]
+   ]
+  },
+  {
+   "id": "payoff",
+   "kind": "scene",
+   "sec": 6.8,
+   "world": "labWalk",
+   "counter": {
+    "label": "шаг",
+    "at": 0.3,
+    "from": 3,
+    "to": 30,
+    "dur": 3.0
+   },
+   "title": {
+    "text": "Через месяц — тридцать шагов",
+    "mark": "тридцать шагов",
+    "at": 0.4,
+    "out": 3.4
+   },
+   "manager": {
+    "mood": "happy",
+    "arms": "thumb",
+    "at": 1.0
+   },
+   "cards": [
+    {
+     "at": 3.4,
+     "lines": [
+      {
+       "text": "Ради второго шага кафедры и покупают гуманоидов",
+       "mark": "второго шага"
+      }
+     ],
+     "note": "из статьи"
+    }
+   ],
+   "sounds": [
+    [
+     1.2,
+     "@zvukitop/zt-kids-yay",
+     0.25
+    ],
+    [
+     3.4,
+     "@applause-1",
+     0.2
+    ]
+   ]
+  },
+  {
+   "id": "cliff",
+   "kind": "cliff",
+   "sec": 6.2,
+   "sos": "SOS · Застава",
+   "city": "边境 · робот в ящике",
+   "hint": "border",
+   "next": "Серия 7 · скоро",
+   "url": "aura-robotics.ru/blog"
+  }
+ ]
+}

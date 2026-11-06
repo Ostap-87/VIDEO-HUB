@@ -205,6 +205,13 @@ TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts RobokitaiCarousel 
 TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts RobokitaiStory /dev/shm/e2out/out.mp4 --props=props/robokitai/002-suzhou.json --bundle-cache=false --concurrency=2 --timeout=240000 --crf=20
 # пробные кадры — RobokitaiStoryPreview с "frames" в props, --sequence --frames=0-<N-1> --scale=0.5
 ```
+Продолжение сезона (06.11.2026): серии 4–8 — `004-shenyang.json` (сварка), `005-shanghai.json` (робот-доставщик в отеле),
+`006-beijing.json` (гуманоид для кафедры), `007-zastava.json` (путь робота через границу), `008-guangdong.json` (линия пельменей, финал сезона).
+Рядом рендерит другой агент — каждый рендер под общим замком:
+```bash
+flock /dev/shm/render.lock env TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts RobokitaiStory /dev/shm/rk4/out.mp4 --props=props/robokitai/004-shenyang.json --bundle-cache=false --ignore-certificate-errors --concurrency=2 --timeout=240000 --crf=20
+```
+Новые виды шагов (`compare`, `calc`), стили угадайки (`cards` / `yesno` / `poll` / `pins`), образ клиента (`manager.look`) и миры — `CLAUDE.md`, «Серии 4–8».
 
 ## Пересборка готового ролика (вырезать кусок, новый звук)
 
@@ -611,6 +618,9 @@ node reels-studio/tools/od-posts/reel-sait.mjs            # ролик «Мой 
 #   python3 reels-studio/tools/blog-news/music_pool.py                           # 15 треков пользователя целиком → library/music.json (pool-NNN)
 # обложки «крик» (из reels-studio): npx remotion render src/index.ts BlogNewsCovers /tmp/cov --sequence --image-format=jpeg --props='{"eps":[…],"layouts":["shout"]}'
 #   второй сезон: в props — "accent", "look": "light", "hook": {"style": "split"}, акты kind = stat | dialog | list | page (см. reels-studio/CLAUDE.md, «多 NEWS»)
+#   третий сезон «Напитки Азии» (06.11.2026): "accent": "#86E05A", "hook": {"style": "cup", "liquid": "matcha|coffee|milktea|thai|teh"}, "coverPos",
+#   акты kind = race (гонка сетей, "twist" — второй раунд) | cupmeter (стакан-шкала, "from" > "pct" — «утекает») | menu (меню кофейни) — blog-news/acts3.tsx;
+#   в этом контейнере рендер — с --ignore-certificate-errors (иначе шрифты Google не грузятся), рядом с другим рендером — через flock /dev/shm/render.lock
 # из reels-studio: TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts BlogNews ../finished-videos/blog-news/001-coffee-with-hint-audit.mp4 --props=props/blog-news/001-coffee-with-hint-audit.json --bundle-cache=false --crf=18
 #   английский дубль каждого выпуска (05.11.2026): python3 tools/blog-news/en_props.py [N] → props/blog-news/en/NNN-<slug>.json;
 #   node tools/blog-news/shots.mjs <slug> --lang en --n 3; рендер с --props=props/blog-news/en/NNN-<slug>.json → ../finished-videos/blog-news/NNN-<slug>-en.mp4;

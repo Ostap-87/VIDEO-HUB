@@ -149,7 +149,8 @@ export const MapBeat: React.FC<{P: RobokitaiProps; k?: number}> = ({P, k = 1}) =
   const fx = (Math.min(...xs) + Math.max(...xs)) / 2;
   const fy = (Math.min(...ys) + Math.max(...ys)) / 2;
   const z = p01(sec, 0.8, 2.6, EIO);
-  const s = MAP.s0 * Math.pow(MAP.s1 / MAP.s0, z);
+  const s1 = P.map.zoom ?? MAP.s1;
+  const s = MAP.s0 * Math.pow(s1 / MAP.s0, z);
   // масштаб — по логарифму, точка фокуса едет по прямой от своего места на общей карте к (cx, cy)
   const fsx = interpolate(z, [0, 1], [MAP.x0 + fx * MAP.s0, MAP.cx]);
   const fsy = interpolate(z, [0, 1], [MAP.y0 + fy * MAP.s0, MAP.cy]);
@@ -216,8 +217,8 @@ export const MapBeat: React.FC<{P: RobokitaiProps; k?: number}> = ({P, k = 1}) =
       </svg>
       {/* подписи начала и конца */}
       <div style={{position: "absolute", left: start[0] - 18 + (P.map.fromOff?.[0] ?? 0), top: start[1] - 74 + (P.map.fromOff?.[1] ?? 0), fontFamily: INTER, fontWeight: 800, fontSize: 40, color: RK.ink, opacity: p01(sec, 0.6, 1.0), whiteSpace: "nowrap", translate: "-50% 0"}}>{from}</div>
-      <div style={{position: "absolute", left: end[0] - 30, top: end[1] + 22, fontFamily: INTER, fontWeight: 800, fontSize: 44, color: RK.red, opacity: p01(f, arrive, arrive + 8), whiteSpace: "nowrap", translate: "-100% 0"}}>{P.city.name}</div>
-      <Seal ch={P.city.zh} size={150} at={arrive} x={end[0] + 112} y={end[1] - 92} rot={-7} id="city" />
+      <div style={{position: "absolute", left: end[0] - 30 + (P.map.toOff?.[0] ?? 0), top: end[1] + 22 + (P.map.toOff?.[1] ?? 0), fontFamily: INTER, fontWeight: 800, fontSize: 44, color: RK.red, opacity: p01(f, arrive, arrive + 8), whiteSpace: "nowrap", translate: "-100% 0"}}>{P.city.name}</div>
+      <Seal ch={P.city.zh} size={150} at={arrive} x={end[0] + 112 + (P.map.sealOff?.[0] ?? 0)} y={end[1] - 92 + (P.map.sealOff?.[1] ?? 0)} rot={-7} id="city" />
       {/* титул серии */}
       {ts > 0 ? (
         <div style={{position: "absolute", left: 64, top: 1236, width: 952, boxSizing: "border-box", padding: "24px 40px 28px", background: RK.paper, border: `5px solid ${RK.ink}`, borderRadius: 34, boxShadow: `10px 10px 0 ${RK.ink}`, translate: `0 ${(1 - ts) * 90}px`, opacity: Math.min(1, ts * 1.5)}}>

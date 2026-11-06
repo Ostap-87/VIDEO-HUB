@@ -11,8 +11,14 @@ import {CL, EIO, EO, INTER, MONO, MONO_CJK, RK, p01, usePop} from "./kit";
 
 export type Mood = "skeptic" | "doubt" | "ok" | "tense" | "despair" | "happy";
 export type Arms = "crossed" | "head" | "thumb" | "phone" | "none";
+// образ клиента (серии 4–8, 06.11.2026): vest — начальник склада/цеха в жилете (как было); welder — начальник сварочного цеха
+// (маска сварщика поднята на лоб, кожаная куртка и фартук); hotel — управляющая отелем (пучок, тёмно-синий жакет, бейдж);
+// prof — заведующий кафедрой (седые волосы, круглые очки, кардиган, галстук); logist — логист (кепка, гарнитура, оранжевый
+// жилет); chef — технолог кухни (белый колпак и китель на пуговицах)
+export type Look = "vest" | "welder" | "hotel" | "prof" | "logist" | "chef";
 const SKIN = "#F1E2CF";
 const SUIT = "#34373C";
+const LOOK_SUIT: Record<Look, string> = {vest: SUIT, welder: "#7A4E2D", hotel: "#1F2A5A", prof: "#7B6650", logist: "#2F4F7A", chef: "#F4F1EA"};
 
 // --- лицо по настроению (координаты головы: центр 200, 190) ---
 const Face: React.FC<{mood: Mood; f: number}> = ({mood, f}) => {
@@ -85,21 +91,74 @@ const Face: React.FC<{mood: Mood; f: number}> = ({mood, f}) => {
   );
 };
 
-const Head: React.FC<{mood: Mood; f: number}> = ({mood, f}) => (
+const Head: React.FC<{mood: Mood; f: number; look?: Look}> = ({mood, f, look = "vest"}) => (
   <g stroke={RK.ink} strokeWidth={6} strokeLinejoin="round">
+    {look === "hotel" ? (
+      // пучок и длинные пряди за ушами
+      <g fill={RK.ink}>
+        <circle cx={200} cy={56} r={36} />
+        <path d="M100,200 C88,120 130,70 200,68 C270,70 312,120 300,200 L304,262 C290,270 282,250 286,214 L114,214 C118,250 110,270 96,262 Z" />
+      </g>
+    ) : null}
     <ellipse cx={104} cy={202} rx={16} ry={28} fill={SKIN} />
     <ellipse cx={296} cy={202} rx={16} ry={28} fill={SKIN} />
     <path d="M108,186 C106,110 150,82 200,82 C252,82 296,110 292,186 C292,260 254,300 200,302 C146,300 108,260 108,186 Z" fill={SKIN} />
-    {/* короткая стрижка */}
-    <path d="M104,190 C94,120 134,72 196,70 C258,68 304,104 298,184 C290,150 270,124 236,116 C212,128 160,130 128,122 C116,140 108,162 104,190 Z" fill={RK.ink} />
+    {look === "hotel" ? (
+      // чёлка на пробор
+      <path d="M106,186 C100,118 140,78 200,76 C262,76 302,116 294,186 C282,140 252,112 204,108 C186,132 150,150 120,152 C112,164 108,174 106,186 Z" fill={RK.ink} />
+    ) : look === "prof" ? (
+      // седые волосы с залысинами
+      <path d="M104,196 C96,140 112,104 140,94 C150,112 150,130 136,150 C124,160 112,176 104,196 Z M296,196 C304,140 288,104 260,94 C250,112 250,130 264,150 C276,160 288,176 296,196 Z M150,92 C180,74 220,74 250,92 C232,100 168,100 150,92 Z" fill="#C9C6C0" />
+    ) : look === "chef" ? null : (
+      // короткая стрижка
+      <path d="M104,190 C94,120 134,72 196,70 C258,68 304,104 298,184 C290,150 270,124 236,116 C212,128 160,130 128,122 C116,140 108,162 104,190 Z" fill={RK.ink} />
+    )}
     <g stroke="none">
       <Face mood={mood} f={f} />
     </g>
+    {look === "welder" ? (
+      // маска сварщика поднята на лоб: корпус и тёмное стекло, крепление к оголовью у висков
+      <g>
+        <path d="M112,150 C112,70 288,70 288,150 L282,124 C262,96 138,96 118,124 Z" fill="#3A3D42" />
+        <path d="M120,120 C130,40 270,40 280,120 C250,98 150,98 120,120 Z" fill="#4A4E55" />
+        <rect x={160} y={56} width={80} height={32} rx={6} fill="#10131A" />
+        <rect x={168} y={62} width={30} height={8} rx={3} fill="#5C7FA8" stroke="none" opacity={0.8} />
+        <circle cx={114} cy={146} r={10} fill="#3A3D42" />
+        <circle cx={286} cy={146} r={10} fill="#3A3D42" />
+      </g>
+    ) : null}
+    {look === "prof" ? (
+      // круглые очки
+      <g fill="none" strokeWidth={6}>
+        <circle cx={160} cy={196} r={27} />
+        <circle cx={240} cy={196} r={27} />
+        <path d="M187,194 Q200,186 213,194 M133,190 L110,184 M267,190 L290,184" />
+      </g>
+    ) : null}
+    {look === "logist" ? (
+      // кепка и гарнитура с микрофоном
+      <g>
+        <path d="M110,150 C108,80 292,80 290,150 Z" fill="#2B6CB0" />
+        <path d="M200,84 L200,150" stroke="#1F4F84" strokeWidth={4} />
+        <path d="M222,146 C262,140 316,146 334,160 C300,166 250,160 222,156 Z" fill="#2B6CB0" />
+        <path d="M100,206 C92,240 120,272 166,276" fill="none" strokeWidth={6} />
+        <rect x={160} y={268} width={26} height={16} rx={7} fill={RK.ink} />
+        <ellipse cx={104} cy={204} rx={18} ry={24} fill={RK.ink} />
+      </g>
+    ) : null}
+    {look === "chef" ? (
+      // колпак технолога и волосы под ним
+      <g>
+        <path d="M108,176 C104,140 120,118 140,110 L260,110 C280,118 296,140 292,176 C270,158 130,158 108,176 Z" fill={RK.ink} />
+        <path d="M126,128 C100,96 120,40 166,50 C176,18 230,16 240,48 C286,36 304,96 274,128 Z" fill="#FFFFFF" />
+        <rect x={124} y={112} width={152} height={32} rx={8} fill="#FFFFFF" />
+      </g>
+    ) : null}
   </g>
 );
 
 // начальник склада по пояс: 400 × 520 при scale 1; x, y — левый верх
-export const Manager: React.FC<{x: number; y: number; scale?: number; mood: Mood; arms?: Arms; flip?: boolean; at?: number; from?: "left" | "right" | "bottom"}> = ({x, y, scale = 1, mood, arms = "none", flip, at = 0, from = "bottom"}) => {
+export const Manager: React.FC<{x: number; y: number; scale?: number; mood: Mood; arms?: Arms; flip?: boolean; at?: number; from?: "left" | "right" | "bottom"; look?: Look}> = ({x, y, scale = 1, mood, arms = "none", flip, at = 0, from = "bottom", look = "vest"}) => {
   const f = useCurrentFrame();
   const s = usePop(at, 14);
   if (s <= 0) return null;
@@ -108,6 +167,7 @@ export const Manager: React.FC<{x: number; y: number; scale?: number; mood: Mood
   const off = (1 - s) * 220;
   const tr = from === "left" ? `${-off}px 0` : from === "right" ? `${off}px 0` : `0 ${off}px`;
   const ink = RK.ink;
+  const SUIT = LOOK_SUIT[look];
   return (
     <div style={{position: "absolute", left: x, top: y, width: 400 * scale, height: 520 * scale, translate: tr, opacity: Math.min(1, s * 2)}}>
       <svg viewBox="0 0 400 520" width={400 * scale} height={520 * scale} style={{overflow: "visible", scale: flip ? "-1 1" : undefined, translate: `${shake}px ${bob}px`}}>
@@ -120,18 +180,70 @@ export const Manager: React.FC<{x: number; y: number; scale?: number; mood: Mood
           </g>
         ) : null}
         <g stroke={ink} strokeWidth={6} strokeLinejoin="round">
-          {/* корпус: рубашка и жилет со светоотражающими полосами */}
+          {/* корпус: по образу клиента */}
           <path d="M30,520 C34,412 92,356 160,342 L240,342 C308,356 366,412 370,520 Z" fill={SUIT} />
-          <path d="M162,342 L200,400 L238,342 Z" fill={RK.paper} />
-          <path d="M74,430 L326,430 L330,452 L70,452 Z" fill={RK.lemon} strokeWidth={4} />
-          <path d="M60,486 L340,486 L344,506 L56,506 Z" fill={RK.lemon} strokeWidth={4} />
-          <path d="M168,342 L200,520 M232,342 L200,520" stroke={ink} strokeWidth={4} fill="none" />
+          <path d="M162,342 L200,400 L238,342 Z" fill={look === "logist" ? "#2F4F7A" : RK.paper} />
+          {look === "vest" ? (
+            <g>
+              {/* жилет со светоотражающими полосами */}
+              <path d="M74,430 L326,430 L330,452 L70,452 Z" fill={RK.lemon} strokeWidth={4} />
+              <path d="M60,486 L340,486 L344,506 L56,506 Z" fill={RK.lemon} strokeWidth={4} />
+              <path d="M168,342 L200,520 M232,342 L200,520" stroke={ink} strokeWidth={4} fill="none" />
+            </g>
+          ) : null}
+          {look === "welder" ? (
+            // кожаный фартук на лямке
+            <g>
+              <path d="M120,400 L280,400 L292,520 L108,520 Z" fill="#5A3A22" strokeWidth={5} />
+              <path d="M150,400 L176,350 M250,400 L224,350" stroke={ink} strokeWidth={6} />
+              <path d="M140,440 L260,440" stroke="#8A6040" strokeWidth={4} />
+            </g>
+          ) : null}
+          {look === "hotel" ? (
+            // лацканы жакета и бейдж
+            <g>
+              <path d="M162,342 L188,430 L150,400 L130,356 Z M238,342 L212,430 L250,400 L270,356 Z" fill="#2B3A72" strokeWidth={4} />
+              <rect x={262} y={420} width={58} height={22} rx={4} fill={RK.lemon} strokeWidth={4} />
+              <circle cx={200} cy={470} r={7} fill={RK.paper} strokeWidth={3} />
+            </g>
+          ) : null}
+          {look === "prof" ? (
+            // галстук и пуговицы кардигана
+            <g>
+              <path d="M192,350 L208,350 L214,372 L206,452 L200,462 L194,452 L186,372 Z" fill={RK.blue} strokeWidth={4} />
+              <path d="M168,342 L200,520 M232,342 L200,520" stroke={ink} strokeWidth={4} fill="none" />
+              {[440, 480].map((yy) => <circle key={yy} cx={218} cy={yy} r={6} fill={RK.paper} strokeWidth={3} />)}
+            </g>
+          ) : null}
+          {look === "logist" ? (
+            // оранжевый жилет с белыми полосами и планшет с бумагами
+            <g>
+              <path d="M70,520 C76,430 110,380 160,352 L190,520 Z M330,520 C324,430 290,380 240,352 L210,520 Z" fill="#F26B1D" strokeWidth={5} />
+              <path d="M84,448 L178,448 M80,486 L186,486 M220,448 L316,448 M214,486 L320,486" stroke="#FFFFFF" strokeWidth={10} />
+            </g>
+          ) : null}
+          {look === "chef" ? (
+            // китель на двух рядах пуговиц
+            <g>
+              <path d="M166,342 L238,342 L246,362 L158,362 Z" fill="#FFFFFF" strokeWidth={4} />
+              {[400, 440, 480].map((yy) => (
+                <g key={yy}>
+                  <circle cx={176} cy={yy} r={6} fill={RK.ink} stroke="none" />
+                  <circle cx={224} cy={yy} r={6} fill={RK.ink} stroke="none" />
+                </g>
+              ))}
+            </g>
+          ) : null}
           <path d="M172,300 L228,300 L234,350 L166,350 Z" fill={SKIN} />
-          {/* бейдж на шнурке */}
-          <path d="M184,352 L200,410 L216,352" fill="none" stroke={RK.red} strokeWidth={4} />
-          <rect x={186} y={404} width={30} height={40} rx={4} fill={RK.paper} strokeWidth={4} />
+          {look === "vest" ? (
+            // бейдж на шнурке
+            <g>
+              <path d="M184,352 L200,410 L216,352" fill="none" stroke={RK.red} strokeWidth={4} />
+              <rect x={186} y={404} width={30} height={40} rx={4} fill={RK.paper} strokeWidth={4} />
+            </g>
+          ) : null}
         </g>
-        <Head mood={mood} f={f} />
+        <Head mood={mood} f={f} look={look} />
         {/* руки */}
         <g stroke={ink} strokeWidth={6} strokeLinejoin="round" strokeLinecap="round">
           {arms === "crossed" ? (
@@ -173,7 +285,7 @@ export const Manager: React.FC<{x: number; y: number; scale?: number; mood: Mood
 };
 
 // лицо клиента в кружке (угол кадра): настроение — по ключам серии
-export const ManagerInset: React.FC<{x: number; y: number; size?: number; mood: Mood; label?: string; moodKey: number; o?: number}> = ({x, y, size = 150, mood, label, moodKey, o = 1}) => {
+export const ManagerInset: React.FC<{x: number; y: number; size?: number; mood: Mood; label?: string; moodKey: number; o?: number; look?: Look}> = ({x, y, size = 150, mood, label, moodKey, o = 1, look = "vest"}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const pop = f >= moodKey ? spring({frame: f - moodKey, fps, config: {damping: 9, stiffness: 260, mass: 0.6}}) : 1;
@@ -181,8 +293,8 @@ export const ManagerInset: React.FC<{x: number; y: number; size?: number; mood: 
   return (
     <div style={{position: "absolute", left: x, top: y, width: size, opacity: o}}>
       <div style={{width: size, height: size, borderRadius: 999, overflow: "hidden", background: mood === "despair" || mood === "tense" ? "#F6D7D2" : mood === "happy" ? "#FFF8B8" : RK.paper, border: `5px solid ${RK.ink}`, boxShadow: `6px 6px 0 ${RK.ink}`, scale: String(0.85 + 0.15 * pop), boxSizing: "border-box"}}>
-        <svg viewBox="92 64 216 230" width={size - 10} height={size - 10} style={{display: "block"}}>
-          <Head mood={mood} f={f} />
+        <svg viewBox={look === "vest" || look === "prof" ? "92 64 216 230" : "82 24 236 270"} width={size - 10} height={size - 10} style={{display: "block"}}>
+          <Head mood={mood} f={f} look={look} />
         </svg>
       </div>
       {label ? <div style={{marginTop: 8, textAlign: "center", fontFamily: MONO, fontWeight: 700, fontSize: 22, letterSpacing: "0.1em", color: RK.ink}}>{label.toUpperCase()}</div> : null}
@@ -353,12 +465,14 @@ export const WorkerSil: React.FC<{x: number; y: number; h?: number; push?: numbe
 };
 
 // тонировка кадра поверх сцены: red — кризис, warm — развязка, night — ночь
-export const Tint: React.FC<{kind: "red" | "warm" | "night"; o: number}> = ({kind, o}) => {
+export const Tint: React.FC<{kind: "red" | "warm" | "night" | "dusk"; o: number}> = ({kind, o}) => {
   if (o <= 0.01) return null;
-  const bg = kind === "red" ? "rgba(229,56,59,0.16)" : kind === "warm" ? "rgba(255,246,93,0.10)" : "rgba(16,24,64,0.62)";
+  // dusk — пыльный полумрак (заброшенная ячейка «через год»)
+  const bg = kind === "red" ? "rgba(229,56,59,0.16)" : kind === "warm" ? "rgba(255,246,93,0.10)" : kind === "dusk" ? "rgba(70,62,50,0.55)" : "rgba(16,24,64,0.62)";
   return (
     <AbsoluteFill style={{pointerEvents: "none", opacity: o}}>
-      <AbsoluteFill style={{background: bg, mixBlendMode: kind === "night" ? "multiply" : "normal"}} />
+      <AbsoluteFill style={{background: bg, mixBlendMode: kind === "night" || kind === "dusk" ? "multiply" : "normal"}} />
+      {kind === "dusk" ? <AbsoluteFill style={{background: "radial-gradient(ellipse at 45% 45%, rgba(0,0,0,0) 30%, rgba(20,16,10,0.55) 100%)"}} /> : null}
       {kind === "red" ? <AbsoluteFill style={{background: "radial-gradient(ellipse at 50% 48%, rgba(0,0,0,0) 45%, rgba(120,10,10,0.35) 100%)"}} /> : null}
     </AbsoluteFill>
   );
@@ -413,7 +527,95 @@ const HintWeld: React.FC = () => (
     <text x={232} y={80} fontFamily={INTER} fontWeight={800} fontSize={58} fill={RK.lemon} stroke={RK.ink} strokeWidth={4} paintOrder="stroke fill">?</text>
   </svg>
 );
-export const SosPhone: React.FC<{x: number; y: number; at: number; title: string; city: string; hint?: "cobot" | "gripper" | "weld"}> = ({x, y, at, title, city, hint = "cobot"}) => {
+// серии 4–8: отель (доставщик с полотенцами у двери «7…»), кафедра (гуманоид на мате), граница (ящик у шлагбаума),
+// кухня (пельмени на ленте), подстанция ночью (трансформатор, луна, горячая точка)
+export type Hint = "cobot" | "gripper" | "weld" | "hotel" | "lab" | "border" | "kitchen" | "substation";
+const Q: React.FC<{x: number; y: number}> = ({x, y}) => (
+  <text x={x} y={y} fontFamily={INTER} fontWeight={800} fontSize={58} fill={RK.lemon} stroke={RK.ink} strokeWidth={4} paintOrder="stroke fill">?</text>
+);
+const HintHotel: React.FC = () => (
+  <svg viewBox="0 0 320 210" width="100%" style={HINT_SVG}>
+    <rect x={0} y={160} width={320} height={50} fill="#9C4A4A" />
+    <rect x={150} y={30} width={86} height={130} rx={4} fill="#8B6A4E" stroke={RK.ink} strokeWidth={3} />
+    <rect x={172} y={46} width={42} height={22} rx={3} fill={RK.lemon} stroke={RK.ink} strokeWidth={2} />
+    <text x={193} y={64} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={18} fill={RK.ink}>7</text>
+    <circle cx={222} cy={100} r={5} fill={RK.ink} />
+    <g stroke={RK.ink} strokeWidth={2.5}>
+      <rect x={52} y={88} width={64} height={70} rx={10} fill={RK.paper} />
+      <rect x={60} y={100} width={48} height={18} rx={3} fill="#1F2A5A" />
+      <rect x={60} y={124} width={48} height={18} rx={3} fill="#1F2A5A" />
+      <rect x={58} y={70} width={52} height={14} rx={5} fill="#FFFFFF" />
+      <rect x={62} y={58} width={44} height={13} rx={5} fill="#FFFFFF" />
+    </g>
+    <circle cx={64} cy={160} r={7} fill={RK.ink} />
+    <circle cx={104} cy={160} r={7} fill={RK.ink} />
+    <Q x={252} y={70} />
+  </svg>
+);
+const HintLab: React.FC = () => (
+  <svg viewBox="0 0 320 210" width="100%" style={HINT_SVG}>
+    <rect x={0} y={160} width={320} height={50} fill="#D9D3C8" />
+    <rect x={30} y={146} width={230} height={18} rx={4} fill={RK.blue} stroke={RK.ink} strokeWidth={2.5} />
+    <g fill={RK.ink}>
+      <circle cx={70} cy={130} r={13} />
+      <rect x={84} y={122} width={86} height={22} rx={8} />
+      <rect x={168} y={126} width={70} height={10} rx={5} />
+      <rect x={168} y={136} width={64} height={10} rx={5} />
+      <rect x={100} y={108} width={46} height={10} rx={5} transform="rotate(-20 100 112)" />
+    </g>
+    <g stroke={RK.ink} strokeWidth={5} fill="none">
+      <path d="M20 40 L20 150 M290 40 L290 150 M14 40 L296 40" />
+    </g>
+    <path d="M150 40 L150 100" stroke={RK.muted} strokeWidth={3} strokeDasharray="6 5" />
+    <Q x={244} y={110} />
+  </svg>
+);
+const HintBorder: React.FC = () => (
+  <svg viewBox="0 0 320 210" width="100%" style={HINT_SVG}>
+    <rect x={0} y={160} width={320} height={50} fill="#8E8B86" />
+    <rect x={0} y={150} width={320} height={10} fill="#FFFFFF" />
+    <rect x={30} y={90} width={20} height={70} fill={RK.ink} />
+    <g transform="rotate(-4 40 96)">
+      {Array.from({length: 7}, (_, i) => (
+        <rect key={i} x={40 + i * 30} y={88} width={30} height={14} fill={i % 2 ? "#FFFFFF" : RK.red} stroke={RK.ink} strokeWidth={2} />
+      ))}
+    </g>
+    <rect x={150} y={108} width={88} height={52} rx={3} fill="#C9A46A" stroke={RK.ink} strokeWidth={3} />
+    <path d="M150 126 L238 126 M150 144 L238 144 M168 108 L168 160 M220 108 L220 160" stroke="#8A6A3A" strokeWidth={3} />
+    <Q x={250} y={80} />
+  </svg>
+);
+const HintKitchen: React.FC = () => (
+  <svg viewBox="0 0 320 210" width="100%" style={HINT_SVG}>
+    <rect x={0} y={160} width={320} height={50} fill="#D9D3C8" />
+    <rect x={10} y={128} width={300} height={18} rx={6} fill="#B9BEC4" stroke={RK.ink} strokeWidth={3} />
+    {[40, 110, 180].map((x) => (
+      <g key={x} stroke={RK.ink} strokeWidth={3}>
+        <path d={`M${x} 126 Q${x + 30} 74 ${x + 60} 126 Z`} fill="#FBF6EA" />
+        <path d={`M${x + 16} 112 L${x + 20} 102 M${x + 30} 106 L${x + 30} 96 M${x + 44} 112 L${x + 40} 102`} fill="none" />
+      </g>
+    ))}
+    <rect x={262} y={50} width={50} height={78} rx={8} fill="#CFE6F5" stroke={RK.ink} strokeWidth={3} />
+    <path d="M272 70 L302 70 M272 90 L302 90 M272 110 L302 110" stroke="#7FB3E6" strokeWidth={4} />
+    <Q x={226} y={70} />
+  </svg>
+);
+const HintSubstation: React.FC = () => (
+  <svg viewBox="0 0 320 210" width="100%" style={{...HINT_SVG, background: "#1F2A5A"}}>
+    <rect x={0} y={160} width={320} height={50} fill="#151B3A" />
+    <path d="M262 22 A20 20 0 1 0 284 52 A15 15 0 1 1 262 22 Z" fill={RK.lemon} />
+    <g stroke="#C9CFD4" strokeWidth={4} fill="none">
+      <path d="M40 160 L70 40 L100 160 M52 110 L88 110 M60 76 L80 76" />
+      <path d="M70 40 L320 70 M70 48 L320 80" strokeWidth={2} />
+    </g>
+    <rect x={150} y={96} width={80} height={64} rx={4} fill="#5A6070" stroke={RK.ink} strokeWidth={3} />
+    {[164, 190, 216].map((x) => <rect key={x} x={x - 5} y={74} width={10} height={24} fill="#C9CFD4" stroke={RK.ink} strokeWidth={2} />)}
+    <circle cx={216} cy={78} r={12} fill={RK.red} opacity={0.9} />
+    <circle cx={216} cy={78} r={22} fill={RK.red} opacity={0.3} />
+    <Q x={110} y={150} />
+  </svg>
+);
+export const SosPhone: React.FC<{x: number; y: number; at: number; title: string; city: string; hint?: Hint}> = ({x, y, at, title, city, hint = "cobot"}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   if (f < at) return null;
@@ -433,7 +635,7 @@ export const SosPhone: React.FC<{x: number; y: number; at: number; title: string
           </div>
           <div style={{fontFamily: MONO_CJK, fontWeight: 700, fontSize: 24, color: RK.ink, marginTop: 6, letterSpacing: "0.06em"}}>{city}</div>
           {/* картинка-намёк: человек и кобот у одной линии */}
-          {hint === "gripper" ? <HintGripper /> : hint === "weld" ? <HintWeld /> : (
+          {hint === "gripper" ? <HintGripper /> : hint === "weld" ? <HintWeld /> : hint === "hotel" ? <HintHotel /> : hint === "lab" ? <HintLab /> : hint === "border" ? <HintBorder /> : hint === "kitchen" ? <HintKitchen /> : hint === "substation" ? <HintSubstation /> : (
           <svg viewBox="0 0 320 210" width="100%" style={{display: "block", marginTop: 12, background: "#E9E5DD", borderRadius: 14, border: `3px solid ${RK.ink}`}}>
             <rect x={0} y={150} width={320} height={60} fill="#D9D3C8" />
             <rect x={20} y={118} width={280} height={18} rx={4} fill={RK.ink} />

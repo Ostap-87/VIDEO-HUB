@@ -37,7 +37,9 @@ const Seg: React.FC<{a: [number, number]; b: [number, number]; z: number; r: num
   );
 };
 // x, z — где стоит, yaw — куда смотрит (0 — по +x), crouch 0…1, box — держит коробку у груди
-export const Worker3D: React.FC<{x: number; z: number; yaw: number; crouch: number; box?: boolean; walk?: number}> = ({x, z, yaw, crouch, box, walk = 0}) => {
+// образ (серии 4–8): jacket — цвет куртки, stripe — лимонная полоса жилета, hat: hard (каска), welder (маска сварщика поднята),
+// hair (без головного убора), cap (кепка), chef (белый колпак); boxColor — цвет того, что в руках (чемодан, лоток)
+export const Worker3D: React.FC<{x: number; z: number; yaw: number; crouch: number; box?: boolean; walk?: number; jacket?: string; stripe?: boolean; hat?: "hard" | "welder" | "hair" | "cap" | "chef"; boxColor?: string; arms?: number}> = ({x, z, yaw, crouch, box, walk = 0, jacket = "#2B6CB0", stripe = true, hat = "hard", boxColor, arms = 0}) => {
   const hy = 1.78 - crouch * 0.95;
   const hx = -crouch * 0.32;
   const lean = crouch * 0.75;
@@ -55,7 +57,8 @@ export const Worker3D: React.FC<{x: number; z: number; yaw: number; crouch: numb
   const top: [number, number] = [hx + Math.sin(lean) * 1.25, hy + Math.cos(lean) * 1.25];
   const head: [number, number] = [top[0] + Math.sin(lean) * 0.42, top[1] + Math.cos(lean) * 0.42];
   const reach = box ? 0.2 : crouch;
-  const hand: [number, number] = box ? [top[0] + 0.55, top[1] - 0.45] : [top[0] + 0.25 + reach * 0.65, top[1] - 1.0 + reach * 0.15 - crouch * 0.1];
+  // arms > 0 — руки подняты вперёд-вверх (тянется, ликует)
+  const hand: [number, number] = box ? [top[0] + 0.55, top[1] - 0.45] : arms > 0 ? [top[0] + 0.5 * (1 - arms) + 0.2, top[1] - 1.0 + arms * 1.7] : [top[0] + 0.25 + reach * 0.65, top[1] - 1.0 + reach * 0.15 - crouch * 0.1];
   return (
     <group position={[x, 0, z]} rotation={[0, yaw, 0]}>
       <Shadow w={1.4} d={1.0} o={0.7} />
@@ -76,41 +79,84 @@ export const Worker3D: React.FC<{x: number; z: number; yaw: number; crouch: numb
       <group position={[hx, hy, 0]} rotation={[0, 0, -lean]}>
         <mesh position={[0, 0.62, 0]}>
           <boxGeometry args={[0.46, 1.2, 0.62]} />
-          <meshStandardMaterial color="#2B6CB0" roughness={0.6} />
+          <meshStandardMaterial color={jacket} roughness={0.6} />
         </mesh>
-        <mesh position={[0, 0.5, 0]}>
-          <boxGeometry args={[0.48, 0.12, 0.64]} />
-          <meshStandardMaterial color={LEMON3} roughness={0.5} />
-        </mesh>
-        <mesh position={[0, 0.85, 0]}>
-          <boxGeometry args={[0.48, 0.08, 0.64]} />
-          <meshStandardMaterial color="#C9CFD4" roughness={0.4} metalness={0.4} />
-        </mesh>
+        {stripe ? (
+          <>
+            <mesh position={[0, 0.5, 0]}>
+              <boxGeometry args={[0.48, 0.12, 0.64]} />
+              <meshStandardMaterial color={LEMON3} roughness={0.5} />
+            </mesh>
+            <mesh position={[0, 0.85, 0]}>
+              <boxGeometry args={[0.48, 0.08, 0.64]} />
+              <meshStandardMaterial color="#C9CFD4" roughness={0.4} metalness={0.4} />
+            </mesh>
+          </>
+        ) : null}
       </group>
       {/* голова и каска */}
       <mesh position={[head[0], head[1], 0]}>
         <sphereGeometry args={[0.24, 16, 12]} />
         <meshStandardMaterial color={SKIN} roughness={0.7} />
       </mesh>
-      <mesh position={[head[0], head[1] + 0.08, 0]}>
-        <sphereGeometry args={[0.27, 16, 10, 0, Math.PI * 2, 0, Math.PI / 2]} />
-        <meshStandardMaterial color={LEMON3} roughness={0.4} />
-      </mesh>
-      <mesh position={[head[0] + 0.12, head[1] + 0.08, 0]}>
-        <cylinderGeometry args={[0.33, 0.33, 0.03, 18]} />
-        <meshStandardMaterial color={LEMON3} roughness={0.4} />
-      </mesh>
+      {hat === "hard" || hat === "cap" ? (
+        <>
+          <mesh position={[head[0], head[1] + 0.08, 0]}>
+            <sphereGeometry args={[0.27, 16, 10, 0, Math.PI * 2, 0, Math.PI / 2]} />
+            <meshStandardMaterial color={hat === "cap" ? "#2B6CB0" : LEMON3} roughness={0.4} />
+          </mesh>
+          <mesh position={[head[0] + (hat === "cap" ? 0.22 : 0.12), head[1] + 0.08, 0]}>
+            <cylinderGeometry args={[hat === "cap" ? 0.2 : 0.33, hat === "cap" ? 0.2 : 0.33, 0.03, 18]} />
+            <meshStandardMaterial color={hat === "cap" ? "#2B6CB0" : LEMON3} roughness={0.4} />
+          </mesh>
+        </>
+      ) : null}
+      {hat === "hair" ? (
+        <mesh position={[head[0] - 0.03, head[1] + 0.05, 0]}>
+          <sphereGeometry args={[0.255, 16, 10, 0, Math.PI * 2, 0, Math.PI / 2]} />
+          <meshStandardMaterial color="#26221F" roughness={0.8} />
+        </mesh>
+      ) : null}
+      {hat === "chef" ? (
+        <mesh position={[head[0], head[1] + 0.28, 0]}>
+          <cylinderGeometry args={[0.27, 0.24, 0.36, 18]} />
+          <meshStandardMaterial color="#FFFFFF" roughness={0.7} />
+        </mesh>
+      ) : null}
+      {hat === "welder" ? (
+        <group position={[head[0], head[1], 0]}>
+          <mesh position={[-0.02, 0.12, 0]}>
+            <sphereGeometry args={[0.29, 16, 10, 0, Math.PI * 2, 0, Math.PI / 2]} />
+            <meshStandardMaterial color="#3A3D42" roughness={0.5} />
+          </mesh>
+          {/* маска поднята: щиток над лбом, тёмное стекло смотрит вверх-вперёд */}
+          <mesh position={[0.16, 0.3, 0]} rotation={[0, 0, -0.9]}>
+            <boxGeometry args={[0.06, 0.34, 0.46]} />
+            <meshStandardMaterial color="#3A3D42" roughness={0.5} />
+          </mesh>
+          <mesh position={[0.2, 0.33, 0]} rotation={[0, 0, -0.9]}>
+            <boxGeometry args={[0.02, 0.14, 0.24]} />
+            <meshStandardMaterial color="#0E1116" roughness={0.1} metalness={0.5} />
+          </mesh>
+        </group>
+      ) : null}
       {/* руки */}
       {[-1, 1].map((s) => (
         <group key={s}>
-          <Seg a={top} b={hand} z={s * 0.36} r={0.1} color="#2B6CB0" />
+          <Seg a={top} b={hand} z={s * 0.36} r={0.1} color={jacket} />
           <mesh position={[hand[0], hand[1], s * 0.36]}>
             <sphereGeometry args={[0.1, 10, 8]} />
             <meshStandardMaterial color={SKIN} roughness={0.7} />
           </mesh>
         </group>
       ))}
-      {box ? <CargoBox s={[0.5, 0.4, 0.45]} p={[hand[0] + 0.05, hand[1] + 0.05, 0]} /> : null}
+      {box && !boxColor ? <CargoBox s={[0.5, 0.4, 0.45]} p={[hand[0] + 0.05, hand[1] + 0.05, 0]} /> : null}
+      {box && boxColor ? (
+        <mesh position={[hand[0] + 0.05, hand[1] + 0.05, 0]}>
+          <boxGeometry args={[0.5, 0.36, 0.6]} />
+          <meshStandardMaterial color={boxColor} roughness={0.55} />
+        </mesh>
+      ) : null}
     </group>
   );
 };

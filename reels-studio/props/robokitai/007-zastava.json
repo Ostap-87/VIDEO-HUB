@@ -1,0 +1,622 @@
+{
+ "series": {
+  "name": "Робокитай",
+  "zh": "机器人中国",
+  "ep": 7
+ },
+ "city": {
+  "name": "Застава",
+  "zh": "关",
+  "zhFull": "边境",
+  "tagline": "Граница: логистика и таможня"
+ },
+ "title": "Из цеха в цех: как робот едет из Китая",
+ "article": "aura-robotics.ru/blog/factory-factory-how-robot-travels-from-china (22.11.2026)",
+ "music": {
+  "src": "интернет-материалы/музыка/space-dimensions-techno-matthew-pablo.mp3",
+  "volume": 0.24,
+  "aFrom": 0,
+  "bFrom": 63.0,
+  "bAt": "fix",
+  "duck": [
+   "guess"
+  ],
+  "credit": "Музыка: «Space Dimensions (Techno Version)» — Matthew Pablo (OpenGameArt), CC BY 3.0. Звуки: Packsmithy, Gregor Quendel (OpenGameArt), CC BY 4.0; zvukitop.com"
+ },
+ "countdown": {
+  "label": "до запуска цеха",
+  "done": "доехал ✓",
+  "doneAt": [
+   "payoff",
+   1.0
+  ],
+  "keys": [
+   [
+    "cold",
+    0,
+    6
+   ],
+   [
+    "letter",
+    0.9,
+    6
+   ],
+   [
+    "try1",
+    6.0,
+    5
+   ],
+   [
+    "try2",
+    6.0,
+    3
+   ],
+   [
+    "crisis",
+    0.3,
+    1
+   ],
+   [
+    "payoff",
+    0.3,
+    0
+   ]
+  ],
+  "blink": [
+   "crisis"
+  ],
+  "hide": [
+   "cold",
+   "guess",
+   "board",
+   "calc",
+   "cliff"
+  ]
+ },
+ "manager": {
+  "label": "логист",
+  "look": "logist",
+  "moods": [
+   [
+    "letter",
+    0,
+    "skeptic"
+   ],
+   [
+    "try1",
+    1.0,
+    "ok"
+   ],
+   [
+    "try1",
+    3.0,
+    "tense"
+   ],
+   [
+    "try2",
+    1.0,
+    "doubt"
+   ],
+   [
+    "try2",
+    3.0,
+    "tense"
+   ],
+   [
+    "crisis",
+    0,
+    "despair"
+   ],
+   [
+    "insight",
+    4,
+    "doubt"
+   ],
+   [
+    "fix",
+    3,
+    "ok"
+   ],
+   [
+    "payoff",
+    1.0,
+    "happy"
+   ]
+  ],
+  "inset": [
+   "try1",
+   "try2",
+   "crisis",
+   "insight",
+   "fix"
+  ]
+ },
+ "map": {
+  "route": [
+   "Пекин",
+   "Шэньян",
+   "Харбин",
+   "Застава"
+  ],
+  "dots": [
+   "Пекин",
+   "Шэньян",
+   "Харбин",
+   "Застава"
+  ],
+  "kicker": "Серия 7",
+  "k": 0.72,
+  "zoom": 1.9,
+  "fromOff": [
+   0,
+   150
+  ]
+ },
+ "beats": [
+  {
+   "id": "cold",
+   "kind": "scene",
+   "sec": 5.4,
+   "music": false,
+   "world": "crateDark",
+   "tint": "night",
+   "title": {
+    "text": "Робот доехал. Документы — нет",
+    "mark": "Документы — нет",
+    "at": 2.6
+   },
+   "stamps": [
+    {
+     "text": "СТОП · 关",
+     "at": 2.4,
+     "x": 560,
+     "y": 520,
+     "rot": -9
+    }
+   ],
+   "sounds": [
+    [
+     0,
+     "@riser-2",
+     0.25
+    ],
+    [
+     0.2,
+     "@zvukitop/zt-gear",
+     0.15
+    ],
+    [
+     2.3,
+     "@zvukitop/zt-horn",
+     0.3
+    ],
+    [
+     2.4,
+     "@stamp-1",
+     0.5
+    ],
+    [
+     2.5,
+     "@error-1",
+     0.3
+    ]
+   ]
+  },
+  {
+   "id": "letter",
+   "kind": "letter",
+   "sec": 5.4,
+   "cut": true,
+   "sos": "SOS · Застава",
+   "city": "边境 · робот в ящике",
+   "hint": "border",
+   "host": {
+    "name": "Ави",
+    "role": "проводник"
+   },
+   "lines": [
+    {
+     "text": "Робот прошёл приёмку.",
+     "mark": "приёмку."
+    },
+    {
+     "text": "Впереди — тысячи километров."
+    },
+    {
+     "text": "Как довезти?"
+    }
+   ]
+  },
+  {
+   "id": "map",
+   "kind": "map",
+   "sec": 4.2
+  },
+  {
+   "id": "try1",
+   "kind": "scene",
+   "sec": 8.5,
+   "world": "crateLoad",
+   "plates": [
+    {
+     "name": "Аист",
+     "role": "грузовой дрон",
+     "at": 0.4,
+     "x": 90,
+     "y": 470
+    }
+   ],
+   "title": {
+    "text": "Ящик собрали «как удобно»",
+    "mark": "«как удобно»",
+    "at": 0.4,
+    "out": 4.6
+   },
+   "cards": [
+    {
+     "at": 4.6,
+     "term": "Индикатор удара",
+     "sub": "копеечная наклейка",
+     "lines": [
+      {
+       "text": "Решает спор со страховщиком",
+       "mark": "спор со страховщиком"
+      }
+     ],
+     "note": "из статьи"
+    }
+   ],
+   "sounds": [
+    [
+     0.6,
+     "@whoosh-2",
+     0.25
+    ],
+    [
+     2.7,
+     "@error-1",
+     0.3
+    ],
+    [
+     5.3,
+     "@impact-3",
+     0.25
+    ]
+   ]
+  },
+  {
+   "id": "guess",
+   "kind": "guess",
+   "sec": 4.2,
+   "cut": true,
+   "world": "crateLoad",
+   "freeze": 3.0,
+   "style": "cards",
+   "q": "Что дольше всего в пути?",
+   "opts": [
+    {
+     "letter": "A",
+     "name": "Дорога"
+    },
+    {
+     "letter": "B",
+     "name": "Граница"
+    },
+    {
+     "letter": "C",
+     "name": "Документы"
+    }
+   ]
+  },
+  {
+   "id": "try2",
+   "kind": "scene",
+   "sec": 8.0,
+   "cut": true,
+   "world": "barrier",
+   "plates": [
+    {
+     "name": "Шустрик",
+     "role": "AGV с батареей",
+     "at": 0.6,
+     "x": 90,
+     "y": 470
+    }
+   ],
+   "stamps": [
+    {
+     "text": "UN 3481",
+     "at": 2.4,
+     "x": 520,
+     "y": 560,
+     "rot": -8
+    },
+    {
+     "text": "КЛАСС 9",
+     "at": 3.0,
+     "x": 600,
+     "y": 660,
+     "rot": 6
+    }
+   ],
+   "title": {
+    "text": "Батарея — опасный груз",
+    "mark": "опасный груз",
+    "at": 0.4,
+    "out": 4.6
+   },
+   "cards": [
+    {
+     "at": 4.6,
+     "lines": [
+      {
+       "text": "Без отчёта по разделу 38.3 перевозчик груз не примет",
+       "mark": "38.3"
+      }
+     ],
+     "note": "из статьи"
+    }
+   ],
+   "sounds": [
+    [
+     0.2,
+     "@zvukitop/zt-gear",
+     0.2
+    ],
+    [
+     2.4,
+     "@stamp-1",
+     0.45
+    ],
+    [
+     3.0,
+     "@stamp-1",
+     0.45
+    ],
+    [
+     3.1,
+     "@error-1",
+     0.25
+    ]
+   ]
+  },
+  {
+   "id": "crisis",
+   "kind": "scene",
+   "sec": 5.6,
+   "cut": true,
+   "music": false,
+   "world": "svh",
+   "tint": "night",
+   "title": {
+    "text": "Робот приехал раньше бумаг. Ждёт — за деньги",
+    "mark": "за деньги",
+    "at": 1.0
+   },
+   "counter": {
+    "label": "дни на складе",
+    "at": 1.2,
+    "from": 1,
+    "to": 7,
+    "dur": 3.4
+   },
+   "sounds": [
+    [
+     0.4,
+     "@heartbeat-1",
+     0.3
+    ],
+    [
+     1.2,
+     "@zvukitop/zt-clock",
+     0.4
+    ],
+    [
+     3.0,
+     "@zvukitop/zt-clock",
+     0.4
+    ],
+    [
+     4.4,
+     "@error-1",
+     0.3
+    ]
+   ]
+  },
+  {
+   "id": "insight",
+   "kind": "scene",
+   "sec": 7.4,
+   "world": "gate",
+   "plates": [
+    {
+     "name": "Скаут",
+     "role": "сыщик с лидаром",
+     "at": 0.5,
+     "x": 90,
+     "y": 470
+    }
+   ],
+   "title": {
+    "text": "А пройдёт ли ящик в ворота?",
+    "mark": "в ворота?",
+    "at": 0.4,
+    "out": 3.6
+   },
+   "bulb": 3.0,
+   "cards": [
+    {
+     "at": 3.6,
+     "lines": [
+      {
+       "text": "Ящик не прошёл в дверь — проблема того, кто не измерил дверь",
+       "mark": "не измерил дверь"
+      }
+     ],
+     "note": "из статьи"
+    }
+   ],
+   "sounds": [
+    [
+     0.6,
+     "@laser-1",
+     0.15
+    ],
+    [
+     2.4,
+     "@error-1",
+     0.2
+    ],
+    [
+     3.0,
+     "@ding-1",
+     0.35
+    ]
+   ]
+  },
+  {
+   "id": "board",
+   "kind": "board",
+   "sec": 6.2,
+   "boardTitle": "До отгрузки, а не после",
+   "criteria": [
+    {
+     "title": "1 · Код ТН ВЭД",
+     "text": "определить до оплаты"
+    },
+    {
+     "title": "2 · Батарея",
+     "text": "отчёт 38.3 и маркировка"
+    },
+    {
+     "title": "3 · Ящик",
+     "text": "оси зафиксированы, внутри осушитель"
+    },
+    {
+     "title": "4 · Страховка",
+     "text": "до места установки"
+    }
+   ]
+  },
+  {
+   "id": "calc",
+   "kind": "calc",
+   "sec": 6.6,
+   "boardTitle": "На границе · цифры условные",
+   "calcRows": [
+    {
+     "text": "таможенная стоимость партии — 8 млн ₽",
+     "small": true
+    },
+    {
+     "text": "Пошлина по коду — 0"
+    },
+    {
+     "text": "НДС 22 % — 1 760 000 ₽"
+    },
+    {
+     "text": "Сбор — 49 240 ₽"
+    }
+   ],
+   "result": "≈ 1,81 млн ₽",
+   "note": "пример из статьи · НДС вернётся вычетом позже"
+  },
+  {
+   "id": "fix",
+   "kind": "scene",
+   "sec": 6.6,
+   "world": "borderOpen",
+   "title": {
+    "text": "Документы готовы — шлагбаум открыт",
+    "mark": "шлагбаум открыт",
+    "at": 0.5,
+    "out": 3.6
+   },
+   "cards": [
+    {
+     "at": 3.6,
+     "lines": [
+      {
+       "text": "Правила не ускорить. Но можно не опаздывать к ним",
+       "mark": "не опаздывать"
+      }
+     ],
+     "note": "из статьи"
+    }
+   ],
+   "sounds": [
+    [
+     0.4,
+     "@servo-2",
+     0.3
+    ],
+    [
+     0.8,
+     "@ding-3",
+     0.3
+    ],
+    [
+     1.6,
+     "@zvukitop/zt-horn",
+     0.2
+    ]
+   ]
+  },
+  {
+   "id": "payoff",
+   "kind": "scene",
+   "sec": 6.4,
+   "world": "unbox",
+   "title": {
+    "text": "Из цеха в цех — доехал",
+    "mark": "доехал",
+    "at": 0.4,
+    "out": 3.2
+   },
+   "manager": {
+    "mood": "happy",
+    "arms": "thumb",
+    "at": 1.0
+   },
+   "cards": [
+    {
+     "at": 3.2,
+     "lines": [
+      {
+       "text": "Лучший вид из окна для робота — темнота ящика",
+       "mark": "темнота ящика"
+      }
+     ],
+     "note": "из статьи"
+    }
+   ],
+   "sounds": [
+    [
+     0.6,
+     "@zvukitop/zt-paper",
+     0.3
+    ],
+    [
+     2.0,
+     "@servo-1",
+     0.2
+    ],
+    [
+     3.0,
+     "@success-1",
+     0.25
+    ]
+   ]
+  },
+  {
+   "id": "cliff",
+   "kind": "cliff",
+   "sec": 6.2,
+   "sos": "SOS · Гуандун",
+   "city": "广东 · пельмени",
+   "hint": "kitchen",
+   "next": "Серия 8 · скоро",
+   "url": "aura-robotics.ru/blog"
+  }
+ ]
+}

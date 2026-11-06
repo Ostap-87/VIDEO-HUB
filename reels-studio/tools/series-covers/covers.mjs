@@ -49,6 +49,32 @@ const RK = [
     tag: 'город железа', note: 'Сначала захват — потом робот',
     heroes: [['14-drone', 'Сокол', 545, 790, 115, 'fly'], ['10-hand', 'Пятёрка', 320, 1345, 600], ['11-hand-chrome', 'Рубин', 770, 1345, 600]],
     extra: '<div class="qmark" style="left:450px;top:850px">?</div>' },
+  // Серии 4–8 (06.11.2026): свой цвет у каждой (не жёлтый/красный/синий/оранжевый), герои края, деталь сюжета
+  { name: 'robokitai-004-shenyang', kind: 'bright', theme: 'violet', ep: 'СЕРИЯ 4', stamp: '沈', mapCity: 'Шэньян',
+    title: 'Где сварочный<br>робот <mark>окупается</mark>?', city: 'Шэньян', zh: '沈阳',
+    tag: 'северная кузница', note: 'Дуга горит 70–80 % смены',
+    heroes: [['08-arm-industrial', 'Титан · сварка', 400, 1340, 640], ['02-dog', 'Скаут', 860, 1340, 210]],
+    extra: '<div class="spark" style="left:560px;top:660px"></div><div class="gauge"><i>ДУГА ГОРИТ</i><b>70–80 %</b><span><s style="width:76%"></s></span></div>' },
+  { name: 'robokitai-005-shanghai', kind: 'bright', theme: 'pink', ep: 'СЕРИЯ 5', stamp: '沪', mapCity: 'Шанхай',
+    title: 'Окупится ли<br><mark>робот в отеле</mark>?', city: 'Шанхай', zh: '上海',
+    tag: 'край сервисных роботов', note: 'Без лифта — робот одного этажа',
+    heroes: [['06-wheel-humanoid-navy', 'Кэрри', 380, 1345, 560], ['05-wheel-humanoid', 'Роли', 790, 1345, 440]],
+    extra: '<div class="clock">23:40</div><div class="door"><b>7</b></div>' },
+  { name: 'robokitai-006-beijing', kind: 'bright', theme: 'mint', ep: 'СЕРИЯ 6', stamp: '京', mapCity: 'Пекин',
+    title: 'Гуманоид<br>для <mark>кафедры</mark>', city: 'Пекин', zh: '北京',
+    tag: 'край зрения', note: 'Его покупают, чтобы он падал',
+    heroes: [['03-humanoid', 'Леон · 1,3 м', 360, 1345, 600], ['04-humanoid-navy', 'Нова · 1,2 м', 760, 1345, 545]],
+    extra: '<div class="mat"></div><div class="steps"><i>ШАГ</i><b>30</b></div>' },
+  { name: 'robokitai-007-zastava', kind: 'bright', theme: 'slate', ep: 'СЕРИЯ 7', stamp: '关', mapCity: 'Застава',
+    title: 'Как робот<br>едет <mark>через границу</mark>?', city: 'Застава', zh: '边境',
+    tag: 'граница: логистика и таможня', note: 'Батарея робота — опасный груз',
+    heroes: [['16-cargo-drone', 'Аист', 330, 900, 230, 'fly'], ['12-agv', 'Шустрик', 700, 1345, 420]],
+    extra: '<div class="barrier"></div><div class="crate"></div><div class="stampbox" style="left:110px;top:930px">UN 3481</div>' },
+  { name: 'robokitai-008-guangdong', kind: 'bright', theme: 'lime', ep: 'СЕРИЯ 8 · ФИНАЛ', stamp: '粤', mapCity: 'Гуанчжоу',
+    title: 'Пельмени<br><mark>на конвейере</mark>', city: 'Гуандун', zh: '广东',
+    tag: 'кухонный край', note: 'Узкое место линии — заморозка',
+    heroes: [['07-arm', 'Арми', 330, 1345, 560], ['06-wheel-humanoid-navy', 'Кэрри', 780, 1345, 470]],
+    extra: '<div class="jiaozi" style="left:520px;top:1150px"></div><div class="jiaozi" style="left:610px;top:1185px;rotate:12deg"></div><div class="jiaozi" style="left:430px;top:1190px;rotate:-10deg"></div><div class="sticker">15 000 шт/ч?</div>' },
 ];
 const rkHtml = (c) => `<!doctype html><html lang="ru"><head><meta charset="utf-8"><style>${FONTS}
 body{background:#F3F0E8;background-image:linear-gradient(#E3DED2 1.5px,transparent 1.5px),linear-gradient(90deg,#E3DED2 1.5px,transparent 1.5px);background-size:54px 54px;font-family:Golos;color:#16161C}
@@ -140,6 +166,12 @@ const THEMES = {
   red: { bg: '#E3312D', ln: 'rgba(255,255,255,.16)', fg: '#fff', sub: '#FFE3DF', mk: '#FFD83A', land: '#fff', dot: '#E3312D' },
   blue: { bg: '#52ABFF', ln: 'rgba(255,255,255,.22)', fg: '#16161C', sub: '#123056', mk: '#FFD83A', land: '#D6262B', dot: '#FFD83A' },
   orange: { bg: '#FF8B2C', ln: 'rgba(22,22,28,.12)', fg: '#16161C', sub: '#4A2508', mk: '#fff', land: '#D6262B', dot: '#FFD83A' },
+  // серии 4–8
+  violet: { bg: '#7B5CFF', ln: 'rgba(255,255,255,.18)', fg: '#fff', sub: '#EDE7FF', mk: '#FFD83A', land: '#fff', dot: '#FFD83A', dark: true },
+  pink: { bg: '#FF7BB5', ln: 'rgba(22,22,28,.12)', fg: '#16161C', sub: '#5A1636', mk: '#fff', land: '#D6262B', dot: '#FFD83A' },
+  mint: { bg: '#34C997', ln: 'rgba(22,22,28,.12)', fg: '#16161C', sub: '#0F4A36', mk: '#fff', land: '#D6262B', dot: '#FFD83A' },
+  slate: { bg: '#26324A', ln: 'rgba(255,255,255,.12)', fg: '#fff', sub: '#C9D6EA', mk: '#FFD83A', land: '#fff', dot: '#E3312D', dark: true },
+  lime: { bg: '#B8E04A', ln: 'rgba(22,22,28,.12)', fg: '#16161C', sub: '#3A4A10', mk: '#fff', land: '#D6262B', dot: '#E3312D' },
 };
 const heroDivs = (list) => list.map(([f, , x, y, h, fl, rot]) => `<div class="h ${fl || ''}" style="left:${x}px;top:${y - h}px;height:${h}px;${rot ? `rotate:${rot}deg;` : ''}"><span class="gs"></span><img src="${u(HERO + f + '.png')}"></div>`).join('\n')
   + list.map(([, n, x, y, h, fl]) => `<span class="nm" style="left:${x}px;top:${fl === 'fly' ? y - h - 30 : y - 26}px">${n}</span>`).join('');
@@ -155,7 +187,7 @@ body{background:${t.bg};font-family:Golos;color:${t.fg}}
 .seal{width:56px;height:56px;background:#D6262B;color:#fff;border-radius:9px;display:flex;align-items:center;justify-content:center;font:58px MSZ}
 .brand .zh{color:#D6262B;font:36px MSZ;letter-spacing:0}
 .ep{background:#16161C;color:#fff;font:800 32px JB;letter-spacing:.06em;padding:12px 22px;border-radius:12px;box-shadow:5px 5px 0 rgba(0,0,0,.25)}
-h1{position:absolute;top:350px;left:60px;right:44px;font:900 112px/1.04 Golos;letter-spacing:-.02em;${c.theme === 'red' ? 'text-shadow:6px 6px 0 #16161C;' : ''}}
+h1{position:absolute;top:350px;left:60px;right:44px;font:900 112px/1.04 Golos;letter-spacing:-.02em;${c.theme === 'red' || t.dark ? 'text-shadow:6px 6px 0 #16161C;' : ''}}
 mark{background:${t.mk};color:#16161C;padding:0 14px;border-radius:12px;box-shadow:6px 6px 0 #16161C;text-shadow:none;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .stamp{position:absolute;top:600px;${c.sealAt === 'left' ? 'left:44px;rotate:-7deg' : 'right:40px;rotate:7deg'};width:150px;height:150px;background:#D6262B;color:#fff;border-radius:20px;display:flex;align-items:center;justify-content:center;font:144px/1 MSZ;box-shadow:8px 8px 0 #16161C;border:5px solid #fff;z-index:6}
 .h{position:absolute;translate:-50% 0}
@@ -183,9 +215,30 @@ mark{background:${t.mk};color:#16161C;padding:0 14px;border-radius:12px;box-shad
 .mini .dt{fill:${t.dot};stroke:#16161C;stroke-width:9}
 .city{display:flex;flex-direction:column;gap:6px;min-width:0}
 .city b{font:900 86px/1 Golos;text-transform:uppercase;letter-spacing:-.01em;white-space:nowrap}
-.city b span{font:76px/1 MSZ;color:${c.theme === 'red' ? '#FFD83A' : '#D6262B'};text-transform:none;margin-left:16px}
+.city b span{font:76px/1 MSZ;color:${c.theme === 'red' || t.dark ? '#FFD83A' : '#D6262B'};text-transform:none;margin-left:16px}
 .city i{font:700 44px Golos;font-style:normal;color:${t.sub}}
-.note{position:absolute;top:1590px;left:56px;max-width:968px;background:#16161C;color:#fff;font:800 52px/1.15 Golos;padding:18px 30px 20px;border-radius:16px;box-shadow:7px 7px 0 ${c.theme === 'red' ? '#FFD83A' : '#fff'}}
+.note{position:absolute;top:1590px;left:56px;max-width:968px;background:#16161C;color:#fff;font:800 52px/1.15 Golos;padding:18px 30px 20px;border-radius:16px;box-shadow:7px 7px 0 ${c.theme === 'red' || t.dark ? '#FFD83A' : '#fff'}}
+/* детали серий 4–8 */
+.spark{position:absolute;width:250px;height:250px;background:radial-gradient(circle,#fff 0 9%,#FFE7A3 14%,rgba(255,154,60,.75) 30%,rgba(255,154,60,0) 62%);z-index:6}
+.spark::before{content:"";position:absolute;inset:-40px;background:repeating-conic-gradient(from 8deg,#FFD27A 0 3deg,transparent 3deg 22deg);-webkit-mask-image:radial-gradient(circle,transparent 18%,#000 24%,transparent 62%)}
+.gauge{position:absolute;left:600px;top:820px;width:430px;background:#fff;color:#16161C;border:6px solid #16161C;border-radius:22px;box-shadow:9px 9px 0 #16161C;padding:14px 22px 18px;rotate:4deg;z-index:7}
+.gauge i{display:block;font:700 30px JB;font-style:normal;letter-spacing:.06em;color:#3E3D45}
+.gauge b{display:block;font:900 78px/1.05 Golos;color:#1F8A4C;white-space:nowrap}
+.gauge span{display:block;height:26px;border:5px solid #16161C;border-radius:14px;overflow:hidden;background:#EEE}
+.gauge s{display:block;height:100%;background:#1F8A4C}
+.clock{position:absolute;left:600px;top:790px;background:#121214;color:#FFD83A;font:800 120px/1 JB;padding:14px 28px 18px;border-radius:24px;border:6px solid #fff;box-shadow:10px 10px 0 #16161C;rotate:5deg;z-index:6}
+.door{position:absolute;left:96px;top:700px;width:200px;height:300px;background:#8B6A4E;border:7px solid #16161C;border-radius:10px;box-shadow:9px 9px 0 #16161C;rotate:-5deg;z-index:2}
+.door b{position:absolute;right:20px;top:26px;background:#FFD83A;border:4px solid #16161C;border-radius:8px;font:900 54px/1 Golos;color:#16161C;padding:4px 14px}
+.mat{position:absolute;left:-20px;right:-20px;top:1255px;height:110px;background:#2B6CB0;border-top:6px solid #16161C;border-bottom:6px solid #16161C;rotate:-1.5deg}
+.steps{position:absolute;left:868px;top:840px;background:#FFD83A;color:#16161C;border:6px solid #16161C;border-radius:22px;box-shadow:9px 9px 0 #16161C;padding:8px 26px 14px;text-align:center;rotate:6deg;z-index:7}
+.steps i{display:block;font:700 30px JB;font-style:normal;letter-spacing:.12em}
+.steps b{display:block;font:900 120px/1 Golos}
+.barrier{position:absolute;left:-40px;right:120px;top:1150px;height:56px;background:repeating-linear-gradient(90deg,#E3312D 0 90px,#fff 90px 180px);border:6px solid #16161C;rotate:-7deg;box-shadow:8px 8px 0 #16161C}
+.crate{position:absolute;left:80px;top:1000px;width:360px;height:260px;background:repeating-linear-gradient(0deg,#C9A46A 0 50px,rgba(0,0,0,.28) 50px 72px);border:9px solid #8A6A3A;border-radius:8px;box-shadow:10px 10px 0 #16161C;z-index:0}
+.stampbox{position:absolute;white-space:nowrap;border:7px solid #FFD83A;color:#FFD83A;font:800 58px JB;padding:4px 20px;border-radius:12px;rotate:-10deg;z-index:8;background:rgba(22,22,28,.55)}
+.jiaozi{position:absolute;width:150px;height:84px;background:#F6EEDC;border:6px solid #16161C;border-radius:80px 80px 14px 14px;box-shadow:6px 6px 0 #16161C;z-index:8}
+.jiaozi::after{content:"";position:absolute;left:24px;right:24px;top:10px;height:22px;background:repeating-linear-gradient(90deg,#16161C 0 5px,transparent 5px 22px);opacity:.5;border-radius:10px}
+.sticker{position:absolute;left:560px;top:790px;white-space:nowrap;background:#fff;color:#E3312D;border:6px solid #16161C;border-radius:18px;box-shadow:9px 9px 0 #16161C;font:900 58px/1 Golos;padding:16px 24px;rotate:6deg;z-index:7}
 .note::before{content:"";display:inline-block;width:22px;height:22px;border-radius:50%;background:#FFD83A;margin-right:16px;vertical-align:4px}
 .foot{position:absolute;top:1740px;left:60px;display:flex;align-items:center;gap:16px;font:700 34px JB;color:${t.fg}}
 .foot svg{width:54px;height:54px}.foot svg *{fill:currentColor}

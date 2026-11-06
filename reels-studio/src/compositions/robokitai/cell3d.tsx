@@ -11,8 +11,19 @@ import {Conveyor, Pallet, conveyorStopAt, palletSlot, type ConveyorProps} from "
 import {ArmPalletScene} from "../../components/aura3d/Scenes";
 import {Worker3D} from "./drama3d";
 import {LidarSweep, MockFloor} from "./scene3d";
+import {WELD_CAM, WeldWorld, weldState, type WeldId} from "./weld3d";
+import {HOTEL_CAM, HotelWorld, hotelState, type HotelId} from "./hotel3d";
+import {LAB_CAM, LabWorld, labState, type LabId} from "./lab3d";
+import {BORDER_CAM, BorderWorld, borderState, type BorderId} from "./border3d";
+import {KITCHEN_CAM, KitchenWorld, kitchenState, type KitchenId} from "./kitchen3d";
 
-export type WorldId = "overload" | "fence" | "reach" | "reachFixed" | "pack" | "slip" | "slipSlow" | "hands" | "handsNight" | "glare" | "fixed";
+// миры серий 4–8 живут в своих файлах (weld3d, hotel3d, lab3d, border3d, kitchen3d) и регистрируются здесь
+export type WorldId = "overload" | "fence" | "reach" | "reachFixed" | "pack" | "slip" | "slipSlow" | "hands" | "handsNight" | "glare" | "fixed" | WeldId | HotelId | LabId | BorderId | KitchenId;
+const isWeld = (w: WorldId): w is WeldId => w.startsWith("weld");
+const isHotel = (w: WorldId): w is HotelId => w.startsWith("hotel");
+const isLab = (w: WorldId): w is LabId => w.startsWith("lab");
+const isBorder = (w: WorldId): w is BorderId => w in BORDER_CAM;
+const isKitchen = (w: WorldId): w is KitchenId => w in KITCHEN_CAM;
 const LEMON = "#FFF65D";
 const RED = "#E5383B";
 const INK = "#262626";
@@ -459,10 +470,20 @@ export const WORLD_CAM: Record<WorldId, Cam> = {
   handsNight: {pos: [0.2, 2.1, 6.6], target: [0.15, 0.85, 0], fov: 38},
   glare: {pos: [0.3, 2.2, 6.4], target: [0.15, 0.95, 0], fov: 38},
   fixed: {pos: [0.3, 2.2, 6.4], target: [0.15, 0.95, 0], fov: 38},
+  ...WELD_CAM,
+  ...HOTEL_CAM,
+  ...LAB_CAM,
+  ...BORDER_CAM,
+  ...KITCHEN_CAM,
 };
 
 // всё, что нужно 2D-слою: тревога, где «!»
 export const worldState = (w: WorldId, t: number) => {
+  if (isWeld(w)) return weldState(w, t);
+  if (isHotel(w)) return hotelState(w, t);
+  if (isLab(w)) return labState(w, t);
+  if (isBorder(w)) return borderState(w, t);
+  if (isKitchen(w)) return kitchenState(w, t);
   if (w === "overload") return {alarm: t > 2.2 && t < 5.4};
   if (w === "fence") return {alarm: t > 2.6 && t < 4.4};
   if (w === "reach") return {alarm: t > 4.9};
@@ -472,6 +493,11 @@ export const worldState = (w: WorldId, t: number) => {
 };
 
 export const World: React.FC<{w: WorldId; t: number; scout?: {at: number; x: number; z: number; yaw: number}; chalk?: number}> = ({w, t, scout, chalk = 0}) => {
+  if (isWeld(w)) return <WeldWorld w={w} t={t} />;
+  if (isHotel(w)) return <HotelWorld w={w} t={t} />;
+  if (isLab(w)) return <LabWorld w={w} t={t} />;
+  if (isBorder(w)) return <BorderWorld w={w} t={t} />;
+  if (isKitchen(w)) return <KitchenWorld w={w} t={t} />;
   const floor = <MockFloor w={20} d={14} p={[0, 0, -1.4]} />;
   const scoutEl = scout ? (
     <>

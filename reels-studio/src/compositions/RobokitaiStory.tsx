@@ -7,7 +7,7 @@ import {Audio} from "@remotion/media";
 import {useBrush} from "../components/MontazhFx";
 import {CL, Header, RK, ShiftIn, loadCjk} from "./robokitai/kit";
 import {Countdown, ManagerInset, type Mood} from "./robokitai/drama2d";
-import {BoardBeat, CliffStoryBeat, GuessStoryBeat, LetterBeat, MapStoryBeat, SceneBeat, S_X, rsFrames, rsScenes, type RobokitaiStoryProps, type SBeat} from "./robokitai/story";
+import {BoardBeat, CalcBeat, CliffStoryBeat, CompareBeat, GuessStoryBeat, LetterBeat, MapStoryBeat, SceneBeat, S_X, rsFrames, rsScenes, type RobokitaiStoryProps, type SBeat} from "./robokitai/story";
 
 export type {RobokitaiStoryProps} from "./robokitai/story";
 export {rsFrames} from "./robokitai/story";
@@ -19,11 +19,14 @@ const KIND: Record<SBeat["kind"], React.FC<{P: RobokitaiStoryProps; B: SBeat}>> 
   guess: GuessStoryBeat,
   board: BoardBeat,
   cliff: CliffStoryBeat,
+  compare: CompareBeat,
+  calc: CalcBeat,
 };
 
 export const RobokitaiStory: React.FC<RobokitaiStoryProps> = (P) => {
   useBrush(true);
-  loadCjk(`${P.series.zh}${P.city.zh}${P.city.zhFull ?? ""}苏州深圳沈阳杭`);
+  // иероглифы: печати краёв, города на телефоне SOS, печати сезона
+  loadCjk(`${P.series.zh}${P.city.zh}${P.city.zhFull ?? ""}苏州深圳沈阳杭上海北京边境关广东粤沪京${P.beats.map((b) => `${b.city ?? ""}${(b.seals ?? []).join("")}${(b.stamps ?? []).map((x) => x.text).join("")}`).join("")}`);
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const S = rsScenes(P);
@@ -76,7 +79,7 @@ export const RobokitaiStory: React.FC<RobokitaiStoryProps> = (P) => {
       })}
       {showHeader ? <Header series={P.series.name} zh="" ep={P.series.ep} city={cur.kind === "map" && f < at(cur.id, 2.2) ? undefined : P.city.name} /> : null}
       <Countdown label={P.countdown.label} days={ck.d} changedAt={ck.f} state={cdState} done={P.countdown.done} o={cdHidden ? 0 : 1} />
-      <ManagerInset x={1080 - 64 - 150} y={372} size={150} mood={mood} label={P.manager.label} moodKey={moodKey} o={insetO} />
+      <ManagerInset x={1080 - 64 - 150} y={372} size={150} mood={mood} label={P.manager.label} moodKey={moodKey} o={insetO} look={P.manager.look} />
       <Sequence from={aStart} durationInFrames={Math.max(1, bStart - aStart)} layout="none">
         <Audio src={staticFile(P.music.src)} trimBefore={Math.round(P.music.aFrom * fps)} volume={(x) => vol * env(aStart + x) * interpolate(x, [0, 15, bStart - aStart - 4, bStart - aStart], [0, 1, 1, 0], CL)} />
       </Sequence>
