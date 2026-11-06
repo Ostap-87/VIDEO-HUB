@@ -84,3 +84,10 @@ LinkedIn — как в оригинале: текст `linkedin.com/in/ostapdot�
 4. Перед сборкой: `df -h /home/user` (если меньше 150 МБ — остановись и сообщи), `free -g` (доступно ≥ 3 ГБ; рядом идёт рендер видео).
 
 Не коммитить (коммит делает основная сессия), ничего не удалять за пределами своих новых папок.
+
+## Дополнительные китайские шрифты креативных версий (06.11.2026)
+
+Пометки ручкой (досье) — Long Cang, заголовки журнала — Noto Serif SC, звуки и заголовки манхуа — ZCOOL QingKe / ZCOOL KuaiLe / Ma Shan Zheng
+(OFL): подмножества под знаки страницы, `fonts/cjk-extra.css`. build.py их не пересобирает — после правки текста в этих блоках:
+`python3 презентации/ostapdotcenko/cjkfonts.py <папка> "LongCang=Long Cang:400" …` (алиасы — как в `cjk-extra.css` папки). У letterhead-zh
+засечный Noto Serif SC — `2026-11-06-resume-letterhead-zh/serif_sc.py`.
