@@ -1,0 +1,262 @@
+{
+ "title": "Что такое 多 NEWS — ролик для блога ostapdotcenko.ru (06.11.2026)",
+ "scenes": [
+  {
+   "kind": "hookCovers",
+   "sec": 4.0,
+   "covers": [
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/run-robot-run.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/asia-drinks-myanmar.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/thailand-sixteen-thousand-7-elevens-and-one-kitchen.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/fastest-man-town.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/birthplace-humanoids.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/central-kitchens-korea.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/coffee-with-hint-audit.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/whoever-dances-owns-square.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/indonesia-the-kitchen-that-feeds-57-million.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/tale-three-cities.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/asia-drinks-laos-cambodia.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/city-where-nobody-carries-wallet.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/where-is-everybody.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/teacher-who-went-into-retail.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/malaysia-the-kitchen-with-a-halal-certificate.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/copying-allowed.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/bread-circuits.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/no-legs-no-tips.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/vietnam-vegetables-vs-convenience-stores.jpg",
+    "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/hand-is-most-expensive-part-human.jpg"
+   ],
+   "lines": [
+    "48 СТАТЕЙ.",
+    "3 ЯЗЫКА.",
+    "КАЖДЫЙ ДЕНЬ."
+   ],
+   "shout": [
+    "А читать —",
+    "КОГДА?!"
+   ],
+   "zh": "什么时候读？",
+   "sfx": "啊?!"
+  },
+  {
+   "kind": "ident",
+   "sec": 2.8,
+   "title": [
+    "ЧТО ТАКОЕ",
+    "多 NEWS?"
+   ],
+   "zh": "这是什么？",
+   "tape": "ostapdotcenko.ru/blog",
+   "chip": "1 статья = 1 выпуск манхуа",
+   "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-yingke-mikrofon.png"
+  },
+  {
+   "kind": "pile",
+   "sec": 7.2,
+   "zh": "第一话",
+   "kicker": "ГЛАВА 1",
+   "title": "Пишу много и про разное",
+   "from": "2026-10-15",
+   "to": "2026-11-06",
+   "count": 48,
+   "countLabel": "статей в блоге",
+   "calNote": "каждый день · 9:00 по Пекину",
+   "rubricsLabel": "3 РУБРИКИ",
+   "rubrics": [
+    "Очень экспертное мнение",
+    "Смотрящий за происходящим",
+    "Все х#йня, давай по новой…"
+   ],
+   "tags": [
+    "Роботы",
+    "Напитки Азии",
+    "Центральные кухни",
+    "Наблюдения",
+    "Перезапуски",
+    "E-commerce"
+   ],
+   "countries": [
+    "Китай",
+    "Япония",
+    "Корея",
+    "Вьетнам",
+    "Таиланд",
+    "Малайзия",
+    "Индия",
+    "Индонезия",
+    "Лаос",
+    "Камбоджа",
+    "Мьянма"
+   ],
+   "langs": "каждая статья — RU · EN · 中文"
+  },
+  {
+   "kind": "clock",
+   "sec": 6.5,
+   "zh": "第二话",
+   "kicker": "ГЛАВА 2",
+   "title": "А читать некогда",
+   "img": "source-videos/higgsfield/2026-11-06-od-manhua/hf-begom.jpg",
+   "imgPos": "50% 28%",
+   "num": 430,
+   "unit": "мин",
+   "numLabel": "чтения во всех 48 статьях",
+   "chips": [
+    "статья — от 5 до 18 минут",
+    "это больше 7 часов"
+   ],
+   "note": "Не у каждого есть время читать — или даже открывать сайт.",
+   "sfx": "啊!"
+  },
+  {
+   "kind": "pipeline",
+   "sec": 8.0,
+   "zh": "第三话",
+   "kicker": "ГЛАВА 3",
+   "title": "Статья → манхуа",
+   "img": "source-videos/higgsfield/2026-11-06-od-manhua/hf-statya-v-manhua.jpg",
+   "steps": [
+    {
+     "img": "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/fastest-man-town.jpg",
+     "pos": "50% 40%",
+     "label": "СТАТЬЯ",
+     "sub": "6 минут чтения"
+    },
+    {
+     "img": "source-videos/2026-11-06-od-manhua-explainer/кадры/news-004-zastavka.jpg",
+     "pos": "50% 30%",
+     "label": "ВЫПУСК",
+     "sub": "манхуа по той же статье"
+    },
+    {
+     "timer": 45,
+     "label": "СМОТРИШЬ",
+     "sub": "до 45 секунд"
+    }
+   ],
+   "note": "Одна статья — один выпуск: самое свежее и главное за 45 секунд."
+  },
+  {
+   "kind": "topics",
+   "sec": 6.0,
+   "zh": "第四话",
+   "kicker": "ГЛАВА 4",
+   "title": "Индустрии Азии",
+   "img": "source-videos/higgsfield/2026-11-06-od-manhua/hf-aziya.jpg",
+   "imgPos": "50% 45%",
+   "labels": [
+    {
+     "text": "Производство",
+     "x": 80,
+     "y": 470
+    },
+    {
+     "text": "Курьеры",
+     "x": 560,
+     "y": 470
+    },
+    {
+     "text": "Напитки Азии",
+     "x": 690,
+     "y": 700
+    },
+    {
+     "text": "Центральные кухни",
+     "x": 420,
+     "y": 900
+    },
+    {
+     "text": "Роботы",
+     "x": 90,
+     "y": 1200
+    },
+    {
+     "text": "Хайтек-города",
+     "x": 640,
+     "y": 1290
+    }
+   ],
+   "note": "Свежее из Азии — роботы, хайтек, ритейл, еда и напитки — языком манхуа."
+  },
+  {
+   "kind": "seasons",
+   "sec": 6.8,
+   "zh": "第五话",
+   "kicker": "ГЛАВА 5",
+   "title": "Сезоны и ритм",
+   "seasons": [
+    {
+     "zh": "重启",
+     "name": "Перезапуски"
+    },
+    {
+     "zh": "观察",
+     "name": "Наблюдения"
+    },
+    {
+     "zh": "饮品",
+     "name": "Напитки Азии"
+    },
+    {
+     "zh": "厨房",
+     "name": "Центральные кухни"
+    },
+    {
+     "zh": "案例",
+     "name": "Кейсы"
+    }
+   ],
+   "covers": [
+    "finished-videos/обложки/blog-news/001-coffee-with-hint-audit.jpg",
+    "finished-videos/обложки/blog-news/002-teacher-who-went-into-retail.jpg",
+    "finished-videos/обложки/blog-news/003-this-is-my-last-startup-season-six.jpg",
+    "finished-videos/обложки/blog-news/004-fastest-man-town.jpg",
+    "finished-videos/обложки/blog-news/005-city-where-nobody-carries-wallet.jpg",
+    "finished-videos/обложки/blog-news/006-whoever-dances-owns-square.jpg",
+    "finished-videos/обложки/blog-news/007-chicken-palate-noodles-no-regrets.jpg",
+    "finished-videos/обложки/blog-news/008-three-days-shanghai-china-expert.jpg"
+   ],
+   "tape": "Готово: №1–8 · RU + EN",
+   "chips": [
+    "Новый выпуск — каждый день",
+    "сезон закончился — завтра новый"
+   ]
+  },
+  {
+   "kind": "finRows",
+   "sec": 5.6,
+   "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-megamarket-mikrofon.png",
+   "title": "Где смотреть",
+   "zh": "在哪儿看？",
+   "rows": [
+    {
+     "icon": "instagram",
+     "kicker": "СМОТРЕТЬ ВЫПУСКИ",
+     "value": "@ostap.dotsenko",
+     "sub": "Instagram"
+    },
+    {
+     "icon": "book",
+     "kicker": "ЧИТАТЬ СТАТЬИ",
+     "value": "ostapdotcenko.ru/blog",
+     "sub": "RU · EN · 中文"
+    },
+    {
+     "icon": "telegram",
+     "kicker": "НАПИСАТЬ МНЕ",
+     "value": "t.me/ostapdotcenko",
+     "sub": "Telegram"
+    }
+   ],
+   "button": "Подписаться",
+   "done": "✓ Вы подписаны",
+   "follow": "новый выпуск — каждый день"
+  }
+ ],
+ "music": {
+  "src": "интернет-материалы/музыка/phonk-remix-holiznacc0.mp3",
+  "drop": 10.45,
+  "vol": 0.37,
+  "credit": "Музыка: HoliznaCC0 — Phonk Remix (CC0)"
+ }
+}

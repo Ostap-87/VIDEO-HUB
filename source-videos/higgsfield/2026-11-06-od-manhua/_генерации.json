@@ -1,0 +1,74 @@
+[
+ {
+  "file": "hf-skuka.jpg",
+  "job_id": "e248e40b-7b5a-4cee-b104-b9b46ed575f6",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_061451_e248e40b-7b5a-4cee-b104-b9b46ed575f6.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "4:3",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "Манхуа: усталый офисный работник спит на столе под горой бумаг — «стена текста», скучно (ч/б, растр)"
+ },
+ {
+  "file": "hf-vostorg.jpg",
+  "job_id": "3c955b84-b31f-43e9-a959-cda67abcc3ce",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_061532_3c955b84-b31f-43e9-a959-cda67abcc3ce.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "Манхуа: восторженный парень с телефоном, из экрана вылетают панели комикса (робот, город, чай, ракета), жёлтый фон"
+ },
+ {
+  "file": "hf-pamyat.jpg",
+  "job_id": "d4828480-6733-4803-bddb-d973bf87d85e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_061533_d4828480-6733-4803-bddb-d973bf87d85e.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "4:3",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "Манхуа: профиль головы, внутри галерея картинок и лампочка, в голову летят панели комикса — «картинки запоминаются»"
+ },
+ {
+  "file": "hf-begom.jpg",
+  "job_id": "8d38edf8-818c-405d-bd99-4b2cb7722bef",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_061452_8d38edf8-818c-405d-bd99-4b2cb7722bef.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "Манхуа: бизнесмен в костюме бежит по аэропорту с телефоном и портфелем, огромные часы, летят бумаги — «нет времени»"
+ },
+ {
+  "file": "hf-aziya.jpg",
+  "job_id": "b12bffe4-9ec7-4704-91e5-5f7e10c85e8b",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_061451_b12bffe4-9ec7-4704-91e5-5f7e10c85e8b.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "Манхуа-коллаж индустрий Азии: гуманоид машет, роборука на линии, курьер на скутере, бабл-ти, лапша центральной кухни, дрон, маглев над неоновым мегаполисом"
+ },
+ {
+  "file": "hf-statya-v-manhua.jpg",
+  "job_id": "8f6ac2e2-7e73-4054-b281-3d368f75496c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_061452_8f6ac2e2-7e73-4054-b281-3d368f75496c.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "4:3",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "Манхуа: стопка газет и статей, верхние листы превращаются в цветные панели комикса и летят стаей к смартфону — «статья → выпуск»"
+ }
+]

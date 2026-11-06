@@ -615,6 +615,9 @@ node reels-studio/tools/od-posts/reel-sait.mjs            # ролик «Мой 
 #   английский дубль каждого выпуска (05.11.2026): python3 tools/blog-news/en_props.py [N] → props/blog-news/en/NNN-<slug>.json;
 #   node tools/blog-news/shots.mjs <slug> --lang en --n 3; рендер с --props=props/blog-news/en/NNN-<slug>.json → ../finished-videos/blog-news/NNN-<slug>-en.mp4;
 #   обложки RU + EN одним прогоном: BlogNewsCovers, "eps": [русские…, английские…] → обложки/blog-news/NNN-<slug>.jpg и NNN-<slug>-en.jpg
+# манхуа-объяснялки ostapdotcenko (06.11.2026, композиция OdManhuaExplainer, сцены из props/od/*.json), из reels-studio:
+#   TMPDIR=/dev/shm/remotion-od npx remotion render src/index.ts OdManhuaExplainer /dev/shm/od/out.mp4 --props=props/od/2026-11-06-why-manhua.json --bundle-cache=false --concurrency=2 --crf=18
+#   пробные кадры: … OdManhuaExplainerPreview /dev/shm/od/st --sequence --scale=0.5 --props=<props + "frames":[50,240,…]>
 # английские версии (04.11.2026): SiteManhuaEn / AuraSiteManhuaEn / GttSiteManhuaEn (Remotion) и node tools/od-posts/reel-intro-en.mjs, tools/gtt-reel/reel-gruppy-od-en.mjs, tools/od-posts/reel-3-proekta-en.mjs
 #   → finished-videos/обложки/манхуа-сайты/ (кадр 0–1 «Мой сайт», 2–3 Aura, 4–9 GTT A–F; --frames=0-9)
 ```
