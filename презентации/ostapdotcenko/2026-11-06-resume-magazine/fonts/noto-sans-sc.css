@@ -1,0 +1,4 @@
+/* Noto Sans SC (OFL), подмножество знаков документа — собирает build.py */
+@font-face { font-family: "NSC"; src: url("NotoSansSC-400-subset.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "NSC"; src: url("NotoSansSC-700-subset.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "NSC"; src: url("NotoSansSC-900-subset.woff2") format("woff2"); font-weight: 900; }

@@ -1,0 +1,538 @@
+<!doctype html>
+<!-- Резюме Остапа Доценко — креативный вариант «BI-дашборд / отчёт аналитики» (задача пользователя 06.11.2026: «сделай моё резюме более
+     креативно, используй другие мои фото для главной, поиграй со стилями и добавь юмора… во всех указывай мои соцсети, блоги и сайт»).
+     Факты, цифры, даты и компании — дословно из ../RESUME-MASTER.md. На графиках — только числа из мастера, без выдуманных промежуточных
+     точек: рост в % (+350 / +185 / +100), ROI 25× (шкала 0–25, стрелка в упоре), «Сделано в России» 0 → 2 000 (две точки: старт и 2024),
+     диаграмма Ганта — периоды ролей. Юмор — только в оформлении: SQL-запрос, статус online, «источники данных подключены», камера REC.
+     Светлая тема для печати; категориальные цвета — эталонная палитра скилла dataviz (синий, оранжевый, бирюзовый — проверены валидатором).
+     Шрифты (OFL, Google Fonts, fonts/fonts.css): Inter, JetBrains Mono. Фото: из-профиля/2024-12-01-выступление, 2024-05-02-russian-retail-show.
+     Сборка: python3 build.py 2026-11-06-resume-dashboard → готовые/2026-11-06-ostap-resume-dashboard.pdf -->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Остап Доценко — резюме-дашборд</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="fonts/noto-sans-sc.css">
+<style>
+:root {
+  --bg: #ECEFF4; --card: #FFFFFF; --line: #E1E5EB; --grid: #E6E8EC; --axis: #C3C7CE;
+  --ink: #0B1220; --ink2: #3D4757; --muted: #586274; --nav: #0E1526;
+  --s1: #2a78d6; --s1w: rgba(42,120,214,.10); --s1t: #dbe7f7; --s2: #eb6834; --s3: #1baf7a;
+  --good: #0ca30c; --goodtext: #006300; --crit: #d03b3b;
+  --zh: "NSC", "Noto Sans SC", sans-serif;
+  --sans: "Inter", var(--zh); --mono: "JBMono", "Inter", var(--zh);
+}
+@page { size: 210mm 297mm; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #b5bac3; }
+body { font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: antialiased; font-size: 11px; line-height: 1.4; }
+.page { width: 794px; height: 1123px; position: relative; overflow: hidden; background: var(--bg); margin: 0 auto 24px;
+  page-break-after: always; break-after: page; padding: 16px 18px 28px; display: flex; flex-direction: column; gap: 8px; }
+@media print { html, body { background: none; } .page { margin: 0; } }
+b { font-weight: 700; }
+.zh { font-family: var(--zh); }
+.mono { font-family: var(--mono); }
+.row { display: flex; gap: 8px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; position: relative; overflow: hidden;
+  box-shadow: 0 1px 2px rgba(14,21,38,.05); }
+.ct { display: flex; align-items: baseline; gap: 8px; }
+.ct h3 { font-size: 12px; font-weight: 700; letter-spacing: -.005em; }
+.ct .sub { font-size: 10.5px; color: var(--muted); }
+.ct .r { margin-left: auto; }
+
+/* шапка приложения */
+.appbar { flex: none; height: 40px; background: var(--nav); color: #fff; border-radius: 10px; display: flex; align-items: center; gap: 10px; padding: 0 12px; }
+.appbar .logo { width: 22px; height: 22px; border-radius: 6px; background: var(--s1); display: grid; grid-template-columns: 1fr 1fr; gap: 2px; padding: 5px; }
+.appbar .logo i { background: #fff; border-radius: 1px; opacity: .95; }
+.appbar .logo i:nth-child(2) { opacity: .55; } .appbar .logo i:nth-child(3) { opacity: .7; }
+.appbar .t { font-size: 12.5px; font-weight: 600; letter-spacing: -.005em; white-space: nowrap; }
+.appbar .t span { color: #b9c3d6; font-weight: 500; }
+.appbar .st { margin-left: auto; display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16);
+  border-radius: 20px; padding: 3px 10px 3px 8px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.appbar .st i { width: 8px; height: 8px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 2px rgba(12,163,12,.3); }
+.appbar .btn { font-size: 10.5px; font-weight: 600; border: 1px solid rgba(255,255,255,.25); border-radius: 6px; padding: 3px 8px; color: #e6eaf2; white-space: nowrap; }
+.filters { flex: none; display: flex; gap: 6px; align-items: center; }
+.chip { display: inline-flex; align-items: center; gap: 4px; background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 2px 8px;
+  font-size: 10.5px; color: var(--ink2); white-space: nowrap; line-height: 1.5; }
+.chip b { color: var(--ink); font-weight: 600; }
+.chip .dd { color: var(--muted); font-size: 10.5px; transform: scale(.75); display: inline-block; }
+.filters .r { margin-left: auto; color: var(--muted); font-size: 10.5px; white-space: nowrap; }
+
+/* профиль */
+.profile { flex: 1; display: flex; flex-direction: column; padding: 11px 14px 11px; }
+.kick { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: .02em; }
+.name { font-size: 29px; font-weight: 800; letter-spacing: -.025em; line-height: 1.05; margin-top: 3px; }
+.name small { font-size: 12px; font-weight: 500; color: var(--muted); letter-spacing: 0; margin-left: 8px; }
+.role { font-size: 15px; font-weight: 700; margin-top: 5px; letter-spacing: -.01em; }
+.role-sub { font-size: 11px; color: var(--ink2); margin-top: 1px; }
+.cos { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+.co { font-size: 11px; font-weight: 600; border-radius: 5px; padding: 2px 8px; background: #F1F4F8; border: 1px solid var(--line); }
+.co i { display: inline-block; width: 7px; height: 7px; border-radius: 2px; margin-right: 5px; transform: translateY(-.5px); }
+.target { margin-top: 8px; display: flex; gap: 8px; align-items: center; background: #F2F6FD; border: 1px solid #cfdcf2; border-radius: 7px; padding: 5px 9px; }
+.target .k { font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: #1d4f91; white-space: nowrap; }
+.target .v { font-size: 12px; font-weight: 700; }
+.target .v span { font-weight: 500; color: var(--ink2); }
+.contacts { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 2px 11px; font-size: 11px; color: var(--ink2); }
+.contacts span { white-space: nowrap; }
+.contacts i { font-style: normal; font-family: var(--mono); font-size: 10.5px; color: var(--muted); margin-right: 4px; }
+.cam { width: 200px; flex: none; padding: 0; background: #000; border-color: #0E1526; }
+.cam img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cam .ov { position: absolute; left: 8px; right: 8px; display: flex; justify-content: space-between; align-items: center; font-family: var(--mono);
+  font-size: 10.5px; color: #fff; }
+.cam .ov span { background: rgba(8,12,22,.72); border-radius: 4px; padding: 1px 6px; white-space: nowrap; }
+.cam .rec i { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--crit); margin-right: 5px; transform: translateY(-.5px); }
+.cam .corner { position: absolute; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,.85); }
+
+/* KPI */
+.kpis { flex: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.kpi { padding: 8px 8px 8px 12px; }
+.kpi .l { font-size: 10.5px; color: var(--ink2); font-weight: 500; line-height: 1.25; white-space: nowrap; letter-spacing: -.01em; }
+.kpi .v { font-size: 22px; font-weight: 700; letter-spacing: -.02em; line-height: 1.1; margin-top: 3px; white-space: nowrap; }
+.kpi .d { display: inline-block; font-size: 10.5px; font-weight: 700; color: var(--goodtext); background: #E7F5E7; border-radius: 4px; padding: 0 5px; margin-top: 3px; white-space: nowrap; }
+.kpi .s { font-size: 10.5px; color: var(--muted); margin-top: 3px; line-height: 1.25; }
+.kpi .bar { position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--s1); }
+
+/* графики */
+svg text { font-family: var(--sans); }
+.cap { font-size: 10.5px; color: var(--muted); line-height: 1.3; }
+.note { font-size: 10.5px; color: var(--ink2); line-height: 1.3; }
+
+/* Гант */
+.query { display: flex; align-items: center; gap: 8px; background: #0E1526; color: #E6EAF2; border-radius: 7px; padding: 5px 6px 5px 10px; font-family: var(--mono); font-size: 11px; }
+.query .kw { color: #7FB0F0; font-weight: 700; }
+.query .str { color: #F2A27E; }
+.query .num { color: #7FD7B5; }
+.query .run { margin-left: auto; background: var(--s1); color: #fff; border-radius: 5px; padding: 2px 8px; font-weight: 700; font-size: 10.5px; white-space: nowrap; }
+.query .res { color: #A9B4C8; font-size: 10.5px; white-space: nowrap; }
+.legend { display: flex; gap: 12px; font-size: 10.5px; color: var(--ink2); }
+.legend span { display: inline-flex; align-items: center; gap: 5px; }
+.legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.gantt { position: relative; margin-top: 4px; }
+.gantt .legend { position: absolute; left: 0; bottom: 1px; }
+.g-row { display: grid; grid-template-columns: 226px 1fr; align-items: center; min-height: 27px; border-top: 1px solid var(--grid); }
+.g-row:first-of-type { border-top: none; }
+.g-lab b { display: block; font-size: 11px; font-weight: 700; line-height: 1.2; }
+.g-lab span { display: block; font-size: 10.5px; color: var(--ink2); line-height: 1.25; }
+.g-track { position: relative; height: 27px; }
+.g-bar { position: absolute; top: 7.5px; height: 12px; border-radius: 4px; }
+.g-txt { position: absolute; top: 5.5px; font-size: 10.5px; color: var(--ink2); white-space: nowrap; line-height: 16px; }
+.g-txt b { color: var(--ink); font-weight: 600; font-family: var(--mono); font-size: 10.5px; }
+.g-grid { position: absolute; top: 0; bottom: 18px; left: 226px; right: 0; pointer-events: none; }
+.g-grid i { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--grid); }
+.g-grid i.now { background: var(--ink); width: 1px; }
+.g-axis { position: relative; height: 18px; margin-left: 226px; border-top: 1px solid var(--axis); }
+.g-axis span { position: absolute; top: 3px; transform: translateX(-50%); font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+
+/* источники */
+.srcs { display: grid; grid-template-columns: 1fr 1fr; column-gap: 14px; margin-top: 6px; }
+.src { display: grid; grid-template-columns: 26px 1fr 12px; align-items: center; gap: 8px; padding: 5px 0; border-top: 1px solid var(--grid); }
+.src:nth-child(-n+2) { border-top: none; }
+.src .ic { width: 26px; height: 26px; border-radius: 6px; background: #F1F4F8; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: var(--ink); }
+.src .ic.k { background: var(--nav); color: #fff; border-color: var(--nav); }
+.src b { display: block; font-size: 11.5px; font-weight: 700; line-height: 1.2; }
+.src span { display: block; font-size: 10.5px; color: var(--ink2); line-height: 1.25; }
+.sync { margin-top: 6px; padding-top: 5px; white-space: nowrap; border-top: 1px dashed var(--line); font-size: 10.5px; color: var(--ink2); line-height: 1.35; }
+.sync .mono { color: var(--goodtext); font-weight: 700; margin-right: 4px; }
+.ok { font-size: 10.5px; font-weight: 600; color: var(--goodtext); white-space: nowrap; display: inline-flex; align-items: center; gap: 4px; }
+.ok svg { flex: none; }
+
+/* языки, навыки */
+.lng { display: grid; grid-template-columns: 54px 1fr 40px; align-items: center; gap: 8px; margin-top: 4px; font-size: 11px; }
+.lng .tr { position: relative; height: 8px; background: var(--s1t); border-radius: 4px; }
+.lng .tr i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--s1); border-radius: 4px; }
+.lng em { font-style: normal; font-family: var(--mono); font-size: 10.5px; font-weight: 700; text-align: right; }
+.scale { display: grid; grid-template-columns: 54px 1fr 40px; gap: 8px; margin-top: 4px; }
+.scale div { display: grid; grid-template-columns: repeat(6, 1fr); text-align: center; font-family: var(--mono); font-size: 10.5px; color: var(--muted); }
+.skills { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 18px; margin-top: 4px; }
+.skills h4 { font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: #1d4f91; }
+.skills p { font-size: 11px; line-height: 1.34; margin-top: 0; }
+.dim { margin-top: 7px; }
+.dim h4 { font-size: 10.5px; font-family: var(--mono); color: var(--muted); font-weight: 600; letter-spacing: .02em; }
+.dim p { font-size: 11px; line-height: 1.38; margin-top: 1px; }
+.lst { list-style: none; }
+.lst li { font-size: 11px; line-height: 1.34; padding-left: 12px; position: relative; margin-top: 2px; }
+.lst li::before { content: ""; position: absolute; left: 1px; top: 5.5px; width: 5px; height: 5px; border-radius: 50%; background: var(--s1); }
+.ftr { position: absolute; left: 18px; right: 18px; bottom: 9px; display: flex; justify-content: space-between; gap: 12px; font-size: 10.5px; color: var(--muted); white-space: nowrap; }
+.ftr b { color: var(--ink2); font-weight: 600; }
+
+/* стр. 2: детализация */
+.tabs { display: flex; gap: 2px; margin-left: 14px; }
+.tabs span { font-size: 11px; font-weight: 500; color: #b9c3d6; padding: 3px 9px; border-radius: 6px; white-space: nowrap; }
+.tabs span.on { background: rgba(255,255,255,.12); color: #fff; font-weight: 700; }
+.dr { display: grid; grid-template-columns: 100px 1fr; gap: 12px; padding: 4px 0 4px; border-top: 1px solid var(--grid); }
+.dr:first-of-type { border-top: none; }
+.dr .p { font-family: var(--mono); font-size: 11px; font-weight: 700; line-height: 1.3; }
+.dr .p span { display: block; font-family: var(--sans); font-weight: 500; font-size: 10.5px; color: var(--muted); margin-top: 1px; }
+.dr .m { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; margin-top: 5px; }
+.dr .m i { font-style: normal; font-family: var(--mono); font-size: 10.5px; font-weight: 700; background: #EEF3FB; color: #17457f; border-radius: 4px; padding: 0 5px; white-space: nowrap; }
+.dr h4 { font-size: 12px; font-weight: 700; line-height: 1.3; }
+.dr h4 .c { color: #1d4f91; }
+.dr h4 .zh { font-weight: 500; font-size: 10.5px; color: var(--muted); }
+.dr .x { font-size: 10.8px; color: var(--ink2); line-height: 1.33; margin-top: 1px; }
+.dr ul { list-style: none; margin-top: 2px; }
+.dr li { font-size: 11px; line-height: 1.33; padding-left: 12px; position: relative; margin-top: 1px; text-wrap: pretty; }
+.dr li::before { content: ""; position: absolute; left: 1px; top: 6px; width: 5px; height: 5px; border-radius: 1px; background: var(--s1); }
+.dr li b { font-weight: 700; }
+.ev { display: grid; grid-template-columns: 34px 1fr; gap: 6px; padding: 2px 0; border-top: 1px solid var(--grid); font-size: 11px; line-height: 1.32; }
+.ev:first-of-type { border-top: none; }
+.ev .y { font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: var(--ink2); padding-top: 1px; }
+.qt { border-left: 3px solid var(--s1); background: #F6F8FB; border-radius: 0 7px 7px 0; padding: 5px 10px 5px; margin-top: 6px; }
+.qt p { font-size: 11px; line-height: 1.38; font-style: italic; }
+.qt span { display: block; font-size: 10.5px; color: var(--muted); margin-top: 2px; }
+.skl { display: grid; grid-template-columns: 150px 1fr; gap: 10px; align-items: baseline; padding: 4px 0; border-top: 1px solid var(--grid); }
+.skl:first-of-type { border-top: none; }
+.skl h4 { font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: #1d4f91; }
+.tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.tags span { font-size: 10.5px; background: #F1F4F8; border: 1px solid var(--line); border-radius: 4px; padding: 0 6px; line-height: 1.6; white-space: nowrap; }
+.tip { margin-left: auto; font-size: 10.5px; color: var(--ink2); background: #FDF3EE; border: 1px solid #f5d5c6; border-radius: 6px; padding: 1px 8px; white-space: nowrap; }
+.tip b { font-family: var(--zh); font-weight: 700; color: var(--ink); }
+</style>
+</head>
+<body>
+
+<!-- ======================= стр. 1 — обзор ======================= -->
+<section class="page">
+
+  <div class="appbar">
+    <div class="logo"><i></i><i></i><i></i><i></i></div>
+    <div class="t">Отчёт: Остап Доценко <span>· период 2013 — 2026</span></div>
+    <div class="st"><i></i>статус: online · открыт к проектам</div>
+    <div class="btn">⤓ Экспорт</div>
+  </div>
+
+  <div class="filters">
+    <span class="chip">Период: <b>2013 — 2026</b> <span class="dd">▼</span></span>
+    <span class="chip">Рынки: <b>Россия ↔ Китай ↔ ЮВА</b> <span class="dd">▼</span></span>
+    <span class="chip">Стран: <b>20+</b></span>
+    <span class="chip">Языков: <b>5</b></span>
+    <span class="chip">База: <b>Шанхай · Москва (гибрид)</b></span>
+  </div>
+
+  <div class="row" style="height:222px; flex:none">
+    <div class="card profile">
+      <div class="kick">профиль · 13+ лет · Россия ↔ Китай ↔ ЮВА · B2B Marketing · Global Business</div>
+      <div class="name">Остап Доценко <small>Ostap Dotsenko · <span class="zh">奥斯塔普·多增科</span></small></div>
+      <div class="role">Руководитель по развитию бизнеса и маркетингу</div>
+      <div class="cos">
+        <span class="co"><i style="background:var(--s1)"></i>Alibaba Group · AliExpress</span>
+        <span class="co"><i style="background:var(--s1)"></i>Мегамаркет (Сбер)</span>
+        <span class="co"><i style="background:var(--s2)"></i>свой бизнес в Шанхае</span>
+      </div>
+      <div class="target"><span class="k">ЦЕЛЕВАЯ РОЛЬ</span><span class="v">CBDO · CMO · директор по международному развитию <span>(Россия ↔ Китай ↔ ЮВА)</span></span></div>
+      <div class="contacts">
+        <span><i>тел</i>+86 137 6171 6355</span><span><i>тел/wa</i>+7 985 874-49-58</span><span><i>mail</i>norbanking@gmail.com</span><span><i>tg</i>@ostapdotcenko</span>
+      </div>
+    </div>
+    <div class="card cam">
+      <img src="img/cam-stage.jpg" alt="Остап Доценко на сцене с микрофоном" style="object-position: 66% 40%">
+      <div class="ov" style="top:8px"><span class="rec"><i></i>REC · CAM 01</span><span>1/2</span></div>
+      <div class="ov" style="bottom:8px"><span>на сцене</span><span>01.12.2024</span></div>
+    </div>
+  </div>
+
+  <div class="kpis">
+    <div class="card kpi"><div class="bar"></div><div class="l">Рост числа продавцов</div><div class="v">+350%</div><div class="s">г/г · Мегамаркет</div></div>
+    <div class="card kpi"><div class="bar"></div><div class="l">GMV · AliExpress</div><div class="v">$48M</div><div class="d">▲ +100% год к году</div></div>
+    <div class="card kpi"><div class="bar"></div><div class="l">Продавцов на платформе</div><div class="v">50&nbsp;000</div><div class="s">Мегамаркет</div></div>
+    <div class="card kpi"><div class="bar"></div><div class="l">Чистая прибыль</div><div class="v">3&nbsp;млрд&nbsp;₽</div><div class="s">Q4 2023 · Мегамаркет</div></div>
+    <div class="card kpi"><div class="bar"></div><div class="l">Регионов в программе</div><div class="v">86</div><div class="s">с Минэкономразвития</div></div>
+  </div>
+
+  <div class="row" style="height:176px; flex:none">
+    <div class="card" style="flex:1.3">
+      <div class="ct"><h3>Рост ключевых метрик, %</h3></div>
+      <div class="cap">Мегамаркет · AliExpress</div>
+      <svg id="growth" width="100%" height="112" style="margin-top:6px"></svg>
+    </div>
+    <div class="card" style="flex:1">
+      <div class="ct"><h3>Средний ROI кампаний</h3></div>
+      <div class="cap">Alibaba Group · 2020–2022</div>
+      <svg id="gauge" width="100%" height="94" style="margin-top:4px"></svg>
+      <div class="note" style="text-align:center">стрелка упёрлась в край шкалы</div>
+    </div>
+    <div class="card" style="flex:1.05">
+      <div class="ct"><h3>«Сделано в России»</h3></div>
+      <div class="cap">компаний в программе · 2024</div>
+      <svg id="slope" width="100%" height="116" style="margin-top:4px"></svg>
+    </div>
+  </div>
+
+  <div class="card" style="flex:none; padding-bottom:6px">
+    <div class="query"><span><span class="kw">SELECT</span> * <span class="kw">FROM</span> опыт <span class="kw">WHERE</span> результат &gt; <span class="num">0</span> <span class="kw">ORDER BY</span> период <span class="kw">DESC</span>;</span>
+      <span class="res">→ 7 строк · 13+ лет</span><span class="run">▶ Выполнить</span></div>
+    <div class="gantt" id="gantt"></div>
+  </div>
+
+  <div class="row" style="flex:1; min-height:0">
+    <div class="card" style="flex:1">
+      <div class="ct"><h3>Источники данных</h3><span class="sub">сайты, блоги, соцсети · 8 из 8</span>
+        <span class="ok r"><svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="#0ca30c"/><path d="M3.2 6.2l1.8 1.8 3.8-3.8" stroke="#fff" stroke-width="1.6" fill="none"/></svg>подключено</span></div>
+      <div class="srcs" id="sources"></div>
+      <div class="sync"><span class="mono">↻ sync</span> блог: статья каждый день с 15.10.2026 · RU · EN · <span class="zh">中文</span></div>
+    </div>
+    <div class="card" style="width:304px; flex:none">
+      <div class="ct"><h3>Фидбэк стейкхолдеров</h3><span class="sub">отзывы с сайта</span></div>
+      <div class="qt"><p>«Остап обладает уникальной способностью видеть рынок комплексно — от стратегии до тактических решений…»</p><span>Алексей К., VP of Sales · Мегамаркет</span></div>
+      <div class="qt"><p>«…ROI 25x говорит сам за себя»</p><span>Ли В., Regional Director · Alibaba Group</span></div>
+      <div class="qt"><p>«…одинаково свободно работает на рынках России, Китая и ЮВА…»</p><span>Мухаммад А., CEO · HiTarget Indonesia</span></div>
+    </div>
+  </div>
+
+  <div class="ftr"><span><b>Остап Доценко</b> · резюме-дашборд · стр. 1 / 2</span><span>* Метрики из реальных проектов; часть данных обезличена по требованиям NDA</span></div>
+</section>
+
+<!-- ======================= стр. 2 — детализация ======================= -->
+<section class="page">
+
+  <div class="appbar" style="height:34px">
+    <div class="logo"><i></i><i></i><i></i><i></i></div>
+    <div class="t">Отчёт: Остап Доценко</div>
+    <div class="tabs"><span>Обзор</span><span class="on">Детализация</span><span>Медиа</span><span>Фидбэк</span></div>
+    <div class="st"><i></i>online · открыт к проектам</div>
+  </div>
+
+  <div class="card" style="flex:none; padding-top:7px; padding-bottom:3px">
+    <div class="query"><span><span class="kw">SELECT</span> роль, компания, достижения <span class="kw">FROM</span> опыт <span class="kw">ORDER BY</span> период <span class="kw">DESC</span>;</span>
+      <span class="res">→ 7 строк</span><span class="run">▶ Выполнить</span></div>
+
+    <div style="margin-top:4px">
+    <div class="dr">
+      <div class="p">2025 — н. в.<span>Шанхай</span><div class="m"><i>форум 1&nbsp;200+</i></div></div>
+      <div>
+        <h4>Собственник и основатель · <span class="c">Shanghai Pinnacle Technology Co., Ltd.</span> <span class="zh">上海拼那克了科技有限公司</span></h4>
+        <div class="x">GlobalTechTour — технологические экспедиции и бенчмарк-туры в Китай и ЮВА; Aura Robotics — робототехника и автоматизация, подбор роботов напрямую у китайских производителей.</div>
+        <ul>
+          <li>Корпоративный форум <b>Мегамаркета (Сбер) в Шэньчжэне на 1&nbsp;200+ участников</b> — под ключ: логистика, площадка, деловая программа.</li>
+          <li>Визиты делегаций на заводы и в R&amp;D <b>BYD, Xiaomi, Baidu, Meituan, Poizon, Leju Robotics</b>; для клиентов Aura — прямой доступ к руководству и R&amp;D производителей роботов, а не к рядовым менеджерам.</li>
+          <li><b>БелМол</b> за 2&nbsp;часа переговоров на заводе Kepler решил вопрос автоматизации молочного производства; <b>СоларТек</b> за 5&nbsp;дней посетил Leju Robotics, Robotera, AgiBot и Kepler; <b>«Просто Еда»</b> встретилась лично с основателем производителя робооборудования для пищепрома.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dr">
+      <div class="p">2023 — 2025<span>Россия</span><div class="m"><i>+350% г/г</i><i>50&nbsp;000 продавцов</i><i>86 регионов</i><i>3&nbsp;млрд&nbsp;₽</i></div></div>
+      <div>
+        <h4>Head of B2B Marketing · <span class="c">Мегамаркет (экосистема Сбера)</span></h4>
+        <div class="x">E-commerce №3 в России.</div>
+        <ul>
+          <li>B2B-маркетинг привлечения продавцов: <b>+350% продавцов год к году</b>, <b>50&nbsp;000 продавцов</b> на платформе.</li>
+          <li>С <b>Минэкономразвития России</b> — федеральная программа поддержки предпринимателей на базе центров «Мой бизнес» в <b>86 регионах</b>: стратегия привлечения, материалы, региональная коммуникация — с нуля.</li>
+          <li>Федеральный марафон <b>«Мегасреда» в 20 городах</b> — от концепции и логистики до контента и PR; <b>1&nbsp;млн+ просмотров</b>.</li>
+          <li>«Сделано в России»: бренд-программа, онбординг, видеокампания — <b>от 0 до 2&nbsp;000 компаний</b>.</li>
+          <li>Социальный маркетплейс для производителей с ограниченными физическими возможностями: позиционирование, UX, PR-кампания.</li>
+          <li><b>3&nbsp;млрд&nbsp;₽ чистой прибыли, Q4 2023.</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="dr">
+      <div class="p">2022 — 2023<span>Узбекистан · Казахстан · ЮВА</span></div>
+      <div>
+        <h4>Independent Adviser · <span class="c">AdTech / MarTech / EduTech</span></h4>
+        <ul><li>MyDars, HiTarget (Индонезия); <b>20+ партнёров</b>; локализация продуктов для ЮВА.</li></ul>
+      </div>
+    </div>
+    <div class="dr">
+      <div class="p">2020 — 2022<span>Россия и СНГ</span><div class="m"><i>GMV $48M</i><i>ROI 25×</i><i>120+ медиа</i></div></div>
+      <div>
+        <h4>Head of O2O &amp; New Business · <span class="c">Alibaba Group — AliExpress Россия и СНГ</span></h4>
+        <ul>
+          <li>Партнёрства: <b>Альфа-Банк, Тинькофф, МТС Банк, МегаФон, Билайн, Роснефть</b> и <b>120+ медиахолдингов</b>.</li>
+          <li><b>GMV $48M (+100% год к году)</b>, <b>новые покупатели +185%</b>, средний <b>ROI кампаний 25×</b>.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dr">
+      <div class="p">2018 — 2020<span>Шанхай · Гонконг</span></div>
+      <div>
+        <h4>Co-founder · <span class="c">O.F.D Creative Agency</span></h4>
+        <ul>
+          <li>Совместный проект китайской и российской команд: рекламные решения для продвижения бизнеса на рынках Китая и России. Клиенты: <b>FOREO, DECATHLON, Bank of China, WWE, CDEK</b>.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="dr">
+      <div class="p">2015 — 2017<span>Москва · Шанхай</span></div>
+      <div>
+        <h4>Head of Commerce &amp; BD · <span class="c">Data Centric Alliance</span></h4>
+        <ul><li>Медиазакупки и развитие бизнеса в Азии; <b>Google HK, Yahoo HK, Tencent, Ctrip, Baidu</b>.</li></ul>
+      </div>
+    </div>
+    <div class="dr">
+      <div class="p">2013 — 2015<span>КНР · ЮВА</span></div>
+      <div>
+        <h4>BD Manager — КНР / ЮВА · <span class="c">CityAds Media</span></h4>
+        <ul><li>Performance- и аффилиат-маркетинг (CPA / CPC / CPL), Китай и ЮВА; Sasa (Гонконг).</li></ul>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="card" style="flex:none; padding-top:7px; padding-bottom:7px">
+    <div class="ct"><h3>Навыки</h3><span class="sub">4 измерения</span><span class="tip">Подсказка дня: <b>千里之行，始于足下</b> — «Путь в тысячу ли начинается с первого шага»</span></div>
+    <div class="skills">
+      <div><h4>business_development</h4><p>Стратегия выхода на рынки, партнёрства и альянсы, переговоры с первыми лицами, BD Asia &amp; CIS, новые направления</p></div>
+      <div><h4>marketing</h4><p>B2B Marketing, Demand Generation, Performance, Product Marketing, Sales Enablement, бренд-программы</p></div>
+      <div><h4>tech_data</h4><p>E-commerce и маркетплейсы, AdTech / MarTech, Marketing Automation, CRM &amp; Analytics, O2O</p></div>
+      <div><h4>communications</h4><p>GR и госпрограммы, федеральные мероприятия, PR · 50+ выставок и форумов в РФ и СНГ</p></div>
+    </div>
+  </div>
+
+  <div class="row" style="flex:1; min-height:0">
+    <div class="card" style="flex:1">
+      <div class="ct"><h3>Журнал событий</h3><span class="sub">сцена и медиа</span></div>
+      <div style="display:grid; grid-template-columns: 1fr 124px; gap: 10px; margin-top: 3px">
+        <div>
+          <div class="ev"><span class="y">2024</span><span><b>Russian Retail Show 2024</b> — спикер</span></div>
+          <div class="ev"><span class="y">2024</span><span><b>Amber Forum 2024</b> — панельная дискуссия</span></div>
+          <div class="ev"><span class="y">2024</span><span><b>«Саммит производителей»</b>, Иркутск — панель</span></div>
+          <div class="ev"><span class="y">2025</span><span><b>Russian Retail Week 2025</b> · <b>форум ШОС 2025</b></span></div>
+          <div class="ev"><span class="y">РФ</span><span>федеральный марафон <b>«Мегасреда»</b></span></div>
+        </div>
+        <div class="card cam" style="width:auto; border-radius:8px">
+          <img src="img/cam-rrs.jpg" alt="Остап Доценко на панели Russian Retail Show 2024" style="object-position: 50% 45%">
+          <div class="ov" style="top:6px; left:6px; right:6px"><span class="rec"><i></i>CAM 02</span></div>
+          <div class="ov" style="bottom:6px; left:6px; right:6px"><span>RRS 2024</span></div>
+        </div>
+      </div>
+      <div class="ct" style="margin-top:4px"><h3 style="font-size:11.5px">Упоминания в СМИ</h3></div>
+      <ul class="lst">
+        <li><b>РБК</b> — интервью «Главное — знать матчасть и не бояться»; <b>РБК Отрасли</b></li>
+        <li><b>Сбер Бизнес</b> — гайд «Маркетплейсы: большая инструкция по заработку»</li>
+        <li><b>ТАСС</b> — Ульяновская область и Мегамаркет: региональная витрина</li>
+        <li><b>«Мой бизнес»</b> — марафон, 1&nbsp;млн+ просмотров</li>
+      </ul>
+    </div>
+    <div class="card" style="width:248px; flex:none">
+      <div class="ct"><h3>Языки</h3><span class="sub">шкала CEFR</span></div>
+      <div id="langs"></div>
+      <div class="scale"><span></span><div><span>A1</span><span>A2</span><span>B1</span><span>B2</span><span>C1</span><span>C2</span></div><span></span></div>
+      <div class="ct" style="margin-top:6px"><h3>Образование</h3></div>
+      <ul class="lst" style="margin-top:0">
+        <li>Гражданское право — МИУ</li>
+        <li>Преподаватель корейского языка — лицей при ТашГИВ</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ftr"><span><b>Полная деловая версия и версия для ATS — по запросу</b></span><span>ostapdotcenko.ru · Telegram @ostapdotcenko · стр. 2 / 2</span></div>
+</section>
+
+<script>
+// Все графики — только из чисел RESUME-MASTER.md; никаких промежуточных точек.
+const C = { s1: '#2a78d6', s1w: 'rgba(42,120,214,0.10)', s1t: '#dbe7f7', s2: '#eb6834', s3: '#1baf7a', ink: '#0B1220', ink2: '#3D4757',
+  muted: '#586274', grid: '#E6E8EC', axis: '#C3C7CE', surf: '#FFFFFF' };
+const NS = 'http://www.w3.org/2000/svg';
+const el = (svg, tag, attrs, text) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (text != null) e.textContent = text; svg.appendChild(e); return e; };
+const hbar = (x0, y, w, h, r = 4) => `M${x0},${y} H${x0 + w - r} A${r},${r} 0 0 1 ${x0 + w},${y + r} V${y + h - r} A${r},${r} 0 0 1 ${x0 + w - r},${y + h} H${x0} Z`;
+
+// 1. Рост, % — горизонтальные полосы, одна серия (подписи слева, значения на концах)
+(() => {
+  const svg = document.getElementById('growth'), W = svg.getBoundingClientRect().width;
+  const data = [['Продавцы, г/г', 350], ['Новые покупатели', 185], ['GMV, г/г', 100]];
+  const x0 = 114, plotW = W - x0 - 44, max = 400, sx = v => x0 + v / max * plotW, rowH = 28, top = 2, barH = 14;
+  for (let v = 0; v <= max; v += 100) {
+    el(svg, 'line', { x1: sx(v), x2: sx(v), y1: top, y2: top + rowH * data.length, stroke: v ? C.grid : C.axis, 'stroke-width': 1 });
+    if (v % 200 === 0) el(svg, 'text', { x: sx(v), y: top + rowH * data.length + 13, 'font-size': 10.5, fill: C.muted, 'text-anchor': 'middle', 'font-family': 'JBMono' }, v ? v + '%' : '0');
+  }
+  data.forEach(([lab, v], i) => {
+    const y = top + i * rowH + (rowH - barH) / 2;
+    el(svg, 'text', { x: 0, y: y + 11, 'font-size': 11, fill: C.ink2 }, lab);
+    el(svg, 'path', { d: hbar(x0, y, sx(v) - x0, barH), fill: C.s1 });
+    el(svg, 'text', { x: sx(v) + 5, y: y + 11.5, 'font-size': 12, 'font-weight': 700, fill: C.ink }, '+' + v + '%');
+  });
+})();
+
+// 2. ROI 25× — полукруглая шкала 0–25, подписи снаружи, стрелка в упоре
+(() => {
+  const svg = document.getElementById('gauge'), W = svg.getBoundingClientRect().width;
+  const cx = W / 2, cy = 78, R = 52, max = 25, ang = v => Math.PI - v / max * Math.PI;
+  const pt = (v, r) => [cx + Math.cos(ang(v)) * r, cy - Math.sin(ang(v)) * r];
+  const arc = (v0, v1, r) => { const [x0, y0] = pt(v0, r), [x1, y1] = pt(v1, r); return `M${x0},${y0} A${r},${r} 0 0 1 ${x1},${y1}`; };
+  el(svg, 'path', { d: arc(0, 25, R), stroke: C.s1, 'stroke-width': 11, fill: 'none', 'stroke-linecap': 'butt' });
+  for (let v = 0; v <= max; v += 5) {
+    const [a, b] = pt(v, R + 7), [c, d] = pt(v, R + 11), [tx, ty] = pt(v, R + 19);
+    el(svg, 'line', { x1: a, y1: b, x2: c, y2: d, stroke: C.axis, 'stroke-width': 1 });
+    el(svg, 'text', { x: tx, y: ty + 3.5, 'font-size': 10.5, fill: C.muted, 'text-anchor': v < 12 ? (v === 10 ? 'end' : 'end') : (v > 13 ? 'start' : 'middle'), 'font-family': 'JBMono' }, v);
+  }
+  const [nx, ny] = pt(25, R - 9);
+  el(svg, 'line', { x1: cx, y1: cy, x2: nx, y2: ny, stroke: C.ink, 'stroke-width': 2, 'stroke-linecap': 'round' });
+  el(svg, 'circle', { cx, cy, r: 5, fill: C.ink, stroke: C.surf, 'stroke-width': 2 });
+  el(svg, 'text', { x: cx, y: cy - 15, 'font-size': 24, 'font-weight': 700, fill: C.ink, 'text-anchor': 'middle', 'letter-spacing': '-0.02em' }, '25×');
+})();
+
+// 3. «Сделано в России» 0 → 2 000 — две точки (старт и 2024), без промежуточных
+(() => {
+  const svg = document.getElementById('slope'), W = svg.getBoundingClientRect().width;
+  const L = 38, R = W - 14, T = 22, B = 96, max = 2000, sy = v => B - v / max * (B - T);
+  [0, 1000, 2000].forEach(v => {
+    el(svg, 'line', { x1: L, x2: R, y1: sy(v), y2: sy(v), stroke: v ? C.grid : C.axis, 'stroke-width': 1 });
+    el(svg, 'text', { x: L - 6, y: sy(v) + 3.5, 'font-size': 10.5, fill: C.muted, 'text-anchor': 'end', 'font-family': 'JBMono' }, v ? v.toLocaleString('ru-RU') : '0');
+  });
+  const p0 = [L + 14, sy(0)], p1 = [R - 10, sy(2000)];
+  el(svg, 'path', { d: `M${p0[0]},${p0[1]} L${p1[0]},${p1[1]} L${p1[0]},${B} Z`, fill: C.s1w });
+  el(svg, 'line', { x1: p0[0], y1: p0[1], x2: p1[0], y2: p1[1], stroke: C.s1, 'stroke-width': 2, 'stroke-linecap': 'round' });
+  [p0, p1].forEach(([x, y]) => el(svg, 'circle', { cx: x, cy: y, r: 4.5, fill: C.s1, stroke: C.surf, 'stroke-width': 2 }));
+  el(svg, 'text', { x: p1[0] - 8, y: p1[1] - 8, 'font-size': 12, 'font-weight': 700, fill: C.ink, 'text-anchor': 'end' }, '2 000 компаний');
+  el(svg, 'text', { x: p0[0], y: B + 14, 'font-size': 10.5, fill: C.muted, 'text-anchor': 'middle', 'font-family': 'JBMono' }, 'старт');
+  el(svg, 'text', { x: p1[0], y: B + 14, 'font-size': 10.5, fill: C.muted, 'text-anchor': 'middle', 'font-family': 'JBMono' }, '2024');
+})();
+
+// 4. Гант: периоды ролей (2013 — н. в.), цвет — тип роли
+(() => {
+  const root = document.getElementById('gantt');
+  const Y0 = 2013, Y1 = 2027.7, NOW = 2026.85;
+  const rows = [
+    ['Собственник и основатель', 'Shanghai Pinnacle Technology', 2025, NOW, 's2', '2025 — н. в.', 'форум Мегамаркета 1 200+ участников', 'L'],
+    ['Head of B2B Marketing', 'Мегамаркет (экосистема Сбера)', 2023, 2025, 's1', '2023 — 2025', '+350% продавцов г/г · 86 регионов', 'L'],
+    ['Independent Adviser', 'AdTech / MarTech / EduTech', 2022, 2023, 's3', '2022 — 2023', '20+ партнёров · Узбекистан, Казахстан, ЮВА', 'L'],
+    ['Head of O2O & New Business', 'Alibaba Group — AliExpress РФ и СНГ', 2020, 2022, 's1', '2020 — 2022', 'GMV $48M · ROI 25×', 'L'],
+    ['Co-founder', 'O.F.D Creative Agency', 2018, 2020, 's2', '2018 — 2020', 'Шанхай / Гонконг', 'R'],
+    ['Head of Commerce & BD', 'Data Centric Alliance', 2015, 2017, 's1', '2015 — 2017', 'Google HK, Tencent, Baidu', 'R'],
+    ['BD Manager — КНР / ЮВА', 'CityAds Media', 2013, 2015, 's1', '2013 — 2015', 'CPA / CPC / CPL · Китай и ЮВА', 'R'],
+  ];
+  const pct = y => ((y - Y0) / (Y1 - Y0) * 100);
+  let html = '<div class="g-grid">';
+  for (let y = Y0; y <= 2025; y += 2) html += `<i style="left:${pct(y)}%"></i>`;
+  html += `<i class="now" style="left:${pct(NOW)}%"></i></div>`;
+  rows.forEach(([role, co, a, b, s, per, res, side]) => {
+    const txt = `<b>${per}</b> · ${res}`;
+    const pos = side === 'L' ? `right:${100 - pct(a) + 1.2}%` : `left:${pct(b) + 1.2}%`;
+    html += `<div class="g-row"><div class="g-lab"><b>${role.replace('&', '&amp;')}</b><span>${co}</span></div><div class="g-track">
+      <div class="g-bar" style="left:${pct(a)}%; width:${pct(b) - pct(a)}%; background:var(--${s})"></div>
+      <div class="g-txt" style="${pos}">${txt}</div></div></div>`;
+  });
+  html += '<div class="g-axis">';
+  for (let y = Y0; y <= 2025; y += 2) html += `<span style="left:${pct(y)}%">${y}</span>`;
+  html += `<span style="left:${pct(NOW)}%; color:#0B1220; font-weight:700">сейчас</span></div>`;
+  html += '<div class="legend"><span><i style="background:var(--s1)"></i>найм</span><span><i style="background:var(--s2)"></i>своё дело</span><span><i style="background:var(--s3)"></i>советник</span></div>';
+  root.innerHTML = html;
+})();
+
+// 5. Источники данных (соцсети, блоги, сайты)
+(() => {
+  const ok = '<span class="ok"><svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="6" fill="#0ca30c"/><path d="M3.2 6.2l1.8 1.8 3.8-3.8" stroke="#fff" stroke-width="1.6" fill="none"/></svg>подключено</span>';
+  const rows = [
+    ['WEB', 'ostapdotcenko.ru', 'сайт · RU · EN · <span class="zh" style="display:inline">中文</span>', 1],
+    ['BLOG', 'ostapdotcenko.ru/blog', 'каждый день · 3 языка', 1],
+    ['IG', '@ostap.dotsenko', 'Instagram'],
+    ['TG', '@ostapdotcenko', 'Telegram'],
+    ['in', 'Ostap Dotsenko', 'LinkedIn'],
+    ['f', 'Ostap Dotsenko', 'Facebook'],
+    ['GTT', 'globaltechtour.ru', 'проект + блог'],
+    ['AR', 'aura-robotics.ru', 'проект + блог'],
+  ];
+  const tick = '<svg width="12" height="12" viewBox="0 0 12 12" aria-label="подключено"><circle cx="6" cy="6" r="6" fill="#0ca30c"/><path d="M3.2 6.2l1.8 1.8 3.8-3.8" stroke="#fff" stroke-width="1.6" fill="none"/></svg>';
+  document.getElementById('sources').innerHTML = rows.map(([ic, b, s, k]) =>
+    `<div class="src"><span class="ic${k ? ' k' : ''}">${ic}</span><div><b>${b}</b><span>${s}</span></div>${tick}</div>`).join('');
+})();
+
+// 6. Языки — по шкале CEFR (A1…C2), родной — полная полоса
+(() => {
+  const lv = { A1: 1, A2: 2, B1: 3, B2: 4, 'B2+': 4.5, C1: 5, C2: 6, 'родной': 6 };
+  const rows = [['Русский', 'родной'], ['English', 'C1'], ['中文', 'B2+'], ["O'zbek", 'B1'], ['한국어', 'A2']];
+  document.getElementById('langs').innerHTML = rows.map(([n, l]) =>
+    `<div class="lng"><span${/[㐀-￿]/.test(n) ? ' class="zh"' : ''}>${n}</span><div class="tr"><i style="width:${l === 'родной' ? 100 : (lv[l] - 0.5) / 6 * 100}%"></i></div><em>${l}</em></div>`).join('');
+})();
+</script>
+</body>
+</html>
