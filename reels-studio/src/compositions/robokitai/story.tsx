@@ -44,7 +44,7 @@ export type SBeat = {
   tag?: {text: string; at?: number; out?: number; icon?: "night" | "morning"};
   clock?: {text: string; at?: number};
   meter?: {label: string; at: number; from: number; to: number; dur?: number; text?: string; text2?: string; bad?: boolean};
-  counter?: {label: string; at: number; from: number; to: number; dur: number};
+  counter?: {label: string; at: number; from: number; to: number; dur: number; side?: "left" | "right"};
   stamps?: {text: string; at: number; x: number; y: number; rot?: number; color?: string; size?: number}[];
   // letter
   sos?: string;
@@ -255,12 +255,12 @@ const Meter: React.FC<NonNullable<SBeat["meter"]>> = ({label, at, from, to, dur 
   );
 };
 // счётчик (шаги, дни): подпись и большое число
-const Counter: React.FC<NonNullable<SBeat["counter"]>> = ({label, at, from, to, dur}) => {
+const Counter: React.FC<NonNullable<SBeat["counter"]>> = ({label, at, from, to, dur, side = "right"}) => {
   const {t} = useT();
   if (t < at) return null;
   const v = Math.round(from + (to - from) * p01(t, at, at + dur));
   return (
-    <div style={{position: "absolute", right: 84, top: 1080, padding: "10px 26px 12px", background: RK.lemon, border: `5px solid ${RK.ink}`, borderRadius: 22, boxShadow: `7px 7px 0 ${RK.ink}`, textAlign: "center", opacity: p01(t, at, at + 0.2)}}>
+    <div style={{position: "absolute", ...(side === "left" ? {left: 84} : {right: 84}), top: 1080, padding: "10px 26px 12px", background: RK.lemon, border: `5px solid ${RK.ink}`, borderRadius: 22, boxShadow: `7px 7px 0 ${RK.ink}`, textAlign: "center", opacity: p01(t, at, at + 0.2)}}>
       <div style={{fontFamily: MONO, fontWeight: 700, fontSize: 26, letterSpacing: "0.14em", color: RK.ink}}>{label.toUpperCase()}</div>
       <div style={{fontFamily: INTER, fontWeight: 800, fontSize: 96, lineHeight: 1, letterSpacing: "-0.04em", color: RK.ink}}>{v}</div>
     </div>
@@ -299,13 +299,13 @@ export const GuessStoryBeat: React.FC<BP> = ({P, B}) => {
     return (
       <div key={i} style={{position: "absolute", left: x, top: 900, width: w, padding: "26px 24px 30px", boxSizing: "border-box", background: RK.paper, border: `6px solid ${RK.ink}`, borderRadius: 30, boxShadow: `10px 10px 0 ${col}`, rotate: `${rot}deg`, scale: String(0.6 + 0.4 * s), opacity: Math.min(1, s * 2)}}>
         <div style={{fontFamily: INTER, fontWeight: 800, fontSize: n === 3 ? 120 : 150, lineHeight: 0.9, color: col, WebkitTextStroke: `5px ${RK.ink}`, paintOrder: "stroke fill"}}>{c.letter}</div>
-        <div style={{fontFamily: INTER, fontWeight: 800, fontSize: n === 3 ? 50 : 52, letterSpacing: "-0.03em", color: RK.ink, marginTop: 12, whiteSpace: "nowrap"}}>{c.name}</div>
+        <div style={{fontFamily: INTER, fontWeight: 800, fontSize: n === 3 ? (c.name.length > 8 ? 40 : 48) : 52, letterSpacing: "-0.03em", color: RK.ink, marginTop: 12, whiteSpace: "nowrap"}}>{c.name}</div>
         {c.role ? <div style={{fontFamily: MONO, fontWeight: 700, fontSize: n === 3 ? 28 : 32, color: RK.blue, marginTop: 2}}>{c.role}</div> : null}
       </div>
     );
   };
   const words = (B.q ?? "").split(" ");
-  const qTop = style === "pins" ? 300 : 560;
+  const qTop = style === "pins" ? 1310 : 560;
   return (
     <AbsoluteFill>
       <SceneBeat P={P} B={{...B, title: undefined, cards: undefined, alerts: [], tint: undefined, manager: undefined, stamps: undefined, meter: undefined, counter: undefined, tag: undefined, clock: undefined}} gray />

@@ -331,10 +331,10 @@ const doorPlan: WheelPlan = {
 };
 
 export const HOTEL_CAM: Record<HotelId, Cam> = {
-  hotelDesk: {pos: [2.4, 4.6, 8.6], target: [0.2, 1.9, -0.6], fov: 44},
-  hotelLift: {pos: [0.6, 4.6, 8.6], target: [1.2, 2.0, -0.6], fov: 50},
-  hotelNight: {pos: [1.6, 4.8, 9.6], target: [1.4, 2.0, -0.6], fov: 48},
-  hotelFix: {pos: [1.8, 4.6, 8.8], target: [1.8, 2.0, -0.6], fov: 48},
+  hotelDesk: {pos: [1.4, 3.9, 7.2], target: [-0.2, 2.0, -0.8], fov: 44},
+  hotelLift: {pos: [2.6, 4.6, 9.4], target: [2.3, 2.2, -0.8], fov: 46},
+  hotelNight: {pos: [2.0, 4.6, 9.8], target: [1.9, 2.1, -0.8], fov: 50},
+  hotelFix: {pos: [2.7, 4.6, 9.2], target: [2.4, 2.1, -0.8], fov: 48},
   hotelDoor: {pos: [2.6, 4.0, 6.6], target: [0.9, 2.0, -0.8], fov: 46},
 };
 export const hotelState = (w: HotelId, t: number) => {

@@ -9,6 +9,7 @@
 // - jiaoziScan — Скаут идёт вдоль ленты и сканирует: годные — лимонная метка, с вылезшим фаршем — красная;
 // - jiaoziFixed — «как руками» (складочки), аппарат с запасом, Кэрри привозит тесто, Арми упаковывает.
 import React from "react";
+import {BoxGeometry} from "three";
 import {ArmModel, HOME, type ArmKey} from "../../components/aura3d/AuraArm";
 import {DogModel} from "../../components/aura3d/AuraDog";
 import {WheelHumanoidModel, type WheelPlan} from "../../components/aura3d/AuraWheelHumanoid";
@@ -19,7 +20,7 @@ export type KitchenId = "lump" | "jiaoziFast" | "jiaoziJam" | "jiaoziScan" | "ji
 const LEMON = "#FFF65D";
 const RED = "#E5383B";
 const INK = "#262626";
-const STEEL = "#C9CFD4";
+const STEEL = "#AEB6BE";
 const DOUGH = "#F6EEDC";
 const MEAT = "#D98C8C";
 const BELT_Y = 1.6;
@@ -31,7 +32,7 @@ const rnd = (i: number, k = 0) => {
   const x = Math.sin(i * 127.1 + k * 311.7) * 43758.5453;
   return x - Math.floor(x);
 };
-const Steel: React.FC = () => <meshStandardMaterial color={STEEL} metalness={0.85} roughness={0.28} />;
+const Steel: React.FC = () => <meshStandardMaterial color={STEEL} metalness={0.7} roughness={0.35} />;
 
 // пельмень: полукупол теста; pleat — складочки «как руками»; leak — фарш вылез из шва
 export const Dumpling: React.FC<{p: V3; yaw?: number; pleat?: boolean; leak?: boolean; s?: number; frost?: number}> = ({p, yaw = 0, pleat, leak, s = 1, frost = 0}) => (
@@ -58,15 +59,16 @@ export const Dumpling: React.FC<{p: V3; yaw?: number; pleat?: boolean; leak?: bo
 );
 
 // ===== линия =====
-const LINE_X0 = -6.2;
-const FORM_X = -1.6;
-const FREEZER: V3 = [3.4, 0, -0.2];
-const Line: React.FC<{t: number; speed: number; pleat?: boolean; drum?: number; freezerR?: number; spin?: number}> = ({t, speed, pleat, drum = 1, freezerR = 1.6, spin = 0.5}) => (
+const LINE_X0 = -5.0;
+const HOPPER_X = -2.7;
+const FORM_X = -1.3;
+const FREEZER: V3 = [3.2, 0, -0.2];
+const Line: React.FC<{t: number; speed: number; pleat?: boolean; drum?: number; freezerR?: number; spin?: number}> = ({t, speed, pleat, drum = 1, freezerR = 1.35, spin = 0.5}) => (
   <>
     {/* станина ленты и лента */}
     <mesh position={[(LINE_X0 + FREEZER[0] - 1.4) / 2, BELT_Y - 0.12, 0]}>
       <boxGeometry args={[FREEZER[0] - 1.4 - LINE_X0, 0.16, 1.2]} />
-      <meshStandardMaterial color="#3A3D42" roughness={0.6} />
+      <meshStandardMaterial color="#2B2E33" roughness={0.6} />
     </mesh>
     {Array.from({length: 22}, (_, i) => {
       const len = FREEZER[0] - 1.4 - LINE_X0;
@@ -78,7 +80,7 @@ const Line: React.FC<{t: number; speed: number; pleat?: boolean; drum?: number; 
         </mesh>
       );
     })}
-    {[LINE_X0 + 0.3, -3.4, FORM_X, 0.8].map((x) => (
+    {[LINE_X0 + 0.3, HOPPER_X, FORM_X, 0.8].map((x) => (
       <group key={x}>
         {[-0.5, 0.5].map((z) => (
           <mesh key={z} position={[x, (BELT_Y - 0.2) / 2, z]}>
@@ -106,7 +108,7 @@ const Line: React.FC<{t: number; speed: number; pleat?: boolean; drum?: number; 
       <meshStandardMaterial color={DOUGH} roughness={0.8} />
     </mesh>
     {/* бункер с фаршем */}
-    <group position={[-3.4, BELT_Y + 1.8, 0]}>
+    <group position={[HOPPER_X, BELT_Y + 1.8, 0]}>
       <mesh>
         <cylinderGeometry args={[0.8, 0.25, 1.2, 24, 1, true]} />
         <meshStandardMaterial color={STEEL} metalness={0.85} roughness={0.28} side={2} />
@@ -145,12 +147,20 @@ const Line: React.FC<{t: number; speed: number; pleat?: boolean; drum?: number; 
     <group position={FREEZER}>
       <mesh position={[0, 2.3, 0]}>
         <cylinderGeometry args={[freezerR, freezerR, 4.6, 32, 1, true]} />
-        <meshStandardMaterial color="#CFE6F5" transparent opacity={0.32} roughness={0.2} side={2} />
+        <meshStandardMaterial color="#8FC8EC" transparent opacity={0.42} roughness={0.2} side={2} />
       </mesh>
-      <mesh position={[0, 4.65, 0]}>
-        <cylinderGeometry args={[freezerR + 0.05, freezerR + 0.05, 0.12, 32]} />
-        <meshStandardMaterial color="#E8F2F8" metalness={0.4} roughness={0.3} />
-      </mesh>
+      {[0.06, 4.65].map((y) => (
+        <mesh key={y} position={[0, y, 0]}>
+          <cylinderGeometry args={[freezerR + 0.08, freezerR + 0.08, 0.16, 32]} />
+          <meshStandardMaterial color="#3A4652" metalness={0.4} roughness={0.4} />
+        </mesh>
+      ))}
+      {[0.8, 2.37, 3.94, 5.5].map((a) => (
+        <mesh key={a} position={[Math.cos(a) * (freezerR + 0.06), 2.35, Math.sin(a) * (freezerR + 0.06)]}>
+          <boxGeometry args={[0.1, 4.6, 0.1]} />
+          <meshStandardMaterial color="#3A4652" />
+        </mesh>
+      ))}
       {Array.from({length: 30}, (_, i) => {
         const a = i * 0.62 + t * spin;
         const y = 0.8 + i * 0.12;
@@ -158,7 +168,7 @@ const Line: React.FC<{t: number; speed: number; pleat?: boolean; drum?: number; 
           <group key={i}>
             <mesh position={[Math.cos(a) * (freezerR - 0.45), y, Math.sin(a) * (freezerR - 0.45)]} rotation={[0, -a, 0]}>
               <boxGeometry args={[0.5, 0.03, 0.62]} />
-              <meshStandardMaterial color="#8FA2B0" metalness={0.5} roughness={0.4} />
+              <meshStandardMaterial color="#4E5E6B" metalness={0.5} roughness={0.4} />
             </mesh>
             {i % 2 ? <Dumpling p={[Math.cos(a) * (freezerR - 0.45), y + 0.02, Math.sin(a) * (freezerR - 0.45)]} yaw={-a} pleat={pleat} frost={i / 30} s={0.9} /> : null}
           </group>
@@ -180,7 +190,7 @@ const BeltDumplings: React.FC<{t: number; speed: number; pleat?: boolean; leakEv
   const x0 = FORM_X + 0.9;
   const x1 = FREEZER[0] - 1.5;
   const len = x1 - x0;
-  const n = 9;
+  const n = 6;
   return (
     <>
       {Array.from({length: n * 2}, (_, i) => {
@@ -192,10 +202,10 @@ const BeltDumplings: React.FC<{t: number; speed: number; pleat?: boolean; leakEv
         const mark = tick ? tick(x) : 0;
         return (
           <group key={i}>
-            <Dumpling p={[x, BELT_Y, row ? 0.25 : -0.25]} yaw={0.1 * (rnd(id, row) - 0.5)} pleat={pleat} leak={leak} />
+            <Dumpling p={[x, BELT_Y, row ? 0.26 : -0.26]} yaw={0.1 * (rnd(id, row) - 0.5)} pleat={pleat} leak={leak} s={1.45} />
             {mark ? (
-              <mesh position={[x, BELT_Y + 0.32, row ? 0.25 : -0.25]}>
-                <sphereGeometry args={[0.07, 12, 8]} />
+              <mesh position={[x, BELT_Y + 0.42, row ? 0.26 : -0.26]}>
+                <sphereGeometry args={[0.09, 12, 8]} />
                 <meshBasicMaterial color={leak ? RED : LEMON} />
               </mesh>
             ) : null}
@@ -206,7 +216,7 @@ const BeltDumplings: React.FC<{t: number; speed: number; pleat?: boolean; leakEv
   );
 };
 // упаковка: весы, пакеты, Арми кладёт пакеты в короб
-const PACK_ARM: V3 = [6.6, 0, 1.6];
+const PACK_ARM: V3 = [6.0, 0, 1.4];
 const packPlan = (): {keys: ArmKey[]} => {
   const keys: ArmKey[] = [{at: 0, j: HOME, grip: 0.5}];
   const pick: V3 = [-0.9, 1.3, -0.9];
@@ -224,16 +234,16 @@ const packPlan = (): {keys: ArmKey[]} => {
 };
 const Packing: React.FC<{t: number}> = ({t}) => (
   <>
-    <mesh position={[5.4, 0.6, 0.3]}>
+    <mesh position={[5.2, 0.6, 0.3]}>
       <boxGeometry args={[1.4, 1.2, 1.2]} />
       <Steel />
     </mesh>
-    <mesh position={[5.4, 1.22, 0.75]}>
+    <mesh position={[5.2, 1.22, 0.75]}>
       <boxGeometry args={[0.5, 0.2, 0.02]} />
       <meshStandardMaterial color="#121214" emissive="#2FD06A" emissiveIntensity={0.6} />
     </mesh>
     {[0, 1, 2].map((k) => (
-      <mesh key={k} position={[5.4 + (k - 1) * 0.42, 1.36, 0.2]}>
+      <mesh key={k} position={[5.2 + (k - 1) * 0.42, 1.36, 0.2]}>
         <boxGeometry args={[0.36, 0.22, 0.5]} />
         <meshStandardMaterial color="#FFFFFF" transparent opacity={0.75} roughness={0.2} />
       </mesh>
@@ -244,11 +254,11 @@ const Packing: React.FC<{t: number}> = ({t}) => (
 );
 
 export const KITCHEN_CAM: Record<KitchenId, Cam> = {
-  lump: {pos: [1.3, 2.6, 2.6], target: [0, 0.95, 0], fov: 40},
-  jiaoziFast: {pos: [-0.6, 5.6, 10.8], target: [0.2, 1.8, 0], fov: 48},
-  jiaoziJam: {pos: [0.4, 4.4, 8.2], target: [1.2, 1.8, 0], fov: 44},
-  jiaoziScan: {pos: [-0.4, 4.2, 8.0], target: [0.2, 1.4, 0.4], fov: 46},
-  jiaoziFixed: {pos: [0.6, 5.8, 11.6], target: [0.8, 1.8, 0], fov: 50},
+  lump: {pos: [1.0, 2.5, 2.3], target: [0, 0.95, 0], fov: 40},
+  jiaoziFast: {pos: [1.2, 5.4, 11.0], target: [1.2, 1.9, 0], fov: 52},
+  jiaoziJam: {pos: [1.0, 4.0, 7.2], target: [1.4, 1.8, 0], fov: 46},
+  jiaoziScan: {pos: [-0.8, 3.8, 7.6], target: [-0.4, 1.5, 0.6], fov: 46},
+  jiaoziFixed: {pos: [0.6, 5.6, 11.8], target: [0.8, 1.9, 0.2], fov: 54},
 };
 export const kitchenState = (w: KitchenId, t: number) => {
   if (w === "jiaoziJam") return {alarm: t > 3.6};
@@ -257,10 +267,10 @@ export const kitchenState = (w: KitchenId, t: number) => {
 
 const Floor: React.FC = () => (
   <>
-    <MockFloor w={22} d={12} p={[0.4, 0, -0.6]} tone="#DCE1E3" />
+    <MockFloor w={22} d={12} p={[0.4, 0, -0.6]} tone="#C4C9CC" />
     <mesh position={[0.4, 2.8, -3.6]}>
       <boxGeometry args={[22, 5.6, 0.2]} />
-      <meshStandardMaterial color="#F1F3F2" roughness={0.9} />
+      <meshStandardMaterial color="#DCE6EA" roughness={0.9} />
     </mesh>
     {/* белая плитка на стене */}
     {Array.from({length: 18}, (_, i) => (
@@ -279,25 +289,29 @@ export const KitchenWorld: React.FC<{w: KitchenId; t: number}> = ({w, t}) => {
       <>
         <mesh position={[0, 0.4, 0]}>
           <boxGeometry args={[3.2, 0.8, 2.2]} />
-          <Steel />
+          <meshStandardMaterial color="#3A4652" metalness={0.5} roughness={0.4} />
         </mesh>
         <mesh position={[0, 0.82, 0]}>
           <boxGeometry args={[2.4, 0.04, 1.6]} />
-          <meshStandardMaterial color="#E8F2F8" metalness={0.3} roughness={0.3} />
+          <meshStandardMaterial color="#5C6E7C" metalness={0.4} roughness={0.35} />
         </mesh>
         <group position={[0, 0.84, 0]}>
           {Array.from({length: 13}, (_, i) => (
-            <Dumpling key={i} p={[(rnd(i, 1) - 0.5) * 0.9, 0.04 + rnd(i, 2) * 0.16, (rnd(i, 3) - 0.5) * 0.6]} yaw={rnd(i, 4) * 3} frost={1} s={1.3} />
+            <Dumpling key={i} p={[(rnd(i, 1) - 0.5) * 0.9, 0.04 + rnd(i, 2) * 0.16, (rnd(i, 3) - 0.5) * 0.6]} yaw={rnd(i, 4) * 3} s={1.3} pleat />
           ))}
           <mesh position={[0, 0.12, 0]} scale={[0.6, 0.22, 0.4]}>
             <sphereGeometry args={[1, 24, 16]} />
-            <meshStandardMaterial color="#EEF2F2" roughness={0.6} />
+            <meshStandardMaterial color={DOUGH} roughness={0.7} />
           </mesh>
-          {/* пачка */}
+          {/* пачка: прозрачная, края чернилами */}
           <mesh position={[0, 0.2, 0]}>
             <boxGeometry args={[1.5, 0.5, 1.0]} />
-            <meshStandardMaterial color="#FFFFFF" transparent opacity={0.22} roughness={0.1} />
+            <meshStandardMaterial color="#FFFFFF" transparent opacity={0.18} roughness={0.1} />
           </mesh>
+          <lineSegments position={[0, 0.2, 0]}>
+            <edgesGeometry args={[new BoxGeometry(1.5, 0.5, 1.0)]} />
+            <lineBasicMaterial color={INK} />
+          </lineSegments>
         </group>
         {Array.from({length: 24}, (_, i) => (
           <mesh key={`f${i}`} position={[(rnd(i, 5) - 0.5) * 3, 0.9 + ((rnd(i, 6) * 2 + t * 0.2) % 2), (rnd(i, 7) - 0.5) * 2]}>
@@ -322,7 +336,7 @@ export const KitchenWorld: React.FC<{w: KitchenId; t: number}> = ({w, t}) => {
   if (w === "jiaoziJam") {
     // формовка выдаёт быстро, аппарат принимает медленно: перед ним растёт куча
     const heap = Math.min(1, Math.max(0, (t - 0.6) / 4.4));
-    const n = Math.floor(6 + heap * 34);
+    const n = Math.floor(8 + heap * 46);
     const alarm = t > 3.6;
     return (
       <>
@@ -330,12 +344,12 @@ export const KitchenWorld: React.FC<{w: KitchenId; t: number}> = ({w, t}) => {
         <Line t={t} speed={2.0} drum={2} spin={0.15} />
         <BeltDumplings t={t} speed={2.0} />
         {Array.from({length: n}, (_, i) => {
-          const r = Math.sqrt(rnd(i, 1)) * (0.25 + heap * 0.45);
+          const r = Math.sqrt(rnd(i, 1)) * (0.3 + heap * 0.55);
           const a = rnd(i, 2) * 6.28;
-          return <Dumpling key={i} p={[FREEZER[0] - 1.55 + Math.cos(a) * r * 0.8, BELT_Y + 0.02 + (1 - r / 0.7) * heap * 0.5 + rnd(i, 3) * 0.08, Math.sin(a) * r]} yaw={rnd(i, 4) * 3} />;
+          return <Dumpling key={i} p={[FREEZER[0] - 1.6 + Math.cos(a) * r * 0.8, BELT_Y + 0.02 + Math.max(0, 1 - r / 0.85) * heap * 0.7 + rnd(i, 3) * 0.1, Math.sin(a) * r]} yaw={rnd(i, 4) * 3} s={1.4} />;
         })}
-        <mesh position={[FREEZER[0] - 1.55, BELT_Y + 0.01, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-          <ringGeometry args={[0.85, 0.97, 40]} />
+        <mesh position={[FREEZER[0] - 1.6, BELT_Y + 0.01, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+          <ringGeometry args={[0.95, 1.08, 40]} />
           <meshBasicMaterial color={alarm ? RED : LEMON} />
         </mesh>
         <Packing t={t * 0.3} />
@@ -343,17 +357,17 @@ export const KitchenWorld: React.FC<{w: KitchenId; t: number}> = ({w, t}) => {
     );
   }
   if (w === "jiaoziScan") {
-    const dx = -4.4 + Math.min(1, t / 6.2) * 6.4;
+    const dx = -3.6 + Math.min(1, t / 6.2) * 5.2;
     return (
       <>
         <Floor />
         <Line t={t} speed={0.9} pleat />
         <BeltDumplings t={t} speed={0.9} pleat leakEvery={7} tick={(x) => (x < dx + 0.4 ? 1 : 0)} />
         <DogModel t={t} plan={{stays: [], path: (tt) => {
-          const x = -4.4 + Math.min(1, tt / 6.2) * 6.4;
-          return {x, z: 1.5, yaw: 0, dist: x + 4.4, speed: tt < 6.2 ? 1.0 : 0, moving: tt < 6.2};
+          const x = -3.6 + Math.min(1, tt / 6.2) * 5.2;
+          return {x, z: 1.4, yaw: 0, dist: x + 3.6, speed: tt < 6.2 ? 0.85 : 0, moving: tt < 6.2};
         }}} />
-        <group position={[dx, 0, 1.5]}>
+        <group position={[dx, 0, 1.4]}>
           <LidarSweep t={t} range={2.0} y={0.45} o={1} />
         </group>
       </>
@@ -362,13 +376,13 @@ export const KitchenWorld: React.FC<{w: KitchenId; t: number}> = ({w, t}) => {
   // jiaoziFixed: «как руками», аппарат с запасом, Кэрри привозит тесто по рецепту, Арми упаковывает
   const plan: WheelPlan = {
     stays: [
-      {at: 0, x: -9.0, z: 2.2, yaw: 0},
-      {at: 3.0, x: -6.4, z: 1.6, yaw: 0},
-      {at: 3.8, x: -6.4, z: 1.6, yaw: Math.PI / 2},
+      {at: 0, x: -6.6, z: 3.4, yaw: 0},
+      {at: 2.6, x: -4.0, z: 3.0, yaw: 0},
+      {at: 3.4, x: -4.0, z: 3.0, yaw: Math.PI / 2},
     ],
     speed: 2.0,
     lift: [[0, 0.3]],
-    carry: [{at: -3, from: [-8.6, 1.5, 2.2], until: 4.8, to: [-6.4, 1.0, 0.85], s: [0.7, 0.4, 0.5]}],
+    carry: [{at: -3, from: [-6.2, 1.5, 3.4], until: 4.8, to: [-4.0, 1.42, 1.95], s: [0.7, 0.4, 0.5]}],
   };
   return (
     <>
@@ -376,6 +390,11 @@ export const KitchenWorld: React.FC<{w: KitchenId; t: number}> = ({w, t}) => {
       <Line t={t} speed={1.2} pleat freezerR={1.85} spin={0.6} />
       <BeltDumplings t={t} speed={1.2} pleat />
       <Packing t={t} />
+      {/* столик у тестораскатки — сюда Кэрри ставит тесто по рецепту клиента */}
+      <mesh position={[-4.0, 0.6, 1.95]}>
+        <boxGeometry args={[1.0, 1.2, 0.8]} />
+        <Steel />
+      </mesh>
       <WheelHumanoidModel skin="navy" t={t} plan={plan} />
     </>
   );

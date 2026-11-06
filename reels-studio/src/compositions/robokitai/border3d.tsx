@@ -367,6 +367,8 @@ export const BorderWorld: React.FC<{w: BorderId; t: number}> = ({w, t}) => {
           : null}
         {!moving ? <pointLight position={[3.6, 2.2, 1.0]} intensity={4 + 3 * Math.sin(t * 9)} distance={8} color={RED} /> : null}
         <Crate p={[0, CR[1] / 2, 0]} t={t} roll={moving ? Math.sin(t * 11) * 0.012 : 0} />
+        {/* свет внутри ящика: сквозь щели виден Шустрик */}
+        <pointLight position={[0.2, 1.1, 0.3]} intensity={2.2} distance={2.6} color="#FFF4C8" />
       </>
     );
   }

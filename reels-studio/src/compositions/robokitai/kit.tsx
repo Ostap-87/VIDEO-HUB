@@ -332,7 +332,8 @@ export const Title: React.FC<{x: number; y: number; w?: number; text: string; ma
         translate: `0 ${(1 - s) * 40}px`,
       }}
     >
-      <MarkLine text={text} mark={mark} p={p01(f, at + 8, at + 24, EO)} />
+      {/* на тёмном (ночь) светлый текст под лимонным маркером не читается — выделенная часть чернилами */}
+      <MarkLine text={text} mark={mark} p={p01(f, at + 8, at + 24, EO)} markStyle={color === RK.paper ? {color: RK.ink} : undefined} />
     </div>
   );
 };

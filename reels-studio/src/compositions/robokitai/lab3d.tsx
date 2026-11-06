@@ -195,7 +195,7 @@ const Battery: React.FC<{p: V3; level: number}> = ({p, level}) => {
     <group position={p}>
       <mesh>
         <boxGeometry args={[0.9, 0.42, 0.06]} />
-        <meshStandardMaterial color="#F8F6F3" />
+        <meshStandardMaterial color={INK} />
       </mesh>
       <mesh position={[0.5, 0, 0]}>
         <boxGeometry args={[0.1, 0.2, 0.06]} />
@@ -218,7 +218,7 @@ const fallK = (t: number) => {
 const LYING: HumanoidPlan = {stays: [{at: 0, x: -0.4, z: -0.8, yaw: FACE_CAM}]};
 
 export const LAB_CAM: Record<LabId, Cam> = {
-  labFall: {pos: [3.6, 4.4, 9.0], target: [0.2, 1.6, -0.2], fov: 42},
+  labFall: {pos: [2.8, 3.8, 7.4], target: [0.2, 1.4, 0.3], fov: 40},
   labLift: {pos: [3.2, 4.6, 7.6], target: [-0.2, 1.0, 0.4], fov: 42},
   labCup: {pos: [1.4, 3.8, 7.6], target: [0.4, 1.9, -0.4], fov: 40},
   labBattery: {pos: [0.4, 4.6, 9.0], target: [-1.8, 1.8, -0.8], fov: 46},
@@ -247,7 +247,7 @@ export const LabWorld: React.FC<{w: LabId; t: number}> = ({w, t}) => {
       <>
         <Room />
         <Faller plan={LYING} t={t} fall={1 - 0.07 * tug} />
-        <Worker3D x={1.0} z={2.0} yaw={Math.PI - 0.3} crouch={0.5 + 0.12 * tug} jacket={HOODIE} stripe={false} hat="hair" arms={0.25 + 0.2 * tug} />
+        <Worker3D x={-1.75} z={1.6} yaw={0.15} crouch={0.5 + 0.12 * tug} jacket={HOODIE} stripe={false} hat="hair" arms={0.25 + 0.2 * tug} />
       </>
     );
   }
@@ -257,26 +257,26 @@ export const LabWorld: React.FC<{w: LabId; t: number}> = ({w, t}) => {
     return (
       <>
         <Room />
-        <group position={[0.75, 0, 0.1]}>
-          <mesh position={[0, 1.15, 0]}>
+        <group position={[0.5, MAT.h, 0.1]}>
+          <mesh position={[0, 1.85, 0]}>
             <boxGeometry args={[1.0, 0.08, 1.2]} />
             <meshStandardMaterial color="#F1EDE6" />
           </mesh>
-          <mesh position={[0, 0.56, 0]}>
-            <boxGeometry args={[0.12, 1.12, 0.12]} />
+          <mesh position={[0, 0.92, 0]}>
+            <boxGeometry args={[0.12, 1.84, 0.12]} />
             <meshStandardMaterial color={INK} />
           </mesh>
           {/* чашка */}
-          <mesh position={[-0.05, 1.36, 0]}>
+          <mesh position={[-0.05, 2.06, 0]}>
             <cylinderGeometry args={[0.13, 0.11, 0.34, 20]} />
             <meshStandardMaterial color="#F26B1D" roughness={0.4} />
           </mesh>
-          <mesh position={[0.11, 1.38, 0]} rotation={[Math.PI / 2, 0, 0]}>
+          <mesh position={[0.11, 2.08, 0]} rotation={[Math.PI / 2, 0, 0]}>
             <torusGeometry args={[0.08, 0.025, 8, 16]} />
             <meshStandardMaterial color="#F26B1D" roughness={0.4} />
           </mesh>
           {miss ? (
-            <mesh position={[-0.05, 1.2, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+            <mesh position={[-0.05, 1.9, 0]} rotation={[-Math.PI / 2, 0, 0]}>
               <ringGeometry args={[0.24, 0.31, 32]} />
               <meshBasicMaterial color={RED} />
             </mesh>
@@ -298,7 +298,9 @@ export const LabWorld: React.FC<{w: LabId; t: number}> = ({w, t}) => {
         <pointLight position={[-5.0, 3.2, -0.6]} intensity={2.5} distance={7} color="#FFE2A8" />
         <Worker3D x={-5.0} z={-0.5} yaw={FACE_CAM + 0.2} crouch={0.38} jacket={HOODIE} stripe={false} hat="hair" arms={t > 1.2 && t < 2.6 ? 0.8 : 0.1} />
         <Faller plan={plan} t={t} stumble={sag} />
-        <Battery p={[0.4, 3.9, 0.2]} level={level} />
+        <group position={[1.5, 3.3, 0.6]} scale={1.9}>
+          <Battery p={[0, 0, 0]} level={level} />
+        </group>
       </>
     );
   }
@@ -311,7 +313,7 @@ export const LabWorld: React.FC<{w: LabId; t: number}> = ({w, t}) => {
         <group position={[0, MAT.h, 0]}>
           <HumanoidModel plan={plan} t={t} skin="navy" />
         </group>
-        <DogModel t={t} plan={{stays: [{at: -1, x: 0.4, z: 2.6, yaw: 0.3}], actions: [{at: 2.8, kind: "hop"}]}} />
+        <DogModel t={t} plan={{stays: [{at: -1, x: 2.9, z: 2.5, yaw: 0.6}], actions: [{at: 2.8, kind: "hop"}]}} />
       </>
     );
   }
