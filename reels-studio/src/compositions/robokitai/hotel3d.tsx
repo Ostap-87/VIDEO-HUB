@@ -5,7 +5,7 @@
 // - hotelDesk — холодное открытие: ресепшен ночью, администратор один, звонит телефон;
 // - hotelLift — лифт без модуля связи: Кэрри подъезжает, кнопка мигает красным, двери не открываются;
 // - hotelNight — ночь: администратор остаётся за стойкой, Кэрри едет к лифту с модулем (лимонный огонёк), двери открываются;
-// - hotelFix — седьмой этаж: Кэрри выезжает из лифта и едет по коридору к номеру;
+// - hotelFix — седьмой этаж: Кэрри выезжает из лифта и едет по коридору к номеру; Роли (днём помогает горничным) машет ей с бельём;
 // - hotelDoor — у номера: дверь открывается, гость забирает полотенца.
 import React from "react";
 import * as THREE from "three";
@@ -317,6 +317,13 @@ const fixPlan: WheelPlan = {
   gestures: [{at: 0.3, kind: "nod"}],
   carry: [holding([LIFT_X, 1.6, -2.4])],
 };
+// Роли днём: стоит у номера с коробом белья, машет и кивает Кэрри
+const rollyPlan: WheelPlan = {
+  stays: [{at: 0, x: 0.7, z: -0.75, yaw: -Math.PI / 2 + 0.5}],
+  lift: [[0, 0.35]],
+  gestures: [{at: 1.0, kind: "wave"}, {at: 4.6, kind: "nod"}],
+  carry: [holding([0.7, 1.6, -0.75])],
+};
 const DOOR_X = 0.4;
 const doorPlan: WheelPlan = {
   stays: [
@@ -391,6 +398,8 @@ export const HotelWorld: React.FC<{w: HotelId; t: number}> = ({w, t}) => {
         <Lift open={open} call="lemon" module={1} t={t} />
         <WheelHumanoidModel skin="navy" t={t} plan={fixPlan} />
         <Towels plan={fixPlan} c={c} t={t} />
+        <WheelHumanoidModel t={t} plan={rollyPlan} />
+        <Towels plan={rollyPlan} c={rollyPlan.carry![0]} t={t} />
       </>
     );
   }
