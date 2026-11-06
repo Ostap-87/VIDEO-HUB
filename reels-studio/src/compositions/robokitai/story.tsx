@@ -117,7 +117,7 @@ export const SceneBeat: React.FC<BP & {forceT?: number; gray?: boolean}> = ({B, 
         <NamePlate key={i} x={pl.x} y={pl.y} name={pl.name} role={pl.role} at={Math.round(pl.at * fps)} ax={pl.ax} ay={pl.ay} scale={0.85} />
       ))}
       {B.title ? (
-        <Title x={64} y={CARD_Y + 14} w={B.manager ? 600 : 952} text={B.title.text} mark={B.title.mark} at={Math.round((B.title.at ?? 0.4) * fps)} size={56} color={B.title.red ? RK.red : RK.ink} out={Math.round((B.title.out ?? firstCard) * fps)} />
+        <Title x={64} y={CARD_Y + 14} w={B.manager ? 600 : 952} text={B.title.text} mark={B.title.mark} at={Math.round((B.title.at ?? 0.4) * fps)} size={56} color={B.title.red ? RK.red : B.tint === "night" ? RK.paper : RK.ink} out={Math.round((B.title.out ?? firstCard) * fps)} />
       ) : null}
       {(B.cards ?? []).map((c, i) => (
         <SpecCard key={i} x={64} y={CARD_Y} w={B.manager ? 600 : 952} at={Math.round(c.at * fps)} out={c.out !== undefined ? Math.round(c.out * fps) : undefined} term={c.term} sub={c.sub} lines={c.lines} note={c.note?.toUpperCase()} tone={c.tone} size={44} />
@@ -219,7 +219,7 @@ export const BoardBeat: React.FC<BP> = ({B}) => {
       <Paper />
       <div style={{position: "absolute", left: 64, top: 330, width: 952, height: 1150, background: RK.paper, border: `6px solid ${RK.ink}`, borderRadius: 26, boxShadow: `12px 12px 0 ${RK.ink}`}}>
         <div style={{position: "absolute", left: 300, top: -30, width: 352, height: 44, background: RK.ink, borderRadius: 14}} />
-        <div style={{position: "absolute", left: 48, top: 56, right: 48, fontFamily: INTER, fontWeight: 800, fontSize: 66, letterSpacing: "-0.04em", color: RK.ink, opacity: p01(t, 0.1, 0.4)}}>{B.boardTitle}</div>
+        <div style={{position: "absolute", left: 48, top: 56, right: 48, fontFamily: INTER, fontWeight: 800, fontSize: (B.boardTitle ?? "").length > 20 ? 52 : 66, letterSpacing: "-0.04em", color: RK.ink, opacity: p01(t, 0.1, 0.4)}}>{B.boardTitle}</div>
         {crit.map((c, i) => {
           const at = 0.6 + i * step;
           const k = p01(t, at, at + 0.25, EO);

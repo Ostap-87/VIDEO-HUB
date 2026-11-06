@@ -361,9 +361,8 @@
    "tint": "night",
    "title": {
     "text": "Ночная смена: снова мимо",
-    "mark": "снова мимо",
     "at": 2.6,
-    "red": true
+    "red": false
    },
    "manager": {
     "mood": "despair",
@@ -385,9 +384,9 @@
    "world": "glare",
    "scout": {
     "at": 0.2,
-    "x": -2.5,
-    "z": 1.3,
-    "yaw": -0.4
+    "x": -1.6,
+    "z": 1.6,
+    "yaw": -2.3
    },
    "bulb": 3.0,
    "plates": [
@@ -437,8 +436,8 @@
   {
    "id": "board",
    "kind": "board",
-   "sec": 5.0,
-   "boardTitle": "Сначала захват, потом робот",
+   "sec": 6.5,
+   "boardTitle": "Сначала — захват",
    "criteria": [
     {
      "title": "1 · Деталь",
