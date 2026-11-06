@@ -25,7 +25,7 @@ export type RobokitaiProps = {
   music: {src: string; from?: number; volume: number; credit?: string};
   sec: Record<RKBeatId, number>;
   letter: {kicker: string; lines: CardLine[]; host: {name: string; role: string}};
-  map: {route: string[]; dots: string[]; kicker: string};
+  map: {route: string[]; dots: string[]; kicker: string; fromOff?: [number, number]}; // fromOff — сдвиг подписи начального города (близкие города не налезают)
   arrival: {title: string; mark?: string; heroes: RKHero[]};
   trial: {a: {term: string; sub?: string; lines: CardLine[]}; b: {term: string; sub?: string; lines: CardLine[]}; map: string};
   twist: {stuck: string; insight: CardLine; labels: {threshold: string; gap: string}; spec: {title: string; threshold: string; gap: string}; note: string};

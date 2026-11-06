@@ -200,6 +200,11 @@ TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts RobokitaiTrailer /
 TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts RobokitaiCarousel /dev/shm/rt/karta --sequence --image-format=jpeg --jpeg-quality=88 --props=props/robokitai/carousel-karta.json --bundle-cache=false
 # element-N.jpeg → finished-videos/карусели/robokitai-карта/NN.jpg (N+1); то же для carousel-komanda.json → robokitai-команда/
 ```
+Серии из статьи с драматургией — композиция `RobokitaiStory` (шаги — `beats` в props; серия 2 — `002-suzhou.json`, серия 3 — `003-shenzhen.json`):
+```bash
+TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts RobokitaiStory /dev/shm/e2out/out.mp4 --props=props/robokitai/002-suzhou.json --bundle-cache=false --concurrency=2 --timeout=240000 --crf=20
+# пробные кадры — RobokitaiStoryPreview с "frames" в props, --sequence --frames=0-<N-1> --scale=0.5
+```
 
 ## Пересборка готового ролика (вырезать кусок, новый звук)
 

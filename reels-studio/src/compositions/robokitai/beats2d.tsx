@@ -215,7 +215,7 @@ export const MapBeat: React.FC<{P: RobokitaiProps; k?: number}> = ({P, k = 1}) =
         ) : null}
       </svg>
       {/* подписи начала и конца */}
-      <div style={{position: "absolute", left: start[0] - 18, top: start[1] - 74, fontFamily: INTER, fontWeight: 800, fontSize: 40, color: RK.ink, opacity: p01(sec, 0.6, 1.0), whiteSpace: "nowrap", translate: "-50% 0"}}>{from}</div>
+      <div style={{position: "absolute", left: start[0] - 18 + (P.map.fromOff?.[0] ?? 0), top: start[1] - 74 + (P.map.fromOff?.[1] ?? 0), fontFamily: INTER, fontWeight: 800, fontSize: 40, color: RK.ink, opacity: p01(sec, 0.6, 1.0), whiteSpace: "nowrap", translate: "-50% 0"}}>{from}</div>
       <div style={{position: "absolute", left: end[0] - 30, top: end[1] + 22, fontFamily: INTER, fontWeight: 800, fontSize: 44, color: RK.red, opacity: p01(f, arrive, arrive + 8), whiteSpace: "nowrap", translate: "-100% 0"}}>{P.city.name}</div>
       <Seal ch={P.city.zh} size={150} at={arrive} x={end[0] + 112} y={end[1] - 92} rot={-7} id="city" />
       {/* титул серии */}

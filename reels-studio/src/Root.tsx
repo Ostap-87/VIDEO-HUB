@@ -34,6 +34,8 @@ import {DeskPromo, deskPromoFrames, deskPromoSchema, type DeskPromoProps} from "
 import {SiteManhua, SiteManhuaPreview, SITE_MANHUA_FRAMES} from "./compositions/SiteManhua";
 import {BlogNews, BlogNewsPreview, bnFrames, type BlogNewsProps} from "./compositions/BlogNews";
 import {BlogNewsCovers} from "./compositions/BlogNewsCovers";
+import {OdManhuaExplainer, OdManhuaExplainerPreview, odxFrames, type OdManhuaExplainerProps} from "./compositions/OdManhuaExplainer";
+import odxSample from "../props/od/2026-11-06-why-manhua.json";
 import {RobokitaiEpisode, RobokitaiPreview, rkFrames, type RobokitaiProps} from "./compositions/RobokitaiEpisode";
 import robokitaiSample from "../props/robokitai/001-hangzhou.json";
 import {RobokitaiDrama, RobokitaiDramaPreview, rdFrames, type RobokitaiDramaProps} from "./compositions/RobokitaiDrama";
@@ -42,6 +44,8 @@ import {RobokitaiTrailer, RobokitaiTrailerPreview, rtFrames, type RobokitaiTrail
 import {RobokitaiCarousel} from "./compositions/robokitai/carousel";
 import type {RobokitaiCarouselProps} from "./compositions/robokitai/trailerTypes";
 import robokitaiTrailerSample from "../props/robokitai/000-trailer.json";
+import {RobokitaiStory, RobokitaiStoryPreview, rsFrames, type RobokitaiStoryProps} from "./compositions/RobokitaiStory";
+import robokitaiStorySample from "../props/robokitai/002-suzhou.json";
 import robokitaiKartaSample from "../props/robokitai/carousel-karta.json";
 import blogNewsSample from "../props/blog-news/001-coffee-with-hint-audit.json";
 import {SiteManhuaEn, SiteManhuaEnPreview, SITE_MANHUA_EN_FRAMES} from "./compositions/SiteManhuaEn";
@@ -320,6 +324,27 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{...(blogNewsSample as BlogNewsProps), step: 30, start: 15}}
         calculateMetadata={({props}: {props: BlogNewsProps}) => ({durationInFrames: bnFrames(props)})}
       />
+      {/* Манхуа-объяснялки ostapdotcenko (06.11.2026): «Почему манхуа?» и «Что такое 多 NEWS»; props — reels-studio/props/od/*.json */}
+      <Composition
+        id="OdManhuaExplainer"
+        component={OdManhuaExplainer}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={odxFrames(odxSample as OdManhuaExplainerProps)}
+        defaultProps={odxSample as OdManhuaExplainerProps}
+        calculateMetadata={({props}: {props: OdManhuaExplainerProps}) => ({durationInFrames: odxFrames(props)})}
+      />
+      <Composition
+        id="OdManhuaExplainerPreview"
+        component={OdManhuaExplainerPreview}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={odxFrames(odxSample as OdManhuaExplainerProps)}
+        defaultProps={{...(odxSample as OdManhuaExplainerProps), step: 30, start: 15}}
+        calculateMetadata={({props}: {props: OdManhuaExplainerProps}) => ({durationInFrames: odxFrames(props)})}
+      />
       {/* «Робокитай · 机器人中国» — сериал Aura (05.11.2026); props — reels-studio/props/robokitai/NNN-<город>.json */}
       <Composition
         id="RobokitaiEpisode"
@@ -382,6 +407,27 @@ export const RemotionRoot: React.FC = () => {
         durationInFrames={rtFrames(robokitaiTrailerSample as unknown as RobokitaiTrailerProps)}
         defaultProps={{...(robokitaiTrailerSample as unknown as RobokitaiTrailerProps), step: 30, start: 15}}
         calculateMetadata={({props}: {props: RobokitaiTrailerProps}) => ({durationInFrames: rtFrames(props)})}
+      />
+      {/* «Робокитай» — серия из статьи с драматургией v2 (06.11.2026, серии 2–3); props — props/robokitai/NNN-<город>.json */}
+      <Composition
+        id="RobokitaiStory"
+        component={RobokitaiStory}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={rsFrames(robokitaiStorySample as unknown as RobokitaiStoryProps)}
+        defaultProps={robokitaiStorySample as unknown as RobokitaiStoryProps}
+        calculateMetadata={({props}: {props: RobokitaiStoryProps}) => ({durationInFrames: rsFrames(props)})}
+      />
+      <Composition
+        id="RobokitaiStoryPreview"
+        component={RobokitaiStoryPreview}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={rsFrames(robokitaiStorySample as unknown as RobokitaiStoryProps)}
+        defaultProps={{...(robokitaiStorySample as unknown as RobokitaiStoryProps), step: 30, start: 15}}
+        calculateMetadata={({props}: {props: RobokitaiStoryProps}) => ({durationInFrames: rsFrames(props)})}
       />
       <Composition
         id="RobokitaiCarousel"

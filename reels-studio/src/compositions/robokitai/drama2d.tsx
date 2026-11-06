@@ -379,7 +379,41 @@ export const FlashCard: React.FC<{text: string}> = ({text}) => {
 };
 
 // телефон Ави с уведомлением SOS и картинкой-намёком (человек и кобот у одной линии, силуэт героя с «?»)
-export const SosPhone: React.FC<{x: number; y: number; at: number; title: string; city: string}> = ({x, y, at, title, city}) => {
+// картинки-намёки следующей серии в телефоне Ави: роборука над тремя разными деталями; силуэт манипулятора с искрами сварки
+const HINT_SVG = {display: "block", marginTop: 12, background: "#E9E5DD", borderRadius: 14, border: `3px solid ${RK.ink}`} as const;
+const HintGripper: React.FC = () => (
+  <svg viewBox="0 0 320 210" width="100%" style={HINT_SVG}>
+    <rect x={0} y={160} width={320} height={50} fill="#D9D3C8" />
+    <rect x={40} y={128} width={44} height={32} rx={4} fill="#BE9A62" stroke={RK.ink} strokeWidth={2} />
+    <ellipse cx={160} cy={146} rx={24} ry={14} fill="#DADDE2" stroke={RK.ink} strokeWidth={2} />
+    <path d="M222 160 Q236 120 262 136 Q282 150 268 160 Z" fill="#F2C14E" stroke={RK.ink} strokeWidth={2} />
+    <g fill={RK.ink}>
+      <rect x={150} y={0} width={20} height={44} />
+      <rect x={136} y={40} width={48} height={18} rx={4} />
+      <rect x={136} y={56} width={10} height={30} rx={3} />
+      <rect x={174} y={56} width={10} height={30} rx={3} />
+    </g>
+    <text x={204} y={70} fontFamily={INTER} fontWeight={800} fontSize={58} fill={RK.lemon} stroke={RK.ink} strokeWidth={4} paintOrder="stroke fill">?</text>
+  </svg>
+);
+const HintWeld: React.FC = () => (
+  <svg viewBox="0 0 320 210" width="100%" style={HINT_SVG}>
+    <rect x={0} y={160} width={320} height={50} fill="#D9D3C8" />
+    <rect x={150} y={140} width={150} height={20} fill={RK.ink} />
+    <g fill={RK.ink}>
+      <rect x={40} y={130} width={60} height={30} rx={6} />
+      <path d="M62 132 L86 60 L102 64 L80 136 Z" />
+      <path d="M92 62 L170 96 L164 108 L86 76 Z" />
+      <rect x={160} y={98} width={14} height={34} rx={3} />
+    </g>
+    {[[-30, -18], [-14, -30], [8, -26], [24, -12], [-26, 4], [20, 6]].map(([dx, dy], i) => (
+      <line key={i} x1={168} y1={136} x2={168 + dx} y2={136 + dy} stroke="#F2A93B" strokeWidth={4} strokeLinecap="round" />
+    ))}
+    <circle cx={168} cy={136} r={8} fill="#FFF65D" />
+    <text x={232} y={80} fontFamily={INTER} fontWeight={800} fontSize={58} fill={RK.lemon} stroke={RK.ink} strokeWidth={4} paintOrder="stroke fill">?</text>
+  </svg>
+);
+export const SosPhone: React.FC<{x: number; y: number; at: number; title: string; city: string; hint?: "cobot" | "gripper" | "weld"}> = ({x, y, at, title, city, hint = "cobot"}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   if (f < at) return null;
@@ -399,6 +433,7 @@ export const SosPhone: React.FC<{x: number; y: number; at: number; title: string
           </div>
           <div style={{fontFamily: MONO_CJK, fontWeight: 700, fontSize: 24, color: RK.ink, marginTop: 6, letterSpacing: "0.06em"}}>{city}</div>
           {/* картинка-намёк: человек и кобот у одной линии */}
+          {hint === "gripper" ? <HintGripper /> : hint === "weld" ? <HintWeld /> : (
           <svg viewBox="0 0 320 210" width="100%" style={{display: "block", marginTop: 12, background: "#E9E5DD", borderRadius: 14, border: `3px solid ${RK.ink}`}}>
             <rect x={0} y={150} width={320} height={60} fill="#D9D3C8" />
             <rect x={20} y={118} width={280} height={18} rx={4} fill={RK.ink} />
@@ -422,7 +457,7 @@ export const SosPhone: React.FC<{x: number; y: number; at: number; title: string
               <rect x={194} y={40} width={14} height={20} rx={3} />
             </g>
             <text x={278} y={54} fontFamily={INTER} fontWeight={800} fontSize={58} fill={RK.lemon} stroke={RK.ink} strokeWidth={4} paintOrder="stroke fill">?</text>
-          </svg>
+          </svg>)}
         </div>
       </div>
     </div>
