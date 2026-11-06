@@ -797,6 +797,14 @@ Noto Sans SC через `loadCjk`), роль, скин; кадр 17 — «Ком
   дешевле одного колена»); флипчарт — стр. 72–74; поворот — `labFrame` (подвес, вторая батарея, стр. 60 «железо устареет…»); развязка —
   `labWalk`, счётчик «шаг 3 → 30», стр. 98. Музыка — Kevin MacLeod «EDM Detection Mode» (CC BY 4.0), удар 119,8 с.
   Props `props/robokitai/006-beijing.json` → `finished-videos/robokitai-006-beijing.mp4` (72,0 с, CRF 20, 13 МБ, −20,5 LUFS; копия для телефона `finished-videos/для-телефона/robokitai-006-beijing.mp4`, раскадровка `finished-videos/раскадровки/robokitai-006-beijing.jpg`, обложка `finished-videos/обложки/robokitai/robokitai-006-beijing.jpg`; видео в git не идут).
+- **Серия 7 · Застава · «Из цеха в цех»** — статья 22.11 (`…/2026-11-22_1500_factory-factory-how-robot-travels-from-china/`), клиент — логист
+  (`logist`), герои — Аист и Шустрик. Холодное открытие — темнота кузова, штамп «СТОП · 关», «Робот доехал. Документы — нет» (стр. 80).
+  Попытка 1 — `crateLoad` (стр. 32: индикатор удара — копеечная наклейка); угадайка — три карточки «Что дольше всего в пути?» (стр. 60);
+  попытка 2 — `barrier`, штампы UN 3481 / класс 9 (стр. 40–42, отчёт 38.3); кризис — `svh`, счётчик дней на складе (стр. 80, 92); озарение —
+  `gate`, Скаут меряет ворота (стр. 66 «кто не измерил дверь»); флипчарт — стр. 26–30, 42, 66, 70; шаг `calc` — арифметика на границе
+  (стр. 84–90, «пример из статьи»); поворот — `borderOpen` (стр. 102); развязка — `unbox` (стр. 102 «темнота ящика»). Музыка — Matthew Pablo
+  «Space Dimensions (Techno Version)» (CC BY 3.0), удар 63,0 с.
+  Props `props/robokitai/007-zastava.json` → `finished-videos/robokitai-007-zastava.mp4` (77,5 с, CRF 20, 15 МБ, −20,6 LUFS; копия для телефона `finished-videos/для-телефона/robokitai-007-zastava.mp4`, раскадровка `finished-videos/раскадровки/robokitai-007-zastava.jpg`, обложка `finished-videos/обложки/robokitai/robokitai-007-zastava.jpg`; видео в git не идут).
 - **Серия 8 · Гуандун · «Пельмень на конвейере» — финал сезона** — статья 25.11 (`…/2026-11-25_1500_dumplings-on-conveyor-what-chinese-jiaozi-line/`),
   клиент — технолог кухни (`chef`), герои — Арми и Кэрри, озарение — Скаут. Холодное открытие — пачка слиплась в один ком (`lump`, стр. 83),
   «Утром того же дня…». Попытка 1 — `jiaoziFast` (стр. 56 «экструдер выдаст вас»); угадайка — булавки `pins` на линии «Где узкое место?»;
@@ -805,7 +813,7 @@ Noto Sans SC через `loadCjk`), роль, скин; кадр 17 — «Ком
   развязка — стр. 106 «Рецепт остаётся вашим. Скорость можно купить»; крючок — печати 8 краёв и «SOS · Ханчжоу» (обход подстанции, 10.11).
   Музыка — Kevin MacLeod «Go Cart — Drop Mix» (CC BY 4.0), удар 76,25 с.
   Props `props/robokitai/008-guangdong.json` → `finished-videos/robokitai-008-guangdong.mp4` (79,4 с, CRF 20, 18 МБ, −20,1 LUFS; копия для телефона `finished-videos/для-телефона/robokitai-008-guangdong.mp4`, раскадровка `finished-videos/раскадровки/robokitai-008-guangdong.jpg`, обложка `finished-videos/обложки/robokitai/robokitai-008-guangdong.jpg`; видео в git не идут).
-- В работе: серии 5, 7 (props уже лежат в `props/robokitai/`, миры готовы; ролики — после рендера).
+- В работе: серии 5 (props уже лежат в `props/robokitai/`, миры готовы; ролики — после рендера).
 - **Рендер** — как у серий 2–3, каждый рендер под общим замком (рядом рендерит другой агент): `cd reels-studio && flock /dev/shm/render.lock env TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts RobokitaiStory /dev/shm/rk4/out.mp4 --props=props/robokitai/004-shenyang.json --bundle-cache=false --ignore-certificate-errors --concurrency=2 --timeout=240000 --crf=20` (~35 мин на серию: 3D почти в каждом шаге). Пробные кадры — `RobokitaiStoryPreview` с `frames`.
 
 ## Обложки серий без голоса — Робокитай и манхуа-объяснялки (решение пользователя 06.11.2026)
@@ -2493,7 +2501,7 @@ style / grid / fin и hookCovers / pile / clock / pipeline / topics / seasons / 
 recap (`od-explainer/scenes3.tsx`), оба ролика v2.
 Готово (06.11.2026): «Робокитай» — серии из статьи `RobokitaiStory` (шаги из props, 3D-миры `cell3d.tsx`): серия 2 · Сучжоу (коботы) —
 готова (73,7 с); серия 3 · Шэньчжэнь (захваты и зрение) готова (77,2 с).
-Готово (06.11.2026): «Робокитай», серии 4–8 — продолжение сезона (новые миры `weld3d` / `hotel3d` / `lab3d` / `border3d` / `kitchen3d`, шаги `compare` и `calc`, стили угадайки, образы клиента, оверлеи сцены, печати сезона); готовы: 4 (78,0 с), 6 (72,0 с), 8 (79,4 с); в работе: 5, 7.
+Готово (06.11.2026): «Робокитай», серии 4–8 — продолжение сезона (новые миры `weld3d` / `hotel3d` / `lab3d` / `border3d` / `kitchen3d`, шаги `compare` и `calc`, стили угадайки, образы клиента, оверлеи сцены, печати сезона); готовы: 4 (78,0 с), 6 (72,0 с), 7 (77,5 с), 8 (79,4 с); в работе: 5.
 Готово (06.11.2026): «Робокитай» · Серия 0 — трейлер вселенной `RobokitaiTrailer` (хук с огнями над картой, облёт 8 краёв с печатями
 и героями-наклейками, Ави и Скаут в 3D, сетка 16 героев, три кадра серии 1, финал «Серия 1»), карусели `RobokitaiCarousel` «Карта Робокитая»
 (10 слайдов) и «Команда Aura · 16 героев» (18 слайдов).
