@@ -1,0 +1,7 @@
+/* Noto Serif SC (OFL), subset of the document's characters; ZHDS = its em dash only */
+@font-face { font-family: "NSerifSC"; src: url("NotoSerifSC-400-subset.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "ZHDS"; src: url("NotoSerifSC-400-subset.woff2") format("woff2"); font-weight: 400; unicode-range: U+2014; }
+@font-face { font-family: "NSerifSC"; src: url("NotoSerifSC-600-subset.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "ZHDS"; src: url("NotoSerifSC-600-subset.woff2") format("woff2"); font-weight: 600; unicode-range: U+2014; }
+@font-face { font-family: "NSerifSC"; src: url("NotoSerifSC-700-subset.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "ZHDS"; src: url("NotoSerifSC-700-subset.woff2") format("woff2"); font-weight: 700; unicode-range: U+2014; }

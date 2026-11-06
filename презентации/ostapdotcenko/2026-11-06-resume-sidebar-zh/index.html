@@ -1,0 +1,289 @@
+<!doctype html>
+<!-- Ostap Dotsenko resume, Simplified Chinese: strict version "Corporate with a sidebar", translated from 2026-11-06-resume-sidebar.
+     Rules: ../RESUME-I18N.md; facts: ../RESUME-MASTER.md only; wording: ostapdotcenko.ru (src/i18n/zh.ts) + glossary.
+     Same design, photo and layout as the original: dark-navy left column 31 % (photo, contacts, links, languages, education,
+     competencies), main column with profile, key results and experience; IBM Plex Sans + IBM Plex Serif.
+     Latin fonts and the photo are taken from the original folder, only Noto Sans SC lives here (written by build.py).
+     Build: python3 build.py 2026-11-06-resume-sidebar-zh -->
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>奥斯塔普·多增科 — 简历</title>
+<link rel="stylesheet" href="../2026-11-06-resume-sidebar/fonts/fonts.css">
+<link rel="stylesheet" href="fonts/noto-sans-sc.css">
+<style>
+/* the em dash is drawn by Noto Sans SC, so the Chinese "——" is one solid line */
+@font-face { font-family: "ZHD"; src: url("fonts/NotoSansSC-400-subset.woff2") format("woff2"); font-weight: 400; unicode-range: U+2014; }
+@font-face { font-family: "ZHD"; src: url("fonts/NotoSansSC-700-subset.woff2") format("woff2"); font-weight: 700; unicode-range: U+2014; }
+:root {
+  --side: #1B2B40; --side-text: #EEF2F6; --side-dim: #AEBBCB; --side-rule: #3B4E67; --side-acc: #9FB8D6;
+  --ink: #1E2632; --navy: #1F3D66; --grey: #5A6473; --rule: #CDD3DB; --hair: #E1E5EA; --paper: #FFFFFF;
+  --sans: "ZHD", "IBM Plex Sans", "NSC", Arial, sans-serif;
+  --serif: "IBM Plex Serif", "NSC", Georgia, serif;
+}
+@page { size: 210mm 297mm; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #9EA3AB; }
+body { font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: antialiased; font-size: 11px; line-height: 1.55;
+  line-break: strict; font-synthesis: none; }
+a { color: inherit; text-decoration: none; }
+.page { width: 794px; height: 1123px; position: relative; overflow: hidden; background: var(--paper); margin: 0 auto 24px;
+  page-break-after: always; break-after: page; display: grid; grid-template-columns: 246px 1fr; grid-template-rows: 1123px; }
+@media print { html, body { background: none; } .page { margin: 0; } }
+
+/* left column */
+.side { background: var(--side); color: var(--side-text); padding: 34px 24px 30px; }
+.photo { width: 198px; height: 264px; border: 1px solid rgba(255,255,255,0.45); padding: 4px; }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.side h3 { font-family: var(--sans); font-weight: 700; font-size: 12px; letter-spacing: 0; color: var(--side-acc);
+  border-bottom: 1px solid var(--side-rule); padding-bottom: 4px; margin: 18px 0 8px; }
+.side .first { margin-top: 20px; }
+.kv { font-size: 10.8px; line-height: 1.45; margin-bottom: 5px; }
+.kv .k { display: block; color: var(--side-dim); font-size: 10.5px; }
+.kv b { font-weight: 600; }
+.lang { display: flex; justify-content: space-between; font-size: 11px; padding: 2px 0; border-bottom: 1px dotted var(--side-rule); }
+.lang:last-child { border-bottom: none; }
+.lang span:last-child { color: var(--side-dim); }
+.side p, .side li { font-size: 10.8px; line-height: 1.55; }
+.side ul { list-style: none; }
+.side li { padding-left: 11px; position: relative; margin-bottom: 4px; }
+.side li::before { content: ""; position: absolute; left: 0; top: 7px; width: 4px; height: 4px; background: var(--side-acc); }
+.cg { margin-bottom: 8px; }
+.cg b { display: block; font-weight: 700; font-size: 11px; color: var(--side-text); }
+.cg span { display: block; font-size: 10.6px; line-height: 1.55; color: var(--side-dim); word-break: keep-all; }
+
+/* main column */
+.main { padding: 36px 40px 50px 30px; position: relative; }
+.ftr { position: absolute; left: 30px; right: 40px; bottom: 22px; display: flex; justify-content: space-between;
+  border-top: 1px solid var(--hair); padding-top: 7px; font-size: 10.5px; color: var(--grey); }
+h1 { font-family: var(--serif); font-weight: 900; font-size: 33px; line-height: 1.15; color: var(--side); }
+h1 small { font-family: var(--serif); font-weight: 600; font-size: 14px; color: var(--grey); margin-left: 10px; vertical-align: 5px; letter-spacing: 0.04em; }
+.role { font-weight: 700; font-size: 15px; line-height: 1.4; margin-top: 7px; color: var(--ink); }
+.cos { font-size: 11.8px; color: var(--grey); margin-top: 1px; }
+.target { margin-top: 9px; padding: 5px 0 5px 11px; border-left: 3px solid var(--navy); font-size: 11.6px; line-height: 1.5; }
+.target b { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0; color: var(--navy); }
+h2 { font-family: var(--sans); font-weight: 700; font-size: 13px; letter-spacing: 0; color: var(--navy);
+  display: flex; align-items: center; gap: 10px; margin: 15px 0 8px; }
+h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.summary { font-size: 11.6px; line-height: 1.62; text-wrap: pretty; }
+.summary b { font-weight: 700; }
+
+.kpi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px 16px; }
+.kpi div { border-top: 2px solid var(--navy); padding-top: 5px; }
+.kpi b { display: block; font-weight: 600; font-size: 19px; line-height: 1.15; color: var(--navy); white-space: nowrap; }
+.kpi span { display: block; font-size: 10.8px; line-height: 1.45; margin-top: 2px; }
+.kpi i { display: block; font-style: normal; font-size: 10.5px; color: var(--grey); margin-top: 1px; }
+
+.job { padding: 7px 0 7px; border-top: 1px solid var(--hair); }
+.job.first { border-top: none; padding-top: 0; }
+.job h3 { font-weight: 700; font-size: 13px; line-height: 1.4; }
+.jl { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-top: 1px; }
+.jl .co { font-weight: 600; font-size: 11.8px; color: var(--navy); }
+.jl .dt { font-weight: 600; font-size: 11px; color: var(--grey); white-space: nowrap; }
+.scale { font-size: 10.8px; line-height: 1.55; margin-top: 3px; color: var(--ink); }
+.scale b { font-weight: 700; font-size: 10.8px; letter-spacing: 0; color: var(--navy); margin-right: 5px; }
+.job ul { list-style: none; margin-top: 3px; }
+.job li, .plain li { font-size: 11px; line-height: 1.56; padding-left: 12px; position: relative; margin-top: 2px; text-wrap: pretty; }
+.job li::before, .plain li::before { content: ""; position: absolute; left: 1px; top: 7px; width: 4px; height: 4px; background: var(--navy); }
+.job li b, .plain li b { font-weight: 700; }
+.plain { list-style: none; }
+.quotes { display: grid; gap: 7px; }
+.quotes blockquote { font-style: normal; font-size: 11.2px; line-height: 1.55; padding-left: 11px; border-left: 2px solid var(--rule); color: #333B47; }
+.quotes cite { display: block; font-style: normal; font-size: 10.5px; color: var(--grey); margin-top: 1px; }
+.nw { white-space: nowrap; }
+.p2 .plain li { font-size: 11.5px; line-height: 1.6; margin-top: 3px; }
+.p2 h2 { margin: 18px 0 9px; }
+.p2 .quotes blockquote { font-size: 11.6px; }
+.p2 .quotes { gap: 9px; }
+.cont { font-size: 11px; letter-spacing: 0; color: var(--grey); font-weight: 700; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+
+<!-- ============ page 1 ============ -->
+<section class="page">
+  <aside class="side">
+    <div class="photo"><img src="../2026-11-06-resume-sidebar/img/portrait.jpg" alt="奥斯塔普·多增科"></div>
+
+    <h3 class="first">联系方式</h3>
+    <div class="kv"><span class="k">电话</span>+86 137 6171 6355<br>+7 985 874-49-58（WhatsApp）</div>
+    <div class="kv"><span class="k">邮箱</span><a href="mailto:norbanking@gmail.com">norbanking@gmail.com</a></div>
+    <div class="kv"><span class="k">微信 · Telegram</span>ostap10081987&nbsp;· <a href="https://t.me/ostapdotcenko">@ostapdotcenko</a></div>
+    <div class="kv"><span class="k">城市</span>上海&nbsp;· 莫斯科（混合办公）</div>
+
+    <h3>网站、博客与社交媒体</h3>
+    <div class="kv"><span class="k">网站&nbsp;· RU&nbsp;· EN&nbsp;· 中文</span><a href="https://ostapdotcenko.ru"><b>ostapdotcenko.ru</b></a></div>
+    <div class="kv"><span class="k">博客&nbsp;· 每日更新</span><a href="https://ostapdotcenko.ru/blog"><b>ostapdotcenko.ru/blog</b></a></div>
+    <div class="kv"><span class="k">LinkedIn&nbsp;· 1.1万+关注者</span><a href="https://www.linkedin.com/in/ostapdot%D1%81enko/"><b>linkedin.com/in/ostapdot&#x441;enko</b></a></div>
+    <div class="kv"><span class="k">Telegram&nbsp;· Instagram</span><a href="https://t.me/ostapdotcenko"><b>@ostapdotcenko</b></a>&nbsp;· <a href="https://instagram.com/ostap.dotsenko"><b>@ostap.dotsenko</b></a></div>
+    <div class="kv"><span class="k">Facebook</span><b>Ostap Dotsenko</b></div>
+    <div class="kv"><span class="k">项目及其博客</span><a href="https://globaltechtour.ru"><b>globaltechtour.ru</b></a><br><a href="https://aura-robotics.ru"><b>aura-robotics.ru</b></a></div>
+
+    <h3>语言</h3>
+    <div class="lang"><span>俄语</span><span>母语</span></div>
+    <div class="lang"><span>英语</span><span>C1</span></div>
+    <div class="lang"><span>中文</span><span>B2+</span></div>
+    <div class="lang"><span>乌兹别克语</span><span>B1</span></div>
+    <div class="lang"><span>韩语</span><span>A2</span></div>
+
+    <h3>教育背景</h3>
+    <ul>
+      <li>民法专业 —— 国际大学</li>
+      <li>韩语教师 ——<br>塔什干国立东方学学院附属中学</li>
+    </ul>
+  </aside>
+
+  <main class="main">
+    <h1>奥斯塔普·多增科<small>Ostap Dotsenko</small></h1>
+    <div class="role">业务拓展与市场营销负责人</div>
+    <div class="cos">阿里巴巴集团&nbsp;· Megamarket（Sber 生态）&nbsp;· 上海自有企业</div>
+    <div class="target"><b>求职意向</b>CBDO&nbsp;· CMO&nbsp;· 国际业务拓展总监（俄罗斯 — 中国 — 东南亚）</div>
+
+    <h2>职业概述</h2>
+    <p class="summary"><b>13+ 年业务拓展与市场营销经验，深耕俄罗斯、中国与东南亚市场。</b>曾任 <b>Megamarket</b>（俄罗斯第三大电商平台，Sber 生态）
+      B2B 市场负责人、<b>AliExpress 俄罗斯与独联体</b>（阿里巴巴集团）O2O 业务负责人。<b>管理团队最多40人，年营销预算超过10亿卢布，</b>在 Megamarket、阿里巴巴及自有企业均<b>负责损益（P&amp;L）</b>。主导联邦级项目，与银行、电信运营商及政府部门建立合作。足迹遍及20+个国家，掌握5种语言，包括中文。</p>
+
+    <h2>核心业绩</h2>
+    <div class="kpi">
+      <div><b>+350%</b><span>卖家数量同比增长</span><i>Megamarket</i></div>
+      <div><b>30亿卢布</b><span>我主导的项目带来的净利润（2023年第四季度）</span><i>Megamarket</i></div>
+      <div><b>4800万美元</b><span>GMV，同比增长 +100%</span><i>AliExpress 俄罗斯与独联体</i></div>
+      <div><b>25×</b><span>平均投放 ROI</span><i>阿里巴巴，2020–2022</i></div>
+      <div><b>5万</b><span>平台卖家数量</span><i>Megamarket</i></div>
+      <div><b>86</b><span>个地区<br>与俄罗斯经济发展部合作</span><i>Megamarket</i></div>
+      <div><b>+185%</b><span>新买家增长</span><i>AliExpress</i></div>
+      <div><b>120+</b><span>俄罗斯与独联体媒体合作伙伴</span><i>AliExpress</i></div>
+      <div><b>0 → 2000</b><span>家企业加入“俄罗斯制造”</span><i>Megamarket，2024</i></div>
+    </div>
+
+    <h2>工作经历</h2>
+    <div class="job first">
+      <h3>所有者与项目创始人</h3>
+      <div class="jl"><span class="co">上海拼那克了科技有限公司&nbsp;· 上海</span><span class="dt">2025 — 至今</span></div>
+      <div class="scale"><b>规模</b>作为所有者承担损益&nbsp;· GlobalTechTour —— 聚焦中国与东南亚的标杆考察与技术探访之旅；Aura Robotics —— 直接从中国制造商选型采购机器人</div>
+      <ul>
+        <li>为 <b>Megamarket（Sber）在深圳一站式承办1200+人企业论坛</b>：物流、场地、商务日程。</li>
+        <li>组织代表团参观 <b>BYD、小米、百度、美团、得物、Leju Robotics</b> 的工厂与研发中心；为 Aura 客户直接对接机器人厂商管理层与研发团队。</li>
+        <li><b>BelMol</b> 在 Kepler 工厂仅用2小时会谈即解决乳品生产自动化问题；<b>SolarTek</b> 5天内走访 Leju Robotics、Robotera、AgiBot 和 Kepler。</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <h3>B2B 市场负责人</h3>
+      <div class="jl"><span class="co">Megamarket（Sber 生态）&nbsp;· 俄罗斯第三大电商平台</span><span class="dt">2023 — 2025</span></div>
+      <div class="scale"><b>规模</b>团队16–40人（直接管理及通过下属主管）&nbsp;· 年营销预算超过10亿卢布<br>负责业务线损益（P&amp;L）</div>
+      <ul>
+        <li>搭建卖家招募 B2B 营销体系：<b>卖家数量同比 +350%</b>，平台卖家达 <b>5万家</b>；<b>我主导的项目带来<span class="nw">30亿卢布</span>净利润（2023年第四季度）</b>。</li>
+        <li>与<b>俄罗斯经济发展部</b>联合推出联邦级企业家扶持项目，依托 <b>86个地区</b>的“我的事业”创业服务中心：从零搭建获客战略、营销物料与区域传播。</li>
+        <li>“Megasreda”全国创业马拉松覆盖 <b>20座城市</b>——从概念、物流到内容与公关；<b>100万+次观看</b>。</li>
+        <li>“俄罗斯制造”：品牌计划、入驻体系、视频推广——参与企业 <b>从0增长到2000家</b>（2024）。面向残障生产者的社会公益市集：定位、UX、公关活动。</li>
+      </ul>
+    </div>
+
+    <div class="ftr"><span>奥斯塔普·多增科 —— 简历</span><span>第 1 页，共 2 页</span></div>
+  </main>
+</section>
+
+<!-- ============ page 2 ============ -->
+<section class="page p2">
+  <aside class="side">
+    <h3 style="margin-top:0">核心能力</h3>
+    <div class="cg"><b>业务拓展</b><span>市场进入战略&nbsp;· 合作伙伴与战略联盟&nbsp;· 与企业一把手谈判&nbsp;· 亚洲与独联体市场拓展&nbsp;· 新业务方向</span></div>
+    <div class="cg"><b>市场营销</b><span>B2B&nbsp;市场营销&nbsp;· 需求挖掘&nbsp;· Performance&nbsp;· 产品营销&nbsp;· 销售赋能&nbsp;· 品牌项目</span></div>
+    <div class="cg"><b>技术与数据</b><span>电子商务与电商平台&nbsp;· AdTech&nbsp;/&nbsp;MarTech&nbsp;· 营销自动化&nbsp;· CRM&nbsp;与数据分析&nbsp;· O2O</span></div>
+    <div class="cg"><b>传播与公关</b><span>政府关系与国家项目&nbsp;· 联邦级活动&nbsp;· 公关&nbsp;· 俄联邦与独联体50+场展会与论坛</span></div>
+
+    <h3>地域经验</h3>
+    <p>20+个国家<br>俄罗斯、中国、香港、东南亚、中亚</p>
+
+    <h3>演讲经历</h3>
+    <ul>
+      <li>Russian Retail Show 2024 <span class="nw">—— 演讲嘉宾</span></li>
+      <li>Amber Forum 2024 —— 圆桌讨论</li>
+      <li>“制造商峰会”，伊尔库茨克，2024 <span class="nw">—— 圆桌讨论</span></li>
+      <li>Russian Retail Week 2025</li>
+      <li>上合组织论坛 2025</li>
+      <li>“Megasreda”全国创业马拉松</li>
+      <li>俄联邦与独联体50+场展会与论坛</li>
+    </ul>
+
+    <h3>推荐人</h3>
+    <p>来自 Megamarket、阿里巴巴集团管理层及东南亚合作伙伴。推荐人信息可应要求提供。</p>
+  </aside>
+
+  <main class="main">
+    <div class="cont">工作经历（续）</div>
+
+    <div class="job first">
+      <h3>独立顾问&nbsp;· AdTech / MarTech / EduTech</h3>
+      <div class="jl"><span class="co">乌兹别克斯坦、哈萨克斯坦、东南亚</span><span class="dt">2022 — 2023</span></div>
+      <ul>
+        <li>为企业提供咨询，包括 MyDars、HiTarget（印度尼西亚）：<b>20+ 合作伙伴</b>，东南亚产品本地化。</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <h3>O2O 与新业务负责人</h3>
+      <div class="jl"><span class="co">阿里巴巴集团 —— AliExpress 俄罗斯与独联体</span><span class="dt">2020 — 2022</span></div>
+      <div class="scale"><b>规模</b>团队最多5人&nbsp;· 负责 O2O 业务线损益（P&amp;L）&nbsp;· 俄罗斯与独联体市场</div>
+      <ul>
+        <li>从零搭建 O2O 合作体系：<b>Alfa 银行、Tinkoff、MTS 银行、Megafon、Beeline、<span class="nw">俄罗斯石油公司</span></b>及 <b>120+ 家媒体集团</b>。</li>
+        <li><b>GMV 4800万美元（同比 +100%）</b>，<b>新买家 +185%</b>，<b>平均投放 ROI 25×</b>。</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <h3>联合创始人</h3>
+      <div class="jl"><span class="co">O.F.D 创意机构&nbsp;· 上海 / 香港</span><span class="dt">2017 — 2020</span></div>
+      <div class="scale"><b>规模</b>作为所有者承担损益&nbsp;· 2017年为筹备与启动期</div>
+      <ul>
+        <li>中俄联合团队项目：为企业开拓中俄两国市场提供广告推广方案。</li>
+        <li>客户：<b>FOREO、DECATHLON、中国银行、WWE、CDEK</b>。</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <h3>商务与业务拓展负责人</h3>
+      <div class="jl"><span class="co">Data Centric Alliance&nbsp;· 莫斯科 / 上海</span><span class="dt">2015 — 2017</span></div>
+      <ul>
+        <li>负责媒体采购与亚洲业务拓展；伙伴：<b>Google 香港、Yahoo 香港、腾讯、携程、百度</b>。</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <h3>业务拓展经理 —— 中国 / 东南亚</h3>
+      <div class="jl"><span class="co">CityAds Media&nbsp;· 中国与东南亚</span><span class="dt">2013 — 2015</span></div>
+      <ul>
+        <li>在中国及东南亚市场开展效果营销与联盟营销（CPA / CPC / CPL）；客户包括 Sasa（香港）。</li>
+      </ul>
+    </div>
+
+    <h2>我能为公司带来什么</h2>
+    <ul class="plain">
+      <li><b>进入并拓展中国与东南亚市场</b> —— 常驻上海，中文 B2+；组织参观 BYD、小米、百度的工厂与研发中心，直接对接机器人厂商管理层。</li>
+      <li><b>联邦级 B2B 营销</b> —— 从获客战略到覆盖86个地区的项目，卖家数量一年增长350%。</li>
+      <li><b>与企业一把手建立合作</b> —— 银行、电信、油气、媒体集团、俄罗斯经济发展部。</li>
+      <li><b>从零开拓新业务</b> —— 阿里巴巴 O2O、“俄罗斯制造”（0 → 2000家企业）、上海自有公司：团队、流程、第一笔收入。</li>
+    </ul>
+
+    <h2>媒体报道</h2>
+    <ul class="plain">
+      <li><b>RBC</b> —— 专访“最重要的是懂行，并且敢于行动”；<b>RBC Industries</b>。</li>
+      <li><b>Sber Business</b> —— 指南《电商平台：完整盈利指南》。</li>
+      <li><b>塔斯社</b> —— 乌里扬诺夫斯克州与 Megamarket 地方橱窗。</li>
+      <li><b>“我的事业”</b> —— 联邦级线上马拉松，100万+次观看。</li>
+    </ul>
+
+    <h2>同事评价</h2>
+    <div class="quotes">
+      <blockquote>“Ostap 有一种难得的能力，能从战略到战术完整地看待市场……”<cite>Alexey K.，销售副总裁&nbsp;· Megamarket</cite></blockquote>
+      <blockquote>“……25 倍的 ROI 就是最好的证明。”<cite>Li W.，区域总监&nbsp;· 阿里巴巴集团</cite></blockquote>
+      <blockquote>“Ostap 是少有的能在俄罗斯、中国和东南亚市场同样游刃有余的专家……”<cite>Muhammad A.，首席执行官&nbsp;· HiTarget 印尼</cite></blockquote>
+    </div>
+
+    <div class="ftr"><span>奥斯塔普·多增科 —— 简历</span><span>第 2 页，共 2 页</span></div>
+  </main>
+</section>
+
+</body>
+</html>
