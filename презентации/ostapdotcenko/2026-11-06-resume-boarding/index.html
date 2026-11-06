@@ -1,0 +1,457 @@
+<!doctype html>
+<!-- Резюме Остапа Доценко — креативный вариант «Посадочный талон и маршрутная квитанция» (06.11.2026; задача пользователя:
+     «сделай моё резюме более креативно, используй другие мои фото для главной, поиграй со стилями и добавь юмора…
+     во всех указывай мои соцсети, блоги и сайт; не заклинивайся на стиле моего сайта»).
+     Факты — только из ../RESUME-MASTER.md (сайт ostapdotcenko.ru; выступления — подписи к его постам Instagram).
+     Юмор — только в подписях полей и разделов; цифры, даты, компании — дословно. Авиакомпании нет: общий вид билета без чужого бренда.
+     Рейс BD-2013 — шутка «Business Development с 2013 года»; коды MOW/SHA/HKG — коды городов, остальное — страны/регионы из фактов.
+     QR: img/qr-site.svg → https://ostapdotcenko.ru (segno, проверен декодером), img/qr-telegram.png → https://t.me/ostapdotcenko.
+     Шрифты (OFL): Oswald, IBM Plex Mono, IBM Plex Sans — fonts/; китайский — Noto Sans SC (build.py), корейский — Noto Sans KR («한국어»).
+     Сборка: python3 build.py 2026-11-06-resume-boarding → готовые/2026-11-06-ostap-resume-boarding.pdf -->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Остап Доценко — резюме-посадочный талон</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="fonts/noto-sans-sc.css">
+<link rel="stylesheet" href="fonts/noto-sans-kr.css">
+<style>
+:root {
+  --sky: #E3E9F0; --paper: #FFFFFF; --paper2: #F4F7FA; --ink: #0F1B2D; --navy: #13294B; --navy2: #1C3864;
+  --dim: #556173; --line: #D3DAE3; --amber: #FFB01F; --board: #0C131E; --board2: #162131; --boardtx: #E8EDF4;
+  --red: #C8312A; --blue: #2446C7; --violet: #6B3FB0; --green: #13824C; --teal: #0B7A75;
+  --disp: "Oswald", "NSC", sans-serif; --mono: "IBM Plex Mono", "NSC", "NKR", monospace; --text: "IBM Plex Sans", "NSC", "NKR", "WenQuanYi Zen Hei", sans-serif;
+}
+@page { size: 210mm 297mm; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #9aa3ad; }
+body { font-family: var(--text); color: var(--ink); -webkit-font-smoothing: antialiased; }
+.page { width: 794px; height: 1123px; position: relative; overflow: hidden; background: var(--sky); margin: 0 auto 24px;
+  page-break-after: always; break-after: page; padding: 22px 28px 30px; display: flex; flex-direction: column; gap: 12px; }
+@media print { html, body { background: none; } .page { margin: 0; } }
+.lab { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); }
+.mono { font-family: var(--mono); }
+b { font-weight: 700; }
+.topline { display: flex; justify-content: space-between; align-items: center; }
+.topline .lab b { color: var(--ink); font-weight: 700; }
+.ftr { position: absolute; left: 28px; right: 28px; bottom: 11px; display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; color: var(--dim); letter-spacing: 0.04em; }
+.ftr b { color: var(--ink); }
+.h { font-family: var(--disp); font-weight: 600; font-size: 17px; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1; display: flex; align-items: baseline; gap: 8px; }
+.h small { font-family: var(--mono); font-size: 9.5px; font-weight: 500; color: var(--dim); letter-spacing: 0.08em; }
+.box { background: var(--paper); border-radius: 14px; padding: 13px 15px; box-shadow: 0 1px 0 rgba(15,27,45,.06); }
+
+/* ===== посадочный талон ===== */
+.pass { display: grid; grid-template-columns: 1fr 192px; background: var(--paper); border-radius: 18px; box-shadow: 0 10px 28px rgba(19,41,75,.16), 0 1px 0 rgba(19,41,75,.08); position: relative; }
+.pass .band { background: var(--navy); color: #fff; height: 46px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+.pass .main .band { border-radius: 18px 0 0 0; }
+.pass .stub .band { border-radius: 0 18px 0 0; background: var(--navy2); }
+.band .t { display: flex; align-items: center; gap: 10px; }
+.band .t svg { width: 22px; height: 22px; fill: var(--amber); }
+.band .t b { font-family: var(--disp); font-weight: 600; font-size: 20px; letter-spacing: 0.08em; white-space: nowrap; }
+.band .t span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; color: #AFC0D8; }
+.band .cls { white-space: nowrap; background: var(--amber); color: var(--ink); font-family: var(--mono); font-weight: 700; font-size: 10.5px; letter-spacing: 0.08em; padding: 4px 9px; border-radius: 6px; }
+.pass .stub { border-left: 2px dashed #B9C4D2; position: relative; }
+.pass .stub::before, .pass .stub::after { content: ""; position: absolute; left: -12px; width: 22px; height: 22px; border-radius: 50%; background: var(--sky); }
+.pass .stub::before { top: -11px; } .pass .stub::after { bottom: -11px; }
+.pbody { display: grid; grid-template-columns: 160px 1fr; gap: 15px; padding: 12px 16px 8px; }
+.photo { position: relative; }
+.photo .fr { height: 232px; border-radius: 10px; overflow: hidden; background: #ccd; }
+.photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; display: block; }
+.photo .cap { margin-top: 5px; font-family: var(--mono); font-size: 9.5px; color: var(--dim); line-height: 1.3; letter-spacing: 0.02em; }
+.photo .chk { position: absolute; left: -7px; top: 127px; transform: rotate(-8deg); border: 2px solid var(--green); color: var(--green); background: rgba(255,255,255,.9); font-family: var(--disp); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; padding: 2px 7px; border-radius: 4px; }
+.pax .nm { font-family: var(--mono); font-weight: 700; font-size: 21px; letter-spacing: 0.02em; line-height: 1.1; margin-top: 2px; }
+.pax .ru { font-size: 12px; color: var(--dim); margin-top: 2px; }
+.pax .ru b { color: var(--ink); }
+.role { margin-top: 7px; font-weight: 700; font-size: 15.5px; line-height: 1.22; }
+.role .co { display: block; font-weight: 500; font-size: 11.6px; margin-top: 3px; color: var(--ink); }
+.role .co b { font-weight: 700; }
+.route { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; margin-top: 7px; padding: 6px 0 4px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.route .ap b { display: block; font-family: var(--disp); font-weight: 700; font-size: 40px; line-height: 0.95; letter-spacing: 0.01em; }
+.route .ap span { font-size: 11px; color: var(--dim); }
+.route .ap:last-child { text-align: right; }
+.route .mid { position: relative; height: 40px; }
+.route .mid::before { content: ""; position: absolute; left: 0; right: 0; top: 20px; border-top: 2px dashed #9EABBC; }
+.route .mid svg { position: absolute; left: 50%; top: 8px; width: 24px; height: 24px; transform: translateX(-50%); fill: var(--navy); background: var(--paper); padding: 0 3px; box-sizing: content-box; }
+.route .mid span { position: absolute; left: 0; right: 0; top: 29px; text-align: center; font-family: var(--mono); font-size: 9.5px; color: var(--dim); }
+.fields { display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; gap: 6px 10px; margin-top: 7px; }
+.f .v { font-family: var(--mono); font-weight: 600; font-size: 12px; line-height: 1.25; margin-top: 1px; }
+.f .v.big { font-family: var(--disp); font-size: 17px; font-weight: 600; letter-spacing: 0.02em; }
+.f.go .v { color: var(--green); }
+.strip { display: grid; grid-template-columns: 1fr 1fr 1.25fr; gap: 10px; margin: 0 16px 8px; padding: 6px 0; border-top: 1px dashed #B9C4D2; border-bottom: 1px dashed #B9C4D2; }
+.target { margin: 0 16px; padding: 7px 10px; background: #FFF4DA; border-radius: 8px; font-size: 11.6px; line-height: 1.35; display: flex; gap: 8px; align-items: baseline; }
+.target .lab { color: #7A5300; white-space: nowrap; font-weight: 700; }
+.pfoot { display: flex; align-items: center; gap: 14px; padding: 8px 16px 11px; }
+.bars { height: 26px; width: 300px; fill: var(--ink); flex: none; }
+.pfoot .lab { line-height: 1.4; }
+.stub .sb { padding: 10px 13px; display: flex; flex-direction: column; gap: 7px; }
+.stub .nm { font-family: var(--mono); font-weight: 700; font-size: 13px; line-height: 1.15; }
+.stub .rt { font-family: var(--disp); font-weight: 700; font-size: 26px; line-height: 1; letter-spacing: 0.02em; }
+.stub .rt i { font-style: normal; color: var(--dim); font-weight: 400; font-size: 20px; }
+.k7 { border-top: 1px dashed #B9C4D2; padding-top: 6px; }
+.k7 .it { margin-top: 6px; }
+.k7 .it b { display: block; font-family: var(--disp); font-weight: 700; font-size: 20px; line-height: 1; }
+.k7 .it span { display: block; font-size: 10.8px; font-weight: 600; line-height: 1.25; margin-top: 1px; }
+.k7 .it i { font-style: normal; color: var(--dim); display: block; font-size: 10.5px; line-height: 1.2; }
+.qr { display: flex; gap: 7px; align-items: center; border-top: 1px dashed #B9C4D2; padding-top: 8px; }
+.qr .q { width: 66px; height: 66px; background: #fff; padding: 6px; border: 1px solid var(--line); border-radius: 6px; flex: none; }
+.qr .q img { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+.qr .tx { font-size: 10.5px; line-height: 1.3; }
+.qr .tx b { font-family: var(--mono); font-size: 10.5px; display: block; letter-spacing: -0.02em; }
+.tear { font-family: var(--mono); font-size: 9.5px; color: var(--dim); text-align: center; letter-spacing: 0.06em; }
+
+/* ===== табло ===== */
+.board { background: var(--board); border-radius: 14px; padding: 12px 16px 12px; color: var(--boardtx); }
+.board .hd { display: flex; justify-content: space-between; align-items: baseline; }
+.board .hd b { font-family: var(--disp); font-weight: 600; font-size: 18px; letter-spacing: 0.08em; color: var(--amber); }
+.board .hd span { font-family: var(--mono); font-size: 9.5px; color: #9FB0C6; letter-spacing: 0.12em; }
+.board .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; margin-top: 8px; }
+.board .th, .board .tr { display: grid; grid-template-columns: 84px 1fr 50px; gap: 8px; align-items: center; }
+.board .th { font-family: var(--mono); font-size: 9.5px; color: #9FB0C6; letter-spacing: 0.1em; padding-bottom: 4px; border-bottom: 1px solid #2A3A52; }
+.board .tr { padding: 4px 0; border-bottom: 1px solid #1F2C40; }
+.board .tr .c { font-family: var(--mono); font-weight: 600; font-size: 10.5px; color: var(--amber); letter-spacing: 0.02em; }
+.board .tr .d { font-size: 11.2px; line-height: 1.25; }
+.board .tr .d b { font-weight: 700; color: #fff; }
+.board .tr .s { font-family: var(--mono); font-size: 9.5px; font-weight: 700; color: #57D68D; letter-spacing: 0.06em; text-align: right; }
+.board .note { font-family: var(--mono); font-size: 9.5px; color: #9FB0C6; margin-top: 7px; letter-spacing: 0.02em; }
+
+/* ===== низ стр. 1 ===== */
+.row3 { display: grid; grid-template-columns: 236px minmax(0, 1fr); gap: 12px; }
+.contact .ln { display: grid; grid-template-columns: 62px 1fr; gap: 6px; font-size: 11.3px; line-height: 1.3; margin-top: 5px; align-items: baseline; }
+.contact .ln .lab { font-size: 9.5px; }
+.contact .ln span { font-family: var(--mono); font-weight: 600; font-size: 11px; }
+.contact .tg { display: flex; gap: 10px; align-items: center; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); }
+.contact .tg .q { width: 64px; height: 64px; padding: 4px; border: 1px solid var(--line); border-radius: 6px; flex: none; }
+.contact .tg .q img { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+.contact .tg div { font-size: 10.5px; line-height: 1.3; }
+.contact .tg b { font-family: var(--mono); font-size: 11px; display: block; }
+.kit { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; margin-top: 7px; }
+.langs .l { display: grid; grid-template-columns: 54px 1fr 50px; gap: 7px; align-items: center; font-size: 11.2px; margin-top: 4px; }
+.langs .bar { height: 6px; background: var(--paper2); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
+.langs .bar i { display: block; height: 100%; background: var(--navy); }
+.langs em { font-style: normal; font-family: var(--mono); font-size: 10px; font-weight: 600; text-align: right; color: var(--dim); }
+.sub { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); font-weight: 700; }
+.ul { list-style: none; }
+.ul li { font-size: 11px; line-height: 1.36; padding-left: 13px; position: relative; margin-top: 3px; text-wrap: pretty; }
+.ul li::before { content: ""; position: absolute; left: 0; top: 5px; width: 6px; height: 6px; border: 1.5px solid var(--navy); border-radius: 50%; }
+.ul li b { font-weight: 700; }
+
+/* ===== стр. 2: маршрутная квитанция ===== */
+.rhead { display: grid; grid-template-columns: 1fr 300px; gap: 12px; align-items: start; position: relative; height: 98px; }
+.rhead .tt { font-family: var(--disp); font-weight: 700; font-size: 36px; line-height: 1; text-transform: uppercase; letter-spacing: 0.02em; margin-top: 4px; }
+.rhead .meta { display: grid; grid-template-columns: repeat(3, auto); gap: 4px 18px; margin-top: 10px; justify-content: start; }
+.rhead .meta .v { font-family: var(--mono); font-size: 11.5px; font-weight: 700; }
+.visa { position: relative; height: 98px; }
+.st { position: absolute; }
+.pst { position: absolute; background: #fff; padding: 6px 6px 5px; border: 4px dotted var(--sky); box-shadow: 0 3px 10px rgba(19,41,75,.18); }
+.pst img { display: block; object-fit: cover; }
+.pst span { display: block; font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 0.06em; margin-top: 3px; text-align: center; color: var(--ink); }
+.ink { font-family: var(--disp); text-transform: uppercase; text-align: center; border: 2.5px solid currentColor; border-radius: 7px; padding: 4px 9px 3px; line-height: 1.05; background: rgba(255,255,255,.35); }
+.ink b { display: block; font-size: 16px; font-weight: 700; letter-spacing: 0.06em; }
+.ink span { display: block; white-space: nowrap; font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; }
+
+.chain { background: var(--paper); border-radius: 14px; padding: 8px 12px 8px; }
+.chain .line { display: grid; grid-template-columns: repeat(7, 1fr); position: relative; }
+.chain .line::before { content: ""; position: absolute; left: 7%; right: 7%; top: 6px; border-top: 2px dashed #9EABBC; }
+.chain .n { text-align: center; position: relative; }
+.chain .n i { display: block; width: 14px; height: 14px; border-radius: 50%; background: var(--paper); border: 3px solid var(--navy); margin: 0 auto; position: relative; }
+.chain .n.now i { background: var(--amber); border-color: var(--ink); }
+.chain .n b { display: block; font-family: var(--disp); font-size: 14px; font-weight: 600; margin-top: 3px; }
+.chain .n span { display: block; font-size: 10.5px; line-height: 1.2; color: var(--ink); }
+.seg { display: grid; grid-template-columns: 124px 1fr; gap: 10px; padding: 5px 0; border-top: 1px dashed #BFC9D6; }
+.segs .seg:first-of-type { border-top: none; padding-top: 2px; }
+.seg .y .n { font-family: var(--mono); font-size: 9.5px; color: var(--dim); letter-spacing: 0.02em; margin-right: 4px; }
+.seg .y b { display: block; font-family: var(--disp); font-weight: 600; font-size: 16px; line-height: 1.1; margin-top: 3px; }
+.seg .y .ap { display: inline-block; margin-top: 0; font-family: var(--mono); font-size: 10px; font-weight: 700; background: var(--navy); color: #fff; border-radius: 4px; padding: 1px 5px; letter-spacing: 0.02em; }
+.seg .y .pl { display: block; font-size: 10.5px; color: var(--dim); margin-top: 3px; line-height: 1.25; }
+.seg h3 { font-size: 13px; font-weight: 700; line-height: 1.28; }
+.seg h3 em { font-style: normal; font-weight: 500; color: var(--dim); }
+.seg .ctx { font-size: 11px; color: var(--dim); line-height: 1.36; margin-top: 2px; }
+.seg ul { list-style: none; margin-top: 2px; }
+.seg li { font-size: 11px; line-height: 1.36; padding-left: 14px; position: relative; margin-top: 2px; text-wrap: pretty; }
+.seg li::before { content: "✓"; position: absolute; left: 0; top: 0; font-size: 10px; font-weight: 700; color: var(--green); font-family: var(--text); }
+.seg li b { font-weight: 700; }
+.row4 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+.loy .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 12px; margin-top: 7px; }
+.loy .it { display: grid; grid-template-columns: 26px 1fr; gap: 7px; align-items: center; }
+.loy .it .m { width: 26px; height: 26px; border-radius: 7px; background: var(--navy); color: #fff; display: grid; place-items: center; font-family: var(--mono); font-size: 9.5px; font-weight: 700; }
+.loy .it b { display: block; font-family: var(--mono); font-size: 11px; font-weight: 700; line-height: 1.2; }
+.loy .it span { display: block; font-size: 10.5px; color: var(--dim); line-height: 1.2; }
+.loy .it.gold .m { background: var(--amber); color: var(--ink); }
+.marks { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; padding: 0 4px; }
+.marks .ink { padding: 3px 7px 2px; }
+.marks .ink b { font-size: 14px; }
+.loy .tier { margin-top: 8px; font-family: var(--mono); font-size: 10px; color: var(--dim); letter-spacing: 0.04em; }
+</style>
+</head>
+<body>
+
+<!-- ============ стр. 1 — посадочный талон ============ -->
+<section class="page">
+  <div class="topline"><span class="lab">Электронный билет · e-ticket · <b>действителен на интервью</b></span><span class="lab">RU · EN · 中文 · <b>ostapdotcenko.ru</b></span></div>
+
+  <div class="pass">
+    <div class="main">
+      <div class="band">
+        <div class="t"><svg viewBox="0 0 24 24"><path d="M21 15.5v-2l-8-5V3.2c0-.9-.7-1.7-1.5-1.7S10 2.3 10 3.2v5.3l-8 5v2l8-2.5V18l-2 1.5V21l3.5-1 3.5 1v-1.5L13 18v-5z"/></svg><b>ПОСАДОЧНЫЙ ТАЛОН</b></div>
+        <span class="cls">BUSINESS DEVELOPMENT</span>
+      </div>
+      <div class="pbody">
+        <div class="photo">
+          <div class="fr"><img src="img/passenger-rrw-2025.jpg" alt="Остап Доценко на Russian Retail Week 2025"></div>
+          <div class="chk">ДОСМОТР ПРОЙДЕН</div>
+          <div class="cap">Фото пассажира · Russian Retail Week 2025</div>
+        </div>
+        <div>
+          <div class="pax"><div class="lab">Пассажир · passenger</div>
+            <div class="nm">DOTSENKO / OSTAP MR</div>
+            <div class="ru"><b>Остап Доценко</b> · 奥斯塔普·多增科</div></div>
+          <div class="role">Руководитель по развитию бизнеса и маркетингу
+            <span class="co">13+ лет · <b>Alibaba Group</b> (AliExpress Россия и СНГ) · <b>Мегамаркет</b> (экосистема Сбера) · свой бизнес в Шанхае</span></div>
+          <div class="route">
+            <div class="ap"><b>MOW</b><span>Москва</span></div>
+            <div class="mid"><svg viewBox="0 0 24 24"><path d="M21 15.5v-2l-8-5V3.2c0-.9-.7-1.7-1.5-1.7S10 2.3 10 3.2v5.3l-8 5v2l8-2.5V18l-2 1.5V21l3.5-1 3.5 1v-1.5L13 18v-5z" transform="rotate(90 12 12)"/></svg><span>⇄ туда и обратно</span></div>
+            <div class="ap"><b>SHA</b><span>Шанхай</span></div>
+          </div>
+          <div class="fields">
+            <div class="f"><div class="lab">Рейс</div><div class="v big">BD-2013</div></div>
+            <div class="f"><div class="lab">Выход</div><div class="v big">C-level</div></div>
+            <div class="f"><div class="lab">Место</div><div class="v big">CBDO/CMO</div></div>
+            <div class="f"><div class="lab">Налёт</div><div class="v big">13+ лет</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="strip">
+        <div class="f"><div class="lab">Багаж · baggage</div><div class="v">5 языков · 20+ стран</div></div>
+        <div class="f"><div class="lab">Направления</div><div class="v">Россия · Китай · ЮВА</div></div>
+        <div class="f go"><div class="lab">Посадка · boarding</div><div class="v">сейчас — открыт к проектам</div></div>
+      </div>
+      <div class="target"><span class="lab">Желаемый рейс</span><span><b>CBDO · CMO · директор по международному развитию</b> (Россия ↔ Китай ↔ ЮВА)</span></div>
+      <div class="pfoot"><svg class="bars" viewBox="0 0 302 40" preserveAspectRatio="none"><rect x="0" y="0" width="2" height="40"/><rect x="3" y="0" width="2" height="40"/><rect x="7" y="0" width="2" height="40"/><rect x="12" y="0" width="2" height="40"/><rect x="16" y="0" width="2" height="40"/><rect x="21" y="0" width="3" height="40"/><rect x="27" y="0" width="1" height="40"/><rect x="29" y="0" width="1" height="40"/><rect x="32" y="0" width="1" height="40"/><rect x="34" y="0" width="1" height="40"/><rect x="37" y="0" width="2" height="40"/><rect x="40" y="0" width="3" height="40"/><rect x="45" y="0" width="3" height="40"/><rect x="50" y="0" width="2" height="40"/><rect x="54" y="0" width="1" height="40"/><rect x="56" y="0" width="1" height="40"/><rect x="60" y="0" width="1" height="40"/><rect x="64" y="0" width="1" height="40"/><rect x="66" y="0" width="1" height="40"/><rect x="70" y="0" width="1" height="40"/><rect x="74" y="0" width="2" height="40"/><rect x="78" y="0" width="1" height="40"/><rect x="81" y="0" width="2" height="40"/><rect x="84" y="0" width="3" height="40"/><rect x="88" y="0" width="2" height="40"/><rect x="91" y="0" width="2" height="40"/><rect x="96" y="0" width="1" height="40"/><rect x="98" y="0" width="3" height="40"/><rect x="102" y="0" width="1" height="40"/><rect x="104" y="0" width="1" height="40"/><rect x="106" y="0" width="1" height="40"/><rect x="109" y="0" width="2" height="40"/><rect x="114" y="0" width="1" height="40"/><rect x="116" y="0" width="1" height="40"/><rect x="118" y="0" width="2" height="40"/><rect x="123" y="0" width="2" height="40"/><rect x="126" y="0" width="2" height="40"/><rect x="129" y="0" width="1" height="40"/><rect x="132" y="0" width="1" height="40"/><rect x="135" y="0" width="1" height="40"/><rect x="137" y="0" width="1" height="40"/><rect x="141" y="0" width="1" height="40"/><rect x="145" y="0" width="3" height="40"/><rect x="151" y="0" width="2" height="40"/><rect x="154" y="0" width="1" height="40"/><rect x="156" y="0" width="1" height="40"/><rect x="158" y="0" width="1" height="40"/><rect x="160" y="0" width="2" height="40"/><rect x="165" y="0" width="2" height="40"/><rect x="169" y="0" width="1" height="40"/><rect x="171" y="0" width="2" height="40"/><rect x="174" y="0" width="1" height="40"/><rect x="177" y="0" width="3" height="40"/><rect x="183" y="0" width="3" height="40"/><rect x="189" y="0" width="2" height="40"/><rect x="194" y="0" width="1" height="40"/><rect x="197" y="0" width="3" height="40"/><rect x="201" y="0" width="1" height="40"/><rect x="204" y="0" width="1" height="40"/><rect x="207" y="0" width="2" height="40"/><rect x="211" y="0" width="1" height="40"/><rect x="214" y="0" width="2" height="40"/><rect x="217" y="0" width="1" height="40"/><rect x="221" y="0" width="2" height="40"/><rect x="225" y="0" width="1" height="40"/><rect x="228" y="0" width="3" height="40"/><rect x="232" y="0" width="3" height="40"/><rect x="238" y="0" width="1" height="40"/><rect x="242" y="0" width="3" height="40"/><rect x="247" y="0" width="3" height="40"/><rect x="251" y="0" width="1" height="40"/><rect x="254" y="0" width="3" height="40"/><rect x="260" y="0" width="1" height="40"/><rect x="263" y="0" width="2" height="40"/><rect x="267" y="0" width="2" height="40"/><rect x="270" y="0" width="1" height="40"/><rect x="273" y="0" width="1" height="40"/><rect x="275" y="0" width="2" height="40"/><rect x="278" y="0" width="2" height="40"/><rect x="282" y="0" width="2" height="40"/><rect x="285" y="0" width="3" height="40"/><rect x="290" y="0" width="3" height="40"/><rect x="295" y="0" width="2" height="40"/><rect x="299" y="0" width="2" height="40"/></svg><div class="lab">Ручная кладь: B2B Marketing ·<br>Global Business · AdTech</div></div>
+    </div>
+    <div class="stub">
+      <div class="band"><div class="t"><b style="font-size:18px">КОРЕШОК</b></div></div>
+      <div class="sb">
+        <div class="rt">MOW <i>⇄</i> SHA</div>
+        <div class="k7"><div class="lab">Для рекрутера: главное за 7 секунд</div>
+          <div class="it"><b>+350%</b><span>продавцов год к году</span><i>Мегамаркет</i></div>
+          <div class="it"><b>$48M</b><span>GMV, +100% год к году</span><i>AliExpress Россия и СНГ</i></div>
+          <div class="it"><b>25×</b><span>средний ROI кампаний</span><i>Alibaba, 2020–2022</i></div>
+          <div class="it"><b>3 млрд ₽</b><span>чистой прибыли, Q4 2023</span><i>Мегамаркет</i></div>
+        </div>
+        <div class="qr"><div class="q"><img src="img/qr-site.svg" alt="QR ostapdotcenko.ru"></div><div class="tx"><b>ostapdotcenko.ru</b>сайт и блог<br>RU · EN · 中文</div></div>
+        <div class="tear">✂ оторвать и оставить себе</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="board">
+    <div class="hd"><b>ТАБЛО ПРИЛЁТА · ЕЩЁ ДОСТИЖЕНИЯ</b><span>ARRIVALS · ВСЕ РЕЙСЫ ПРИБЫЛИ</span></div>
+    <div class="cols">
+      <div>
+        <div class="th"><span>РЕЙС</span><span>ПУНКТ НАЗНАЧЕНИЯ</span><span style="text-align:right">СТАТУС</span></div>
+        <div class="tr"><span class="c">МЕГАМАРКЕТ</span><span class="d"><b>50 000</b> продавцов на платформе</span><span class="s">ПРИБЫЛ</span></div>
+        <div class="tr"><span class="c">МЕГАМАРКЕТ</span><span class="d"><b>86 регионов</b> — программа с Минэкономразвития</span><span class="s">ПРИБЫЛ</span></div>
+        <div class="tr"><span class="c">МЕГАМАРКЕТ</span><span class="d">«Сделано в России»: <b>0 → 2000</b> компаний, 2024</span><span class="s">ПРИБЫЛ</span></div>
+        <div class="tr"><span class="c">МЕГАМАРКЕТ</span><span class="d">«Мегасреда»: <b>20 городов</b>, <b>1 млн+</b> просмотров</span><span class="s">ПРИБЫЛ</span></div>
+      </div>
+      <div>
+        <div class="th"><span>РЕЙС</span><span>ПУНКТ НАЗНАЧЕНИЯ</span><span style="text-align:right">СТАТУС</span></div>
+        <div class="tr"><span class="c">ALIEXPRESS</span><span class="d">новые покупатели <b>+185%</b></span><span class="s">ПРИБЫЛ</span></div>
+        <div class="tr"><span class="c">ALIEXPRESS</span><span class="d"><b>120+</b> медиа-партнёров, РФ и СНГ</span><span class="s">ПРИБЫЛ</span></div>
+        <div class="tr"><span class="c">PINNACLE</span><span class="d">форум Мегамаркета в Шэньчжэне: <b>1 200+</b> участников</span><span class="s">ПРИБЫЛ</span></div>
+        <div class="tr"><span class="c">РФ И СНГ</span><span class="d"><b>50+</b> выставок и форумов</span><span class="s">ПРИБЫЛ</span></div>
+      </div>
+    </div>
+    <div class="note">Правила перевозки: метрики из реальных проектов; часть данных обезличена по требованиям NDA.</div>
+  </div>
+
+  <div class="row3">
+    <div class="box contact">
+      <div class="h">Связь с бортом</div>
+      <div class="ln"><span class="lab">тел</span><span>+86 137 6171 6355</span></div>
+      <div class="ln"><span class="lab">тел</span><span>+7 985 874-49-58</span></div>
+      <div class="ln"><span class="lab">WhatsApp</span><span>+7 985 874-49-58</span></div>
+      <div class="ln"><span class="lab">e-mail</span><span>norbanking@gmail.com</span></div>
+      <div class="ln"><span class="lab">где</span><span>Шанхай · Москва (гибрид)</span></div>
+      <div class="ln"><span class="lab">сайт</span><span>ostapdotcenko.ru</span></div>
+      <div class="ln"><span class="lab">блог</span><span>ostapdotcenko.ru/blog</span></div>
+      <div class="ln"><span class="lab">insta</span><span>@ostap.dotsenko</span></div>
+      <div class="tg"><div class="q"><img src="img/qr-telegram.png" alt="QR Telegram"></div><div><b>@ostapdotcenko</b>Telegram — напишите, посадка уже идёт</div></div>
+    </div>
+    <div class="box">
+      <div class="h">Экипаж в сборе <small>языки · образование · допуски</small></div>
+      <div class="kit">
+        <div class="langs">
+          <div class="sub">Языки на борту</div>
+          <div class="l"><span>Русский</span><div class="bar"><i style="width:100%"></i></div><em>родной</em></div>
+          <div class="l"><span>English</span><div class="bar"><i style="width:88%"></i></div><em>C1</em></div>
+          <div class="l"><span>中文</span><div class="bar"><i style="width:74%"></i></div><em>B2+</em></div>
+          <div class="l"><span>O'zbek</span><div class="bar"><i style="width:58%"></i></div><em>B1</em></div>
+          <div class="l"><span>한국어</span><div class="bar"><i style="width:36%"></i></div><em>A2</em></div>
+          <div class="sub" style="margin-top:8px">Лётная школа</div>
+          <ul class="ul"><li>Гражданское право — МИУ</li><li>Преподаватель корейского языка — лицей при ТашГИВ</li></ul>
+        </div>
+        <div>
+          <div class="sub">Допуски экипажа</div>
+          <ul class="ul">
+            <li><b>Business Development:</b> стратегия выхода на рынки, партнёрства и альянсы, переговоры с первыми лицами, BD Asia &amp; CIS, новые направления.</li>
+            <li><b>Маркетинг:</b> B2B Marketing, Demand Generation, Performance, Product Marketing, Sales Enablement, бренд-программы.</li>
+            <li><b>Технологии и данные:</b> e-commerce и маркетплейсы, AdTech / MarTech, Marketing Automation, CRM &amp; Analytics, O2O.</li>
+            <li><b>Коммуникации:</b> GR и госпрограммы, федеральные мероприятия, PR.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ftr"><span>Посадочный талон · Остап Доценко</span><span><b>ostapdotcenko.ru</b> · лист 1 / 2</span></div>
+</section>
+
+<!-- ============ стр. 2 — маршрутная квитанция ============ -->
+<section class="page">
+  <div class="rhead">
+    <div>
+      <div class="lab">Itinerary receipt · квитанция к билету BD-2013</div>
+      <div class="tt">Маршрутная квитанция</div>
+      <div class="meta">
+        <div><div class="lab">Пассажир</div><div class="v">DOTSENKO / OSTAP MR</div></div>
+        <div><div class="lab">Сегментов</div><div class="v">7 · с 2013 года</div></div>
+        <div><div class="lab">Статус</div><div class="v" style="color:var(--green)">открыт к проектам</div></div>
+      </div>
+    </div>
+    <div class="visa deco">
+      <div class="pst" style="left:14px; top:0px; transform: rotate(-6deg)"><img src="img/stamp-hangzhou-2018.jpg" alt="" style="width:92px; height:66px; object-position: 30% 40%"><span>ХАНЧЖОУ · 2018</span></div>
+      <div class="pst" style="left:124px; top:-4px; transform: rotate(5deg)"><img src="img/stamp-changsha-2026.jpg" alt="" style="width:62px; height:74px; object-position: 50% 62%"><span>ЧАНША · 2026</span></div>
+      <div class="st ink" style="left:208px; top:2px; color:var(--red); transform: rotate(9deg)"><b>上海</b><span>ШАНХАЙ · SHA</span></div>
+      <div class="st ink" style="left:206px; top:54px; color:var(--blue); transform: rotate(-7deg)"><b>МОСКВА</b><span>MOW · ВЫЛЕТ</span></div>
+    </div>
+  </div>
+
+  <div class="chain">
+        <div class="line">
+      <div class="n"><i></i><b>2013</b><span>CityAds Media</span></div>
+      <div class="n"><i></i><b>2015</b><span>Data Centric Alliance</span></div>
+      <div class="n"><i></i><b>2018</b><span>O.F.D Creative Agency</span></div>
+      <div class="n"><i></i><b>2020</b><span>Alibaba Group · AliExpress</span></div>
+      <div class="n"><i></i><b>2022</b><span>Independent Adviser</span></div>
+      <div class="n"><i></i><b>2023</b><span>Мегамаркет (Сбер)</span></div>
+      <div class="n now"><i></i><b>2025</b><span>Shanghai Pinnacle</span></div>
+    </div>
+  </div>
+
+  <div class="box segs">
+    <div class="h" style="margin-bottom:6px">Сегменты <small>от текущего к первому · даты, компании, результаты</small></div>
+
+    <div class="seg">
+      <div class="y"><span class="n">СЕГМ. 7</span><span class="ap">SHA</span><b>2025 — н. в.</b></div>
+      <div>
+        <h3>Собственник и основатель · Shanghai Pinnacle Technology Co., Ltd.</h3>
+        <div class="ctx">GlobalTechTour — технологические экспедиции и бенчмарк-туры в Китай и ЮВА; Aura Robotics — робототехника и автоматизация, подбор роботов напрямую у китайских производителей.</div>
+        <ul>
+          <li>Корпоративный форум <b>Мегамаркета (Сбер) в Шэньчжэне на 1 200+ участников</b> — под ключ: логистика, площадка, деловая программа.</li>
+          <li>Визиты делегаций на заводы и в R&amp;D <b>BYD, Xiaomi, Baidu, Meituan, Poizon, Leju Robotics</b>; для клиентов Aura — прямой доступ к руководству и R&amp;D производителей роботов.</li>
+          <li><b>БелМол</b> за 2 часа переговоров на заводе Kepler решил вопрос автоматизации молочного производства; <b>СоларТек</b> за 5 дней посетил Leju Robotics, Robotera, AgiBot и Kepler.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="seg">
+      <div class="y"><span class="n">СЕГМ. 6</span><span class="ap">RU</span><b>2023 — 2025</b></div>
+      <div>
+        <h3>Head of B2B Marketing · Мегамаркет (экосистема Сбера) <em>— e-commerce №3 в России</em></h3>
+        <ul>
+          <li>B2B-маркетинг привлечения продавцов: <b>+350% продавцов год к году</b>, <b>50 000 продавцов</b> на платформе; <b>3 млрд ₽ чистой прибыли, Q4 2023</b>.</li>
+          <li>С <b>Минэкономразвития России</b> — федеральная программа поддержки предпринимателей на базе центров «Мой бизнес» в <b>86 регионах</b>: стратегия привлечения, материалы, региональная коммуникация — с нуля.</li>
+          <li>Федеральный марафон «Мегасреда» в <b>20 городах</b> — от концепции до контента и PR; <b>1 млн+ просмотров</b>.</li>
+          <li>«Сделано в России»: бренд-программа, онбординг, видеокампания — <b>от 0 до 2 000 компаний</b>; социальный маркетплейс для производителей с ограниченными физическими возможностями.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="seg">
+      <div class="y"><span class="n">СЕГМ. 5</span><span class="ap">UZ·KZ·ЮВА</span><b>2022 — 2023</b></div>
+      <div>
+        <h3>Independent Adviser · AdTech / MarTech / EduTech <em>— Узбекистан, Казахстан, ЮВА</em></h3>
+        <ul><li>MyDars, HiTarget (Индонезия); <b>20+ партнёров</b>; локализация продуктов для ЮВА.</li></ul>
+      </div>
+    </div>
+
+    <div class="seg">
+      <div class="y"><span class="n">СЕГМ. 4</span><span class="ap">RU·СНГ</span><b>2020 — 2022</b></div>
+      <div>
+        <h3>Head of O2O &amp; New Business · Alibaba Group — AliExpress Россия и СНГ</h3>
+        <ul>
+          <li>Партнёрства: <b>Альфа-Банк, Тинькофф, МТС Банк, МегаФон, Билайн, Роснефть</b> и <b>120+ медиахолдингов</b>.</li>
+          <li><b>GMV $48M (+100% год к году)</b>, <b>новые покупатели +185%</b>, средний <b>ROI кампаний 25×</b>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="seg">
+      <div class="y"><span class="n">СЕГМ. 3</span><span class="ap">SHA·HKG</span><b>2018 — 2020</b></div>
+      <div>
+        <h3>Co-founder · O.F.D Creative Agency <em>— Шанхай / Гонконг</em></h3>
+        <ul><li>Совместный проект китайской и российской команд: рекламные решения для продвижения бизнеса на рынках Китая и России. Клиенты: <b>FOREO, DECATHLON, Bank of China, WWE, CDEK</b>.</li></ul>
+      </div>
+    </div>
+
+    <div class="seg">
+      <div class="y"><span class="n">СЕГМ. 2</span><span class="ap">MOW·SHA</span><b>2015 — 2017</b></div>
+      <div>
+        <h3>Head of Commerce &amp; BD · Data Centric Alliance <em>— Москва / Шанхай</em></h3>
+        <ul><li>Медиазакупки и развитие бизнеса в Азии; <b>Google HK, Yahoo HK, Tencent, Ctrip, Baidu</b>.</li></ul>
+      </div>
+    </div>
+
+    <div class="seg">
+      <div class="y"><span class="n">СЕГМ. 1</span><span class="ap">CN·ЮВА</span><b>2013 — 2015</b></div>
+      <div>
+        <h3>BD Manager — КНР / ЮВА · CityAds Media</h3>
+        <ul><li>Performance- и аффилиат-маркетинг (CPA / CPC / CPL), Китай и ЮВА; <b>Sasa</b> (Гонконг).</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row4">
+    <div class="box loy">
+      <div class="h">Программа лояльности <small>где меня найти</small></div>
+      <div class="grid">
+        <div class="it gold"><span class="m">WEB</span><div><b>ostapdotcenko.ru</b><span>сайт · RU · EN · 中文</span></div></div>
+        <div class="it gold"><span class="m">BLOG</span><div><b>ostapdotcenko.ru/blog</b><span>статьи каждый день</span></div></div>
+        <div class="it"><span class="m">IG</span><div><b>@ostap.dotsenko</b><span>Instagram</span></div></div>
+        <div class="it"><span class="m">TG</span><div><b>@ostapdotcenko</b><span>Telegram</span></div></div>
+        <div class="it"><span class="m">in</span><div><b>Ostap Dotsenko</b><span>LinkedIn</span></div></div>
+        <div class="it"><span class="m">f</span><div><b>Ostap Dotsenko</b><span>Facebook</span></div></div>
+        <div class="it"><span class="m">GTT</span><div><b>globaltechtour.ru</b><span>+ блог · экспедиции</span></div></div>
+        <div class="it"><span class="m">AR</span><div><b>aura-robotics.ru</b><span>+ блог · роботы</span></div></div>
+      </div>
+      <div class="marks deco">
+        <span class="ink" style="color:var(--red); transform: rotate(-6deg)"><b>深圳</b><span>ШЭНЬЧЖЭНЬ</span></span>
+        <span class="ink" style="color:var(--violet); transform: rotate(4deg)"><b>香港</b><span>ГОНКОНГ</span></span>
+        <span class="ink" style="color:var(--green); transform: rotate(-3deg)"><b>ТАШКЕНТ</b><span>ТашГИВ</span></span>
+        <span class="ink" style="color:var(--blue); transform: rotate(6deg)"><b>ИРКУТСК</b><span>2024</span></span>
+      </div>
+    </div>
+    <div class="box">
+      <div class="h">Бортовая пресса</div>
+      <ul class="ul" style="margin-top:3px">
+        <li><b>РБК</b> — интервью «Главное — знать матчасть и не бояться»</li>
+        <li><b>РБК Отрасли</b> · <b>ТАСС</b> — Ульяновская область и Мегамаркет</li>
+        <li><b>Сбер Бизнес</b> — гайд «Маркетплейсы: большая инструкция по заработку»</li>
+        <li><b>«Мой бизнес»</b> — марафон, 1 млн+ просмотров</li>
+      </ul>
+      <div class="h" style="margin-top:7px">Объявления в салоне <small>выступления</small></div>
+      <ul class="ul" style="margin-top:3px">
+        <li><b>Russian Retail Show 2024</b> — спикер</li>
+        <li><b>Amber Forum 2024</b> — панельная дискуссия</li>
+        <li><b>«Саммит производителей»</b>, Иркутск, 2024 — панель</li>
+        <li><b>Russian Retail Week 2025</b> · форум <b>ШОС 2025</b> · «Мегасреда»</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ftr"><span><b>Полная деловая версия и версия для ATS — по запросу</b></span><span><b>ostapdotcenko.ru</b> · лист 2 / 2</span></div>
+</section>
+
+</body>
+</html>
