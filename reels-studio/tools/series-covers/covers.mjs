@@ -27,18 +27,28 @@ const RK = [
   // Серия 0 — своя раскладка (07.11.2026, пользователь: «не очень красивая… чтобы было понятно, что это Китай, и чтобы всех
   // персонажей было видно»): красная карта Китая, 16 героев целиком (вырезки из портретов AuraCast), ряд 8 печатей краёв
   { name: 'robokitai-000-trailer', kind: 'map', ep: 'СЕРИЯ 0', title: 'Добро пожаловать в <mark>Робокитай</mark>' },
-  { name: 'robokitai-001-hangzhou', ep: 'СЕРИЯ 1', stamp: '杭', img: 'ep1-kadr.jpg', pos: 'center 74%',
+  // Серии 1–3 — яркие (07.11.2026, пользователь: «и для других серий сделай более яркие обложки, чтобы интересно было»):
+  // свой цвет фона серии, линии концентрации манхуа, герои серии крупно (вырезки), деталь сюжета, мини-карта Китая с точкой города
+  { name: 'robokitai-001-hangzhou', kind: 'bright', theme: 'yellow', ep: 'СЕРИЯ 1', stamp: '杭', mapCity: 'Ханчжоу',
     title: 'Склад <mark>не успевает</mark>.<br>AGV или AMR?', city: 'Ханчжоу', zh: '杭州',
-    tag: 'край складских машин', note: 'Рыжик или Шустрик — кто?' },
-  { name: 'robokitai-001-hangzhou-v2', ep: 'СЕРИЯ 1', stamp: '杭', img: 'ep1-kadr.jpg', pos: 'center 74%',
-    title: 'Склад <mark>не успевает</mark>.<br>AGV или AMR?', city: 'Ханчжоу', zh: '杭州',
-    tag: 'край складских машин', note: 'До 11.11 осталось 2 дня' },
-  { name: 'robokitai-002-suzhou', ep: 'СЕРИЯ 2', stamp: '苏', img: 'ep2-kadr.jpg', pos: 'center 25%',
+    tag: 'край складских машин', note: 'Рыжик или Шустрик — кто?',
+    heroes: [['12-agv', 'Шустрик · AGV', 270, 1330, 400], ['13-agv-orange', 'Рыжик · AMR', 805, 1330, 300], ['02-dog', 'Скаут', 540, 1365, 215]],
+    extra: '<div class="burst" style="left:395px;top:800px;width:290px;height:290px"><b>VS</b></div>' },
+  { name: 'robokitai-001-hangzhou-v2', kind: 'bright', theme: 'red', ep: 'СЕРИЯ 1', stamp: '杭', sealAt: 'left', mapCity: 'Ханчжоу',
+    title: 'Склад<br><mark>не успевает</mark>', city: 'Ханчжоу', zh: '杭州',
+    tag: 'край складских машин', note: 'Рыжик застрял у порога!',
+    heroes: [['13-agv-orange', 'Рыжик · AMR', 480, 1305, 430, '', -6]],
+    extra: '<div class="hazard"><span>ПОРОГ</span></div><div class="timer"><i>ДО 11.11</i><b>2 дня</b></div><div class="alert" style="left:230px;top:700px">!</div>' },
+  { name: 'robokitai-002-suzhou', kind: 'bright', theme: 'blue', ep: 'СЕРИЯ 2', stamp: '苏', mapCity: 'Сучжоу',
     title: 'Какой <mark>кобот</mark><br>нужен цеху?', city: 'Сучжоу', zh: '苏州',
-    tag: 'край коботов', note: 'Деталь 4 кг → кобот на 8–10 кг' },
-  { name: 'robokitai-003-shenzhen', ep: 'СЕРИЯ 3', stamp: '深', img: 'ep3-kadr.jpg', pos: 'center 25%',
+    tag: 'край коботов', note: 'Деталь 4 кг → кобот на 8–10 кг',
+    heroes: [['09-cobot', 'Тихон · кобот на 5 кг', 380, 1340, 640], ['07-arm', 'Арми', 860, 1340, 380]],
+    extra: '<svg class="string" viewBox="0 0 1080 1920"><path d="M590 790 Q 640 820 668 846"/></svg><div class="weight" style="left:640px;top:830px">4 кг</div><div class="alert sm" style="left:120px;top:820px">!</div>' },
+  { name: 'robokitai-003-shenzhen', kind: 'bright', theme: 'orange', ep: 'СЕРИЯ 3', stamp: '深', mapCity: 'Шэньчжэнь',
     title: 'Чем робот<br>будет <mark>брать</mark>?', city: 'Шэньчжэнь', zh: '深圳',
-    tag: 'город железа', note: 'Сначала захват — потом робот' },
+    tag: 'город железа', note: 'Сначала захват — потом робот',
+    heroes: [['14-drone', 'Сокол', 545, 790, 115, 'fly'], ['10-hand', 'Пятёрка', 320, 1345, 600], ['11-hand-chrome', 'Рубин', 770, 1345, 600]],
+    extra: '<div class="qmark" style="left:450px;top:850px">?</div>' },
 ];
 const rkHtml = (c) => `<!doctype html><html lang="ru"><head><meta charset="utf-8"><style>${FONTS}
 body{background:#F3F0E8;background-image:linear-gradient(#E3DED2 1.5px,transparent 1.5px),linear-gradient(90deg,#E3DED2 1.5px,transparent 1.5px);background-size:54px 54px;font-family:Golos;color:#16161C}
@@ -122,6 +132,79 @@ ${CAST0.map(([, n, x, y, h, fl]) => `<span class="nm ${fl || ''}" style="left:${
 <script>window.fit=()=>{const h=document.querySelector('h1');let f=108;h.style.fontSize=f+'px';while(h.offsetHeight>2.2*f&&f>60){f-=4;h.style.fontSize=f+'px'}}</script>
 </body></html>`;
 
+// Серии 1–3: яркий фон серии + линии концентрации + герои + деталь сюжета (`extra`) + мини-карта с точкой города (`CITY_XY`).
+// Герой: [файл, подпись, центр x, низ y, высота, 'fly' | '', поворот°].
+const CITY_XY = JSON.parse(MAP_TS.match(/CITY_XY: Record<string, \[number, number\]> = (\{.*?\});/s)[1]);
+const THEMES = {
+  yellow: { bg: '#FFD83A', ln: 'rgba(22,22,28,.13)', fg: '#16161C', sub: '#3E3D45', mk: '#fff', land: '#D6262B', dot: '#FFD83A' },
+  red: { bg: '#E3312D', ln: 'rgba(255,255,255,.16)', fg: '#fff', sub: '#FFE3DF', mk: '#FFD83A', land: '#fff', dot: '#E3312D' },
+  blue: { bg: '#52ABFF', ln: 'rgba(255,255,255,.22)', fg: '#16161C', sub: '#123056', mk: '#FFD83A', land: '#D6262B', dot: '#FFD83A' },
+  orange: { bg: '#FF8B2C', ln: 'rgba(22,22,28,.12)', fg: '#16161C', sub: '#4A2508', mk: '#fff', land: '#D6262B', dot: '#FFD83A' },
+};
+const heroDivs = (list) => list.map(([f, , x, y, h, fl, rot]) => `<div class="h ${fl || ''}" style="left:${x}px;top:${y - h}px;height:${h}px;${rot ? `rotate:${rot}deg;` : ''}"><span class="gs"></span><img src="${u(HERO + f + '.png')}"></div>`).join('\n')
+  + list.map(([, n, x, y, h, fl]) => `<span class="nm" style="left:${x}px;top:${fl === 'fly' ? y - h - 30 : y - 26}px">${n}</span>`).join('');
+const rkBright = (c) => {
+  const t = THEMES[c.theme];
+  const [mx, my] = CITY_XY[c.mapCity];
+  return `<!doctype html><html lang="ru"><head><meta charset="utf-8"><style>${FONTS}
+body{background:${t.bg};font-family:Golos;color:${t.fg}}
+.rays{position:absolute;inset:0;background:repeating-conic-gradient(from 0deg at 50% 54%,${t.ln} 0 2.4deg,transparent 2.4deg 7.5deg);-webkit-mask-image:radial-gradient(circle at 50% 54%,transparent 22%,#000 52%)}
+.dots{position:absolute;inset:0;background-image:radial-gradient(${t.ln} 2.4px,transparent 2.8px);background-size:20px 20px;-webkit-mask-image:linear-gradient(180deg,#000 0,transparent 30%,transparent 70%,#000 100%)}
+.hdr{position:absolute;top:262px;left:56px;right:64px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:16px;font:700 30px JB;letter-spacing:.08em;background:#fff;color:#16161C;padding:8px 20px 8px 8px;border-radius:14px;border:3px solid #16161C;box-shadow:5px 5px 0 #16161C}
+.seal{width:56px;height:56px;background:#D6262B;color:#fff;border-radius:9px;display:flex;align-items:center;justify-content:center;font:58px MSZ}
+.brand .zh{color:#D6262B;font:36px MSZ;letter-spacing:0}
+.ep{background:#16161C;color:#fff;font:800 32px JB;letter-spacing:.06em;padding:12px 22px;border-radius:12px;box-shadow:5px 5px 0 rgba(0,0,0,.25)}
+h1{position:absolute;top:350px;left:60px;right:44px;font:900 112px/1.04 Golos;letter-spacing:-.02em;${c.theme === 'red' ? 'text-shadow:6px 6px 0 #16161C;' : ''}}
+mark{background:${t.mk};color:#16161C;padding:0 14px;border-radius:12px;box-shadow:6px 6px 0 #16161C;text-shadow:none;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.stamp{position:absolute;top:600px;${c.sealAt === 'left' ? 'left:44px;rotate:-7deg' : 'right:40px;rotate:7deg'};width:150px;height:150px;background:#D6262B;color:#fff;border-radius:20px;display:flex;align-items:center;justify-content:center;font:144px/1 MSZ;box-shadow:8px 8px 0 #16161C;border:5px solid #fff;z-index:6}
+.h{position:absolute;translate:-50% 0}
+.h img{display:block;height:100%;width:auto;margin:0 auto;position:relative;filter:drop-shadow(5px 6px 0 rgba(22,22,28,.45))}
+.h .gs{position:absolute;left:50%;bottom:-12px;width:80%;height:30px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(22,22,28,.5),rgba(22,22,28,0))}
+.h.fly .gs{bottom:-50px;width:60%;opacity:.5}
+.nm{position:absolute;transform:translateX(-50%);background:#fff;color:#16161C;border:3px solid #16161C;border-radius:30px;padding:4px 18px 6px;font:800 34px Golos;white-space:nowrap;box-shadow:5px 5px 0 #16161C;z-index:7}
+.burst{position:absolute;display:flex;align-items:center;justify-content:center;background:#E3312D;clip-path:polygon(50% 0,61% 22%,85% 8%,78% 34%,100% 42%,80% 56%,95% 80%,68% 74%,60% 100%,47% 78%,25% 96%,25% 70%,0 66%,18% 48%,4% 24%,30% 28%);z-index:5}
+.burst b{font:900 120px/1 Golos;color:#fff;-webkit-text-stroke:5px #16161C;paint-order:stroke;letter-spacing:-.04em;rotate:-8deg}
+.alert{position:absolute;width:170px;height:150px;background:#FFD83A;clip-path:polygon(50% 0,100% 100%,0 100%);display:flex;align-items:flex-end;justify-content:center;font:900 112px/1.1 Golos;color:#16161C;z-index:5;filter:drop-shadow(0 0 0 #16161C)}
+.alert.sm{width:120px;height:106px;font-size:80px}
+.timer{position:absolute;left:650px;top:640px;width:360px;background:#fff;border:6px solid #16161C;border-radius:22px;box-shadow:10px 10px 0 #16161C;rotate:4deg;text-align:center;padding:16px 0 18px;z-index:6}
+.timer i{display:block;font:700 36px JB;font-style:normal;color:#3E3D45;letter-spacing:.06em}
+.timer b{display:block;font:900 118px/1 Golos;color:#E3312D}
+.hazard{position:absolute;left:-30px;right:-30px;top:1262px;height:70px;background:repeating-linear-gradient(-45deg,#FFD83A 0 40px,#16161C 40px 80px);border-top:5px solid #16161C;border-bottom:5px solid #16161C;rotate:-2deg}
+.hazard span{position:absolute;right:120px;top:-62px;background:#16161C;color:#FFD83A;font:800 34px JB;padding:6px 16px;border-radius:10px;letter-spacing:.08em}
+.weight{position:absolute;width:190px;height:150px;background:#fff;border:6px solid #16161C;border-radius:14px 14px 30px 30px;box-shadow:8px 8px 0 #16161C;display:flex;align-items:center;justify-content:center;font:900 68px/1 Golos;color:#E3312D;rotate:8deg;z-index:6}
+.weight::before{content:"";position:absolute;top:14px;left:50%;width:22px;height:22px;margin-left:-11px;border-radius:50%;border:5px solid #16161C}
+.string{position:absolute;inset:0;z-index:5}.string path{fill:none;stroke:#16161C;stroke-width:5}
+.qmark{position:absolute;font:900 300px/1 Golos;color:#fff;-webkit-text-stroke:9px #16161C;paint-order:stroke;text-shadow:12px 12px 0 #16161C;rotate:10deg;z-index:5}
+.row{position:absolute;top:1400px;left:56px;right:56px;display:flex;align-items:center;gap:26px}
+.mini{width:236px;flex:none}
+.mini .sh{fill:#16161C;transform:translate(14px,14px)}
+.mini .land{fill:${t.land};stroke:#16161C;stroke-width:9;stroke-linejoin:round}
+.mini .dt{fill:${t.dot};stroke:#16161C;stroke-width:9}
+.city{display:flex;flex-direction:column;gap:6px;min-width:0}
+.city b{font:900 86px/1 Golos;text-transform:uppercase;letter-spacing:-.01em;white-space:nowrap}
+.city b span{font:76px/1 MSZ;color:${c.theme === 'red' ? '#FFD83A' : '#D6262B'};text-transform:none;margin-left:16px}
+.city i{font:700 44px Golos;font-style:normal;color:${t.sub}}
+.note{position:absolute;top:1590px;left:56px;max-width:968px;background:#16161C;color:#fff;font:800 52px/1.15 Golos;padding:18px 30px 20px;border-radius:16px;box-shadow:7px 7px 0 ${c.theme === 'red' ? '#FFD83A' : '#fff'}}
+.note::before{content:"";display:inline-block;width:22px;height:22px;border-radius:50%;background:#FFD83A;margin-right:16px;vertical-align:4px}
+.foot{position:absolute;top:1740px;left:60px;display:flex;align-items:center;gap:16px;font:700 34px JB;color:${t.fg}}
+.foot svg{width:54px;height:54px}.foot svg *{fill:currentColor}
+</style></head><body>
+<div class="rays"></div><div class="dots"></div>
+<div class="hdr"><div class="brand"><span class="seal">机</span>РОБОКИТАЙ <span class="zh">机器人中国</span></div><div class="ep">${c.ep}</div></div>
+<h1>${c.title}</h1>
+<div class="stamp">${c.stamp}</div>
+${c.extra || ''}
+${heroDivs(c.heroes)}
+<div class="row"><svg class="mini" viewBox="-20 -20 1050 880">${CHINA.map((d) => `<path class="sh" d="${d}"/>`).join('')}${CHINA.map((d) => `<path class="land" d="${d}"/>`).join('')}<circle class="dt" cx="${mx}" cy="${my}" r="46"/></svg>
+<div class="city"><b>${c.city}<span>${c.zh}</span></b><i>${c.tag}</i></div></div>
+<div class="note">${c.note}</div>
+<div class="foot">${AR}<span>aura-robotics.ru/blog</span></div>
+<script>window.fit=()=>{const h=document.querySelector('h1');let f=112;h.style.fontSize=f+'px';while(h.offsetHeight>2.25*f&&f>60){f-=4;h.style.fontSize=f+'px'}
+const b=document.querySelector('.city b');let g=86;while(b.scrollWidth>b.parentElement.parentElement.clientWidth-262&&g>50){g-=4;b.style.fontSize=g+'px'}}</script>
+</body></html>`;
+};
+
 // ——— манхуа ostapdotcenko ———
 const OST = `${ROOT}/source-videos/фото-от-пользователя/остап/`;
 const ART = `${ROOT}/source-videos/2026-11-06-od-manhua-explainer/обложки-статей/`;
@@ -177,7 +260,7 @@ h1 .b{display:block;color:#E8341C;text-shadow:6px 6px 0 #191922}
 
 (async () => {
   const only = process.argv.slice(2);
-  const jobs = [...RK.map((c) => ['robokitai', c, c.kind === 'map' ? rk0Html(c) : rkHtml(c)]), ...OD.map((c) => ['od-manhua', c, odHtml(c)])]
+  const jobs = [...RK.map((c) => ['robokitai', c, c.kind === 'map' ? rk0Html(c) : c.kind === 'bright' ? rkBright(c) : rkHtml(c)]), ...OD.map((c) => ['od-manhua', c, odHtml(c)])]
     .filter(([, c]) => !only.length || only.includes(c.name));
   const b = await chromium.launch();
   const pg = await b.newPage({ viewport: { width: 1080, height: 1920 } });
