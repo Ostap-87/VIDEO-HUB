@@ -38,6 +38,11 @@ import {RobokitaiEpisode, RobokitaiPreview, rkFrames, type RobokitaiProps} from 
 import robokitaiSample from "../props/robokitai/001-hangzhou.json";
 import {RobokitaiDrama, RobokitaiDramaPreview, rdFrames, type RobokitaiDramaProps} from "./compositions/RobokitaiDrama";
 import robokitaiDramaSample from "../props/robokitai/001-hangzhou-v2.json";
+import {RobokitaiTrailer, RobokitaiTrailerPreview, rtFrames, type RobokitaiTrailerProps} from "./compositions/RobokitaiTrailer";
+import {RobokitaiCarousel} from "./compositions/robokitai/carousel";
+import type {RobokitaiCarouselProps} from "./compositions/robokitai/trailerTypes";
+import robokitaiTrailerSample from "../props/robokitai/000-trailer.json";
+import robokitaiKartaSample from "../props/robokitai/carousel-karta.json";
 import blogNewsSample from "../props/blog-news/001-coffee-with-hint-audit.json";
 import {SiteManhuaEn, SiteManhuaEnPreview, SITE_MANHUA_EN_FRAMES} from "./compositions/SiteManhuaEn";
 import {AuraSiteManhua, AuraSiteManhuaPreview, AURA_MANHUA_FRAMES} from "./compositions/AuraSiteManhua";
@@ -356,6 +361,37 @@ export const RemotionRoot: React.FC = () => {
         durationInFrames={rdFrames(robokitaiDramaSample as unknown as RobokitaiDramaProps)}
         defaultProps={{...(robokitaiDramaSample as unknown as RobokitaiDramaProps), step: 30, start: 15}}
         calculateMetadata={({props}: {props: RobokitaiDramaProps}) => ({durationInFrames: rdFrames(props)})}
+      />
+      {/* «Робокитай» · Серия 0 — трейлер вселенной и карусели «Карта» / «Команда» (06.11.2026); props — props/robokitai/000-trailer.json, carousel-*.json */}
+      <Composition
+        id="RobokitaiTrailer"
+        component={RobokitaiTrailer}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={rtFrames(robokitaiTrailerSample as unknown as RobokitaiTrailerProps)}
+        defaultProps={robokitaiTrailerSample as unknown as RobokitaiTrailerProps}
+        calculateMetadata={({props}: {props: RobokitaiTrailerProps}) => ({durationInFrames: rtFrames(props)})}
+      />
+      <Composition
+        id="RobokitaiTrailerPreview"
+        component={RobokitaiTrailerPreview}
+        width={1080}
+        height={1920}
+        fps={30}
+        durationInFrames={rtFrames(robokitaiTrailerSample as unknown as RobokitaiTrailerProps)}
+        defaultProps={{...(robokitaiTrailerSample as unknown as RobokitaiTrailerProps), step: 30, start: 15}}
+        calculateMetadata={({props}: {props: RobokitaiTrailerProps}) => ({durationInFrames: rtFrames(props)})}
+      />
+      <Composition
+        id="RobokitaiCarousel"
+        component={RobokitaiCarousel}
+        width={1080}
+        height={1350}
+        fps={30}
+        durationInFrames={(robokitaiKartaSample as unknown as RobokitaiCarouselProps).slides.length}
+        defaultProps={robokitaiKartaSample as unknown as RobokitaiCarouselProps}
+        calculateMetadata={({props}: {props: RobokitaiCarouselProps}) => ({durationInFrames: props.slides.length})}
       />
       {/* обложки выпусков «多 NEWS»: кадр N = выпуск N / 3 × раскладка (journal, shout, page) */}
       <Composition id="BlogNewsCovers" component={BlogNewsCovers} width={1080} height={1920} fps={30} durationInFrames={30} />

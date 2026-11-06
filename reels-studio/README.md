@@ -194,6 +194,12 @@ python3 tools/robokitai/china_map.py
 TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts RobokitaiDrama /dev/shm/rk/out.mp4 --props=props/robokitai/001-hangzhou-v2.json --bundle-cache=false --concurrency=3 --timeout=180000 --crf=20
 # пробные кадры — RobokitaiDramaPreview с "frames" в props (кадр N = frames[N]), --sequence --frames=0-<N-1>
 ```
+Серия 0 — трейлер вселенной (`props/robokitai/000-trailer.json`) и карусели «Карта Робокитая» / «Команда Aura» (`carousel-karta.json`, `carousel-komanda.json`):
+```bash
+TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts RobokitaiTrailer /dev/shm/rt/out.mp4 --props=props/robokitai/000-trailer.json --bundle-cache=false --concurrency=3 --timeout=180000 --crf=20
+TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts RobokitaiCarousel /dev/shm/rt/karta --sequence --image-format=jpeg --jpeg-quality=88 --props=props/robokitai/carousel-karta.json --bundle-cache=false
+# element-N.jpeg → finished-videos/карусели/robokitai-карта/NN.jpg (N+1); то же для carousel-komanda.json → robokitai-команда/
+```
 
 ## Пересборка готового ролика (вырезать кусок, новый звук)
 

@@ -125,7 +125,9 @@ Stories-анонсы каруселей — `npm run announce` (`finished-videos
 Скаут на тёмном складе и в пещере (05.11.2026, DarkScan 2.0: реалистичный мир, лидар с облаком точек, карта SLAM, «как видит робот») — кадры `scene-2-dark-scan*.png`, `scene-5-dark-cave*.png` там же, ролики 7 с `scene-2-dark-scan.mp4`, `scene-5-dark-cave.mp4` (вне git), порядок — `reels-studio/CLAUDE.md`, «Скаут в темноте».
 Сериал Aura «Робокитай · 机器人中国» (05.11.2026, без голоса: «чтобы по картинкам было всё понятно») — композиция `RobokitaiEpisode`, серия = статья блога Aura,
 props `reels-studio/props/robokitai/NNN-<город>.json`, ролики `finished-videos/robokitai-NNN-<город>.mp4` (вне git); версия 2 с драматургией (дедлайн, клиент-скептик,
-угадайка, кризис, поворот, крючок) — композиция `RobokitaiDrama`, props `…-v2.json`; порядок — `reels-studio/CLAUDE.md`, «Робокитай — сериал Aura».
+угадайка, кризис, поворот, крючок) — композиция `RobokitaiDrama`, props `…-v2.json`; Серия 0 — трейлер вселенной `RobokitaiTrailer`
+(`props/robokitai/000-trailer.json` → `finished-videos/robokitai-000-trailer.mp4`, вне git) и карусели «Карта Робокитая» и «Команда Aura»
+(`RobokitaiCarousel` → `finished-videos/карусели/robokitai-карта/`, `robokitai-команда/`); порядок — `reels-studio/CLAUDE.md`, «Робокитай — сериал Aura».
 Какой бренд у ролика, понятно из слов пользователя; не ясно — спроси, работу не останавливая.
 
 ## Присланный ролик — сразу в работу (решение пользователя 08.10.2026)
