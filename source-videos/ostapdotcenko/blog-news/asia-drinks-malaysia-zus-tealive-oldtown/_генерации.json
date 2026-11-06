@@ -1,0 +1,50 @@
+[
+ {
+  "file": "hf-kiosk.jpg",
+  "job_id": "e479f823-b99b-4984-89b9-4cfc943fd33a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_130534_e479f823-b99b-4984-89b9-4cfc943fd33a.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "гонка «Киоск обогнал Starbucks» — Давид и Голиаф"
+ },
+ {
+  "file": "hf-vyveska.jpg",
+  "job_id": "bc356604-8e03-471e-a4d2-51b9cad86a86",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_130534_bc356604-8e03-471e-a4d2-51b9cad86a86.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "хроника «Шесть недель» — смена вывески за ночь; обложка"
+ },
+ {
+  "file": "hf-sud.jpg",
+  "job_id": "6d67b8eb-1dea-401c-aea5-2fa0269df9d6",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_130534_6d67b8eb-1dea-401c-aea5-2fa0269df9d6.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "диалог «Решение суда» (герб вверху кадра обрезан)"
+ },
+ {
+  "file": "hf-teh-tarik.jpg",
+  "job_id": "cbc300e3-fb91-4fd2-84de-214abce0c656",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_130533_cbc300e3-fb91-4fd2-84de-214abce0c656.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "меню «Тэ тарик и копи» — мамак-стойка"
+ }
+]

@@ -1,0 +1,218 @@
+{
+ "show": "多 NEWS",
+ "ep": 10,
+ "season": {
+  "name": "Напитки Азии",
+  "zh": "饮品",
+  "n": 2,
+  "total": 9
+ },
+ "title": "Напитки Азии: Южная Корея — кофейная война и лопнувший пузырь бабл-ти",
+ "date": "2026-09-13",
+ "slug": "asia-drinks-korea-coffee-war-bubble-tea",
+ "cover": "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/cover.jpg",
+ "coverPos": "50% 62%",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/ru-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/ru-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/ru-02.jpg"
+ ],
+ "accent": "#86E05A",
+ "look": "light",
+ "hook": {
+  "style": "cup",
+  "liquid": "coffee",
+  "lines": [
+   "КОФЕ",
+   "ДЕШЕВЛЕ",
+   "ВОДЫ."
+  ],
+  "shout": [
+   "А пузырь бабл-ти —",
+   "лопнул!"
+  ],
+  "sfx": "啪"
+ },
+ "beats": [
+  {
+   "kind": "menu",
+   "sec": 8.2,
+   "zh": "便宜",
+   "kicker": "MEGA COFFEE",
+   "title": "Кофе дешевле воды",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/hf-voda.jpg",
+   "imgPos": "50% 62%",
+   "board": "МЕНЮ",
+   "boardZh": "咖啡",
+   "items": [
+    {
+     "name": "Вода",
+     "sub": "её хотя бы нужно довезти",
+     "price": "дороже"
+    },
+    {
+     "name": "Вторая чашка американо",
+     "sub": "если успеешь до конца акции",
+     "price": "приз"
+    },
+    {
+     "name": "Стакан Mega Coffee",
+     "sub": "3 325 точек по стране",
+     "price": "2 000 вон"
+    }
+   ],
+   "stamp": {
+    "text": "+110 %",
+    "sub": "выручка за год",
+    "zh": "钱"
+   },
+   "note": "Золотая жила — просто копают её маленькой ложкой, зато очень часто"
+  },
+  {
+   "kind": "cupmeter",
+   "sec": 8.6,
+   "zh": "税",
+   "kicker": "STARBUCKS KOREA · 2025",
+   "title": "93% — в Америку",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/hf-solominka.jpg",
+   "imgPos": "50% 40%",
+   "liquid": "coffee",
+   "from": 100,
+   "pct": 7,
+   "marks": [
+    50,
+    100
+   ],
+   "out": "→ США · роялти",
+   "big": {
+    "num": 93,
+    "suf": " %",
+    "text": "операционной прибыли — роялти в США"
+   },
+   "chips": [
+    "Выручка 2025 — рекорд: 3,24 трлн вон",
+    "У материнской компании — 0% доли"
+   ]
+  },
+  {
+   "kind": "fall",
+   "sec": 8.0,
+   "zh": "泡",
+   "kicker": "GONG CHA · СДЕЛКА",
+   "title": "Минус полцены",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/hf-puzyr.jpg",
+   "imgPos": "50% 30%",
+   "steps": [
+    {
+     "when": "2014",
+     "text": "корейцы купили Gong Cha за 35 млрд вон"
+    },
+    {
+     "when": "2019",
+     "text": "продали американскому фонду за 350 млрд"
+    },
+    {
+     "when": "ПОТОМ",
+     "text": "фонд запросил 2 трлн вон"
+    }
+   ],
+   "big": {
+    "num": 900,
+    "suf": " млрд",
+    "text": "вон дали — меньше половины"
+   },
+   "mark": "ПУЗЫРЬ ЛОПНУЛ",
+   "stamp": {
+    "text": "ЗАКАТ ЭРЫ",
+    "sub": "бабл-ти · так написали СМИ",
+    "zh": "泡"
+   },
+   "note": "А бизнес здоров: 150 млн стаканов в год, 40% всех точек — в Корее"
+  },
+  {
+   "kind": "page",
+   "sec": 8.2,
+   "zh": "茶",
+   "kicker": "OSULLOC · AMOREPACIFIC",
+   "title": "Сократились в 8 раз",
+   "panels": [
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/hf-matcha.jpg",
+     "imgPos": "38% 50%",
+     "cap": "Было больше 60 магазинов — осталось 7–8"
+    },
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/hf-matcha.jpg",
+     "imgPos": "78% 42%",
+     "zoom": 1.25,
+     "cap": "Маття: продажи +229% в деньгах",
+     "sfx": "绿"
+    }
+   ],
+   "big": {
+    "num": 110.9,
+    "dec": 1,
+    "suf": " млрд",
+    "text": "вон выручки — впервые больше 100 млрд"
+   }
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Инвесторы",
+   "покупают не бизнес,",
+   "а настроение."
+  ],
+  "zh": "投资者买的不是生意，是情绪。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/финал-сайт-3.png",
+  "from": "— из статьи",
+  "photoH": 1250,
+  "photoRight": -10
+ },
+ "next": {
+  "n": 11,
+  "title": "Напитки Азии: Вьетнам — экспортёр робусты, который не может выбрать своего лидера",
+  "season": "Напитки Азии",
+  "zh": "饮品",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/rise-of-spirit-alexandr-zhelanov.mp3",
+  "drop": 28.1,
+  "vol": 0.34
+ },
+ "brand": {
+  "name": "Южная Корея",
+  "zh": "韩国"
+ },
+ "ticker": [
+  "Mega Coffee: выручка головной компании 8,8 → 17,5 → 36,84 млрд вон (2021–2023)",
+  "Прибыль Mega Coffee за год — +124%",
+  "76% оборота сегмента — у двух брендов из пяти",
+  "Май 2026: Mega Coffee впервые — больше 100 млрд вон за месяц",
+  "Compose Coffee купила филиппинская Jollibee",
+  "Starbucks Korea: 2 076 магазинов — третий рынок сети в мире",
+  "Роялти Starbucks Korea: 93,5 млрд вон в 2019-м — 162 млрд сейчас",
+  "Gong Cha: 2 200 точек в 33 странах, 217 млн $ выручки",
+  "Osulloc: маття +178% в штуках"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/hf-voda.jpg",
+  "heroPos": "50% 45%",
+  "alt": "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/hf-puzyr.jpg",
+  "altPos": "50% 30%",
+  "big": "93 %",
+  "bigText": "прибыли Starbucks Korea — в США",
+  "blurbs": [
+   {
+    "big": "2 000",
+    "text": "вон — стакан Mega Coffee"
+   },
+   {
+    "big": "900 млрд",
+    "text": "вон вместо 2 трлн за Gong Cha"
+   }
+  ],
+  "tag": "Ценовая война, роялти и лопнувший пузырь"
+ }
+}

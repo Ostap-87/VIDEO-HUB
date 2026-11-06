@@ -1,0 +1,50 @@
+[
+ {
+  "file": "hf-voda.jpg",
+  "job_id": "373dfe8b-8303-4b32-8ca4-9c34aa5845bc",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_125610_373dfe8b-8303-4b32-8ca4-9c34aa5845bc.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "меню «Кофе дешевле воды» — Сеул, вода на пьедестале"
+ },
+ {
+  "file": "hf-solominka.jpg",
+  "job_id": "fd1e418d-7115-4015-bdcb-dd34e25e56c6",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_125708_fd1e418d-7115-4015-bdcb-dd34e25e56c6.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "стакан-шкала «93% — в Америку»: соломинка через океан"
+ },
+ {
+  "file": "hf-puzyr.jpg",
+  "job_id": "689b1365-9855-463b-8d98-5a18b006f10e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_125538_689b1365-9855-463b-8d98-5a18b006f10e.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "падение «Минус полцены» — лопнувший пузырь бабл-ти; обложка"
+ },
+ {
+  "file": "hf-matcha.jpg",
+  "job_id": "fc4c8d66-47d9-42fc-86f6-b1b47346574a",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_125707_fc4c8d66-47d9-42fc-86f6-b1b47346574a.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "разворот «Сжались в 8 раз» — маття"
+ }
+]

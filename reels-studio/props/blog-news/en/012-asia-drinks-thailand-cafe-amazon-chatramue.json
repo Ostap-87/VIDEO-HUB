@@ -1,0 +1,204 @@
+{
+ "show": "多 NEWS",
+ "ep": 12,
+ "season": {
+  "name": "Asia's Drinks",
+  "zh": "饮品",
+  "n": 4,
+  "total": 9
+ },
+ "title": "Asia’s Drinks: Thailand — Where Coffee Hides at the Gas Station and Tea Holds a Death Grip",
+ "date": "2026-09-18",
+ "slug": "asia-drinks-thailand-cafe-amazon-chatramue",
+ "cover": "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/cover.jpg",
+ "coverPos": "50% 62%",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/en-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/en-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/en-02.jpg"
+ ],
+ "accent": "#86E05A",
+ "look": "light",
+ "hook": {
+  "style": "cup",
+  "liquid": "thai",
+  "lines": [
+   "A GAS-STATION",
+   "COFFEE SHOP —",
+   "THAILAND’S NO. 1."
+  ],
+  "shout": [
+   "Dreamed up by —",
+   "an oil company!"
+  ],
+  "sfx": "油"
+ },
+ "beats": [
+  {
+   "kind": "stat",
+   "sec": 8.0,
+   "zh": "油",
+   "kicker": "CAFÉ AMAZON · PTT",
+   "title": "Coffee by Oilmen",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/hf-zapravka.jpg",
+   "imgPos": "50% 40%",
+   "big": {
+    "num": 5000,
+    "suf": "+",
+    "text": "Café Amazon stores worldwide — by October 2025"
+   },
+   "equal": "oil is still 91% of PTT’s revenue",
+   "chips": [
+    "2002: a café at every PTT station",
+    "Q1 2024: 99M cups in three months"
+   ]
+  },
+  {
+   "kind": "vs",
+   "sec": 8.4,
+   "zh": "赢",
+   "kicker": "2018 · THAILAND",
+   "title": "Beat Starbucks",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/hf-ring.jpg",
+   "imgPos": "50% 35%",
+   "left": "CAFE AMAZON",
+   "right": "STARBUCKS",
+   "round": "ROUND · 2018",
+   "result": "The gas-station chain out-earned Starbucks in Thailand",
+   "facts": [
+    {
+     "num": 10.3,
+     "dec": 1,
+     "suf": "B",
+     "text": "baht — Café Amazon revenue"
+    },
+    {
+     "num": 21.2,
+     "dec": 1,
+     "suf": "B",
+     "text": "baht — the whole café market then"
+    },
+    {
+     "num": 574,
+     "text": "Starbucks stores now, 600 planned by 2027"
+    }
+   ]
+  },
+  {
+   "kind": "menu",
+   "sec": 8.4,
+   "zh": "学",
+   "kicker": "STARBUCKS · 2026",
+   "title": "Thai Tea for Thais",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/hf-tayskiy-chay.jpg",
+   "imgPos": "50% 62%",
+   "board": "NEW ON THE MENU",
+   "boardZh": "泰茶",
+   "items": [
+    {
+     "name": "Thai tea",
+     "sub": "for people who don’t drink coffee",
+     "price": "95 baht"
+    },
+    {
+     "name": "Durian smoothie",
+     "sub": "for people who grew up on durian",
+     "price": "95 baht"
+    },
+    {
+     "name": "Rice",
+     "sub": "“next, presumably, they’ll offer”",
+     "price": "?"
+    }
+   ],
+   "stamp": {
+    "text": "BRAVO",
+    "sub": "the verdict after 28 years",
+    "zh": "妙"
+   }
+  },
+  {
+   "kind": "cupmeter",
+   "sec": 8.2,
+   "zh": "茶",
+   "kicker": "CHATRAMUE · SINCE 1945",
+   "title": "80 Years at 70–80%",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/hf-1945.jpg",
+   "imgPos": "50% 45%",
+   "liquid": "thai",
+   "pct": 75,
+   "pctLabel": "70–80%",
+   "marks": [
+    50,
+    100
+   ],
+   "markLabel": "ChaTraMue",
+   "big": {
+    "big": "70–80%",
+    "text": "of the Thai tea market — for eighty years"
+   },
+   "chips": [
+    "September 2025 — premium sub-brand CTM, 75–200 baht",
+    "Collabs: bird’s nest soup, Universal Music, Sushiro"
+   ]
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Do what",
+   "nobody",
+   "expects."
+  ],
+  "zh": "做别人意想不到的事。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/финал-сайт-1.png",
+  "from": "— from the article",
+  "photoH": 1080,
+  "photoRight": -300
+ },
+ "next": {
+  "n": 13,
+  "title": "Asia’s Drinks: Malaysia — Where a Franchisee Outmaneuvered a Global Brand in Six Weeks",
+  "season": "Asia's Drinks",
+  "zh": "饮品",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/union-square-edit-decktonic.mp3",
+  "drop": 37.5,
+  "vol": 0.32
+ },
+ "brand": {
+  "name": "Thailand",
+  "zh": "泰国"
+ },
+ "ticker": [
+  "2018: Thailand’s whole café market — 21.2B baht",
+  "Café Amazon, H1 2023: 4,007 stores and 184M cups",
+  "2021: just 298 Café Amazon stores abroad",
+  "Starbucks Thailand: 1.9M loyalty members",
+  "Thailand’s café market — 65B baht, +8% a year",
+  "Starbucks entered canned coffee through 7-Eleven",
+  "ChaTraMue’s 80th: a festival at CentralWorld",
+  "Mixue — almost 60,000 stores worldwide by end-2025"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/hf-zapravka.jpg",
+  "heroPos": "50% 40%",
+  "alt": "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/hf-ring.jpg",
+  "altPos": "50% 30%",
+  "big": "10.3B baht",
+  "bigText": "in 2018 — more than Starbucks",
+  "blurbs": [
+   {
+    "big": "5,000+",
+    "text": "Café Amazon stores"
+   },
+   {
+    "big": "70–80%",
+    "text": "of Thai tea — ChaTraMue"
+   }
+  ],
+  "tag": "Oilmen, Thai tea and bird’s nest soup"
+ },
+ "lang": "en"
+}

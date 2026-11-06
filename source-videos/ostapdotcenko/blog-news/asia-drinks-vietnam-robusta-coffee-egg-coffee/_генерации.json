@@ -1,0 +1,50 @@
+[
+ {
+  "file": "hf-plantaciya.jpg",
+  "job_id": "bc738d28-aed3-4e5d-81d9-5c73dabe3faa",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_125707_bc738d28-aed3-4e5d-81d9-5c73dabe3faa.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "стакан-шкала «40% мировой робусты» — плантации Тэй Нгуен; обложка"
+ },
+ {
+  "file": "hf-gonka.jpg",
+  "job_id": "0e3326fd-8f73-4b37-9cf4-411ee1083010",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_125708_0e3326fd-8f73-4b37-9cf4-411ee1083010.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "гонка «Кто здесь лидер?» — бариста на скутерах"
+ },
+ {
+  "file": "hf-hanoi.jpg",
+  "job_id": "b4ea184e-f5da-4a25-b543-466d56e4c594",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_125538_b4ea184e-f5da-4a25-b543-466d56e4c594.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "меню «Вкус по-вьетнамски» — яичный кофе в Ханое"
+ },
+ {
+  "file": "hf-zakrytie.jpg",
+  "job_id": "793543ef-5466-48f1-8c48-7eaafcc32e61",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_125537_793543ef-5466-48f1-8c48-7eaafcc32e61.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "список «Бум закончился» — закрытие чайной"
+ }
+]

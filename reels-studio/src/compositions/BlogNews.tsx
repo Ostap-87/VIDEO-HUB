@@ -18,6 +18,7 @@ import {
 } from "./site-manhua/fx";
 
 import {DialogAct, HookSplit, ListAct, PageAct, SND_HOOK_SPLIT, StatAct, sndDialog, sndList, sndPage, sndStat, type BNAct2} from "./blog-news/acts2";
+import {CupMeterAct, HookCup, MenuAct, PourReveal, RaceAct, SND_HOOK_CUP, sndCup, sndMenu, sndRace, type BNAct3, type BNLiquid} from "./blog-news/acts3";
 import {AccCtx, BrandPlate, ChapterHead, Chip, LangCtx, LookCtx, TX, countNum, dela, fmtDate, numStyle, useAcc, useLang, useLook, type BNBrand, type BNFact} from "./blog-news/kit";
 export type {BNFact} from "./blog-news/kit";
 export type BNStory = {
@@ -29,14 +30,16 @@ export type BNVs = {
   kind: "vs"; sec: number; zh: string; kicker: string; title: string; img: string; imgPos?: string;
   left: string; right: string; round: string; result: string; facts: BNFact[];
 };
-export type BNBeat = BNStory | BNVs | BNAct2;
+export type BNBeat = BNStory | BNVs | BNAct2 | BNAct3;
 export type BNNext = {n: number; title: string; season: string; zh: string; newSeason: boolean} | null;
 export type BlogNewsProps = {
   show?: string; ep: number; season: {name: string; zh: string; n: number; total: number};
   title: string; date: string; slug: string; cover: string; shots: string[];
-  hook: {lines: string[]; shout: string[]; sfx?: string; style?: "classic" | "split"}; // split — хук «полосами» (второй сезон)
+  // split — хук «полосами» (второй сезон), cup — хук «стакан» (третий сезон «Напитки Азии»: liquid — напиток в стакане)
+  hook: {lines: string[]; shout: string[]; sfx?: string; style?: "classic" | "split" | "cup"; liquid?: BNLiquid};
+  coverPos?: string; // кадрирование обложки статьи в хуке «стакан»
   beats: BNBeat[];
-  punch: {lines: string[]; zh?: string; photo: string; from?: string};
+  punch: {lines: string[]; zh?: string; photo: string; from?: string; photoH?: number; photoRight?: number}; // photoH / photoRight — для широких вырезок
   next?: BNNext;
   music: {src: string; from?: number; drop: number; vol: number};
   // о ком статья (правка 04.11.2026: «надо указать, что это Luckin Coffee, чтобы было понимание у людей») — плашка с логотипом
@@ -131,8 +134,9 @@ const Ident: React.FC<{P: BlogNewsProps}> = ({P}) => {
         {TX[P.lang ?? "ru"].season(P.season.name)}<span style={{fontFamily: FONT.zcool}}>{P.season.zh}</span>{` · ${P.season.n}/${P.season.total}`}
       </Chip>
       {f >= 30 ? (
-        <div style={{position: "absolute", left: 64, right: 64, top: 1170, background: C.ink, padding: "22px 30px", boxShadow: `12px 12px 0 ${C.red}`, rotate: "-1deg", opacity: p(f, 30, 36), translate: `0 ${(1 - p(f, 30, 40, EO)) * 60}px`}}>
-          <div style={dela(64, acc)}>{P.title}</div>
+        <div style={{position: "absolute", left: 64, right: 64, top: P.title.length > 60 ? 1128 : 1170, background: C.ink, padding: "22px 30px", boxShadow: `12px 12px 0 ${C.red}`, rotate: "-1deg", opacity: p(f, 30, 36), translate: `0 ${(1 - p(f, 30, 40, EO)) * 60}px`}}>
+          {/* длинные заголовки третьего сезона («Напитки Азии: Вьетнам — экспортёр робусты…», 80+ знаков) — мельче, чтобы дата не уходила под бегущую строку */}
+          <div style={dela(P.title.length > 76 ? 44 : P.title.length > 60 ? 50 : 64, acc)}>{P.title}</div>
           {P.brand ? <div style={{fontFamily: FONT.golos, fontWeight: 800, fontSize: 36, color: "#fff", marginTop: 10}}>{`${TX[P.lang ?? "ru"].about} ${P.brand.name} `}<span style={{fontFamily: FONT.zcool, color: acc}}>{P.brand.zh ?? ""}</span></div> : null}
           <div style={{fontFamily: FONT.mono, fontSize: 28, color: "#fff", marginTop: 10}}>{`${fmtDate(P.date, P.lang ?? "ru")} · ostapdotcenko.ru/blog`}</div>
         </div>
@@ -294,7 +298,7 @@ const Punch: React.FC<{P: BlogNewsProps}> = ({P}) => {
       </div>
       <Img
         src={staticFile(P.punch.photo)}
-        style={{position: "absolute", right: -150, bottom: -60, height: 1180, scale: String(1.25 - 0.25 * ps), transformOrigin: "70% 100%", filter: "drop-shadow(7px 0 0 #fff) drop-shadow(-7px 0 0 #fff) drop-shadow(0 7px 0 #fff) drop-shadow(0 -7px 0 #fff) drop-shadow(16px 16px 0 #15151D)"}}
+        style={{position: "absolute", right: P.punch.photoRight ?? -150, bottom: -60, height: P.punch.photoH ?? 1180, scale: String(1.25 - 0.25 * ps), transformOrigin: "70% 100%", filter: "drop-shadow(7px 0 0 #fff) drop-shadow(-7px 0 0 #fff) drop-shadow(0 7px 0 #fff) drop-shadow(0 -7px 0 #fff) drop-shadow(16px 16px 0 #15151D)"}}
       />
       {f >= 14 ? (
         <Bubble x={44} y={280} w={760} h={560} shout tail={[700, 640]} scale={0.3 + 0.7 * bub} opacity={Math.min(1, bub * 2)}>
@@ -401,12 +405,20 @@ export const BlogNews: React.FC<BlogNewsProps> = (P) => {
     (c: React.ReactNode) => <GlitchReveal dur={12}>{c}</GlitchReveal>,
     (c: React.ReactNode) => <PageReveal dur={14}>{c}</PageReveal>,
   ];
+  const acc = P.accent ?? C.y;
+  const reveal3 = [
+    (c: React.ReactNode) => <PourReveal dur={14} acc={acc}>{c}</PourReveal>,
+    (c: React.ReactNode) => <SlashReveal dur={12} color={acc}>{c}</SlashReveal>,
+    (c: React.ReactNode) => <PourReveal dur={14} acc={acc}>{c}</PourReveal>,
+    (c: React.ReactNode) => <GlitchReveal dur={12}>{c}</GlitchReveal>,
+  ];
   const sounds: Snd[] = [
-    ...(P.hook.style === "split" ? SND_HOOK_SPLIT : SND_HOOK).map(([a, n, v]) => [Math.max(0, S[0][0] + a), n, v] as [number, string, number]),
+    ...(P.hook.style === "cup" ? SND_HOOK_CUP : P.hook.style === "split" ? SND_HOOK_SPLIT : SND_HOOK).map(([a, n, v]) => [Math.max(0, S[0][0] + a), n, v] as [number, string, number]),
     ...SND_ID.map(([a, n, v]) => [S[1][0] + a, n, v] as [number, string, number]),
     ...P.beats.flatMap((b, i) => {
       const d = S[2 + i][1] - S[2 + i][0];
-      const snd = b.kind === "vs" ? sndVs(d) : b.kind === "stat" ? sndStat(b, d) : b.kind === "dialog" ? sndDialog(b, d) : b.kind === "list" ? sndList(b, d) : b.kind === "page" ? sndPage(b, d) : sndStory(b, d);
+      const snd = b.kind === "vs" ? sndVs(d) : b.kind === "stat" ? sndStat(b, d) : b.kind === "dialog" ? sndDialog(b, d) : b.kind === "list" ? sndList(b, d) : b.kind === "page" ? sndPage(b, d)
+        : b.kind === "race" ? sndRace(b, d) : b.kind === "cupmeter" ? sndCup(b, d) : b.kind === "menu" ? sndMenu(b, d) : sndStory(b, d);
       return snd.map(([a, n, v]) => [S[2 + i][0] + a, n, v] as [number, string, number]);
     }),
     ...SND_PUNCH.map(([a, n, v]) => [S[2 + nb][0] + a, n, v] as [number, string, number]),
@@ -418,12 +430,16 @@ export const BlogNews: React.FC<BlogNewsProps> = (P) => {
     <LookCtx.Provider value={P.look ?? "dark"}>
     <LangCtx.Provider value={P.lang ?? "ru"}>
     <AbsoluteFill style={{background: C.ink, overflow: "hidden"}}>
-      {seq(0, P.hook.style === "split" ? <HookSplit h={P.hook} cover={P.cover} brand={P.brand} /> : <Hook h={P.hook} cover={P.cover} brand={P.brand} />)}
+      {seq(0, P.hook.style === "cup" ? <HookCup h={P.hook} cover={P.cover} coverPos={P.coverPos} brand={P.brand} /> : P.hook.style === "split" ? <HookSplit h={P.hook} cover={P.cover} brand={P.brand} /> : <Hook h={P.hook} cover={P.cover} brand={P.brand} />)}
       {seq(1, <CircleReveal dur={12} x={540} y={480}><Ident P={P} /></CircleReveal>)}
       {P.beats.map((b, i) => {
         const d = S[2 + i][1] - S[2 + i][0];
         const node = b.kind === "vs" ? <Vs b={b} dur={d} brand={P.brand} /> : b.kind === "stat" ? <StatAct b={b} dur={d} brand={P.brand} /> : b.kind === "dialog" ? <DialogAct b={b} dur={d} brand={P.brand} />
-          : b.kind === "list" ? <ListAct b={b} dur={d} brand={P.brand} /> : b.kind === "page" ? <PageAct b={b} dur={d} brand={P.brand} /> : <Story b={b} dur={d} brand={P.brand} />;
+          : b.kind === "list" ? <ListAct b={b} dur={d} brand={P.brand} /> : b.kind === "page" ? <PageAct b={b} dur={d} brand={P.brand} />
+          : b.kind === "race" ? <RaceAct b={b} dur={d} brand={P.brand} /> : b.kind === "cupmeter" ? <CupMeterAct b={b} dur={d} brand={P.brand} /> : b.kind === "menu" ? <MenuAct b={b} dur={d} brand={P.brand} />
+          : <Story b={b} dur={d} brand={P.brand} />;
+        // третий сезон (хук «стакан»): через раз переход «налили» — новая сцена поднимается волной кофе
+        if (P.hook.style === "cup") return seq(2 + i, reveal3[i % reveal3.length](node));
         return seq(2 + i, reveal[(i + (P.accent ? 1 : 0)) % reveal.length](node));
       })}
       {seq(2 + nb, <InkReveal dur={12} id="pu" x={760} y={1250}><Punch P={P} /></InkReveal>)}

@@ -1,0 +1,205 @@
+{
+ "show": "多 NEWS",
+ "ep": 9,
+ "season": {
+  "name": "Напитки Азии",
+  "zh": "饮品",
+  "n": 1,
+  "total": 9
+ },
+ "title": "Напитки Азии: Япония — кофе уже взрослый, бабл-ти всё ещё подросток",
+ "date": "2026-09-10",
+ "slug": "asia-drinks-japan-coffee-bubble-tea",
+ "cover": "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/cover.jpg",
+ "coverPos": "50% 62%",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/ru-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/ru-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/ru-02.jpg"
+ ],
+ "accent": "#86E05A",
+ "look": "light",
+ "hook": {
+  "style": "cup",
+  "liquid": "matcha",
+  "lines": [
+   "КОФЕ ВЗРОСЛЫЙ.",
+   "БАБЛ-ТИ —",
+   "ПОДРОСТОК."
+  ],
+  "shout": [
+   "Зато растёт",
+   "на 14–15% в год!"
+  ],
+  "sfx": "咕"
+ },
+ "beats": [
+  {
+   "kind": "race",
+   "sec": 8.4,
+   "zh": "老",
+   "kicker": "КОФЕ · ТОЧКИ, 2025",
+   "title": "Всё уже поделено",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/hf-starik.jpg",
+   "imgPos": "50% 30%",
+   "unit": "ЧИСЛО ТОЧЕК КРУПНЕЙШИХ СЕТЕЙ",
+   "lanes": [
+    {
+     "name": "Starbucks Japan",
+     "num": 1883
+    },
+    {
+     "name": "Komeda",
+     "num": 1083
+    },
+    {
+     "name": "Doutor",
+     "logo": "source-videos/логотипы/чай-кофе/doutor-coffee.png",
+     "pre": "~",
+     "num": 1079
+    },
+    {
+     "name": "Tully's Coffee",
+     "pre": "~",
+     "num": 800
+    }
+   ],
+   "note": "Кофе в Японии — больше 1 трлн иен в год. Новых игроков почти нет"
+  },
+  {
+   "kind": "stat",
+   "sec": 8.0,
+   "zh": "缺",
+   "kicker": "%ARABICA · 2024",
+   "title": "Дефицит на родине",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/hf-kioto.jpg",
+   "imgPos": "50% 55%",
+   "big": {
+    "num": 7,
+    "suf": " точек",
+    "text": "в самой Японии — из 213+ в 23 странах"
+   },
+   "equal": "дефицит — это стратегия",
+   "chips": [
+    "Первая точка — Гонконг, 2013",
+    "Токио — только с ноября 2023-го"
+   ]
+  },
+  {
+   "kind": "cupmeter",
+   "sec": 8.2,
+   "zh": "甜",
+   "kicker": "БАБЛ-ТИ ПО-ЯПОНСКИ",
+   "title": "Шкала сладости",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/hf-sladost.jpg",
+   "imgPos": "50% 40%",
+   "liquid": "milktea",
+   "pearls": true,
+   "pct": 30,
+   "marks": [
+    50,
+    100
+   ],
+   "markLabel": "выбор японцев",
+   "big": {
+    "num": 30,
+    "suf": " %",
+    "text": "сладости — чаще всего выбирают японцы"
+   },
+   "chips": [
+    "Хоудзитя и матча вместо классики",
+    "Кокуто — тапиока на коричневом сахаре"
+   ]
+  },
+  {
+   "kind": "menu",
+   "sec": 8.4,
+   "zh": "贵",
+   "kicker": "GONG CHA · ОСАКА",
+   "title": "Подросток дорожает",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/hf-vitrina.jpg",
+   "imgPos": "50% 60%",
+   "board": "МЕНЮ",
+   "boardZh": "奶茶",
+   "items": [
+    {
+     "name": "Напитки в комбини",
+     "sub": "недорогие",
+     "price": "дешевле"
+    },
+    {
+     "name": "Сезонный напиток",
+     "sub": "стандартная порция",
+     "price": "620 ¥"
+    },
+    {
+     "name": "Лимитированные позиции",
+     "sub": "торговые центры Осаки",
+     "price": "690–780 ¥"
+    }
+   ],
+   "stamp": {
+    "text": "ПРЕМИУМ",
+    "sub": "осознанно",
+    "zh": "贵"
+   },
+   "note": "Gong Cha — почти 200 точек в Японии (май 2025-го)"
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Шустрый такой",
+   "подросток, который",
+   "наконец нашёл,",
+   "чем заниматься."
+  ],
+  "zh": "终于找到人生方向的少年。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-fintech-kadr.png",
+  "from": "— из статьи"
+ },
+ "next": {
+  "n": 10,
+  "title": "Напитки Азии: Южная Корея — кофейная война и лопнувший пузырь бабл-ти",
+  "season": "Напитки Азии",
+  "zh": "饮品",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/neon-hyperdrive-adiutorium.mp3",
+  "drop": 41.2,
+  "vol": 0.49
+ },
+ "brand": {
+  "name": "Япония: кофе и бабл-ти",
+  "zh": "日本"
+ },
+ "ticker": [
+  "Кофе в Японии — оборот больше 1 трлн иен в год (2023)",
+  "Komeda: выручка +8,8%, операционная прибыль — всего +1,2%",
+  "Зёрна дорожают: в 2024-м Komeda дважды поднимала цены в меню",
+  "UCC: первая в мире промышленная обжарка на водороде — 6000 т в год",
+  "Бабл-ти в Японии: 162,9 млн $ в 2025-м — на два порядка меньше кофе",
+  "Gong Cha: 30,12 млн потребителей в Японии (2024)",
+  "«My Gong cha»: 200 тыс. регистраций в первый день, 2,6 млн к январю 2026-го",
+  "%Arabica в Токио — с ноября 2023-го, 159-я точка сети"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/hf-starik.jpg",
+  "heroPos": "50% 35%",
+  "alt": "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/hf-starik.jpg",
+  "altPos": "50% 30%",
+  "big": "14–15%",
+  "bigText": "в год растёт бабл-ти",
+  "blurbs": [
+   {
+    "big": "1883",
+    "text": "точки Starbucks"
+   },
+   {
+    "big": "7",
+    "text": "точек %Arabica на родине"
+   }
+  ],
+  "tag": "Кофе с сединой, бабл-ти в коротких штанишках"
+ }
+}

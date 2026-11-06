@@ -1,0 +1,203 @@
+{
+ "show": "多 NEWS",
+ "ep": 12,
+ "season": {
+  "name": "Напитки Азии",
+  "zh": "饮品",
+  "n": 4,
+  "total": 9
+ },
+ "title": "Напитки Азии: Таиланд - кофе на бензоколонке и чай, который держит рынок восемьдесят лет",
+ "date": "2026-09-18",
+ "slug": "asia-drinks-thailand-cafe-amazon-chatramue",
+ "cover": "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/cover.jpg",
+ "coverPos": "50% 62%",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/ru-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/ru-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/ru-02.jpg"
+ ],
+ "accent": "#86E05A",
+ "look": "light",
+ "hook": {
+  "style": "cup",
+  "liquid": "thai",
+  "lines": [
+   "КОФЕЙНЯ",
+   "НА ЗАПРАВКЕ —",
+   "№1 В ТАИЛАНДЕ."
+  ],
+  "shout": [
+   "Придумала её —",
+   "нефтяная компания!"
+  ],
+  "sfx": "油"
+ },
+ "beats": [
+  {
+   "kind": "stat",
+   "sec": 8.0,
+   "zh": "油",
+   "kicker": "CAFÉ AMAZON · PTT",
+   "title": "Кофейня от нефтяников",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/hf-zapravka.jpg",
+   "imgPos": "50% 40%",
+   "big": {
+    "num": 5000,
+    "suf": "+",
+    "text": "точек Café Amazon по миру — к октябрю 2025-го"
+   },
+   "equal": "у PTT нефть — всё ещё 91% выручки",
+   "chips": [
+    "2002: кофейня — на каждую заправку",
+    "I кв. 2024: 99 млн чашек за 3 месяца"
+   ]
+  },
+  {
+   "kind": "vs",
+   "sec": 8.4,
+   "zh": "赢",
+   "kicker": "2018 · ТАИЛАНД",
+   "title": "Обогнали Starbucks",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/hf-ring.jpg",
+   "imgPos": "50% 35%",
+   "left": "CAFE AMAZON",
+   "right": "STARBUCKS",
+   "round": "ROUND · 2018",
+   "result": "Выручка сети при заправках — больше, чем у Starbucks в Таиланде",
+   "facts": [
+    {
+     "num": 10.3,
+     "dec": 1,
+     "suf": " млрд",
+     "text": "бат — выручка Café Amazon"
+    },
+    {
+     "num": 21.2,
+     "dec": 1,
+     "suf": " млрд",
+     "text": "бат — весь рынок кофеен тогда"
+    },
+    {
+     "num": 574,
+     "text": "точки у Starbucks, цель — 600 к 2027-му"
+    }
+   ]
+  },
+  {
+   "kind": "menu",
+   "sec": 8.4,
+   "zh": "学",
+   "kicker": "STARBUCKS · 2026",
+   "title": "Тайцам — тайский чай",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/hf-tayskiy-chay.jpg",
+   "imgPos": "50% 62%",
+   "board": "НОВОЕ В МЕНЮ",
+   "boardZh": "泰茶",
+   "items": [
+    {
+     "name": "Тайский чай",
+     "sub": "для тех, кто не пьёт кофе",
+     "price": "95 бат"
+    },
+    {
+     "name": "Дуриановый смузи",
+     "sub": "людям, выросшим на дуриане",
+     "price": "95 бат"
+    },
+    {
+     "name": "Рис",
+     "sub": "«в следующий раз, наверное, предложат»",
+     "price": "?"
+    }
+   ],
+   "stamp": {
+    "text": "БРАВО",
+    "sub": "вывод после 28 лет на рынке",
+    "zh": "妙"
+   }
+  },
+  {
+   "kind": "cupmeter",
+   "sec": 8.2,
+   "zh": "茶",
+   "kicker": "CHATRAMUE · С 1945",
+   "title": "80 лет — 70–80% рынка",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/hf-1945.jpg",
+   "imgPos": "50% 45%",
+   "liquid": "thai",
+   "pct": 75,
+   "pctLabel": "70–80%",
+   "marks": [
+    50,
+    100
+   ],
+   "markLabel": "ChaTraMue",
+   "big": {
+    "big": "70–80 %",
+    "text": "рынка тайского чая — восемьдесят лет"
+   },
+   "chips": [
+    "Сентябрь 2025 — свой премиум-бренд CTM, 75–200 бат",
+    "Коллабы: ласточкины гнёзда, Universal Music, Sushiro"
+   ]
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Делай то,",
+   "чего от тебя",
+   "не ждут."
+  ],
+  "zh": "做别人意想不到的事。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/финал-сайт-1.png",
+  "from": "— из статьи",
+  "photoH": 1080,
+  "photoRight": -300
+ },
+ "next": {
+  "n": 13,
+  "title": "Напитки Азии: Малайзия - франчайзи, который переиграл международный бренд за шесть недель",
+  "season": "Напитки Азии",
+  "zh": "饮品",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/union-square-edit-decktonic.mp3",
+  "drop": 37.5,
+  "vol": 0.32
+ },
+ "brand": {
+  "name": "Таиланд",
+  "zh": "泰国"
+ },
+ "ticker": [
+  "2018: весь рынок кофеен Таиланда — 21,2 млрд бат",
+  "Café Amazon, I пол. 2023: 4 007 точек и 184 млн чашек",
+  "2021: за рубежом у Café Amazon — всего 298 точек",
+  "Starbucks Thailand: 1,9 млн участников программы лояльности",
+  "Рынок кофеен Таиланда — 65 млрд бат, +8% в год",
+  "Starbucks зашёл в кофе в банках через 7-Eleven",
+  "ChaTraMue: 80-летие — фестиваль в CentralWorld",
+  "Mixue — почти 60 тысяч точек по миру к концу 2025-го"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/hf-zapravka.jpg",
+  "heroPos": "50% 40%",
+  "alt": "source-videos/ostapdotcenko/blog-news/asia-drinks-thailand-cafe-amazon-chatramue/hf-ring.jpg",
+  "altPos": "50% 30%",
+  "big": "10,3 млрд бат",
+  "bigText": "в 2018-м — больше, чем у Starbucks",
+  "blurbs": [
+   {
+    "big": "5000+",
+    "text": "точек Café Amazon"
+   },
+   {
+    "big": "70–80 %",
+    "text": "рынка тайского чая у ChaTraMue"
+   }
+  ],
+  "tag": "Нефтяники, тайский чай и ласточкины гнёзда"
+ }
+}

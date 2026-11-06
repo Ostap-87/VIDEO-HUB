@@ -1,0 +1,206 @@
+{
+ "show": "多 NEWS",
+ "ep": 9,
+ "season": {
+  "name": "Asia's Drinks",
+  "zh": "饮品",
+  "n": 1,
+  "total": 9
+ },
+ "title": "Asia’s Drinks: Japan — Coffee Already Grew Up, Bubble Tea Is Still a Teenager",
+ "date": "2026-09-10",
+ "slug": "asia-drinks-japan-coffee-bubble-tea",
+ "cover": "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/cover.jpg",
+ "coverPos": "50% 62%",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/en-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/en-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/en-02.jpg"
+ ],
+ "accent": "#86E05A",
+ "look": "light",
+ "hook": {
+  "style": "cup",
+  "liquid": "matcha",
+  "lines": [
+   "COFFEE: GROWN UP.",
+   "BUBBLE TEA —",
+   "A TEENAGER."
+  ],
+  "shout": [
+   "Yet it grows",
+   "14–15% a year!"
+  ],
+  "sfx": "咕"
+ },
+ "beats": [
+  {
+   "kind": "race",
+   "sec": 8.4,
+   "zh": "老",
+   "kicker": "COFFEE · STORES, 2025",
+   "title": "Already Carved Up",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/hf-starik.jpg",
+   "imgPos": "50% 30%",
+   "unit": "STORE COUNT OF THE BIGGEST CHAINS",
+   "lanes": [
+    {
+     "name": "Starbucks Japan",
+     "num": 1883
+    },
+    {
+     "name": "Komeda",
+     "num": 1083
+    },
+    {
+     "name": "Doutor",
+     "logo": "source-videos/логотипы/чай-кофе/doutor-coffee.png",
+     "pre": "~",
+     "num": 1079
+    },
+    {
+     "name": "Tully's Coffee",
+     "pre": "~",
+     "num": 800
+    }
+   ],
+   "note": "Japan’s coffee: over ¥1 trillion a year. New players basically don’t appear"
+  },
+  {
+   "kind": "stat",
+   "sec": 8.0,
+   "zh": "缺",
+   "kicker": "%ARABICA · 2024",
+   "title": "Scarce at Home",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/hf-kioto.jpg",
+   "imgPos": "50% 55%",
+   "big": {
+    "num": 7,
+    "suf": " stores",
+    "text": "in Japan itself — out of 213+ in 23 countries"
+   },
+   "equal": "the scarcity is the strategy",
+   "chips": [
+    "First location — Hong Kong, 2013",
+    "Tokyo — only since November 2023"
+   ]
+  },
+  {
+   "kind": "cupmeter",
+   "sec": 8.2,
+   "zh": "甜",
+   "kicker": "BUBBLE TEA, JAPANESE STYLE",
+   "title": "The Sweetness Scale",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/hf-sladost.jpg",
+   "imgPos": "50% 40%",
+   "liquid": "milktea",
+   "pearls": true,
+   "pct": 30,
+   "marks": [
+    50,
+    100
+   ],
+   "markLabel": "Japan’s pick",
+   "big": {
+    "num": 30,
+    "suf": "%",
+    "text": "sweetness — what Japanese drinkers pick most"
+   },
+   "chips": [
+    "Hojicha and matcha over the classic",
+    "Kokuto — brown sugar tapioca"
+   ]
+  },
+  {
+   "kind": "menu",
+   "sec": 8.4,
+   "zh": "贵",
+   "kicker": "GONG CHA · OSAKA",
+   "title": "The Teen Gets Pricey",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/hf-vitrina.jpg",
+   "imgPos": "50% 60%",
+   "board": "MENU",
+   "boardZh": "奶茶",
+   "items": [
+    {
+     "name": "Convenience-store drinks",
+     "sub": "cheap",
+     "price": "cheaper"
+    },
+    {
+     "name": "Seasonal drink",
+     "sub": "standard size",
+     "price": "¥620"
+    },
+    {
+     "name": "Limited items",
+     "sub": "Osaka shopping malls",
+     "price": "¥690–780"
+    }
+   ],
+   "stamp": {
+    "text": "PREMIUM",
+    "sub": "deliberately",
+    "zh": "贵"
+   },
+   "note": "Gong Cha — nearly 200 stores in Japan (May 2025)"
+  }
+ ],
+ "punch": {
+  "lines": [
+   "A scrappy",
+   "teenager who’s",
+   "finally figured out",
+   "what to do in life."
+  ],
+  "zh": "终于找到人生方向的少年。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-fintech-kadr.png",
+  "from": "— from the article"
+ },
+ "next": {
+  "n": 10,
+  "title": "Asia’s Drinks: South Korea — A Coffee War of Attrition and a Bubble Tea Bubble That Popped",
+  "season": "Asia's Drinks",
+  "zh": "饮品",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/neon-hyperdrive-adiutorium.mp3",
+  "drop": 41.2,
+  "vol": 0.49
+ },
+ "brand": {
+  "name": "Japan: coffee & bubble tea",
+  "zh": "日本"
+ },
+ "ticker": [
+  "Japan’s coffee industry: over ¥1 trillion a year (2023)",
+  "Komeda: revenue +8.8%, operating profit just +1.2%",
+  "Beans got pricier: Komeda raised menu prices twice in 2024",
+  "UCC: the world’s first industrial hydrogen roaster — 6,000 tons a year",
+  "Japan’s bubble tea: $162.9M in 2025 — two orders of magnitude smaller than coffee",
+  "Gong Cha: 30.12M customers in Japan (2024)",
+  "“My Gong cha”: 200,000 sign-ups on day one, 2.6M by January 2026",
+  "%Arabica in Tokyo — since November 2023, the chain’s 159th store"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/hf-starik.jpg",
+  "heroPos": "50% 35%",
+  "alt": "source-videos/ostapdotcenko/blog-news/asia-drinks-japan-coffee-bubble-tea/hf-starik.jpg",
+  "altPos": "50% 30%",
+  "big": "14–15%",
+  "bigText": "a year — bubble tea’s growth",
+  "blurbs": [
+   {
+    "big": "1,883",
+    "text": "Starbucks stores"
+   },
+   {
+    "big": "7",
+    "text": "%Arabica stores at home"
+   }
+  ],
+  "tag": "Grey-haired coffee, bubble tea in short pants"
+ },
+ "lang": "en"
+}

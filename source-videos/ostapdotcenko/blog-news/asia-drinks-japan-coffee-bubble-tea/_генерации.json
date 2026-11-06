@@ -1,0 +1,50 @@
+[
+ {
+  "file": "hf-starik.jpg",
+  "job_id": "7cc73b04-c739-4a1b-b7d0-c7fbcce69bba",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_125538_7cc73b04-c739-4a1b-b7d0-c7fbcce69bba.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "гонка «Всё уже поделено»: старый кофе и бабл-ти-подросток; обложка"
+ },
+ {
+  "file": "hf-kioto.jpg",
+  "job_id": "1b1f6a65-510e-4200-8eb5-103682da82dc",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_125608_1b1f6a65-510e-4200-8eb5-103682da82dc.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "цифра «%Arabica: дефицит на родине» — кофейня в Киото и очередь"
+ },
+ {
+  "file": "hf-sladost.jpg",
+  "job_id": "6099113f-a898-49c9-95f3-18539d2ca80e",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_125609_6099113f-a898-49c9-95f3-18539d2ca80e.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "стакан-шкала «Шкала сладости» — «чуть-чуть сахара»"
+ },
+ {
+  "file": "hf-vitrina.jpg",
+  "job_id": "c6e4d935-f0af-4b3a-a00f-e7b51e13192c",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_125609_c6e4d935-f0af-4b3a-a00f-e7b51e13192c.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "меню «Подросток дорожает» — премиальная витрина в Осаке"
+ }
+]

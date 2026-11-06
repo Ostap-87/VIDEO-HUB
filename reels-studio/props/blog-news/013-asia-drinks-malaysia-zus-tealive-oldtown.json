@@ -1,0 +1,224 @@
+{
+ "show": "多 NEWS",
+ "ep": 13,
+ "season": {
+  "name": "Напитки Азии",
+  "zh": "饮品",
+  "n": 5,
+  "total": 9
+ },
+ "title": "Напитки Азии: Малайзия - франчайзи, который переиграл международный бренд за шесть недель",
+ "date": "2026-09-19",
+ "slug": "asia-drinks-malaysia-zus-tealive-oldtown",
+ "cover": "source-videos/ostapdotcenko/blog-news/asia-drinks-malaysia-zus-tealive-oldtown/cover.jpg",
+ "coverPos": "50% 62%",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-malaysia-zus-tealive-oldtown/ru-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-malaysia-zus-tealive-oldtown/ru-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-malaysia-zus-tealive-oldtown/ru-02.jpg"
+ ],
+ "accent": "#86E05A",
+ "look": "light",
+ "hook": {
+  "style": "cup",
+  "liquid": "teh",
+  "lines": [
+   "УВОЛИЛИ —",
+   "ОТКРЫЛ",
+   "КОНКУРЕНТА."
+  ],
+  "shout": [
+   "За шесть",
+   "недель!"
+  ],
+  "sfx": "换"
+ },
+ "beats": [
+  {
+   "kind": "race",
+   "sec": 8.4,
+   "zh": "冠",
+   "kicker": "КОФЕ · 2025",
+   "title": "Киоск обогнал Starbucks",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-malaysia-zus-tealive-oldtown/hf-kiosk.jpg",
+   "imgPos": "50% 35%",
+   "unit": "ЧИСЛО ТОЧЕК",
+   "lanes": [
+    {
+     "name": "ZUS Coffee",
+     "logo": "source-videos/логотипы/чай-кофе/zus-coffee.png",
+     "num": 900,
+     "suf": "+",
+     "note": "киоск в 2019-м"
+    },
+    {
+     "name": "Starbucks Malaysia",
+     "num": 287,
+     "note": "пик — около 400"
+    },
+    {
+     "name": "Old Town White Coffee",
+     "num": 240,
+     "suf": "+",
+     "note": "с 1999-го"
+    }
+   ],
+   "note": "Starbucks Malaysia: рекордный убыток 292 млн ринггитов, выручка −64%"
+  },
+  {
+   "kind": "rise",
+   "sec": 8.6,
+   "zh": "换",
+   "kicker": "CHATIME → TEALIVE",
+   "title": "Шесть недель",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-malaysia-zus-tealive-oldtown/hf-vyveska.jpg",
+   "imgPos": "50% 30%",
+   "steps": [
+    {
+     "when": "ЯНВ 2017",
+     "text": "La Kaffa расторгла контракт — за 24 года до конца"
+    },
+    {
+     "when": "17 ФЕВ",
+     "text": "161 из 165 точек Chatime — теперь Tealive"
+    },
+    {
+     "when": "26 ФЕВ",
+     "text": "первая Tealive — в Pavilion, Куала-Лумпур"
+    }
+   ],
+   "big": {
+    "num": 161,
+    "suf": " из 165",
+    "text": "точек просто сменили вывеску"
+   },
+   "mark": "ТЕ ЖЕ КАССЫ",
+   "note": "Не закрылись на ремонт — те же сотрудники и почти то же меню"
+  },
+  {
+   "kind": "dialog",
+   "sec": 7.6,
+   "zh": "法",
+   "kicker": "АПЕЛЛЯЦИОННЫЙ СУД · 2018",
+   "title": "Решение суда",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-malaysia-zus-tealive-oldtown/hf-sud.jpg",
+   "imgPos": "50% 50%",
+   "a": {
+    "name": "Суд",
+    "emo": "angry",
+    "tie": true
+   },
+   "b": {
+    "name": "Loob",
+    "emo": "calm",
+    "fill": "#6B4226"
+   },
+   "lines": [
+    {
+     "who": "a",
+     "text": "Франчайзинговое соглашение нарушено."
+    },
+    {
+     "who": "a",
+     "text": "Закройтесь."
+    },
+    {
+     "who": "b",
+     "text": "Спасибо за информацию."
+    }
+   ],
+   "note": "…и работает дальше. 30 августа 2018-го — мировое, иски отозваны"
+  },
+  {
+   "kind": "menu",
+   "sec": 8.4,
+   "zh": "拉",
+   "kicker": "КОПИТИАМ · МАМАК",
+   "title": "Тэ тарик и копи",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-malaysia-zus-tealive-oldtown/hf-teh-tarik.jpg",
+   "imgPos": "50% 30%",
+   "board": "КОПИТИАМ",
+   "boardZh": "咖啡店",
+   "items": [
+    {
+     "name": "Копи О",
+     "sub": "чёрный с сахаром"
+    },
+    {
+     "name": "Копи О косонг",
+     "sub": "чёрный без сахара"
+    },
+    {
+     "name": "Копи Си",
+     "sub": "с концентрированным молоком"
+    },
+    {
+     "name": "Тэ тарик",
+     "sub": "«вытянутый чай» в любом мамак-кафе",
+     "price": "2–4 RM"
+    }
+   ],
+   "stamp": {
+    "text": "НЕ ПОДВИНУТЬ",
+    "sub": "ни инвестицией, ни судом",
+    "zh": "茶"
+   }
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Иногда достаточно",
+   "просто хорошо",
+   "готовить кофе",
+   "тридцать лет подряд."
+  ],
+  "zh": "有时，三十年如一日把咖啡做好就够了。",
+  "photo": "source-videos/фото-от-пользователя/остап/ostap-portret-vyrezka.png",
+  "from": "— из статьи"
+ },
+ "next": {
+  "n": 14,
+  "title": "Напитки Азии: Индия - страна чая, где рынок кофеен втрое больше рынка чайных",
+  "season": "Напитки Азии",
+  "zh": "饮品",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/raving-1000-handz.mp3",
+  "drop": 35.85,
+  "vol": 0.4
+ },
+ "brand": {
+  "name": "Малайзия",
+  "zh": "马来西亚"
+ },
+ "ticker": [
+  "ZUS Coffee: выручка 15,7 млн → 200+ млн ринггитов (2021–2023)",
+  "ZUS привлекла 250 млн ринггитов, IPO — с оценкой около 4 млрд",
+  "Starbucks Malaysia: 287 точек к декабрю 2025-го, выручка −64%",
+  "Chatime в Малайзии давал больше 20% глобальной выручки La Kaffa",
+  "Tealive: 800-я точка — в сентябре 2022-го",
+  "Tealive теперь и на заправках Petronas",
+  "Old Town White Coffee: Ипох, 1999 — JDE Peet's купил её за 1,47 млрд ринггитов",
+  "Кофе и чай ЮВА: 8,3 → 9,9 млрд $ (2023–2025)"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/asia-drinks-malaysia-zus-tealive-oldtown/hf-vyveska.jpg",
+  "heroPos": "50% 40%",
+  "alt": "source-videos/ostapdotcenko/blog-news/asia-drinks-malaysia-zus-tealive-oldtown/hf-vyveska.jpg",
+  "altPos": "50% 30%",
+  "big": "< 6 недель",
+  "bigText": "от разрыва контракта до своей сети",
+  "blurbs": [
+   {
+    "big": "161 из 165",
+    "text": "точек сменили вывеску"
+   },
+   {
+    "big": "900+",
+    "text": "точек ZUS Coffee"
+   }
+  ],
+  "tag": "Франчайзи, суд и тэ тарик за два ринггита"
+ }
+}

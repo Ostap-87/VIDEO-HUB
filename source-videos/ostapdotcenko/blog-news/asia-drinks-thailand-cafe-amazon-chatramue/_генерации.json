@@ -1,0 +1,50 @@
+[
+ {
+  "file": "hf-zapravka.jpg",
+  "job_id": "56b064cd-87f9-4f9c-b477-1e9566bed222",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_125750_56b064cd-87f9-4f9c-b477-1e9566bed222.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "цифра «Кофейня от нефтяников» — кафе-оазис на заправке"
+ },
+ {
+  "file": "hf-ring.jpg",
+  "job_id": "098dc34f-55e7-46d4-918d-03f1021d5bae",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_125749_098dc34f-55e7-46d4-918d-03f1021d5bae.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "VS «Обогнали Starbucks» — ринг; обложка"
+ },
+ {
+  "file": "hf-tayskiy-chay.jpg",
+  "job_id": "626bb0d5-6505-4fe3-a0a2-3a4b2523c6a8",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_125749_626bb0d5-6505-4fe3-a0a2-3a4b2523c6a8.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "меню «Тайцам — тайский чай» — тайский чай и дуриан"
+ },
+ {
+  "file": "hf-1945.jpg",
+  "job_id": "a3bb8aaf-d21d-4252-aad8-2a5603f45f1b",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261106_125751_a3bb8aaf-d21d-4252-aad8-2a5603f45f1b.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-06",
+  "what": "стакан-шкала «80 лет — 70–80% рынка» — Бангкок 1945"
+ }
+]

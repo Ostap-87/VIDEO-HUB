@@ -184,6 +184,129 @@ EN[8] = dict(
  cover=dict(big="3 days", bigText="— and a China expert", blurbs=[["0", "Chinese characters"], ["2", "simple questions"]], tag="Swagger, a paramecium — and Bandar Abbas"),
 )
 
+# ── сезон 3 «Asia’s Drinks» (06.11.2026): новые акты race (lanes — имя, note, text; twist — label), cupmeter (out, markLabel,
+# pctLabel), menu (board, items — name/sub/price) ──
+EN[9] = dict(
+ title="Asia’s Drinks: Japan — Coffee Already Grew Up, Bubble Tea Is Still a Teenager",
+ hook=dict(lines=["COFFEE: GROWN UP.", "BUBBLE TEA —", "A TEENAGER."], shout=["Yet it grows", "14–15% a year!"]),
+ beats=[
+  dict(kicker="COFFEE · STORES, 2025", title="Already Carved Up", unit="STORE COUNT OF THE BIGGEST CHAINS",
+       lanes=[dict(name="Starbucks Japan"), dict(name="Komeda"), dict(name="Doutor"), dict(name="Tully's Coffee")],
+       note="Japan’s coffee: over ¥1 trillion a year. New players basically don’t appear"),
+  dict(kicker="%ARABICA · 2024", title="Scarce at Home", big=dict(suf=" stores", text="in Japan itself — out of 213+ in 23 countries"),
+       equal="the scarcity is the strategy", chips=["First location — Hong Kong, 2013", "Tokyo — only since November 2023"]),
+  dict(kicker="BUBBLE TEA, JAPANESE STYLE", title="The Sweetness Scale", markLabel="Japan’s pick",
+       big=dict(suf="%", text="sweetness — what Japanese drinkers pick most"), chips=["Hojicha and matcha over the classic", "Kokuto — brown sugar tapioca"]),
+  dict(kicker="GONG CHA · OSAKA", title="The Teen Gets Pricey", board="MENU",
+       items=[dict(name="Convenience-store drinks", sub="cheap", price="cheaper"), dict(name="Seasonal drink", sub="standard size", price="¥620"),
+              dict(name="Limited items", sub="Osaka shopping malls", price="¥690–780")],
+       stamp=dict(text="PREMIUM", sub="deliberately"), note="Gong Cha — nearly 200 stores in Japan (May 2025)"),
+ ],
+ punch=["A scrappy", "teenager who’s", "finally figured out", "what to do in life."],
+ brand=dict(name="Japan: coffee & bubble tea"),
+ ticker=["Japan’s coffee industry: over ¥1 trillion a year (2023)", "Komeda: revenue +8.8%, operating profit just +1.2%",
+  "Beans got pricier: Komeda raised menu prices twice in 2024", "UCC: the world’s first industrial hydrogen roaster — 6,000 tons a year",
+  "Japan’s bubble tea: $162.9M in 2025 — two orders of magnitude smaller than coffee", "Gong Cha: 30.12M customers in Japan (2024)",
+  "“My Gong cha”: 200,000 sign-ups on day one, 2.6M by January 2026", "%Arabica in Tokyo — since November 2023, the chain’s 159th store"],
+ cover=dict(big="14–15%", bigText="a year — bubble tea’s growth", blurbs=[["1,883", "Starbucks stores"], ["7", "%Arabica stores at home"]], tag="Grey-haired coffee, bubble tea in short pants"),
+)
+EN[10] = dict(
+ title="Asia’s Drinks: South Korea — A Coffee War of Attrition and a Bubble Tea Bubble That Popped",
+ hook=dict(lines=["COFFEE", "CHEAPER THAN", "WATER."], shout=["And the bubble tea", "bubble popped!"]),
+ beats=[
+  dict(kicker="MEGA COFFEE", title="Cheaper Than Water", board="MENU",
+       items=[dict(name="Water", sub="at least it needs delivering", price="pricier"), dict(name="A second americano", sub="if you make it before the promo ends", price="prize"),
+              dict(name="A Mega Coffee cup", sub="3,325 locations", price="2,000 won")],
+       stamp=dict(text="+110%", sub="revenue in a year"), note="A gold mine — dug with a teaspoon, except very, very often"),
+  dict(kicker="STARBUCKS KOREA · 2025", title="93% Goes to America", out="→ USA · royalties",
+       big=dict(suf="%", text="of operating profit — royalties to the US"), chips=["2025 revenue — a record 3.24 trillion won", "Parent company equity — 0%"]),
+  dict(kicker="GONG CHA · THE DEAL", title="Half Price", steps=[["2014", "Korean investors bought Gong Cha for 35B won"], ["2019", "sold to an American fund for 350B won"], ["THEN", "the fund asked for 2 trillion won"]],
+       big=dict(suf="B", text="won they got — less than half"), mark="BUBBLE POPPED", stamp=dict(text="ERA’S END", sub="bubble tea · the press wrote"),
+       note="And the business is fine: 150M cups a year, 40% of all stores are in Korea"),
+  dict(kicker="OSULLOC · AMOREPACIFIC", title="Shrank Eightfold", panels=["More than sixty stores — now seven or eight", "Matcha: sales +229% in revenue"],
+       big=dict(suf="B", text="won revenue — first time over 100B")),
+ ],
+ punch=["Investors", "don’t buy a business,", "they buy a mood."],
+ brand=dict(name="South Korea"),
+ ticker=["Mega Coffee parent revenue: 8.78 → 17.48 → 36.84B won (2021–2023)", "Mega Coffee profit grew 124%",
+  "76% of segment turnover — two brands out of five", "May 2026: Mega Coffee tops 100B won in a month for the first time",
+  "Compose Coffee was bought by the Philippines’ Jollibee", "Starbucks Korea: 2,076 stores — the chain’s third-largest market",
+  "Starbucks Korea royalties: 93.5B won in 2019 — 162B now", "Gong Cha: 2,200 locations in 33 countries, $217M revenue", "Osulloc: matcha +178% in units"],
+ cover=dict(big="93%", bigText="of Starbucks Korea’s profit — to the US", blurbs=[["2,000", "won — a Mega Coffee cup"], ["900B", "won instead of 2T for Gong Cha"]], tag="Price war, royalties and a popped bubble"),
+)
+EN[11] = dict(
+ title="Asia’s Drinks: Vietnam — The Robusta Exporter That Can’t Decide Who’s Boss",
+ hook=dict(lines=["40% OF THE WORLD’S", "ROBUSTA —", "FROM VIETNAM."], shout=["Who’s the leader?", "Still undecided!"]),
+ beats=[
+  dict(kicker="ROBUSTA · 2025", title="40% of the World’s Robusta", markLabel="Vietnam",
+       big=dict(suf="%", text="of the world’s robusta — from Vietnam"), chips=["2025 coffee exports — a record $8.9B", "$5,115 a ton — “a dream figure”"]),
+  dict(kicker="VIETNAM’S COFFEE CHAINS", title="Who’s the Leader?", unit="STORE COUNT",
+       lanes=[dict(name="Highlands", note="60% owned by Jollibee"), dict(name="Phúc Long", note="Masan Group"), dict(name="The Coffee House")],
+       twist="BUT DAILY REVENUE PER STORE (2022), MILLION VND:", note="The Coffee House — three straight years of losses"),
+  dict(kicker="MICHELIN NOTICED", title="A Taste of Vietnam", board="CÀ PHÊ",
+       items=[dict(name="Iced condensed-milk coffee", sub="Saigon, 19th century", price="sữa đá"), dict(name="Coconut coffee", sub="the south and Central Highlands", price="cốt dừa"),
+              dict(name="Salt coffee", sub="Hue: salt softens the bitterness", price="muối"), dict(name="Egg coffee", sub="Hanoi, 1940s", price="trứng")],
+       stamp=dict(text="MASTERPIECE", sub="Michelin on egg coffee")),
+  dict(kicker="BUBBLE TEA · 2025", title="The Boom Is Over",
+       items=["Openings and closures — roughly balanced", "TocoToco: 700+ stores — even it reviews locations", "Hanoi: Ding Tea — 49%, TocoToco — 16%, Gong Cha — 9%",
+              "Mixue is quietly closing stores nationwide", "“The boom era is over”"]),
+ ],
+ punch=["This isn’t a", "banana paradise —", "it’s the next", "Asian tiger."],
+ brand=dict(name="Vietnam"),
+ ticker=["2025 coffee exports: $8.9B — up nearly 59%", "Robusta: $6.65B on 1.3M tons", "Robusta covers 720,000 ha — 95% of the country’s plantations",
+  "Highlands: 2025 EBITDA over 1,097B VND, IPO in 18–24 months", "Phúc Long: Q1 2026 — 569B VND, +34%", "Phúc Long in 2025: from 156 to 237 stores",
+  "Katinat opened three locations at once in Hanoi", "Trung Nguyen Legend: ~27 stores in China, target 130", "Processed coffee — 16% of exports, +50% a year"],
+ cover=dict(big="40%", bigText="of the world’s robusta — Vietnam", blurbs=[["$8.9B", "coffee exports, 2025"], ["928", "Highlands stores"]], tag="Robusta, egg coffee and a race for the lead"),
+)
+EN[12] = dict(
+ title="Asia’s Drinks: Thailand — Where Coffee Hides at the Gas Station and Tea Holds a Death Grip",
+ hook=dict(lines=["A GAS-STATION", "COFFEE SHOP —", "THAILAND’S NO. 1."], shout=["Dreamed up by —", "an oil company!"]),
+ beats=[
+  dict(kicker="CAFÉ AMAZON · PTT", title="Coffee by Oilmen", big=dict(suf="+", text="Café Amazon stores worldwide — by October 2025"),
+       equal="oil is still 91% of PTT’s revenue", chips=["2002: a café at every PTT station", "Q1 2024: 99M cups in three months"]),
+  dict(kicker="2018 · THAILAND", title="Beat Starbucks", left="CAFE AMAZON", right="STARBUCKS", round="ROUND · 2018",
+       result="The gas-station chain out-earned Starbucks in Thailand",
+       facts=[dict(suf="B", text="baht — Café Amazon revenue"), dict(suf="B", text="baht — the whole café market then"), dict(text="Starbucks stores now, 600 planned by 2027")]),
+  dict(kicker="STARBUCKS · 2026", title="Thai Tea for Thais", board="NEW ON THE MENU",
+       items=[dict(name="Thai tea", sub="for people who don’t drink coffee", price="95 baht"), dict(name="Durian smoothie", sub="for people who grew up on durian", price="95 baht"),
+              dict(name="Rice", sub="“next, presumably, they’ll offer”", price="?")],
+       stamp=dict(text="BRAVO", sub="the verdict after 28 years")),
+  dict(kicker="CHATRAMUE · SINCE 1945", title="80 Years at 70–80%", markLabel="ChaTraMue",
+       big=dict(big="70–80%", text="of the Thai tea market — for eighty years"),
+       chips=["September 2025 — premium sub-brand CTM, 75–200 baht", "Collabs: bird’s nest soup, Universal Music, Sushiro"]),
+ ],
+ punch=["Do what", "nobody", "expects."],
+ brand=dict(name="Thailand"),
+ ticker=["2018: Thailand’s whole café market — 21.2B baht", "Café Amazon, H1 2023: 4,007 stores and 184M cups",
+  "2021: just 298 Café Amazon stores abroad", "Starbucks Thailand: 1.9M loyalty members", "Thailand’s café market — 65B baht, +8% a year",
+  "Starbucks entered canned coffee through 7-Eleven", "ChaTraMue’s 80th: a festival at CentralWorld", "Mixue — almost 60,000 stores worldwide by end-2025"],
+ cover=dict(big="10.3B baht", bigText="in 2018 — more than Starbucks", blurbs=[["5,000+", "Café Amazon stores"], ["70–80%", "of Thai tea — ChaTraMue"]], tag="Oilmen, Thai tea and bird’s nest soup"),
+)
+EN[13] = dict(
+ title="Asia’s Drinks: Malaysia — Where a Franchisee Outmaneuvered a Global Brand in Six Weeks",
+ hook=dict(lines=["FIRED —", "OPENED", "A RIVAL."], shout=["Within", "six weeks!"]),
+ beats=[
+  dict(kicker="COFFEE · 2025", title="A Kiosk Beat Starbucks", unit="STORE COUNT",
+       lanes=[dict(name="ZUS Coffee", note="a kiosk in 2019"), dict(name="Starbucks Malaysia", note="peak — roughly 400"), dict(name="Old Town White Coffee", note="since 1999")],
+       note="Starbucks Malaysia: record net loss of RM292M, revenue −64%"),
+  dict(kicker="CHATIME → TEALIVE", title="Six Weeks", steps=[["JAN 2017", "La Kaffa terminated the deal — 24 years early"], ["FEB 17", "161 of 165 Chatime outlets are now Tealive"], ["FEB 26", "first Tealive opens at Pavilion KL"]],
+       big=dict(suf=" of 165", text="outlets just repainted the signage"), mark="SAME REGISTERS", note="Not closed for renovation — same staff, almost the same menu"),
+  dict(kicker="COURT OF APPEAL · 2018", title="The Ruling", a="Court", b="Loob",
+       lines=["The franchise agreement was breached.", "Shut down.", "Thanks for the heads-up."], note="…and carries on. August 30, 2018 — settlement, all claims withdrawn"),
+  dict(kicker="KOPITIAM · MAMAK", title="Teh Tarik and Kopi", board="KOPITIAM",
+       items=[dict(name="Kopi O", sub="black with sugar"), dict(name="Kopi O kosong", sub="black without sugar"), dict(name="Kopi C", sub="with evaporated milk"),
+              dict(name="Teh tarik", sub="“pulled tea” at any mamak stall", price="RM2–4")],
+       stamp=dict(text="UNDEFEATED", sub="no court ruling budged it")),
+ ],
+ punch=["Sometimes", "it’s enough to just", "make good coffee", "for thirty years."],
+ brand=dict(name="Malaysia"),
+ ticker=["ZUS Coffee: revenue RM15.7M → over RM200M (2021–2023)", "ZUS raised RM250M, IPO target valuation around RM4B",
+  "Starbucks Malaysia: 287 stores by December 2025, revenue −64%", "Malaysian Chatime made over 20% of La Kaffa’s global revenue",
+  "Tealive: 800th outlet in September 2022", "Tealive is now at Petronas gas stations too",
+  "Old Town White Coffee: Ipoh, 1999 — bought by JDE Peet’s for RM1.47B", "SE Asia coffee & tea: $8.3B → $9.9B (2023–2025)"],
+ cover=dict(big="< 6 weeks", bigText="from termination to his own chain", blurbs=[["161 of 165", "outlets changed signs"], ["900+", "ZUS Coffee stores"]], tag="A franchisee, a court and RM2 teh tarik"),
+)
+
 def apply(ru, en):
     d = copy.deepcopy(ru)
     d["lang"] = "en"
@@ -202,8 +325,8 @@ def apply(ru, en):
             if "suf" not in e["big"] and "suf" in b["big"]: del b["big"]["suf"]
             if "pre" not in e["big"] and "pre" in b["big"]: del b["big"]["pre"]
         if "stamp" in e:
-            b["stamp"]["text"] = e["stamp"]["text"]; b["stamp"]["sub"] = e["stamp"]["sub"]
-        if "items" in e:
+            b["stamp"]["text"] = e["stamp"]["text"]; b["stamp"]["sub"] = e["stamp"]["sub"]  # zh — общий
+        if "items" in e and b["kind"] != "menu":
             assert len(e["items"]) == len(b["items"]), (d["ep"], b["title"]); b["items"] = e["items"]
         if "panels" in e:
             for p, c in zip(b["panels"], e["panels"]): p["cap"] = c
@@ -211,6 +334,20 @@ def apply(ru, en):
             assert len(e["lines"]) == len(b["lines"]), (d["ep"], b["title"])
             for l, t in zip(b["lines"], e["lines"]): l["text"] = t
             b["a"]["name"] = e["a"]; b["b"]["name"] = e["b"]
+        for k in ("unit", "out", "markLabel", "pctLabel", "board"):
+            if k in e: b[k] = e[k]
+        if "lanes" in e:
+            assert len(e["lanes"]) == len(b["lanes"]), (d["ep"], b["title"])
+            for l, le in zip(b["lanes"], e["lanes"]):
+                l["name"] = le["name"]
+                for k in ("note", "text"):
+                    if k in le: l[k] = le[k]
+                    elif k in l: del l[k]
+        if "twist" in e: b["twist"]["label"] = e["twist"]
+        if "items" in e and b["kind"] == "menu":
+            assert len(e["items"]) == len(b["items"]), (d["ep"], b["title"])
+            b["items"] = [{**it, **ie} for it, ie in zip(b["items"], e["items"])]
+            e = {k: v for k, v in e.items() if k != "items"}
         if "facts" in e:
             for fct, fe in zip(b["facts"], e["facts"]):
                 for k in ("pre", "suf"):
@@ -229,7 +366,8 @@ def apply(ru, en):
     d["coverArt"]["blurbs"] = [{"big": a, "text": t} for a, t in c["blurbs"]]
     return d
 
-NEXT_EN = {9: "Asia’s Drinks: Japan — Coffee Already Grew Up, Bubble Tea Is Still a Teenager"}
+NEXT_EN = {9: "Asia’s Drinks: Japan — Coffee Already Grew Up, Bubble Tea Is Still a Teenager",
+           14: "Asia’s Drinks: India — A Tea Nation Where the Coffee Shop Market Triples Tea Cafés"}
 only = [int(x) for x in sys.argv[1:]] or sorted(EN)
 for p in sorted(glob.glob(R + "/0*.json")):
     ru = json.load(open(p))

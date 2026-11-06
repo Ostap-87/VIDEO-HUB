@@ -1,0 +1,219 @@
+{
+ "show": "多 NEWS",
+ "ep": 10,
+ "season": {
+  "name": "Asia's Drinks",
+  "zh": "饮品",
+  "n": 2,
+  "total": 9
+ },
+ "title": "Asia’s Drinks: South Korea — A Coffee War of Attrition and a Bubble Tea Bubble That Popped",
+ "date": "2026-09-13",
+ "slug": "asia-drinks-korea-coffee-war-bubble-tea",
+ "cover": "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/cover.jpg",
+ "coverPos": "50% 62%",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/en-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/en-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/en-02.jpg"
+ ],
+ "accent": "#86E05A",
+ "look": "light",
+ "hook": {
+  "style": "cup",
+  "liquid": "coffee",
+  "lines": [
+   "COFFEE",
+   "CHEAPER THAN",
+   "WATER."
+  ],
+  "shout": [
+   "And the bubble tea",
+   "bubble popped!"
+  ],
+  "sfx": "啪"
+ },
+ "beats": [
+  {
+   "kind": "menu",
+   "sec": 8.2,
+   "zh": "便宜",
+   "kicker": "MEGA COFFEE",
+   "title": "Cheaper Than Water",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/hf-voda.jpg",
+   "imgPos": "50% 62%",
+   "board": "MENU",
+   "boardZh": "咖啡",
+   "items": [
+    {
+     "name": "Water",
+     "sub": "at least it needs delivering",
+     "price": "pricier"
+    },
+    {
+     "name": "A second americano",
+     "sub": "if you make it before the promo ends",
+     "price": "prize"
+    },
+    {
+     "name": "A Mega Coffee cup",
+     "sub": "3,325 locations",
+     "price": "2,000 won"
+    }
+   ],
+   "stamp": {
+    "text": "+110%",
+    "sub": "revenue in a year",
+    "zh": "钱"
+   },
+   "note": "A gold mine — dug with a teaspoon, except very, very often"
+  },
+  {
+   "kind": "cupmeter",
+   "sec": 8.6,
+   "zh": "税",
+   "kicker": "STARBUCKS KOREA · 2025",
+   "title": "93% Goes to America",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/hf-solominka.jpg",
+   "imgPos": "50% 40%",
+   "liquid": "coffee",
+   "from": 100,
+   "pct": 7,
+   "marks": [
+    50,
+    100
+   ],
+   "out": "→ USA · royalties",
+   "big": {
+    "num": 93,
+    "suf": "%",
+    "text": "of operating profit — royalties to the US"
+   },
+   "chips": [
+    "2025 revenue — a record 3.24 trillion won",
+    "Parent company equity — 0%"
+   ]
+  },
+  {
+   "kind": "fall",
+   "sec": 8.0,
+   "zh": "泡",
+   "kicker": "GONG CHA · THE DEAL",
+   "title": "Half Price",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/hf-puzyr.jpg",
+   "imgPos": "50% 30%",
+   "steps": [
+    {
+     "when": "2014",
+     "text": "Korean investors bought Gong Cha for 35B won"
+    },
+    {
+     "when": "2019",
+     "text": "sold to an American fund for 350B won"
+    },
+    {
+     "when": "THEN",
+     "text": "the fund asked for 2 trillion won"
+    }
+   ],
+   "big": {
+    "num": 900,
+    "suf": "B",
+    "text": "won they got — less than half"
+   },
+   "mark": "BUBBLE POPPED",
+   "stamp": {
+    "text": "ERA’S END",
+    "sub": "bubble tea · the press wrote",
+    "zh": "泡"
+   },
+   "note": "And the business is fine: 150M cups a year, 40% of all stores are in Korea"
+  },
+  {
+   "kind": "page",
+   "sec": 8.2,
+   "zh": "茶",
+   "kicker": "OSULLOC · AMOREPACIFIC",
+   "title": "Shrank Eightfold",
+   "panels": [
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/hf-matcha.jpg",
+     "imgPos": "38% 50%",
+     "cap": "More than sixty stores — now seven or eight"
+    },
+    {
+     "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/hf-matcha.jpg",
+     "imgPos": "78% 42%",
+     "zoom": 1.25,
+     "cap": "Matcha: sales +229% in revenue",
+     "sfx": "绿"
+    }
+   ],
+   "big": {
+    "num": 110.9,
+    "dec": 1,
+    "suf": "B",
+    "text": "won revenue — first time over 100B"
+   }
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Investors",
+   "don’t buy a business,",
+   "they buy a mood."
+  ],
+  "zh": "投资者买的不是生意，是情绪。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/финал-сайт-3.png",
+  "from": "— from the article",
+  "photoH": 1250,
+  "photoRight": -10
+ },
+ "next": {
+  "n": 11,
+  "title": "Asia’s Drinks: Vietnam — The Robusta Exporter That Can’t Decide Who’s Boss",
+  "season": "Asia's Drinks",
+  "zh": "饮品",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/rise-of-spirit-alexandr-zhelanov.mp3",
+  "drop": 28.1,
+  "vol": 0.34
+ },
+ "brand": {
+  "name": "South Korea",
+  "zh": "韩国"
+ },
+ "ticker": [
+  "Mega Coffee parent revenue: 8.78 → 17.48 → 36.84B won (2021–2023)",
+  "Mega Coffee profit grew 124%",
+  "76% of segment turnover — two brands out of five",
+  "May 2026: Mega Coffee tops 100B won in a month for the first time",
+  "Compose Coffee was bought by the Philippines’ Jollibee",
+  "Starbucks Korea: 2,076 stores — the chain’s third-largest market",
+  "Starbucks Korea royalties: 93.5B won in 2019 — 162B now",
+  "Gong Cha: 2,200 locations in 33 countries, $217M revenue",
+  "Osulloc: matcha +178% in units"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/hf-voda.jpg",
+  "heroPos": "50% 45%",
+  "alt": "source-videos/ostapdotcenko/blog-news/asia-drinks-korea-coffee-war-bubble-tea/hf-puzyr.jpg",
+  "altPos": "50% 30%",
+  "big": "93%",
+  "bigText": "of Starbucks Korea’s profit — to the US",
+  "blurbs": [
+   {
+    "big": "2,000",
+    "text": "won — a Mega Coffee cup"
+   },
+   {
+    "big": "900B",
+    "text": "won instead of 2T for Gong Cha"
+   }
+  ],
+  "tag": "Price war, royalties and a popped bubble"
+ },
+ "lang": "en"
+}

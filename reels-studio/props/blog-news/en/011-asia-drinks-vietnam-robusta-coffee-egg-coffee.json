@@ -1,0 +1,223 @@
+{
+ "show": "多 NEWS",
+ "ep": 11,
+ "season": {
+  "name": "Asia's Drinks",
+  "zh": "饮品",
+  "n": 3,
+  "total": 9
+ },
+ "title": "Asia’s Drinks: Vietnam — The Robusta Exporter That Can’t Decide Who’s Boss",
+ "date": "2026-09-14",
+ "slug": "asia-drinks-vietnam-robusta-coffee-egg-coffee",
+ "cover": "source-videos/ostapdotcenko/blog-news/asia-drinks-vietnam-robusta-coffee-egg-coffee/cover.jpg",
+ "coverPos": "50% 62%",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-vietnam-robusta-coffee-egg-coffee/en-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-vietnam-robusta-coffee-egg-coffee/en-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/asia-drinks-vietnam-robusta-coffee-egg-coffee/en-02.jpg"
+ ],
+ "accent": "#86E05A",
+ "look": "light",
+ "hook": {
+  "style": "cup",
+  "liquid": "milktea",
+  "lines": [
+   "40% OF THE WORLD’S",
+   "ROBUSTA —",
+   "FROM VIETNAM."
+  ],
+  "shout": [
+   "Who’s the leader?",
+   "Still undecided!"
+  ],
+  "sfx": "咖"
+ },
+ "beats": [
+  {
+   "kind": "cupmeter",
+   "sec": 8.2,
+   "zh": "豆",
+   "kicker": "ROBUSTA · 2025",
+   "title": "40% of the World’s Robusta",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-vietnam-robusta-coffee-egg-coffee/hf-plantaciya.jpg",
+   "imgPos": "50% 55%",
+   "liquid": "coffee",
+   "pct": 40,
+   "marks": [
+    100
+   ],
+   "markLabel": "Vietnam",
+   "big": {
+    "num": 40,
+    "suf": "%",
+    "text": "of the world’s robusta — from Vietnam"
+   },
+   "chips": [
+    "2025 coffee exports — a record $8.9B",
+    "$5,115 a ton — “a dream figure”"
+   ]
+  },
+  {
+   "kind": "race",
+   "sec": 8.8,
+   "zh": "谁",
+   "kicker": "VIETNAM’S COFFEE CHAINS",
+   "title": "Who’s the Leader?",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-vietnam-robusta-coffee-egg-coffee/hf-gonka.jpg",
+   "imgPos": "50% 45%",
+   "unit": "STORE COUNT",
+   "lanes": [
+    {
+     "name": "Highlands",
+     "logo": "source-videos/логотипы/чай-кофе/highlands-coffee.svg",
+     "num": 928,
+     "note": "60% owned by Jollibee"
+    },
+    {
+     "name": "Phúc Long",
+     "logo": "source-videos/логотипы/чай-кофе/phuc-long-masan.png",
+     "num": 237,
+     "note": "Masan Group"
+    },
+    {
+     "name": "The Coffee House",
+     "logo": "source-videos/логотипы/чай-кофе/the-coffee-house.png",
+     "pre": "<",
+     "num": 100
+    }
+   ],
+   "twist": {
+    "label": "BUT DAILY REVENUE PER STORE (2022), MILLION VND:",
+    "lanes": [
+     {
+      "num": 16.5,
+      "dec": 1
+     },
+     {
+      "num": 33
+     },
+     {
+      "big": "—"
+     }
+    ]
+   },
+   "note": "The Coffee House — three straight years of losses"
+  },
+  {
+   "kind": "menu",
+   "sec": 8.2,
+   "zh": "味",
+   "kicker": "MICHELIN NOTICED",
+   "title": "A Taste of Vietnam",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-vietnam-robusta-coffee-egg-coffee/hf-hanoi.jpg",
+   "imgPos": "50% 78%",
+   "board": "CÀ PHÊ",
+   "boardZh": "咖啡",
+   "items": [
+    {
+     "name": "Iced condensed-milk coffee",
+     "sub": "Saigon, 19th century",
+     "price": "sữa đá"
+    },
+    {
+     "name": "Coconut coffee",
+     "sub": "the south and Central Highlands",
+     "price": "cốt dừa"
+    },
+    {
+     "name": "Salt coffee",
+     "sub": "Hue: salt softens the bitterness",
+     "price": "muối"
+    },
+    {
+     "name": "Egg coffee",
+     "sub": "Hanoi, 1940s",
+     "price": "trứng"
+    }
+   ],
+   "stamp": {
+    "text": "MASTERPIECE",
+    "sub": "Michelin on egg coffee",
+    "zh": "蛋"
+   }
+  },
+  {
+   "kind": "list",
+   "sec": 7.8,
+   "zh": "退",
+   "kicker": "BUBBLE TEA · 2025",
+   "title": "The Boom Is Over",
+   "img": "source-videos/ostapdotcenko/blog-news/asia-drinks-vietnam-robusta-coffee-egg-coffee/hf-zakrytie.jpg",
+   "imgPos": "50% 50%",
+   "mark": "退",
+   "items": [
+    "Openings and closures — roughly balanced",
+    "TocoToco: 700+ stores — even it reviews locations",
+    "Hanoi: Ding Tea — 49%, TocoToco — 16%, Gong Cha — 9%",
+    "Mixue is quietly closing stores nationwide",
+    "“The boom era is over”"
+   ]
+  }
+ ],
+ "punch": {
+  "lines": [
+   "This isn’t a",
+   "banana paradise —",
+   "it’s the next",
+   "Asian tiger."
+  ],
+  "zh": "不再是香蕉天堂，而是下一只亚洲虎。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-sany-selfi.png",
+  "from": "— from the article",
+  "photoH": 980,
+  "photoRight": -60
+ },
+ "next": {
+  "n": 12,
+  "title": "Asia’s Drinks: Thailand — Where Coffee Hides at the Gas Station and Tea Holds a Death Grip",
+  "season": "Asia's Drinks",
+  "zh": "饮品",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/phonk-remix-holiznacc0.mp3",
+  "drop": 10.45,
+  "vol": 0.37
+ },
+ "brand": {
+  "name": "Vietnam",
+  "zh": "越南"
+ },
+ "ticker": [
+  "2025 coffee exports: $8.9B — up nearly 59%",
+  "Robusta: $6.65B on 1.3M tons",
+  "Robusta covers 720,000 ha — 95% of the country’s plantations",
+  "Highlands: 2025 EBITDA over 1,097B VND, IPO in 18–24 months",
+  "Phúc Long: Q1 2026 — 569B VND, +34%",
+  "Phúc Long in 2025: from 156 to 237 stores",
+  "Katinat opened three locations at once in Hanoi",
+  "Trung Nguyen Legend: ~27 stores in China, target 130",
+  "Processed coffee — 16% of exports, +50% a year"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/asia-drinks-vietnam-robusta-coffee-egg-coffee/hf-plantaciya.jpg",
+  "heroPos": "50% 50%",
+  "alt": "source-videos/ostapdotcenko/blog-news/asia-drinks-vietnam-robusta-coffee-egg-coffee/hf-gonka.jpg",
+  "altPos": "50% 40%",
+  "big": "40%",
+  "bigText": "of the world’s robusta — Vietnam",
+  "blurbs": [
+   {
+    "big": "$8.9B",
+    "text": "coffee exports, 2025"
+   },
+   {
+    "big": "928",
+    "text": "Highlands stores"
+   }
+  ],
+  "tag": "Robusta, egg coffee and a race for the lead"
+ },
+ "lang": "en"
+}
