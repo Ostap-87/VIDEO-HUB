@@ -1,0 +1,461 @@
+<!doctype html>
+<!-- Ostap Dotsenko's resume, creative 'boarding pass + itinerary receipt' variant, English version (06.11.2026). Translation of ../2026-11-06-resume-boarding: same design, photo and layout; no airline brand. Flight BD-2013 = Business Development since 2013. QR codes: ostapdotcenko.ru and t.me/ostapdotcenko (images from the original folder). Facts only from ../RESUME-MASTER.md, glossary from ../RESUME-I18N.md. Build: python3 build.py 2026-11-06-resume-boarding-en -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ostap Dotsenko — Boarding Pass Resume</title>
+<link rel="stylesheet" href="../2026-11-06-resume-boarding/fonts/fonts.css">
+<link rel="stylesheet" href="fonts/noto-sans-sc.css">
+<link rel="stylesheet" href="../2026-11-06-resume-boarding/fonts/noto-sans-kr.css">
+<style>
+:root {
+  --sky: #E3E9F0; --paper: #FFFFFF; --paper2: #F4F7FA; --ink: #0F1B2D; --navy: #13294B; --navy2: #1C3864;
+  --dim: #556173; --line: #D3DAE3; --amber: #FFB01F; --board: #0C131E; --board2: #162131; --boardtx: #E8EDF4;
+  --red: #C8312A; --blue: #2446C7; --violet: #6B3FB0; --green: #13824C; --teal: #0B7A75;
+  --disp: "Oswald", "NSC", sans-serif; --mono: "IBM Plex Mono", "NSC", "NKR", monospace; --text: "IBM Plex Sans", "NSC", "NKR", "WenQuanYi Zen Hei", sans-serif;
+}
+@page { size: 210mm 297mm; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #9aa3ad; }
+body { font-family: var(--text); color: var(--ink); -webkit-font-smoothing: antialiased; }
+.page { width: 794px; height: 1123px; position: relative; overflow: hidden; background: var(--sky); margin: 0 auto 24px;
+  page-break-after: always; break-after: page; padding: 22px 28px 30px; display: flex; flex-direction: column; gap: 10px; }
+@media print { html, body { background: none; } .page { margin: 0; } }
+.lab { font-family: var(--mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); }
+.mono { font-family: var(--mono); }
+b { font-weight: 700; }
+.topline { display: flex; justify-content: space-between; align-items: center; }
+.topline .lab b { color: var(--ink); font-weight: 700; }
+.ftr { position: absolute; left: 28px; right: 28px; bottom: 11px; display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; color: var(--dim); letter-spacing: 0.04em; }
+.ftr b { color: var(--ink); }
+.h { font-family: var(--disp); font-weight: 600; font-size: 17px; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1; display: flex; align-items: baseline; gap: 8px; }
+.h small { font-family: var(--mono); font-size: 9.5px; font-weight: 500; color: var(--dim); letter-spacing: 0.08em; }
+.box { background: var(--paper); border-radius: 14px; padding: 13px 15px; box-shadow: 0 1px 0 rgba(15,27,45,.06); }
+
+
+.pass { display: grid; grid-template-columns: 1fr 192px; background: var(--paper); border-radius: 18px; box-shadow: 0 10px 28px rgba(19,41,75,.16), 0 1px 0 rgba(19,41,75,.08); position: relative; }
+.pass .band { background: var(--navy); color: #fff; height: 46px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; }
+.pass .main .band { border-radius: 18px 0 0 0; }
+.pass .stub .band { border-radius: 0 18px 0 0; background: var(--navy2); }
+.band .t { display: flex; align-items: center; gap: 10px; }
+.band .t svg { width: 22px; height: 22px; fill: var(--amber); }
+.band .t b { font-family: var(--disp); font-weight: 600; font-size: 20px; letter-spacing: 0.08em; white-space: nowrap; }
+.band .t span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; color: #AFC0D8; }
+.band .cls { white-space: nowrap; background: var(--amber); color: var(--ink); font-family: var(--mono); font-weight: 700; font-size: 10.5px; letter-spacing: 0.08em; padding: 4px 9px; border-radius: 6px; }
+.pass .stub { border-left: 2px dashed #B9C4D2; position: relative; }
+.pass .stub::before, .pass .stub::after { content: ""; position: absolute; left: -12px; width: 22px; height: 22px; border-radius: 50%; background: var(--sky); }
+.pass .stub::before { top: -11px; } .pass .stub::after { bottom: -11px; }
+.pbody { display: grid; grid-template-columns: 160px 1fr; gap: 15px; padding: 12px 16px 8px; }
+.photo { position: relative; }
+.photo .fr { height: 232px; border-radius: 10px; overflow: hidden; background: #ccd; }
+.photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; display: block; }
+.photo .cap { margin-top: 5px; font-family: var(--mono); font-size: 9.5px; color: var(--dim); line-height: 1.3; letter-spacing: 0.02em; }
+.photo .chk { position: absolute; left: -7px; top: 127px; transform: rotate(-8deg); border: 2px solid var(--green); color: var(--green); background: rgba(255,255,255,.9); font-family: var(--disp); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; padding: 2px 7px; border-radius: 4px; }
+.pax .nm { font-family: var(--mono); font-weight: 700; font-size: 21px; letter-spacing: 0.02em; line-height: 1.1; margin-top: 2px; }
+.pax .ru { font-size: 12px; color: var(--dim); margin-top: 2px; }
+.pax .ru b { color: var(--ink); }
+.role { margin-top: 7px; font-weight: 700; font-size: 15.5px; line-height: 1.22; }
+.role .co { display: block; font-weight: 500; font-size: 11.6px; margin-top: 3px; color: var(--ink); }
+.role .co b { font-weight: 700; }
+.route { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; margin-top: 7px; padding: 6px 0 4px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.route .ap b { display: block; font-family: var(--disp); font-weight: 700; font-size: 40px; line-height: 0.95; letter-spacing: 0.01em; }
+.route .ap span { font-size: 11px; color: var(--dim); }
+.route .ap:last-child { text-align: right; }
+.route .mid { position: relative; height: 40px; }
+.route .mid::before { content: ""; position: absolute; left: 0; right: 0; top: 20px; border-top: 2px dashed #9EABBC; }
+.route .mid svg { position: absolute; left: 50%; top: 8px; width: 24px; height: 24px; transform: translateX(-50%); fill: var(--navy); background: var(--paper); padding: 0 3px; box-sizing: content-box; }
+.route .mid span { position: absolute; left: 0; right: 0; top: 29px; text-align: center; font-family: var(--mono); font-size: 9.5px; color: var(--dim); }
+.fields { display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; gap: 6px 10px; margin-top: 7px; }
+.f .v { font-family: var(--mono); font-weight: 600; font-size: 12px; line-height: 1.25; margin-top: 1px; }
+.f .v.big { font-family: var(--disp); font-size: 17px; font-weight: 600; letter-spacing: 0.02em; }
+.f.go .v { color: var(--green); }
+.strip { display: grid; grid-template-columns: 1fr 1fr 1.25fr; gap: 10px; margin: 0 16px 8px; padding: 6px 0; border-top: 1px dashed #B9C4D2; border-bottom: 1px dashed #B9C4D2; }
+.strip .r2 { padding-top: 5px; border-top: 1px dashed #B9C4D2; }
+.strip .r2 .v { color: var(--navy); }
+.target { margin: 0 16px; padding: 7px 10px; background: #FFF4DA; border-radius: 8px; font-size: 11.6px; line-height: 1.35; display: flex; gap: 8px; align-items: baseline; }
+.target .lab { color: #7A5300; white-space: nowrap; font-weight: 700; }
+.pfoot { display: flex; align-items: center; gap: 14px; padding: 8px 16px 11px; }
+.bars { height: 26px; width: 300px; fill: var(--ink); flex: none; }
+.pfoot .lab { line-height: 1.4; }
+.stub .sb { padding: 10px 13px; display: flex; flex-direction: column; gap: 7px; }
+.stub .nm { font-family: var(--mono); font-weight: 700; font-size: 13px; line-height: 1.15; }
+.stub .rt { font-family: var(--disp); font-weight: 700; font-size: 26px; line-height: 1; letter-spacing: 0.02em; }
+.stub .rt i { font-style: normal; color: var(--dim); font-weight: 400; font-size: 20px; }
+.k7 { border-top: 1px dashed #B9C4D2; padding-top: 6px; }
+.k7 .it { margin-top: 6px; }
+.k7 .it b { display: block; font-family: var(--disp); font-weight: 700; font-size: 20px; line-height: 1; }
+.k7 .it span { display: block; font-size: 10.8px; font-weight: 600; line-height: 1.25; margin-top: 1px; }
+.k7 .it i { font-style: normal; color: var(--dim); display: block; font-size: 10.5px; line-height: 1.2; }
+.qr { display: flex; gap: 7px; align-items: center; border-top: 1px dashed #B9C4D2; padding-top: 8px; }
+.qr .q { width: 60px; height: 60px; background: #fff; padding: 6px; border: 1px solid var(--line); border-radius: 6px; flex: none; }
+.qr .q img { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+.qr .tx { font-size: 10.5px; line-height: 1.3; }
+.qr .tx b { font-family: var(--mono); font-size: 10.5px; display: block; letter-spacing: -0.02em; }
+.stub .tgt { background: #FFF4DA; border-radius: 8px; padding: 6px 8px 7px; font-size: 11px; line-height: 1.32; }
+.stub .tgt .lab { color: #7A5300; font-weight: 700; display: block; margin-bottom: 2px; }
+.tear { font-family: var(--mono); font-size: 9.5px; color: var(--dim); text-align: center; letter-spacing: 0.01em; white-space: nowrap; }
+
+
+.board { background: var(--board); border-radius: 14px; padding: 12px 16px 12px; color: var(--boardtx); }
+.board .hd { display: flex; justify-content: space-between; align-items: baseline; }
+.board .hd b { font-family: var(--disp); font-weight: 600; font-size: 18px; letter-spacing: 0.08em; color: var(--amber); }
+.board .hd span { font-family: var(--mono); font-size: 9.5px; color: #9FB0C6; letter-spacing: 0.12em; }
+.board .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; margin-top: 8px; }
+.board .th, .board .tr { display: grid; grid-template-columns: 84px 1fr 50px; gap: 8px; align-items: center; }
+.board .th { font-family: var(--mono); font-size: 9.5px; color: #9FB0C6; letter-spacing: 0.1em; padding-bottom: 4px; border-bottom: 1px solid #2A3A52; }
+.board .tr { padding: 4px 0; border-bottom: 1px solid #1F2C40; }
+.board .tr .c { font-family: var(--mono); font-weight: 600; font-size: 10.5px; color: var(--amber); letter-spacing: 0.02em; }
+.board .tr .d { font-size: 11.2px; line-height: 1.25; }
+.board .tr .d b { font-weight: 700; color: #fff; }
+.board .tr .s { font-family: var(--mono); font-size: 9.5px; font-weight: 700; color: #57D68D; letter-spacing: 0.06em; text-align: right; }
+.board .note { font-family: var(--mono); font-size: 9.5px; color: #9FB0C6; margin-top: 7px; letter-spacing: 0.02em; }
+
+
+.row3 { display: grid; grid-template-columns: 236px minmax(0, 1fr); gap: 12px; }
+.contact .ln { display: grid; grid-template-columns: 62px 1fr; gap: 6px; font-size: 11.3px; line-height: 1.3; margin-top: 3px; align-items: baseline; }
+.contact .ln .lab { font-size: 9.5px; }
+.contact .ln span { font-family: var(--mono); font-weight: 600; font-size: 11px; }
+.contact .tg { display: flex; gap: 10px; align-items: center; margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--line); }
+.contact .tg .q { width: 64px; height: 64px; padding: 4px; border: 1px solid var(--line); border-radius: 6px; flex: none; }
+.contact .tg .q img { width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+.contact .tg div { font-size: 10.5px; line-height: 1.3; }
+.contact .tg b { font-family: var(--mono); font-size: 11px; display: block; }
+.kit { display: grid; grid-template-columns: 0.8fr 1fr; gap: 0 16px; margin-top: 7px; }
+.langs .l { display: grid; grid-template-columns: 54px 1fr 50px; gap: 7px; align-items: center; font-size: 11.2px; margin-top: 4px; }
+.langs .bar { height: 6px; background: var(--paper2); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
+.langs .bar i { display: block; height: 100%; background: var(--navy); }
+.langs em { font-style: normal; font-family: var(--mono); font-size: 10px; font-weight: 600; text-align: right; color: var(--dim); }
+.sub { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); font-weight: 700; }
+.ul { list-style: none; }
+.ul li { font-size: 11px; line-height: 1.36; padding-left: 13px; position: relative; margin-top: 3px; text-wrap: pretty; }
+.ul li::before { content: ""; position: absolute; left: 0; top: 5px; width: 6px; height: 6px; border: 1.5px solid var(--navy); border-radius: 50%; }
+.ul li b { font-weight: 700; }
+
+
+.rhead { display: grid; grid-template-columns: 1fr 300px; gap: 12px; align-items: start; position: relative; height: 98px; }
+.rhead .tt { font-family: var(--disp); font-weight: 700; font-size: 36px; line-height: 1; text-transform: uppercase; letter-spacing: 0.02em; margin-top: 4px; }
+.rhead .meta { display: grid; grid-template-columns: repeat(3, auto); gap: 4px 18px; margin-top: 10px; justify-content: start; }
+.rhead .meta .v { font-family: var(--mono); font-size: 11.5px; font-weight: 700; }
+.visa { position: relative; height: 98px; }
+.st { position: absolute; }
+.pst { position: absolute; background: #fff; padding: 6px 6px 5px; border: 4px dotted var(--sky); box-shadow: 0 3px 10px rgba(19,41,75,.18); }
+.pst img { display: block; object-fit: cover; }
+.pst span { display: block; font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 0.06em; margin-top: 3px; text-align: center; color: var(--ink); }
+.ink { font-family: var(--disp); text-transform: uppercase; text-align: center; border: 2.5px solid currentColor; border-radius: 7px; padding: 4px 9px 3px; line-height: 1.05; background: rgba(255,255,255,.35); }
+.ink b { display: block; font-size: 16px; font-weight: 700; letter-spacing: 0.06em; }
+.ink span { display: block; white-space: nowrap; font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; }
+
+.chain { background: var(--paper); border-radius: 14px; padding: 8px 12px 8px; }
+.chain .line { display: grid; grid-template-columns: repeat(7, 1fr); position: relative; }
+.chain .line::before { content: ""; position: absolute; left: 7%; right: 7%; top: 6px; border-top: 2px dashed #9EABBC; }
+.chain .n { text-align: center; position: relative; }
+.chain .n i { display: block; width: 14px; height: 14px; border-radius: 50%; background: var(--paper); border: 3px solid var(--navy); margin: 0 auto; position: relative; }
+.chain .n.now i { background: var(--amber); border-color: var(--ink); }
+.chain .n b { display: block; font-family: var(--disp); font-size: 14px; font-weight: 600; margin-top: 3px; }
+.chain .n span { display: block; font-size: 10.5px; line-height: 1.2; color: var(--ink); }
+.seg { display: grid; grid-template-columns: 124px 1fr; gap: 10px; padding: 4px 0; border-top: 1px dashed #BFC9D6; }
+.segs .seg:first-of-type { border-top: none; padding-top: 2px; }
+.seg .y .n { font-family: var(--mono); font-size: 9.5px; color: var(--dim); letter-spacing: 0.02em; margin-right: 4px; }
+.seg .y b { display: block; font-family: var(--disp); font-weight: 600; font-size: 16px; line-height: 1.1; margin-top: 3px; }
+.seg .y .ap { display: inline-block; margin-top: 0; font-family: var(--mono); font-size: 10px; font-weight: 700; background: var(--navy); color: #fff; border-radius: 4px; padding: 1px 5px; letter-spacing: 0.02em; }
+.seg .y .pl { display: block; font-size: 10.5px; color: var(--ink); margin-top: 3px; line-height: 1.28; }
+.seg .y .pl + .pl { margin-top: 1px; }
+.seg .y .pl b { display: inline; font-family: var(--text); font-size: inherit; font-weight: 700; line-height: inherit; margin: 0; }
+a { color: inherit; text-decoration: none; }
+.seg h3 { font-size: 13px; font-weight: 700; line-height: 1.28; }
+.seg h3 em { font-style: normal; font-weight: 500; color: var(--dim); }
+.seg .ctx { font-size: 11px; color: var(--dim); line-height: 1.36; margin-top: 2px; }
+.seg ul { list-style: none; margin-top: 2px; }
+.seg li { font-size: 11px; line-height: 1.32; padding-left: 14px; position: relative; margin-top: 2px; text-wrap: pretty; }
+.seg li::before { content: "✓"; position: absolute; left: 0; top: 0; font-size: 10px; font-weight: 700; color: var(--green); font-family: var(--text); }
+.seg li b { font-weight: 700; }
+.row4 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+.loy .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px 12px; margin-top: 7px; }
+.loy .it { display: grid; grid-template-columns: 26px 1fr; gap: 7px; align-items: center; }
+.loy .it .m { width: 26px; height: 26px; border-radius: 7px; background: var(--navy); color: #fff; display: grid; place-items: center; font-family: var(--mono); font-size: 9.5px; font-weight: 700; }
+.loy .it b { display: block; font-family: var(--mono); font-size: 11px; font-weight: 700; line-height: 1.2; }
+.loy .it span { display: block; font-size: 10.5px; color: var(--dim); line-height: 1.2; }
+.loy .it.gold .m { background: var(--amber); color: var(--ink); }
+.marks { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; padding: 0 4px; }
+.marks .ink { padding: 3px 7px 2px; }
+.marks .ink b { font-size: 14px; }
+.row4 > .box:last-child .ul li { margin-top: 2px; }
+.row4 > .box:last-child .h + .ul { margin-top: 2px !important; }
+.loy .tier { margin-top: 8px; font-family: var(--mono); font-size: 10px; color: var(--dim); letter-spacing: 0.04em; }
+</style>
+</head>
+<body>
+
+<!-- ============ page 1 — boarding pass ============ -->
+<section class="page">
+  <div class="topline"><span class="lab">E-ticket · 电子客票 · <b>valid for one interview</b></span><span class="lab">RU · EN · 中文 · <b>ostapdotcenko.ru</b></span></div>
+
+  <div class="pass">
+    <div class="main">
+      <div class="band">
+        <div class="t"><svg viewBox="0 0 24 24"><path d="M21 15.5v-2l-8-5V3.2c0-.9-.7-1.7-1.5-1.7S10 2.3 10 3.2v5.3l-8 5v2l8-2.5V18l-2 1.5V21l3.5-1 3.5 1v-1.5L13 18v-5z"/></svg><b>BOARDING PASS</b></div>
+        <span class="cls">BUSINESS DEVELOPMENT</span>
+      </div>
+      <div class="pbody">
+        <div class="photo">
+          <div class="fr"><img src="../2026-11-06-resume-boarding/img/passenger-rrw-2025.jpg" alt="Ostap Dotsenko at Russian Retail Week 2025"></div>
+          <div class="chk">SECURITY CLEARED</div>
+          <div class="cap">Passenger photo · Russian Retail Week 2025</div>
+        </div>
+        <div>
+          <div class="pax"><div class="lab">Passenger · 旅客</div>
+            <div class="nm">DOTSENKO / OSTAP MR</div>
+            <div class="ru"><b>Ostap Dotsenko</b> · 奥斯塔普·多增科</div></div>
+          <div class="role">Business Development &amp; Marketing Leader
+            <span class="co">13+ years · <b>Alibaba Group</b> (AliExpress Russia &amp; CIS) · <b>Megamarket</b> (Sber ecosystem) · own business in Shanghai</span></div>
+          <div class="route">
+            <div class="ap"><b>MOW</b><span>Moscow</span></div>
+            <div class="mid"><svg viewBox="0 0 24 24"><path d="M21 15.5v-2l-8-5V3.2c0-.9-.7-1.7-1.5-1.7S10 2.3 10 3.2v5.3l-8 5v2l8-2.5V18l-2 1.5V21l3.5-1 3.5 1v-1.5L13 18v-5z" transform="rotate(90 12 12)"/></svg><span>⇄ round trip</span></div>
+            <div class="ap"><b>SHA</b><span>Shanghai</span></div>
+          </div>
+          <div class="fields">
+            <div class="f"><div class="lab">Flight</div><div class="v big">BD-2013</div></div>
+            <div class="f"><div class="lab">Gate</div><div class="v big">C-level</div></div>
+            <div class="f"><div class="lab">Seat</div><div class="v big">CBDO/CMO</div></div>
+            <div class="f"><div class="lab">Flight time</div><div class="v big">13+ years</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="strip">
+        <div class="f"><div class="lab">Baggage · 行李</div><div class="v">5 languages · 20+ countries</div></div>
+        <div class="f"><div class="lab">Destinations</div><div class="v">Russia · China · SEA</div></div>
+        <div class="f go"><div class="lab">Boarding · 登机</div><div class="v">now — open to projects</div></div>
+        <div class="f r2"><div class="lab">Crew · 机组</div><div class="v">teams of up to 40</div></div>
+        <div class="f r2"><div class="lab">Fuel · 燃油</div><div class="v">marketing budget &gt; RUB 1 bn a year</div></div>
+        <div class="f r2"><div class="lab">Captain · P&amp;L</div><div class="v">P&amp;L at Megamarket, Alibaba and own business</div></div>
+      </div>
+      <div class="pfoot"><svg class="bars" viewBox="0 0 302 40" preserveAspectRatio="none"><rect x="0" y="0" width="2" height="40"/><rect x="3" y="0" width="2" height="40"/><rect x="7" y="0" width="2" height="40"/><rect x="12" y="0" width="2" height="40"/><rect x="16" y="0" width="2" height="40"/><rect x="21" y="0" width="3" height="40"/><rect x="27" y="0" width="1" height="40"/><rect x="29" y="0" width="1" height="40"/><rect x="32" y="0" width="1" height="40"/><rect x="34" y="0" width="1" height="40"/><rect x="37" y="0" width="2" height="40"/><rect x="40" y="0" width="3" height="40"/><rect x="45" y="0" width="3" height="40"/><rect x="50" y="0" width="2" height="40"/><rect x="54" y="0" width="1" height="40"/><rect x="56" y="0" width="1" height="40"/><rect x="60" y="0" width="1" height="40"/><rect x="64" y="0" width="1" height="40"/><rect x="66" y="0" width="1" height="40"/><rect x="70" y="0" width="1" height="40"/><rect x="74" y="0" width="2" height="40"/><rect x="78" y="0" width="1" height="40"/><rect x="81" y="0" width="2" height="40"/><rect x="84" y="0" width="3" height="40"/><rect x="88" y="0" width="2" height="40"/><rect x="91" y="0" width="2" height="40"/><rect x="96" y="0" width="1" height="40"/><rect x="98" y="0" width="3" height="40"/><rect x="102" y="0" width="1" height="40"/><rect x="104" y="0" width="1" height="40"/><rect x="106" y="0" width="1" height="40"/><rect x="109" y="0" width="2" height="40"/><rect x="114" y="0" width="1" height="40"/><rect x="116" y="0" width="1" height="40"/><rect x="118" y="0" width="2" height="40"/><rect x="123" y="0" width="2" height="40"/><rect x="126" y="0" width="2" height="40"/><rect x="129" y="0" width="1" height="40"/><rect x="132" y="0" width="1" height="40"/><rect x="135" y="0" width="1" height="40"/><rect x="137" y="0" width="1" height="40"/><rect x="141" y="0" width="1" height="40"/><rect x="145" y="0" width="3" height="40"/><rect x="151" y="0" width="2" height="40"/><rect x="154" y="0" width="1" height="40"/><rect x="156" y="0" width="1" height="40"/><rect x="158" y="0" width="1" height="40"/><rect x="160" y="0" width="2" height="40"/><rect x="165" y="0" width="2" height="40"/><rect x="169" y="0" width="1" height="40"/><rect x="171" y="0" width="2" height="40"/><rect x="174" y="0" width="1" height="40"/><rect x="177" y="0" width="3" height="40"/><rect x="183" y="0" width="3" height="40"/><rect x="189" y="0" width="2" height="40"/><rect x="194" y="0" width="1" height="40"/><rect x="197" y="0" width="3" height="40"/><rect x="201" y="0" width="1" height="40"/><rect x="204" y="0" width="1" height="40"/><rect x="207" y="0" width="2" height="40"/><rect x="211" y="0" width="1" height="40"/><rect x="214" y="0" width="2" height="40"/><rect x="217" y="0" width="1" height="40"/><rect x="221" y="0" width="2" height="40"/><rect x="225" y="0" width="1" height="40"/><rect x="228" y="0" width="3" height="40"/><rect x="232" y="0" width="3" height="40"/><rect x="238" y="0" width="1" height="40"/><rect x="242" y="0" width="3" height="40"/><rect x="247" y="0" width="3" height="40"/><rect x="251" y="0" width="1" height="40"/><rect x="254" y="0" width="3" height="40"/><rect x="260" y="0" width="1" height="40"/><rect x="263" y="0" width="2" height="40"/><rect x="267" y="0" width="2" height="40"/><rect x="270" y="0" width="1" height="40"/><rect x="273" y="0" width="1" height="40"/><rect x="275" y="0" width="2" height="40"/><rect x="278" y="0" width="2" height="40"/><rect x="282" y="0" width="2" height="40"/><rect x="285" y="0" width="3" height="40"/><rect x="290" y="0" width="3" height="40"/><rect x="295" y="0" width="2" height="40"/><rect x="299" y="0" width="2" height="40"/></svg><div class="lab">Carry-on: B2B Marketing ·<br>Global Business · AdTech</div></div>
+    </div>
+    <div class="stub">
+      <div class="band"><div class="t"><b style="font-size:18px">STUB</b></div></div>
+      <div class="sb">
+        <div class="tgt"><span class="lab">Requested flight</span><b>CBDO · CMO · Head of International Expansion</b> (Russia ↔ China ↔ SEA)</div>
+        <div class="k7"><div class="lab">Read in 7 seconds</div>
+          <div class="it"><b>+350%</b><span>sellers, year over year</span><i>Megamarket</i></div>
+          <div class="it"><b>$48M</b><span>GMV, +100% YoY</span><i>AliExpress Russia &amp; CIS</i></div>
+          <div class="it"><b>25×</b><span>average campaign ROI</span><i>Alibaba, 2020–2022</i></div>
+          <div class="it"><b>RUB 3 bn</b><span>net profit from my programs, Q4&nbsp;2023</span><i>Megamarket</i></div>
+        </div>
+        <div class="qr"><div class="q"><img src="../2026-11-06-resume-boarding/img/qr-site.svg" alt="QR ostapdotcenko.ru"></div><div class="tx"><b>ostapdotcenko.ru</b>website &amp; blog<br>RU · EN · 中文</div></div>
+        <div class="tear">✂ tear off and keep</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="board">
+    <div class="hd"><b>ARRIVALS · MORE ACHIEVEMENTS</b><span>到达 · ALL FLIGHTS LANDED</span></div>
+    <div class="cols">
+      <div>
+        <div class="th"><span>FLIGHT</span><span>DESTINATION</span><span style="text-align:right">STATUS</span></div>
+        <div class="tr"><span class="c">MEGAMARKET</span><span class="d"><b>50,000</b> sellers on the platform</span><span class="s">LANDED</span></div>
+        <div class="tr"><span class="c">MEGAMARKET</span><span class="d"><b>86 regions</b> — program with the Ministry of Economic Development</span><span class="s">LANDED</span></div>
+        <div class="tr"><span class="c">MEGAMARKET</span><span class="d">“Made in Russia”: <b>0 → 2000</b> companies, 2024</span><span class="s">LANDED</span></div>
+        <div class="tr"><span class="c">MEGAMARKET</span><span class="d">Megasreda: <b>20 cities</b>, <b>1M+</b> views</span><span class="s">LANDED</span></div>
+      </div>
+      <div>
+        <div class="th"><span>FLIGHT</span><span>DESTINATION</span><span style="text-align:right">STATUS</span></div>
+        <div class="tr"><span class="c">ALIEXPRESS</span><span class="d">new buyers <b>+185%</b></span><span class="s">LANDED</span></div>
+        <div class="tr"><span class="c">ALIEXPRESS</span><span class="d"><b>120+</b> media partners, Russia &amp; CIS</span><span class="s">LANDED</span></div>
+        <div class="tr"><span class="c">PINNACLE</span><span class="d">Megamarket forum in Shenzhen: <b>1,200+</b> attendees</span><span class="s">LANDED</span></div>
+        <div class="tr"><span class="c">RUSSIA &amp; CIS</span><span class="d"><b>50+</b> expos and forums</span><span class="s">LANDED</span></div>
+      </div>
+    </div>
+    <div class="note">Conditions of carriage: metrics from real projects; some data anonymized under NDA.</div>
+  </div>
+
+  <div class="row3">
+    <div class="box contact">
+      <div class="h">Call the cockpit</div>
+      <div class="ln"><span class="lab">tel</span><span>+86 137 6171 6355</span></div>
+      <div class="ln"><span class="lab">tel</span><span>+7 985 874-49-58</span></div>
+      <div class="ln"><span class="lab">WhatsApp</span><span>+7 985 874-49-58</span></div>
+      <div class="ln"><span class="lab">e-mail</span><span>norbanking@gmail.com</span></div>
+      <div class="ln"><span class="lab">base</span><span>Shanghai · Moscow (hybrid)</span></div>
+      <div class="ln"><span class="lab">web</span><span>ostapdotcenko.ru</span></div>
+      <div class="ln"><span class="lab">blog</span><span>ostapdotcenko.ru/blog</span></div>
+      <div class="ln"><span class="lab">insta</span><span>@ostap.dotsenko</span></div>
+      <div class="tg"><div class="q"><img src="../2026-11-06-resume-boarding/img/qr-telegram.png" alt="QR Telegram"></div><div><b>@ostapdotcenko</b>Telegram — message me, boarding has started</div></div>
+    </div>
+    <div class="box">
+      <div class="h">Full crew on board <small>languages · education · clearances</small></div>
+      <div class="kit">
+        <div class="langs">
+          <div class="sub">Languages on board</div>
+          <div class="l"><span>Russian</span><div class="bar"><i style="width:100%"></i></div><em>native</em></div>
+          <div class="l"><span>English</span><div class="bar"><i style="width:88%"></i></div><em>C1</em></div>
+          <div class="l"><span>Chinese</span><div class="bar"><i style="width:74%"></i></div><em>B2+</em></div>
+          <div class="l"><span>Uzbek</span><div class="bar"><i style="width:58%"></i></div><em>B1</em></div>
+          <div class="l"><span>Korean</span><div class="bar"><i style="width:36%"></i></div><em>A2</em></div>
+          <div class="sub" style="margin-top:8px">Flight school</div>
+          <ul class="ul"><li>Civil law — MIU</li><li>Korean language teacher — Lyceum under TashSIL</li></ul>
+        </div>
+        <div>
+          <div class="sub">Crew clearances</div>
+          <ul class="ul">
+            <li><b>Business Development:</b> market-entry strategy, partnerships and alliances, C-level negotiations, BD Asia &amp; CIS, new business lines.</li>
+            <li><b>Marketing:</b> B2B Marketing, Demand Generation, Performance, Product Marketing, Sales Enablement, brand programs.</li>
+            <li><b>Tech &amp; data:</b> e-commerce and marketplaces, AdTech / MarTech, Marketing Automation, CRM &amp; Analytics, O2O.</li>
+            <li><b>Communications:</b> GR and government programs, federal events, PR.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ftr"><span>Boarding pass · Ostap Dotsenko</span><span><b>ostapdotcenko.ru</b> · sheet 1 / 2</span></div>
+</section>
+
+<!-- ============ page 2 — itinerary receipt ============ -->
+<section class="page">
+  <div class="rhead">
+    <div>
+      <div class="lab">Itinerary receipt · 行程单 · ticket BD-2013</div>
+      <div class="tt">Itinerary receipt</div>
+      <div class="meta">
+        <div><div class="lab">Passenger</div><div class="v">DOTSENKO / OSTAP MR</div></div>
+        <div><div class="lab">Segments</div><div class="v">7 · since 2013</div></div>
+        <div><div class="lab">Status</div><div class="v" style="color:var(--green)">open to projects</div></div>
+      </div>
+    </div>
+    <div class="visa deco">
+      <div class="pst" style="left:-8px; top:0px; transform: rotate(-6deg)"><img src="../2026-11-06-resume-boarding/img/stamp-hangzhou-2018.jpg" alt="" style="width:92px; height:66px; object-position: 30% 40%"><span>HANGZHOU · 2018</span></div>
+      <div class="pst" style="left:104px; top:-4px; transform: rotate(5deg)"><img src="../2026-11-06-resume-boarding/img/stamp-changsha-2026.jpg" alt="" style="width:62px; height:74px; object-position: 50% 62%"><span>CHANGSHA · 2026</span></div>
+      <div class="st ink" style="left:200px; top:2px; color:var(--red); transform: rotate(9deg)"><b>上海</b><span>SHANGHAI · SHA</span></div>
+      <div class="st ink" style="left:216px; top:56px; color:var(--blue); transform: rotate(-7deg)"><b>MOSCOW</b><span>MOW · DEP</span></div>
+    </div>
+  </div>
+
+  <div class="chain">
+        <div class="line">
+      <div class="n"><i></i><b>2013</b><span>CityAds Media</span></div>
+      <div class="n"><i></i><b>2015</b><span>Data Centric Alliance</span></div>
+      <div class="n"><i></i><b>2017</b><span>O.F.D Agency</span></div>
+      <div class="n"><i></i><b>2020</b><span>Alibaba Group</span></div>
+      <div class="n"><i></i><b>2022</b><span>Independent Adviser</span></div>
+      <div class="n"><i></i><b>2023</b><span>Megamarket (Sber)</span></div>
+      <div class="n now"><i></i><b>2025</b><span>Shanghai Pinnacle</span></div>
+    </div>
+  </div>
+
+  <div class="box segs">
+    <div class="h" style="margin-bottom:6px">Segments <small>latest to first · dates, companies, results</small></div>
+
+    <div class="seg">
+      <div class="y"><span class="n">SEG. 7</span><span class="ap">SHA</span><b>2025 — present</b><span class="pl"><b>Owner’s P&amp;L</b></span></div>
+      <div>
+        <h3>Owner &amp; Founder · Shanghai Pinnacle Technology Co., Ltd.</h3>
+        <div class="ctx">GlobalTechTour — tech expeditions and benchmark tours to China and SEA; Aura Robotics — robotics and automation, sourcing robots directly from Chinese manufacturers.</div>
+        <ul>
+          <li>Turnkey corporate forum for <b>Megamarket (Sber) in Shenzhen with 1,200+ attendees</b>: logistics, venue, business program.</li>
+          <li>Delegation visits to factories and R&amp;D at <b>BYD, Xiaomi, Baidu, Meituan, Poizon, Leju Robotics</b>; Aura clients get direct access to robot makers’ leadership and R&amp;D.</li>
+          <li><b>BelMol</b> closed a dairy-automation deal in a 2-hour meeting at the Kepler factory; <b>SolarTek</b> toured Leju Robotics, Robotera, AgiBot and Kepler in 5 days.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="seg">
+      <div class="y"><span class="n">SEG. 6</span><span class="ap">RU</span><b>2023 — 2025</b><span class="pl">Team of <b>16–40</b></span><span class="pl">Marketing budget <b>over RUB 1 bn a year</b></span><span class="pl"><b>P&amp;L for the business line</b></span></div>
+      <div>
+        <h3>Head of B2B Marketing · Megamarket (Sber ecosystem) <em>— Russia’s #3 e-commerce</em></h3>
+        <ul>
+          <li>B2B seller-acquisition marketing: <b>+350% sellers YoY</b>, <b>50,000 sellers</b> on the platform; my programs’ impact — <b>RUB 3 bn net profit, Q4 2023</b>.</li>
+          <li>With the <b>Ministry of Economic Development of Russia</b> — a federal entrepreneur support program based on “My Business” centers in <b>86 regions</b>: acquisition strategy, materials, regional communications — from scratch.</li>
+          <li>Federal Megasreda marathon in <b>20 cities</b> — from concept to content and PR; <b>1M+ views</b>.</li>
+          <li>“Made in Russia”: brand program, onboarding, video campaign — <b>from 0 to 2,000 companies</b>; an inclusive marketplace for producers with disabilities.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="seg">
+      <div class="y"><span class="n">SEG. 5</span><span class="ap">UZ·KZ·SEA</span><b>2022 — 2023</b></div>
+      <div>
+        <h3>Independent Adviser · AdTech / MarTech / EduTech <em>— Uzbekistan, Kazakhstan, SEA</em></h3>
+        <ul><li>MyDars, HiTarget (Indonesia); <b>20+ partners</b>; product localization for SEA.</li></ul>
+      </div>
+    </div>
+
+    <div class="seg">
+      <div class="y"><span class="n">SEG. 4</span><span class="ap">RU·CIS</span><b>2020 — 2022</b><span class="pl">Team of <b>up to 5</b></span><span class="pl"><b>P&amp;L for O2O</b></span></div>
+      <div>
+        <h3>Head of O2O &amp; New Business · Alibaba Group — AliExpress Russia &amp; CIS</h3>
+        <ul>
+          <li>Partnerships: <b>Alfa-Bank, Tinkoff, MTS Bank, MegaFon, Beeline, Rosneft</b> and <b>120+ media holdings</b>.</li>
+          <li><b>GMV $48M (+100% YoY)</b>, <b>new buyers +185%</b>, average <b>campaign ROI 25×</b>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="seg">
+      <div class="y"><span class="n">SEG. 3</span><span class="ap">SHA·HKG</span><b>2017 — 2020</b><span class="pl"><b>Owner’s P&amp;L</b></span></div>
+      <div>
+        <h3>Co-founder · O.F.D Creative Agency <em>— Shanghai / Hong Kong</em></h3>
+        <div class="ctx">2017 — preparation and launch</div>
+        <ul><li>A joint Chinese-Russian team: advertising solutions for promoting businesses in the Chinese and Russian markets. Clients: <b>FOREO, DECATHLON, Bank of China, WWE, CDEK</b>.</li></ul>
+      </div>
+    </div>
+
+    <div class="seg">
+      <div class="y"><span class="n">SEG. 2</span><span class="ap">MOW·SHA</span><b>2015 — 2017</b></div>
+      <div>
+        <h3>Head of Commerce &amp; BD · Data Centric Alliance <em>— Moscow / Shanghai</em></h3>
+        <ul><li>Media buying and business development in Asia: <b>Google HK, Yahoo HK, Tencent, Ctrip, Baidu</b>.</li></ul>
+      </div>
+    </div>
+
+    <div class="seg">
+      <div class="y"><span class="n">SEG. 1</span><span class="ap">CN·SEA</span><b>2013 — 2015</b></div>
+      <div>
+        <h3>BD Manager — China / SEA · CityAds Media</h3>
+        <ul><li>Performance and affiliate marketing (CPA / CPC / CPL), China and SEA; <b>Sasa</b> (Hong Kong).</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row4">
+    <div class="box loy">
+      <div class="h">Frequent flyer program <small>where to find me</small></div>
+      <div class="grid">
+        <div class="it gold"><span class="m">WEB</span><div><b>ostapdotcenko.ru</b><span>website · RU · EN · 中文</span></div></div>
+        <div class="it gold"><span class="m">BLOG</span><div><b>ostapdotcenko.ru/blog</b><span>new articles daily</span></div></div>
+        <div class="it"><span class="m">IG</span><div><b>@ostap.dotsenko</b><span>Instagram</span></div></div>
+        <div class="it"><span class="m">TG</span><div><b>@ostapdotcenko</b><span>Telegram</span></div></div>
+        <div class="it"><span class="m">in</span><div><a href="https://www.linkedin.com/in/ostapdot%D1%81enko/"><b>linkedin.com/in/<br>ostapdot&#x441;enko</b></a><span>11,000+ followers</span></div></div>
+        <div class="it"><span class="m">f</span><div><b>Ostap Dotsenko</b><span>Facebook</span></div></div>
+        <div class="it"><span class="m">GTT</span><div><b>globaltechtour.ru</b><span>+ blog · expeditions</span></div></div>
+        <div class="it"><span class="m">AR</span><div><b>aura-robotics.ru</b><span>+ blog · robots</span></div></div>
+      </div>
+      <div class="marks deco">
+        <span class="ink" style="color:var(--red); transform: rotate(-6deg)"><b>深圳</b><span>SHENZHEN</span></span>
+        <span class="ink" style="color:var(--violet); transform: rotate(4deg)"><b>香港</b><span>HONG KONG</span></span>
+        <span class="ink" style="color:var(--green); transform: rotate(-3deg)"><b>TASHKENT</b><span>TashSIL</span></span>
+        <span class="ink" style="color:var(--blue); transform: rotate(6deg)"><b>IRKUTSK</b><span>2024</span></span>
+      </div>
+    </div>
+    <div class="box">
+      <div class="h">In-flight reading</div>
+      <ul class="ul" style="margin-top:3px">
+        <li><b>RBC</b> — interview “The key is to know your fundamentals and not be afraid”</li>
+        <li><b>RBC Industries</b> · <b>TASS</b> — Ulyanovsk region and Megamarket</li>
+        <li><b>Sber Business</b> — guide “Marketplaces: the complete guide to earning”</li>
+        <li><b>“My Business”</b> — marathon, 1M+ views</li>
+      </ul>
+      <div class="h" style="margin-top:5px">Cabin announcements <small>talks</small></div>
+      <ul class="ul" style="margin-top:3px">
+        <li><b>Russian Retail Show 2024</b> — speaker</li>
+        <li><b>Amber Forum 2024</b> — panel discussion</li>
+        <li><b>Manufacturers’ Summit</b>, Irkutsk, 2024 — panel</li>
+        <li><b>Russian Retail Week 2025</b> · <b>SCO Forum 2025</b> · Megasreda</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ftr"><span><b>Full business version and ATS version available on request</b></span><span><b>ostapdotcenko.ru</b> · sheet 2 / 2</span></div>
+</section>
+
+</body>
+</html>

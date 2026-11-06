@@ -1,0 +1,395 @@
+<!doctype html>
+<!-- Ostap Dotsenko's resume, creative 'manhua comic: the hero's journey' variant, English version (06.11.2026). Translation of ../2026-11-06-resume-manhua: same design, photos and layout. Facts, numbers, dates and companies verbatim from ../RESUME-MASTER.md (glossary ../RESUME-I18N.md); humor only in chapter titles, sound effects, the issue sticker and the supporting cast. Fonts and photos are referenced from the Russian original folder. Build: python3 build.py 2026-11-06-resume-manhua-en -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ostap Dotsenko — Manhua Resume</title>
+<link rel="stylesheet" href="../2026-11-06-resume-manhua/fonts/fonts.css">
+<link rel="stylesheet" href="fonts/noto-sans-sc.css">
+<style>
+:root {
+  --ink: #121214; --paper: #FFFFFF; --red: #E1232B; --cyan: #0A9BD8; --tint: #E6F5FC; --pink: #FDE8E8; --dim: #4A4A52;
+  --zh: "NSC", "Noto Sans SC", sans-serif;
+  --title: "RussoOne", var(--zh); --body: "Rubik", var(--zh); --hand: "Pangolin", "Rubik", var(--zh);
+  --brush: "MaShanZheng", var(--zh);
+}
+@page { size: 210mm 297mm; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #9a9aa0; }
+body { font-family: var(--body); color: var(--ink); -webkit-font-smoothing: antialiased; font-size: 11.2px; line-height: 1.4; }
+.page { width: 794px; height: 1123px; position: relative; overflow: hidden; background: var(--paper); margin: 0 auto 24px;
+  page-break-after: always; break-after: page; padding: 18px 20px 28px; display: flex; flex-direction: column; gap: 6px; }
+@media print { html, body { background: none; } .page { margin: 0; } }
+b { font-weight: 700; }
+.zh { font-family: var(--zh); }
+
+
+.row { display: flex; gap: 8px; }
+.panel { position: relative; border: 3px solid var(--ink); background: var(--paper); overflow: hidden; }
+.pad { padding: 10px 12px 10px; }
+.dots { position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(circle, var(--c, var(--cyan)) 0 1.5px, transparent 1.9px); background-size: 7px 7px; }
+.speed { position: absolute; inset: 0; pointer-events: none;
+  background: repeating-conic-gradient(from 3deg at var(--sx, 30%) var(--sy, 45%), rgba(18,18,20,.82) 0 .55deg, transparent .55deg 4.6deg);
+  -webkit-mask: radial-gradient(circle at var(--sx, 30%) var(--sy, 45%), transparent 0 var(--hole, 34%), #000 72%); }
+.cap { background: var(--tint); border: 2px solid var(--ink); padding: 6px 9px; position: relative; z-index: 2; }
+.cap .k { display: inline-block; font-family: var(--title); font-size: 10.5px; letter-spacing: .06em; background: var(--ink); color: #fff;
+  padding: 2px 7px 1px; margin: -6px 0 5px -9px; }
+.bubble { position: absolute; z-index: 4; background: #fff; border: 2.5px solid var(--ink); border-radius: 50%; padding: 12px 18px;
+  font-family: var(--hand); font-size: 13px; line-height: 1.22; text-align: center; display: flex; align-items: center; justify-content: center; }
+.bubble .tail { position: absolute; z-index: 2; overflow: visible; }
+.qm { font-family: var(--body); font-weight: 500; }
+
+
+.burst { position: absolute; z-index: 3; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.burst svg { position: absolute; inset: -6px; width: calc(100% + 12px); height: calc(100% + 12px); z-index: -1; overflow: visible; }
+.burst .num { font-family: var(--body); font-weight: 900; font-style: italic; line-height: .95; letter-spacing: -.02em; color: #fff;
+  -webkit-text-stroke: 1.2px var(--ink); paint-order: stroke fill; text-shadow: 2px 2px 0 var(--ink); white-space: nowrap; }
+.burst.w .num { color: var(--red); text-shadow: 2px 2px 0 rgba(18,18,20,.9); }
+.burst .lbl { font-family: var(--body); font-weight: 700; font-size: 10.5px; line-height: 1.15; margin-top: 3px; color: var(--ink); }
+.tag { position: absolute; z-index: 4; background: var(--ink); color: #fff; font-weight: 600; font-size: 10.5px; line-height: 1.2; padding: 3px 6px; text-align: center; }
+.sfx { position: absolute; z-index: 4; font-family: var(--title); color: var(--red); -webkit-text-stroke: 1px var(--ink); paint-order: stroke fill;
+  text-shadow: 2px 2px 0 var(--ink); transform: rotate(var(--r, -8deg)); letter-spacing: .02em; line-height: 1; }
+
+
+.title { display: flex; align-items: stretch; gap: 8px; height: 73px; flex: none; }
+.logo { flex: 1; position: relative; border: 3px solid var(--ink); background: var(--red); overflow: hidden; padding: 6px 14px 0; }
+.logo .dots { --c: rgba(255,255,255,.28); }
+.logo h1 { position: relative; font-family: var(--title); font-weight: 400; font-size: 41px; line-height: 1; color: #fff; letter-spacing: .01em;
+  -webkit-text-stroke: 2px var(--ink); paint-order: stroke fill; text-shadow: 3px 3px 0 var(--ink); white-space: nowrap; }
+.logo .sub { position: relative; display: flex; gap: 10px; align-items: baseline; margin-top: 4px; color: #fff; font-weight: 700; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; }
+.logo .sub .zh { font-weight: 700; letter-spacing: .12em; font-size: 12px; }
+.tcont { width: 292px; flex: none; border: 3px solid var(--ink); background: #fff; padding: 5px 10px 5px; font-size: 11px; line-height: 1.42; }
+.tcont i { font-style: normal; color: var(--red); font-weight: 800; font-size: 10.5px; margin-right: 4px; }
+.tcont span { white-space: nowrap; }
+
+
+.hero { height: 308px; flex: none; }
+.hero .main { width: 462px; flex: none; background: var(--tint); }
+.hero .main .dots { -webkit-mask: linear-gradient(200deg, #000 0%, transparent 60%); }
+.hero .main img { position: absolute; left: -8px; bottom: -4px; height: 298px; z-index: 2;
+  filter: drop-shadow(2.5px 0 0 var(--ink)) drop-shadow(-2.5px 0 0 var(--ink)) drop-shadow(0 2.5px 0 var(--ink)) drop-shadow(0 -2.5px 0 var(--ink)); }
+.side-col { flex: 1; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.who { padding: 9px 12px 8px; font-size: 11.5px; line-height: 1.4; }
+.who .k { margin-left: -12px; margin-top: -9px; }
+.who b { font-weight: 800; }
+.mission { background: var(--ink); color: #fff; padding: 7px 12px 6px; border: 3px solid var(--ink); }
+.mission .k { font-family: var(--title); font-size: 11px; color: #fff; letter-spacing: .05em; }
+.mission .k span { color: #ff6b70; }
+.mission p { font-weight: 800; font-size: 13px; line-height: 1.3; margin-top: 3px; }
+.mission .power { border-top: 1px solid rgba(255,255,255,.35); margin-top: 6px; padding-top: 5px; font-size: 11.2px; line-height: 1.38; color: #f1f1f4; }
+.mission .power b { color: #ff6b70; font-weight: 800; }
+.mission p i { font-style: normal; font-weight: 500; font-size: 11.2px; display: block; color: #e9e9ee; margin-top: 2px; }
+.sticker { position: absolute; z-index: 5; background: #fff; border: 2px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); padding: 4px 8px 5px;
+  transform: rotate(-5deg); text-align: center; }
+.sticker b { display: block; font-family: var(--title); font-weight: 400; font-size: 12.5px; line-height: 1.1; }
+.sticker b span { color: var(--red); }
+.sticker em { display: block; font-style: normal; font-size: 10.5px; line-height: 1.2; margin-top: 2px; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+.chips span { border: 1.5px solid var(--ink); background: #fff; padding: 1px 6px; font-size: 10.5px; font-weight: 600; line-height: 1.35; }
+.chips span b { font-weight: 800; }
+
+
+.ch { padding: 7px 12px 7px; }
+.ch-head { display: flex; align-items: center; gap: 9px; flex-wrap: nowrap; }
+.hua { font-family: var(--brush); font-size: 27px; line-height: 1; color: var(--red); flex: none; margin-top: -2px; }
+.ep { font-family: var(--title); font-size: 13.5px; line-height: 1.1; flex: 1; min-width: 0; }
+.when { flex: none; background: var(--ink); color: #fff; font-weight: 700; font-size: 11px; padding: 3px 8px 2px; letter-spacing: .02em; white-space: nowrap; }
+.role { font-weight: 800; font-size: 12.6px; line-height: 1.28; margin-top: 5px; }
+.role .co { color: var(--red); }
+.role .zh { font-weight: 500; font-size: 11px; color: var(--dim); }
+.ctx { font-size: 11px; color: var(--dim); margin-top: 2px; line-height: 1.36; }
+.ch ul { list-style: none; margin-top: 3px; }
+.ch li { padding-left: 15px; position: relative; margin-top: 2px; line-height: 1.38; text-wrap: pretty; }
+.ch li::before { content: ""; position: absolute; left: 1px; top: 4.5px; width: 0; height: 0; border-style: solid; border-width: 4.5px 0 4.5px 8px;
+  border-color: transparent transparent transparent var(--red); }
+.ch li b { font-weight: 800; }
+.manga { position: absolute; z-index: 6; left: 14px; top: -3px; }
+
+
+.powers { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 14px; margin-top: 7px; }
+.powers h4 { font-family: var(--title); font-weight: 400; font-size: 11.5px; color: var(--red); letter-spacing: .03em; }
+.powers p { font-size: 11px; line-height: 1.38; margin-top: 1px; }
+.ptitle { font-family: var(--title); font-size: 15px; line-height: 1.05; }
+.ptitle small { font-family: var(--body); font-weight: 600; font-size: 10.5px; color: var(--dim); margin-left: 6px; letter-spacing: 0; }
+.lv { display: grid; grid-template-columns: 58px 1fr 52px; align-items: center; gap: 7px; margin-top: 3.5px; font-size: 11.2px; font-weight: 600; }
+.lv .bar { height: 11px; border: 2px solid var(--ink); position: relative; background: #fff; transform: skewX(-14deg); }
+.lv .bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--red); }
+.lv .bar i.c { background: var(--cyan); }
+.lv em { font-style: normal; font-weight: 800; font-size: 10.5px; text-align: right; white-space: nowrap; }
+.quote { position: relative; background: #fff; border: 2.5px solid var(--ink); border-radius: 16px; padding: 7px 11px 6px; font-family: var(--hand);
+  font-size: 12.2px; line-height: 1.26; }
+.quote + .quote { margin-top: 13px; }
+.quote::after { content: ""; position: absolute; bottom: -11px; left: 26px; width: 14px; height: 14px; background: #fff; border-right: 2.5px solid var(--ink);
+  border-bottom: 2.5px solid var(--ink); transform: skewX(35deg) rotate(45deg) scale(.8, 1.1); }
+.quote.r::after { left: auto; right: 26px; transform: skewX(-35deg) rotate(45deg) scale(.8, 1.1); }
+.quote cite { display: block; font-family: var(--body); font-style: normal; font-weight: 700; font-size: 10.5px; line-height: 1.2; margin-top: 3px; color: var(--dim); }
+.list { list-style: none; }
+.list li { padding-left: 13px; position: relative; margin-top: 3px; font-size: 11px; line-height: 1.36; }
+.list li::before { content: ""; position: absolute; left: 0; top: 5px; width: 6px; height: 6px; background: var(--cyan); border: 1.5px solid var(--ink); }
+.find { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; margin-top: 8px; position: relative; z-index: 2; }
+.net { display: flex; align-items: center; gap: 8px; background: #fff; border: 2px solid var(--ink); padding: 4px 8px 4px 4px; box-shadow: 3px 3px 0 var(--ink); }
+.net .ic { flex: none; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; background: var(--ink); color: #fff;
+  font-family: var(--title); font-size: 10.5px; letter-spacing: .02em; }
+.net .ic.r { background: var(--red); } .net .ic.c { background: var(--cyan); color: var(--ink); }
+.net b { display: block; font-weight: 800; font-size: 12.4px; line-height: 1.15; }
+.net span { display: block; font-size: 10.5px; line-height: 1.2; color: var(--dim); font-weight: 500; }
+.net.wide { grid-column: span 2; }
+.net a { color: inherit; text-decoration: none; }
+.ftr { position: absolute; left: 20px; right: 20px; bottom: 9px; display: flex; justify-content: space-between; font-size: 10.5px; font-weight: 600; color: var(--dim); }
+.ftr b { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<!-- ======================= page 1 ======================= -->
+<section class="page">
+
+  <div class="title">
+    <div class="logo"><div class="dots"></div>
+      <h1>OSTAP DOTSENKO</h1>
+      <div class="sub"><span class="zh">奥斯塔普·多增科</span><span>· a hero’s journey · 2013 → 2026</span></div>
+    </div>
+    <div class="tcont">
+      <span><i>TEL</i>+86&nbsp;137 6171 6355</span><br>
+      <span><i>TEL / WA</i>+7&nbsp;985&nbsp;874-49-58</span><br>
+      <span><i>MAIL</i>norbanking@gmail.com · <i>TG</i>@ostapdotcenko</span><br>
+      <span><i>WEB</i>ostapdotcenko.ru · Shanghai · Moscow (hybrid)</span>
+    </div>
+  </div>
+
+  <div class="row hero">
+    <div class="panel main"><div class="dots"></div><div class="speed" style="--sx:28%; --sy:38%; --hole:30%"></div>
+      <img src="../2026-11-06-resume-manhua/img/hero-mic.png" alt="Ostap Dotsenko with a microphone">
+      <div class="sticker" style="left:148px; top:10px; width:136px"><b style="white-space:nowrap">VOL. <span>13+</span> YEARS</b><em>20+ countries<br>5 languages<br>price: one interview</em></div>
+      <div class="burst" data-n="13" style="right:12px; top:6px; width:152px; height:82px"><span class="num" style="font-size:34px">+350%</span></div>
+      <div class="tag" style="right:14px; top:90px; width:150px">seller growth YoY · Megamarket</div>
+      <div class="burst" data-n="12" data-fill="cyan" style="right:8px; top:128px; width:152px; height:78px"><span class="num" style="font-size:36px">$48M</span></div>
+      <div class="tag" style="right:12px; top:208px; width:152px">GMV, +100% YoY · AliExpress</div>
+      <div class="burst" data-n="11" style="right:22px; top:240px; width:124px; height:60px"><span class="num" style="font-size:32px">25×</span></div>
+      <div class="tag" style="right:150px; top:258px; width:128px">average campaign ROI · Alibaba Group</div>
+      <div class="sfx" style="right:172px; top:84px; font-size:21px; --r:-12deg">BAM!</div>
+      <div class="sfx" style="right:170px; top:140px; font-size:17px; --r:8deg">KA-CHING!</div>
+    </div>
+    <div class="side-col">
+      <div class="cap who"><span class="k">MEANWHILE, IN SHANGHAI…</span><br>
+        <b>Business Development &amp; Marketing Leader.</b> 13+ years at the crossroads of Russia, China and Southeast Asia.
+        Led B2B marketing at <b>Megamarket</b> (Sber ecosystem) and the O2O business at <b>AliExpress Russia &amp; CIS</b>
+        (<b>Alibaba Group</b>). Now runs his own business in Shanghai.</div>
+      <div class="mission chk" style="flex:1; overflow:hidden"><div class="k">OUR HERO SEEKS A <span>NEW MISSION</span>:</div>
+        <p>CBDO · CMO · Head of International Expansion<i>Russia ↔ China ↔ Southeast Asia</i></p>
+        <div class="power"><b>Power level:</b> teams of up to 40 · marketing budget of over RUB&nbsp;1&nbsp;bn a year · P&amp;L at Megamarket, Alibaba and own business.</div></div>
+    </div>
+  </div>
+
+  <!-- 第一话 -->
+  <div class="panel ch" style="flex:none">
+    <div class="ch-head"><span class="hua">第一话</span><span class="ep">Chapter 1. “The Shanghai Venture”</span><span class="when">2025 — present · Shanghai</span></div>
+    <div class="role">Owner &amp; Founder · <span class="co">Shanghai Pinnacle Technology Co., Ltd.</span> <span class="zh">上海拼那克了科技有限公司</span></div>
+    <div class="ctx">GlobalTechTour — tech expeditions and benchmark tours to China and SEA; Aura Robotics — robotics and automation, sourcing robots directly from Chinese manufacturers. <b style="color:var(--ink)">Owner’s P&amp;L.</b></div>
+    <ul>
+      <li>Turnkey corporate forum for <b>Megamarket (Sber) in Shenzhen with 1,200+ attendees</b>: logistics, venue, business program.</li>
+      <li>Delegation visits to factories and R&amp;D at <b>BYD, Xiaomi, Baidu, Meituan, Poizon, Leju Robotics</b>; Aura clients get direct access to robot makers’ leadership and R&amp;D — not rank-and-file managers.</li>
+      <li><b>BelMol</b> closed a dairy-automation deal in a 2-hour meeting at the Kepler factory; <b>SolarTek</b> toured Leju Robotics, Robotera, AgiBot and Kepler in 5&nbsp;days; <b>Prosto Eda</b> met personally with the founder of a food-industry robotics manufacturer.</li>
+    </ul>
+  </div>
+
+  <!-- 第二话 -->
+  <div class="panel ch" style="flex:none; display:grid; grid-template-columns: 1fr 226px; gap: 10px">
+    <div>
+      <div class="ch-head"><span class="hua">第二话</span><span class="ep">Chapter 2. “The Battle for Sellers”</span><span class="when">2023 — 2025</span></div>
+      <div class="role">Head of B2B Marketing · <span class="co">Megamarket (Sber ecosystem)</span></div>
+      <div class="ctx">Russia’s #3 e-commerce · <b style="color:var(--ink)">team of 16–40 · marketing budget of over RUB&nbsp;1&nbsp;bn a year · P&amp;L ownership for the business line</b></div>
+      <ul>
+        <li>B2B seller-acquisition marketing: <b>+350% sellers YoY</b>, <b>50,000 sellers</b> on the platform.</li>
+        <li>With the <b>Ministry of Economic Development of Russia</b> — a federal entrepreneur support program based on “My Business” centers in <b>86 regions</b>: acquisition strategy, materials, regional communications — from scratch.</li>
+        <li>Federal <b>Megasreda marathon in 20 cities</b> — from concept and logistics to content and PR; <b>1M+ views</b>.</li>
+        <li>“Made in Russia”: brand program, onboarding, video campaign — <b>from 0 to 2,000 companies</b>.</li>
+        <li>Inclusive marketplace for producers with disabilities: positioning, UX, PR campaign.</li>
+        <li>My programs’ impact — <b>RUB&nbsp;3&nbsp;bn net profit, Q4 2023.</b></li>
+      </ul>
+    </div>
+    <div style="position:relative">
+      <div class="dots" style="--c: rgba(225,35,43,.5); inset:-9px -13px -10px -6px; -webkit-mask: linear-gradient(90deg, transparent, #000 60%)"></div>
+      <div class="burst w" data-n="13" style="left:2px; top:2px; width:150px; height:60px"><span class="num" style="font-size:26px">50,000</span></div>
+      <div class="tag" style="left:96px; top:50px; width:128px">sellers on the platform</div>
+      <div class="burst w" data-n="12" style="left:2px; top:84px; width:150px; height:60px"><span class="num" style="font-size:28px">86</span></div>
+      <div class="tag" style="left:96px; top:132px; width:128px">regions · federal program</div>
+      <div class="burst" data-n="15" style="left:0; top:164px; width:176px; height:64px"><span class="num" style="font-size:23px">0&thinsp;→&thinsp;2000</span></div>
+      <div class="tag" style="left:70px; top:216px; width:154px">companies in “Made in Russia”</div>
+      <div class="sfx" style="right:-6px; top:160px; font-size:15px; --r:-10deg">WHOOSH!</div>
+    </div>
+  </div>
+
+  <!-- 第三话 + 第四话 -->
+  <div class="row" style="flex:1; min-height:0">
+    <div class="panel ch" style="width:282px; flex:none">
+      <div class="ch-head"><span class="hua">第三话</span><span class="when">2022 — 2023</span></div>
+      <div class="ep" style="margin-top:3px">Chapter 3. “The Wandering Adviser”</div>
+      <div class="role">Independent Adviser · <span class="co">AdTech / MarTech / EduTech</span></div>
+      <ul>
+        <li>Uzbekistan, Kazakhstan, SEA: MyDars, HiTarget (Indonesia); <b>20+ partners</b>; product localization for SEA.</li>
+      </ul>
+    </div>
+    <div class="panel ch" style="flex:1">
+      <div class="dots" style="--c: rgba(10,155,216,.45); -webkit-mask: linear-gradient(250deg, #000 0%, transparent 45%)"></div>
+      <div class="ch-head" style="position:relative"><span class="hua">第四话</span><span class="ep">Chapter 4. “Banks + Telecom”</span><span class="when">2020 — 2022</span></div>
+      <div class="role" style="position:relative">Head of O2O &amp; New Business · <span class="co">Alibaba Group — AliExpress Russia &amp; CIS</span> <span style="font-weight:700; font-size:11px">· team of up to 5 · P&amp;L for the O2O business line</span></div>
+      <ul style="position:relative">
+        <li>Partnerships: <b>Alfa-Bank, Tinkoff, MTS Bank, MegaFon, Beeline, Rosneft</b> and <b>120+ media holdings</b>.</li>
+        <li><b>GMV $48M (+100% YoY)</b>, <b>new buyers +185%</b>, average <b>campaign ROI 25×</b>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ftr"><span><b>Ostap Dotsenko</b> · manhua resume · read it like a manga, from the back: newest chapters first</span><span>ostapdotcenko.ru · p. 1 / 2 →</span></div>
+</section>
+
+<!-- ======================= page 2 ======================= -->
+<section class="page">
+
+  <div class="row" style="height:212px; flex:none">
+    <div class="panel ch" style="flex:1.16">
+      <div class="ch-head"><span class="hua">第五话</span><span class="when">2017 — 2020</span></div>
+      <div class="ep" style="margin-top:3px">Chapter 5. “Two Shores”</div>
+      <div class="role">Co-founder · <span class="co">O.F.D Creative Agency</span></div>
+      <div class="ctx">Shanghai / Hong Kong · <b style="color:var(--ink)">Owner’s P&amp;L</b><br>2017 — preparation and launch</div>
+      <ul>
+        <li>A joint Chinese-Russian team: advertising solutions for promoting businesses in the Chinese and Russian markets.</li>
+        <li>Clients: <b>FOREO, DECATHLON, Bank of China, WWE, CDEK</b>.</li>
+      </ul>
+    </div>
+    <div class="panel ch" style="flex:1">
+      <div class="ch-head"><span class="hua">第六话</span><span class="when">2015 — 2017</span></div>
+      <div class="ep" style="margin-top:3px">Chapter 6. “Media Across Asia”</div>
+      <div class="role">Head of Commerce &amp; BD · <span class="co">Data Centric Alliance</span></div>
+      <div class="ctx">Moscow / Shanghai.</div>
+      <ul>
+        <li>Media buying and business development in Asia.</li>
+        <li><b>Google HK, Yahoo HK, Tencent, Ctrip, Baidu</b>.</li>
+      </ul>
+    </div>
+    <div class="panel ch" style="flex:1; background: var(--tint)">
+      <div class="ch-head"><span class="hua">第七话</span><span class="when">2013 — 2015</span></div>
+      <div class="ep" style="margin-top:3px">Chapter 7. “The First Step”</div>
+      <div class="role">BD Manager — China / SEA · <span class="co">CityAds Media</span></div>
+      <ul>
+        <li>Performance and affiliate marketing (CPA / CPC / CPL), China and SEA; Sasa (Hong Kong).</li>
+      </ul>
+      <div class="cap" style="margin-top:6px; background:#fff; padding:4px 8px; font-size:10.5px; line-height:1.3"><b class="zh" style="font-weight:900; font-size:13px">千里之行，始于足下</b><br>“A journey of a thousand miles begins with a single step”</div>
+    </div>
+  </div>
+
+  <div class="row" style="height:204px; flex:none">
+    <div class="panel pad" style="flex:1">
+      <div class="dots" style="--c: rgba(225,35,43,.35); -webkit-mask: radial-gradient(circle at 100% 0%, #000 0, transparent 45%)"></div>
+      <div class="ptitle" style="position:relative">SUPERPOWERS <small>skills · no cape, but with KPIs</small></div>
+      <div class="powers" style="position:relative">
+        <div><h4>⚡ Business Development</h4><p>Market-entry strategy, partnerships and alliances, C-level negotiations, BD Asia &amp; CIS, new business lines.</p></div>
+        <div><h4>⚡ Marketing</h4><p>B2B Marketing, Demand Generation, Performance, Product Marketing, Sales Enablement, brand programs.</p></div>
+        <div><h4>⚡ Tech &amp; data</h4><p>E-commerce and marketplaces, AdTech / MarTech, Marketing Automation, CRM &amp; Analytics, O2O.</p></div>
+        <div><h4>⚡ Communications</h4><p>GR and government programs, federal events, PR · 50+ expos and forums in Russia &amp; CIS.</p></div>
+      </div>
+    </div>
+    <div class="panel pad" style="width:272px; flex:none; padding-top:9px">
+      <div class="ptitle">POWER LEVELS <small>languages</small></div>
+      <div class="lv"><span>Russian</span><div class="bar"><i style="width:100%"></i></div><em>native</em></div>
+      <div class="lv"><span>English</span><div class="bar"><i style="width:86%"></i></div><em>C1</em></div>
+      <div class="lv"><span>Chinese</span><div class="bar"><i class="c" style="width:72%"></i></div><em>B2+</em></div>
+      <div class="lv"><span>Uzbek</span><div class="bar"><i style="width:56%"></i></div><em>B1</em></div>
+      <div class="lv"><span>Korean</span><div class="bar"><i style="width:34%"></i></div><em>A2</em></div>
+      <div class="ptitle" style="margin-top:8px; font-size:13px">HERO ACADEMY</div>
+      <ul class="list" style="margin-top:0">
+        <li>Civil law — MIU</li>
+        <li>Korean language teacher — Lyceum under TashSIL</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row" style="height:318px; flex:none">
+    <div class="panel" style="width:150px; flex:none; background:#000">
+      <img src="../2026-11-06-resume-manhua/img/aliexpress.jpg" alt="Ostap at the AliExpress office" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:38% 50%">
+      <div class="cap" style="position:absolute; left:6px; top:6px; right:6px; padding:4px 7px; font-size:10.5px; line-height:1.25"><b>FLASHBACK:</b><br>AliExpress office, 2022</div>
+      <div class="sfx" style="left:10px; bottom:12px; font-size:19px; color:#fff; --r:-8deg">HELLO!</div>
+    </div>
+    <div class="panel pad" style="flex:1; background: var(--tint)">
+      <div class="ptitle">THE SUPPORTING CAST</div>
+      <div style="font-size:10.5px; color:var(--dim); font-weight:600; margin-top:2px">testimonials from ostapdotcenko.ru</div>
+      <div class="quote" style="margin-top:7px"><span class="qm">“</span>Ostap has a unique ability to see the market as a whole — from strategy to tactical decisions…<span class="qm">”</span><cite>— Alexey K., VP of Sales · Megamarket</cite></div>
+      <div class="quote r"><span class="qm">“</span>…ROI 25x speaks for itself.<span class="qm">”</span><cite>— Li W., Regional Director · Alibaba Group</cite></div>
+      <div class="quote"><span class="qm">“</span>…works equally fluently across the Russian, Chinese and SEA markets…<span class="qm">”</span><cite>— Muhammad A., CEO · HiTarget Indonesia</cite></div>
+    </div>
+    <div class="panel pad" style="width:262px; flex:none">
+      <div class="ptitle" style="font-size:13.5px">ON AIR <small>media</small></div>
+      <ul class="list">
+        <li><b>RBC</b> — interview “The key is to know your fundamentals and not be afraid”; <b>RBC Industries</b></li>
+        <li><b>Sber Business</b> — guide “Marketplaces: the complete guide to earning”</li>
+        <li><b>TASS</b> — Ulyanovsk region and Megamarket: a regional product showcase</li>
+        <li><b>“My Business”</b> — marathon, 1M+ views</li>
+      </ul>
+      <div class="ptitle" style="font-size:13.5px; margin-top:7px">ON STAGE <small>talks</small></div>
+      <div class="chips">
+        <span><b>Russian Retail Show 2024</b> · speaker</span>
+        <span><b>Amber Forum 2024</b> · panel</span>
+        <span><b>Manufacturers’ Summit</b>, Irkutsk, 2024</span>
+        <span><b>Russian Retail Week 2025</b></span>
+        <span><b>SCO Forum 2025</b></span>
+        <span><b>Megasreda</b></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="flex:1; min-height:0">
+    <div class="panel pad" style="flex:1; background:#fff">
+      <div class="dots" style="--c: rgba(10,155,216,.5); -webkit-mask: linear-gradient(200deg, #000 0%, transparent 55%)"></div>
+      <div class="ptitle" style="position:relative; font-size:19px">WHERE TO FIND ME <small>websites, blogs, socials</small></div>
+      <div class="find" style="margin-right:152px">
+        <div class="net wide"><span class="ic r">WEB</span><div><b>ostapdotcenko.ru</b><span>website in three languages: RU · EN · <span class="zh" style="display:inline">中文</span></span></div></div>
+        <div class="net wide"><span class="ic r">BLOG</span><div><b>ostapdotcenko.ru/blog</b><span>new articles daily, in three languages (since Oct 15, 2026)</span></div></div>
+        <div class="net"><span class="ic">IG</span><div><b>@ostap.dotsenko</b><span>Instagram</span></div></div>
+        <div class="net"><span class="ic c">TG</span><div><b>@ostapdotcenko</b><span>Telegram</span></div></div>
+        <div class="net"><span class="ic">in</span><div><a href="https://www.linkedin.com/in/ostapdot%D1%81enko/"><b>linkedin.com/in/<br>ostapdot&#x441;enko</b></a><span>11,000+ followers</span></div></div>
+        <div class="net"><span class="ic">f</span><div><b>Ostap Dotsenko</b><span>Facebook</span></div></div>
+        <div class="net"><span class="ic c">GTT</span><div><b>globaltechtour.ru</b><span>project + blog</span></div></div>
+        <div class="net"><span class="ic c">AURA</span><div><b>aura-robotics.ru</b><span>project + blog</span></div></div>
+      </div>
+      <img src="../2026-11-06-resume-manhua/img/selfie.png" alt="Ostap — selfie" style="position:absolute; right:-16px; bottom:-6px; height:196px; z-index:1;
+        filter: drop-shadow(2px 0 0 #121214) drop-shadow(-2px 0 0 #121214) drop-shadow(0 -2px 0 #121214)">
+      <div class="bubble" style="right:6px; top:40px; width:146px; height:70px; font-size:12px; padding:8px 12px">Subscribe — new chapters every day!
+        <svg class="tail" width="26" height="30" viewBox="0 0 26 30" style="left:64px; bottom:-27px"><path d="M2 0 L14 28 L22 0" fill="#fff" stroke="#121214" stroke-width="2.5" stroke-linejoin="round"/></svg></div>
+    </div>
+    <div class="panel" style="width:262px; flex:none; background: var(--red)">
+      <div class="speed" style="--sx:72%; --sy:72%; --hole:24%; opacity:.5"></div>
+      <img src="../2026-11-06-resume-manhua/img/sit.png" alt="Ostap" style="position:absolute; right:-18px; bottom:-4px; height:206px; z-index:2;
+        filter: drop-shadow(2px 0 0 #121214) drop-shadow(-2px 0 0 #121214) drop-shadow(0 -2px 0 #121214)">
+      <div class="cap" style="position:absolute; left:10px; top:10px; right:10px; background:#fff; z-index:3">
+        <div style="font-family:var(--title); font-size:16px; line-height:1.1">TO BE CONTINUED…</div>
+        <div style="font-family:var(--hand); font-size:15.5px; line-height:1.15; margin-top:2px; color:var(--red)">…at your company?</div>
+      </div>
+      <div class="hua" style="position:absolute; left:12px; top:92px; z-index:3; font-size:30px; color:#fff; text-shadow: 2px 2px 0 var(--ink)">未完待续</div>
+      <div class="tag" style="left:10px; bottom:12px; text-align:left; z-index:3; width:136px">Telegram @ostapdotcenko<br>norbanking@gmail.com<br>References available on request</div>
+    </div>
+  </div>
+
+  <div class="ftr"><span><b>Full business version and ATS version available on request</b></span><span>Ostap Dotsenko · ostapdotcenko.ru · p. 2 / 2</span></div>
+</section>
+
+<script>
+// Comic "bursts" behind the numbers: a star with uneven rays, black outline and offset shadow (deterministic: identical on every render)
+document.querySelectorAll('.burst').forEach((el, k) => {
+  const n = +(el.dataset.n || 12), w = el.offsetWidth + 12, h = el.offsetHeight + 12;
+  const fill = el.dataset.fill === 'cyan' ? '#0A9BD8' : (el.classList.contains('w') ? '#FFFFFF' : '#E1232B');
+  let s = 17 + k * 131;
+  const rnd = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+  const pts = [];
+  for (let i = 0; i < n * 2; i++) {
+    const a = (i / (n * 2)) * Math.PI * 2 + (rnd() - 0.5) * 0.16;
+    const r = i % 2 ? 0.70 + rnd() * 0.07 : 0.93 + rnd() * 0.07;
+    pts.push(((0.5 + Math.cos(a) * r * 0.5) * w).toFixed(1) + ',' + ((0.5 + Math.sin(a) * r * 0.5) * h).toFixed(1));
+  }
+  const p = pts.join(' ');
+  el.insertAdjacentHTML('afterbegin', `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><polygon points="${p}" fill="#121214" transform="translate(4 4)"/><polygon points="${p}" fill="${fill}" stroke="#121214" stroke-width="2.6" stroke-linejoin="miter"/></svg>`);
+});
+</script>
+</body>
+</html>
