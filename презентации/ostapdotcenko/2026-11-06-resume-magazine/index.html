@@ -68,9 +68,10 @@ body { font-family: var(--sans); color: var(--text); -webkit-font-smoothing: ant
 .badge small { font-size: 10px; letter-spacing: 0.14em; font-weight: 600; }
 .badge b { font-family: var(--disp); font-weight: 900; font-variant-numeric: lining-nums; font-size: 30px; line-height: 0.95; text-transform: none; }
 .badge span { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; line-height: 1.25; margin-top: 3px; }
-.strip { position: absolute; left: 0; right: 0; bottom: 0; height: 80px; background: var(--cream); border-top: 3px solid var(--red); padding: 10px 170px 0 26px; }
+.strip { position: absolute; left: 0; right: 0; bottom: 0; height: 80px; background: var(--cream); border-top: 3px solid var(--red); padding: 7px 170px 0 26px; }
 .strip .h { font-family: var(--cond); font-weight: 600; font-size: 11px; letter-spacing: 0.16em; color: var(--red); }
-.strip .v { font-family: var(--sans); font-weight: 500; font-size: 13px; color: var(--ink); margin-top: 3px; line-height: 1.38; }
+.strip .v { font-family: var(--sans); font-weight: 500; font-size: 13px; color: var(--ink); margin-top: 2px; line-height: 1.3; }
+a { color: inherit; text-decoration: none; }
 .strip .v b { font-weight: 800; }
 .bc { position: absolute; right: 24px; bottom: 10px; width: 132px; background: #fff; padding: 7px 8px 5px; border: 1px solid #d8d4cc; text-align: center; }
 .bc svg { display: block; width: 116px; height: 46px; }
@@ -90,9 +91,12 @@ h1 { font-family: var(--disp); font-weight: 900; font-size: 28px; white-space: n
 h1 em { font-style: italic; font-weight: 700; color: var(--red); }
 .stand { font-family: var(--disp); font-style: italic; font-size: 13.5px; line-height: 1.36; color: #2a2a2f; margin-top: 8px; }
 .by { font-family: var(--cond); font-size: 10px; letter-spacing: 0.14em; color: var(--grey); text-transform: uppercase; margin-top: 7px; padding-bottom: 9px; border-bottom: 1px solid #cfc9bd; }
+.kick-row { display: flex; justify-content: space-between; align-items: baseline; }
+.kick-row .by-in { font-size: 10px; letter-spacing: 0.14em; color: var(--grey); font-weight: 400; }
+.by:empty { margin-top: 0; padding-bottom: 8px; }
 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 10px; }
 .cols > div + div { border-left: 1px solid #ddd7cb; padding-left: 17px; margin-left: -1px; }
-.art p, .art li { font-size: 11px; line-height: 1.36; color: var(--text); text-wrap: pretty; }
+.art p, .art li { font-size: 11px; line-height: 1.32; color: var(--text); text-wrap: pretty; }
 .art p + p { margin-top: 4px; }
 .art b { font-weight: 700; color: var(--ink); }
 .art ul { list-style: none; margin-top: 3px; }
@@ -105,7 +109,7 @@ h1 em { font-style: italic; font-weight: 700; color: var(--red); }
 .role h3 { font-family: var(--disp); font-weight: 800; font-size: 13.5px; line-height: 1.18; color: var(--ink); margin: 1px 0 2px; }
 .role h3 span { font-weight: 400; font-style: italic; }
 .pq { margin: 10px 0 8px; padding: 7px 0 7px; border-top: 2.5px solid var(--red); border-bottom: 1px solid var(--red); }
-.pq p { font-family: var(--disp); font-style: italic; font-weight: 500; font-size: 13.5px; line-height: 1.24; color: var(--ink); }
+.pq p { font-family: var(--disp); font-style: italic; font-weight: 500; font-size: 12.8px; line-height: 1.24; color: var(--ink); }
 .pq p::before { content: "«"; float: left; font-family: var(--disp); font-weight: 900; font-style: normal; color: var(--red); font-size: 40px; line-height: 0.75; margin: 3px 5px 0 0; }
 .pq .w { font-family: var(--cond); font-size: 10.5px; letter-spacing: 0.1em; color: var(--grey); text-transform: uppercase; margin-top: 5px; }
 .rub { margin-top: 12px; border-top: 2.5px solid var(--ink); padding-top: 5px; }
@@ -128,7 +132,7 @@ h1 em { font-style: italic; font-weight: 700; color: var(--red); }
 .side li b { font-weight: 700; color: var(--ink); }
 .side li i { font-style: normal; color: var(--grey); }
 .au { display: grid; grid-template-columns: 1fr; }
-.au img { width: 100%; height: 104px; object-fit: cover; object-position: 50% 22%; display: block; }
+.au img { width: 100%; height: 78px; object-fit: cover; object-position: 50% 22%; display: block; }
 .au .cap { font-family: var(--disp); font-style: italic; font-size: 10.6px; color: var(--grey); margin-top: 3px; }
 .links li { display: grid; grid-template-columns: 56px 1fr; gap: 4px; }
 .links li i { font-family: var(--cond); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding-top: 1px; }
@@ -170,12 +174,15 @@ h1 em { font-style: italic; font-weight: 700; color: var(--red); }
     <span class="t">компаний в «Сделано в России»</span>
     <span class="bar"></span>
     <span class="n" style="font-size:31px">3 млрд ₽</span>
-    <span class="t">чистой прибыли за Q4 2023</span>
+    <span class="t">чистой прибыли от моих программ, Q4&nbsp;2023</span>
     <span class="s">Мегамаркет</span>
   </div>
 
   <!-- анонсы справа -->
-  <div class="cr" style="right:26px; top:368px; width:236px">
+  <div class="cr" style="right:26px; top:330px; width:236px">
+    <span class="n" style="font-size:29px">Больше 1 млрд ₽</span>
+    <span class="t">маркетинговый бюджет в год · команды до 40 человек · P&amp;L в Мегамаркете, Alibaba и своём бизнесе</span>
+    <span class="bar"></span>
     <span class="n" style="font-size:36px">$48M GMV<br>и ROI <em>25×</em></span>
     <span class="n" style="font-size:24px; margin-top:2px">в Alibaba</span>
     <span class="t">O2O-партнёрства: Альфа-Банк, Тинькофф, МТС Банк, МегаФон, Билайн, Роснефть и 120+ медиахолдингов</span>
@@ -193,7 +200,7 @@ h1 em { font-style: italic; font-weight: 700; color: var(--red); }
 
   <div class="strip">
     <div class="h">Также в номере — читайте автора</div>
-    <div class="v">Сайт <b>ostapdotcenko.ru</b> (RU · EN · <span class="zh">中文</span>) · блог <b>ostapdotcenko.ru/blog</b> — статьи каждый день<br>Instagram <b>@ostap.dotsenko</b> · Telegram <b>@ostapdotcenko</b> · LinkedIn и Facebook: <b>Ostap Dotsenko</b></div>
+    <div class="v">Сайт <b>ostapdotcenko.ru</b> (RU · EN · <span class="zh">中文</span>) · блог <b>ostapdotcenko.ru/blog</b> — статьи каждый день<br>LinkedIn <a href="https://www.linkedin.com/in/ostapdot%D1%81enko/"><b>linkedin.com/in/ostapdot&#x441;enko</b></a> — 11 000+ подписчиков<br>Instagram <b>@ostap.dotsenko</b> · Telegram <b>@ostapdotcenko</b> · Facebook <b>Ostap Dotsenko</b></div>
   </div>
   <div class="bc"><svg viewBox="0 0 116 46" aria-hidden="true"><g fill="#141417"><rect x="2" y="0" width="1" height="46"/><rect x="5" y="0" width="1" height="46"/><rect x="7" y="0" width="2" height="46"/><rect x="10" y="0" width="1" height="46"/><rect x="12" y="0" width="1" height="46"/><rect x="14" y="0" width="3" height="46"/><rect x="19" y="0" width="2" height="46"/><rect x="22" y="0" width="2" height="46"/><rect x="25" y="0" width="2" height="46"/><rect x="30" y="0" width="2" height="46"/><rect x="34" y="0" width="2" height="46"/><rect x="38" y="0" width="3" height="46"/><rect x="43" y="0" width="2" height="46"/><rect x="48" y="0" width="2" height="46"/><rect x="52" y="0" width="2" height="46"/><rect x="56" y="0" width="1" height="46"/><rect x="59" y="0" width="2" height="46"/><rect x="63" y="0" width="2" height="46"/><rect x="67" y="0" width="2" height="46"/><rect x="71" y="0" width="2" height="46"/><rect x="75" y="0" width="1" height="46"/><rect x="77" y="0" width="2" height="46"/><rect x="81" y="0" width="2" height="46"/><rect x="86" y="0" width="2" height="46"/><rect x="89" y="0" width="2" height="46"/><rect x="92" y="0" width="1" height="46"/><rect x="95" y="0" width="1" height="46"/><rect x="98" y="0" width="1" height="46"/><rect x="100" y="0" width="2" height="46"/><rect x="103" y="0" width="2" height="46"/><rect x="108" y="0" width="2" height="46"/><rect x="112" y="0" width="3" height="46"/></g></svg><div class="d">13 20 5 350 48 25</div></div>
 </section>
@@ -205,17 +212,17 @@ h1 em { font-style: italic; font-weight: 700; color: var(--red); }
   <div class="grid">
     <!-- статья -->
     <div class="art">
-      <div class="kick">Профиль</div>
+      <div class="kick kick-row"><span>Профиль</span><span class="by-in">Текст: редакция «Восток · Запад» · цифры сверены с ostapdotcenko.ru</span></div>
       <h1>Переговорщик <em>между полушариями</em></h1>
       <div class="stand">13+ лет между Россией, Китаем и ЮВА — теперь в поиске роли CBDO, CMO или директора по международному развитию.</div>
-      <div class="by">Текст: редакция «Восток · Запад» · цифры сверены с ostapdotcenko.ru</div>
+      <div class="by"></div>
 
       <div class="cols">
         <div>
           <div class="role">
             <div class="d">2025 — н. в. · Шанхай</div>
             <h3>Собственник и основатель <span>— Shanghai Pinnacle Technology Co., Ltd.</span></h3>
-            <p class="drop">GlobalTechTour — технологические экспедиции и бенчмарк-туры в Китай и ЮВА; Aura Robotics — робототехника и автоматизация, подбор роботов напрямую у китайских производителей.</p>
+            <p class="drop">GlobalTechTour — технологические экспедиции и бенчмарк-туры в Китай и ЮВА; Aura Robotics — подбор роботов напрямую у китайских производителей. P&amp;L собственника.</p>
             <ul>
               <li>Корпоративный форум Мегамаркета (Сбер) в Шэньчжэне на <b>1 200+ участников</b> — под ключ: логистика, площадка, деловая программа.</li>
               <li>Визиты делегаций на заводы и в R&amp;D <b>BYD, Xiaomi, Baidu, Meituan, Poizon, Leju Robotics</b>; для клиентов Aura — прямой доступ к руководству и R&amp;D производителей роботов.</li>
@@ -226,12 +233,12 @@ h1 em { font-style: italic; font-weight: 700; color: var(--red); }
           <div class="role">
             <div class="d">2023 — 2025 · Россия</div>
             <h3>Head of B2B Marketing <span>— Мегамаркет (экосистема Сбера), e-commerce №3 в России</span></h3>
+            <p>Команда <b>16–40 человек</b>, маркетинговый бюджет <b>больше 1 млрд ₽ в год</b>, P&amp;L направления.</p>
             <ul>
-              <li>B2B-маркетинг привлечения продавцов: <b>+350% продавцов год к году</b>, <b>50 000 продавцов</b> на платформе; <b>3 млрд ₽</b> чистой прибыли, Q4 2023.</li>
+              <li>B2B-маркетинг привлечения продавцов: <b>+350% продавцов год к году</b>, <b>50 000 продавцов</b> на платформе; эффект моих программ — <b>3 млрд ₽</b> чистой прибыли, Q4 2023.</li>
               <li>С Минэкономразвития России — федеральная программа поддержки предпринимателей на базе центров «Мой бизнес» в <b>86 регионах</b>: стратегия, материалы, региональная коммуникация — с нуля.</li>
               <li>Федеральный марафон «Мегасреда» в <b>20 городах</b> — от концепции до PR; <b>1 млн+ просмотров</b>.</li>
-              <li>«Сделано в России»: бренд-программа, онбординг, видеокампания — <b>от 0 до 2 000 компаний</b>.</li>
-              <li>Социальный маркетплейс для производителей с ограниченными физическими возможностями: позиционирование, UX, PR.</li>
+              <li>«Сделано в России»: бренд-программа, онбординг, видеокампания — <b>от 0 до 2&nbsp;000 компаний</b>; социальный маркетплейс для производителей с ограниченными физическими возможностями.</li>
             </ul>
           </div>
 
@@ -250,15 +257,15 @@ h1 em { font-style: italic; font-weight: 700; color: var(--red); }
           <div class="role">
             <div class="d">2020 — 2022 · Россия и СНГ</div>
             <h3>Head of O2O &amp; New Business <span>— Alibaba Group, AliExpress Россия и СНГ</span></h3>
-            <p>Партнёрства: <b>Альфа-Банк, Тинькофф, МТС Банк, МегаФон, Билайн, Роснефть</b> и <b>120+ медиахолдингов</b>. GMV <b>$48M (+100% год к году)</b>, новые покупатели <b>+185%</b>, средний ROI кампаний <b>25×</b>.</p>
+            <p>Команда до 5 человек, P&amp;L направления O2O. Партнёрства: <b>Альфа-Банк, Тинькофф, МТС Банк, МегаФон, Билайн, Роснефть</b> и <b>120+ медиахолдингов</b>. GMV <b>$48M (+100% год к году)</b>, новые покупатели <b>+185%</b>, средний ROI кампаний <b>25×</b>.</p>
           </div>
 
           <div class="pq"><p>…ROI 25x говорит сам за себя»</p><div class="w">— Ли В., Regional Director · Alibaba Group</div></div>
 
           <div class="role">
-            <div class="d">2018 — 2020 · Шанхай / Гонконг</div>
+            <div class="d">2017 — 2020 · Шанхай / Гонконг</div>
             <h3>Co-founder <span>— O.F.D Creative Agency</span></h3>
-            <p>Совместный проект китайской и российской команд: рекламные решения для продвижения бизнеса на рынках Китая и России. Клиенты: <b>FOREO, DECATHLON, Bank of China, WWE, CDEK</b>.</p>
+            <p>2017 — подготовка и запуск. P&amp;L собственника. Совместный проект китайской и российской команд: рекламные решения для продвижения бизнеса на рынках Китая и России. Клиенты: <b>FOREO, DECATHLON, Bank of China, WWE, CDEK</b>.</p>
           </div>
 
           <div class="role">
@@ -287,10 +294,10 @@ h1 em { font-style: italic; font-weight: 700; color: var(--red); }
       <div class="au"><img src="img/amber-forum-2024.jpg" alt="Остап Доценко на Amber Forum 2024"><div class="cap">Amber Forum 2024, панельная дискуссия</div></div>
       <ul class="links" style="margin-top:8px">
         <li><i>Сайт</i><span><b>ostapdotcenko.ru</b><br>RU · EN · <span class="zh">中文</span></span></li>
-        <li><i>Блог</i><span><b>ostapdotcenko.ru/blog</b><br>статьи каждый день, на трёх языках</span></li>
+        <li><i>Блог</i><span><b>ostapdotcenko.ru/blog</b><br>статьи каждый день</span></li>
         <li><i>Instagram</i><b>@ostap.dotsenko</b></li>
         <li><i>Telegram</i><b>@ostapdotcenko</b></li>
-        <li><i>LinkedIn</i><b>Ostap Dotsenko</b></li>
+        <li><i>LinkedIn</i><span><a href="https://www.linkedin.com/in/ostapdot%D1%81enko/"><b>linkedin.com/in/<wbr>ostapdot&#x441;enko</b></a><br>11 000+ подписчиков</span></li>
         <li><i>Facebook</i><b>Ostap Dotsenko</b></li>
         <li><i>Проекты</i><span><b>globaltechtour.ru</b> + блог<br><b>aura-robotics.ru</b> + блог</span></li>
       </ul>

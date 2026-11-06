@@ -61,10 +61,10 @@ body { font-family: var(--type); color: var(--ink); font-synthesis: none; -webki
 .main { display: grid; grid-template-columns: 214px 1fr; gap: 24px; margin-top: 12px; }
 .photo { position: relative; width: 214px; background: #FCFBF7; padding: 8px 8px 30px; border: 1px solid #D9D1C0;
   box-shadow: 3px 4px 0 rgba(40, 30, 15, 0.22); transform: rotate(-1.6deg); margin-top: 6px; }
-.photo img { display: block; width: 196px; height: 226px; object-fit: cover; object-position: 48% 22%; }
+.photo img { display: block; width: 196px; height: 204px; object-fit: cover; object-position: 48% 22%; }
 .photo .cap { position: absolute; left: 0; right: 0; bottom: 6px; text-align: center; font-family: var(--hand); color: var(--pen); font-weight: 600; font-size: 15px; }
 .clip { position: absolute; left: 150px; top: -16px; width: 30px; height: 84px; transform: rotate(-8deg); }
-.fld { display: grid; grid-template-columns: 1fr; margin-top: 6px; }
+.fld { display: grid; grid-template-columns: 1fr; margin-top: 5px; }
 .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .fld .k { font-size: 9.6px; letter-spacing: 0.14em; color: var(--dim); text-transform: uppercase; }
 .fld .v { font-size: 11.2px; line-height: 1.36; margin-top: 1px; }
@@ -75,7 +75,7 @@ body { font-family: var(--type); color: var(--ink); font-synthesis: none; -webki
 .target .v { font-size: 12px; }
 
 /* улики */
-.ev-h { display: flex; justify-content: space-between; align-items: baseline; margin-top: 10px; }
+.ev-h { display: flex; justify-content: space-between; align-items: baseline; margin-top: 7px; }
 .evs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-top: 5px; }
 .ev { position: relative; background: var(--tag); border: 1px solid #B9A57C; padding: 5px 9px 6px 12px; clip-path: polygon(9px 0, 100% 0, 100% 100%, 0 100%, 0 9px); }
 .ev .no { position: absolute; right: 8px; top: 5px; font-size: 9.4px; letter-spacing: 0.1em; color: var(--dim); }
@@ -85,7 +85,7 @@ body { font-family: var(--type); color: var(--ink); font-synthesis: none; -webki
 .nda { font-size: 10px; margin-top: 5px; color: var(--dim); white-space: nowrap; }
 
 /* операции */
-.op { position: relative; padding: 5px 0 5px; border-top: 1.5px dashed var(--line); }
+.op { position: relative; padding: 4px 0 4px; border-top: 1.5px dashed var(--line); }
 .op:first-of-type { border-top: none; padding-top: 0; }
 .op-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
 .op-code { font-size: 10.4px; letter-spacing: 0.16em; color: var(--ribbon); }
@@ -120,6 +120,7 @@ body { font-family: var(--type); color: var(--ink); font-synthesis: none; -webki
 .card .ttl { position: absolute; left: 14px; top: 6px; font-family: var(--head); font-weight: 700; font-size: 14px; letter-spacing: 0.18em; }
 .card .row { display: grid; grid-template-columns: 76px 1fr; font-size: 10.8px; line-height: 17px; }
 .card .note { font-size: 10px; color: var(--dim); }
+.card .url { grid-column: 1 / -1; color: inherit; text-decoration: none; }
 .card .row i { font-style: normal; color: var(--dim); font-size: 9.4px; letter-spacing: 0.08em; text-transform: uppercase; }
 .lng { display: grid; grid-template-columns: 70px 1fr 46px; align-items: center; gap: 6px; font-size: 10.6px; margin-top: 4px; }
 .lng .bar { height: 7px; border: 1px solid var(--ink); position: relative; }
@@ -168,7 +169,7 @@ body { font-family: var(--type); color: var(--ink); font-synthesis: none; -webki
           </svg>
           <div class="stamp v" style="right:-12px; bottom:44px; font-size:13px; transform:rotate(-11deg)">Проверено:<br>20+ стран</div>
         </div>
-        <div class="fld" style="margin-top:14px"><span class="k">Стаж в поле</span><span class="v">13+ лет · 20+ стран</span></div>
+        <div class="fld" style="margin-top:14px"><span class="k">Стаж в поле</span><span class="v">13+ лет · 20+ стран · 5 языков</span></div>
         <div class="fld"><span class="k">Последнее местонахождение</span><span class="v">Шанхай · Москва (гибрид)</span></div>
       </div>
 
@@ -178,9 +179,9 @@ body { font-family: var(--type); color: var(--ink); font-synthesis: none; -webki
         <div class="name">ОСТАП ДОЦЕНКО</div>
         <div class="name-sub">Ostap Dotsenko · <span class="zh">奥斯塔普</span>·<span class="zh">多增科</span></div>
         <div class="fld" style="margin-top:9px"><span class="k">Легенда (совпадает с правдой)</span><span class="v">Руководитель по развитию бизнеса и маркетингу</span></div>
-        <div class="fld"><span class="k">Послужной список</span><span class="v">Мегамаркет (Сбер) — <span class="red">+350%</span> продавцов год к году · Alibaba Group — <span class="red">$48M</span> GMV, ROI <span class="red">25×</span> · свой бизнес в Шанхае</span></div>
+        <div class="fld"><span class="k">Послужной список</span><span class="v">Мегамаркет (Сбер) · Alibaba Group · свой бизнес в Шанхае</span></div>
         <div class="target"><span class="k f" style="color:var(--ribbon)">Ищет назначение</span><div class="v">CBDO · CMO · директор по международному развитию (Россия ↔ Китай ↔ ЮВА)</div></div>
-        <div class="fld"><span class="k">Особые приметы</span><span class="v">говорит на 5 языках, включая язык KPI</span></div>
+        <div class="fld"><span class="k">Под командованием</span><span class="v">до <span class="red">40 человек</span> · маркетинговый бюджет больше <span class="red">1 млрд ₽</span> в год · <span class="red">P&amp;L</span> в Мегамаркете, Alibaba и своём бизнесе</span></div>
         <div class="fld"><span class="k">Каналы связи</span><span class="v">+86 137 6171 6355 · +7 985 874-49-58<br>norbanking@gmail.com · @ostapdotcenko · ostapdotcenko.ru</span></div>
       </div>
     </div>
@@ -191,16 +192,16 @@ body { font-family: var(--type); color: var(--ink); font-synthesis: none; -webki
         <div class="hand" style="right:8px; bottom:6px; font-size:15px; transform:rotate(-6deg)">не опечатка</div></div>
       <div class="ev"><span class="no">№ 2</span><b>$48M</b><span>GMV, +100% год к году</span><em>AliExpress Россия и СНГ</em></div>
       <div class="ev"><span class="no">№ 3</span><b>25×</b><span>средний ROI кампаний</span><em>Alibaba, 2020–2022</em></div>
-      <div class="ev"><span class="no">№ 4</span><b>3 млрд ₽</b><span>чистой прибыли, Q4 2023</span><em>Мегамаркет</em></div>
+      <div class="ev"><span class="no">№ 4</span><b>3 млрд ₽</b><span>чистой прибыли, Q4 2023</span><em>эффект моих программ</em></div>
     </div>
     <div class="nda">* Метрики из реальных проектов; часть данных обезличена по NDA. Секретный ингредиент: <i class="rd" style="width:58px"></i><i class="rd" style="width:30px"></i><i class="rd" style="width:44px"></i></div>
 
-    <div class="sec" style="margin-top:12px"><span class="n">§ 1</span><h2>Операции</h2><span class="l"></span><span class="f">от свежих к давним</span></div>
+    <div class="sec" style="margin-top:9px"><span class="n">§ 1</span><h2>Операции</h2><span class="l"></span><span class="f">от свежих к давним</span></div>
 
     <div class="op">
       <div class="op-h"><span class="op-code">ОПЕРАЦИЯ «ПРЯМОЙ ДОСТУП»</span><span class="op-when">2025 — н. в. · Шанхай<span class="op-st v">в работе</span></span></div>
       <h3>Собственник и основатель · Shanghai Pinnacle Technology Co., Ltd.</h3>
-      <div class="ctx"><span class="zh">上海拼那克了科技有限公司</span>. GlobalTechTour — технологические экспедиции и бенчмарк-туры в Китай и ЮВА; Aura Robotics — робототехника и автоматизация, подбор роботов напрямую у китайских производителей.</div>
+      <div class="ctx"><span class="zh">上海拼那克了科技有限公司</span>. GlobalTechTour — технологические экспедиции и бенчмарк-туры в Китай и ЮВА; Aura Robotics — подбор роботов напрямую у китайских производителей. P&amp;L собственника.</div>
       <ul>
         <li>Корпоративный форум Мегамаркета (Сбер) в Шэньчжэне на <span class="red">1 200+ участников</span> — под ключ: логистика, площадка, деловая программа.</li>
         <li>Визиты делегаций на заводы и в R&amp;D <span class="red">BYD, Xiaomi, Baidu, Meituan, Poizon, Leju Robotics</span>; для клиентов Aura — прямой доступ к руководству и R&amp;D производителей роботов, а не к рядовым менеджерам.</li>
@@ -211,11 +212,12 @@ body { font-family: var(--type); color: var(--ink); font-synthesis: none; -webki
     <div class="op">
       <div class="op-h"><span class="op-code">ОПЕРАЦИЯ «МАСШТАБ»</span><span class="op-when">2023 — 2025 · Россия<span class="op-st">выполнено</span></span></div>
       <h3>Head of B2B Marketing · Мегамаркет (экосистема Сбера) — e-commerce №3 в России</h3>
+      <div class="ctx">Команда 16–40 человек · маркетинговый бюджет больше 1 млрд ₽ в год · P&amp;L направления.</div>
       <ul>
-        <li>B2B-маркетинг привлечения продавцов: <span class="red">+350% продавцов год к году</span>, <span class="red">50 000 продавцов</span> на платформе.</li>
+        <li>B2B-маркетинг привлечения продавцов: <span class="red">+350% продавцов год к году</span>, <span class="red">50 000 продавцов</span> на платформе; эффект моих программ — <span class="red">3 млрд ₽ чистой прибыли, Q4 2023</span>.</li>
         <li>С Минэкономразвития России — федеральная программа поддержки предпринимателей на базе центров «Мой бизнес» в <span class="red">86 регионах</span>: стратегия привлечения, материалы, региональная коммуникация — с нуля.</li>
         <li>Федеральный марафон «Мегасреда» в <span class="red">20 городах</span> — от концепции до PR; <span class="red">1 млн+ просмотров</span>.</li>
-        <li>«Сделано в России»: бренд-программа, онбординг, видеокампания — <span class="red">от 0 до 2 000 компаний</span>. Социальный маркетплейс для производителей с ограниченными физическими возможностями: позиционирование, UX, PR-кампания.</li>
+        <li>«Сделано в России»: бренд-программа, онбординг, видеокампания — <span class="red">от 0 до 2 000 компаний</span>. Социальный маркетплейс для производителей с ограниченными физическими возможностями.</li>
       </ul>
     </div>
 
@@ -228,6 +230,7 @@ body { font-family: var(--type); color: var(--ink); font-synthesis: none; -webki
     <div class="op">
       <div class="op-h"><span class="op-code">ОПЕРАЦИЯ «25×»</span><span class="op-when">2020 — 2022 · Россия и СНГ<span class="op-st">выполнено</span></span></div>
       <h3>Head of O2O &amp; New Business · Alibaba Group — AliExpress Россия и СНГ</h3>
+      <div class="ctx">Команда до 5 человек · P&amp;L направления O2O.</div>
       <ul>
         <li>Партнёрства: <span class="red">Альфа-Банк, Тинькофф, МТС Банк, МегаФон, Билайн, Роснефть</span> и <span class="red">120+ медиахолдингов</span>.</li>
         <li><span class="red">GMV $48M (+100% год к году)</span>, новые покупатели <span class="red">+185%</span>, средний ROI кампаний <span class="red">25×</span>.</li>
@@ -249,9 +252,10 @@ body { font-family: var(--type); color: var(--ink); font-synthesis: none; -webki
     <div class="sec"><span class="n">§ 1</span><h2>Операции — продолжение</h2><span class="l"></span></div>
 
     <div class="op">
-      <div class="op-h"><span class="op-code">ОПЕРАЦИЯ «ДВЕ КОМАНДЫ»</span><span class="op-when">2018 — 2020 · Шанхай / Гонконг<span class="op-st">выполнено</span></span></div>
+      <div class="op-h"><span class="op-code">ОПЕРАЦИЯ «ДВЕ КОМАНДЫ»</span><span class="op-when">2017 — 2020 · Шанхай / Гонконг<span class="op-st">выполнено</span></span></div>
       <h3>Co-founder · O.F.D Creative Agency</h3>
-      <ul><li>Совместный проект китайской и российской команд: рекламные решения для продвижения бизнеса на рынках Китая и России. Клиенты: <span class="red">FOREO, DECATHLON, Bank of China, WWE, CDEK</span>.</li></ul>
+      <ul><li>Совместный проект китайской и российской команд: рекламные решения для продвижения бизнеса на рынках Китая и России. Клиенты: <span class="red">FOREO, DECATHLON, Bank of China, WWE, CDEK</span>. P&amp;L собственника.</li></ul>
+      <div class="hand" style="right:6px; top:18px; font-size:16px; transform:rotate(-2deg)">↑ 2017 — подготовка и запуск</div>
     </div>
     <div class="op">
       <div class="op-h"><span class="op-code">ОПЕРАЦИЯ «АЗИЯ»</span><span class="op-when">2015 — 2017 · Москва / Шанхай<span class="op-st">выполнено</span></span></div>
@@ -303,7 +307,8 @@ body { font-family: var(--type); color: var(--ink); font-synthesis: none; -webki
           <div class="row"><i></i><span class="note">статьи каждый день</span></div>
           <div class="row"><i>Instagram</i><span>@ostap.dotsenko</span></div>
           <div class="row"><i>Telegram</i><span>@ostapdotcenko</span></div>
-          <div class="row"><i>LinkedIn</i><span>Ostap Dotsenko</span></div>
+          <div class="row"><i>LinkedIn</i><span>11 000+ подписчиков</span></div>
+          <div class="row"><a class="url" href="https://www.linkedin.com/in/ostapdot%D1%81enko/">linkedin.com/in/ostapdot&#x441;enko</a></div>
           <div class="row"><i>Facebook</i><span>Ostap Dotsenko</span></div>
           <div class="row"><i>Проекты</i><span>globaltechtour.ru + блог</span></div>
           <div class="row"><i></i><span>aura-robotics.ru + блог</span></div>
