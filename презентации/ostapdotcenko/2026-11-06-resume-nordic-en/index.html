@@ -1,0 +1,264 @@
+<!doctype html>
+<!-- Ostap Dotsenko, CV, strict version "Nordic minimalism", English. Translation of ../2026-11-06-resume-nordic (same design, photo, layout,
+     page count). Facts: ../RESUME-MASTER.md only, including the user's answers to the audit questions (06.11.2026); wording: ostapdotcenko.ru
+     src/i18n/en.ts and the glossary in ../RESUME-I18N.md. Fonts and photo are referenced from the Russian original folder;
+     fonts/ here holds only the Noto Sans SC subset written by build.py.
+     Build: python3 build.py 2026-11-06-resume-nordic-en -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ostap Dotsenko — CV</title>
+<link rel="stylesheet" href="../2026-11-06-resume-nordic/fonts/inter.css">
+<link rel="stylesheet" href="fonts/noto-sans-sc.css">
+<style>
+:root {
+  --ink: #222426; --grey: #686C70; --light: #8C9094; --accent: #53677A; --hair: #DEDEDA; --paper: #FFFFFF;
+  --sans: "Inter", "NSC", sans-serif;
+}
+@page { size: 210mm 297mm; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #c9c9c4; }
+body { font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: antialiased; font-size: 10.9px; line-height: 1.5;
+  font-optical-sizing: auto; font-feature-settings: "tnum" 0; }
+a { color: inherit; text-decoration: none; }
+b { font-weight: 600; }
+.page { width: 794px; height: 1123px; position: relative; overflow: hidden; background: var(--paper); margin: 0 auto 24px;
+  page-break-after: always; break-after: page; padding: 52px 58px 50px; }
+@media print { html, body { background: none; } .page { margin: 0; } }
+.ftr { position: absolute; left: 58px; right: 58px; bottom: 24px; display: flex; justify-content: space-between;
+  font-size: 9.5px; color: var(--light); letter-spacing: 0.06em; }
+
+/* header */
+.head { display: grid; grid-template-columns: 1fr 140px; gap: 36px; align-items: end; }
+.name { font-weight: 300; font-size: 42px; line-height: 1; letter-spacing: -0.025em; }
+.alt { font-size: 10.5px; color: var(--light); margin-top: 8px; letter-spacing: 0.04em; }
+.role { font-weight: 500; font-size: 14.5px; margin-top: 20px; letter-spacing: -0.005em; }
+.cos { font-size: 11.4px; color: var(--grey); margin-top: 2px; }
+.target { font-size: 11px; margin-top: 12px; color: var(--ink); }
+.target span { color: var(--accent); font-weight: 500; margin-right: 8px; }
+.photo { width: 140px; height: 175px; overflow: hidden; background: #eee; }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.contacts { display: flex; flex-wrap: wrap; gap: 3px 18px; margin-top: 18px; font-size: 10.6px; color: var(--ink); }
+.contacts span { color: var(--light); margin-right: 4px; }
+.hr { height: 0.75px; background: var(--hair); margin: 18px 0; }
+
+/* key figures */
+.figs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 24px; }
+.fig b { display: block; font-weight: 300; font-size: 27px; line-height: 1; letter-spacing: -0.02em; font-feature-settings: "tnum" 1; color: var(--ink); }
+.fig span { display: block; font-size: 10.5px; color: var(--grey); margin-top: 7px; line-height: 1.38; }
+.fig i { display: block; font-style: normal; font-size: 10.5px; color: var(--accent); margin-top: 2px; }
+
+.profile { font-size: 11.6px; line-height: 1.6; color: var(--ink); text-wrap: pretty; }
+
+/* sections: label left, content right */
+.sec { display: grid; grid-template-columns: 118px 1fr; gap: 22px; }
+.sec + .sec { margin-top: 20px; }
+.lab { font-size: 10.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); padding-top: 2px; line-height: 1.4; }
+.job + .job { margin-top: 13px; }
+.jt { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.jt h3 { font-size: 12.4px; font-weight: 600; line-height: 1.35; }
+.jt .d { font-size: 10.6px; color: var(--grey); white-space: nowrap; font-feature-settings: "tnum" 1; }
+.co { font-size: 11px; color: var(--grey); margin-top: 1px; }
+ul.b { list-style: none; margin-top: 4px; }
+ul.b li { position: relative; padding-left: 14px; margin-top: 2px; text-wrap: pretty; }
+ul.b li::before { content: ""; position: absolute; left: 0; top: 8px; width: 7px; height: 0.75px; background: var(--accent); }
+.kv { display: grid; grid-template-columns: 150px 1fr; gap: 3px 16px; }
+.kv dt { color: var(--grey); }
+.links { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 18px; }
+.links div span { color: var(--grey); }
+</style>
+</head>
+<body>
+
+<!-- ============ page 1 ============ -->
+<section class="page">
+  <div class="head">
+    <div>
+      <div class="name">Ostap Dotsenko</div>
+      <div class="alt">奥斯塔普·多增科</div>
+      <div class="role">Business Development &amp; Marketing Leader</div>
+      <div class="cos">Alibaba Group · Megamarket (Sber ecosystem) · own business in&nbsp;Shanghai</div>
+      <div class="target"><span>Target</span>CBDO · CMO · Head of International Expansion: Russia&nbsp;— China&nbsp;— <em style="font-style:normal; white-space:nowrap">Southeast Asia</em></div>
+    </div>
+    <div class="photo"><img src="../2026-11-06-resume-nordic/img/portrait.jpg" alt="Ostap Dotsenko"></div>
+  </div>
+
+  <div class="contacts">
+    <div>+86&nbsp;137&nbsp;6171&nbsp;6355</div>
+    <div>+7&nbsp;985&nbsp;874-49-58 <span>WhatsApp</span></div>
+    <div><a href="mailto:norbanking@gmail.com">norbanking@gmail.com</a></div>
+    <div><span>Telegram</span><a href="https://t.me/ostapdotcenko">@ostapdotcenko</a></div>
+    <div><a href="https://ostapdotcenko.ru">ostapdotcenko.ru</a></div>
+    <div><span>LinkedIn</span><a href="https://www.linkedin.com/in/ostapdot%D1%81enko/">linkedin.com/in/ostapdot&#x441;enko</a> · 11,000+ followers</div>
+    <div>Shanghai · Moscow (hybrid)</div>
+  </div>
+
+  <div class="hr"></div>
+
+  <div class="figs">
+    <div class="fig"><b>+350%</b><span>seller growth year over year; 50,000 sellers</span><i>Megamarket</i></div>
+    <div class="fig"><b>RUB&nbsp;3&nbsp;bn</b><span>net profit — my programs’ impact, Q4&nbsp;2023</span><i>Megamarket</i></div>
+    <div class="fig"><b>$48M</b><span>GMV, +100% year over year; new buyers +185%</span><i>AliExpress Russia &amp; CIS</i></div>
+    <div class="fig"><b>25×</b><span>average campaign ROI</span><i>Alibaba Group, 2020–2022</i></div>
+  </div>
+
+  <div class="hr"></div>
+
+  <p class="profile">13+ years in business development and marketing at the crossroads of Russia, China and Southeast Asia. Led B2B marketing at
+    <b>Megamarket</b> (Russia’s #3 e-commerce, Sber ecosystem) and the O2O business at <b>AliExpress Russia &amp; CIS</b> (Alibaba Group);
+    since 2025, owner of a company in Shanghai. <b>Teams of up to&nbsp;40, a marketing budget of over RUB&nbsp;1&nbsp;bn a&nbsp;year,
+    P&amp;L at Megamarket, Alibaba and my own business.</b> Federal programs in 86&nbsp;regions, partnerships with banks,
+    telecoms and government bodies. 20+ countries, 5&nbsp;languages, including Chinese.</p>
+
+  <div class="hr"></div>
+
+  <div class="sec">
+    <div class="lab">Work experience</div>
+    <div>
+      <div class="job">
+        <div class="jt"><h3>Owner &amp; Founder</h3><span class="d">2025 — present</span></div>
+        <div class="co">Shanghai Pinnacle Technology Co., Ltd. · Shanghai · owner’s P&amp;L</div>
+        <ul class="b">
+          <li>GlobalTechTour — tech expeditions and benchmark tours across China and SEA; Aura Robotics — sourcing robots directly from Chinese manufacturers.</li>
+          <li>Turnkey corporate forum for Megamarket (Sber) in Shenzhen with <b>1,200+ attendees</b>: logistics, venue and business program.</li>
+          <li>Delegation visits to the factories and R&amp;D centers of BYD, Xiaomi, Baidu, Meituan, Poizon, Leju Robotics; BelMol closed a dairy-automation deal in a <b>2-hour</b> meeting at the Kepler factory.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="jt"><h3>Head of B2B Marketing</h3><span class="d">2023 — 2025</span></div>
+        <div class="co">Megamarket (Sber ecosystem) · Russia’s #3 e-commerce · team of 16–40, budget of over RUB&nbsp;1&nbsp;bn a&nbsp;year, P&amp;L ownership for the business line</div>
+        <ul class="b">
+          <li>B2B seller-acquisition marketing: <b>+350%</b> year over year, <b>50,000</b> sellers on the platform; my programs’ impact — <b>RUB&nbsp;3&nbsp;bn</b> net profit, Q4&nbsp;2023.</li>
+          <li>With the Ministry of Economic Development of Russia — a federal entrepreneur support program run through “My Business” centers in <b>86&nbsp;regions</b>, built from scratch.</li>
+          <li>Megasreda marathon in <b>20&nbsp;cities</b>, <b>1M+</b> views; “Made in Russia” — <span style="white-space:nowrap">from&nbsp;<b>0 to&nbsp;2,000</b> companies</span>; an inclusive marketplace for producers with disabilities.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="jt"><h3>Independent Adviser · AdTech / MarTech / EduTech</h3><span class="d">2022 — 2023</span></div>
+        <div class="co">Uzbekistan, Kazakhstan, Southeast Asia</div>
+        <ul class="b">
+          <li>MyDars, HiTarget (Indonesia): <b>20+ partners</b>, product localization for SEA.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="jt"><h3>Head of O2O &amp; New Business</h3><span class="d">2020 — 2022</span></div>
+        <div class="co">Alibaba Group — AliExpress Russia &amp; CIS · team of up to&nbsp;5, P&amp;L ownership for the O2O business line</div>
+        <ul class="b">
+          <li>Partnerships with Alfa-Bank, Tinkoff, MTS Bank, MegaFon, Beeline, Rosneft and <b>120+ media holdings</b>.</li>
+          <li>GMV <b>$48M</b> (+100% YoY), new buyers <b>+185%</b>, average campaign ROI <b>25×</b>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="ftr"><span>Ostap Dotsenko</span><span>1 / 2</span></div>
+</section>
+
+<!-- ============ page 2 ============ -->
+<section class="page">
+  <div class="sec">
+    <div class="lab">Work experience<br><span style="color:var(--light)">continued</span></div>
+    <div>
+      <div class="job">
+        <div class="jt"><h3>Co-founder</h3><span class="d">2017 — 2020</span></div>
+        <div class="co">O.F.D Creative Agency · Shanghai, Hong Kong · 2017 — preparation and launch · owner’s P&amp;L</div>
+        <ul class="b">
+          <li>Joint Chinese-Russian team project: advertising solutions that promote businesses in the Chinese and Russian markets.</li>
+          <li>Clients: FOREO, DECATHLON, Bank of China, WWE, CDEK.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="jt"><h3>Head of Commerce &amp; BD</h3><span class="d">2015 — 2017</span></div>
+        <div class="co">Data Centric Alliance · Moscow, Shanghai</div>
+        <ul class="b">
+          <li>Media buying and business development in Asia; Google HK, Yahoo HK, Tencent, Ctrip, Baidu.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="jt"><h3>BD Manager — China / SEA</h3><span class="d">2013 — 2015</span></div>
+        <div class="co">CityAds Media · China, Southeast Asia</div>
+        <ul class="b">
+          <li>Performance and affiliate marketing (CPA / CPC / CPL) in China and SEA; clients included Sasa (Hong Kong).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="hr"></div>
+
+  <div class="sec">
+    <div class="lab">Competencies</div>
+    <dl class="kv">
+      <dt>Business Development</dt><dd>Market-entry strategy, partnerships and alliances, C-level negotiations, BD Asia &amp; CIS, new business lines</dd>
+      <dt>Marketing</dt><dd>B2B Marketing, Demand Generation, Performance, Product Marketing, Sales Enablement, brand programs</dd>
+      <dt>Technology &amp; data</dt><dd>E-commerce and marketplaces, AdTech / MarTech, Marketing Automation, CRM &amp; Analytics, O2O</dd>
+      <dt>Communications</dt><dd>GR and government programs, federal events, PR, 50+ expos and forums in Russia and the CIS</dd>
+    </dl>
+  </div>
+
+  <div class="sec">
+    <div class="lab">Languages</div>
+    <dl class="kv">
+      <dt>Russian</dt><dd>native</dd>
+      <dt>English</dt><dd>C1</dd>
+      <dt>Chinese</dt><dd>B2+</dd>
+      <dt>Uzbek</dt><dd>B1</dd>
+      <dt>Korean</dt><dd>A2</dd>
+    </dl>
+  </div>
+
+  <div class="sec">
+    <div class="lab">Education</div>
+    <dl class="kv">
+      <dt>MIU</dt><dd>Civil Law</dd>
+      <dt>Lyceum under TashSIL</dt><dd>Korean Language Teacher</dd>
+    </dl>
+  </div>
+
+  <div class="hr"></div>
+
+  <div class="sec">
+    <div class="lab">Media</div>
+    <dl class="kv">
+      <dt>RBC</dt><dd>Interview “The key is to know your fundamentals and not be afraid”; RBC Industries</dd>
+      <dt>Sber Business</dt><dd>Guide “Marketplaces: the complete guide to earning”</dd>
+      <dt>TASS</dt><dd>Ulyanovsk region and Megamarket: a regional product showcase</dd>
+      <dt>“My Business”</dt><dd>Megasreda marathon, 1M+ views</dd>
+    </dl>
+  </div>
+
+  <div class="sec">
+    <div class="lab">Speaking</div>
+    <dl class="kv">
+      <dt>2025</dt><dd>Russian Retail Week; SCO Forum</dd>
+      <dt>2024</dt><dd>Russian Retail Show — speaker; Amber Forum — panel discussion; Manufacturers’ Summit, Irkutsk — panel</dd>
+      <dt>Megamarket</dt><dd>Federal Megasreda marathon — 20 cities</dd>
+    </dl>
+  </div>
+
+  <div class="hr"></div>
+
+  <div class="sec">
+    <div class="lab">Website, blog<br>and social</div>
+    <div class="links">
+      <div><a href="https://ostapdotcenko.ru">ostapdotcenko.ru</a> <span>— website in three languages</span></div>
+      <div><a href="https://ostapdotcenko.ru/blog">ostapdotcenko.ru/blog</a> <span>— new articles daily</span></div>
+      <div><span>LinkedIn</span> <a href="https://www.linkedin.com/in/ostapdot%D1%81enko/">linkedin.com/in/ostapdot&#x441;enko</a> <span>· 11,000+</span></div>
+      <div><span>Telegram</span> <a href="https://t.me/ostapdotcenko">@ostapdotcenko</a></div>
+      <div><span>Instagram</span> <a href="https://www.instagram.com/ostap.dotsenko/">@ostap.dotsenko</a></div>
+      <div><span>Facebook</span> Ostap Dotsenko</div>
+      <div><a href="https://globaltechtour.ru">globaltechtour.ru</a> <span>— project and blog</span></div>
+      <div><a href="https://aura-robotics.ru">aura-robotics.ru</a> <span>— project and blog</span></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="lab">References</div>
+    <div>Available on request.</div>
+  </div>
+
+  <div class="ftr"><span>Ostap Dotsenko</span><span>2 / 2</span></div>
+</section>
+
+</body>
+</html>
