@@ -9,7 +9,8 @@ import {ChapterHead, Chip, dela, numStyle} from "../blog-news/kit";
 import type {OdxHead} from "./scenes";
 
 export type OdxHookCovers = {kind: "hookCovers"; sec: number; covers: string[]; lines: string[]; shout: string[]; zh?: string; sfx?: string};
-export type OdxPile = OdxHead & {kind: "pile"; sec: number; from: string; to: string; count: number; countLabel: string; calNote: string; rubricsLabel: string; rubrics: string[]; tags: string[]; countries: string[]; langs: string};
+export type OdxPile = OdxHead & {kind: "pile"; sec: number; from: string; to: string; count: number; countFrom?: number; // countFrom — номер статьи в первый день календаря (счётчик идёт по дням)
+  countLabel: string; calNote: string; rubricsLabel: string; rubrics: string[]; tags: string[]; countries: string[]; langs: string};
 export type OdxClock = OdxHead & {kind: "clock"; sec: number; img: string; imgPos?: string; num: number; unit: string; numLabel: string; chips: string[]; note: string; sfx?: string};
 export type OdxPipeline = OdxHead & {kind: "pipeline"; sec: number; img: string; steps: {img?: string; pos?: string; timer?: number; label: string; sub: string}[]; note: string};
 export type OdxTopics = OdxHead & {kind: "topics"; sec: number; img: string; imgPos?: string; labels: {text: string; x: number; y: number; rot?: number}[]; note: string};
@@ -92,14 +93,14 @@ export const PileAct: React.FC<{s: OdxPile; dur: number}> = ({s}) => {
       <ChapterHead zh={s.zh} kicker={s.kicker} title={s.title} />
       <div style={{position: "absolute", left: 64, top: 440, width: 390, height: 380, rotate: "-3deg", boxShadow: `14px 14px 0 ${C.ink}`}}>
         {page(days[Math.min(days.length - 1, idx + 1)])}
-        {idx < days.length - 1 ? page(days[idx], {translate: `${fr * 640}px ${fr * 160}px`, rotate: `${fr * 34}deg`, opacity: 1 - fr * 0.5}) : page(days[days.length - 1])}
+        {idx < days.length - 1 ? page(days[idx], {translate: `${-fr * 640}px ${fr * 90}px`, rotate: `${-fr * 32}deg`, opacity: 1 - fr * 0.5}) : page(days[days.length - 1])}
         {Array.from({length: 4}).map((_, i) => <div key={i} style={{position: "absolute", top: -18, left: 50 + i * 90, width: 22, height: 40, borderRadius: 11, background: C.ink, border: "4px solid #fff"}} />)}
       </div>
       <Chip x={64} y={850} at={20} rot={-1.5} bg={C.ink} color={C.y} size={28}>{s.calNote}</Chip>
       {f >= 6 ? (
         <>
           <Burst x={790} y={620} r={190} color={C.y} scale={0.3 + 0.7 * cs} rot={f * 0.4} seed="plb" />
-          <div style={{position: "absolute", left: 790, top: 600, translate: "-50% -50%", rotate: "-5deg", scale: String(0.3 + 0.7 * cs), background: "#fff", border: `6px solid ${C.ink}`, boxShadow: `10px 10px 0 ${C.red}`, padding: "0 22px 6px", ...numStyle(130, C.ink)}}>{Math.round(s.count * p(f, T0, T1))}</div>
+          <div style={{position: "absolute", left: 790, top: 600, translate: "-50% -50%", rotate: "-5deg", scale: String(0.3 + 0.7 * cs), background: "#fff", border: `6px solid ${C.ink}`, boxShadow: `10px 10px 0 ${C.red}`, padding: "0 22px 6px", ...numStyle(130, C.ink)}}>{s.countFrom !== undefined ? s.countFrom + Math.round(pos) : Math.round(s.count * p(f, T0, T1))}</div>
           <div style={{position: "absolute", left: 790, top: 730, translate: "-50% 0", rotate: "-5deg", background: C.ink, color: "#fff", fontFamily: FONT.golos, fontWeight: 800, fontSize: 30, padding: "4px 14px", whiteSpace: "nowrap", opacity: p(f, 12, 18)}}>{s.countLabel}</div>
         </>
       ) : null}
