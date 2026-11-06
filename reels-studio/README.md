@@ -636,3 +636,7 @@ node reels-studio/tools/gtt-reel/cover-gruppy.mjs            # 4 вариант�
 Куски публикаций — `source-videos/2026-11-03-gtt-проект/из-instagram/` (`README.json`). Свежий список публикаций со ссылками на файлы —
 Actions POST-HUB «Профиль Instagram — сводка» (строки `POST`, `CHILD`, `STORY`). Архив сторис API не отдаёт — только файлами от пользователя.
 
+
+## Обложки серий без голоса (06.11.2026)
+
+`node tools/series-covers/covers.mjs [имя …]` (из корня репозитория — `node reels-studio/tools/series-covers/covers.mjs`) → `finished-videos/обложки/robokitai/` и `finished-videos/обложки/od-manhua/` + `_лист.jpg`. Описание — `CLAUDE.md`, «Обложки серий без голоса».

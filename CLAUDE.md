@@ -128,7 +128,7 @@ props `reels-studio/props/robokitai/NNN-<город>.json`, ролики `finish
 угадайка, кризис, поворот, крючок) — композиция `RobokitaiDrama`, props `…-v2.json`; Серия 0 — трейлер вселенной `RobokitaiTrailer`
 (`props/robokitai/000-trailer.json` → `finished-videos/robokitai-000-trailer.mp4`, вне git) и карусели «Карта Робокитая» и «Команда Aura»
 (`RobokitaiCarousel` → `finished-videos/карусели/robokitai-карта/`, `robokitai-команда/`); серии из статьи (2 · Сучжоу, 3 · Шэньчжэнь) — композиция
-`RobokitaiStory`, шаги в props (`props/robokitai/002-suzhou.json`, `003-shenzhen.json`); порядок — `reels-studio/CLAUDE.md`, «Робокитай — сериал Aura».
+`RobokitaiStory`, шаги в props (`props/robokitai/002-suzhou.json`, `003-shenzhen.json`); порядок — `reels-studio/CLAUDE.md`, «Робокитай — сериал Aura». Обложки серий и манхуа-объяснялок — `node reels-studio/tools/series-covers/covers.mjs` → `finished-videos/обложки/robokitai/`, `…/od-manhua/` (06.11.2026).
 Какой бренд у ролика, понятно из слов пользователя; не ясно — спроси, работу не останавливая.
 
 ## Присланный ролик — сразу в работу (решение пользователя 08.10.2026)
