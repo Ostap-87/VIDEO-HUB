@@ -619,6 +619,7 @@ node reels-studio/tools/od-posts/reel-sait.mjs            # ролик «Мой 
 #   TMPDIR=/dev/shm/remotion-od npx remotion render src/index.ts OdManhuaExplainer /dev/shm/od/out.mp4 --props=props/od/2026-11-06-why-manhua.json --bundle-cache=false --concurrency=2 --crf=18
 #   пробные кадры: … OdManhuaExplainerPreview /dev/shm/od/st --sequence --scale=0.5 --props=<props + "frames":[50,240,…]>
 #   второй ролик «Что такое 多 NEWS»: --props=props/od/2026-11-06-what-is-duo-news.json → ../finished-videos/2026-11-06-od-what-is-duo-news.mp4
+#   версия 2 «ролик объясняет обложку»: --props=props/od/2026-11-06-why-manhua-v2.json / …-what-is-duo-news-v2.json → ../finished-videos/…-v2.mp4 (мастер CRF 22, копия для телефона — ln -f)
 # английские версии (04.11.2026): SiteManhuaEn / AuraSiteManhuaEn / GttSiteManhuaEn (Remotion) и node tools/od-posts/reel-intro-en.mjs, tools/gtt-reel/reel-gruppy-od-en.mjs, tools/od-posts/reel-3-proekta-en.mjs
 #   → finished-videos/обложки/манхуа-сайты/ (кадр 0–1 «Мой сайт», 2–3 Aura, 4–9 GTT A–F; --frames=0-9)
 ```

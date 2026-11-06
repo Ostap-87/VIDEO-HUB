@@ -14,8 +14,9 @@ import {useBrush, BRUSH} from "../components/MontazhFx";
 import {C, CL, CircleReveal, GlitchReveal, Grain, InkReveal, PageReveal, SlashReveal, Vignette} from "./site-manhua/fx";
 import {FinAct, FormulaAct, GridAct, HookWall, Ident, PhoneAct, StyleAct, Versus, type OdxScene as OdxScene1} from "./od-explainer/scenes";
 import {ClockAct, FinRows, HookCovers, PileAct, PipelineAct, SeasonsAct, TopicsAct, type OdxScene2} from "./od-explainer/scenes2";
+import {CoverAct, IntroAct, PointAct, RecapAct, type OdxScene3} from "./od-explainer/scenes3";
 
-export type OdxScene = OdxScene1 | OdxScene2;
+export type OdxScene = OdxScene1 | OdxScene2 | OdxScene3;
 export type OdManhuaExplainerProps = {
   title?: string;
   scenes: OdxScene[];
@@ -84,6 +85,26 @@ const sndOf = (sc: OdxScene, d: number): Snd[] => {
       return [[0, "@whoosh-1", 0.5], [10, "@zvukitop/zt-pop", 0.3], [14, "@whoosh-3", 0.3], [26, "@whoosh-3", 0.3], [38, "@whoosh-3", 0.3], [52, "@pop-1", 0.4], [t, "@click-1", 0.55], [t + 2, "@success-1", 0.4], [t + 4, "@zvukitop/zt-ding", 0.35],
         [t + 14, "@ding-3", 0.4], [t + 18, "@cheer-1", 0.2], [d - 20, "@zvukitop/zt-whoosh", 0.3]];
     }
+    case "cover":
+      return [[0, "@shutter-1", 0.3]];
+    case "intro":
+      return [[0, "@whoosh-4", 0.45], [2, "@impact-1", 0.45], [8, "@pop-2", 0.45], [26, "@zvukitop/zt-paper", 0.25]];
+    case "point": {
+      const dm = sc.demo;
+      const base: Snd[] = [[0, "@flip-1", 0.45], [6, "@click-2", 0.35], [8, "@impact-3", 0.35], [28, "@typewriter-1", 0.3]];
+      const demo: Snd[] = dm.type === "wallToPanel" ? [[20, "@pop-1", 0.35], [104, "@sweep-1", 0.35], [110, "@success-1", 0.35], [120, "@pop-2", 0.4]]
+        : dm.type === "phoneHand" ? [[2, "@whoosh-2", 0.35], [34, "@pop-1", 0.4], [64, "@pop-2", 0.4], [94, "@pop-1", 0.4], ...dm.feed.slice(1).map((_, i) => [20 + (i + 1) * Math.max(50, Math.floor((d - 40) / dm.feed.length)), "@swipe-1", 0.25] as Snd)]
+        : dm.type === "memory" ? [[8, "@shutter-1", 0.35], [24, "@click-2", 0.35], [30, "@pop-2", 0.4], [50, "@click-2", 0.35], [58, "@ding-2", 0.45], [92, "@whoosh-2", 0.3], [118, "@zvukitop/zt-wrong", 0.35]]
+        : dm.type === "articleToEpisode" ? [[4, "@pop-1", 0.4], [40, "@sweep-1", 0.35], [56, "@whoosh-3", 0.4], [70, "@zvukitop/zt-clock", 0.3], [200, "@ding-3", 0.4]]
+        : dm.type === "topics" ? dm.labels.map((_, i) => [22 + i * 22, i % 2 ? "@pop-2" : "@pop-1", 0.4] as Snd)
+        : dm.type === "dailyClock" ? [[10, "@zvukitop/zt-clock", 0.35], ...Array.from({length: 6}).map((_, i) => [16 + i * 22, "@zvukitop/zt-paper", 0.2] as Snd), [72, "@ding-2", 0.4], [84, "@pop-1", 0.35]]
+        : [[6, "@pop-1", 0.4], [24, "@pop-2", 0.4], [42, "@pop-1", 0.4]];
+      return [...base, ...demo];
+    }
+    case "recap": {
+      const n = sc.points.length;
+      return [[0, "@whoosh-1", 0.45], ...sc.points.map((_, i) => [12 + i * 10, "@pop-1", 0.4] as Snd), [8 + n * 10 + 4, "@impact-3", 0.4], [8 + n * 10 + 8, "@success-1", 0.35], [d - 20, "@zvukitop/zt-whoosh", 0.3]];
+    }
     case "fin": {
       const t = Math.round(d * 0.52);
       return [[0, "@whoosh-1", 0.5], [4, "@swipe-1", 0.3], [22, "@typing-1", 0.35], [34, "@pop-1", 0.4], [40, "@impact-3", 0.4], [t, "@click-1", 0.55], [t + 2, "@success-1", 0.4], [t + 4, "@zvukitop/zt-ding", 0.35],
@@ -111,6 +132,10 @@ const node = (sc: OdxScene, d: number) => {
     case "topics": return <TopicsAct s={sc} dur={d} />;
     case "seasons": return <SeasonsAct s={sc} dur={d} />;
     case "finRows": return <FinRows s={sc} dur={d} />;
+    case "cover": return <CoverAct s={sc} dur={d} />;
+    case "intro": return <IntroAct s={sc} dur={d} />;
+    case "point": return <PointAct s={sc} dur={d} />;
+    case "recap": return <RecapAct s={sc} dur={d} />;
   }
   return null;
 };
@@ -121,7 +146,8 @@ export const OdManhuaExplainer: React.FC<OdManhuaExplainerProps> = (P) => {
   const f = useCurrentFrame();
   const S = odxScenes(P);
   const total = odxFrames(P);
-  const identIdx = Math.max(0, P.scenes.findIndex((s) => s.kind === "ident"));
+  const identIdx = Math.max(0, P.scenes.findIndex((s) => s.kind === "ident" || s.kind === "intro"));
+  const recapIdx = P.scenes.findIndex((s) => s.kind === "recap");
   const reveal = [
     (c: React.ReactNode) => <SlashReveal dur={12}>{c}</SlashReveal>,
     (c: React.ReactNode) => <InkReveal dur={12} id="x1" x={540} y={900}>{c}</InkReveal>,
@@ -130,17 +156,17 @@ export const OdManhuaExplainer: React.FC<OdManhuaExplainerProps> = (P) => {
     (c: React.ReactNode) => <CircleReveal dur={12} x={540} y={760}>{c}</CircleReveal>,
   ];
   const sounds: Snd[] = P.scenes.flatMap((sc, i) => sndOf(sc, S[i][1] - S[i][0]).map(([a, n, v]) => [Math.max(0, S[i][0] + a), n, v] as Snd));
-  const drop = S[identIdx][0] + 2; // удар трека — на «шлёп» печати заставки
+  const drop = S[identIdx][0] + 2; // удар трека — на «шлёп» печати заставки (в версии 2 — на вступление после обложки)
   return (
     <AbsoluteFill style={{background: C.ink, overflow: "hidden"}}>
       {P.scenes.map((sc, i) => {
         const d = S[i][1] - S[i][0];
         const inner = node(sc, d);
-        const wrapped = i === 0 ? inner : sc.kind === "ident" ? <CircleReveal dur={12} x={190} y={420}>{inner}</CircleReveal> : (sc.kind === "fin" || sc.kind === "finRows") ? <InkReveal dur={12} id="fin" x={760} y={1100}>{inner}</InkReveal> : reveal[i % reveal.length](inner);
+        const wrapped = i === 0 ? inner : sc.kind === "intro" ? <InkReveal dur={12} id="intro" x={300} y={560}>{inner}</InkReveal> : sc.kind === "point" ? (P.scenes[i - 1]?.kind === "intro" ? <SlashReveal dur={12}>{inner}</SlashReveal> : <PageReveal dur={14}>{inner}</PageReveal>) : sc.kind === "recap" ? <CircleReveal dur={12} x={540} y={760}>{inner}</CircleReveal> : sc.kind === "ident" ? <CircleReveal dur={12} x={190} y={420}>{inner}</CircleReveal> : (sc.kind === "fin" || sc.kind === "finRows") ? <InkReveal dur={12} id="fin" x={760} y={1100}>{inner}</InkReveal> : reveal[i % reveal.length](inner);
         return <Sequence key={i} from={S[i][0]} durationInFrames={d} premountFor={fps}>{wrapped}</Sequence>;
       })}
       {/* печать 多 — после заставки на всех сценах, как в «多 NEWS» */}
-      <div style={{position: "absolute", right: 64, top: 262, width: 84, height: 84, background: C.seal, color: "#fff", fontFamily: BRUSH, fontSize: 64, lineHeight: "84px", textAlign: "center", borderRadius: 10, boxShadow: "0 0 0 5px #fff", rotate: "-4deg", opacity: f < S[Math.min(S.length - 1, identIdx + 1)][0] + 6 ? 0 : 1}}>多</div>
+      <div style={{position: "absolute", right: 64, top: 262, width: 84, height: 84, background: C.seal, color: "#fff", fontFamily: BRUSH, fontSize: 64, lineHeight: "84px", textAlign: "center", borderRadius: 10, boxShadow: "0 0 0 5px #fff", rotate: "-4deg", opacity: f < S[Math.min(S.length - 1, identIdx + 1)][0] + 6 || (recapIdx >= 0 && f >= S[recapIdx][0] + 6) ? 0 : 1}}>多</div>
       <Grain opacity={0.12} />
       <Vignette strength={0.14} />
       <Audio

@@ -1,0 +1,126 @@
+{
+ "title": "Что такое 多 NEWS v2 — объяснение пунктов обложки (06.11.2026)",
+ "scenes": [
+  {
+   "kind": "cover",
+   "sec": 1.4,
+   "img": "finished-videos/обложки/od-manhua/2026-11-06-od-what-is-duo-news.jpg"
+  },
+  {
+   "kind": "intro",
+   "sec": 3.6,
+   "text": "Статья → **манхуа** за 45 секунд",
+   "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-megamarket-mikrofon.png",
+   "photoH": 900
+  },
+  {
+   "kind": "point",
+   "sec": 7.6,
+   "n": 1,
+   "total": 4,
+   "title": "Статья → манхуа за 45 секунд",
+   "line": "Одна статья — **один выпуск**",
+   "demo": {
+    "type": "articleToEpisode",
+    "article": "source-videos/2026-11-06-od-manhua-explainer/обложки-статей/fastest-man-town.jpg",
+    "articlePos": "50% 40%",
+    "articleLabel": "статья · 6 мин",
+    "episode": "finished-videos/обложки/blog-news/004-fastest-man-town.jpg",
+    "timer": 45
+   }
+  },
+  {
+   "kind": "point",
+   "sec": 7.2,
+   "n": 2,
+   "total": 4,
+   "title": "Новости индустрий Азии",
+   "line": "От **роботов** до напитков",
+   "bg": "bone",
+   "demo": {
+    "type": "topics",
+    "img": "source-videos/higgsfield/2026-11-06-od-manhua/hf-aziya.jpg",
+    "imgPos": "50% 40%",
+    "labels": [
+     {
+      "text": "производство",
+      "x": 70,
+      "y": 640
+     },
+     {
+      "text": "напитки",
+      "x": 690,
+      "y": 760
+     },
+     {
+      "text": "кухни",
+      "x": 460,
+      "y": 970
+     },
+     {
+      "text": "роботы",
+      "x": 80,
+      "y": 1180
+     }
+    ]
+   }
+  },
+  {
+   "kind": "point",
+   "sec": 7.2,
+   "n": 3,
+   "total": 4,
+   "title": "Каждый день · 9:00 по Пекину",
+   "line": "Новая статья — **каждое утро**",
+   "demo": {
+    "type": "dailyClock",
+    "from": "2026-10-31",
+    "to": "2026-11-06",
+    "time": "9:00",
+    "zh": "北京"
+   }
+  },
+  {
+   "kind": "point",
+   "sec": 7.2,
+   "n": 4,
+   "total": 4,
+   "title": "RU · EN · 中文",
+   "line": "Одна статья — **на трёх языках**",
+   "bg": "bone",
+   "demo": {
+    "type": "threeLangs",
+    "imgs": [
+     "source-videos/ostapdotcenko/site/2026-11-03-сайт/ru-hum-1.jpg",
+     "source-videos/ostapdotcenko/site/2026-11-03-сайт/en-hum-1.jpg",
+     "source-videos/ostapdotcenko/site/2026-11-03-сайт/zh-hum-1.jpg"
+    ],
+    "tags": [
+     "RU",
+     "EN",
+     "中文"
+    ]
+   }
+  },
+  {
+   "kind": "recap",
+   "sec": 5.6,
+   "points": [
+    "Статья → манхуа за 45 секунд",
+    "Новости Азии",
+    "Каждый день",
+    "RU · EN · 中文"
+   ],
+   "url": "ostapdotcenko.ru/blog",
+   "handle": "Instagram · @ostap.dotsenko",
+   "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-megamarket-mikrofon.png",
+   "photoH": 700
+  }
+ ],
+ "music": {
+  "src": "интернет-материалы/музыка/phonk-remix-holiznacc0.mp3",
+  "drop": 10.45,
+  "vol": 0.37,
+  "credit": "Музыка: HoliznaCC0 — Phonk Remix (CC0)"
+ }
+}
