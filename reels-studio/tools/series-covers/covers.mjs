@@ -24,9 +24,9 @@ const AR = fs.readFileSync(`${ROOT}/source-videos/aura-robotics/логотип/a
 
 // ——— Робокитай ———
 const RK = [
-  { name: 'robokitai-000-trailer', ep: 'СЕРИЯ 0', stamp: '机', img: 'ep0-komanda.jpg', pos: 'center 40%',
-    title: 'Добро пожаловать в <mark>Робокитай</mark>', city: 'Знакомство', zh: '',
-    tag: '16 героев · 8 краёв Китая', note: 'Каждая серия — задача клиента' },
+  // Серия 0 — своя раскладка (07.11.2026, пользователь: «не очень красивая… чтобы было понятно, что это Китай, и чтобы всех
+  // персонажей было видно»): красная карта Китая, 16 героев целиком (вырезки из портретов AuraCast), ряд 8 печатей краёв
+  { name: 'robokitai-000-trailer', kind: 'map', ep: 'СЕРИЯ 0', title: 'Добро пожаловать в <mark>Робокитай</mark>' },
   { name: 'robokitai-001-hangzhou', ep: 'СЕРИЯ 1', stamp: '杭', img: 'ep1-kadr.jpg', pos: 'center 74%',
     title: 'Склад <mark>не успевает</mark>.<br>AGV или AMR?', city: 'Ханчжоу', zh: '杭州',
     tag: 'край складских машин', note: 'Рыжик или Шустрик — кто?' },
@@ -70,6 +70,56 @@ mark{background:linear-gradient(transparent 52%,#F4E35B 52%,#F4E35B 92%,transpar
 <div class="note">${c.note}</div></div>
 <div class="foot">${AR}<span>aura-robotics.ru/blog</span></div>
 <script>window.fit=()=>{const h=document.querySelector('h1');let f=112;h.style.fontSize=f+'px';while(h.offsetHeight>2.2*f&&f>60){f-=4;h.style.fontSize=f+'px'}}</script>
+</body></html>`;
+
+// Серия 0: карта Китая из chinaMap.ts (Natural Earth, общественное достояние) + герои. Вырезки героев —
+// source-videos/обложки/robokitai/герои/NN-*.png (scripts/cutout.py --crop 64,102,952,906 из портретов aura-персонажи/NN-*.png).
+// Герой: [файл, имя, центр x, низ y, высота, флаги] — fly: летит (тень ниже), lead: плашка на лимонном маркере.
+const HERO = `${ROOT}/source-videos/обложки/robokitai/герои/`;
+const MAP_TS = fs.readFileSync(`${ROOT}/reels-studio/src/compositions/robokitai/chinaMap.ts`, 'utf8');
+const CHINA = JSON.parse(MAP_TS.match(/CHINA_PATHS: string\[\] = (\[.*?\]);/s)[1]);
+const CAST0 = [
+  ['14-drone', 'Сокол', 215, 760, 118, 'fly'], ['16-cargo-drone', 'Аист', 470, 770, 150, 'fly'], ['15-drone-white', 'Стриж', 900, 790, 118, 'fly'],
+  ['08-arm-industrial', 'Титан', 165, 1040, 235], ['07-arm', 'Арми', 385, 1040, 235], ['01-mascot', 'Ави', 610, 1028, 285, 'lead'],
+  ['09-cobot', 'Тихон', 845, 1040, 235],
+  ['03-humanoid', 'Леон', 105, 1290, 250], ['04-humanoid-navy', 'Нова', 255, 1290, 250], ['05-wheel-humanoid', 'Роли', 425, 1290, 250],
+  ['06-wheel-humanoid-navy', 'Кэрри', 575, 1290, 222], ['10-hand', 'Пятёрка', 735, 1290, 230], ['11-hand-chrome', 'Рубин', 885, 1290, 230],
+  ['02-dog', 'Скаут', 230, 1500, 200], ['12-agv', 'Шустрик', 535, 1500, 195], ['13-agv-orange', 'Рыжик', 835, 1500, 180],
+];
+const SEALS0 = ['杭', '苏', '沪', '京', '深', '粤', '沈', '关'];
+const rk0Html = (c) => `<!doctype html><html lang="ru"><head><meta charset="utf-8"><style>${FONTS}
+body{background:#F3F0E8;background-image:linear-gradient(#E3DED2 1.5px,transparent 1.5px),linear-gradient(90deg,#E3DED2 1.5px,transparent 1.5px);background-size:54px 54px;font-family:Golos;color:#16161C}
+.hdr{position:absolute;top:262px;left:64px;right:64px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:18px;font:700 30px JB;letter-spacing:.08em}
+.seal{width:62px;height:62px;background:#D6262B;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font:64px MSZ}
+.brand .zh{color:#D6262B;font:38px MSZ;letter-spacing:0}
+.ep{background:#16161C;color:#fff;font:800 32px JB;letter-spacing:.06em;padding:12px 22px;border-radius:12px}
+h1{position:absolute;top:346px;left:64px;right:40px;font:900 108px/1.04 Golos;letter-spacing:-.02em}
+mark{background:linear-gradient(transparent 52%,#F4E35B 52%,#F4E35B 92%,transparent 92%);color:inherit;padding:0 6px}
+.map{position:absolute;left:22px;top:585px;width:1036px}
+.map .sh{fill:#16161C;transform:translate(9px,9px)}
+.map .land{fill:#D6262B;stroke:#16161C;stroke-width:3.2;stroke-linejoin:round}
+.h{position:absolute;transform:translateX(-50%)}
+.h img{display:block;height:100%;width:auto;margin:0 auto;position:relative;filter:drop-shadow(0 3px 0 rgba(22,22,28,.35))}
+.h .gs{position:absolute;left:50%;bottom:-10px;width:78%;height:26px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(22,22,28,.55),rgba(22,22,28,0))}
+.h.fly .gs{bottom:-46px;width:60%;opacity:.55}
+.nm{position:absolute;transform:translateX(-50%);background:#fff;border:3px solid #16161C;border-radius:30px;padding:3px 16px 5px;font:800 31px Golos;white-space:nowrap;box-shadow:4px 4px 0 #16161C;z-index:5}
+.nm.lead{background:#F4E35B;font-size:36px}
+.seals{position:absolute;top:1560px;left:64px;right:64px;display:flex;align-items:center;justify-content:space-between}
+.seals span{width:94px;height:94px;background:#D6262B;color:#fff;border-radius:14px;display:flex;align-items:center;justify-content:center;font:84px/1 MSZ;border:4px solid #fff;box-shadow:5px 5px 0 #16161C}
+.seals span:nth-child(odd){transform:rotate(-5deg)}.seals span:nth-child(even){transform:rotate(4deg)}
+.cap{position:absolute;top:1684px;left:64px;right:64px;display:flex;justify-content:space-between;align-items:center;font:800 42px Golos;white-space:nowrap}
+.cap i{font-style:normal;font:700 32px JB;color:#3E3D45;display:flex;align-items:center;gap:12px;white-space:nowrap}
+.cap svg{width:50px;height:50px}
+</style></head><body>
+<div class="hdr"><div class="brand"><span class="seal">机</span>РОБОКИТАЙ <span class="zh">机器人中国</span></div><div class="ep">${c.ep}</div></div>
+<h1>${c.title}</h1>
+<svg class="map" viewBox="0 0 1000 839.1">${CHINA.map((d) => `<path class="sh" d="${d}"/>`).join('')}${CHINA.map((d) => `<path class="land" d="${d}"/>`).join('')}</svg>
+${CAST0.map(([f, n, x, y, h, fl]) => `<div class="h ${fl || ''}" style="left:${x}px;top:${y - h}px;height:${h}px"><span class="gs"></span><img src="${u(HERO + f + '.png')}"></div>`).join('\n')}
+${CAST0.map(([, n, x, y, h, fl]) => `<span class="nm ${fl || ''}" style="left:${x}px;top:${fl === 'fly' ? y - h - 30 : y - 26}px">${n}</span>`).join('')}
+<div class="seals">${SEALS0.map((s) => `<span>${s}</span>`).join('')}</div>
+<div class="cap"><span>16 героев · 8 краёв Китая</span><i>${AR}aura-robotics.ru</i></div>
+<script>window.fit=()=>{const h=document.querySelector('h1');let f=108;h.style.fontSize=f+'px';while(h.offsetHeight>2.2*f&&f>60){f-=4;h.style.fontSize=f+'px'}}</script>
 </body></html>`;
 
 // ——— манхуа ostapdotcenko ———
@@ -127,7 +177,7 @@ h1 .b{display:block;color:#E8341C;text-shadow:6px 6px 0 #191922}
 
 (async () => {
   const only = process.argv.slice(2);
-  const jobs = [...RK.map((c) => ['robokitai', c, rkHtml(c)]), ...OD.map((c) => ['od-manhua', c, odHtml(c)])]
+  const jobs = [...RK.map((c) => ['robokitai', c, c.kind === 'map' ? rk0Html(c) : rkHtml(c)]), ...OD.map((c) => ['od-manhua', c, odHtml(c)])]
     .filter(([, c]) => !only.length || only.includes(c.name));
   const b = await chromium.launch();
   const pg = await b.newPage({ viewport: { width: 1080, height: 1920 } });
