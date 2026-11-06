@@ -75,11 +75,11 @@ const ART = `${ROOT}/source-videos/2026-11-06-od-manhua-explainer/обложки
 const OD = [
   { name: '2026-11-06-od-why-manhua', kick: 'OSTAPDOTCENKO.RU · 为什么是漫画？', t1: 'Почему', t2: 'манхуа?',
     bubble: 'Почему я рассказываю<br>о своих проектах<br><b>как в комиксе</b>', bubbleZh: '像漫画一样！',
-    cut: OST + 'ostap-portret-vyrezka.png', chips: ['легко, а не занудно', 'удобно с телефона', 'лучше запоминается'], wall: false,
+    cut: OST + 'ostap-portret-vyrezka.png', cutR: -170, cutB: 230, cutH: 930, chips: ['легко, а не занудно', 'удобно с телефона', 'лучше запоминается'], wall: false,
     foot: 'ostapdotcenko.ru' },
   { name: '2026-11-06-od-what-is-duo-news', kick: 'БЛОГ OSTAPDOTCENKO.RU · 这是什么？', t1: 'Что такое', t2: '多 NEWS?',
     bubble: 'Статья блога →<br><b>выпуск манхуа</b><br>за 45 секунд', bubbleZh: '什么时候读？',
-    cut: OST + 'вырезки/ostap-megamarket-mikrofon.png', chips: ['новости индустрий Азии', 'каждый день · 9:00 по Пекину', 'RU · EN · 中文'], wall: true,
+    cut: OST + 'вырезки/ostap-megamarket-mikrofon.png', cutR: -150, cutB: 250, cutH: 900, chips: ['новости индустрий Азии', 'каждый день · 9:00 по Пекину', 'RU · EN · 中文'], wall: true,
     foot: 'ostapdotcenko.ru/blog' },
 ];
 const odHtml = (c) => {
@@ -98,11 +98,11 @@ h1{position:absolute;top:340px;left:52px;right:30px;font:900 150px/.98 Unbounded
 h1 .a,h1 .b{display:block;white-space:nowrap;width:max-content}
 h1 .a{color:#191922}
 h1 .b{display:block;color:#E8341C;text-shadow:6px 6px 0 #191922}
-.bubble{position:absolute;top:720px;left:52px;width:560px;background:#fff;border:6px solid #191922;border-radius:46px;padding:30px 34px;font:600 42px/1.18 Golos;box-shadow:10px 10px 0 #191922}
+.bubble{position:absolute;top:700px;left:44px;width:470px;background:#fff;border:6px solid #191922;border-radius:46px;padding:30px 34px;font:600 42px/1.18 Golos;box-shadow:10px 10px 0 #191922}
 .bubble b{font-weight:900;background:linear-gradient(transparent 55%,#FFD92E 55%)}
 .bubble .zh{display:block;font:46px MSZ;color:#E8341C;margin-top:10px}
-.bubble::after{content:"";position:absolute;right:-58px;top:120px;border:30px solid transparent;border-left:52px solid #191922}
-.cut{position:absolute;right:-40px;bottom:250px;height:${c.wall ? 930 : 980}px}
+.bubble::after{content:"";position:absolute;right:-44px;top:110px;border:22px solid transparent;border-left:40px solid #191922}
+.cut{position:absolute;right:${c.cutR ?? -150}px;bottom:${c.cutB ?? 240}px;height:${c.cutH ?? 940}px}
 .chips{position:absolute;top:1130px;left:52px;display:flex;flex-direction:column;gap:18px}
 .chip{background:#191922;color:#fff;font:800 38px Golos;padding:16px 26px;border-radius:14px;width:max-content;transform:rotate(-1deg);box-shadow:6px 6px 0 #E8341C}
 .chip:nth-child(2){transform:rotate(1deg);margin-left:24px}.chip:nth-child(3){transform:rotate(-.5deg)}
