@@ -337,7 +337,7 @@ EN[14] = dict(
   "R1 on top of V3 — $294,000 (Nature paper, September 2025)", "V4 (April 24, 2026): 1.6 trillion parameters, 1M-token context, open weights",
   "V4 — first adapted to Huawei’s Ascend chips", "A 75% price cut on the flagship V4 — made permanent",
   "Liang put in about 20 billion yuan; backers include Tencent and CATL", "IPO — possibly in 2027 (Bloomberg, FT)"],
- cover=dict(big="nearly $600B", bigText="Nvidia lost in a single day", blurbs=[["≈ $5.6M", "V3’s final training run"], ["−97%", "Alibaba in the price war"]], tag="A hedge fund, silence and a token war"),
+ cover=dict(big="−$600B", bigText="nearly that much — Nvidia, in a single day", blurbs=[["≈ $5.6M", "V3’s final training run"], ["−97%", "Alibaba in the price war"]], tag="A hedge fund, silence and a token war"),
 )
 EN[15] = dict(
  title="There Is Such a Thing as a Free Lunch. It Runs in the Cloud",
