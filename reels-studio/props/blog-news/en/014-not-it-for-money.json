@@ -1,0 +1,247 @@
+{
+ "show": "多 NEWS",
+ "ep": 14,
+ "season": {
+  "name": "China’s AI",
+  "zh": "智能",
+  "n": 1,
+  "total": 9
+ },
+ "title": "Not in It for the Money",
+ "date": "2026-11-07",
+ "slug": "not-it-for-money",
+ "cover": "source-videos/ostapdotcenko/blog-news/not-it-for-money/cover.jpg",
+ "coverPos": "50% 45%",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/not-it-for-money/en-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/not-it-for-money/en-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/not-it-for-money/en-02.jpg"
+ ],
+ "accent": "#A98CFF",
+ "look": "light",
+ "hook": {
+  "style": "chip",
+  "chipZh": "深",
+  "lines": [
+   "A HEDGE FUND",
+   "BUILT AI",
+   "ON THE SIDE."
+  ],
+  "shout": [
+   "…and knocked",
+   "someone else’s stock!"
+  ],
+  "sfx": "嘘"
+ },
+ "beats": [
+  {
+   "kind": "chat",
+   "sec": 8.4,
+   "zh": "算",
+   "kicker": "DECEMBER 2024 · V3",
+   "title": "The Price of the Last Toast",
+   "bot": {
+    "name": "V3 tech report",
+    "zh": "深"
+   },
+   "user": {
+    "name": "World"
+   },
+   "msgs": [
+    {
+     "who": "user",
+     "text": "How much did it cost to train V3?"
+    },
+    {
+     "who": "bot",
+     "text": "The final training run took 2.788 million H800 GPU hours.",
+     "big": "≈ $5.6M",
+     "bigText": "about that much"
+    },
+    {
+     "who": "user",
+     "text": "US labs were spending orders of magnitude more!"
+    },
+    {
+     "who": "bot",
+     "text": "This covers only the final run, not the research and experiments before it."
+    }
+   ],
+   "note": "It’s like quoting the cost of a wedding as the price of the last toast."
+  },
+  {
+   "kind": "pricewar",
+   "sec": 9.0,
+   "zh": "价",
+   "kicker": "MAY 2024",
+   "title": "The Token War",
+   "img": "source-videos/ostapdotcenko/blog-news/not-it-for-money/hf-cenovaya-voyna.jpg",
+   "imgPos": "50% 30%",
+   "unit": "PRICE PER 1M TOKENS",
+   "tags": [
+    {
+     "name": "DeepSeek V2",
+     "logo": "source-videos/логотипы/ии/deepseek.svg",
+     "icon": 0.38,
+     "when": "MAY 2024",
+     "price": "1 / 2 ¥",
+     "sub": "input / output"
+    },
+    {
+     "name": "Zhipu",
+     "logo": "source-videos/логотипы/ии/zhipu.png",
+     "icon": 0.25,
+     "when": "5 DAYS LATER",
+     "price": "÷5",
+     "sub": "cut its price fivefold"
+    },
+    {
+     "name": "Doubao",
+     "logo": "source-videos/логотипы/общие/bytedance.png",
+     "icon": 0.3,
+     "when": "BYTEDANCE",
+     "price": "0.8 ¥",
+     "sub": "priced its own model"
+    },
+    {
+     "name": "Qwen-Long",
+     "logo": "source-videos/логотипы/ии/qwen.svg",
+     "icon": 0.27,
+     "when": "ALIBABA",
+     "price": "−97%",
+     "sub": "slashed the price"
+    },
+    {
+     "name": "Baidu",
+     "when": "4 HOURS LATER",
+     "price": "0 ¥",
+     "sub": "two models made free",
+     "free": true
+    }
+   ],
+   "stamp": {
+    "text": "PRICE WAR",
+    "sub": "how China’s token price war began",
+    "zh": "战"
+   },
+   "note": "Some people walk into a room, say nothing, and everyone else starts apologizing."
+  },
+  {
+   "kind": "fall",
+   "sec": 7.8,
+   "zh": "崩",
+   "kicker": "JANUARY 27, 2025",
+   "title": "The DeepSeek Moment",
+   "img": "source-videos/ostapdotcenko/blog-news/not-it-for-money/hf-panika.jpg",
+   "imgPos": "50% 28%",
+   "steps": [
+    {
+     "when": "JAN 20",
+     "text": "R1 — an open-weights reasoning model"
+    },
+    {
+     "when": "JAN 27",
+     "text": "its app overtook ChatGPT on the US App Store"
+    },
+    {
+     "when": "JAN 27",
+     "text": "Nvidia loses about 17% in a day"
+    }
+   ],
+   "big": {
+    "pre": "nearly $",
+    "num": 600,
+    "suf": "B",
+    "text": "of Nvidia’s market value in one day"
+   },
+   "mark": "−17%",
+   "stamp": {
+    "text": "RECORD",
+    "sub": "largest one-day rout · Bloomberg",
+    "zh": "崩"
+   },
+   "note": "Nobody meant to scare anyone. They just uploaded some files."
+  },
+  {
+   "kind": "stat",
+   "sec": 7.6,
+   "zh": "钱",
+   "kicker": "2026 · FIRST OUTSIDE ROUND",
+   "title": "Hand Over Money, Sit Quietly",
+   "img": "source-videos/ostapdotcenko/blog-news/not-it-for-money/hf-investory.jpg",
+   "imgPos": "50% 40%",
+   "big": {
+    "pre": ">¥",
+    "num": 50,
+    "suf": "B",
+    "text": "outside money, for the first time"
+   },
+   "equal": "≈ $7.4B",
+   "chips": [
+    "no votes",
+    "five-year lock-up"
+   ]
+  }
+ ],
+ "punch": {
+  "lines": [
+   "The best",
+   "salesman is",
+   "the one who",
+   "keeps quiet."
+  ],
+  "zh": "卖得最好的，是那个不说话的。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-portret-sait.png",
+  "from": "— from the article"
+ },
+ "next": {
+  "n": 15,
+  "title": "There Is Such a Thing as a Free Lunch. It Runs in the Cloud",
+  "season": "China’s AI",
+  "zh": "智能",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/cybernetic-enhancements-dafuqex.mp3",
+  "drop": 53.0,
+  "vol": 0.2
+ },
+ "brand": {
+  "name": "DeepSeek",
+  "zh": "深度求索",
+  "logo": "source-videos/логотипы/ии/deepseek.svg",
+  "icon": 0.38
+ },
+ "ticker": [
+  "High-Flyer: a Hangzhou quant fund co-founded by Liang Wenfeng in 2015",
+  "By 2021 — around 10,000 Nvidia A100s, before US restrictions",
+  "July 2023: the fund spun its research lab off as DeepSeek",
+  "2025: DeepSeek had about 160 employees",
+  "R1 on top of V3 — $294,000 (Nature paper, September 2025)",
+  "V4 (April 24, 2026): 1.6 trillion parameters, 1M-token context, open weights",
+  "V4 — first adapted to Huawei’s Ascend chips",
+  "A 75% price cut on the flagship V4 — made permanent",
+  "Liang put in about 20 billion yuan; backers include Tencent and CATL",
+  "IPO — possibly in 2027 (Bloomberg, FT)"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/not-it-for-money/hf-panika.jpg",
+  "heroPos": "50% 30%",
+  "alt": "source-videos/ostapdotcenko/blog-news/not-it-for-money/hf-panika.jpg",
+  "altPos": "50% 28%",
+  "big": "nearly $600B",
+  "bigText": "Nvidia lost in a single day",
+  "blurbs": [
+   {
+    "big": "≈ $5.6M",
+    "text": "V3’s final training run"
+   },
+   {
+    "big": "−97%",
+    "text": "Alibaba in the price war"
+   }
+  ],
+  "tag": "A hedge fund, silence and a token war"
+ },
+ "lang": "en"
+}

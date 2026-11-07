@@ -1,0 +1,236 @@
+{
+ "show": "多 NEWS",
+ "ep": 15,
+ "season": {
+  "name": "Китайский ИИ",
+  "zh": "智能",
+  "n": 2,
+  "total": 9
+ },
+ "title": "Бесплатный сыр в облаке",
+ "date": "2026-11-08",
+ "slug": "there-is-such-thing-as-free-lunch",
+ "cover": "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/cover.jpg",
+ "coverPos": "50% 40%",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/ru-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/ru-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/ru-02.jpg"
+ ],
+ "accent": "#A98CFF",
+ "look": "light",
+ "hook": {
+  "style": "chip",
+  "chipZh": "千",
+  "lines": [
+   "СЫР — БЕСПЛАТНО.",
+   "ХОЛОДИЛЬНИК —",
+   "В АРЕНДУ."
+  ],
+  "shout": [
+   "А кто",
+   "тут мышь?"
+  ],
+  "sfx": "免"
+ },
+ "beats": [
+  {
+   "kind": "weights",
+   "sec": 8.6,
+   "zh": "开",
+   "kicker": "АВГУСТ 2023 → 2026",
+   "title": "Сыроварня для полмира",
+   "img": "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/hf-syrovarnya.jpg",
+   "imgPos": "50% 52%",
+   "box": "Qwen-7B",
+   "boxZh": "开源",
+   "boxSub": "август 2023: первой из китайских техгигантов",
+   "big": {
+    "pre": ">",
+    "num": 3,
+    "suf": " млрд",
+    "text": "скачиваний моделей Qwen"
+   },
+   "chips": [
+    "460+ открытых моделей",
+    "300 000+ производных"
+   ],
+   "note": "Это уже не сыр. Это сыроварня, к которой полмира ходит со своим хлебом."
+  },
+  {
+   "kind": "vs",
+   "sec": 7.6,
+   "zh": "比",
+   "kicker": "HUGGING FACE · 7 МЕСЯЦЕВ 2026",
+   "title": "Чужие цифры",
+   "img": "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/hf-ring.jpg",
+   "imgPos": "50% 30%",
+   "left": "QWEN",
+   "right": "META",
+   "round": "ROUND 2026 · СКАЧИВАНИЯ",
+   "result": "Производных от Qwen — в 2,6 раза больше, чем от Meta",
+   "facts": [
+    {
+     "pre": "≈",
+     "num": 2,
+     "suf": " млрд",
+     "text": "скачиваний Qwen"
+    },
+    {
+     "num": 418,
+     "suf": " млн",
+     "text": "у Google"
+    },
+    {
+     "num": 227,
+     "suf": " млн",
+     "text": "у Meta"
+    }
+   ]
+  },
+  {
+   "kind": "rise",
+   "sec": 8.0,
+   "zh": "云",
+   "kicker": "ОТЧЁТНОСТЬ ALIBABA",
+   "title": "Пекарня под бесплатный хлеб",
+   "img": "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/hf-oblako-pekarnya.jpg",
+   "imgPos": "50% 45%",
+   "steps": [
+    {
+     "when": "ФЕВ 2025",
+     "text": "380 млрд ¥ в ИИ и облако — за три года"
+    },
+    {
+     "when": "АВГ 2026",
+     "text": "+45% за год — лучший рост за 22 квартала"
+    },
+    {
+     "when": "КВАРТАЛ",
+     "text": "капзатраты — почти 10 млрд $"
+    }
+   ],
+   "big": {
+    "pre": "$",
+    "num": 7.1,
+    "dec": 1,
+    "suf": " млрд",
+    "text": "выручка облака и ИИ за квартал"
+   },
+   "mark": "+45%",
+   "note": "Вот так выглядит бесплатный сыр в отчёте о прибылях и убытках."
+  },
+  {
+   "kind": "chat",
+   "sec": 8.8,
+   "zh": "问",
+   "kicker": "СЦЕНКА · ТОЛЬКО ЖАНР",
+   "title": "А в чём подвох?",
+   "bot": {
+    "name": "Продавец облака",
+    "zh": "云"
+   },
+   "user": {
+    "name": "Клиент"
+   },
+   "msgs": [
+    {
+     "who": "user",
+     "text": "Модель у вас сколько стоит?"
+    },
+    {
+     "who": "bot",
+     "text": "Нисколько. Скачивайте."
+    },
+    {
+     "who": "user",
+     "text": "А в чём подвох?"
+    },
+    {
+     "who": "bot",
+     "text": "Ни в чём. Запускать где будете?"
+    },
+    {
+     "who": "user",
+     "text": "Ну… у себя."
+    },
+    {
+     "who": "bot",
+     "text": "У себя — это сколько видеокарт?"
+    },
+    {
+     "who": "user",
+     "text": "(пауза)",
+     "quiet": true
+    },
+    {
+     "who": "bot",
+     "text": "Вот договор на облако. Модель, как договорились, бесплатно."
+    }
+   ],
+   "note": "Это не мышеловка. Это гастроном."
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Бесплатный",
+   "сыр бывает.",
+   "Просто сначала",
+   "научись строить",
+   "облако."
+  ],
+  "zh": "免费的午餐是有的。前提是，厨房得是你的。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-alibaba-hangzhou-selfi.png",
+  "from": "— из статьи",
+  "photoH": 1240,
+  "photoRight": -120
+ },
+ "next": {
+  "n": 16,
+  "title": "Обратная сторона Луны",
+  "season": "Китайский ИИ",
+  "zh": "智能",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/global-tech-geoff-harvey-purple-planet-music.mp3",
+  "drop": 54.88,
+  "vol": 0.75
+ },
+ "brand": {
+  "name": "Qwen · Alibaba",
+  "zh": "通义千问",
+  "logo": "source-videos/логотипы/ии/qwen.svg",
+  "icon": 0.27
+ },
+ "ticker": [
+  "Август 2023: Qwen-7B — открытая модель, можно и в коммерции",
+  "460+ открытых моделей Qwen: текст, код, картинки, голос",
+  "Производных от Qwen на Hugging Face — около 151 тысячи",
+  "Airbnb: поддержка сильно опирается на Qwen — «быстрая и дешёвая» (Брайан Чески, Bloomberg)",
+  "Приложение Qwen: больше 10 млн скачиваний за первую неделю (ноябрь 2025)",
+  "QuestMobile, май 2026: Doubao 382 млн, Qwen 167 млн, DeepSeek 130 млн в месяц",
+  "Офисный ассистент Qwen: от 19 до 128 ¥ в месяц или 1499 ¥ в год",
+  "Базовый доступ к Qwen остался бесплатным",
+  "Выручка ИИ-продуктов Alibaba растёт трёхзначными темпами 12-й квартал подряд"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/hf-syrovarnya.jpg",
+  "heroPos": "50% 45%",
+  "alt": "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/hf-syrovarnya.jpg",
+  "altPos": "50% 50%",
+  "big": "> 3 млрд",
+  "bigText": "скачиваний моделей Qwen",
+  "blurbs": [
+   {
+    "big": "460+",
+    "text": "открытых моделей"
+   },
+   {
+    "big": "$7,1 млрд",
+    "text": "облако и ИИ за квартал"
+   }
+  ],
+  "tag": "Бесплатная модель и облако по подписке"
+ }
+}

@@ -1,0 +1,38 @@
+[
+ {
+  "file": "hf-cenovaya-voyna.jpg",
+  "job_id": "c5f3bd71-6875-453a-b2d5-66452c229324",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261107_051311_c5f3bd71-6875-453a-b2d5-66452c229324.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-07",
+  "what": "ценники «Война токенов» — торговцы режут ценники, тихий программист с кубиком"
+ },
+ {
+  "file": "hf-panika.jpg",
+  "job_id": "ec9ef019-7217-4675-a644-c92074a01a77",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261107_051453_ec9ef019-7217-4675-a644-c92074a01a77.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-07",
+  "what": "падение «Момент DeepSeek» — паника на бирже, инженер в худи уходит с чаем; обложка"
+ },
+ {
+  "file": "hf-investory.jpg",
+  "job_id": "2dd4e898-1486-492d-a4cc-dc350ed03ee4",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261107_051311_2dd4e898-1486-492d-a4cc-dc350ed03ee4.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-07",
+  "what": "цифра «Дать денег и посидеть тихо» — инвесторы молча сидят у стены с чемоданами денег"
+ }
+]

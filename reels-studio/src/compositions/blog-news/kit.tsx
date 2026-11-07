@@ -17,9 +17,11 @@ export const useLang = () => React.useContext(LangCtx);
 export const TX = {
   ru: {issue: (n: number) => `Выпуск №${n}`, season: (s: string) => `Сезон «${s}» `, about: "О ком:", fromArticle: "из статьи ↑", read: ["Читай", "целиком"],
     tomorrow: "ЗАВТРА", overTomorrow: "СЕЗОН ОКОНЧЕН · ЗАВТРА", over: "СЕЗОН ОКОНЧЕН", newSeason: (s: string) => `Новый сезон «${s}» `, soon: "Скоро — новые выпуски",
+    pauseTomorrow: "ПАУЗА В СЕЗОНЕ · ЗАВТРА", resume: (s: string) => `Возвращается сезон «${s}» `,
     follow: "подпишись — новый выпуск каждый день", no: "№", coverSeason: (s: string) => `сезон «${s}»`},
   en: {issue: (n: number) => `Episode #${n}`, season: (s: string) => `Season “${s}” `, about: "About:", fromArticle: "from the article ↑", read: ["Read it", "in full"],
     tomorrow: "TOMORROW", overTomorrow: "SEASON OVER · TOMORROW", over: "SEASON OVER", newSeason: (s: string) => `New season “${s}” `, soon: "New episodes soon",
+    pauseTomorrow: "SEASON PAUSED · TOMORROW", resume: (s: string) => `Season “${s}” is back `,
     follow: "follow — a new episode every day", no: "#", coverSeason: (s: string) => `season “${s}”`},
 };
 const EN_MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];

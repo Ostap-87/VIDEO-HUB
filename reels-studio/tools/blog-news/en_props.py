@@ -4,7 +4,7 @@
 # (pre/suf: "$", "¥", "M", "B", "K"), мат — знаками.
 import json, copy, glob, os, sys
 R = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'props', 'blog-news')
-SEASON = {"Перезапуски": "Restarts", "Наблюдения": "Observations", "Напитки Азии": "Asia's Drinks"}
+SEASON = {"Перезапуски": "Restarts", "Наблюдения": "Observations", "Напитки Азии": "Asia's Drinks", "Китайский ИИ": "China’s AI"}
 FROM = "— from the article"
 
 EN = {}
@@ -307,6 +307,68 @@ EN[13] = dict(
  cover=dict(big="< 6 weeks", bigText="from termination to his own chain", blurbs=[["161 of 165", "outlets changed signs"], ["900+", "ZUS Coffee stores"]], tag="A franchisee, a court and RM2 teh tarik"),
 )
 
+# сезон «Китайский ИИ» 智能 (07.11.2026): акты chat (msgs, bot, user), pricewar (unit, tags), weights (box, boxSub) — тексты из post.en.md
+EN[14] = dict(
+ title="Not in It for the Money",
+ hook=dict(lines=["A HEDGE FUND", "BUILT AI", "ON THE SIDE."], shout=["…and knocked", "someone else’s stock!"]),
+ beats=[
+  dict(kicker="DECEMBER 2024 · V3", title="The Price of the Last Toast", bot="V3 tech report", user="World",
+       msgs=[dict(text="How much did it cost to train V3?"),
+             dict(text="The final training run took 2.788 million H800 GPU hours.", big="≈ $5.6M", bigText="about that much"),
+             dict(text="US labs were spending orders of magnitude more!"),
+             dict(text="This covers only the final run, not the research and experiments before it.")],
+       note="It’s like quoting the cost of a wedding as the price of the last toast."),
+  dict(kicker="MAY 2024", title="The Token War", unit="PRICE PER 1M TOKENS",
+       tags=[dict(when="MAY 2024", sub="input / output"), dict(when="5 DAYS LATER", sub="cut its price fivefold"), dict(price="0.8 ¥", sub="priced its own model"),
+             dict(sub="slashed the price"), dict(when="4 HOURS LATER", sub="two models made free")],
+       stamp=dict(text="PRICE WAR", sub="how China’s token price war began"),
+       note="Some people walk into a room, say nothing, and everyone else starts apologizing."),
+  dict(kicker="JANUARY 27, 2025", title="The DeepSeek Moment",
+       steps=[["JAN 20", "R1 — an open-weights reasoning model"], ["JAN 27", "its app overtook ChatGPT on the US App Store"], ["JAN 27", "Nvidia loses about 17% in a day"]],
+       big=dict(pre="nearly $", suf="B", text="of Nvidia’s market value in one day"), mark="−17%",
+       stamp=dict(text="RECORD", sub="largest one-day rout · Bloomberg"), note="Nobody meant to scare anyone. They just uploaded some files."),
+  dict(kicker="2026 · FIRST OUTSIDE ROUND", title="Hand Over Money, Sit Quietly",
+       big=dict(pre=">¥", suf="B", text="outside money, for the first time"), equal="≈ $7.4B", chips=["no votes", "five-year lock-up"]),
+ ],
+ punch=["The best", "salesman is", "the one who", "keeps quiet."],
+ brand=None,
+ ticker=["High-Flyer: a Hangzhou quant fund co-founded by Liang Wenfeng in 2015", "By 2021 — around 10,000 Nvidia A100s, before US restrictions",
+  "July 2023: the fund spun its research lab off as DeepSeek", "2025: DeepSeek had about 160 employees",
+  "R1 on top of V3 — $294,000 (Nature paper, September 2025)", "V4 (April 24, 2026): 1.6 trillion parameters, 1M-token context, open weights",
+  "V4 — first adapted to Huawei’s Ascend chips", "A 75% price cut on the flagship V4 — made permanent",
+  "Liang put in about 20 billion yuan; backers include Tencent and CATL", "IPO — possibly in 2027 (Bloomberg, FT)"],
+ cover=dict(big="nearly $600B", bigText="Nvidia lost in a single day", blurbs=[["≈ $5.6M", "V3’s final training run"], ["−97%", "Alibaba in the price war"]], tag="A hedge fund, silence and a token war"),
+)
+EN[15] = dict(
+ title="There Is Such a Thing as a Free Lunch. It Runs in the Cloud",
+ hook=dict(lines=["THE MEAL’S FREE.", "THE KITCHEN —", "BY THE HOUR."], shout=["So who’s paying", "for lunch?"]),
+ beats=[
+  dict(kicker="AUGUST 2023 → 2026", title="A Soup Kitchen for the World", box="Qwen-7B", boxSub="August 2023: first of China’s tech giants",
+       big=dict(pre=">", suf="B", text="Qwen model downloads"), chips=["460+ open models", "300,000+ derivatives"],
+       note="That’s not a free lunch anymore. That’s a soup kitchen half the world now relies on."),
+  dict(kicker="HUGGING FACE · 7 MONTHS OF 2026", title="Someone Else’s Numbers", round="ROUND 2026 · DOWNLOADS",
+       result="2.6× as many Qwen derivatives as for Meta’s models",
+       facts=[dict(pre="≈", suf="B", text="Qwen downloads"), dict(suf="M", text="for Google"), dict(suf="M", text="for Meta")]),
+  dict(kicker="ALIBABA’S FILINGS", title="Building the Kitchen",
+       steps=[["FEB 2025", "¥380B into AI and cloud over three years"], ["AUG 2026", "+45% a year — fastest growth in 22 quarters"], ["QUARTER", "capital spending close to $10B"]],
+       big=dict(pre="$", suf="B", text="AI cloud & compute revenue, one quarter"), mark="+45%",
+       note="That’s what a free lunch looks like on an income statement."),
+  dict(kicker="A SHORT SCENE · JUST THE GENRE", title="What’s the Catch?", bot="Cloud seller", user="Client",
+       msgs=[dict(text="How much is the model?"), dict(text="Nothing. Download it."), dict(text="What’s the catch?"), dict(text="No catch. Where will you run it?"),
+             dict(text="Um. On our own servers."), dict(text="How many GPUs is ‘our own’?"), dict(text="(Pause.)"),
+             dict(text="Here’s the cloud contract. The model, as promised, is free.")],
+       note="It’s not a trap. It’s a business model with good manners."),
+ ],
+ punch=["There is", "a free lunch.", "You just have", "to own", "the kitchen."],
+ brand=None,
+ ticker=["August 2023: Qwen-7B released as open source, commercial use allowed", "460+ open Qwen models: text, code, images and voice",
+  "About 151,000 Qwen derivatives on Hugging Face", "Airbnb: customer service relies heavily on Qwen — “fast and cheap” (Brian Chesky, Bloomberg)",
+  "Qwen app: over 10 million downloads in its first week (November 2025)", "QuestMobile, May 2026: Doubao 382M, Qwen 167M, DeepSeek 130M monthly users",
+  "Qwen office assistant: ¥19 to ¥128 a month, or ¥1,499 a year", "Basic access to Qwen stays free",
+  "AI-related product revenue grew at triple digits for the 12th straight quarter"],
+ cover=dict(big="> 3B", bigText="Qwen model downloads", blurbs=[["460+", "open models"], ["$7.1B", "AI cloud in one quarter"]], tag="A free model and a cloud by the hour"),
+)
+
 def apply(ru, en):
     d = copy.deepcopy(ru)
     d["lang"] = "en"
@@ -344,6 +406,17 @@ def apply(ru, en):
                     if k in le: l[k] = le[k]
                     elif k in l: del l[k]
         if "twist" in e: b["twist"]["label"] = e["twist"]
+        # четвёртый сезон: чат, ценники, ящик с моделью
+        if "msgs" in e:
+            assert len(e["msgs"]) == len(b["msgs"]), (d["ep"], b["title"])
+            for m, me in zip(b["msgs"], e["msgs"]): m.update(me)
+            b["bot"]["name"] = e["bot"]
+            if "user" in e: b["user"]["name"] = e["user"]
+        if "tags" in e:
+            assert len(e["tags"]) == len(b["tags"]), (d["ep"], b["title"])
+            for t, te in zip(b["tags"], e["tags"]): t.update(te)
+        for k in ("box", "boxSub"):
+            if k in e: b[k] = e[k]
         if "items" in e and b["kind"] == "menu":
             assert len(e["items"]) == len(b["items"]), (d["ep"], b["title"])
             b["items"] = [{**it, **ie} for it, ie in zip(b["items"], e["items"])]
@@ -366,7 +439,7 @@ def apply(ru, en):
     d["coverArt"]["blurbs"] = [{"big": a, "text": t} for a, t in c["blurbs"]]
     return d
 
-NEXT_EN = {9: "Asia’s Drinks: Japan — Coffee Already Grew Up, Bubble Tea Is Still a Teenager",
+NEXT_EN = {9: "Asia’s Drinks: Japan — Coffee Already Grew Up, Bubble Tea Is Still a Teenager", 16: "The Dark Side of the Moon",
            14: "Asia’s Drinks: India — A Tea Nation Where the Coffee Shop Market Triples Tea Cafés"}
 only = [int(x) for x in sys.argv[1:]] or sorted(EN)
 for p in sorted(glob.glob(R + "/0*.json")):

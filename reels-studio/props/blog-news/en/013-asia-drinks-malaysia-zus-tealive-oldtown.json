@@ -178,10 +178,11 @@
  },
  "next": {
   "n": 14,
-  "title": "Asia’s Drinks: India — A Tea Nation Where the Coffee Shop Market Triples Tea Cafés",
-  "season": "Asia's Drinks",
-  "zh": "饮品",
-  "newSeason": false
+  "title": "Not in It for the Money",
+  "season": "China’s AI",
+  "zh": "智能",
+  "newSeason": true,
+  "pause": true
  },
  "music": {
   "src": "интернет-материалы/музыка/raving-1000-handz.mp3",

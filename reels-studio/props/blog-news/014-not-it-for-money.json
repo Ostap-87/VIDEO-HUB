@@ -1,0 +1,245 @@
+{
+ "show": "多 NEWS",
+ "ep": 14,
+ "season": {
+  "name": "Китайский ИИ",
+  "zh": "智能",
+  "n": 1,
+  "total": 9
+ },
+ "title": "Не корысти ради",
+ "date": "2026-11-07",
+ "slug": "not-it-for-money",
+ "cover": "source-videos/ostapdotcenko/blog-news/not-it-for-money/cover.jpg",
+ "coverPos": "50% 45%",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/not-it-for-money/ru-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/not-it-for-money/ru-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/not-it-for-money/ru-02.jpg"
+ ],
+ "accent": "#A98CFF",
+ "look": "light",
+ "hook": {
+  "style": "chip",
+  "chipZh": "深",
+  "lines": [
+   "ХЕДЖ-ФОНД",
+   "СДЕЛАЛ ИИ",
+   "МЕЖДУ ДЕЛОМ."
+  ],
+  "shout": [
+   "…и обвалил",
+   "чужие акции!"
+  ],
+  "sfx": "嘘"
+ },
+ "beats": [
+  {
+   "kind": "chat",
+   "sec": 8.4,
+   "zh": "算",
+   "kicker": "ДЕКАБРЬ 2024 · V3",
+   "title": "Цена последнего тоста",
+   "bot": {
+    "name": "Техотчёт V3",
+    "zh": "深"
+   },
+   "user": {
+    "name": "Мир"
+   },
+   "msgs": [
+    {
+     "who": "user",
+     "text": "Сколько стоило обучить V3?"
+    },
+    {
+     "who": "bot",
+     "text": "Финальное обучение — 2,788 млн часов видеокарт H800.",
+     "big": "≈ 5,6 млн $",
+     "bigText": "примерно столько"
+    },
+    {
+     "who": "user",
+     "text": "Американские лаборатории тратили на порядки больше!"
+    },
+    {
+     "who": "bot",
+     "text": "Это стоимость только последнего прогона, без исследований и экспериментов."
+    }
+   ],
+   "note": "Примерно как назвать стоимостью свадьбы цену последнего тоста."
+  },
+  {
+   "kind": "pricewar",
+   "sec": 9.0,
+   "zh": "价",
+   "kicker": "МАЙ 2024",
+   "title": "Война токенов",
+   "img": "source-videos/ostapdotcenko/blog-news/not-it-for-money/hf-cenovaya-voyna.jpg",
+   "imgPos": "50% 30%",
+   "unit": "ЦЕНА ЗА 1 МЛН ТОКЕНОВ",
+   "tags": [
+    {
+     "name": "DeepSeek V2",
+     "logo": "source-videos/логотипы/ии/deepseek.svg",
+     "icon": 0.38,
+     "when": "МАЙ 2024",
+     "price": "1 / 2 ¥",
+     "sub": "вход / выход"
+    },
+    {
+     "name": "Zhipu",
+     "logo": "source-videos/логотипы/ии/zhipu.png",
+     "icon": 0.25,
+     "when": "ЧЕРЕЗ 5 ДНЕЙ",
+     "price": "÷5",
+     "sub": "снизила цену в пять раз"
+    },
+    {
+     "name": "Doubao",
+     "logo": "source-videos/логотипы/общие/bytedance.png",
+     "icon": 0.3,
+     "when": "BYTEDANCE",
+     "price": "0,8 ¥",
+     "sub": "выставила свою модель"
+    },
+    {
+     "name": "Qwen-Long",
+     "logo": "source-videos/логотипы/ии/qwen.svg",
+     "icon": 0.27,
+     "when": "ALIBABA",
+     "price": "−97%",
+     "sub": "срезала цену"
+    },
+    {
+     "name": "Baidu",
+     "when": "ЧЕРЕЗ 4 ЧАСА",
+     "price": "0 ¥",
+     "sub": "две модели — бесплатно",
+     "free": true
+    }
+   ],
+   "stamp": {
+    "text": "ЦЕНОВАЯ ВОЙНА",
+    "sub": "так в Китае началась война токенов",
+    "zh": "战"
+   },
+   "note": "Есть люди, которые входят в комнату молча, а все остальные почему-то начинают оправдываться."
+  },
+  {
+   "kind": "fall",
+   "sec": 7.8,
+   "zh": "崩",
+   "kicker": "27 ЯНВАРЯ 2025",
+   "title": "Момент DeepSeek",
+   "img": "source-videos/ostapdotcenko/blog-news/not-it-for-money/hf-panika.jpg",
+   "imgPos": "50% 28%",
+   "steps": [
+    {
+     "when": "20 ЯНВ",
+     "text": "R1 — рассуждающая модель с открытыми весами"
+    },
+    {
+     "when": "27 ЯНВ",
+     "text": "обогнала ChatGPT в американском App Store"
+    },
+    {
+     "when": "27 ЯНВ",
+     "text": "Nvidia теряет около 17% за день"
+    }
+   ],
+   "big": {
+    "pre": "почти $",
+    "num": 600,
+    "suf": " млрд",
+    "text": "капитализации Nvidia за один день"
+   },
+   "mark": "−17%",
+   "stamp": {
+    "text": "РЕКОРД",
+    "sub": "крупнейшее падение за день · Bloomberg",
+    "zh": "崩"
+   },
+   "note": "Никого не хотели пугать. Просто выложили файлы."
+  },
+  {
+   "kind": "stat",
+   "sec": 7.6,
+   "zh": "钱",
+   "kicker": "2026 · ПЕРВЫЙ ВНЕШНИЙ РАУНД",
+   "title": "Дать денег и посидеть тихо",
+   "img": "source-videos/ostapdotcenko/blog-news/not-it-for-money/hf-investory.jpg",
+   "imgPos": "50% 40%",
+   "big": {
+    "pre": ">",
+    "num": 50,
+    "suf": " млрд ¥",
+    "text": "впервые взяли чужие деньги"
+   },
+   "equal": "≈ 7,4 млрд $",
+   "chips": [
+    "голосовать не могут",
+    "выйти 5 лет не могут"
+   ]
+  }
+ ],
+ "punch": {
+  "lines": [
+   "Лучше всех",
+   "продаёт тот,",
+   "кто молчит."
+  ],
+  "zh": "卖得最好的，是那个不说话的。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-portret-sait.png",
+  "from": "— из статьи"
+ },
+ "next": {
+  "n": 15,
+  "title": "Бесплатный сыр в облаке",
+  "season": "Китайский ИИ",
+  "zh": "智能",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/cybernetic-enhancements-dafuqex.mp3",
+  "drop": 53.0,
+  "vol": 0.2
+ },
+ "brand": {
+  "name": "DeepSeek",
+  "zh": "深度求索",
+  "logo": "source-videos/логотипы/ии/deepseek.svg",
+  "icon": 0.38
+ },
+ "ticker": [
+  "High-Flyer: квантовый фонд из Ханчжоу, Лян Вэньфэн — сооснователь с 2015 года",
+  "К 2021-му — около 10 000 Nvidia A100, до ограничений США",
+  "Июль 2023: лабораторию фонда выделили в DeepSeek",
+  "2025: в DeepSeek около 160 человек",
+  "R1 поверх V3 — 294 тыс. $ (статья в Nature, сентябрь 2025)",
+  "V4 (24 апреля 2026): 1,6 трлн параметров, контекст 1 млн токенов, открытые веса",
+  "V4 — впервые под китайские чипы Huawei Ascend",
+  "Цену старшей V4 навсегда снизили на 75%",
+  "Лян вложил около 20 млрд юаней, среди инвесторов — Tencent и CATL",
+  "IPO — возможно, в 2027 году (Bloomberg, FT)"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/not-it-for-money/hf-panika.jpg",
+  "heroPos": "50% 30%",
+  "alt": "source-videos/ostapdotcenko/blog-news/not-it-for-money/hf-panika.jpg",
+  "altPos": "50% 28%",
+  "big": "почти $600 млрд",
+  "bigText": "Nvidia потеряла за один день",
+  "blurbs": [
+   {
+    "big": "≈ 5,6 млн $",
+    "text": "финальное обучение V3"
+   },
+   {
+    "big": "−97%",
+    "text": "Alibaba в ценовой войне"
+   }
+  ],
+  "tag": "Хедж-фонд, тишина и война токенов"
+ }
+}

@@ -19,6 +19,7 @@ import {
 
 import {DialogAct, HookSplit, ListAct, PageAct, SND_HOOK_SPLIT, StatAct, sndDialog, sndList, sndPage, sndStat, type BNAct2} from "./blog-news/acts2";
 import {CupMeterAct, HookCup, MenuAct, PourReveal, RaceAct, SND_HOOK_CUP, sndCup, sndMenu, sndRace, type BNAct3, type BNLiquid} from "./blog-news/acts3";
+import {ChatAct, HookChip, PriceWarAct, SND_HOOK_CHIP, TokenReveal, WeightsAct, sndChat, sndPriceWar, sndWeights, type BNAct4} from "./blog-news/acts4";
 import {AccCtx, BrandPlate, ChapterHead, Chip, LangCtx, LookCtx, TX, countNum, dela, fmtDate, numStyle, useAcc, useLang, useLook, type BNBrand, type BNFact} from "./blog-news/kit";
 export type {BNFact} from "./blog-news/kit";
 export type BNStory = {
@@ -30,13 +31,16 @@ export type BNVs = {
   kind: "vs"; sec: number; zh: string; kicker: string; title: string; img: string; imgPos?: string;
   left: string; right: string; round: string; result: string; facts: BNFact[];
 };
-export type BNBeat = BNStory | BNVs | BNAct2 | BNAct3;
-export type BNNext = {n: number; title: string; season: string; zh: string; newSeason: boolean} | null;
+export type BNBeat = BNStory | BNVs | BNAct2 | BNAct3 | BNAct4;
+// pause — сезон не окончен, а прерван новым (07.11.2026: «Напитки Азии» на паузе, вне очереди — «Китайский ИИ» по свежим статьям);
+// resume — следующий выпуск возвращает прерванный сезон
+export type BNNext = {n: number; title: string; season: string; zh: string; newSeason: boolean; pause?: boolean; resume?: boolean} | null;
 export type BlogNewsProps = {
   show?: string; ep: number; season: {name: string; zh: string; n: number; total: number};
   title: string; date: string; slug: string; cover: string; shots: string[];
-  // split — хук «полосами» (второй сезон), cup — хук «стакан» (третий сезон «Напитки Азии»: liquid — напиток в стакане)
-  hook: {lines: string[]; shout: string[]; sfx?: string; style?: "classic" | "split" | "cup"; liquid?: BNLiquid};
+  // split — хук «полосами» (второй сезон), cup — хук «стакан» (третий сезон «Напитки Азии»: liquid — напиток в стакане),
+  // chip — хук «чип» (четвёртый сезон «Китайский ИИ»: chipZh — иероглиф в кристалле)
+  hook: {lines: string[]; shout: string[]; sfx?: string; style?: "classic" | "split" | "cup" | "chip"; liquid?: BNLiquid; chipZh?: string};
   coverPos?: string; // кадрирование обложки статьи в хуке «стакан»
   beats: BNBeat[];
   punch: {lines: string[]; zh?: string; photo: string; from?: string; photoH?: number; photoRight?: number}; // photoH / photoRight — для широких вырезок
@@ -134,9 +138,9 @@ const Ident: React.FC<{P: BlogNewsProps}> = ({P}) => {
         {TX[P.lang ?? "ru"].season(P.season.name)}<span style={{fontFamily: FONT.zcool}}>{P.season.zh}</span>{` · ${P.season.n}/${P.season.total}`}
       </Chip>
       {f >= 30 ? (
-        <div style={{position: "absolute", left: 64, right: 64, top: P.title.length > 60 ? 1128 : 1170, background: C.ink, padding: "22px 30px", boxShadow: `12px 12px 0 ${C.red}`, rotate: "-1deg", opacity: p(f, 30, 36), translate: `0 ${(1 - p(f, 30, 40, EO)) * 60}px`}}>
-          {/* длинные заголовки третьего сезона («Напитки Азии: Вьетнам — экспортёр робусты…», 80+ знаков) — мельче, чтобы дата не уходила под бегущую строку */}
-          <div style={dela(P.title.length > 76 ? 44 : P.title.length > 60 ? 50 : 64, acc)}>{P.title}</div>
+        <div style={{position: "absolute", left: 64, right: 64, top: P.title.length > 44 ? 1128 : 1170, background: C.ink, padding: "22px 30px", boxShadow: `12px 12px 0 ${C.red}`, rotate: "-1deg", opacity: p(f, 30, 36), translate: `0 ${(1 - p(f, 30, 40, EO)) * 60}px`}}>
+          {/* длинные заголовки третьего сезона («Напитки Азии: Вьетнам — экспортёр робусты…», 80+ знаков) и английские от 45 знаков (№15 EN, 59) — мельче, чтобы дата не уходила под бегущую строку */}
+          <div style={dela(P.title.length > 76 ? 44 : P.title.length > 44 ? 50 : 64, acc)}>{P.title}</div>
           {P.brand ? <div style={{fontFamily: FONT.golos, fontWeight: 800, fontSize: 36, color: "#fff", marginTop: 10}}>{`${TX[P.lang ?? "ru"].about} ${P.brand.name} `}<span style={{fontFamily: FONT.zcool, color: acc}}>{P.brand.zh ?? ""}</span></div> : null}
           <div style={{fontFamily: FONT.mono, fontSize: 28, color: "#fff", marginTop: 10}}>{`${fmtDate(P.date, P.lang ?? "ru")} · ostapdotcenko.ru/blog`}</div>
         </div>
@@ -340,10 +344,10 @@ const Fin: React.FC<{P: BlogNewsProps}> = ({P}) => {
       <Chip x={540} y={610} at={30} rot={2} size={28}>RU · EN · <span style={{fontFamily: FONT.zcool}}>中文</span></Chip>
       {f >= 46 ? (
         <div style={{position: "absolute", left: 530, right: 52, top: 730, background: "#fff", border: `6px solid ${C.ink}`, boxShadow: `12px 12px 0 ${C.ink}`, padding: "20px 24px", rotate: "1.5deg", scale: String(1.5 - 0.5 * card), opacity: Math.min(1, card * 2), transformOrigin: "50% 0"}}>
-          <div style={{fontFamily: FONT.oswald, fontSize: nx?.newSeason ? 27 : 32, letterSpacing: nx?.newSeason ? "0.1em" : "0.16em", color: C.red, whiteSpace: "nowrap"}}>{nx ? (nx.newSeason ? TX[P.lang ?? "ru"].overTomorrow : TX[P.lang ?? "ru"].tomorrow) : TX[P.lang ?? "ru"].over}</div>
+          <div style={{fontFamily: FONT.oswald, fontSize: nx?.newSeason ? 27 : 32, letterSpacing: nx?.newSeason ? "0.1em" : "0.16em", color: C.red, whiteSpace: "nowrap"}}>{nx ? (nx.newSeason ? (nx.pause ? TX[P.lang ?? "ru"].pauseTomorrow : nx.resume ? TX[P.lang ?? "ru"].tomorrow : TX[P.lang ?? "ru"].overTomorrow) : TX[P.lang ?? "ru"].tomorrow) : TX[P.lang ?? "ru"].over}</div>
           {nx ? (
             <>
-              {nx.newSeason ? <div style={{fontFamily: FONT.golos, fontWeight: 800, fontSize: 26, color: C.ink, marginTop: 6, whiteSpace: "nowrap"}}>{TX[P.lang ?? "ru"].newSeason(nx.season)}<span style={{fontFamily: FONT.zcool}}>{nx.zh}</span></div> : null}
+              {nx.newSeason ? <div style={{fontFamily: FONT.golos, fontWeight: 800, fontSize: 26, color: C.ink, marginTop: 6, whiteSpace: "nowrap"}}>{nx.resume ? TX[P.lang ?? "ru"].resume(nx.season) : TX[P.lang ?? "ru"].newSeason(nx.season)}<span style={{fontFamily: FONT.zcool}}>{nx.zh}</span></div> : null}
               <div style={{fontFamily: FONT.zcool, fontSize: 60, color: C.ink, lineHeight: 1.1, marginTop: 6}}>{`第${nx.n}话 · ${TX[P.lang ?? "ru"].no}${nx.n}`}</div>
               <div style={{...dela(nx.title.length > 34 ? 36 : 44, C.ink), marginTop: 8}}>{nx.title}</div>
             </>
@@ -412,13 +416,21 @@ export const BlogNews: React.FC<BlogNewsProps> = (P) => {
     (c: React.ReactNode) => <PourReveal dur={14} acc={acc}>{c}</PourReveal>,
     (c: React.ReactNode) => <GlitchReveal dur={12}>{c}</GlitchReveal>,
   ];
+  // четвёртый сезон (хук «чип»): через раз переход «токены» — новая сцена проявляется плитками
+  const reveal4 = [
+    (c: React.ReactNode) => <TokenReveal dur={14} acc={acc}>{c}</TokenReveal>,
+    (c: React.ReactNode) => <SlashReveal dur={12} color={acc}>{c}</SlashReveal>,
+    (c: React.ReactNode) => <TokenReveal dur={14} acc={acc}>{c}</TokenReveal>,
+    (c: React.ReactNode) => <GlitchReveal dur={12}>{c}</GlitchReveal>,
+  ];
   const sounds: Snd[] = [
-    ...(P.hook.style === "cup" ? SND_HOOK_CUP : P.hook.style === "split" ? SND_HOOK_SPLIT : SND_HOOK).map(([a, n, v]) => [Math.max(0, S[0][0] + a), n, v] as [number, string, number]),
+    ...(P.hook.style === "chip" ? SND_HOOK_CHIP : P.hook.style === "cup" ? SND_HOOK_CUP : P.hook.style === "split" ? SND_HOOK_SPLIT : SND_HOOK).map(([a, n, v]) => [Math.max(0, S[0][0] + a), n, v] as [number, string, number]),
     ...SND_ID.map(([a, n, v]) => [S[1][0] + a, n, v] as [number, string, number]),
     ...P.beats.flatMap((b, i) => {
       const d = S[2 + i][1] - S[2 + i][0];
       const snd = b.kind === "vs" ? sndVs(d) : b.kind === "stat" ? sndStat(b, d) : b.kind === "dialog" ? sndDialog(b, d) : b.kind === "list" ? sndList(b, d) : b.kind === "page" ? sndPage(b, d)
-        : b.kind === "race" ? sndRace(b, d) : b.kind === "cupmeter" ? sndCup(b, d) : b.kind === "menu" ? sndMenu(b, d) : sndStory(b, d);
+        : b.kind === "race" ? sndRace(b, d) : b.kind === "cupmeter" ? sndCup(b, d) : b.kind === "menu" ? sndMenu(b, d)
+        : b.kind === "chat" ? sndChat(b, d) : b.kind === "pricewar" ? sndPriceWar(b, d) : b.kind === "weights" ? sndWeights(b, d) : sndStory(b, d);
       return snd.map(([a, n, v]) => [S[2 + i][0] + a, n, v] as [number, string, number]);
     }),
     ...SND_PUNCH.map(([a, n, v]) => [S[2 + nb][0] + a, n, v] as [number, string, number]),
@@ -430,14 +442,16 @@ export const BlogNews: React.FC<BlogNewsProps> = (P) => {
     <LookCtx.Provider value={P.look ?? "dark"}>
     <LangCtx.Provider value={P.lang ?? "ru"}>
     <AbsoluteFill style={{background: C.ink, overflow: "hidden"}}>
-      {seq(0, P.hook.style === "cup" ? <HookCup h={P.hook} cover={P.cover} coverPos={P.coverPos} brand={P.brand} /> : P.hook.style === "split" ? <HookSplit h={P.hook} cover={P.cover} brand={P.brand} /> : <Hook h={P.hook} cover={P.cover} brand={P.brand} />)}
+      {seq(0, P.hook.style === "chip" ? <HookChip h={P.hook} cover={P.cover} coverPos={P.coverPos} brand={P.brand} /> : P.hook.style === "cup" ? <HookCup h={P.hook} cover={P.cover} coverPos={P.coverPos} brand={P.brand} /> : P.hook.style === "split" ? <HookSplit h={P.hook} cover={P.cover} brand={P.brand} /> : <Hook h={P.hook} cover={P.cover} brand={P.brand} />)}
       {seq(1, <CircleReveal dur={12} x={540} y={480}><Ident P={P} /></CircleReveal>)}
       {P.beats.map((b, i) => {
         const d = S[2 + i][1] - S[2 + i][0];
         const node = b.kind === "vs" ? <Vs b={b} dur={d} brand={P.brand} /> : b.kind === "stat" ? <StatAct b={b} dur={d} brand={P.brand} /> : b.kind === "dialog" ? <DialogAct b={b} dur={d} brand={P.brand} />
           : b.kind === "list" ? <ListAct b={b} dur={d} brand={P.brand} /> : b.kind === "page" ? <PageAct b={b} dur={d} brand={P.brand} />
           : b.kind === "race" ? <RaceAct b={b} dur={d} brand={P.brand} /> : b.kind === "cupmeter" ? <CupMeterAct b={b} dur={d} brand={P.brand} /> : b.kind === "menu" ? <MenuAct b={b} dur={d} brand={P.brand} />
+          : b.kind === "chat" ? <ChatAct b={b} dur={d} brand={P.brand} /> : b.kind === "pricewar" ? <PriceWarAct b={b} dur={d} brand={P.brand} /> : b.kind === "weights" ? <WeightsAct b={b} dur={d} brand={P.brand} />
           : <Story b={b} dur={d} brand={P.brand} />;
+        if (P.hook.style === "chip") return seq(2 + i, reveal4[i % reveal4.length](node));
         // третий сезон (хук «стакан»): через раз переход «налили» — новая сцена поднимается волной кофе
         if (P.hook.style === "cup") return seq(2 + i, reveal3[i % reveal3.length](node));
         return seq(2 + i, reveal[(i + (P.accent ? 1 : 0)) % reveal.length](node));

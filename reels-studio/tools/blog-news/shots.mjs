@@ -4,6 +4,9 @@
 // верхние 160 px — шапка сайта, остальные 1950 px — полоса страницы; кадры идут встык через 780 CSS px, поэтому в телефоне
 // `Phone mode="strip"` страница листается без шва). Мат на странице (рубрика «Все х#йня, давай по новой…») заменяется знаками
 // до съёмки, как во всех роликах. Выход: source-videos/ostapdotcenko/blog-news/<slug>/<lang>-NN.jpg
+// --base http://127.0.0.1:5199 — статья ещё не вышла на сайте (07.11.2026, выпуск №15 снят за день до выхода): снимаем локальную
+// сборку сайта — копия репозитория ostapdotcenko во временной папке, статья вставлена функциями blog_od.py POST-HUB, `npx vite`.
+// Playwright — глобальный: NODE_PATH=$(npm root -g) node reels-studio/tools/blog-news/shots.mjs …
 import {createRequire} from "node:module";
 import fs from "node:fs";
 import path from "node:path";
@@ -28,7 +31,7 @@ const page = await ctx.newPage();
 // статьи на месте, иначе повтор; после 4 попыток — ошибка, а не пустые кадры
 for (let i = 0; i < 4; i++) {
   try {
-    await page.goto(`https://ostapdotcenko.ru/blog/${slug}`, {waitUntil: "networkidle", timeout: 60000});
+    await page.goto(`${opt("base", "https://ostapdotcenko.ru")}/blog/${slug}`, {waitUntil: "networkidle", timeout: 60000});
     await page.waitForFunction(() => document.body.innerText.length > 1500, null, {timeout: 20000});
     break;
   } catch (e) { if (i === 3) throw new Error(`статья не загрузилась: ${e.message}`); await page.waitForTimeout(3000); }

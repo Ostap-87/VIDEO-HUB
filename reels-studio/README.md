@@ -621,6 +621,12 @@ node reels-studio/tools/od-posts/reel-sait.mjs            # ролик «Мой 
 #   третий сезон «Напитки Азии» (06.11.2026): "accent": "#86E05A", "hook": {"style": "cup", "liquid": "matcha|coffee|milktea|thai|teh"}, "coverPos",
 #   акты kind = race (гонка сетей, "twist" — второй раунд) | cupmeter (стакан-шкала, "from" > "pct" — «утекает») | menu (меню кофейни) — blog-news/acts3.tsx;
 #   в этом контейнере рендер — с --ignore-certificate-errors (иначе шрифты Google не грузятся), рядом с другим рендером — через flock /dev/shm/render.lock
+#   четвёртый сезон «Китайский ИИ» (07.11.2026): "accent": "#A98CFF", "hook": {"style": "chip", "chipZh": "深"}, акты kind = chat (окно чата: bot, user, msgs) |
+#   pricewar (ценники: unit, tags, stamp) | weights (открытые веса: box, boxSub, big, chips) — blog-news/acts4.tsx; next.pause / next.resume — пауза и возврат сезона;
+#   flock /dev/shm/render.lock env TMPDIR=/dev/shm/remotion-tmp npx remotion render src/blog-news-entry.tsx BlogNews ../finished-videos/blog-news/014-not-it-for-money.mp4 --props=props/blog-news/014-not-it-for-money.json --bundle-cache=false --ignore-certificate-errors --crf=18 --concurrency=2
+#   статья ещё не на сайте: копия сайта (git archive) + статья функциями blog_od.py POST-HUB + npx vite --port 5199, затем
+#   NODE_PATH=$(npm root -g) node tools/blog-news/shots.mjs <slug> --base http://127.0.0.1:5199 [--lang en]
+#   очередь: python3 tools/blog-news/queue.py --out /tmp/q.json — проверка без записи (порядок уже стоящих выпусков сохраняется, вставки сезонов — pause / resume, part)
 # из reels-studio: TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts BlogNews ../finished-videos/blog-news/001-coffee-with-hint-audit.mp4 --props=props/blog-news/001-coffee-with-hint-audit.json --bundle-cache=false --crf=18
 #   английский дубль каждого выпуска (05.11.2026): python3 tools/blog-news/en_props.py [N] → props/blog-news/en/NNN-<slug>.json;
 #   node tools/blog-news/shots.mjs <slug> --lang en --n 3; рендер с --props=props/blog-news/en/NNN-<slug>.json → ../finished-videos/blog-news/NNN-<slug>-en.mp4;

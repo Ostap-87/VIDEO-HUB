@@ -48,13 +48,18 @@ def main():
         return f"{x.day} {MON[x.month - 1]}", DAYS[x.weekday()]
 
     E = html.escape
-    rows, cur = [], None
+    rows, cur, prev = [], None, None
     for e in q["episodes"]:
-        if e["season"] != cur:
+        if (e["season"], e.get("part")) != cur:
             if cur is not None:
-                rows.append(f'<div class="handoff"><span>Сезон «{E(cur)}» окончен</span><span class="arrow">→</span><span>завтра — новый сезон «{E(e["season"])}»</span></div>')
-            cur = e["season"]
-            rows.append(f'<h2 class="season"><span class="zh">{E(e["zh"])}</span><span class="sname">Сезон «{E(e["season"])}»</span><span class="count">{e["stotal"]} {"выпуск" if e["stotal"] == 1 else "выпуска" if e["stotal"] < 5 else "выпусков"}</span></h2>')
+                # 07.11.2026: сезон можно прервать другим («пауза в сезоне») и вернуть позже («возвращается сезон»)
+                nx = (prev or {}).get("next") or {}
+                left = f'Сезон «{E(cur[0])}» на паузе' if nx.get("pause") else f'Сезон «{E(cur[0])}» окончен'
+                right = f'завтра — возвращается сезон «{E(e["season"])}»' if nx.get("resume") else f'завтра — новый сезон «{E(e["season"])}»'
+                rows.append(f'<div class="handoff"><span>{left}</span><span class="arrow">→</span><span>{right}</span></div>')
+            cur = (e["season"], e.get("part"))
+            rows.append(f'<h2 class="season"><span class="zh">{E(e["zh"])}</span><span class="sname">Сезон «{E(e["season"])}»{" · часть " + str(e["part"]) if e.get("part") else (" · продолжение" if e["sn"] > 1 else "")}</span><span class="count">{e["stotal"]} {"выпуск" if e["stotal"] == 1 else "выпуска" if e["stotal"] < 5 else "выпусков"}</span></h2>')
+        prev = e
         d, wd = when(e["day"])
         t = thumb(e["slug"])
         ready = e.get("status") in ("готов", "вышел")  # готовые выпуски: о ком и какая музыка — из props выпуска

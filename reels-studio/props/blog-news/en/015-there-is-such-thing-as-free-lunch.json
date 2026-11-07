@@ -1,0 +1,237 @@
+{
+ "show": "多 NEWS",
+ "ep": 15,
+ "season": {
+  "name": "China’s AI",
+  "zh": "智能",
+  "n": 2,
+  "total": 9
+ },
+ "title": "There Is Such a Thing as a Free Lunch. It Runs in the Cloud",
+ "date": "2026-11-08",
+ "slug": "there-is-such-thing-as-free-lunch",
+ "cover": "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/cover.jpg",
+ "coverPos": "50% 40%",
+ "shots": [
+  "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/en-00.jpg",
+  "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/en-01.jpg",
+  "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/en-02.jpg"
+ ],
+ "accent": "#A98CFF",
+ "look": "light",
+ "hook": {
+  "style": "chip",
+  "chipZh": "千",
+  "lines": [
+   "THE MEAL’S FREE.",
+   "THE KITCHEN —",
+   "BY THE HOUR."
+  ],
+  "shout": [
+   "So who’s paying",
+   "for lunch?"
+  ],
+  "sfx": "免"
+ },
+ "beats": [
+  {
+   "kind": "weights",
+   "sec": 8.6,
+   "zh": "开",
+   "kicker": "AUGUST 2023 → 2026",
+   "title": "A Soup Kitchen for the World",
+   "img": "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/hf-syrovarnya.jpg",
+   "imgPos": "50% 52%",
+   "box": "Qwen-7B",
+   "boxZh": "开源",
+   "boxSub": "August 2023: first of China’s tech giants",
+   "big": {
+    "pre": ">",
+    "num": 3,
+    "suf": "B",
+    "text": "Qwen model downloads"
+   },
+   "chips": [
+    "460+ open models",
+    "300,000+ derivatives"
+   ],
+   "note": "That’s not a free lunch anymore. That’s a soup kitchen half the world now relies on."
+  },
+  {
+   "kind": "vs",
+   "sec": 7.6,
+   "zh": "比",
+   "kicker": "HUGGING FACE · 7 MONTHS OF 2026",
+   "title": "Someone Else’s Numbers",
+   "img": "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/hf-ring.jpg",
+   "imgPos": "50% 30%",
+   "left": "QWEN",
+   "right": "META",
+   "round": "ROUND 2026 · DOWNLOADS",
+   "result": "2.6× as many Qwen derivatives as for Meta’s models",
+   "facts": [
+    {
+     "pre": "≈",
+     "num": 2,
+     "suf": "B",
+     "text": "Qwen downloads"
+    },
+    {
+     "num": 418,
+     "suf": "M",
+     "text": "for Google"
+    },
+    {
+     "num": 227,
+     "suf": "M",
+     "text": "for Meta"
+    }
+   ]
+  },
+  {
+   "kind": "rise",
+   "sec": 8.0,
+   "zh": "云",
+   "kicker": "ALIBABA’S FILINGS",
+   "title": "Building the Kitchen",
+   "img": "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/hf-oblako-pekarnya.jpg",
+   "imgPos": "50% 45%",
+   "steps": [
+    {
+     "when": "FEB 2025",
+     "text": "¥380B into AI and cloud over three years"
+    },
+    {
+     "when": "AUG 2026",
+     "text": "+45% a year — fastest growth in 22 quarters"
+    },
+    {
+     "when": "QUARTER",
+     "text": "capital spending close to $10B"
+    }
+   ],
+   "big": {
+    "pre": "$",
+    "num": 7.1,
+    "dec": 1,
+    "suf": "B",
+    "text": "AI cloud & compute revenue, one quarter"
+   },
+   "mark": "+45%",
+   "note": "That’s what a free lunch looks like on an income statement."
+  },
+  {
+   "kind": "chat",
+   "sec": 8.8,
+   "zh": "问",
+   "kicker": "A SHORT SCENE · JUST THE GENRE",
+   "title": "What’s the Catch?",
+   "bot": {
+    "name": "Cloud seller",
+    "zh": "云"
+   },
+   "user": {
+    "name": "Client"
+   },
+   "msgs": [
+    {
+     "who": "user",
+     "text": "How much is the model?"
+    },
+    {
+     "who": "bot",
+     "text": "Nothing. Download it."
+    },
+    {
+     "who": "user",
+     "text": "What’s the catch?"
+    },
+    {
+     "who": "bot",
+     "text": "No catch. Where will you run it?"
+    },
+    {
+     "who": "user",
+     "text": "Um. On our own servers."
+    },
+    {
+     "who": "bot",
+     "text": "How many GPUs is ‘our own’?"
+    },
+    {
+     "who": "user",
+     "text": "(Pause.)",
+     "quiet": true
+    },
+    {
+     "who": "bot",
+     "text": "Here’s the cloud contract. The model, as promised, is free."
+    }
+   ],
+   "note": "It’s not a trap. It’s a business model with good manners."
+  }
+ ],
+ "punch": {
+  "lines": [
+   "There is",
+   "a free lunch.",
+   "You just have",
+   "to own",
+   "the kitchen."
+  ],
+  "zh": "免费的午餐是有的。前提是，厨房得是你的。",
+  "photo": "source-videos/фото-от-пользователя/остап/вырезки/ostap-alibaba-hangzhou-selfi.png",
+  "from": "— from the article",
+  "photoH": 1240,
+  "photoRight": -120
+ },
+ "next": {
+  "n": 16,
+  "title": "The Dark Side of the Moon",
+  "season": "China’s AI",
+  "zh": "智能",
+  "newSeason": false
+ },
+ "music": {
+  "src": "интернет-материалы/музыка/global-tech-geoff-harvey-purple-planet-music.mp3",
+  "drop": 54.88,
+  "vol": 0.75
+ },
+ "brand": {
+  "name": "Qwen · Alibaba",
+  "zh": "通义千问",
+  "logo": "source-videos/логотипы/ии/qwen.svg",
+  "icon": 0.27
+ },
+ "ticker": [
+  "August 2023: Qwen-7B released as open source, commercial use allowed",
+  "460+ open Qwen models: text, code, images and voice",
+  "About 151,000 Qwen derivatives on Hugging Face",
+  "Airbnb: customer service relies heavily on Qwen — “fast and cheap” (Brian Chesky, Bloomberg)",
+  "Qwen app: over 10 million downloads in its first week (November 2025)",
+  "QuestMobile, May 2026: Doubao 382M, Qwen 167M, DeepSeek 130M monthly users",
+  "Qwen office assistant: ¥19 to ¥128 a month, or ¥1,499 a year",
+  "Basic access to Qwen stays free",
+  "AI-related product revenue grew at triple digits for the 12th straight quarter"
+ ],
+ "coverArt": {
+  "hero": "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/hf-syrovarnya.jpg",
+  "heroPos": "50% 45%",
+  "alt": "source-videos/ostapdotcenko/blog-news/there-is-such-thing-as-free-lunch/hf-syrovarnya.jpg",
+  "altPos": "50% 50%",
+  "big": "> 3B",
+  "bigText": "Qwen model downloads",
+  "blurbs": [
+   {
+    "big": "460+",
+    "text": "open models"
+   },
+   {
+    "big": "$7.1B",
+    "text": "AI cloud in one quarter"
+   }
+  ],
+  "tag": "A free model and a cloud by the hour"
+ },
+ "lang": "en"
+}

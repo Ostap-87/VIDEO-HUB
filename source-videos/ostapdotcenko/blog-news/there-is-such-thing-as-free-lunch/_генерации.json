@@ -1,0 +1,39 @@
+[
+ {
+  "file": "hf-syrovarnya.jpg",
+  "job_id": "920b620b-c156-4e4b-a771-91b46e72eeb2",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261107_051454_920b620b-c156-4e4b-a771-91b46e72eeb2.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-07",
+  "what": "открытые веса «Сыроварня для полмира» — сыровар раздаёт сыр толпе разработчиков; обложка",
+  "note": "в правом нижнем углу размыт крошечный «росчерк-подпись» нейросети"
+ },
+ {
+  "file": "hf-ring.jpg",
+  "job_id": "fa9ae332-747e-487a-a7b9-56c9962bc535",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261107_051311_fa9ae332-747e-487a-a7b9-56c9962bc535.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-07",
+  "what": "VS «Чужие цифры» — два робота на ринге, фиолетовый и синий"
+ },
+ {
+  "file": "hf-oblako-pekarnya.jpg",
+  "job_id": "edce42fb-e2b0-4a7a-bc6e-339c227b6631",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3HTmZ9Q90B4oeOLXfgRPKEYZbAe/hf_20261107_051311_edce42fb-e2b0-4a7a-bc6e-339c227b6631.png",
+  "model": "gpt_image_2_5",
+  "quality": "medium",
+  "resolution": "1k",
+  "aspect": "3:4",
+  "credits": 0.5,
+  "date": "2026-11-07",
+  "what": "взлёт «Пекарня под бесплатный хлеб» — пекарня в облаке, река монет снизу вверх"
+ }
+]
