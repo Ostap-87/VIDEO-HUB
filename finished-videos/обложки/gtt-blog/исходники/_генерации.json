@@ -1,0 +1,25 @@
+{
+ "note": "Higgsfield для стиль-кадров рубрики «Брифинг GTT» (статья boe-display-supply-chain). Итого 1,0 кредита.",
+ "items": [
+  {
+   "file": "hf-boe-panel.jpg",
+   "job_id": "40d82e3b-bd5f-47c2-afa8-d7d17f27eea6",
+   "model": "gpt_image_2_5 medium 1k 9:16",
+   "cost": 0.5,
+   "date": "2026-11-07",
+   "use": "стиль-кадры «Брифинг GTT», вариант 1 «Афиша» (хук, обложка), вариант 3",
+   "checked": "глазами: без текста и логотипов",
+   "prompt": "Minimal high-end advertising studio photo, vertical. A single ultra-thin flexible OLED display panel, bare glass without any device body, gently bent into a soft S-curve, floating at a slight angle in the lower-middle part of the frame, its surface glowing from within with electric blue light and a very fine pixel grid texture, thin glass edges catching cool white highlights, a few tiny glowing glass shards floating around it, soft blue light reflecting on a glossy dark floor below. Seamless deep navy-to-black backdrop, electric blue rim light, large empty dark space in the upper half of the frame. Realistic materials, premium product photography. No text, no letters, no numbers, no logos, no watermarks."
+  },
+  {
+   "file": "hf-boe-devices.jpg",
+   "job_id": "ab9913e2-f591-4eb4-b806-ca450a590b06",
+   "model": "gpt_image_2_5 medium 1k 9:16",
+   "cost": 0.5,
+   "date": "2026-11-07",
+   "use": "стиль-кадры «Брифинг GTT»: «один экран из четырёх» (хук вариантов 2–5)",
+   "checked": "глазами: без текста и логотипов, устройства без брендов",
+   "prompt": "Minimal high-end advertising studio photo, vertical. Four modern generic brandless devices standing in a neat row on a glossy dark floor in the lower-middle part of the frame: a smartphone, a tablet, a half-open laptop and a slim TV panel, their screens glowing with plain soft electric blue light, exactly one of the four screens (the tablet) much brighter than the others with an intense white-blue glow. Seamless deep navy-to-black backdrop, electric blue rim light, subtle reflections on the floor, large empty dark space in the upper half of the frame. Realistic materials, premium product photography. No text, no letters, no numbers, no logos, no watermarks, no brand marks on the devices."
+  }
+ ]
+}
