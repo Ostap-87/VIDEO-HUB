@@ -881,7 +881,9 @@ Noto Sans SC через `loadCjk`), роль, скин; кадр 17 — «Ком
   минимум двоих»); развязка — стр. 94; крючок — «SOS · Шэньян · гарантия кончилась» (статья 24.11). Музыка — Dafuqex «Malfunction at the Robotics
   Factory» (CC BY 4.0, трек громкий: −5 LUFS, `volume` 0,16): удар 13,25 с трека — на «самого дорогого экскурсанта», удар 172,25 с — на зачёркивании
   в приёмке (`bFrom` 169,85 + 2,4 с шага).
-  Props `props/robokitai/010-zastava.json` → `finished-videos/robokitai-010-zastava.mp4` (ролик вне git — бюджет LFS).
+  Props `props/robokitai/010-zastava.json` → `finished-videos/robokitai-010-zastava.mp4` (68,6 с, CRF 20, 15 МБ, −20,7 LUFS, рендер ~13 мин;
+  копия для телефона `finished-videos/для-телефона/robokitai-010-zastava.mp4` — та же (жёсткая ссылка), раскадровка
+  `finished-videos/раскадровки/robokitai-010-zastava.jpg`, обложка `finished-videos/обложки/robokitai/robokitai-010-zastava.jpg`; видео в git не идут).
 - **Обложки сезона 2** (`tools/series-covers/covers.mjs`): `robokitai-009-hangzhou` (`cyan` — Скаут и Рыжик, снимок тепловизора «03:00», снег, «Цена
   обхода, которого не было») и `robokitai-010-zastava` (`teal` — Титан в ящике, телефоны со вспышками, «Ну что, когда?», Шустрик) →
   `finished-videos/обложки/robokitai/`; лист `_лист.jpg` — запускать со всеми сериями 0–10.
