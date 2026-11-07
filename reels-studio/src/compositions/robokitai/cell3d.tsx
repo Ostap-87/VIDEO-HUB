@@ -16,14 +16,19 @@ import {HOTEL_CAM, HotelWorld, hotelState, type HotelId} from "./hotel3d";
 import {LAB_CAM, LabWorld, labState, type LabId} from "./lab3d";
 import {BORDER_CAM, BorderWorld, borderState, type BorderId} from "./border3d";
 import {KITCHEN_CAM, KitchenWorld, kitchenState, type KitchenId} from "./kitchen3d";
+import {SUB_CAM, SUB_CAM_AT, SubWorld, subState, type SubId} from "./substation3d";
+import {SITE_CAM, SITE_CAM_AT, SiteWorld, siteState, type SiteId} from "./site3d";
 
 // миры серий 4–8 живут в своих файлах (weld3d, hotel3d, lab3d, border3d, kitchen3d) и регистрируются здесь
-export type WorldId = "overload" | "fence" | "reach" | "reachFixed" | "pack" | "slip" | "slipSlow" | "hands" | "handsNight" | "glare" | "fixed" | WeldId | HotelId | LabId | BorderId | KitchenId;
+// сезон 2 (07.11.2026): substation3d (С2·1 · Ханчжоу, подстанция ночью) и site3d (С2·2 · Застава, пусконаладка в цехе клиента)
+export type WorldId = "overload" | "fence" | "reach" | "reachFixed" | "pack" | "slip" | "slipSlow" | "hands" | "handsNight" | "glare" | "fixed" | WeldId | HotelId | LabId | BorderId | KitchenId | SubId | SiteId;
 const isWeld = (w: WorldId): w is WeldId => w.startsWith("weld");
 const isHotel = (w: WorldId): w is HotelId => w.startsWith("hotel");
 const isLab = (w: WorldId): w is LabId => w.startsWith("lab");
 const isBorder = (w: WorldId): w is BorderId => w in BORDER_CAM;
 const isKitchen = (w: WorldId): w is KitchenId => w in KITCHEN_CAM;
+const isSub = (w: WorldId): w is SubId => w in SUB_CAM;
+const isSite = (w: WorldId): w is SiteId => w in SITE_CAM;
 const LEMON = "#FFF65D";
 const RED = "#E5383B";
 const INK = "#262626";
@@ -475,7 +480,12 @@ export const WORLD_CAM: Record<WorldId, Cam> = {
   ...LAB_CAM,
   ...BORDER_CAM,
   ...KITCHEN_CAM,
+  ...SUB_CAM,
+  ...SITE_CAM,
 };
+// камера мира в момент t (миры сезона 2 двигают камеру); свет сцены: «dark» — мир ставит свой свет (день → ночь, фонари)
+export const worldCam = (w: WorldId, t: number): Cam => (isSub(w) ? SUB_CAM_AT(w, t) : isSite(w) ? SITE_CAM_AT(w, t) : WORLD_CAM[w]);
+export const worldMood = (w: WorldId): "studio" | "dark" => (isSub(w) ? "dark" : "studio");
 
 // всё, что нужно 2D-слою: тревога, где «!»
 export const worldState = (w: WorldId, t: number) => {
@@ -484,6 +494,8 @@ export const worldState = (w: WorldId, t: number) => {
   if (isLab(w)) return labState(w, t);
   if (isBorder(w)) return borderState(w, t);
   if (isKitchen(w)) return kitchenState(w, t);
+  if (isSub(w)) return subState(w, t);
+  if (isSite(w)) return siteState(w, t);
   if (w === "overload") return {alarm: t > 2.2 && t < 5.4};
   if (w === "fence") return {alarm: t > 2.6 && t < 4.4};
   if (w === "reach") return {alarm: t > 4.9};
@@ -498,6 +510,8 @@ export const World: React.FC<{w: WorldId; t: number; scout?: {at: number; x: num
   if (isLab(w)) return <LabWorld w={w} t={t} />;
   if (isBorder(w)) return <BorderWorld w={w} t={t} />;
   if (isKitchen(w)) return <KitchenWorld w={w} t={t} />;
+  if (isSub(w)) return <SubWorld w={w} t={t} />;
+  if (isSite(w)) return <SiteWorld w={w} t={t} />;
   const floor = <MockFloor w={20} d={14} p={[0, 0, -1.4]} />;
   const scoutEl = scout ? (
     <>

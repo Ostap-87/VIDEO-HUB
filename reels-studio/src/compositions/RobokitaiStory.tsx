@@ -1,6 +1,7 @@
 // «Робокитай» — серия из статьи блога Aura с драматургией v2 (06.11.2026, серии 2 · Сучжоу и 3 · Шэньчжэнь): шаги задаются списком
 // `beats` в props (robokitai/story.tsx), 3D-миры — robokitai/cell3d.tsx. Таймер дедлайна, лицо клиента, шапка серии и музыка —
-// как в RobokitaiDrama, но ключи — по `id` шагов. Props — props/robokitai/NNN-<город>.json.
+// как в RobokitaiDrama, но ключи — по `id` шагов. Props — props/robokitai/NNN-<город>.json. Сезон 2 (07.11.2026): `series.season` —
+// бирюзовая плашка «СЕЗОН 2» в шапке.
 import React from "react";
 import {AbsoluteFill, Freeze, Sequence, interpolate, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
 import {Audio} from "@remotion/media";
@@ -77,7 +78,7 @@ export const RobokitaiStory: React.FC<RobokitaiStoryProps> = (P) => {
           </Sequence>
         );
       })}
-      {showHeader ? <Header series={P.series.name} zh="" ep={P.series.ep} city={cur.kind === "map" && f < at(cur.id, 2.2) ? undefined : P.city.name} /> : null}
+      {showHeader ? <Header series={P.series.name} zh="" ep={P.series.ep} season={P.series.season} city={cur.kind === "map" && f < at(cur.id, 2.2) ? undefined : P.city.name} /> : null}
       <Countdown label={P.countdown.label} days={ck.d} changedAt={ck.f} state={cdState} done={P.countdown.done} o={cdHidden ? 0 : 1} />
       <ManagerInset x={1080 - 64 - 150} y={372} size={150} mood={mood} label={P.manager.label} moodKey={moodKey} o={insetO} look={P.manager.look} />
       <Sequence from={aStart} durationInFrames={Math.max(1, bStart - aStart)} layout="none">

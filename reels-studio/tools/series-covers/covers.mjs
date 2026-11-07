@@ -75,6 +75,17 @@ const RK = [
     tag: 'кухонный край', note: 'Узкое место линии — заморозка',
     heroes: [['07-arm', 'Арми', 330, 1345, 560], ['06-wheel-humanoid-navy', 'Кэрри', 780, 1345, 470]],
     extra: '<div class="jiaozi" style="left:520px;top:1150px"></div><div class="jiaozi" style="left:610px;top:1185px;rotate:12deg"></div><div class="jiaozi" style="left:430px;top:1190px;rotate:-10deg"></div><div class="sticker">15 000 шт/ч?</div>' },
+  // Сезон 2 (07.11.2026): бирюзовая плашка «СЕЗОН 2 · СЕРИЯ N» (season: 2), свои цвета — cyan (ночная подстанция) и teal (цвет сезона)
+  { name: 'robokitai-009-hangzhou', kind: 'bright', theme: 'cyan', season: 2, ep: 'СЕЗОН 2 · СЕРИЯ 1', stamp: '杭', mapCity: 'Ханчжоу',
+    title: 'Окупится ли<br><mark>робот-обходчик</mark>?', city: 'Ханчжоу', zh: '杭州',
+    tag: 'край четвероногих', note: 'Цена обхода, которого не было',
+    heroes: [['13-agv-orange', 'Рыжик', 255, 1350, 250], ['02-dog', 'Скаут · обходчик', 650, 1350, 360]],
+    extra: '<div class="snow"></div><div class="thermo"><i>ТЕПЛОВИЗОР · 03:00</i><svg viewBox="0 0 400 200"><defs><radialGradient id="hg"><stop offset="0" stop-color="#FFFBD6"/><stop offset=".3" stop-color="#FFD84A"/><stop offset=".6" stop-color="#F5892B"/><stop offset="1" stop-color="#D63A3A" stop-opacity="0"/></radialGradient></defs><rect width="400" height="200" fill="#17114F"/><rect x="20" y="70" width="350" height="12" rx="6" fill="#8E1F8F"/><g fill="#5A1A8A"><rect x="72" y="80" width="14" height="120"/><rect x="193" y="80" width="14" height="120"/><rect x="314" y="80" width="14" height="120"/></g><circle cx="79" cy="76" r="22" fill="#8E1F8F"/><circle cx="321" cy="76" r="22" fill="#8E1F8F"/><circle cx="200" cy="76" r="64" fill="url(#hg)"/><path d="M164 76h20M216 76h20M200 40v20M200 92v20" stroke="#fff" stroke-width="4"/></svg><b>2</b></div>' },
+  { name: 'robokitai-010-zastava', kind: 'bright', theme: 'teal', season: 2, ep: 'СЕЗОН 2 · СЕРИЯ 2', stamp: '关', mapCity: 'Застава',
+    title: 'Робот приехал —<br><mark>а не работает</mark>', city: 'Застава', zh: '边境',
+    tag: 'граница: логистика и таможня', note: 'Место готовят раньше робота',
+    heroes: [['08-arm-industrial', 'Титан · в ящике', 470, 1330, 560], ['12-agv', 'Шустрик', 875, 1355, 190]],
+    extra: '<div class="box2back"></div><div class="box2front"></div><div class="phone2" style="left:70px;top:820px;rotate:-12deg"><span></span></div><div class="phone2" style="left:820px;top:880px;rotate:10deg"><span></span></div><div class="say" style="left:70px;top:650px">Ну что, когда?</div>' },
 ];
 const rkHtml = (c) => `<!doctype html><html lang="ru"><head><meta charset="utf-8"><style>${FONTS}
 body{background:#F3F0E8;background-image:linear-gradient(#E3DED2 1.5px,transparent 1.5px),linear-gradient(90deg,#E3DED2 1.5px,transparent 1.5px);background-size:54px 54px;font-family:Golos;color:#16161C}
@@ -172,6 +183,9 @@ const THEMES = {
   mint: { bg: '#34C997', ln: 'rgba(22,22,28,.12)', fg: '#16161C', sub: '#0F4A36', mk: '#fff', land: '#D6262B', dot: '#FFD83A' },
   slate: { bg: '#26324A', ln: 'rgba(255,255,255,.12)', fg: '#fff', sub: '#C9D6EA', mk: '#FFD83A', land: '#fff', dot: '#E3312D', dark: true },
   lime: { bg: '#B8E04A', ln: 'rgba(22,22,28,.12)', fg: '#16161C', sub: '#3A4A10', mk: '#fff', land: '#D6262B', dot: '#E3312D' },
+  // сезон 2
+  cyan: { bg: '#22C3E6', ln: 'rgba(22,22,28,.12)', fg: '#16161C', sub: '#0B3A4A', mk: '#fff', land: '#D6262B', dot: '#FFD83A' },
+  teal: { bg: '#0E9C8E', ln: 'rgba(255,255,255,.16)', fg: '#fff', sub: '#D6F5F0', mk: '#FFD83A', land: '#fff', dot: '#E3312D', dark: true },
 };
 const heroDivs = (list) => list.map(([f, , x, y, h, fl, rot]) => `<div class="h ${fl || ''}" style="left:${x}px;top:${y - h}px;height:${h}px;${rot ? `rotate:${rot}deg;` : ''}"><span class="gs"></span><img src="${u(HERO + f + '.png')}"></div>`).join('\n')
   + list.map(([, n, x, y, h, fl]) => `<span class="nm" style="left:${x}px;top:${fl === 'fly' ? y - h - 30 : y - 26}px">${n}</span>`).join('');
@@ -186,7 +200,7 @@ body{background:${t.bg};font-family:Golos;color:${t.fg}}
 .brand{display:flex;align-items:center;gap:16px;font:700 30px JB;letter-spacing:.08em;background:#fff;color:#16161C;padding:8px 20px 8px 8px;border-radius:14px;border:3px solid #16161C;box-shadow:5px 5px 0 #16161C}
 .seal{width:56px;height:56px;background:#D6262B;color:#fff;border-radius:9px;display:flex;align-items:center;justify-content:center;font:58px MSZ}
 .brand .zh{color:#D6262B;font:36px MSZ;letter-spacing:0}
-.ep{background:#16161C;color:#fff;font:800 32px JB;letter-spacing:.06em;padding:12px 22px;border-radius:12px;box-shadow:5px 5px 0 rgba(0,0,0,.25)}
+.ep{background:${c.season ? (c.theme === 'teal' ? '#fff' : '#0E9C8E') : '#16161C'};color:${c.season && c.theme === 'teal' ? '#0E7A6F' : '#fff'};font:800 32px JB;letter-spacing:.06em;padding:12px 22px;border-radius:12px;box-shadow:5px 5px 0 ${c.season ? '#16161C' : 'rgba(0,0,0,.25)'};${c.season ? 'border:3px solid #16161C;rotate:-2deg;' : ''}}
 h1{position:absolute;top:350px;left:60px;right:44px;font:900 112px/1.04 Golos;letter-spacing:-.02em;${c.theme === 'red' || t.dark ? 'text-shadow:6px 6px 0 #16161C;' : ''}}
 mark{background:${t.mk};color:#16161C;padding:0 14px;border-radius:12px;box-shadow:6px 6px 0 #16161C;text-shadow:none;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .stamp{position:absolute;top:600px;${c.sealAt === 'left' ? 'left:44px;rotate:-7deg' : 'right:40px;rotate:7deg'};width:150px;height:150px;background:#D6262B;color:#fff;border-radius:20px;display:flex;align-items:center;justify-content:center;font:144px/1 MSZ;box-shadow:8px 8px 0 #16161C;border:5px solid #fff;z-index:6}
@@ -239,6 +253,19 @@ mark{background:${t.mk};color:#16161C;padding:0 14px;border-radius:12px;box-shad
 .jiaozi{position:absolute;width:150px;height:84px;background:#F6EEDC;border:6px solid #16161C;border-radius:80px 80px 14px 14px;box-shadow:6px 6px 0 #16161C;z-index:8}
 .jiaozi::after{content:"";position:absolute;left:24px;right:24px;top:10px;height:22px;background:repeating-linear-gradient(90deg,#16161C 0 5px,transparent 5px 22px);opacity:.5;border-radius:10px}
 .sticker{position:absolute;left:560px;top:790px;white-space:nowrap;background:#fff;color:#E3312D;border:6px solid #16161C;border-radius:18px;box-shadow:9px 9px 0 #16161C;font:900 58px/1 Golos;padding:16px 24px;rotate:6deg;z-index:7}
+/* сезон 2: снег, снимок тепловизора, ящик, телефоны со вспышкой, реплика */
+.snow{position:absolute;inset:0;background-image:radial-gradient(#fff 0 5px,transparent 6px),radial-gradient(#fff 0 3.5px,transparent 4.5px);background-size:150px 170px,90px 110px;background-position:20px 40px,60px 10px;opacity:.75;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 30%,#000 66%,transparent 74%)}
+.thermo{position:absolute;left:66px;top:700px;width:430px;background:#16161C;border:7px solid #16161C;border-radius:20px;box-shadow:10px 10px 0 #fff;rotate:-5deg;overflow:hidden;z-index:6}
+.thermo i{display:block;font:700 26px JB;font-style:normal;color:#fff;letter-spacing:.08em;padding:6px 12px 8px}
+.thermo svg{display:block;width:100%}
+.thermo b{position:absolute;left:186px;top:52px;width:52px;height:52px;border-radius:50%;background:#fff;border:5px solid #16161C;font:900 36px/42px Golos;text-align:center;color:#16161C}
+.box2back{position:absolute;left:190px;top:900px;width:560px;height:430px;background:repeating-linear-gradient(0deg,#C9A46A 0 58px,#8A6A3A 58px 74px);border:9px solid #6E5230;border-radius:8px;box-shadow:10px 10px 0 #16161C;z-index:0}
+.box2front{position:absolute;left:150px;top:1180px;width:640px;height:180px;background:repeating-linear-gradient(0deg,#D8B47A 0 52px,#8A6A3A 52px 66px);border:9px solid #6E5230;border-radius:8px;box-shadow:10px 10px 0 #16161C;z-index:6}
+.phone2{position:absolute;width:150px;height:250px;background:#16161C;border-radius:26px;border:6px solid #fff;box-shadow:8px 8px 0 #16161C;z-index:7}
+.phone2 span{position:absolute;left:50%;top:-70px;width:150px;height:150px;margin-left:-75px;background:radial-gradient(circle,#fff 0 18%,rgba(255,246,170,.9) 30%,rgba(255,246,170,0) 62%)}
+.phone2 span::before{content:"";position:absolute;inset:-20px;background:repeating-conic-gradient(#FFF6AA 0 4deg,transparent 4deg 24deg);-webkit-mask-image:radial-gradient(circle,transparent 20%,#000 26%,transparent 66%)}
+.say{position:absolute;white-space:nowrap;background:#fff;color:#16161C;border:6px solid #16161C;border-radius:30px;box-shadow:8px 8px 0 #16161C;font:900 56px/1 Golos;padding:16px 28px 20px;rotate:-4deg;z-index:8}
+.say::after{content:"";position:absolute;left:60px;bottom:-40px;border:20px solid transparent;border-top:24px solid #16161C}
 .note::before{content:"";display:inline-block;width:22px;height:22px;border-radius:50%;background:#FFD83A;margin-right:16px;vertical-align:4px}
 .foot{position:absolute;top:1740px;left:60px;display:flex;align-items:center;gap:16px;font:700 34px JB;color:${t.fg}}
 .foot svg{width:54px;height:54px}.foot svg *{fill:currentColor}

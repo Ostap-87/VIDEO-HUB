@@ -5,17 +5,23 @@
 // Серии 4–8 (06.11.2026): `compare` (смена по часам: две полосы, когда «горит» работа), `calc` (расчёт на бумаге: строки, итог,
 // вычёркивание строки и новый итог), у угадайки — стили cards (2–3 карточки) / yesno / poll / pins, у сцены — tag (вкладка
 // «Попытка 1/3»), clock (часы), meter (шкала), counter (счётчик), stamps (штампы), у крючка — seals (печати пройденных краёв).
+// Сезон 2 (07.11.2026): у сцены — phone (SOS на телефоне поверх тёмной сцены, потом «влетаем» в кадр), clocks (часы меняются),
+// thermo (снимки тепловизора: три контакта, нагрев 0…1), trend (график «каждую ночь в 03:00»), checks (чек-лист готовности
+// площадки), bubbles (реплики-облачка), flashes (вспышки телефонов); угадайка — diff (два снимка тепловизора «что изменилось?»)
+// и order («кто приходит первым?»: плитки и пустые места 1-2-3); у расчёта — addRows/addAt (строки дописываются), good (новый
+// итог зелёный), stamps, tag; у письма — memo (бланк протокола со штампом вместо телефона).
 // Факты, цифры и цитаты — только из статьи серии; рамка сюжета (дедлайн, начальник цеха) — вымысел без цифр.
 import React from "react";
 import {AbsoluteFill, Sequence, interpolate, spring, useCurrentFrame, useVideoConfig} from "remotion";
 import {AuraMascot} from "../../components/AuraMascot";
 import {AuraBadge} from "../../components/AuraBadge";
 import {Stage} from "../../components/aura3d/kit";
-import {Alert, BRUSH_CJK, CL, EIO, EO, INTER, MONO, MONO_CJK, MarkLine, NamePlate, PANEL, Paper, RK, ScenePanel, Seal, SpecCard, Title, p01, usePop, type CardLine} from "./kit";
+import {Alert, BRUSH_CJK, CL, EIO, EO, INTER, MONO, MONO_CJK, MarkLine, Marked, NamePlate, PANEL, Paper, RK, ScenePanel, Seal, SpecCard, Title, p01, usePop, type CardLine} from "./kit";
 import {MapBeat, Sounds, type Snd} from "./beats2d";
 import {useT} from "./beats3d";
 import {Bulb, DayMark, FlashCard, Huh, Manager, SosPhone, Tint, type Arms, type Hint, type Look, type Mood} from "./drama2d";
-import {WORLD_CAM, World, worldState, type WorldId} from "./cell3d";
+import {World, worldCam, worldMood, worldState, type WorldId} from "./cell3d";
+import {heatColor} from "./substation3d";
 import type {RobokitaiProps} from "./types";
 
 export type SCard = {at: number; out?: number; term?: string; sub?: string; lines: CardLine[]; note?: string; tone?: "paper" | "alert"};
@@ -46,6 +52,20 @@ export type SBeat = {
   meter?: {label: string; at: number; from: number; to: number; dur?: number; text?: string; text2?: string; bad?: boolean};
   counter?: {label: string; at: number; from: number; to: number; dur: number; side?: "left" | "right"};
   stamps?: {text: string; at: number; x: number; y: number; rot?: number; color?: string; size?: number}[];
+  // сезон 2
+  phone?: {at: number; out: number; sos: string; city: string; hint?: Hint};
+  clocks?: {at: number; text: string}[];
+  thermo?: {at: number; out?: number; heat: [number, number, number]; label?: string; x?: number; y?: number; w?: number}[];
+  trend?: {at: number; out?: number; title: string; dur?: number; x?: number; y?: number; w?: number};
+  checks?: {at: number; title: string; items: {text: string; ok?: boolean; at: number}[]; x?: number; y?: number};
+  bubbles?: {at: number; out?: number; text: string; x: number; y: number; tail?: "l" | "r"}[];
+  flashes?: number[];
+  shots?: {label: string; heat: [number, number, number]}[];
+  addRows?: {text: string; small?: boolean}[];
+  addAt?: number;
+  good?: boolean;
+  resultSize?: number;
+  memo?: {title: string; lines: string[]; stamp: string};
   // letter
   sos?: string;
   city?: string;
@@ -56,7 +76,7 @@ export type SBeat = {
   q?: string;
   a?: {letter: string; name: string; role: string};
   b?: {letter: string; name: string; role: string};
-  style?: "cards" | "yesno" | "poll" | "pins";
+  style?: "cards" | "yesno" | "poll" | "pins" | "diff" | "order";
   opts?: {letter?: string; name: string; role?: string; x?: number; y?: number}[];
   // compare: полосы смены
   cmpTitle?: {text: string; mark?: string};
@@ -81,7 +101,7 @@ export type SBeat = {
 };
 
 export type RobokitaiStoryProps = {
-  series: {name: string; zh: string; ep: number};
+  series: {name: string; zh: string; ep: number; season?: number};
   city: {name: string; zh: string; zhFull?: string; tagline: string};
   title: string;
   article?: string;
@@ -125,12 +145,17 @@ export const SceneBeat: React.FC<BP & {forceT?: number; gray?: boolean}> = ({P, 
       <Paper />
       <div style={{position: "absolute", inset: 0, rotate: `${B.tilt ?? 0}deg`, filter: gray ? "grayscale(1) contrast(0.92)" : undefined}}>
         <ScenePanel>
-          <Stage cam={WORLD_CAM[w]} left={0} top={0} width={PANEL.w} height={PANEL.h} dpr={1}>
+          <Stage cam={worldCam(w, wt)} mood={worldMood(w)} left={0} top={0} width={PANEL.w} height={PANEL.h} dpr={1}>
             <World w={w} t={wt} scout={B.scout} chalk={B.chalk ? chalk : w === "reach" || w === "reachFixed" ? 1 : 0} />
           </Stage>
         </ScenePanel>
       </div>
       {B.tint ? <Tint kind={B.tint} o={B.tint === "red" ? 0.85 : 1} /> : null}
+      {(B.flashes ?? []).length ? <PanelFlash t={t} list={B.flashes ?? []} /> : null}
+      {(B.thermo ?? []).map((th, i) => (gray || t < th.at || (th.out !== undefined && t >= th.out) ? null : <ThermoInset key={i} {...th} t={t} />))}
+      {B.trend && !gray && (B.trend.out === undefined || t < B.trend.out) ? <TrendChart {...B.trend} /> : null}
+      {B.checks && !gray ? <Checks {...B.checks} /> : null}
+      {(B.bubbles ?? []).map((b, i) => (gray ? null : <Bubble key={i} {...b} />))}
       {(B.alerts ?? []).map((a, i) => (
         <Alert key={i} x={880} y={520} at={Math.round(a * fps)} size={120} />
       ))}
@@ -154,6 +179,12 @@ export const SceneBeat: React.FC<BP & {forceT?: number; gray?: boolean}> = ({P, 
         )
       ) : null}
       {B.clock ? <Clock text={B.clock.text} at={Math.round((B.clock.at ?? 0.2) * fps)} /> : null}
+      {B.clocks && !gray
+        ? (() => {
+            const cur = [...B.clocks].reverse().find((c) => t >= c.at);
+            return cur ? <Clock key={cur.at} text={cur.text} at={Math.round(cur.at * fps)} /> : null;
+          })()
+        : null}
       {B.meter && !gray ? <Meter {...B.meter} /> : null}
       {B.counter && !gray ? <Counter {...B.counter} /> : null}
       {(B.stamps ?? []).map((st2, i) => (gray ? null : <Stamp key={i} {...st2} />))}
@@ -163,8 +194,197 @@ export const SceneBeat: React.FC<BP & {forceT?: number; gray?: boolean}> = ({P, 
           <FlashCard text={B.flash.text} />
         </Sequence>
       ) : null}
+      {B.phone && t < B.phone.out ? <PhoneIntro {...B.phone} t={t} /> : null}
       {B.sounds ? <Sounds list={B.sounds} /> : null}
     </AbsoluteFill>
+  );
+};
+
+// ===== сезон 2: оверлеи сцены =====
+// SOS на телефоне поверх тёмной сцены; в `out − 0,5 с` телефон «влетает» в камеру и открывает кадр
+const PhoneIntro: React.FC<NonNullable<SBeat["phone"]> & {t: number}> = ({at, out, sos, city, hint, t}) => {
+  const {fps} = useVideoConfig();
+  const z = p01(t, out - 0.5, out, EIO);
+  return (
+    <>
+      <AbsoluteFill style={{background: "#0A0C18", opacity: 0.86 * (1 - z)}} />
+      <div style={{position: "absolute", inset: 0, scale: String(1 + z * 1.8), opacity: 1 - z, transformOrigin: "560px 900px"}}>
+        <SosPhone x={330} y={520} at={Math.round(at * fps)} title={sos} city={city} hint={hint} />
+      </div>
+    </>
+  );
+};
+// вспышки телефонов: белая засветка панели
+const PanelFlash: React.FC<{t: number; list: number[]}> = ({t, list}) => {
+  const o = Math.max(0, ...list.map((a) => (t >= a && t < a + 0.22 ? 1 - (t - a) / 0.22 : 0)));
+  if (o <= 0) return null;
+  return <div style={{position: "absolute", left: PANEL.x, top: PANEL.y, width: PANEL.w, height: PANEL.h, borderRadius: 30, background: "#FFFFFF", opacity: 0.7 * o}} />;
+};
+// снимок тепловизора: шина, три опорных изолятора, зажимы-контакты светятся по нагреву (палитра «холодно → горячо»), шкала
+export const ThermoShot: React.FC<{heat: [number, number, number]; label?: string; w: number; nums?: boolean}> = ({heat, label, w, nums}) => {
+  const h = Math.round(w * 0.44);
+  const id = `th${Math.round(w)}${heat.map((v) => Math.round(v * 100)).join("")}`;
+  const xs = [0.2, 0.5, 0.8].map((v) => v * w);
+  const yC = h * 0.4;
+  const hot = heat.indexOf(Math.max(...heat));
+  return (
+    <div style={{position: "relative", width: w, height: h, borderRadius: 18, overflow: "hidden", border: `5px solid ${RK.ink}`, boxShadow: `8px 8px 0 ${RK.ink}`, background: "#14104A", boxSizing: "border-box"}}>
+      <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} style={{display: "block"}}>
+        <defs>
+          {heat.map((v, i) => (
+            <radialGradient key={i} id={`${id}g${i}`}>
+              <stop offset="0%" stopColor={heatColor(Math.min(1, v + 0.18))} />
+              <stop offset="40%" stopColor={heatColor(v)} stopOpacity={0.9} />
+              <stop offset="100%" stopColor={heatColor(v * 0.5)} stopOpacity={0} />
+            </radialGradient>
+          ))}
+          <linearGradient id={`${id}bar`} x1="0" y1="1" x2="0" y2="0">
+            {[0, 0.2, 0.4, 0.6, 0.8, 1].map((v) => (
+              <stop key={v} offset={`${v * 100}%`} stopColor={heatColor(v)} />
+            ))}
+          </linearGradient>
+        </defs>
+        <rect width={w} height={h} fill="#17114F" />
+        <rect x={0} y={h * 0.78} width={w} height={h * 0.22} fill="#211565" />
+        {xs.map((x, i) => (
+          <g key={i}>
+            <rect x={x - w * 0.012} y={yC} width={w * 0.024} height={h - yC} fill={heatColor(0.14)} />
+            {Array.from({length: 6}, (_, k) => (
+              <ellipse key={k} cx={x} cy={yC + 26 + k * ((h - yC - 40) / 6)} rx={w * 0.03} ry={6} fill={heatColor(0.18)} />
+            ))}
+          </g>
+        ))}
+        <rect x={w * 0.04} y={yC - 8} width={w * 0.84} height={16} rx={8} fill={heatColor(0.24 + 0.2 * (heat[0] + heat[1] + heat[2]) / 3)} />
+        {xs.map((x, i) => (
+          <g key={`c${i}`}>
+            <circle cx={x} cy={yC} r={w * (0.03 + 0.085 * heat[i])} fill={`url(#${id}g${i})`} />
+            <rect x={x - w * 0.022} y={yC - 15} width={w * 0.044} height={30} rx={5} fill={heatColor(heat[i])} />
+            {nums ? (
+              <g>
+                <circle cx={x} cy={yC - w * 0.085} r={w * 0.028} fill={RK.paper} stroke={RK.ink} strokeWidth={4} />
+                <text x={x} y={yC - w * 0.085 + w * 0.012} textAnchor="middle" fontFamily={INTER} fontWeight={800} fontSize={w * 0.034} fill={RK.ink}>
+                  {i + 1}
+                </text>
+              </g>
+            ) : null}
+          </g>
+        ))}
+        {/* перекрестие на самой горячей точке кадра */}
+        <g stroke="#FFFFFF" strokeWidth={3} opacity={0.85}>
+          <path d={`M${xs[hot] - 34} ${yC} L${xs[hot] - 14} ${yC} M${xs[hot] + 14} ${yC} L${xs[hot] + 34} ${yC} M${xs[hot]} ${yC - 34} L${xs[hot]} ${yC - 14} M${xs[hot]} ${yC + 14} L${xs[hot]} ${yC + 34}`} />
+        </g>
+        <rect x={w - 34} y={18} width={14} height={h - 36} rx={7} fill={`url(#${id}bar)`} stroke="#FFFFFF" strokeWidth={2} />
+      </svg>
+      {label ? (
+        <div style={{position: "absolute", left: 14, top: 12, padding: "4px 12px 5px", background: "rgba(10,10,20,0.72)", color: "#FFFFFF", fontFamily: MONO, fontWeight: 700, fontSize: Math.max(22, Math.round(w * 0.034)), letterSpacing: "0.08em", borderRadius: 8}}>{label}</div>
+      ) : null}
+    </div>
+  );
+};
+const ThermoInset: React.FC<NonNullable<SBeat["thermo"]>[number] & {t: number}> = ({at, heat, label, x = 576, y = 1010, w = 430, t}) => {
+  const {fps} = useVideoConfig();
+  const s = usePop(Math.round(at * fps), 13);
+  return (
+    <div style={{position: "absolute", left: x, top: y, scale: String(0.7 + 0.3 * s), opacity: Math.min(1, s * 2), transformOrigin: "100% 100%"}}>
+      <ThermoShot heat={heat} label={label} w={w} />
+      {t < 0 ? null : null}
+    </div>
+  );
+};
+// график: три контакта каждую ночь в одно и то же время; второй медленно ползёт вверх
+const TrendChart: React.FC<NonNullable<SBeat["trend"]>> = ({at, title, dur = 2.6, x = 84, y = 1000, w = 600}) => {
+  const {t} = useT();
+  if (t < at) return null;
+  const W = w;
+  const H = 236;
+  const N = 30;
+  const k = p01(t, at + 0.2, at + 0.2 + dur);
+  const shown = Math.max(1, Math.round(k * N));
+  const px = (i: number) => 30 + (i / (N - 1)) * (W - 130);
+  const py = (v: number) => H - 30 - v * (H - 96);
+  const ser = [(i: number) => 0.2 + 0.03 * Math.sin(i * 2.3 + 1), (i: number) => 0.24 + 0.62 * Math.pow(i / (N - 1), 1.7) + 0.03 * Math.sin(i * 1.7), (i: number) => 0.27 + 0.03 * Math.sin(i * 1.3 + 2)];
+  const line = (fn: (i: number) => number) => Array.from({length: shown}, (_, i) => `${px(i).toFixed(1)},${py(fn(i)).toFixed(1)}`).join(" ");
+  return (
+    <div style={{position: "absolute", left: x, top: y, width: W, height: H, background: RK.paper, border: `5px solid ${RK.ink}`, borderRadius: 22, boxShadow: `7px 7px 0 ${RK.ink}`, opacity: p01(t, at, at + 0.25), boxSizing: "border-box", overflow: "hidden"}}>
+      <div style={{position: "absolute", left: 18, top: 10, fontFamily: MONO, fontWeight: 700, fontSize: 24, letterSpacing: "0.08em", color: RK.ink}}>{title.toUpperCase()}</div>
+      <svg width={W} height={H} style={{position: "absolute", left: 0, top: 0}}>
+        <path d={`M30 ${H - 30} L${W - 96} ${H - 30}`} stroke={RK.ink} strokeWidth={3} />
+        {[ser[0], ser[2]].map((fn, i) => (
+          <polyline key={i} points={line(fn)} fill="none" stroke={RK.muted} strokeWidth={4} strokeLinejoin="round" opacity={0.7} />
+        ))}
+        <polyline points={line(ser[1])} fill="none" stroke={RK.red} strokeWidth={7} strokeLinejoin="round" strokeLinecap="round" />
+        <circle cx={px(shown - 1)} cy={py(ser[1](shown - 1))} r={9} fill={RK.red} stroke={RK.ink} strokeWidth={3} />
+        <text x={px(shown - 1) + 18} y={py(ser[1](shown - 1)) + 10} fontFamily={INTER} fontWeight={800} fontSize={30} fill={RK.red}>
+          2
+        </text>
+        <text x={W - 90} y={H - 22} fontFamily={MONO} fontWeight={700} fontSize={20} fill={RK.muted}>
+          ночи →
+        </text>
+      </svg>
+    </div>
+  );
+};
+// чек-лист готовности площадки: пункты отмечаются по очереди ✓ / ✕
+const Checks: React.FC<NonNullable<SBeat["checks"]>> = ({at, title, items, x = 84, y = 880}) => {
+  const {t, fps} = useT();
+  if (t < at) return null;
+  return (
+    <div style={{position: "absolute", left: x, top: y, width: 470, padding: "16px 22px 10px", background: RK.paper, border: `5px solid ${RK.ink}`, borderRadius: 22, boxShadow: `7px 7px 0 ${RK.ink}`, opacity: p01(t, at, at + 0.25), boxSizing: "border-box"}}>
+      <div style={{fontFamily: MONO, fontWeight: 700, fontSize: 24, letterSpacing: "0.1em", color: RK.red, marginBottom: 6}}>{title.toUpperCase()}</div>
+      {items.map((it, i) => {
+        const on = t >= it.at;
+        const s = on ? spring({frame: Math.round((t - it.at) * fps), fps, config: {damping: 11, stiffness: 220, mass: 0.6}}) : 0;
+        const col = it.ok ? "#1F8A4C" : RK.red;
+        return (
+          <div key={i} style={{display: "flex", alignItems: "center", gap: 14, height: 50}}>
+            <span style={{width: 38, height: 38, borderRadius: 99, flexShrink: 0, border: `4px solid ${RK.ink}`, background: on ? col : RK.paper2, display: "flex", alignItems: "center", justifyContent: "center", color: RK.paper, fontFamily: INTER, fontWeight: 800, fontSize: 24, scale: String(on ? 0.6 + 0.4 * s : 1)}}>
+              {on ? (it.ok ? "✓" : "✕") : ""}
+            </span>
+            <span style={{fontFamily: INTER, fontWeight: 800, fontSize: 36, letterSpacing: "-0.02em", color: on ? RK.ink : RK.muted}}>{it.text}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+// реплика-облачко
+const Bubble: React.FC<NonNullable<SBeat["bubbles"]>[number]> = ({at, out, text, x, y, tail = "l"}) => {
+  const {t, fps} = useT();
+  const s = usePop(Math.round(at * fps), 11);
+  if (s <= 0 || (out !== undefined && t >= out)) return null;
+  return (
+    <div style={{position: "absolute", left: x, top: y, scale: String(0.5 + 0.5 * s), opacity: Math.min(1, s * 2), transformOrigin: tail === "l" ? "0 100%" : "100% 100%"}}>
+      <div style={{position: "relative", padding: "12px 24px 14px", background: RK.paper, border: `5px solid ${RK.ink}`, borderRadius: 28, boxShadow: `6px 6px 0 ${RK.ink}`, fontFamily: INTER, fontWeight: 800, fontSize: 40, letterSpacing: "-0.03em", color: RK.ink, whiteSpace: "nowrap"}}>
+        {text}
+        <svg width={50} height={40} style={{position: "absolute", [tail === "l" ? "left" : "right"]: 26, bottom: -36, overflow: "visible"}}>
+          <path d={tail === "l" ? "M4 0 L14 34 L36 0" : "M46 0 L36 34 L14 0"} fill={RK.paper} stroke={RK.ink} strokeWidth={5} strokeLinejoin="round" />
+          <path d={tail === "l" ? "M8 -4 L32 -4" : "M18 -4 L42 -4"} stroke={RK.paper} strokeWidth={8} />
+        </svg>
+      </div>
+    </div>
+  );
+};
+// бланк протокола со штампом (письмо без телефона)
+const Memo: React.FC<NonNullable<SBeat["memo"]>> = ({title, lines, stamp}) => {
+  const {f, fps} = useT();
+  const s = spring({frame: f - 6, fps, config: {damping: 14, stiffness: 150}});
+  const st = f >= 48 ? spring({frame: f - 48, fps, config: {damping: 12, stiffness: 260, mass: 0.8}}) : 0;
+  return (
+    <div style={{position: "absolute", left: 560, top: 420, width: 440, height: 600, translate: `${(1 - s) * 700}px 0`, rotate: "3deg", background: RK.paper, border: `6px solid ${RK.ink}`, borderRadius: 16, boxShadow: `14px 14px 0 rgba(38,38,38,0.25)`, padding: "30px 30px", boxSizing: "border-box"}}>
+      <div style={{fontFamily: MONO, fontWeight: 700, fontSize: 26, letterSpacing: "0.12em", color: RK.red}}>{title.toUpperCase()}</div>
+      <div style={{height: 5, background: RK.ink, margin: "14px 0 20px"}} />
+      {lines.map((l, i) => (
+        <div key={i} style={{fontFamily: INTER, fontWeight: 800, fontSize: 44, lineHeight: 1.14, letterSpacing: "-0.03em", color: RK.ink, marginBottom: 14, opacity: p01(f, 14 + i * 8, 22 + i * 8)}}>
+          {l}
+        </div>
+      ))}
+      {[0, 1, 2].map((k) => (
+        <div key={k} style={{height: 10, borderRadius: 5, background: RK.fog, width: `${80 - k * 18}%`, marginTop: 18}} />
+      ))}
+      {st > 0 ? (
+        <div style={{position: "absolute", left: 40, bottom: 52, rotate: "-12deg", scale: String(2 - st), opacity: Math.min(1, st * 3), padding: "6px 20px 8px", border: `7px solid ${RK.red}`, borderRadius: 12, fontFamily: MONO, fontWeight: 700, fontSize: 52, letterSpacing: "0.08em", color: RK.red, background: "rgba(248,246,243,0.85)"}}>{stamp}</div>
+      ) : null}
+    </div>
   );
 };
 
@@ -180,8 +400,9 @@ export const LetterBeat: React.FC<BP> = ({P, B}) => {
       <Manager x={60} y={470} scale={1.02} mood="skeptic" arms="crossed" at={4} from="left" look={P.manager.look} />
       <NamePlate x={70} y={1010} name={P.manager.label} role="клиент" at={Math.round(0.6 * fps)} scale={0.92} />
       <div style={{position: "absolute", left: 0, top: 0, width: 1080, height: 1920, scale: "0.82", transformOrigin: "1000px 420px"}}>
-        <SosPhone x={560} y={440} at={Math.round(0.2 * fps)} title={B.sos ?? "SOS"} city={B.city ?? ""} hint={B.hint} />
+        {B.memo ? null : <SosPhone x={560} y={440} at={Math.round(0.2 * fps)} title={B.sos ?? "SOS"} city={B.city ?? ""} hint={B.hint} />}
       </div>
+      {B.memo ? <Memo {...B.memo} /> : null}
       {bubble > 0 ? (
         <div style={{position: "absolute", left: 64, top: 1110, width: 700, translate: `0 ${(1 - bubble) * 60}px`, opacity: Math.min(1, bubble * 1.6)}}>
           <svg width={700} height={300} style={{position: "absolute", left: 0, top: 0, overflow: "visible"}}>
@@ -201,7 +422,7 @@ export const LetterBeat: React.FC<BP> = ({P, B}) => {
       ) : null}
       <AuraMascot scale={1.15} dpr={1.25} plan={{stays: [{at: 0, x: 905, y: 1515, face: -0.4}], gestures: [{at: 2.5, kind: "wave"}], emotes: [{at: 0.3, kind: "alert", dur: 1.6}, {at: 3.6, kind: "thinking", dur: 2.0}]}} />
       {B.host ? <NamePlate x={640} y={1440} name={B.host.name} role={B.host.role} at={Math.round(2.6 * fps)} scale={0.78} /> : null}
-      <Sounds list={[[0.2, "@vibrate-1", 0.5], [0.5, "@ding-2", 0.3], [2.6, "@pop-1", 0.25], [2.9, "@typing-1", 0.18], ...(B.sounds ?? [])]} />
+      <Sounds list={[...(B.memo ? ([[0.2, "@swipe-1", 0.35], [1.6, "@stamp-1", 0.4]] as Snd[]) : ([[0.2, "@vibrate-1", 0.5], [0.5, "@ding-2", 0.3]] as Snd[])), [2.6, "@pop-1", 0.25], [2.9, "@typing-1", 0.18], ...(B.sounds ?? [])]} />
     </AbsoluteFill>
   );
 };
@@ -297,7 +518,7 @@ export const GuessStoryBeat: React.FC<BP> = ({P, B}) => {
     const rot = n === 3 ? [-3, 1, 4][i] : [-3, 3][i];
     const col = GUESS_COL[i];
     return (
-      <div key={i} style={{position: "absolute", left: x, top: 900, width: w, padding: "26px 24px 30px", boxSizing: "border-box", background: RK.paper, border: `6px solid ${RK.ink}`, borderRadius: 30, boxShadow: `10px 10px 0 ${col}`, rotate: `${rot}deg`, scale: String(0.6 + 0.4 * s), opacity: Math.min(1, s * 2)}}>
+      <div key={i} style={{position: "absolute", left: x, top: style === "order" ? 760 : 900, width: w, padding: "26px 24px 30px", boxSizing: "border-box", background: RK.paper, border: `6px solid ${RK.ink}`, borderRadius: 30, boxShadow: `10px 10px 0 ${col}`, rotate: `${rot}deg`, scale: String(0.6 + 0.4 * s), opacity: Math.min(1, s * 2)}}>
         <div style={{fontFamily: INTER, fontWeight: 800, fontSize: n === 3 ? 120 : 150, lineHeight: 0.9, color: col, WebkitTextStroke: `5px ${RK.ink}`, paintOrder: "stroke fill"}}>{c.letter}</div>
         <div style={{fontFamily: INTER, fontWeight: 800, fontSize: n === 3 ? (c.name.length > 8 ? 40 : 48) : 52, letterSpacing: "-0.03em", color: RK.ink, marginTop: 12, whiteSpace: "nowrap"}}>{c.name}</div>
         {c.role ? <div style={{fontFamily: MONO, fontWeight: 700, fontSize: n === 3 ? 28 : 32, color: RK.blue, marginTop: 2}}>{c.role}</div> : null}
@@ -305,15 +526,66 @@ export const GuessStoryBeat: React.FC<BP> = ({P, B}) => {
     );
   };
   const words = (B.q ?? "").split(" ");
-  const qTop = style === "pins" ? 1310 : 560;
+  const qTop = style === "pins" ? 1310 : style === "diff" ? 1236 : 520;
+  const qText = (
+    <div style={{position: "absolute", left: 40, right: 40, top: qTop, textAlign: "center", fontFamily: INTER, fontWeight: 800, fontSize: style === "pins" || style === "diff" ? 76 : 88, letterSpacing: "-0.03em", lineHeight: 1.08, color: RK.paper, opacity: Math.min(1, q * 1.5), translate: `0 ${(1 - q) * 40}px`, textShadow: style === "pins" ? `4px 4px 0 ${RK.ink}` : undefined}}>
+      {words.slice(0, -1).join(" ")} <span style={{color: RK.ink, background: RK.lemon, padding: "0 14px", borderRadius: 10, textShadow: "none"}}>{words.slice(-1)[0]}</span>
+    </div>
+  );
+  const ticks: Snd[] = [[0, "@zvukitop/zt-suspense-1", 0.3], [0.3, "@zvukitop/zt-clock", 0.5], [2.3, "@zvukitop/zt-clock", 0.45], [0.3, "@pop-1", 0.25], [0.5, "@pop-1", 0.25], ...(opts.length > 2 ? ([[0.7, "@pop-1", 0.25]] as Snd[]) : [])];
+  if (style === "diff") {
+    // два снимка тепловизора одного узла в разное время: «что изменилось?» — номера контактов и кружки-ответы
+    const shots = B.shots ?? [];
+    return (
+      <AbsoluteFill>
+        <Paper />
+        <AbsoluteFill style={{background: "#15173A"}} />
+        {shots.map((sh, i) => {
+          const s = pop(4 + i * 7);
+          return (
+            <div key={i} style={{position: "absolute", left: 64, top: 330 + i * 450, scale: String(0.8 + 0.2 * s), opacity: Math.min(1, s * 2), rotate: `${i ? 1.2 : -1.2}deg`}}>
+              <ThermoShot heat={sh.heat} label={sh.label} w={952} nums />
+            </div>
+          );
+        })}
+        {qText}
+        <div style={{position: "absolute", left: 0, right: 0, top: 1360, display: "flex", justifyContent: "center", gap: 48}}>
+          {opts.map((c, i) => {
+            const s = pop(16 + i * 5);
+            return (
+              <span key={i} style={{width: 120, height: 120, borderRadius: 99, background: GUESS_COL[i], border: `7px solid ${RK.ink}`, boxShadow: `8px 8px 0 ${RK.paper}`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: INTER, fontWeight: 800, fontSize: 64, color: RK.ink, scale: String(0.4 + 0.6 * s), opacity: Math.min(1, s * 2)}}>
+                {c.letter ?? c.name}
+              </span>
+            );
+          })}
+        </div>
+        <Sounds list={ticks} />
+      </AbsoluteFill>
+    );
+  }
   return (
     <AbsoluteFill>
       <SceneBeat P={P} B={{...B, title: undefined, cards: undefined, alerts: [], tint: undefined, manager: undefined, stamps: undefined, meter: undefined, counter: undefined, tag: undefined, clock: undefined}} gray />
       <AbsoluteFill style={{background: style === "pins" ? "rgba(20,20,22,0.34)" : "rgba(20,20,22,0.62)"}} />
-      <div style={{position: "absolute", left: 40, right: 40, top: qTop, textAlign: "center", fontFamily: INTER, fontWeight: 800, fontSize: style === "pins" ? 76 : 88, letterSpacing: "-0.03em", lineHeight: 1.08, color: RK.paper, opacity: Math.min(1, q * 1.5), translate: `0 ${(1 - q) * 40}px`, textShadow: style === "pins" ? `4px 4px 0 ${RK.ink}` : undefined}}>
-        {words.slice(0, -1).join(" ")} <span style={{color: RK.ink, background: RK.lemon, padding: "0 14px", borderRadius: 10, textShadow: "none"}}>{words.slice(-1)[0]}</span>
-      </div>
-      {style === "cards" ? opts.map((c, i) => card(c, i, opts.length)) : null}
+      {qText}
+      {style === "cards" || style === "order" ? opts.map((c, i) => card(c, i, opts.length)) : null}
+      {style === "order" ? (
+        // пустые места «1 → 2 → 3»: в первом мигает «?»
+        <div style={{position: "absolute", left: 0, right: 0, top: 1230, display: "flex", justifyContent: "center", alignItems: "center", gap: 20}}>
+          {[0, 1, 2].map((k) => {
+            const s = pop(22 + k * 4);
+            return (
+              <React.Fragment key={k}>
+                {k ? <span style={{fontFamily: INTER, fontWeight: 800, fontSize: 60, color: RK.paper, opacity: Math.min(1, s * 2)}}>→</span> : null}
+                <span style={{width: 190, height: 150, borderRadius: 24, border: `6px dashed ${RK.paper}`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", scale: String(0.6 + 0.4 * s), opacity: Math.min(1, s * 2)}}>
+                  <span style={{fontFamily: MONO, fontWeight: 700, fontSize: 30, color: RK.lemon, letterSpacing: "0.1em"}}>{k + 1}</span>
+                  <span style={{fontFamily: INTER, fontWeight: 800, fontSize: 64, lineHeight: 1, color: RK.paper, opacity: k === 0 ? 0.4 + 0.6 * Math.abs(Math.sin(f / 8)) : 0.35}}>?</span>
+                </span>
+              </React.Fragment>
+            );
+          })}
+        </div>
+      ) : null}
       {style === "yesno"
         ? opts.slice(0, 2).map((c, i) => {
             const s = pop(9 + i * 7);
@@ -362,7 +634,7 @@ export const GuessStoryBeat: React.FC<BP> = ({P, B}) => {
             );
           })
         : null}
-      <Sounds list={[[0, "@zvukitop/zt-suspense-1", 0.3], [0.3, "@zvukitop/zt-clock", 0.5], [2.3, "@zvukitop/zt-clock", 0.45], [0.3, "@pop-1", 0.25], [0.5, "@pop-1", 0.25], ...(opts.length > 2 ? ([[0.7, "@pop-1", 0.25]] as Snd[]) : [])]} />
+      <Sounds list={ticks} />
     </AbsoluteFill>
   );
 };
@@ -556,6 +828,9 @@ export const CalcBeat: React.FC<BP> = ({B}) => {
   const sk = sAt !== undefined ? p01(t, sAt, sAt + 0.35, EO) : 0;
   const r2 = sAt !== undefined ? usePopT(f, Math.round((sAt + 0.6) * fps)) : 0;
   const rp = p01(t, resAt, resAt + 0.3, EO);
+  const addAt = B.addAt ?? (sAt !== undefined ? sAt - 0.9 : 99);
+  const good = B.good === true;
+  const r2col = good ? "#1F8A4C" : RK.red;
   return (
     <AbsoluteFill>
       <Paper />
@@ -569,27 +844,42 @@ export const CalcBeat: React.FC<BP> = ({B}) => {
             </div>
           );
         })}
+        {(B.addRows ?? []).map((r, i) => {
+          const k = p01(t, addAt + i * 0.45, addAt + i * 0.45 + 0.3, EO);
+          if (k <= 0) return null;
+          return (
+            <div key={`a${i}`} style={{marginTop: r.small ? 10 : 18, fontFamily: r.small ? MONO : INTER, fontWeight: r.small ? 700 : 800, fontSize: r.small ? 28 : 56, lineHeight: 1.15, letterSpacing: r.small ? "0.02em" : "-0.03em", color: r.small ? RK.muted : r2col, opacity: k, translate: `${(1 - k) * 30}px 0`, whiteSpace: r.small ? "normal" : "nowrap"}}>
+              <Marked p={r.small ? 0 : p01(t, addAt + i * 0.45 + 0.25, addAt + i * 0.45 + 0.6, EO)} color={good ? "#CDEFD6" : RK.lemon}>
+                {r.text}
+              </Marked>
+            </div>
+          );
+        })}
         <div style={{marginTop: 26, borderTop: `5px solid ${RK.ink}`, paddingTop: 18, display: "flex", alignItems: "baseline", gap: 26, flexWrap: "wrap"}}>
-          <span style={{fontFamily: INTER, fontWeight: 800, fontSize: 92, letterSpacing: "-0.04em", lineHeight: 1.05, color: sk > 0 ? RK.muted : RK.ink, opacity: rp, scale: String(0.7 + 0.3 * rp), transformOrigin: "0 50%", display: "inline-block"}}>
+          <span style={{fontFamily: INTER, fontWeight: 800, fontSize: B.resultSize ?? 92, letterSpacing: "-0.04em", lineHeight: 1.05, color: sk > 0 ? RK.muted : RK.ink, opacity: rp, scale: String(0.7 + 0.3 * rp), transformOrigin: "0 50%", display: "inline-block"}}>
             <Struck text={B.result ?? ""} part={sk > 0 ? B.result : undefined} k={sk} />
           </span>
           {B.result2 && r2 > 0 ? (
-            <span style={{fontFamily: INTER, fontWeight: 800, fontSize: 104, letterSpacing: "-0.04em", lineHeight: 1.05, color: RK.red, scale: String(0.5 + 0.5 * r2), display: "inline-block", transformOrigin: "0 50%"}}>{B.result2}</span>
+            <span style={{fontFamily: INTER, fontWeight: 800, fontSize: (B.resultSize ?? 92) + 12, letterSpacing: "-0.04em", lineHeight: 1.05, color: r2col, scale: String(0.5 + 0.5 * r2), display: "inline-block", transformOrigin: "0 50%"}}>{B.result2}</span>
           ) : null}
         </div>
-        {B.sub2 && r2 > 0 ? <div style={{marginTop: 8, fontFamily: INTER, fontWeight: 700, fontSize: 44, color: RK.red, opacity: Math.min(1, r2)}}>{B.sub2}</div> : null}
+        {B.sub2 && r2 > 0 ? <div style={{marginTop: 8, fontFamily: INTER, fontWeight: 700, fontSize: 44, color: r2col, opacity: Math.min(1, r2)}}>{B.sub2}</div> : null}
         {B.note ? <div style={{marginTop: 22, fontFamily: MONO, fontWeight: 700, fontSize: 26, letterSpacing: "0.08em", color: RK.red, opacity: rp}}>{B.note.toUpperCase()}</div> : null}
       </div>
       {(B.cards ?? []).map((c, i) => (
         <SpecCard key={i} x={64} y={1330} w={720} at={Math.round(c.at * fps)} out={c.out !== undefined ? Math.round(c.out * fps) : undefined} term={c.term} sub={c.sub} lines={c.lines} note={c.note?.toUpperCase()} tone={c.tone} size={42} />
+      ))}
+      {B.tag ? <TagPill text={B.tag.text} at={Math.round((B.tag.at ?? 0.1) * fps)} /> : null}
+      {(B.stamps ?? []).map((st2, i) => (
+        <Stamp key={i} {...st2} />
       ))}
       <AuraMascot
         scale={1.0}
         dpr={1.25}
         plan={{
           stays: [{at: 0, x: 930, y: 1560, face: -0.4}],
-          gestures: [{at: 0.4, kind: "point"}, ...(sAt !== undefined ? [{at: sAt + 0.2, kind: "shrug" as const}] : [{at: resAt + 0.2, kind: "nod" as const}])],
-          emotes: [{at: 0.4, kind: "thinking", dur: 1.6}, ...(sAt !== undefined ? [{at: sAt + 0.1, kind: "surprised" as const, dur: 1.6}] : [{at: resAt + 0.2, kind: "happy" as const, dur: 1.2}])],
+          gestures: [{at: 0.4, kind: "point"}, ...(sAt !== undefined ? [{at: sAt + 0.2, kind: good ? ("jump" as const) : ("shrug" as const)}] : [{at: resAt + 0.2, kind: "nod" as const}])],
+          emotes: [{at: 0.4, kind: "thinking", dur: 1.6}, ...(sAt !== undefined ? [{at: sAt + 0.1, kind: good ? ("happy" as const) : ("surprised" as const), dur: 1.6}] : [{at: resAt + 0.2, kind: "happy" as const, dur: 1.2}])],
         }}
       />
       <Sounds
@@ -597,7 +887,7 @@ export const CalcBeat: React.FC<BP> = ({B}) => {
           [0.2, "@swipe-1", 0.3],
           ...rows.map((_, i) => [rowAt(i), "@typing-1", 0.16] as Snd),
           [resAt, "@pop-1", 0.35],
-          ...(sAt !== undefined ? ([[sAt, "@error-1", 0.4], [sAt + 0.6, "@impact-2", 0.35]] as Snd[]) : ([[resAt + 0.1, "@ding-1", 0.3]] as Snd[])),
+          ...(sAt !== undefined ? (good ? ([[sAt, "@swipe-1", 0.3], [sAt + 0.6, "@success-1", 0.35]] as Snd[]) : ([[sAt, "@error-1", 0.4], [sAt + 0.6, "@impact-2", 0.35]] as Snd[])) : ([[resAt + 0.1, "@ding-1", 0.3]] as Snd[])),
           ...(B.sounds ?? []),
         ]}
       />

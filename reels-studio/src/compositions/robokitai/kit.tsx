@@ -19,6 +19,7 @@ export const RK = {
   red: "#E5383B",
   blue: "#2B6CB0",
   muted: "#66666E",
+  s2: "#0E9C8E", // сезон 2 (07.11.2026): бирюзовый акцент шапки, печати «Сезон 2» и вкладок
 };
 export const INTER = inter.fontFamily;
 export const MONO = loadMono("normal", {weights: ["500", "700"], subsets: ["cyrillic", "latin"]}).fontFamily;
@@ -88,7 +89,7 @@ export const MarkLine: React.FC<{text: string; mark?: string; p: number; markCol
 };
 
 // шапка серии: «РОБОКИТАЙ · 机器人中国 · СЕРИЯ N» и вкладка шага (меняется по сценам)
-export const Header: React.FC<{series: string; zh: string; ep: number; city?: string; tab?: string; tabKey?: number; hide?: number}> = ({series, zh, ep, city, tab, tabKey = 0, hide = 0}) => {
+export const Header: React.FC<{series: string; zh: string; ep: number; city?: string; tab?: string; tabKey?: number; hide?: number; season?: number}> = ({series, zh, ep, city, tab, tabKey = 0, hide = 0, season}) => {
   const f = useCurrentFrame();
   const k = p01(f, 0, 14, EO) * (1 - hide);
   const tk = p01(f - tabKey, 2, 14, EO);
@@ -96,11 +97,19 @@ export const Header: React.FC<{series: string; zh: string; ep: number; city?: st
     <div style={{position: "absolute", left: 64, top: 262, opacity: k, translate: `0 ${(1 - k) * -30}px`}}>
       <div style={{display: "flex", alignItems: "center", gap: 14, fontFamily: MONO_CJK, fontWeight: 700, fontSize: 25, letterSpacing: "0.12em", color: RK.ink}}>
         <span style={{display: "inline-flex", alignItems: "center", justifyContent: "center", width: 40, height: 40, background: RK.red, color: RK.paper, borderRadius: 7, fontFamily: BRUSH_CJK, fontSize: 30, letterSpacing: 0, rotate: "-4deg"}}>机</span>
-        <span>
-          {series.toUpperCase()}
-          {zh ? ` · ${zh}` : ""}
-        </span>
-        <span style={{color: RK.muted}}>·</span>
+        {season && season > 1 ? null : (
+          // сезон 2+: название сериала говорит знак 机, место — у плашки «СЕЗОН N» (иначе город уходит под таймер)
+          <span>
+            {series.toUpperCase()}
+            {zh ? ` · ${zh}` : ""}
+          </span>
+        )}
+        {season && season > 1 ? (
+          // сезон 2+: бирюзовая плашка «СЕЗОН N» вместо точки-разделителя
+          <span style={{display: "inline-flex", alignItems: "center", padding: "3px 12px 4px", borderRadius: 8, background: RK.s2, color: RK.paper, letterSpacing: "0.1em", rotate: "-2deg"}}>СЕЗОН {season}</span>
+        ) : (
+          <span style={{color: RK.muted}}>·</span>
+        )}
         <span>СЕРИЯ {ep}</span>
         {city ? (
           <>

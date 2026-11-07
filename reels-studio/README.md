@@ -213,6 +213,14 @@ flock /dev/shm/render.lock env TMPDIR=/dev/shm/remotion-tmp npx remotion render 
 ```
 Новые виды шагов (`compare`, `calc`), стили угадайки (`cards` / `yesno` / `poll` / `pins`), образ клиента (`manager.look`) и миры — `CLAUDE.md`, «Серии 4–8».
 
+Сезон 2 (07.11.2026): `009-hangzhou.json` (С2·1 · Ханчжоу, «Обход, которого не было» — подстанция, мир `substation3d`) и `010-zastava.json`
+(С2·2 · Застава, «Робот приехал — робот не работает» — пусконаладка, мир `site3d`); в props `series.season: 2` — плашка «СЕЗОН 2» в шапке.
+```bash
+flock /dev/shm/render.lock env TMPDIR=/dev/shm/remotion-tmp npx remotion render src/index.ts RobokitaiStory /dev/shm/rk9/out.mp4 --props=props/robokitai/009-hangzhou.json --bundle-cache=false --ignore-certificate-errors --concurrency=2 --timeout=240000 --crf=20
+node tools/series-covers/covers.mjs robokitai-000-trailer robokitai-001-hangzhou robokitai-001-hangzhou-v2 robokitai-002-suzhou robokitai-003-shenzhen robokitai-004-shenyang robokitai-005-shanghai robokitai-006-beijing robokitai-007-zastava robokitai-008-guangdong robokitai-009-hangzhou robokitai-010-zastava
+```
+Новые поля шагов (`phone`, `clocks`, `thermo`, `trend`, `checks`, `bubbles`, `flashes`, `memo`, `addRows`, `good`), угадайки `diff` / `order` — `CLAUDE.md`, «Сезон 2».
+
 ## Пересборка готового ролика (вырезать кусок, новый звук)
 
 ```bash

@@ -391,5 +391,39 @@
   "attribution": "Музыка: Alexandr Zhelanov — Rise of Spirit (CC BY 3.0)",
   "page": "https://opengameart.org/content/rise-of-spirit",
   "note": "№96 подборки 100; пул «多 NEWS» (04.11.2026)"
+ },
+ "heart-of-machine-alexandr-zhelanov": {
+  "src": "интернет-материалы/музыка/heart-of-machine-alexandr-zhelanov.mp3",
+  "volume": 0.44,
+  "lufs": -14.4,
+  "drops": [
+   82.65,
+   58.65,
+   35.65
+  ],
+  "duration": 232.4,
+  "title": "Heart of Machine",
+  "artist": "Alexandr Zhelanov",
+  "license": "CC BY 3.0",
+  "attribution": "Музыка: «Heart of Machine» — Alexandr Zhelanov (OpenGameArt), CC BY 3.0",
+  "page": "https://opengameart.org/content/heart-of-machine",
+  "note": "№69 подборки 100; «Робокитай», сезон 2 · серия 1 · Ханчжоу (07.11.2026). Тишина 80,3–82,6 с, удар 82,65 с; брейк 55–58,6 с, удар 58,65 с"
+ },
+ "malfunction-at-the-robotics-factory-dafuqex": {
+  "src": "интернет-материалы/музыка/malfunction-at-the-robotics-factory-dafuqex.mp3",
+  "volume": 0.16,
+  "lufs": -5.4,
+  "drops": [
+   13.25,
+   172.25,
+   185.9
+  ],
+  "duration": 271.5,
+  "title": "Malfunction at the Robotics Factory",
+  "artist": "Dafuqex",
+  "license": "CC BY 4.0",
+  "attribution": "Музыка: «Malfunction at the Robotics Factory» — Dafuqex (archive.org), CC BY 4.0",
+  "page": "https://archive.org/details/SRS02306",
+  "note": "№56 подборки 100; «Робокитай», сезон 2 · серия 2 · Застава (07.11.2026). Трек громкий (−5 LUFS): тихое вступление 0–6 с, провал 10–13 с, удар 13,25 с; провал перед 172,25 с"
  }
 }
